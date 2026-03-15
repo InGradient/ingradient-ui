@@ -1,0 +1,19 @@
+{
+  "name": "ingradient-ui",
+  "private": true,
+  "workspaces": [
+    "packages/design-tokens",
+    "packages/ui",
+    "packages/portal-patterns",
+    "packages/gallery-ui",
+    "apps/design-showcase"
+  ],
+  "scripts": {
+    "dev": "npm run dev --prefix apps/design-showcase",
+    "build": "npm run build --prefix apps/design-showcase",
+    "preview": "npm run preview --prefix apps/design-showcase"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
