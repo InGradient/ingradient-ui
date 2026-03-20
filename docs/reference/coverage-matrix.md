@@ -21,6 +21,8 @@
 | overlays | yes | yes | yes |
 | charts | yes | yes | yes |
 | patterns | yes | yes | yes |
+| button destructive tone | yes | yes | yes |
+| field label/group helpers | yes | yes | yes |
 
 ## Rule
 

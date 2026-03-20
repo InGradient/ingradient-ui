@@ -48,6 +48,9 @@ import {
   TooltipBubble,
   AssignmentRow,
   ActionBar,
+  DialogCloseButton,
+  NotificationBadge,
+  VerticalTabs,
 } from '@ingradient/ui/components'
 import { BrandLogo, BrandMark } from '@ingradient/ui/brand'
 import { Grid, Heading, Inline, Stack, Surface, Text } from '@ingradient/ui/primitives'
@@ -55,6 +58,9 @@ import {
   AppShell,
   AppSidebar,
   DashboardGrid,
+  FieldGroup,
+  FieldHint,
+  FieldLabel,
   FilterBar,
   FormSection,
   InspectorLayout,
@@ -295,6 +301,7 @@ function ButtonsDemo() {
         <Button>Primary</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="accent">Accent</Button>
+        <Button tone="danger">Delete</Button>
         <IconButton variant="secondary" aria-label="Star">
           *
         </IconButton>
@@ -358,6 +365,32 @@ function IdentityDemo() {
       <Badge $tone="accent">Preview</Badge>
       <Chip>ML Ops</Chip>
       <StatusPill $tone="running">Running</StatusPill>
+      <NotificationBadge value={4}>
+        <IconButton variant="secondary" aria-label="Notice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </IconButton>
+      </NotificationBadge>
+    </Inline>
+  )
+}
+
+function NotificationBadgeDemo() {
+  return (
+    <Inline gap={16} align="center">
+      <NotificationBadge value={12}>
+        <IconButton variant="secondary" aria-label="Open notices">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </IconButton>
+      </NotificationBadge>
+      <NotificationBadge value="3" tone="accent">
+        <Button variant="secondary">Messages</Button>
+      </NotificationBadge>
     </Inline>
   )
 }
@@ -594,6 +627,7 @@ function AccordionDemo() {
 function NavigationDemo() {
   const [page, setPage] = useState(2)
   const [tab, setTab] = useState('work')
+  const [verticalTab, setVerticalTab] = useState('general')
   return (
     <Stack gap={16}>
       <Tabs
@@ -607,6 +641,19 @@ function NavigationDemo() {
         ]}
         style={{ width: '100%' }}
       />
+      <div style={{ maxWidth: 240 }}>
+        <VerticalTabs
+          radius="xs"
+          value={verticalTab}
+          onChange={setVerticalTab}
+          items={[
+            { value: 'general', label: 'General' },
+            { value: 'notices', label: 'Notices', badge: '4' },
+            { value: 'members', label: 'Members' },
+            { value: 'advanced', label: 'Advanced' },
+          ]}
+        />
+      </div>
       <Breadcrumbs items={[{ label: 'Components', href: '#' }, { label: 'Navigation', href: '#' }, { label: 'Pagination' }]} />
       <Pagination page={page} totalPages={5} onChange={setPage} />
       <Stepper steps={['Select', 'Configure', 'Review']} activeStep={1} />
@@ -625,7 +672,10 @@ function DialogDemo() {
         <ModalBackdrop onClick={() => setOpen(false)}>
           <CompactModalCard onClick={(event) => event.stopPropagation()}>
             <Stack gap={14}>
-              <ModalTitle>Publish token changes</ModalTitle>
+              <Inline align="center" justify="space-between">
+                <ModalTitle>Publish token changes</ModalTitle>
+                <DialogCloseButton onClick={() => setOpen(false)} />
+              </Inline>
               <Text tone="secondary" style={{ display: 'block' }}>
                 This is the reusable modal shell used by docs and product surfaces.
               </Text>
@@ -876,13 +926,23 @@ function FormSectionPatternDemo() {
     <FormSection>
       <SectionTitle>Token Playground</SectionTitle>
       <Grid minItemWidth={220}>
-        <TextField placeholder="Theme name" />
-        <SelectField defaultValue="dark">
-          <option value="dark">Dark</option>
-          <option value="contrast">High Contrast</option>
-        </SelectField>
+        <FieldGroup>
+          <FieldLabel htmlFor="theme-name">Theme name</FieldLabel>
+          <TextField id="theme-name" placeholder="Theme name" />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor="theme-mode">Mode</FieldLabel>
+          <SelectField id="theme-mode" defaultValue="dark">
+            <option value="dark">Dark</option>
+            <option value="contrast">High Contrast</option>
+          </SelectField>
+        </FieldGroup>
       </Grid>
-      <TextareaField rows={4} placeholder="Describe the intent of this preset" />
+      <FieldGroup>
+        <FieldLabel htmlFor="theme-notes">Notes</FieldLabel>
+        <TextareaField id="theme-notes" rows={4} placeholder="Describe the intent of this preset" />
+        <FieldHint>FieldGroup and FieldLabel keep labeled forms visually consistent across settings and create flows.</FieldHint>
+      </FieldGroup>
       <Inline gap={10}>
         <Button variant="secondary">Cancel</Button>
         <Button>Save preset</Button>
@@ -926,16 +986,21 @@ function ListDetailPatternDemo() {
 }
 
 function SettingsShellPatternDemo() {
+  const [tab, setTab] = useState('general')
   return (
     <Stack gap={16}>
       <SettingsShell>
-        <AppSidebar>
-          <SidebarSection>
-            <Button variant="secondary">General</Button>
-            <Button variant="secondary">Account</Button>
-            <Button variant="secondary">Project</Button>
-          </SidebarSection>
-        </AppSidebar>
+        <VerticalTabs
+          radius="xs"
+          value={tab}
+          onChange={setTab}
+          items={[
+            { value: 'general', label: 'General' },
+            { value: 'account', label: 'Account' },
+            { value: 'project', label: 'Project', badge: '2' },
+            { value: 'advanced', label: 'Advanced' },
+          ]}
+        />
         <SectionPanel>
           <Heading level={3}>SettingsShell</Heading>
           <Text tone="secondary" style={{ display: 'block' }}>
@@ -989,6 +1054,7 @@ export {
   ImageGridDemo,
   ListDetailPatternDemo,
   NavigationDemo,
+  NotificationBadgeDemo,
   OverlayBlocksDemo,
   ProgressDemo,
   SelectsDemo,

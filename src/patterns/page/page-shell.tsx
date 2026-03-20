@@ -123,3 +123,21 @@ export const FormSection = styled(Panel)`
   padding: 18px;
   gap: 14px;
 `
+
+export const FieldGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-2);
+  min-width: 0;
+`
+
+export const FieldLabel = styled.label`
+  font-size: var(--ig-font-size-sm);
+  font-weight: 600;
+  color: var(--ig-color-text-muted);
+`
+
+export const FieldHint = styled.span`
+  font-size: var(--ig-font-size-xs);
+  color: var(--ig-color-text-muted);
+`

@@ -3,7 +3,7 @@
 ## Import
 
 ```ts
-import { Breadcrumbs, Pagination, Stepper, Tabs } from '@ingradient/ui/components'
+import { Breadcrumbs, Pagination, Stepper, Tabs, VerticalTabs } from '@ingradient/ui/components'
 ```
 
 ## What It Covers
@@ -12,6 +12,7 @@ import { Breadcrumbs, Pagination, Stepper, Tabs } from '@ingradient/ui/component
 - `Pagination`
 - `Stepper`
 - `Tabs`
+- `VerticalTabs`
 
 ## When To Use
 
@@ -42,6 +43,14 @@ import { Breadcrumbs, Pagination, Stepper, Tabs } from '@ingradient/ui/component
 - 같은 레벨의 전환
 - `pill` 또는 `underline`
 
+### VerticalTabs
+
+- settings 같은 좌측 rail 전환
+- badge가 붙는 left navigation
+- animated active highlight
+- `radius="sm" | "md" | "lg"`로 rail의 모서리 강도를 조절
+  - settings처럼 더 각진 rail은 `xs`
+
 ## Most Important Prop
 
 - `items`
@@ -50,12 +59,18 @@ import { Breadcrumbs, Pagination, Stepper, Tabs } from '@ingradient/ui/component
   - 현재 active 값
 - `onChange`
   - 사용자 선택 처리
+- `radius`
+  - settings rail은 `xs`
+  - 일반 left navigation은 `md`
 
 ## Do
 
 - 같은 화면 안에서는 동일한 navigation 패턴을 유지한다
 - top-level tab은 `underline`을 우선 고려한다
+- settings left rail은 `VerticalTabs`를 우선 고려한다
+- settings left rail은 너무 둥글지 않게 `radius="xs"`부터 본다
 
 ## Don’t
 
 - 같은 역할의 navigation을 화면마다 새로 구현하지 않는다
+- settings 왼쪽 메뉴를 로컬 styled button 묶음으로 다시 만들지 않는다

@@ -1,5 +1,6 @@
 export * from './status'
 export * from './badge'
+export * from './notification-badge'
 export * from './progress'
 export * from './skeleton'
 export * from './alert'

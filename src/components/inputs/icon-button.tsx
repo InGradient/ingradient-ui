@@ -5,6 +5,7 @@ export function IconButton({
   variant,
   $variant,
   size = 'md',
+  tone = 'default',
   children,
   ...props
 }: ButtonProps) {
@@ -13,6 +14,7 @@ export function IconButton({
       type="button"
       $variant={normalizeVariant(variant, $variant)}
       $size={size}
+      $tone={tone}
       $iconOnly
       aria-label={props['aria-label'] ?? 'Action'}
       {...props}

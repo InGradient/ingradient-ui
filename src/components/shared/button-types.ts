@@ -3,11 +3,13 @@ import React from 'react'
 export type ButtonVariant = 'solid' | 'secondary' | 'accent'
 export type LegacyButtonVariant = 'primary' | 'ghost' | 'accent'
 export type ButtonSize = 'sm' | 'md' | 'lg'
+export type ButtonTone = 'default' | 'danger'
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
   $variant?: LegacyButtonVariant
   size?: ButtonSize
+  tone?: ButtonTone
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
 }

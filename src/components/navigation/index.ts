@@ -1,4 +1,5 @@
 export * from './tabs'
+export * from './vertical-tabs'
 export * from './breadcrumbs'
 export * from './pagination'
 export * from './stepper'

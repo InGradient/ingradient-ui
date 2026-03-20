@@ -8,7 +8,7 @@ import { Button, IconButton } from '@ingradient/ui/components'
 
 ## What It Is
 
-가장 기본적인 action trigger다. primary, secondary, accent, icon action을 공통 규칙으로 제공한다.
+가장 기본적인 action trigger다. primary, secondary, accent, destructive, icon action을 공통 규칙으로 제공한다.
 
 ## When To Use
 
@@ -20,6 +20,7 @@ import { Button, IconButton } from '@ingradient/ui/components'
 
 - `variant?: 'solid' | 'secondary' | 'accent'`
 - `size?: 'sm' | 'md' | 'lg'`
+- `tone?: 'default' | 'danger'`
 - `leadingIcon?: ReactNode`
 - `trailingIcon?: ReactNode`
 - `children: ReactNode`
@@ -32,13 +33,16 @@ import { Button, IconButton } from '@ingradient/ui/components'
   - 보조 action
 - `accent`
   - 강조가 필요한 action
+- `tone="danger"`
+  - 삭제, 제거, 취소 불가 action 같은 destructive 흐름
 
 ## Do
 
 - action hierarchy를 variant로 표현한다
+- destructive action은 `tone="danger"`로 통일한다
 - icon-only action은 `IconButton`을 쓴다
 
 ## Don’t
 
 - 링크 역할을 버튼으로 대체하지 않는다
-- feature마다 별도 button shell을 만들지 않는다
+- feature마다 별도 red button shell을 만들지 않는다

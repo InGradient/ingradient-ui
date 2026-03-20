@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { X } from 'lucide-react'
 import { Button } from '../inputs/button'
-import { IconButton } from '../inputs/icon-button'
+import { DialogCloseButton } from './dialog-close-button'
 import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from './modal-primitives'
 import type { ButtonVariant } from '../shared/button-types'
 
@@ -40,7 +39,7 @@ export function DialogShell({
       <ModalCard onClick={(event) => event.stopPropagation()} style={{ width }}>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
-          {onClose ? <IconButton type="button" variant="secondary" aria-label="Close dialog" onClick={() => onClose()}><X size={16} /></IconButton> : null}
+          {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}
         </ModalHeader>
         <DialogContent>
           {description ? <DialogDescription>{description}</DialogDescription> : null}

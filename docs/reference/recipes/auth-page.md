@@ -12,6 +12,8 @@
 - `PageContent`
 - `Surface` or `Card`
 - `FormSection`
+- `FieldGroup`
+- `FieldLabel`
 - `TextField`
 - `PasswordField`
 - `Button`
@@ -22,7 +24,7 @@
 1. theme와 global style 적용
 2. 가운데 정렬된 shell 구성
 3. `BrandLogo` 배치
-4. `FormSection`으로 field 묶기
+4. `FormSection`과 `FieldGroup`으로 field 묶기
 5. primary/secondary button 배치
 
 ## Don’t
