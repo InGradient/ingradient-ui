@@ -50,6 +50,34 @@ ingradient-ui/
 - docs 앱은 개발 편의를 위해 `@ingradient/ui/*`를 루트 `src/`로 alias한다.
 - `lib/tokens.css`는 `src/tokens`에서 자동 생성한다.
 
+## Documentation Structure
+
+사용자 문서와 유지보수 문서는 저장 위치를 분리한다.
+
+- 사용자 문서
+  - `apps/design-showcase/src/docs/*.ts(x)`
+  - public API metadata source of truth
+- 유지보수 문서
+  - `docs/*.md`
+  - 철학, 구조, 규칙, 워크플로우
+
+showcase 문서 메타는 아래처럼 나눈다.
+
+```text
+apps/design-showcase/src/docs/
+├─ types.ts
+├─ foundations.tsx
+├─ components.tsx
+├─ patterns.tsx
+└─ index.ts
+```
+
+이 구조를 쓰는 이유는 다음과 같다.
+
+- demo 렌더링과 문서 메타를 분리할 수 있다.
+- props, variants, do/don't, related 같은 사람이 써야 하는 설명을 명시적으로 관리할 수 있다.
+- public API 추가 시 문서 누락 여부를 더 쉽게 발견할 수 있다.
+
 ## Token Architecture
 
 스타일은 아래 4층으로 분리한다.

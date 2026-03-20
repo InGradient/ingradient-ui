@@ -32,10 +32,17 @@
 
 아래 변경은 항상 문서와 같이 간다.
 
-- 구조 변경 -> `ARCHITECTURE.md`
-- 파일 규칙 변경 -> `FILE_RULES.md`
-- 경계 기준 변경 -> `BOUNDARIES.md`
-- 운영 원칙 변경 -> `PHILOSOPHY.md`, `README.md`
+- 사용자 문서 구조/작성 기준 변경 -> `DOCUMENTATION_STRATEGY.md`, `DOC_WRITING_RULES.md`
+- 구조 변경 -> `docs/concepts/ARCHITECTURE.md`
+- 파일 규칙 변경 -> `docs/rules/FILE_RULES.md`
+- 경계 기준 변경 -> `docs/concepts/BOUNDARIES.md`
+- 운영 원칙 변경 -> `docs/concepts/PHILOSOPHY.md`, `README.md`
+
+새 public export를 추가하거나 public prop contract를 바꾸면 아래도 같이 본다.
+
+1. `apps/design-showcase/src/docs/*.ts(x)` metadata
+2. showcase 상세 페이지 예제
+3. 관련 maintainer 문서
 
 ## Local Development
 
@@ -60,7 +67,7 @@
 ```json
 {
   "dependencies": {
-    "@ingradient/ui": "^0.1.0"
+    "@ingradient/ui": "^0.0.1"
   }
 }
 ```

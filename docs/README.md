@@ -2,43 +2,79 @@
 
 이 폴더는 `ingradient-ui` 운영 기준 문서 저장소다. 루트 `README.md`보다 깊은 구조, 경계, 규칙, 워크플로우는 여기서 관리한다.
 
+사용자용 API 문서는 `apps/design-showcase`가 담당한다. 이 폴더는 기여자와 유지보수자를 위한 기준 문서다.
+
 ## Reading Order
 
-1. [PHILOSOPHY.md](./PHILOSOPHY.md)
-2. [BOUNDARIES.md](./BOUNDARIES.md)
-3. [CHANGE_GUIDE.md](./CHANGE_GUIDE.md)
-4. [ARCHITECTURE.md](./ARCHITECTURE.md)
-5. [FILE_RULES.md](./FILE_RULES.md)
-6. [WORKFLOW.md](./WORKFLOW.md)
+1. [concepts/PHILOSOPHY.md](./concepts/PHILOSOPHY.md)
+2. [concepts/BOUNDARIES.md](./concepts/BOUNDARIES.md)
+3. [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
+4. [guides/DOC_WRITING_RULES.md](./guides/DOC_WRITING_RULES.md)
+5. [guides/CHANGE_GUIDE.md](./guides/CHANGE_GUIDE.md)
+6. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
+7. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
+8. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
+9. [releases/README.md](./releases/README.md)
+
+## Structure
+
+- `concepts/`
+  - 저장소 철학, 경계, 구조
+- `guides/`
+  - 수정 절차, 문서 전략, 작성 규칙, 운영 가이드
+- `rules/`
+  - 강하게 지켜야 하는 규칙
+- `reference/`
+  - 공유 가능한 Markdown API reference
+- `releases/`
+  - 버전별 릴리즈 노트
 
 ## Document Map
 
-- [PHILOSOPHY.md](./PHILOSOPHY.md)
+- [concepts/PHILOSOPHY.md](./concepts/PHILOSOPHY.md)
   - 저장소 존재 이유
   - 공용 UI와 제품 UI 분리 이유
   - 역할 분담 원칙
 
-- [BOUNDARIES.md](./BOUNDARIES.md)
+- [concepts/BOUNDARIES.md](./concepts/BOUNDARIES.md)
   - core vs app 판단 기준
   - token vs recipe vs variant 판단 기준
 
-- [CHANGE_GUIDE.md](./CHANGE_GUIDE.md)
-  - 수정 전에 꼭 읽어야 하는 문서 순서
-  - 수정 중 지켜야 하는 규칙
-  - 수정 후 최소 검증 항목
-
-- [ARCHITECTURE.md](./ARCHITECTURE.md)
+- [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
   - 루트 패키지 구조
   - `src/` 내부 레이어 구조
   - `lib/` 빌드 산출물 원칙
   - TS token source와 generated `tokens.css`
 
-- [FILE_RULES.md](./FILE_RULES.md)
+- [guides/CHANGE_GUIDE.md](./guides/CHANGE_GUIDE.md)
+  - 수정 전에 꼭 읽어야 하는 문서 순서
+  - 수정 중 지켜야 하는 규칙
+  - 수정 후 최소 검증 항목
+
+- [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
+  - 사용자 문서와 유지보수 문서의 경계
+  - showcase metadata를 source of truth로 두는 이유
+  - 폴더별 README를 제한적으로만 두는 이유
+
+- [guides/DOC_WRITING_RULES.md](./guides/DOC_WRITING_RULES.md)
+  - 사용자 문서 페이지의 필수 섹션
+  - props / variants / examples 작성 규칙
+  - 코드 변경 시 문서 동기화 기준
+
+- [rules/FILE_RULES.md](./rules/FILE_RULES.md)
   - 파일 길이 규칙
   - naming/export 규칙
   - raw literal 금지 규칙
 
-- [WORKFLOW.md](./WORKFLOW.md)
+- [guides/WORKFLOW.md](./guides/WORKFLOW.md)
   - 디자인 변경 흐름
   - docs 동기화 규칙
   - local link와 release versioning
+
+- [reference/README.md](./reference/README.md)
+  - showcase를 보조하는 공유용 Markdown reference
+  - 핵심 public API 사용 요약
+
+- [releases/README.md](./releases/README.md)
+  - 버전별 릴리즈 노트 인덱스
+  - 현재 공개된 버전 목록

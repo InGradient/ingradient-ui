@@ -11,6 +11,7 @@ npm run dev
 ```
 
 - docs: `http://localhost:3002`
+- user-facing docs source: `apps/design-showcase`
 - package build + docs build: `npm run build`
 - package only: `npm run build:package`
 - style literal check: `npm run check:style-literals`
@@ -30,6 +31,8 @@ ingradient-ui/
 - `apps/design-showcase`: public API docs app
 - `docs`: 운영 기준 문서
 - `lib`: 빌드 산출물
+
+사용자 문서는 showcase를 보고, 유지보수 규칙은 `docs/`를 본다.
 
 ## Token Source Strategy
 
@@ -66,13 +69,19 @@ ingradient-ui/
 
 ## Docs
 
+- user-facing docs: `npm run dev` 후 `http://localhost:3002`
 - [Docs Index](./docs/README.md)
-- [Philosophy](./docs/PHILOSOPHY.md)
-- [Change Guide](./docs/CHANGE_GUIDE.md)
-- [Architecture](./docs/ARCHITECTURE.md)
-- [File Rules](./docs/FILE_RULES.md)
-- [Boundaries](./docs/BOUNDARIES.md)
-- [Workflow](./docs/WORKFLOW.md)
+- [Philosophy](./docs/concepts/PHILOSOPHY.md)
+- [Architecture](./docs/concepts/ARCHITECTURE.md)
+- [Boundaries](./docs/concepts/BOUNDARIES.md)
+- [Documentation Strategy](./docs/guides/DOCUMENTATION_STRATEGY.md)
+- [Doc Writing Rules](./docs/guides/DOC_WRITING_RULES.md)
+- [Change Guide](./docs/guides/CHANGE_GUIDE.md)
+- [Workflow](./docs/guides/WORKFLOW.md)
+- [File Rules](./docs/rules/FILE_RULES.md)
+- [Reference Docs](./docs/reference/README.md)
+- [Releases](./docs/releases/README.md)
+- [Changelog](./CHANGELOG.md)
 
 ## Legacy Compatibility
 

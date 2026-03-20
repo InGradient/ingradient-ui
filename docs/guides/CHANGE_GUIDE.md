@@ -11,21 +11,28 @@
 
 코드를 수정하기 전에 아래 문서를 먼저 본다.
 
-1. [PHILOSOPHY.md](./PHILOSOPHY.md)
+1. [PHILOSOPHY.md](../concepts/PHILOSOPHY.md)
    - 왜 이 저장소가 존재하는지
    - 왜 범용 UI만 여기 둬야 하는지
-2. [BOUNDARIES.md](./BOUNDARIES.md)
+2. [BOUNDARIES.md](../concepts/BOUNDARIES.md)
    - 지금 수정하려는 것이 core인지 app/domain인지
    - token, recipe, variant 중 어디에 둬야 하는지
-3. [ARCHITECTURE.md](./ARCHITECTURE.md)
+3. [DOCUMENTATION_STRATEGY.md](./DOCUMENTATION_STRATEGY.md)
+   - 사용자 문서는 어디에 쓰는지
+   - 유지보수 문서는 어디에 쓰는지
+   - showcase metadata를 왜 source of truth로 두는지
+4. [DOC_WRITING_RULES.md](./DOC_WRITING_RULES.md)
+   - 사용자 문서 페이지의 필수 섹션
+   - props / variants / examples 작성 규칙
+5. [ARCHITECTURE.md](../concepts/ARCHITECTURE.md)
    - 현재 루트 패키지 구조
    - `src/`와 `lib/`의 역할
    - token source와 generated CSS 관계
-4. [FILE_RULES.md](./FILE_RULES.md)
+6. [FILE_RULES.md](../rules/FILE_RULES.md)
    - 파일 길이
    - export 규칙
    - raw literal 금지 규칙
-5. [WORKFLOW.md](./WORKFLOW.md)
+7. [WORKFLOW.md](./WORKFLOW.md)
    - 수정 순서
    - `tokens.css` 생성 흐름
    - docs 동기화 규칙
@@ -47,6 +54,8 @@
 - 한 파일에는 하나의 public unit만 둔다.
 - `components/`와 `patterns/`에서는 raw color, raw spacing, raw radius를 직접 넣지 않는다.
 - 새 public export를 추가하면 docs도 같이 추가한다.
+- showcase metadata 없는 public export를 만들지 않는다.
+- 공유가 필요한 핵심 API는 `docs/reference/**`도 같이 갱신한다.
 
 ## What You Must Not Do
 
@@ -90,11 +99,12 @@
 
 아래 변화는 반드시 문서와 같이 간다.
 
-- 구조 변경 -> [ARCHITECTURE.md](./ARCHITECTURE.md)
-- 파일 규칙 변경 -> [FILE_RULES.md](./FILE_RULES.md)
-- 경계 판단 기준 변경 -> [BOUNDARIES.md](./BOUNDARIES.md)
+- 구조 변경 -> [ARCHITECTURE.md](../concepts/ARCHITECTURE.md)
+- 파일 규칙 변경 -> [FILE_RULES.md](../rules/FILE_RULES.md)
+- 경계 판단 기준 변경 -> [BOUNDARIES.md](../concepts/BOUNDARIES.md)
 - 운영 순서 변경 -> [WORKFLOW.md](./WORKFLOW.md)
-- 저장소 목적이나 역할 분담 변경 -> [PHILOSOPHY.md](./PHILOSOPHY.md), [../README.md](../README.md)
+- 사용자 문서 구조 변경 -> [DOCUMENTATION_STRATEGY.md](./DOCUMENTATION_STRATEGY.md), [DOC_WRITING_RULES.md](./DOC_WRITING_RULES.md)
+- 저장소 목적이나 역할 분담 변경 -> [PHILOSOPHY.md](../concepts/PHILOSOPHY.md), [../../README.md](../../README.md)
 
 ## Minimum Verification
 
