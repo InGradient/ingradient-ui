@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ingradient/ui": ["./src/index.ts"],
+      "@ingradient/ui/legacy": ["./src/legacy/index.ts"],
+      "@ingradient/ui/tokens": ["./src/tokens/index.ts"],
+      "@ingradient/ui/primitives": ["./src/primitives/index.ts"],
+      "@ingradient/ui/components": ["./src/components/index.ts"],
+      "@ingradient/ui/patterns": ["./src/patterns/index.ts"],
+      "@ingradient/ui/brand": ["./src/brand/index.tsx"]
+    }
+  },
+  "include": ["src", "apps/design-showcase/src", "tsup.config.ts", "scripts/**/*.mjs"]
+}

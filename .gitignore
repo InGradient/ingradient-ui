@@ -1,3 +1,5 @@
 node_modules/
 dist/
+lib/
+apps/design-showcase/dist/
 .DS_Store

@@ -9,12 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ingradient/design-tokens": "*",
-    "@ingradient/gallery-ui": "*",
-    "@ingradient/portal-patterns": "*",
-    "@ingradient/ui": "*",
+    "@ingradient/ui": "file:../..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.28.0",
     "styled-components": "^6.1.1"
   },
   "devDependencies": {

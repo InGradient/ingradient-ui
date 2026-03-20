@@ -1,0 +1,11 @@
+export * from './foundations'
+export * from './semantic'
+export * from './recipes'
+export * from './variants'
+export * from './globals/css-contract'
+export * from './globals/theme-provider'
+export * from './globals/global-style'
+
+export { IngradientThemeProvider as ThemeProvider } from './globals/theme-provider'
+export { IngradientGlobalStyle as PortalGlobalStyle } from './globals/global-style'
+export { IngradientGlobalStyle as DesignSystemGlobalStyle } from './globals/global-style'

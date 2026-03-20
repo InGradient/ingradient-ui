@@ -1,0 +1,86 @@
+import React from 'react'
+import styled from 'styled-components'
+import { X } from 'lucide-react'
+import { Button } from '../inputs/button'
+import { IconButton } from '../inputs/icon-button'
+import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from './modal-primitives'
+import type { ButtonVariant } from '../shared/button-types'
+
+const DialogContent = styled.div`
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
+const DialogDescription = styled.p`
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ig-color-text-muted);
+`
+
+export function DialogShell({
+  title,
+  description,
+  children,
+  actions,
+  onClose,
+  width = 'min(720px, 100%)',
+}: {
+  title: React.ReactNode
+  description?: React.ReactNode
+  children?: React.ReactNode
+  actions?: React.ReactNode
+  onClose?: () => void
+  width?: string | number
+}) {
+  return (
+    <ModalBackdrop onClick={() => onClose?.()}>
+      <ModalCard onClick={(event) => event.stopPropagation()} style={{ width }}>
+        <ModalHeader>
+          <ModalTitle>{title}</ModalTitle>
+          {onClose ? <IconButton type="button" variant="secondary" aria-label="Close dialog" onClick={() => onClose()}><X size={16} /></IconButton> : null}
+        </ModalHeader>
+        <DialogContent>
+          {description ? <DialogDescription>{description}</DialogDescription> : null}
+          {children}
+          {actions ? <ModalActions>{actions}</ModalActions> : null}
+        </DialogContent>
+      </ModalCard>
+    </ModalBackdrop>
+  )
+}
+
+export function ConfirmDialog({
+  title,
+  description,
+  confirmLabel = 'Confirm',
+  cancelLabel = 'Cancel',
+  onConfirm,
+  onCancel,
+  confirmVariant = 'solid',
+}: {
+  title: React.ReactNode
+  description: React.ReactNode
+  confirmLabel?: React.ReactNode
+  cancelLabel?: React.ReactNode
+  onConfirm: () => void
+  onCancel: () => void
+  confirmVariant?: ButtonVariant
+}) {
+  return (
+    <DialogShell
+      title={title}
+      description={description}
+      onClose={onCancel}
+      width="min(520px, 100%)"
+      actions={
+        <>
+          <Button type="button" variant="secondary" onClick={onCancel}>{cancelLabel}</Button>
+          <Button type="button" variant={confirmVariant} onClick={onConfirm}>{confirmLabel}</Button>
+        </>
+      }
+    />
+  )
+}

@@ -1,19 +1,46 @@
 {
-  "name": "ingradient-ui",
-  "private": true,
+  "name": "@ingradient/ui",
+  "version": "0.0.1",
+  "type": "module",
   "workspaces": [
-    "packages/design-tokens",
-    "packages/ui",
-    "packages/portal-patterns",
-    "packages/gallery-ui",
     "apps/design-showcase"
   ],
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./brand": "./lib/brand.js",
+    "./legacy": "./lib/legacy.js",
+    "./tokens.css": "./lib/tokens.css",
+    "./tokens": "./lib/tokens.js",
+    "./primitives": "./lib/primitives.js",
+    "./components": "./lib/components.js",
+    "./patterns": "./lib/patterns.js"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "dev": "npm run dev --prefix apps/design-showcase",
-    "build": "npm run build --prefix apps/design-showcase",
-    "preview": "npm run preview --prefix apps/design-showcase"
+    "dev": "npm run dev --workspace apps/design-showcase",
+    "build": "npm run build:package && npm run build:docs",
+    "build:package": "rm -rf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs",
+    "build:docs": "npm run build --workspace apps/design-showcase",
+    "preview": "npm run preview --workspace apps/design-showcase",
+    "check:style-literals": "node scripts/check-style-literals.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.563.0",
+    "recharts": "^3.7.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.3.3",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

@@ -1,0 +1,16 @@
+export const spacingScale = {
+  0: '0px',
+  1: '4px',
+  2: '6px',
+  3: '8px',
+  4: '10px',
+  5: '12px',
+  6: '14px',
+  7: '16px',
+  8: '18px',
+  9: '20px',
+  10: '22px',
+  11: '24px',
+  12: '28px',
+  13: '32px',
+} as const
