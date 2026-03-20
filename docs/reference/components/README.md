@@ -28,6 +28,8 @@
 - [menus-and-overlays.md](./menus-and-overlays.md)
 - [workspace-blocks.md](./workspace-blocks.md)
 - [dialog-shell.md](./dialog-shell.md)
+- [spinner.md](./spinner.md)
+- [context-menu.md](./context-menu.md)
 
 ## Notes
 

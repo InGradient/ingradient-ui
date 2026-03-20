@@ -8,6 +8,13 @@ import {
   Breadcrumbs,
   Button,
   Card,
+  Spinner,
+  ContextMenuBackdrop,
+  ContextMenuList,
+  ContextMenuItem,
+  ContextMenuButton,
+  ContextMenuSub,
+  ContextMenuSubItem,
   ChartContainer,
   Checkbox,
   Chip,
@@ -1034,6 +1041,73 @@ function SettingsShellPatternDemo() {
   )
 }
 
+function SpinnerDemo() {
+  return (
+    <Stack gap={14}>
+      <Inline gap={16}>
+        <Spinner size="sm" tone="accent" />
+        <Spinner size="md" tone="accent" />
+        <Spinner size="lg" tone="accent" />
+      </Inline>
+      <Inline gap={16}>
+        <Spinner size="md" tone="accent" aria-label="accent tone" />
+        <Spinner size="md" tone="white" aria-label="white tone" />
+        <Spinner size="md" tone="muted" aria-label="muted tone" />
+      </Inline>
+    </Stack>
+  )
+}
+
+function ContextMenuDemo() {
+  const [open, setOpen] = useState(false)
+  const [subOpen, setSubOpen] = useState(false)
+  return (
+    <Stack gap={14}>
+      <Text size="12px" tone="soft">Click the button to open a context menu. In production, open on right-click.</Text>
+      <Inline gap={10}>
+        <Button size="sm" variant="secondary" type="button" onClick={() => setOpen(true)}>
+          Open context menu
+        </Button>
+      </Inline>
+      {open && (
+        <>
+          <ContextMenuBackdrop onClick={() => { setOpen(false); setSubOpen(false) }} aria-hidden />
+          <ContextMenuList
+            $x={200}
+            $y={180}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ContextMenuButton type="button" $danger onClick={() => setOpen(false)}>
+              Delete
+            </ContextMenuButton>
+            <ContextMenuItem
+              onMouseEnter={() => setSubOpen(true)}
+              onMouseLeave={() => setSubOpen(false)}
+            >
+              <ContextMenuButton as="div" style={{ cursor: 'default' }}>
+                Set class ›
+              </ContextMenuButton>
+              {subOpen && (
+                <ContextMenuSub $left={330} $top={180}>
+                  {['Cat A', 'Cat B', 'Cat C'].map((label) => (
+                    <ContextMenuSubItem
+                      key={label}
+                      type="button"
+                      onClick={() => { setOpen(false); setSubOpen(false) }}
+                    >
+                      {label}
+                    </ContextMenuSubItem>
+                  ))}
+                </ContextMenuSub>
+              )}
+            </ContextMenuItem>
+          </ContextMenuList>
+        </>
+      )}
+    </Stack>
+  )
+}
+
 export {
   AccordionDemo,
   AlertDemo,
@@ -1071,4 +1145,6 @@ export {
   TypographyDemo,
   WorkspaceBlocksDemo,
   DashboardGridPatternDemo,
+  SpinnerDemo,
+  ContextMenuDemo,
 }
