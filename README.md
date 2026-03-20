@@ -15,6 +15,7 @@ npm run dev
 - package build + docs build: `npm run build`
 - package only: `npm run build:package`
 - style literal check: `npm run check:style-literals`
+- doc coverage check: `npm run check:doc-coverage`
 - generated stylesheet: `lib/tokens.css`
 
 ## Repository Shape
@@ -80,6 +81,7 @@ ingradient-ui/
 - [Workflow](./docs/guides/WORKFLOW.md)
 - [File Rules](./docs/rules/FILE_RULES.md)
 - [Reference Docs](./docs/reference/README.md)
+- [Getting Started Reference](./docs/reference/getting-started.md)
 - [Releases](./docs/releases/README.md)
 - [Changelog](./CHANGELOG.md)
 

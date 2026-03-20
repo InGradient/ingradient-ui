@@ -43,6 +43,8 @@
 1. `apps/design-showcase/src/docs/*.ts(x)` metadata
 2. showcase 상세 페이지 예제
 3. 관련 maintainer 문서
+4. `docs/reference/**`
+5. `npm run check:doc-coverage`
 
 ## Local Development
 

@@ -52,12 +52,16 @@ export interface DocEntry {
   summary: string
   whenToUse: string
   whenNotToUse?: string
+  chooseThisWhen?: string[]
+  useInsteadWhen?: string[]
   importPath: string
   examples: DocExample[]
   states: string[]
   props: DocProp[]
   variants: DocVariant[]
   related: string[]
+  commonComposition?: string[]
+  commonMistakes?: string[]
   notes: string[]
   dos: string[]
   donts: string[]

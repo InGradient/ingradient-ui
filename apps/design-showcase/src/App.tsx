@@ -210,6 +210,37 @@ const EmptyDocState = styled.div`
   background: rgba(255, 255, 255, 0.02);
 `
 
+function BulletCard({
+  title,
+  items,
+  fallback,
+}: {
+  title: string
+  items?: string[]
+  fallback?: string
+}) {
+  return (
+    <ContentCard elevation="panel">
+      <Stack gap={12}>
+        <MetaLabel>{title}</MetaLabel>
+        {items && items.length > 0 ? (
+          <ColumnList>
+            {items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ColumnList>
+        ) : fallback ? (
+          <Text tone="secondary" style={{ display: 'block' }}>
+            {fallback}
+          </Text>
+        ) : (
+          <EmptyDocState>No documented guidance yet.</EmptyDocState>
+        )}
+      </Stack>
+    </ContentCard>
+  )
+}
+
 function OverviewPage() {
   const recentEntries = docEntries.slice(-6)
   return (
@@ -286,6 +317,33 @@ function OverviewPage() {
           </Grid>
         </Stack>
       </ContentCard>
+
+      <Grid minItemWidth={280} gap={16}>
+        <ContentCard elevation="panel">
+          <Stack gap={12}>
+            <MetaLabel>Start Here</MetaLabel>
+            <Text tone="secondary" style={{ display: 'block' }}>
+              1. Theme and global style를 붙이고, 2. AppShell로 바깥 프레임을 만들고, 3. Table 또는 FormSection으로 첫
+              화면을 조립한다.
+            </Text>
+            <Text tone="secondary" style={{ display: 'block' }}>
+              Shareable Markdown guide는 `docs/reference/getting-started.md`에, interactive examples는 각 상세 문서에
+              있다.
+            </Text>
+          </Stack>
+        </ContentCard>
+        <ContentCard elevation="panel">
+          <Stack gap={12}>
+            <MetaLabel>Most Common Flows</MetaLabel>
+            <ColumnList>
+              <li>Page shell + toolbar + table</li>
+              <li>Settings shell + form section + dialog</li>
+              <li>Gallery-like browser + image grid + inspector</li>
+              <li>Auth or short form flow + dialog shell + buttons</li>
+            </ColumnList>
+          </Stack>
+        </ContentCard>
+      </Grid>
     </Stack>
   )
 }
@@ -332,6 +390,22 @@ function EntryPage({ entry }: { entry: DocEntry }) {
             </Text>
           </Stack>
         </ContentCard>
+      </Grid>
+
+      <Grid minItemWidth={320} gap={16}>
+        <BulletCard
+          title="Choose this when"
+          items={entry.chooseThisWhen}
+          fallback={entry.whenToUse}
+        />
+        <BulletCard
+          title="Use this instead when"
+          items={entry.useInsteadWhen}
+          fallback={
+            entry.whenNotToUse ??
+            '이 컴포넌트나 패턴이 business workflow 자체를 소유하게 만들기 시작하면 더 작은 primitive/component 또는 앱 레이어로 내려간다.'
+          }
+        />
       </Grid>
 
       <ContentCard elevation="panel">
@@ -496,6 +570,19 @@ function EntryPage({ entry }: { entry: DocEntry }) {
             </ColumnList>
           </Stack>
         </ContentCard>
+      </Grid>
+
+      <Grid minItemWidth={320} gap={16}>
+        <BulletCard
+          title="Common composition"
+          items={entry.commonComposition}
+          fallback="이 페이지의 examples와 related docs를 조합해 가장 가까운 화면 패턴부터 시작한다."
+        />
+        <BulletCard
+          title="Common mistakes"
+          items={entry.commonMistakes}
+          fallback="같은 역할의 UI를 feature마다 다시 만들지 않고, 이미 있는 patterns/components 조합으로 먼저 해결한다."
+        />
       </Grid>
 
       <Grid minItemWidth={320} gap={16}>

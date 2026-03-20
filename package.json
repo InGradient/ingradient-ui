@@ -26,7 +26,8 @@
     "build:package": "rm -rf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs",
     "build:docs": "npm run build --workspace apps/design-showcase",
     "preview": "npm run preview --workspace apps/design-showcase",
-    "check:style-literals": "node scripts/check-style-literals.mjs"
+    "check:style-literals": "node scripts/check-style-literals.mjs",
+    "check:doc-coverage": "node scripts/check-doc-coverage.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",

@@ -26,6 +26,8 @@
   - 강하게 지켜야 하는 규칙
 - `reference/`
   - 공유 가능한 Markdown API reference
+- `reference/recipes/`
+  - 실제 화면 조립 예제
 - `releases/`
   - 버전별 릴리즈 노트
 
@@ -74,6 +76,15 @@
 - [reference/README.md](./reference/README.md)
   - showcase를 보조하는 공유용 Markdown reference
   - 핵심 public API 사용 요약
+- [reference/getting-started.md](./reference/getting-started.md)
+  - 처음 보는 사람을 위한 빠른 시작
+  - theme 적용, page shell, table 조립 순서
+
+- [reference/troubleshooting.md](./reference/troubleshooting.md)
+  - 설치/peer dependency/theme/tokens.css/legacy 관련 실전 문제 해결
+
+- [reference/coverage-matrix.md](./reference/coverage-matrix.md)
+  - public surface 문서 coverage 추적
 
 - [releases/README.md](./releases/README.md)
   - 버전별 릴리즈 노트 인덱스

@@ -31,6 +31,16 @@
 - 코드 옆 JSDoc보다 showcase metadata를 우선한다.
 - 새 public export는 showcase entry 없이 추가하지 않는다.
 
+## Coverage Matrix
+
+문서 coverage는 아래 3단계로 관리한다.
+
+- `showcase documented`
+- `markdown reference documented`
+- `recipe documented`
+
+이 기준은 `docs/reference/coverage-matrix.md`에서 추적한다.
+
 ## Maintainer Docs
 
 위치:
@@ -53,6 +63,8 @@
 - 사용자가 `어떻게 쓰는지` 궁금한 내용
   - `apps/design-showcase/src/docs/*`
   - `docs/reference/**`
+- 사용자가 `어떻게 조합하는지` 궁금한 내용
+  - `docs/reference/recipes/**`
 - 기여자가 `왜 이렇게 구성되어 있는지` 궁금한 내용
   - `docs/*.md`
 - 특정 레이어 책임을 설명하는 짧은 안내

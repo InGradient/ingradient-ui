@@ -56,6 +56,7 @@
 - 새 public export를 추가하면 docs도 같이 추가한다.
 - showcase metadata 없는 public export를 만들지 않는다.
 - 공유가 필요한 핵심 API는 `docs/reference/**`도 같이 갱신한다.
+- 실제 페이지에서 자주 쓰는 조합이면 `docs/reference/recipes/**`도 같이 갱신한다.
 
 ## What You Must Not Do
 
@@ -105,6 +106,7 @@
 - 운영 순서 변경 -> [WORKFLOW.md](./WORKFLOW.md)
 - 사용자 문서 구조 변경 -> [DOCUMENTATION_STRATEGY.md](./DOCUMENTATION_STRATEGY.md), [DOC_WRITING_RULES.md](./DOC_WRITING_RULES.md)
 - 저장소 목적이나 역할 분담 변경 -> [PHILOSOPHY.md](../concepts/PHILOSOPHY.md), [../../README.md](../../README.md)
+- coverage 기준 변경 -> [coverage-matrix.md](../reference/coverage-matrix.md)
 
 ## Minimum Verification
 
@@ -112,6 +114,7 @@
 
 - `npm run build`
 - `npm run check:style-literals`
+- `npm run check:doc-coverage`
 
 필요하면 추가로 확인한다.
 

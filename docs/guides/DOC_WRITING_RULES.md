@@ -43,6 +43,13 @@
 - 한 문장은 짧고 바로 판단 가능해야 함
 - 구현 세부보다 사용 판단을 먼저 설명
 
+## Beginner-First Rule
+
+- 문서는 `무엇인가`보다 `언제 쓰는가`를 먼저 설명한다
+- 가능하면 `무엇 대신 이걸 써야 하는가`도 같이 적는다
+- 단일 컴포넌트 문서만 두지 말고, 실제 조립 문서도 같이 유지한다
+- 처음 보는 사용자가 코드 없이 첫 화면을 조립할 수 있어야 한다
+
 좋은 예:
 - `목록, 비교 표, 간단한 metadata table에 사용한다.`
 
@@ -101,6 +108,7 @@
 
 - `apps/design-showcase/src/docs/*.ts(x)`
 - 필요한 경우 `docs/reference/**`
+- recipe에 자주 쓰이는 조합이면 `docs/reference/recipes/**`
 
 ## Review Checklist
 

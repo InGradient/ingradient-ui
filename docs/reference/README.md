@@ -23,22 +23,38 @@ showcase가 사용자 문서의 기본 진입점이고, 이 폴더는 shareable 
 
 ## Reading Order
 
-1. [foundations.md](./foundations.md)
-2. [components/README.md](./components/README.md)
-3. [patterns/README.md](./patterns/README.md)
+1. [getting-started.md](./getting-started.md)
+2. [foundations.md](./foundations.md)
+3. [components/README.md](./components/README.md)
+4. [patterns/README.md](./patterns/README.md)
+5. [recipes/README.md](./recipes/README.md)
+6. [troubleshooting.md](./troubleshooting.md)
+7. [coverage-matrix.md](./coverage-matrix.md)
 
 ## Coverage
 
 현재는 아래 핵심 public API를 우선 정리한다.
 
+- getting started
 - foundations overview
 - Button
 - Text Field
 - Select
+- Navigation
 - Tabs
 - Table
 - Image Grid
+- Charts
+- Feedback
+- Surfaces
+- Overlays
+- Workspace Blocks
 - Dialog Shell
 - App Shell
+- layout patterns
+- form patterns
+- recipes
+- troubleshooting
+- coverage matrix
 
 이 목록은 사용 빈도가 높은 컴포넌트부터 계속 확장한다.
