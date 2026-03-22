@@ -1,4 +1,4 @@
-name: Publish to GitHub Packages
+name: Publish UI Package
 
 on:
   push:
@@ -9,8 +9,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write
 
     steps:
       - name: Checkout
@@ -20,7 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          registry-url: https://npm.pkg.github.com
 
       - name: Install Dependencies
         run: npm install --ignore-scripts
@@ -28,7 +26,12 @@ jobs:
       - name: Build Package
         run: npm run build:package
 
-      - name: Publish
-        run: npm publish
+      - name: Pack Tarball
+        run: npm pack
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ingradient-ui-*.tgz
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
