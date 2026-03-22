@@ -20,6 +20,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "npm run dev --workspace apps/design-showcase",
     "build": "npm run build:package && npm run build:docs",
