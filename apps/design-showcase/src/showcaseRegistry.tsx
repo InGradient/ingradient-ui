@@ -53,6 +53,7 @@ import {
   TextField,
   TextareaField,
   TooltipBubble,
+  Tooltip,
   AssignmentRow,
   ActionBar,
   DialogCloseButton,
@@ -790,11 +791,13 @@ function DrawerDemo() {
 
 function TooltipDemo() {
   return (
-    <Inline gap={12} align="center">
-      <Button type="button" variant="secondary">
-        Hover target
-      </Button>
-      <TooltipBubble>Tooltip content, guidance, or compact metadata.</TooltipBubble>
+    <Inline gap={24} align="center">
+      <Tooltip content="짧은 설명이나 context hint를 여기에 넣습니다.">
+        <Button type="button" variant="secondary">Hover me</Button>
+      </Tooltip>
+      <Tooltip content="아이콘 버튼에도 동일하게 사용합니다.">
+        <IconButton aria-label="info">ⓘ</IconButton>
+      </Tooltip>
     </Inline>
   )
 }
