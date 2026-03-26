@@ -18,13 +18,35 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
       - name: Install Dependencies
-        run: npm install --ignore-scripts
+        run: npm ci --ignore-scripts
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type Check
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npm test
 
       - name: Build Package
         run: npm run build:package
+
+      - name: Validate Style Literals
+        run: npm run check:style-literals
+
+      - name: Validate Doc Coverage
+        run: npm run check:doc-coverage
+
+      - name: Validate Bundle Size
+        run: node scripts/check-bundle-size.mjs
+
+      - name: Validate Exports
+        run: node scripts/check-exports.mjs
 
       - name: Pack Tarball
         run: npm pack

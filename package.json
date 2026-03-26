@@ -30,7 +30,11 @@
     "build:docs": "npm run build --workspace apps/design-showcase",
     "preview": "npm run preview --workspace apps/design-showcase",
     "check:style-literals": "node scripts/check-style-literals.mjs",
-    "check:doc-coverage": "node scripts/check-doc-coverage.mjs"
+    "check:doc-coverage": "node scripts/check-doc-coverage.mjs",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev:lib": "tsup --watch src --config tsup.config.ts"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",
@@ -42,9 +46,19 @@
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "axe-core": "^4.11.1",
     "concurrently": "^8.2.2",
+    "eslint": "^10.1.0",
+    "eslint-plugin-security": "^4.0.0",
+    "globals": "^17.4.0",
+    "jsdom": "^29.0.1",
     "tsup": "^8.3.5",
     "typescript": "^5.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "typescript-eslint": "^8.57.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.1.1"
   }
 }
