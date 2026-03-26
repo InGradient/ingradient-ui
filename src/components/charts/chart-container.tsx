@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { EmptyState, Skeleton } from '../feedback'
+import { EmptyStateText, Skeleton } from '../feedback'
 import { surfaceCard } from '../../primitives'
 
 const ChartCard = styled.div`
@@ -75,7 +75,7 @@ export function ChartContainer({
         {legend}
       </ChartHead>
       <ChartFrame $height={height}>
-        {loading ? <div style={{ display: 'grid', gap: 10 }}><Skeleton $height="18px" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <EmptyState>{emptyMessage}</EmptyState> : children}
+        {loading ? <div style={{ display: 'grid', gap: 10 }}><Skeleton $height="18px" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <EmptyStateText>{emptyMessage}</EmptyStateText> : children}
       </ChartFrame>
     </ChartCard>
   )

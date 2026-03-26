@@ -59,6 +59,7 @@ export function ConfirmDialog({
   onConfirm,
   onCancel,
   confirmVariant = 'solid',
+  danger = false,
 }: {
   title: React.ReactNode
   description: React.ReactNode
@@ -67,6 +68,7 @@ export function ConfirmDialog({
   onConfirm: () => void
   onCancel: () => void
   confirmVariant?: ButtonVariant
+  danger?: boolean
 }) {
   return (
     <DialogShell
@@ -77,7 +79,7 @@ export function ConfirmDialog({
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onCancel}>{cancelLabel}</Button>
-          <Button type="button" variant={confirmVariant} onClick={onConfirm}>{confirmLabel}</Button>
+          <Button type="button" variant={confirmVariant} tone={danger ? 'danger' : 'default'} onClick={onConfirm}>{confirmLabel}</Button>
         </>
       }
     />

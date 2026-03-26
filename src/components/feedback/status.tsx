@@ -9,18 +9,19 @@ export const SmallText = styled.span`
   word-break: break-word;
 `
 
-export const EmptyState = styled.div`
+/** @deprecated Use `EmptyState` from `empty-state` instead */
+export const EmptyStateText = styled.div`
   padding: var(--ig-space-12);
   text-align: center;
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-md);
 `
 
-export const LoadingState = styled(EmptyState)`
+export const LoadingState = styled(EmptyStateText)`
   text-align: left;
 `
 
-export const ErrorState = styled(EmptyState)`
+export const ErrorState = styled(EmptyStateText)`
   color: var(--ig-color-alert-danger-text);
 `
 

@@ -1,11 +1,12 @@
 import { componentDocs } from './components'
+import { newComponentDocs } from './new-components'
 import { foundationDocs } from './foundations'
 import { patternDocs } from './patterns'
 import type { DocEntry, DocGroup, DocSection } from './types'
 
 export type { DocEntry, DocExample, DocGroup, DocProp, DocSection, DocVariant } from './types'
 
-export const docEntries: DocEntry[] = [...foundationDocs, ...componentDocs, ...patternDocs]
+export const docEntries: DocEntry[] = [...foundationDocs, ...componentDocs, ...newComponentDocs, ...patternDocs]
 
 export const sectionOrder: DocSection[] = ['foundations', 'components', 'patterns']
 
@@ -24,6 +25,7 @@ export const groupLabels: Record<DocGroup, string> = {
   theming: 'Theming',
   brand: 'Brand',
   primitives: 'Primitives',
+  hooks: 'Hooks',
   inputs: 'Inputs',
   'data-display': 'Data Display',
   charts: 'Charts',
@@ -40,7 +42,7 @@ export const groupLabels: Record<DocGroup, string> = {
 
 export const groupOrderBySection: Record<DocSection, DocGroup[]> = {
   foundations: ['overview', 'color', 'typography', 'spacing', 'backgrounds', 'theming', 'brand', 'primitives'],
-  components: ['inputs', 'data-display', 'charts', 'feedback', 'icons', 'surfaces', 'navigation', 'overlays'],
+  components: ['hooks', 'inputs', 'data-display', 'charts', 'feedback', 'icons', 'surfaces', 'navigation', 'overlays'],
   patterns: ['shells', 'layouts', 'page-blocks', 'forms'],
 }
 

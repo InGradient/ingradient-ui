@@ -11,6 +11,7 @@ export type DocGroup =
   | 'theming'
   | 'brand'
   | 'primitives'
+  | 'hooks'
   | 'inputs'
   | 'data-display'
   | 'charts'

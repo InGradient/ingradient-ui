@@ -22,6 +22,25 @@ const criticalExports = {
   'lib/components.js': [
     'Alert', 'Button', 'TextField', 'PasswordField',
     'Badge', 'Spinner', 'ToastProvider', 'useToast',
+    // Phase 1: Hooks
+    'useZoomPan', 'useSelection', 'useClipboard',
+    // Phase 2: Inputs
+    'SearchField', 'NumberField', 'MentionTextarea',
+    // Phase 3: Feedback
+    'SelectionActionBar', 'EmptyState',
+    // Phase 4: Data Display
+    'ColorSwatch', 'CommentThread', 'CommentItem', 'CommentInput',
+    'TagList', 'TagListSearch',
+    // Phase 5: Viewer
+    'ImageViewer', 'ImageViewerToolbar',
+    // Phase 6: Drawing
+    'DrawingLayer', 'useDrawingCanvas', 'useUndoRedo',
+    // Phase 7: Gallery
+    'UploadDropzone',
+    // Phase 8: Interaction
+    'CopyButton', 'ModeSwitcher', 'ResizablePanel',
+    // Phase 9: Layout
+    'ChipGroup', 'FormGroup', 'FieldRow', 'FilterBarLayout', 'KeyboardShortcutHint',
   ],
   'lib/tokens.js': [
     'IngradientThemeProvider', 'IngradientGlobalStyle',

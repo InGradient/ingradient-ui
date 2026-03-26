@@ -23,6 +23,26 @@
 | patterns | yes | yes | yes |
 | button destructive tone | yes | yes | yes |
 | field label/group helpers | yes | yes | yes |
+| **신규 (Phase 1~9)** | | | |
+| hooks (useZoomPan, useSelection, useClipboard, useUndoRedo, useDrawingCanvas) | — | yes | yes |
+| SearchField | — | yes | yes |
+| NumberField | — | yes | yes |
+| MentionTextarea | — | yes | — |
+| SelectionActionBar | — | yes | yes |
+| EmptyState | — | yes | — |
+| CommentThread / CommentItem / CommentInput | — | yes | — |
+| ColorSwatch | — | yes | — |
+| TagList / TagListSearch | — | yes | yes |
+| ImageViewer / ImageViewerToolbar | — | yes | yes |
+| DrawingLayer | — | yes | yes |
+| UploadDropzone | — | yes | — |
+| CopyButton | — | yes | — |
+| ModeSwitcher | — | yes | yes |
+| ResizablePanel | — | yes | — |
+| ChipGroup | — | yes | — |
+| FormGroup / FieldRow | — | yes | yes |
+| FilterBarLayout | — | yes | — |
+| KeyboardShortcutHint | — | yes | — |
 
 ## Rule
 
