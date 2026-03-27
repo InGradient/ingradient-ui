@@ -11,9 +11,9 @@ export const SidebarNav = styled.nav`
   gap: 8px;
 `
 
-export const AppSidebar = styled.aside`
+export const AppSidebar = styled.aside<{ $width?: number | string }>`
   ${surfacePanel}
-  width: 280px;
+  width: ${(p) => (typeof p.$width === 'number' ? `${p.$width}px` : p.$width ?? '280px')};
   min-width: 0;
   min-height: 0;
   border-radius: 24px;
@@ -56,5 +56,5 @@ export const MobileNavDrawer = styled.aside<{ $open?: boolean }>`
   gap: 14px;
   transform: translateX(${(p) => (p.$open === false ? '-100%' : '0')});
   transition: transform 0.2s ease;
-  z-index: 1100;
+  z-index: var(--ig-z-drawer);
 `

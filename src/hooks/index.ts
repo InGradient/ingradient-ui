@@ -11,4 +11,4 @@ export { useUndoRedo } from './useUndoRedo'
 export type { UseUndoRedoOptions } from './useUndoRedo'
 
 export { useDrawingCanvas } from './useDrawingCanvas'
-export type { DrawingObject, DrawingMode, DrawingPreview, UseDrawingCanvasOptions } from './useDrawingCanvas'
+export type { DrawingObject, DrawingMode, DrawingPreview, DrawingAction, UseDrawingCanvasOptions } from './useDrawingCanvas'

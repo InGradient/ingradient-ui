@@ -57,7 +57,7 @@ export const Drawer = styled.aside<{ $side?: 'left' | 'right' }>`
   bottom: 0;
   ${(p) => (p.$side === 'left' ? 'left: 0;' : 'right: 0;')}
   width: min(420px, 100vw);
-  z-index: 1300;
+  z-index: var(--ig-z-drawer);
   padding: var(--ig-space-9);
   border-radius: 0;
 `

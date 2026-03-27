@@ -1,4 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const TableWrap = styled.div`
+  overflow-x: auto;
+`
+
+const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`
+
+const Th = styled.th`
+  text-align: left;
+  padding: var(--ig-space-4) var(--ig-space-5);
+  color: var(--ig-color-text-muted);
+  font-size: var(--ig-font-size-xs);
+  font-weight: 500;
+  border-bottom: 1px solid var(--ig-color-border-subtle);
+`
+
+const Td = styled.td`
+  padding: var(--ig-space-5);
+  color: var(--ig-color-text-secondary);
+  border-bottom: 1px solid var(--ig-color-border-subtle);
+`
 
 export function Table<T extends { id?: string | number }>({
   columns,
@@ -8,14 +33,12 @@ export function Table<T extends { id?: string | number }>({
   rows: T[]
 }) {
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <TableWrap>
+      <StyledTable>
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.key} style={{ textAlign: 'left', padding: '12px 14px', color: 'var(--ig-color-text-muted)', fontSize: 12, borderBottom: '1px solid var(--ig-color-border-subtle)' }}>
-                {column.header}
-              </th>
+              <Th key={column.key}>{column.header}</Th>
             ))}
           </tr>
         </thead>
@@ -23,15 +46,13 @@ export function Table<T extends { id?: string | number }>({
           {rows.map((row, rowIndex) => (
             <tr key={row.id ?? rowIndex}>
               {columns.map((column) => (
-                <td key={column.key} style={{ padding: '14px', borderBottom: '1px solid rgba(255,255,255,0.06)', color: 'var(--ig-color-text-secondary)' }}>
-                  {column.render(row)}
-                </td>
+                <Td key={column.key}>{column.render(row)}</Td>
               ))}
             </tr>
           ))}
         </tbody>
-      </table>
-    </div>
+      </StyledTable>
+    </TableWrap>
   )
 }
 

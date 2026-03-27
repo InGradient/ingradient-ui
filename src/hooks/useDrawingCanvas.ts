@@ -19,6 +19,8 @@ export interface DrawingPreview {
   x: number; y: number; w: number; h: number
 }
 
+export type DrawingAction = 'create' | 'move' | 'resize' | null
+
 export interface UseDrawingCanvasOptions {
   objects: DrawingObject[]
   mode: DrawingMode
@@ -26,6 +28,12 @@ export interface UseDrawingCanvasOptions {
   handleRadius?: number
   onObjectsChange: (objects: DrawingObject[]) => void
   onSelectionChange?: (id: string | null) => void
+  /** Called on mouseup after a drawing action completes (create/move/resize) */
+  onComplete?: (objects: DrawingObject[], action: DrawingAction) => void
+  /** Called on right-click with normalized coordinates */
+  onContextMenu?: (e: React.MouseEvent, nx: number, ny: number) => void
+  /** If true, empty-space click in cursor mode is ignored (for pan fallback) */
+  passThroughEmptyClick?: boolean
 }
 
 type DragState =
@@ -71,10 +79,12 @@ function genId(): string { return `draw-${nextId++}` }
 export function useDrawingCanvas({
   objects, mode, minSize = 0.01, handleRadius = 0.03,
   onObjectsChange, onSelectionChange,
+  onComplete, onContextMenu, passThroughEmptyClick,
 }: UseDrawingCanvasOptions) {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [drawingPreview, setDrawingPreview] = useState<DrawingPreview | null>(null)
   const dragRef = useRef<DragState>(null)
+  const actionRef = useRef<DrawingAction>(null)
 
   const select = useCallback(
     (id: string | null) => {
@@ -98,47 +108,53 @@ export function useDrawingCanvas({
 
   const onMouseDown = useCallback(
     (e: React.MouseEvent) => {
+      if (e.button === 2) return // right-click handled by onContextMenu
       const norm = getNorm(e)
       if (!norm) return
       const { nx, ny } = norm
+      actionRef.current = null
 
       if (mode === 'cursor') {
-        // Check handles on selected object
         if (selectedId) {
           const sel = objects.find((o) => o.id === selectedId)
           if (sel) {
             const handle = hitTestHandle(nx, ny, sel, handleRadius)
             if (handle) {
               dragRef.current = { type: 'resize', id: sel.id, handle, startX: nx, startY: ny, orig: { ...sel } }
+              actionRef.current = 'resize'
               return
             }
           }
         }
-        // Check hit on any object
         for (let i = objects.length - 1; i >= 0; i--) {
           const obj = objects[i]
           if (hitTestPoint(nx, ny, obj, handleRadius * 1.5) || hitTestRect(nx, ny, obj)) {
             select(obj.id)
             dragRef.current = { type: 'move', id: obj.id, startX: nx, startY: ny, origX: obj.x, origY: obj.y }
+            actionRef.current = 'move'
             return
           }
         }
-        select(null)
+        if (!passThroughEmptyClick) select(null)
         return
       }
 
       if (mode === 'rect') {
         dragRef.current = { type: 'draw', startX: nx, startY: ny }
+        actionRef.current = 'create'
         return
       }
 
       if (mode === 'point') {
         const newObj: DrawingObject = { id: genId(), type: 'point', x: nx, y: ny }
-        onObjectsChange([...objects, newObj])
+        const next = [...objects, newObj]
+        onObjectsChange(next)
         select(newObj.id)
+        actionRef.current = 'create'
+        onComplete?.(next, 'create')
       }
     },
-    [mode, objects, selectedId, handleRadius, onObjectsChange, select, getNorm],
+    [mode, objects, selectedId, handleRadius, onObjectsChange, select, getNorm, onComplete, passThroughEmptyClick],
   )
 
   const onMouseMove = useCallback(
@@ -193,18 +209,35 @@ export function useDrawingCanvas({
           x: drawingPreview.x, y: drawingPreview.y,
           w: drawingPreview.w, h: drawingPreview.h,
         }
-        onObjectsChange([...objects, newObj])
+        const next = [...objects, newObj]
+        onObjectsChange(next)
         select(newObj.id)
+        onComplete?.(next, 'create')
       }
       setDrawingPreview(null)
+    } else if (drag && actionRef.current) {
+      onComplete?.(objects, actionRef.current)
     }
     dragRef.current = null
-  }, [drawingPreview, objects, onObjectsChange, minSize, select])
+    actionRef.current = null
+  }, [drawingPreview, objects, onObjectsChange, minSize, select, onComplete])
 
   const onMouseLeave = useCallback(() => {
     dragRef.current = null
+    actionRef.current = null
     setDrawingPreview(null)
   }, [])
+
+  const handleContextMenu = useCallback(
+    (e: React.MouseEvent) => {
+      if (!onContextMenu) return
+      const norm = getNorm(e)
+      if (!norm) return
+      e.preventDefault()
+      onContextMenu(e, norm.nx, norm.ny)
+    },
+    [onContextMenu, getNorm],
+  )
 
   const cursor =
     mode === 'rect' ? 'crosshair' :
@@ -215,6 +248,6 @@ export function useDrawingCanvas({
     selectedId,
     drawingPreview,
     cursor,
-    bindings: { onMouseDown, onMouseMove, onMouseUp, onMouseLeave },
+    bindings: { onMouseDown, onMouseMove, onMouseUp, onMouseLeave, onContextMenu: handleContextMenu },
   }
 }
