@@ -52,7 +52,6 @@ import {
   Tabs,
   TextField,
   TextareaField,
-  TooltipBubble,
   Tooltip,
   AssignmentRow,
   ActionBar,

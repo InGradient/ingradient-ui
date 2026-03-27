@@ -857,10 +857,11 @@ Phase가 완료될 때마다 해당 마이그레이션 문서의 체크리스트
 
 | 앱 | 완료 | 대기 |
 |----|------|------|
-| **Edge** | useZoomPan (BBoxCanvas, ImagesView) | useClipboard, Phase 2~9 (JSX 구조 변경 필요) |
-| **Platform** | useSelection (gallery/page.tsx) | useZoomPan, useClipboard, Phase 2~9 (JSX 구조 변경 필요) |
+| **Edge** | useZoomPan (2), ColorSwatch (2), NumberField (3), EmptyState (7), CopyButton (1), SearchField (1), CommentThread (1), ImageViewer (1) — **총 18파일** | DrawingLayer (Canvas→SVG 전환) |
+| **Platform** | useSelection (1), ColorSwatch (3), CopyButton (1) — **총 5파일** | useZoomPan (인라인), SelectionBar(유지), Phase 2~9 나머지 |
 
-> Phase 2~9 교체는 단순 import 교체가 아니라 styled-component 제거 + JSX 구조 변경이 포함된다.
+> Phase 2~9 교체는 단순 import 교체가 아니라 styled-component 제거 + JSX 구조 변경 + 스타일 적응이 포함된다.
+> 기존 styled-component가 앱 자체 사이즈/border를 갖고 있어 `@ingradient/ui` 컴포넌트와 시각적 차이가 생길 수 있다.
 > 앱을 실행하면서 화면 확인과 함께 순차적으로 진행해야 안전하다.
 
 ### 체크리스트 (매 컴포넌트/hook 추가 시)

@@ -617,6 +617,7 @@ export const componentDocs: DocEntry[] = [
       { name: 'children', type: 'ReactNode', required: true, description: 'tooltip을 trigger하는 요소다.' },
       { name: 'gap', type: 'number', required: false, defaultValue: '6', description: 'trigger 하단과 tooltip 사이 간격(px)이다.' },
     ],
+    variants: [],
     related: ['overlay-blocks', 'alert'],
     notes: [
       'position: fixed로 렌더링되어 overflow: hidden 부모 안에서도 잘리지 않는다.',

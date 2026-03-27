@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { ColorSwatch } from './color-swatch'
 

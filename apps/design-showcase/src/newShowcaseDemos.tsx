@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import {
   SearchField,
@@ -13,7 +13,6 @@ import {
   TagList,
   TagListSearch,
   ImageViewer,
-  ImageViewerToolbar,
   DrawingLayer,
   CopyButton,
   ModeSwitcher,

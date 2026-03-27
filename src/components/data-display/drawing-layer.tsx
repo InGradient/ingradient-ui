@@ -1,4 +1,3 @@
-import React from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 
 export type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
