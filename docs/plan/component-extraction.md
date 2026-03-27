@@ -857,8 +857,8 @@ Phase가 완료될 때마다 해당 마이그레이션 문서의 체크리스트
 
 | 앱 | 완료 | 대기 |
 |----|------|------|
-| **Edge** | useZoomPan (2), ColorSwatch (2), NumberField (3), EmptyState (7), CopyButton (1), SearchField (1), CommentThread (1), ImageViewer (1) — **총 18파일** | DrawingLayer (Canvas→SVG 전환) |
-| **Platform** | useSelection (1), ColorSwatch (3), CopyButton (1) — **총 5파일** | useZoomPan (인라인), SelectionBar(유지), Phase 2~9 나머지 |
+| **Edge** | useZoomPan (2), ColorSwatch (2), NumberField (3), EmptyState (7), CopyButton (1), SearchField (1), CommentThread (1), ImageViewer (1), **DrawingLayer (1, BBoxCanvas 661→200줄)** — **총 19파일** | ✅ 완료 |
+| **Platform** | useSelection (1), ColorSwatch (3), CopyButton (1), useZoomPan (1), SearchField (1), CommentThread (1), MentionTextarea (1), TagListSearch (1), useUndoRedo (1), **DrawingLayer 렌더링 (1, 7 styled 제거)** — **총 12파일** | useDrawingCanvas (마우스 핸들러) — 별도 세션 |
 
 > Phase 2~9 교체는 단순 import 교체가 아니라 styled-component 제거 + JSX 구조 변경 + 스타일 적응이 포함된다.
 > 기존 styled-component가 앱 자체 사이즈/border를 갖고 있어 `@ingradient/ui` 컴포넌트와 시각적 차이가 생길 수 있다.

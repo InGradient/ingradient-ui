@@ -79,7 +79,7 @@ const SendBtn = styled.button`
 export interface CommentItemProps {
   author: string
   timestamp?: string
-  body: string
+  body: React.ReactNode
   actions?: React.ReactNode
 }
 
