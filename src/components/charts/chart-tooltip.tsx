@@ -3,14 +3,14 @@ import { surfaceRaised } from '../../primitives'
 
 const ChartTooltipCard = styled.div`
   ${surfaceRaised}
-  border-radius: 14px;
-  padding: 10px 12px;
+  border-radius: var(--ig-radius-md);
+  padding: var(--ig-space-4) var(--ig-space-5);
   min-width: 140px;
 `
 
 const ChartTooltipLabel = styled.div`
-  margin-bottom: 8px;
-  font-size: 12px;
+  margin-bottom: var(--ig-space-3);
+  font-size: var(--ig-font-size-xs);
   font-weight: 700;
   color: var(--ig-color-text-primary);
 `
@@ -19,12 +19,12 @@ const ChartTooltipRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  font-size: 12px;
+  gap: var(--ig-space-4);
+  font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-secondary);
 
   &:not(:last-child) {
-    margin-bottom: 6px;
+    margin-bottom: var(--ig-space-2);
   }
 `
 

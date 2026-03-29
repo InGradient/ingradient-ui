@@ -6,15 +6,15 @@ import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from 
 import type { ButtonVariant } from '../shared/button-types'
 
 const DialogContent = styled.div`
-  padding: 20px 22px 22px;
+  padding: var(--ig-space-9) var(--ig-space-10) var(--ig-space-10);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--ig-space-7);
 `
 
 const DialogDescription = styled.p`
   margin: 0;
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   line-height: 1.6;
   color: var(--ig-color-text-muted);
 `

@@ -5,37 +5,37 @@ import { surfaceCard } from '../../primitives'
 
 const ChartCard = styled.div`
   ${surfaceCard}
-  border-radius: 22px;
-  padding: 18px;
+  border-radius: var(--ig-radius-xl);
+  padding: var(--ig-space-8);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--ig-space-6);
 `
 
 const ChartHead = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ig-space-5);
   flex-wrap: wrap;
 `
 
 const ChartCopy = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--ig-space-1);
 `
 
 const ChartTitle = styled.h3`
   margin: 0;
-  font-size: 15px;
+  font-size: var(--ig-font-size-md);
   font-weight: 700;
   color: var(--ig-color-text-primary);
 `
 
 const ChartDescription = styled.p`
   margin: 0;
-  font-size: 12px;
+  font-size: var(--ig-font-size-xs);
   line-height: 1.5;
   color: var(--ig-color-text-muted);
 `

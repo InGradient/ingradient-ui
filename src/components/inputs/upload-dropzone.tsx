@@ -10,7 +10,7 @@ const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
   padding: var(--ig-space-10) var(--ig-space-6);
   border: 2px dashed ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-border-subtle)')};
   border-radius: var(--ig-radius-lg);
-  background: ${(p) => (p.$active ? 'rgba(74,158,255,0.06)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);
   text-align: center;

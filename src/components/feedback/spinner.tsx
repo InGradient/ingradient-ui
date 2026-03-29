@@ -17,7 +17,7 @@ const toneColorMap = {
   muted: 'var(--ig-color-text-soft)',
 } as const
 
-export type SpinnerSize = keyof typeof sizeMap
+export type SpinnerSize = keyof typeof sizeMap | number
 export type SpinnerTone = keyof typeof toneColorMap
 
 const SpinnerEl = styled.span<{ $px: number; $color: string }>`
@@ -33,17 +33,18 @@ const SpinnerEl = styled.span<{ $px: number; $color: string }>`
 `
 
 export interface SpinnerProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  /** Spinner 크기. sm=14px, md=18px, lg=24px */
+  /** Spinner 크기. sm=14px, md=18px, lg=24px, 또는 직접 pixel 값 */
   size?: SpinnerSize
   /** 색상 tone. accent=브랜드 색, white=텍스트 primary, muted=텍스트 soft */
   tone?: SpinnerTone
 }
 
 export function Spinner({ size = 'md', tone = 'accent', 'aria-label': ariaLabel, ...rest }: SpinnerProps) {
+  const px = typeof size === 'number' ? size : sizeMap[size]
   return (
     <SpinnerEl
       {...rest}
-      $px={sizeMap[size]}
+      $px={px}
       $color={toneColorMap[tone]}
       role="status"
       aria-label={ariaLabel ?? 'Loading'}

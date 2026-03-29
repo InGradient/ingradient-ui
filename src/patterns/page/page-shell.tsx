@@ -13,7 +13,7 @@ export const PageHeader = styled.header`
   flex-shrink: 0;
 
   @media (max-width: 768px) {
-    padding: 14px 16px 12px;
+    padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-5);
   }
 `
 
@@ -21,31 +21,31 @@ export const PageHeaderRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--ig-space-7);
   flex-wrap: wrap;
 `
 
 export const PageTitleBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
   min-width: 0;
 `
 
 export const PageTitle = styled.h1`
   margin: 0;
-  font-size: 24px;
+  font-size: var(--ig-font-size-2xl);
   font-weight: 700;
   letter-spacing: -0.02em;
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: var(--ig-font-size-xl);
   }
 `
 
 export const PageSubtitle = styled.p`
   margin: 0;
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
 `
 
@@ -53,17 +53,17 @@ export const PageContent = styled.div`
   ${pageContentLayout}
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: var(--ig-space-8);
 
   @media (max-width: 768px) {
-    padding: 12px 14px 16px;
-    gap: 12px;
+    padding: var(--ig-space-5) var(--ig-space-6) var(--ig-space-7);
+    gap: var(--ig-space-5);
   }
 `
 
 export const Panel = styled.section`
   ${surfacePanel}
-  border-radius: 20px;
+  border-radius: var(--ig-radius-xl);
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -71,28 +71,28 @@ export const Panel = styled.section`
 `
 
 export const PanelHeader = styled.div`
-  padding: 16px 18px 12px;
+  padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);
   border-bottom: 1px solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 export const PanelTitle = styled.h2`
   margin: 0;
-  font-size: 15px;
+  font-size: var(--ig-font-size-md);
   font-weight: 700;
 `
 
 export const PanelHint = styled.span`
-  font-size: 12px;
+  font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
 `
 
 export const SectionTitle = styled.h3`
-  margin: 0 0 12px;
-  font-size: 16px;
+  margin: 0 0 var(--ig-space-5);
+  font-size: var(--ig-font-size-lg);
   font-weight: 600;
   color: var(--ig-color-text-primary);
 `
@@ -101,10 +101,10 @@ export const Toolbar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ig-space-5);
   flex-wrap: wrap;
-  padding: 14px 16px;
-  border-radius: 16px;
+  padding: var(--ig-space-6) var(--ig-space-7);
+  border-radius: var(--ig-radius-lg);
   border: 1px solid var(--ig-color-border-subtle);
   background: var(--ig-color-toolbar-surface);
 `
@@ -120,8 +120,8 @@ export const FilterBar = styled(Toolbar)`
 `
 
 export const FormSection = styled(Panel)`
-  padding: 18px;
-  gap: 14px;
+  padding: var(--ig-space-8);
+  gap: var(--ig-space-6);
 `
 
 export const FieldGroup = styled.div`

@@ -6,11 +6,11 @@ import { ActionBar } from './layout'
 
 const ProgressBlockRoot = styled.div`
   ${surfacePanel}
-  border-radius: 18px;
-  padding: 16px;
+  border-radius: var(--ig-radius-lg);
+  padding: var(--ig-space-7);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 export function ProgressBlock({

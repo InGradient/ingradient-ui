@@ -5,24 +5,24 @@ import { icons, type IconName } from './registry'
 const IconGalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const IconTile = styled.div`
   ${surfacePanel}
-  border-radius: 16px;
-  padding: 14px;
+  border-radius: var(--ig-radius-lg);
+  padding: var(--ig-space-6);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-4);
   color: var(--ig-color-text-secondary);
 `
 
 const IconPreview = styled.div`
   width: 44px;
   height: 44px;
-  border-radius: 14px;
+  border-radius: var(--ig-radius-md);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@ const IconPreview = styled.div`
 `
 
 const IconLabel = styled.div`
-  font-size: 12px;
+  font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
   text-align: center;
   word-break: break-word;

@@ -100,7 +100,7 @@ export const ItemBadge = styled.span`
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-badge-accent);
   color: var(--ig-color-text-primary);
-  font-size: 10px;
+  font-size: var(--ig-font-size-2xs);
   font-weight: 700;
   line-height: 1;
 `

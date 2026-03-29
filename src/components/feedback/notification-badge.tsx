@@ -23,7 +23,7 @@ const Bubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: var(--ig-font-size-2xs);
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;

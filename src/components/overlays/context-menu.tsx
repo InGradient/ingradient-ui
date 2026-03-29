@@ -5,7 +5,7 @@ import { surfaceRaised } from '../../primitives'
 export const ContextMenuBackdrop = styled.div`
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: var(--ig-z-context-menu);
 `
 
 /** cursor 위치에 fixed 배치되는 메뉴 컨테이너 */
@@ -13,7 +13,7 @@ export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p) 
   style: { left: p.$x, top: p.$y },
 }))<{ $x: number; $y: number }>`
   position: fixed;
-  z-index: 101;
+  z-index: calc(var(--ig-z-context-menu) + 1);
   min-width: 120px;
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}
@@ -49,7 +49,7 @@ export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>(
   style: { left: p.$left, top: p.$top },
 }))<{ $left: number; $top: number }>`
   position: fixed;
-  z-index: 102;
+  z-index: calc(var(--ig-z-context-menu) + 2);
   min-width: 140px;
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}

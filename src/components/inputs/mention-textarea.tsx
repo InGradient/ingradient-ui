@@ -26,7 +26,7 @@ const Menu = styled.div`
   border: 1px solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);
-  z-index: 10;
+  z-index: var(--ig-z-dropdown);
 `
 
 const Option = styled.button<{ $active: boolean }>`

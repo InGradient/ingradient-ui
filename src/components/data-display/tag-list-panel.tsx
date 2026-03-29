@@ -26,7 +26,7 @@ const Dropdown = styled.div`
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: var(--ig-z-dropdown);
   max-height: 200px;
   overflow-y: auto;
   background: var(--ig-color-surface-elevated, #1e1e2e);

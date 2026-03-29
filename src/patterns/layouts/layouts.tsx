@@ -10,7 +10,7 @@ const SplitLayoutRoot = styled.div<{
   display: grid;
   grid-template-columns: ${(p) =>
     `${p.$hasSidebar ? `minmax(0, ${p.$sidebarWidth}) ` : ''}minmax(0, 1fr)${p.$hasInspector ? ` minmax(0, ${p.$inspectorWidth})` : ''}`};
-  gap: 16px;
+  gap: var(--ig-space-7);
   min-width: 0;
 
   @media (max-width: 1024px) {
@@ -48,13 +48,13 @@ export function SplitLayout({
 export const DashboardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  gap: var(--ig-space-7);
 `
 
 export const ListDetailLayout = styled.div`
   display: grid;
   grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-  gap: 16px;
+  gap: var(--ig-space-7);
   min-width: 0;
 
   @media (max-width: 1024px) {
@@ -65,7 +65,7 @@ export const ListDetailLayout = styled.div`
 export const SettingsShell = styled.div`
   display: grid;
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-  gap: 16px;
+  gap: var(--ig-space-7);
   min-width: 0;
 
   @media (max-width: 960px) {
@@ -76,7 +76,7 @@ export const SettingsShell = styled.div`
 export const SplitPanelShell = styled.div`
   display: grid;
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-  gap: 16px;
+  gap: var(--ig-space-7);
   min-width: 0;
 
   @media (max-width: 1024px) {
@@ -87,7 +87,7 @@ export const SplitPanelShell = styled.div`
 export const InspectorLayout = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-  gap: 16px;
+  gap: var(--ig-space-7);
   min-width: 0;
 
   @media (max-width: 1024px) {

@@ -7,7 +7,7 @@ import { surfaceRaised } from '../../primitives'
 const Bubble = styled.div`
   ${surfaceRaised}
   position: fixed;
-  z-index: 9999;
+  z-index: var(--ig-z-tooltip);
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-3) var(--ig-space-4);
   font-size: var(--ig-font-size-xs);

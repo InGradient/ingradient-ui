@@ -14,6 +14,7 @@ export const ButtonRoot = styled.button<{
   justify-content: center;
   gap: 8px;
   min-width: 0;
+  white-space: nowrap;
   padding: ${(p) => (p.$iconOnly ? '10px' : buttonPadding[p.$size])};
   font-size: ${(p) => (p.$size === 'sm' ? '13px' : p.$size === 'lg' ? '15px' : '14px')};
   font-weight: 600;

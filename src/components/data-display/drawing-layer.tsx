@@ -74,11 +74,11 @@ export function DrawingLayer({
               />
               {showLabels && obj.label && (
                 <text
-                  x={obj.x + 0.004}
-                  y={obj.y - 0.006}
+                  x={obj.x + 0.003}
+                  y={obj.y + 0.016}
                   fill={color}
-                  fontSize={0.018}
-                  fontWeight={600}
+                  fontSize={0.014}
+                  fontFamily="sans-serif"
                   style={{ pointerEvents: 'none' }}
                 >
                   {obj.label}

@@ -3,11 +3,11 @@ import { surfacePanel } from '../../primitives'
 
 export const SectionPanel = styled.section`
   ${surfacePanel}
-  border-radius: 20px;
-  padding: 18px;
+  border-radius: var(--ig-radius-xl);
+  padding: var(--ig-space-8);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--ig-space-6);
 `
 
 export const ActionBar = styled.div`
