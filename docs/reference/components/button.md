@@ -37,6 +37,15 @@ import { Button, IconButton } from '@ingradient/ui/components'
   - 삭제, 제거, 취소 불가 action 같은 destructive 흐름
   - Delete, Remove, Revoke 등의 action에 사용한다
 
+## IconButton 레이아웃
+
+`IconButton`은 `$iconOnly` 모드로 렌더링되어 정사각형 레이아웃이 자동 적용된다:
+- `width = height` (size 토큰과 동일)
+- `padding: 0`
+- 아이콘이 중앙 정렬됨
+
+소비자에서 `width`/`height`/`padding`을 override할 필요 없다.
+
 ## Do
 
 - action hierarchy를 variant로 표현한다

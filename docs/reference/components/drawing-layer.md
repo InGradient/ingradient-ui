@@ -19,6 +19,17 @@ import { DrawingLayer, useDrawingCanvas, type DrawingObject } from '@ingradient/
 | `showLabels` | `boolean` | `false` | 라벨 텍스트 표시 |
 | `showCrosshair` | `boolean` | `false` | 십자선 표시 |
 | `cursorX/Y` | `number` | — | 십자선 위치 (정규화 0~1) |
+| `containerWidth` | `number` | — | 컨테이너 픽셀 너비. 설정 시 stroke/핸들/라벨이 균일하게 렌더링됨 |
+| `containerHeight` | `number` | — | 컨테이너 픽셀 높이. `containerWidth`와 함께 사용 |
+| `previewColor` | `string` | `'#4a9eff'` | 드래그 중 미리보기 bbox 색상 |
+
+## Uniform Rendering
+
+`containerWidth`/`containerHeight`를 전달하면:
+- stroke에 `vectorEffect="non-scaling-stroke"` 적용 (픽셀 단위 균일 두께)
+- 핸들이 `<ellipse>`로 렌더링되어 비정방형 이미지에서도 원형 유지
+- 라벨이 `scale(1/cw, 1/ch)` 변환으로 텍스트 왜곡 방지
+- 미전달 시 기존 동작 유지 (하위 호환)
 
 ## DrawingObject
 

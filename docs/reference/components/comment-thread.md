@@ -25,3 +25,10 @@ import { CommentThread, CommentItem, CommentInput } from '@ingradient/ui/compone
 | `onChange` | `(value: string) => void` | 변경 |
 | `onSubmit` | `() => void` | 전송 (Ctrl+Enter도 지원) |
 | `submitLabel` | `string` | 전송 버튼 텍스트 (default: "Send") |
+
+## Typography
+
+- CommentItem body: `--ig-font-size-xs` (12px)
+- CommentItem meta (작성자, 시간): `--ig-font-size-2xs` (10px)
+- CommentInput textarea: `--ig-font-size-xs` (12px)
+- 코멘트 영역은 밀집된 UI이므로 본문/입력 모두 소형 폰트를 사용한다

@@ -83,3 +83,10 @@ const { selectedId, drawingPreview, cursor, bindings } = useDrawingCanvas({
 
 // bindings = { onMouseDown, onMouseMove, onMouseUp, onMouseLeave }
 ```
+
+### 드래그 동작
+
+- 드래그 시작 시 `document`에 mousemove/mouseup을 등록하여, 마우스가 컨테이너 밖으로 나가도 드래그가 계속된다
+- 좌표는 0~1로 자동 clamp — 이미지 경계를 넘으면 가장자리에 고정
+- 드래그 중 `user-select: none`이 body에 적용되어 텍스트 선택이 방지된다
+- mouseup 또는 컴포넌트 unmount 시 자동 해제

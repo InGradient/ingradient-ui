@@ -28,6 +28,9 @@ boolean setting과 opt-in 선택을 위한 compact control이다.
 - `defaultChecked?`
 - `onChange?`
 - `disabled?`
+- `indeterminate?` — 부분 선택 상태 표시 (체크 대신 가로줄 아이콘)
+- `label?` — 체크박스 옆에 표시할 라벨 텍스트
+- `ref` — `React.forwardRef` 지원. DOM input에 직접 접근 가능
 
 ## Common Composition
 

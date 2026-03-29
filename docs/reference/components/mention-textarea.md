@@ -26,6 +26,11 @@ import { MentionTextarea } from '@ingradient/ui/components'
 { id: string; name: string; secondary?: string }
 ```
 
+## Typography
+
+- textarea 폰트: `--ig-font-size-xs` (12px) — 코멘트 영역에서 밀집된 UI에 적합
+- 후보 드롭다운 이름: `--ig-font-size-sm`, 보조 정보: `--ig-font-size-xs`
+
 ## When to use
 
 - 코멘트 입력에서 사용자 멘션이 필요할 때

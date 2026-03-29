@@ -11,6 +11,7 @@ const Wrap = styled.div`
 
 const Textarea = styled.textarea`
   ${controlField}
+  font-size: var(--ig-font-size-xs);
   resize: vertical;
   min-height: 60px;
 `

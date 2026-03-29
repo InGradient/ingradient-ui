@@ -47,7 +47,7 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: var(--ig-radius-xs);
+  border-radius: 4px;
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
@@ -89,22 +89,32 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   }
 `
 
-export function Checkbox({
-  label,
-  checked,
-  disabled,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }) {
+export const Checkbox = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode; indeterminate?: boolean }
+>(function Checkbox({ label, checked, disabled, indeterminate, ...props }, ref) {
+  const innerRef = React.useRef<HTMLInputElement>(null)
+  React.useImperativeHandle(ref, () => innerRef.current!)
+  React.useEffect(() => {
+    if (innerRef.current) innerRef.current.indeterminate = !!indeterminate
+  }, [indeterminate])
+
+  const visual = indeterminate ? 'indeterminate' : !!checked
+
   return (
     <ToggleLabel>
-      <HiddenInput type="checkbox" checked={checked} disabled={disabled} {...props} />
-      <CheckboxBox $checked={!!checked} $disabled={disabled}>
-        <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3" /></svg>
+      <HiddenInput ref={innerRef} type="checkbox" checked={checked} disabled={disabled} {...props} />
+      <CheckboxBox $checked={!!visual} $disabled={disabled}>
+        {indeterminate ? (
+          <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6" /></svg>
+        ) : (
+          <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3" /></svg>
+        )}
       </CheckboxBox>
       {label}
     </ToggleLabel>
   )
-}
+})
 
 export function Radio({
   label,

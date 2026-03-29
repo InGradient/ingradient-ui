@@ -30,7 +30,7 @@ const Author = styled.span`
 `
 
 const Body = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-font-size-xs);
   line-height: 1.5;
   white-space: pre-wrap;
   color: var(--ig-color-text-primary);
@@ -51,7 +51,7 @@ const Textarea = styled.textarea`
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-font-size-xs);
   &::placeholder { color: var(--ig-color-text-soft); }
   &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `
