@@ -79,6 +79,28 @@ import { BrandMark, BrandLogo } from '@ingradient/ui/brand'
 - `BrandLogo`
   - 헤더, intro, auth, larger brand placement
 
+## Control Height Tokens
+
+- `--ig-control-height-sm` — 32px
+- `--ig-control-height-md` — 36px
+- `--ig-control-height-lg` — 44px
+
+Button, Select, TextField 등 interactive control의 높이를 일관되게 맞출 때 사용한다.
+
+## Media Helper
+
+```ts
+import { media } from '@ingradient/ui/tokens'
+```
+
+- `media.sm` / `media.md` / `media.lg` / `media.xl`
+- styled-components 내에서 반응형 breakpoint를 간결하게 사용할 수 있다
+
+## Global Style
+
+- `IngradientGlobalStyle`에 `color-scheme: dark`가 적용된다
+- 브라우저 네이티브 UI (스크롤바, form control 등)가 다크 모드에 맞춰진다
+
 ## Do
 
 - semantic token을 우선 사용한다

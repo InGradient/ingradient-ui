@@ -10,6 +10,9 @@ const DialogContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-7);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 `
 
 const DialogDescription = styled.p`
@@ -26,6 +29,7 @@ export function DialogShell({
   actions,
   onClose,
   width = 'min(720px, 100%)',
+  height,
 }: {
   title: React.ReactNode
   description?: React.ReactNode
@@ -33,10 +37,11 @@ export function DialogShell({
   actions?: React.ReactNode
   onClose?: () => void
   width?: string | number
+  height?: string | number
 }) {
   return (
     <ModalBackdrop onClick={() => onClose?.()}>
-      <ModalCard onClick={(event) => event.stopPropagation()} style={{ width }}>
+      <ModalCard onClick={(event) => event.stopPropagation()} style={{ width, ...(height ? { height } : {}) }}>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}

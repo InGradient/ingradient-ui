@@ -41,7 +41,7 @@ const Body = styled.div`
 
 const Sidebar = styled.div`
   width: 190px;
-  background-color: var(--ig-color-surface-panel, rgba(255,255,255,0.02));
+  background-color: var(--ig-color-surface-panel);
   border-right: 1px solid var(--ig-color-border-subtle);
   padding: var(--ig-space-5) 0;
   flex-shrink: 0;
@@ -69,7 +69,7 @@ export function SettingsDialog({
   children,
   onClose,
   width = '820px',
-  maxHeight = 'calc(100vh - 32px)',
+  maxHeight = 'calc(100dvh - 32px)',
 }: SettingsDialogProps) {
   return (
     <ModalBackdrop onClick={() => onClose()}>

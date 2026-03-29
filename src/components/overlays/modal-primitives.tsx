@@ -16,8 +16,11 @@ export const ModalCard = styled.div`
   ${surfaceRaised}
   width: min(920px, 100%);
   max-height: calc(100vh - 48px);
-  overflow: auto;
+  @supports (height: 1dvh) { max-height: calc(100dvh - 48px); }
+  overflow: hidden;
   border-radius: var(--ig-radius-4xl);
+  display: flex;
+  flex-direction: column;
 `
 
 export const CompactModalCard = styled(ModalCard)`
@@ -36,6 +39,7 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   gap: var(--ig-space-7);
   flex-wrap: wrap;
+  flex-shrink: 0;
 `
 
 export const ModalTitle = styled.h2`

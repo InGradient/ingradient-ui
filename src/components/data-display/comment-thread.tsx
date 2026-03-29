@@ -53,7 +53,7 @@ const Textarea = styled.textarea`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
   &::placeholder { color: var(--ig-color-text-soft); }
-  &:focus { outline: none; border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
+  &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `
 
 const SendRow = styled.div`

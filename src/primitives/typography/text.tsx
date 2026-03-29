@@ -18,7 +18,7 @@ const TextRoot = styled.span<{
   $weight?: number
 }>`
   color: ${(p) => toneColor[p.$tone ?? 'default']};
-  font-size: ${(p) => p.$size ?? '14px'};
+  font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 400};
   line-height: 1.45;
   word-break: break-word;

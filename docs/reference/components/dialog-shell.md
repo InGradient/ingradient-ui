@@ -26,6 +26,12 @@ import { DialogShell, DialogCloseButton, ConfirmDialog } from '@ingradient/ui/co
 - `actions?: ReactNode`
 - `onClose?: () => void`
 - `width?: string | number`
+- `height?: string | number` — 고정 높이 모달 (예: `height="min(600px, 80dvh)"`)
+
+### Height & Tab Modals
+
+- 탭이 있는 모달은 `height`를 설정하여 탭 전환 시 크기 점프를 방지한다
+- `DialogContent` 영역은 `flex: 1; min-height: 0; overflow-y: auto`가 적용되어 콘텐츠가 넘칠 때 스크롤된다
 
 ### `ConfirmDialog`
 

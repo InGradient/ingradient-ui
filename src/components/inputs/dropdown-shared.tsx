@@ -36,8 +36,7 @@ export const DropdownTrigger = styled.button<{ $open: boolean }>`
   text-align: left;
   cursor: pointer;
   padding-right: var(--ig-space-6);
-  border-radius: var(--ig-radius-lg);
-  box-shadow: var(--ig-color-dropdown-trigger-shadow);
+  border-radius: var(--ig-radius-md);
 
   ${(p) =>
     p.$open &&
@@ -56,18 +55,13 @@ export const DropdownValue = styled.span`
 `
 
 export const DropdownChevron = styled.span<{ $open: boolean }>`
-  width: 28px;
-  height: 28px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-dropdown-chevron-bg);
-  border: 1px solid var(--ig-color-dropdown-chevron-border);
   color: var(--ig-color-text-soft);
   transform: ${(p) => (p.$open ? 'rotate(180deg)' : 'rotate(0deg)')};
-  transition: transform var(--ig-motion-fast), background-color var(--ig-motion-fast), color var(--ig-motion-fast);
+  transition: transform var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
 export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({ $layout }) => ({
@@ -81,8 +75,8 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
 }))<{ $layout: DropdownMenuLayout }>`
   position: fixed;
   z-index: var(--ig-z-popover);
-  padding: var(--ig-space-4);
-  border-radius: var(--ig-radius-2xl);
+  padding: var(--ig-space-2);
+  border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
   border: 1px solid var(--ig-color-border-strong);
   box-shadow: var(--ig-shadow-popover);
@@ -92,22 +86,18 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
 
 export const DropdownOptionButton = styled.button<{ $active: boolean }>`
   width: 100%;
-  padding: var(--ig-space-5) var(--ig-space-6);
-  border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
-  border-radius: var(--ig-radius-md);
-  background: ${(p) => (p.$active ? 'var(--ig-color-image-card-gradient-a)' : 'transparent')};
+  padding: var(--ig-space-3) var(--ig-space-4);
+  border: none;
+  border-radius: var(--ig-radius-sm);
+  white-space: nowrap;
+  background: ${(p) => (p.$active ? 'var(--ig-color-surface-active)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
   text-align: left;
   cursor: pointer;
 
   &:hover {
-    border-color: var(--ig-color-image-card-hover-border);
     background: var(--ig-color-dropdown-option-hover);
     color: var(--ig-color-text-primary);
-  }
-
-  &:not(:last-child) {
-    margin-bottom: var(--ig-space-2);
   }
 `
 

@@ -22,7 +22,7 @@ const Menu = styled.div`
   right: 0;
   max-height: 160px;
   overflow-y: auto;
-  background: var(--ig-color-surface-elevated, #1e1e2e);
+  background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);

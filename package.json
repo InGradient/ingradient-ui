@@ -37,7 +37,10 @@
     "dev:lib": "tsup --watch src --config tsup.config.ts"
   },
   "dependencies": {
+    "@ingradient/ui": "file:ingradient-ui-0.0.1.tgz",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
+    "react-day-picker": "^9.14.0",
     "recharts": "^3.7.0"
   },
   "peerDependencies": {

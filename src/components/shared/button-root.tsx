@@ -12,11 +12,12 @@ export const ButtonRoot = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   min-width: 0;
   white-space: nowrap;
-  padding: ${(p) => (p.$iconOnly ? '10px' : buttonPadding[p.$size])};
-  font-size: ${(p) => (p.$size === 'sm' ? '13px' : p.$size === 'lg' ? '15px' : '14px')};
+  height: ${(p) => p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'};
+  padding: ${(p) => (p.$iconOnly ? `0 var(--ig-space-4)` : `0 ${buttonPadding[p.$size].split(' ')[1]}`)};
+  font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-sm)' : p.$size === 'lg' ? 'var(--ig-font-size-lg)' : 'var(--ig-font-size-md)')};
   font-weight: 600;
   line-height: 1;
   ${(p) => {

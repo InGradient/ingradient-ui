@@ -66,7 +66,8 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   }
 
   &:focus-visible {
-    outline: none;
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: -2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }
 

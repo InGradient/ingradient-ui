@@ -234,6 +234,30 @@ export const newComponentDocs: DocEntry[] = [
     donts: ['CRUD API를 컴포넌트 안에 넣지 않는다.'],
   }),
 
+  // ── Date Picker ──────────────────────────────────────────────────
+  entry({
+    id: 'date-picker',
+    section: 'components',
+    group: 'inputs',
+    title: 'DatePickerField',
+    summary: '날짜를 선택하는 커스텀 달력 컴포넌트. 네이티브 date input 대신 사용한다.',
+    whenToUse: '날짜 입력이 필요할 때. From/To 범위, 만료일, 유효기간 등.',
+    importPath: "import { DatePickerField } from '@ingradient/ui/components'",
+    examples: [],
+    states: [],
+    props: [
+      { name: 'value', type: 'string', required: true, description: '선택된 날짜 값' },
+      { name: 'onChange', type: '(value: string) => void', required: true, description: '날짜 변경 콜백' },
+      { name: 'placeholder', type: 'string', required: false, defaultValue: 'Select date', description: '플레이스홀더 텍스트' },
+      { name: 'disabled', type: 'boolean', required: false, description: '비활성 상태' },
+    ],
+    variants: [],
+    related: ['text-field', 'number-field'],
+    notes: ['네이티브 date input 대신 커스텀 달력 UI를 사용한다.'],
+    dos: ['From/To 범위, 만료일, 유효기간 등 날짜 입력에 사용한다.'],
+    donts: ['시간 선택이 필요한 경우 단독으로 사용하지 않는다.'],
+  }),
+
   // ── Interaction (Phase 8) ──────────────────────────────────────────
   entry({
     id: 'interaction-utils',

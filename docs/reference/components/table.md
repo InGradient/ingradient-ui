@@ -26,6 +26,7 @@ import { Table, DataGrid } from '@ingradient/ui/components'
 
 - `Table`과 `DataGrid`는 현재 같은 구현을 공유한다
 - 고급 grid framework가 아니라 표현 계층의 기본 시작점이다
+- `table-layout: fixed`가 기본 적용된다 — 행 확장/축소 시 컬럼 너비가 흔들리지 않는다
 
 ## Do
 

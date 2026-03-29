@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from '../../tokens/foundations/breakpoints'
 
 const SplitLayoutRoot = styled.div<{
   $sidebarWidth: string
@@ -13,7 +14,7 @@ const SplitLayoutRoot = styled.div<{
   gap: var(--ig-space-7);
   min-width: 0;
 
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
@@ -57,7 +58,7 @@ export const ListDetailLayout = styled.div`
   gap: var(--ig-space-7);
   min-width: 0;
 
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
@@ -68,7 +69,7 @@ export const SettingsShell = styled.div`
   gap: var(--ig-space-7);
   min-width: 0;
 
-  @media (max-width: 960px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
@@ -79,7 +80,7 @@ export const SplitPanelShell = styled.div`
   gap: var(--ig-space-7);
   min-width: 0;
 
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
@@ -90,7 +91,7 @@ export const InspectorLayout = styled.div`
   gap: var(--ig-space-7);
   min-width: 0;
 
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `

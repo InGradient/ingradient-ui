@@ -4,12 +4,14 @@ export const controlField = css`
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  padding: var(--ig-space-6) var(--ig-space-5);
+  height: var(--ig-control-height-md);
+  padding: 0 var(--ig-space-5);
   border-radius: var(--ig-radius-md);
   border: 1px solid var(--ig-color-border-strong);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
-  line-height: 1.4;
+  font-size: var(--ig-font-size-md);
+  line-height: 1;
   transition:
     border-color var(--ig-motion-fast),
     box-shadow var(--ig-motion-fast),
@@ -19,11 +21,65 @@ export const controlField = css`
     color: var(--ig-color-text-soft);
   }
 
-  &:focus {
-    outline: none;
-    border-color: var(--ig-color-accent-ring);
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: -2px;
     box-shadow: var(--ig-shadow-focus-ring);
     background: var(--ig-color-surface-focus);
+  }
+
+  &:where(textarea) {
+    height: auto;
+    padding: var(--ig-space-4) var(--ig-space-5);
+    line-height: 1.4;
+  }
+
+  &:where([type='date']),
+  &:where([type='datetime-local']),
+  &:where([type='time']) {
+    padding-right: var(--ig-space-4);
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(0.8) brightness(1.2);
+      cursor: pointer;
+      padding: var(--ig-space-1);
+      border-radius: var(--ig-radius-xs);
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+
+    &::-webkit-calendar-picker-indicator:hover {
+      opacity: 1;
+    }
+
+    &::-webkit-datetime-edit {
+      color: var(--ig-color-text-primary);
+      font-size: var(--ig-font-size-sm);
+    }
+
+    &::-webkit-datetime-edit-fields-wrapper {
+      padding: 0;
+    }
+
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-day-field,
+    &::-webkit-datetime-edit-year-field {
+      color: var(--ig-color-text-primary);
+      padding: 2px;
+      border-radius: 2px;
+    }
+
+    &::-webkit-datetime-edit-month-field:focus,
+    &::-webkit-datetime-edit-day-field:focus,
+    &::-webkit-datetime-edit-year-field:focus {
+      background: var(--ig-color-accent-soft-surface);
+      color: var(--ig-color-text-primary);
+    }
+
+    &::-webkit-datetime-edit-text {
+      color: var(--ig-color-text-muted);
+      padding: 0 1px;
+    }
   }
 
   &:where(select) {

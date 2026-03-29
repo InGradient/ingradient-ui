@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from '../../tokens/foundations/breakpoints'
 
 const SectionWrap = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ const RowWrap = styled.div`
   grid-template-columns: 140px 1fr;
   gap: var(--ig-space-3);
   align-items: start;
-  @media (max-width: 480px) {
+  ${media.sm} {
     grid-template-columns: 1fr;
   }
 `

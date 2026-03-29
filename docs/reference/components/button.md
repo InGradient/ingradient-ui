@@ -19,8 +19,8 @@ import { Button, IconButton } from '@ingradient/ui/components'
 ## Main Props
 
 - `variant?: 'solid' | 'secondary' | 'accent'`
-- `size?: 'sm' | 'md' | 'lg'`
-- `tone?: 'default' | 'danger'`
+- `size?: 'sm' | 'md' | 'lg'` — `--ig-control-height-sm/md/lg` 토큰 사용
+- `tone?: 'default' | 'danger'` — `tone="danger"`는 빨간 배경 + 흰 텍스트
 - `leadingIcon?: ReactNode`
 - `trailingIcon?: ReactNode`
 - `children: ReactNode`
@@ -35,6 +35,7 @@ import { Button, IconButton } from '@ingradient/ui/components'
   - 강조가 필요한 action
 - `tone="danger"`
   - 삭제, 제거, 취소 불가 action 같은 destructive 흐름
+  - Delete, Remove, Revoke 등의 action에 사용한다
 
 ## Do
 

@@ -32,7 +32,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
   border: 1px solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
-  box-shadow: var(--ig-shadow-floating, 0 4px 16px rgba(0,0,0,.12));
+  box-shadow: var(--ig-shadow-floating);
   pointer-events: auto;
   animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} 200ms ease forwards;
   max-width: 420px;

@@ -33,13 +33,74 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   }
 `
 
+const HiddenInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+`
+
+const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--ig-radius-xs);
+  border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
+  transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
+  flex-shrink: 0;
+  opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
+
+  svg {
+    width: 12px;
+    height: 12px;
+    stroke: white;
+    stroke-width: 2.5;
+    fill: none;
+    opacity: ${(p) => (p.$checked ? 1 : 0)};
+    transition: opacity var(--ig-motion-fast);
+  }
+`
+
+const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--ig-radius-pill);
+  border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  background: transparent;
+  transition: border-color var(--ig-motion-fast);
+  flex-shrink: 0;
+  opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
+
+  &::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: var(--ig-radius-pill);
+    background: var(--ig-color-accent);
+    opacity: ${(p) => (p.$checked ? 1 : 0)};
+    transition: opacity var(--ig-motion-fast);
+  }
+`
+
 export function Checkbox({
   label,
+  checked,
+  disabled,
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }) {
   return (
     <ToggleLabel>
-      <input type="checkbox" {...props} />
+      <HiddenInput type="checkbox" checked={checked} disabled={disabled} {...props} />
+      <CheckboxBox $checked={!!checked} $disabled={disabled}>
+        <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3" /></svg>
+      </CheckboxBox>
       {label}
     </ToggleLabel>
   )
@@ -47,11 +108,14 @@ export function Checkbox({
 
 export function Radio({
   label,
+  checked,
+  disabled,
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }) {
   return (
     <ToggleLabel>
-      <input type="radio" {...props} />
+      <HiddenInput type="radio" checked={checked} disabled={disabled} {...props} />
+      <RadioDot $checked={!!checked} $disabled={disabled} />
       {label}
     </ToggleLabel>
   )
@@ -64,7 +128,7 @@ export function Switch({
 }: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & { label?: React.ReactNode }) {
   return (
     <ToggleLabel>
-      <input type="checkbox" checked={checked} {...props} style={{ display: 'none' }} />
+      <HiddenInput type="checkbox" checked={checked} {...props} />
       <SwitchTrack $checked={checked} />
       {label}
     </ToggleLabel>

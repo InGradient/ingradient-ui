@@ -5,6 +5,10 @@ import { renderTokensCss } from './css-contract'
 export const IngradientGlobalStyle = createGlobalStyle`
   ${renderTokensCss()}
 
+  html {
+    color-scheme: dark;
+  }
+
   html,
   body,
   #root {

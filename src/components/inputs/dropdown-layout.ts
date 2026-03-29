@@ -15,7 +15,9 @@ export function useDropdownLayout(
     const rect = root.getBoundingClientRect()
     const viewportPadding = 12
     const gap = 10
-    const clampedWidth = Math.min(rect.width, window.innerWidth - viewportPadding * 2)
+    const minMenuWidth = 160
+    const menuWidth = Math.max(rect.width, minMenuWidth)
+    const clampedWidth = Math.min(menuWidth, window.innerWidth - viewportPadding * 2)
     const clampedLeft = Math.min(
       Math.max(rect.left, viewportPadding),
       window.innerWidth - viewportPadding - clampedWidth

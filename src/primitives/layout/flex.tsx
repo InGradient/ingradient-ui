@@ -6,7 +6,7 @@ const StackRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string 
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: ${(p) => space(p.$gap) ?? '16px'};
+  gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-7)'};
   align-items: ${(p) => p.$align ?? 'stretch'};
   justify-content: ${(p) => p.$justify ?? 'flex-start'};
 `
@@ -24,7 +24,7 @@ const InlineRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string
   display: flex;
   flex-wrap: ${(p) => p.$wrap ?? 'wrap'};
   min-width: 0;
-  gap: ${(p) => space(p.$gap) ?? '12px'};
+  gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-5)'};
   align-items: ${(p) => p.$align ?? 'center'};
   justify-content: ${(p) => p.$justify ?? 'flex-start'};
 `
@@ -42,7 +42,7 @@ export function Inline({
 const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: string | number }>`
   display: grid;
   min-width: 0;
-  gap: ${(p) => space(p.$gap) ?? '16px'};
+  gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-7)'};
   grid-template-columns: ${(p) =>
     p.$columns ?? `repeat(auto-fit, minmax(${numberOrString(p.$minItemWidth) ?? '220px'}, 1fr))`};
 `
@@ -60,7 +60,7 @@ const ContainerRoot = styled.div<{ $maxWidth?: string | number; $padding?: Space
   width: 100%;
   max-width: ${(p) => numberOrString(p.$maxWidth) ?? '1280px'};
   margin: 0 auto;
-  padding-inline: ${(p) => space(p.$padding) ?? '24px'};
+  padding-inline: ${(p) => space(p.$padding) ?? 'var(--ig-space-11)'};
 `
 
 export function Container({

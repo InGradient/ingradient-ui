@@ -18,7 +18,7 @@ const SearchInput = styled.input`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
   &::placeholder { color: var(--ig-color-text-soft); }
-  &:focus { outline: none; border-color: var(--ig-color-accent-ring); }
+  &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `
 
 const Dropdown = styled.div`
@@ -29,7 +29,7 @@ const Dropdown = styled.div`
   z-index: var(--ig-z-dropdown);
   max-height: 200px;
   overflow-y: auto;
-  background: var(--ig-color-surface-elevated, #1e1e2e);
+  background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);

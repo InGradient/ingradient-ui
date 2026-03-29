@@ -13,22 +13,22 @@ import { surfaceCard, surfacePanel } from '../primitives'
 
 export const Paper = styled.div`
   ${surfacePanel}
-  border-radius: 20px;
+  border-radius: var(--ig-radius-2xl);
 `
 
 export const Card = styled.div`
   ${surfaceCard}
-  border-radius: 20px;
+  border-radius: var(--ig-radius-2xl);
 `
 
 export const Accordion = styled.details`
   ${surfacePanel}
-  border-radius: 18px;
+  border-radius: var(--ig-radius-xl);
   overflow: hidden;
 
   summary {
     cursor: pointer;
-    padding: 14px 16px;
+    padding: var(--ig-space-6) var(--ig-space-7);
     list-style: none;
     font-weight: 600;
   }

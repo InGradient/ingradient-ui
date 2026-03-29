@@ -45,6 +45,13 @@ native-compatible select와 custom dropdown select를 같은 디자인 언어로
 - `onChange`
 - `disabled?`
 
+## Style Notes
+
+- 드롭다운 메뉴에 `min-width: 160px`가 적용되어 trigger가 좁아도 옵션이 잘리지 않는다
+- chevron 아이콘은 원형 border 없이 단순화되었다
+- 메뉴 padding과 옵션 간격이 축소되었다
+- 옵션에 `white-space: nowrap`이 적용되어 텍스트가 줄바꿈되지 않는다
+
 ## Do
 
 - form submit과 native compatibility가 필요하면 `SelectField`를 쓴다

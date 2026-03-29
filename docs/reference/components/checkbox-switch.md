@@ -10,6 +10,12 @@ import { Checkbox, Switch } from '@ingradient/ui/components'
 
 boolean setting과 opt-in 선택을 위한 compact control이다.
 
+## Custom Visual
+
+- Checkbox는 네이티브 input을 숨기고 accent color 체크 마크를 커스텀으로 렌더링한다
+- Radio는 네이티브 input을 숨기고 커스텀 dot을 렌더링한다
+- 두 컴포넌트 모두 `<input>` 자체는 visually hidden 상태로 접근성을 유지한다
+
 ## When To Use
 
 - settings toggle

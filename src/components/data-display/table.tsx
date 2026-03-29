@@ -8,6 +8,7 @@ const TableWrap = styled.div`
 const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 `
 
 const Th = styled.th`

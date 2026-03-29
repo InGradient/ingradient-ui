@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
 import { appShell, pageContentLayout, pageHeaderSurface } from '../shared/surfaces'
+import { media } from '../../tokens/foundations/breakpoints'
 
 export const AppShell = styled.div`
   ${appShell}
@@ -12,7 +13,7 @@ export const PageHeader = styled.header`
   ${pageHeaderSurface}
   flex-shrink: 0;
 
-  @media (max-width: 768px) {
+  ${media.md} {
     padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-5);
   }
 `
@@ -38,7 +39,7 @@ export const PageTitle = styled.h1`
   font-weight: 700;
   letter-spacing: -0.02em;
 
-  @media (max-width: 768px) {
+  ${media.md} {
     font-size: var(--ig-font-size-xl);
   }
 `
@@ -55,7 +56,7 @@ export const PageContent = styled.div`
   flex-direction: column;
   gap: var(--ig-space-8);
 
-  @media (max-width: 768px) {
+  ${media.md} {
     padding: var(--ig-space-5) var(--ig-space-6) var(--ig-space-7);
     gap: var(--ig-space-5);
   }
@@ -114,7 +115,7 @@ export const FilterBar = styled(Toolbar)`
   grid-template-columns: minmax(0, 1.2fr) auto;
   align-items: center;
 
-  @media (max-width: 760px) {
+  ${media.md} {
     grid-template-columns: 1fr;
   }
 `

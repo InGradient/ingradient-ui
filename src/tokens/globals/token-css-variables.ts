@@ -5,6 +5,7 @@ import {
   spacingScale,
   typographyScale,
   zIndexScale,
+  controlSizes,
 } from '../foundations'
 import { ingradientTheme } from '../semantic/theme'
 
@@ -159,4 +160,7 @@ export const tokenCssVariables = {
   '--ig-color-tab-highlight': foundationColors.blueTint18,
   '--ig-color-toolbar-surface': 'rgba(8, 12, 18, 0.84)',
   '--ig-color-modal-backdrop': foundationColors.overlayBackdrop,
+  '--ig-control-height-sm': controlSizes.sm,
+  '--ig-control-height-md': controlSizes.md,
+  '--ig-control-height-lg': controlSizes.lg,
 } as const
