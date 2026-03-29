@@ -12,6 +12,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
   xKey,
   height = 260,
   loading = false,
+  onPointClick,
 }: {
   title: string
   description?: string
@@ -20,12 +21,13 @@ export function LineChartCard<T extends Record<string, string | number>>({
   xKey: keyof T & string
   height?: number
   loading?: boolean
+  onPointClick?: (entry: T, index: number) => void
 }) {
   const legend = <ChartLegend items={series.map((item, index) => ({ label: item.label, color: item.color ?? chartPalette[index % chartPalette.length] }))} />
   return (
     <ChartContainer title={title} description={description} height={height} loading={loading} empty={!data.length} legend={legend}>
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={data}>
+        <RechartsLineChart data={data} onClick={onPointClick ? (state: any) => { if (state?.activePayload?.[0]) onPointClick(state.activePayload[0].payload as T, state.activeTooltipIndex ?? 0) } : undefined}>
           <CartesianGrid stroke="var(--ig-color-chart-grid)" strokeDasharray="3 3" />
           <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
           <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
