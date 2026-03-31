@@ -292,7 +292,7 @@ export function useDrawingCanvas({
 
   // Element-level onMouseMove still used for non-drag interactions (crosshair, hover)
   const onMouseMove = useCallback(
-    (e: React.MouseEvent) => {
+    (_e: React.MouseEvent) => {
       // During drag, document-level handler takes over
       if (dragRef.current) return
       // Non-drag mousemove can be used by consumers (e.g. crosshair update)
