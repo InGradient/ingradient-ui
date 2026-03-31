@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { DayPicker } from 'react-day-picker'
 import { format, parse, isValid } from 'date-fns'
@@ -31,11 +32,11 @@ const CalendarIcon = () => (
   </svg>
 )
 
-const Popover = styled.div<{ $above: boolean }>`
-  position: absolute;
-  ${p => p.$above ? 'bottom: calc(100% + 6px);' : 'top: calc(100% + 6px);'}
-  left: 0;
-  z-index: var(--ig-z-popover);
+const Popover = styled.div<{ $top: number; $left: number }>`
+  position: fixed;
+  top: ${p => p.$top}px;
+  left: ${p => p.$left}px;
+  z-index: calc(var(--ig-z-modal) + 10);
   border-radius: var(--ig-radius-lg);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
   border: 1px solid var(--ig-color-border-strong);
@@ -160,23 +161,34 @@ export function DatePickerField({
   className,
 }: DatePickerProps) {
   const [open, setOpen] = useState(false)
-  const [above, setAbove] = useState(false)
+  const [pos, setPos] = useState({ top: 0, left: 0 })
   const wrapRef = useRef<HTMLDivElement>(null)
 
   const selected = value ? parse(value, 'yyyy-MM-dd', new Date()) : undefined
   const displayValue = selected && isValid(selected) ? format(selected, 'yyyy-MM-dd') : ''
 
+  const popoverRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (!open) return
     const handleClick = (e: MouseEvent) => {
-      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false)
+      if (
+        !wrapRef.current?.contains(e.target as Node) &&
+        !popoverRef.current?.contains(e.target as Node)
+      ) setOpen(false)
     }
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
-    // Decide above/below
+    // Calculate fixed position based on trigger rect
     const rect = wrapRef.current?.getBoundingClientRect()
-    if (rect) setAbove(window.innerHeight - rect.bottom < 320 && rect.top > 320)
+    if (rect) {
+      const showAbove = window.innerHeight - rect.bottom < 320 && rect.top > 320
+      setPos({
+        top: showAbove ? rect.top - 320 : rect.bottom + 6,
+        left: rect.left,
+      })
+    }
 
     document.addEventListener('mousedown', handleClick)
     document.addEventListener('keydown', handleEsc)
@@ -199,15 +211,16 @@ export function DatePickerField({
         {displayValue || <Placeholder>{placeholder}</Placeholder>}
         <CalendarIcon />
       </Trigger>
-      {open && (
-        <Popover $above={above}>
+      {open && createPortal(
+        <Popover ref={popoverRef} $top={pos.top} $left={pos.left}>
           <DayPicker
             mode="single"
             selected={selected}
             onSelect={handleSelect}
             showOutsideDays
           />
-        </Popover>
+        </Popover>,
+        document.body,
       )}
     </Wrap>
   )
