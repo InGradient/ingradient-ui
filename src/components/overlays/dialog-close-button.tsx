@@ -20,7 +20,7 @@ export function DialogCloseButton({
   title = 'Close',
   children,
   ...props
-}: React.ComponentProps<typeof IconButton>) {
+}: React.ComponentPropsWithoutRef<typeof IconButton>) {
   return (
     <Root type="button" variant="secondary" aria-label={ariaLabel} title={title} {...props}>
       {children ?? <X size={16} />}

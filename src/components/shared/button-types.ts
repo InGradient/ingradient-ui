@@ -5,7 +5,7 @@ export type LegacyButtonVariant = 'primary' | 'ghost' | 'accent'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 export type ButtonTone = 'default' | 'danger'
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   variant?: ButtonVariant
   $variant?: LegacyButtonVariant
   size?: ButtonSize
