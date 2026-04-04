@@ -17,6 +17,8 @@ export interface DrawingLayerProps {
   containerHeight?: number
   /** Color for the drawing preview (defaults to #4a9eff) */
   previewColor?: string
+  /** Color for the crosshair lines (defaults to rgba(255,255,255,0.3)) */
+  crosshairColor?: string
 }
 
 const HANDLE_PX = 4
@@ -36,6 +38,7 @@ export function DrawingLayer({
   showCrosshair = false, cursorX, cursorY,
   containerWidth, containerHeight,
   previewColor = '#4a9eff',
+  crosshairColor,
 }: DrawingLayerProps) {
   const cw = containerWidth || 0
   const ch = containerHeight || 0
@@ -55,24 +58,27 @@ export function DrawingLayer({
       preserveAspectRatio="none"
     >
       {/* Crosshair */}
-      {showCrosshair && cursorX != null && cursorY != null && (
-        <>
-          <line
-            x1={cursorX} y1={0} x2={cursorX} y2={1}
-            stroke="rgba(255,255,255,0.3)"
-            strokeWidth={uniform ? 1 : 0.001}
-            strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
-            vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
-          />
-          <line
-            x1={0} y1={cursorY} x2={1} y2={cursorY}
-            stroke="rgba(255,255,255,0.3)"
-            strokeWidth={uniform ? 1 : 0.001}
-            strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
-            vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
-          />
-        </>
-      )}
+      {showCrosshair && cursorX != null && cursorY != null && (() => {
+        const chColor = crosshairColor ?? 'rgba(255,255,255,0.3)'
+        return (
+          <>
+            <line
+              x1={cursorX} y1={0} x2={cursorX} y2={1}
+              stroke={chColor}
+              strokeWidth={uniform ? 1 : 0.001}
+              strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
+              vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
+            />
+            <line
+              x1={0} y1={cursorY} x2={1} y2={cursorY}
+              stroke={chColor}
+              strokeWidth={uniform ? 1 : 0.001}
+              strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
+              vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
+            />
+          </>
+        )
+      })()}
 
       {/* Drawing preview */}
       {drawingPreview && (
