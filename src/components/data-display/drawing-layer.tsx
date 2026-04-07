@@ -47,6 +47,8 @@ export function DrawingLayer({
   const ch = containerHeight || 0
   const uniform = cw > 0 && ch > 0
   const z = zoomProp ?? 1
+  // Stroke widths are divided by zoom so they stay constant on screen
+  const s = (px: number) => px / z
 
   return (
     <svg
@@ -69,15 +71,15 @@ export function DrawingLayer({
             <line
               x1={cursorX} y1={0} x2={cursorX} y2={1}
               stroke={chColor}
-              strokeWidth={uniform ? 1 : 0.001}
-              strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
+              strokeWidth={uniform ? s(1) : 0.001}
+              strokeDasharray={uniform ? `${s(4)} ${s(4)}` : '0.004 0.004'}
               vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
             />
             <line
               x1={0} y1={cursorY} x2={1} y2={cursorY}
               stroke={chColor}
-              strokeWidth={uniform ? 1 : 0.001}
-              strokeDasharray={uniform ? '4 4' : '0.004 0.004'}
+              strokeWidth={uniform ? s(1) : 0.001}
+              strokeDasharray={uniform ? `${s(4)} ${s(4)}` : '0.004 0.004'}
               vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
             />
           </>
@@ -93,8 +95,8 @@ export function DrawingLayer({
           height={drawingPreview.h}
           fill={`${previewColor}26`}
           stroke={previewColor}
-          strokeWidth={uniform ? 1.5 : 0.002}
-          strokeDasharray={uniform ? '6 4' : '0.006 0.004'}
+          strokeWidth={uniform ? s(1.5) : 0.002}
+          strokeDasharray={uniform ? `${s(6)} ${s(4)}` : '0.006 0.004'}
           vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
         />
       )}
@@ -114,7 +116,7 @@ export function DrawingLayer({
                 height={obj.h}
                 fill={isSelected ? `${color}22` : `${color}11`}
                 stroke={color}
-                strokeWidth={uniform ? (isSelected ? STROKE_SELECTED_PX : STROKE_PX) : (isSelected ? 0.003 : 0.002)}
+                strokeWidth={uniform ? s(isSelected ? STROKE_SELECTED_PX : STROKE_PX) : (isSelected ? 0.003 : 0.002)}
                 vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
               />
               {showLabels && obj.label && (
@@ -171,7 +173,7 @@ export function DrawingLayer({
                         ry={HANDLE_PX / (ch * z)}
                         fill="#fff"
                         stroke={color}
-                        strokeWidth={1.5}
+                        strokeWidth={s(1.5)}
                         vectorEffect="non-scaling-stroke"
                       />
                     ) : (
@@ -203,7 +205,7 @@ export function DrawingLayer({
               ry={size / (ch * z)}
               fill={color}
               stroke={isSelected ? '#fff' : 'none'}
-              strokeWidth={1.5}
+              strokeWidth={s(1.5)}
               vectorEffect="non-scaling-stroke"
             />
           ) : (
