@@ -19,6 +19,8 @@ export interface DrawingLayerProps {
   previewColor?: string
   /** Color for the crosshair lines (defaults to rgba(255,255,255,0.3)) */
   crosshairColor?: string
+  /** Current zoom level — used to keep stroke width and label size constant regardless of zoom */
+  zoom?: number
 }
 
 const HANDLE_PX = 4
@@ -39,10 +41,12 @@ export function DrawingLayer({
   containerWidth, containerHeight,
   previewColor = '#4a9eff',
   crosshairColor,
+  zoom: zoomProp,
 }: DrawingLayerProps) {
   const cw = containerWidth || 0
   const ch = containerHeight || 0
   const uniform = cw > 0 && ch > 0
+  const z = zoomProp ?? 1
 
   return (
     <svg
@@ -115,7 +119,7 @@ export function DrawingLayer({
               />
               {showLabels && obj.label && (
                 uniform ? (
-                  <g transform={`translate(${obj.x}, ${obj.y}) scale(${1 / cw}, ${1 / ch})`}>
+                  <g transform={`translate(${obj.x}, ${obj.y}) scale(${1 / (cw * z)}, ${1 / (ch * z)})`}>
                     <rect
                       x={0}
                       y={-LABEL_HEIGHT}
@@ -163,8 +167,8 @@ export function DrawingLayer({
                         key={i}
                         cx={cx}
                         cy={cy}
-                        rx={HANDLE_PX / cw}
-                        ry={HANDLE_PX / ch}
+                        rx={HANDLE_PX / (cw * z)}
+                        ry={HANDLE_PX / (ch * z)}
                         fill="#fff"
                         stroke={color}
                         strokeWidth={1.5}
@@ -195,8 +199,8 @@ export function DrawingLayer({
               key={obj.id}
               cx={obj.x}
               cy={obj.y}
-              rx={size / cw}
-              ry={size / ch}
+              rx={size / (cw * z)}
+              ry={size / (ch * z)}
               fill={color}
               stroke={isSelected ? '#fff' : 'none'}
               strokeWidth={1.5}
