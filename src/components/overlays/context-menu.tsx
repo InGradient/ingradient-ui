@@ -18,6 +18,7 @@ export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p) 
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
+  overflow: hidden;
   box-shadow: var(--ig-shadow-popover);
 `
 
@@ -54,6 +55,7 @@ export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>(
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
+  overflow: hidden;
   box-shadow: var(--ig-shadow-popover);
 `
 

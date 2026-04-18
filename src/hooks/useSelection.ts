@@ -25,6 +25,10 @@ export function useSelection<T extends { id: string }>(items: T[]) {
 
   const onSelectionChange = useCallback(
     (action: SelectionAction, id: string, rangeStartId?: string) => {
+      // Always update lastIndexRef so Shift+click range works from any selection method
+      const clickedIdx = items.findIndex((i) => i.id === id)
+      if (clickedIdx !== -1 && action !== 'range') lastIndexRef.current = clickedIdx
+
       setSelectedIds((prev) => {
         const next = new Set(prev)
 
@@ -40,10 +44,12 @@ export function useSelection<T extends { id: string }>(items: T[]) {
           return next
         }
 
-        if (action === 'range' && rangeStartId) {
-          const startIdx = items.findIndex((i) => i.id === rangeStartId)
+        if (action === 'range') {
+          const startIdx = rangeStartId
+            ? items.findIndex((i) => i.id === rangeStartId)
+            : lastIndexRef.current
           const endIdx = items.findIndex((i) => i.id === id)
-          if (startIdx === -1 || endIdx === -1) return prev
+          if (startIdx == null || startIdx === -1 || endIdx === -1) return prev
           const [a, b] = startIdx < endIdx ? [startIdx, endIdx] : [endIdx, startIdx]
           for (let i = a; i <= b; i++) next.add(items[i].id)
           return next

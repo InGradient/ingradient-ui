@@ -119,10 +119,11 @@ export function DrawingLayer({
       {objects.map((obj) => {
         const isSelected = obj.id === selectedId
         const color = obj.color ?? '#4a9eff'
+        const gStyle = obj.opacity != null && obj.opacity < 1 ? { opacity: obj.opacity, transition: 'opacity 0.15s' } as const : undefined
 
         if (obj.type === 'rect' && obj.w != null && obj.h != null) {
           return (
-            <g key={obj.id}>
+            <g key={obj.id} style={gStyle}>
               <rect
                 x={obj.x}
                 y={obj.y}
@@ -213,6 +214,7 @@ export function DrawingLayer({
           return uniform ? (
             <ellipse
               key={obj.id}
+              style={gStyle}
               cx={obj.x}
               cy={obj.y}
               rx={size / (cw * z)}
@@ -225,6 +227,7 @@ export function DrawingLayer({
           ) : (
             <circle
               key={obj.id}
+              style={gStyle}
               cx={obj.x}
               cy={obj.y}
               r={isSelected ? 0.008 : 0.006}

@@ -11,6 +11,7 @@ export interface DrawingObject {
   h?: number
   color?: string
   label?: string
+  opacity?: number
 }
 
 export type DrawingMode = 'cursor' | 'rect' | 'point'

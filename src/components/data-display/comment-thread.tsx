@@ -27,6 +27,7 @@ const Meta = styled.div`
 const Author = styled.span`
   font-weight: 600;
   color: var(--ig-color-text-primary);
+  margin-right: auto;
 `
 
 const Body = styled.div`
@@ -77,7 +78,7 @@ const SendBtn = styled.button`
 // ── Components ─────────────────────────────────────────────────────
 
 export interface CommentItemProps {
-  author: string
+  author: React.ReactNode
   timestamp?: string
   body: React.ReactNode
   actions?: React.ReactNode
