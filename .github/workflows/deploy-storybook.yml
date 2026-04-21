@@ -18,6 +18,7 @@ jobs:
   build:
     name: Build Storybook Pages Artifact
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
@@ -28,11 +29,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npx playwright install --with-deps chromium
       - run: npm run test-storybook
-      - run: npm run build:package
-      - run: npm run build:smoke-consumer
       - run: npm run check:doc-coverage
-      - run: npm run build:storybook
-      - run: npm run test:visual
       - run: npm run build:storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/

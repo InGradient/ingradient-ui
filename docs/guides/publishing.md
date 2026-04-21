@@ -50,16 +50,14 @@ git push origin v0.0.2
 1. `npm ci --ignore-scripts`
 2. `npx playwright install --with-deps chromium`
 3. `npm run test-storybook`
-4. `npm run build:package`
-5. `npm run build:smoke-consumer`
-6. `npm run check:doc-coverage`
-7. `npm run build:storybook`
-8. `npm run test:visual`
-9. `actions/deploy-pages`로 GitHub Pages 배포
+4. `npm run check:doc-coverage`
+5. `STORYBOOK_BASE_PATH=/<repo-name>/ npm run build:storybook`
+6. `actions/deploy-pages`로 GitHub Pages 배포
 
 중요한 점:
 
 - Pages 배포는 `STORYBOOK_BASE_PATH=/<repo-name>/`를 사용해 repo 하위 경로에서도 asset path가 깨지지 않게 만든다.
+- package build, consumer smoke, visual regression 같은 무거운 검증은 `CI` workflow에서 계속 확인하고, Pages deploy workflow는 배포에 필요한 최소 검증만 수행한다.
 - private repository라면 Pages 접근 정책은 저장소 설정에서 별도로 확인해야 한다.
 - visual regression은 committed screenshot baseline과 비교한다.
 - consumer smoke app은 public export와 `tokens.css` subpath가 실제 앱에서 빌드되는지 검증한다.

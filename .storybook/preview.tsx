@@ -5,6 +5,7 @@ import { IngradientGlobalStyle, IngradientThemeProvider } from '../src/tokens'
 
 initialize({
   onUnhandledRequest: 'bypass',
+  quiet: true,
 })
 
 const densityPadding = {
