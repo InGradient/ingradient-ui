@@ -17,6 +17,8 @@
 ```text
 ingradient-ui/
 ├─ package.json
+├─ .storybook/
+├─ stories/
 ├─ src/
 │  ├─ index.ts
 │  ├─ brand/
@@ -31,7 +33,6 @@ ingradient-ui/
 │  ├─ components/
 │  ├─ patterns/
 │  └─ legacy/
-├─ apps/design-showcase/
 ├─ docs/
 └─ lib/
 ```
@@ -40,14 +41,14 @@ ingradient-ui/
 
 - 이 저장소는 publishable package가 사실상 하나뿐이다.
 - `packages/ui`를 한 번 더 들어가는 비용보다, 루트가 곧 패키지인 구조가 더 단순하다.
-- docs 앱은 하위 workspace로 두고, 패키지는 루트에서 바로 빌드하는 편이 현재 저장소 크기에 더 잘 맞는다.
+- Storybook과 smoke consumer app만 하위 workspace/설정으로 두고, 패키지는 루트에서 바로 빌드하는 편이 현재 저장소 크기에 더 잘 맞는다.
 
 ## Source And Build Rule
 
 - 사람이 수정하는 코드는 `src/`에만 둔다.
 - `lib/`는 package build 결과물만 둔다.
 - `package.json`의 `exports`는 `lib/`만 가리킨다.
-- docs 앱은 개발 편의를 위해 `@ingradient/ui/*`를 루트 `src/`로 alias한다.
+- Storybook과 smoke consumer는 개발 편의를 위해 `@ingradient/ui/*`를 루트 `src/` 또는 workspace 링크로 사용한다.
 - `lib/tokens.css`는 `src/tokens`에서 자동 생성한다.
 
 ## Documentation Structure
@@ -55,28 +56,19 @@ ingradient-ui/
 사용자 문서와 유지보수 문서는 저장 위치를 분리한다.
 
 - 사용자 문서
-  - `apps/design-showcase/src/docs/*.ts(x)`
-  - public API metadata source of truth
+  - `.storybook/**`
+  - `stories/**`
+  - `docs/reference/**`
+  - 실행 가능한 source of truth + shareable snapshot
 - 유지보수 문서
   - `docs/*.md`
   - 철학, 구조, 규칙, 워크플로우
 
-showcase 문서 메타는 아래처럼 나눈다.
+현재 구조를 유지하는 이유는 다음과 같다.
 
-```text
-apps/design-showcase/src/docs/
-├─ types.ts
-├─ foundations.tsx
-├─ components.tsx
-├─ patterns.tsx
-└─ index.ts
-```
-
-이 구조를 쓰는 이유는 다음과 같다.
-
-- demo 렌더링과 문서 메타를 분리할 수 있다.
-- props, variants, do/don't, related 같은 사람이 써야 하는 설명을 명시적으로 관리할 수 있다.
-- public API 추가 시 문서 누락 여부를 더 쉽게 발견할 수 있다.
+- 실행 가능한 문서는 Storybook에 모은다.
+- 공유용 텍스트 snapshot은 `docs/reference`에 남긴다.
+- 과거 showcase는 migration tracker 문맥으로만 추적한다.
 
 ## Token Architecture
 

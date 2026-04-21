@@ -56,6 +56,12 @@ export interface NumberFieldProps {
   parse?: (s: string) => number
   className?: string
   id?: string
+  name?: string
+  required?: boolean
+  autoFocus?: boolean
+  'aria-label'?: string
+  'aria-labelledby'?: string
+  title?: string
 }
 
 function clamp(v: number, min?: number, max?: number): number {
@@ -68,6 +74,7 @@ function clamp(v: number, min?: number, max?: number): number {
 export function NumberField({
   value, onChange, min, max, step = 1,
   disabled, placeholder, format, parse, className, id,
+  name, required, autoFocus, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, title,
 }: NumberFieldProps) {
   const [draft, setDraft] = useState(() => format ? format(value) : String(value))
   const prevValueRef = useRef(value)
@@ -111,11 +118,17 @@ export function NumberField({
     <Wrap className={className}>
       <Input
         id={id}
+        name={name}
         type="text"
         inputMode="decimal"
         value={draft}
         disabled={disabled}
+        required={required}
+        autoFocus={autoFocus}
         placeholder={placeholder}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        title={title}
         onChange={(e) => setDraft(e.target.value)}
         onBlur={commit}
         onKeyDown={handleKeyDown}

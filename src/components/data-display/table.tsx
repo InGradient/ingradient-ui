@@ -29,14 +29,28 @@ const Td = styled.td`
 const DragTh = styled(Th)`width: 36px; padding: var(--ig-space-4) var(--ig-space-2);`
 const DragTd = styled(Td)`width: 36px; padding: var(--ig-space-3) var(--ig-space-2);`
 
-const HandleBtn = styled.div`
+const VisuallyHidden = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`
+
+const HandleBtn = styled.button.attrs({ type: 'button', 'aria-label': 'Reorder row' })`
   cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
+  border: none;
   border-radius: var(--ig-radius-sm);
+  background: transparent;
   color: var(--ig-color-text-muted);
   flex-shrink: 0;
   user-select: none;
@@ -223,7 +237,9 @@ export function Table<T extends { id?: string | number }>({
       <StyledTable>
         <thead>
           <tr>
-            <DragTh />
+            <DragTh scope="col">
+              <VisuallyHidden>Reorder</VisuallyHidden>
+            </DragTh>
             {columns.map((col) => (
               <Th key={col.key}>{col.header}</Th>
             ))}

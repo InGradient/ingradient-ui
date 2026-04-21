@@ -2,9 +2,15 @@
 
 이 문서는 `@ingradient/ui` 사용자 문서를 쓸 때 지켜야 하는 최소 규칙을 정의한다.
 
+기본 전제:
+
+- 실행 가능한 사용자 문서의 중심은 Storybook이다
+- `docs/reference/**`는 Storybook을 보조하는 shareable Markdown이다
+- props 설명과 사용 의도는 JSDoc와 Storybook이 같이 만든다
+
 ## Required Sections
 
-각 showcase 상세 페이지는 아래 순서를 유지한다.
+각 Storybook docs page 또는 이에 대응하는 reference 문서는 아래 순서를 유지한다.
 
 1. What it is
 2. When to use
@@ -18,7 +24,7 @@
 
 ## Required Metadata
 
-모든 `DocEntry`는 최소 아래를 채운다.
+모든 public surface 문서는 최소 아래 정보를 드러내야 한다.
 
 - `id`
 - `section`
@@ -35,6 +41,8 @@
 - `dos`
 - `donts`
 - `status`
+
+이 정보는 Storybook story, MDX, JSDoc, reference 문서에 분산될 수 있지만 사용자 입장에서는 빠짐없이 보여야 한다.
 
 ## Writing Style
 
@@ -62,6 +70,7 @@
 - key component는 2개 이상이면 더 좋다
 - 예제 제목은 무엇을 보여주는지 바로 드러나야 한다
 - 예제 설명은 1문장 안에서 끝낸다
+- 가능하면 `Playground`와 별도로 `Review` 또는 `Scenario` 예시도 둔다
 
 ## Props Rules
 
@@ -106,9 +115,16 @@
 
 동기화 대상:
 
-- `apps/design-showcase/src/docs/*.ts(x)`
+- 관련 Storybook story
+- 필요한 Storybook MDX
 - 필요한 경우 `docs/reference/**`
 - recipe에 자주 쓰이는 조합이면 `docs/reference/recipes/**`
+
+필요하면 같이 본다.
+
+- JSDoc
+- `docs/guides/STORYBOOK_GUIDE.md`
+- `docs/plan/storybook-adoption-plan.md`
 
 ## Review Checklist
 
@@ -119,3 +135,4 @@
 - examples가 현재 구현과 맞는가
 - related가 실제로 도움이 되는가
 - do / don't가 너무 추상적이지 않은가
+- Storybook의 `Playground`, `Review`, `Scenario` 역할이 섞이지 않았는가

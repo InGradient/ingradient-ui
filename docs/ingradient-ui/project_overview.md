@@ -8,7 +8,7 @@
 - tokens, components, patterns, brand assets를 공통화한다
 
 ## 범위 / 비범위
-- 범위: design tokens, primitives, components, patterns, brand, docs app
+- 범위: design tokens, primitives, components, patterns, brand, Storybook, Markdown companion docs
 - 비범위: dataset export, training flow, camera workflow, permission meaning
 
 ## 주요 의존성
@@ -18,4 +18,3 @@
 ## 관련 SSOT 문서
 - `../../architecture/service_responsibility.md`
 - 원본 근거: `/home/june/workspace/projects/ingradient-ui/README.md`, `/home/june/workspace/projects/ingradient-ui/docs/concepts/BOUNDARIES.md`
-

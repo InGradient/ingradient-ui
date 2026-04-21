@@ -17,9 +17,45 @@ jobs:
           node-version: '20'
           cache: npm
       - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
       - run: npm run lint
       - run: npx tsc --noEmit
       - run: npm test
+      - run: npm run test-storybook
       - run: npm run build:package
+      - run: npm run build:smoke-consumer
       - run: npm run check:style-literals
       - run: npm run check:doc-coverage
+      - run: npm run build:storybook
+      - run: npm run test:visual
+      - name: Summarize Storybook Preview
+        if: success()
+        run: |
+          {
+            echo "## Storybook Preview"
+            echo
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              echo "- PR: #${{ github.event.pull_request.number }}"
+              echo "- Artifact: \`storybook-static-pr-${{ github.event.pull_request.number }}\`"
+            else
+              echo "- Branch: \`${{ github.ref_name }}\`"
+              echo "- Artifact: \`storybook-static-${{ github.run_number }}\`"
+            fi
+            echo "- Consumer smoke: \`npm run build:smoke-consumer\` passed in CI"
+            echo "- Visual snapshots: \`npm run test:visual\` passed in CI"
+            echo "- Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo
+            echo "Actions run page의 Artifacts 섹션에서 정적 Storybook을 내려받아 확인할 수 있다."
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: success() && github.event_name == 'pull_request'
+        with:
+          name: storybook-static-pr-${{ github.event.pull_request.number }}
+          path: storybook-static
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: success() && github.event_name != 'pull_request'
+        with:
+          name: storybook-static-${{ github.run_number }}
+          path: storybook-static
+          retention-days: 7

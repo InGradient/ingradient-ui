@@ -1,6 +1,6 @@
 # Documentation Strategy
 
-`ingradient-ui` 문서는 한 곳에 몰아넣지 않는다. 사용자 문서와 유지보수 문서는 목적이 다르기 때문이다.
+`ingradient-ui` 문서는 한 곳에 몰아넣지 않는다. 사용자-facing 문서의 중심은 Storybook이다.
 
 ## Why Hybrid
 
@@ -13,7 +13,7 @@
 ## User Docs
 
 위치:
-- `apps/design-showcase`
+- Storybook
 - `docs/reference`
 
 역할:
@@ -26,16 +26,17 @@
 - 공유 가능한 Markdown snapshot
 
 원칙:
-- 사용자 문서의 기본 source of truth는 showcase metadata다.
-- `docs/reference`는 showcase를 따라가는 shareable companion이다.
-- 코드 옆 JSDoc보다 showcase metadata를 우선한다.
-- 새 public export는 showcase entry 없이 추가하지 않는다.
+- 사용자-facing 실행 문서의 기본 source of truth는 Storybook stories와 MDX다.
+- `docs/reference`는 Storybook을 따라가는 shareable companion이다.
+- props 설명과 사용 의도는 코드 옆 JSDoc를 우선한다.
+- 새 public export는 Storybook entry 없이 추가하지 않는다.
+- retired showcase app은 새 기준 문서로 취급하지 않는다.
 
 ## Coverage Matrix
 
 문서 coverage는 아래 3단계로 관리한다.
 
-- `showcase documented`
+- `storybook documented`
 - `markdown reference documented`
 - `recipe documented`
 
@@ -61,9 +62,10 @@
 ## Where To Write What
 
 - 사용자가 `어떻게 쓰는지` 궁금한 내용
-  - `apps/design-showcase/src/docs/*`
+  - Storybook stories / MDX
   - `docs/reference/**`
 - 사용자가 `어떻게 조합하는지` 궁금한 내용
+  - Storybook `Patterns`, `Pages`
   - `docs/reference/recipes/**`
 - 기여자가 `왜 이렇게 구성되어 있는지` 궁금한 내용
   - `docs/*.md`
@@ -76,21 +78,52 @@
 ## Why Not README In Every Folder
 
 - 폴더마다 README를 두면 구조 설명이 중복되고 금방 어긋난다.
-- 사용자 입장에서는 폴더 README보다 showcase 페이지가 훨씬 유용하다.
+- 사용자 입장에서는 폴더 README보다 Storybook 페이지가 훨씬 유용하다.
 - contributor 입장에서도 모든 하위 폴더에 설명이 필요하지 않다.
 
 그래서 README는 상위 레이어 몇 곳에만 둔다.
 
 ## Documentation Source Model
 
-- public API 문서의 source는 `apps/design-showcase/src/docs/*.ts(x)`의 metadata다.
-- metadata는 수동으로 관리한다.
+- 실제 API 계약의 source는 TypeScript source다.
+- props 설명과 사용 의도의 source는 JSDoc다.
+- public API의 실행 가능한 문서 source는 Storybook story와 MDX다.
+- `docs/reference/**`는 Storybook을 따라가는 Markdown companion이다.
 - 이유:
   - 타입만으로는 사용 맥락을 설명할 수 없다.
+  - story가 실제 상태와 조합을 가장 정확하게 보여준다.
   - do / don't, related, notes는 사람이 명시해야 정확하다.
+
+## Storybook Role
+
+Storybook은 아래 역할을 동시에 맡는다.
+
+- 공식 컴포넌트 카탈로그
+- 공식 live example 대체제
+- 디자이너 검토용 interactive sandbox
+- story 기반 테스트 entrypoint
+
+따라서 Storybook은 문서이면서 검증 수단이다.
+
+## Source Priority
+
+우선순위는 아래와 같다.
+
+1. TypeScript source
+2. JSDoc
+3. Storybook stories
+4. Storybook MDX
+5. `docs/reference/**`
+
+규칙:
+
+- 타입/계약은 source를 따른다
+- 설명과 사용 판단은 JSDoc + Storybook을 따른다
+- 공유용 Markdown은 Storybook과 동기화한다
 
 ## Non-Negotiables
 
-- public export를 추가하면 showcase metadata도 같이 추가한다.
-- showcase에 없는 public export는 사실상 미완성 API로 취급한다.
+- public export를 추가하면 Storybook story도 같이 추가한다.
+- Storybook에 없는 public export는 사실상 미완성 API로 취급한다.
+- 자주 쓰는 surface는 `docs/reference/**`도 같이 유지한다.
 - 유지보수 규칙을 바꾸면 `docs/`를 같이 수정한다.

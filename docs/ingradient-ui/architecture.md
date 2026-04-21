@@ -7,7 +7,8 @@
 ```text
 ingradient-ui/
 ├─ src/
-├─ apps/design-showcase/
+├─ .storybook/
+├─ stories/
 ├─ docs/
 └─ lib/
 ```
@@ -17,7 +18,7 @@ ingradient-ui/
 - 사람이 수정하는 코드는 `src/`에 둔다
 - `lib/`는 generated output만 둔다
 - package exports는 `lib/`를 가리킨다
-- docs app은 개발 편의를 위해 root `src/` alias를 사용할 수 있다
+- Storybook과 smoke consumer는 개발 편의를 위해 root `src/` alias를 사용할 수 있다
 
 ## 레이어 구성
 
@@ -78,4 +79,3 @@ ingradient-ui/
 - public API coverage 강화
 - pattern contract 명확화
 - docs coverage와 release process 고도화
-

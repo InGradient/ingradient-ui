@@ -10,6 +10,7 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "baseUrl": ".",
@@ -20,8 +21,9 @@
       "@ingradient/ui/primitives": ["./src/primitives/index.ts"],
       "@ingradient/ui/components": ["./src/components/index.ts"],
       "@ingradient/ui/patterns": ["./src/patterns/index.ts"],
-      "@ingradient/ui/brand": ["./src/brand/index.tsx"]
+      "@ingradient/ui/brand": ["./src/brand/index.tsx"],
+      "@storybook-support/*": ["./stories/support/*"]
     }
   },
-  "include": ["src", "apps/design-showcase/src", "tsup.config.ts", "scripts/**/*.mjs"]
+  "include": ["src", "stories", "tests", ".storybook", "apps/design-showcase/src", "tsup.config.ts", "vitest.storybook.config.ts", "playwright.storybook.config.ts", "scripts/**/*.mjs"]
 }

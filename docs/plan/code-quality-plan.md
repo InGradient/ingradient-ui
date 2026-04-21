@@ -119,11 +119,11 @@ export default tseslint.config(
 
 ### 1-3. npm 취약점 수정
 
-**현재:** jspdf <=4.2.0 high severity (design-showcase 의존성)
+**당시:** jspdf <=4.2.0 high severity (`design-showcase` 의존성)
 
 **작업:**
-- `apps/design-showcase/package.json`에서 jspdf 업데이트 또는 제거
-- 메인 패키지에는 영향 없음
+- removed app 기준으로는 해결됨
+- 현재 메인 패키지에는 영향 없음
 
 ---
 
@@ -209,10 +209,10 @@ jobs:
 
 ### 3-1. axe 접근성 자동 테스트
 
-design-showcase 앱에 axe-playwright 테스트 추가:
+현재 구현은 Storybook에 브라우저 기반 a11y 테스트를 추가하는 방향으로 대체되었다. 당시 초안은 아래와 같았다:
 
 ```typescript
-// apps/design-showcase/e2e/a11y.spec.ts
+// historical sketch for a former docs app
 import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 

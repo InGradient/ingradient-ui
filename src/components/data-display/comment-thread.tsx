@@ -66,7 +66,7 @@ const SendBtn = styled.button`
   padding: var(--ig-space-2) var(--ig-space-5);
   border: none;
   border-radius: var(--ig-radius-sm);
-  background: var(--ig-color-accent-soft);
+  background: var(--ig-color-accent-strong);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);
   font-weight: 600;

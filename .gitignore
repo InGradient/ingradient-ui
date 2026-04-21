@@ -2,4 +2,7 @@ node_modules/
 dist/
 lib/
 apps/design-showcase/dist/
+storybook-static/
+playwright-report/
+test-results/
 .DS_Store

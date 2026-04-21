@@ -43,7 +43,8 @@ const ChartDescription = styled.p`
 const ChartFrame = styled.div<{ $height: number }>`
   width: 100%;
   height: ${(p) => `${p.$height}px`};
-  min-height: 0;
+  min-width: 240px;
+  min-height: ${(p) => `${p.$height}px`};
 `
 
 export function ChartContainer({

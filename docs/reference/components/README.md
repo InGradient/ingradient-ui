@@ -5,6 +5,7 @@
 ## Included
 
 - [button.md](./button.md)
+- [file-input.md](./file-input.md)
 - [text-field.md](./text-field.md)
 - [select.md](./select.md)
 - [checkbox-switch.md](./checkbox-switch.md)
@@ -17,6 +18,7 @@
 - [image-grid.md](./image-grid.md)
 - [charts.md](./charts.md)
 - [feedback.md](./feedback.md)
+- [toast.md](./toast.md)
 - [progress.md](./progress.md)
 - [alert.md](./alert.md)
 - [empty-loading.md](./empty-loading.md)
@@ -34,4 +36,4 @@
 ## Notes
 
 - 이 폴더는 공유용 Markdown snapshot이다.
-- 최신 시각 예제와 states는 showcase를 같이 본다.
+- 최신 시각 예제와 states는 Storybook을 같이 본다.

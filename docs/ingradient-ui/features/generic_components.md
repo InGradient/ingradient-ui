@@ -32,7 +32,7 @@
 1. `src/components/**` 구현
 2. `src/components/index.ts` re-export
 3. 루트 export 연결
-4. showcase metadata 추가
+4. Storybook story 추가
 5. 예제와 docs coverage 확인
 
 ## 두면 안 되는 것
@@ -46,7 +46,7 @@
 
 - raw hex/rgba, 임의 spacing/radius 직접 하드코딩 금지
 - unrelated component를 한 파일에 섞지 않음
-- docs showcase만 통과하고 실제 앱에서 깨지는 contract 금지
+- Storybook만 통과하고 실제 앱에서 깨지는 contract 금지
 
 ## 관련 문서
 

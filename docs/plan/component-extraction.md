@@ -676,28 +676,26 @@ Phase 9 (layout)       → ChipGroup, FormSection, FilterBar, KeyboardShortcutHi
 - `recipes/gallery-with-selection.md` — ImageGrid + useSelection + SelectionActionBar 조합
 - `recipes/form-layout.md` — FormSection + FieldRow + SearchField + NumberField 조합
 
-### showcase 문서 (apps/design-showcase)
+### Storybook 문서
 
-`apps/design-showcase/src/docs/components.tsx`에 DocEntry 추가.
-매 컴포넌트마다 아래 필드를 반드시 채운다:
+새 public surface는 Storybook에 먼저 추가한다.
+최소 기준은 아래와 같다:
 
 ```typescript
 {
   id: 'image-viewer',
-  section: 'data-display',
-  title: 'ImageViewer',
-  summary: '이미지 확대/축소/패닝 뷰어',
-  whenToUse: '이미지를 확대해서 세부 사항을 확인할 때',
-  importPath: "@ingradient/ui/components",
-  examples: [/* 최소 1개, 핵심 컴포넌트는 2개 이상 */],
-  props: [/* 사용자가 판단에 필요한 핵심 prop만 */],
-  variants: [/* 각 variant가 "무엇을 바꾸는지" 설명 포함 */],
-  related: [/* 같은 화면에서 자주 같이 쓰는 것 */],
-  dos: [/* 사용 권장 패턴 */],
-  donts: [/* 실제로 자주 생길 수 있는 오용 */],
-  status: 'stable',
+  stories: ['Playground', 'Review'],
+  optionalStories: ['Scenario', 'Page'],
+  docs: ['autodocs', 'reference markdown', 'recipe when needed'],
 }
 ```
+
+권장 기준:
+
+- 최소 `Playground` 1개
+- 디자이너 검토용 `Review` 1개
+- 조합이 중요한 surface면 `Scenario` 또는 `Page`
+- 필요한 경우 `play` 또는 a11y/visual 검증 포함
 
 ### coverage 검증
 
@@ -816,8 +814,7 @@ tokens → primitives → components → patterns
 
 새 public export 추가 시 반드시 함께 작업:
 
-1. **showcase metadata** — `apps/design-showcase/src/docs/components.tsx`에 DocEntry 추가
-   - 필수 필드: id, section, title, summary, whenToUse, importPath, examples, props, variants, related, dos, donts, status
+1. **Storybook stories** — 최소 `Playground`, `Review`, 필요 시 `Scenario`/`Page`
 2. **reference 문서** — `docs/reference/`에 API 사용 요약
 3. **recipes** — 자주 쓰이는 조합이면 `docs/reference/recipes/`에 조립 예제
 4. **doc-coverage** — `npm run check:doc-coverage` 통과 확인
@@ -874,7 +871,7 @@ Phase가 완료될 때마다 해당 마이그레이션 문서의 체크리스트
 [ ] 해당 layer index에서 export를 열었는가?
 [ ] Vitest 테스트를 작성했는가?
 [ ] axe-core 접근성 검증을 포함했는가?
-[ ] showcase DocEntry를 추가했는가?
+[ ] Storybook story를 추가했는가?
 [ ] reference/ 문서를 갱신했는가?
 [ ] npm run build + check:style-literals + check:doc-coverage 통과하는가?
 [ ] check-exports.mjs에 등록했는가?

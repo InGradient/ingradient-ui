@@ -24,6 +24,9 @@ jobs:
       - name: Install Dependencies
         run: npm ci --ignore-scripts
 
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Lint
         run: npm run lint
 
@@ -33,14 +36,26 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Storybook Test
+        run: npm run test-storybook
+
       - name: Build Package
         run: npm run build:package
+
+      - name: Consumer Smoke Build
+        run: npm run build:smoke-consumer
 
       - name: Validate Style Literals
         run: npm run check:style-literals
 
       - name: Validate Doc Coverage
         run: npm run check:doc-coverage
+
+      - name: Build Storybook
+        run: npm run build:storybook
+
+      - name: Visual Regression
+        run: npm run test:visual
 
       - name: Validate Bundle Size
         run: node scripts/check-bundle-size.mjs

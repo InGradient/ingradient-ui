@@ -37,7 +37,7 @@
 
 - layout ownership이 모호하면 소비 앱마다 겹침 문제가 반복된다.
 - overlay, sidebar, split layout은 dense layout에서도 안전해야 한다.
-- docs showcase에서만 예쁘고 실제 앱에서 깨지는 패턴은 공용 패턴으로 보기 어렵다.
+- Storybook에서만 예쁘고 실제 앱에서 깨지는 패턴은 공용 패턴으로 보기 어렵다.
 
 ## 관련 문서
 

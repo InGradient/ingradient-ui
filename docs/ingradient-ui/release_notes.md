@@ -6,7 +6,7 @@ Release date: 2026-03-20
 
 ### Summary
 
-`0.0.1`은 `ingradient-ui`의 첫 기준 버전이다. 루트 패키지 구조, token source 전략, docs showcase, public export surface를 한 번에 고정한 초기 release다.
+`0.0.1`은 `ingradient-ui`의 첫 기준 버전이다. 루트 패키지 구조, token source 전략, 초기 docs showcase, public export surface를 한 번에 고정한 초기 release다. 현재 사용자용 실행 문서 기준은 Storybook으로 전환되었다.
 
 ### Included
 
@@ -15,7 +15,8 @@ Release date: 2026-03-20
 - `tokens -> primitives -> components -> patterns -> brand` 공용 UI 레이어
 - TypeScript token source와 generated `lib/tokens.css` 계약
 - `@ingradient/ui/legacy` 호환 subpath
-- `apps/design-showcase` 기반 사용자용 docs app
+- `apps/design-showcase` 기반 초기 사용자용 docs app
+  - 이후 Storybook으로 대체됨
 
 ### Not Included
 

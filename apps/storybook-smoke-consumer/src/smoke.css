@@ -1,0 +1,16 @@
+@import '@ingradient/ui/tokens.css';
+
+.smoke-css-proof {
+  padding: var(--ig-space-6);
+  border: 1px solid var(--ig-color-border-subtle);
+  border-radius: var(--ig-radius-xl);
+  background:
+    linear-gradient(180deg, var(--ig-color-surface-panel) 0%, var(--ig-color-surface-raised) 100%);
+  color: var(--ig-color-text-secondary);
+}
+
+.smoke-css-proof strong {
+  display: block;
+  margin-bottom: var(--ig-space-2);
+  color: var(--ig-color-text-primary);
+}

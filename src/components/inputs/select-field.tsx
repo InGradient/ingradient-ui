@@ -39,7 +39,10 @@ export function SelectField({
   const [open, setOpen] = React.useState(false)
   const rootRef = React.useRef<HTMLDivElement | null>(null)
   const nativeRef = React.useRef<HTMLSelectElement | null>(null)
-  const menuLayout = useDropdownLayout(rootRef, open, () => setOpen(false))
+  const handleClose = React.useCallback(() => {
+    setOpen(false)
+  }, [])
+  const menuLayout = useDropdownLayout(rootRef, open, handleClose)
 
   React.useEffect(() => {
     if (isControlled) setInternalValue(String(value))

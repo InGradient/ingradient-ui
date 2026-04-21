@@ -33,7 +33,7 @@ import '@ingradient/ui/tokens.css'
 1. `docs/reference/getting-started.md`
 2. `docs/reference/components/README.md`
 3. `docs/reference/patterns/README.md`
-4. interactive showcase
+4. Storybook
 
 ## Dialog Or Drawer?
 

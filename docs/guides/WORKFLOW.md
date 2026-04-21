@@ -3,14 +3,36 @@
 ## Core Principle
 
 디자인 변경은 제품 앱이 아니라 `ingradient-ui`에서 먼저 시작한다.
+그리고 사용자-facing 검토는 Storybook을 기준으로 한다.
 
 ## Change Flow
 
 1. foundation, semantic, recipe, variant 중 어디가 바뀌는지 먼저 결정한다.
 2. `src/`에서 해당 layer를 수정한다.
-3. docs app에서 시각적으로 확인한다.
+3. Storybook에서 시각적으로 확인한다.
 4. package build를 돌려 `lib/` 산출물, `lib/tokens.css`, types를 확인한다.
-5. 이후 제품 앱이 버전 업데이트 또는 local link로 반영한다.
+5. 필요한 story / MDX / reference 문서를 같이 갱신한다.
+6. 이후 제품 앱이 버전 업데이트 또는 local link로 반영한다.
+
+## Storybook Flow
+
+새 public surface를 추가하거나 바꿀 때는 아래 순서를 기본으로 한다.
+
+1. source와 public API를 정리한다.
+2. 필요한 JSDoc를 보강한다.
+3. `Playground` story를 추가한다.
+4. `Review` story로 핵심 상태를 묶는다.
+5. 필요한 경우 `Scenario` 또는 `Page` story를 추가한다.
+6. mock/provider 또는 MSW를 연결한다.
+7. play/a11y/visual 영향이 있으면 같이 검증한다.
+8. `docs/reference/**`와 관련 guide를 동기화한다.
+
+원칙:
+
+- Storybook 반영 없는 public export는 미완성으로 본다.
+- Storybook은 문서이면서 테스트 entrypoint다.
+- retired showcase app 대신 Storybook만 유지한다.
+- PR과 release 검증에는 `npm run test-storybook`과 `npm run build:storybook`가 포함된다.
 
 ## Token Build Flow
 
@@ -40,11 +62,18 @@
 
 새 public export를 추가하거나 public prop contract를 바꾸면 아래도 같이 본다.
 
-1. `apps/design-showcase/src/docs/*.ts(x)` metadata
-2. showcase 상세 페이지 예제
+1. 관련 Storybook story
+2. 필요한 Storybook MDX
 3. 관련 maintainer 문서
 4. `docs/reference/**`
-5. `npm run check:doc-coverage`
+5. `docs/reference/coverage-matrix.md`
+6. `npm run check:doc-coverage`
+
+Storybook 운영 기준이 바뀌면 아래도 같이 본다.
+
+- `docs/plan/storybook-adoption-plan.md`
+- `docs/guides/STORYBOOK_GUIDE.md`
+- 필요한 경우 `docs/README.md`
 
 ## Local Development
 
@@ -78,6 +107,27 @@
 
 - development는 live-linked
 - release는 versioned
+
+## Storybook Verification
+
+최소한 아래는 본다.
+
+- story가 올바른 그룹에 노출되는지
+- `Playground`, `Review`, `Scenario`, `Page` 역할이 섞이지 않았는지
+- loading / empty / error / disabled가 실제로 구분되는지
+- theme / viewport / role / density 변경이 반영되는지
+- Autodocs와 JSDoc 설명이 충돌하지 않는지
+- `npm run test-storybook`이 통과하는지
+- `npm run build:storybook`이 통과하는지
+- `npm run test:visual`이 통과하는지
+- `npm run build:smoke-consumer`가 통과하는지
+
+필요하면 추가로 본다.
+
+- play function
+- accessibility 검사
+- visual regression
+- consumer smoke app 검증
 
 ## CSS Consumer Rule
 

@@ -2,7 +2,7 @@
 
 이 폴더는 `ingradient-ui` 운영 기준 문서 저장소다. 루트 `README.md`보다 깊은 구조, 경계, 규칙, 워크플로우는 여기서 관리한다.
 
-사용자용 API 문서는 `apps/design-showcase`가 담당한다. 이 폴더는 기여자와 유지보수자를 위한 기준 문서다.
+사용자-facing 실행 문서는 Storybook이 담당한다. 이 폴더는 기여자와 유지보수자를 위한 기준 문서와 shareable Markdown companion을 관리한다.
 
 ## Reading Order
 
@@ -11,10 +11,11 @@
 3. [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
 4. [guides/DOC_WRITING_RULES.md](./guides/DOC_WRITING_RULES.md)
 5. [guides/CHANGE_GUIDE.md](./guides/CHANGE_GUIDE.md)
-6. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
-7. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
-8. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
-9. [releases/README.md](./releases/README.md)
+6. [guides/STORYBOOK_GUIDE.md](./guides/STORYBOOK_GUIDE.md)
+7. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
+8. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
+9. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
+10. [releases/README.md](./releases/README.md)
 
 ## Structure
 
@@ -55,13 +56,23 @@
 
 - [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
   - 사용자 문서와 유지보수 문서의 경계
-  - showcase metadata를 source of truth로 두는 이유
+  - Storybook과 `docs/reference`의 역할 분리
   - 폴더별 README를 제한적으로만 두는 이유
 
 - [guides/DOC_WRITING_RULES.md](./guides/DOC_WRITING_RULES.md)
   - 사용자 문서 페이지의 필수 섹션
   - props / variants / examples 작성 규칙
   - 코드 변경 시 문서 동기화 기준
+
+- [guides/STORYBOOK_GUIDE.md](./guides/STORYBOOK_GUIDE.md)
+  - Storybook을 누가 어떻게 쓰는지
+  - story 유형과 global controls 기준
+  - review/scenario/page story의 역할
+
+- [plan/storybook-migration-tracker.md](./plan/storybook-migration-tracker.md)
+  - `design-showcase`에서 Storybook으로의 이관 현황
+  - done / partial / pending inventory
+  - 남은 migration 우선순위
 
 - [rules/FILE_RULES.md](./rules/FILE_RULES.md)
   - 파일 길이 규칙
@@ -74,7 +85,7 @@
   - local link와 release versioning
 
 - [reference/README.md](./reference/README.md)
-  - showcase를 보조하는 공유용 Markdown reference
+  - Storybook을 보조하는 공유용 Markdown reference
   - 핵심 public API 사용 요약
 - [reference/getting-started.md](./reference/getting-started.md)
   - 처음 보는 사람을 위한 빠른 시작

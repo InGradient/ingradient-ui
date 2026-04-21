@@ -2,46 +2,49 @@
 
 ## 목적
 
-`apps/design-showcase`는 단순 demo 앱이 아니라 `@ingradient/ui`의 사용자용 API 문서 앱이다. 유지보수 문서와 역할이 다르며, public API metadata의 source of truth 역할을 가진다.
+`apps/design-showcase`는 과거에 `@ingradient/ui`의 사용자용 API 문서 앱 역할을 맡았던 historical docs app이다.
+현재 앱 자체는 제거되었고, 공식 실행 문서 source of truth는 Storybook이다.
 
 ## 역할
 
-- public API를 사용자 관점으로 문서화
-- live example 제공
-- props, variants, do/don't, related notes 정리
-- 새 export 추가 시 문서 누락을 빨리 발견
+- 과거 live example 출처 설명
+- migration tracker의 historical source inventory 보조
+- Storybook 전환의 역사적 문맥 유지
 
-## metadata 구조
+## 역사적 metadata 구조
 
-문서 메타는 아래 파일에서 나눠 관리한다.
+제거 전에는 문서 메타를 아래 파일에서 나눠 관리했다.
 
 - `foundations.tsx`
 - `components.tsx`
 - `patterns.tsx`
 - `types.ts`
 
-## public export 변경 시 함께 수정할 것
+## 현재 운영 원칙
 
-1. `apps/design-showcase/src/docs/*.ts(x)` metadata
-2. showcase 상세 페이지 예제
-3. 관련 maintainer 문서
-4. `docs/reference/**`
-5. `npm run check:doc-coverage`
+1. 새 public export는 Storybook story를 먼저 추가한다.
+2. removed docs app을 기준 문서처럼 복원하거나 재도입하지 않는다.
+3. 관련 maintainer 문서와 `docs/reference/**`는 Storybook 기준으로 갱신한다.
+4. `npm run check:doc-coverage`는 Storybook seed 기준으로 본다.
 
 ## 유지보수 문서와의 경계
 
-- showcase
+- Storybook
   - 소비자용
   - public API 사용법
+  - interactive review
+- removed showcase
+  - historical note only
+  - source inventory
 - `docs/`
   - 기여자/유지보수자용
   - 구조, 규칙, 워크플로우
 
 ## 운영상 주의
 
-- 문서 메타는 수동 관리이므로 export surface 변경 시 누락이 생기기 쉽다.
+- 제거된 앱을 새 기준 문서처럼 다루지 않는다.
 - 내부 helper나 low-level alias를 무조건 1:1 페이지로 노출하지는 않는다.
-- release note와 public export 변경 기록을 함께 봐야 한다.
+- release note와 Storybook migration tracker를 함께 본다.
 
 ## 관련 문서
 

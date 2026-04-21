@@ -6,7 +6,7 @@
 - generic components
 - reusable patterns
 - brand assets
-- docs showcase
+- Storybook + companion docs/reference
 
 ## 단계별 계획
 

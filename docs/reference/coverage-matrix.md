@@ -4,13 +4,13 @@
 
 ## Coverage Levels
 
-- `showcase documented`
+- `storybook documented`
 - `markdown reference documented`
 - `recipe documented`
 
 ## Core Surface
 
-| Surface | Showcase | Reference | Recipe |
+| Surface | Storybook | Reference | Recipe |
 | --- | --- | --- | --- |
 | tokens / theming | yes | yes | n/a |
 | primitives | yes | yes | yes |
@@ -21,31 +21,37 @@
 | overlays | yes | yes | yes |
 | charts | yes | yes | yes |
 | patterns | yes | yes | yes |
+| TextField / PasswordField | yes | yes | yes |
+| Alert | yes | yes | — |
+| Badge / Chip / StatusPill | yes | yes | — |
+| Spinner | yes | yes | — |
 | button destructive tone | yes | yes | yes |
 | field label/group helpers | yes | yes | yes |
+| FileInput | yes | yes | — |
+| ToastProvider / useToast | yes | yes | — |
 | **신규 (Phase 1~9)** | | | |
-| hooks (useZoomPan, useSelection, useClipboard, useUndoRedo, useDrawingCanvas) | — | yes | yes |
-| SearchField | — | yes | yes |
-| NumberField | — | yes | yes |
-| MentionTextarea | — | yes | — |
-| SelectionActionBar | — | yes | yes |
-| EmptyState | — | yes | — |
-| CommentThread / CommentItem / CommentInput | — | yes | — |
-| ColorSwatch | — | yes | — |
-| TagList / TagListSearch | — | yes | yes |
-| ImageViewer / ImageViewerToolbar | — | yes | yes |
-| DrawingLayer | — | yes | yes |
-| UploadDropzone | — | yes | — |
-| CopyButton | — | yes | — |
-| ModeSwitcher | — | yes | yes |
-| ResizablePanel | — | yes | — |
-| ChipGroup | — | yes | — |
-| FormGroup / FieldRow | — | yes | yes |
-| FilterBarLayout | — | yes | — |
-| KeyboardShortcutHint | — | yes | — |
+| hooks (useZoomPan, useSelection, useClipboard, useUndoRedo, useDrawingCanvas) | yes | yes | yes |
+| SearchField | yes | yes | yes |
+| NumberField | yes | yes | yes |
+| MentionTextarea | yes | yes | — |
+| SelectionActionBar | yes | yes | yes |
+| EmptyState | yes | yes | — |
+| CommentThread / CommentItem / CommentInput | yes | yes | — |
+| ColorSwatch | yes | yes | — |
+| TagList / TagListSearch | yes | yes | yes |
+| ImageViewer / ImageViewerToolbar | yes | yes | yes |
+| DrawingLayer | yes | yes | yes |
+| UploadDropzone | yes | yes | — |
+| CopyButton | yes | yes | — |
+| ModeSwitcher | yes | yes | yes |
+| ResizablePanel | yes | yes | — |
+| ChipGroup | yes | yes | — |
+| FormGroup / FieldRow | yes | yes | yes |
+| FilterBarLayout | yes | yes | — |
+| KeyboardShortcutHint | yes | yes | — |
 
 ## Rule
 
-- showcase가 없는 public surface는 불완전한 API로 본다
+- Storybook이 없는 public surface는 불완전한 API로 본다
 - 자주 쓰는 surface는 markdown reference도 있어야 한다
 - 실제 페이지 조립에 자주 쓰는 조합은 recipe 문서도 있어야 한다

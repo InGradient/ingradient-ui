@@ -5,53 +5,58 @@ import { fileURLToPath } from 'url'
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(scriptDir, '..')
 
-const showcaseDocFiles = [
-  path.join(repoRoot, 'apps/design-showcase/src/docs/foundations.tsx'),
-  path.join(repoRoot, 'apps/design-showcase/src/docs/components.tsx'),
-  path.join(repoRoot, 'apps/design-showcase/src/docs/patterns.tsx'),
-]
-
-const requiredDocIds = [
-  'overview',
-  'colors',
-  'typography',
-  'spacing',
-  'backgrounds',
-  'theming',
-  'brand',
-  'layout-primitives',
-  'type-primitives',
-  'surface-primitives',
-  'button',
-  'text-field',
-  'select',
-  'checkbox-switch',
-  'avatar-badge',
-  'notification-badge',
-  'data-grid',
-  'image-grid',
-  'charts',
-  'progress',
-  'workspace-blocks',
-  'alert',
-  'empty-loading',
-  'card',
-  'accordion',
-  'navigation',
-  'vertical-tabs',
-  'icon-gallery',
-  'dialog',
-  'overlay-blocks',
-  'drawer',
-  'tooltip',
-  'app-shell',
-  'sidebar-shell',
-  'toolbar',
-  'split-layout',
-  'form-section',
-  'dashboard-grid',
-  'list-detail',
-  'settings-shell',
+const requiredStoryFiles = [
+  '.storybook/main.ts',
+  '.storybook/preview.tsx',
+  'stories/guides/getting-started.stories.tsx',
+  'stories/foundations/token-overview.stories.tsx',
+  'stories/sandboxes/interaction-utils-lab.stories.tsx',
+  'stories/sandboxes/state-matrix.stories.tsx',
+  'stories/sandboxes/theme-lab.stories.tsx',
+  'stories/sandboxes/hooks-lab.stories.tsx',
+  'stories/patterns/form-sections.stories.tsx',
+  'stories/patterns/dashboard-grid.stories.tsx',
+  'stories/patterns/shell-and-layouts.stories.tsx',
+  'stories/patterns/overlay-blocks.stories.tsx',
+  'stories/patterns/workspace-blocks.stories.tsx',
+  'stories/pages/table-page.stories.tsx',
+  'stories/pages/settings-workspace-page.stories.tsx',
+  'stories/pages/workspace-api-page.stories.tsx',
+  'src/components/inputs/button.stories.tsx',
+  'src/components/inputs/file-input.stories.tsx',
+  'src/components/inputs/text-fields.stories.tsx',
+  'src/components/inputs/search-field.stories.tsx',
+  'src/components/inputs/number-field.stories.tsx',
+  'src/components/inputs/date-picker.stories.tsx',
+  'src/components/inputs/mention-textarea.stories.tsx',
+  'src/components/inputs/select-field.stories.tsx',
+  'src/components/inputs/toggles.stories.tsx',
+  'src/components/inputs/upload-dropzone.stories.tsx',
+  'src/components/feedback/alert.stories.tsx',
+  'src/components/feedback/avatar-badge.stories.tsx',
+  'src/components/feedback/empty-state.stories.tsx',
+  'src/components/feedback/notification-badge.stories.tsx',
+  'src/components/feedback/progress.stories.tsx',
+  'src/components/feedback/selection-action-bar.stories.tsx',
+  'src/components/feedback/spinner.stories.tsx',
+  'src/components/feedback/toast.stories.tsx',
+  'src/components/navigation/navigation-family.stories.tsx',
+  'src/components/navigation/tabs.stories.tsx',
+  'src/components/navigation/vertical-tabs.stories.tsx',
+  'src/components/overlays/dialog-shell.stories.tsx',
+  'src/components/overlays/settings-dialog.stories.tsx',
+  'src/components/overlays/drawer.stories.tsx',
+  'src/components/overlays/tooltip.stories.tsx',
+  'src/components/overlays/context-menu.stories.tsx',
+  'src/components/surfaces.stories.tsx',
+  'src/components/data-display/table.stories.tsx',
+  'src/components/data-display/tag-list.stories.tsx',
+  'src/components/data-display/drawing-layer.stories.tsx',
+  'src/components/data-display/image-grid.stories.tsx',
+  'src/components/data-display/image-viewer.stories.tsx',
+  'src/components/data-display/comment-thread.stories.tsx',
+  'src/components/charts/charts.stories.tsx',
+  'src/components/icons/icon-gallery.stories.tsx',
 ]
 
 const requiredReferenceFiles = [
@@ -60,6 +65,7 @@ const requiredReferenceFiles = [
   'docs/reference/troubleshooting.md',
   'docs/reference/coverage-matrix.md',
   'docs/reference/components/button.md',
+  'docs/reference/components/file-input.md',
   'docs/reference/components/text-field.md',
   'docs/reference/components/select.md',
   'docs/reference/components/checkbox-switch.md',
@@ -72,6 +78,7 @@ const requiredReferenceFiles = [
   'docs/reference/components/image-grid.md',
   'docs/reference/components/charts.md',
   'docs/reference/components/feedback.md',
+  'docs/reference/components/toast.md',
   'docs/reference/components/progress.md',
   'docs/reference/components/alert.md',
   'docs/reference/components/empty-loading.md',
@@ -99,22 +106,13 @@ const requiredReferenceFiles = [
   'docs/reference/recipes/gallery-like-browser.md',
 ]
 
-const showcaseIds = new Set()
-
-for (const file of showcaseDocFiles) {
-  const text = fs.readFileSync(file, 'utf8')
-  for (const match of text.matchAll(/id:\s*'([^']+)'/g)) {
-    showcaseIds.add(match[1])
-  }
-}
-
-const missingDocIds = requiredDocIds.filter((id) => !showcaseIds.has(id))
+const missingStoryFiles = requiredStoryFiles.filter((relativePath) => !fs.existsSync(path.join(repoRoot, relativePath)))
 const missingReferenceFiles = requiredReferenceFiles.filter((relativePath) => !fs.existsSync(path.join(repoRoot, relativePath)))
 
-if (missingDocIds.length > 0 || missingReferenceFiles.length > 0) {
-  if (missingDocIds.length > 0) {
-    console.error('Missing showcase doc ids:')
-    for (const id of missingDocIds) console.error(`- ${id}`)
+if (missingStoryFiles.length > 0 || missingReferenceFiles.length > 0) {
+  if (missingStoryFiles.length > 0) {
+    console.error('Missing Storybook seed files:')
+    for (const file of missingStoryFiles) console.error(`- ${file}`)
   }
   if (missingReferenceFiles.length > 0) {
     console.error('Missing reference files:')
@@ -123,4 +121,4 @@ if (missingDocIds.length > 0 || missingReferenceFiles.length > 0) {
   process.exit(1)
 }
 
-console.log('Showcase docs and markdown reference coverage checks passed.')
+console.log('Storybook seed and markdown reference coverage checks passed.')

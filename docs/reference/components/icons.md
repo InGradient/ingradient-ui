@@ -14,7 +14,7 @@ navigation, status, media, workspace action에 쓰는 curated icon registry다.
 
 - 새 icon이 필요할 때
 - 기존 action language를 유지하고 싶을 때
-- showcase에서 icon 후보를 확인할 때
+- Storybook에서 icon 후보를 확인할 때
 
 ## Main Building Blocks
 

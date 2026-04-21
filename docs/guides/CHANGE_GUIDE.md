@@ -20,19 +20,23 @@
 3. [DOCUMENTATION_STRATEGY.md](./DOCUMENTATION_STRATEGY.md)
    - 사용자 문서는 어디에 쓰는지
    - 유지보수 문서는 어디에 쓰는지
-   - showcase metadata를 왜 source of truth로 두는지
+   - Storybook과 `docs/reference`의 역할 분리
 4. [DOC_WRITING_RULES.md](./DOC_WRITING_RULES.md)
    - 사용자 문서 페이지의 필수 섹션
    - props / variants / examples 작성 규칙
-5. [ARCHITECTURE.md](../concepts/ARCHITECTURE.md)
+5. [STORYBOOK_GUIDE.md](./STORYBOOK_GUIDE.md)
+   - Storybook을 누가 어떻게 쓰는지
+   - story 유형과 global controls 기준
+   - review/scenario/page story의 역할
+6. [ARCHITECTURE.md](../concepts/ARCHITECTURE.md)
    - 현재 루트 패키지 구조
    - `src/`와 `lib/`의 역할
    - token source와 generated CSS 관계
-6. [FILE_RULES.md](../rules/FILE_RULES.md)
+7. [FILE_RULES.md](../rules/FILE_RULES.md)
    - 파일 길이
    - export 규칙
    - raw literal 금지 규칙
-7. [WORKFLOW.md](./WORKFLOW.md)
+8. [WORKFLOW.md](./WORKFLOW.md)
    - 수정 순서
    - `tokens.css` 생성 흐름
    - docs 동기화 규칙
@@ -54,7 +58,8 @@
 - 한 파일에는 하나의 public unit만 둔다.
 - `components/`와 `patterns/`에서는 raw color, raw spacing, raw radius를 직접 넣지 않는다.
 - 새 public export를 추가하면 docs도 같이 추가한다.
-- showcase metadata 없는 public export를 만들지 않는다.
+- Storybook entry 없는 public export를 만들지 않는다.
+- 자주 쓰는 public surface는 `docs/reference/**`도 같이 유지한다.
 - 공유가 필요한 핵심 API는 `docs/reference/**`도 같이 갱신한다.
 - 실제 페이지에서 자주 쓰는 조합이면 `docs/reference/recipes/**`도 같이 갱신한다.
 
@@ -80,7 +85,7 @@
 그리고 아래 순서로 본다.
 
 1. `src/tokens/**` 수정
-2. docs app에서 시각 확인
+2. Storybook에서 시각 확인
 3. `npm run build`
 4. `lib/tokens.css`가 기대한 값으로 생성됐는지 확인
 5. 관련 문서 갱신
@@ -94,7 +99,8 @@
   - 어떤 recipe를 쓰는지
   - 어떤 variant surface를 노출하는지
   - 어떤 public export로 열지
-  - docs showcase에 어떻게 보여줄지
+  - Storybook에서 어떻게 보여줄지
+  - `Review` / `Scenario` / `Page` 중 어떤 story가 필요한지
 
 ## When Updating Docs
 
@@ -115,11 +121,16 @@
 - `npm run build`
 - `npm run check:style-literals`
 - `npm run check:doc-coverage`
+- `npm run test-storybook`
+- `npm run build:storybook`
+- `npm run test:visual`
+- `npm run build:smoke-consumer`
 
 필요하면 추가로 확인한다.
 
-- docs 화면 시각 확인
-- 새 export가 docs에 노출되는지 확인
+- Storybook 화면 시각 확인
+- 새 export가 Storybook에 노출되는지 확인
+- 필요 시 consumer smoke app 또는 visual regression 영향 확인
 - generated `lib/tokens.css` 확인
 
 ## Decision Shortcut
