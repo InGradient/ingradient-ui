@@ -93,6 +93,12 @@ const config: StorybookConfig = {
       ...viteConfig.resolve,
       alias: {
         ...(viteConfig.resolve?.alias ?? {}),
+        '@ingradient/ui/brand': path.resolve(__dirname, '../src/brand/index.tsx'),
+        '@ingradient/ui/tokens': path.resolve(__dirname, '../src/tokens/index.ts'),
+        '@ingradient/ui/primitives': path.resolve(__dirname, '../src/primitives/index.ts'),
+        '@ingradient/ui/components': path.resolve(__dirname, '../src/components/index.ts'),
+        '@ingradient/ui/patterns': path.resolve(__dirname, '../src/patterns/index.ts'),
+        '@ingradient/ui': path.resolve(__dirname, '../src/index.ts'),
         '@storybook-support': path.resolve(__dirname, '../stories/support'),
       },
     }
