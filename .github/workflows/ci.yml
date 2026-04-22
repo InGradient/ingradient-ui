@@ -6,13 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   validate:
     name: Lint + TypeCheck + Test + Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: npm
@@ -47,13 +50,13 @@ jobs:
             echo
             echo "Actions run page의 Artifacts 섹션에서 정적 Storybook을 내려받아 확인할 수 있다."
           } >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: success() && github.event_name == 'pull_request'
         with:
           name: storybook-static-pr-${{ github.event.pull_request.number }}
           path: storybook-static
           retention-days: 7
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: success() && github.event_name != 'pull_request'
         with:
           name: storybook-static-${{ github.run_number }}
