@@ -3,9 +3,22 @@ import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
 import { IngradientGlobalStyle, IngradientThemeProvider } from '../src/tokens'
 
+function normalizeBasePath(basePath: string | undefined) {
+  if (!basePath || basePath === '/') return '/'
+  return basePath.endsWith('/') ? basePath : `${basePath}/`
+}
+
+const storybookBasePath = normalizeBasePath(import.meta.env.BASE_URL)
+
 initialize({
   onUnhandledRequest: 'bypass',
   quiet: true,
+  serviceWorker: {
+    url: `${storybookBasePath}mockServiceWorker.js`,
+    options: {
+      scope: storybookBasePath,
+    },
+  },
 })
 
 const densityPadding = {
