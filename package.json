@@ -15,7 +15,8 @@
     "./tokens": "./lib/tokens.js",
     "./primitives": "./lib/primitives.js",
     "./components": "./lib/components.js",
-    "./patterns": "./lib/patterns.js"
+    "./patterns": "./lib/patterns.js",
+    "./utils": "./lib/utils.js"
   },
   "files": [
     "lib"

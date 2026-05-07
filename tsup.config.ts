@@ -9,6 +9,7 @@ export default defineConfig({
     components: 'src/components/index.ts',
     patterns: 'src/patterns/index.ts',
     brand: 'src/brand/index.tsx',
+    utils: 'src/utils/index.ts',
   },
   format: ['esm'],
   dts: true,
