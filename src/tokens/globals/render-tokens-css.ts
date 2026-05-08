@@ -1,4 +1,3 @@
-import { legacyPortalCssVariables } from './legacy-css-variables'
 import { tokenCssVariables } from './token-css-variables'
 
 export function renderVariableBlock(
@@ -10,8 +9,5 @@ export function renderVariableBlock(
 }
 
 export function renderTokensCss() {
-  return `${renderVariableBlock(':root', tokenCssVariables)}\n\n${renderVariableBlock(
-    ':root',
-    legacyPortalCssVariables
-  )}\n`
+  return `${renderVariableBlock(':root', tokenCssVariables)}\n`
 }

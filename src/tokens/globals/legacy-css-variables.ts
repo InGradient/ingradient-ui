@@ -1,3 +1,14 @@
+/**
+ * @deprecated --portal-* 레거시 CSS 변수 매핑.
+ *
+ * 2026-05-08 기준 ingradient-platform, ingradient-edge, @ingradient/ui 자체
+ * 어디서도 var(--portal-*) 를 사용하지 않음 (D-5 마이그레이션 완료).
+ *
+ * 이 매핑은 더 이상 renderTokensCss() 출력에 포함되지 않으며, 외부 코드가
+ * 이 export를 import해서 직접 emit하지 않는 한 런타임에 적용되지 않음.
+ *
+ * 다음 메이저 버전에서 파일 자체 삭제 예정. 새 코드는 var(--ig-color-*) 사용.
+ */
 export const legacyPortalCssVariables = {
   '--portal-bg-base': 'var(--ig-color-bg-canvas)',
   '--portal-bg-radial-a': 'var(--ig-color-bg-radial-a)',
