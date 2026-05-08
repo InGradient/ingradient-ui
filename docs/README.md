@@ -11,11 +11,12 @@
 3. [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
 4. [guides/DOC_WRITING_RULES.md](./guides/DOC_WRITING_RULES.md)
 5. [guides/CHANGE_GUIDE.md](./guides/CHANGE_GUIDE.md)
-6. [guides/STORYBOOK_GUIDE.md](./guides/STORYBOOK_GUIDE.md)
-7. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
-8. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
-9. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
-10. [releases/README.md](./releases/README.md)
+6. [guides/CONSUMER_ONBOARDING.md](./guides/CONSUMER_ONBOARDING.md)
+7. [guides/STORYBOOK_GUIDE.md](./guides/STORYBOOK_GUIDE.md)
+8. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
+9. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
+10. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
+11. [releases/README.md](./releases/README.md)
 
 ## Structure
 
@@ -53,6 +54,11 @@
   - 수정 전에 꼭 읽어야 하는 문서 순서
   - 수정 중 지켜야 하는 규칙
   - 수정 후 최소 검증 항목
+
+- [guides/CONSUMER_ONBOARDING.md](./guides/CONSUMER_ONBOARDING.md)
+  - `platform`, `edge` 같은 소비 앱이 `@ingradient/ui`를 읽는 방식
+  - `build:package`, `dev:lib`, tarball 소비 흐름
+  - consumer `.env`와 실행 절차를 어디서 봐야 하는지
 
 - [guides/DOCUMENTATION_STRATEGY.md](./guides/DOCUMENTATION_STRATEGY.md)
   - 사용자 문서와 유지보수 문서의 경계

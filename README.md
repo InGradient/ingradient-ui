@@ -82,6 +82,7 @@ ingradient-ui/
 - [Documentation Strategy](./docs/guides/DOCUMENTATION_STRATEGY.md)
 - [Doc Writing Rules](./docs/guides/DOC_WRITING_RULES.md)
 - [Change Guide](./docs/guides/CHANGE_GUIDE.md)
+- [Consumer Onboarding](./docs/guides/CONSUMER_ONBOARDING.md)
 - [Storybook Guide](./docs/guides/STORYBOOK_GUIDE.md)
 - [Workflow](./docs/guides/WORKFLOW.md)
 - [File Rules](./docs/rules/FILE_RULES.md)
