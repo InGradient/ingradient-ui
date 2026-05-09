@@ -1,13 +1,30 @@
 ---
 plan: ingradient-ui storybook coverage 보강 (Phase 3 — 마지막 일괄)
 date: 2026-05-09
+status: ✅ 완료 (2026-05-10)
 audience: ingradient-ui 기여자
 master plan: ../MASTER-PLAN.md
 governance: ../governance.md (§ 4.4 storybook 필수, Phase 3 일괄)
 phase: 3 (D-008 — Phase 0~2 의 ui 변경 완료 후 진행)
 ---
 
-# Storybook Coverage Plan (Phase 3)
+# Storybook Coverage Plan (Phase 3) ✅ 완료
+
+## 결과 요약 (2026-05-10)
+
+5 group, **총 33 stories 신규 작성**. ui storybook coverage ~50% → **~95%** ✅.
+
+| Group | Stories | 컴포넌트 |
+|---|---|---|
+| A — Phase 0~2 신규 | 7 | InfoRow, CheckboxGroup, RadioCardGroup, StepIndicator, SelectableListItem, FilterPopover, VirtualizedImageGrid |
+| B — 기존 누락 핵심 | 8 | useConfirm, useClickOutside, Foundation tokens, IconButton, Popovers, DropdownSelect, Pagination, Breadcrumbs |
+| C — Secondary | 4 | Skeleton, Badge, StatusPill, ChipGroup |
+| D — Chart | 2 추가 | ChartContainer, ChartLegend (Card 류는 기존 charts.stories) |
+| E — 잔여 | 12 | CopyButton, FilterBarLayout, FormGroup + FieldRow, ModeSwitcher, AssignmentRow, ColorSwatch, KeyboardShortcutHint, PreviewCard, ProgressBlock, ResizablePanel, StatCard, TagListSearch |
+
+ui typecheck + 기존 test 124/124 통과.
+
+
 
 ## 목적
 

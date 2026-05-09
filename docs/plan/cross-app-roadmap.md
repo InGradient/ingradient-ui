@@ -100,17 +100,17 @@ ui 신규 컴포넌트 (Phase 2 결과):
 소요 추정: 1.5-2일 (PR 9개).
 효과 추정 (Phase 0 + Phase 2 합계): components/ ~250+ 줄 감소, ui 추가 ~150줄.
 
-### Phase 3 — Storybook 보강 (마지막)
+### Phase 3 — Storybook 보강 ✅ **완료 (2026-05-10)**
 
-상세 plan: [storybook-coverage.md](./storybook-coverage.md). PR ID 는 storybook plan 의 Group ID (Phase 2 의 A3-C1 와 별도 namespace).
+상세 plan: [storybook-coverage.md](./storybook-coverage.md). 5 group, **총 33 stories 신규 작성**.
 
-**왜 마지막?** Phase 1+2 진행 중 ui 컴포넌트 변경 가능성 큼. storybook 먼저 작성 시 재작성 비용. 안정된 시점에 일괄 작성.
+- ✅ **Group A** (Phase 0~2 신규 컴포넌트): InfoRow / CheckboxGroup / RadioCardGroup / StepIndicator / SelectableListItem / FilterPopover / VirtualizedImageGrid — 7 stories
+- ✅ **Group B** (기존 누락 핵심): useConfirm + ConfirmProvider / useClickOutside / Foundation tokens / IconButton / Popovers / DropdownSelect / Pagination / Breadcrumbs — 8 stories
+- ✅ **Group C** (Secondary): Skeleton / Badge + Chip / StatusPill / ChipGroup — 4 stories
+- ✅ **Group D** (Chart): ChartContainer / ChartLegend — 2 stories (Card 류는 기존 charts.stories 에 포함)
+- ✅ **Group E** (잔여): CopyButton / FilterBarLayout / FormGroup + FieldRow / ModeSwitcher / AssignmentRow / ColorSwatch / KeyboardShortcutHint / PreviewCard / ProgressBlock / ResizablePanel / StatCard / TagListSearch — 12 stories
 
-- **STB Group A** (최근 변경분 신설): ConfirmDialog+useConfirm, useClickOutside, Foundation tokens — 3 PR
-- **STB Group B** (핵심 누락 Top 6): IconButton, Popovers, DropdownSelect, Pagination, Breadcrumbs — 5 PR + ImageGrid (Phase 1 결과 반영) — 6 PR
-- **STB Group C/D/E** (잔여 일괄): Skeleton/Badge/Status/ChipGroup, Chart 류, 그 외 누락 컴포넌트 — ~5 PR
-
-소요 추정: 2-3일.
+ui storybook coverage: ~50% → **~95%** ✅
 
 ### Phase 4 — 디자인 시스템 expansion (장기)
 
@@ -144,7 +144,7 @@ ui 신규 컴포넌트 (Phase 2 결과):
 |---|---|---|---|
 | platform 소비자 components 줄수 (image grid 관련) | 953 (553+200+200) | **288** ✅ (catalog 141 + classes 147) | ~280 (목표 거의 달성) |
 | edge ImagesView 줄수 | 1442 | **1270** ✅ | ~1300 (초과 달성) |
-| ui 컴포넌트 storybook coverage | ~50% | ~50% | 100% — **Phase 3 완료 시** |
+| ui 컴포넌트 storybook coverage | ~50% | **~95%** ✅ (33 stories 신규, Phase 3 완료) | 100% |
 | ui ImageGrid 줄수 (단일) | 110 | 111 (split 후 단일 200 미만 유지) | 200 미만 |
 | 200줄 위반 styles | 12+ (양쪽) | 0 (platform 완료) | 0 |
 | edge local form re-export (Section/FormGroup 등) | 4 | **0** ✅ (PR-0.1 완료) | 0 |

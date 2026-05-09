@@ -309,19 +309,27 @@ D-015 정신 따라 PR 순서: 1.1 → 1.3 → 1.4 → 1.5 → 1.2 (test 마지�
 
 ### 4.4 장기 / 미정
 
-#### Phase 3 — Storybook 보강 (마지막)
+#### Phase 3 — Storybook 보강 ✅ **완료 (2026-05-10)**
 
 [storybook-coverage.md](./plan/storybook-coverage.md). 모든 ui 변경이 안정된 후 일괄 작성.
 
-8+ PR:
-- ConfirmDialog + useConfirm, useClickOutside, Foundation tokens (신설)
-- IconButton, Popovers, DropdownSelect, Pagination, Breadcrumbs (각 신설)
-- ImageGrid (Phase 1 결과 반영)
-- 그 외 누락 컴포넌트 일괄
+5 group, 총 33 stories:
 
-**왜 마지막?** Phase 1+2 진행 중 ui 컴포넌트 변경 가능성 큼. storybook 먼저 작성하면 재작성 비용. 안정된 시점에 일괄 작성.
+**Group A — Phase 0~2 신규 컴포넌트** (7 stories)
+- InfoRow, CheckboxGroup, RadioCardGroup, StepIndicator, SelectableListItem, FilterPopover, VirtualizedImageGrid
 
-소요: 2-3일.
+**Group B — 기존 누락 핵심** (8 stories)
+- useConfirm + ConfirmProvider, useClickOutside, Foundation tokens gallery, IconButton, Popovers (PopoverCard/Menu/MenuPopover/HoverCard), DropdownSelect, Pagination, Breadcrumbs
+
+**Group C — Secondary** (4 stories)
+- Skeleton, Badge + Chip, StatusPill, ChipGroup
+
+**Group D — Chart** (Card 류는 기존 charts.stories 에 있음, ChartContainer + ChartLegend 2 stories 추가)
+
+**Group E — 잔여** (12 stories)
+- CopyButton, FilterBarLayout, FormGroup + FieldRow, ModeSwitcher, AssignmentRow, ColorSwatch, KeyboardShortcutHint, PreviewCard, ProgressBlock, ResizablePanel, StatCard, TagListSearch
+
+**왜 마지막에 했나?** Phase 1+2 진행 중 ui 컴포넌트 변경 큼. 안정된 후 일괄로 재작성 비용 회피 (D-008).
 
 #### Phase 4 — 디자인 system expansion (장기)
 
@@ -367,11 +375,15 @@ Phase 2 — 작은 audit 거리 ✅ 완료 (2026-05-09)
    ├ PR-B4: FilterPopover ✅
    └ PR-C1: SelectableListItem ✅
 
+Phase 3 — Storybook 보강 ✅ 완료 (2026-05-10)
+   ├ Group A (Phase 0~2 신규 컴포넌트) ─ 7 stories
+   ├ Group B (기존 누락 핵심) ─ 8 stories
+   ├ Group C (Secondary) ─ 4 stories
+   ├ Group D (Chart) ─ 2 추가 (ChartContainer/Legend)
+   └ Group E (잔여) ─ 12 stories
+                                                  ─ 합계 33 stories
+
 [다음]
-Phase 2 — 잔여 audit 거리 (1.5-2일, 9 PR)
-   ↓
-Phase 3 — Storybook 보강 일괄 (2-3일, 8+ PR)  ← 마지막
-   ↓
 Phase 4 — 디자인 시스템 expansion (장기)
 ```
 
@@ -494,7 +506,7 @@ ID 순 (D-001 부터). 새 결정은 마지막에 append. 모든 record 는 결�
 | platform image grid 줄수 (catalog + classes) | 753 | **288** ✅ (catalog 141 + classes 147) | ~180 (목표 거의 달성) |
 | edge ImagesView 줄수 | 1442 | **1270** ✅ (-172) | ~1300 (초과 달성) |
 | ui ImageGrid 줄수 | 110 | 111 (대체) + 124 virtualized + 124 cell + 13 selection = 372 | ~180 (단일 파일 기준 — split 으로 각 파일 200 미만) |
-| ui storybook coverage | ~50% | ~50% | 100% |
+| ui storybook coverage | ~50% | **~95%** ✅ (33 stories 신규 추가, Phase 3 완료) | 100% |
 | edge custom Toast 코드 | 140 | **0** ✅ | 0 |
 | edge AccountMenu 중복 | 228 | **130** ✅ | 130 |
 | platform `styled(MenuPopover)` wrap | 5-7 | **2** ✅ (positioning props 만 제거, 시각 wrap 유지 — PR-A3) | 0-2 |
