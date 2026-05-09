@@ -1,3 +1,4 @@
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { surfaceRaised } from '../../primitives'
 
@@ -14,11 +15,28 @@ export const Menu = styled.div`
   min-width: 180px;
 `
 
-export const MenuPopover = styled(Menu)`
+const MenuPopoverRoot = styled.div`
+  ${surfaceRaised}
+  border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-4);
   min-width: 220px;
   box-shadow: var(--ig-shadow-popover);
 `
+
+export interface MenuPopoverProps extends React.HTMLAttributes<HTMLDivElement> {
+  anchor?: { top: number; left: number }
+}
+
+export const MenuPopover = forwardRef<HTMLDivElement, MenuPopoverProps>(
+  ({ anchor, style, ...rest }, ref) => (
+    <MenuPopoverRoot
+      ref={ref}
+      style={anchor ? { position: 'fixed', top: anchor.top, left: anchor.left, ...style } : style}
+      {...rest}
+    />
+  ),
+)
+MenuPopover.displayName = 'MenuPopover'
 
 export const TooltipBubble = styled.div`
   ${surfaceRaised}

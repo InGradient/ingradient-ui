@@ -1,110 +1,133 @@
 import React from 'react'
 import styled from 'styled-components'
-import { surfacePanel } from '../../primitives'
+import { ImageGridCell } from './image-grid-cell'
+import type { GridSelectionAction } from './use-grid-selection'
 
-const ImageGridRoot = styled.div<{ $minItemWidth: number }>`
+const Root = styled.div<{ $minWidth: number; $columns?: number; $gap: number }>`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(${(p) => `${p.$minItemWidth}px`}, 1fr));
-  gap: var(--ig-space-6);
+  grid-template-columns: ${(p) =>
+    p.$columns
+      ? `repeat(${p.$columns}, minmax(0, 1fr))`
+      : `repeat(auto-fit, minmax(${p.$minWidth}px, 1fr))`};
+  gap: ${(p) => `var(--ig-space-${p.$gap})`};
+  min-width: 0;
 `
 
-const ImageGridCard = styled.button<{ $selected: boolean }>`
-  ${surfacePanel}
-  width: 100%;
-  padding: 0;
-  border-radius: var(--ig-radius-2xl);
-  overflow: hidden;
-  cursor: pointer;
-  text-align: left;
-  border-color: ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'var(--ig-color-border-subtle)')};
-  box-shadow: ${(p) => (p.$selected ? '0 0 0 2px var(--ig-color-image-card-selected-ring), var(--ig-shadow-panel)' : 'var(--ig-shadow-panel)')};
-  transition: transform var(--ig-motion-fast), border-color var(--ig-motion-fast), box-shadow var(--ig-motion-fast), background-color var(--ig-motion-fast);
-
-  &:hover {
-    transform: translateY(-1px);
-    border-color: var(--ig-color-image-card-hover-border);
-  }
+const Sentinel = styled.div`
+  grid-column: 1 / -1;
+  height: 1px;
 `
 
-const ImageGridMedia = styled.div`
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: linear-gradient(135deg, var(--ig-color-image-card-gradient-a) 0%, var(--ig-color-image-card-gradient-b) 100%), var(--ig-color-surface-interactive);
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-`
-
-const ImageGridMeta = styled.div`
-  padding: var(--ig-space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const ImageGridTitle = styled.div`
-  font-size: var(--ig-font-size-md);
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
-`
-
-const ImageGridDescription = styled.div`
-  font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
+const LoadMoreHint = styled.div`
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--ig-space-5);
   color: var(--ig-color-text-muted);
+  font-size: var(--ig-font-size-xs);
 `
 
-const ImageGridBadgeRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-space-3);
-`
+export interface ImageGridLayout {
+  minWidth?: number
+  columns?: number
+  gap?: number
+}
 
-export function ImageGrid<T extends { id?: string | number }>({
-  items,
-  getImageSrc,
-  getTitle,
-  getDescription,
-  getMeta,
-  minItemWidth = 180,
-  selectedIds = [],
-  onItemClick,
-}: {
+export interface ImageGridProps<T extends { id: string }> {
   items: T[]
-  getImageSrc: (item: T) => string
-  getTitle?: (item: T) => React.ReactNode
-  getDescription?: (item: T) => React.ReactNode
-  getMeta?: (item: T) => React.ReactNode
-  minItemWidth?: number
-  selectedIds?: Array<string | number>
-  onItemClick?: (item: T) => void
-}) {
-  const selectedSet = React.useMemo(() => new Set(selectedIds), [selectedIds])
+  getThumbnailUrl: (item: T) => string
+  layout?: ImageGridLayout
+  onItemClick?: (item: T, index: number, event: React.MouseEvent) => void
+  onItemDoubleClick?: (item: T, index: number, event: React.MouseEvent) => void
+  selectedIds?: Set<string>
+  onSelectionChange?: (action: GridSelectionAction, id: string, index: number) => void
+  onDragStart?: (item: T, index: number, event: React.DragEvent) => void
+  onContextMenu?: (item: T, index: number, event: React.MouseEvent) => void
+  onCellMouseEnter?: (item: T, index: number, event: React.MouseEvent) => void
+  onCellMouseLeave?: (item: T, index: number) => void
+  highlightedId?: string | null
+  renderCellOverlay?: (item: T, index: number) => React.ReactNode
+  renderCellFooter?: (item: T, index: number) => React.ReactNode
+  renderCellTopRight?: (item: T, index: number) => React.ReactNode
+  hasMore?: boolean
+  onLoadMore?: () => void
+  isLoadingMore?: boolean
+}
+
+const EMPTY_SELECTION: Set<string> = new Set()
+
+export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
+  const {
+    items,
+    getThumbnailUrl,
+    layout,
+    onItemClick,
+    onItemDoubleClick,
+    selectedIds = EMPTY_SELECTION,
+    onSelectionChange,
+    onDragStart,
+    onContextMenu,
+    onCellMouseEnter,
+    onCellMouseLeave,
+    highlightedId = null,
+    renderCellOverlay,
+    renderCellFooter,
+    renderCellTopRight,
+    hasMore = false,
+    onLoadMore,
+    isLoadingMore = false,
+  } = props
+
+  const sentinelRef = React.useRef<HTMLDivElement | null>(null)
+  const rootRef = React.useRef<HTMLDivElement | null>(null)
+
+  React.useEffect(() => {
+    if (!highlightedId || !rootRef.current) return
+    const cell = rootRef.current.querySelector(`[data-grid-id="${CSS.escape(highlightedId)}"]`)
+    if (cell) (cell as Element).scrollIntoView({ block: 'center', behavior: 'instant' as ScrollBehavior })
+  }, [highlightedId])
+
+  React.useEffect(() => {
+    if (!hasMore || !onLoadMore) return
+    const node = sentinelRef.current
+    if (!node) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) onLoadMore()
+      },
+      { rootMargin: '200px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [hasMore, onLoadMore])
 
   return (
-    <ImageGridRoot $minItemWidth={minItemWidth}>
-      {items.map((item, index) => {
-        const key = item.id ?? index
-        const title = getTitle?.(item)
-        const description = getDescription?.(item)
-        const meta = getMeta?.(item)
-        return (
-          <ImageGridCard key={key} type="button" $selected={selectedSet.has(key)} onClick={() => onItemClick?.(item)}>
-            <ImageGridMedia>
-              <img src={getImageSrc(item)} alt={typeof title === 'string' ? title : 'Image item'} />
-            </ImageGridMedia>
-            <ImageGridMeta>
-              {title ? <ImageGridTitle>{title}</ImageGridTitle> : null}
-              {description ? <ImageGridDescription>{description}</ImageGridDescription> : null}
-              {meta ? <ImageGridBadgeRow>{meta}</ImageGridBadgeRow> : null}
-            </ImageGridMeta>
-          </ImageGridCard>
-        )
-      })}
-    </ImageGridRoot>
+    <Root
+      ref={rootRef}
+      $minWidth={layout?.minWidth ?? 180}
+      $columns={layout?.columns}
+      $gap={layout?.gap ?? 6}
+    >
+      {items.map((item, index) => (
+        <ImageGridCell
+          key={item.id}
+          item={item}
+          index={index}
+          selected={selectedIds.has(item.id)}
+          thumbnailUrl={getThumbnailUrl(item)}
+          onItemClick={onItemClick}
+          onItemDoubleClick={onItemDoubleClick}
+          onSelectionChange={onSelectionChange}
+          onDragStart={onDragStart}
+          onContextMenu={onContextMenu}
+          onCellMouseEnter={onCellMouseEnter}
+          onCellMouseLeave={onCellMouseLeave}
+          renderCellOverlay={renderCellOverlay}
+          renderCellFooter={renderCellFooter}
+          renderCellTopRight={renderCellTopRight}
+        />
+      ))}
+      {hasMore ? <Sentinel ref={sentinelRef} aria-hidden /> : null}
+      {isLoadingMore ? <LoadMoreHint>Loading…</LoadMoreHint> : null}
+    </Root>
   )
 }

@@ -160,6 +160,23 @@ export const tokenCssVariables = {
   '--ig-color-tab-highlight': foundationColors.blueTint18,
   '--ig-color-toolbar-surface': 'rgba(8, 12, 18, 0.84)',
   '--ig-color-modal-backdrop': foundationColors.overlayBackdrop,
+
+  // Direct alpha aliases for foundation tints (consumer raw rgba 마이그레이션 용)
+  '--ig-color-white-04': foundationColors.white04,
+  '--ig-color-white-06': foundationColors.white06,
+  '--ig-color-white-07': foundationColors.white07,
+  '--ig-color-white-08': foundationColors.white08,
+  '--ig-color-white-12': foundationColors.white12,
+  '--ig-color-white-18': foundationColors.white18,
+  '--ig-color-white-96': foundationColors.white96,
+  '--ig-color-blue-tint-12': foundationColors.blueTint12,
+  '--ig-color-blue-tint-14': foundationColors.blueTint14,
+  '--ig-color-blue-tint-16': foundationColors.blueTint16,
+  '--ig-color-blue-tint-18': foundationColors.blueTint18,
+  '--ig-color-blue-tint-28': foundationColors.blueTint28,
+  '--ig-color-blue-tint-38': foundationColors.blueTint38,
+  '--ig-color-blue-tint-42': foundationColors.blueTint42,
+
   '--ig-control-height-sm': controlSizes.sm,
   '--ig-control-height-md': controlSizes.md,
   '--ig-control-height-lg': controlSizes.lg,

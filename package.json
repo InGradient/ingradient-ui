@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@ingradient/ui": "file:ingradient-ui-0.0.1.tgz",
+    "@tanstack/react-virtual": "^3.13.0",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
     "react-day-picker": "^9.14.0",

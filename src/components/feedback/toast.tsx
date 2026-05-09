@@ -5,11 +5,16 @@ import { alertToneStyles } from '../../tokens/variants'
 // ── Toast item ───────────────────────────────────────────────────────────────
 
 export type ToastTone = keyof typeof alertToneStyles
+export interface ToastAction {
+  label: string
+  onClick: () => void
+}
 export interface ToastItem {
   id: string
   message: React.ReactNode
   tone?: ToastTone
   duration?: number
+  action?: ToastAction
 }
 
 const slideIn = keyframes`
@@ -37,6 +42,39 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
   animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} 200ms ease forwards;
   max-width: 420px;
   word-break: break-word;
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-3);
+`
+
+const Message = styled.span`
+  flex: 1;
+`
+
+const ActionButton = styled.button`
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: var(--ig-radius-sm);
+  color: inherit;
+  font: inherit;
+  padding: 2px 8px;
+  cursor: pointer;
+  opacity: 0.85;
+  &:hover { opacity: 1; }
+`
+
+const CloseButton = styled.button`
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+  opacity: 0.55;
+  &:hover { opacity: 1; }
 `
 
 const Container = styled.div`
@@ -52,7 +90,7 @@ const Container = styled.div`
 
 // ── Context + Provider ───────────────────────────────────────────────────────
 
-type ToastFn = (message: React.ReactNode, opts?: { tone?: ToastTone; duration?: number }) => void
+type ToastFn = (message: React.ReactNode, opts?: { tone?: ToastTone; duration?: number; action?: ToastAction }) => void
 
 const ToastContext = createContext<ToastFn>(() => {})
 
@@ -70,7 +108,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
   const toast: ToastFn = useCallback((message, opts) => {
     const id = String(++_nextId)
-    setItems((prev) => [...prev, { id, message, tone: opts?.tone ?? 'info', duration: opts?.duration ?? DEFAULT_DURATION }])
+    setItems((prev) => [...prev, { id, message, tone: opts?.tone ?? 'info', duration: opts?.duration ?? DEFAULT_DURATION, action: opts?.action }])
   }, [])
 
   const dismiss = useCallback((id: string) => {
@@ -105,15 +143,33 @@ function ToastEntry({
   leaving: boolean
   onDismiss: (id: string) => void
 }) {
+  const duration = item.duration ?? DEFAULT_DURATION
+  const persistent = duration <= 0 || !Number.isFinite(duration)
+
   useEffect(() => {
-    if (leaving) return
-    const timer = setTimeout(() => onDismiss(item.id), item.duration ?? DEFAULT_DURATION)
+    if (leaving || persistent) return
+    const timer = setTimeout(() => onDismiss(item.id), duration)
     return () => clearTimeout(timer)
-  }, [item.id, item.duration, leaving, onDismiss])
+  }, [item.id, duration, persistent, leaving, onDismiss])
 
   return (
-    <Item $tone={item.tone ?? 'info'} $leaving={leaving} onClick={() => onDismiss(item.id)} role="alert">
-      {item.message}
+    <Item $tone={item.tone ?? 'info'} $leaving={leaving} role="alert">
+      <Message>{item.message}</Message>
+      {item.action && (
+        <ActionButton
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            item.action!.onClick()
+            onDismiss(item.id)
+          }}
+        >
+          {item.action.label}
+        </ActionButton>
+      )}
+      <CloseButton type="button" aria-label="Dismiss" onClick={() => onDismiss(item.id)}>
+        ×
+      </CloseButton>
     </Item>
   )
 }

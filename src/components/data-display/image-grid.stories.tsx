@@ -23,7 +23,6 @@ type Story = StoryObj<typeof meta>
 type ImageItem = {
   id: string
   title: string
-  description: string
   tag: string
   src: string
 }
@@ -46,68 +45,63 @@ function svgThumb(title: string, a: string, b: string) {
 }
 
 const items: ImageItem[] = [
-  {
-    id: 'frame-a',
-    title: 'Workspace thumbnail',
-    description: 'Operational asset preview with neutral metadata.',
-    tag: 'ready',
-    src: svgThumb('Workspace', '#214d96', '#35c6a7'),
-  },
-  {
-    id: 'frame-b',
-    title: 'Audit gallery',
-    description: 'Grid card with selection and compact badge metadata.',
-    tag: 'review',
-    src: svgThumb('Audit', '#7747a9', '#2962d9'),
-  },
-  {
-    id: 'frame-c',
-    title: 'Template browser',
-    description: 'Visual browsing card with short descriptive copy.',
-    tag: 'draft',
-    src: svgThumb('Template', '#8a5f18', '#d98929'),
-  },
+  { id: 'frame-a', title: 'Workspace', tag: 'ready', src: svgThumb('Workspace', '#214d96', '#35c6a7') },
+  { id: 'frame-b', title: 'Audit', tag: 'review', src: svgThumb('Audit', '#7747a9', '#2962d9') },
+  { id: 'frame-c', title: 'Template', tag: 'draft', src: svgThumb('Template', '#8a5f18', '#d98929') },
+  { id: 'frame-d', title: 'Inspect', tag: 'ready', src: svgThumb('Inspect', '#1f6f5c', '#79c4a8') },
 ]
 
 export const Review: Story = {
-  args: {
-    items,
-    getImageSrc: (item) => items.find((candidate) => candidate.id === item.id)?.src ?? items[0].src,
-  },
+  args: { items: [], getThumbnailUrl: () => '' },
   render: () => {
-    const [selectedIds, setSelectedIds] = React.useState<Array<string | number>>(['frame-b'])
+    const [selectedIds, setSelectedIds] = React.useState(new Set<string>(['frame-b']))
+
+    const handleSelectionChange = (action: 'toggle' | 'range' | 'single', id: string, _index: number) => {
+      setSelectedIds((prev) => {
+        if (action === 'single') return new Set([id])
+        const next = new Set(prev)
+        if (next.has(id)) next.delete(id)
+        else next.add(id)
+        return next
+      })
+    }
 
     return (
       <StorybookPage
         title="Image Grid"
-        description="ImageGrid is the reusable visual browsing shell for gallery-like content. Review selection, metadata, and density here before adding domain-specific workflow logic."
+        description="ImageGrid is the reusable visual browsing shell for gallery-like content. Domain-specific UI (annotation, hover preview, sync state) is injected via render slots."
       >
-        <StorybookSection
-          title="Gallery review"
-          description="Compare default and denser thumbnail layouts using the same card contract."
-        >
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
-            <StorybookCard title="Default density" subtitle="gallery-like browsing">
-              <ImageGrid
+        <StorybookSection title="Default" description="Basic grid with footer slot only.">
+          <StorybookGrid columns="repeat(auto-fit, minmax(360px, 1fr))">
+            <StorybookCard title="Footer slot" subtitle="title rendered via renderCellFooter">
+              <ImageGrid<ImageItem>
                 items={items}
-                selectedIds={selectedIds}
-                onItemClick={(item) => setSelectedIds([item.id])}
-                getImageSrc={(item) => item.src}
-                getTitle={(item) => item.title}
-                getDescription={(item) => item.description}
-                getMeta={(item) => <Badge>{item.tag}</Badge>}
+                getThumbnailUrl={(item) => item.src}
+                renderCellFooter={(item) => <span>{item.title}</span>}
               />
             </StorybookCard>
-            <StorybookCard title="Compact density" subtitle="denser asset list">
-              <ImageGrid
+            <StorybookCard title="Top-right slot" subtitle="badge in renderCellTopRight">
+              <ImageGrid<ImageItem>
                 items={items}
-                minItemWidth={140}
+                getThumbnailUrl={(item) => item.src}
+                layout={{ minWidth: 140, gap: 4 }}
+                renderCellTopRight={(item) => <Badge>{item.tag}</Badge>}
+                renderCellFooter={(item) => <span>{item.title}</span>}
+              />
+            </StorybookCard>
+          </StorybookGrid>
+        </StorybookSection>
+
+        <StorybookSection title="Selection" description="Multi-select via shift/ctrl. Caller manages selectedIds Set.">
+          <StorybookGrid columns="1fr">
+            <StorybookCard title="Click to toggle, ctrl+click for multi">
+              <ImageGrid<ImageItem>
+                items={items}
+                getThumbnailUrl={(item) => item.src}
+                layout={{ minWidth: 160, gap: 4 }}
                 selectedIds={selectedIds}
-                onItemClick={(item) => setSelectedIds([item.id])}
-                getImageSrc={(item) => item.src}
-                getTitle={(item) => item.title}
-                getDescription={(item) => item.description}
-                getMeta={(item) => <Badge>{item.tag}</Badge>}
+                onSelectionChange={handleSelectionChange}
+                renderCellFooter={(item) => <span>{item.title}</span>}
               />
             </StorybookCard>
           </StorybookGrid>

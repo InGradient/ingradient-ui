@@ -42,6 +42,18 @@ function ToastDemo() {
         <Button variant="secondary" onClick={() => toast('Export failed', { tone: 'danger' })}>
           Show error toast
         </Button>
+        <Button
+          variant="secondary"
+          onClick={() =>
+            toast('Disk space is critically low', {
+              tone: 'warning',
+              duration: 0,
+              action: { label: 'Clean up', onClick: () => alert('Open cleanup dialog') },
+            })
+          }
+        >
+          Show actionable persistent toast
+        </Button>
       </div>
     </StorybookStack>
   )
