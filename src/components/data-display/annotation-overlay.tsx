@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 export interface AnnotationOverlayBbox {
-  classId: string
+  /** Optional — undefined classId falls back to `defaultColor` and is excluded from
+   *  `selectedClassId` filtering. */
+  classId?: string
   /** Normalized [0, 1] coordinates in the original image space. */
   x: number
   y: number
@@ -11,7 +13,7 @@ export interface AnnotationOverlayBbox {
 }
 
 export interface AnnotationOverlayPoint {
-  classId: string
+  classId?: string
   /** Normalized [0, 1] coordinates in the original image space. */
   x: number
   y: number
@@ -20,8 +22,9 @@ export interface AnnotationOverlayPoint {
 export interface AnnotationOverlayProps {
   bboxes?: AnnotationOverlayBbox[] | null
   points?: AnnotationOverlayPoint[] | null
-  /** Resolves classId → color hex. Returns undefined to fall back to `defaultColor`. */
-  getColor: (classId: string) => string | undefined
+  /** Resolves classId → color hex. Returns undefined to fall back to `defaultColor`.
+   *  Called with undefined when an annotation has no classId. */
+  getColor: (classId: string | undefined) => string | undefined
   /** Fallback color when `getColor` returns undefined. Default `'#4d88ff'`. */
   defaultColor?: string
   /** Filter — only render annotations matching this classId. Omit/null = render all. */
@@ -87,7 +90,7 @@ export function AnnotationOverlay({
   const h = imageHeight ?? 0
   const { vx, vy, vw, vh } = coverViewBox(w, h)
 
-  const matchesFilter = (classId: string) =>
+  const matchesFilter = (classId: string | undefined) =>
     selectedClassId == null || selectedClassId === '' || classId === selectedClassId
 
   const visibleBboxes = (bboxes ?? []).filter((b) => matchesFilter(b.classId))

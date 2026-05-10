@@ -21,7 +21,7 @@ const classColors: Record<string, string> = {
   scratch: '#6fb6ff',
   glare: '#7ce0be',
 }
-const getColor = (id: string) => classColors[id]
+const getColor = (id: string | undefined) => (id ? classColors[id] : undefined)
 
 const sampleBboxes: AnnotationOverlayBbox[] = [
   { classId: 'dent', x: 0.18, y: 0.22, w: 0.22, h: 0.18 },
