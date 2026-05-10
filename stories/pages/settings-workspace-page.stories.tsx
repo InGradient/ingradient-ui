@@ -25,8 +25,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    // Page-level scrollable region structural — out of scope for D4c.
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta
 
@@ -125,6 +124,7 @@ function SettingsWorkspacePage() {
                   <StorybookStack gap={16}>
                     <FieldBlock label="Workspace name" hint="Visible to downstream consumer apps and review portals.">
                       <input
+                        aria-label="Workspace name"
                         defaultValue="Quality Review Portal"
                         style={{
                           width: '100%',

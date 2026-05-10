@@ -35,8 +35,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    // Pattern-level shell scrollable region structural — out of scope for D4c.
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta
 
@@ -81,7 +80,7 @@ export const Overview: Story = {
                 <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ig-color-text-soft)' }}>
                   Workspace
                 </div>
-                <SidebarNav>
+                <SidebarNav aria-label="App shell workspace navigation">
                   <Button variant="solid">Overview</Button>
                   <Button variant="secondary">Datasets</Button>
                   <Button variant="secondary">Labels</Button>
@@ -207,7 +206,7 @@ export const NavigationReview: Story = {
                   <FieldLabel>Workspace switcher</FieldLabel>
                   <FieldHint>Use labels and hints as part of navigation composition, not ad-hoc text blocks.</FieldHint>
                 </FieldGroup>
-                <SidebarNav>
+                <SidebarNav aria-label="Navigation review sidebar">
                   <Button variant="solid">Overview</Button>
                   <Button variant="secondary">Assets</Button>
                   <Button variant="secondary">Members</Button>
@@ -242,7 +241,7 @@ export const SidebarShellParity: Story = {
                   <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ig-color-text-soft)' }}>
                     Workspace
                   </div>
-                  <SidebarNav>
+                  <SidebarNav aria-label="Desktop workspace navigation">
                     <Button variant="solid">Overview</Button>
                     <Button variant="secondary">Datasets</Button>
                     <Button variant="secondary">Assets</Button>
@@ -305,7 +304,7 @@ export const SidebarShellParity: Story = {
                     <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ig-color-text-soft)' }}>
                       Workspace
                     </div>
-                    <SidebarNav>
+                    <SidebarNav aria-label="Mobile drawer navigation">
                       <Button variant="solid">Overview</Button>
                       <Button variant="secondary">Datasets</Button>
                       <Button variant="secondary">Assets</Button>

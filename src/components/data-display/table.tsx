@@ -3,7 +3,13 @@ import styled, { css } from 'styled-components'
 
 /* ── Styled ── */
 
-const TableWrap = styled.div`overflow-x: auto;`
+const TableWrap = styled.div.attrs({ tabIndex: 0, role: 'region' })`
+  overflow-x: auto;
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: -2px;
+  }
+`
 
 const StyledTable = styled.table`
   width: 100%;
@@ -127,6 +133,8 @@ export type TableProps<T extends { id?: string | number }> = {
   onReorder?: (rows: T[]) => void
   /** Estimated row height in px for drag calculation. Default: 48 */
   rowHeight?: number
+  /** Accessible label for the table's scrollable region. Required when multiple tables on a page. */
+  ariaLabel?: string
 }
 
 /* ── Component ── */
@@ -138,6 +146,7 @@ export function Table<T extends { id?: string | number }>({
   draggable = false,
   onReorder,
   rowHeight = 48,
+  ariaLabel = 'Data table',
 }: TableProps<T>) {
   const [dragState, setDragState] = useState<{ fromIdx: number; dy: number } | null>(null)
   const startY = useRef(0)
@@ -204,7 +213,7 @@ export function Table<T extends { id?: string | number }>({
   /* ── Non-draggable (original behavior) ── */
   if (!draggable) {
     return (
-      <TableWrap>
+      <TableWrap aria-label={ariaLabel}>
         <StyledTable>
           <thead>
             <tr>
@@ -233,7 +242,7 @@ export function Table<T extends { id?: string | number }>({
 
   /* ── Draggable ── */
   return (
-    <TableWrap style={{ userSelect: dragState ? 'none' : undefined }}>
+    <TableWrap aria-label={ariaLabel} style={{ userSelect: dragState ? 'none' : undefined }}>
       <StyledTable>
         <thead>
           <tr>

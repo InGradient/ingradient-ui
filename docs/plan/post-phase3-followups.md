@@ -303,8 +303,18 @@ export function DrawingLayer({
 - 102 storybook tests pass (3 explicit 'todo' 제외)
 - a11y enforced: 99 stories error mode + 3 deferred (scrollable-region — Phase 4 거리)
 
-### 후속 거리
-- 3 pattern/page stories 의 scrollable-region 구조적 fix — TanStack Table + shell scroll container 에 `tabindex="0"` + 적절한 keyboard 처리. 일반 거리 큼, Phase 4 expansion 으로 분리
+### 후속 거리 PR-D4d ✅ **완료 (2026-05-10)** — scrollable-region a11y
+
+#### 컴포넌트 변경
+- **Table**: `TableWrap` 에 `tabIndex=0 + role=region` + focus-visible outline 추가. `ariaLabel?: string` prop (default "Data table") — 다중 Table 상황에서 unique label 필요
+
+#### 스토리 fix
+- dashboard-grid: 2 Table 에 unique `ariaLabel` ("Active queues — realistic" / "Queue summary — overloaded")
+- shell-and-layouts: 4 SidebarNav 에 unique `aria-label` (Desktop/Mobile/AppShell/NavigationReview)
+- settings-workspace-page: FieldBlock `<input>` 에 `aria-label="Workspace name"`
+
+#### 결과
+- **102 storybook tests pass + 모든 stories 'error' enforced (3 deferred → 0)**
 
 ---
 

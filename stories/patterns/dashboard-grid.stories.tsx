@@ -40,9 +40,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    // Pattern-level scrollable Table region not focusable — structural
-    // (TanStack Table's scroll container). Out of scope for D4c; tracked.
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta
 
@@ -119,7 +117,7 @@ export const Review: Story = {
                   <PanelHint>3 active</PanelHint>
                 </PanelHeader>
                 <div style={{ padding: 20 }}>
-                  <Table columns={tableColumns} rows={realisticRows} />
+                  <Table ariaLabel="Active queues — realistic" columns={tableColumns} rows={realisticRows} />
                 </div>
               </Panel>
             </DashboardGrid>
@@ -137,7 +135,7 @@ export const Review: Story = {
                   <PanelHint>6 active</PanelHint>
                 </PanelHeader>
                 <div style={{ padding: 20 }}>
-                  <Table columns={tableColumns} rows={overloadedRows} />
+                  <Table ariaLabel="Queue summary — overloaded" columns={tableColumns} rows={overloadedRows} />
                 </div>
               </Panel>
               <Panel>
