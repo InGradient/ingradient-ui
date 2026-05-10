@@ -12,6 +12,7 @@ export function PieChartCard({
   data,
   height = 260,
   loading = false,
+  emptyMessage,
   innerRadius = 60,
   outerRadius = 90,
   paddingAngle = 3,
@@ -24,6 +25,7 @@ export function PieChartCard({
   data: PieDatum[]
   height?: number
   loading?: boolean
+  emptyMessage?: string
   /** Inner radius of the donut. Set to 0 for a full pie. Default 60. */
   innerRadius?: number
   /** Outer radius. Default 90. */
@@ -53,6 +55,7 @@ export function PieChartCard({
       height={height}
       loading={loading}
       empty={!data.length}
+      emptyMessage={emptyMessage}
       legend={<ChartLegend items={legendItems} />}
       headerExtra={headerExtra}
     >

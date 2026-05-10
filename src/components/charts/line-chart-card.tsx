@@ -14,6 +14,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
   xKey,
   height = 260,
   loading = false,
+  emptyMessage,
   onPointClick,
   secondaryAxisKeys,
   tooltipContent,
@@ -26,6 +27,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
   xKey: keyof T & string
   height?: number
   loading?: boolean
+  emptyMessage?: string
   onPointClick?: (entry: T, index: number) => void
   /** Series keys that should bind to a right-side secondary Y-axis. Triggers dual-axis layout. */
   secondaryAxisKeys?: string[]
@@ -49,6 +51,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
       height={height}
       loading={loading}
       empty={!data.length}
+      emptyMessage={emptyMessage}
       legend={legend}
       headerExtra={headerExtra}
     >

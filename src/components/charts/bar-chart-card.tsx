@@ -14,6 +14,7 @@ export function BarChartCard<T extends Record<string, string | number>>({
   xKey,
   height = 260,
   loading = false,
+  emptyMessage,
   layout = 'horizontal',
   stacked = false,
   getCellColor,
@@ -27,6 +28,8 @@ export function BarChartCard<T extends Record<string, string | number>>({
   xKey: keyof T & string
   height?: number
   loading?: boolean
+  /** Message rendered when `data` is empty. Forwarded to ChartContainer. */
+  emptyMessage?: string
   /** 'horizontal' (default) = vertical bars / X axis at bottom. 'vertical' = horizontal bars / category on Y axis. */
   layout?: 'horizontal' | 'vertical'
   /** When true, all series share `stackId='a'` to render as a stacked bar chart. */
@@ -56,6 +59,7 @@ export function BarChartCard<T extends Record<string, string | number>>({
       height={height}
       loading={loading}
       empty={!data.length}
+      emptyMessage={emptyMessage}
       legend={legend}
       headerExtra={headerExtra}
     >
