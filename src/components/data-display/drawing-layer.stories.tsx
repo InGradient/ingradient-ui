@@ -39,8 +39,6 @@ const meta = {
   },
   args: {
     objects: sampleObjects,
-    containerWidth: CANVAS_WIDTH,
-    containerHeight: CANVAS_HEIGHT,
     showLabels: true,
     showHandles: true,
   },
@@ -98,12 +96,7 @@ export const Review: Story = {
           <StorybookCard title="Annotation set" subtitle="labels enabled">
             <StorybookStack gap={10}>
               <DrawingFrame>
-                <DrawingLayer
-                  objects={sampleObjects}
-                  containerWidth={CANVAS_WIDTH}
-                  containerHeight={CANVAS_HEIGHT}
-                  showLabels
-                />
+                <DrawingLayer objects={sampleObjects} showLabels />
               </DrawingFrame>
               <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
                 Base annotation review with labels and no active selection.
@@ -117,8 +110,6 @@ export const Review: Story = {
                 <DrawingLayer
                   objects={sampleObjects}
                   selectedId="dent"
-                  containerWidth={CANVAS_WIDTH}
-                  containerHeight={CANVAS_HEIGHT}
                   showLabels
                   showHandles
                 />
@@ -134,8 +125,6 @@ export const Review: Story = {
               <DrawingFrame>
                 <DrawingLayer
                   objects={sampleObjects}
-                  containerWidth={CANVAS_WIDTH}
-                  containerHeight={CANVAS_HEIGHT}
                   showCrosshair
                   cursorX={0.44}
                   cursorY={0.56}

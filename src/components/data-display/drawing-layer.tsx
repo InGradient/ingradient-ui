@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 import { ImageViewerContext } from './image-viewer'
 
@@ -59,12 +59,27 @@ export function DrawingLayer({
   crosshairColor,
   zoom: zoomProp,
 }: DrawingLayerProps) {
-  // Context fallback — when DrawingLayer is rendered inside <ImageViewer>,
-  // zoom and container size are auto-supplied so caller doesn't need to wire
-  // ResizeObserver / onZoomChange manually. Explicit props always override.
+  // Container size resolution priority: explicit prop > ImageViewerContext >
+  // self-measured. Self-measure ensures correct rendering even when DrawingLayer
+  // is rendered standalone (no caller prop, no ImageViewer ancestor).
   const ctx = useContext(ImageViewerContext)
-  const cw = (containerWidth ?? ctx?.containerWidth) || 0
-  const ch = (containerHeight ?? ctx?.containerHeight) || 0
+  const svgRef = useRef<SVGSVGElement | null>(null)
+  const [measured, setMeasured] = useState({ w: 0, h: 0 })
+
+  useEffect(() => {
+    const el = svgRef.current
+    if (!el) return
+    const ro = new ResizeObserver(([entry]) => {
+      if (!entry) return
+      const { width, height } = entry.contentRect
+      setMeasured((prev) => (prev.w === width && prev.h === height ? prev : { w: width, h: height }))
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const cw = (containerWidth ?? ctx?.containerWidth ?? measured.w) || 0
+  const ch = (containerHeight ?? ctx?.containerHeight ?? measured.h) || 0
   const uniform = cw > 0 && ch > 0
   const z = zoomProp ?? ctx?.zoom ?? 1
   // Stroke widths are divided by zoom so they stay constant on screen
@@ -72,6 +87,7 @@ export function DrawingLayer({
 
   return (
     <svg
+      ref={svgRef}
       style={{
         position: 'absolute',
         inset: 0,
