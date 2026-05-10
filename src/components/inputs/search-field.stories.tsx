@@ -37,7 +37,7 @@ export const Playground: Story = {
     )
   },
   play: async ({ canvas, userEvent }) => {
-    const searchbox = canvas.getByRole('searchbox')
+    const searchbox = canvas.getByPlaceholderText('Search labels, comments, or files')
 
     await userEvent.clear(searchbox)
     await userEvent.type(searchbox, 'review queue')
