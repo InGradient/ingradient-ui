@@ -18,7 +18,8 @@ parent: docs/MASTER-PLAN.md
 | **PR-D2** | 검증 | 시각 검증 후 발견 issue fix | 단기 |
 | **PR-D3** ✅ | ui (test) | Phase 2 신규 컴포넌트 단위 test 보강 (39 신규 tests) | 완료 |
 | **PR-D4** ✅ | ui (storybook) | storybook a11y `'todo'` → `'error'` 전환 (41 enforced, 18 deferred → D4b) | 완료 |
-| **PR-D4b** | ui (token) | 18 deferred stories color-contrast token 조정 | 단기 |
+| **PR-D4b** ✅ | ui (token + 컴포넌트) | color-contrast token + nested label fix → 11 stories newly enforced (18 → 7 deferred) | 완료 |
+| **PR-D4c** ✅ | ui (story-level + 일부 component) | 8 stories Switch/Radio/textarea aria-label + Breadcrumbs aria-label prop + heading-order. global default 'error' 이행. 3 pattern/page 는 scrollable-region (구조적) 으로 explicit 'todo' | 완료 |
 | **PR-D5** ✅ | edge | `tests/upload-error.test.ts` cleanup hook ENOTEMPTY fix (rm maxRetries 추가) | 완료 |
 | **PR-D6** ✅ | edge | `@tanstack/react-virtual` dep 제거 (ui bundled) | 완료 |
 | **PR-D7** ✅ | dev infra | edge ui sync 자동화 (`scripts/sync-ui.mjs` + watch 모드) | 완료 |
@@ -254,19 +255,56 @@ export function DrawingLayer({
 - 'todo' (inherit from global): 6 stories
 - 향후 PR-D4b 에서 18 deferred 의 색 토큰 조정 + a11y fix
 
-### 후속 PR-D4b — color-contrast 토큰 조정 거리
+### 후속 PR-D4b ✅ **완료 (2026-05-10)** — color-contrast 토큰 + nested label fix
 
-| 영향 컴포넌트 | violation 유형 | 거리 |
+#### 컴포넌트 fix
+1. **ModeSwitcher**: active state `accent-soft` (= solid `#8cb6ff`) + `text-primary` (light) → `accent-soft-surface` (transparent tint) + `accent` color. RadioCardGroup 과 동일 패턴. contrast 1.81 → pass
+2. **textSoft 토큰**: `#708196` → `#7e8fa3` — surface-panel(`#1a1e26`) 위 contrast 4.19 → 4.7 (>= 4.5 만족). 광범위 영향 — D-001 정신 따라 새 토큰 추가 X
+3. **upload-dropzone disabled**: `opacity: 0.5` 제거 + `text-soft` 직접 사용 (composition `#545c68` 2.7:1 fix)
+4. **CheckboxGroup**: ItemRow `<label>` → `<div>` + Checkbox label prop 위임 (nested label = 잘못된 markup, axe 가 hidden input 못 찾음)
+
+#### 결과
+- Phase 3.5 시작 시 19 fail → 본 PR 완료 시 8 fail = 11 newly enforced
+- 8 fail 모두 "Form elements must have labels" — story 안 Switch/Radio 직접 사용 (label prop 없음). component-level 문제 아님 — story rewrite 거리 → PR-D4c 분리
+
+#### 영향
+- textSoft 톤 변경 (#708196 → #7e8fa3) 은 **모든 사용처에 약간 lighter** 시각 적용. 약 50+ 곳 사용 — visual regression 검증 거리 (PR-D2 후속)
+- ModeSwitcher 시각 변경 — active state 가 solid blue → tint blue + accent text. 더 일관되고 가벼운 시각
+
+---
+
+## 4b. PR-D4c — story-level a11y rewrite ✅ **완료 (2026-05-10)**
+
+### 대상 + fix 적용
+
+| story | violation | fix |
 |---|---|---|
-| ModeSwitcher (active) | white-on-accent 1.81:1 | accent surface 색 강화 또는 active text 색 별도 |
-| TextField placeholder | text-soft 위 dark surface | placeholder 토큰 contrast 강화 |
-| upload-dropzone disabled msg | text-soft 위 dark | 동일 |
-| keyboard-shortcut-hint | text-soft 위 dark | 동일 |
-| breadcrumbs separator | text-soft 위 dark | 동일 |
-| filter-popover, settings-dialog placeholder | text-soft variants | 동일 |
-| charts label, mention-textarea, etc. | 다양 | 케이스별 |
+| filter-popover | nested `<label>` 안 Switch | Switch `label="Local only"` prop 위임 |
+| assignment-row | bare Switch (no label/aria-label) | `aria-label="..."` 추가 |
+| settings-dialog | bare `<input>` | `aria-label="Workspace name"` 추가 |
+| form-section | TextField/Switch no label | `aria-label="..."` 추가 (FieldRow visual label 옆에) |
+| interaction-utils-lab | bare `<input>` | `aria-label` 추가 |
+| mention-textarea | bare `<textarea>` | **컴포넌트 자체에 `aria-label` prop 추가** + placeholder fallback |
+| breadcrumbs | landmark-unique (4 nav 동일 aria-label) | **Breadcrumbs 에 `ariaLabel` prop 추가** + 각 story 인스턴스에 unique label |
+| charts (States) | heading-order 점프 (h1 → h3) | StorybookSection 추가 (h1 → h2 → h3) |
 
-→ 토큰 수정 시 D-001 (token 늘리지 않고 기존 활용) 정신 우선. 진정 부족 시 새 토큰 1개 추가 검토.
+### 컴포넌트 변경
+- `Breadcrumbs`: `ariaLabel?: string` prop 추가 (default 'Breadcrumb')
+- `MentionTextarea`: `'aria-label'?: string` prop 추가 — textarea 에 spread, placeholder fallback
+
+### global default 이행
+- preview.tsx 의 a11y `test` 글로벌 → `'error'` (D4 직후 'todo' fallback 이었음)
+- 3 stories 만 explicit `'todo'` (구조적 scrollable-region 위반):
+  - stories/pages/settings-workspace-page.stories.tsx
+  - stories/patterns/dashboard-grid.stories.tsx (TanStack Table scroll container)
+  - stories/patterns/shell-and-layouts.stories.tsx
+
+### 결과
+- 102 storybook tests pass (3 explicit 'todo' 제외)
+- a11y enforced: 99 stories error mode + 3 deferred (scrollable-region — Phase 4 거리)
+
+### 후속 거리
+- 3 pattern/page stories 의 scrollable-region 구조적 fix — TanStack Table + shell scroll container 에 `tabindex="0"` + 적절한 keyboard 처리. 일반 거리 큼, Phase 4 expansion 으로 분리
 
 ---
 

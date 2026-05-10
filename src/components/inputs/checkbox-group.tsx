@@ -30,12 +30,11 @@ const HeaderBtn = styled.button<{ $tone: 'accent' | 'muted' }>`
   }
 `
 
-const ItemRow = styled.label`
+const ItemRow = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-2) var(--ig-space-4);
-  cursor: pointer;
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
 `
@@ -90,9 +89,16 @@ export function CheckboxGroup({
       )}
       {items.map((item) => (
         <ItemRow key={item.id}>
-          <Checkbox checked={selectedIds.has(item.id)} onChange={() => handleToggle(item.id)} />
-          {item.color ? <ColorSwatch $color={item.color} /> : null}
-          {item.label}
+          <Checkbox
+            checked={selectedIds.has(item.id)}
+            onChange={() => handleToggle(item.id)}
+            label={
+              <>
+                {item.color ? <ColorSwatch $color={item.color} /> : null}
+                {item.label}
+              </>
+            }
+          />
         </ItemRow>
       ))}
     </Wrap>

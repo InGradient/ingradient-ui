@@ -41,7 +41,7 @@ export const foundationColors = {
   textPrimary: '#edf2f7',
   textSecondary: '#d7deea',
   textMuted: '#98a2b3',
-  textSoft: '#708196',
+  textSoft: '#7e8fa3',
   textSuccess: '#9ef0c1',
   textWarning: '#ffe08a',
   textDanger: '#fca5a5',

@@ -9,6 +9,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    a11y: { test: 'error' },
   },
 } satisfies Meta
 
@@ -76,6 +77,7 @@ export const Overview: Story = {
                 <FormGroup title="Workspace settings" description="Keep small form sections structured and repeatable.">
                   <FieldRow label="Name" hint="Visible in consumer-facing workspace lists.">
                     <input
+                      aria-label="Workspace name"
                       defaultValue="Quality Review"
                       style={{
                         width: '100%',

@@ -11,12 +11,11 @@ const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
   border: 2px dashed ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-border-subtle)')};
   border-radius: var(--ig-radius-lg);
   background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
-  color: var(--ig-color-text-muted);
+  color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
   text-align: center;
   cursor: ${(p) => (p.$disabled ? 'default' : 'pointer')};
-  opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
-  transition: border-color var(--ig-motion-fast), background var(--ig-motion-fast);
+  transition: border-color var(--ig-motion-fast), background var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
 const HiddenInput = styled.input`

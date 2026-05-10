@@ -11,7 +11,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta<typeof AssignmentRow>
 
@@ -32,7 +32,7 @@ export const Review: Story = {
             <AssignmentRow
               title="Auto-sync new captures"
               description="Automatically upload images to platform when captured."
-              control={<Switch defaultChecked />}
+              control={<Switch defaultChecked aria-label="Auto-sync new captures" />}
             />
           </StorybookCard>
           <StorybookCard title="Title + meta + Button control">
@@ -46,7 +46,7 @@ export const Review: Story = {
           <StorybookCard title="Title only" subtitle="no description, simple row">
             <AssignmentRow
               title="Notifications"
-              control={<Switch />}
+              control={<Switch aria-label="Notifications" />}
             />
           </StorybookCard>
         </StorybookGrid>

@@ -16,7 +16,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
   args: {

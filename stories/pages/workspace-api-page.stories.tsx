@@ -253,7 +253,7 @@ export const Loading: Story = {
       handlers: buildHandlers('loading'),
     },
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
   render: () => <ConnectedWorkspacePage endpoint={endpointFromScale('realistic')} />,

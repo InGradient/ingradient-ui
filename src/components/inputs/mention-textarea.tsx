@@ -71,6 +71,7 @@ export interface MentionTextareaProps {
   disabled?: boolean
   className?: string
   triggerChar?: string
+  'aria-label'?: string
 }
 
 // ── Helpers ────────────────────────────────────────────────────────
@@ -102,6 +103,7 @@ export function MentionTextarea({
   value, onChange, candidates, onSubmit,
   placeholder, maxLength, disabled, className,
   triggerChar = '@',
+  'aria-label': ariaLabel,
 }: MentionTextareaProps) {
   const [mentionRange, setMentionRange] = useState<MentionRange | null>(null)
   const [menuIndex, setMenuIndex] = useState(0)
@@ -203,6 +205,7 @@ export function MentionTextarea({
         placeholder={placeholder}
         maxLength={maxLength}
         disabled={disabled}
+        aria-label={ariaLabel ?? placeholder ?? 'Mention textarea'}
       />
     </Wrap>
   )

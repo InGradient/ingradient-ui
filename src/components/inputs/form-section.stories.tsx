@@ -10,7 +10,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta<typeof FormGroup>
 
@@ -33,17 +33,17 @@ export const Review: Story = {
               description="Configure how this device connects to the platform."
             >
               <FieldRow label="Server URL" hint="Including https://">
-                <TextField size="sm" defaultValue="https://platform.example.com" />
+                <TextField size="sm" defaultValue="https://platform.example.com" aria-label="Server URL" />
               </FieldRow>
               <FieldRow label="API Key">
-                <TextField size="sm" type="password" defaultValue="********" />
+                <TextField size="sm" type="password" defaultValue="********" aria-label="API Key" />
               </FieldRow>
             </FormGroup>
           </StorybookCard>
           <StorybookCard title="Title only">
             <FormGroup title="General">
               <FieldRow label="Workspace name">
-                <TextField size="sm" defaultValue="My Workspace" />
+                <TextField size="sm" defaultValue="My Workspace" aria-label="Workspace name" />
               </FieldRow>
             </FormGroup>
           </StorybookCard>
@@ -57,10 +57,10 @@ export const Review: Story = {
               <TextField id="email" size="sm" defaultValue="user@example.com" />
             </FieldRow>
             <FieldRow label="Notifications">
-              <Switch defaultChecked />
+              <Switch defaultChecked aria-label="Notifications" />
             </FieldRow>
             <FieldRow label="Description (no hint)">
-              <TextField size="sm" placeholder="Optional description" />
+              <TextField size="sm" placeholder="Optional description" aria-label="Description" />
             </FieldRow>
           </StorybookCard>
         </StorybookGrid>

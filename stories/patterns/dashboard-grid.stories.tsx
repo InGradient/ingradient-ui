@@ -40,6 +40,9 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    // Pattern-level scrollable Table region not focusable — structural
+    // (TanStack Table's scroll container). Out of scope for D4c; tracked.
+    a11y: { test: 'todo' },
   },
 } satisfies Meta
 

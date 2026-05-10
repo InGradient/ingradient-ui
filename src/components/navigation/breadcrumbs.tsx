@@ -2,11 +2,14 @@ import React from 'react'
 
 export function Breadcrumbs({
   items,
+  ariaLabel = 'Breadcrumb',
 }: {
   items: Array<{ label: string; href?: string }>
+  /** Override for landmark uniqueness when multiple breadcrumbs render on the same page */
+  ariaLabel?: string
 }) {
   return (
-    <nav aria-label="Breadcrumb">
+    <nav aria-label={ariaLabel}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--ig-color-text-muted)', fontSize: 13 }}>
         {items.map((item, index) => (
           <React.Fragment key={`${item.label}-${index}`}>

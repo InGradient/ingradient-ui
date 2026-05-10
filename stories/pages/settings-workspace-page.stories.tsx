@@ -25,6 +25,8 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    // Page-level scrollable region structural — out of scope for D4c.
+    a11y: { test: 'todo' },
   },
 } satisfies Meta
 

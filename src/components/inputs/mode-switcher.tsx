@@ -15,15 +15,15 @@ const OptionBtn = styled.button<{ $active: boolean; $size: 'sm' | 'md' }>`
   gap: var(--ig-space-2);
   padding: ${(p) => (p.$size === 'sm' ? 'var(--ig-space-1) var(--ig-space-3)' : 'var(--ig-space-2) var(--ig-space-4)')};
   border: none;
-  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'transparent')};
-  color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
+  color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
   font-weight: ${(p) => (p.$active ? 600 : 400)};
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
   &:hover:not(:disabled) {
-    background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-surface-interactive)')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive)')};
   }
 `
 

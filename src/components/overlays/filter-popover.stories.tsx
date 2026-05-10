@@ -11,7 +11,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta<typeof FilterPopover>
 
@@ -46,10 +46,11 @@ export const Review: Story = {
             <StorybookCard title="Two sections" subtitle="Source + Date filters">
               <FilterPopover>
                 <FilterPopoverSection title="Source">
-                  <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', cursor: 'pointer' }}>
-                    <Switch checked={localOnly} onChange={(e) => setLocalOnly(e.target.checked)} />
-                    <span>Local only</span>
-                  </label>
+                  <Switch
+                    checked={localOnly}
+                    onChange={(e) => setLocalOnly(e.target.checked)}
+                    label="Local only"
+                  />
                 </FilterPopoverSection>
                 <FilterPopoverSection title="Date">
                   <DropdownSelect
@@ -105,10 +106,7 @@ export const Review: Story = {
               <div style={{ position: 'relative', minHeight: 200 }}>
                 <FilterPopover anchor={{ top: 80, left: 40 }} width={260}>
                   <FilterPopoverSection title="Source">
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
-                      <Switch checked onChange={() => undefined} />
-                      <span>Local only</span>
-                    </label>
+                    <Switch checked onChange={() => undefined} label="Local only" />
                   </FilterPopoverSection>
                 </FilterPopover>
               </div>

@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
   args: {
@@ -69,6 +69,7 @@ export const Review: Story = {
                 Use SettingsDialog for compact settings flows that still need stable left navigation and a larger editing surface.
               </div>
               <input
+                aria-label="Workspace name"
                 defaultValue="Quality Review Workspace"
                 style={{
                   width: '100%',

@@ -24,7 +24,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
 } satisfies Meta<ChartsStoryArgs>
@@ -96,7 +96,11 @@ export const States: Story = {
         title="Chart States"
         description="Loading and empty states are first-class chart states and should be visible in Storybook, not hidden in app-only code."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookSection
+          title="State variants"
+          description="Loading skeletons, empty data, and compact summaries side by side for visual review."
+        >
+          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
           <StorybookCard title="Loading line chart" subtitle="skeleton-like waiting state">
             <LineChartCard
               title="Weekly review throughput"
@@ -131,7 +135,8 @@ export const States: Story = {
               />
             </StorybookStack>
           </StorybookCard>
-        </StorybookGrid>
+          </StorybookGrid>
+        </StorybookSection>
       </StorybookPage>
     )
   },

@@ -8,7 +8,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta<typeof Breadcrumbs>
 
@@ -27,6 +27,7 @@ export const Review: Story = {
         <StorybookGrid columns="1fr">
           <StorybookCard title="3 levels — full path with links" subtitle="all but last are links">
             <Breadcrumbs
+              ariaLabel="Catalog breadcrumb"
               items={[
                 { label: 'Catalog', href: '/catalog' },
                 { label: 'Datasets', href: '/catalog/datasets' },
@@ -36,6 +37,7 @@ export const Review: Story = {
           </StorybookCard>
           <StorybookCard title="2 levels" subtitle="parent → current">
             <Breadcrumbs
+              ariaLabel="Settings breadcrumb"
               items={[
                 { label: 'Settings', href: '/settings' },
                 { label: 'Connection' },
@@ -43,10 +45,11 @@ export const Review: Story = {
             />
           </StorybookCard>
           <StorybookCard title="Single level" subtitle="no link, just current location">
-            <Breadcrumbs items={[{ label: 'Dashboard' }]} />
+            <Breadcrumbs ariaLabel="Dashboard breadcrumb" items={[{ label: 'Dashboard' }]} />
           </StorybookCard>
           <StorybookCard title="Long path with no links" subtitle="all items as plain text (e.g. summary)">
             <Breadcrumbs
+              ariaLabel="Long path breadcrumb"
               items={[
                 { label: 'Project A' },
                 { label: 'Dataset X' },
