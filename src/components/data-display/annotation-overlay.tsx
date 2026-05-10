@@ -51,14 +51,15 @@ const Layer = styled.svg`
 `
 
 /**
- * Compute the `object-fit: cover` square viewBox so normalized [0,1] coordinates
- * map onto the cropped thumbnail correctly.
+ * Compute the `object-fit: cover` square crop region in normalized image coords.
+ * Returns the (vx, vy, vw, vh) slice of the [0, 1] image that is visible after the
+ * thumbnail crops to a square.
  *
  * - landscape (ar > 1): horizontal slice (width 1/ar centered)
  * - portrait (ar < 1): vertical slice (height ar centered)
- * - square or unknown: full [0,1] view
+ * - square or unknown: full [0, 1] view
  */
-function coverViewBox(imageWidth: number, imageHeight: number) {
+function coverCropRegion(imageWidth: number, imageHeight: number) {
   const ar = imageWidth > 0 && imageHeight > 0 ? imageWidth / imageHeight : 1
   let vx = 0
   let vy = 0
@@ -88,7 +89,7 @@ export function AnnotationOverlay({
 }: AnnotationOverlayProps) {
   const w = imageWidth ?? 0
   const h = imageHeight ?? 0
-  const { vx, vy, vw, vh } = coverViewBox(w, h)
+  const { vx, vy, vw, vh } = coverCropRegion(w, h)
 
   const matchesFilter = (classId: string | undefined) =>
     selectedClassId == null || selectedClassId === '' || classId === selectedClassId
@@ -98,43 +99,43 @@ export function AnnotationOverlay({
 
   if (visibleBboxes.length === 0 && visiblePoints.length === 0) return null
 
-  const strokeBase = vw * 0.008
-  const strokeEmphasis = vw * 0.012
-  const pointRadius = vw * 0.015
+  // Render in a normalized [0, 1] x [0, 1] container space. Each annotation's
+  // image-normalized coords are pre-transformed into container-normalized coords
+  // using the cover-crop region — this keeps strokes uniform (no anamorphic stretch
+  // from a non-square viewBox) so rects don't have thicker vertical lines and
+  // points stay circular.
+  const toCx = (x: number) => (x - vx) / vw
+  const toCy = (y: number) => (y - vy) / vh
+  const toCw = (rectW: number) => rectW / vw
+  const toCh = (rectH: number) => rectH / vh
+
+  const strokeBase = 0.008
+  const strokeEmphasis = 0.012
+  const pointRadius = 0.015
 
   return (
-    <Layer viewBox={`${vx} ${vy} ${vw} ${vh}`} preserveAspectRatio="none" className={className}>
+    <Layer viewBox="0 0 1 1" preserveAspectRatio="none" className={className}>
       {visibleBboxes.map((bbox, i) => {
         const color = getColor(bbox.classId) ?? defaultColor
+        const x = toCx(bbox.x)
+        const y = toCy(bbox.y)
+        const rw = toCw(bbox.w)
+        const rh = toCh(bbox.h)
         return (
           <g key={`bbox-${i}`}>
             {emphasize ? (
               <>
-                <rect
-                  x={bbox.x}
-                  y={bbox.y}
-                  width={bbox.w}
-                  height={bbox.h}
-                  fill="none"
-                  stroke="rgba(0, 0, 0, 0.6)"
-                  strokeWidth={strokeEmphasis}
-                />
-                <rect
-                  x={bbox.x}
-                  y={bbox.y}
-                  width={bbox.w}
-                  height={bbox.h}
-                  fill="none"
-                  stroke="rgba(255, 255, 255, 0.9)"
-                  strokeWidth={strokeBase * 0.6}
-                />
+                <rect x={x} y={y} width={rw} height={rh}
+                  fill="none" stroke="rgba(0, 0, 0, 0.6)" strokeWidth={strokeEmphasis} />
+                <rect x={x} y={y} width={rw} height={rh}
+                  fill="none" stroke="rgba(255, 255, 255, 0.9)" strokeWidth={strokeBase * 0.6} />
               </>
             ) : null}
             <rect
-              x={bbox.x}
-              y={bbox.y}
-              width={bbox.w}
-              height={bbox.h}
+              x={x}
+              y={y}
+              width={rw}
+              height={rh}
               fill={fillOpacity > 0 ? color : 'none'}
               fillOpacity={fillOpacity > 0 ? fillOpacity : undefined}
               stroke={color}
@@ -146,18 +147,20 @@ export function AnnotationOverlay({
       })}
       {visiblePoints.map((point, i) => {
         const color = getColor(point.classId) ?? defaultColor
+        const cx = toCx(point.x)
+        const cy = toCy(point.y)
         return (
           <g key={`point-${i}`}>
             {emphasize ? (
-              <circle cx={point.x} cy={point.y} r={pointRadius * 1.4} fill="rgba(0, 0, 0, 0.55)" />
+              <circle cx={cx} cy={cy} r={pointRadius * 1.4} fill="rgba(0, 0, 0, 0.55)" />
             ) : null}
             <circle
-              cx={point.x}
-              cy={point.y}
+              cx={cx}
+              cy={cy}
               r={pointRadius}
               fill={color}
               stroke={emphasize ? 'var(--ig-color-text-primary)' : 'none'}
-              strokeWidth={emphasize ? vw * 0.004 : 0}
+              strokeWidth={emphasize ? 0.004 : 0}
             />
           </g>
         )
