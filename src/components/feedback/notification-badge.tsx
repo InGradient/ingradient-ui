@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Root = styled.span`
   position: relative;
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
