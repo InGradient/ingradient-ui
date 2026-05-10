@@ -5,6 +5,7 @@ import { ImageGridCell } from './image-grid-cell'
 import type { ImageGridProps } from './image-grid'
 
 const Scroll = styled.div`
+  height: 100%;
   overflow-y: auto;
   min-width: 0;
   position: relative;
