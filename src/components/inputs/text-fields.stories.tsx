@@ -36,7 +36,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
 } satisfies Meta<TextFieldStoryArgs>
@@ -53,6 +53,7 @@ export const Playground: Story = {
     return (
       <StorybookStack gap={10}>
         <TextField
+          aria-label="Playground field"
           value={value}
           onChange={(event) => setValue(event.target.value)}
           placeholder={copy.placeholder}
@@ -95,6 +96,7 @@ export const Review: Story = {
             <StorybookCard title="TextField" subtitle="single-line input">
               <StorybookStack gap={12}>
                 <TextField
+                  aria-label="Project title"
                   value={value}
                   onChange={(event) => setValue(event.target.value)}
                   placeholder={copy.placeholder}
@@ -104,13 +106,14 @@ export const Review: Story = {
                 {args.showHelperText ? (
                   <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>{copy.helperText}</div>
                 ) : null}
-                <TextField placeholder="Disabled input" disabled aria-disabled />
+                <TextField aria-label="Disabled example" placeholder="Disabled input" disabled aria-disabled />
               </StorybookStack>
             </StorybookCard>
 
             <StorybookCard title="TextareaField" subtitle="longer copy and notes">
               <StorybookStack gap={12}>
                 <TextareaField
+                  aria-label="Review notes"
                   rows={5}
                   value={notes}
                   onChange={(event) => setNotes(event.target.value)}
@@ -125,7 +128,7 @@ export const Review: Story = {
 
             <StorybookCard title="PasswordField" subtitle="sensitive value input">
               <StorybookStack gap={12}>
-                <PasswordField defaultValue="secure-passphrase" disabled={args.disabled} aria-invalid={args.validationState === 'error'} />
+                <PasswordField aria-label="Account password" defaultValue="secure-passphrase" disabled={args.disabled} aria-invalid={args.validationState === 'error'} />
                 <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
                   Use password input when the field behavior is sensitive, not just because the content is important.
                 </div>

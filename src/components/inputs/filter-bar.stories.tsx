@@ -11,7 +11,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta<typeof FilterBarLayout>
 

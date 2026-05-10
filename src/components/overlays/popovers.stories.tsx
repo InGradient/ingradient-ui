@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Overlays/Popovers',
   parameters: {
     layout: 'fullscreen',
-    a11y: { test: 'todo' },
+    a11y: { test: 'error' },
   },
 } satisfies Meta
 

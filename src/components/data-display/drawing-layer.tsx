@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
+import { ImageViewerContext } from './image-viewer'
 
 export type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 
@@ -57,10 +59,14 @@ export function DrawingLayer({
   crosshairColor,
   zoom: zoomProp,
 }: DrawingLayerProps) {
-  const cw = containerWidth || 0
-  const ch = containerHeight || 0
+  // Context fallback — when DrawingLayer is rendered inside <ImageViewer>,
+  // zoom and container size are auto-supplied so caller doesn't need to wire
+  // ResizeObserver / onZoomChange manually. Explicit props always override.
+  const ctx = useContext(ImageViewerContext)
+  const cw = (containerWidth ?? ctx?.containerWidth) || 0
+  const ch = (containerHeight ?? ctx?.containerHeight) || 0
   const uniform = cw > 0 && ch > 0
-  const z = zoomProp ?? 1
+  const z = zoomProp ?? ctx?.zoom ?? 1
   // Stroke widths are divided by zoom so they stay constant on screen
   const s = (px: number) => px / z
 

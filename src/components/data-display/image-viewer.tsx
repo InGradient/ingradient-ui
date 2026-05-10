@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { createContext, useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { useZoomPan, type UseZoomPanOptions } from '../../hooks'
 
@@ -30,6 +30,14 @@ const Img = styled.img`
   -webkit-user-drag: none;
 `
 
+export interface ImageViewerContextValue {
+  zoom: number
+  containerWidth: number
+  containerHeight: number
+}
+
+export const ImageViewerContext = createContext<ImageViewerContextValue | null>(null)
+
 export interface ImageViewerProps {
   src: string
   alt?: string
@@ -44,6 +52,7 @@ export function ImageViewer({
   src, alt, zoomOptions, onZoomChange, children, className,
 }: ImageViewerProps) {
   const wrapRef = useRef<HTMLDivElement>(null)
+  const [size, setSize] = useState({ w: 0, h: 0 })
   const {
     zoom, pan, reset,
     handleWheel, startPan, movePan, endPan, isZoomPanning,
@@ -59,6 +68,26 @@ export function ImageViewer({
 
   // Notify parent of zoom changes
   useEffect(() => { onZoomChange?.(zoom) }, [zoom, onZoomChange])
+
+  // Container size tracker — published via Context so DrawingLayer (or other
+  // overlay children) can render uniform stroke/handle/label without consumers
+  // having to wire up zoom + size manually.
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const ro = new ResizeObserver(([entry]) => {
+      if (!entry) return
+      const { width, height } = entry.contentRect
+      setSize((prev) => (prev.w === width && prev.h === height ? prev : { w: width, h: height }))
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const ctx = useMemo<ImageViewerContextValue>(
+    () => ({ zoom, containerWidth: size.w, containerHeight: size.h }),
+    [zoom, size.w, size.h],
+  )
 
   const onMouseDown = useCallback(
     (e: React.MouseEvent) => {
@@ -91,7 +120,9 @@ export function ImageViewer({
     >
       <ZoomLayer $zoom={zoom} $panX={pan.x} $panY={pan.y}>
         <Img src={src} alt={alt} draggable={false} />
-        {children}
+        <ImageViewerContext.Provider value={ctx}>
+          {children}
+        </ImageViewerContext.Provider>
       </ZoomLayer>
     </Wrap>
   )

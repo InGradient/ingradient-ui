@@ -31,6 +31,9 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     a11y: {
+      // Default global mode kept as 'todo' — individual stories opt into
+      // 'error' once their a11y violations are resolved (PR-D4 sweep,
+      // 2026-05-10). Stories that pass enforce this explicitly to 'error'.
       test: 'todo',
     },
     controls: {

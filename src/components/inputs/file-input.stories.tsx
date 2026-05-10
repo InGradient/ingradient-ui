@@ -10,7 +10,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
 } satisfies Meta<typeof FileInput>

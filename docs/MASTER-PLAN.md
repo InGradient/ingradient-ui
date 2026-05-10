@@ -307,6 +307,25 @@ D-015 정신 따라 PR 순서: 1.1 → 1.3 → 1.4 → 1.5 → 1.2 (test 마지�
 
 **효과** (Phase 0 + Phase 2 합계): components/ 약 -300줄, ui 추가 ~370줄 (재사용 가능).
 
+#### Phase 3.5 — 후속 작업 묶음 ⏳ **planning (2026-05-10)**
+
+상세: [plan/post-phase3-followups.md](./plan/post-phase3-followups.md)
+
+Phase 0~3 완료 후 발견된 단기/중기 거리 8 PR. Phase 4 (장기 expansion) 진입 전 정리.
+
+| PR | 거리 |
+|---|---|
+| **PR-D1** ⭐ | bbox/annotation overlay zoom 처리 기본화 (ImageViewer ↔ DrawingLayer Context 자동 연결). 사용자 명시 요청 |
+| PR-D2 | 시각 검증 (dev server) 후 발견 issue fix |
+| PR-D3 | Phase 2 신규 컴포넌트 단위 test 보강 (7 컴포넌트) |
+| PR-D4 | Storybook a11y `'todo'` → `'error'` 전환 |
+| PR-D5 | edge `tests/upload-error.test.ts` ENOTEMPTY fix |
+| PR-D6 | edge `@tanstack/react-virtual` dep 제거 (ui bundled) |
+| PR-D7 | edge ui sync 자동화 (watch + cp 또는 workspace) |
+| PR-D8 | platform + edge `wip:` commit 정리 (사용자 명시 합의 후) |
+
+→ PR-D1 최우선. 각 PR 은 D-012 따라 시작 전 별도 sub-plan + 사용자 합의.
+
 ### 4.4 장기 / 미정
 
 #### Phase 3 — Storybook 보강 ✅ **완료 (2026-05-10)**
@@ -384,6 +403,16 @@ Phase 3 — Storybook 보강 ✅ 완료 (2026-05-10)
                                                   ─ 합계 33 stories
 
 [다음]
+Phase 3.5 — 후속 작업 묶음 ⏳ planning (2026-05-10)
+   ├ PR-D1 ⭐ bbox zoom 처리 기본화 (ImageViewer ↔ DrawingLayer Context)
+   ├ PR-D2  시각 검증 후 fix
+   ├ PR-D3  Phase 2 신규 컴포넌트 단위 test
+   ├ PR-D4  Storybook a11y enforce
+   ├ PR-D5  edge test ENOTEMPTY fix
+   ├ PR-D6  edge react-virtual dep 제거
+   ├ PR-D7  edge ui sync 자동화
+   └ PR-D8  wip commit 정리
+
 Phase 4 — 디자인 시스템 expansion (장기)
 ```
 
@@ -484,6 +513,16 @@ ID 순 (D-001 부터). 새 결정은 마지막에 append. 모든 record 는 결�
 - 근거: edge 는 production tarball 배포 (GitHub Release). 개발 흐름과 다름.
 - 후속: 향후 monorepo 또는 workspace 전환 검토 거리 (Phase 4 expansion)
 
+**[D-016]** bbox/annotation overlay zoom 처리 — ingradient-ui 의 기본 동작으로 (2026-05-10)
+- 결정: ImageViewer 가 React Context (`ImageViewerContext`) 로 `{ zoom, containerWidth, containerHeight }` 공급. DrawingLayer 는 Context 있으면 자동 read, 없으면 prop 사용 — caller 가 zoom + container size 보일러 없이도 stroke/label 일정 크기 자동 유지
+- 근거:
+  - 사용자 명시 — "bbox 그리고서 확대할 때 bbox선의 두꺼워 지지 않게 하고, class도 커지지 않도록 ingradient edge랑 platform에서도 어떻게 처리 했었거든. 이 처리가 기본이 되게 해줘"
+  - 현재: ui DrawingLayer 는 처리 *지원* (vector-effect non-scaling-stroke + strokeWidth/zoom + label transform scale) 하지만 caller 가 prop 명시 전달해야 동작. ImageViewer 와 결합 시 자동 X
+  - edge BBoxCanvas 는 prop drilling 으로 잘 동작 — ingradient-ui 만 누락
+- 옵션 비교: A (Context 자동) / B (cloneElement) / C (새 통합 컴포넌트). 옵션 A 채택 — components 최소화 + props ≤ 5 + backward compat
+- 영향: ui image-viewer +30 줄, drawing-layer +5 줄. edge/platform 변경 없음. 향후 ImageViewer 사용처 (platform / 새 프로젝트) 가 zoom + bbox overlay 결합 시 보일러 0
+- 상세: [post-phase3-followups.md § 1](./plan/post-phase3-followups.md#1-pr-d1--bboxannotation-overlay-zoom-처리-기본화-최우선)
+
 **[D-015]** Phase 1 PR 순서 변경 — test 를 마지막으로 (D-008 정신 일관)
 - 결정: PR-1.1 → **PR-1.3 (classes) → PR-1.4 (catalog) → PR-1.5 (edge) → PR-1.2 (test)**
 - 근거:
@@ -537,6 +576,7 @@ ID 순 (D-001 부터). 새 결정은 마지막에 append. 모든 record 는 결�
 - **Phase 1**: `docs/plan/image-grid-unification.md`
 - **Phase 2**: `docs/plan/components-audit-findings.md` (작은 거리 11 PR)
 - **Phase 3**: `docs/plan/storybook-coverage.md` (마지막)
+- **Phase 3.5**: `docs/plan/post-phase3-followups.md` (후속 8 PR — bbox zoom 기본화 외) ⏳
 - **전체 roadmap**: `docs/plan/cross-app-roadmap.md`
 
 ### PR sub-plan (Phase 0 + Phase 1 완료)

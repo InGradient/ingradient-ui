@@ -123,13 +123,13 @@ function ViewerReviewDemo({
                 showCrosshair={mode !== 'cursor'}
                 cursorX={mode !== 'cursor' ? 0.5 : undefined}
                 cursorY={mode !== 'cursor' ? 0.5 : undefined}
-                containerWidth={VIEWER_WIDTH}
-                containerHeight={VIEWER_HEIGHT}
               />
             </ImageViewer>
           </div>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
             Use mouse wheel to zoom, double-click to reset, then switch to rect or point mode to validate overlay behavior.
+            Stroke width and label size stay constant across zoom — DrawingLayer reads zoom and container size from
+            ImageViewerContext automatically (no manual props needed).
           </div>
         </StorybookStack>
       </StorybookCard>
