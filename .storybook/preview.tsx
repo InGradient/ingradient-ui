@@ -58,6 +58,7 @@ const preview: Preview = {
         dynamicTitle: true,
         items: [
           { value: 'portalDark', title: 'Portal Dark' },
+          { value: 'portalLight', title: 'Portal Light' },
         ],
       },
     },
@@ -112,9 +113,10 @@ const preview: Preview = {
     (Story, context) => {
       const density = context.globals.density as keyof typeof densityPadding
       const padding = densityPadding[density] ?? densityPadding.default
+      const mode = context.globals.theme === 'portalLight' ? 'light' : 'dark'
 
       return (
-        <IngradientThemeProvider>
+        <IngradientThemeProvider mode={mode}>
           <IngradientGlobalStyle />
           <div
             data-ig-theme={context.globals.theme}
@@ -124,7 +126,8 @@ const preview: Preview = {
             style={{
               minHeight: '100vh',
               padding,
-              transition: 'padding 160ms ease',
+              background: 'var(--ig-color-bg-canvas)',
+              transition: 'padding 160ms ease, background 160ms ease',
             }}
           >
             <div style={{ maxWidth: 1280, margin: '0 auto' }}>

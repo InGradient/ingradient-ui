@@ -163,31 +163,32 @@ export function StorybookMetaPill({
   label: string
   tone?: 'neutral' | 'success' | 'warning' | 'accent' | 'danger'
 }) {
+  // Use design tokens so MetaPill auto-adapts to dark/light theme
   const palette = {
     neutral: {
-      background: 'rgba(255, 255, 255, 0.06)',
-      border: 'rgba(255, 255, 255, 0.14)',
+      background: 'var(--ig-color-white-06)',
+      border: 'var(--ig-color-white-12)',
       color: 'var(--ig-color-text-soft)',
     },
     success: {
-      background: 'rgba(61, 181, 126, 0.14)',
-      border: 'rgba(61, 181, 126, 0.3)',
-      color: '#9ce0bb',
+      background: 'var(--ig-color-status-running-bg)',
+      border: 'var(--ig-color-alert-success-border)',
+      color: 'var(--ig-color-status-running-text)',
     },
     warning: {
-      background: 'rgba(240, 184, 64, 0.14)',
-      border: 'rgba(240, 184, 64, 0.3)',
-      color: '#f6d58f',
+      background: 'var(--ig-color-status-draft-bg)',
+      border: 'var(--ig-color-alert-warning-border)',
+      color: 'var(--ig-color-status-draft-text)',
     },
     accent: {
-      background: 'rgba(93, 160, 255, 0.14)',
-      border: 'rgba(93, 160, 255, 0.32)',
-      color: '#b7d3ff',
+      background: 'var(--ig-color-blue-tint-14)',
+      border: 'var(--ig-color-accent-border-strong)',
+      color: 'var(--ig-color-status-queued-text)',
     },
     danger: {
-      background: 'rgba(255, 127, 102, 0.14)',
-      border: 'rgba(255, 127, 102, 0.3)',
-      color: '#ffb6a8',
+      background: 'var(--ig-color-alert-danger-bg)',
+      border: 'var(--ig-color-alert-danger-border)',
+      color: 'var(--ig-color-status-failed-text)',
     },
   } as const
 

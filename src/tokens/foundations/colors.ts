@@ -1,3 +1,4 @@
+// Dark palette (default). Light counterpart is `foundationColorsLight` below.
 export const foundationColors = {
   slate950: '#0f1115',
   slate925: '#10151d',
@@ -55,3 +56,80 @@ export const foundationColors = {
   textSlateSoft: '#d5dee9',
   textOrange: '#fdba74',
 } as const
+
+// Light palette — same shape as foundationColors. Used by ingradientThemeLight.
+// Color choices target WCAG AA (4.5:1) on light surfaces, mirroring the contrast
+// principles of the dark palette (PR-D4b textSoft lift kept consistent).
+export const foundationColorsLight = {
+  // Surfaces — flipped from slate900-tinted dark to white/near-white tints
+  slate950: '#ffffff',                              // canvas
+  slate925: '#f7f9fb',                              // raised
+  slate900: '#eef2f7',                              // raised-alt
+  slate880: 'rgba(255, 255, 255, 0.92)',            // header
+  slate860: 'rgba(255, 255, 255, 0.85)',            // panel
+  slate840: 'rgba(247, 249, 251, 0.92)',            // muted
+  // "white tint" tokens become "black tint" in light mode for inset/hover overlays
+  white04: 'rgba(15, 18, 25, 0.04)',
+  white06: 'rgba(15, 18, 25, 0.05)',
+  white07: 'rgba(15, 18, 25, 0.06)',
+  white08: 'rgba(15, 18, 25, 0.08)',
+  white12: 'rgba(15, 18, 25, 0.10)',
+  white18: 'rgba(15, 18, 25, 0.14)',
+  white96: 'rgba(15, 18, 25, 0.92)',
+  // Accent — saturated variants for light bg contrast.
+  // All three meet 4.5:1 on white and on accent-soft-surface tints. Hierarchy
+  // is "deeper accent" rather than "lighter tint" in light mode (the soft tier
+  // can't be lighter without failing contrast).
+  blue500: '#214bb8',                                // ~5.7:1 on white tints
+  blue600: '#143fa6',                                // strongest; on-accent uses white text token
+  blue300: '#214bb8',                                // soft = same as primary in light (hierarchy collapse)
+  blueTint12: 'rgba(58, 115, 230, 0.12)',
+  blueTint14: 'rgba(58, 115, 230, 0.14)',
+  blueTint16: 'rgba(58, 115, 230, 0.16)',
+  blueTint18: 'rgba(58, 115, 230, 0.18)',
+  blueTint28: 'rgba(58, 115, 230, 0.28)',
+  blueTint38: 'rgba(58, 115, 230, 0.38)',
+  blueTint42: 'rgba(58, 115, 230, 0.42)',
+  // Semantic colors lifted for light bg contrast
+  green500: '#1a8f6f',
+  greenTint12: 'rgba(26, 143, 111, 0.12)',
+  greenTint18: 'rgba(26, 143, 111, 0.18)',
+  amber500: '#b8761a',
+  amberTint18: 'rgba(184, 118, 26, 0.18)',
+  amberTint20: 'rgba(184, 118, 26, 0.2)',
+  red300: '#cc2929',
+  redTint12: 'rgba(204, 41, 41, 0.12)',
+  redTint18: 'rgba(204, 41, 41, 0.18)',
+  cyanTint18: 'rgba(14, 116, 144, 0.18)',
+  violet300: '#7c3aed',
+  // Borders — subtle dark tints on light surface
+  borderMuted: 'rgba(15, 23, 42, 0.10)',
+  borderStrong: 'rgba(15, 23, 42, 0.14)',
+  // Overlay backdrop — keep heavy dark for clarity over light page
+  overlayBackdrop: 'rgba(15, 23, 42, 0.32)',
+  // Radials — softer / neutral on light
+  radialA: 'rgba(58, 115, 230, 0.10)',
+  radialB: 'rgba(26, 143, 111, 0.07)',
+  // Text — dark-on-light, mirroring contrast tiers of dark palette
+  textPrimary: '#0f1219',                            // ~16:1 on white
+  textSecondary: '#384155',                          // ~9.5:1
+  textMuted: '#475467',                              // ~7:1
+  textSoft: '#5e6776',                               // ~5.6:1 — safe, hierarchy preserved
+  // Status text tokens — "soft" tier still needs >=4.5:1 on its tint bg (~#e0f0ea
+  // for success, ~#efe2c4 for warning, etc.). Darkened from initial draft.
+  textSuccess: '#0e5a44',
+  textWarning: '#7a4f10',
+  textDanger: '#8a1818',
+  textInfo: '#1f4fb8',
+  textSuccessSoft: '#0e5a44',
+  textWarningSoft: '#7a4f10',
+  textDangerSoft: '#8a1818',
+  textCyan: '#0e5b6c',
+  textBlue: '#1f4fb8',
+  textSlate: '#374151',
+  textSlateSoft: '#384155',
+  textOrange: '#7d4310',
+} as const
+
+// Both palettes share the exact same key shape — type guard.
+const _shapeCheck: Record<keyof typeof foundationColors, string> = foundationColorsLight

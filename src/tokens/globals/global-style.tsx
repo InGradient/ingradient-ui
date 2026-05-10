@@ -1,12 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
-import { foundationColors } from '../foundations'
+import { foundationColors, foundationColorsLight } from '../foundations'
 import { renderTokensCss } from './css-contract'
 
 export const IngradientGlobalStyle = createGlobalStyle`
   ${renderTokensCss()}
 
-  html {
+  html,
+  html[data-theme='dark'] {
     color-scheme: dark;
+  }
+
+  html[data-theme='light'] {
+    color-scheme: light;
   }
 
   html,
@@ -79,6 +84,11 @@ export const IngradientGlobalStyle = createGlobalStyle`
 
   select option {
     background: ${foundationColors.slate900};
+    color: var(--ig-color-text-primary);
+  }
+
+  html[data-theme='light'] select option {
+    background: ${foundationColorsLight.slate900};
     color: var(--ig-color-text-primary);
   }
 

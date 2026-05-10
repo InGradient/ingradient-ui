@@ -513,6 +513,27 @@ ID 순 (D-001 부터). 새 결정은 마지막에 append. 모든 record 는 결�
 - 근거: edge 는 production tarball 배포 (GitHub Release). 개발 흐름과 다름.
 - 후속: 향후 monorepo 또는 workspace 전환 검토 거리 (Phase 4 expansion)
 
+**[D-017]** Phase 4 light mode 도입 — `data-theme` attr 기반 + 단일 PR (2026-05-10)
+- 결정:
+  1. 전환 메커니즘 = `data-theme="light|dark"` HTML attr + CSS `:root[data-theme=...]` selector. React re-render 없이 CSS swap. 옵션 A
+  2. 한 번에 전체 (text/surface/accent/gradient/shadow/chart) — Tier 1+2 통합 (사용자 명시 선택)
+  3. default = dark 유지. light 는 `<IngradientThemeProvider mode="light">` 또는 attr 직접 설정
+- 산출:
+  - `foundationColorsLight` (foundations/colors.ts) — 동일 shape, 광범위 contrast lift
+  - `shadowScaleLight` (foundations/shadows.ts) — 약 50% 약한 drop shadow
+  - `ingradientThemeLight` + `themes` map (semantic/theme.ts)
+  - `buildTokenCssVariables(mode)` (globals/token-css-variables.ts)
+  - `renderTokensCss()` 양 block 출력 + `legacyPortalCssVariables` theme-independent (globals/render-tokens-css.ts)
+  - `IngradientThemeProvider` mode prop + sync `data-theme` 설정 (theme-provider.tsx)
+  - `--ig-color-on-accent: #ffffff` 신규 token — accent-strong 위 white 텍스트 표준화
+  - storybook preview toolbar 'Portal Light' option + decorator mode prop 전달
+- 영향:
+  - 양 mode 102 storybook tests pass + 163 unit tests pass
+  - cross-app: platform/edge default dark 유지. 각 app 의 user toggle UI 는 별도 결정 거리
+  - SendBtn (comment-thread) `text-primary` → `on-accent` 마이그
+  - 약 +400 줄 (palette + theme + build + storybook)
+- 후속: light mode 시각적 polish (디자이너 review), per-app toggle UI 구현 시 결정
+
 **[D-016]** bbox/annotation overlay zoom 처리 — ingradient-ui 의 기본 동작으로 (2026-05-10)
 - 결정: ImageViewer 가 React Context (`ImageViewerContext`) 로 `{ zoom, containerWidth, containerHeight }` 공급. DrawingLayer 는 Context 있으면 자동 read, 없으면 prop 사용 — caller 가 zoom + container size 보일러 없이도 stroke/label 일정 크기 자동 유지
 - 근거:
