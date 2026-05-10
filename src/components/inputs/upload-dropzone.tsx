@@ -8,13 +8,23 @@ const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
   justify-content: center;
   gap: var(--ig-space-4);
   padding: var(--ig-space-10) var(--ig-space-6);
-  border: 2px dashed ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-border-subtle)')};
+  border: 2px dashed ${(p) =>
+    p.$disabled
+      ? 'var(--ig-color-border-subtle)'
+      : p.$active
+        ? 'var(--ig-color-accent-soft)'
+        : 'var(--ig-color-border-subtle)'};
   border-radius: var(--ig-radius-lg);
-  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
+  background: ${(p) =>
+    p.$disabled
+      ? 'var(--ig-color-surface-muted)'
+      : p.$active
+        ? 'var(--ig-color-accent-soft-surface)'
+        : 'transparent'};
   color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
   text-align: center;
-  cursor: ${(p) => (p.$disabled ? 'default' : 'pointer')};
+  cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};
   transition: border-color var(--ig-motion-fast), background var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
