@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect } from 'storybook/test'
+import { expect, within } from 'storybook/test'
 import { SelectField } from './select-field'
 import { StorybookCard, StorybookGrid } from '@storybook-support/storybook-layout'
 
@@ -35,7 +35,8 @@ export const Playground: Story = {
   },
   play: async ({ canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'In review' }))
-    await userEvent.click(canvas.getByRole('button', { name: 'Published' }))
+    const body = within(document.body)
+    await userEvent.click(body.getByRole('button', { name: 'Published' }))
     await expect(canvas.getByRole('button', { name: 'Published' })).toBeInTheDocument()
   },
 }

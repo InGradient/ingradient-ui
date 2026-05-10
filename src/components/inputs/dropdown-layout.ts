@@ -3,6 +3,7 @@ import type { DropdownMenuLayout } from './dropdown-shared'
 
 export function useDropdownLayout(
   rootRef: React.RefObject<HTMLDivElement | null>,
+  menuRef: React.RefObject<HTMLDivElement | null>,
   open: boolean,
   onClose: () => void
 ) {
@@ -47,7 +48,10 @@ export function useDropdownLayout(
     if (!open) return
 
     const handlePointerDown = (event: MouseEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) onClose()
+      const target = event.target as Node
+      if (rootRef.current?.contains(target)) return
+      if (menuRef.current?.contains(target)) return
+      onClose()
     }
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
@@ -65,7 +69,7 @@ export function useDropdownLayout(
       window.removeEventListener('resize', updateMenuLayout)
       window.removeEventListener('scroll', updateMenuLayout, true)
     }
-  }, [onClose, open, rootRef, updateMenuLayout])
+  }, [onClose, open, rootRef, menuRef, updateMenuLayout])
 
   return menuLayout
 }

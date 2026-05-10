@@ -1,4 +1,5 @@
 import React from 'react'
+import { createPortal } from 'react-dom'
 import {
   DropdownMenu,
   DropdownOptionButton,
@@ -27,7 +28,8 @@ export function DropdownSelect({
 }) {
   const [open, setOpen] = React.useState(false)
   const rootRef = React.useRef<HTMLDivElement | null>(null)
-  const menuLayout = useDropdownLayout(rootRef, open, () => setOpen(false))
+  const menuRef = React.useRef<HTMLDivElement | null>(null)
+  const menuLayout = useDropdownLayout(rootRef, menuRef, open, () => setOpen(false))
 
   const selectedOption = options.find((option) => option.value === value) ?? options[0]
 
@@ -37,8 +39,8 @@ export function DropdownSelect({
         <DropdownValue>{selectedOption?.label ?? ''}</DropdownValue>
         {renderChevron(open)}
       </DropdownTrigger>
-      {open && menuLayout && (
-        <DropdownMenu role="listbox" $layout={menuLayout}>
+      {open && menuLayout && createPortal(
+        <DropdownMenu ref={menuRef} role="listbox" $layout={menuLayout}>
           {options.map((option) => (
             <DropdownOptionButton
               key={option.value}
@@ -53,7 +55,8 @@ export function DropdownSelect({
               {option.description ? <DropdownOptionDescription>{option.description}</DropdownOptionDescription> : null}
             </DropdownOptionButton>
           ))}
-        </DropdownMenu>
+        </DropdownMenu>,
+        document.body,
       )}
     </DropdownRoot>
   )

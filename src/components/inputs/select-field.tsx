@@ -1,4 +1,5 @@
 import React from 'react'
+import { createPortal } from 'react-dom'
 import {
   DropdownMenu,
   DropdownOptionButton,
@@ -38,11 +39,12 @@ export function SelectField({
   const [internalValue, setInternalValue] = React.useState(initialValue)
   const [open, setOpen] = React.useState(false)
   const rootRef = React.useRef<HTMLDivElement | null>(null)
+  const menuRef = React.useRef<HTMLDivElement | null>(null)
   const nativeRef = React.useRef<HTMLSelectElement | null>(null)
   const handleClose = React.useCallback(() => {
     setOpen(false)
   }, [])
-  const menuLayout = useDropdownLayout(rootRef, open, handleClose)
+  const menuLayout = useDropdownLayout(rootRef, menuRef, open, handleClose)
 
   React.useEffect(() => {
     if (isControlled) setInternalValue(String(value))
@@ -82,8 +84,8 @@ export function SelectField({
         <DropdownValue>{selectedOption?.label ?? ''}</DropdownValue>
         {renderChevron(open)}
       </DropdownTrigger>
-      {open && menuLayout && (
-        <DropdownMenu role="listbox" $layout={menuLayout}>
+      {open && menuLayout && createPortal(
+        <DropdownMenu ref={menuRef} role="listbox" $layout={menuLayout}>
           {options.map((option) => (
             <DropdownOptionButton
               key={option.value}
@@ -95,7 +97,8 @@ export function SelectField({
               <DropdownOptionLabel>{option.label}</DropdownOptionLabel>
             </DropdownOptionButton>
           ))}
-        </DropdownMenu>
+        </DropdownMenu>,
+        document.body,
       )}
     </DropdownRoot>
   )
