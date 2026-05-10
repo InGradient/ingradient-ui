@@ -20,7 +20,7 @@ export function BarChartCard<T extends Record<string, string | number>>({
   tooltipContent,
   headerExtra,
 }: {
-  title: string
+  title?: string
   description?: string
   data: T[]
   series: CartesianSeries[]

@@ -19,7 +19,7 @@ export function PieChartCard({
   tooltipContent,
   headerExtra,
 }: {
-  title: string
+  title?: string
   description?: string
   data: PieDatum[]
   height?: number

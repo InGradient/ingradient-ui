@@ -65,7 +65,7 @@ export function ChartContainer({
   headerExtra,
   children,
 }: {
-  title: string
+  title?: string
   description?: string
   height?: number
   loading?: boolean
@@ -77,18 +77,20 @@ export function ChartContainer({
 }) {
   return (
     <ChartCard>
-      <ChartHead>
-        <ChartCopy>
-          <ChartTitle>{title}</ChartTitle>
-          {description ? <ChartDescription>{description}</ChartDescription> : null}
-        </ChartCopy>
-        {(headerExtra || legend) ? (
-          <ChartActions>
-            {headerExtra}
-            {legend}
-          </ChartActions>
-        ) : null}
-      </ChartHead>
+      {(title || description || headerExtra || legend) ? (
+        <ChartHead>
+          <ChartCopy>
+            {title ? <ChartTitle>{title}</ChartTitle> : null}
+            {description ? <ChartDescription>{description}</ChartDescription> : null}
+          </ChartCopy>
+          {(headerExtra || legend) ? (
+            <ChartActions>
+              {headerExtra}
+              {legend}
+            </ChartActions>
+          ) : null}
+        </ChartHead>
+      ) : null}
       <ChartFrame $height={height}>
         {loading ? <div style={{ display: 'grid', gap: 10 }}><Skeleton $height="18px" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <EmptyStateText>{emptyMessage}</EmptyStateText> : children}
       </ChartFrame>
