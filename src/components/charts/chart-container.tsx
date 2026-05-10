@@ -20,6 +20,13 @@ const ChartHead = styled.div`
   flex-wrap: wrap;
 `
 
+const ChartActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-4);
+  flex-wrap: wrap;
+`
+
 const ChartCopy = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,6 +62,7 @@ export function ChartContainer({
   empty = false,
   emptyMessage = 'No chart data available.',
   legend,
+  headerExtra,
   children,
 }: {
   title: string
@@ -64,6 +72,7 @@ export function ChartContainer({
   empty?: boolean
   emptyMessage?: string
   legend?: React.ReactNode
+  headerExtra?: React.ReactNode
   children: React.ReactNode
 }) {
   return (
@@ -73,7 +82,12 @@ export function ChartContainer({
           <ChartTitle>{title}</ChartTitle>
           {description ? <ChartDescription>{description}</ChartDescription> : null}
         </ChartCopy>
-        {legend}
+        {(headerExtra || legend) ? (
+          <ChartActions>
+            {headerExtra}
+            {legend}
+          </ChartActions>
+        ) : null}
       </ChartHead>
       <ChartFrame $height={height}>
         {loading ? <div style={{ display: 'grid', gap: 10 }}><Skeleton $height="18px" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <EmptyStateText>{emptyMessage}</EmptyStateText> : children}
