@@ -65,10 +65,32 @@ function InteractiveDemo() {
   const drawingMode: 'cursor' | 'rect' | 'point' =
     tool === 'bbox' ? 'rect' : tool === 'point' ? 'point' : 'cursor'
 
+  const activeClass = sampleClasses.find((c) => c.id === classId) ?? sampleClasses[0]
+  const previewColor = activeClass.color
+
+  // 새 object 는 *현재* class 로 영구 태그 (color/label 저장). 기존 object 는 보존.
+  const handleObjectsChange = React.useCallback(
+    (next: DrawingObject[]) => {
+      setObjects((prev) => {
+        const prevById = new Map(prev.map((o) => [o.id, o]))
+        return next.map((o) => {
+          const existing = prevById.get(o.id)
+          if (existing) {
+            // 기존 object — color/label 보존, 좌표/크기 등은 next 의 값 사용
+            return { ...o, color: existing.color, label: existing.label }
+          }
+          // 새 object — 현재 class 로 태그
+          return { ...o, color: o.color ?? activeClass.color, label: o.label ?? activeClass.label }
+        })
+      })
+    },
+    [activeClass],
+  )
+
   const { selectedId, drawingPreview, cursor: drawingCursor, bindings: drawBindings } = useDrawingCanvas({
     objects,
     mode: drawingMode,
-    onObjectsChange: setObjects,
+    onObjectsChange: handleObjectsChange,
   })
 
   const drawingBindings = {
@@ -93,14 +115,19 @@ function InteractiveDemo() {
     onCrosshairUpdate: (n) => setCrosshair(n ? { x: n.nx, y: n.ny } : null),
   })
 
-  const activeClass = sampleClasses.find((c) => c.id === classId) ?? sampleClasses[0]
-  const previewColor = activeClass.color
-
-  // Color objects by classId (caller responsibility). For demo we tag new objects with current classId.
-  const taggedObjects: DrawingObject[] = React.useMemo(
-    () => objects.map((o) => ({ ...o, color: o.color ?? activeClass.color, label: o.label ?? activeClass.label })),
-    [objects, activeClass],
-  )
+  // Class chip 클릭 — cursor mode + 선택된 bbox 가 있으면 *그 bbox 만* class 변경.
+  // 그 외에는 단순히 active class 만 변경 (다음에 그릴 bbox 의 기본 class).
+  const handleClassClick = (id: string) => {
+    setClassId(id)
+    if (tool === 'cursor' && selectedId) {
+      const klass = sampleClasses.find((c) => c.id === id)
+      if (klass) {
+        setObjects((prev) =>
+          prev.map((o) => (o.id === selectedId ? { ...o, color: klass.color, label: klass.label } : o)),
+        )
+      }
+    }
+  }
 
   const toolbarActions: Array<AnnotationToolbarAction | 'separator'> = [
     { key: 'cursor', title: 'Select & move', icon: <CursorIcon />, active: tool === 'cursor', onClick: () => setTool('cursor') },
@@ -129,7 +156,7 @@ function InteractiveDemo() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--ig-color-text-soft)', fontSize: 12 }}>Class:</span>
         {sampleClasses.map((c) => (
-          <ClassChip key={c.id} klass={c} active={c.id === classId} onClick={() => setClassId(c.id)} />
+          <ClassChip key={c.id} klass={c} active={c.id === classId} onClick={() => handleClassClick(c.id)} />
         ))}
         <span style={{ marginLeft: 'auto', color: 'var(--ig-color-text-soft)', fontSize: 12 }}>
           Objects: {objects.length} · Zoom: {zp.zoom.toFixed(2)}×
@@ -144,7 +171,7 @@ function InteractiveDemo() {
             onImageLoad={(w, h) => setImageAspect(w / h)}
             zoom={zp.zoom}
             pan={zp.pan}
-            objects={taggedObjects}
+            objects={objects}
             preview={drawingPreview}
             selectedId={selectedId}
             showHandles={tool === 'cursor' && selectedId != null}
