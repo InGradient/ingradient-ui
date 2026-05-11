@@ -3,9 +3,9 @@
 `docs/rules/BUILDING_UI.md` 규칙별로 현재 ui 본체가 얼마나 잘 지키는지 자동 + 수동 audit. 각 항목에 **PASS / PARTIAL / FAIL** 판정 + 위반 사례 + 권장 조치.
 
 **audit 대상**: `src/` 전체 (160+ source files = 77 components + 7 patterns + 8 hooks + tokens/primitives/icons)
-**총 stories**: 90 개 / **tests**: 35 개
+**총 stories**: 90 개 / **tests**: **39 개 (183 cases)** ↑ (35 → 39)
 
-> **갱신 (2026-05-11 audit 후속)**: high/medium 우선순위 액션 + low 일부 적용 완료. 갱신 내역은 § 액션 아이템 표 참조.
+> **갱신 (2026-05-11 audit 후속)**: high/medium/low 우선순위 액션 모두 적용 완료. 갱신 내역은 § 액션 아이템 표 참조.
 
 ---
 
@@ -333,9 +333,16 @@ BUILDING_UI § 11 에 명시. governance.md § 6 거부 명단도 동기. *문�
 | **🟡 med** | Button / Switch / Radio 에 forwardRef 추가 | inputs/button.tsx, toggles.tsx | DOM 핸들 caller 지원 | ✅ `2319cf4` |
 | **🟡 med** | Overlay rgba → `--ig-color-overlay-*` / `sidebar-bg-*` / `danger-soft-surface` 토큰 신설 | annotation-toolbar.styles.ts, sidebar-shell.styles.ts, tokens/globals | 토큰 일관성 | ✅ 본 commit |
 | **🟢 low** | DialogShell Escape 키 + `role="dialog"` + `aria-modal` | overlays/dialog-shell.tsx | a11y 강화 | ✅ 본 commit |
-| **🟢 low** | drawing-layer split (267 → 153+167+24) | drawing-layer.tsx/.renderers/.constants | governance § 7.1 | ✅ 본 commit |
-| **🟢 low** | date-picker / mention-textarea / table / useDrawingCanvas split | 각 파일 | governance § 7.1 | ⏳ **별건 PR defer** (complex refactor) |
-| **🟢 low** | navigation / overlays / patterns / charts interaction test 추가 | 각 파일 | test 커버리지 38% → 60%+ | ⏳ **별건 PR defer** |
+| **🟢 low** | drawing-layer split (267 → 153+167+24) | drawing-layer.tsx/.renderers/.constants | governance § 7.1 | ✅ `a7a4eec` |
+| **🟢 low** | date-picker split (227 → 89+135) | date-picker.tsx/.styles | governance § 7.1 | ✅ 본 commit |
+| **🟢 low** | mention-textarea split (212 → 134+51+28) | mention-textarea.tsx/.styles/.utils | governance § 7.1 | ✅ 본 commit |
+| **🟢 low** | table split (283 → 120+97+81) | table.tsx/.styles/use-table-drag | governance § 7.1 | ✅ 본 commit |
+| **🟢 low** | useDrawingCanvas utils 추출 (336 → 299+45) | useDrawingCanvas.ts/.utils | helpers 별도, body 는 hook 책임 통합 유지 | ✅ 본 commit |
+| **🟢 low** | search-field `type="search"` (pre-existing test fail) | search-field.tsx | a11y role=searchbox | ✅ 본 commit |
+| **🟢 low** | DialogShell + ConfirmDialog interaction test | overlays/dialog-shell.test.tsx | role/Escape/click | ✅ 본 commit (9 cases) |
+| **🟢 low** | Tabs interaction test | navigation/tabs.test.tsx | onChange/render | ✅ 본 commit (3 cases) |
+| **🟢 low** | SelectField interaction test | inputs/select-field.test.tsx | trigger/open/disabled | ✅ 본 commit (4 cases) |
+| **🟢 low** | Toast interaction test | feedback/toast.test.tsx | push/dismiss/stack | ✅ 본 commit (3 cases) |
 
 ---
 

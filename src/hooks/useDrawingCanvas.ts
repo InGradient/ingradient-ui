@@ -1,4 +1,13 @@
 import { useCallback, useRef, useState, useEffect } from 'react'
+import {
+  clamp,
+  disableTextSelection,
+  enableTextSelection,
+  genId,
+  hitTestHandle,
+  hitTestPoint,
+  hitTestRect,
+} from './useDrawingCanvas.utils'
 
 // ── Types ──────────────────────────────────────────────────────────
 
@@ -42,52 +51,6 @@ type DragState =
   | { type: 'draw'; startX: number; startY: number }
   | { type: 'move'; id: string; startX: number; startY: number; origX: number; origY: number }
   | { type: 'resize'; id: string; handle: string; startX: number; startY: number; orig: DrawingObject }
-
-// ── Helpers ────────────────────────────────────────────────────────
-
-function clamp(v: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, v))
-}
-
-function hitTestPoint(
-  mx: number, my: number, obj: DrawingObject, radius: number,
-): boolean {
-  return obj.type === 'point' && Math.hypot(mx - obj.x, my - obj.y) < radius
-}
-
-function hitTestRect(mx: number, my: number, obj: DrawingObject): boolean {
-  if (obj.type !== 'rect' || !obj.w || !obj.h) return false
-  return mx >= obj.x && mx <= obj.x + obj.w && my >= obj.y && my <= obj.y + obj.h
-}
-
-function hitTestHandle(
-  mx: number, my: number, obj: DrawingObject, radius: number,
-): string | null {
-  if (obj.type !== 'rect' || !obj.w || !obj.h) return null
-  const corners: [string, number, number][] = [
-    ['nw', obj.x, obj.y],
-    ['ne', obj.x + obj.w, obj.y],
-    ['sw', obj.x, obj.y + obj.h],
-    ['se', obj.x + obj.w, obj.y + obj.h],
-  ]
-  for (const [name, cx, cy] of corners) {
-    if (Math.hypot(mx - cx, my - cy) < radius) return name
-  }
-  return null
-}
-
-let nextId = 1
-function genId(): string { return `draw-${nextId++}` }
-
-function disableTextSelection() {
-  document.body.style.userSelect = 'none'
-  document.body.style.webkitUserSelect = 'none'
-}
-
-function enableTextSelection() {
-  document.body.style.userSelect = ''
-  document.body.style.webkitUserSelect = ''
-}
 
 // ── Hook ───────────────────────────────────────────────────────────
 

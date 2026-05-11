@@ -1,59 +1,6 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react'
-import styled from 'styled-components'
-import { controlField } from '../../primitives'
-
-// ── Styled ─────────────────────────────────────────────────────────
-
-const Wrap = styled.div`
-  position: relative;
-  width: 100%;
-`
-
-const Textarea = styled.textarea`
-  ${controlField}
-  font-size: var(--ig-font-size-xs);
-  resize: vertical;
-  min-height: 60px;
-`
-
-const Menu = styled.div`
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  max-height: 160px;
-  overflow-y: auto;
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-sm);
-  box-shadow: var(--ig-shadow-md);
-  z-index: var(--ig-z-dropdown);
-`
-
-const Option = styled.button<{ $active: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border: none;
-  background: ${(p) => (p.$active ? 'var(--ig-color-surface-interactive)' : 'transparent')};
-  color: var(--ig-color-text-primary);
-  text-align: left;
-  cursor: pointer;
-  &:hover { background: var(--ig-color-surface-interactive); }
-`
-
-const Primary = styled.span`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 500;
-`
-
-const Secondary = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-`
-
-// ── Types ──────────────────────────────────────────────────────────
+import { Menu, Option, Primary, Secondary, Textarea, Wrap } from './mention-textarea.styles'
+import { detectMention, extractMentionIds, type MentionRange } from './mention-textarea.utils'
 
 export interface MentionCandidate {
   id: string
@@ -73,31 +20,6 @@ export interface MentionTextareaProps {
   triggerChar?: string
   'aria-label'?: string
 }
-
-// ── Helpers ────────────────────────────────────────────────────────
-
-interface MentionRange { start: number; end: number; query: string }
-
-function detectMention(text: string, caretPos: number | null, trigger: string): MentionRange | null {
-  if (caretPos === null || caretPos === 0) return null
-  const before = text.slice(0, caretPos)
-  const atIdx = before.lastIndexOf(trigger)
-  if (atIdx === -1) return null
-  if (atIdx > 0 && before[atIdx - 1] !== ' ' && before[atIdx - 1] !== '\n') return null
-  const query = before.slice(atIdx + trigger.length)
-  if (/\s/.test(query)) return null
-  return { start: atIdx, end: caretPos, query }
-}
-
-function extractMentionIds(text: string, candidates: MentionCandidate[], trigger: string): string[] {
-  const ids: string[] = []
-  for (const c of candidates) {
-    if (text.includes(`${trigger}${c.name}`)) ids.push(c.id)
-  }
-  return ids
-}
-
-// ── Component ──────────────────────────────────────────────────────
 
 export function MentionTextarea({
   value, onChange, candidates, onSubmit,

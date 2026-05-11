@@ -61,7 +61,7 @@ export function SearchField({ onClear, size = 'md', value, ...rest }: SearchFiel
           <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
         </svg>
       </IconLeft>
-      <Input ref={ref} type="text" $size={size} value={value} {...rest} />
+      <Input ref={ref} type="search" $size={size} value={value} {...rest} />
       {showClear && (
         <ClearBtn type="button" onClick={handleClear} aria-label="Clear search">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
