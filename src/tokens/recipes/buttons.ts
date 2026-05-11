@@ -16,9 +16,18 @@ export const buttonPrimary = css`
     box-shadow: var(--ig-shadow-hover-lift);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
   &:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
   }
 `
 
@@ -40,9 +49,18 @@ export const buttonSecondary = css`
     color: var(--ig-color-text-primary);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
   &:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
   }
 `
 
@@ -63,9 +81,18 @@ export const buttonAccent = css`
     color: var(--ig-color-text-primary);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
   &:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
   }
 `
 
@@ -86,9 +113,18 @@ export const buttonDanger = css`
     box-shadow: 0 10px 28px rgba(127, 29, 29, 0.32);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
   &:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
   }
 `
 
@@ -110,8 +146,17 @@ export const buttonDangerSecondary = css`
     color: #ffe1e1;
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
   &:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
   }
 `

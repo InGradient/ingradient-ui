@@ -25,7 +25,7 @@ export interface AnnotationOverlayProps {
   /** Resolves classId → color hex. Returns undefined to fall back to `defaultColor`.
    *  Called with undefined when an annotation has no classId. */
   getColor: (classId: string | undefined) => string | undefined
-  /** Fallback color when `getColor` returns undefined. Default `'#4d88ff'`. */
+  /** Fallback color when `getColor` returns undefined. Default `var(--ig-color-accent)`. */
   defaultColor?: string
   /** Filter — only render annotations matching this classId. Omit/null = render all. */
   selectedClassId?: string | null
@@ -79,7 +79,7 @@ export function AnnotationOverlay({
   bboxes,
   points,
   getColor,
-  defaultColor = '#4d88ff',
+  defaultColor = 'var(--ig-color-accent)',
   selectedClassId,
   imageWidth,
   imageHeight,

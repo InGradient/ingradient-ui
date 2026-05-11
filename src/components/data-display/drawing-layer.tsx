@@ -17,9 +17,9 @@ export interface DrawingLayerProps {
   containerWidth?: number
   /** Container pixel height — enables uniform stroke/handle rendering */
   containerHeight?: number
-  /** Color for the drawing preview (defaults to #4a9eff) */
+  /** Color for the drawing preview (defaults to `var(--ig-color-accent)`). */
   previewColor?: string
-  /** Color for the crosshair lines (defaults to rgba(255,255,255,0.3)) */
+  /** Color for the crosshair lines (defaults to `rgba(255, 255, 255, 0.3)`). */
   crosshairColor?: string
   /** Current zoom level — used to keep stroke width and label size constant regardless of zoom */
   zoom?: number
@@ -55,7 +55,7 @@ export function DrawingLayer({
   showHandles = true, showLabels = false,
   showCrosshair = false, cursorX, cursorY,
   containerWidth, containerHeight,
-  previewColor = '#4a9eff',
+  previewColor = 'var(--ig-color-accent)',
   crosshairColor,
   zoom: zoomProp,
 }: DrawingLayerProps) {
@@ -140,7 +140,7 @@ export function DrawingLayer({
       {/* Objects */}
       {objects.map((obj) => {
         const isSelected = obj.id === selectedId
-        const color = obj.color ?? '#4a9eff'
+        const color = obj.color ?? 'var(--ig-color-accent)'
         const gStyle = obj.opacity != null && obj.opacity < 1 ? { opacity: obj.opacity, transition: 'opacity 0.15s' } as const : undefined
 
         if (obj.type === 'rect' && obj.w != null && obj.h != null) {

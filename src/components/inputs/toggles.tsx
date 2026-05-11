@@ -116,31 +116,28 @@ export const Checkbox = React.forwardRef<
   )
 })
 
-export function Radio({
-  label,
-  checked,
-  disabled,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }) {
+export const Radio = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }
+>(function Radio({ label, checked, disabled, ...props }, ref) {
   return (
     <ToggleLabel>
-      <HiddenInput type="radio" checked={checked} disabled={disabled} {...props} />
+      <HiddenInput ref={ref} type="radio" checked={checked} disabled={disabled} {...props} />
       <RadioDot $checked={!!checked} $disabled={disabled} />
       {label}
     </ToggleLabel>
   )
-}
+})
 
-export function Switch({
-  checked = false,
-  label,
-  ...props
-}: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & { label?: React.ReactNode }) {
+export const Switch = React.forwardRef<
+  HTMLInputElement,
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & { label?: React.ReactNode }
+>(function Switch({ checked = false, label, ...props }, ref) {
   return (
     <ToggleLabel>
-      <HiddenInput type="checkbox" checked={checked} {...props} />
+      <HiddenInput ref={ref} type="checkbox" checked={checked} {...props} />
       <SwitchTrack $checked={checked} />
       {label}
     </ToggleLabel>
   )
-}
+})

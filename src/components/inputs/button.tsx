@@ -1,9 +1,10 @@
+import React from 'react'
 import { ButtonRoot } from '../shared/button-root'
 import { normalizeVariant, type ButtonProps } from '../shared/button-types'
 
 export type { ButtonProps } from '../shared/button-types'
 
-export function Button({
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button({
   variant,
   $variant,
   size = 'md',
@@ -12,12 +13,12 @@ export function Button({
   trailingIcon,
   children,
   ...props
-}: ButtonProps) {
+}, ref) {
   return (
-    <ButtonRoot $variant={normalizeVariant(variant, $variant)} $size={size} $tone={tone} {...props}>
+    <ButtonRoot ref={ref} $variant={normalizeVariant(variant, $variant)} $size={size} $tone={tone} {...props}>
       {leadingIcon}
       {children}
       {trailingIcon}
     </ButtonRoot>
   )
-}
+})
