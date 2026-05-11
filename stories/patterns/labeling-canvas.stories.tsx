@@ -143,6 +143,7 @@ function InteractiveDemo() {
             cursor={cursor}
             crosshair={tool !== 'cursor' && crosshair ? { x: crosshair.x, y: crosshair.y, color: previewColor } : null}
             imageAreaRef={imageAreaRef}
+            onWheel={zp.handleWheel}
           />
         </div>
         <CanvasCoordReadout>{coordText}</CanvasCoordReadout>

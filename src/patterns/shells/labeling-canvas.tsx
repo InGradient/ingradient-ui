@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { DrawingLayer, type DrawingObject, type DrawingPreview } from '../../components/data-display/drawing-layer'
 import {
   CaptureLayer,
@@ -59,6 +59,11 @@ export interface LabelingCanvasProps {
   /** 외부 wrap ref. */
   wrapRef?: React.Ref<HTMLDivElement>
 
+  /** Wheel handler — 마우스 휠로 zoom (보통 useZoomPan().handleWheel).
+   *  Pattern 이 내부에서 `addEventListener('wheel', ..., { passive: false })` 로
+   *  첨부하여 React 의 passive 기본값으로 인한 `preventDefault()` 실패 회피. */
+  onWheel?: (event: WheelEvent) => void
+
   className?: string
 }
 
@@ -84,8 +89,34 @@ export function LabelingCanvas({
   floatingOverlays,
   imageAreaRef,
   wrapRef,
+  onWheel,
   className,
 }: LabelingCanvasProps) {
+  const internalWrapRef = useRef<HTMLDivElement | null>(null)
+  // 외부 wrapRef + 내부 ref 병합 (callback ref).
+  const setWrapRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      internalWrapRef.current = node
+      if (typeof wrapRef === 'function') wrapRef(node)
+      else if (wrapRef && 'current' in wrapRef) {
+        ;(wrapRef as React.MutableRefObject<HTMLDivElement | null>).current = node
+      }
+    },
+    [wrapRef],
+  )
+
+  // Wheel listener — React 의 onWheel 은 passive default 라 preventDefault 실패.
+  // native addEventListener 로 첨부 + passive: false 명시.
+  useEffect(() => {
+    if (!onWheel) return
+    const el = internalWrapRef.current
+    if (!el) return
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      el.removeEventListener('wheel', onWheel)
+    }
+  }, [onWheel])
+
   const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const el = event.currentTarget
     if (el.naturalWidth && el.naturalHeight && onImageLoad) {
@@ -93,7 +124,7 @@ export function LabelingCanvas({
     }
   }
   return (
-    <LabelingCanvasWrap ref={wrapRef} className={className}>
+    <LabelingCanvasWrap ref={setWrapRef} className={className}>
       <ZoomWrap $zoom={zoom} $panX={pan.x} $panY={pan.y}>
         <ImageAreaWrap ref={imageAreaRef} $aspect={imageAspect}>
           {imageUrl ? (
