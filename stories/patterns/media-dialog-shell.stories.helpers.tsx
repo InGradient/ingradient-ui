@@ -1,5 +1,12 @@
 import React from 'react'
 import { MediaDialogShell } from '../../src/patterns'
+import sampleImage1 from '../assets/20230808.jpg'
+import sampleImage2 from '../assets/20230816.jpg'
+import sampleImage3 from '../assets/20230823.jpg'
+import sampleImage4 from '../assets/20230830.jpg'
+import sampleImage5 from '../assets/20230906.jpg'
+
+export const sampleImages = [sampleImage1, sampleImage2, sampleImage3, sampleImage4, sampleImage5]
 
 export function MockToolbar({ label }: { label: string }) {
   return (
@@ -19,7 +26,7 @@ export function MockToolbar({ label }: { label: string }) {
   )
 }
 
-export function MockCanvas({ accent }: { accent: string }) {
+export function MockCanvas({ src, alt = 'Sample image' }: { src: string; alt?: string }) {
   return (
     <div
       style={{
@@ -28,12 +35,15 @@ export function MockCanvas({ accent }: { accent: string }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: `linear-gradient(135deg, ${accent} 0%, var(--ig-color-bg-canvas) 100%)`,
-        color: 'var(--ig-color-text-secondary)',
-        fontSize: 14,
+        background: 'var(--ig-color-bg-canvas)',
+        overflow: 'hidden',
       }}
     >
-      Canvas area (image + drawing layer goes here)
+      <img
+        src={src}
+        alt={alt}
+        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
+      />
     </div>
   )
 }
@@ -74,11 +84,12 @@ export function ResizableDemo() {
   }
   return (
     <MediaDialogShell
-      main={<><MockToolbar label="Resizable demo · width 220~560" /><MockCanvas accent="#214d96" /></>}
+      main={<><MockToolbar label="Resizable demo · width 220~560" /><MockCanvas src={sampleImages[0]} /></>}
       sidebar={<MockSidebar title="Sidebar (drag the divider)" items={['Item A', 'Item B', 'Item C']} />}
       sidebarWidth={width}
       onSidebarResize={startResize}
       ariaLabel="Resizable demo dialog"
+      positioning="absolute"
     />
   )
 }

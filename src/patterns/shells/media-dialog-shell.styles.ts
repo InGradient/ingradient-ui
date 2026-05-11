@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { media } from '../../tokens/foundations/breakpoints'
 
-export const MediaDialogOverlay = styled.div`
-  position: fixed;
+export const MediaDialogOverlay = styled.div<{ $positioning: 'fixed' | 'absolute' }>`
+  position: ${(p) => p.$positioning};
   inset: 0;
   z-index: var(--ig-z-modal);
   display: flex;

@@ -35,6 +35,10 @@ export interface MediaDialogShellProps {
   className?: string
   /** ARIA dialog label */
   ariaLabel?: string
+  /** Outer container position. `'fixed'` (default) covers the viewport — production
+   *  modal usage. `'absolute'` confines the shell to the nearest positioned ancestor
+   *  — Storybook in-card demos, or Workspace-relative embedded usage. */
+  positioning?: 'fixed' | 'absolute'
 }
 
 const DEFAULT_SIDEBAR_WIDTH = 320
@@ -54,6 +58,7 @@ export function MediaDialogShell({
   onTouchEnd,
   className,
   ariaLabel,
+  positioning = 'fixed',
 }: MediaDialogShellProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return
@@ -61,7 +66,7 @@ export function MediaDialogShell({
   }
 
   return (
-    <MediaDialogOverlay role="dialog" aria-modal="true" aria-label={ariaLabel}>
+    <MediaDialogOverlay role="dialog" aria-modal="true" aria-label={ariaLabel} $positioning={positioning}>
       <MediaDialogBackdrop onClick={handleBackdropClick} aria-hidden />
       {overlay}
       <MediaDialogContent

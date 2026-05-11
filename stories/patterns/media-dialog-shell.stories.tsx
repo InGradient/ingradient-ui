@@ -8,6 +8,7 @@ import {
   MockSidebar,
   MockToolbar,
   ResizableDemo,
+  sampleImages,
 } from './media-dialog-shell.stories.helpers'
 
 const meta = {
@@ -36,11 +37,12 @@ export const Review: Story = {
           <StorybookCard title="With sidebar" subtitle="default sidebar width 320">
             <div style={{ position: 'relative', height: 520, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
               <MediaDialogShell
-                main={<><MockToolbar label="Toolbar mock" /><MockCanvas accent="#1f6f5c" /></>}
+                main={<><MockToolbar label="Toolbar mock" /><MockCanvas src={sampleImages[0]} /></>}
                 sidebar={<MockSidebar title="Classes" items={['Dent', 'Scratch', 'Glare']} />}
                 width="100%"
                 height="100%"
                 ariaLabel="Basic dialog"
+                positioning="absolute"
               />
             </div>
           </StorybookCard>
@@ -52,10 +54,11 @@ export const Review: Story = {
           <StorybookCard title="Sidebar omitted" subtitle="full-width main area">
             <div style={{ position: 'relative', height: 460, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
               <MediaDialogShell
-                main={<><MockToolbar label="Full-width toolbar" /><MockCanvas accent="#7747a9" /></>}
+                main={<><MockToolbar label="Full-width toolbar" /><MockCanvas src={sampleImages[1]} /></>}
                 width="100%"
                 height="100%"
                 ariaLabel="No sidebar"
+                positioning="absolute"
               />
             </div>
           </StorybookCard>
@@ -77,9 +80,10 @@ export const Review: Story = {
           <StorybookCard title="ContextMenu mock at top-right" subtitle="overlay slot 가 ModalContent sibling">
             <div style={{ position: 'relative', height: 460, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
               <MediaDialogShell
-                main={<><MockToolbar label="Toolbar" /><MockCanvas accent="#9c2a45" /></>}
+                main={<><MockToolbar label="Toolbar" /><MockCanvas src={sampleImages[2]} /></>}
                 width="100%"
                 height="100%"
+                positioning="absolute"
                 overlay={
                   <div
                     style={{
@@ -110,9 +114,10 @@ export const Review: Story = {
           <StorybookCard title="ConfirmDialog mock outside content" subtitle="extras slot 가 Overlay sibling">
             <div style={{ position: 'relative', height: 460, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
               <MediaDialogShell
-                main={<><MockToolbar label="Toolbar" /><MockCanvas accent="#3d4a6b" /></>}
+                main={<><MockToolbar label="Toolbar" /><MockCanvas src={sampleImages[3]} /></>}
                 width="100%"
                 height="100%"
+                positioning="absolute"
                 extras={
                   <div
                     style={{
