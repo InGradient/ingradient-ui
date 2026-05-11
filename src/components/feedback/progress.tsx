@@ -1,10 +1,21 @@
 import styled, { keyframes, css } from 'styled-components'
 
-const STRIPE_PERIOD_PX = 16
+/**
+ * Stripe 한 쌍 (light + transparent) 의 두께. 작을수록 촘촘.
+ * 24px = 12 light + 12 gap.
+ */
+const STRIPE_PERIOD_PX = 24
+
+/**
+ * 대각선 135deg 방향으로 한 주기 만큼 shift 하기 위한 (x, y) 길이.
+ * 135deg direction = (√2/2, √2/2), 따라서 (period/√2, period/√2) 만큼
+ * 이동하면 정확히 한 period 만큼 진행해 seamless loop.
+ */
+const DIAG_SHIFT_PX = STRIPE_PERIOD_PX / Math.SQRT2
 
 const shimmer = keyframes`
   from { background-position: 0 0; }
-  to   { background-position: ${STRIPE_PERIOD_PX}px 0; }
+  to   { background-position: ${DIAG_SHIFT_PX}px ${DIAG_SHIFT_PX}px; }
 `
 
 const activeOverlay = css`
@@ -13,11 +24,11 @@ const activeOverlay = css`
     position: absolute;
     inset: 0;
     background-image: repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.22) 0 ${STRIPE_PERIOD_PX / 2}px,
+      135deg,
+      rgba(255, 255, 255, 0.20) 0 ${STRIPE_PERIOD_PX / 2}px,
       rgba(255, 255, 255, 0) ${STRIPE_PERIOD_PX / 2}px ${STRIPE_PERIOD_PX}px
     );
-    animation: ${shimmer} 0.9s linear infinite;
+    animation: ${shimmer} 1.2s linear infinite;
   }
 `
 
