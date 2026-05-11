@@ -1,21 +1,24 @@
 import styled, { keyframes, css } from 'styled-components'
 
+const STRIPE_PERIOD_PX = 16
+
 const shimmer = keyframes`
-  0%   { background-position: 0 0; }
-  100% { background-position: 32px 0; }
+  from { background-position: 0 0; }
+  to   { background-position: ${STRIPE_PERIOD_PX}px 0; }
 `
 
-const activeStripes = css`
-  background-image:
-    linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%),
-    repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.18) 0 8px,
-      rgba(255, 255, 255, 0) 8px 16px
+const activeOverlay = css`
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.22) 0 ${STRIPE_PERIOD_PX / 2}px,
+      rgba(255, 255, 255, 0) ${STRIPE_PERIOD_PX / 2}px ${STRIPE_PERIOD_PX}px
     );
-  background-blend-mode: normal;
-  background-size: 100% 100%, 32px 100%;
-  animation: ${shimmer} 1s linear infinite;
+    animation: ${shimmer} 0.9s linear infinite;
+  }
 `
 
 export const ProgressTrack = styled.div`
@@ -27,12 +30,14 @@ export const ProgressTrack = styled.div`
 `
 
 export const ProgressFill = styled.div<{ $value: number; $active: boolean }>`
+  position: relative;
   width: ${(p) => `${Math.max(0, Math.min(100, p.$value))}%`};
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
   transition: width 0.25s ease;
-  ${(p) => p.$active && activeStripes}
+  overflow: hidden;
+  ${(p) => p.$active && activeOverlay}
 `
 
 export function ProgressBar({ value }: { value: number }) {
