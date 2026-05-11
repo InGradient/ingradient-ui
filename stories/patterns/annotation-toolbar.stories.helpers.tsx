@@ -1,4 +1,7 @@
 import React from 'react'
+import sampleImage from '../assets/20230808.jpg'
+
+export { sampleImage }
 
 /** Inline minimalist SVG icons for stories. caller 자유 — ui 제공 0. */
 
@@ -75,21 +78,24 @@ export function InfoIcon() {
   )
 }
 
-export function CoordReadoutMock({ text }: { text: string }) {
+export function MockCanvas({ src, height = 240 }: { src: string; height?: number }) {
   return (
-    <span
+    <div
       style={{
-        fontSize: 12,
-        fontFamily: 'ui-monospace, monospace',
-        color: 'var(--ig-color-text-muted)',
-        userSelect: 'all',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
         flex: 1,
+        minHeight: height,
+        background: 'var(--ig-color-bg-canvas)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
       }}
     >
-      {text}
-    </span>
+      <img
+        src={src}
+        alt="Sample canvas"
+        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
+      />
+    </div>
   )
 }

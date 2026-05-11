@@ -1,53 +1,53 @@
 import styled, { css } from 'styled-components'
-import { media } from '../../tokens/foundations/breakpoints'
 
-type Placement = 'absolute' | 'inline'
+type Placement = 'bottom' | 'top' | 'left' | 'right'
 type Size = 'sm' | 'md'
 
-const placementCss = {
-  absolute: css`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    min-height: 48px;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 10;
-    ${media.md} {
-      padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-    }
-  `,
-  inline: css`
-    min-height: 44px;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.55);
+const orientationCss = {
+  bottom: css`
+    flex-direction: row;
     border-radius: 0 0 var(--ig-radius-md) var(--ig-radius-md);
-    flex-shrink: 0;
+  `,
+  top: css`
+    flex-direction: row;
+    border-radius: var(--ig-radius-md) var(--ig-radius-md) 0 0;
+  `,
+  left: css`
+    flex-direction: column;
+    border-radius: var(--ig-radius-md) 0 0 var(--ig-radius-md);
+  `,
+  right: css`
+    flex-direction: column;
+    border-radius: 0 var(--ig-radius-md) var(--ig-radius-md) 0;
   `,
 }
 
+/** Toolbar root — sibling 요소로 canvas 와 동일 flex 안에 배치되어 overlap 없음. */
 export const ToolbarRoot = styled.div<{ $placement: Placement }>`
   display: flex;
   align-items: center;
   gap: 8px;
-  ${(p) => placementCss[p.$placement]}
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.55);
+  flex-shrink: 0;
+  ${(p) => orientationCss[p.$placement]}
 `
 
-export const LeadingArea = styled.div`
-  flex: 1 1 0%;
-  min-width: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-`
-
-export const TrailingArea = styled.div`
-  margin-left: auto;
+export const TrailingArea = styled.div<{ $placement: Placement }>`
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 4px;
+  ${(p) =>
+    p.$placement === 'bottom' || p.$placement === 'top'
+      ? css`
+          margin-left: auto;
+          flex-direction: row;
+        `
+      : css`
+          margin-top: auto;
+          flex-direction: column;
+        `}
 `
 
 const sizeCss = {
@@ -91,10 +91,33 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   }
 `
 
-export const Separator = styled.span`
+export const Separator = styled.span<{ $placement: Placement }>`
   flex-shrink: 0;
-  width: 1px;
-  height: 22px;
   background: var(--ig-color-white-12);
-  margin: 0 2px;
+  ${(p) =>
+    p.$placement === 'bottom' || p.$placement === 'top'
+      ? css`
+          width: 1px;
+          height: 22px;
+          margin: 0 2px;
+        `
+      : css`
+          width: 22px;
+          height: 1px;
+          margin: 2px 0;
+        `}
+`
+
+/** Coord readout — toolbar 와 분리된 별도 컴포넌트. 보통 canvas 아래 sibling 으로 배치. */
+export const CoordReadoutRoot = styled.div`
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+  color: var(--ig-color-text-muted);
+  user-select: all;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 `

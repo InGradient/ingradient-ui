@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  LeadingArea,
+  CoordReadoutRoot,
   Separator,
   ToolbarButton,
   ToolbarRoot,
@@ -25,39 +25,39 @@ export interface AnnotationToolbarAction {
 export interface AnnotationToolbarProps {
   /** Action 버튼 배열. 문자열 `'separator'` 가 섞여 있으면 구분자 표시. */
   actions: Array<AnnotationToolbarAction | 'separator'>
-  /** 좌측 슬롯 — 보통 CoordReadout. flex 1 차지. */
-  leading?: React.ReactNode
-  /** 우측 슬롯 — actions 뒤. */
+  /** Trailing slot — actions 뒤. 가로 placement 면 오른쪽 끝, 세로면 아래 끝. */
   trailing?: React.ReactNode
-  /** 배치. `'absolute'` (default platform image-detail) / `'inline'` (edge labeling). */
-  placement?: 'absolute' | 'inline'
+  /** Toolbar 배치 방향. 모두 inline flex (canvas 와 겹치지 않음).
+   *  - `'bottom'` (default) / `'top'`: 가로 row.
+   *  - `'left'` / `'right'`: 세로 column. */
+  placement?: 'bottom' | 'top' | 'left' | 'right'
   /** 버튼 사이즈. default `'md'` (40px) / `'sm'` (36px). */
   size?: 'sm' | 'md'
   className?: string
-  /** ARIA toolbar label — must be unique within a page if multiple toolbars share it. */
+  /** ARIA toolbar label — 복수 toolbar 시 unique 보장. */
   ariaLabel?: string
 }
 
 export function AnnotationToolbar({
   actions,
-  leading,
   trailing,
-  placement = 'absolute',
+  placement = 'bottom',
   size = 'md',
   className,
   ariaLabel,
 }: AnnotationToolbarProps) {
+  const orientation = placement === 'left' || placement === 'right' ? 'vertical' : 'horizontal'
   return (
     <ToolbarRoot
       $placement={placement}
       role="toolbar"
+      aria-orientation={orientation}
       aria-label={ariaLabel}
       className={className}
     >
-      {leading ? <LeadingArea>{leading}</LeadingArea> : null}
       {actions.map((action, idx) =>
         action === 'separator' ? (
-          <Separator key={`sep-${idx}`} aria-hidden />
+          <Separator key={`sep-${idx}`} $placement={placement} aria-hidden />
         ) : (
           <ToolbarButton
             key={action.key}
@@ -76,7 +76,30 @@ export function AnnotationToolbar({
           </ToolbarButton>
         ),
       )}
-      {trailing ? <TrailingArea>{trailing}</TrailingArea> : null}
+      {trailing ? <TrailingArea $placement={placement}>{trailing}</TrailingArea> : null}
     </ToolbarRoot>
+  )
+}
+
+/** Coord readout — toolbar 와 분리된 별도 컴포넌트. canvas 아래 sibling 으로 배치하여
+ *  toolbar placement 와 무관하게 항상 canvas 아래에 표시. */
+export function CanvasCoordReadout({
+  children,
+  className,
+  ariaLabel,
+}: {
+  children: React.ReactNode
+  className?: string
+  ariaLabel?: string
+}) {
+  return (
+    <CoordReadoutRoot
+      className={className}
+      role="status"
+      aria-label={ariaLabel}
+      aria-live="polite"
+    >
+      {children}
+    </CoordReadoutRoot>
   )
 }

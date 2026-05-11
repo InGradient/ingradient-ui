@@ -1,18 +1,19 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { AnnotationToolbar, type AnnotationToolbarAction } from '../../src/patterns'
+import { AnnotationToolbar, CanvasCoordReadout, type AnnotationToolbarAction } from '../../src/patterns'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 import {
   BboxIcon,
   ClassificationIcon,
-  CoordReadoutMock,
   CursorIcon,
   InfoIcon,
+  MockCanvas,
   PointIcon,
   RedoIcon,
   ResetIcon,
   TrashIcon,
   UndoIcon,
+  sampleImage,
 } from './annotation-toolbar.stories.helpers'
 
 const meta = {
@@ -31,77 +32,79 @@ type Story = StoryObj<typeof meta>
 
 type Mode = 'cursor' | 'bbox' | 'point' | 'classification'
 
-function PlatformDemo() {
+/** Single demo composer — toolbar 의 placement 에 맞춰 canvas 와 sibling 으로 배치.
+ *  CoordReadout 은 항상 canvas 아래 (toolbar placement 와 무관). */
+function ToolbarDemo({ placement, full }: { placement: 'bottom' | 'top' | 'left' | 'right'; full: boolean }) {
   const [mode, setMode] = React.useState<Mode>('bbox')
   const [items, setItems] = React.useState(2)
-  const modeActions: AnnotationToolbarAction[] = [
+
+  const fullActions: Array<AnnotationToolbarAction | 'separator'> = [
     { key: 'cursor', title: 'Cursor (select & move)', icon: <CursorIcon />, active: mode === 'cursor', onClick: () => setMode('cursor') },
     { key: 'bbox', title: 'Draw bbox', icon: <BboxIcon />, active: mode === 'bbox', onClick: () => setMode('bbox') },
     { key: 'point', title: 'Add point', icon: <PointIcon />, active: mode === 'point', onClick: () => setMode('point') },
     { key: 'classification', title: 'Classification', icon: <ClassificationIcon />, active: mode === 'classification', onClick: () => setMode('classification') },
-  ]
-  const historyActions: AnnotationToolbarAction[] = [
-    { key: 'undo', title: 'Undo (Ctrl+Z)', icon: <UndoIcon />, disabled: items === 0, onClick: () => setItems((i) => Math.max(0, i - 1)) },
-    { key: 'redo', title: 'Redo (Ctrl+Y)', icon: <RedoIcon />, disabled: items >= 4, onClick: () => setItems((i) => Math.min(4, i + 1)) },
+    'separator',
+    { key: 'undo', title: 'Undo', icon: <UndoIcon />, disabled: items === 0, onClick: () => setItems((i) => Math.max(0, i - 1)) },
+    { key: 'redo', title: 'Redo', icon: <RedoIcon />, disabled: items >= 4, onClick: () => setItems((i) => Math.min(4, i + 1)) },
     { key: 'reset', title: 'Reset', icon: <ResetIcon />, disabled: items === 0, onClick: () => setItems(0) },
+    { key: 'delete', title: 'Delete image', icon: <TrashIcon />, danger: true, onClick: () => undefined },
   ]
-  const dangerAction: AnnotationToolbarAction = {
-    key: 'delete', title: 'Delete image', icon: <TrashIcon />, danger: true, onClick: () => undefined,
-  }
-  return (
-    <AnnotationToolbar
-      placement="absolute"
-      ariaLabel="Platform demo"
-      leading={<CoordReadoutMock text={`bbox x=0.18 y=0.22 w=0.22 h=0.18 · items=${items}`} />}
-      actions={[...modeActions, 'separator', ...historyActions, dangerAction]}
-      trailing={
-        <button
-          type="button"
-          title="Info & classes"
-          aria-label="Info & classes"
-          style={{
-            width: 40, height: 40, border: 'none', borderRadius: 8, background: 'transparent',
-            color: 'var(--ig-color-text-primary)', cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >
-          <InfoIcon />
-        </button>
-      }
-    />
-  )
-}
+  const minimalActions: AnnotationToolbarAction[] = [
+    { key: 'cursor', title: 'Cursor', icon: <CursorIcon />, active: mode === 'cursor', onClick: () => setMode('cursor') },
+    { key: 'bbox', title: 'Draw bbox', icon: <BboxIcon />, active: mode === 'bbox', onClick: () => setMode('bbox') },
+  ]
 
-function EdgeDemo() {
-  const [mode, setMode] = React.useState<'cursor' | 'bbox'>('bbox')
-  return (
-    <AnnotationToolbar
-      placement="inline"
-      size="sm"
-      ariaLabel="Edge demo"
-      actions={[
-        { key: 'cursor', title: 'Cursor', icon: <CursorIcon />, active: mode === 'cursor', onClick: () => setMode('cursor') },
-        { key: 'bbox', title: 'Draw bbox', icon: <BboxIcon />, active: mode === 'bbox', onClick: () => setMode('bbox') },
-      ]}
-    />
-  )
-}
-
-function MockCanvas() {
-  return (
-    <div
+  const trailing = full ? (
+    <button
+      type="button"
+      title="Info & classes"
+      aria-label="Info & classes"
       style={{
-        flex: 1,
-        minHeight: 240,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg, #112f57 0%, #1d7568 100%)',
-        color: 'rgba(255,255,255,0.5)',
-        fontSize: 14,
+        width: 40, height: 40, border: 'none', borderRadius: 8, background: 'transparent',
+        color: 'var(--ig-color-text-primary)', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}
     >
-      Canvas (image + drawing layer here)
+      <InfoIcon />
+    </button>
+  ) : undefined
+
+  const toolbar = (
+    <AnnotationToolbar
+      placement={placement}
+      ariaLabel={`Demo ${placement}`}
+      actions={full ? fullActions : minimalActions}
+      trailing={trailing}
+    />
+  )
+
+  const coordReadout = (
+    <CanvasCoordReadout>
+      bbox x=0.18 y=0.22 w=0.22 h=0.18 · items={items}
+    </CanvasCoordReadout>
+  )
+
+  // toolbar 가 좌/우 일 때: 가로 row(toolbar + canvas) → 아래에 CoordReadout
+  // toolbar 가 위/아래 일 때: 세로 column 안에서 순서 배치
+  if (placement === 'left' || placement === 'right') {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--ig-color-border-subtle)' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', minHeight: 240 }}>
+          {placement === 'left' ? toolbar : null}
+          <MockCanvas src={sampleImage} />
+          {placement === 'right' ? toolbar : null}
+        </div>
+        {coordReadout}
+      </div>
+    )
+  }
+  // top / bottom
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--ig-color-border-subtle)' }}>
+      {placement === 'top' ? toolbar : null}
+      <MockCanvas src={sampleImage} />
+      {coordReadout}
+      {placement === 'bottom' ? toolbar : null}
     </div>
   )
 }
@@ -111,35 +114,45 @@ export const Review: Story = {
   render: () => (
     <StorybookPage
       title="AnnotationToolbar"
-      description="Horizontal action toolbar for labeling canvas. actions[] (with optional 'separator'), leading slot (CoordReadout), trailing slot (mobile-info / etc.). Two placements — `absolute` (platform image-detail bottom overlay) / `inline` (edge labeling below canvas)."
+      description="Sibling-based toolbar — canvas 와 inline flex 안에 배치되어 겹치지 않음. 4 placements (bottom/top/left/right). CoordReadout 은 별도 컴포넌트 <CanvasCoordReadout> 로 항상 canvas 아래에 배치."
     >
-      <StorybookSection title="Platform style (placement='absolute')" description="canvas 위 absolute bottom — overlay 형태.">
+      <StorybookSection title="Placement: bottom" description="기본값 — 가로 toolbar, canvas 아래.">
         <StorybookGrid columns="1fr">
-          <StorybookCard title="Full toolbar (mode + history + delete + info)" subtitle="leading: CoordReadout · separator · trailing: info">
-            <div style={{ position: 'relative', height: 280, borderRadius: 12, overflow: 'hidden' }}>
-              <MockCanvas />
-              <PlatformDemo />
-            </div>
+          <StorybookCard title="Full toolbar" subtitle="4 mode + separator + 3 history + delete + trailing info">
+            <ToolbarDemo placement="bottom" full />
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>
 
-      <StorybookSection title="Edge style (placement='inline', size='sm')" description="canvas 아래 flex inline — overlay 아님.">
+      <StorybookSection title="Placement: top" description="가로 toolbar, canvas 위. 동일 actions 배열 재사용.">
         <StorybookGrid columns="1fr">
-          <StorybookCard title="Minimal toolbar (2 modes)" subtitle="size='sm' (36px)">
-            <div style={{ display: 'flex', flexDirection: 'column', borderRadius: 12, overflow: 'hidden' }}>
-              <MockCanvas />
-              <EdgeDemo />
-            </div>
+          <StorybookCard title="Full toolbar above canvas">
+            <ToolbarDemo placement="top" full />
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>
 
-      <StorybookSection title="States" description="active / disabled / danger 시각 확인.">
+      <StorybookSection title="Placement: left" description="세로 toolbar, canvas 왼쪽. CoordReadout 은 여전히 아래.">
         <StorybookGrid columns="1fr">
-          <StorybookCard title="State demo (static)" subtitle="placement='inline' for compact display">
+          <StorybookCard title="Full toolbar at left">
+            <ToolbarDemo placement="left" full />
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+
+      <StorybookSection title="Placement: right" description="세로 toolbar, canvas 오른쪽. CoordReadout 은 여전히 아래.">
+        <StorybookGrid columns="1fr">
+          <StorybookCard title="Minimal toolbar at right" subtitle="2 mode buttons (edge style)">
+            <ToolbarDemo placement="right" full={false} />
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+
+      <StorybookSection title="States" description="active / disabled / danger 시각 (placement='bottom').">
+        <StorybookGrid columns="1fr">
+          <StorybookCard title="State demo (static)" subtitle="모든 state 시각화">
             <AnnotationToolbar
-              placement="inline"
+              placement="bottom"
               ariaLabel="State demo"
               actions={[
                 { key: 'a1', title: 'Active mode', icon: <BboxIcon />, active: true, onClick: () => undefined },
