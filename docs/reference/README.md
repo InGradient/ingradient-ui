@@ -25,11 +25,12 @@ Storybook이 사용자 문서의 기본 진입점이고, 이 폴더는 shareable
 
 1. [getting-started.md](./getting-started.md)
 2. [foundations.md](./foundations.md)
-3. [components/README.md](./components/README.md)
-4. [patterns/README.md](./patterns/README.md)
-5. [recipes/README.md](./recipes/README.md)
-6. [troubleshooting.md](./troubleshooting.md)
-7. [coverage-matrix.md](./coverage-matrix.md)
+3. **[cheat-sheet.md](./cheat-sheet.md) — 모든 components/patterns/hooks 단일 페이지 색인 (새 UI 작업 전 먼저 확인)**
+4. [components/README.md](./components/README.md)
+5. [patterns/README.md](./patterns/README.md)
+6. [recipes/README.md](./recipes/README.md)
+7. [troubleshooting.md](./troubleshooting.md)
+8. [coverage-matrix.md](./coverage-matrix.md)
 
 ## Coverage
 
