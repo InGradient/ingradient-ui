@@ -9,6 +9,25 @@ export interface UseZoomPanOptions {
   minZoom?: number
   maxZoom?: number
   zoomStep?: number
+  /** Optional — function returning the container dimensions. When provided, pan is
+   *  clamped so the scaled content cannot move beyond `containerSize * (zoom - 1) / 2`
+   *  on each side (image edges stay near canvas edges, no scroll past empty space). */
+  getBounds?: () => { width: number; height: number } | null
+}
+
+function clampPan(
+  x: number,
+  y: number,
+  zoom: number,
+  bounds: { width: number; height: number } | null | undefined,
+): { x: number; y: number } {
+  if (!bounds || zoom <= 1) return { x, y }
+  const maxX = (bounds.width * (zoom - 1)) / 2
+  const maxY = (bounds.height * (zoom - 1)) / 2
+  return {
+    x: Math.max(-maxX, Math.min(maxX, x)),
+    y: Math.max(-maxY, Math.min(maxY, y)),
+  }
 }
 
 export function useZoomPan(options: UseZoomPanOptions = {}) {
@@ -16,6 +35,7 @@ export function useZoomPan(options: UseZoomPanOptions = {}) {
     minZoom = ZOOM_MIN_DEFAULT,
     maxZoom = ZOOM_MAX_DEFAULT,
     zoomStep = ZOOM_STEP_DEFAULT,
+    getBounds,
   } = options
 
   const [zoom, setZoom] = useState(minZoom)
@@ -23,6 +43,11 @@ export function useZoomPan(options: UseZoomPanOptions = {}) {
   const isDraggingRef = useRef(false)
   const dragStartRef = useRef({ x: 0, y: 0, panX: 0, panY: 0 })
   const hasPannedRef = useRef(false)
+  // zoom + getBounds 를 ref 로 보관 — movePan 의 deps 가 비어 안정 callback 유지.
+  const zoomRef = useRef(zoom)
+  zoomRef.current = zoom
+  const getBoundsRef = useRef(getBounds)
+  getBoundsRef.current = getBounds
 
   const reset = useCallback(() => {
     setZoom(minZoom)
@@ -36,7 +61,12 @@ export function useZoomPan(options: UseZoomPanOptions = {}) {
       setZoom((prev) => {
         const delta = e.deltaY < 0 ? zoomStep : -zoomStep
         const next = Math.min(maxZoom, Math.max(minZoom, prev + delta))
-        if (next === minZoom) setPan({ x: 0, y: 0 })
+        if (next === minZoom) {
+          setPan({ x: 0, y: 0 })
+        } else {
+          // zoom 이 바뀌면 기존 pan 이 새 bounds 를 벗어날 수 있어 clamp.
+          setPan((p) => clampPan(p.x, p.y, next, getBoundsRef.current?.() ?? null))
+        }
         return next
       })
     },
@@ -60,7 +90,10 @@ export function useZoomPan(options: UseZoomPanOptions = {}) {
       return false
     }
     hasPannedRef.current = true
-    setPan({ x: dragStartRef.current.panX + dx, y: dragStartRef.current.panY + dy })
+    const nextX = dragStartRef.current.panX + dx
+    const nextY = dragStartRef.current.panY + dy
+    const clamped = clampPan(nextX, nextY, zoomRef.current, getBoundsRef.current?.() ?? null)
+    setPan(clamped)
     return true
   }, [])
 

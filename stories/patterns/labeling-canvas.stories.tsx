@@ -48,8 +48,19 @@ function InteractiveDemo() {
   const [imageAspect, setImageAspect] = React.useState(1)
   const [crosshair, setCrosshair] = React.useState<{ x: number; y: number } | null>(null)
   const imageAreaRef = React.useRef<HTMLDivElement | null>(null)
+  const wrapRef = React.useRef<HTMLDivElement | null>(null)
 
-  const zp = useZoomPan({ minZoom: 1, maxZoom: 4 })
+  const zp = useZoomPan({
+    minZoom: 1,
+    maxZoom: 4,
+    /** wrap element size 를 측정해서 pan clamp — 줌해서 이미지가 캔버스 밖으로 너무 안 나가게. */
+    getBounds: () => {
+      const el = wrapRef.current
+      if (!el) return null
+      const rect = el.getBoundingClientRect()
+      return { width: rect.width, height: rect.height }
+    },
+  })
 
   const drawingMode: 'cursor' | 'rect' | 'point' =
     tool === 'bbox' ? 'rect' : tool === 'point' ? 'point' : 'cursor'
@@ -110,7 +121,7 @@ function InteractiveDemo() {
       if (sel?.type === 'point') return `point x=${sel.x.toFixed(3)} y=${sel.y.toFixed(3)}`
     }
     if (crosshair) return `cursor x=${crosshair.x.toFixed(3)} y=${crosshair.y.toFixed(3)}`
-    return ' '
+    return ' ' // NBSP — CoordReadoutRoot 의 min-height 와 함께 row height 고정
   })()
 
   return (
@@ -143,6 +154,7 @@ function InteractiveDemo() {
             cursor={cursor}
             crosshair={tool !== 'cursor' && crosshair ? { x: crosshair.x, y: crosshair.y, color: previewColor } : null}
             imageAreaRef={imageAreaRef}
+            wrapRef={wrapRef}
             onWheel={zp.handleWheel}
           />
         </div>

@@ -108,7 +108,8 @@ export const Separator = styled.span<{ $placement: Placement }>`
         `}
 `
 
-/** Coord readout — toolbar 와 분리된 별도 컴포넌트. 보통 canvas 아래 sibling 으로 배치. */
+/** Coord readout — toolbar 와 분리된 별도 컴포넌트. 보통 canvas 아래 sibling 으로 배치.
+ *  min-height + line-height 로 텍스트가 비어도 height 고정 (layout shift 방지). */
 export const CoordReadoutRoot = styled.div`
   font-size: 12px;
   font-family: ui-monospace, monospace;
@@ -120,4 +121,7 @@ export const CoordReadoutRoot = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 0;
+  line-height: 1.4;
+  min-height: calc(1.4em + 12px);
+  box-sizing: border-box;
 `
