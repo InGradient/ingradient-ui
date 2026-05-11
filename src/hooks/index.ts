@@ -15,3 +15,6 @@ export type { DrawingObject, DrawingMode, DrawingPreview, DrawingAction, UseDraw
 
 export { useClickOutside } from './useClickOutside'
 export type { UseClickOutsideOptions } from './useClickOutside'
+
+export { useCanvasMouse } from './useCanvasMouse'
+export type { UseCanvasMouseConfig } from './useCanvasMouse'
