@@ -12,6 +12,10 @@ export const LabelingCanvasWrap = styled.div`
   justify-content: center;
 `
 
+/** ZoomWrap — pan + scale 적용. *will-change / transition 의도적으로 제거*.
+ *  will-change: transform 은 GPU 레이어로 promote 되어 SVG 가 intrinsic
+ *  해상도에서 rasterize 후 upscale → DrawingLayer label 텍스트 blur. platform/
+ *  edge 의 ZoomWrap 도 둘 다 없는 패턴 — 동일하게 유지. */
 export const ZoomWrap = styled.div<{ $zoom: number; $panX: number; $panY: number }>`
   position: relative;
   display: flex;
@@ -21,8 +25,6 @@ export const ZoomWrap = styled.div<{ $zoom: number; $panX: number; $panY: number
   height: 100%;
   transform: ${(p) => `translate(${p.$panX}px, ${p.$panY}px) scale(${p.$zoom})`};
   transform-origin: center center;
-  transition: transform 0.04s linear;
-  will-change: transform;
 `
 
 export const ImageAreaWrap = styled.div<{ $aspect: number }>`
