@@ -28,6 +28,14 @@ export const controlField = css`
     background: var(--ig-color-surface-focus);
   }
 
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-style: dashed;
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
+  }
+
   &:where(textarea) {
     height: auto;
     padding: var(--ig-space-4) var(--ig-space-5);

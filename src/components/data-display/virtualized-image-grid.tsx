@@ -79,6 +79,7 @@ export function VirtualizedImageGrid<T extends { id: string }>(props: Virtualize
     getScrollElement: () => parentRef.current,
     estimateSize: () => estimatedItemHeight,
     overscan,
+    measureElement: (el) => el.getBoundingClientRect().height,
   })
 
   React.useEffect(() => {
@@ -100,6 +101,8 @@ export function VirtualizedImageGrid<T extends { id: string }>(props: Virtualize
           return (
             <RowWrap
               key={virtualRow.key}
+              ref={virtualizer.measureElement}
+              data-index={virtualRow.index}
               $top={virtualRow.start}
               $columns={columns}
               $gap={gap}

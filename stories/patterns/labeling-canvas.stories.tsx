@@ -12,6 +12,37 @@ import {
   useZoomPan,
   type DrawingObject,
 } from '../../src/hooks'
+
+const PRELOADED_BBOXES: DrawingObject[] = [
+  { id: 'b1', type: 'rect', x: 0.18, y: 0.22, w: 0.28, h: 0.32, color: '#ff7f66', label: 'Dent' },
+  { id: 'b2', type: 'rect', x: 0.55, y: 0.40, w: 0.30, h: 0.25, color: '#6fb6ff', label: 'Scratch' },
+  { id: 'b3', type: 'rect', x: 0.30, y: 0.70, w: 0.20, h: 0.18, color: '#7ce0be', label: 'Glare' },
+]
+
+function ZoomInvariantCard({ zoom, label }: { zoom: number; label: string }) {
+  const imageAreaRef = React.useRef<HTMLDivElement | null>(null)
+  const wrapRef = React.useRef<HTMLDivElement | null>(null)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{label}</div>
+      <div style={{ position: 'relative', height: 240, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--ig-color-border-subtle)' }}>
+        <LabelingCanvas
+          imageUrl={sampleImage}
+          alt={`Zoom ${zoom}x`}
+          imageAspect={1}
+          zoom={zoom}
+          pan={{ x: 0, y: 0 }}
+          objects={PRELOADED_BBOXES}
+          showLabels
+          mouseHandlers={{ onMouseDown: () => undefined, onMouseMove: () => undefined, onMouseUp: () => undefined, onMouseLeave: () => undefined }}
+          cursor="default"
+          imageAreaRef={imageAreaRef}
+          wrapRef={wrapRef}
+        />
+      </div>
+    </div>
+  )
+}
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 import sampleImage from '../assets/20230808.jpg'
 import {
@@ -211,6 +242,20 @@ export const Review: Story = {
         <StorybookGrid columns="1fr">
           <StorybookCard title="Full integration" subtitle="useZoomPan + useDrawingCanvas + useCanvasMouse + AnnotationToolbar + CoordReadout">
             <InteractiveDemo />
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+
+      <StorybookSection title="Zoom-invariant stroke & label" description="동일한 3 개 bbox 가 zoom 1× / 2× / 3× 에 표시됩니다. 이미지는 확대되지만 bbox 테두리 굵기와 class 라벨 크기는 픽셀 기준으로 일정 — 줌해도 UI 가독성이 유지됩니다 (DrawingLayer 의 zoom prop 기반 정규화).">
+        <StorybookGrid columns="repeat(3, 1fr)">
+          <StorybookCard title="Zoom 1×" subtitle="기준 배율">
+            <ZoomInvariantCard zoom={1} label="stroke / label 픽셀 크기 = baseline" />
+          </StorybookCard>
+          <StorybookCard title="Zoom 2×" subtitle="이미지 2배 확대">
+            <ZoomInvariantCard zoom={2} label="bbox 선·라벨 굵기는 1× 와 동일" />
+          </StorybookCard>
+          <StorybookCard title="Zoom 3×" subtitle="이미지 3배 확대">
+            <ZoomInvariantCard zoom={3} label="3× 에서도 가독성 유지" />
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>

@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +18,7 @@ const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
   border-radius: var(--ig-radius-lg);
   background: ${(p) =>
     p.$disabled
-      ? 'var(--ig-color-surface-muted)'
+      ? 'repeating-linear-gradient(135deg, var(--ig-color-surface-muted) 0 10px, var(--ig-color-bg-canvas) 10px 20px)'
       : p.$active
         ? 'var(--ig-color-accent-soft-surface)'
         : 'transparent'};
@@ -25,6 +26,7 @@ const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
   font-size: var(--ig-font-size-sm);
   text-align: center;
   cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(p) => (p.$disabled ? 0.6 : 1)};
   transition: border-color var(--ig-motion-fast), background var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
