@@ -15,8 +15,9 @@
 7. [guides/STORYBOOK_GUIDE.md](./guides/STORYBOOK_GUIDE.md)
 8. [concepts/ARCHITECTURE.md](./concepts/ARCHITECTURE.md)
 9. [rules/FILE_RULES.md](./rules/FILE_RULES.md)
-10. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
-11. [releases/README.md](./releases/README.md)
+10. **[rules/BUILDING_UI.md](./rules/BUILDING_UI.md) — 컴포넌트 API + 시각/행동 표준 + 토큰 사용 + storybook 커버리지 종합 규칙**
+11. [guides/WORKFLOW.md](./guides/WORKFLOW.md)
+12. [releases/README.md](./releases/README.md)
 
 ## Structure
 
@@ -84,6 +85,17 @@
   - 파일 길이 규칙
   - naming/export 규칙
   - raw literal 금지 규칙
+
+- [rules/BUILDING_UI.md](./rules/BUILDING_UI.md)
+  - 컴포넌트 API 컨벤션 (네이밍 / 표준 props / forwardRef)
+  - 디자인 토큰 사용 (foundation / semantic / recipe / variant 우선순위)
+  - 시각·행동 표준 (animation seamless loop / disabled 명확 구분 / focus / hover / loading)
+  - 컴포지션 패턴 (slot / render prop / compound)
+  - Accessibility 요구사항
+  - Storybook 커버리지 시나리오
+  - Backward compatibility 정책
+  - Domain escape hatch (threshold 색 / indeterminate / custom layout)
+  - 새 컴포넌트 추가 checklist
 
 - [guides/WORKFLOW.md](./guides/WORKFLOW.md)
   - 디자인 변경 흐름
