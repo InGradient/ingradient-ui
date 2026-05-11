@@ -10,7 +10,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   flex: 0 0 ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   height: 100%;
   background:
-    linear-gradient(180deg, rgba(12, 15, 20, 0.96) 0%, rgba(10, 14, 20, 0.94) 100%),
+    linear-gradient(180deg, var(--ig-color-sidebar-bg-top) 0%, var(--ig-color-sidebar-bg-bottom) 100%),
     var(--ig-color-bg-canvas);
   border-right: 1px solid var(--ig-color-border-subtle);
   flex-shrink: 0;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../inputs/button'
 import { DialogCloseButton } from './dialog-close-button'
@@ -39,9 +39,25 @@ export function DialogShell({
   width?: string | number
   height?: string | number
 }) {
+  useEffect(() => {
+    if (!onClose) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
   return (
     <ModalBackdrop onClick={() => onClose?.()}>
-      <ModalCard onClick={(event) => event.stopPropagation()} style={{ width, ...(height ? { height } : {}) }}>
+      <ModalCard
+        role="dialog"
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+        style={{ width, ...(height ? { height } : {}) }}
+      >
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}

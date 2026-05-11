@@ -28,7 +28,7 @@ export const ToolbarRoot = styled.div<{ $placement: Placement }>`
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.55);
+  background: var(--ig-color-overlay-strong);
   flex-shrink: 0;
   ${(p) => orientationCss[p.$placement]}
 `
@@ -74,7 +74,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   justify-content: center;
   transition: background 0.14s ease, color 0.14s ease;
   &:hover:not(:disabled) {
-    background: ${(p) => (p.$danger ? 'rgba(164, 44, 44, 0.22)' : 'var(--ig-color-white-08)')};
+    background: ${(p) => (p.$danger ? 'var(--ig-color-danger-soft-surface)' : 'var(--ig-color-white-08)')};
     color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger-soft)' : 'var(--ig-color-text-primary)')};
   }
   &:focus-visible {
@@ -116,7 +116,7 @@ export const CoordReadoutRoot = styled.div`
   color: var(--ig-color-text-muted);
   user-select: all;
   padding: 6px 10px;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--ig-color-overlay-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

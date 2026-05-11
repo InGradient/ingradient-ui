@@ -130,6 +130,14 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-tab-highlight': palette.blueTint18,
     '--ig-color-toolbar-surface': isLight ? 'rgba(247, 249, 251, 0.84)' : 'rgba(8, 12, 18, 0.84)',
     '--ig-color-modal-backdrop': palette.overlayBackdrop,
+    // Canvas overlay (annotation-toolbar / coord readout 등 어두운 surface)
+    '--ig-color-overlay-dim': 'rgba(0, 0, 0, 0.45)',
+    '--ig-color-overlay-strong': 'rgba(0, 0, 0, 0.55)',
+    // Sidebar shell gradient backgrounds
+    '--ig-color-sidebar-bg-top': 'rgba(12, 15, 20, 0.96)',
+    '--ig-color-sidebar-bg-bottom': 'rgba(10, 14, 20, 0.94)',
+    // Danger button soft surface (toolbar hover)
+    '--ig-color-danger-soft-surface': 'rgba(164, 44, 44, 0.22)',
 
     // Direct alpha aliases (consumer raw rgba 마이그레이션 용) — palette-aware
     '--ig-color-white-04': palette.white04,

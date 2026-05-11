@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 import { ImageViewerContext } from './image-viewer'
+import { PointObject, RectObject, type RendererCtx } from './drawing-layer.renderers'
 
 export type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 
@@ -23,31 +24,6 @@ export interface DrawingLayerProps {
   crosshairColor?: string
   /** Current zoom level — used to keep stroke width and label size constant regardless of zoom */
   zoom?: number
-}
-
-const HANDLE_PX = 4
-const POINT_PX = 5
-const POINT_SELECTED_PX = 7
-const STROKE_PX = 1.5
-const STROKE_SELECTED_PX = 2.5
-const LABEL_FONT_PX = 11
-const LABEL_PAD_X = 6
-const LABEL_PAD_Y = 3
-const LABEL_HEIGHT = LABEL_FONT_PX + LABEL_PAD_Y * 2
-const LABEL_RADIUS = 3
-
-/** Estimate text width in pixels — wider chars (CJK, uppercase) get more space. */
-function estimateLabelWidth(text: string): number {
-  let w = 0
-  for (const ch of text) {
-    const code = ch.charCodeAt(0)
-    if (code > 0x2E80) w += LABEL_FONT_PX * 1.0       // CJK / full-width
-    else if (ch >= 'A' && ch <= 'Z') w += LABEL_FONT_PX * 0.68  // uppercase
-    else if (ch >= 'a' && ch <= 'z') w += LABEL_FONT_PX * 0.55  // lowercase
-    else if (ch >= '0' && ch <= '9') w += LABEL_FONT_PX * 0.6   // digits
-    else w += LABEL_FONT_PX * 0.5                                // space, punct
-  }
-  return w + LABEL_PAD_X * 2
 }
 
 export function DrawingLayer({
@@ -82,8 +58,8 @@ export function DrawingLayer({
   const ch = (containerHeight ?? ctx?.containerHeight ?? measured.h) || 0
   const uniform = cw > 0 && ch > 0
   const z = zoomProp ?? ctx?.zoom ?? 1
-  // Stroke widths are divided by zoom so they stay constant on screen
   const s = (px: number) => px / z
+  const rendererCtx: RendererCtx = { cw, ch, uniform, z, s }
 
   return (
     <svg
@@ -99,7 +75,6 @@ export function DrawingLayer({
       viewBox="0 0 1 1"
       preserveAspectRatio="none"
     >
-      {/* Crosshair */}
       {showCrosshair && cursorX != null && cursorY != null && (() => {
         const chColor = crosshairColor ?? 'rgba(255,255,255,0.3)'
         return (
@@ -122,7 +97,6 @@ export function DrawingLayer({
         )
       })()}
 
-      {/* Drawing preview */}
       {drawingPreview && (
         <rect
           x={drawingPreview.x}
@@ -137,125 +111,37 @@ export function DrawingLayer({
         />
       )}
 
-      {/* Objects */}
       {objects.map((obj) => {
         const isSelected = obj.id === selectedId
         const color = obj.color ?? 'var(--ig-color-accent)'
-        const gStyle = obj.opacity != null && obj.opacity < 1 ? { opacity: obj.opacity, transition: 'opacity 0.15s' } as const : undefined
+        const gStyle = obj.opacity != null && obj.opacity < 1
+          ? { opacity: obj.opacity, transition: 'opacity 0.15s' } as const
+          : undefined
 
         if (obj.type === 'rect' && obj.w != null && obj.h != null) {
           return (
-            <g key={obj.id} style={gStyle}>
-              <rect
-                x={obj.x}
-                y={obj.y}
-                width={obj.w}
-                height={obj.h}
-                fill={isSelected ? `${color}22` : `${color}11`}
-                stroke={color}
-                strokeWidth={uniform ? s(isSelected ? STROKE_SELECTED_PX : STROKE_PX) : (isSelected ? 0.003 : 0.002)}
-                vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
-              />
-              {showLabels && obj.label && (
-                uniform ? (
-                  <g transform={`translate(${obj.x}, ${obj.y}) scale(${1 / (cw * z)}, ${1 / (ch * z)})`}>
-                    <rect
-                      x={0}
-                      y={-LABEL_HEIGHT}
-                      width={estimateLabelWidth(obj.label)}
-                      height={LABEL_HEIGHT}
-                      rx={LABEL_RADIUS}
-                      fill={color}
-                      opacity={0.85}
-                    />
-                    <text
-                      x={LABEL_PAD_X}
-                      y={-LABEL_PAD_Y}
-                      fill="#fff"
-                      fontSize={LABEL_FONT_PX}
-                      fontWeight={600}
-                      fontFamily="sans-serif"
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      {obj.label}
-                    </text>
-                  </g>
-                ) : (
-                  <text
-                    x={obj.x + 0.003}
-                    y={obj.y - 0.004}
-                    fill={color}
-                    fontSize={0.014}
-                    fontFamily="sans-serif"
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    {obj.label}
-                  </text>
-                )
-              )}
-              {showHandles && isSelected && (
-                <>
-                  {([
-                    [obj.x, obj.y],
-                    [obj.x + obj.w, obj.y],
-                    [obj.x, obj.y + obj.h],
-                    [obj.x + obj.w, obj.y + obj.h],
-                  ] as [number, number][]).map(([cx, cy], i) => (
-                    uniform ? (
-                      <ellipse
-                        key={i}
-                        cx={cx}
-                        cy={cy}
-                        rx={HANDLE_PX / (cw * z)}
-                        ry={HANDLE_PX / (ch * z)}
-                        fill="#fff"
-                        stroke={color}
-                        strokeWidth={s(1.5)}
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    ) : (
-                      <circle
-                        key={i}
-                        cx={cx}
-                        cy={cy}
-                        r={HANDLE_PX / 1000}
-                        fill="#fff"
-                        stroke={color}
-                        strokeWidth={0.002}
-                      />
-                    )
-                  ))}
-                </>
-              )}
-            </g>
+            <RectObject
+              key={obj.id}
+              obj={obj as DrawingObject & { w: number; h: number }}
+              isSelected={isSelected}
+              color={color}
+              showLabels={showLabels}
+              showHandles={showHandles}
+              ctx={rendererCtx}
+              gStyle={gStyle}
+            />
           )
         }
 
         if (obj.type === 'point') {
-          const size = isSelected ? POINT_SELECTED_PX : POINT_PX
-          return uniform ? (
-            <ellipse
+          return (
+            <PointObject
               key={obj.id}
-              style={gStyle}
-              cx={obj.x}
-              cy={obj.y}
-              rx={size / (cw * z)}
-              ry={size / (ch * z)}
-              fill={color}
-              stroke={isSelected ? '#fff' : 'none'}
-              strokeWidth={s(1.5)}
-              vectorEffect="non-scaling-stroke"
-            />
-          ) : (
-            <circle
-              key={obj.id}
-              style={gStyle}
-              cx={obj.x}
-              cy={obj.y}
-              r={isSelected ? 0.008 : 0.006}
-              fill={color}
-              stroke={isSelected ? '#fff' : 'none'}
-              strokeWidth={0.002}
+              obj={obj}
+              isSelected={isSelected}
+              color={color}
+              ctx={rendererCtx}
+              gStyle={gStyle}
             />
           )
         }

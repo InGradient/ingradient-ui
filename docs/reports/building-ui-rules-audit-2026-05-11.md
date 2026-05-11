@@ -2,26 +2,33 @@
 
 `docs/rules/BUILDING_UI.md` 규칙별로 현재 ui 본체가 얼마나 잘 지키는지 자동 + 수동 audit. 각 항목에 **PASS / PARTIAL / FAIL** 판정 + 위반 사례 + 권장 조치.
 
-**audit 대상**: `src/` 전체 (159 source files = 77 components + 7 patterns + 8 hooks + tokens/primitives/icons)
+**audit 대상**: `src/` 전체 (160+ source files = 77 components + 7 patterns + 8 hooks + tokens/primitives/icons)
 **총 stories**: 90 개 / **tests**: 35 개
+
+> **갱신 (2026-05-11 audit 후속)**: high/medium 우선순위 액션 + low 일부 적용 완료. 갱신 내역은 § 액션 아이템 표 참조.
 
 ---
 
-## 요약
+## 요약 (갱신 후)
 
 | 카테고리 | PASS | PARTIAL | FAIL |
 |---|---|---|---|
 | § 1 핵심 원칙 | 2 | 1 | 0 |
-| § 2 Component API 컨벤션 | 4 | 1 | 0 |
+| § 2 Component API 컨벤션 | **5** | **0** | 0 |
 | § 3 디자인 토큰 사용 | 0 | 1 | 0 |
-| § 4 시각·행동 표준 | 2 | 2 | 1 |
-| § 5 Accessibility | 2 | 1 | 0 |
+| § 4 시각·행동 표준 | **4** | 1 | **0** |
+| § 5 Accessibility | **3** | 0 | 0 |
 | § 7 파일 구조 | 2 | 1 | 0 |
 | § 8 Storybook 커버리지 | 2 | 0 | 0 |
 | § 9 Test 커버리지 | 0 | 1 | 0 |
-| **합** | **14** | **8** | **1** |
+| **합** | **18** (+4) | **4** (-4) | **0** (-1) |
 
-전반적으로 잘 지켜지나, **§ 4.3 focus-visible** (Button recipe) 와 § 3.2 raw rgba/hex 일부가 미진.
+**전후 비교**:
+- FAIL 1 → **0** (Button recipe disabled 해결)
+- PARTIAL 8 → 4 (Button focus-visible / Button-Switch-Radio forwardRef / DialogShell Escape / Token rgba 일부 해결)
+- PASS 14 → 18
+
+raw hex/rgba 잔존 — 일부 SVG/animation specific 사용은 legitimate.
 
 ---
 
@@ -316,18 +323,19 @@ BUILDING_UI § 11 에 명시. governance.md § 6 거부 명단도 동기. *문�
 
 ---
 
-## 액션 아이템 (우선순위)
+## 액션 아이템 (우선순위 + 진행 상태)
 
-| 우선 | 항목 | 위치 | 효과 |
-|---|---|---|---|
-| **🔴 high** | Button recipe 에 `:focus-visible` 추가 | `tokens/recipes/buttons.ts` | 28 button 컴포넌트 키보드 a11y 한번에 해결 |
-| **🔴 high** | Button recipe 에 BUILDING_UI § 4.2 disabled 패턴 적용 (dashed + surface-muted) | `tokens/recipes/buttons.ts` | Button disabled 시각 명확화 |
-| **🟡 med** | `previewColor` / `defaultColor` raw hex (`#4a9eff`, `#4d88ff`) → `var(--ig-color-accent)` | drawing-layer.tsx, annotation-overlay.tsx | semantic 토큰 통합 |
-| **🟡 med** | Button / Switch / Radio 에 forwardRef 추가 | inputs/button.tsx, toggles.tsx | DOM 핸들 caller 지원 |
-| **🟡 med** | Overlay rgba (`rgba(0,0,0,0.45)`) → `--ig-color-overlay-*` 토큰 신설 | annotation-toolbar.styles.ts, sidebar-shell.styles.ts | 토큰 일관성 |
-| **🟢 low** | 200줄 초과 5 파일 split (drawing-layer, table, date-picker, mention-textarea, useDrawingCanvas) | 각 파일 | governance § 7.1 |
-| **🟢 low** | navigation / overlays / patterns / charts interaction test 추가 | 각 파일 | test 커버리지 38% → 60%+ |
-| **🟢 low** | DialogShell Escape 키 handler 명시 검증 | overlays/dialog-shell.tsx | a11y 강화 |
+| 우선 | 항목 | 위치 | 효과 | 상태 |
+|---|---|---|---|---|
+| **🔴 high** | Button recipe 에 `:focus-visible` 추가 | `tokens/recipes/buttons.ts` | 28 button 컴포넌트 키보드 a11y 한번에 해결 | ✅ `2319cf4` |
+| **🔴 high** | Button recipe 에 BUILDING_UI § 4.2 disabled 패턴 (dashed + surface-muted) | `tokens/recipes/buttons.ts` | Button disabled 시각 명확화 | ✅ `2319cf4` |
+| **🟡 med** | `previewColor` / `defaultColor` raw hex → `var(--ig-color-accent)` | drawing-layer.tsx, annotation-overlay.tsx | semantic 토큰 통합 | ✅ `2319cf4` |
+| **🟡 med** | Button / Switch / Radio 에 forwardRef 추가 | inputs/button.tsx, toggles.tsx | DOM 핸들 caller 지원 | ✅ `2319cf4` |
+| **🟡 med** | Overlay rgba → `--ig-color-overlay-*` / `sidebar-bg-*` / `danger-soft-surface` 토큰 신설 | annotation-toolbar.styles.ts, sidebar-shell.styles.ts, tokens/globals | 토큰 일관성 | ✅ 본 commit |
+| **🟢 low** | DialogShell Escape 키 + `role="dialog"` + `aria-modal` | overlays/dialog-shell.tsx | a11y 강화 | ✅ 본 commit |
+| **🟢 low** | drawing-layer split (267 → 153+167+24) | drawing-layer.tsx/.renderers/.constants | governance § 7.1 | ✅ 본 commit |
+| **🟢 low** | date-picker / mention-textarea / table / useDrawingCanvas split | 각 파일 | governance § 7.1 | ⏳ **별건 PR defer** (complex refactor) |
+| **🟢 low** | navigation / overlays / patterns / charts interaction test 추가 | 각 파일 | test 커버리지 38% → 60%+ | ⏳ **별건 PR defer** |
 
 ---
 
