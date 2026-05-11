@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components'
 
-const STRIPE_PERIOD_PX = 32
+const STRIPE_PERIOD_PX = 20
 const ANGLE_DEG = 120
 const ANGLE_RAD = (ANGLE_DEG * Math.PI) / 180
 
@@ -21,15 +21,17 @@ const activeOverlay = css`
     content: '';
     position: absolute;
     inset: 0;
+    /**
+     * Continuous wave (peak ↔ baseline) — fully-transparent gap 이 없으므로
+     * 어느 위치도 "shimmer 가 비어 보이는" 구간이 없음.
+     */
     background-image: repeating-linear-gradient(
       ${ANGLE_DEG}deg,
-      rgba(255, 255, 255, 0) 0,
-      rgba(255, 255, 255, 0.22) 4px,
-      rgba(255, 255, 255, 0.22) 16px,
-      rgba(255, 255, 255, 0) 20px,
-      rgba(255, 255, 255, 0) ${STRIPE_PERIOD_PX}px
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.24) ${STRIPE_PERIOD_PX / 2}px,
+      rgba(255, 255, 255, 0.06) ${STRIPE_PERIOD_PX}px
     );
-    animation: ${shimmer} 1.3s linear infinite;
+    animation: ${shimmer} 1s linear infinite;
   }
 `
 
