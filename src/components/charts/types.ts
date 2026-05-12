@@ -1,4 +1,4 @@
-export { chartPalette } from '../../tokens/variants'
+export { chartPalette } from '../../tokens/semantic/states'
 
 export interface CartesianSeries {
   key: string

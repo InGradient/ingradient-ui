@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { alertToneStyles } from '../../tokens/variants'
+import { alertToneStyles } from '../../tokens/semantic/states'
 
 // ── Toast item ───────────────────────────────────────────────────────────────
 

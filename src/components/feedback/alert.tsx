@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { alertToneStyles } from '../../tokens/variants'
+import { alertToneStyles } from '../../tokens/semantic/states'
 
 export const Alert = styled.div<{ $tone?: keyof typeof alertToneStyles }>`
   ${({ $tone = 'info' }) => css`

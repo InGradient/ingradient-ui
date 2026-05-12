@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
-import { statusToneStyles, type StatusTone } from '../../tokens/variants'
+import { statusToneStyles, type StatusTone } from '../../tokens/semantic/states'
 
-export type { StatusTone } from '../../tokens/variants'
+export type { StatusTone } from '../../tokens/semantic/states'
 
 export const SmallText = styled.span`
   color: var(--ig-color-text-muted);
