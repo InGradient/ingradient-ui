@@ -17,7 +17,7 @@ const handoff = defineHandoff({
   service: 'platform',
   version: '0.0.1',
   page: 'Catalog',
-  referenceStory: 'Pages / Platform / 0.0.1 / Catalog / Default',
+  referenceStory: 'Pages / Platform / Catalog / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/catalog-scenarios.ts',
   requiredScenarios: [
@@ -276,7 +276,7 @@ function CatalogScene(args: Args) {
 }
 
 const meta = {
-  title: 'Pages/Platform/0.0.1/Catalog',
+  title: 'Pages/Platform/Catalog',
   component: CatalogScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

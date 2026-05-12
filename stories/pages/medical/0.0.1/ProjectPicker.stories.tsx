@@ -8,7 +8,7 @@ const handoff = defineHandoff({
   service: 'medical',
   version: '0.0.1',
   page: 'ProjectPicker',
-  referenceStory: 'Pages / Medical / 0.0.1 / ProjectPicker / Default',
+  referenceStory: 'Pages / Medical / ProjectPicker / Default',
   preset: 'medical-0.0.1',
   fixturesPath: 'stories/fixtures/medical/0.0.1/cases.ts',
   requiredScenarios: ['default', 'empty'],
@@ -111,7 +111,7 @@ function ProjectPickerScene({ empty = false }: Scene) {
 }
 
 const meta = {
-  title: 'Pages/Medical/0.0.1/ProjectPicker',
+  title: 'Pages/Medical/ProjectPicker',
   component: ProjectPickerScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

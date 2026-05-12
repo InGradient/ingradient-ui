@@ -8,7 +8,7 @@ const handoff = defineHandoff({
   service: 'medical',
   version: '0.0.1',
   page: 'ClassWorkspace',
-  referenceStory: 'Pages / Medical / 0.0.1 / ClassWorkspace / Default',
+  referenceStory: 'Pages / Medical / ClassWorkspace / Default',
   preset: 'medical-0.0.1',
   fixturesPath: 'stories/fixtures/medical/0.0.1/cases.ts (mockClasses)',
   requiredScenarios: ['default', 'drafting', 'empty'],
@@ -107,7 +107,7 @@ function ClassWorkspaceScene({ empty = false, drafting = false }: Scene) {
 }
 
 const meta = {
-  title: 'Pages/Medical/0.0.1/ClassWorkspace',
+  title: 'Pages/Medical/ClassWorkspace',
   component: ClassWorkspaceScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

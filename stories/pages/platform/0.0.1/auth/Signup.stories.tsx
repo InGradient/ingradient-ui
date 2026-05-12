@@ -9,7 +9,7 @@ const handoff = defineHandoff({
   service: 'platform',
   version: '0.0.1',
   page: 'Signup',
-  referenceStory: 'Pages / Platform / 0.0.1 / Auth / Signup / Default',
+  referenceStory: 'Pages / Platform / Auth / Signup / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/users.ts',
   requiredScenarios: ['default', 'password-mismatch', 'submitting'],
@@ -109,7 +109,7 @@ function SignupScene(scene: SignupScene) {
 }
 
 const meta = {
-  title: 'Pages/Platform/0.0.1/Auth/Signup',
+  title: 'Pages/Platform/Auth/Signup',
   component: SignupScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

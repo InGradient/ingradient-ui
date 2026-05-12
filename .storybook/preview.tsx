@@ -76,20 +76,6 @@ const preview: Preview = {
     },
   },
   globalTypes: {
-    service: {
-      name: 'Service',
-      description: '대상 서비스 (§ 14.2)',
-      toolbar: {
-        icon: 'box',
-        dynamicTitle: true,
-        items: [
-          { value: 'none', title: 'None' },
-          { value: 'platform', title: 'Platform' },
-          { value: 'edge', title: 'Edge' },
-          { value: 'medical', title: 'Medical' },
-        ],
-      },
-    },
     version: {
       name: 'Version',
       description: '서비스 UI version (§ 14.3)',
@@ -141,7 +127,6 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    service: 'none',
     version: '0.0.1',
     mode: 'inherit',
     density: 'inherit',
@@ -150,11 +135,14 @@ const preview: Preview = {
   loaders: [mswLoader],
   decorators: [
     (Story, context) => {
-      const service = context.globals.service as string
       const version = context.globals.version as string
       const modeGlobal = context.globals.mode as string
       const densityGlobal = context.globals.density as string
       const locale = context.globals.locale as string
+
+      // service 는 story parameters.handoff.service 또는 parameters.service 에서 가져옴
+      const handoff = context.parameters?.handoff as { service?: string } | undefined
+      const service = handoff?.service ?? (context.parameters?.service as string | undefined) ?? 'none'
 
       const preset = resolvePreset(service, version)
       const modeOverride: ThemeMode | undefined =

@@ -13,7 +13,7 @@ const handoff = defineHandoff({
   service: 'platform',
   version: '0.0.1',
   page: 'ClassManage',
-  referenceStory: 'Pages / Platform / 0.0.1 / ClassManage / Default',
+  referenceStory: 'Pages / Platform / ClassManage / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/class-scenarios.ts',
   requiredScenarios: ['default', 'empty', 'loading', 'permission-denied', 'long-text', 'many-items'],
@@ -192,7 +192,7 @@ function ClassManageScene(args: Args) {
 }
 
 const meta = {
-  title: 'Pages/Platform/0.0.1/ClassManage',
+  title: 'Pages/Platform/ClassManage',
   component: ClassManageScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

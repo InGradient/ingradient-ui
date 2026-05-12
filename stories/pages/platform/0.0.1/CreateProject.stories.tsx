@@ -11,7 +11,7 @@ const handoff = defineHandoff({
   service: 'platform',
   version: '0.0.1',
   page: 'CreateProject',
-  referenceStory: 'Pages / Platform / 0.0.1 / CreateProject / Default',
+  referenceStory: 'Pages / Platform / CreateProject / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/create-project-scenarios.ts',
   requiredScenarios: ['default', 'filled', 'validation-error', 'submitting', 'server-error'],
@@ -149,7 +149,7 @@ function CreateProjectScene({ scenario }: Args) {
 }
 
 const meta = {
-  title: 'Pages/Platform/0.0.1/CreateProject',
+  title: 'Pages/Platform/CreateProject',
   component: CreateProjectScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },
