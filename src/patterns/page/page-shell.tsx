@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
 import { appShell, pageContentLayout, pageHeaderSurface } from '../shared/surfaces'
-import { media } from '../../tokens/foundations/breakpoints'
+import { media } from '../../tokens/core/breakpoints'
 
 export const AppShell = styled.div`
   ${appShell}

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../tokens/foundations/breakpoints'
+import { media } from '../../tokens/core/breakpoints'
 
 const SplitLayoutRoot = styled.div<{
   $sidebarWidth: string

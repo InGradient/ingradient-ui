@@ -7,7 +7,7 @@ import {
   shadowScale,
   shadowScaleLight,
   typographyScale,
-} from '../foundations'
+} from '../core'
 import type { IngradientTheme } from './types'
 
 type Palette = Record<keyof typeof foundationColors, string>

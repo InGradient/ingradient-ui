@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { media } from '../../tokens/foundations/breakpoints'
+import { media } from '../../tokens/core/breakpoints'
 
 const SIDEBAR_INSET = 18
 

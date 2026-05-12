@@ -1,4 +1,4 @@
-export * from './foundations'
+export * from './core'
 export * from './semantic'
 export * from './recipes'
 export * from './variants'

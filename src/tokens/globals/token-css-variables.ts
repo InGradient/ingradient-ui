@@ -8,7 +8,7 @@ import {
   typographyScale,
   zIndexScale,
   controlSizes,
-} from '../foundations'
+} from '../core'
 import { ingradientThemeDark, ingradientThemeLight } from '../semantic/theme'
 import type { IngradientTheme } from '../semantic/types'
 

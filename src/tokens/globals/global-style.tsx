@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { foundationColors, foundationColorsLight } from '../foundations'
+import { foundationColors, foundationColorsLight } from '../core'
 import { renderTokensCss } from './css-contract'
 
 export const IngradientGlobalStyle = createGlobalStyle`
