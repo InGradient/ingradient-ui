@@ -6,12 +6,16 @@ import {
   IngradientThemeProvider,
   PresetProvider,
   platformV001,
+  edgeV001,
+  medicalV001,
   type Preset,
 } from '../src/tokens'
 
 const presetRegistry: Record<string, Preset | undefined> = {
   none: undefined,
   'platform-0.0.1': platformV001,
+  'edge-0.0.1': edgeV001,
+  'medical-0.0.1': medicalV001,
 }
 
 function normalizeBasePath(basePath: string | undefined) {
@@ -70,6 +74,8 @@ const preview: Preview = {
         items: [
           { value: 'none', title: 'None (legacy toolbars)' },
           { value: 'platform-0.0.1', title: 'platform 0.0.1' },
+          { value: 'edge-0.0.1', title: 'edge 0.0.1' },
+          { value: 'medical-0.0.1', title: 'medical 0.0.1' },
         ],
       },
     },

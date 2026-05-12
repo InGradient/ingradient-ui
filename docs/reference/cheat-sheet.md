@@ -214,10 +214,10 @@ import { ... } from '@ingradient/ui/primitives'  // surfaceCard / surfacePanel /
 
 **Preset 사용** (Phase 4+):
 ```tsx
-import { PresetProvider, platformV001 } from '@ingradient/ui/tokens'
+import { PresetProvider, platformV001, edgeV001, medicalV001 } from '@ingradient/ui/tokens'
 <PresetProvider preset={platformV001}>{children}</PresetProvider>
 ```
-data-ig-{theme,brand,density,mode} attribute 가 html root 에 적용됨.
+data-ig-{theme,brand,density,mode} attribute 가 html root 에 적용됨. 등록된 preset: `platform-0.0.1`, `edge-0.0.1`, `medical-0.0.1`.
 
 자주 쓰는 CSS 변수 (`@ingradient/ui/tokens.css` import 후 사용):
 
@@ -275,4 +275,4 @@ CSS-in-JS recipes — styled 정의 안에서 `${recipe}` 로 mixin:
 - [`recipes/`](recipes/) — 자주 쓰는 조합 레시피
 - [Storybook](../../storybook-static) — live preview + props playground
 
-마지막 업데이트: 2026-05-12. (Phase 4 presets 도입 — `PresetProvider`, `platformV001` + Storybook preset toolbar)
+마지막 업데이트: 2026-05-12. (Phase 6 multi-service — edgeV001 / medicalV001 preset + Edge/Medical 0.0.1 페이지 stories)
