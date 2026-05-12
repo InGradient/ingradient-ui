@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Button } from '@ingradient/ui/components'
 import { Box, Grid, Inline, Stack } from '@ingradient/ui/primitives'
+import { copyToClipboard, downloadFile } from '../../support/download'
 
 type PrimitiveKind = 'Stack' | 'Inline' | 'Grid' | 'Box'
 
@@ -66,12 +68,32 @@ function LayoutComposer(args: ComposerArgs) {
     preview = <Box padding={args.padding}>{children}</Box>
   }
 
+  const snippet = buildSnippet(args)
+  const [feedback, setFeedback] = useState<string | null>(null)
+  const flash = (msg: string) => {
+    setFeedback(msg)
+    setTimeout(() => setFeedback(null), 2400)
+  }
+  const handleDownload = () => {
+    downloadFile(`${args.primitive}.tsx`, snippet, 'text/typescript')
+    flash(`Downloaded ${args.primitive}.tsx`)
+  }
+  const handleCopy = async () => {
+    const ok = await copyToClipboard(snippet)
+    flash(ok ? 'Copied snippet to clipboard' : 'Clipboard copy failed')
+  }
+
   return (
     <div>
       <div style={{ padding: 'var(--ig-space-6)', background: 'var(--ig-color-surface-panel)', border: '1px solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-lg)', minHeight: 200 }}>
         {preview}
       </div>
-      <pre style={codeStyle}>{buildSnippet(args)}</pre>
+      <pre style={codeStyle}>{snippet}</pre>
+      <Inline gap={3} style={{ marginTop: 'var(--ig-space-4)' }}>
+        <Button variant="accent" size="sm" onClick={handleDownload}>Download TSX</Button>
+        <Button variant="secondary" size="sm" onClick={handleCopy}>Copy snippet</Button>
+        {feedback ? <span style={{ ...codeStyle, marginTop: 0, padding: 'var(--ig-space-2) var(--ig-space-3)' }}>{feedback}</span> : null}
+      </Inline>
     </div>
   )
 }

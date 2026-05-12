@@ -1,5 +1,7 @@
 import type { Preset } from '@ingradient/ui/tokens'
 
+export { downloadFile, copyToClipboard } from '../../support/download'
+
 /**
  * Preset → JSON 문자열 (pretty-print).
  */
@@ -34,33 +36,4 @@ function toIdentifier(id: string): string {
       return safe.charAt(0).toUpperCase() + safe.slice(1)
     })
     .join('')
-}
-
-/**
- * 브라우저에서 파일 다운로드 트리거.
- */
-export function downloadFile(filename: string, content: string, mimeType = 'application/json') {
-  if (typeof document === 'undefined') return
-  const blob = new Blob([content], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  URL.revokeObjectURL(url)
-}
-
-/**
- * 텍스트를 clipboard 에 복사. async 권한 필요.
- */
-export async function copyToClipboard(text: string): Promise<boolean> {
-  if (typeof navigator === 'undefined' || !navigator.clipboard) return false
-  try {
-    await navigator.clipboard.writeText(text)
-    return true
-  } catch {
-    return false
-  }
 }
