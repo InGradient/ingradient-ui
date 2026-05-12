@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '@ingradient/ui/components'
+import { useArgs } from 'storybook/preview-api'
+import { Button, TextField } from '@ingradient/ui/components'
 import { Box, Grid, Inline, Stack } from '@ingradient/ui/primitives'
 import { copyToClipboard, downloadFile } from '../../support/download'
+import { deleteDraft, listDrafts, saveDraft, type Draft } from '../../support/drafts'
+
+const DRAFTS_SCOPE = 'layout-composer'
 
 type PrimitiveKind = 'Stack' | 'Inline' | 'Grid' | 'Box'
 
@@ -70,6 +74,11 @@ function LayoutComposer(args: ComposerArgs) {
 
   const snippet = buildSnippet(args)
   const [feedback, setFeedback] = useState<string | null>(null)
+  const [, updateArgs] = useArgs<ComposerArgs>()
+  const [draftName, setDraftName] = useState('')
+  const [drafts, setDrafts] = useState<Draft<ComposerArgs>[]>(() => listDrafts<ComposerArgs>(DRAFTS_SCOPE))
+  const refreshDrafts = () => setDrafts(listDrafts<ComposerArgs>(DRAFTS_SCOPE))
+
   const flash = (msg: string) => {
     setFeedback(msg)
     setTimeout(() => setFeedback(null), 2400)
@@ -81,6 +90,22 @@ function LayoutComposer(args: ComposerArgs) {
   const handleCopy = async () => {
     const ok = await copyToClipboard(snippet)
     flash(ok ? 'Copied snippet to clipboard' : 'Clipboard copy failed')
+  }
+  const handleSaveDraft = () => {
+    const name = draftName.trim() || args.primitive
+    saveDraft(DRAFTS_SCOPE, name, args)
+    refreshDrafts()
+    setDraftName('')
+    flash(`Saved draft "${name}"`)
+  }
+  const handleLoadDraft = (draft: Draft<ComposerArgs>) => {
+    updateArgs(draft.args)
+    flash(`Loaded "${draft.name}"`)
+  }
+  const handleDeleteDraft = (name: string) => {
+    deleteDraft(DRAFTS_SCOPE, name)
+    refreshDrafts()
+    flash(`Deleted "${name}"`)
   }
 
   return (
@@ -94,6 +119,34 @@ function LayoutComposer(args: ComposerArgs) {
         <Button variant="secondary" size="sm" onClick={handleCopy}>Copy snippet</Button>
         {feedback ? <span style={{ ...codeStyle, marginTop: 0, padding: 'var(--ig-space-2) var(--ig-space-3)' }}>{feedback}</span> : null}
       </Inline>
+
+      <Stack gap={3} style={{ marginTop: 'var(--ig-space-6)' }}>
+        <h3 style={{ fontSize: 'var(--ig-font-size-md)', fontWeight: 600, color: 'var(--ig-color-text-secondary)', margin: 0 }}>Drafts (localStorage)</h3>
+        <Inline gap={3} align="center">
+          <TextField placeholder="Draft name (e.g. 3-col-cards)" value={draftName} onChange={(e) => setDraftName(e.target.value)} />
+          <Button variant="accent" size="sm" onClick={handleSaveDraft}>Save as draft</Button>
+        </Inline>
+        {drafts.length === 0 ? (
+          <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>(no drafts saved yet)</span>
+        ) : (
+          <Stack gap={2}>
+            {drafts.map((d) => (
+              <Inline key={d.name} gap={3} justify="space-between" align="center">
+                <Stack gap={0}>
+                  <span style={{ fontWeight: 600 }}>{d.name}</span>
+                  <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
+                    {d.args.primitive} · {new Date(d.savedAt).toLocaleString()}
+                  </span>
+                </Stack>
+                <Inline gap={2}>
+                  <Button variant="secondary" size="sm" onClick={() => handleLoadDraft(d)}>Load</Button>
+                  <Button variant="secondary" size="sm" tone="danger" onClick={() => handleDeleteDraft(d.name)}>Delete</Button>
+                </Inline>
+              </Inline>
+            ))}
+          </Stack>
+        )}
+      </Stack>
     </div>
   )
 }
