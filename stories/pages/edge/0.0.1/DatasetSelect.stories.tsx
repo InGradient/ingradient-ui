@@ -8,7 +8,7 @@ const handoff = defineHandoff({
   service: 'edge',
   version: '0.0.1',
   page: 'DatasetSelect',
-  referenceStory: 'Pages / Edge / DatasetSelect / WithDatasets',
+  referenceStory: 'Pages / Edge / 0.0.1 / DatasetSelect / WithDatasets',
   preset: 'edge-0.0.1',
   fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
   requiredScenarios: ['with-datasets', 'empty'],
@@ -121,7 +121,7 @@ function DatasetSelectScene({ showDatasets = true }: Scene) {
 }
 
 const meta = {
-  title: 'Pages/Edge/DatasetSelect',
+  title: 'Pages/Edge/0.0.1/DatasetSelect',
   component: DatasetSelectScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

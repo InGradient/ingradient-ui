@@ -14,7 +14,7 @@ const handoff = defineHandoff({
   service: 'platform',
   version: '0.0.1',
   page: 'Login',
-  referenceStory: 'Pages / Platform / Auth / Login / Default',
+  referenceStory: 'Pages / Platform / 0.0.1 / Auth / Login / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/scenarios.ts',
   requiredScenarios: ['default', 'validation-error', 'submitting', 'permission-denied', 'long-text'],
@@ -90,7 +90,7 @@ function LoginScene({ scenario }: Args) {
 }
 
 const meta = {
-  title: 'Pages/Platform/Auth/Login',
+  title: 'Pages/Platform/0.0.1/Auth/Login',
   component: LoginScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

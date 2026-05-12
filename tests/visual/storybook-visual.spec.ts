@@ -35,21 +35,21 @@ const stories: StoryTarget[] = [
   },
 
   // Platform pages (Phase 9)
-  { name: 'pages-platform-auth-login', id: 'pages-platform-auth-login--default', readyText: 'Sign in', fullPage: true },
-  { name: 'pages-platform-auth-signup', id: 'pages-platform-auth-signup--default', readyText: 'Sign up', fullPage: true },
-  { name: 'pages-platform-catalog', id: 'pages-platform-catalog--default', readyText: 'Catalog', fullPage: true },
-  { name: 'pages-platform-classmanage', id: 'pages-platform-classmanage--default', readyText: 'Classes', fullPage: true },
-  { name: 'pages-platform-createproject', id: 'pages-platform-createproject--default', readyText: 'Add Project', fullPage: true },
+  { name: 'pages-platform-0-0-1-auth-login', id: 'pages-platform-0-0-1-auth-login--default', readyText: 'Sign in', fullPage: true },
+  { name: 'pages-platform-0-0-1-auth-signup', id: 'pages-platform-0-0-1-auth-signup--default', readyText: 'Sign up', fullPage: true },
+  { name: 'pages-platform-0-0-1-catalog', id: 'pages-platform-0-0-1-catalog--default', readyText: 'Catalog', fullPage: true },
+  { name: 'pages-platform-0-0-1-classmanage', id: 'pages-platform-0-0-1-classmanage--default', readyText: 'Classes', fullPage: true },
+  { name: 'pages-platform-0-0-1-createproject', id: 'pages-platform-0-0-1-createproject--default', readyText: 'Add Project', fullPage: true },
 
   // Edge pages (Phase 6)
-  { name: 'pages-edge-login', id: 'pages-edge-login--online', readyText: 'Edge Sign in', fullPage: true },
-  { name: 'pages-edge-license', id: 'pages-edge-license--valid', readyText: 'License', fullPage: true },
-  { name: 'pages-edge-datasetselect', id: 'pages-edge-datasetselect--with-datasets', readyText: 'Edge Workstation', fullPage: true },
+  { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'Edge Sign in', fullPage: true },
+  { name: 'pages-edge-0-0-1-license', id: 'pages-edge-0-0-1-license--valid', readyText: 'License', fullPage: true },
+  { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-datasets', readyText: 'Edge Workstation', fullPage: true },
 
   // Medical pages (Phase 6)
-  { name: 'pages-medical-auth', id: 'pages-medical-auth--login', readyText: 'medilabel', fullPage: true },
-  { name: 'pages-medical-projectpicker', id: 'pages-medical-projectpicker--default', readyText: 'Cases', fullPage: true },
-  { name: 'pages-medical-classworkspace', id: 'pages-medical-classworkspace--default', readyText: 'Label classes', fullPage: true },
+  { name: 'pages-medical-0-0-1-auth', id: 'pages-medical-0-0-1-auth--login', readyText: 'medilabel', fullPage: true },
+  { name: 'pages-medical-0-0-1-projectpicker', id: 'pages-medical-0-0-1-projectpicker--default', readyText: 'Cases', fullPage: true },
+  { name: 'pages-medical-0-0-1-classworkspace', id: 'pages-medical-0-0-1-classworkspace--default', readyText: 'Label classes', fullPage: true },
 
   // Sandboxes (Phase 12)
   { name: 'sandboxes-platform-densecatalog', id: 'sandboxes-platform-densecatalog--default', readyText: 'ultra-dense experiment', fullPage: true },

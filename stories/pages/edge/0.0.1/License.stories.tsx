@@ -9,7 +9,7 @@ const handoff = defineHandoff({
   service: 'edge',
   version: '0.0.1',
   page: 'License',
-  referenceStory: 'Pages / Edge / License / Valid',
+  referenceStory: 'Pages / Edge / 0.0.1 / License / Valid',
   preset: 'edge-0.0.1',
   fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts (mockLicense)',
   requiredScenarios: ['valid', 'expired', 'unbound', 'submitting'],
@@ -124,7 +124,7 @@ function LicenseScene(scene: LicenseScene) {
 }
 
 const meta = {
-  title: 'Pages/Edge/License',
+  title: 'Pages/Edge/0.0.1/License',
   component: LicenseScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

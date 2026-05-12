@@ -78,15 +78,6 @@ const preview: Preview = {
     },
   },
   globalTypes: {
-    version: {
-      name: 'Version',
-      description: '서비스 UI version (§ 14.3)',
-      toolbar: {
-        icon: 'time',
-        dynamicTitle: true,
-        items: [{ value: '0.0.1', title: '0.0.1' }],
-      },
-    },
     mode: {
       name: 'Mode',
       description: '화면 모드 (§ 14.5) — inherit = preset.mode 따름',
@@ -129,7 +120,6 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    version: '0.0.1',
     mode: 'inherit',
     density: 'inherit',
     locale: 'ko',
@@ -137,14 +127,15 @@ const preview: Preview = {
   loaders: [mswLoader],
   decorators: [
     (Story, context) => {
-      const version = context.globals.version as string
       const modeGlobal = context.globals.mode as string
       const densityGlobal = context.globals.density as string
       const locale = context.globals.locale as string
 
-      // service 는 story parameters.handoff.service 또는 parameters.service 에서 가져옴
-      const handoff = context.parameters?.handoff as { service?: string } | undefined
-      const service = handoff?.service ?? (context.parameters?.service as string | undefined) ?? 'none'
+      // service / version 은 story parameters.handoff 에서 가져옴 (service 마다 진화 속도 다름).
+      // sandbox 처럼 handoff.version 없으면 service 별 default ('0.0.1') 사용.
+      const handoff = context.parameters?.handoff as { service?: string; version?: string } | undefined
+      const service = handoff?.service ?? 'none'
+      const version = handoff?.version ?? '0.0.1'
 
       const preset = resolvePreset(service, version)
       const modeOverride: ThemeMode | undefined =

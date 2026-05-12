@@ -8,7 +8,7 @@ const handoff = defineHandoff({
   service: 'edge',
   version: '0.0.1',
   page: 'Login',
-  referenceStory: 'Pages / Edge / Login / Online',
+  referenceStory: 'Pages / Edge / 0.0.1 / Login / Online',
   preset: 'edge-0.0.1',
   fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
   requiredScenarios: ['online', 'offline', 'invalid-credentials', 'submitting'],
@@ -97,7 +97,7 @@ function LoginScene(scene: LoginScene) {
 }
 
 const meta = {
-  title: 'Pages/Edge/Login',
+  title: 'Pages/Edge/0.0.1/Login',
   component: LoginScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },

@@ -7,7 +7,7 @@ const handoff = defineHandoff({
   service: 'medical',
   version: '0.0.1',
   page: 'Auth',
-  referenceStory: 'Pages / Medical / Auth / Login',
+  referenceStory: 'Pages / Medical / 0.0.1 / Auth / Login',
   preset: 'medical-0.0.1',
   fixturesPath: '(없음 — 단순 form)',
   requiredScenarios: ['login', 'signup', 'invalid-credentials', 'submitting'],
@@ -98,7 +98,7 @@ function AuthScene(scene: Scene) {
 }
 
 const meta = {
-  title: 'Pages/Medical/Auth',
+  title: 'Pages/Medical/0.0.1/Auth',
   component: AuthScene,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },
