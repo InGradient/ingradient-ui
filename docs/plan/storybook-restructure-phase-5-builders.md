@@ -11,11 +11,13 @@
 
 상위 문서 8 의 builders 도구를 구현한다. 디자이너가 Storybook 안에서 직접 다음을 실험할 수 있게 한다:
 
-- **ThemeBuilder** — Theme + Brand + Density + Token override 조합
+- **ThemeBuilder** — Theme + Brand + Density + Token override 조합 *(이연: themes/brands/density 가 placeholder 인 상태에서 만들면 빈 toggle 만 노출됨. 토큰 실제 값 채워질 때 함께 작성)*
 - **PageComposer** — Pattern + Layout 조합으로 페이지 변형
 - **LayoutComposer** — Layout primitive 조합
 
 각 도구는 코드를 작성하지 않고도 결과를 즉시 시각화 → 안정화되면 `stories/pages/` 로 승격.
+
+**구현 방식 결정 (2026-05-12)**: 별도 "메인 UI + sub-panel" 보다 **Storybook native args + Controls** 사용. 디자이너 친화적이고 코드도 가벼움.
 
 ---
 
