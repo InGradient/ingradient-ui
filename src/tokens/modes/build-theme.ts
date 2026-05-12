@@ -1,19 +1,17 @@
 import {
   breakpoints,
-  foundationColors,
-  foundationColorsLight,
   motionScale,
   radiusScale,
   shadowScale,
-  shadowScaleLight,
   typographyScale,
+  foundationColors,
 } from '../core'
-import type { IngradientTheme } from './types'
+import type { IngradientTheme } from '../semantic/types'
 
 type Palette = Record<keyof typeof foundationColors, string>
 type Shadows = Record<keyof typeof shadowScale, string>
 
-function buildTheme(name: string, palette: Palette, shadows: Shadows): IngradientTheme {
+export function buildTheme(name: string, palette: Palette, shadows: Shadows): IngradientTheme {
   return {
     name,
     colors: {
@@ -59,19 +57,3 @@ function buildTheme(name: string, palette: Palette, shadows: Shadows): Ingradien
     },
   }
 }
-
-export const ingradientThemeDark: IngradientTheme = buildTheme('portalDark', foundationColors, shadowScale)
-export const ingradientThemeLight: IngradientTheme = buildTheme('portalLight', foundationColorsLight, shadowScaleLight)
-
-// Backward-compat default — existing callers that import `ingradientTheme` keep dark.
-export const ingradientTheme = ingradientThemeDark
-
-export const themes = {
-  dark: ingradientThemeDark,
-  light: ingradientThemeLight,
-  // legacy aliases
-  portalDark: ingradientThemeDark,
-  portalLight: ingradientThemeLight,
-}
-
-export type ThemeMode = 'dark' | 'light'

@@ -9,7 +9,7 @@ import {
   zIndexScale,
   controlSizes,
 } from '../core'
-import { ingradientThemeDark, ingradientThemeLight } from '../semantic/theme'
+import { ingradientThemeDark, ingradientThemeLight } from '../modes'
 import type { IngradientTheme } from '../semantic/types'
 
 type Palette = Record<keyof typeof foundationColors, string>

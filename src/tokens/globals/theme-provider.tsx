@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { ingradientThemeDark, ingradientThemeLight, type ThemeMode } from '../semantic/theme'
+import { ingradientThemeDark, ingradientThemeLight, type ThemeMode } from '../modes'
 import type { IngradientTheme } from '../semantic/types'
 
 export interface IngradientThemeProviderProps {
