@@ -13,6 +13,7 @@ import {
   type DensityId,
 } from '../src/tokens'
 import { ReviewWidget } from '../stories/support/ReviewWidget'
+import { CommentPanel } from '../stories/support/CommentPanel'
 
 type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
 type VersionId = '0.0.1'
@@ -170,6 +171,7 @@ const preview: Preview = {
             </div>
           </div>
           {showReviewWidget ? <ReviewWidget storyId={context.id} /> : null}
+          {showReviewWidget ? <CommentPanel storyId={context.id} /> : null}
         </>
       )
 
