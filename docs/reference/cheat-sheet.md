@@ -66,7 +66,7 @@ import { ... } from '@ingradient/ui/primitives'  // surfaceCard / surfacePanel /
 | **`ProgressBar`** | 진행률 막대 (0–100). 진행 중 시 대각선 shimmer animation 자동 | `value: number` |
 | **`NotificationBadge`** | 알림 개수 점/숫자 (top-right 배치) | `count?`, children |
 | **`EmptyState`** | 빈 상태 카드 | `icon?`, `title`, `description?`, `action?` |
-| **`SelectionActionBar`** | 선택 항목 액션바 (floating) | `count`, `actions`, `onClear` |
+| **`SelectionActionBar`** | 선택 항목 액션바 (floating) | `count`, `actions`, `onClear`. *현재 한계*: checkbox / indeterminate / loading spinner / "select all entire" slot 미지원 — platform-style gallery selection bar 에는 prop 확장 필요 |
 | **`StepIndicator`** | 단계 진행 표시 | `items: StepItem[]` (`status: 'pending'/'running'/'done'/'error'`) |
 | **`SmallText`** | 작은 보조 텍스트 | `<span>` |
 | **`LoadingState` / `ErrorState` / `EmptyStateText`** | 인라인 상태 메시지 (block) | children |
@@ -118,7 +118,7 @@ import { ... } from '@ingradient/ui/primitives'  // surfaceCard / surfacePanel /
 | **`PreviewCard`** | 큰 이미지 미리보기 카드 (호버) | `imageUrl`, `title?`, `meta?` |
 | **`ColorSwatch`** | 색상 점/사각형 | `$color`, `$size: 'xs' \| 'sm' \| 'md'`, `$shape: 'circle' \| 'square'` |
 | **`Chip` / `Badge`** (overlap with feedback) | — | — |
-| **`ChipGroup`** | chip 배열 + 더보기 (`maxVisible`) | `items: ChipGroupItem[]`, `maxVisible?`, `onItemClick?` |
+| **`ChipGroup`** | chip 배열 + 더보기 (`maxVisible`) | `items: ChipGroupItem[]`, `maxVisible?`, `onItemClick?`. *현재 한계*: chip item 에 state indicator dot / color swatch slot 없음 — class-filter chip 에는 slot 추가 필요 |
 | **`TagList` / `TagListSearch`** | 태그 리스트 + 검색 패널 | `tags`, `candidates`, `onAdd`, `onRemove` |
 | **`CommentThread` / `CommentItem` / `CommentInput`** | 댓글 스레드 building blocks | `author`, `timestamp`, `body`, `actions` (CommentItem) |
 | **`KeyboardShortcutHint`** | `[Ctrl] + [K]` 같은 키 힌트 표시 | `keys: string[]`, `size?` |
@@ -175,7 +175,7 @@ import { ... } from '@ingradient/ui/primitives'  // surfaceCard / surfacePanel /
 | **`SettingsShell`** | settings grid (left vertical tabs + right content) |
 | **`SplitLayout` / `SplitPanelShell`** | 좌우 분할 레이아웃 |
 | **`ListDetailLayout`** | list + detail 2-pane |
-| **`DashboardGrid`** | 대시보드 카드 grid |
+| **`DashboardGrid`** | 대시보드 카드 grid. *현재 한계*: `auto-fit minmax(260px, 1fr)` 고정 — `$count` 기반 1~3 컬럼 동적 행, drag handle slot, action icon slot 미지원 |
 | **`InspectorLayout`** | 메인 + 우측 inspector |
 | **`AnnotationToolbar`** | 라벨링 화면 toolbar (placement: top/bottom/left/right) |
 | **`AnnotationToolbarAction`** type | toolbar action item shape |
@@ -258,4 +258,4 @@ CSS-in-JS recipes — styled 정의 안에서 `${recipe}` 로 mixin:
 - [`recipes/`](recipes/) — 자주 쓰는 조합 레시피
 - [Storybook](../../storybook-static) — live preview + props playground
 
-마지막 업데이트: 2026-05-11.
+마지막 업데이트: 2026-05-12. (platform Storybook 목업 gap 검증 결과 반영 — `SelectionActionBar`, `ChipGroup`, `DashboardGrid` 한계 명시)
