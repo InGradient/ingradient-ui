@@ -2,9 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Alert, Button, Card, Checkbox, PasswordField, TextField } from '@ingradient/ui/components'
 import { Stack } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
-import { platformAuthScenarios, type PlatformAuthScenario } from '../../../../fixtures/platform/0.0.1'
+import { type PlatformAuthScenario } from '../../../../fixtures/platform/0.0.1'
 import { scenarioArgType } from '../../../../support/scenarios'
 import { defineHandoff } from '../../../../support/handoff'
+import { getFixtures } from '../../../../support/fixtures-registry'
+
+// § 14.2/14.3 fixture 자동 연결 예시. 기존 explicit import 도 그대로 동작 (점진적 마이그레이션).
+const fixtures = getFixtures('platform', '0.0.1')
 
 const handoff = defineHandoff({
   service: 'platform',
@@ -51,7 +55,7 @@ const linkStyle: React.CSSProperties = { color: 'var(--ig-color-accent-soft)', t
 type Args = { scenario: PlatformAuthScenario }
 
 function LoginScene({ scenario }: Args) {
-  const scene = platformAuthScenarios[scenario]
+  const scene = fixtures.auth[scenario]
   const email = scene.user?.email ?? ''
   const password = scene.password ?? ''
   const rememberMe = scene.rememberMe ?? false
