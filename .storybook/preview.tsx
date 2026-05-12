@@ -9,13 +9,21 @@ import {
   edgeV001,
   medicalV001,
   type Preset,
+  type ThemeMode,
+  type DensityId,
 } from '../src/tokens'
 
-const presetRegistry: Record<string, Preset | undefined> = {
-  none: undefined,
-  'platform-0.0.1': platformV001,
-  'edge-0.0.1': edgeV001,
-  'medical-0.0.1': medicalV001,
+type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
+type VersionId = '0.0.1'
+
+const presetMatrix: Partial<Record<ServiceId, Partial<Record<VersionId, Preset>>>> = {
+  platform: { '0.0.1': platformV001 },
+  edge: { '0.0.1': edgeV001 },
+  medical: { '0.0.1': medicalV001 },
+}
+
+function resolvePreset(service: string, version: string): Preset | undefined {
+  return presetMatrix[service as ServiceId]?.[version as VersionId]
 }
 
 function normalizeBasePath(basePath: string | undefined) {
@@ -36,19 +44,19 @@ initialize({
   },
 })
 
-const densityPadding = {
-  compact: 16,
-  default: 24,
-  comfortable: 32,
+// Storybook viewport addon 의 viewport 정의 + Factory Monitor 추가.
+const customViewports = {
+  mobile: { name: 'Mobile', styles: { width: '375px', height: '667px' }, type: 'mobile' },
+  tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' }, type: 'tablet' },
+  laptop: { name: 'Laptop', styles: { width: '1280px', height: '800px' }, type: 'desktop' },
+  desktop: { name: 'Desktop', styles: { width: '1440px', height: '900px' }, type: 'desktop' },
+  factoryMonitor: { name: 'Factory Monitor', styles: { width: '1920px', height: '1080px' }, type: 'desktop' },
 } as const
 
 const preview: Preview = {
   parameters: {
     layout: 'padded',
     a11y: {
-      // Default global mode is 'error' after PR-D4/D4b/D4c sweep (2026-05-10).
-      // Individual stories may opt out with `test: 'todo'` only when violations
-      // are documented as out-of-scope (none currently).
       test: 'error',
     },
     controls: {
@@ -58,122 +66,130 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    viewport: {
+      viewports: customViewports,
+    },
     options: {
       storySort: {
-        order: ['Guides', 'Foundations', 'Components', 'Patterns', 'Pages', 'Sandboxes'],
+        order: ['Guides', 'Foundations', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
       },
     },
   },
   globalTypes: {
-    preset: {
-      name: 'Preset',
-      description: '제품 디자인 snapshot (theme + brand + density + mode)',
+    service: {
+      name: 'Service',
+      description: '대상 서비스 (§ 14.2)',
       toolbar: {
-        icon: 'globe',
+        icon: 'box',
         dynamicTitle: true,
         items: [
-          { value: 'none', title: 'None (legacy toolbars)' },
-          { value: 'platform-0.0.1', title: 'platform 0.0.1' },
-          { value: 'edge-0.0.1', title: 'edge 0.0.1' },
-          { value: 'medical-0.0.1', title: 'medical 0.0.1' },
+          { value: 'none', title: 'None' },
+          { value: 'platform', title: 'Platform' },
+          { value: 'edge', title: 'Edge' },
+          { value: 'medical', title: 'Medical' },
         ],
       },
     },
-    theme: {
-      name: 'Theme',
-      description: 'Preview theme',
+    version: {
+      name: 'Version',
+      description: '서비스 UI version (§ 14.3)',
+      toolbar: {
+        icon: 'time',
+        dynamicTitle: true,
+        items: [{ value: '0.0.1', title: '0.0.1' }],
+      },
+    },
+    mode: {
+      name: 'Mode',
+      description: '화면 모드 (§ 14.5) — inherit = preset.mode 따름',
       toolbar: {
         icon: 'paintbrush',
         dynamicTitle: true,
         items: [
-          { value: 'portalDark', title: 'Portal Dark' },
-          { value: 'portalLight', title: 'Portal Light' },
+          { value: 'inherit', title: 'Inherit' },
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+          { value: 'high-contrast', title: 'High Contrast (placeholder)' },
         ],
       },
     },
     density: {
       name: 'Density',
-      description: 'Preview density',
+      description: '정보 밀도 (§ 14.6) — inherit = preset.density 따름',
       toolbar: {
         icon: 'mirror',
         dynamicTitle: true,
         items: [
-          { value: 'compact', title: 'Compact' },
-          { value: 'default', title: 'Default' },
+          { value: 'inherit', title: 'Inherit' },
           { value: 'comfortable', title: 'Comfortable' },
+          { value: 'compact', title: 'Compact' },
+          { value: 'ultra-dense', title: 'Ultra Dense' },
         ],
       },
     },
-    role: {
-      name: 'Role',
-      description: 'Viewer role preset',
+    locale: {
+      name: 'Locale',
+      description: '언어 (§ 14.8) — placeholder (i18n 미구현)',
       toolbar: {
-        icon: 'user',
+        icon: 'globe',
         dynamicTitle: true,
         items: [
-          { value: 'viewer', title: 'Viewer' },
-          { value: 'editor', title: 'Editor' },
-          { value: 'admin', title: 'Admin' },
-        ],
-      },
-    },
-    dataScale: {
-      name: 'Data',
-      description: 'Data density preset',
-      toolbar: {
-        icon: 'database',
-        dynamicTitle: true,
-        items: [
-          { value: 'sparse', title: 'Sparse' },
-          { value: 'realistic', title: 'Realistic' },
-          { value: 'overloaded', title: 'Overloaded' },
+          { value: 'ko', title: '한국어' },
+          { value: 'en', title: 'English' },
         ],
       },
     },
   },
   initialGlobals: {
-    preset: 'none',
-    theme: 'portalDark',
-    density: 'default',
-    role: 'editor',
-    dataScale: 'realistic',
+    service: 'none',
+    version: '0.0.1',
+    mode: 'inherit',
+    density: 'inherit',
+    locale: 'ko',
   },
   loaders: [mswLoader],
   decorators: [
     (Story, context) => {
-      const density = context.globals.density as keyof typeof densityPadding
-      const padding = densityPadding[density] ?? densityPadding.default
-      const presetKey = context.globals.preset as string
-      const preset = presetRegistry[presetKey]
-      const fallbackMode = context.globals.theme === 'portalLight' ? 'light' : 'dark'
+      const service = context.globals.service as string
+      const version = context.globals.version as string
+      const modeGlobal = context.globals.mode as string
+      const densityGlobal = context.globals.density as string
+      const locale = context.globals.locale as string
+
+      const preset = resolvePreset(service, version)
+      const modeOverride: ThemeMode | undefined =
+        modeGlobal === 'inherit' || modeGlobal === 'high-contrast' ? undefined : (modeGlobal as ThemeMode)
+      const densityOverride: DensityId | undefined =
+        densityGlobal === 'inherit' ? undefined : (densityGlobal as DensityId)
 
       const inner = (
         <>
           <IngradientGlobalStyle />
           <div
-            data-ig-theme={context.globals.theme}
-            data-ig-density={context.globals.density}
-            data-ig-role={context.globals.role}
-            data-ig-data-scale={context.globals.dataScale}
+            data-ig-locale={locale}
             style={{
               minHeight: '100vh',
-              padding,
               background: 'var(--ig-color-bg-canvas)',
-              transition: 'padding 160ms ease, background 160ms ease',
+              transition: 'background 160ms ease',
             }}
           >
-            <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+            <div style={{ maxWidth: 1280, margin: '0 auto', padding: 24 }}>
               <Story />
             </div>
           </div>
         </>
       )
 
-      // preset 선택 시 PresetProvider 가 mode + data-ig-* attr 관리. None 일 때만 legacy toolbar 사용.
+      // preset 매칭 시 PresetProvider 가 mode + density + data-ig-* attr 관리
       if (preset) {
-        return <PresetProvider preset={preset}>{inner}</PresetProvider>
+        return (
+          <PresetProvider preset={preset} modeOverride={modeOverride} densityOverride={densityOverride}>
+            {inner}
+          </PresetProvider>
+        )
       }
-      return <IngradientThemeProvider mode={fallbackMode}>{inner}</IngradientThemeProvider>
+      // preset 없으면 IngradientThemeProvider 만 (mode 는 toolbar 선택 또는 dark default)
+      return <IngradientThemeProvider mode={modeOverride ?? 'dark'}>{inner}</IngradientThemeProvider>
     },
   ],
 }

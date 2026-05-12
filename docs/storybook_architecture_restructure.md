@@ -508,18 +508,819 @@ UI = ingradient-ui
 
 ---
 
-# 12. 단계별 실행 계획
+# 12. Storybook 기능 기획
 
-본 문서의 비전을 단계별로 분할한 plan 문서. 각 plan 은 작업 체크리스트 + 검증 기준 + 산출물 + 다음 phase 진입 조건을 포함한다.
+## 12.1 목적
 
-| Phase | 범위 | 위험도 | 문서 |
-|---|---|---|---|
-| 1 | Storybook 폴더 scaffold (primitives, components, service/version 서브폴더) | 낮음 | [plan/storybook-restructure-phase-1-scaffold.md](./plan/storybook-restructure-phase-1-scaffold.md) |
-| 2 | Platform 0.0.1 첫 페이지 4개 (Login, Signup, Dashboard, CreateProject) + fixtures | 낮음 | [plan/storybook-restructure-phase-2-platform-pages.md](./plan/storybook-restructure-phase-2-platform-pages.md) |
-| 3 | Token 재구조 — core/themes/brands/density/modes 카테고리 도입 | **높음** | [plan/storybook-restructure-phase-3-token-restructure.md](./plan/storybook-restructure-phase-3-token-restructure.md) |
-| 4 | Preset 시스템 + platform/0.0.1 preset + PresetProvider | 중 | [plan/storybook-restructure-phase-4-presets.md](./plan/storybook-restructure-phase-4-presets.md) |
-| 5 | Builders — ThemeBuilder / PageComposer / LayoutComposer | 중 | [plan/storybook-restructure-phase-5-builders.md](./plan/storybook-restructure-phase-5-builders.md) |
-| 6 | Multi-service 확장 — Edge / Medical 0.0.1 | 낮음 | [plan/storybook-restructure-phase-6-multi-service.md](./plan/storybook-restructure-phase-6-multi-service.md) |
+Storybook은 INGRADIENT UI의 단순 문서화 도구가 아니라,
+디자이너와 개발자가 함께 사용하는 제품 UI 설계 환경으로 운영한다.
 
-**의존성**: 1 → 2 (병렬 가능) → 3 → 4 → 5 / 6 (병렬 가능)
-**즉시 가치 지점**: Phase 2 완료 시 storybook 으로 platform 페이지 mockup 시작 가능. Phase 4 완료 시 brand/density 전환 실험 가능.
+이를 위해 Storybook에는 다음 기능이 필요하다.
+
+* 서비스/버전별 UI snapshot 탐색
+* 디자인 preset 전환
+* fixture/mock scenario 전환
+* 화면 상태별 검증
+* density/mode/viewport 전환
+* page/pattern/component 조합 실험
+* sandbox 기반 신규 UX 실험
+* 확정된 story를 platform 구현 기준으로 전달
+* 장기적으로 preset 및 page 조합 저장/생성
+
+---
+
+# 13. Storybook 사용자 역할
+
+## 13.1 디자이너
+
+주요 작업:
+
+* 전체 디자인 preset 확인 및 조정
+* page-level UI 조합 검토
+* fixture를 바꿔가며 상태별 UI 검증
+* sandbox에서 신규 UX 실험
+* 확정된 story를 개발 기준으로 전달
+
+---
+
+## 13.2 UI 개발자
+
+주요 작업:
+
+* primitives/components/patterns 구현
+* story controls 연결
+* fixture system 구성
+* theme/preset provider 구성
+* builder 기능 구현
+* Storybook과 실제 UI package 동기화
+
+---
+
+## 13.3 플랫폼 개발자
+
+주요 작업:
+
+* 확정된 story/page template을 실제 platform에 연결
+* mock data를 real data로 교체
+* mock action을 API action으로 교체
+* routing/auth/permission/business logic 연결
+
+---
+
+# 14. Global Toolbar 기능
+
+Storybook 상단 Toolbar에는 전체 작업 환경을 바꾸는 global selector를 제공한다.
+
+## 14.1 필수 selector
+
+```txt
+Service Selector
+Version Selector
+Preset Selector
+Mode Selector
+Density Selector
+Viewport Selector
+Locale Selector
+```
+
+---
+
+## 14.2 Service Selector
+
+대상 서비스 선택.
+
+예:
+
+```txt
+Platform
+Edge
+Medical
+```
+
+선택값은 다음 경로와 연결된다.
+
+```txt
+stories/pages/{service}
+stories/fixtures/{service}
+src/tokens/presets/{service}
+```
+
+---
+
+## 14.3 Version Selector
+
+서비스별 UI version 선택.
+
+예:
+
+```txt
+0.0.1
+0.1.0
+0.2.0
+sandbox
+```
+
+선택값은 다음 경로와 연결된다.
+
+```txt
+stories/pages/{service}/{version}
+stories/fixtures/{service}/{version}
+src/tokens/presets/{service}/{version}
+```
+
+---
+
+## 14.4 Preset Selector
+
+디자인 preset 선택.
+
+예:
+
+```txt
+Platform Default
+Industrial Dark
+Factory Compact
+FineMTech Factory
+Medical Clean
+```
+
+Preset은 다음 조합을 포함한다.
+
+```txt
+Theme
+Brand
+Mode
+Density
+Token Override
+```
+
+---
+
+## 14.5 Mode Selector
+
+화면 모드 선택.
+
+예:
+
+```txt
+Light
+Dark
+High Contrast
+```
+
+---
+
+## 14.6 Density Selector
+
+정보 밀도 선택.
+
+예:
+
+```txt
+Comfortable
+Compact
+Dense
+Ultra Dense
+```
+
+---
+
+## 14.7 Viewport Selector
+
+반응형 검증을 위한 화면 크기 선택.
+
+예:
+
+```txt
+Desktop
+Laptop
+Tablet
+Mobile
+Factory Monitor
+```
+
+Factory Monitor는 Edge/현장 UI 검증을 위한 별도 viewport로 둔다.
+
+---
+
+# 15. Story Controls 기능
+
+각 story에는 해당 컴포넌트 또는 페이지의 세부 상태를 바꾸는 controls를 제공한다.
+
+## 15.1 Component Controls
+
+예:
+
+```txt
+variant
+size
+density
+status
+selected
+disabled
+loading
+error
+longText
+```
+
+대상:
+
+* Button
+* Input
+* DatasetCard
+* TrainingJobCard
+* StatusBadge
+* DatasetTable
+
+---
+
+## 15.2 Pattern Controls
+
+예:
+
+```txt
+toolbarPosition
+filterStyle
+tableDensity
+selectionMode
+rightPanelState
+viewMode
+```
+
+대상:
+
+* SearchAndTable
+* MasterDetail
+* RightPanel
+* SplitViewer
+* FilterToolbar
+
+---
+
+## 15.3 Page Controls
+
+예:
+
+```txt
+viewMode: table / grid
+sidebar: expanded / compact / hidden
+rightPanel: open / closed
+filterStyle: chips / dropdown / side-panel
+tableDensity: comfortable / compact / dense
+selectionMode: single / multi
+```
+
+대상:
+
+* Platform Catalog
+* Platform Training
+* Analytics Dashboard
+* Edge Capture
+* Medical Viewer
+
+---
+
+# 16. Fixture / Scenario Selector
+
+Page story에는 반드시 fixture 또는 scenario selector를 제공한다.
+
+## 16.1 목적
+
+기본 화면뿐 아니라 실제 서비스에서 발생 가능한 상태를 검증하기 위함이다.
+
+---
+
+## 16.2 공통 scenario
+
+```txt
+Default
+Empty
+Loading
+Error
+Permission Denied
+Long Text
+Many Items
+Small Screen
+Dark Mode
+Compact Mode
+```
+
+---
+
+## 16.3 Platform Catalog scenario
+
+```txt
+Default Datasets
+Empty Dataset
+Huge Dataset
+Long Dataset Names
+Syncing Dataset
+Permission Denied
+Server Error
+Multi Selection
+Export Ready
+```
+
+---
+
+## 16.4 Platform Training scenario
+
+```txt
+No Model
+Queued
+Running
+Completed
+Failed
+Paused
+No GPU Available
+Resume Available
+Evaluation Complete
+```
+
+---
+
+## 16.5 Edge scenario
+
+```txt
+Camera Connected
+Camera Disconnected
+Offline Mode
+Capture Ready
+Capturing Sequence
+Sync Pending
+Sync Failed
+License Expired
+```
+
+---
+
+## 16.6 Medical scenario
+
+```txt
+Study List
+No Study
+DICOM Loading
+Segmentation Available
+Segmentation Missing
+Viewer Error
+Report Ready
+```
+
+---
+
+# 17. ThemeBuilder 기능
+
+ThemeBuilder는 디자이너가 전체 디자인 preset을 조정하는 공간이다.
+
+## 17.1 위치
+
+```txt
+stories/builders/ThemeBuilder
+```
+
+---
+
+## 17.2 기능
+
+```txt
+Theme 선택
+Brand 선택
+Mode 선택
+Density 선택
+Primary Color 조정
+Surface Contrast 조정
+Border Contrast 조정
+Radius Scale 선택
+Shadow Strength 선택
+Typography Scale 선택
+```
+
+---
+
+## 17.3 초기 단계
+
+초기에는 Storybook 안에서 실시간 preview만 제공한다.
+
+```txt
+조정값 preview
+→ 디자이너/개발자 합의
+→ 개발자가 preset 파일에 반영
+```
+
+---
+
+## 17.4 고도화 단계
+
+추후에는 저장 기능을 제공한다.
+
+```txt
+Save as Draft Preset
+Export Token JSON
+Generate CSS Variables
+Create Pull Request
+```
+
+---
+
+# 18. PageComposer 기능
+
+PageComposer는 디자이너가 page-level 조합을 실험하는 공간이다.
+
+## 18.1 위치
+
+```txt
+stories/builders/PageComposer
+```
+
+---
+
+## 18.2 기능
+
+```txt
+Service 선택
+Version 선택
+Page 선택
+Layout 선택
+Sidebar 선택
+Header 선택
+Toolbar 선택
+Content View 선택
+Right Panel 선택
+Footer 선택
+Fixture 선택
+```
+
+---
+
+## 18.3 예시
+
+Catalog Page 조합:
+
+```txt
+Layout = AppShell
+Sidebar = Compact Project Sidebar
+Header = Dense Page Header
+Toolbar = Filter Toolbar with Chips
+Content = Dataset Table
+Right Panel = Dataset Detail Panel
+Fixture = Huge Dataset
+```
+
+---
+
+# 19. LayoutComposer 기능
+
+LayoutComposer는 레이아웃 구조를 실험하는 공간이다.
+
+## 19.1 위치
+
+```txt
+stories/builders/LayoutComposer
+```
+
+---
+
+## 19.2 기능
+
+```txt
+Layout Type 선택
+Sidebar Width 조정
+Right Panel Width 조정
+Content Max Width 조정
+Grid Column 조정
+Header Height 조정
+Panel Gap 조정
+Responsive Breakpoint 확인
+```
+
+---
+
+## 19.3 대상 layout
+
+```txt
+AppShell
+Two Column
+Three Column
+Split View
+Master Detail
+Viewer Workspace
+Dashboard Grid
+```
+
+---
+
+# 20. Sandbox 기능
+
+Sandbox는 정식 version으로 승격하기 전의 실험 공간이다.
+
+## 20.1 위치
+
+```txt
+stories/sandboxes/{service}/{experiment}
+```
+
+---
+
+## 20.2 예시
+
+```txt
+stories/sandboxes/platform/new-sidebar
+stories/sandboxes/platform/dense-catalog
+stories/sandboxes/platform/training-v2
+stories/sandboxes/edge/mobile-capture-ui
+stories/sandboxes/medical/viewer-v2
+```
+
+---
+
+## 20.3 운영 규칙
+
+Sandbox는 자유도가 높은 실험 공간이지만,
+정식 적용 전에는 반드시 다음 기준을 통과해야 한다.
+
+```txt
+사용 preset 정리
+사용 fixture 정리
+상태별 story 정리
+반응형 확인
+접근성 기본 확인
+기존 component/pattern 재사용 가능성 확인
+```
+
+통과 후:
+
+```txt
+sandboxes/{service}/{experiment}
+→ pages/{service}/{version}
+```
+
+으로 승격한다.
+
+---
+
+# 21. Version Snapshot 기능
+
+서비스별 version은 하나의 제품 UI snapshot으로 관리한다.
+
+## 21.1 구성 요소
+
+```txt
+src/tokens/presets/{service}/{version}
+stories/fixtures/{service}/{version}
+stories/pages/{service}/{version}
+```
+
+---
+
+## 21.2 예시
+
+```txt
+platform/0.1.0
+├─ token preset
+├─ fixtures
+└─ pages
+```
+
+---
+
+## 21.3 Storybook 표시 방식
+
+왼쪽 navigation은 다음처럼 보이게 한다.
+
+```txt
+Pages
+└─ Platform
+   ├─ 0.0.1
+   │  ├─ Catalog
+   │  ├─ Training
+   │  └─ Analytics
+   └─ 0.1.0
+      ├─ Catalog
+      ├─ Training
+      └─ Analytics
+```
+
+---
+
+# 22. Design Handoff 기능
+
+디자인 확정 후 개발자에게 전달할 기준 정보를 Storybook에서 명확히 남긴다.
+
+## 22.1 Handoff 정보
+
+각 page story에는 다음 정보를 문서화한다.
+
+```txt
+적용 대상 서비스
+적용 대상 버전
+기준 Story 이름
+사용 Preset
+사용 Fixtures
+필수 검증 Scenario
+주요 Interaction
+개발 연결 포인트
+```
+
+---
+
+## 22.2 예시
+
+```txt
+Service: Platform
+Version: 0.1.0
+Page: Catalog
+Reference Story: Pages / Platform / 0.1.0 / Catalog / Default
+Preset: src/tokens/presets/platform/0.1.0
+Fixtures: stories/fixtures/platform/0.1.0/datasets
+Required Scenarios: Default, Empty, Loading, Error, Permission Denied, Huge Dataset
+Platform Integration: replace mock datasets with useDatasets(), replace mock export action with exportDataset()
+```
+
+---
+
+# 23. 상태 검증 Matrix 기능
+
+각 page별로 반드시 확인해야 할 상태 matrix를 제공한다.
+
+## 23.1 목적
+
+디자인이 기본 화면에서만 정상적으로 보이는 문제를 방지한다.
+
+---
+
+## 23.2 Matrix 예시
+
+```txt
+Page: Platform Catalog
+
+Required:
+- Default
+- Empty
+- Loading
+- Error
+- Permission Denied
+- Huge Dataset
+- Long Names
+- Compact Density
+- Dark Mode
+- Tablet Viewport
+```
+
+---
+
+## 23.3 운영 방식
+
+초기에는 문서형 checklist로 시작한다.
+
+추후에는 Storybook addon 또는 panel로 구현한다.
+
+```txt
+Scenario Pass / Fail 표시
+Comment 기록
+Screenshot 비교
+Visual regression 연동
+```
+
+---
+
+# 24. 저장 및 생성 기능
+
+Storybook 기본 기능만으로는 디자이너가 변경한 값을 파일로 저장하지 못한다.
+따라서 저장/생성 기능은 단계적으로 구현한다.
+
+## 24.1 Phase 1: 수동 반영
+
+```txt
+디자이너가 Storybook에서 조합 확인
+→ 기준 story와 설정값 전달
+→ UI 개발자가 story/preset 파일에 반영
+```
+
+---
+
+## 24.2 Phase 2: Export 기능
+
+```txt
+ThemeBuilder Export JSON
+PageComposer Export Config
+LayoutComposer Export Config
+```
+
+---
+
+## 24.3 Phase 3: Save 기능
+
+```txt
+Save as Draft Preset
+Save as Sandbox Page
+Save as New Version
+```
+
+---
+
+## 24.4 Phase 4: PR 생성
+
+```txt
+Storybook에서 저장
+→ token/story config 생성
+→ Git branch 생성
+→ Pull Request 생성
+```
+
+이 단계는 추후 고도화 기능으로 둔다.
+
+---
+
+# 25. 필수 구현 우선순위
+
+## 25.1 MVP
+
+먼저 구현해야 할 기능:
+
+```txt
+Global Toolbar
+Preset Provider
+Fixture Selector
+Page Stories
+Component Controls
+Pattern Controls
+Basic ThemeBuilder
+Basic PageComposer
+Handoff 문서 영역
+```
+
+---
+
+## 25.2 V1
+
+```txt
+Scenario Matrix
+Sandbox 운영 구조
+LayoutComposer
+Version Snapshot Navigation
+Fixture 자동 연결
+ThemeBuilder Export JSON
+```
+
+---
+
+## 25.3 V2
+
+```txt
+Save as Preset
+Save as Page Config
+Visual Regression
+Story Review Status
+PR 생성 연동
+Designer Comment Panel
+```
+
+---
+
+# 26. Platform 0.1.0 작업 시나리오
+
+디자이너가 platform 0.1.0을 만드는 실제 순서는 다음과 같다.
+
+```txt
+1. Pages / Platform / 0.0.1에서 기존 화면 확인
+2. Toolbar에서 Service=Platform, Version=0.1.0 선택
+3. ThemeBuilder에서 platform 0.1.0 preset 조정
+4. Pages / Platform / 0.1.0 / Catalog 열기
+5. Catalog layout, density, filter, right panel 조합 확인
+6. Fixture selector로 Empty/Error/Huge/Permission 상태 검증
+7. 문제가 있으면 Patterns에서 구조 조정
+8. 세부 부품 문제가 있으면 Components에서 variant/state 확인
+9. 같은 방식으로 Training, Analytics, Settings 확인
+10. 큰 실험은 Sandboxes / Platform에서 진행
+11. 확정된 UI는 Pages / Platform / 0.1.0으로 정리
+12. Handoff 정보와 기준 Story를 platform 개발자에게 전달
+```
+
+---
+
+# 27. 성공 기준
+
+이 기획이 성공적으로 구현되면 다음 상태가 된다.
+
+```txt
+Storybook에서 실제 제품 화면에 가까운 UI를 확인할 수 있다.
+디자이너가 preset, density, fixture, viewport를 직접 바꿔볼 수 있다.
+서비스/버전별 UI snapshot을 추적할 수 있다.
+새 UI는 sandbox에서 실험 후 정식 version으로 승격할 수 있다.
+platform 개발자는 Storybook page를 실제 데이터와 action에 연결하면 된다.
+```
+
+최종 목표는 다음과 같다.
+
+```txt
+Storybook pages
+≈
+Actual platform pages
+```
+
+차이는 다음 하나만 남기는 것이 이상적이다.
+
+```txt
+Storybook = mock data / mock action
+Platform = real data / real action
+```
