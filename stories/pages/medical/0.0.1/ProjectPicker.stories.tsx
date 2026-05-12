@@ -2,6 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, Card, EmptyState, SectionPanel, StatusPill, type StatusTone } from '@ingradient/ui/components'
 import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
 import { mockCases } from '../../../fixtures/medical/0.0.1'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'medical',
+  version: '0.0.1',
+  page: 'ProjectPicker',
+  referenceStory: 'Pages / Medical / 0.0.1 / ProjectPicker / Default',
+  preset: 'medical-0.0.1',
+  fixturesPath: 'stories/fixtures/medical/0.0.1/cases.ts',
+  requiredScenarios: ['default', 'empty'],
+  interactions: [
+    'case card 클릭 → 라벨링 화면 (Workbench)',
+    'New case 클릭 → upload modal',
+    'status pill 로 진행 단계 (pending/in-review/completed) 표시',
+  ],
+  platformIntegration: [
+    'replace mock cases with /api/cases query',
+    'New case 액션은 DICOM upload 시작',
+    'status 는 case workflow state (서버 enum)',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -93,7 +114,7 @@ const meta = {
   title: 'Pages/Medical/0.0.1/ProjectPicker',
   component: ProjectPickerScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'medical-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof ProjectPickerScene>
 
 export default meta

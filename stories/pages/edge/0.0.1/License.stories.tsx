@@ -3,6 +3,28 @@ import { Alert, Button, Card, StatusPill, TextField, type StatusTone } from '@in
 import { Stack } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { mockLicense } from '../../../fixtures/edge/0.0.1'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'edge',
+  version: '0.0.1',
+  page: 'License',
+  referenceStory: 'Pages / Edge / 0.0.1 / License / Valid',
+  preset: 'edge-0.0.1',
+  fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts (mockLicense)',
+  requiredScenarios: ['valid', 'expired', 'unbound', 'submitting'],
+  interactions: [
+    'license key 입력',
+    'Activate / Re-bind device 클릭',
+    'device fingerprint 자동 표시 (machine ID)',
+  ],
+  platformIntegration: [
+    'replace mock license with Electron license module',
+    'device fingerprint 는 OS-level machine ID',
+    'Activate 액션은 license-server API 호출',
+    'expired 상태에서는 Activate 만 노출, valid 상태에서는 Re-bind',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -105,7 +127,7 @@ const meta = {
   title: 'Pages/Edge/0.0.1/License',
   component: LicenseScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'edge-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof LicenseScene>
 
 export default meta

@@ -5,6 +5,30 @@ import { Stack, Inline } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { createProjectScenarios, type CreateProjectScenario } from '../../../fixtures/platform/0.0.1/create-project-scenarios'
 import { scenarioArgType } from '../../../support/scenarios'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'platform',
+  version: '0.0.1',
+  page: 'CreateProject',
+  referenceStory: 'Pages / Platform / 0.0.1 / CreateProject / Default',
+  preset: 'platform-0.0.1',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/create-project-scenarios.ts',
+  requiredScenarios: ['default', 'filled', 'validation-error', 'submitting', 'server-error'],
+  interactions: [
+    'name / description / first dataset name 입력',
+    'project type RadioCardGroup 선택 (general / deflectometry)',
+    'UploadDropzone 에 이미지 drop 또는 file picker',
+    'Create Project 클릭 → submit (이름 비어있으면 validation error)',
+    'Cancel 클릭 → 이전 페이지로',
+  ],
+  platformIntegration: [
+    'replace handleSubmit with createProject() API call (frontend/api/projects.ts)',
+    'files 업로드는 uploadFiles() (frontend/api/images.ts) — first dataset 의 dataset id 필요',
+    'deflectometry → createProject({ deflectometry_enabled: true })',
+    '성공 후 setCurrentProjectId() + navigate("/", { replace: true })',
+  ],
+})
 
 type Args = { scenario: CreateProjectScenario }
 
@@ -128,7 +152,7 @@ const meta = {
   title: 'Pages/Platform/0.0.1/CreateProject',
   component: CreateProjectScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: scenarioArgType(['filled', 'validation-error', 'submitting', 'server-error']),
   },

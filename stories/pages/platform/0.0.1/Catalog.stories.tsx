@@ -11,6 +11,34 @@ import {
   filterStyleArg, rightPanelArg, sidebarArg, selectionModeArg, viewModeArg,
   type FilterStyle, type RightPanelState, type SelectionMode, type SidebarState, type ViewMode,
 } from '../../../support/page-controls'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'platform',
+  version: '0.0.1',
+  page: 'Catalog',
+  referenceStory: 'Pages / Platform / 0.0.1 / Catalog / Default',
+  preset: 'platform-0.0.1',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/catalog-scenarios.ts',
+  requiredScenarios: [
+    'default', 'empty', 'loading', 'error', 'permission-denied',
+    'huge-dataset', 'long-text', 'many-items', 'syncing', 'multi-selection', 'export-ready',
+  ],
+  interactions: [
+    'dataset row 클릭 → right panel 에 detail 표시',
+    'checkbox 다중 선택 → bottom SelectionActionBar 표시',
+    'viewMode 토글 (table / grid)',
+    'filterStyle 전환 (chips / dropdown / side-panel)',
+    'Export 액션은 selection 이 있고 export 권한이 있을 때만 노출',
+  ],
+  platformIntegration: [
+    'replace mock datasets with useCatalogDatasets() (frontend/features/catalog/use-catalog-datasets.ts 패턴)',
+    'selection state 는 useState 또는 useSelection hook',
+    'Export 액션은 igpExport mutation 으로 교체',
+    'permissionDenied 는 useAuth().permissions.canViewDatasets 로 판정',
+    'syncing/failed status 는 server-side 상태를 polling 또는 SSE',
+  ],
+})
 
 type Args = {
   scenario: CatalogScenario
@@ -251,7 +279,7 @@ const meta = {
   title: 'Pages/Platform/0.0.1/Catalog',
   component: CatalogScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: scenarioArgType(['huge-dataset', 'syncing', 'multi-selection', 'export-ready']),
     viewMode: viewModeArg,

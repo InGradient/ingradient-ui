@@ -3,6 +3,26 @@ import { Alert, Button, Card, PasswordField, TextField } from '@ingradient/ui/co
 import { Stack } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { mockUsers } from '../../../../fixtures/platform/0.0.1'
+import { defineHandoff } from '../../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'platform',
+  version: '0.0.1',
+  page: 'Signup',
+  referenceStory: 'Pages / Platform / 0.0.1 / Auth / Signup / Default',
+  preset: 'platform-0.0.1',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/users.ts',
+  requiredScenarios: ['default', 'password-mismatch', 'submitting'],
+  interactions: [
+    'Enter email + name + organization + password → submit',
+    '폼 valid 일 때만 Submit 활성화',
+  ],
+  platformIntegration: [
+    'replace handleSubmit with useSignup() mutation',
+    'organization 은 별도 endpoint /api/orgs 또는 user create payload',
+    'error 는 mutation 의 error.message',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -92,9 +112,7 @@ const meta = {
   title: 'Pages/Platform/0.0.1/Auth/Signup',
   component: SignupScene,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof SignupScene>
 
 export default meta

@@ -4,6 +4,27 @@ import { Stack } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { platformAuthScenarios, type PlatformAuthScenario } from '../../../../fixtures/platform/0.0.1'
 import { scenarioArgType } from '../../../../support/scenarios'
+import { defineHandoff } from '../../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'platform',
+  version: '0.0.1',
+  page: 'Login',
+  referenceStory: 'Pages / Platform / 0.0.1 / Auth / Login / Default',
+  preset: 'platform-0.0.1',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/scenarios.ts',
+  requiredScenarios: ['default', 'validation-error', 'submitting', 'permission-denied', 'long-text'],
+  interactions: [
+    'Enter email + password → submit',
+    '`Keep me signed in` / `Remember password` checkbox 토글',
+    'Submit 중 모든 입력 disabled',
+  ],
+  platformIntegration: [
+    'replace handleSubmit with useLogin() mutation (frontend/features/auth/use-login.ts 패턴)',
+    'rememberMe / savePassword 는 auth store 의 setAuthPreferences()',
+    'error 는 mutation 의 error.message',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -68,7 +89,7 @@ const meta = {
   title: 'Pages/Platform/0.0.1/Auth/Login',
   component: LoginScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: scenarioArgType(['submitting', 'validation-error']),
   },

@@ -1,6 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Alert, Button, Card, ModeSwitcher, PasswordField, TextField } from '@ingradient/ui/components'
 import { Stack } from '@ingradient/ui/primitives'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'medical',
+  version: '0.0.1',
+  page: 'Auth',
+  referenceStory: 'Pages / Medical / 0.0.1 / Auth / Login',
+  preset: 'medical-0.0.1',
+  fixturesPath: '(없음 — 단순 form)',
+  requiredScenarios: ['login', 'signup', 'invalid-credentials', 'submitting'],
+  interactions: [
+    'Sign in / Sign up 모드 토글',
+    'Sign up 모드에서는 Name 필드 추가 노출',
+    'submit 중 모든 입력 disabled',
+  ],
+  platformIntegration: [
+    'replace handleSubmit with login/signup API (medilabel Next.js auth endpoint)',
+    'JWT 발급 후 cookie 설정',
+    'invalid credentials 시 form 상단 Alert',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -80,7 +101,7 @@ const meta = {
   title: 'Pages/Medical/0.0.1/Auth',
   component: AuthScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'medical-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof AuthScene>
 
 export default meta

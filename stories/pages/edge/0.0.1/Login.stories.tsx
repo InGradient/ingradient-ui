@@ -2,6 +2,28 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Alert, Button, Card, ModeSwitcher, PasswordField, TextField } from '@ingradient/ui/components'
 import { Stack } from '@ingradient/ui/primitives'
 import { BrandLogo } from '@ingradient/ui/brand'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'edge',
+  version: '0.0.1',
+  page: 'Login',
+  referenceStory: 'Pages / Edge / 0.0.1 / Login / Online',
+  preset: 'edge-0.0.1',
+  fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
+  requiredScenarios: ['online', 'offline', 'invalid-credentials', 'submitting'],
+  interactions: [
+    'Online / Offline mode 토글',
+    'Online: email + password 입력',
+    'Offline: 저장된 인증으로 진행',
+    'Submit 중 disabled',
+  ],
+  platformIntegration: [
+    'replace handleSubmit with Electron IPC login (edge 의 main process 와 통신)',
+    'offline mode 는 keychain 의 saved credentials 사용',
+    'license 가 없거나 만료 시 License 페이지로 redirect',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -78,7 +100,7 @@ const meta = {
   title: 'Pages/Edge/0.0.1/Login',
   component: LoginScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'edge-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof LoginScene>
 
 export default meta

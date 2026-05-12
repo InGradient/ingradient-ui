@@ -2,6 +2,28 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, ColorSwatch, EmptyState, SectionPanel, TextField } from '@ingradient/ui/components'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 import { mockClasses } from '../../../fixtures/medical/0.0.1'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'medical',
+  version: '0.0.1',
+  page: 'ClassWorkspace',
+  referenceStory: 'Pages / Medical / 0.0.1 / ClassWorkspace / Default',
+  preset: 'medical-0.0.1',
+  fixturesPath: 'stories/fixtures/medical/0.0.1/cases.ts (mockClasses)',
+  requiredScenarios: ['default', 'drafting', 'empty'],
+  interactions: [
+    '클래스 row 표시 — color swatch + label + annotation count',
+    '하단 input 에 새 클래스 이름 입력 → Add 버튼 활성화',
+    'Add 클릭 시 list 에 append',
+  ],
+  platformIntegration: [
+    'replace mock classes with /api/labels query (per case)',
+    'Add 액션은 createLabel mutation',
+    'color 는 자동 할당 또는 사용자 picker',
+    'annotation count 는 server-side aggregation',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -88,7 +110,7 @@ const meta = {
   title: 'Pages/Medical/0.0.1/ClassWorkspace',
   component: ClassWorkspaceScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'medical-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof ClassWorkspaceScene>
 
 export default meta

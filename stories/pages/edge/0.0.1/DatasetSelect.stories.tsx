@@ -2,6 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Badge, Card, EmptyState, SectionPanel, StatusPill, type StatusTone } from '@ingradient/ui/components'
 import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
 import { mockDatasets, mockDevices } from '../../../fixtures/edge/0.0.1'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'edge',
+  version: '0.0.1',
+  page: 'DatasetSelect',
+  referenceStory: 'Pages / Edge / 0.0.1 / DatasetSelect / WithDatasets',
+  preset: 'edge-0.0.1',
+  fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
+  requiredScenarios: ['with-datasets', 'empty'],
+  interactions: [
+    'device card 클릭 → 캡처 화면 진입',
+    'dataset card 클릭 → 해당 dataset 의 라벨링 화면',
+    'device status 변경 시 status pill 실시간 업데이트',
+  ],
+  platformIntegration: [
+    'replace mock devices with Electron device discovery (USB/IP camera scan)',
+    'dataset 은 local SQLite + 동기화된 cloud dataset 의 union',
+    'status (online/offline/capturing) 는 device 와의 heartbeat 결과',
+  ],
+})
 
 const pageStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -103,7 +124,7 @@ const meta = {
   title: 'Pages/Edge/0.0.1/DatasetSelect',
   component: DatasetSelectScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', preset: 'edge-0.0.1' },
+  parameters: { layout: 'fullscreen', ...handoff },
 } satisfies Meta<typeof DatasetSelectScene>
 
 export default meta

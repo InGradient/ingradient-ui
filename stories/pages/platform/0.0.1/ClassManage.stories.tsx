@@ -7,6 +7,28 @@ import { Inline, Stack } from '@ingradient/ui/primitives'
 import { classScenarios, type ClassScenario, type MockClass } from '../../../fixtures/platform/0.0.1/class-scenarios'
 import { scenarioArgType } from '../../../support/scenarios'
 import { rightPanelArg, sidebarArg, type RightPanelState, type SidebarState } from '../../../support/page-controls'
+import { defineHandoff } from '../../../support/handoff'
+
+const handoff = defineHandoff({
+  service: 'platform',
+  version: '0.0.1',
+  page: 'ClassManage',
+  referenceStory: 'Pages / Platform / 0.0.1 / ClassManage / Default',
+  preset: 'platform-0.0.1',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/class-scenarios.ts',
+  requiredScenarios: ['default', 'empty', 'loading', 'permission-denied', 'long-text', 'many-items'],
+  interactions: [
+    '클래스 row 클릭 → right panel 에 detail 표시',
+    'New class 클릭 → 추가 modal',
+    'name / description 편집 시 explicit save',
+  ],
+  platformIntegration: [
+    'replace mock classes with useClasses() (frontend/store/useClassStore.ts)',
+    'New class 액션은 createClass mutation',
+    'permissionDenied 는 useAuth().permissions.canEditClasses',
+    'color picker 는 별도 ColorSwatch input component',
+  ],
+})
 
 type Args = {
   scenario: ClassScenario
@@ -173,7 +195,7 @@ const meta = {
   title: 'Pages/Platform/0.0.1/ClassManage',
   component: ClassManageScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: scenarioArgType(),
     sidebar: sidebarArg,
