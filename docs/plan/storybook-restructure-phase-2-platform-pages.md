@@ -15,18 +15,18 @@
 
 ## 2. 범위
 
-### 2.1 대상 페이지 (4개)
-
-[../../ingradient-platform/docs/plans/storybook_mockup_roadmap.md](../../../ingradient-platform/docs/plans/storybook_mockup_roadmap.md) 의 P1 + P2.
+### 2.1 대상 페이지 (현재 스코프: 2개)
 
 | Story | 원본 platform 페이지 | Gap | 비고 |
 |---|---|---|---|
 | `auth/Login.stories.tsx` | `pages/auth/LoginPage.tsx` | 없음 | TextField + PasswordField + Button + Alert |
 | `auth/Signup.stories.tsx` | `pages/auth/SignupPage.tsx` | 없음 | Login 패턴 재사용 |
-| `Dashboard.stories.tsx` | `pages/DashboardPage.tsx` | 없음 (확인 필요) | SidebarShell + DashboardGrid + project card |
-| `CreateProject.stories.tsx` | `pages/CreateProjectPage.tsx` | 없음 | FormSection + FieldGroup + RadioCardGroup |
 
-P3 (Catalog, ClassManage, AnalysisDashboard) 는 prop 확장 필요해서 **Phase 2 에서 제외**. Token 재구조(Phase 3) 후 별도 진행 또는 Phase 2 연장으로 처리.
+**이연 (deferred)**:
+- `CreateProject.stories.tsx` — `RadioCardGroup` (`projectType` 의 OptionCard 대체) + `UploadDropzone` 검증 후 진행. Phase 2 연장 가능
+- `Dashboard.stories.tsx` — platform 의 DashboardPage 는 analysis dashboard (charts + widget grid). WidgetGrid 는 Phase 3+ 의 gap 확장과 직결 → Phase 4 (preset) 이후 별도 phase 로 분리
+
+P3 (Catalog, ClassManage, AnalysisDashboard) 는 prop 확장 필요 — Token 재구조(Phase 3) 후 진행.
 
 ### 2.2 의존성 정책
 
@@ -38,20 +38,18 @@ P3 (Catalog, ClassManage, AnalysisDashboard) 는 prop 확장 필요해서 **Phas
 
 ## 3. Fixtures 작성
 
-### 3.1 파일 트리
+### 3.1 파일 트리 (현재 스코프)
 ```
 stories/fixtures/platform/0.0.1/
 ├─ preset.ts              # platform 0.0.1 토큰 메타 (Phase 4 에서 정식화, 지금은 placeholder)
-├─ users.ts               # mock 사용자 (Login 폼 prefill, account chip 표시 등)
-├─ projects.ts            # mock 프로젝트 리스트 (Dashboard 카드)
-├─ project-types.ts       # CreateProject 의 RadioCardGroup 옵션
+├─ users.ts               # mock 사용자 (Login/Signup prefill 등)
 └─ index.ts               # 모두 re-export
 ```
 
+`projects.ts` / `project-types.ts` 는 Dashboard / CreateProject 진행 시 추가.
+
 ### 3.2 작업 항목
 - [ ] `users.ts` — `{ id, name, email, avatarUrl? }` mock 3개
-- [ ] `projects.ts` — `{ id, name, description, imageCount, lastUpdatedAt, thumbnailUrl }` mock 12개
-- [ ] `project-types.ts` — `[{ id, label, description, icon }]` 3~4개 (예: Classification, Detection, Segmentation)
 - [ ] `preset.ts` — `export const platformV001Preset = {}` placeholder (Phase 4 에서 채움)
 - [ ] `index.ts` — 위 모듈 re-export
 
