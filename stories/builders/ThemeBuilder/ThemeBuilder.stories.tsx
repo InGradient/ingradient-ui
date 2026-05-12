@@ -1,10 +1,12 @@
-import React, { useLayoutEffect, useMemo } from 'react'
+import React, { useLayoutEffect, useMemo, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Alert, Badge, Button, Card, StatusPill, TextField } from '@ingradient/ui/components'
 import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
 import { composePreset, type BrandId, type DensityId, type Preset, type ThemeId } from '@ingradient/ui/tokens'
+import { copyToClipboard, downloadFile, exportPresetJson, exportPresetTs } from './export-preset'
 
 type BuilderArgs = {
+  presetId: string
   theme: ThemeId
   brand: BrandId
   density: DensityId
@@ -12,7 +14,7 @@ type BuilderArgs = {
 
 function buildAdHocPreset(args: BuilderArgs): Preset {
   return {
-    id: 'theme-builder-adhoc',
+    id: args.presetId || 'theme-builder-adhoc',
     service: 'platform',
     version: '0.0.0',
     theme: args.theme,
@@ -61,7 +63,9 @@ const overrideKeyStyle: React.CSSProperties = {
 }
 
 function ThemeBuilder(args: BuilderArgs) {
-  const composed = useMemo(() => composePreset(buildAdHocPreset(args)), [args])
+  const preset = useMemo(() => buildAdHocPreset(args), [args])
+  const composed = useMemo(() => composePreset(preset), [preset])
+  const [exportFeedback, setExportFeedback] = useState<string | null>(null)
 
   // ad-hoc CSS vars 적용. PresetProvider (decorator) 위에 override 로 얹힘.
   useLayoutEffect(() => {
@@ -74,6 +78,22 @@ function ThemeBuilder(args: BuilderArgs) {
   }, [composed])
 
   const overrideEntries = Object.entries(composed.cssVariables)
+
+  const handleDownloadJson = () => {
+    downloadFile(`${preset.id}.json`, exportPresetJson(preset), 'application/json')
+    flashFeedback(`Downloaded ${preset.id}.json`)
+  }
+
+  const handleCopyTs = async () => {
+    const ok = await copyToClipboard(exportPresetTs(preset))
+    flashFeedback(ok ? 'Copied TypeScript to clipboard' : 'Clipboard copy failed — falling back to download')
+    if (!ok) downloadFile(`${preset.id}.ts`, exportPresetTs(preset), 'text/typescript')
+  }
+
+  const flashFeedback = (msg: string) => {
+    setExportFeedback(msg)
+    setTimeout(() => setExportFeedback(null), 2400)
+  }
 
   return (
     <div style={pageStyle}>
@@ -157,15 +177,16 @@ function ThemeBuilder(args: BuilderArgs) {
 
         <Stack gap={3}>
           <h2 style={sectionTitle}>Preset snippet</h2>
-          <pre style={codeStyle}>{`const preset: Preset = {
-  id: 'my-preset',
-  service: 'platform',
-  version: '0.0.0',
-  theme: '${args.theme}',
-  brand: '${args.brand}',
-  density: '${args.density}',
-  mode: 'dark',
-}`}</pre>
+          <pre style={codeStyle}>{exportPresetTs(preset)}</pre>
+        </Stack>
+
+        <Stack gap={3}>
+          <h2 style={sectionTitle}>Export</h2>
+          <Inline gap={3}>
+            <Button variant="accent" onClick={handleDownloadJson}>Download JSON</Button>
+            <Button variant="secondary" onClick={handleCopyTs}>Copy TypeScript</Button>
+          </Inline>
+          {exportFeedback ? <span style={overrideKeyStyle}>{exportFeedback}</span> : null}
         </Stack>
       </Stack>
     </div>
@@ -177,11 +198,13 @@ const meta = {
   component: ThemeBuilder,
   parameters: { layout: 'fullscreen' },
   argTypes: {
+    presetId: { control: 'text', description: 'Export 파일명/식별자' },
     theme: { control: 'select', options: ['industrial-dark', 'medical-dark'] satisfies ThemeId[] },
     brand: { control: 'select', options: ['default', 'finemtech', 'samsung'] satisfies BrandId[] },
     density: { control: 'select', options: ['comfortable', 'compact', 'ultra-dense'] satisfies DensityId[] },
   },
   args: {
+    presetId: 'platform-custom-0.0.0',
     theme: 'industrial-dark',
     brand: 'default',
     density: 'compact',
