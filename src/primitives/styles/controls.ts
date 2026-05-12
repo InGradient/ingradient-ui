@@ -1,1 +1,1 @@
-export { controlField } from '../../tokens/recipes/controls'
+export { controlField } from '../recipes/controls'

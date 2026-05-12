@@ -4,4 +4,4 @@ export {
   buttonDangerSecondary,
   buttonPrimary,
   buttonSecondary,
-} from '../../tokens/recipes/buttons'
+} from '../recipes/buttons'

@@ -3,4 +3,4 @@ export {
   headerSurface,
   pageContentLayout,
   pageHeaderSurface,
-} from '../../tokens/recipes/patterns'
+} from '../../primitives/recipes/patterns'

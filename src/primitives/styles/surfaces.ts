@@ -3,4 +3,4 @@ export {
   surfacePanel,
   surfaceRaised,
   surfaceRounded,
-} from '../../tokens/recipes/surfaces'
+} from '../recipes/surfaces'
