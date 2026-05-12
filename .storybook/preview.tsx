@@ -1,7 +1,18 @@
 import React from 'react'
 import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
-import { IngradientGlobalStyle, IngradientThemeProvider } from '../src/tokens'
+import {
+  IngradientGlobalStyle,
+  IngradientThemeProvider,
+  PresetProvider,
+  platformV001,
+  type Preset,
+} from '../src/tokens'
+
+const presetRegistry: Record<string, Preset | undefined> = {
+  none: undefined,
+  'platform-0.0.1': platformV001,
+}
 
 function normalizeBasePath(basePath: string | undefined) {
   if (!basePath || basePath === '/') return '/'
@@ -50,6 +61,18 @@ const preview: Preview = {
     },
   },
   globalTypes: {
+    preset: {
+      name: 'Preset',
+      description: '제품 디자인 snapshot (theme + brand + density + mode)',
+      toolbar: {
+        icon: 'globe',
+        dynamicTitle: true,
+        items: [
+          { value: 'none', title: 'None (legacy toolbars)' },
+          { value: 'platform-0.0.1', title: 'platform 0.0.1' },
+        ],
+      },
+    },
     theme: {
       name: 'Theme',
       description: 'Preview theme',
@@ -103,6 +126,7 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
+    preset: 'none',
     theme: 'portalDark',
     density: 'default',
     role: 'editor',
@@ -113,10 +137,12 @@ const preview: Preview = {
     (Story, context) => {
       const density = context.globals.density as keyof typeof densityPadding
       const padding = densityPadding[density] ?? densityPadding.default
-      const mode = context.globals.theme === 'portalLight' ? 'light' : 'dark'
+      const presetKey = context.globals.preset as string
+      const preset = presetRegistry[presetKey]
+      const fallbackMode = context.globals.theme === 'portalLight' ? 'light' : 'dark'
 
-      return (
-        <IngradientThemeProvider mode={mode}>
+      const inner = (
+        <>
           <IngradientGlobalStyle />
           <div
             data-ig-theme={context.globals.theme}
@@ -134,8 +160,14 @@ const preview: Preview = {
               <Story />
             </div>
           </div>
-        </IngradientThemeProvider>
+        </>
       )
+
+      // preset 선택 시 PresetProvider 가 mode + data-ig-* attr 관리. None 일 때만 legacy toolbar 사용.
+      if (preset) {
+        return <PresetProvider preset={preset}>{inner}</PresetProvider>
+      }
+      return <IngradientThemeProvider mode={fallbackMode}>{inner}</IngradientThemeProvider>
     },
   ],
 }
