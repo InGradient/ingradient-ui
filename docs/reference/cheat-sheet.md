@@ -202,14 +202,22 @@ import { ... } from '@ingradient/ui/primitives'  // surfaceCard / surfacePanel /
 
 ## Tokens (`@ingradient/ui/tokens` 또는 CSS `--ig-*`)
 
-**폴더 구조** (Phase 3 재구조 후 — 상위: [storybook_architecture_restructure.md § 3.1](../storybook_architecture_restructure.md)):
+**폴더 구조** (Phase 3 재구조 + Phase 4 presets — 상위: [storybook_architecture_restructure.md § 3.1, § 4](../storybook_architecture_restructure.md)):
 
 - `core/` — raw 절대값 (구 foundations)
 - `semantic/` — 의미 토큰 (`types.ts` + `states/` 흡수된 구 variants)
 - `modes/` — light / dark (구 semantic/theme 에서 분리)
-- `themes/`, `brands/`, `density/` — Phase 4 에서 채움 (현재 placeholder)
-- `globals/` — CSS 변수 생성 + Provider
+- `themes/`, `brands/`, `density/` — placeholder (실제 토큰 값 추후)
+- `presets/` — Theme + Brand + Density + Mode 조합 snapshot (`platformV001` 등). `PresetProvider`, `usePreset`, `composePreset` 노출
+- `globals/` — CSS 변수 생성 + IngradientThemeProvider + GlobalStyle
 - `recipes.ts` — backward-compat alias (실제 위치: `src/primitives/recipes/`)
+
+**Preset 사용** (Phase 4+):
+```tsx
+import { PresetProvider, platformV001 } from '@ingradient/ui/tokens'
+<PresetProvider preset={platformV001}>{children}</PresetProvider>
+```
+data-ig-{theme,brand,density,mode} attribute 가 html root 에 적용됨.
 
 자주 쓰는 CSS 변수 (`@ingradient/ui/tokens.css` import 후 사용):
 
@@ -267,4 +275,4 @@ CSS-in-JS recipes — styled 정의 안에서 `${recipe}` 로 mixin:
 - [`recipes/`](recipes/) — 자주 쓰는 조합 레시피
 - [Storybook](../../storybook-static) — live preview + props playground
 
-마지막 업데이트: 2026-05-12. (Phase 3 token 재구조 반영 — core/modes/states 매핑 + themes/brands/density placeholder)
+마지막 업데이트: 2026-05-12. (Phase 4 presets 도입 — `PresetProvider`, `platformV001` + Storybook preset toolbar)
