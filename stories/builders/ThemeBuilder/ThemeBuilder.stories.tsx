@@ -1,9 +1,13 @@
 import React, { useLayoutEffect, useMemo, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useArgs } from 'storybook/preview-api'
 import { Alert, Badge, Button, Card, StatusPill, TextField } from '@ingradient/ui/components'
 import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
 import { composePreset, type BrandId, type DensityId, type Preset, type ThemeId } from '@ingradient/ui/tokens'
 import { copyToClipboard, downloadFile, exportPresetJson, exportPresetTs } from './export-preset'
+import { deleteDraft, listDrafts, saveDraft, type Draft } from '../../support/drafts'
+
+const DRAFTS_SCOPE = 'theme-builder'
 
 type BuilderArgs = {
   presetId: string
@@ -66,6 +70,29 @@ function ThemeBuilder(args: BuilderArgs) {
   const preset = useMemo(() => buildAdHocPreset(args), [args])
   const composed = useMemo(() => composePreset(preset), [preset])
   const [exportFeedback, setExportFeedback] = useState<string | null>(null)
+  const [, updateArgs] = useArgs<BuilderArgs>()
+  const [draftName, setDraftName] = useState('')
+  const [drafts, setDrafts] = useState<Draft<BuilderArgs>[]>(() => listDrafts<BuilderArgs>(DRAFTS_SCOPE))
+  const refreshDrafts = () => setDrafts(listDrafts<BuilderArgs>(DRAFTS_SCOPE))
+
+  const handleSaveDraft = () => {
+    const name = draftName.trim() || preset.id
+    saveDraft(DRAFTS_SCOPE, name, args)
+    refreshDrafts()
+    setDraftName('')
+    flashFeedback(`Saved draft "${name}"`)
+  }
+
+  const handleLoadDraft = (draft: Draft<BuilderArgs>) => {
+    updateArgs(draft.args)
+    flashFeedback(`Loaded "${draft.name}"`)
+  }
+
+  const handleDeleteDraft = (name: string) => {
+    deleteDraft(DRAFTS_SCOPE, name)
+    refreshDrafts()
+    flashFeedback(`Deleted "${name}"`)
+  }
 
   // ad-hoc CSS vars 적용. PresetProvider (decorator) 위에 override 로 얹힘.
   useLayoutEffect(() => {
@@ -187,6 +214,38 @@ function ThemeBuilder(args: BuilderArgs) {
             <Button variant="secondary" onClick={handleCopyTs}>Copy TypeScript</Button>
           </Inline>
           {exportFeedback ? <span style={overrideKeyStyle}>{exportFeedback}</span> : null}
+        </Stack>
+
+        <Stack gap={3}>
+          <h2 style={sectionTitle}>Drafts (localStorage)</h2>
+          <Inline gap={3} align="center">
+            <TextField
+              placeholder="Draft name (e.g. wafer-line-a)"
+              value={draftName}
+              onChange={(e) => setDraftName(e.target.value)}
+            />
+            <Button variant="accent" onClick={handleSaveDraft}>Save as draft</Button>
+          </Inline>
+          {drafts.length === 0 ? (
+            <span style={overrideKeyStyle}>(no drafts saved yet)</span>
+          ) : (
+            <Stack gap={2}>
+              {drafts.map((d) => (
+                <Inline key={d.name} gap={3} justify="space-between" align="center">
+                  <Stack gap={0}>
+                    <span style={{ fontWeight: 600 }}>{d.name}</span>
+                    <span style={overrideKeyStyle}>
+                      {d.args.theme} · {d.args.brand} · {d.args.density} · {new Date(d.savedAt).toLocaleString()}
+                    </span>
+                  </Stack>
+                  <Inline gap={2}>
+                    <Button variant="secondary" size="sm" onClick={() => handleLoadDraft(d)}>Load</Button>
+                    <Button variant="secondary" size="sm" tone="danger" onClick={() => handleDeleteDraft(d.name)}>Delete</Button>
+                  </Inline>
+                </Inline>
+              ))}
+            </Stack>
+          )}
         </Stack>
       </Stack>
     </div>
