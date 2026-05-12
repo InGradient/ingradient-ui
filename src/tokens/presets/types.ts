@@ -8,7 +8,7 @@ export type PresetService = 'platform' | 'edge' | 'medical'
 /**
  * 분위기 단위 토큰 set 의 id. Phase 4 이후 themes/ 에 실제 값 채워질 때 확장.
  */
-export type ThemeId = 'industrial-dark' | 'industrial-light' | 'medical' | 'light' | 'dark'
+export type ThemeId = 'industrial-dark' | 'industrial-light' | 'medical' | 'medical-dark' | 'light' | 'dark'
 
 /**
  * 고객사 / 브랜드 id. Phase 4 이후 brands/ 채워질 때 확장.
