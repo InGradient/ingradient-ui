@@ -1,5 +1,15 @@
-/**
- * density placeholder — Phase 4 에서 comfortable / compact / ultra-dense
- * 토큰 override 를 채운다. 상위 문서 § 3.2 참조.
- */
-export {}
+import { comfortableDensity } from './comfortable'
+import { compactDensity } from './compact'
+import { ultraDenseDensity } from './ultra-dense'
+import type { TokenCategory } from './types'
+
+export type { TokenCategory } from './types'
+export { comfortableDensity } from './comfortable'
+export { compactDensity } from './compact'
+export { ultraDenseDensity } from './ultra-dense'
+
+export const densityRegistry: Record<string, TokenCategory> = {
+  comfortable: comfortableDensity,
+  compact: compactDensity,
+  'ultra-dense': ultraDenseDensity,
+}

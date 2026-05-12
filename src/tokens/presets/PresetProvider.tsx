@@ -15,23 +15,34 @@ export interface PresetProviderProps {
  * Preset 을 런타임에 적용한다. 내부에서 `IngradientThemeProvider` 를 감싸므로
  * 별도로 ThemeProvider 를 둘 필요 없음.
  *
- * Phase 4 현재: mode 만 ThemeProvider 로 전달, density/brand 는 data-ig-* attr 로만
- * 표현. 실제 토큰 override 는 Phase 4+ 에서 themes/brands/density 채워지면 동작.
+ * 동작:
+ * 1. composePreset() 으로 theme + brand + density + override 를 CSS 변수 맵으로 합성
+ * 2. document.documentElement.style.setProperty 로 inline override 주입 (외부 stylesheet 보다 우선)
+ * 3. data-ig-* attribute 도 root 에 적용
+ * 4. unmount / preset 변경 시 모든 변경사항 cleanup
  */
 export function PresetProvider({ preset, children }: PresetProviderProps) {
   const composed = useMemo(() => (preset ? composePreset(preset) : null), [preset])
 
-  // DOM 의 root 에 data-ig-* attribute 적용 — 외부 CSS 가 attribute selector 로 override 가능.
   useLayoutEffect(() => {
     if (typeof document === 'undefined') return
     const root = document.documentElement
     const attrs = composed?.attributes ?? {}
+    const vars = composed?.cssVariables ?? {}
+
     Object.entries(attrs).forEach(([key, value]) => {
       root.setAttribute(key, value)
     })
+    Object.entries(vars).forEach(([key, value]) => {
+      root.style.setProperty(key, value)
+    })
+
     return () => {
       Object.keys(attrs).forEach((key) => {
         root.removeAttribute(key)
+      })
+      Object.keys(vars).forEach((key) => {
+        root.style.removeProperty(key)
       })
     }
   }, [composed])

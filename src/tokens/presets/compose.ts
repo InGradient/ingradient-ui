@@ -1,21 +1,29 @@
+import { brandRegistry } from '../brands'
+import { densityRegistry } from '../density'
+import { themeRegistry } from '../themes'
 import type { ComposedPreset, Preset } from './types'
 
 /**
  * Preset 을 런타임 적용 가능한 형태로 합성.
  *
- * Phase 4 현재: themes/brands/density 가 placeholder 라 실제 토큰 합성은 최소.
- * - mode → 그대로 전달
- * - data-ig-* attribute → preset 의 service/version/theme/brand/density/mode 전체를 DOM 에 노출
- * - cssVariables → preset.overrides 만 우선 (Phase 4+ 에서 카테고리별 합성 추가)
+ * 합성 순서 (뒤가 앞을 override):
+ *   theme → brand → density → preset.overrides
  *
- * Phase 4+ 확장 시:
- *   1. themes/{themeId}.ts 에서 base 토큰 가져오기
- *   2. brands/{brandId}.ts 의 override 적용
- *   3. density/{densityId}.ts 의 control-height/spacing override 적용
- *   4. mode 별 color set 적용
- *   5. preset.overrides 최종 override
+ * mode (light/dark) 는 ThemeProvider 가 별도로 처리하므로 cssVariables 에 포함 안 함.
  */
 export function composePreset(preset: Preset): ComposedPreset {
+  const themeVars = themeRegistry[preset.theme]?.cssVars ?? {}
+  const brandVars = brandRegistry[preset.brand]?.cssVars ?? {}
+  const densityVars = densityRegistry[preset.density]?.cssVars ?? {}
+  const overrideVars = preset.overrides ?? {}
+
+  const cssVariables: Record<string, string> = {
+    ...themeVars,
+    ...brandVars,
+    ...densityVars,
+    ...overrideVars,
+  }
+
   return {
     mode: preset.mode,
     attributes: {
@@ -27,7 +35,7 @@ export function composePreset(preset: Preset): ComposedPreset {
       'data-ig-density': preset.density,
       'data-ig-mode': preset.mode,
     },
-    cssVariables: { ...preset.overrides },
+    cssVariables,
     source: preset,
   }
 }
