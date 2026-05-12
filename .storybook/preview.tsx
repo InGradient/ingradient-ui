@@ -12,6 +12,7 @@ import {
   type ThemeMode,
   type DensityId,
 } from '../src/tokens'
+import { ReviewWidget } from '../stories/support/ReviewWidget'
 
 type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
 type VersionId = '0.0.1'
@@ -150,6 +151,9 @@ const preview: Preview = {
       const densityOverride: DensityId | undefined =
         densityGlobal === 'inherit' ? undefined : (densityGlobal as DensityId)
 
+      // page story (handoff metadata 있는 것) 에만 ReviewWidget 표시.
+      const showReviewWidget = !!handoff?.service
+
       const inner = (
         <>
           <IngradientGlobalStyle />
@@ -165,6 +169,7 @@ const preview: Preview = {
               <Story />
             </div>
           </div>
+          {showReviewWidget ? <ReviewWidget storyId={context.id} /> : null}
         </>
       )
 
