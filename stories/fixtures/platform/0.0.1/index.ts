@@ -1,3 +1,6 @@
 export * from './users'
 export * from './preset'
 export * from './scenarios'
+export * from './catalog-scenarios'
+export * from './class-scenarios'
+export * from './create-project-scenarios'
