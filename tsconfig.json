@@ -22,6 +22,8 @@
       "@ingradient/ui/components": ["./src/components/index.ts"],
       "@ingradient/ui/patterns": ["./src/patterns/index.ts"],
       "@ingradient/ui/brand": ["./src/brand/index.tsx"],
+      "@ingradient/ui/utils": ["./src/utils/index.ts"],
+      "@ingradient/platform-pages": ["./packages/platform-pages/src/index.ts"],
       "@storybook-support/*": ["./stories/support/*"]
     }
   },

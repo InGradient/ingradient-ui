@@ -98,6 +98,8 @@ const config: StorybookConfig = {
         '@ingradient/ui/primitives': path.resolve(__dirname, '../src/primitives/index.ts'),
         '@ingradient/ui/components': path.resolve(__dirname, '../src/components/index.ts'),
         '@ingradient/ui/patterns': path.resolve(__dirname, '../src/patterns/index.ts'),
+        '@ingradient/ui/utils': path.resolve(__dirname, '../src/utils/index.ts'),
+        '@ingradient/platform-pages': path.resolve(__dirname, '../packages/platform-pages/src/index.ts'),
         '@ingradient/ui': path.resolve(__dirname, '../src/index.ts'),
         '@storybook-support': path.resolve(__dirname, '../stories/support'),
       },

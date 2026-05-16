@@ -1,0 +1,158 @@
+import type { ReactNode } from 'react'
+import styled from 'styled-components'
+import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-3);
+  padding: var(--ig-space-5);
+  border-bottom: 1px solid var(--ig-color-border-subtle);
+`
+
+const Title = styled.div`
+  font-size: var(--ig-font-size-sm);
+  font-weight: 600;
+  color: var(--ig-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+`
+
+const DetailsToggle = styled.button`
+  background: none;
+  border: none;
+  padding: var(--ig-space-2) 0;
+  text-align: left;
+  font-size: var(--ig-font-size-sm);
+  color: var(--ig-color-accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ig-space-2);
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const DetailsBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-3);
+  padding-top: var(--ig-space-2);
+`
+
+export interface ImageDetailInfo {
+  name?: string
+  created_at?: string
+  captured_at?: string
+  upload_source?: string
+  camera_ip?: string
+  camera_type?: string
+  camera_model?: string
+  edge_device?: string
+  dimensions?: { width: number; height: number }
+  size_bytes?: number
+  uploader?: string
+  labeled_by?: string
+  labeled_at?: string
+  upload_quality?: string
+  sequence_id?: string
+  sequence_step?: number
+  pattern_label?: string
+  package_version?: number
+  capture_duration_ms?: number
+}
+
+export interface ImageDetailInfoPanelProps {
+  image: ImageDetailInfo
+  positionLabel?: string
+  detailsOpen: boolean
+  onToggleDetails: () => void
+  cameraParamsSlot?: ReactNode
+  title?: string
+}
+
+function formatBytes(bytes?: number): string {
+  if (!bytes) return '—'
+  if (bytes < 1024) return `${bytes} B`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / 1024 / 1024).toFixed(2)} MB`
+}
+
+function rowIfValue(label: string, value: string | number | undefined | null) {
+  if (value === undefined || value === null || value === '') return null
+  return (
+    <InfoRow key={label}>
+      <InfoRowLabel>{label}</InfoRowLabel>
+      <InfoRowValue>{value}</InfoRowValue>
+    </InfoRow>
+  )
+}
+
+export function ImageDetailInfoPanel({
+  image,
+  positionLabel,
+  detailsOpen,
+  onToggleDetails,
+  cameraParamsSlot,
+  title = 'Image info',
+}: ImageDetailInfoPanelProps) {
+  return (
+    <Section>
+      <Title>{title}</Title>
+      {positionLabel ? (
+        <InfoRow>
+          <InfoRowLabel>Position</InfoRowLabel>
+          <InfoRowValue>{positionLabel}</InfoRowValue>
+        </InfoRow>
+      ) : null}
+      <InfoRow>
+        <InfoRowLabel>File</InfoRowLabel>
+        <InfoRowValue title={image.name}>{image.name ?? '—'}</InfoRowValue>
+      </InfoRow>
+      <InfoRow>
+        <InfoRowLabel>Uploaded</InfoRowLabel>
+        <InfoRowValue>{image.created_at ?? '—'}</InfoRowValue>
+      </InfoRow>
+      <InfoRow>
+        <InfoRowLabel>Captured</InfoRowLabel>
+        <InfoRowValue>{image.captured_at ?? '—'}</InfoRowValue>
+      </InfoRow>
+      <DetailsToggle type="button" onClick={onToggleDetails}>
+        <span>{detailsOpen ? '▾' : '▸'}</span>
+        {detailsOpen ? 'Hide details' : 'Show details'}
+      </DetailsToggle>
+      {detailsOpen ? (
+        <DetailsBody>
+          {rowIfValue('Upload Source', image.upload_source)}
+          {rowIfValue('Camera IP', image.camera_ip)}
+          {rowIfValue('Camera Type', image.camera_type)}
+          {rowIfValue('Camera Model', image.camera_model)}
+          {rowIfValue('Edge Device', image.edge_device)}
+          {rowIfValue('Uploaded By', image.uploader)}
+          {image.package_version != null ? rowIfValue('Package Ver.', `v${image.package_version}`) : null}
+          {image.capture_duration_ms != null
+            ? rowIfValue('Capture Duration', `${image.capture_duration_ms} ms`)
+            : null}
+          {image.dimensions
+            ? rowIfValue('Dimensions', `${image.dimensions.width} × ${image.dimensions.height}`)
+            : null}
+          {rowIfValue('Size', formatBytes(image.size_bytes))}
+          {rowIfValue('Labeled By', image.labeled_by)}
+          {rowIfValue('Labeled At', image.labeled_at)}
+          {rowIfValue('Quality', image.upload_quality)}
+          {image.sequence_id
+            ? rowIfValue(
+                'Sequence',
+                typeof image.sequence_step === 'number'
+                  ? `Seq ${image.sequence_step + 1}`
+                  : image.sequence_id,
+              )
+            : null}
+          {rowIfValue('Pattern', image.pattern_label)}
+        </DetailsBody>
+      ) : null}
+      {cameraParamsSlot}
+    </Section>
+  )
+}

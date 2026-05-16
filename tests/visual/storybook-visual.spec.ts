@@ -51,10 +51,6 @@ const stories: StoryTarget[] = [
   { name: 'pages-medical-0-0-1-projectpicker', id: 'pages-medical-0-0-1-projectpicker--default', readyText: 'Cases', fullPage: true },
   { name: 'pages-medical-0-0-1-classworkspace', id: 'pages-medical-0-0-1-classworkspace--default', readyText: 'Label classes', fullPage: true },
 
-  // Sandboxes (Phase 12)
-  { name: 'sandboxes-platform-densecatalog', id: 'sandboxes-platform-densecatalog--default', readyText: 'ultra-dense experiment', fullPage: true },
-  { name: 'sandboxes-edge-mobilecaptureui', id: 'sandboxes-edge-mobilecaptureui--default', readyText: 'Swipe to select device', fullPage: true },
-  { name: 'sandboxes-medical-viewerlightmode', id: 'sandboxes-medical-viewerlightmode--default', readyText: 'DICOM viewer', fullPage: true },
 ]
 
 async function openStory(page: import('@playwright/test').Page, story: StoryTarget) {

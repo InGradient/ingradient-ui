@@ -3,19 +3,28 @@ import type { Preset } from '@ingradient/ui/tokens'
 export { downloadFile, copyToClipboard } from '../../support/download'
 
 /**
- * Preset → JSON 문자열 (pretty-print).
+ * user override (color picker / spacing / radius 등에서 입력한 CSS var 값) 을
+ * preset.overrides 에 머지한 사본을 만든다. 빈 overrides 면 원본 그대로 반환.
  */
-export function exportPresetJson(preset: Preset): string {
-  return JSON.stringify(preset, null, 2)
+function mergeOverrides(preset: Preset, overrides: Record<string, string>): Preset {
+  if (!overrides || Object.keys(overrides).length === 0) return preset
+  return { ...preset, overrides: { ...(preset.overrides ?? {}), ...overrides } }
+}
+
+/**
+ * Preset → JSON 문자열 (pretty-print). user override 가 있으면 preset.overrides 에 머지됨.
+ */
+export function exportPresetJson(preset: Preset, overrides: Record<string, string> = {}): string {
+  return JSON.stringify(mergeOverrides(preset, overrides), null, 2)
 }
 
 /**
  * Preset → TypeScript 파일 코드. src/tokens/presets/{service}/{version}/preset.ts 에
- * 그대로 붙여 넣을 수 있는 형태. JSON 은 JS object literal 의 부분집합이라 그대로 사용.
+ * 그대로 붙여 넣을 수 있는 형태. user override 는 preset.overrides 에 머지되어 직렬화됨.
  */
-export function exportPresetTs(preset: Preset): string {
+export function exportPresetTs(preset: Preset, overrides: Record<string, string> = {}): string {
   const ident = toIdentifier(preset.id)
-  const json = JSON.stringify(preset, null, 2)
+  const json = JSON.stringify(mergeOverrides(preset, overrides), null, 2)
   return [
     `import type { Preset } from '@ingradient/ui/tokens'`,
     ``,

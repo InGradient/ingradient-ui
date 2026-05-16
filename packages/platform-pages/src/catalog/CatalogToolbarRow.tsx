@@ -1,0 +1,146 @@
+import {
+  FilterIcon,
+  GridIcon,
+  ModeSwitcher,
+  SearchField,
+  SortIcon,
+  StatsIcon,
+  TableIcon,
+  Button,
+} from '@ingradient/ui/components'
+import {
+  ExpandSidebarBtn,
+  FilterPopoverTrigger,
+  GalleryFilterPanel,
+  GalleryToolbar,
+  SortPopoverTrigger,
+} from '@ingradient/ui/patterns'
+import { DangerDimButton } from './CatalogView.styles'
+import type { CatalogToolbarPaneProps, CatalogViewMode } from './types'
+
+interface Props extends CatalogToolbarPaneProps {
+  sidebarCollapsed: boolean
+  onExpandSidebar: () => void
+}
+
+const VIEW_OPTIONS = [
+  { value: 'grid' as CatalogViewMode, label: 'Grid', icon: <GridIcon size={16} /> },
+  { value: 'table' as CatalogViewMode, label: 'Table', icon: <TableIcon size={16} /> },
+  { value: 'stats' as CatalogViewMode, label: 'Stats', icon: <StatsIcon size={16} /> },
+]
+
+export function CatalogToolbarRow({
+  sidebarCollapsed,
+  onExpandSidebar,
+  viewMode,
+  onChangeViewMode,
+  searchValue,
+  onSearchChange,
+  filterState,
+  onFilterChange,
+  onFilterReset,
+  hasActiveFilter,
+  filterDefaultOpen,
+  sortValue,
+  sortOptions,
+  onSortChange,
+  sortDefaultOpen,
+  classes,
+  members,
+  patternItems,
+  totalCount,
+  loadedCount,
+  selectionCount,
+  allSelected,
+  uploadProgress,
+  onToggleSelectAll,
+  onDelete,
+  onExport,
+  onUpload,
+}: Props) {
+  return (
+    <GalleryToolbar
+      leftStart={sidebarCollapsed ? <ExpandSidebarBtn onClick={onExpandSidebar} /> : undefined}
+      search={
+        <SearchField
+          placeholder="Search file name"
+          size="sm"
+          value={searchValue}
+          onChange={(e) => onSearchChange(e.target.value)}
+          style={{ maxWidth: 220 }}
+        />
+      }
+      filters={
+        <>
+          <FilterPopoverTrigger
+            label="Filter"
+            iconOnly
+            icon={<FilterIcon size={18} />}
+            active={hasActiveFilter}
+            defaultOpen={filterDefaultOpen}
+            panel={
+              <GalleryFilterPanel
+                state={filterState}
+                onChange={onFilterChange}
+                classItems={classes.map((c) => ({ id: c.id, label: c.name, color: c.color }))}
+                memberItems={members.map((m) => ({ id: m.id, label: m.name }))}
+                patternItems={patternItems ?? []}
+                showPatterns={!!patternItems?.length}
+                onReset={onFilterReset}
+                onSelectAllPatterns={() =>
+                  onFilterChange({
+                    ...filterState,
+                    selectedPatternIds: new Set((patternItems ?? []).map((p) => p.id)),
+                  })
+                }
+                onResetPatterns={() =>
+                  onFilterChange({ ...filterState, selectedPatternIds: new Set() })
+                }
+              />
+            }
+          />
+          <SortPopoverTrigger
+            iconOnly
+            icon={<SortIcon size={18} />}
+            value={sortValue}
+            onChange={onSortChange}
+            options={sortOptions}
+            defaultOpen={sortDefaultOpen}
+          />
+        </>
+      }
+      viewMode={
+        <ModeSwitcher
+          size="sm"
+          shape="pill"
+          iconOnly
+          value={viewMode}
+          onChange={(v) => onChangeViewMode(v as CatalogViewMode)}
+          options={VIEW_OPTIONS}
+        />
+      }
+      actions={
+        <>
+          <Button variant="secondary" size="sm" onClick={onExport}>
+            Export
+          </Button>
+          <Button variant="accent" size="sm" onClick={onUpload}>
+            Upload
+          </Button>
+        </>
+      }
+      itemLabel="image"
+      selectionCount={selectionCount}
+      totalCount={totalCount}
+      loadedCount={loadedCount}
+      allSelected={allSelected}
+      uploadProgress={uploadProgress}
+      selectionActions={
+        <DangerDimButton type="button" onClick={onDelete}>
+          Delete
+        </DangerDimButton>
+      }
+      onToggleSelectAll={onToggleSelectAll}
+    />
+  )
+}

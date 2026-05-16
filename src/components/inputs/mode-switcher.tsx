@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Row = styled.div<{ $size: 'sm' | 'md' }>`
+const Row = styled.div<{ $size: 'sm' | 'md'; $shape: 'rounded' | 'pill' }>`
   display: inline-flex;
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-md);
+  border-radius: ${(p) => (p.$shape === 'pill' ? 'var(--ig-radius-pill)' : 'var(--ig-radius-md)')};
   overflow: hidden;
-  background: var(--ig-color-surface-muted);
+  background: ${(p) => (p.$shape === 'pill' ? 'var(--ig-color-surface-raised)' : 'var(--ig-color-surface-muted)')};
 `
 
 const OptionBtn = styled.button<{ $active: boolean; $size: 'sm' | 'md' }>`
@@ -38,12 +38,16 @@ export interface ModeSwitcherProps {
   value: string
   onChange: (value: string) => void
   size?: 'sm' | 'md'
+  shape?: 'rounded' | 'pill'
+  iconOnly?: boolean
   className?: string
 }
 
-export function ModeSwitcher({ options, value, onChange, size = 'md', className }: ModeSwitcherProps) {
+export function ModeSwitcher({
+  options, value, onChange, size = 'md', shape = 'rounded', iconOnly = false, className,
+}: ModeSwitcherProps) {
   return (
-    <Row $size={size} className={className} role="radiogroup">
+    <Row $size={size} $shape={shape} className={className} role="radiogroup">
       {options.map((opt) => (
         <OptionBtn
           key={opt.value}
@@ -52,10 +56,12 @@ export function ModeSwitcher({ options, value, onChange, size = 'md', className 
           aria-checked={opt.value === value}
           $active={opt.value === value}
           $size={size}
+          aria-label={iconOnly ? opt.label : undefined}
+          title={iconOnly ? opt.label : undefined}
           onClick={() => onChange(opt.value)}
         >
           {opt.icon}
-          {opt.label}
+          {iconOnly ? null : opt.label}
         </OptionBtn>
       ))}
     </Row>

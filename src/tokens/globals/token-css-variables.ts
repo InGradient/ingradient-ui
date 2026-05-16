@@ -1,6 +1,7 @@
 import {
   foundationColors,
   foundationColorsLight,
+  motionScale,
   radiusScale,
   shadowScale,
   shadowScaleLight,
@@ -103,6 +104,25 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-badge-success': palette.greenTint18,
     '--ig-color-badge-warning': palette.amberTint18,
     '--ig-color-badge-danger': palette.redTint18,
+    // Catalog dataset task tags
+    '--ig-color-tag-classification-bg': palette.tagClassificationBg,
+    '--ig-color-tag-classification-text': palette.tagClassificationText,
+    '--ig-color-tag-segmentation-bg': palette.tagSegmentationBg,
+    '--ig-color-tag-segmentation-text': palette.tagSegmentationText,
+    '--ig-color-tag-object-detection-bg': palette.tagObjectDetectionBg,
+    // Sync state chip — opaque variants (image overlay 위에 올라가는 chip)
+    '--ig-color-sync-chip-synced-bg': palette.syncChipSyncedBg,
+    '--ig-color-sync-chip-uploading-bg': palette.syncChipUploadingBg,
+    '--ig-color-sync-chip-failed-bg': palette.syncChipFailedBg,
+    '--ig-color-sync-chip-local-bg': palette.syncChipLocalBg,
+    '--ig-color-sync-chip-on-text': palette.syncChipOnText,
+    // Image card overlay buttons / group count
+    '--ig-color-image-option-bg': palette.imageOptionBg,
+    '--ig-color-image-option-bg-hover': palette.imageOptionBgHover,
+    '--ig-color-image-group-circle-bg': palette.imageGroupCircleBg,
+    '--ig-color-image-group-circle-border': palette.imageGroupCircleBorder,
+    '--ig-color-danger-dim-bg': palette.dangerDimBg,
+    '--ig-color-danger-dim-border': palette.dangerDimBorder,
     '--ig-color-progress-track': palette.white08,
     '--ig-color-skeleton-start': palette.white06,
     '--ig-color-skeleton-mid': palette.white12,
@@ -205,6 +225,8 @@ const staticVars = {
   '--ig-control-height-sm': controlSizes.sm,
   '--ig-control-height-md': controlSizes.md,
   '--ig-control-height-lg': controlSizes.lg,
+  '--ig-motion-fast': motionScale.fast,
+  '--ig-motion-normal': motionScale.normal,
 } as const
 
 export function buildTokenCssVariables(mode: 'dark' | 'light' = 'dark') {

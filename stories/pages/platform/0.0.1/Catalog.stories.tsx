@@ -1,16 +1,9 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import {
-  Alert, Badge, Button, Card, EmptyState, FilterBarLayout, SearchField, SelectionActionBar,
-  Spinner, StatusPill, type StatusTone,
-} from '@ingradient/ui/components'
-import { ListDetailLayout, PageContent, PageHeader, PageTitle, PageTitleBlock, Panel, PanelHeader, PanelTitle } from '@ingradient/ui/patterns'
-import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
-import { catalogScenarios, type CatalogScenario, type MockDataset } from '../../../fixtures/platform/0.0.1/catalog-scenarios'
-import { scenarioArgType } from '../../../support/scenarios'
-import {
-  filterStyleArg, rightPanelArg, sidebarArg, selectionModeArg, viewModeArg,
-  type FilterStyle, type RightPanelState, type SelectionMode, type SidebarState, type ViewMode,
-} from '../../../support/page-controls'
+import { CatalogView } from '@ingradient/platform-pages'
+import { catalogScenarios, type CatalogScenarioKey } from '../../../fixtures/platform/0.0.1/catalog-scenarios'
+import { buildCatalogViewProps } from './catalog/build-view-props'
+import { useCatalogScene } from './catalog/use-catalog-scene'
 import { defineHandoff } from '../../../support/handoff'
 
 const handoff = defineHandoff({
@@ -19,283 +12,46 @@ const handoff = defineHandoff({
   page: 'Catalog',
   referenceStory: 'Pages / Platform / 0.0.1 / Catalog / Default',
   preset: 'platform-0.0.1',
-  fixturesPath: 'stories/fixtures/platform/0.0.1/catalog-scenarios.ts',
+  fixturesPath: 'stories/fixtures/platform/0.0.1/catalog-{datasets,images,scenarios}.ts',
   requiredScenarios: [
-    'default', 'empty', 'loading', 'error', 'permission-denied',
-    'huge-dataset', 'long-text', 'many-items', 'syncing', 'multi-selection', 'export-ready',
+    'default', 'empty-images', 'loading-images', 'permission-denied',
+    'mixed-sync', 'archived', 'multi-selection', 'table-view', 'stats-view',
   ],
   interactions: [
-    'dataset row 클릭 → right panel 에 detail 표시',
-    'checkbox 다중 선택 → bottom SelectionActionBar 표시',
-    'viewMode 토글 (table / grid)',
-    'filterStyle 전환 (chips / dropdown / side-panel)',
-    'Export 액션은 selection 이 있고 export 권한이 있을 때만 노출',
+    'dataset 클릭 → current dataset 변경 + image list 갱신',
+    'image 카드 클릭 → detail modal',
+    'view mode toggle → Grid / Table / Stats 전환',
+    'kebab 클릭 → image / dataset 메뉴',
   ],
   platformIntegration: [
-    'replace mock datasets with useCatalogDatasets() (frontend/features/catalog/use-catalog-datasets.ts 패턴)',
-    'selection state 는 useState 또는 useSelection hook',
-    'Export 액션은 igpExport mutation 으로 교체',
-    'permissionDenied 는 useAuth().permissions.canViewDatasets 로 판정',
-    'syncing/failed status 는 server-side 상태를 polling 또는 SSE',
+    'CatalogView 를 그대로 import — props 에 hook 결과 연결',
+    'datasets → useCatalogDatasets()',
+    'images → useGalleryImageList()',
+    'selectedDatasetIds / currentDatasetId → useCatalogPageUiState()',
+    'image menu actions → useGalleryImageMenu / mutations',
   ],
 })
 
-type Args = {
-  scenario: CatalogScenario
-  viewMode: ViewMode
-  sidebar: SidebarState
-  rightPanel: RightPanelState
-  filterStyle: FilterStyle
-  selectionMode: SelectionMode
-}
+type Args = { scenario: CatalogScenarioKey }
 
-const statusTone: Record<MockDataset['status'], StatusTone> = {
-  ready: 'completed',
-  syncing: 'running',
-  failed: 'failed',
-}
-
-const pageStyle: React.CSSProperties = {
-  minHeight: '100vh',
-  background: 'var(--ig-color-bg-canvas)',
-  display: 'flex',
-}
-
-const sidebarStyle: React.CSSProperties = {
-  background: 'var(--ig-color-surface-panel)',
-  borderRight: '1px solid var(--ig-color-border-subtle)',
-  padding: 'var(--ig-space-5)',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--ig-space-4)',
-}
-
-const tableHeaderStyle: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: '32px 1fr 100px 120px 100px',
-  gap: 'var(--ig-space-4)',
-  padding: 'var(--ig-space-3) var(--ig-space-5)',
-  fontSize: 'var(--ig-font-size-xs)',
-  color: 'var(--ig-color-text-muted)',
-  textTransform: 'uppercase',
-  fontWeight: 600,
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
-}
-
-const tableRowStyle: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: '32px 1fr 100px 120px 100px',
-  gap: 'var(--ig-space-4)',
-  padding: 'var(--ig-space-4) var(--ig-space-5)',
-  alignItems: 'center',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
-}
-
-const nameCell: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-sm)',
-  color: 'var(--ig-color-text-primary)',
-  fontWeight: 500,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-}
-
-const metaCell: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-xs)',
-  color: 'var(--ig-color-text-muted)',
-  fontFamily: 'var(--ig-font-mono)',
-}
-
-const gridCardBody: React.CSSProperties = {
-  padding: 'var(--ig-space-5)',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--ig-space-3)',
-}
-
-function SidebarColumn({ state }: { state: SidebarState }) {
-  if (state === 'hidden') return null
-  return (
-    <aside style={{ ...sidebarStyle, width: state === 'compact' ? 72 : 240 }}>
-      <Inline gap={2} align="center">
-        <div style={{ width: 32, height: 32, background: 'var(--ig-color-accent)', borderRadius: 8 }} />
-        {state === 'expanded' ? <span style={{ fontWeight: 600 }}>INGRADIENT</span> : null}
-      </Inline>
-      <Stack gap={1}>
-        {['Dashboard', 'Catalog', 'Classes', 'Settings'].map((item) => (
-          <Button key={item} variant={item === 'Catalog' ? 'accent' : 'secondary'} size="sm">
-            {state === 'expanded' ? item : item[0]}
-          </Button>
-        ))}
-      </Stack>
-    </aside>
+function CatalogScene({ scenario: key }: Args) {
+  const scenario = catalogScenarios[key]
+  const s = useCatalogScene(scenario)
+  const datasetNameById = React.useMemo(
+    () => Object.fromEntries(scenario.datasets.map((d) => [d.id, d.name])),
+    [scenario.datasets],
   )
+  return <CatalogView {...buildCatalogViewProps(scenario, s, datasetNameById)} />
 }
 
-function FilterControls({ filterStyle: fs, selectedCount }: { filterStyle: FilterStyle; selectedCount: number }) {
-  return (
-    <FilterBarLayout>
-      <SearchField placeholder="Search datasets…" value="" onChange={() => undefined} />
-      {fs === 'chips' ? (
-        <Inline gap={2}>
-          <Badge $tone="accent">Ready</Badge>
-          <Badge $tone="warning">Syncing</Badge>
-          <Badge $tone="danger">Failed</Badge>
-        </Inline>
-      ) : fs === 'dropdown' ? (
-        <Button variant="secondary" size="sm">Status: All</Button>
-      ) : (
-        <Button variant="secondary" size="sm">Open filters</Button>
-      )}
-      {selectedCount > 0 ? <Badge $tone="accent">{selectedCount} selected</Badge> : null}
-    </FilterBarLayout>
-  )
-}
-
-function DatasetTable({ datasets, selectedIds }: { datasets: MockDataset[]; selectedIds: string[] }) {
-  return (
-    <div>
-      <div style={tableHeaderStyle}>
-        <span />
-        <span>Name</span>
-        <span>Images</span>
-        <span>Status</span>
-        <span>Updated</span>
-      </div>
-      {datasets.map((d) => (
-        <div key={d.id} style={tableRowStyle}>
-          <input type="checkbox" checked={selectedIds.includes(d.id)} readOnly />
-          <span style={nameCell}>{d.name}</span>
-          <span style={metaCell}>{d.imageCount.toLocaleString()}</span>
-          <StatusPill tone={statusTone[d.status]}>{d.status}</StatusPill>
-          <span style={metaCell}>{d.lastUpdatedAt}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function DatasetGrid({ datasets }: { datasets: MockDataset[] }) {
-  return (
-    <Grid gap={4} columns="repeat(auto-fill, minmax(240px, 1fr))">
-      {datasets.map((d) => (
-        <Card key={d.id}>
-          <div style={gridCardBody}>
-            <Inline justify="space-between" align="center">
-              <span style={nameCell}>{d.name}</span>
-              <StatusPill tone={statusTone[d.status]}>{d.status}</StatusPill>
-            </Inline>
-            <span style={metaCell}>{d.imageCount.toLocaleString()} images</span>
-            <span style={metaCell}>{d.lastUpdatedAt} · {d.owner}</span>
-          </div>
-        </Card>
-      ))}
-    </Grid>
-  )
-}
-
-function RightPanel({ dataset }: { dataset: MockDataset | undefined }) {
-  if (!dataset) return null
-  return (
-    <Panel>
-      <PanelHeader>
-        <PanelTitle>{dataset.name}</PanelTitle>
-      </PanelHeader>
-      <div style={{ padding: 'var(--ig-space-5)' }}>
-        <Stack gap={3}>
-          <Inline justify="space-between"><span style={metaCell}>Owner</span><span>{dataset.owner}</span></Inline>
-          <Inline justify="space-between"><span style={metaCell}>Images</span><span>{dataset.imageCount.toLocaleString()}</span></Inline>
-          <Inline justify="space-between"><span style={metaCell}>Status</span><StatusPill tone={statusTone[dataset.status]}>{dataset.status}</StatusPill></Inline>
-          <Inline justify="space-between"><span style={metaCell}>Updated</span><span>{dataset.lastUpdatedAt}</span></Inline>
-        </Stack>
-      </div>
-    </Panel>
-  )
-}
-
-function CatalogScene(args: Args) {
-  const scene = catalogScenarios[args.scenario]
-  const selectedFirst = scene.datasets.find((d) => scene.selectedIds.includes(d.id))
-
-  return (
-    <div style={pageStyle}>
-      <SidebarColumn state={args.sidebar} />
-      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
-        <PageHeader>
-          <PageTitleBlock>
-            <PageTitle>Catalog</PageTitle>
-            <Inline gap={2} align="center">
-              <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-sm)' }}>
-                Organize datasets, manage dataset-class links, browse labeled images.
-              </span>
-              <Badge $tone="neutral">Project: Wafer-2026</Badge>
-            </Inline>
-          </PageTitleBlock>
-          <Inline gap={2}>
-            <Button variant="secondary" size="sm">Import</Button>
-            <Button variant="accent" size="sm">New dataset</Button>
-          </Inline>
-        </PageHeader>
-        <PageContent>
-          {scene.permissionDenied ? (
-            <Alert $tone="warning">You don&apos;t have permission to view datasets in this project.</Alert>
-          ) : scene.error ? (
-            <Alert $tone="danger">{scene.error}</Alert>
-          ) : scene.loading ? (
-            <Stack gap={3} align="center"><Spinner size="lg" /><span style={metaCell}>Loading datasets…</span></Stack>
-          ) : scene.datasets.length === 0 ? (
-            <EmptyState title="No datasets yet" description="Create your first dataset to start labeling." />
-          ) : (
-            <ListDetailLayout style={{ gridTemplateColumns: args.rightPanel === 'open' ? 'minmax(0,1fr) 320px' : 'minmax(0,1fr)' }}>
-              <Stack gap={4}>
-                <FilterControls filterStyle={args.filterStyle} selectedCount={scene.selectedIds.length} />
-                {args.viewMode === 'table' ? (
-                  <DatasetTable datasets={scene.datasets} selectedIds={scene.selectedIds} />
-                ) : (
-                  <DatasetGrid datasets={scene.datasets} />
-                )}
-              </Stack>
-              {args.rightPanel === 'open' ? <RightPanel dataset={selectedFirst ?? scene.datasets[0]} /> : null}
-            </ListDetailLayout>
-          )}
-        </PageContent>
-        {scene.selectedIds.length > 0 ? (
-          <SelectionActionBar
-            selectedCount={scene.selectedIds.length}
-            totalCount={scene.datasets.length}
-            onClearSelection={() => undefined}
-            actions={<Inline gap={2}>
-              {scene.exportReady ? <Button variant="accent" size="sm">Export</Button> : null}
-              <Button variant="secondary" size="sm" tone="danger">Delete</Button>
-            </Inline>}
-          />
-        ) : null}
-      </div>
-    </div>
-  )
-}
+const SCENARIO_KEYS = Object.keys(catalogScenarios) as CatalogScenarioKey[]
 
 const meta = {
   title: 'Pages/Platform/0.0.1/Catalog',
   component: CatalogScene,
-  tags: ['autodocs'],
   parameters: { layout: 'fullscreen', ...handoff },
-  argTypes: {
-    scenario: scenarioArgType(['huge-dataset', 'syncing', 'multi-selection', 'export-ready']),
-    viewMode: viewModeArg,
-    sidebar: sidebarArg,
-    rightPanel: rightPanelArg,
-    filterStyle: filterStyleArg,
-    selectionMode: selectionModeArg,
-  },
-  args: {
-    scenario: 'default',
-    viewMode: 'table',
-    sidebar: 'expanded',
-    rightPanel: 'open',
-    filterStyle: 'chips',
-    selectionMode: 'multi',
-  },
+  argTypes: { scenario: { control: 'select', options: SCENARIO_KEYS, table: { category: 'Page' } } },
+  args: { scenario: 'default' as CatalogScenarioKey },
 } satisfies Meta<typeof CatalogScene>
 
 export default meta
@@ -303,15 +59,61 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-export const Empty: Story = { args: { scenario: 'empty' } }
-export const Loading: Story = { args: { scenario: 'loading' } }
+export const EmptyDatasets: Story = { args: { scenario: 'empty-datasets' } }
+export const EmptyImages: Story = { args: { scenario: 'empty-images' } }
+export const LoadingDatasets: Story = { args: { scenario: 'loading-datasets' } }
+export const LoadingImages: Story = { args: { scenario: 'loading-images' } }
+export const Error: Story = { args: { scenario: 'error' } }
 export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
-export const HugeDataset: Story = { args: { scenario: 'huge-dataset' } }
-export const LongNames: Story = { args: { scenario: 'long-text' } }
-export const ManyItems: Story = { args: { scenario: 'many-items', viewMode: 'grid' } }
-export const Syncing: Story = { args: { scenario: 'syncing' } }
+export const NoProject: Story = { args: { scenario: 'no-project' } }
+export const ManyImages: Story = { args: { scenario: 'many-images' } }
+export const LongText: Story = { args: { scenario: 'long-text' } }
 export const MultiSelection: Story = { args: { scenario: 'multi-selection' } }
-export const ExportReady: Story = { args: { scenario: 'export-ready' } }
-export const GridView: Story = { args: { viewMode: 'grid' } }
-export const CompactSidebar: Story = { args: { sidebar: 'compact' } }
-export const NoRightPanel: Story = { args: { rightPanel: 'closed' } }
+export const MixedSync: Story = { args: { scenario: 'mixed-sync' } }
+export const Archived: Story = { args: { scenario: 'archived' } }
+export const Processing: Story = { args: { scenario: 'processing' } }
+export const GroupMode: Story = { args: { scenario: 'group-mode' } }
+export const HoverPreviewState: Story = { args: { scenario: 'hover-preview' } }
+export const DetailOpen: Story = { args: { scenario: 'detail-open' } }
+export const FilterOpen: Story = { args: { scenario: 'filter-open' } }
+export const SortOpen: Story = { args: { scenario: 'sort-open' } }
+export const ImageMenuOpen: Story = { args: { scenario: 'image-menu-open' } }
+export const DatasetMenuOpen: Story = { args: { scenario: 'dataset-menu-open' } }
+export const DragOverSidebar: Story = { args: { scenario: 'drag-over-sidebar' } }
+export const DragOverGrid: Story = { args: { scenario: 'drag-over-grid' } }
+export const UploadPending: Story = { args: { scenario: 'upload-pending' } }
+export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
+export const TableView: Story = { args: { scenario: 'table-view' } }
+export const StatsView: Story = { args: { scenario: 'stats-view' } }
+export const RightEmptyClasses: Story = { args: { scenario: 'right-empty-classes' } }
+export const RightLoading: Story = { args: { scenario: 'right-loading' } }
+export const RightManyClasses: Story = { args: { scenario: 'right-many-classes' } }
+export const MemberOverflow: Story = { args: { scenario: 'member-overflow' } }
+export const FilterActive: Story = { args: { scenario: 'filter-active' } }
+export const StatsRich: Story = { args: { scenario: 'stats-rich' } }
+export const StatsEmpty: Story = { args: { scenario: 'stats-empty' } }
+export const ModalAddDataset: Story = { args: { scenario: 'modal-add-dataset' } }
+export const ModalDuplicate: Story = { args: { scenario: 'modal-duplicate' } }
+export const ModalDragDrop: Story = { args: { scenario: 'modal-drag-drop' } }
+export const ModalIgpExportProgress: Story = { args: { scenario: 'modal-igp-export-progress' } }
+export const ModalIgpExportReady: Story = { args: { scenario: 'modal-igp-export-ready' } }
+export const ModalUploadQuality: Story = { args: { scenario: 'modal-upload-quality' } }
+export const ModalConfirmClassRemoval: Story = { args: { scenario: 'modal-confirm-class-removal' } }
+export const ModalConfirmDatasetDeletion: Story = { args: { scenario: 'modal-confirm-dataset-deletion' } }
+export const ModalBulkDelete: Story = { args: { scenario: 'modal-bulk-delete' } }
+export const ModalExportConfig: Story = { args: { scenario: 'modal-export-config' } }
+export const ModalExportProgress: Story = { args: { scenario: 'modal-export-progress' } }
+export const ModalExportComplete: Story = { args: { scenario: 'modal-export-complete' } }
+export const ModalTransferCopy: Story = { args: { scenario: 'modal-transfer-copy' } }
+export const ModalTransferMove: Story = { args: { scenario: 'modal-transfer-move' } }
+export const UploadInProgress: Story = { args: { scenario: 'upload-in-progress' } }
+export const DragOverFull: Story = { args: { scenario: 'drag-over-full' } }
+export const DetailWithAnnotations: Story = { args: { scenario: 'detail-with-annotations' } }
+export const DetailWithComments: Story = { args: { scenario: 'detail-with-comments' } }
+export const DetailMultiClass: Story = { args: { scenario: 'detail-multi-class' } }
+export const ImageMenuSubmenu: Story = { args: { scenario: 'image-menu-submenu' } }
+export const ImageMenuArchived: Story = { args: { scenario: 'image-menu-archived' } }
+export const ImageMenuClipboardReady: Story = { args: { scenario: 'image-menu-clipboard-ready' } }
+export const MobileDefault: Story = { args: { scenario: 'mobile-default' } }
+export const MobileDatasetDropdownOpen: Story = { args: { scenario: 'mobile-dataset-dropdown-open' } }
+export const MobileBottomFilter: Story = { args: { scenario: 'mobile-bottom-filter' } }

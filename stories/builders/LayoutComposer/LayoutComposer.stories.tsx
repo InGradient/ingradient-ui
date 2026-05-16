@@ -56,7 +56,11 @@ function buildSnippet(args: ComposerArgs) {
   return `${opener}\n${items}\n</${primitive}>`
 }
 
-function LayoutComposer(args: ComposerArgs) {
+type LayoutComposerProps = ComposerArgs & {
+  onLoadDraftArgs?: (next: Partial<ComposerArgs>) => void
+}
+
+function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutComposerProps) {
   const children = Array.from({ length: args.childCount }, (_, i) => (
     <div key={i} style={sampleStyle}>Item {i + 1}</div>
   ))
@@ -74,7 +78,6 @@ function LayoutComposer(args: ComposerArgs) {
 
   const snippet = buildSnippet(args)
   const [feedback, setFeedback] = useState<string | null>(null)
-  const [, updateArgs] = useArgs<ComposerArgs>()
   const [draftName, setDraftName] = useState('')
   const [drafts, setDrafts] = useState<Draft<ComposerArgs>[]>(() => listDrafts<ComposerArgs>(DRAFTS_SCOPE))
   const refreshDrafts = () => setDrafts(listDrafts<ComposerArgs>(DRAFTS_SCOPE))
@@ -99,7 +102,7 @@ function LayoutComposer(args: ComposerArgs) {
     flash(`Saved draft "${name}"`)
   }
   const handleLoadDraft = (draft: Draft<ComposerArgs>) => {
-    updateArgs(draft.args)
+    onLoadDraftArgs(draft.args)
     flash(`Loaded "${draft.name}"`)
   }
   const handleDeleteDraft = (name: string) => {
@@ -154,6 +157,10 @@ function LayoutComposer(args: ComposerArgs) {
 const meta = {
   title: 'Builders/LayoutComposer',
   component: LayoutComposer,
+  render: (args: ComposerArgs) => {
+    const [, updateArgs] = useArgs<ComposerArgs>()
+    return <LayoutComposer {...args} onLoadDraftArgs={updateArgs} />
+  },
   parameters: { layout: 'padded' },
   argTypes: {
     primitive: { control: 'select', options: ['Stack', 'Inline', 'Grid', 'Box'] satisfies PrimitiveKind[] },
@@ -173,7 +180,7 @@ const meta = {
     columns: 3,
     childCount: 4,
   },
-} satisfies Meta<typeof LayoutComposer>
+} satisfies Meta<ComposerArgs>
 
 export default meta
 

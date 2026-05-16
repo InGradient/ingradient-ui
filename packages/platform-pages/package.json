@@ -1,0 +1,23 @@
+{
+  "name": "@ingradient/platform-pages",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsup --config tsup.config.ts"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^6.0.0",
+    "@ingradient/ui": "*",
+    "@dnd-kit/core": "^6.0.0"
+  }
+}

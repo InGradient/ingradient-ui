@@ -1,11 +1,20 @@
-import React, { useLayoutEffect, useMemo, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useArgs } from 'storybook/preview-api'
-import { Alert, Badge, Button, Card, StatusPill, TextField } from '@ingradient/ui/components'
-import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
-import { composePreset, type BrandId, type DensityId, type Preset, type ThemeId } from '@ingradient/ui/tokens'
+import { Button, TextField } from '@ingradient/ui/components'
+import { Inline, Stack } from '@ingradient/ui/primitives'
+import {
+  buildTokenCssVariables, composePreset,
+  type BrandId, type DensityId, type Preset, type ThemeId, type ThemeMode,
+} from '@ingradient/ui/tokens'
 import { copyToClipboard, downloadFile, exportPresetJson, exportPresetTs } from './export-preset'
+import {
+  buildTokenAutoSyncUpdates, buildTokenOverrides, tokenOverrideArgTypes, tokenOverrideDefaults,
+  type TokenOverrideArgs,
+} from './token-overrides'
 import { deleteDraft, listDrafts, saveDraft, type Draft } from '../../support/drafts'
+import { codeStyle, overrideKeyStyle, pageStyle, sectionTitle } from './styles'
+import { PreviewSections } from './preview-sections'
 
 const DRAFTS_SCOPE = 'theme-builder'
 
@@ -14,6 +23,9 @@ type BuilderArgs = {
   theme: ThemeId
   brand: BrandId
   density: DensityId
+  mode: 'light' | 'dark'
+  // tokenOverrideDefaults 가 채워주는 dynamic string 필드들. index signature 형태로 받음.
+  [tokenKey: string]: unknown
 }
 
 function buildAdHocPreset(args: BuilderArgs): Preset {
@@ -24,57 +36,36 @@ function buildAdHocPreset(args: BuilderArgs): Preset {
     theme: args.theme,
     brand: args.brand,
     density: args.density,
-    mode: 'dark',
+    mode: args.mode as ThemeMode,
   }
 }
 
-const pageStyle: React.CSSProperties = {
-  padding: 'var(--ig-space-7)',
-  background: 'var(--ig-color-bg-canvas)',
-  minHeight: '100vh',
+type ThemeBuilderProps = BuilderArgs & {
+  onLoadDraftArgs?: (next: Partial<BuilderArgs>) => void
 }
 
-const sectionTitle: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-lg)',
-  fontWeight: 600,
-  color: 'var(--ig-color-text-secondary)',
-  margin: 0,
-}
-
-const cardBody: React.CSSProperties = {
-  padding: 'var(--ig-space-5)',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--ig-space-3)',
-}
-
-const codeStyle: React.CSSProperties = {
-  padding: 'var(--ig-space-4)',
-  background: 'var(--ig-color-surface-muted)',
-  border: '1px solid var(--ig-color-border-subtle)',
-  borderRadius: 'var(--ig-radius-md)',
-  fontFamily: 'var(--ig-font-mono)',
-  fontSize: 'var(--ig-font-size-xs)',
-  color: 'var(--ig-color-text-secondary)',
-  whiteSpace: 'pre',
-  overflow: 'auto',
-}
-
-const overrideKeyStyle: React.CSSProperties = {
-  fontFamily: 'var(--ig-font-mono)',
-  fontSize: 'var(--ig-font-size-xs)',
-  color: 'var(--ig-color-text-muted)',
-}
-
-function ThemeBuilder(args: BuilderArgs) {
+function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuilderProps) {
   const preset = useMemo(() => buildAdHocPreset(args), [args])
   const composed = useMemo(() => composePreset(preset), [preset])
+  const tokenOverrides = useMemo(() => buildTokenOverrides(args as unknown as TokenOverrideArgs), [args])
+  // global CSS 의 mode-specific tokenCssVariables + composed.cssVariables (brand/density override) = picker 가 트래킹할 resolved 값
+  const resolvedDefaults = useMemo(
+    () => ({ ...buildTokenCssVariables(args.mode), ...composed.cssVariables }),
+    [composed, args.mode],
+  )
+  const appliedVars = useMemo(
+    () => ({ ...composed.cssVariables, ...tokenOverrides }),
+    [composed, tokenOverrides],
+  )
   const [exportFeedback, setExportFeedback] = useState<string | null>(null)
-  const [, updateArgs] = useArgs<BuilderArgs>()
   const [draftName, setDraftName] = useState('')
   const [drafts, setDrafts] = useState<Draft<BuilderArgs>[]>(() => listDrafts<BuilderArgs>(DRAFTS_SCOPE))
   const refreshDrafts = () => setDrafts(listDrafts<BuilderArgs>(DRAFTS_SCOPE))
 
+  const flashFeedback = (msg: string) => {
+    setExportFeedback(msg)
+    setTimeout(() => setExportFeedback(null), 2400)
+  }
   const handleSaveDraft = () => {
     const name = draftName.trim() || preset.id
     saveDraft(DRAFTS_SCOPE, name, args)
@@ -82,129 +73,53 @@ function ThemeBuilder(args: BuilderArgs) {
     setDraftName('')
     flashFeedback(`Saved draft "${name}"`)
   }
-
   const handleLoadDraft = (draft: Draft<BuilderArgs>) => {
-    updateArgs(draft.args)
+    onLoadDraftArgs(draft.args)
     flashFeedback(`Loaded "${draft.name}"`)
   }
-
   const handleDeleteDraft = (name: string) => {
     deleteDraft(DRAFTS_SCOPE, name)
     refreshDrafts()
     flashFeedback(`Deleted "${name}"`)
   }
+  const handleDownloadJson = () => {
+    downloadFile(`${preset.id}.json`, exportPresetJson(preset, tokenOverrides), 'application/json')
+    flashFeedback(`Downloaded ${preset.id}.json`)
+  }
+  const handleCopyTs = async () => {
+    const code = exportPresetTs(preset, tokenOverrides)
+    const ok = await copyToClipboard(code)
+    flashFeedback(ok ? 'Copied TypeScript to clipboard' : 'Clipboard copy failed — falling back to download')
+    if (!ok) downloadFile(`${preset.id}.ts`, code, 'text/typescript')
+  }
+
+  // theme/brand/density/mode 변경 시 — 사용자가 직접 override 안 한 picker 만 새 default 로 동기화.
+  const prevDefaults = useRef<Record<string, string>>({})
+  useEffect(() => {
+    const updates = buildTokenAutoSyncUpdates(prevDefaults.current, resolvedDefaults, args as unknown as TokenOverrideArgs)
+    prevDefaults.current = resolvedDefaults
+    if (Object.keys(updates).length) onLoadDraftArgs(updates)
+  }, [resolvedDefaults, args, onLoadDraftArgs])
 
   // ad-hoc CSS vars 적용. PresetProvider (decorator) 위에 override 로 얹힘.
   useLayoutEffect(() => {
     if (typeof document === 'undefined') return
     const root = document.documentElement
-    Object.entries(composed.cssVariables).forEach(([k, v]) => root.style.setProperty(k, v))
+    Object.entries(appliedVars).forEach(([k, v]) => root.style.setProperty(k, v))
     return () => {
-      Object.keys(composed.cssVariables).forEach((k) => root.style.removeProperty(k))
+      Object.keys(appliedVars).forEach((k) => root.style.removeProperty(k))
     }
-  }, [composed])
-
-  const overrideEntries = Object.entries(composed.cssVariables)
-
-  const handleDownloadJson = () => {
-    downloadFile(`${preset.id}.json`, exportPresetJson(preset), 'application/json')
-    flashFeedback(`Downloaded ${preset.id}.json`)
-  }
-
-  const handleCopyTs = async () => {
-    const ok = await copyToClipboard(exportPresetTs(preset))
-    flashFeedback(ok ? 'Copied TypeScript to clipboard' : 'Clipboard copy failed — falling back to download')
-    if (!ok) downloadFile(`${preset.id}.ts`, exportPresetTs(preset), 'text/typescript')
-  }
-
-  const flashFeedback = (msg: string) => {
-    setExportFeedback(msg)
-    setTimeout(() => setExportFeedback(null), 2400)
-  }
+  }, [appliedVars])
 
   return (
     <div style={pageStyle}>
       <Stack gap={7}>
         <h1 style={{ fontSize: 'var(--ig-font-size-2xl)', fontWeight: 600, margin: 0 }}>ThemeBuilder</h1>
-
-        <Stack gap={4}>
-          <h2 style={sectionTitle}>Preview — Buttons</h2>
-          <Inline gap={3}>
-            <Button variant="accent">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="solid">Solid</Button>
-            <Button tone="danger">Danger</Button>
-          </Inline>
-        </Stack>
-
-        <Stack gap={4}>
-          <h2 style={sectionTitle}>Preview — Form</h2>
-          <Grid gap={3} columns="repeat(3, minmax(0, 1fr))">
-            <TextField placeholder="Small" size="sm" />
-            <TextField placeholder="Medium" size="md" />
-            <TextField placeholder="Large" size="lg" />
-          </Grid>
-        </Stack>
-
-        <Stack gap={4}>
-          <h2 style={sectionTitle}>Preview — Cards & Status</h2>
-          <Grid gap={3} columns="repeat(3, minmax(0, 1fr))">
-            <Card>
-              <div style={cardBody}>
-                <span style={{ fontWeight: 600 }}>Project A</span>
-                <Inline gap={2}>
-                  <Badge $tone="accent">accent</Badge>
-                  <StatusPill tone="completed">completed</StatusPill>
-                </Inline>
-              </div>
-            </Card>
-            <Card>
-              <div style={cardBody}>
-                <span style={{ fontWeight: 600 }}>Project B</span>
-                <Inline gap={2}>
-                  <Badge $tone="success">success</Badge>
-                  <StatusPill tone="running">running</StatusPill>
-                </Inline>
-              </div>
-            </Card>
-            <Card>
-              <div style={cardBody}>
-                <span style={{ fontWeight: 600 }}>Project C</span>
-                <Inline gap={2}>
-                  <Badge $tone="danger">danger</Badge>
-                  <StatusPill tone="failed">failed</StatusPill>
-                </Inline>
-              </div>
-            </Card>
-          </Grid>
-        </Stack>
-
-        <Stack gap={4}>
-          <h2 style={sectionTitle}>Preview — Alerts</h2>
-          <Alert $tone="info">Info alert — preview text.</Alert>
-          <Alert $tone="warning">Warning alert — preview text.</Alert>
-          <Alert $tone="danger">Danger alert — preview text.</Alert>
-        </Stack>
-
-        <Stack gap={3}>
-          <h2 style={sectionTitle}>Applied CSS variables ({overrideEntries.length})</h2>
-          {overrideEntries.length === 0 ? (
-            <span style={overrideKeyStyle}>(no override — current preset is identity)</span>
-          ) : (
-            <Stack gap={1}>
-              {overrideEntries.map(([k, v]) => (
-                <Inline key={k} gap={3} justify="space-between">
-                  <span style={overrideKeyStyle}>{k}</span>
-                  <span style={{ ...overrideKeyStyle, color: 'var(--ig-color-text-primary)' }}>{v}</span>
-                </Inline>
-              ))}
-            </Stack>
-          )}
-        </Stack>
+        <PreviewSections />
 
         <Stack gap={3}>
           <h2 style={sectionTitle}>Preset snippet</h2>
-          <pre style={codeStyle}>{exportPresetTs(preset)}</pre>
+          <pre style={codeStyle}>{exportPresetTs(preset, tokenOverrides)}</pre>
         </Stack>
 
         <Stack gap={3}>
@@ -235,7 +150,7 @@ function ThemeBuilder(args: BuilderArgs) {
                   <Stack gap={0}>
                     <span style={{ fontWeight: 600 }}>{d.name}</span>
                     <span style={overrideKeyStyle}>
-                      {d.args.theme} · {d.args.brand} · {d.args.density} · {new Date(d.savedAt).toLocaleString()}
+                      {d.args.theme} · {d.args.brand} · {d.args.density} · {d.args.mode} · {new Date(d.savedAt).toLocaleString()}
                     </span>
                   </Stack>
                   <Inline gap={2}>
@@ -255,39 +170,40 @@ function ThemeBuilder(args: BuilderArgs) {
 const meta = {
   title: 'Builders/ThemeBuilder',
   component: ThemeBuilder,
-  parameters: { layout: 'fullscreen' },
+  render: (args: BuilderArgs) => {
+    const [, updateArgs] = useArgs<BuilderArgs>()
+    return <ThemeBuilder {...args} onLoadDraftArgs={updateArgs} />
+  },
+  parameters: {
+    layout: 'fullscreen',
+    // 상단 toolbar 의 global mode / density 가 이 story 에 영향 안 가도록 ThemeBuilder argType 단일화.
+    globals: { mode: 'inherit', density: 'inherit' },
+  },
   argTypes: {
-    presetId: { control: 'text', description: 'Export 파일명/식별자' },
-    theme: { control: 'select', options: ['industrial-dark', 'medical-dark'] satisfies ThemeId[] },
-    brand: { control: 'select', options: ['default', 'finemtech', 'samsung'] satisfies BrandId[] },
-    density: { control: 'select', options: ['comfortable', 'compact', 'ultra-dense'] satisfies DensityId[] },
+    presetId: { control: 'text', description: 'Export 파일명/식별자', table: { category: 'Preset' } },
+    theme: { control: 'select', options: ['industrial-dark', 'medical-dark'] satisfies ThemeId[], table: { category: 'Preset' } },
+    brand: { control: 'select', options: ['default', 'finemtech', 'samsung'] satisfies BrandId[], table: { category: 'Preset' } },
+    density: { control: 'select', options: ['comfortable', 'compact', 'ultra-dense'] satisfies DensityId[], table: { category: 'Preset' } },
+    mode: { control: 'select', options: ['light', 'dark'], table: { category: 'Preset' } },
+    ...tokenOverrideArgTypes,
   },
   args: {
     presetId: 'platform-custom-0.0.0',
     theme: 'industrial-dark',
     brand: 'default',
     density: 'compact',
+    mode: 'dark',
+    ...tokenOverrideDefaults,
   },
-} satisfies Meta<typeof ThemeBuilder>
+} satisfies Meta<BuilderArgs>
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-
-export const FinemtechCompact: Story = {
-  args: { theme: 'industrial-dark', brand: 'finemtech', density: 'compact' },
-}
-
-export const SamsungComfortable: Story = {
-  args: { theme: 'industrial-dark', brand: 'samsung', density: 'comfortable' },
-}
-
-export const MedicalDark: Story = {
-  args: { theme: 'medical-dark', brand: 'default', density: 'comfortable' },
-}
-
-export const UltraDense: Story = {
-  args: { theme: 'industrial-dark', brand: 'default', density: 'ultra-dense' },
-}
+export const FinemtechCompact: Story = { args: { theme: 'industrial-dark', brand: 'finemtech', density: 'compact' } }
+export const SamsungComfortable: Story = { args: { theme: 'industrial-dark', brand: 'samsung', density: 'comfortable' } }
+export const MedicalDark: Story = { args: { theme: 'medical-dark', brand: 'default', density: 'comfortable' } }
+export const UltraDense: Story = { args: { theme: 'industrial-dark', brand: 'default', density: 'ultra-dense' } }
+export const LightMode: Story = { args: { mode: 'light' } }

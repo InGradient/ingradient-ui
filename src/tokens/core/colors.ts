@@ -55,6 +55,23 @@ export const foundationColors = {
   textSlate: '#cbd5e1',
   textSlateSoft: '#d5dee9',
   textOrange: '#fdba74',
+  // Catalog-specific (platform 와 매칭)
+  tagClassificationBg: 'rgba(110, 200, 122, 0.15)',
+  tagClassificationText: '#6ec87a',
+  tagSegmentationBg: 'rgba(180, 120, 230, 0.15)',
+  tagSegmentationText: '#c07be8',
+  tagObjectDetectionBg: 'rgba(77, 136, 255, 0.15)',
+  syncChipSyncedBg: 'rgba(34, 197, 94, 0.92)',
+  syncChipUploadingBg: 'rgba(234, 179, 8, 0.92)',
+  syncChipFailedBg: 'rgba(220, 38, 38, 0.92)',
+  syncChipLocalBg: 'rgba(75, 85, 99, 0.92)',
+  syncChipOnText: '#ffffff',
+  imageOptionBg: 'rgba(0, 0, 0, 0.6)',
+  imageOptionBgHover: 'rgba(0, 0, 0, 0.8)',
+  imageGroupCircleBg: 'rgba(12, 16, 24, 0.92)',
+  imageGroupCircleBorder: 'rgba(255, 255, 255, 0.14)',
+  dangerDimBg: 'rgba(120, 28, 28, 0.18)',
+  dangerDimBorder: 'rgba(224, 92, 92, 0.45)',
 } as const
 
 // Light palette — same shape as foundationColors. Used by ingradientThemeLight.
@@ -129,6 +146,23 @@ export const foundationColorsLight = {
   textSlate: '#374151',
   textSlateSoft: '#384155',
   textOrange: '#7d4310',
+  // Catalog-specific — light mode 변형
+  tagClassificationBg: 'rgba(34, 139, 50, 0.12)',
+  tagClassificationText: '#2f7a3a',
+  tagSegmentationBg: 'rgba(120, 60, 175, 0.12)',
+  tagSegmentationText: '#7c3aed',
+  tagObjectDetectionBg: 'rgba(33, 75, 184, 0.12)',
+  syncChipSyncedBg: 'rgba(22, 163, 74, 0.92)',
+  syncChipUploadingBg: 'rgba(202, 138, 4, 0.92)',
+  syncChipFailedBg: 'rgba(185, 28, 28, 0.92)',
+  syncChipLocalBg: 'rgba(75, 85, 99, 0.92)',
+  syncChipOnText: '#ffffff',
+  imageOptionBg: 'rgba(0, 0, 0, 0.5)',
+  imageOptionBgHover: 'rgba(0, 0, 0, 0.7)',
+  imageGroupCircleBg: 'rgba(15, 23, 42, 0.85)',
+  imageGroupCircleBorder: 'rgba(255, 255, 255, 0.18)',
+  dangerDimBg: 'rgba(185, 28, 28, 0.10)',
+  dangerDimBorder: 'rgba(185, 28, 28, 0.40)',
 } as const
 
 // Both palettes share the exact same key shape — type guard.

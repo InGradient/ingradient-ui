@@ -143,8 +143,10 @@ const preview: Preview = {
       const densityOverride: DensityId | undefined =
         densityGlobal === 'inherit' ? undefined : (densityGlobal as DensityId)
 
-      // page story (handoff metadata 있는 것) 에만 ReviewWidget 표시.
-      const showReviewWidget = !!handoff?.service
+      // layout: 'fullscreen' 인 story (전체 페이지 재현) 는 wrapper / review widget 제거.
+      // 그 외 component / pattern story 는 가운데 정렬 wrapper + design review widget 적용.
+      const isFullscreen = context.parameters?.layout === 'fullscreen'
+      const showReviewWidget = !!handoff?.service && !isFullscreen
 
       const inner = (
         <>
@@ -157,9 +159,13 @@ const preview: Preview = {
               transition: 'background 160ms ease',
             }}
           >
-            <div style={{ maxWidth: 1280, margin: '0 auto', padding: 24 }}>
+            {isFullscreen ? (
               <Story />
-            </div>
+            ) : (
+              <div style={{ maxWidth: 1280, margin: '0 auto', padding: 24 }}>
+                <Story />
+              </div>
+            )}
           </div>
           {showReviewWidget ? <ReviewWidget storyId={context.id} /> : null}
           {showReviewWidget ? <CommentPanel storyId={context.id} /> : null}

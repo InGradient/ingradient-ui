@@ -85,7 +85,11 @@ function buildSnippet(args: ComposerArgs) {
   }
 }
 
-function PageComposer(args: ComposerArgs) {
+type PageComposerProps = ComposerArgs & {
+  onLoadDraftArgs?: (next: Partial<ComposerArgs>) => void
+}
+
+function PageComposer({ onLoadDraftArgs = () => undefined, ...args }: PageComposerProps) {
   let preview: React.ReactNode
   switch (args.pattern) {
     case 'SplitLayout':
@@ -127,7 +131,6 @@ function PageComposer(args: ComposerArgs) {
 
   const snippet = buildSnippet(args)
   const [feedback, setFeedback] = useState<string | null>(null)
-  const [, updateArgs] = useArgs<ComposerArgs>()
   const [draftName, setDraftName] = useState('')
   const [drafts, setDrafts] = useState<Draft<ComposerArgs>[]>(() => listDrafts<ComposerArgs>(DRAFTS_SCOPE))
   const refreshDrafts = () => setDrafts(listDrafts<ComposerArgs>(DRAFTS_SCOPE))
@@ -152,7 +155,7 @@ function PageComposer(args: ComposerArgs) {
     flash(`Saved draft "${name}"`)
   }
   const handleLoadDraft = (draft: Draft<ComposerArgs>) => {
-    updateArgs(draft.args)
+    onLoadDraftArgs(draft.args)
     flash(`Loaded "${draft.name}"`)
   }
   const handleDeleteDraft = (name: string) => {
@@ -209,6 +212,10 @@ const slotOptions: SlotKind[] = ['panel', 'empty-state', 'spinner', 'placeholder
 const meta = {
   title: 'Builders/PageComposer',
   component: PageComposer,
+  render: (args: ComposerArgs) => {
+    const [, updateArgs] = useArgs<ComposerArgs>()
+    return <PageComposer {...args} onLoadDraftArgs={updateArgs} />
+  },
   parameters: { layout: 'fullscreen' },
   argTypes: {
     pattern: { control: 'select', options: ['SplitLayout', 'ListDetailLayout', 'InspectorLayout', 'DashboardGrid'] satisfies PatternKind[] },
@@ -224,7 +231,7 @@ const meta = {
     slot3: 'placeholder',
     widgetCount: 6,
   },
-} satisfies Meta<typeof PageComposer>
+} satisfies Meta<ComposerArgs>
 
 export default meta
 
