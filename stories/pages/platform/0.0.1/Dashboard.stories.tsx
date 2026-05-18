@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { DashboardView } from '@ingradient/platform-pages'
+import styled from 'styled-components'
+import { DashboardView, DraggableAnalysisWidgetGrid } from '@ingradient/platform-pages'
+import { AnalysisWidgetShell, DashboardOverviewPanel } from '@ingradient/ui/patterns'
 import { downloadCaptureAsPng } from '@ingradient/ui/utils'
 import {
   customizeToggleItems,
+  defaultLayout,
   type DashboardWidgetKey,
 } from '../../../fixtures/platform/0.0.1/dashboard-analysis'
 import {
@@ -49,6 +52,41 @@ const EMPTY_STATE_STYLE: React.CSSProperties = {
 }
 
 const noop = () => undefined
+
+const ComparisonCanvas = styled.div`
+  min-height: 100vh;
+  padding: var(--ig-space-7) var(--ig-space-9);
+  background: var(--ig-color-surface-canvas);
+`
+
+const ComparisonGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ig-space-7);
+  align-items: start;
+
+  @media (max-width: 1280px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const Masonry = styled.div`
+  column-count: 3;
+  column-gap: var(--ig-space-5);
+
+  @media (max-width: 1680px) {
+    column-count: 2;
+  }
+
+  @media (max-width: 1024px) {
+    column-count: 1;
+  }
+`
+
+const MasonryItem = styled.div`
+  break-inside: avoid;
+  margin-bottom: var(--ig-space-5);
+`
 
 function DashboardScene({ scenario: key }: Args) {
   const scenario = dashboardScenarios[key]
@@ -125,6 +163,47 @@ function DashboardScene({ scenario: key }: Args) {
   )
 }
 
+function LayoutComparisonScene() {
+  const widgets = buildDashboardWidgets()
+  const orderedKeys = defaultLayout.flat()
+
+  return (
+    <ComparisonCanvas>
+      <ComparisonGrid>
+        <DashboardOverviewPanel
+          title="Default Grid"
+          hint="Current project stats · All time"
+          dateLabel="All time"
+        >
+          <DraggableAnalysisWidgetGrid<DashboardWidgetKey>
+            layout={defaultLayout}
+            widgets={widgets}
+            widgetTitles={dashboardWidgetTitles}
+            widgetKeys={dashboardWidgetKeys}
+            onDownloadWidget={noop}
+          />
+        </DashboardOverviewPanel>
+
+        <DashboardOverviewPanel
+          title="Compact Masonry"
+          hint="Current project stats · All time"
+          dateLabel="All time"
+        >
+          <Masonry>
+            {orderedKeys.map((key) => (
+              <MasonryItem key={key} data-widget-key={key}>
+                <AnalysisWidgetShell onDownload={noop}>
+                  {widgets[key]}
+                </AnalysisWidgetShell>
+              </MasonryItem>
+            ))}
+          </Masonry>
+        </DashboardOverviewPanel>
+      </ComparisonGrid>
+    </ComparisonCanvas>
+  )
+}
+
 const SCENARIO_KEYS = Object.keys(dashboardScenarios) as DashboardScenarioKey[]
 
 const meta = {
@@ -158,3 +237,6 @@ export const NoProjectName: Story = { args: { scenario: 'no-project-name' } }
 export const AllWidgetsHidden: Story = { args: { scenario: 'all-widgets-hidden' } }
 export const WithEdgeAnalytics: Story = { args: { scenario: 'with-edge-analytics' } }
 export const WithDeflectometry: Story = { args: { scenario: 'with-deflectometry' } }
+export const LayoutComparison: Story = {
+  render: () => <LayoutComparisonScene />,
+}
