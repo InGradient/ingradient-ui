@@ -37,6 +37,7 @@ function InteractiveDemo({ initial }: { initial: DatasetListPanelDataset[] }) {
         datasets={initial}
         selectedIds={selectedIds}
         currentId={currentId}
+        openMenuId={menuFor?.id}
         onSelectAll={(checked) => setSelectedIds(checked ? new Set(initial.map((d) => d.id)) : new Set())}
         onToggleSelect={(id, checked) => {
           setSelectedIds((prev) => {

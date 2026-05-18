@@ -51,6 +51,7 @@ export function buildCatalogViewProps(
       datasets: scenario.datasets,
       selectedIds: s.selectedDatasetIds,
       currentId: s.currentDatasetId,
+      openMenuId: s.datasetMenuAnchor?.id,
       loading: scenario.datasetsLoading,
       noProject: scenario.noProject,
       dragOverDatasetId: s.dragOverDatasetId,

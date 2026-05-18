@@ -94,6 +94,7 @@ export interface DatasetListPanelProps {
   datasets: DatasetListPanelDataset[]
   selectedIds: Set<string>
   currentId?: string
+  openMenuId?: string
   loading?: boolean
   noProject?: boolean
   dragOverDatasetId?: string
@@ -107,7 +108,7 @@ export interface DatasetListPanelProps {
 }
 
 export function DatasetListPanel({
-  datasets, selectedIds, currentId, loading, noProject, dragOverDatasetId,
+  datasets, selectedIds, currentId, openMenuId, loading, noProject, dragOverDatasetId,
   title = 'Datasets',
   onSelectAll, onToggleSelect, onSelectCurrent, onAddDataset, onOpenDatasetMenu, onCollapse,
 }: DatasetListPanelProps) {
@@ -161,6 +162,7 @@ export function DatasetListPanel({
               selected={selectedIds.has(d.id)}
               current={currentId === d.id}
               dragOver={dragOverDatasetId === d.id}
+              menuOpen={openMenuId === d.id}
               onToggleSelect={onToggleSelect}
               onSelectCurrent={onSelectCurrent}
               onOpenMenu={onOpenDatasetMenu}
