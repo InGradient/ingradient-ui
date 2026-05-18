@@ -63,6 +63,7 @@ const Right = styled.aside<{ $width: number }>`
   min-width: 0;
   overflow: hidden;
   background: var(--ig-color-surface-panel);
+  border-left: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
 `
 
 export interface CatalogShellProps {

@@ -5,7 +5,7 @@ import { Checkbox } from '../../components/inputs/toggles'
 const Bar = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   background: rgba(12, 15, 20, 0.76);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -41,7 +41,7 @@ const SelectionRow = styled.div`
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) var(--ig-space-7);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
 `
 
 const SelectionRowActive = styled(SelectionRow)`

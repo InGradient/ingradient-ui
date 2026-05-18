@@ -17,7 +17,7 @@ const TopBar = styled.div`
   gap: 10px;
   padding: 10px 14px;
   background: var(--ig-color-surface-raised);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;
   position: relative;
   z-index: 20;

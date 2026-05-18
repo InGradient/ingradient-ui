@@ -11,7 +11,7 @@ const Panel = styled.aside`
   flex-direction: column;
   height: 100%;
   background: var(--ig-color-surface-panel);
-  border-right: 1px solid var(--ig-color-border-subtle);
+  border-right: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
 `
 
 const Header = styled.div`
@@ -21,7 +21,7 @@ const Header = styled.div`
   min-height: 72px;
   padding: 0 var(--ig-space-7);
   gap: var(--ig-space-4);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;
 `
 
@@ -41,7 +41,7 @@ const SelectAllRow = styled.div`
   justify-content: space-between;
   gap: var(--ig-space-5);
   padding: var(--ig-space-4) var(--ig-space-6);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
 `
 
 const List = styled.div`
@@ -120,7 +120,7 @@ export function DatasetListPanel({
       <Header>
         <Title>{title}</Title>
         <HeaderActions>
-          <Button variant="accent" size="sm" onClick={onAddDataset} disabled={noProject}>
+          <Button variant="solid" size="sm" onClick={onAddDataset} disabled={noProject}>
             + Add
           </Button>
           {onCollapse ? (

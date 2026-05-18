@@ -13,7 +13,7 @@ const Panel = styled.aside`
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   &:last-child {
     border-bottom: none;
   }

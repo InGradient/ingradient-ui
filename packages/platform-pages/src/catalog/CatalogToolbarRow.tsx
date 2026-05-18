@@ -124,7 +124,7 @@ export function CatalogToolbarRow({
           <Button variant="secondary" size="sm" onClick={onExport}>
             Export
           </Button>
-          <Button variant="accent" size="sm" onClick={onUpload}>
+          <Button variant="solid" size="sm" onClick={onUpload}>
             Upload
           </Button>
         </>

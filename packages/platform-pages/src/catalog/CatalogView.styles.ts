@@ -4,6 +4,7 @@ export const Page = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  --ig-catalog-divider-color: var(--ig-color-border-strong);
 `
 
 export const ContentArea = styled.div`
@@ -73,7 +74,7 @@ export const MobileBottomSheet = styled.div`
   bottom: 60px;
   z-index: 30;
   background: var(--ig-color-surface-raised);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-space-5);
@@ -87,4 +88,3 @@ export const RightSideLoadingText = styled.span`
 export const TableWrap = styled.div`
   padding: var(--ig-space-5);
 `
-
