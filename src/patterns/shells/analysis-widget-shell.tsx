@@ -3,19 +3,35 @@ import styled from 'styled-components'
 import { Download } from 'lucide-react'
 import { IconButton } from '../../components/inputs/icon-button'
 
-const Shell = styled.div`
+const Shell = styled.div<{ $hasActions: boolean }>`
   position: relative;
   min-width: 0;
+
+  ${(p) =>
+    p.$hasActions
+      ? `
+        --ig-analysis-widget-action-space: calc(
+          var(--ig-control-height-sm) +
+          var(--ig-control-height-sm) +
+          var(--ig-space-2) +
+          var(--ig-space-8)
+        );
+
+        [data-ig-chart-head] {
+          padding-right: var(--ig-analysis-widget-action-space);
+        }
+      `
+      : ''}
 `
 
 const Actions = styled.div`
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: var(--ig-space-4);
+  right: var(--ig-space-4);
   z-index: 8;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-2);
 `
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`
@@ -43,9 +59,10 @@ export function AnalysisWidgetShell({
   downloadLabel = 'Download widget image',
   className,
 }: AnalysisWidgetShellProps) {
+  const hasActions = !!(onDownload || extraActions)
   return (
-    <Shell className={className}>
-      {(onDownload || extraActions) ? (
+    <Shell className={className} $hasActions={hasActions}>
+      {hasActions ? (
         <Actions data-report-hide>
           {onDownload ? (
             <ActionButton type="button" onClick={onDownload} title={downloadLabel} aria-label={downloadLabel}>

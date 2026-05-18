@@ -78,7 +78,10 @@ export function BarChartCard<T extends Record<string, string | number>>({
                 <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
               </>
             )}
-            <Tooltip content={tooltipContent ?? <ChartTooltipContent />} />
+            <Tooltip
+              content={tooltipContent ?? <ChartTooltipContent />}
+              cursor={{ fill: 'var(--ig-color-surface-interactive)' }}
+            />
             <Legend content={() => null} />
             {series.map((item, index) => {
               const fill = item.color ?? chartPalette[index % chartPalette.length]

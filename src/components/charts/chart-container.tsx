@@ -78,7 +78,7 @@ export function ChartContainer({
   return (
     <ChartCard>
       {(title || description || headerExtra || legend) ? (
-        <ChartHead>
+        <ChartHead data-ig-chart-head>
           <ChartCopy>
             {title ? <ChartTitle>{title}</ChartTitle> : null}
             {description ? <ChartDescription>{description}</ChartDescription> : null}

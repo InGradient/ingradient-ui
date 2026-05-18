@@ -73,7 +73,10 @@ export function LineChartCard<T extends Record<string, string | number>>({
             ) : (
               <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
             )}
-            <Tooltip content={tooltipContent ?? <ChartTooltipContent />} />
+            <Tooltip
+              content={tooltipContent ?? <ChartTooltipContent />}
+              cursor={{ stroke: 'var(--ig-color-border-subtle)' }}
+            />
             <Legend content={() => null} />
             {series.map((item, index) => {
               const color = item.color ?? chartPalette[index % chartPalette.length]

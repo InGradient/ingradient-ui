@@ -99,6 +99,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-chart-5': palette.blue300,
     '--ig-color-chart-6': palette.violet300,
     '--ig-color-chart-grid': isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.08)',
+    '--ig-color-chart-separator': isLight ? 'rgba(255, 255, 255, 0.82)' : 'rgba(10, 14, 20, 0.62)',
     '--ig-color-badge-neutral': palette.white08,
     '--ig-color-badge-accent': palette.blueTint18,
     '--ig-color-badge-success': palette.greenTint18,

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisWidgetShell } from './analysis-widget-shell'
+import { WidgetDragHandle } from './widget-drag-handle'
 
 const meta: Meta<typeof AnalysisWidgetShell> = {
   title: 'Patterns/Shells/AnalysisWidgetShell',
@@ -27,3 +28,10 @@ const mockChart = (
 
 export const NoActions: Story = { args: { children: mockChart } }
 export const WithDownload: Story = { args: { children: mockChart, onDownload: () => undefined } }
+export const WithDownloadAndDrag: Story = {
+  args: {
+    children: mockChart,
+    onDownload: () => undefined,
+    extraActions: <WidgetDragHandle />,
+  },
+}

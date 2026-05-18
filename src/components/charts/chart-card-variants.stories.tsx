@@ -156,7 +156,7 @@ export const Review: Story = {
         </StorybookGrid>
       </StorybookSection>
 
-      <StorybookSection title="PieChartCard" description="innerRadius, outerRadius, paddingAngle, labelRender.">
+      <StorybookSection title="PieChartCard" description="innerRadius, outerRadius, paddingAngle, separator, labelRender.">
         <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
           <StorybookCard title="Full pie + slice labels" subtitle="innerRadius=0 + labelRender">
             <PieChartCard
@@ -181,6 +181,19 @@ export const Review: Story = {
               ]}
               innerRadius={36}
               outerRadius={64}
+              height={220}
+            />
+          </StorybookCard>
+          <StorybookCard title="No separator" subtitle='separator="none" for uninterrupted color fields'>
+            <PieChartCard
+              title="Status share"
+              description="Filled donut without slice separators."
+              data={[
+                { name: 'Ready', value: 46, color: 'var(--ig-color-success)' },
+                { name: 'Queued', value: 32, color: 'var(--ig-color-chart-2)' },
+                { name: 'Review', value: 22, color: 'var(--ig-color-chart-5)' },
+              ]}
+              separator="none"
               height={220}
             />
           </StorybookCard>

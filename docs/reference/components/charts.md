@@ -37,6 +37,10 @@ metric, trend, distribution을 공통 chart skin으로 보여주는 wrapper 묶�
   - 항목 간 비교
 - `PieChartCard`
   - 분포 비율
+  - 기본 slice 간격은 `0`이라 조각 사이가 배경색으로 벌어지지 않는다
+  - 기본 `separator="subtle"`은 `--ig-color-chart-separator`로 비슷한 색의 slice 경계를 구분한다
+  - 분리된 조각 표현이 필요할 때만 `paddingAngle`을 명시한다
+  - separator가 필요 없는 chart는 `separator="none"`을 명시한다
 
 ## Do
 
