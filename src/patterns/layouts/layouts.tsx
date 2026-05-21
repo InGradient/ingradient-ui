@@ -74,17 +74,6 @@ export const SettingsShell = styled.div`
   }
 `
 
-export const SplitPanelShell = styled.div`
-  display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-  gap: var(--ig-space-7);
-  min-width: 0;
-
-  ${media.lg} {
-    grid-template-columns: 1fr;
-  }
-`
-
 export const InspectorLayout = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);

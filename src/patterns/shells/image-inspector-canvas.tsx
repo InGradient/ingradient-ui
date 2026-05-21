@@ -9,7 +9,26 @@ import {
 } from '../../components'
 import { IconButton } from '../../components/inputs/icon-button'
 import { LabelingCanvas } from './labeling-canvas'
-import type { AnnotationBoundingBox } from './annotation-viewer'
+
+export interface AnnotationBoundingBox {
+  id: string
+  label?: string
+  color: string
+  /** Normalized 0~1 coordinates (left / top / width / height) */
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
+export interface AnnotationPolygon {
+  id: string
+  label?: string
+  color: string
+  /** Normalized 0~1 points (relative to image) */
+  points: { x: number; y: number }[]
+  fillOpacity?: number
+}
 
 const TopRightGroup = styled.div`
   position: absolute;
