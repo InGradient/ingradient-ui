@@ -198,3 +198,54 @@ R4 진행 결과 9 개 중 5 개가 "이미 분리됨" / "재확인 시 차이 �
 - `ChartResponsive` vs `SafeResponsiveContainer` 통일 — 사용 패턴 검증 후
 - `ToggleIndicator` 공통화 — switch/checkbox/radio 외 추가 toggle variant 등장 시
 - `InfoRow` ↔ `KeyValueRow` — align variant 통일은 가능하나 시나리오 합치면 둘 다 약화. 현재 양립이 합리적.
+
+---
+
+# Round 5 — 보류 9 개 + hooks audit 전면 진행
+
+R4 후 사용자가 "장기 가치 위해 진행하자" 결정. R4 의 "트리거 대기" 결정을 뒤집고 보류 9 개 + 안 본 영역 (`src/hooks/`) 모두 진행.
+
+## A. 처리 완료
+
+| # | 항목 | 조치 |
+|---|---|---|
+| R5-1 | 6 / 8px radius token 신설 | `2xs: '6px'`, `xxs: '8px'` 추가. R3 에서 xs(10) 으로 통일했던 21 곳 원복 (시각 100% 보존). 4px 케이스 2 곳도 `2xs` 통일 (디자인 시스템 외 값 인정 안 함, 1px 더 둥글어짐). 자동화: `/tmp/revert_radius.py`. |
+| R5-2 | backdrop / overlay semantic token 4 개 신설 | `--ig-color-lightbox-backdrop` / `--ig-color-lightbox-surface` / `--ig-color-canvas-overlay-soft` / `--ig-color-canvas-overlay-strong`. 5 곳 raw 마이그레이션 (class-lightbox 2 + canvas-overlays 2 + media-overlay 1). |
+| R5-3 | `SearchableList` 추출 | `src/components/data-display/searchable-list.tsx` 신설 (generic `<T>` candidates + renderItem). `TagListPanel` 이 그것 + `TagListItem` 조합으로 단순화 (60 줄 → 25 줄). |
+| R5-4 | `StateChip` generic 화 | `src/components/feedback/state-chip.tsx` 신설 (state → style map 을 prop 으로). `SyncStatusChip` 은 SOFT/OPAQUE state styles 상수 + StateChip wrapper. |
+| R5-5 | SVG primitive 4 종 + 위치 결정 | `src/primitives/svg/` 신설 — `SvgBboxRect`, `SvgPointDot` (auto `<circle>`/`<ellipse>`), `SvgShapeLabel`, `SvgShapeHandle`. `drawing-layer.renderers.tsx` 의 `BboxLabel` / `BboxHandles` / `RectObject` / `PointObject` 가 새 primitive 사용. 다른 viewer/editor 에서 import 가능. |
+| R5-6 | `PopoverTriggerField` 추출 + 일부 마이그레이션 | `src/components/inputs/popover-trigger-field.tsx` 신설. `useDropdownLayout` + `DropdownRoot` + `DropdownMenu` + portal 패턴 추출. `DropdownSelect`, `SelectField` 가 그것을 사용. |
+| R5-7 | hooks audit + 작은 정리 | `useDropdownLayout` 의 click-outside 로직을 `useClickOutside` hook 으로 위임 (중복 제거). |
+
+## B. R5-6 부분 처리 — `date-picker` 는 제외
+
+사용자 결정은 "date-picker + dropdown-select + select-field 모두 PopoverTriggerField 로". 실제 코드 보니:
+- `useDropdownLayout` 은 트리거 너비를 popover 에 강제 (드롭다운 메뉴 패턴)
+- `date-picker` 는 `DayPicker` 의 고유 너비 사용 (라이브러리 콘텐츠 너비)
+- 통합 시 width 강제 / DayPicker 너비 override 충돌
+
+date-picker 는 자체 유지. 다음 라운드 트리거: **PopoverTriggerField 에 `layout: 'menu' | 'free'` mode 추가** 또는 별도 `FloatingPanelField` 신설.
+
+## C. R5-5 — `useZoomInvariantRenderer` hook 은 보류
+
+`drawing-layer.tsx` 의 `RendererCtx` 생성 로직을 별도 hook 으로 추출 검토했으나:
+- 사용처가 `drawing-layer.tsx` 1 곳뿐
+- 다른 viewer 등장 시 정확한 contract 가능
+- 지금 추출 시 over-engineering 위험
+
+보류. 다음 라운드 트리거: 다른 viewer / measurement tool 이 같은 zoom-invariant 패턴 필요할 때.
+
+## D. R5-7 — 큰 hooks 통합은 보류
+
+| hook | 보류 이유 |
+|---|---|
+| `useCanvasMouse` (191 줄) + `useDrawingCanvas` (299 줄) + `useZoomPan` (108 줄) | 셋 다 mouse coord 변환을 자체 처리. 통합 시 큰 리팩터 + canvas 동작 회귀 검증 필수. mouse coord 만 분리하면 응집도 깨질 수 있음. |
+| `useSelection` ↔ `use-grid-selection.ts` 통합 | `useSelection` 은 state hook, `classifySelectionAction` 은 event 분류 함수. 서로 다른 역할로 보완. 통합보다 양립이 명확. |
+
+진짜 가치 있는 정리 (`useDropdownLayout` 의 `useClickOutside` 위임) 만 적용. 나머지는 over-extraction.
+
+## Next Round Triggers — Round 6
+
+- `PopoverTriggerField` 의 `free mode` (DayPicker / color picker / time picker 같은 라이브러리-너비 popover 통합)
+- mouse coord 통합 (`useMousePosition` 또는 `useImageCoord` hook 신설) — canvas 도구 추가 시
+- 디자인 검토: 4px → 2xs(6px) 으로 1px 더 둥글어진 2 곳 (member-pool-list RemoveBtn, source-breakdown-widget) — 의도 확인

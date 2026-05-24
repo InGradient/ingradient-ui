@@ -44,7 +44,7 @@ const ErrorWrap = styled.div`
   padding: var(--ig-space-7);
   background: var(--ig-color-alert-danger-bg);
   border: 1px solid var(--ig-color-alert-danger-border);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
 `
 
 const ErrorMessage = styled.p`

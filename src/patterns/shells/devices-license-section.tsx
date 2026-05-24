@@ -44,7 +44,7 @@ const InfoValue = styled.span`
 const FormBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;

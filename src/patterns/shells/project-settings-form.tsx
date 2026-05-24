@@ -49,7 +49,7 @@ const Textarea = styled.textarea`
   color: var(--ig-color-text-primary);
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   resize: vertical;
   box-sizing: border-box;
   &:focus {

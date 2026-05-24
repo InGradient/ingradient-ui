@@ -65,7 +65,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   flex-shrink: 0;
   ${(p) => sizeCss[p.$size]}
   border: none;
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-12)' : 'transparent')};
   color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger)' : 'var(--ig-color-text-primary)')};
   cursor: pointer;

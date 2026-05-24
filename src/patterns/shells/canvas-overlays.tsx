@@ -87,7 +87,7 @@ const ImageLoadingOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(12, 12, 12, 0.28);
+  background: var(--ig-color-canvas-overlay-soft);
   pointer-events: none;
 `
 
@@ -119,7 +119,7 @@ const HiResPill = styled.div`
   gap: var(--ig-space-2);
   padding: var(--ig-space-2) var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
-  background: rgba(12, 12, 12, 0.72);
+  background: var(--ig-color-canvas-overlay-strong);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);
   line-height: 1;

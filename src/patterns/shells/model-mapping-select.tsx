@@ -11,7 +11,7 @@ const StyledSelect = styled(SelectField)`
   max-width: 280px;
   padding: var(--ig-space-3) var(--ig-space-5);
   font-size: 13px;
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
 `
 
 const Hint = styled.span`

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Zone = styled.div<{ $dragging?: boolean; $hasImage?: boolean }>`
   padding: ${(p) => (p.$hasImage ? 'var(--ig-space-4)' : 'var(--ig-space-9)')};
   border: 1px solid ${(p) => (p.$dragging ? 'rgba(77, 136, 255, 0.7)' : 'var(--ig-color-white-12)')};
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   background: ${(p) => (p.$dragging ? 'var(--ig-color-blue-tint-12)' : 'var(--ig-color-surface-raised)')};
   color: var(--ig-color-text-soft);
   font-size: 13px;

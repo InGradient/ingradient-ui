@@ -15,7 +15,7 @@ const Item = styled.li<{ $tone: 'info' | 'warn' }>`
   color: ${(p) => (p.$tone === 'warn' ? 'var(--ig-color-alert-warning-text)' : 'var(--ig-color-alert-info-text)')};
   padding: var(--ig-space-3) var(--ig-space-5);
   background: ${(p) => (p.$tone === 'warn' ? 'var(--ig-color-alert-warning-bg)' : 'var(--ig-color-alert-info-bg)')};
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   &::before {
     content: '${(p) => (p.$tone === 'warn' ? '⚠ ' : 'ⓘ ')}';
   }

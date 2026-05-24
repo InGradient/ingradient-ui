@@ -30,7 +30,7 @@ const Panel = styled.div`
 
 const NameInput = styled(TextField).attrs({ size: 'sm' as const })`
   max-width: 280px;
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
 `
 
 const Description = styled(TextareaField)`

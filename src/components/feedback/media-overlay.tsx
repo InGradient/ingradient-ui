@@ -18,7 +18,7 @@ const overlayVariantStyles: Record<MediaOverlayVariant, ReturnType<typeof css>> 
     color: var(--ig-color-text-secondary);
   `,
   processing: css`
-    background: rgba(15, 17, 21, 0.7);
+    background: var(--ig-color-lightbox-surface);
     color: var(--ig-color-text-primary);
   `,
 }

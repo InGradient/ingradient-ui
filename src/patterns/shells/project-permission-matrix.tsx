@@ -19,7 +19,7 @@ const TableWrap = styled.div`
   display: inline-block;
   width: fit-content;
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   background: var(--ig-color-surface-panel);
 `
 

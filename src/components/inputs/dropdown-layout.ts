@@ -1,4 +1,5 @@
 import React from 'react'
+import { useClickOutside } from '../../hooks/useClickOutside'
 import type { DropdownMenuLayout } from './dropdown-shared'
 
 export function useDropdownLayout(
@@ -44,32 +45,31 @@ export function useDropdownLayout(
     )
   }, [rootRef])
 
+  useClickOutside({
+    refs: [rootRef, menuRef],
+    onClickOutside: onClose,
+    enabled: open,
+    event: 'mousedown',
+  })
+
   React.useEffect(() => {
     if (!open) return
 
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node
-      if (rootRef.current?.contains(target)) return
-      if (menuRef.current?.contains(target)) return
-      onClose()
-    }
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
     }
 
     updateMenuLayout()
-    document.addEventListener('mousedown', handlePointerDown)
     document.addEventListener('keydown', handleEscape)
     window.addEventListener('resize', updateMenuLayout)
     window.addEventListener('scroll', updateMenuLayout, true)
 
     return () => {
-      document.removeEventListener('mousedown', handlePointerDown)
       document.removeEventListener('keydown', handleEscape)
       window.removeEventListener('resize', updateMenuLayout)
       window.removeEventListener('scroll', updateMenuLayout, true)
     }
-  }, [onClose, open, rootRef, menuRef, updateMenuLayout])
+  }, [onClose, open, updateMenuLayout])
 
   return menuLayout
 }

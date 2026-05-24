@@ -51,7 +51,7 @@ const OptionButton = styled.button`
   height: 18px;
   padding: 0;
   border: none;
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-image-option-bg);
   color: var(--ig-color-on-accent);
   display: inline-flex;

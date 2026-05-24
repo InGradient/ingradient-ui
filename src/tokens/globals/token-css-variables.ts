@@ -153,6 +153,12 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     // Canvas overlay (annotation-toolbar / coord readout 등 어두운 surface)
     '--ig-color-overlay-dim': 'rgba(0, 0, 0, 0.45)',
     '--ig-color-overlay-strong': 'rgba(0, 0, 0, 0.55)',
+    // Lightbox (full-viewport image preview)
+    '--ig-color-lightbox-backdrop': 'rgba(0, 0, 0, 0.85)',
+    '--ig-color-lightbox-surface': 'rgba(7, 10, 20, 0.7)',
+    // Canvas image-area overlay (image-viewer 위 archived / loading state)
+    '--ig-color-canvas-overlay-soft': 'rgba(12, 12, 12, 0.28)',
+    '--ig-color-canvas-overlay-strong': 'rgba(12, 12, 12, 0.72)',
     // Sidebar shell gradient backgrounds
     '--ig-color-sidebar-bg-top': 'rgba(12, 15, 20, 0.96)',
     '--ig-color-sidebar-bg-bottom': 'rgba(10, 14, 20, 0.94)',
@@ -184,6 +190,8 @@ const staticVars = {
   '--ig-radius-lg': ingradientThemeDark.radius.lg,
   '--ig-radius-xl': ingradientThemeDark.radius.xl,
   '--ig-radius-pill': ingradientThemeDark.radius.pill,
+  '--ig-radius-2xs': radiusScale['2xs'],
+  '--ig-radius-xxs': radiusScale.xxs,
   '--ig-radius-xs': radiusScale.xs,
   '--ig-radius-sm-alt': radiusScale.sm,
   '--ig-radius-lg-alt': radiusScale.lg,

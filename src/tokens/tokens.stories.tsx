@@ -171,6 +171,8 @@ export const Review: Story = {
 
       <StorybookSection title="Radius" description="Border radius scale.">
         <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+          <RadiusTile varName="--ig-radius-2xs" label="2xs" />
+          <RadiusTile varName="--ig-radius-xxs" label="xxs" />
           <RadiusTile varName="--ig-radius-xs" label="xs" />
           <RadiusTile varName="--ig-radius-sm" label="sm" />
           <RadiusTile varName="--ig-radius-md" label="md" />

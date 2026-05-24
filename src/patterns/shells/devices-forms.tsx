@@ -8,7 +8,7 @@ import { TextField } from '../../components/inputs/text-fields'
 const FormBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ const ErrMsg = styled.span`
 const TokenBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-accent);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@ const TokenText = styled.textarea`
   min-height: 72px;
   background: var(--ig-color-surface-panel);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   padding: var(--ig-space-3);
   font-family: monospace;
   font-size: 11px;

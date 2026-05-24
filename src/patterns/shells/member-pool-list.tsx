@@ -16,7 +16,7 @@ const Row = styled.li`
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-2) var(--ig-space-4);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-surface-interactive);
   border: 1px solid var(--ig-color-border-subtle);
 `

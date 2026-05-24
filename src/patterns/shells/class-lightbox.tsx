@@ -5,7 +5,7 @@ import { PatternTabs, type PatternTabsItem } from './pattern-tabs'
 const Backdrop = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--ig-color-lightbox-backdrop);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +57,7 @@ const CloseBtn = styled.button`
   height: 36px;
   border: none;
   border-radius: var(--ig-radius-pill);
-  background: rgba(7, 10, 20, 0.7);
+  background: var(--ig-color-lightbox-surface);
   color: var(--ig-color-text-primary);
   font-size: 18px;
   cursor: pointer;

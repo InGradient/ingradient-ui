@@ -12,7 +12,7 @@ const NativeColor = styled.input.attrs({ type: 'color' })`
   height: 40px;
   padding: 2px;
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-xxs);
   cursor: pointer;
   background: var(--ig-color-surface-raised);
   &:disabled {
@@ -20,7 +20,7 @@ const NativeColor = styled.input.attrs({ type: 'color' })`
     opacity: 0.7;
   }
   &::-webkit-color-swatch-wrapper { padding: 0; }
-  &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-xs); }
+  &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-2xs); }
 `
 
 const RandomButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`

@@ -1,5 +1,11 @@
 import type { DrawingObject } from '../../hooks/useDrawingCanvas'
 import {
+  SvgBboxRect,
+  SvgPointDot,
+  SvgShapeHandle,
+  SvgShapeLabel,
+} from '../../primitives/svg'
+import {
   HANDLE_PX, POINT_PX, POINT_SELECTED_PX,
   STROKE_PX, STROKE_SELECTED_PX,
   LABEL_FONT_PX, LABEL_PAD_X, LABEL_PAD_Y, LABEL_HEIGHT, LABEL_RADIUS,
@@ -23,28 +29,17 @@ function BboxLabel({ obj, color, ctx }: { obj: DrawingObject & { w: number; h: n
   const { cw, ch, uniform, z } = ctx
   if (!obj.label) return null
   return uniform ? (
-    <g transform={`translate(${obj.x}, ${obj.y}) scale(${1 / (cw * z)}, ${1 / (ch * z)})`}>
-      <rect
-        x={0}
-        y={-LABEL_HEIGHT}
-        width={estimateLabelWidth(obj.label)}
-        height={LABEL_HEIGHT}
-        rx={LABEL_RADIUS}
-        fill={color}
-        opacity={0.85}
-      />
-      <text
-        x={LABEL_PAD_X}
-        y={-LABEL_PAD_Y}
-        fill="#fff"
-        fontSize={LABEL_FONT_PX}
-        fontWeight={600}
-        fontFamily="sans-serif"
-        style={{ pointerEvents: 'none' }}
-      >
-        {obj.label}
-      </text>
-    </g>
+    <SvgShapeLabel
+      transform={`translate(${obj.x}, ${obj.y}) scale(${1 / (cw * z)}, ${1 / (ch * z)})`}
+      width={estimateLabelWidth(obj.label)}
+      height={LABEL_HEIGHT}
+      radius={LABEL_RADIUS}
+      color={color}
+      text={obj.label}
+      padX={LABEL_PAD_X}
+      padY={LABEL_PAD_Y}
+      fontSize={LABEL_FONT_PX}
+    />
   ) : (
     <text
       x={obj.x + 0.003}
@@ -71,25 +66,23 @@ function BboxHandles({ obj, color, ctx }: { obj: DrawingObject & { w: number; h:
     <>
       {corners.map(([cx, cy], i) => (
         uniform ? (
-          <ellipse
+          <SvgShapeHandle
             key={i}
             cx={cx}
             cy={cy}
             rx={HANDLE_PX / (cw * z)}
             ry={HANDLE_PX / (ch * z)}
-            fill="#fff"
-            stroke={color}
+            color={color}
             strokeWidth={s(1.5)}
             vectorEffect="non-scaling-stroke"
           />
         ) : (
-          <circle
+          <SvgShapeHandle
             key={i}
             cx={cx}
             cy={cy}
-            r={HANDLE_PX / 1000}
-            fill="#fff"
-            stroke={color}
+            rx={HANDLE_PX / 1000}
+            color={color}
             strokeWidth={0.002}
           />
         )
@@ -112,14 +105,13 @@ export function RectObject({
   const { uniform, s } = ctx
   return (
     <g style={gStyle}>
-      <rect
+      <SvgBboxRect
         x={obj.x}
         y={obj.y}
-        width={obj.w}
-        height={obj.h}
-        fill={color}
+        w={obj.w}
+        h={obj.h}
+        color={color}
         fillOpacity={isSelected ? 0.13 : 0.07}
-        stroke={color}
         strokeWidth={uniform ? s(isSelected ? STROKE_SELECTED_PX : STROKE_PX) : (isSelected ? 0.003 : 0.002)}
         vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
       />
@@ -141,24 +133,24 @@ export function PointObject({
   const { cw, ch, uniform, z, s } = ctx
   const size = isSelected ? POINT_SELECTED_PX : POINT_PX
   return uniform ? (
-    <ellipse
+    <SvgPointDot
       style={gStyle}
       cx={obj.x}
       cy={obj.y}
       rx={size / (cw * z)}
       ry={size / (ch * z)}
-      fill={color}
+      color={color}
       stroke={isSelected ? '#fff' : 'none'}
       strokeWidth={s(1.5)}
       vectorEffect="non-scaling-stroke"
     />
   ) : (
-    <circle
+    <SvgPointDot
       style={gStyle}
       cx={obj.x}
       cy={obj.y}
-      r={isSelected ? 0.008 : 0.006}
-      fill={color}
+      rx={isSelected ? 0.008 : 0.006}
+      color={color}
       stroke={isSelected ? '#fff' : 'none'}
       strokeWidth={0.002}
     />

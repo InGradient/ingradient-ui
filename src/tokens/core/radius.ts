@@ -1,4 +1,6 @@
 export const radiusScale = {
+  '2xs': '6px',
+  xxs: '8px',
   xs: '10px',
   sm: '12px',
   md: '14px',

@@ -33,7 +33,7 @@ const RowLabel = styled.th`
 
 const Cell = styled.td<{ $intensity: number }>`
   background: rgba(77, 136, 255, ${(p) => 0.08 + p.$intensity * 0.55});
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   font-size: var(--ig-font-size-xs);
   color: ${(p) => (p.$intensity > 0.5 ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
   text-align: center;
