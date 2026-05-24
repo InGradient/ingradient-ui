@@ -1,4 +1,5 @@
-import type { DatasetTaskType, SyncState } from '@ingradient/ui/components'
+import type { SyncState } from '@ingradient/ui/components'
+import type { DatasetTaskType } from '@ingradient/ui/patterns'
 import { mockDatasets, type MockDataset } from './catalog-datasets'
 import { mockImages, type MockGalleryImage } from './catalog-images'
 import { mockClasses, type MockCatalogClass } from './catalog-classes'

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import type { DatasetTaskType, SyncState } from '@ingradient/ui/components'
-import type { GalleryFilterPanelState } from '@ingradient/ui/patterns'
+import type { SyncState } from '@ingradient/ui/components'
+import type { DatasetTaskType, GalleryFilterPanelState } from '@ingradient/ui/patterns'
 
 export type CatalogViewMode = 'grid' | 'table' | 'stats'
 export type FilterKey = 'status' | 'dataset' | 'sort' | null

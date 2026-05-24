@@ -4,7 +4,7 @@ import { Button, Checkbox } from '../../components/inputs'
 import { Spinner } from '../../components/feedback/spinner'
 import { ClosePanelIcon } from '../../components/icons/catalog-icons'
 import { DatasetListItem } from './dataset-list-item'
-import type { DatasetTaskType } from '../../components/data-display/dataset-task-tag'
+import type { DatasetTaskType } from './dataset-task-tag'
 
 const Panel = styled.aside`
   display: flex;

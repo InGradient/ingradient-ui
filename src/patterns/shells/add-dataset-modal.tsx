@@ -5,7 +5,7 @@ import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 import { RadioCardGroup } from '../../components/inputs/radio-card-group'
 import { Checkbox } from '../../components/inputs/toggles'
-import { type DatasetTaskType } from '../../components/data-display/dataset-task-tag'
+import { type DatasetTaskType } from './dataset-task-tag'
 
 import { FormField } from '../../components/inputs'
 

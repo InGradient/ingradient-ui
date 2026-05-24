@@ -388,3 +388,40 @@ audit 정확도 문제: 1차 audit 에서 "도메인 중복" 카테고리로 gro
 
 - `feedback/chip` rename (Tag 등) — 정적 display 인데 "Chip" 이름. 사용처 광범위해 부담.
 - 다른 chip-like 패턴 (sync-status-chip, state-chip 등) 의미 통합 검토
+
+---
+
+# Round 9 — DatasetTaskTag atomic 분리 + tag 시각 패턴 정리
+
+사용자 지적 (R8 패턴 반복): "DatasetTaskTag 도 Chip 같은 걸로 대체 안 되나?" audit 에서 DatasetTaskTag 를 "도메인 의미 강한 component 예시" 로만 분류하고 atomic 추출은 안 했음. **재평가 결과 atomic 분리 가능했음**.
+
+## 발견
+
+4 종류 tag/badge 가 비슷한 의미 (span + bg + color + small text) 인데 시각 다 다른 채 공존:
+
+| 위치 | radius | font | padding | text |
+|---|---|---|---|---|
+| `data-display/dataset-task-tag` | xs (10px) | 10px | 1×2 | 정상 |
+| `patterns/shells/project-type-tag` | pill | 10px | 0×4 | UPPERCASE |
+| `patterns/shells/device-status-badge` | 4xl (24px) | 11px | 1×7 | 정상 |
+| `feedback/chip` (Badge extend) | pill | xs (12px) | 1×4 | 정상 |
+
+## A. 처리 완료
+
+| 항목 | 결과 |
+|---|---|
+| `Tag` atomic 추출 | `src/components/data-display/tag.tsx` 신설. `styled.span<{ $bg, $color }>` + DatasetTaskTag 의 기존 시각 그대로 (radius-xs, font 10px, padding 1×space-2, weight 600). |
+| `DatasetTaskTag` → patterns 이동 | `src/components/data-display/dataset-task-tag.tsx` → `src/patterns/shells/dataset-task-tag.tsx`. 내부 `Tag` styled 제거 + `Tag` atomic 사용. `taskTypeStyles` (도메인 매핑) + label (short/full) 잔류. data-ig-layer="patterns" 로 갱신. |
+| 외부 import 갱신 | `DatasetTaskType` import 를 `@ingradient/ui/components` → `@ingradient/ui/patterns` (3 파일: platform-pages catalog/types.ts, fixtures catalog-datasets, catalog-scenarios). |
+
+검증: typecheck OK, 178 tests OK. 시각 변화 0.
+
+## B. 미처리 (시각 통일 = 디자이너 결정)
+
+ProjectTypeTag, DeviceStatusBadge, feedback/chip 은 시각이 DatasetTaskTag 와 명백히 다름 — Tag atomic 적용 시 시각 변경 발생. **디자이너 결정 사항**. 코드 정리만으로는 불가.
+
+## Round 10 트리거
+
+- 4 tag 시각 통일 (디자이너 결정 후)
+- `feedback/chip` rename — 정적 display 인데 "Chip" 이름 (interactive `ActionChip` 과 혼동)
+- audit 정확도 메타: **"도메인 의미 강한 component"** 분류도 atomic 추출 가능한지 재평가 필요 (R8 ChipGroup + R9 DatasetTaskTag 모두 audit 보류였음)

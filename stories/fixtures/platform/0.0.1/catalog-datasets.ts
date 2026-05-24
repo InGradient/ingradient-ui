@@ -1,4 +1,4 @@
-import type { DatasetTaskType } from '@ingradient/ui/components'
+import type { DatasetTaskType } from '@ingradient/ui/patterns'
 
 export type MockDataset = {
   id: string

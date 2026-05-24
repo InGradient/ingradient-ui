@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Checkbox, IconButton } from '../../components/inputs'
 import { SelectableListItem } from '../../components/data-display/selectable-list-item'
-import { DatasetTaskTag, type DatasetTaskType } from '../../components/data-display/dataset-task-tag'
+import { DatasetTaskTag, type DatasetTaskType } from './dataset-task-tag'
 import { KebabIcon } from '../../components/icons/catalog-icons'
 
 const Row = styled.div`

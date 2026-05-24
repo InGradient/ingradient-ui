@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { Tag } from '../../components/data-display/tag'
 
 export type DatasetTaskType = 'object_detection' | 'classification' | 'segmentation' | 'point'
 
@@ -20,25 +20,6 @@ const taskTypeStyles: Record<DatasetTaskType, { bg: string; color: string; short
     short: 'PT', full: 'Point',
   },
 }
-
-const Tag = styled.span<{ $type: DatasetTaskType }>`
-  ${({ $type }) => {
-    const s = taskTypeStyles[$type]
-    return css`
-      background: ${s.bg};
-      color: ${s.color};
-    `
-  }}
-  display: inline-flex;
-  align-items: center;
-  padding: 1px var(--ig-space-2);
-  border-radius: var(--ig-radius-xs);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  flex-shrink: 0;
-`
 
 export interface DatasetTaskTagProps {
   taskType: DatasetTaskType
@@ -62,11 +43,12 @@ export function DatasetTaskTag({
   const style = taskTypeStyles[taskType]
   return (
     <Tag
-      $type={taskType}
+      $bg={style.bg}
+      $color={style.color}
       className={className}
       title={style.full}
       data-ig-component={componentName}
-      data-ig-layer="components"
+      data-ig-layer="patterns"
       data-ig-slot={slotName}
       data-ig-kind="tag"
       data-ig-label={componentLabel ?? style.full}
