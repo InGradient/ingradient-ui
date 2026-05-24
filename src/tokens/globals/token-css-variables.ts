@@ -23,7 +23,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     : 'rgba(255, 255, 255, 0.04)'
   return {
     '--ig-color-bg-canvas': theme.colors.bgCanvas,
-    '--ig-color-bg-canvas-alt': theme.colors.bgCanvasAlt,
     '--ig-color-bg-radial-a': theme.colors.bgRadialA,
     '--ig-color-bg-radial-b': theme.colors.bgRadialB,
     '--ig-color-surface-header': theme.colors.surfaceHeader,
@@ -132,13 +131,9 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-image-card-gradient-a': palette.blueTint14,
     '--ig-color-image-card-gradient-b': palette.greenTint12,
     '--ig-color-avatar-bg': palette.blueTint18,
-    '--ig-color-dropdown-trigger-shadow':
-      'inset 0 1px 0 var(--ig-color-inset-highlight), 0 10px 24px rgba(0, 0, 0, 0.12)',
     '--ig-color-dropdown-open-shadow': isLight
       ? '0 0 0 3px rgba(58, 115, 230, 0.20), 0 18px 36px rgba(15, 23, 42, 0.10)'
       : '0 0 0 3px rgba(77, 136, 255, 0.16), 0 18px 36px rgba(0, 0, 0, 0.18)',
-    '--ig-color-dropdown-chevron-bg': palette.white04,
-    '--ig-color-dropdown-chevron-border': palette.borderMuted,
     '--ig-color-dropdown-menu-a': isLight ? 'rgba(255, 255, 255, 0.98)' : 'rgba(18, 24, 34, 0.98)',
     '--ig-color-dropdown-menu-b': isLight ? 'rgba(247, 249, 251, 0.98)' : 'rgba(10, 14, 20, 0.98)',
     '--ig-color-dropdown-option-hover': palette.white06,
@@ -172,14 +167,12 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-white-08': palette.white08,
     '--ig-color-white-12': palette.white12,
     '--ig-color-white-18': palette.white18,
-    '--ig-color-white-96': palette.white96,
     '--ig-color-blue-tint-12': palette.blueTint12,
     '--ig-color-blue-tint-14': palette.blueTint14,
     '--ig-color-blue-tint-16': palette.blueTint16,
     '--ig-color-blue-tint-18': palette.blueTint18,
     '--ig-color-blue-tint-28': palette.blueTint28,
     '--ig-color-blue-tint-38': palette.blueTint38,
-    '--ig-color-blue-tint-42': palette.blueTint42,
   } as const
 }
 
@@ -193,10 +186,7 @@ const staticVars = {
   '--ig-radius-2xs': radiusScale['2xs'],
   '--ig-radius-xxs': radiusScale.xxs,
   '--ig-radius-xs': radiusScale.xs,
-  '--ig-radius-sm-alt': radiusScale.sm,
-  '--ig-radius-lg-alt': radiusScale.lg,
   '--ig-radius-2xl': radiusScale['2xl'],
-  '--ig-radius-3xl': radiusScale['3xl'],
   '--ig-radius-4xl': radiusScale['4xl'],
   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
   '--ig-font-mono': ingradientThemeDark.typography.fontMono,
@@ -224,12 +214,12 @@ const staticVars = {
   '--ig-space-11': spacingScale[11],
   '--ig-space-12': spacingScale[12],
   '--ig-space-13': spacingScale[13],
+  '--ig-z-dropdown': String(zIndexScale.dropdown),
   '--ig-z-popover': String(zIndexScale.popover),
+  '--ig-z-context-menu': String(zIndexScale.contextMenu),
   '--ig-z-drawer': String(zIndexScale.drawer),
   '--ig-z-modal': String(zIndexScale.modal),
-  '--ig-z-context-menu': '1000',
-  '--ig-z-tooltip': '9999',
-  '--ig-z-dropdown': '100',
+  '--ig-z-tooltip': String(zIndexScale.tooltip),
   '--ig-control-height-sm': controlSizes.sm,
   '--ig-control-height-md': controlSizes.md,
   '--ig-control-height-lg': controlSizes.lg,

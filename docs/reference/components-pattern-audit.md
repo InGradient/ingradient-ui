@@ -249,3 +249,56 @@ date-picker 는 자체 유지. 다음 라운드 트리거: **PopoverTriggerField
 - `PopoverTriggerField` 의 `free mode` (DayPicker / color picker / time picker 같은 라이브러리-너비 popover 통합)
 - mouse coord 통합 (`useMousePosition` 또는 `useImageCoord` hook 신설) — canvas 도구 추가 시
 - 디자인 검토: 4px → 2xs(6px) 으로 1px 더 둥글어진 2 곳 (member-pool-list RemoveBtn, source-breakdown-widget) — 의도 확인
+
+---
+
+# Round 6 — Token 시스템 자체 audit
+
+R1~R5 에서 token 시스템을 많이 사용·확장 (radius `2xs/xxs` 신설, backdrop semantic 4 종, OptionRow rename 등). 그 위에 token 시스템 **자체** 정리. Explore agent 가 195 CSS variable 중 미사용 / hardcoded / 모호 케이스 점검.
+
+## A. 처리 완료
+
+### 미사용 token 제거 (9 개)
+
+| 카테고리 | 토큰 | 정의 위치 (이전) |
+|---|---|---|
+| Color theme-aware | `--ig-color-bg-canvas-alt` | line 26 |
+| Color theme-aware | `--ig-color-dropdown-chevron-bg` | line 140 |
+| Color theme-aware | `--ig-color-dropdown-chevron-border` | line 141 |
+| Color theme-aware | `--ig-color-dropdown-trigger-shadow` | line 135-136 |
+| Color foundation | `--ig-color-white-96` | line 175 |
+| Color foundation | `--ig-color-blue-tint-42` | line 182 |
+| Radius scale | `--ig-radius-3xl` (+ `radiusScale['3xl']` 도 함께) | line 199 / radius.ts |
+| Radius scale | `--ig-radius-sm-alt` | line 196 |
+| Radius scale | `--ig-radius-lg-alt` | line 197 |
+
+검증: `grep -rn "var(--ig-XXX)" src/ packages/ stories/` → 0 사용처 확인 후 제거. 시각 영향 0.
+
+### z-index hardcode → scale 이동
+
+`src/tokens/core/z-index.ts` 의 `zIndexScale` 에 `dropdown / contextMenu / tooltip` 3 개 추가. `token-css-variables.ts` 의 hardcoded `'100' / '1000' / '9999'` → `String(zIndexScale.XXX)` 참조로 변경. 단일 source-of-truth 회복.
+
+순서도 z-order 순으로 재정렬: `dropdown(100) < popover(500) < contextMenu(1000) < drawer(1100) < modal(1200) < tooltip(9999)`.
+
+## B. 검토 후 유지
+
+| 항목 | 유지 이유 |
+|---|---|
+| `--ig-color-sidebar-bg-top` (1 사용) | `sidebar-bg-bottom` 과 gradient pair. 시각 의도 유지. |
+| `--ig-color-danger-soft-surface` (1 사용) | annotation-toolbar 의도된 hover state. semantic 명확. |
+| `--ig-font-size-5xl` (1 사용) | `heading.tsx` H1 사용. typography scale 의미 있음. |
+| 중복 값 (`blueTint18` 7 token, `amberTint18` 3 token 등) | 의미적 grouping (queued/badge/avatar/tab/image-ring 등 각자 semantic name). consolidate 시 의도 손실. |
+| recipes (14 개) | 모두 활용 중. dead code 없음. |
+| light / dark mode 매핑 | 누락 없음. `buildTheme()` 양쪽 모두 호출. |
+
+## C. 발견된 보류 / 후속
+
+- `-alt` suffix 의미 — 1, 2 번 항목 (`radius-sm-alt`, `radius-lg-alt`) 은 제거됨. 다른 곳에도 `-alt` 가 남아있으면 audit 필요.
+- semantic vs raw token 공존 (예: `--ig-color-accent-soft-surface` 와 `--ig-color-blue-tint-18` 둘 다 같은 값) — 의미적 grouping 으로 인정 + 향후 JSDoc 으로 명확화 검토.
+
+## Next Round Triggers — Round 7
+
+- semantic token 에 JSDoc / 카테고리 주석 추가 (token-css-variables.ts 가 점점 길어짐, 230+ 줄)
+- `-alt` suffix 가 남은 다른 token 점검 (현재는 radius 만)
+- color palette 중 미사용 색 (foundation `palette.X` 중 token 매핑 안 된 것) audit
+- shadow scale 일관성 (현재 `shadowScale` / `shadowScaleLight` 둘만 있음, raw `box-shadow: ...` 사용처 점검)

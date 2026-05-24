@@ -7,7 +7,6 @@ export const radiusScale = {
   lg: '16px',
   xl: '18px',
   '2xl': '20px',
-  '3xl': '22px',
   '4xl': '24px',
   pill: '999px',
 } as const
