@@ -98,6 +98,7 @@ export function buildCatalogViewProps(
       selectedImageIds: s.selectedImageIds,
       loading: scenario.imagesLoading,
       hoverImageId: s.hoverImageId,
+      openMenuId: s.imageMenuAnchor?.id,
       datasetNameById,
       onToggleSelect: s.toggleImageSelection,
       onOpenDetail: (id) => s.setDetailImageId(id),

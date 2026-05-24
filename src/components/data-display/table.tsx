@@ -20,6 +20,7 @@ function GripIcon() {
 export type TableColumn<T> = {
   key: string
   header: string
+  width?: string | number
   render: (row: T) => React.ReactNode
 }
 
@@ -56,7 +57,7 @@ export function Table<T extends { id?: string | number }>({
           <thead>
             <tr>
               {columns.map((col) => (
-                <Th key={col.key}>{col.header}</Th>
+                <Th key={col.key} style={{ width: col.width }}>{col.header}</Th>
               ))}
             </tr>
           </thead>
@@ -68,7 +69,7 @@ export function Table<T extends { id?: string | number }>({
                 onClick={() => onRowClick?.(row, i)}
               >
                 {columns.map((col) => (
-                  <Td key={col.key}>{col.render(row)}</Td>
+                  <Td key={col.key} style={{ width: col.width }}>{col.render(row)}</Td>
                 ))}
               </PlainTr>
             ))}
@@ -87,7 +88,7 @@ export function Table<T extends { id?: string | number }>({
               <VisuallyHidden>Reorder</VisuallyHidden>
             </DragTh>
             {columns.map((col) => (
-              <Th key={col.key}>{col.header}</Th>
+              <Th key={col.key} style={{ width: col.width }}>{col.header}</Th>
             ))}
           </tr>
         </thead>
@@ -107,7 +108,7 @@ export function Table<T extends { id?: string | number }>({
                 </HandleBtn>
               </DragTd>
               {columns.map((col) => (
-                <Td key={col.key}>{col.render(row)}</Td>
+                <Td key={col.key} style={{ width: col.width }}>{col.render(row)}</Td>
               ))}
             </StyledTr>
           ))}

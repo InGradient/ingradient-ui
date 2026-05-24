@@ -113,6 +113,7 @@ export interface CatalogImagesPaneProps {
   selectedImageIds: Set<string>
   loading?: boolean
   hoverImageId?: string
+  openMenuId?: string
   datasetNameById: Record<string, string>
   onToggleSelect: (id: string, checked: boolean) => void
   onOpenDetail: (id: string) => void

@@ -67,6 +67,7 @@ export function CatalogBody({
           images={imagesPane.images}
           selectedIds={imagesPane.selectedImageIds}
           datasetNameById={imagesPane.datasetNameById}
+          openMenuId={imagesPane.openMenuId}
           onToggleSelect={imagesPane.onToggleSelect}
           onOpenMenu={imagesPane.onOpenMenu}
           onRowClick={(id) => imagesPane.onOpenDetail(id)}
