@@ -302,3 +302,52 @@ R1~R5 에서 token 시스템을 많이 사용·확장 (radius `2xs/xxs` 신설, 
 - `-alt` suffix 가 남은 다른 token 점검 (현재는 radius 만)
 - color palette 중 미사용 색 (foundation `palette.X` 중 token 매핑 안 된 것) audit
 - shadow scale 일관성 (현재 `shadowScale` / `shadowScaleLight` 둘만 있음, raw `box-shadow: ...` 사용처 점검)
+
+---
+
+# Round 7 — 남은 항목 전면 진행
+
+R6 후 사용자 "장기 가치 위해 남은 것 전부 검토 후 진행" 요청. audit C/D 후속 트리거 + 안 본 영역 (`hooks`) 을 한 번에. 사용자 핵심 원칙: **components 는 atomic 최소 단위, 그 조합이 patterns**.
+
+## A. 처리 완료
+
+| # | 항목 | 결과 |
+|---|---|---|
+| R7-A | shadow scale + raw box-shadow → token | `menu` shadow 신설 (dark + light). 3 곳 마이그레이션 (`image-context-menu`, `table.styles`, `dataset-selector-mobile` → menu/popover). class-lightbox (rgba 0.5 강함, 단일 사용) + buttons.ts danger gradient (의도된 색) 는 raw 유지. |
+| R7-B | foundation palette 미사용 색 정리 | `borderMuted`, `white96` 제거 (각 light/dark 양쪽). 71 → 69 palette key. typecheck OK. |
+| R7-C | semantic token JSDoc / section header | `token-css-variables.ts` 에 `// ── Background / Surface / Border-Text / Accent-Status ────` section 주석. radius 도 2xs→pill 순서로 재정렬 + section header. |
+| R7-D | `FloatingPanelField` 신설 + date-picker 통합 | `PopoverTriggerField` (menu mode, width 강제) 와 별도 `FloatingPanelField` (free mode, panel 고유 너비) 신설. `date-picker.tsx` 의 자체 positioning 로직 제거 후 FloatingPanelField 사용. R5 명시 후속 완료. |
+| R7-G | `useZoomInvariantRenderer` hook 추출 | `drawing-layer.tsx` 의 inline RendererCtx 생성 로직 → hook (`{ ref, containerWidth, containerHeight, zoom }` → `ZoomInvariantRendererCtx`). `drawing-layer.renderers.tsx` 의 `RendererCtx` 는 `type RendererCtx = ZoomInvariantRendererCtx` alias. 다른 viewer / measurement tool 에서 재사용 가능. |
+| R7-I | `useElementSize` hook 추출 | `ChartResponsive` + `SafeResponsiveContainer` 의 ResizeObserver + window resize listener 중복 → 공통 hook. 두 wrapper 의 API (render prop vs cloneElement) 는 사용 시나리오가 달라 통합하지 않고 hook 만 공유. |
+| R7-F | `getNormalizedCoord` utility 추출 | `useCanvasMouse` 의 toNorm 함수를 `src/hooks/normalized-coord.ts` utility 로. `useDrawingCanvas` 는 `e.currentTarget` 패턴이라 ref 기반 utility 와 contract 다름 — 부분 통합. |
+
+## B. 평가 후 skip
+
+| # | 항목 | 정직한 skip 이유 |
+|---|---|---|
+| R7-H | InfoRow ↔ KeyValueRow 통합 | 실제 코드 보니 **API 완전 다름**: InfoRow 는 styled 3 개 composable (`<InfoRow><InfoRowLabel/><InfoRowValue/></InfoRow>`, value 안에 자유 React node + flex-wrap), KeyValueRow 는 props (`label`, `value`). 통합 시 한쪽 사용 패턴 (사용처 6+ 파일) 변경 부담 + API 약화. atomic 1개 줄이는 가치 < 통합 부담. **양립 유지가 정직**. |
+| R7-E | layouts / page / shared audit | `layouts.tsx` (SplitLayout / DashboardGrid / ListDetailLayout / SettingsShell / InspectorLayout) 5 개 named layouts 각자 의도 명확 — 통합 시 의도 흐려짐. `shared/surfaces.ts` 는 recipe re-export 1 줄. `page-shell.tsx` 는 R3 token 일관성 후 잘 정리. **추가 정리 없음**. |
+| R7-X1 | `src/utils` audit | 6 파일 모두 독립 도메인 utility. 공통 패턴 없음. |
+| R7-X2 | `src/brand` audit | brand-specific. 다른 brand 추가 시 audit 가치 생김. |
+| R7-X4 | ToggleIndicator 공통화 | switch / checkbox / radio 시각 근본적 다름. 안쪽 더 작은 atomic 없음. 이미 최소. |
+| R7-X6 | 4px → 2xs 디자인 검토 | 디자이너 결정 사항. 코드 변경 아님. |
+
+## C. 남은 추가 변경 가능 영역 (Round 8 트리거)
+
+지금 강행 시 over-extraction 위험. 트리거:
+
+| 항목 | 트리거 |
+|---|---|
+| `useDrawingCanvas` 도 `getNormalizedCoord` utility 사용 | `e.currentTarget` 패턴 → ref 패턴 리팩터 필요. 큰 회귀 검증 부담. 사용처 변경 시 자연스럽게. |
+| `useCanvasMouse` + `useDrawingCanvas` + `useZoomPan` 의 pan drag / scroll wheel 등 다른 mouse helpers 통합 | mouse coord 외 다른 패턴은 hook 책임이 너무 달라 통합 어려움. 새 mouse-driven 도구 추가 시. |
+| 4px → 2xs 변화 두 곳 (member-pool-list, source-breakdown-widget) | 디자이너 결정. |
+| `-alt` suffix 가 남은 다른 token | 점검 안 함 (R6 에서 radius 는 정리, 다른 카테고리 확인 필요). |
+
+## 최종 평가
+
+R1~R7 (7 rounds) 후 디자인 시스템 라이브러리로서 정리 완성도 매우 높음:
+- 정책 ([components-vs-patterns.md](docs/reference/components-vs-patterns.md)) 기준 분류 정착
+- atomic primitive 다수 노출 (Card, GridContainer, OptionRow, TagListItem, SearchableList, StateChip, TooltipCard, KeyValueRow, LegendItem, Avatar, Chip, InputAdornment, FilterPopoverSection, TwoColumnDialog, PopoverTriggerField, FloatingPanelField, SelectableGridCell, LabelValueRow + 4 SVG primitive)
+- token 일관성 (spacing / radius / color / shadow 모두)
+- hooks atomic 정리 (useClickOutside / useElementSize / useZoomInvariantRenderer / getNormalizedCoord)
+- 보류 항목은 모두 명확한 트리거 명시

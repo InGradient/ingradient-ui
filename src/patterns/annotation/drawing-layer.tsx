@@ -1,7 +1,8 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
+import { useZoomInvariantRenderer } from '../../hooks/useZoomInvariantRenderer'
 import { ImageViewerContext } from '../../components/data-display/image-viewer'
-import { PointObject, RectObject, type RendererCtx } from './drawing-layer.renderers'
+import { PointObject, RectObject } from './drawing-layer.renderers'
 
 export type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 
@@ -40,26 +41,13 @@ export function DrawingLayer({
   // is rendered standalone (no caller prop, no ImageViewer ancestor).
   const ctx = useContext(ImageViewerContext)
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [measured, setMeasured] = useState({ w: 0, h: 0 })
-
-  useEffect(() => {
-    const el = svgRef.current
-    if (!el) return
-    const ro = new ResizeObserver(([entry]) => {
-      if (!entry) return
-      const { width, height } = entry.contentRect
-      setMeasured((prev) => (prev.w === width && prev.h === height ? prev : { w: width, h: height }))
-    })
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
-
-  const cw = (containerWidth ?? ctx?.containerWidth ?? measured.w) || 0
-  const ch = (containerHeight ?? ctx?.containerHeight ?? measured.h) || 0
-  const uniform = cw > 0 && ch > 0
-  const z = zoomProp ?? ctx?.zoom ?? 1
-  const s = (px: number) => px / z
-  const rendererCtx: RendererCtx = { cw, ch, uniform, z, s }
+  const rendererCtx = useZoomInvariantRenderer({
+    ref: svgRef,
+    containerWidth: containerWidth ?? ctx?.containerWidth,
+    containerHeight: containerHeight ?? ctx?.containerHeight,
+    zoom: zoomProp ?? ctx?.zoom ?? 1,
+  })
+  const { uniform, s } = rendererCtx
 
   return (
     <svg

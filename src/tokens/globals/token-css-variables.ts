@@ -22,21 +22,25 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     ? 'rgba(15, 18, 25, 0.04)'
     : 'rgba(255, 255, 255, 0.04)'
   return {
+    // ── Background ────────────────────────────────────────────────
     '--ig-color-bg-canvas': theme.colors.bgCanvas,
     '--ig-color-bg-radial-a': theme.colors.bgRadialA,
     '--ig-color-bg-radial-b': theme.colors.bgRadialB,
+    // ── Surface ───────────────────────────────────────────────────
     '--ig-color-surface-header': theme.colors.surfaceHeader,
     '--ig-color-surface-panel': theme.colors.surfacePanel,
     '--ig-color-surface-raised': theme.colors.surfaceRaised,
     '--ig-color-surface-muted': theme.colors.surfaceMuted,
     '--ig-color-surface-interactive': theme.colors.surfaceInteractive,
     '--ig-color-surface-active': theme.colors.surfaceActive,
+    // ── Border / Text ─────────────────────────────────────────────
     '--ig-color-border-subtle': theme.colors.borderSubtle,
     '--ig-color-border-strong': theme.colors.borderStrong,
     '--ig-color-text-primary': theme.colors.textPrimary,
     '--ig-color-text-secondary': theme.colors.textSecondary,
     '--ig-color-text-muted': theme.colors.textMuted,
     '--ig-color-text-soft': theme.colors.textSoft,
+    // ── Accent / Status ───────────────────────────────────────────
     '--ig-color-accent': theme.colors.accent,
     '--ig-color-accent-strong': theme.colors.accentStrong,
     '--ig-color-accent-soft': theme.colors.accentSoft,
@@ -56,6 +60,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-shadow-panel': shadows.panel,
     '--ig-shadow-floating': shadows.floating,
     '--ig-shadow-popover': shadows.popover,
+    '--ig-shadow-menu': shadows.menu,
     '--ig-shadow-hover-lift': shadows.hoverLift,
     '--ig-shadow-focus-ring': shadows.focusRing,
     '--ig-scrollbar-thumb': isLight ? 'rgba(15, 23, 42, 0.18)' : 'rgba(148, 163, 184, 0.22)',
@@ -178,16 +183,18 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
 
 // Theme-independent vars (radius / spacing / typography / z / control sizes)
 const staticVars = {
+  // ── Radius (2xs:6 → 4xl:24, plus pill) ────────────────────────
+  '--ig-radius-2xs': radiusScale['2xs'],
+  '--ig-radius-xxs': radiusScale.xxs,
+  '--ig-radius-xs': radiusScale.xs,
   '--ig-radius-sm': ingradientThemeDark.radius.sm,
   '--ig-radius-md': ingradientThemeDark.radius.md,
   '--ig-radius-lg': ingradientThemeDark.radius.lg,
   '--ig-radius-xl': ingradientThemeDark.radius.xl,
-  '--ig-radius-pill': ingradientThemeDark.radius.pill,
-  '--ig-radius-2xs': radiusScale['2xs'],
-  '--ig-radius-xxs': radiusScale.xxs,
-  '--ig-radius-xs': radiusScale.xs,
   '--ig-radius-2xl': radiusScale['2xl'],
   '--ig-radius-4xl': radiusScale['4xl'],
+  '--ig-radius-pill': ingradientThemeDark.radius.pill,
+  // ── Typography ────────────────────────────────────────────────
   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
   '--ig-font-mono': ingradientThemeDark.typography.fontMono,
   '--ig-font-size-2xs': typographyScale.size2xs,

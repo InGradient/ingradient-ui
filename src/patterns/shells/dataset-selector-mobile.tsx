@@ -41,9 +41,7 @@ const Dropdown = styled.div`
   background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(10, 14, 20, 0.98) 100%);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: var(--ig-radius-xl);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 var(--ig-color-white-06);
+  box-shadow: var(--ig-shadow-popover);
   backdrop-filter: blur(16px);
   z-index: 200;
   overflow: hidden;

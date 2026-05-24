@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 import { controlField } from '../../primitives'
 
-export const Wrap = styled.div`
-  position: relative;
-`
-
 export const Trigger = styled.button`
   ${controlField}
   display: flex;
@@ -21,10 +17,7 @@ export const Placeholder = styled.span`
   color: var(--ig-color-text-soft);
 `
 
-export const Popover = styled.div<{ $top: number; $left: number }>`
-  position: fixed;
-  top: ${(p) => p.$top}px;
-  left: ${(p) => p.$left}px;
+export const Popover = styled.div`
   z-index: calc(var(--ig-z-modal) + 10);
   border-radius: var(--ig-radius-lg);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);

@@ -18,3 +18,12 @@ export type { UseClickOutsideOptions } from './useClickOutside'
 
 export { useCanvasMouse } from './useCanvasMouse'
 export type { UseCanvasMouseConfig } from './useCanvasMouse'
+
+export { useElementSize } from './useElementSize'
+export type { ElementSize, UseElementSizeOptions } from './useElementSize'
+
+export { useZoomInvariantRenderer } from './useZoomInvariantRenderer'
+export type { ZoomInvariantRendererCtx, UseZoomInvariantRendererOptions } from './useZoomInvariantRenderer'
+
+export { getNormalizedCoord } from './normalized-coord'
+export type { NormalizedCoord } from './normalized-coord'

@@ -1,4 +1,5 @@
 import type { DrawingObject } from '../../hooks/useDrawingCanvas'
+import type { ZoomInvariantRendererCtx } from '../../hooks/useZoomInvariantRenderer'
 import {
   SvgBboxRect,
   SvgPointDot,
@@ -12,18 +13,8 @@ import {
   estimateLabelWidth,
 } from './drawing-layer.constants'
 
-interface RendererCtx {
-  /** Container width in CSS pixels (resolved from prop / context / measured). */
-  cw: number
-  /** Container height in CSS pixels. */
-  ch: number
-  /** Container 측정 완료 여부. */
-  uniform: boolean
-  /** Current zoom level (default 1). */
-  z: number
-  /** Convert pixel value to viewBox unit, divided by zoom for zoom-invariant rendering. */
-  s: (px: number) => number
-}
+/** Alias for back-compat with existing import sites. */
+type RendererCtx = ZoomInvariantRendererCtx
 
 function BboxLabel({ obj, color, ctx }: { obj: DrawingObject & { w: number; h: number }; color: string; ctx: RendererCtx }) {
   const { cw, ch, uniform, z } = ctx

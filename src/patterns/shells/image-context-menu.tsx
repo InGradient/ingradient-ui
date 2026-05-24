@@ -11,7 +11,7 @@ const Menu = styled.div<{ $top: number; $left: number }>`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-white-08);
   border-radius: var(--ig-radius-sm);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--ig-shadow-menu);
   overflow: hidden;
   z-index: 1200;
 `

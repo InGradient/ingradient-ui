@@ -47,7 +47,7 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-2xs);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);

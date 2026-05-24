@@ -12,7 +12,6 @@ export const foundationColors = {
   white08: 'rgba(255, 255, 255, 0.08)',
   white12: 'rgba(255, 255, 255, 0.12)',
   white18: 'rgba(255, 255, 255, 0.18)',
-  white96: 'rgba(255, 255, 255, 0.96)',
   blue500: '#4d88ff',
   blue600: '#2962d9',
   blue300: '#8cb6ff',
@@ -34,7 +33,6 @@ export const foundationColors = {
   redTint18: 'rgba(239, 68, 68, 0.18)',
   cyanTint18: 'rgba(56, 189, 248, 0.18)',
   violet300: '#c084fc',
-  borderMuted: 'rgba(148, 163, 184, 0.14)',
   borderStrong: 'rgba(148, 163, 184, 0.18)',
   overlayBackdrop: 'rgba(4, 8, 14, 0.72)',
   radialA: 'rgba(66, 139, 202, 0.18)',
@@ -92,7 +90,6 @@ export const foundationColorsLight = {
   white08: 'rgba(15, 18, 25, 0.08)',
   white12: 'rgba(15, 18, 25, 0.10)',
   white18: 'rgba(15, 18, 25, 0.14)',
-  white96: 'rgba(15, 18, 25, 0.92)',
   // Accent — saturated variants for light bg contrast.
   // All three meet 4.5:1 on white and on accent-soft-surface tints. Hierarchy
   // is "deeper accent" rather than "lighter tint" in light mode (the soft tier
@@ -120,7 +117,6 @@ export const foundationColorsLight = {
   cyanTint18: 'rgba(14, 116, 144, 0.18)',
   violet300: '#7c3aed',
   // Borders — subtle dark tints on light surface
-  borderMuted: 'rgba(15, 23, 42, 0.10)',
   borderStrong: 'rgba(15, 23, 42, 0.14)',
   // Overlay backdrop — keep heavy dark for clarity over light page
   overlayBackdrop: 'rgba(15, 23, 42, 0.32)',
