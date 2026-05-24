@@ -51,9 +51,9 @@ const OptionButton = styled.button`
   height: 18px;
   padding: 0;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
   background: var(--ig-color-image-option-bg);
-  color: #ffffff;
+  color: var(--ig-color-on-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ const Footer = styled.div`
   bottom: 0;
   padding: var(--ig-space-3);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
-  color: #ffffff;
+  color: var(--ig-color-on-accent);
   font-size: var(--ig-font-size-xs);
   overflow: hidden;
   text-overflow: ellipsis;

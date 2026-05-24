@@ -14,8 +14,8 @@ const Root = styled.div`
 const TopBar = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-4) var(--ig-space-6);
   background: var(--ig-color-surface-raised);
   border-bottom: 1px solid var(--ig-color-border-subtle);
   flex-shrink: 0;

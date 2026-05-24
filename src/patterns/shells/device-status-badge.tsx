@@ -15,7 +15,7 @@ const Badge = styled.span<{ $tone: DeviceStatusTone }>`
   display: inline-flex;
   align-items: center;
   padding: 1px 7px;
-  border-radius: 99px;
+  border-radius: var(--ig-radius-4xl);
   font-size: 11px;
   font-weight: 600;
   ${(p) => toneStyles[p.$tone]}

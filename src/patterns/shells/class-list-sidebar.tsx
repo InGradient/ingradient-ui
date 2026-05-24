@@ -16,7 +16,7 @@ const Sidebar = styled.aside`
 `
 
 const Header = styled.div`
-  padding: 16px 16px 12px;
+  padding: var(--ig-space-7) var(--ig-space-7) var(--ig-space-5);
   border-bottom: 1px solid var(--ig-color-border-subtle);
   flex-shrink: 0;
 `
@@ -24,14 +24,14 @@ const Header = styled.div`
 const List = styled.ul`
   list-style: none;
   margin: 0;
-  padding: 8px 0;
+  padding: var(--ig-space-3) 0;
   overflow-y: auto;
   min-height: 0;
   flex: 1;
 `
 
 const Placeholder = styled.div`
-  padding: 20px 14px;
+  padding: var(--ig-space-9) var(--ig-space-6);
   color: var(--ig-color-text-muted);
   font-size: 14px;
   text-align: center;

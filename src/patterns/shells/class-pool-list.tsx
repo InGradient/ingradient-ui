@@ -15,8 +15,8 @@ const Row = styled.li`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
-  padding: 6px 10px 6px 12px;
-  border-radius: 6px;
+  padding: var(--ig-space-2) var(--ig-space-4) var(--ig-space-2) var(--ig-space-5);
+  border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-interactive);
   border: 1px solid var(--ig-color-border-subtle);
   &:hover {
@@ -50,13 +50,13 @@ const Count = styled.span`
 const RemoveBtn = styled.button`
   background: none;
   border: none;
-  padding: 4px;
+  padding: var(--ig-space-1);
   color: var(--ig-color-text-muted);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: var(--ig-radius-xs);
   &:hover {
     color: var(--ig-color-danger);
     background: var(--ig-color-alert-danger-bg);

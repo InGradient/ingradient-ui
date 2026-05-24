@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { EmptyState, ProgressBar, StatCard, Table, type TableColumn } from '../../src/components'
-import { DashboardGrid, Panel, PanelHeader, PanelHint, PanelTitle } from '../../src/patterns'
+import { EmptyState, ProgressBar, Table, type TableColumn } from '../../src/components'
+import { DashboardGrid, Panel, PanelHeader, PanelHint, PanelTitle, StatCard } from '../../src/patterns'
 import { StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 type QueueRow = {

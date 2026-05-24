@@ -4,8 +4,8 @@ const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 6px;
+  gap: var(--ig-space-3);
+  margin-top: var(--ig-space-2);
 `
 
 const ArrowBtn = styled.button`
@@ -14,10 +14,10 @@ const ArrowBtn = styled.button`
   cursor: pointer;
   color: var(--ig-color-text-secondary);
   font-size: 16px;
-  padding: 2px 6px;
+  padding: 2px var(--ig-space-2);
   line-height: 1;
   &:disabled {
-    color: #444;
+    color: var(--ig-color-text-muted);
     cursor: default;
   }
 `

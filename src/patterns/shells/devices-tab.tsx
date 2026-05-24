@@ -6,7 +6,7 @@ import { DevicesTable, type DevicesTableProps } from './devices-table'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--ig-space-11);
 `
 
 export interface DevicesTabProps {

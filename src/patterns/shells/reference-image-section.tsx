@@ -16,12 +16,12 @@ const Stack = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const Preview = styled.img`
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--ig-radius-xs);
   border: 1px solid var(--ig-color-white-12);
   background: var(--ig-color-white-04);
   object-fit: contain;
@@ -37,7 +37,7 @@ const EmptyText = styled.span`
 const EmptyStateWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: flex-start;
 `
 

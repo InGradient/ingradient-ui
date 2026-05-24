@@ -5,8 +5,8 @@ import { Button } from '../../components/inputs/button'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 4px 0;
+  gap: var(--ig-space-9);
+  padding: var(--ig-space-1) 0;
 `
 
 const Header = styled.div`
@@ -34,17 +34,17 @@ const SectionTitle = styled.h4`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: var(--ig-space-9);
 `
 
 const ErrorWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px;
+  gap: var(--ig-space-3);
+  padding: var(--ig-space-7);
   background: var(--ig-color-alert-danger-bg);
   border: 1px solid var(--ig-color-alert-danger-border);
-  border-radius: 8px;
+  border-radius: var(--ig-radius-xs);
 `
 
 const ErrorMessage = styled.p`

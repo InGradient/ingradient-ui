@@ -10,7 +10,7 @@ const Menu = styled.div<{ $top: number; $left: number }>`
   min-width: 200px;
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-white-08);
-  border-radius: 12px;
+  border-radius: var(--ig-radius-sm);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   z-index: 1200;
@@ -21,7 +21,7 @@ const Item = styled.button<{ $disabled?: boolean }>`
   border: none;
   background: transparent;
   color: var(--ig-color-text-primary);
-  padding: 12px 14px;
+  padding: var(--ig-space-5) var(--ig-space-6);
   text-align: left;
   font-size: 13px;
   cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};

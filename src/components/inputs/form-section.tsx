@@ -85,3 +85,36 @@ export function FieldRow({ label, htmlFor, hint, children }: FieldRowProps) {
     </RowWrap>
   )
 }
+
+// ── FormField ───────────────────────────────────────────────────────
+
+const FieldWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-2);
+`
+
+const FieldLabelText = styled.label`
+  font-size: var(--ig-font-size-xs);
+  font-weight: 600;
+  color: var(--ig-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+`
+
+export interface FormFieldProps {
+  label: string
+  htmlFor?: string
+  children: React.ReactNode
+  className?: string
+}
+
+export function FormField({ label, htmlFor, children, className }: FormFieldProps) {
+  return (
+    <FieldWrap className={className}>
+      <FieldLabelText htmlFor={htmlFor}>{label}</FieldLabelText>
+      {children}
+    </FieldWrap>
+  )
+}
+

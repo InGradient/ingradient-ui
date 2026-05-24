@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const Title = styled.h3`

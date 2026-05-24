@@ -123,7 +123,7 @@ export function CatalogShell({
   useEffect(() => { if (storageKey) writeStored(storageKey, 'right', rightW) }, [rightW, storageKey])
 
   return (
-    <Root className={className}>
+    <Root className={className} data-ig-component="CatalogShell" data-ig-layer="patterns">
       {leftSidebar ? <Left $width={leftW} $collapsed={sidebarCollapsed}>{leftSidebar}</Left> : null}
       {resizable && leftSidebar && !sidebarCollapsed ? <Handle onMouseDown={(e) => startResize('left', e)} role="separator" aria-orientation="vertical" /> : null}
       <Center>

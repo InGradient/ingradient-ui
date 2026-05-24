@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StatCard } from '../../components/data-display/stat-card'
+import { StatCard } from '../cards/stat-card'
 
 const Root = styled.div`
   display: grid;

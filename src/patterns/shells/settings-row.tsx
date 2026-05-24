@@ -5,8 +5,8 @@ const Row = styled.label`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
+  gap: var(--ig-space-7);
+  padding: var(--ig-space-5) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   color: var(--ig-color-text-primary);
   font-size: 14px;
@@ -16,8 +16,8 @@ const PlainRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
+  gap: var(--ig-space-7);
+  padding: var(--ig-space-5) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   color: var(--ig-color-text-primary);
   font-size: 14px;

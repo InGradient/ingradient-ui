@@ -5,7 +5,7 @@ import { TextField } from '../../components/inputs/text-fields'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--ig-space-9);
   max-width: 480px;
 `
 
@@ -19,7 +19,7 @@ const SectionTitle = styled.h3`
 const Field = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 const FieldLabel = styled.label`
@@ -36,7 +36,7 @@ const FieldValue = styled.div`
 const SaveRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const SuccessMsg = styled.span`

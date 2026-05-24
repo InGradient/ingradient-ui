@@ -14,9 +14,9 @@ const Bar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 8px;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  background: rgba(10, 14, 20, 0.97);
+  padding: 0 var(--ig-space-3);
+  padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
+  background: var(--ig-color-surface-header);
   border-top: 1px solid var(--ig-color-border-subtle);
   backdrop-filter: blur(14px);
   z-index: 10;
@@ -30,12 +30,12 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   gap: 3px;
   min-width: 48px;
   height: 48px;
-  padding: 0 6px;
+  padding: 0 var(--ig-space-2);
   border: none;
   background: none;
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: var(--ig-radius-xs);
   -webkit-tap-highlight-color: transparent;
   transition: color 0.15s, background 0.15s;
   &:hover:not(:disabled) { color: var(--ig-color-text-primary); background: var(--ig-color-white-07); }

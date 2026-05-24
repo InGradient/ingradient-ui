@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
-import { SearchResultRow } from '../../components/data-display/search-result-row'
+import { OptionRow } from '../../components/data-display/option-row'
 import { Table, type TableColumn } from '../../components/data-display/table'
 
 const Wrap = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const SectionTitle = styled.h3`
@@ -27,14 +27,14 @@ const SectionDesc = styled.p`
 
 const SearchRow = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
 `
 
 const Results = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 const Hint = styled.p`
@@ -51,11 +51,11 @@ const Feedback = styled.span`
 const SearchWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const Empty = styled.p`
-  margin: 16px 0 0;
+  margin: var(--ig-space-7) 0 0;
   text-align: center;
   color: var(--ig-color-text-muted);
   font-size: 13px;
@@ -170,7 +170,7 @@ export function InvitationsSection({
             <Results>
               {isSearching && <Hint>Searching…</Hint>}
               {!isSearching && searchResults.map((u) => (
-                <SearchResultRow
+                <OptionRow
                   key={u.id}
                   primary={u.name || u.email}
                   secondary={u.name ? u.email : undefined}

@@ -4,14 +4,14 @@ import styled from 'styled-components'
 const Rows = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--ig-space-9);
 `
 
 const Row = styled.div<{ $count: number }>`
   position: relative;
   display: grid;
   grid-template-columns: repeat(${(p) => Math.max(1, Math.min(3, p.$count))}, minmax(0, 1fr));
-  gap: 20px;
+  gap: var(--ig-space-9);
   align-items: start;
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;

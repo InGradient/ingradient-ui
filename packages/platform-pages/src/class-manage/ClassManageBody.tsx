@@ -1,11 +1,10 @@
 import type { CSSProperties } from 'react'
 import {
   Alert,
-  AnnotationOverlay,
   Badge,
   EmptyState,
-  ImageGrid,
 } from '@ingradient/ui/components'
+import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import {
   ClassImagesPanel,
   ClassInfoSidebar,

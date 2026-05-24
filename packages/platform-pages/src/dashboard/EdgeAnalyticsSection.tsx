@@ -1,4 +1,4 @@
-import { BarChartCard, PieChartCard } from '@ingradient/ui/components'
+import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { formatDurationMs } from '@ingradient/ui/utils'
 import {
   CHART_COLORS,

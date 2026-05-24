@@ -11,8 +11,8 @@ const Trigger = styled.button<{ $loading?: boolean }>`
   width: 100%;
   background: var(--ig-color-white-06);
   border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 10px;
-  padding: 8px 14px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-3) var(--ig-space-6);
   color: var(--ig-color-text-primary);
   font-size: 15px;
   font-weight: 600;
@@ -20,11 +20,11 @@ const Trigger = styled.button<{ $loading?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  &:hover { background: rgba(255, 255, 255, 0.10); }
+  &:hover { background: var(--ig-color-surface-interactive-hover); }
   ${(p) => p.$loading && 'opacity: 0.7;'}
 `
 
@@ -40,7 +40,7 @@ const Dropdown = styled.div`
   right: 0;
   background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(10, 14, 20, 0.98) 100%);
   border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 18px;
+  border-radius: var(--ig-radius-xl);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 var(--ig-color-white-06);
@@ -56,8 +56,8 @@ const Option = styled.button<{ $active: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-5) var(--ig-space-7);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'none')};
   border: none;
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-primary)')};

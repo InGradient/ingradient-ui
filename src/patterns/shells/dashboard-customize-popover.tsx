@@ -7,12 +7,12 @@ const Wrap = styled(MenuPopover)`
   right: 0;
   z-index: 20;
   width: min(320px, calc(100vw - 32px));
-  padding: 14px;
-  border-radius: 16px;
+  padding: var(--ig-space-6);
+  border-radius: var(--ig-radius-lg);
 `
 
 const Title = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: var(--ig-space-4);
   font-size: 12px;
   font-weight: 700;
   color: var(--ig-color-text-soft);
@@ -23,13 +23,13 @@ const Title = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const Row = styled.label`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-4);
   font-size: 13px;
   color: var(--ig-color-text-primary);
   cursor: pointer;

@@ -4,14 +4,14 @@ import { SelectField } from '../../components/inputs/select-field'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const StyledSelect = styled(SelectField)`
   max-width: 280px;
-  padding: 8px 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   font-size: 13px;
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
 `
 
 const Hint = styled.span`

@@ -5,7 +5,7 @@ import { AutoSaveStatus, type AutoSaveState } from './auto-save-status'
 import { ProjectTypeTag, type ProjectTypeTone } from './project-type-tag'
 
 const SectionTitle = styled.h4`
-  margin: 16px 0 8px;
+  margin: var(--ig-space-7) 0 var(--ig-space-3);
   font-size: 13px;
   font-weight: 600;
   color: var(--ig-color-text-muted);
@@ -17,17 +17,17 @@ const SectionTitle = styled.h4`
 const TitleRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-wrap: wrap;
 `
 
 const Row = styled.div`
-  padding: 12px 0;
+  padding: var(--ig-space-5) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--ig-space-7);
   flex-wrap: wrap;
 `
 
@@ -44,12 +44,12 @@ const Input = styled(TextField)`
 const Textarea = styled.textarea`
   width: 100%;
   min-height: 80px;
-  padding: 8px 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   font-size: 14px;
   color: var(--ig-color-text-primary);
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
   resize: vertical;
   box-sizing: border-box;
   &:focus {
@@ -68,7 +68,7 @@ const Hint = styled.p`
 const NestedField = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
   flex: 1;
   min-width: 0;
 `

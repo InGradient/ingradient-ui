@@ -6,14 +6,14 @@ import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const SectionTitle = styled.h3`
@@ -25,7 +25,7 @@ const SectionTitle = styled.h3`
 const InfoGrid = styled.div`
   display: grid;
   grid-template-columns: 160px 1fr;
-  gap: 6px 12px;
+  gap: var(--ig-space-2) var(--ig-space-5);
   font-size: 13px;
   align-items: center;
 `
@@ -37,23 +37,23 @@ const InfoLabel = styled.span`
 const InfoValue = styled.span`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   color: var(--ig-color-text-muted);
 `
 
 const FormBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 const FormRow = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
   flex-wrap: wrap;
 `

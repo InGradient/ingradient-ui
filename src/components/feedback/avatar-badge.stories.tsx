@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Avatar, Badge, Chip } from './badge'
+import { Avatar } from './avatar'
+import { Badge } from './badge'
+import { Chip } from './chip'
 import { StatusPill } from './status'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 

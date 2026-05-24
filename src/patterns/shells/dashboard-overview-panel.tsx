@@ -6,20 +6,20 @@ import { Panel, PanelHeader, PanelHint, PanelTitle } from '../page/page-shell'
 const HeaderMain = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--ig-space-1);
   min-width: 0;
 `
 
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-4);
   position: relative;
   flex-wrap: wrap;
 `
 
 const DateButton = styled(Button).attrs({ variant: 'secondary' as const })`
-  padding: 8px 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   min-height: 36px;
   font-size: 12px;
   font-weight: 600;
@@ -30,7 +30,7 @@ const ResetButton = styled(DateButton)`
 `
 
 const Body = styled.div`
-  padding: 16px;
+  padding: var(--ig-space-7);
   overflow: visible;
 `
 

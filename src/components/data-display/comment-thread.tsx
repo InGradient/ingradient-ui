@@ -1,14 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// ── Styled ─────────────────────────────────────────────────────────
-
-const Thread = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
 const Item = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4);
   border-radius: var(--ig-radius-sm);
@@ -75,8 +67,6 @@ const SendBtn = styled.button`
   &:hover:not(:disabled) { opacity: 0.85; }
 `
 
-// ── Components ─────────────────────────────────────────────────────
-
 export interface CommentItemProps {
   author: React.ReactNode
   timestamp?: string
@@ -95,15 +85,6 @@ export function CommentItem({ author, timestamp, body, actions }: CommentItemPro
       <Body>{body}</Body>
     </Item>
   )
-}
-
-export interface CommentThreadProps {
-  children: React.ReactNode
-  className?: string
-}
-
-export function CommentThread({ children, className }: CommentThreadProps) {
-  return <Thread className={className}>{children}</Thread>
 }
 
 export interface CommentInputProps {

@@ -1,4 +1,4 @@
-import { PieChartCard } from '../../components/charts/pie-chart-card'
+import { PieChartCard } from '../charts/pie-chart-card'
 import { DashboardStatsHeader } from './dashboard-stats-header'
 
 export interface AnalysisLabelingStatusWidgetProps {

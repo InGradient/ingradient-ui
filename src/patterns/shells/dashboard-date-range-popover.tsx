@@ -10,15 +10,15 @@ const Popover = styled(MenuPopover)`
   right: 0;
   z-index: 24;
   width: min(360px, calc(100vw - 40px));
-  padding: 16px;
-  border-radius: 20px;
+  padding: var(--ig-space-7);
+  border-radius: var(--ig-radius-2xl);
 `
 
 const Header = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 14px;
+  gap: var(--ig-space-2);
+  margin-bottom: var(--ig-space-6);
 `
 
 const Title = styled.div`
@@ -35,19 +35,19 @@ const Subtitle = styled.div`
 const PresetRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: var(--ig-space-3);
+  margin-bottom: var(--ig-space-6);
 `
 
 const PresetButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
-  padding: 6px 10px;
+  padding: var(--ig-space-2) var(--ig-space-4);
   font-size: 12px;
   font-weight: 600;
 `
 
 const Calendar = styled.div`
-  padding: 12px;
-  border-radius: 18px;
+  padding: var(--ig-space-5);
+  border-radius: var(--ig-radius-xl);
   background: linear-gradient(180deg, rgba(17, 23, 32, 0.96) 0%, rgba(10, 14, 20, 0.96) 100%);
   border: 1px solid var(--ig-color-white-06);
   .rdp-root {
@@ -63,24 +63,24 @@ const Calendar = styled.div`
     font-weight: 700;
     color: var(--ig-color-text-primary);
   }
-  .rdp-day { width: 38px; height: 38px; border-radius: 12px; font-size: 13px; color: var(--ig-color-text-secondary); }
-  .rdp-day_button { width: 100%; height: 100%; border-radius: 12px; }
+  .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: 13px; color: var(--ig-color-text-secondary); }
+  .rdp-day_button { width: 100%; height: 100%; border-radius: var(--ig-radius-sm); }
   .rdp-selected .rdp-day_button, .rdp-day_button:hover {
     background: var(--ig-color-blue-tint-16);
     color: var(--ig-color-text-primary);
   }
   .rdp-range_middle .rdp-day_button {
-    background: rgba(77, 136, 255, 0.1);
+    background: var(--ig-color-blue-tint-12);
     color: var(--ig-color-text-primary);
   }
   .rdp-range_start .rdp-day_button, .rdp-range_end .rdp-day_button {
     background: var(--ig-color-accent);
-    color: white;
+    color: var(--ig-color-on-accent);
   }
 `
 
 const Summary = styled.div`
-  margin-top: 12px;
+  margin-top: var(--ig-space-5);
   font-size: 12px;
   color: var(--ig-color-text-soft);
 `
@@ -88,13 +88,13 @@ const Summary = styled.div`
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin-top: 14px;
+  gap: var(--ig-space-4);
+  margin-top: var(--ig-space-6);
 `
 
 const FooterActions = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 export type DateRangePreset = 'today' | 'last7' | 'thisMonth'

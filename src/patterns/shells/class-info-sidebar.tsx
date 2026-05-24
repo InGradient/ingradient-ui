@@ -22,15 +22,15 @@ const Panel = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 16px;
+  padding: var(--ig-space-7);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--ig-space-9);
 `
 
 const NameInput = styled(TextField).attrs({ size: 'sm' as const })`
   max-width: 280px;
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
 `
 
 const Description = styled(TextareaField)`
@@ -41,9 +41,9 @@ const Description = styled(TextareaField)`
 `
 
 const DeleteBtn = styled(Button).attrs({ variant: 'secondary', tone: 'danger' as const })`
-  margin-top: 8px;
-  padding: 8px 16px;
-  border-radius: 6px;
+  margin-top: var(--ig-space-3);
+  padding: var(--ig-space-3) var(--ig-space-7);
+  border-radius: var(--ig-radius-xs);
 `
 
 export interface ClassInfoSidebarClass {

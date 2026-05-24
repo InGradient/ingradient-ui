@@ -4,20 +4,20 @@ import { Skeleton } from '../../components/feedback/skeleton'
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const Card = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 8px;
-  padding: 14px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-6);
 `
 
 const Label = styled.div`
   font-size: 11px;
   color: var(--ig-color-text-muted);
-  margin-bottom: 4px;
+  margin-bottom: var(--ig-space-1);
 `
 
 const Value = styled.div`
@@ -30,7 +30,7 @@ const Sub = styled.span`
   font-size: 12px;
   color: var(--ig-color-text-soft);
   font-weight: 400;
-  margin-left: 4px;
+  margin-left: var(--ig-space-1);
 `
 
 export interface StorageOverviewItem {

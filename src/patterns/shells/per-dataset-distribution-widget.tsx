@@ -1,21 +1,21 @@
 import styled from 'styled-components'
-import { BarChartCard } from '../../components/charts/bar-chart-card'
+import { BarChartCard } from '../charts/bar-chart-card'
 import { SectionPanel } from '../../components/data-display/layout'
 
 const Card = styled(SectionPanel)`
   background: var(--ig-color-surface-raised);
   border-color: var(--ig-color-border-strong);
-  border-radius: 8px;
-  padding: 16px 20px;
-  gap: 12px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-7) var(--ig-space-9);
+  gap: var(--ig-space-5);
 `
 
 const Head = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: var(--ig-space-5);
+  margin-bottom: var(--ig-space-4);
 `
 
 const Title = styled.span`
@@ -31,12 +31,12 @@ const Empty = styled.p`
 `
 
 const Block = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: var(--ig-space-9);
   &:last-child { margin-bottom: 0; }
 `
 
 const SectionTitle = styled.h3`
-  margin: 0 0 8px 0;
+  margin: 0 0 var(--ig-space-3) 0;
   font-size: 14px;
   font-weight: 600;
   color: var(--ig-color-text-secondary);
@@ -47,7 +47,7 @@ const Table = styled.table`
   border-collapse: collapse;
   font-size: 14px;
   th, td {
-    padding: 8px 12px;
+    padding: var(--ig-space-3) var(--ig-space-5);
     text-align: left;
     border-bottom: 1px solid var(--ig-color-border-strong);
   }

@@ -14,6 +14,6 @@ export const ActionBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ig-space-5);
   flex-wrap: wrap;
 `

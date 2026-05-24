@@ -28,7 +28,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
 
 export const SidebarBrandRow = styled.div`
   min-height: 72px;
-  padding: 16px ${SIDEBAR_INSET}px;
+  padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,8 +44,8 @@ export const SidebarCloseButton = styled.button`
   border: none;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  padding: 4px;
-  margin-left: 8px;
+  padding: var(--ig-space-1);
+  margin-left: var(--ig-space-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,8 +61,8 @@ export const SidebarNavList = styled.nav`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 12px 0;
-  gap: 4px;
+  padding: var(--ig-space-5) 0;
+  gap: var(--ig-space-1);
   min-height: 0;
 `
 
@@ -72,7 +72,7 @@ const rowMixin = `
   align-items: center;
   height: 44px;
   padding: 0 ${SIDEBAR_INSET}px;
-  gap: 12px;
+  gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: 13px;
   text-decoration: none;
@@ -113,9 +113,9 @@ export const SidebarActionButton = styled.button`
 export const SidebarBottom = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 12px 0;
+  padding: var(--ig-space-5) 0;
   border-top: 1px solid var(--ig-color-border-subtle);
-  gap: 4px;
+  gap: var(--ig-space-1);
   flex-shrink: 0;
 `
 

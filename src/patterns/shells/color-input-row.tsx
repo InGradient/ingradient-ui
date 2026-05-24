@@ -4,7 +4,7 @@ import { Button } from '../../components/inputs/button'
 const Row = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const NativeColor = styled.input.attrs({ type: 'color' })`
@@ -12,7 +12,7 @@ const NativeColor = styled.input.attrs({ type: 'color' })`
   height: 40px;
   padding: 2px;
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 8px;
+  border-radius: var(--ig-radius-xs);
   cursor: pointer;
   background: var(--ig-color-surface-raised);
   &:disabled {
@@ -20,11 +20,11 @@ const NativeColor = styled.input.attrs({ type: 'color' })`
     opacity: 0.7;
   }
   &::-webkit-color-swatch-wrapper { padding: 0; }
-  &::-webkit-color-swatch { border: none; border-radius: 6px; }
+  &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-xs); }
 `
 
 const RandomButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
-  padding: 8px 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   font-size: 12px;
   line-height: 1;
 `

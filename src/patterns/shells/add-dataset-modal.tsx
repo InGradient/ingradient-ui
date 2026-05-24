@@ -7,19 +7,7 @@ import { RadioCardGroup } from '../../components/inputs/radio-card-group'
 import { Checkbox } from '../../components/inputs/toggles'
 import { type DatasetTaskType } from '../../components/data-display/dataset-task-tag'
 
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const FieldLabel = styled.label`
-  font-size: var(--ig-font-size-xs);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+import { FormField } from '../../components/inputs'
 
 const ClassList = styled.div`
   display: flex;
@@ -34,8 +22,8 @@ const ClassRow = styled.label`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  padding: 4px 6px;
-  border-radius: 6px;
+  padding: var(--ig-space-1) var(--ig-space-2);
+  border-radius: var(--ig-radius-xs);
   cursor: pointer;
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
@@ -105,8 +93,7 @@ export function AddDatasetModal({
         </>
       }
     >
-      <Field>
-        <FieldLabel htmlFor="add-dataset-name">Name</FieldLabel>
+      <FormField label="Name" htmlFor="add-dataset-name">
         <TextField
           id="add-dataset-name"
           autoFocus
@@ -114,18 +101,16 @@ export function AddDatasetModal({
           onChange={(e) => setName(e.target.value)}
           placeholder="e.g. Wafer line A — 2026 Q1"
         />
-      </Field>
-      <Field>
-        <FieldLabel>Task type</FieldLabel>
+      </FormField>
+      <FormField label="Task type">
         <RadioCardGroup
           options={TASK_OPTIONS}
           value={taskType}
           onChange={(value) => setTaskType(value as DatasetTaskType)}
         />
-      </Field>
+      </FormField>
       {classes.length > 0 ? (
-        <Field>
-          <FieldLabel>Connect classes (optional)</FieldLabel>
+        <FormField label="Connect classes (optional)">
           <ClassList>
             {classes.map((c) => (
               <ClassRow key={c.id}>
@@ -142,7 +127,7 @@ export function AddDatasetModal({
               </ClassRow>
             ))}
           </ClassList>
-        </Field>
+        </FormField>
       ) : null}
     </DialogShell>
   )

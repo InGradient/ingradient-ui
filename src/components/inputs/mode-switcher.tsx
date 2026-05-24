@@ -67,3 +67,7 @@ export function ModeSwitcher({
     </Row>
   )
 }
+
+export const SegmentedControl = ModeSwitcher
+export type SegmentedControlOption = ModeSwitcherOption
+export type SegmentedControlProps = ModeSwitcherProps

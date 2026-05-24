@@ -37,7 +37,7 @@ const TopRightGroup = styled.div`
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 export interface InspectorPoint {

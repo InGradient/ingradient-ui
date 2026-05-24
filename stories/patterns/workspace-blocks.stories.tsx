@@ -2,7 +2,8 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, HoverCard } from '@ingradient/ui/components'
 import { Badge } from '../../src/components/feedback/badge'
-import { AssignmentRow, PreviewCard, SectionPanel, StatCard } from '../../src/components/data-display'
+import { SectionPanel } from '../../src/components/data-display'
+import { LabelValueRow, PreviewCard, StatCard } from '../../src/patterns'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {
@@ -77,19 +78,19 @@ export const Overview: Story = {
                   <Button variant="secondary">Reassign all</Button>
                 </div>
                 <StorybookStack gap={12}>
-                  <AssignmentRow
+                  <LabelValueRow
                     title="Metal surface audit"
                     description="Primary reviewer: J. Kim"
                     meta={<Badge>Ready</Badge>}
                     control={<Button variant="secondary">Open</Button>}
                   />
-                  <AssignmentRow
+                  <LabelValueRow
                     title="Training set refresh"
                     description="Pending asset validation before export"
                     meta={<Badge $tone="warning">Blocked</Badge>}
                     control={<Button variant="secondary">Inspect</Button>}
                   />
-                  <AssignmentRow
+                  <LabelValueRow
                     title="Template sync"
                     description="Read-only while workspace sync is running"
                     meta={<Badge $tone="accent">Syncing</Badge>}

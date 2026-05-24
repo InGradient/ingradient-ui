@@ -6,12 +6,12 @@ const Top = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--ig-space-7);
   flex-wrap: wrap;
 `
 
 const Subtitle = styled(PageSubtitle)`
-  margin-top: 6px;
+  margin-top: var(--ig-space-2);
 `
 
 const ProjectName = styled.span`
@@ -26,11 +26,11 @@ const ProjectName = styled.span`
 const Actions = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-4);
   flex-wrap: wrap;
   position: relative;
   justify-content: flex-end;
-  padding: 8px 24px;
+  padding: var(--ig-space-3) var(--ig-space-11);
 `
 
 const Message = styled.span`

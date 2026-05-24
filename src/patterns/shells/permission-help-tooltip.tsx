@@ -13,7 +13,7 @@ const Icon = styled.span`
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-radius: 999px;
+  border-radius: var(--ig-radius-pill);
   border: 1px solid var(--ig-color-border-strong);
   color: var(--ig-color-text-muted);
   font-size: 10px;

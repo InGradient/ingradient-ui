@@ -6,7 +6,7 @@ import { getSummaryPermissionState } from '../../utils/permission-state'
 import { PermissionHelpTooltip } from './permission-help-tooltip'
 
 const SearchWrap = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: var(--ig-space-5);
   max-width: 240px;
 `
 
@@ -19,7 +19,7 @@ const TableWrap = styled.div`
   display: inline-block;
   width: fit-content;
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 8px;
+  border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-panel);
 `
 
@@ -29,7 +29,7 @@ const StyledTable = styled.table`
 `
 
 const HeaderCell = styled.th`
-  padding: 10px 8px;
+  padding: var(--ig-space-4) var(--ig-space-3);
   border-bottom: 1px solid var(--ig-color-border-strong);
   border-right: 1px solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-raised);
@@ -49,12 +49,12 @@ const HeaderContent = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
   flex-wrap: wrap;
 `
 
 const RoleCell = styled.td`
-  padding: 10px 12px;
+  padding: var(--ig-space-4) var(--ig-space-5);
   border-bottom: 1px solid var(--ig-color-border-subtle);
   border-right: 1px solid var(--ig-color-border-subtle);
   color: var(--ig-color-text-primary);
@@ -68,7 +68,7 @@ const RoleCell = styled.td`
 `
 
 const Cell = styled.td`
-  padding: 8px;
+  padding: var(--ig-space-3);
   border-bottom: 1px solid var(--ig-color-border-subtle);
   border-right: 1px solid var(--ig-color-border-subtle);
   text-align: center;

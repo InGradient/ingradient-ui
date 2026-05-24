@@ -12,6 +12,9 @@ export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   tone?: ButtonTone
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
+  'data-ig-component'?: string
+  'data-ig-slot'?: string
+  'data-ig-layer'?: string
 }
 
 export const buttonPadding = {

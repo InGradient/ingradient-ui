@@ -7,8 +7,8 @@ const Tag = styled.span<{ $tone: ProjectTypeTone }>`
   align-items: center;
   justify-content: center;
   height: 22px;
-  padding: 0 10px;
-  border-radius: 999px;
+  padding: 0 var(--ig-space-4);
+  border-radius: var(--ig-radius-pill);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;

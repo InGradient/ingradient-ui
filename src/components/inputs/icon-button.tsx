@@ -8,8 +8,13 @@ export const IconButton = React.forwardRef<HTMLButtonElement, ButtonProps>(funct
   size = 'md',
   tone = 'default',
   children,
+  'data-ig-component': componentHint,
+  'data-ig-slot': slotHint,
   ...props
 }, ref) {
+  const componentName = 'IconButton'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+
   return (
     <ButtonRoot
       ref={ref}
@@ -20,6 +25,9 @@ export const IconButton = React.forwardRef<HTMLButtonElement, ButtonProps>(funct
       $iconOnly
       aria-label={props['aria-label'] ?? 'Action'}
       {...props}
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
     >
       {children}
     </ButtonRoot>

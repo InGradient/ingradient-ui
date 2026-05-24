@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Item = styled.li<{ $selected?: boolean }>`
-  padding: 10px 14px;
+  padding: var(--ig-space-4) var(--ig-space-6);
   cursor: pointer;
   list-style: none;
   background: ${(p) => (p.$selected ? 'rgba(77, 136, 255, 0.1)' : 'transparent')};
@@ -18,7 +18,7 @@ const Wrap = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-4);
   min-width: 0;
 `
 

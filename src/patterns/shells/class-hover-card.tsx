@@ -14,7 +14,7 @@ const Card = styled.div<{ $top: number; $left: number }>`
   padding: var(--ig-space-4);
   border-radius: var(--ig-radius-lg);
   border: 1px solid var(--ig-color-white-08);
-  background: rgba(12, 16, 26, 0.97);
+  background: var(--ig-color-surface-raised);
   box-shadow: var(--ig-shadow-floating);
   z-index: var(--ig-z-tooltip);
   pointer-events: none;

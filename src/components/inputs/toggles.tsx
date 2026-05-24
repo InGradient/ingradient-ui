@@ -47,7 +47,7 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: 4px;
+  border-radius: var(--ig-radius-xs);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
@@ -91,8 +91,25 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
 
 export const Checkbox = React.forwardRef<
   HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode; indeterminate?: boolean }
->(function Checkbox({ label, checked, disabled, indeterminate, ...props }, ref) {
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    label?: React.ReactNode
+    indeterminate?: boolean
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Checkbox({
+  label,
+  checked,
+  disabled,
+  indeterminate,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Checkbox'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
   const innerRef = React.useRef<HTMLInputElement>(null)
   React.useImperativeHandle(ref, () => innerRef.current!)
   React.useEffect(() => {
@@ -100,9 +117,17 @@ export const Checkbox = React.forwardRef<
   }, [indeterminate])
 
   const visual = indeterminate ? 'indeterminate' : !!checked
+  const labelText = typeof label === 'string' ? label : undefined
+  const summaryLabel = componentLabel ?? props['aria-label'] ?? labelText
 
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="checkbox"
+      data-ig-label={summaryLabel}
+    >
       <HiddenInput ref={innerRef} type="checkbox" checked={checked} disabled={disabled} {...props} />
       <CheckboxBox $checked={!!visual} $disabled={disabled}>
         {indeterminate ? (
@@ -118,10 +143,32 @@ export const Checkbox = React.forwardRef<
 
 export const Radio = React.forwardRef<
   HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }
->(function Radio({ label, checked, disabled, ...props }, ref) {
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    label?: React.ReactNode
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Radio({
+  label,
+  checked,
+  disabled,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Radio'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+  const labelText = typeof label === 'string' ? label : undefined
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="radio"
+      data-ig-label={componentLabel ?? props['aria-label'] ?? labelText}
+    >
       <HiddenInput ref={ref} type="radio" checked={checked} disabled={disabled} {...props} />
       <RadioDot $checked={!!checked} $disabled={disabled} />
       {label}
@@ -131,10 +178,31 @@ export const Radio = React.forwardRef<
 
 export const Switch = React.forwardRef<
   HTMLInputElement,
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & { label?: React.ReactNode }
->(function Switch({ checked = false, label, ...props }, ref) {
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+    label?: React.ReactNode
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Switch({
+  checked = false,
+  label,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Switch'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+  const labelText = typeof label === 'string' ? label : undefined
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="switch"
+      data-ig-label={componentLabel ?? props['aria-label'] ?? labelText}
+    >
       <HiddenInput ref={ref} type="checkbox" checked={checked} {...props} />
       <SwitchTrack $checked={checked} />
       {label}

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { BarChartCard } from '../../components/charts/bar-chart-card'
+import { BarChartCard } from '../charts/bar-chart-card'
 
 const Stack = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--ig-space-7);
 `
 
 const TableCard = styled.div`
-  padding: 12px 16px;
+  padding: var(--ig-space-5) var(--ig-space-7);
   background: var(--ig-color-surface-panel);
   border: 1px solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-lg);
@@ -19,7 +19,7 @@ const PersonTable = styled.table`
   border-collapse: collapse;
   font-size: 13px;
   th, td {
-    padding: 8px 12px;
+    padding: var(--ig-space-3) var(--ig-space-5);
     text-align: left;
     border-bottom: 1px solid var(--ig-color-border-subtle);
   }

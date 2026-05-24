@@ -26,7 +26,7 @@ export interface ExpandSidebarBtnProps {
 
 export function ExpandSidebarBtn({ onClick, ariaLabel = 'Expand sidebar' }: ExpandSidebarBtnProps) {
   return (
-    <Btn type="button" aria-label={ariaLabel} onClick={onClick}>
+    <Btn type="button" aria-label={ariaLabel} onClick={onClick} data-ig-component="ExpandSidebarBtn">
       <MenuIcon size={18} />
     </Btn>
   )

@@ -35,7 +35,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: var(--ig-radius-sm);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   cursor: default;
   display: block;
@@ -56,7 +56,7 @@ const CloseBtn = styled.button`
   width: 36px;
   height: 36px;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--ig-radius-pill);
   background: rgba(7, 10, 20, 0.7);
   color: var(--ig-color-text-primary);
   font-size: 18px;

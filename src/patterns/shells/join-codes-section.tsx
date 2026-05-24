@@ -7,7 +7,7 @@ import { Table, type TableColumn } from '../../components/data-display/table'
 const Wrap = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const SectionTitle = styled.h3`
@@ -26,13 +26,13 @@ const SectionDesc = styled.p`
 
 const FormRow = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
   flex-wrap: wrap;
 `
 
 const Empty = styled.p`
-  margin: 16px 0 0;
+  margin: var(--ig-space-7) 0 0;
   text-align: center;
   color: var(--ig-color-text-muted);
   font-size: 13px;

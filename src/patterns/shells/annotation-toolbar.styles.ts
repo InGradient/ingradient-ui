@@ -26,8 +26,8 @@ const orientationCss = {
 export const ToolbarRoot = styled.div<{ $placement: Placement }>`
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
+  gap: var(--ig-space-3);
+  padding: var(--ig-space-3) var(--ig-space-4);
   background: var(--ig-color-overlay-strong);
   flex-shrink: 0;
   ${(p) => orientationCss[p.$placement]}
@@ -37,7 +37,7 @@ export const TrailingArea = styled.div<{ $placement: Placement }>`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ig-space-1);
   ${(p) =>
     p.$placement === 'bottom' || p.$placement === 'top'
       ? css`
@@ -65,7 +65,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   flex-shrink: 0;
   ${(p) => sizeCss[p.$size]}
   border: none;
-  border-radius: 8px;
+  border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-12)' : 'transparent')};
   color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger)' : 'var(--ig-color-text-primary)')};
   cursor: pointer;
@@ -115,7 +115,7 @@ export const CoordReadoutRoot = styled.div`
   font-family: ui-monospace, monospace;
   color: var(--ig-color-text-muted);
   user-select: all;
-  padding: 6px 10px;
+  padding: var(--ig-space-2) var(--ig-space-4);
   background: var(--ig-color-overlay-dim);
   white-space: nowrap;
   overflow: hidden;

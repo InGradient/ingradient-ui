@@ -10,7 +10,7 @@ const Root = styled.span`
   flex-shrink: 0;
 `
 
-const Bubble = styled.span<{ $tone: 'accent' | 'danger' }>`
+export const NotificationBubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -51,9 +51,9 @@ export function NotificationBadge({
     <Root className={className} style={style}>
       {children}
       {!hidden && value != null ? (
-        <Bubble data-ig-notification-badge="" $tone={tone}>
+        <NotificationBubble data-ig-notification-badge="" $tone={tone}>
           {value}
-        </Bubble>
+        </NotificationBubble>
       ) : null}
     </Root>
   )

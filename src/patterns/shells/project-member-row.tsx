@@ -6,8 +6,8 @@ const Row = styled.li`
   display: grid;
   grid-template-columns: minmax(140px, 1.1fr) minmax(140px, 1fr) minmax(220px, 1.3fr) auto auto;
   align-items: center;
-  gap: 12px;
-  padding: 10px 0;
+  gap: var(--ig-space-5);
+  padding: var(--ig-space-4) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   list-style: none;
   &:last-child {
@@ -29,7 +29,7 @@ const RoleSelect = styled(SelectField)`
 `
 
 const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })`
-  padding: 6px 10px;
+  padding: var(--ig-space-2) var(--ig-space-4);
   font-size: 12px;
 `
 

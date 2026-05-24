@@ -1,4 +1,4 @@
-import { BarChartCard } from '@ingradient/ui/components'
+import { BarChartCard } from '@ingradient/ui/patterns'
 import { formatDurationMs } from '@ingradient/ui/utils'
 import {
   Card,

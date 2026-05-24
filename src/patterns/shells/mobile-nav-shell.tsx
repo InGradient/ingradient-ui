@@ -75,7 +75,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     z-index: 120;
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
     border-radius: 0 0 var(--ig-radius-xl) var(--ig-radius-xl);
   }
 `
@@ -171,7 +171,7 @@ const Badge = styled.span`
   min-width: 20px;
   height: 20px;
   padding: 0 var(--ig-space-2);
-  border-radius: 999px;
+  border-radius: var(--ig-radius-pill);
   background: var(--ig-color-danger);
   color: var(--ig-color-text-primary);
   font-size: 11px;

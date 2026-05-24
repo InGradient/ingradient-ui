@@ -21,12 +21,12 @@ const EmptyArea = styled.div`
   justify-content: center;
   color: var(--ig-color-text-soft);
   font-size: 14px;
-  padding: 24px;
+  padding: var(--ig-space-11);
   text-align: center;
 `
 
 const LoadingArea = styled.div`
-  padding: 20px;
+  padding: var(--ig-space-9);
   color: var(--ig-color-text-muted);
   font-size: 14px;
   text-align: center;

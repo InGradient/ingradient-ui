@@ -48,15 +48,58 @@ export interface EmptyStateProps {
   action?: { label: string; onClick: () => void }
   className?: string
   children?: React.ReactNode
+  'data-ig-component'?: string
+  'data-ig-slot'?: string
 }
 
-export function EmptyState({ icon, title, description, action, className, children }: EmptyStateProps) {
+export function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  className,
+  children,
+  'data-ig-component': componentHint,
+  'data-ig-slot': slotHint,
+}: EmptyStateProps) {
+  const componentName = 'EmptyState'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+
   return (
-    <Wrap className={className}>
-      {icon && <IconWrap>{icon}</IconWrap>}
-      {title && <Title>{title}</Title>}
-      {description && <Description>{description}</Description>}
-      {action && <ActionBtn type="button" onClick={action.onClick}>{action.label}</ActionBtn>}
+    <Wrap
+      className={className}
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="empty-state"
+      data-ig-label={title ?? description ?? 'Empty state'}
+    >
+      {icon ? (
+        <IconWrap data-ig-slot="EmptyState.Icon" data-ig-kind="icon" data-ig-label="Empty state icon">
+          {icon}
+        </IconWrap>
+      ) : null}
+      {title ? (
+        <Title data-ig-slot="EmptyState.Title" data-ig-kind="text" data-ig-label={title}>
+          {title}
+        </Title>
+      ) : null}
+      {description ? (
+        <Description data-ig-slot="EmptyState.Description" data-ig-kind="text" data-ig-label={description}>
+          {description}
+        </Description>
+      ) : null}
+      {action ? (
+        <ActionBtn
+          type="button"
+          onClick={action.onClick}
+          data-ig-slot="EmptyState.Action"
+          data-ig-kind="button"
+          data-ig-label={action.label}
+        >
+          {action.label}
+        </ActionBtn>
+      ) : null}
       {children}
     </Wrap>
   )

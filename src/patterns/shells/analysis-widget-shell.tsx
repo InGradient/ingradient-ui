@@ -15,7 +15,7 @@ const Actions = styled.div`
   z-index: 8;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`

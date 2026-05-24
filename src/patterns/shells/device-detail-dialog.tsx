@@ -5,7 +5,7 @@ import { DialogShell } from '../../components/overlays/dialog-shell'
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 140px 1fr;
-  gap: 10px 16px;
+  gap: var(--ig-space-4) var(--ig-space-7);
   font-size: 13px;
 `
 

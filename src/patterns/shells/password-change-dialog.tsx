@@ -7,13 +7,13 @@ import { DialogShell } from '../../components/overlays/dialog-shell'
 const Stack = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const FieldRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 const Label = styled.label`

@@ -3,13 +3,13 @@ import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 
 const Wrap = styled.div`
-  margin-top: 24px;
-  padding-top: 20px;
+  margin-top: var(--ig-space-11);
+  padding-top: var(--ig-space-9);
   border-top: 1px solid var(--ig-color-border-subtle);
 `
 
 const SubsectionTitle = styled.h4`
-  margin: 0 0 8px;
+  margin: 0 0 var(--ig-space-3);
   font-size: 13px;
   font-weight: 600;
   color: var(--ig-color-text-muted);
@@ -20,15 +20,15 @@ const SubsectionTitle = styled.h4`
 const Hint = styled.p`
   color: var(--ig-color-text-soft);
   font-size: 14px;
-  margin: 0 0 8px;
+  margin: 0 0 var(--ig-space-3);
 `
 
 const Row = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: var(--ig-space-3);
 `
 
 const ConfirmInput = styled(TextField)`

@@ -29,7 +29,7 @@ const DragDots = styled.span`
   span {
     width: 100%;
     height: 100%;
-    border-radius: 999px;
+    border-radius: var(--ig-radius-pill);
     background: currentColor;
     opacity: 0.72;
   }

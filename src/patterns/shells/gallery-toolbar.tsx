@@ -6,7 +6,7 @@ const Bar = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--ig-color-border-subtle);
-  background: rgba(12, 15, 20, 0.76);
+  background: var(--ig-color-surface-header);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   position: relative;
@@ -124,7 +124,7 @@ export function GalleryToolbar({
   const Selection = hasSelection ? SelectionRowActive : SelectionRow
 
   return (
-    <Bar>
+    <Bar data-ig-component="GalleryToolbar" data-ig-layer="patterns">
       {typeof uploadProgress === 'number' && uploadProgress > 0 && uploadProgress < 100 ? (
         <ProgressTrack>
           <ProgressFill $pct={uploadProgress} aria-label={`Upload progress ${uploadProgress}%`} />

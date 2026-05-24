@@ -5,19 +5,7 @@ import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 import { Checkbox } from '../../components/inputs/toggles'
 
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const FieldLabel = styled.label`
-  font-size: var(--ig-font-size-xs);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+import { FormField } from '../../components/inputs'
 
 export interface DuplicateDatasetModalProps {
   open: boolean
@@ -55,22 +43,21 @@ export function DuplicateDatasetModal({
         </>
       }
     >
-      <Field>
-        <FieldLabel htmlFor="duplicate-name">New name</FieldLabel>
+      <FormField label="New name" htmlFor="duplicate-name">
         <TextField
           id="duplicate-name"
           autoFocus
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-      </Field>
-      <Field>
+      </FormField>
+      <FormField label="Options">
         <Checkbox
           checked={copyLabels}
           onChange={(e) => setCopyLabels(e.target.checked)}
           label="Copy labels and annotations"
         />
-      </Field>
+      </FormField>
     </DialogShell>
   )
 }

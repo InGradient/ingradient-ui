@@ -1,4 +1,4 @@
-import { LineChartCard } from '../../components/charts/line-chart-card'
+import { LineChartCard } from '../charts/line-chart-card'
 
 export type AnalysisTimelineGranularity = 'hour' | 'daily' | string
 

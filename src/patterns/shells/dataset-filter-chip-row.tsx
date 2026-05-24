@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const Row = styled.div`
-  padding: 12px 20px;
+  padding: var(--ig-space-5) var(--ig-space-9);
   border-bottom: 1px solid var(--ig-color-border-strong);
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
   flex-shrink: 0;
   min-width: 0;
@@ -17,20 +17,20 @@ const Label = styled.span`
   color: var(--ig-color-text-soft);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-right: 4px;
+  margin-right: var(--ig-space-1);
 `
 
 const Chip = styled.button<{ $active: boolean }>`
-  padding: 6px 12px;
+  padding: var(--ig-space-2) var(--ig-space-5);
   font-size: 13px;
-  border-radius: 999px;
+  border-radius: var(--ig-radius-pill);
   border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
   transition: border-color var(--ig-motion-fast), color var(--ig-motion-fast), background var(--ig-motion-fast);
   &:hover {
     border-color: var(--ig-color-accent);

@@ -4,10 +4,10 @@ import { SelectField } from '../../components/inputs/select-field'
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 14px;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-6);
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 10px;
+  border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-raised);
 `
 
@@ -25,7 +25,7 @@ const Meta = styled.div`
 const FieldRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 const StyledSelect = styled(SelectField)`

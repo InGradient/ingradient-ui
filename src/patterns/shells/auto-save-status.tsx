@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Status = styled.p<{ $error?: boolean }>`
-  margin: 0 0 16px;
+  margin: 0 0 var(--ig-space-7);
   font-size: 13px;
   color: ${(p) => (p.$error ? 'var(--ig-color-danger)' : 'var(--ig-color-text-muted)')};
 `

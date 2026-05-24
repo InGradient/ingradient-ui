@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Stack = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--ig-space-1);
 `
 
 const Row = styled.span`
@@ -15,7 +15,7 @@ const Row = styled.span`
 
 const Value = styled.strong`
   color: var(--ig-color-text-primary);
-  margin-left: 16px;
+  margin-left: var(--ig-space-7);
 `
 
 export interface DashboardStatItem {

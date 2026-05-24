@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { controlField } from '../../primitives'
+import { InputAdornment } from './input-adornment'
 
 const Wrap = styled.div`
   position: relative;
@@ -17,12 +18,9 @@ const Input = styled.input`
 `
 
 const SpinnerGroup = styled.div`
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  bottom: 1px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   width: 28px;
   border-left: 1px solid var(--ig-color-border-subtle);
 `
@@ -134,14 +132,16 @@ export function NumberField({
         onKeyDown={handleKeyDown}
       />
       {!disabled && (
-        <SpinnerGroup>
-          <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
-            disabled={max !== undefined && value >= max}
-            onClick={() => nudge(step)}>&#9650;</SpinBtn>
-          <SpinBtn type="button" tabIndex={-1} aria-label="Decrease"
-            disabled={min !== undefined && value <= min}
-            onClick={() => nudge(-step)}>&#9660;</SpinBtn>
-        </SpinnerGroup>
+        <InputAdornment side="right" inset="1px" stretchY>
+          <SpinnerGroup>
+            <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
+              disabled={max !== undefined && value >= max}
+              onClick={() => nudge(step)}>&#9650;</SpinBtn>
+            <SpinBtn type="button" tabIndex={-1} aria-label="Decrease"
+              disabled={min !== undefined && value <= min}
+              onClick={() => nudge(-step)}>&#9660;</SpinBtn>
+          </SpinnerGroup>
+        </InputAdornment>
       )}
     </Wrap>
   )

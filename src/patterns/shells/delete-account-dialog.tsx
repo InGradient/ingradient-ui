@@ -14,7 +14,7 @@ export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 const Stack = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--ig-space-7);
 `
 
 const Copy = styled.p`
@@ -27,10 +27,10 @@ const Copy = styled.p`
 const SoloCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 12px 14px;
+  gap: var(--ig-space-2);
+  padding: var(--ig-space-5) var(--ig-space-6);
   border: 1px solid var(--ig-color-alert-danger-border);
-  border-radius: 10px;
+  border-radius: var(--ig-radius-xs);
   background: var(--ig-color-alert-danger-bg);
 `
 
@@ -48,7 +48,7 @@ const Meta = styled.div`
 const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
   color: var(--ig-color-text-primary);
   font-size: 13px;
   font-weight: 600;

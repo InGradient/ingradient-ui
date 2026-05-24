@@ -7,15 +7,15 @@ const List = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 const Item = styled.li<{ $tone: 'info' | 'warn' }>`
   font-size: 13px;
   color: ${(p) => (p.$tone === 'warn' ? 'var(--ig-color-alert-warning-text)' : 'var(--ig-color-alert-info-text)')};
-  padding: 8px 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   background: ${(p) => (p.$tone === 'warn' ? 'var(--ig-color-alert-warning-bg)' : 'var(--ig-color-alert-info-bg)')};
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
   &::before {
     content: '${(p) => (p.$tone === 'warn' ? '⚠ ' : 'ⓘ ')}';
   }

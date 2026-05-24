@@ -58,7 +58,7 @@ const ActionButton = styled.button`
   border-radius: var(--ig-radius-sm);
   color: inherit;
   font: inherit;
-  padding: 2px 8px;
+  padding: 2px var(--ig-space-3);
   cursor: pointer;
   opacity: 0.85;
   &:hover { opacity: 1; }
@@ -84,7 +84,7 @@ const Container = styled.div`
   z-index: var(--ig-z-toast, 9000);
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--ig-space-3, 8px);
+  gap: var(--ig-space-3, var(--ig-space-3));
   pointer-events: none;
 `
 

@@ -38,7 +38,7 @@ export const Accordion = styled.details`
   }
 
   > div {
-    padding: 0 16px 16px;
+    padding: 0 var(--ig-space-7) var(--ig-space-7);
     color: var(--ig-color-text-muted);
   }
 `

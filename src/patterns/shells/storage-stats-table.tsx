@@ -5,8 +5,8 @@ import { Skeleton } from '../../components/feedback/skeleton'
 const Card = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-7);
 `
 
 const Table = styled.table`
@@ -17,12 +17,12 @@ const Table = styled.table`
     text-align: left;
     color: var(--ig-color-text-muted);
     font-weight: 500;
-    padding: 8px 12px;
+    padding: var(--ig-space-3) var(--ig-space-5);
     border-bottom: 1px solid var(--ig-color-border-strong);
   }
   & td {
     color: var(--ig-color-text-secondary);
-    padding: 8px 12px;
+    padding: var(--ig-space-3) var(--ig-space-5);
     border-bottom: 1px solid var(--ig-color-border-subtle);
   }
   & td.num {

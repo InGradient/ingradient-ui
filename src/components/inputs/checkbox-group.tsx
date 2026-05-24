@@ -42,7 +42,7 @@ const ItemRow = styled.div`
 const ColorSwatch = styled.span<{ $color: string }>`
   width: 10px;
   height: 10px;
-  border-radius: 2px;
+  border-radius: var(--ig-radius-xs);
   background: ${(p) => p.$color};
   flex-shrink: 0;
 `

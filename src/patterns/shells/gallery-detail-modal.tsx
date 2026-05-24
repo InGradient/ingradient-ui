@@ -13,7 +13,7 @@ const Toolbar = styled.div`
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `
 
 const DefaultMain = styled.div`

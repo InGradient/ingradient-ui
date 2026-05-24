@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { ColorSwatch } from './color-swatch'
+import { TagListItem } from './tag-list-item'
 
 // ── Styled ─────────────────────────────────────────────────────────
 
@@ -34,21 +34,6 @@ const Dropdown = styled.div`
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);
   margin-top: var(--ig-space-1);
-`
-
-const ResultBtn = styled.button`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  width: 100%;
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border: none;
-  background: transparent;
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  text-align: left;
-  cursor: pointer;
-  &:hover { background: var(--ig-color-surface-interactive); }
 `
 
 const EmptyMsg = styled.div`
@@ -125,10 +110,12 @@ export function TagListSearch({
         <Dropdown>
           {filtered.length > 0 ? (
             filtered.map((c) => (
-              <ResultBtn key={c.id} type="button" onClick={() => { onSelect(c.id); setQuery(''); setOpen(false) }}>
-                <ColorSwatch $color={c.color} $size="sm" />
-                {c.label}
-              </ResultBtn>
+              <TagListItem
+                key={c.id}
+                color={c.color}
+                label={c.label}
+                onClick={() => { onSelect(c.id); setQuery(''); setOpen(false) }}
+              />
             ))
           ) : (
             <>

@@ -115,15 +115,26 @@ export function DatasetListPanel({
   const someSelected = datasets.some((d) => selectedIds.has(d.id))
 
   return (
-    <Panel>
+    <Panel data-ig-component="DatasetListPanel" data-ig-layer="patterns">
       <Header>
         <Title>{title}</Title>
         <HeaderActions>
-          <Button variant="accent" size="sm" onClick={onAddDataset} disabled={noProject}>
+          <Button
+            variant="accent"
+            size="sm"
+            onClick={onAddDataset}
+            disabled={noProject}
+            data-ig-component="DatasetListPanel.AddButton"
+          >
             + Add
           </Button>
           {onCollapse ? (
-            <CollapseBtn type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
+            <CollapseBtn
+              type="button"
+              aria-label="Collapse sidebar"
+              onClick={onCollapse}
+              data-ig-component="DatasetListPanel.CollapseButton"
+            >
               <ClosePanelIcon size={16} />
             </CollapseBtn>
           ) : null}

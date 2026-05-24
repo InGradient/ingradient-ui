@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { FilterPopover, FilterPopoverSection } from './filter-popover'
+import { FilterPopover } from './filter-popover'
+import { FilterPopoverSection } from './filter-popover-section'
 import { Switch } from '../inputs/toggles'
 import { DropdownSelect } from '../inputs/dropdown-select'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'

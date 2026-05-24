@@ -8,16 +8,16 @@ import { TextField } from '../../components/inputs/text-fields'
 const FormBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 const FormRow = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
   flex-wrap: wrap;
 `
@@ -36,11 +36,11 @@ const ErrMsg = styled.span`
 const TokenBox = styled.div`
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-accent);
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-5);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const TokenLabel = styled.span`
@@ -54,8 +54,8 @@ const TokenText = styled.textarea`
   min-height: 72px;
   background: var(--ig-color-surface-panel);
   border: 1px solid var(--ig-color-border-subtle);
-  border-radius: 6px;
-  padding: 8px;
+  border-radius: var(--ig-radius-xs);
+  padding: var(--ig-space-3);
   font-family: monospace;
   font-size: 11px;
   color: var(--ig-color-text-primary);
@@ -66,7 +66,7 @@ const TokenText = styled.textarea`
 const TokenFooter = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-wrap: wrap;
 `
 

@@ -63,11 +63,27 @@ export interface SelectableListItemProps
   dragOver?: boolean
   /** Render element. default 'button' (clickable). use 'li' for semantic list rows. */
   as?: 'button' | 'li'
+  'data-ig-component'?: string
+  'data-ig-slot'?: string
   children: React.ReactNode
 }
 
 export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProps>(
-  ({ variant = 'card', selected = false, dragOver = false, as = 'button', type, children, ...rest }, ref) => (
+  ({
+    variant = 'card',
+    selected = false,
+    dragOver = false,
+    as = 'button',
+    type,
+    children,
+    'data-ig-component': componentHint,
+    'data-ig-slot': slotHint,
+    ...rest
+  }, ref) => {
+    const componentName = 'SelectableListItem'
+    const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+
+    return (
     <Root
       as={as}
       ref={ref as React.Ref<HTMLButtonElement>}
@@ -75,10 +91,14 @@ export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProp
       $variant={variant}
       $selected={selected}
       $dragOver={dragOver}
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
       {...rest}
     >
       {children}
     </Root>
-  ),
+    )
+  },
 )
 SelectableListItem.displayName = 'SelectableListItem'

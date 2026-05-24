@@ -4,7 +4,7 @@ import {
   DatasetDistributionHeatmap,
   LabelingProgressBar,
 } from '@ingradient/ui/patterns'
-import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/components'
+import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 import {
   classRatioData, dashboardStats, dataCollectionData, datasetDistribution, defectsBySourceData,

@@ -3,15 +3,15 @@ import { formatPatternTab, type FormatPatternTabItem } from '../../utils/format-
 
 const Row = styled.div`
   display: flex;
-  gap: 4px;
-  padding: 8px 12px;
+  gap: var(--ig-space-1);
+  padding: var(--ig-space-3) var(--ig-space-5);
   flex-wrap: wrap;
   justify-content: center;
 `
 
 const Tab = styled.button<{ $active: boolean }>`
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: var(--ig-space-1) var(--ig-space-4);
+  border-radius: var(--ig-radius-xs);
   border: none;
   font-size: 12px;
   cursor: pointer;

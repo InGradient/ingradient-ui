@@ -118,7 +118,7 @@ const HiResPill = styled.div`
   align-items: center;
   gap: var(--ig-space-2);
   padding: var(--ig-space-2) var(--ig-space-3);
-  border-radius: 999px;
+  border-radius: var(--ig-radius-pill);
   background: rgba(12, 12, 12, 0.72);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);

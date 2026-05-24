@@ -7,14 +7,14 @@ import { DeviceStatusBadge } from './device-status-badge'
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
 `
 
 const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-wrap: wrap;
 `
 
@@ -26,12 +26,12 @@ const SectionTitle = styled.h3`
 
 const Actions = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 const FilterBar = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
   flex-wrap: wrap;
 `
@@ -44,14 +44,14 @@ const Table = styled.table`
 
 const Th = styled.th`
   text-align: left;
-  padding: 6px 8px;
+  padding: var(--ig-space-2) var(--ig-space-3);
   font-weight: 500;
   border-bottom: 1px solid var(--ig-color-border-subtle);
   white-space: nowrap;
 `
 
 const Td = styled.td`
-  padding: 8px;
+  padding: var(--ig-space-3);
   border-bottom: 1px solid var(--ig-color-white-04);
   vertical-align: middle;
 `
@@ -70,7 +70,7 @@ const ActionsTd = styled(Td)`
 `
 
 const EmptyTd = styled.td`
-  padding: 16px 8px;
+  padding: var(--ig-space-7) var(--ig-space-3);
   text-align: center;
   color: var(--ig-color-text-muted);
 `

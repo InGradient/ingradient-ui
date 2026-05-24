@@ -9,13 +9,13 @@ import { LicenseInfoDisplay, type LicenseInfo } from './license-info-display'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-5);
 `
 
 const Row = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--ig-space-5);
   flex-wrap: wrap;
 `
 

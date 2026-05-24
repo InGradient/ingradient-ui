@@ -3,7 +3,8 @@ import { StorageAnalyticsTab } from './storage-analytics-tab'
 import { StorageOverview } from './storage-overview'
 import { StorageStatsTable, type StorageStatsTableColumn } from './storage-stats-table'
 import { StorageRecommendationsList } from './storage-recommendations-list'
-import { BarChartCard, PieChartCard } from '../../components/charts'
+import { BarChartCard } from '../charts/bar-chart-card'
+import { PieChartCard } from '../charts/pie-chart-card'
 
 const overviewItems = [
   { label: 'Total Images', value: '128,402' },

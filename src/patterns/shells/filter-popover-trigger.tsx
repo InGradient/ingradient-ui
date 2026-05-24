@@ -12,9 +12,9 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   gap: ${(p) => (p.$iconOnly ? '0' : 'var(--ig-space-2)')};
   height: 32px;
   width: ${(p) => (p.$iconOnly ? '32px' : 'auto')};
-  padding: ${(p) => (p.$iconOnly ? '0' : '0 10px')};
+  padding: ${(p) => (p.$iconOnly ? '0' : '0 var(--ig-space-4)')};
   justify-content: center;
-  border-radius: 10px;
+  border-radius: var(--ig-radius-xs);
   border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-16)' : 'var(--ig-color-surface-interactive)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-secondary)')};

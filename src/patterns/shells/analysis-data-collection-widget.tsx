@@ -1,4 +1,4 @@
-import { BarChartCard } from '../../components/charts/bar-chart-card'
+import { BarChartCard } from '../charts/bar-chart-card'
 
 export interface AnalysisDataCollectionWidgetProps {
   totalImages: number

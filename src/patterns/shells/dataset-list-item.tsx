@@ -19,6 +19,12 @@ const Name = styled.span`
   white-space: nowrap;
 `
 
+const Slot = styled.span`
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+`
+
 export interface DatasetListItemProps {
   id: string
   name: string
@@ -44,26 +50,53 @@ export function DatasetListItem({
       onClick={() => onSelectCurrent?.(id)}
       data-dataset-id={id}
     >
-      <Row>
-        <Checkbox
-          checked={selected ?? false}
-          onClick={(e) => e.stopPropagation()}
-          onChange={(e) => onToggleSelect?.(id, e.target.checked)}
-          aria-label={`Select dataset ${name}`}
-        />
-        <Name title={name}>{name}</Name>
-        <DatasetTaskTag taskType={taskType} />
-        <IconButton
-          ref={menuBtnRef}
-          aria-label={`Open menu for ${name}`}
-          onClick={(e) => {
-            e.stopPropagation()
-            if (menuBtnRef.current) onOpenMenu?.(id, menuBtnRef.current)
-          }}
-          size="sm"
+      <Row data-ig-component="DatasetListItem" data-ig-layer="patterns" data-ig-label={name}>
+        <Slot
+          data-ig-slot="DatasetListItem.Checkbox"
+          data-ig-kind="checkbox"
+          data-ig-label={`Select dataset ${name}`}
         >
-          <KebabIcon size={18} />
-        </IconButton>
+          <Checkbox
+            checked={selected ?? false}
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => onToggleSelect?.(id, e.target.checked)}
+            aria-label={`Select dataset ${name}`}
+            data-ig-slot="DatasetListItem.Checkbox"
+          />
+        </Slot>
+        <Name
+          title={name}
+          data-ig-slot="DatasetListItem.Name"
+          data-ig-kind="text"
+          data-ig-label={name}
+        >
+          {name}
+        </Name>
+        <Slot
+          data-ig-slot="DatasetListItem.TaskTag"
+          data-ig-kind="tag"
+          data-ig-label={taskType}
+        >
+          <DatasetTaskTag taskType={taskType} data-ig-slot="DatasetListItem.TaskTag" />
+        </Slot>
+        <Slot
+          data-ig-slot="DatasetListItem.MenuButtonSlot"
+          data-ig-kind="button-group"
+          data-ig-label={`Actions for ${name}`}
+        >
+          <IconButton
+            ref={menuBtnRef}
+            aria-label={`Open menu for ${name}`}
+            data-ig-slot="DatasetListItem.MenuButton"
+            onClick={(e) => {
+              e.stopPropagation()
+              if (menuBtnRef.current) onOpenMenu?.(id, menuBtnRef.current)
+            }}
+            size="sm"
+          >
+            <KebabIcon size={18} />
+          </IconButton>
+        </Slot>
       </Row>
     </SelectableListItem>
   )

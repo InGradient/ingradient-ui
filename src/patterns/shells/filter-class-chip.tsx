@@ -7,7 +7,7 @@ const Chip = styled.label<{ $checked: boolean }>`
   align-items: center;
   gap: var(--ig-space-2);
   padding: var(--ig-space-1) var(--ig-space-2);
-  border-radius: 6px;
+  border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   cursor: pointer;
   user-select: none;

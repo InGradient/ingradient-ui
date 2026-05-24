@@ -5,7 +5,7 @@ import { TextField } from '../../components/inputs/text-fields'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 
 const Input = styled(TextField).attrs({ size: 'sm' as const })`
-  margin-bottom: 16px;
+  margin-bottom: var(--ig-space-7);
 `
 
 export interface AddClassDialogProps {

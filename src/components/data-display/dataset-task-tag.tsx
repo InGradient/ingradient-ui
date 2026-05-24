@@ -31,8 +31,8 @@ const Tag = styled.span<{ $type: DatasetTaskType }>`
   }}
   display: inline-flex;
   align-items: center;
-  padding: 1px 6px;
-  border-radius: 4px;
+  padding: 1px var(--ig-space-2);
+  border-radius: var(--ig-radius-xs);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -44,12 +44,33 @@ export interface DatasetTaskTagProps {
   taskType: DatasetTaskType
   format?: 'short' | 'full'
   className?: string
+  'data-ig-component'?: string
+  'data-ig-label'?: string
+  'data-ig-slot'?: string
 }
 
-export function DatasetTaskTag({ taskType, format = 'short', className }: DatasetTaskTagProps) {
+export function DatasetTaskTag({
+  taskType,
+  format = 'short',
+  className,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+}: DatasetTaskTagProps) {
+  const componentName = 'DatasetTaskTag'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
   const style = taskTypeStyles[taskType]
   return (
-    <Tag $type={taskType} className={className} title={style.full}>
+    <Tag
+      $type={taskType}
+      className={className}
+      title={style.full}
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="tag"
+      data-ig-label={componentLabel ?? style.full}
+    >
       {format === 'short' ? style.short : style.full}
     </Tag>
   )

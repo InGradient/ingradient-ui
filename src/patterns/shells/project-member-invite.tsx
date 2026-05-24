@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { TextField } from '../../components/inputs/text-fields'
-import { SearchResultRow } from '../../components/data-display/search-result-row'
+import { OptionRow } from '../../components/data-display/option-row'
 
 const SectionTitle = styled.h4`
-  margin: 16px 0 8px;
+  margin: var(--ig-space-7) 0 var(--ig-space-3);
   font-size: 13px;
   font-weight: 600;
   color: var(--ig-color-text-muted);
@@ -12,18 +12,18 @@ const SectionTitle = styled.h4`
 `
 
 const Row = styled.div`
-  padding: 12px 0;
+  padding: var(--ig-space-5) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-wrap: wrap;
 `
 
 const Stack = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--ig-space-4);
   width: 100%;
 `
 
@@ -41,7 +41,7 @@ const Placeholder = styled.p`
 const Results = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
   width: 100%;
 `
 
@@ -94,7 +94,7 @@ export function ProjectMemberInvite({
           {readyToSearch ? (
             <Results>
               {candidates.map((c) => (
-                <SearchResultRow
+                <OptionRow
                   key={c.id}
                   primary={c.name || c.email}
                   secondary={c.name ? c.email : undefined}

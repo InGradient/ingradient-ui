@@ -11,11 +11,11 @@ import {
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--ig-space-13);
 `
 
 const Empty = styled.p`
-  margin: 16px 0 0;
+  margin: var(--ig-space-7) 0 0;
   text-align: center;
   color: var(--ig-color-text-muted);
   font-size: 13px;

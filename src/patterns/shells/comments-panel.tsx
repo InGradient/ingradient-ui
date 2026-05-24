@@ -4,7 +4,8 @@ import { Archive, Pencil } from 'lucide-react'
 import { Badge } from '../../components/feedback/badge'
 import { Button } from '../../components/inputs/button'
 import { IconButton } from '../../components/inputs/icon-button'
-import { CommentItem, CommentThread } from '../../components/data-display/comment-thread'
+import { CommentItem } from '../../components/data-display/comment-thread'
+import { CommentThread } from '../comment/comment-thread'
 import { MentionTextarea, type MentionCandidate } from '../../components/inputs/mention-textarea'
 
 const Root = styled.div`
