@@ -203,6 +203,7 @@ function AssetViewer({ src, alt, label }: { src: string; alt: string; label: str
       <div
         style={{
           position: 'relative',
+          display: 'flex',
           height: 360,
           borderRadius: 24,
           overflow: 'hidden',
@@ -237,6 +238,7 @@ export const RealImages: Story = {
         <div
           style={{
             position: 'relative',
+            display: 'flex',
             height: 420,
             borderRadius: 24,
             overflow: 'hidden',
