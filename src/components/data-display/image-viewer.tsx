@@ -20,6 +20,8 @@ const ZoomLayer = styled.div<{ $zoom: number; $panX: number; $panY: number }>`
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
+  height: 100%;
 `
 
 const Img = styled.img`
