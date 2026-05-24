@@ -4,7 +4,7 @@ import { CheckboxGroup } from './checkbox-group'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Components/Inputs/CheckboxGroup',
+  title: 'Patterns/Shells/CheckboxGroup',
   component: CheckboxGroup,
   tags: ['autodocs'],
   parameters: {

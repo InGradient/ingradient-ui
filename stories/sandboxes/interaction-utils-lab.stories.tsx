@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button, CopyButton, FieldRow, FilterBarLayout, FormGroup, ModeSwitcher, SearchField } from '@ingradient/ui/components'
+import { Button, CopyButton, FieldRow, FilterBarLayout, ModeSwitcher, SearchField } from '@ingradient/ui/components'
+import { FormGroup } from '@ingradient/ui/patterns'
 import { ChipGroup, ResizablePanel } from '../../src/components/data-display'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 

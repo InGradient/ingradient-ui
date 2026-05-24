@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ModeSwitcher } from '../../components/inputs/mode-switcher'
-import { DateRangeField } from '../../components/inputs/date-range-field'
+import { DateRangeField } from './date-range-field'
 import { FilterSection } from './filter-section'
 import { FilterClassChip } from './filter-class-chip'
 import { FilterSearchableList, type FilterSearchableItem } from './filter-searchable-list'

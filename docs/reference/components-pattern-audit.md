@@ -425,3 +425,54 @@ ProjectTypeTag, DeviceStatusBadge, feedback/chip 은 시각이 DatasetTaskTag �
 - 4 tag 시각 통일 (디자이너 결정 후)
 - `feedback/chip` rename — 정적 display 인데 "Chip" 이름 (interactive `ActionChip` 과 혼동)
 - audit 정확도 메타: **"도메인 의미 강한 component"** 분류도 atomic 추출 가능한지 재평가 필요 (R8 ChipGroup + R9 DatasetTaskTag 모두 audit 보류였음)
+
+---
+
+# Round 10 — atomic 누락분 patterns 이관 + Tooltip 위치 버그
+
+사용자 지적 (또 audit 미스): "DateRangeField는 Patterns로 옮기는게 맞지 않아? CheckboxGroup 안에 있는 Checkbox는 component로 분리하고, CheckboxGroup은 Patterns으로 옮겨도 되지 않을까? FormGroup & FieldRow 이것도 그렇고 ... 분명 너가 이제 더 이상 없다고 했는데. 계속 발견되잖아." R7~R9 audit 가 inputs/ 영역 composition 후보를 누락했음.
+
+## A. 처리 완료 — patterns 이관
+
+| 항목 | 결과 |
+|---|---|
+| `DateRangeField` → patterns | `src/components/inputs/date-range-field.tsx` → `src/patterns/shells/date-range-field.tsx`. 내부 atomic 없음 (DatePickerField × 2 + Dash + Row layout). |
+| `CheckboxGroup` → patterns + ColorSwatch dedupe | `src/components/inputs/checkbox-group.tsx` → `src/patterns/shells/checkbox-group.tsx`. 내부 `Checkbox` 는 이미 `inputs/toggles` atomic 사용 중. 자체 `ColorSwatch` styled (10px square) 제거 + 기존 `data-display/color-swatch` ($size="sm" $shape="square") 사용. 시각 미세 (10 → 12px). |
+| `FormGroup` → patterns | `src/components/inputs/form-section.tsx` 에서 `FormGroup` 만 추출 → `src/patterns/shells/form-group.tsx`. `FieldRow`, `FormField` 는 form-section.tsx 에 atomic 으로 잔류. |
+| 외부 import 갱신 | `gallery-filter-panel.tsx`, `interaction-utils-lab.stories.tsx` 의 `FormGroup`/`DateRangeField` import 경로를 patterns 로 변경. |
+
+검증: typecheck OK, 179 tests OK.
+
+## B. Tooltip 위치 버그 — createPortal 적용
+
+사용자 지적: "Popover나 Tooltip 뜨는 것도 이상한 위치에 뜨고 있는데. 이것도 검토 좀 해주고."
+
+### 조사 결과
+
+- **Tooltip** (`components/overlays/tooltip.tsx`): Bubble 이 Wrap 안쪽에 inline 렌더링 + `position: fixed`. 조상에 `transform`/`filter`/`perspective`/`will-change` 가 있으면 CSS 스펙상 그 조상이 컨테이닝 블록이 된다 → Bubble 이 viewport 좌표가 아닌 transform 좌표계로 이동.
+- **PopoverTriggerField** (`components/inputs/popover-trigger-field.tsx`): `createPortal(document.body)` 사용 — 영향 없음.
+- **FloatingPanelField** (`components/inputs/floating-panel-field.tsx`): `createPortal(document.body)` 사용 — 영향 없음.
+
+### 수정
+
+Tooltip Bubble 을 `createPortal(document.body)` 로 이동. mount/unmount 도 hover 시점으로 변경 (이전: 항상 마운트 + opacity 토글 → portal 이면 hidden bubble 이 body 에 잔존).
+
+## C. 보류 / R11 후보
+
+사용자 지적 "여전히 분리할 수 있다거나 Patterns로 옮겨야 할게 많은 것 같은데" 에 대한 R10 범위 외:
+
+- `inputs/date-picker.tsx` — DatePickerField (atomic OK) 와 DatePicker (calendar 시각 contract) 가 한 파일. DateRangeField 가 patterns 이동했으니 추가 평가 필요.
+- `inputs/mention-textarea.tsx` — textarea + 트리거 dropdown 조합. composition 후보.
+- `inputs/dropdown-select.tsx` — PopoverTriggerField + 옵션 목록 조합. composition 후보.
+
+## D. audit 메타 — 누락 카테고리 패턴
+
+R7~R9 까지 "더 이상 없다" 결론 → 매번 사용자가 누락 찾아냄. 공통 패턴:
+
+| Round | 누락 원인 |
+|---|---|
+| R8 ChipGroup | "도메인 wrapper" 로 분류해 split 검토 안 함 |
+| R9 DatasetTaskTag | "도메인 의미 강한 component" 로 분류해 atomic 추출 안 함 |
+| R10 DateRangeField/CheckboxGroup/FormGroup | `inputs/` 영역을 "atomic primitive 들" 로 묶어 composition 후보 점검 안 함 |
+
+→ **다음 audit 시 모든 분류 결과를 "atomic 인가 / composition 인가" 한 번 더 강제 재평가**. 도메인 / wrapper / generic 같은 다른 분류로 묶어도 그 안에서 composition 후보가 나올 수 있음.

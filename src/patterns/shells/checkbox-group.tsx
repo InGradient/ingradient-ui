@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Checkbox } from './toggles'
+import { Checkbox } from '../../components/inputs/toggles'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Wrap = styled.div<{ $maxHeight: number }>`
   max-height: ${(p) => `${p.$maxHeight}px`};
@@ -37,14 +38,6 @@ const ItemRow = styled.div`
   padding: var(--ig-space-2) var(--ig-space-4);
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
-`
-
-const ColorSwatch = styled.span<{ $color: string }>`
-  width: 10px;
-  height: 10px;
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => p.$color};
-  flex-shrink: 0;
 `
 
 export interface CheckboxGroupItem {
@@ -94,7 +87,7 @@ export function CheckboxGroup({
             onChange={() => handleToggle(item.id)}
             label={
               <>
-                {item.color ? <ColorSwatch $color={item.color} /> : null}
+                {item.color ? <ColorSwatch $color={item.color} $size="sm" $shape="square" /> : null}
                 {item.label}
               </>
             }

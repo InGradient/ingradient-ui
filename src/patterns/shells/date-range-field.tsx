@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DatePickerField } from './date-picker'
+import { DatePickerField } from '../../components/inputs/date-picker'
 
 const Row = styled.div`
   display: flex;
