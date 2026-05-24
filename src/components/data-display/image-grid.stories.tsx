@@ -84,7 +84,7 @@ export const Review: Story = {
               <ImageGrid<ImageItem>
                 items={items}
                 getThumbnailUrl={(item) => item.src}
-                layout={{ minWidth: 140, gap: 4 }}
+                layout={{ minWidth: 140, gap: 12 }}
                 renderCellTopRight={(item) => <Badge>{item.tag}</Badge>}
                 renderCellFooter={(item) => <span>{item.title}</span>}
               />
@@ -98,7 +98,7 @@ export const Review: Story = {
               <ImageGrid<ImageItem>
                 items={items}
                 getThumbnailUrl={(item) => item.src}
-                layout={{ minWidth: 160, gap: 4 }}
+                layout={{ minWidth: 160, gap: 12 }}
                 selectedIds={selectedIds}
                 onSelectionChange={handleSelectionChange}
                 renderCellFooter={(item) => <span>{item.title}</span>}

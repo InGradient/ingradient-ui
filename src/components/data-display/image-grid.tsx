@@ -105,7 +105,7 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
       ref={rootRef}
       $minWidth={layout?.minWidth ?? 180}
       $columns={layout?.columns}
-      $gap={layout?.gap ?? 6}
+      $gap={layout?.gap ?? 12}
     >
       {items.map((item, index) => (
         <ImageGridCell

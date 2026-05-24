@@ -39,7 +39,7 @@ export const WithGrid: Story = {
       <ImageGrid
         items={images}
         getThumbnailUrl={(img) => img.thumb_url}
-        layout={{ minWidth: 120, gap: 4 }}
+        layout={{ minWidth: 120, gap: 12 }}
         renderCellOverlay={(img) => (
           <AnnotationOverlay
             bboxes={img.bboxes}

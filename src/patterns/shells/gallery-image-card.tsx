@@ -21,11 +21,12 @@ const Card = styled.div<{ $selected: boolean }>`
   }
 `
 
-const Thumb = styled.img`
+const Thumb = styled.img<{ $archived: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: ${(p) => (p.$archived ? 'grayscale(1)' : 'none')};
 `
 
 const TopRight = styled.div`
@@ -38,12 +39,13 @@ const TopRight = styled.div`
   z-index: 2;
 `
 
-const GroupSlot = styled.div`
+const TopLeft = styled.div`
   position: absolute;
   top: var(--ig-space-2);
-  right: var(--ig-space-2);
-  transform: translate(12px, -10px);
-  z-index: 3;
+  left: var(--ig-space-2);
+  display: flex;
+  align-items: center;
+  z-index: 2;
 `
 
 const OptionButton = styled.button`
@@ -112,10 +114,18 @@ export function GalleryImageCard({
       $selected={selected}
       onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
       data-image-id={image.id}
+      data-sync-chip-hover-scope="true"
     >
-      <Thumb src={image.thumb_url} alt={image.name} loading="lazy" />
+      <Thumb src={image.thumb_url} alt={image.name} loading="lazy" $archived={Boolean(image.archived)} />
       <TopRight>
-        {image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} /> : null}
+        {image.sync_state ? (
+          <SyncStatusChip
+            state={image.sync_state}
+            variant="opaque"
+            showDot={false}
+            collapseUntilHover
+          />
+        ) : null}
         {showKebab ? (
           <OptionButton
             ref={menuBtnRef}
@@ -129,7 +139,7 @@ export function GalleryImageCard({
           </OptionButton>
         ) : null}
       </TopRight>
-      {groupCount > 1 ? <GroupSlot><GroupCountBadge count={groupCount} /></GroupSlot> : null}
+      {groupCount > 1 ? <TopLeft><GroupCountBadge count={groupCount} /></TopLeft> : null}
       {showName ? <Footer title={image.name}>{image.name}</Footer> : null}
       {image.archived ? <MediaOverlay variant="archived" /> : null}
       {image.processing ? <MediaOverlay variant="processing" /> : null}

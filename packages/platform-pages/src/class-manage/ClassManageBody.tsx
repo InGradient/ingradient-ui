@@ -105,7 +105,7 @@ export function ClassManageBody({
           <ImageGrid
             items={images.images}
             getThumbnailUrl={(img) => img.thumb_url}
-            layout={{ minWidth: 120, gap: 4 }}
+            layout={{ minWidth: 120, gap: 12 }}
             onItemClick={(img) => images.onOpenImage(img)}
             onContextMenu={(img, _i, e) => {
               e.preventDefault()

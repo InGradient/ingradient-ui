@@ -33,3 +33,13 @@ export const Synced: Story = { args: { state: 'synced' } }
 export const Uploading: Story = { args: { state: 'uploading' } }
 export const UploadFailed: Story = { args: { state: 'upload_failed' } }
 export const LocalOnly: Story = { args: { state: 'local_only' } }
+export const CollapsedUntilHover: Story = {
+  render: () => (
+    <Inline gap={3}>
+      <SyncStatusChip state="synced" variant="opaque" showDot={false} collapseUntilHover />
+      <SyncStatusChip state="uploading" variant="opaque" showDot={false} collapseUntilHover />
+      <SyncStatusChip state="upload_failed" variant="opaque" showDot={false} collapseUntilHover />
+      <SyncStatusChip state="local_only" variant="opaque" showDot={false} collapseUntilHover />
+    </Inline>
+  ),
+}
