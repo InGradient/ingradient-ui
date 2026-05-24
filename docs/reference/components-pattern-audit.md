@@ -351,3 +351,40 @@ R1~R7 (7 rounds) 후 디자인 시스템 라이브러리로서 정리 완성도 
 - token 일관성 (spacing / radius / color / shadow 모두)
 - hooks atomic 정리 (useClickOutside / useElementSize / useZoomInvariantRenderer / getNormalizedCoord)
 - 보류 항목은 모두 명확한 트리거 명시
+
+---
+
+# Round 8 — ChipGroup atomic 분리 + chip 패턴 정리
+
+사용자 지적: "components/data-display/chip-group 도 더 쪼갤 수 있는데 왜 안 했냐?". audit C/D 에서 chip-group 을 "도메인 중복" 카테고리로 묶어 보류했지만 **재평가 결과 정확하지 않았음**.
+
+## 발견
+
+3 종류 chip 이 의미·시각 다 다른 채 공존:
+
+| 위치 | 종류 | 처리 |
+|---|---|---|
+| `feedback/chip.tsx` (R2 분리) | 정적 display tag (`styled(Badge)` + border-subtle) | 유지 |
+| `data-display/chip-group.tsx` 내부 `Chip` | **interactive action chip** (button + color swatch + label) | **`ActionChip` 으로 추출** |
+| `patterns/shells/filter-class-chip.tsx` | filter checkbox chip (label + Checkbox + color) | 유지 (도메인 wrapper) |
+
+또 `filter-class-chip.tsx` 가 **자체 `ColorSwatch` styled 를 중복 정의** (10px circle) — 기존 [`color-swatch.tsx`](src/components/data-display/color-swatch.tsx) 가 있음에도. 정리.
+
+## A. 처리 완료
+
+| 항목 | 결과 |
+|---|---|
+| `ActionChip` atomic 추출 | `src/components/data-display/action-chip.tsx` 신설. props `{ color?, children, ...buttonAttrs }`. 내부 `Chip` styled + 기존 `ColorSwatch` 사용. forwardRef + button type='button' default. |
+| `ChipGroup` 리팩터 | 내부 `Chip` styled 제거 + `ActionChip` 호출. `Wrap` + `MoreChip` 만 잔류. |
+| `filter-class-chip.tsx` 중복 제거 | 자체 `ColorSwatch` styled 제거 + 기존 `ColorSwatch` ($size="sm") 사용. 시각 미세 (10 → 12px). |
+
+검증: typecheck OK, 178 tests OK.
+
+## B. 메타 노트
+
+audit 정확도 문제: 1차 audit 에서 "도메인 중복" 카테고리로 grouping 한 항목들은 **실제 코드 대조 시 별도 평가 필수**. ChipGroup 처럼 명백한 atomic 후보가 묻혀 있을 수 있음.
+
+## Round 9 트리거
+
+- `feedback/chip` rename (Tag 등) — 정적 display 인데 "Chip" 이름. 사용처 광범위해 부담.
+- 다른 chip-like 패턴 (sync-status-chip, state-chip 등) 의미 통합 검토

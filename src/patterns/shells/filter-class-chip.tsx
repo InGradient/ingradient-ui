@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Checkbox } from '../../components/inputs/toggles'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Chip = styled.label<{ $checked: boolean }>`
   display: inline-flex;
@@ -14,14 +15,6 @@ const Chip = styled.label<{ $checked: boolean }>`
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
   }
-`
-
-const ColorSwatch = styled.span<{ $color: string }>`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${(p) => p.$color};
-  flex-shrink: 0;
 `
 
 const Label = styled.span`
@@ -48,7 +41,7 @@ export function FilterClassChip({ checked, label, color, onChange, className }: 
         onChange={(e) => onChange(e.target.checked)}
         aria-label={typeof label === 'string' ? label : undefined}
       />
-      {color ? <ColorSwatch $color={color} /> : null}
+      {color ? <ColorSwatch $color={color} $size="sm" /> : null}
       <Label>{label}</Label>
     </Chip>
   )

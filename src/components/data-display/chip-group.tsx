@@ -1,27 +1,11 @@
 import styled from 'styled-components'
-import { ColorSwatch } from './color-swatch'
+import { ActionChip } from './action-chip'
 
 const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--ig-space-2);
   align-items: center;
-`
-
-const Chip = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-1) var(--ig-space-3);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-surface-muted);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-2xs);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background var(--ig-motion-fast);
-  &:hover { background: var(--ig-color-surface-interactive); }
 `
 
 const MoreChip = styled.span`
@@ -55,10 +39,13 @@ export function ChipGroup({ items, maxVisible, onItemClick, className }: ChipGro
   return (
     <Wrap className={className}>
       {visible.map((item) => (
-        <Chip key={item.id} type="button" onClick={() => onItemClick?.(item.id)}>
-          {item.color && <ColorSwatch $color={item.color} $size="xs" />}
+        <ActionChip
+          key={item.id}
+          color={item.color}
+          onClick={() => onItemClick?.(item.id)}
+        >
           {item.label}
-        </Chip>
+        </ActionChip>
       ))}
       {overflow > 0 && <MoreChip>+{overflow} more</MoreChip>}
     </Wrap>
