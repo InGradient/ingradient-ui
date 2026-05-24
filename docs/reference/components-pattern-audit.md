@@ -489,3 +489,24 @@ R7~R9 까지 "더 이상 없다" 결론 → 매번 사용자가 누락 찾아냄
 | `Tooltip` portal 적용 | `Bubble` 을 `createPortal(document.body)` 로 렌더. `position: fixed` 의 containing-block 버그 (transform 조상 시 viewport 좌표 깨짐) 픽스. open state 끌어올려 hover 시점에만 마운트 — 잔존 hidden bubble 제거. |
 
 검증: typecheck OK, 179 tests OK.
+
+## R10 후속 — ChipGroup patterns 이동 + storybook title 정합성
+
+사용자 지적: "ChipGroup은 patterns로 옮긴거 아녔어? Chip은 components에 남기고" + "DatasetTaskTag도 patterns로 옮긴거 아녔어? 아직도 components 에서 보이는데? 아니 storybook을 보니 여전히 그대로 보이는데."
+
+원인:
+- R8 ChipGroup: atomic (ActionChip) 만 분리하고 `ChipGroup` 자체는 components/data-display 에 남겼음 → 정책 위반 (Wrap + ActionChip×N + MoreChip 의 composition).
+- R9 DatasetTaskTag: 파일은 patterns/shells/ 로 이동했지만 `.stories.tsx` 의 `title:` 메타가 `Components/Data Display/DatasetTaskTag` 로 남아 Storybook UI 에서는 여전히 components 카테고리에 표시됐음.
+- R10 SyncStatusChip: 같은 패턴 — 파일은 이동, title 은 `Components/Feedback/SyncStatusChip` 그대로.
+
+처리:
+- `ChipGroup` → `src/patterns/shells/chip-group.tsx` (stories / test 동반). ActionChip import 경로 갱신, components/data-display index 에서 제외, patterns index 에 추가, 외부 사용처 (interaction-utils-lab) 갱신.
+- `dataset-task-tag.stories.tsx` title → `Patterns/Shells/DatasetTaskTag`.
+- `sync-status-chip.stories.tsx` title → `Patterns/Shells/SyncStatusChip`.
+
+검증:
+- typecheck OK.
+- patterns/ 안 모든 `.stories.tsx` 가 `Patterns/...` 사용, components/ 안 모든 `.stories.tsx` 가 `Components/...` 사용 (grep 으로 교차 검증 완료).
+- R1~R10 patterns 이동 항목 (charts/cards, image-grid/cell/virtualized, drawing-layer, annotation-overlay, settings-dialog, use-confirm, comment-thread, dataset-task-tag, sync-status-chip, checkbox-group, date-range-field, form-group, chip-group) 모두 patterns/ 하위 정상 위치 확인.
+
+audit 메타: **파일 이동 ≠ Storybook 카테고리 이동**. 다음 라운드부터 `git mv` 직후 `.stories.tsx` 의 `title:` 메타도 같이 점검할 것.

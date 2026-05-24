@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ActionChip } from './action-chip'
+import { ActionChip } from '../../components/data-display/action-chip'
 
 const Wrap = styled.div`
   display: flex;

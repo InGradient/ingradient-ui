@@ -3,7 +3,7 @@ import { DatasetTaskTag } from './dataset-task-tag'
 import { Inline, Stack } from '../../primitives'
 
 const meta: Meta<typeof DatasetTaskTag> = {
-  title: 'Components/Data Display/DatasetTaskTag',
+  title: 'Patterns/Shells/DatasetTaskTag',
   component: DatasetTaskTag,
   tags: ['autodocs'],
 }

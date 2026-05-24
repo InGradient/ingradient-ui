@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, CopyButton, FieldRow, FilterBarLayout, ModeSwitcher, SearchField } from '@ingradient/ui/components'
-import { FormGroup } from '@ingradient/ui/patterns'
-import { ChipGroup, ResizablePanel } from '../../src/components/data-display'
+import { ChipGroup, FormGroup } from '@ingradient/ui/patterns'
+import { ResizablePanel } from '../../src/components/data-display'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {

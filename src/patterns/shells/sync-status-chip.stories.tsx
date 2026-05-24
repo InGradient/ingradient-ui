@@ -3,7 +3,7 @@ import { SyncStatusChip } from './sync-status-chip'
 import { Inline, Stack } from '../../primitives'
 
 const meta: Meta<typeof SyncStatusChip> = {
-  title: 'Components/Feedback/SyncStatusChip',
+  title: 'Patterns/Shells/SyncStatusChip',
   component: SyncStatusChip,
   tags: ['autodocs'],
 }
