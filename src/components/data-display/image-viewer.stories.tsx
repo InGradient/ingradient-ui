@@ -156,6 +156,8 @@ function ViewerReviewDemo({
               fontSize: 13,
               color: 'var(--ig-color-text-soft)',
               whiteSpace: 'pre-wrap',
+              maxHeight: 240,
+              overflow: 'auto',
             }}
           >
             {JSON.stringify(objects, null, 2)}
