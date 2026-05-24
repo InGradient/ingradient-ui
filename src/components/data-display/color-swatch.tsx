@@ -18,6 +18,6 @@ export const ColorSwatch = styled.span<{
   flex-shrink: 0;
   width: ${(p) => sizeMap[p.$size ?? 'sm']};
   height: ${(p) => sizeMap[p.$size ?? 'sm']};
-  border-radius: ${(p) => (p.$shape === 'square' ? 'var(--ig-radius-xs)' : '50%')};
+  border-radius: ${(p) => (p.$shape === 'square' ? 'var(--ig-radius-2xs)' : '50%')};
   background: ${(p) => p.$color};
 `
