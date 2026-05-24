@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { useZoomPan, type UseZoomPanOptions } from '../../hooks'
 
 const Wrap = styled.div`
-  position: relative;
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
