@@ -1,4 +1,4 @@
-import { StateChip, type StateChipStyle } from './state-chip'
+import { StateChip, type StateChipStyle } from '../../components/feedback/state-chip'
 
 export type SyncState = 'synced' | 'uploading' | 'upload_failed' | 'local_only'
 export type SyncStatusChipVariant = 'soft' | 'opaque'

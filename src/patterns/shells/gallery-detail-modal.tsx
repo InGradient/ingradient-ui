@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { X } from 'lucide-react'
 import { IconButton } from '../../components/inputs/icon-button'
-import { SyncStatusChip, type SyncState } from '../../components/feedback/sync-status-chip'
+import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
 import { MediaDialogShell } from './media-dialog-shell'
 

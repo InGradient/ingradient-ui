@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SyncStatusChip, type SyncState } from '../../components/feedback/sync-status-chip'
+import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { GroupCountBadge } from '../../components/feedback/group-count-badge'
 import { MediaOverlay } from '../../components/feedback/media-overlay'
 import { KebabIcon } from '../../components/icons/catalog-icons'

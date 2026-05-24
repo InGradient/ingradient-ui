@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Table, type TableColumn } from '../../components/data-display/table'
 import { Checkbox, IconButton } from '../../components/inputs'
-import { SyncStatusChip, type SyncState } from '../../components/feedback/sync-status-chip'
+import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '../../components/icons/catalog-icons'
 
 const Thumb = styled.img`

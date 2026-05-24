@@ -476,3 +476,16 @@ R7~R9 까지 "더 이상 없다" 결론 → 매번 사용자가 누락 찾아냄
 | R10 DateRangeField/CheckboxGroup/FormGroup | `inputs/` 영역을 "atomic primitive 들" 로 묶어 composition 후보 점검 안 함 |
 
 → **다음 audit 시 모든 분류 결과를 "atomic 인가 / composition 인가" 한 번 더 강제 재평가**. 도메인 / wrapper / generic 같은 다른 분류로 묶어도 그 안에서 composition 후보가 나올 수 있음.
+
+## R10 실행 결과
+
+| 항목 | 결과 |
+|---|---|
+| `SyncStatusChip` patterns/shells 이동 | components/feedback 에서 patterns/shells 로 이동 (도메인 wrapper). `SyncState` external import 4 파일 갱신. R8/R9 패턴 반복 (audit "도메인 component" 재평가). |
+| `DateRangeField` patterns/shells 이동 | DatePickerField × 2 단순 조합. atomic 없음. |
+| `CheckboxGroup` patterns/shells 이동 | bordered scrollable + Header + ItemRow + Checkbox 조합. 자체 `ColorSwatch` 중복 styled 제거 → 기존 component 사용 ($size="sm" $shape="square"). |
+| `FormGroup` patterns/shells 추출 | `form-section.tsx` 의 FormGroup 만 `patterns/shells/form-group.tsx` 로 추출. FieldRow / FormField 는 atomic 으로 components/inputs 잔류. |
+| `ImageViewer` stories 보강 | components 유지 + `stories/assets` 의 실제 이미지로 zoom / pan / overlay 사용 예시 story 1 개 추가 (`Patterns/Data Display/ImageViewer > RealImages`). |
+| `Tooltip` portal 적용 | `Bubble` 을 `createPortal(document.body)` 로 렌더. `position: fixed` 의 containing-block 버그 (transform 조상 시 viewport 좌표 깨짐) 픽스. open state 끌어올려 hover 시점에만 마운트 — 잔존 hidden bubble 제거. |
+
+검증: typecheck OK, 179 tests OK.
