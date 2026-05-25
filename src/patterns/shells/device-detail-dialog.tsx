@@ -1,22 +1,8 @@
-import styled from 'styled-components'
+import { Grid, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: var(--ig-space-4) var(--ig-space-7);
-  font-size: 13px;
-`
-
-const Label = styled.div`
-  color: var(--ig-color-text-muted);
-`
-
-const Value = styled.div`
-  color: var(--ig-color-text-primary);
-  word-break: break-all;
-`
+const VALUE_STYLE = { wordBreak: 'break-all' as const }
 
 function formatDate(value: string | null | undefined): string {
   if (!value) return '—'
@@ -48,14 +34,14 @@ export function DeviceDetailDialog({ device, onClose, title = 'Device Details' }
       width="min(520px, 100%)"
       actions={<Button type="button" variant="secondary" onClick={onClose}>Close</Button>}
     >
-      <Grid>
-        <Label>Device UID</Label><Value>{device.deviceUid}</Value>
-        <Label>Name</Label><Value>{device.name ?? '—'}</Value>
-        <Label>Status</Label><Value>{device.status}</Value>
-        <Label>Organization ID</Label><Value>{device.organizationId}</Value>
-        <Label>Registered</Label><Value>{formatDate(device.registeredAt)}</Value>
-        <Label>Last seen</Label><Value>{formatDate(device.lastSeenAt)}</Value>
-        <Label>Revoked</Label><Value>{formatDate(device.revokedAt)}</Value>
+      <Grid gap={4} columns="140px 1fr">
+        <Text tone="muted" size="13px">Device UID</Text><Text size="13px" style={VALUE_STYLE}>{device.deviceUid}</Text>
+        <Text tone="muted" size="13px">Name</Text><Text size="13px" style={VALUE_STYLE}>{device.name ?? '—'}</Text>
+        <Text tone="muted" size="13px">Status</Text><Text size="13px" style={VALUE_STYLE}>{device.status}</Text>
+        <Text tone="muted" size="13px">Organization ID</Text><Text size="13px" style={VALUE_STYLE}>{device.organizationId}</Text>
+        <Text tone="muted" size="13px">Registered</Text><Text size="13px" style={VALUE_STYLE}>{formatDate(device.registeredAt)}</Text>
+        <Text tone="muted" size="13px">Last seen</Text><Text size="13px" style={VALUE_STYLE}>{formatDate(device.lastSeenAt)}</Text>
+        <Text tone="muted" size="13px">Revoked</Text><Text size="13px" style={VALUE_STYLE}>{formatDate(device.revokedAt)}</Text>
       </Grid>
     </DialogShell>
   )

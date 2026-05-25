@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import { ChevronDown } from 'lucide-react'
+import { Box, Text } from '../../primitives'
 
-const Wrap = styled.div`
-  flex: 1;
-  min-width: 0;
-  position: relative;
-`
+const WRAP_STYLE = { flex: 1, minWidth: 0, position: 'relative' as const }
+const TRIGGER_LABEL_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const }
+const CHECK_STYLE = { marginLeft: 'auto' }
 
 const Trigger = styled.button<{ $loading?: boolean }>`
   width: 100%;
@@ -26,11 +25,6 @@ const Trigger = styled.button<{ $loading?: boolean }>`
   text-overflow: ellipsis;
   &:hover { background: var(--ig-color-surface-interactive-hover); }
   ${(p) => p.$loading && 'opacity: 0.7;'}
-`
-
-const TriggerLabel = styled.span`
-  overflow: hidden;
-  text-overflow: ellipsis;
 `
 
 const Dropdown = styled.div`
@@ -66,12 +60,6 @@ const Option = styled.button<{ $active: boolean }>`
   &:not(:last-child) { border-bottom: 1px solid var(--ig-color-white-06); }
 `
 
-const Check = styled.span`
-  margin-left: auto;
-  color: var(--ig-color-accent);
-  font-size: 12px;
-`
-
 export interface DatasetSelectorMobileOption {
   id: string
   name: string
@@ -94,7 +82,7 @@ export function DatasetSelectorMobile({
   const current = datasets.find((d) => d.id === currentId)
   const label = current?.name ?? (loading ? 'Loading…' : placeholder)
   return (
-    <Wrap>
+    <Box style={WRAP_STYLE}>
       <Trigger
         type="button"
         aria-haspopup="listbox"
@@ -102,7 +90,7 @@ export function DatasetSelectorMobile({
         $loading={loading}
         onClick={() => onToggle(!open)}
       >
-        <TriggerLabel>{label}</TriggerLabel>
+        <Text as="span" style={TRIGGER_LABEL_STYLE}>{label}</Text>
         <ChevronDown size={16} />
       </Trigger>
       {open && datasets.length > 0 ? (
@@ -117,11 +105,11 @@ export function DatasetSelectorMobile({
               onClick={() => { onSelect(d.id); onToggle(false) }}
             >
               {d.name}
-              {d.id === currentId ? <Check>✓</Check> : null}
+              {d.id === currentId ? <Text as="span" tone="accent" size="12px" style={CHECK_STYLE}>✓</Text> : null}
             </Option>
           ))}
         </Dropdown>
       ) : null}
-    </Wrap>
+    </Box>
   )
 }

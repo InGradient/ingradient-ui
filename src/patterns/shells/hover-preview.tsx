@@ -11,17 +11,17 @@ const Wrapper = styled.span<{ $open: boolean; $scale: number }>`
   ${(p) => p.$open && p.$scale !== 1 && `transform: scale(${p.$scale}); z-index: 2;`}
 `
 
-const Floating = styled.div<{ $offset: number; $placement: Placement }>`
-  position: fixed;
-  z-index: var(--ig-z-tooltip);
-  pointer-events: none;
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-md);
-  box-shadow: var(--ig-shadow-floating);
-  padding: var(--ig-space-3);
-  max-width: min(80vw, 480px);
-`
+const FLOATING_STYLE = {
+  position: 'fixed' as const,
+  zIndex: 'var(--ig-z-tooltip)' as unknown as number,
+  pointerEvents: 'none' as const,
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-border-strong)',
+  borderRadius: 'var(--ig-radius-md)',
+  boxShadow: 'var(--ig-shadow-floating)',
+  padding: 'var(--ig-space-3)',
+  maxWidth: 'min(80vw, 480px)',
+}
 
 export interface HoverPreviewProps {
   preview: React.ReactNode
@@ -67,9 +67,9 @@ export function HoverPreview({
     <Wrapper ref={wrapRef} $open={open} $scale={scale} onMouseEnter={handleEnter} onMouseLeave={handleLeave} className={className}>
       {children}
       {open && pos ? (
-        <Floating $offset={offset} $placement={placement} style={{ top: pos.top, left: pos.left }} role="tooltip">
+        <div role="tooltip" style={{ ...FLOATING_STYLE, top: pos.top, left: pos.left }}>
           {preview}
-        </Floating>
+        </div>
       ) : null}
     </Wrapper>
   )

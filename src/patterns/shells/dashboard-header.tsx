@@ -1,12 +1,8 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 import { Inline, Text } from '../../primitives'
 import { PageHeader, PageSubtitle, PageTitle } from '../page/page-shell'
 
-const Subtitle = styled(PageSubtitle)`
-  margin-top: var(--ig-space-2);
-`
-
+const SUBTITLE_STYLE = { marginTop: 'var(--ig-space-2)' }
 const PROJECT_NAME_STYLE = { textAlign: 'right' as const, flexShrink: 0, marginLeft: 'auto' }
 const ACTIONS_STYLE = {
   position: 'relative' as const,
@@ -39,7 +35,7 @@ export function DashboardHeader({
         <Inline justify="space-between" align="flex-start" gap={7} wrap="wrap">
           <div>
             <PageTitle>{title}</PageTitle>
-            {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+            {subtitle ? <PageSubtitle style={SUBTITLE_STYLE}>{subtitle}</PageSubtitle> : null}
           </div>
           {projectName ? <Text size="18px" weight={700} tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
         </Inline>

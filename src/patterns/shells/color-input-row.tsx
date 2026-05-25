@@ -1,11 +1,6 @@
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-5);
-`
 
 const NativeColor = styled.input.attrs({ type: 'color' })`
   width: 40px;
@@ -23,17 +18,11 @@ const NativeColor = styled.input.attrs({ type: 'color' })`
   &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-2xs); }
 `
 
-const RandomButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
-  padding: var(--ig-space-3) var(--ig-space-5);
-  font-size: 12px;
-  line-height: 1;
-`
-
-const HexLabel = styled.span`
-  font-size: 13px;
-  color: var(--ig-color-text-muted);
-  font-family: var(--ig-font-mono);
-`
+const RANDOM_BTN_STYLE = {
+  padding: 'var(--ig-space-3) var(--ig-space-5)',
+  fontSize: 12,
+  lineHeight: 1,
+}
 
 export interface ColorInputRowProps {
   value: string
@@ -51,17 +40,17 @@ export function ColorInputRow({
   disabled,
 }: ColorInputRowProps) {
   return (
-    <Row>
+    <Inline gap={5}>
       <NativeColor
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         aria-label={ariaLabel}
         disabled={disabled}
       />
-      <RandomButton type="button" onClick={onRandomize} disabled={disabled}>
+      <Button type="button" variant="secondary" size="sm" onClick={onRandomize} disabled={disabled} style={RANDOM_BTN_STYLE}>
         {randomLabel}
-      </RandomButton>
-      <HexLabel>{value}</HexLabel>
-    </Row>
+      </Button>
+      <Text as="span" size="13px" tone="muted" fontFamily="mono">{value}</Text>
+    </Inline>
   )
 }

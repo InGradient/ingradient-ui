@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
@@ -10,14 +11,11 @@ import { type DatasetTaskType } from './dataset-task-tag'
 
 import { FormField } from '../../components/inputs'
 
-const ClassList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  max-height: 200px;
-  overflow-y: auto;
-  padding-right: var(--ig-space-1);
-`
+const CLASS_LIST_STYLE = {
+  maxHeight: 200,
+  overflowY: 'auto' as const,
+  paddingRight: 'var(--ig-space-1)',
+}
 
 const ClassRow = styled.label`
   display: inline-flex;
@@ -105,7 +103,7 @@ export function AddDatasetModal({
       </FormField>
       {classes.length > 0 ? (
         <FormField label="Connect classes (optional)">
-          <ClassList>
+          <Stack gap={2} style={CLASS_LIST_STYLE}>
             {classes.map((c) => (
               <ClassRow key={c.id}>
                 <Checkbox
@@ -117,10 +115,10 @@ export function AddDatasetModal({
                   }}
                 />
                 <ColorSwatch $color={c.color} $size="xs" />
-                <span style={{ fontSize: 'var(--ig-font-size-sm)' }}>{c.name}</span>
+                <Text as="span" size="var(--ig-font-size-sm)">{c.name}</Text>
               </ClassRow>
             ))}
-          </ClassList>
+          </Stack>
         </FormField>
       ) : null}
     </DialogShell>

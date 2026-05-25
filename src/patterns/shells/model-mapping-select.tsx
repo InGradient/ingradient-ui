@@ -1,13 +1,12 @@
-import styled from 'styled-components'
 import { Stack, Text } from '../../primitives'
 import { SelectField } from '../../components/inputs/select-field'
 
-const StyledSelect = styled(SelectField)`
-  max-width: 280px;
-  padding: var(--ig-space-3) var(--ig-space-5);
-  font-size: 13px;
-  border-radius: var(--ig-radius-2xs);
-`
+const SELECT_STYLE = {
+  maxWidth: 280,
+  padding: 'var(--ig-space-3) var(--ig-space-5)',
+  fontSize: 13,
+  borderRadius: 'var(--ig-radius-2xs)',
+}
 
 export interface ModelMappingSelectProps {
   /** 모델이 할당돼 있으면 true → select 렌더, false → enabled hint 만 */
@@ -35,17 +34,18 @@ export function ModelMappingSelect({
   }
   return (
     <Stack gap={3}>
-      <StyledSelect
+      <SelectField
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}
         aria-label={ariaLabel}
         title={title}
+        style={SELECT_STYLE}
       >
         <option value="">{unmappedLabel}</option>
         {options.map((name) => (
           <option key={name} value={name}>{name}</option>
         ))}
-      </StyledSelect>
+      </SelectField>
       <Text size="12px" tone="soft">{enabledHint}</Text>
     </Stack>
   )

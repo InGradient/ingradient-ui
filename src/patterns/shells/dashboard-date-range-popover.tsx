@@ -15,11 +15,11 @@ const Popover = styled(MenuPopover)`
   border-radius: var(--ig-radius-2xl);
 `
 
-const PresetButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
-  padding: var(--ig-space-2) var(--ig-space-4);
-  font-size: 12px;
-  font-weight: 600;
-`
+const PRESET_BTN_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  fontSize: 12,
+  fontWeight: 600,
+}
 
 const Calendar = styled.div`
   padding: var(--ig-space-5);
@@ -92,9 +92,9 @@ export function DashboardDateRangePopover({
         <Text size="12px" tone="soft">{subtitle}</Text>
       </Stack>
       <Inline gap={3} wrap="wrap" style={PRESET_ROW_STYLE}>
-        <PresetButton type="button" onClick={() => onSelectPreset('today')}>Today</PresetButton>
-        <PresetButton type="button" onClick={() => onSelectPreset('last7')}>Last 7 days</PresetButton>
-        <PresetButton type="button" onClick={() => onSelectPreset('thisMonth')}>This month</PresetButton>
+        <Button type="button" variant="secondary" size="sm" onClick={() => onSelectPreset('today')} style={PRESET_BTN_STYLE}>Today</Button>
+        <Button type="button" variant="secondary" size="sm" onClick={() => onSelectPreset('last7')} style={PRESET_BTN_STYLE}>Last 7 days</Button>
+        <Button type="button" variant="secondary" size="sm" onClick={() => onSelectPreset('thisMonth')} style={PRESET_BTN_STYLE}>This month</Button>
       </Inline>
       <Calendar>
         <DayPicker mode="range" selected={dateDraft} onSelect={onChangeDraft} numberOfMonths={1} showOutsideDays />
@@ -103,7 +103,7 @@ export function DashboardDateRangePopover({
       <Inline justify="space-between" gap={4} style={FOOTER_STYLE}>
         <SmallText>{footerHint}</SmallText>
         <Inline gap={3}>
-          <PresetButton type="button" onClick={onReset}>Reset</PresetButton>
+          <Button type="button" variant="secondary" size="sm" onClick={onReset} style={PRESET_BTN_STYLE}>Reset</Button>
           <Button variant="secondary" type="button" onClick={onApply}>Apply</Button>
         </Inline>
       </Inline>

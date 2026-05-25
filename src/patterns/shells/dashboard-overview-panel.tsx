@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 import { Box, Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { Panel, PanelHeader, PanelHint, PanelTitle } from '../page/page-shell'
@@ -9,16 +8,14 @@ const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
 const BODY_STYLE = { padding: 'var(--ig-space-7)', overflow: 'visible' as const }
 const PLACEHOLDER_STYLE = { margin: 0 }
 
-const DateButton = styled(Button).attrs({ variant: 'secondary' as const })`
-  padding: var(--ig-space-3) var(--ig-space-5);
-  min-height: 36px;
-  font-size: 12px;
-  font-weight: 600;
-`
+const DATE_BTN_STYLE = {
+  padding: 'var(--ig-space-3) var(--ig-space-5)',
+  minHeight: 36,
+  fontSize: 12,
+  fontWeight: 600,
+}
 
-const ResetButton = styled(DateButton)`
-  min-width: 0;
-`
+const RESET_BTN_STYLE = { ...DATE_BTN_STYLE, minWidth: 0 }
 
 export interface DashboardOverviewPanelProps {
   title?: string
@@ -57,8 +54,8 @@ export function DashboardOverviewPanel({
           {hint ? <PanelHint>{hint}</PanelHint> : null}
         </Stack>
         <Inline gap={4} wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
-          {onResetLayout ? <ResetButton type="button" onClick={onResetLayout}>Reset</ResetButton> : null}
-          <DateButton type="button" onClick={onToggleDate}>{dateLabel}</DateButton>
+          {onResetLayout ? <Button type="button" variant="secondary" onClick={onResetLayout} style={RESET_BTN_STYLE}>Reset</Button> : null}
+          <Button type="button" variant="secondary" onClick={onToggleDate} style={DATE_BTN_STYLE}>{dateLabel}</Button>
           {datePopover}
         </Inline>
       </PanelHeader>
