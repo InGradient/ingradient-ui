@@ -5,6 +5,7 @@ import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 import { RadioCardGroup } from '../../components/inputs/radio-card-group'
 import { Checkbox } from '../../components/inputs/toggles'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
 import { type DatasetTaskType } from './dataset-task-tag'
 
 import { FormField } from '../../components/inputs'
@@ -28,13 +29,6 @@ const ClassRow = styled.label`
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
   }
-`
-
-const ColorDot = styled.span<{ $color: string }>`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${(p) => p.$color};
 `
 
 const TASK_OPTIONS: { value: DatasetTaskType; label: string; disabled?: boolean }[] = [
@@ -122,7 +116,7 @@ export function AddDatasetModal({
                     setClassIds(next)
                   }}
                 />
-                <ColorDot $color={c.color} />
+                <ColorSwatch $color={c.color} $size="xs" />
                 <span style={{ fontSize: 'var(--ig-font-size-sm)' }}>{c.name}</span>
               </ClassRow>
             ))}

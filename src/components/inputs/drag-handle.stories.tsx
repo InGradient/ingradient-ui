@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { WidgetDragHandle } from './widget-drag-handle'
+import { DragHandle } from './drag-handle'
 
 const meta = {
-  title: 'Patterns/Shells/WidgetDragHandle',
-  component: WidgetDragHandle,
+  title: 'Components/Inputs/DragHandle',
+  component: DragHandle,
   parameters: { layout: 'centered' },
   decorators: [
     (Story) => (
@@ -24,7 +24,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof WidgetDragHandle>
+} satisfies Meta<typeof DragHandle>
 
 export default meta
 

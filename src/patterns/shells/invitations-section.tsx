@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
@@ -54,24 +55,13 @@ const SearchWrap = styled.div`
   gap: var(--ig-space-3);
 `
 
-const Empty = styled.p`
-  margin: var(--ig-space-7) 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
-`
+const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 
-const Muted = styled.span`
-  color: var(--ig-color-text-muted);
-`
-
-const StatusText = styled.span<{ $status: string }>`
-  color: ${(p) =>
-    p.$status === 'accepted' ? 'var(--ig-color-success)'
-    : (p.$status === 'revoked' || p.$status === 'expired') ? 'var(--ig-color-danger)'
-    : 'var(--ig-color-text-muted)'
-  };
-`
+function statusTone(status: string): 'success' | 'danger' | 'muted' {
+  if (status === 'accepted') return 'success'
+  if (status === 'revoked' || status === 'expired') return 'danger'
+  return 'muted'
+}
 
 export interface InvitationsRoleOption {
   value: string
@@ -127,9 +117,9 @@ export function InvitationsSection({
 
   const columns: TableColumn<InvitationRow>[] = [
     { key: 'email', header: 'Email', render: (r) => r.email },
-    { key: 'role', header: 'Role', render: (r) => <Muted>{r.roleId}</Muted> },
-    { key: 'status', header: 'Status', render: (r) => <StatusText $status={r.status}>{r.status}</StatusText> },
-    { key: 'expires', header: 'Expires', render: (r) => <Muted>{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Muted> },
+    { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
+    { key: 'status', header: 'Status', render: (r) => <Text tone={statusTone(r.status)}>{r.status}</Text> },
+    { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },
     ...(isAdmin
       ? [{
           key: 'actions',
@@ -190,7 +180,7 @@ export function InvitationsSection({
       )}
 
       {invitations.length === 0 ? (
-        <Empty>No invitations</Empty>
+        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>No invitations</Text>
       ) : (
         <Table<InvitationRow> columns={columns} rows={invitations} ariaLabel="Invitations table" />
       )}

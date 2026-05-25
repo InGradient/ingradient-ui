@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const toneColor = {
   default: 'var(--ig-color-text-primary)',
@@ -12,23 +12,76 @@ const toneColor = {
   danger: 'var(--ig-color-status-failed-text)',
 } as const
 
+const fontFamilyVar = {
+  default: undefined,
+  mono: 'var(--ig-font-mono)',
+} as const
+
+type Tone = keyof typeof toneColor
+type FontFamily = keyof typeof fontFamilyVar
+type Align = 'left' | 'center' | 'right'
+
 const TextRoot = styled.span<{
-  $tone?: keyof typeof toneColor
+  $tone?: Tone
   $size?: string
   $weight?: number
+  $align?: Align
+  $uppercase?: boolean
+  $letterSpacing?: string
+  $fontFamily?: FontFamily
+  $tabularNums?: boolean
 }>`
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 400};
   line-height: 1.45;
   word-break: break-word;
+  ${(p) => p.$align && css`text-align: ${p.$align};`}
+  ${(p) => p.$uppercase && css`text-transform: uppercase;`}
+  ${(p) => p.$letterSpacing && css`letter-spacing: ${p.$letterSpacing};`}
+  ${(p) => {
+    const family = p.$fontFamily && fontFamilyVar[p.$fontFamily]
+    return family ? css`font-family: ${family};` : ''
+  }}
+  ${(p) => p.$tabularNums && css`font-variant-numeric: tabular-nums;`}
 `
 
+export interface TextProps extends React.HTMLAttributes<HTMLElement> {
+  as?: React.ElementType
+  tone?: Tone
+  size?: string
+  weight?: number
+  align?: Align
+  uppercase?: boolean
+  letterSpacing?: string
+  fontFamily?: FontFamily
+  tabularNums?: boolean
+}
+
 export function Text({
+  as,
   tone,
   size,
   weight,
+  align,
+  uppercase,
+  letterSpacing,
+  fontFamily,
+  tabularNums,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement> & { tone?: keyof typeof toneColor; size?: string; weight?: number }) {
-  return <TextRoot $tone={tone} $size={size} $weight={weight} {...props} />
+}: TextProps) {
+  return (
+    <TextRoot
+      as={as}
+      $tone={tone}
+      $size={size}
+      $weight={weight}
+      $align={align}
+      $uppercase={uppercase}
+      $letterSpacing={letterSpacing}
+      $fontFamily={fontFamily}
+      $tabularNums={tabularNums}
+      {...props}
+    />
+  )
 }

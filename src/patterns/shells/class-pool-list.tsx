@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../../components/inputs'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const List = styled.ul`
   list-style: none;
@@ -22,14 +23,6 @@ const Row = styled.li`
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
   }
-`
-
-const ColorDot = styled.span<{ $color: string }>`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${(p) => p.$color};
-  flex-shrink: 0;
 `
 
 const Label = styled.span`
@@ -87,7 +80,7 @@ export function ClassPoolList({ classes, onRemove, onHover, removeIcon, classNam
           onMouseEnter={() => onHover?.(cls.id)}
           onMouseLeave={() => onHover?.(null)}
         >
-          <ColorDot $color={cls.color} />
+          <ColorSwatch $color={cls.color} $size="xs" />
           <Label title={cls.name}>{cls.name}</Label>
           {typeof cls.count === 'number' ? <Count>{cls.count}</Count> : null}
           {onRemove ? (

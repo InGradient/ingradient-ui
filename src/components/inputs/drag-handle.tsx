@@ -1,6 +1,6 @@
 import type { MouseEventHandler } from 'react'
 import styled from 'styled-components'
-import { IconButton } from '../../components/inputs/icon-button'
+import { IconButton } from './icon-button'
 
 const Handle = styled(IconButton).attrs({
   variant: 'secondary' as const,
@@ -35,30 +35,22 @@ const DragDots = styled.span`
   }
 `
 
-export interface WidgetDragHandleProps {
-  /** ARIA label — default "Drag to reorder". */
+export interface DragHandleProps {
   ariaLabel?: string
-  /** title attribute — default "Drag to reorder". */
   title?: string
-  /** Pointer-down handler — caller can use dnd-kit useDraggable's listeners. */
   onPointerDown?: MouseEventHandler<HTMLButtonElement>
   /** Spread caller's dnd-kit `attributes` here. */
   buttonProps?: Record<string, unknown>
   className?: string
 }
 
-/**
- * Widget header drag handle — platform 의 `WidgetDragHandle` + `DragDots` 시각 동일.
- * 2x2 도트 그리드 + cursor: grab. 클릭으로 동작하진 않으며, caller 가
- * `@dnd-kit/core` 의 `useDraggable()` 에서 attributes + listeners 를 prop 로 전달.
- */
-export function WidgetDragHandle({
+export function DragHandle({
   ariaLabel = 'Drag to reorder',
   title = 'Drag to reorder',
   onPointerDown,
   buttonProps,
   className,
-}: WidgetDragHandleProps) {
+}: DragHandleProps) {
   return (
     <Handle
       type="button"

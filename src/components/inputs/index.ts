@@ -1,5 +1,6 @@
 export * from './button'
 export * from './icon-button'
+export * from './drag-handle'
 export * from './text-fields'
 export * from './search-field'
 export * from './input-adornment'

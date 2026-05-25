@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Wrap = styled.div`
   display: flex;
@@ -36,13 +37,6 @@ const LegendItem = styled.div`
   color: var(--ig-color-text-secondary);
 `
 
-const Dot = styled.span<{ $color: string }>`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: ${(p) => p.$color};
-`
-
 const Value = styled.strong`
   color: var(--ig-color-text-primary);
   font-variant-numeric: tabular-nums;
@@ -76,7 +70,7 @@ export function LabelingProgressBar({
         <Legend>
           {segments.map((s, i) => (
             <LegendItem key={i}>
-              <Dot $color={s.color} />
+              <ColorSwatch $color={s.color} $size="xs" />
               {s.label} <Value>{s.value.toLocaleString()}</Value>
             </LegendItem>
           ))}

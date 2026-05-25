@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import {
   InvitationsSection,
   type InvitationsSectionProps,
@@ -8,18 +8,7 @@ import {
   type JoinCodesSectionProps,
 } from './join-codes-section'
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-13);
-`
-
-const Empty = styled.p`
-  margin: var(--ig-space-7) 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
-`
+const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 
 export interface InvitationsTabProps {
   loading?: boolean
@@ -33,12 +22,12 @@ export function InvitationsTab({
   loading, error, invitations, joinCodes,
   loadingText = 'Loading…',
 }: InvitationsTabProps) {
-  if (loading) return <Empty>{loadingText}</Empty>
-  if (error) return <Empty>{error}</Empty>
+  if (loading) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{loadingText}</Text>
+  if (error) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{error}</Text>
   return (
-    <Wrap>
+    <Stack gap={13}>
       <InvitationsSection {...invitations} />
       <JoinCodesSection {...joinCodes} />
-    </Wrap>
+    </Stack>
   )
 }

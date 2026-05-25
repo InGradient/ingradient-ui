@@ -1,6 +1,7 @@
 import { useCallback, type ReactNode } from 'react'
 import { DndContext, DragOverlay, pointerWithin, useDraggable, useDroppable } from '@dnd-kit/core'
-import { AnalysisWidgetShell, WidgetDragHandle } from '@ingradient/ui/patterns'
+import { DragHandle } from '@ingradient/ui'
+import { AnalysisWidgetShell } from '@ingradient/ui/patterns'
 import { useWidgetDragLayout } from './use-widget-drag-layout'
 import {
   rowBelowDropId,
@@ -159,7 +160,7 @@ function WidgetSlot<K extends string>({
             {...draggable.listeners}
             aria-label={`Drag ${title}`}
           >
-            <WidgetDragHandle ariaLabel={`Drag ${title}`} title="Drag to reorder" />
+            <DragHandle ariaLabel={`Drag ${title}`} title="Drag to reorder" />
           </div>
         }
       >
