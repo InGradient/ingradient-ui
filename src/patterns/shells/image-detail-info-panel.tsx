@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 import { Stack, Text } from '../../primitives'
+import { TextButton } from '../../components/inputs/text-button'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
 
 const SECTION_STYLE = {
@@ -8,22 +8,7 @@ const SECTION_STYLE = {
   borderBottom: '1px solid var(--ig-color-border-subtle)',
 }
 
-const DetailsToggle = styled.button`
-  background: none;
-  border: none;
-  padding: var(--ig-space-2) 0;
-  text-align: left;
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-accent);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
+const DETAILS_TOGGLE_STYLE = { padding: 'var(--ig-space-2) 0' }
 const DETAILS_BODY_STYLE = { paddingTop: 'var(--ig-space-2)' }
 
 export interface ImageDetailInfo {
@@ -103,10 +88,15 @@ export function ImageDetailInfoPanel({
         <InfoRowLabel>Captured</InfoRowLabel>
         <InfoRowValue>{image.captured_at ?? '—'}</InfoRowValue>
       </InfoRow>
-      <DetailsToggle type="button" onClick={onToggleDetails}>
-        <span>{detailsOpen ? '▾' : '▸'}</span>
+      <TextButton
+        tone="accent"
+        size="sm"
+        iconLeading={<span>{detailsOpen ? '▾' : '▸'}</span>}
+        onClick={onToggleDetails}
+        style={DETAILS_TOGGLE_STYLE}
+      >
         {detailsOpen ? 'Hide details' : 'Show details'}
-      </DetailsToggle>
+      </TextButton>
       {detailsOpen ? (
         <Stack gap={3} style={DETAILS_BODY_STYLE}>
           {rowIfValue('Upload Source', image.upload_source)}

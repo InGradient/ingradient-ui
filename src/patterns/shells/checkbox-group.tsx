@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Checkbox } from '../../components/inputs/toggles'
+import { TextButton } from '../../components/inputs/text-button'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Wrap = styled.div<{ $maxHeight: number }>`
@@ -17,18 +18,6 @@ const Header = styled.div`
   gap: var(--ig-space-3);
   padding: var(--ig-space-2) var(--ig-space-4);
   border-bottom: 1px solid var(--ig-color-border-subtle);
-`
-
-const HeaderBtn = styled.button<{ $tone: 'accent' | 'muted' }>`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: var(--ig-font-size-xs);
-  color: ${(p) => (p.$tone === 'accent' ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
-  &:hover {
-    color: var(--ig-color-text-primary);
-  }
 `
 
 const ItemRow = styled.div`
@@ -72,12 +61,12 @@ export function CheckboxGroup({
     <Wrap $maxHeight={maxHeight}>
       {showSelectAll && (
         <Header>
-          <HeaderBtn type="button" $tone="accent" onClick={() => onChange(new Set(items.map((it) => it.id)))}>
+          <TextButton tone="accent" size="xs" onClick={() => onChange(new Set(items.map((it) => it.id)))}>
             Select All
-          </HeaderBtn>
-          <HeaderBtn type="button" $tone="muted" onClick={() => onChange(new Set())}>
+          </TextButton>
+          <TextButton tone="muted" size="xs" onClick={() => onChange(new Set())}>
             Deselect All
-          </HeaderBtn>
+          </TextButton>
         </Header>
       )}
       {items.map((item) => (

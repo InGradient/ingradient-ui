@@ -1,6 +1,6 @@
-import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 import { ModeSwitcher } from '../../components/inputs/mode-switcher'
+import { TextButton } from '../../components/inputs/text-button'
 import { DateRangeField } from './date-range-field'
 import { FilterSection } from './filter-section'
 import { FilterClassChip } from './filter-class-chip'
@@ -13,16 +13,6 @@ const HEADER_STYLE = {
   borderBottom: '1px solid var(--ig-color-border-subtle)',
   marginBottom: 'var(--ig-space-2)',
 }
-
-const ResetBtn = styled.button`
-  background: none;
-  border: none;
-  color: var(--ig-color-accent);
-  font-size: var(--ig-font-size-xs);
-  cursor: pointer;
-  padding: 0;
-  &:hover { text-decoration: underline; }
-`
 
 const LABEL_OPTIONS = [
   { value: 'all', label: 'All' },
@@ -76,7 +66,7 @@ export function GalleryFilterPanel({
     <Stack gap={0} style={PANEL_STYLE}>
       <Inline justify="space-between" gap={3} style={HEADER_STYLE}>
         <Text as="strong" size="var(--ig-font-size-sm)">Filter images</Text>
-        {onReset ? <ResetBtn type="button" onClick={onReset}>Reset</ResetBtn> : null}
+        {onReset ? <TextButton tone="accent" size="xs" onClick={onReset}>Reset</TextButton> : null}
       </Inline>
 
       <FilterSection title="Upload date">
@@ -145,8 +135,8 @@ export function GalleryFilterPanel({
         <FilterSection
           title="Pattern labels"
           actions={<>
-            <ResetBtn type="button" onClick={onSelectAllPatterns}>Select all</ResetBtn>
-            <ResetBtn type="button" onClick={onResetPatterns}>Reset</ResetBtn>
+            <TextButton tone="accent" size="xs" onClick={onSelectAllPatterns}>Select all</TextButton>
+            <TextButton tone="accent" size="xs" onClick={onResetPatterns}>Reset</TextButton>
           </>}
         >
           <FilterSearchableList

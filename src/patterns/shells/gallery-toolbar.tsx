@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Inline, Stack, Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
+import { TextButton } from '../../components/inputs/text-button'
 
 const BAR_STYLE = {
   borderBottom: '1px solid var(--ig-color-border-subtle)',
@@ -40,18 +41,6 @@ const SELECTION_ROW_ACTIVE_STYLE = {
 }
 
 const SPACER_STYLE = { flex: 1 }
-
-const SelectAllLink = styled.button`
-  background: none;
-  border: none;
-  color: var(--ig-color-accent);
-  font-size: var(--ig-font-size-sm);
-  cursor: pointer;
-  padding: 0;
-  &:hover {
-    text-decoration: underline;
-  }
-`
 
 export interface GalleryToolbarProps {
   leftStart?: React.ReactNode
@@ -97,7 +86,7 @@ export function GalleryToolbar({
           : `${totalCount ?? 0} ${itemLabel}${(totalCount ?? 0) === 1 ? '' : 's'}`}
       </Text>
       {hiddenCount > 0 && totalCount ? (
-        <SelectAllLink type="button" onClick={onSelectAllVisible}>Select all {totalCount}</SelectAllLink>
+        <TextButton tone="accent" size="sm" onClick={onSelectAllVisible}>Select all {totalCount}</TextButton>
       ) : null}
       {hasSelection ? selectionActions : null}
       <Box style={SPACER_STYLE} />
