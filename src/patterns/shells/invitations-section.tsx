@@ -12,19 +12,6 @@ const Wrap = styled.section`
   gap: var(--ig-space-5);
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
-
-const SectionDesc = styled.p`
-  margin: 0;
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
-  line-height: 1.5;
-`
 
 const SearchRow = styled.div`
   display: flex;
@@ -133,8 +120,8 @@ export function InvitationsSection({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
-      <SectionDesc>{description}</SectionDesc>
+      <Text as="h3" size="15px" weight={600}>{title}</Text>
+      <Text as="p" tone="muted" size="12px">{description}</Text>
 
       {isAdmin && (
         <SearchWrap>

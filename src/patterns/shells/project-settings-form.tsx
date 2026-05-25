@@ -1,18 +1,11 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextField } from '../../components/inputs/text-fields'
 import { AutoSaveStatus, type AutoSaveState } from './auto-save-status'
 import { ProjectTypeTag, type ProjectTypeTone } from './project-type-tag'
 
-const SectionTitle = styled.h4`
-  margin: var(--ig-space-7) 0 var(--ig-space-3);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  &:first-of-type { margin-top: 0; }
-`
+const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 
 const TitleRow = styled.div`
   display: flex;
@@ -131,19 +124,19 @@ export function ProjectSettingsForm({
       />
 
       <TitleRow>
-        <SectionTitle style={{ marginBottom: 0 }}>Project name</SectionTitle>
+        <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={{ marginTop: 0, marginBottom: 0 }}>Project name</Text>
         <ProjectTypeTag tone={projectType} />
       </TitleRow>
       <Row>
         <Input value={name} onChange={(e) => onChangeName(e.target.value)} placeholder="Project name" aria-label="Project name" disabled={!canEdit} />
       </Row>
 
-      <SectionTitle>Description</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Description</Text>
       <Row>
         <Textarea value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
       </Row>
 
-      <SectionTitle>Data grouping</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Data grouping</Text>
       <Row>
         <Label htmlFor="multi-image-group">Group multiple images as one item (for labeling)</Label>
         <Checkbox id="multi-image-group" checked={groupEnabled} onChange={(e) => onChangeGroupEnabled(e.target.checked)} disabled={!canEdit} />
@@ -167,13 +160,13 @@ export function ProjectSettingsForm({
         </>
       )}
 
-      <SectionTitle>Upload</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Upload</Text>
       <Row>
         <Label htmlFor="allow-duplicate-filenames">Allow duplicate file names</Label>
         <Checkbox id="allow-duplicate-filenames" checked={allowDup} onChange={(e) => onChangeAllowDup(e.target.checked)} disabled={!canEdit} />
       </Row>
 
-      <SectionTitle>Display</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Display</Text>
       <Row>
         <Label htmlFor="show-filename-in-gallery">Show file name below each thumbnail in Catalog</Label>
         <Checkbox id="show-filename-in-gallery" checked={showFilenameInGallery} onChange={(e) => onChangeShowFilenameInGallery(e.target.checked)} disabled={!canEdit} />
@@ -185,7 +178,7 @@ export function ProjectSettingsForm({
 
       {isOwner && (
         <>
-          <SectionTitle>Group visibility (owner only)</SectionTitle>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Group visibility (owner only)</Text>
           <Row>
             <Label htmlFor="group-visible-owner-only">Only owner can see all images in group</Label>
             <Checkbox

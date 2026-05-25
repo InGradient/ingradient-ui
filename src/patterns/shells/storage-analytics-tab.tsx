@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 
 const Container = styled.div`
@@ -15,21 +16,6 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const Title = styled.h3`
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-  margin: 0;
-`
-
-const SectionTitle = styled.h4`
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0;
-`
 
 const Grid = styled.div`
   display: grid;
@@ -106,7 +92,7 @@ export function StorageAnalyticsTab({
   return (
     <Container>
       <Header>
-        <Title>{title}</Title>
+        <Text as="h3" size="16px" weight={600}>{title}</Text>
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>
@@ -114,32 +100,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <SectionTitle>{tierTitle}</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{tierTitle}</Text>
       {tierChart}
 
-      <SectionTitle>{projectTitle}</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
       {projectChart}
 
       <Grid>
         <div>
-          <SectionTitle style={{ marginBottom: 8 }}>{resolutionTitle}</SectionTitle>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={{ marginBottom: 8 }}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <SectionTitle style={{ marginBottom: 8 }}>{formatTitle}</SectionTitle>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={{ marginBottom: 8 }}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <SectionTitle>{tierEfficiencyTitle}</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <SectionTitle>{costTitle}</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <SectionTitle>{recommendationsTitle}</SectionTitle>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}

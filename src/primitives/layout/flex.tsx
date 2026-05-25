@@ -15,9 +15,10 @@ export function Stack({
   gap,
   align,
   justify,
+  as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string }) {
-  return <StackRoot $gap={gap} $align={align} $justify={justify} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; as?: React.ElementType }) {
+  return <StackRoot as={as} $gap={gap} $align={align} $justify={justify} {...props} />
 }
 
 const InlineRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string; $wrap?: string }>`
@@ -34,9 +35,10 @@ export function Inline({
   align,
   justify,
   wrap,
+  as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; wrap?: string }) {
-  return <InlineRoot $gap={gap} $align={align} $justify={justify} $wrap={wrap} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; wrap?: string; as?: React.ElementType }) {
+  return <InlineRoot as={as} $gap={gap} $align={align} $justify={justify} $wrap={wrap} {...props} />
 }
 
 const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: string | number }>`

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Skeleton } from '../../components/feedback'
-import { surfaceCard } from '../../primitives'
+import { surfaceCard, Text } from '../../primitives'
 
 const ChartCard = styled.div`
   ${surfaceCard}
@@ -38,13 +38,6 @@ const ChartCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-1);
-`
-
-const ChartTitle = styled.h3`
-  margin: 0;
-  font-size: var(--ig-font-size-md);
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
 `
 
 const ChartDescription = styled.p`
@@ -87,7 +80,7 @@ export function ChartContainer({
       {(title || description || headerExtra || legend) ? (
         <ChartHead>
           <ChartCopy>
-            {title ? <ChartTitle>{title}</ChartTitle> : null}
+            {title ? <Text as="h3" size="var(--ig-font-size-md)" weight={700}>{title}</Text> : null}
             {description ? <ChartDescription>{description}</ChartDescription> : null}
           </ChartCopy>
           {(headerExtra || legend) ? (

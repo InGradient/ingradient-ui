@@ -11,12 +11,6 @@ const Wrap = styled.div`
   gap: var(--ig-space-7);
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
 
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 
@@ -89,7 +83,7 @@ export function OrgMembersTab({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
+      <Text as="h3" size="15px" weight={600}>{title}</Text>
       {members.length === 0 ? (
         <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { BarChartCard } from '../charts/bar-chart-card'
 import { SectionPanel } from '../../components/data-display/layout'
 
@@ -35,12 +36,7 @@ const Block = styled.div`
   &:last-child { margin-bottom: 0; }
 `
 
-const SectionTitle = styled.h3`
-  margin: 0 0 var(--ig-space-3) 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ig-color-text-secondary);
-`
+const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
 const Table = styled.table`
   width: 100%;
@@ -92,7 +88,7 @@ export function PerDatasetDistributionWidget({
       ) : (
         datasetDistribution.map((dataset) => (
           <Block key={dataset.dataset_id}>
-            <SectionTitle>{dataset.name}</SectionTitle>
+            <Text as="h3" tone="secondary" size="14px" weight={600} style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
             {dataset.class_counts.length === 0 ? (
               <Empty>{noLabelsText}</Empty>
             ) : (

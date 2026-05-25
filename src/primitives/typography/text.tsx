@@ -31,6 +31,7 @@ const TextRoot = styled.span<{
   $fontFamily?: FontFamily
   $tabularNums?: boolean
 }>`
+  margin: 0;
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 400};

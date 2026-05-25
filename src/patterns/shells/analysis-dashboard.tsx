@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { StatCard } from '../cards/stat-card'
 
 const Root = styled.div`
@@ -20,12 +21,7 @@ const WidgetGrid = styled.div<{ $columns: number }>`
   gap: var(--ig-space-5);
 `
 
-const SectionTitle = styled.h3`
-  margin: 0 0 var(--ig-space-3);
-  font-size: var(--ig-font-size-md);
-  font-weight: 600;
-  color: var(--ig-color-text-secondary);
-`
+const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
 export interface AnalysisStat {
   label: React.ReactNode
@@ -69,7 +65,7 @@ export function AnalysisDashboard({
       ) : null}
       {widgets && widgets.length > 0 ? (
         <section>
-          {widgetsTitle ? <SectionTitle>{widgetsTitle}</SectionTitle> : null}
+          {widgetsTitle ? <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{widgetsTitle}</Text> : null}
           <WidgetGrid $columns={widgetColumns}>{widgets.map((w) => (
             <React.Fragment key={w.id}>{w.content}</React.Fragment>
           ))}</WidgetGrid>
@@ -77,13 +73,13 @@ export function AnalysisDashboard({
       ) : null}
       {charts ? (
         <section>
-          <SectionTitle>{chartsTitle}</SectionTitle>
+          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{chartsTitle}</Text>
           {charts}
         </section>
       ) : null}
       {tableSlot ? (
         <section>
-          <SectionTitle>{tableTitle}</SectionTitle>
+          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{tableTitle}</Text>
           {tableSlot}
         </section>
       ) : null}

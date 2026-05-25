@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { surfaceCard } from '../../primitives'
+import { surfaceCard, Text } from '../../primitives'
 
 const Root = styled.div<{ $span: number }>`
   ${surfaceCard}
@@ -26,12 +26,6 @@ const TitleBlock = styled.div`
   gap: 2px;
 `
 
-const Title = styled.h4`
-  margin: 0;
-  font-size: var(--ig-font-size-md);
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
 
 const Subtitle = styled.span`
   font-size: var(--ig-font-size-xs);
@@ -67,7 +61,7 @@ export function DashboardWidget({
     <Root $span={span} className={className}>
       <Header>
         <TitleBlock>
-          <Title>{title}</Title>
+          <Text as="h4" size="var(--ig-font-size-md)" weight={600}>{title}</Text>
           {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
         </TitleBlock>
         {actions ? <Actions>{actions}</Actions> : null}

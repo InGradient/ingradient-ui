@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 
@@ -9,12 +10,6 @@ const Wrap = styled.div`
   max-width: 480px;
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
 
 const Field = styled.div`
   display: flex;
@@ -84,7 +79,7 @@ export function OrgSettingsTab({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
+      <Text as="h3" size="16px" weight={600}>{title}</Text>
 
       <Field>
         <FieldLabel>Code</FieldLabel>

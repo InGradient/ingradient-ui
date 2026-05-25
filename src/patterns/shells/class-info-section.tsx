@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 
 const Section = styled.section`
   display: flex;
@@ -7,14 +8,6 @@ const Section = styled.section`
   gap: var(--ig-space-3);
 `
 
-const Title = styled.h3`
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
 
 export interface ClassInfoSectionProps {
   title: string
@@ -25,7 +18,7 @@ export interface ClassInfoSectionProps {
 export function ClassInfoSection({ title, children, className }: ClassInfoSectionProps) {
   return (
     <Section className={className}>
-      <Title>{title}</Title>
+      <Text as="h3" tone="muted" size="12px" weight={600} uppercase letterSpacing="0.04em">{title}</Text>
       {children}
     </Section>
   )

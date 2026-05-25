@@ -17,11 +17,6 @@ const Header = styled.div`
   gap: var(--ig-space-3);
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-`
 
 const InfoGrid = styled.div`
   display: grid;
@@ -117,7 +112,7 @@ export function DevicesLicenseSection({
   return (
     <Section>
       <Header>
-        <SectionTitle>License</SectionTitle>
+        <Text as="h3" size="15px" weight={600}>License</Text>
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}

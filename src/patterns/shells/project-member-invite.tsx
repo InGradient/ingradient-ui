@@ -3,14 +3,7 @@ import { Text } from '../../primitives'
 import { TextField } from '../../components/inputs/text-fields'
 import { OptionRow } from '../../components/data-display/option-row'
 
-const SectionTitle = styled.h4`
-  margin: var(--ig-space-7) 0 var(--ig-space-3);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 
 const Row = styled.div`
   padding: var(--ig-space-5) 0;
@@ -78,7 +71,7 @@ export function ProjectMemberInvite({
 
   return (
     <>
-      <SectionTitle>{title}</SectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
       <Row>
         <Stack>
           <Input

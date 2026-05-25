@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 
 const Panel = styled.aside`
   display: flex;
@@ -28,12 +29,6 @@ const SectionHeaderRow = styled.div`
   padding: 0 var(--ig-space-7);
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: var(--ig-font-size-md);
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
 
 const SectionBody = styled.div`
   display: flex;
@@ -59,7 +54,7 @@ export function CatalogRightPanel({ sections, className }: CatalogRightPanelProp
       {sections.map((s, i) => (
         <Section key={i}>
           <SectionHeaderRow>
-            <SectionTitle>{s.title}</SectionTitle>
+            <Text as="h3" size="var(--ig-font-size-md)" weight={600}>{s.title}</Text>
             {s.headerActions}
           </SectionHeaderRow>
           <SectionBody>{s.body}</SectionBody>

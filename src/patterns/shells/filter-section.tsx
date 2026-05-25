@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 
 const Section = styled.section`
   display: flex;
@@ -19,14 +20,6 @@ const HeaderRow = styled.div`
   gap: var(--ig-space-3);
 `
 
-const Title = styled.h4`
-  margin: 0;
-  font-size: var(--ig-font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ig-color-text-muted);
-`
 
 const Actions = styled.div`
   display: flex;
@@ -45,7 +38,7 @@ export function FilterSection({ title, actions, children, className }: FilterSec
   return (
     <Section className={className}>
       <HeaderRow>
-        <Title>{title}</Title>
+        <Text as="h4" tone="muted" size="var(--ig-font-size-xs)" weight={600} uppercase letterSpacing="0.04em">{title}</Text>
         {actions ? <Actions>{actions}</Actions> : null}
       </HeaderRow>
       {children}

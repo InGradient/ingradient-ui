@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
+
+const TITLE_STYLE = { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }
 
 const Bar = styled.header`
   display: flex;
@@ -20,24 +23,6 @@ const TitleBlock = styled.div`
   flex: 1;
 `
 
-const Title = styled.h1`
-  margin: 0;
-  font-size: var(--ig-font-size-lg);
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
-
-const Subtitle = styled.p`
-  margin: 0;
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
 
 const RightSlot = styled.div`
   display: flex;
@@ -57,8 +42,8 @@ export function PageTopBar({ title, subtitle, rightSlot, className }: PageTopBar
   return (
     <Bar className={className}>
       <TitleBlock>
-        <Title>{title}</Title>
-        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        <Text as="h1" size="var(--ig-font-size-lg)" weight={600} style={TITLE_STYLE}>{title}</Text>
+        {subtitle ? <Text as="p" tone="muted" size="var(--ig-font-size-xs)" style={TITLE_STYLE}>{subtitle}</Text> : null}
       </TitleBlock>
       {rightSlot ? <RightSlot>{rightSlot}</RightSlot> : null}
     </Bar>

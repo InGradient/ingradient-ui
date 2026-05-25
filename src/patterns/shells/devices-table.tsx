@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DropdownSelect } from '../../components/inputs/dropdown-select'
 import { SearchField } from '../../components/inputs/search-field'
@@ -18,11 +19,6 @@ const Header = styled.div`
   flex-wrap: wrap;
 `
 
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-`
 
 const Actions = styled.div`
   display: flex;
@@ -117,7 +113,7 @@ export function DevicesTable({
   return (
     <Section>
       <Header>
-        <SectionTitle>{title}</SectionTitle>
+        <Text as="h3" size="15px" weight={600}>{title}</Text>
         {isAdmin ? (
           <Actions>
             {offlineEnabled ? (

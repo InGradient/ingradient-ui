@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button, Checkbox, IconButton } from '../../components/inputs'
 import { Spinner } from '../../components/feedback/spinner'
 import { ClosePanelIcon } from '../../components/icons/catalog-icons'
@@ -25,15 +26,7 @@ const Header = styled.div`
   flex-shrink: 0;
 `
 
-const Title = styled.h2`
-  font-size: var(--ig-font-size-lg);
-  font-weight: 600;
-  margin: 0;
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
+const TITLE_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
 
 const SelectAllRow = styled.div`
   display: flex;
@@ -104,7 +97,7 @@ export function DatasetListPanel({
   return (
     <Panel data-ig-component="DatasetListPanel" data-ig-layer="patterns">
       <Header>
-        <Title>{title}</Title>
+        <Text as="h2" size="var(--ig-font-size-lg)" weight={600} style={TITLE_STYLE}>{title}</Text>
         <HeaderActions>
           <Button
             variant="accent"

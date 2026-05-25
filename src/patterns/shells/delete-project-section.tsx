@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 
@@ -8,14 +9,7 @@ const Wrap = styled.div`
   border-top: 1px solid var(--ig-color-border-subtle);
 `
 
-const SubsectionTitle = styled.h4`
-  margin: 0 0 var(--ig-space-3);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
 const Hint = styled.p`
   color: var(--ig-color-text-soft);
@@ -58,7 +52,7 @@ export function DeleteProjectSection({
   const disabled = confirmInput !== projectName || !!pending
   return (
     <Wrap>
-      <SubsectionTitle>{title}</SubsectionTitle>
+      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
       <Hint>{hintTemplate(projectName)}</Hint>
       <Row>
         <ConfirmInput
