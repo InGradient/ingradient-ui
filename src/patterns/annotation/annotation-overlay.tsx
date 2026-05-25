@@ -1,6 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import { coverCropRegion } from '../../utils/cover-crop'
+
+const LAYER_STYLE = {
+  position: 'absolute' as const,
+  inset: 0,
+  width: '100%',
+  height: '100%',
+  pointerEvents: 'none' as const,
+  overflow: 'hidden' as const,
+}
 
 export interface AnnotationOverlayBbox {
   /** Optional — undefined classId falls back to `defaultColor` and is excluded from
@@ -42,15 +50,6 @@ export interface AnnotationOverlayProps {
   className?: string
 }
 
-const Layer = styled.svg`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-`
-
 export function AnnotationOverlay({
   bboxes,
   points,
@@ -90,7 +89,7 @@ export function AnnotationOverlay({
   const pointRadius = 0.015
 
   return (
-    <Layer viewBox="0 0 1 1" preserveAspectRatio="none" className={className}>
+    <svg viewBox="0 0 1 1" preserveAspectRatio="none" className={className} style={LAYER_STYLE}>
       {visibleBboxes.map((bbox, i) => {
         const color = getColor(bbox.classId) ?? defaultColor
         const x = toCx(bbox.x)
@@ -141,6 +140,6 @@ export function AnnotationOverlay({
           </g>
         )
       })}
-    </Layer>
+    </svg>
   )
 }
