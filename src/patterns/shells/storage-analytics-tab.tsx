@@ -1,43 +1,16 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Grid, Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-9);
-  padding: var(--ig-space-1) 0;
-`
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--ig-space-9);
-`
-
-const ErrorWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-7);
-  background: var(--ig-color-alert-danger-bg);
-  border: 1px solid var(--ig-color-alert-danger-border);
-  border-radius: var(--ig-radius-xxs);
-`
-
-const ErrorMessage = styled.p`
-  margin: 0;
-  color: var(--ig-color-alert-danger-text);
-  font-size: 13px;
-`
+const CONTAINER_STYLE = { padding: 'var(--ig-space-1) 0' }
+const ERROR_WRAP_STYLE = {
+  padding: 'var(--ig-space-7)',
+  background: 'var(--ig-color-alert-danger-bg)',
+  border: '1px solid var(--ig-color-alert-danger-border)',
+  borderRadius: 'var(--ig-radius-xxs)',
+}
+const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
+const SUB_TITLE_STYLE = { marginBottom: 8 }
 
 export interface StorageAnalyticsTabProps {
   title?: string
@@ -80,23 +53,23 @@ export function StorageAnalyticsTab({
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Container>
-        <ErrorWrap>
-          <ErrorMessage>{error}</ErrorMessage>
+      <Stack gap={9} style={CONTAINER_STYLE}>
+        <Stack gap={3} style={ERROR_WRAP_STYLE}>
+          <Text as="p" size="13px" style={ERROR_TEXT_STYLE}>{error}</Text>
           {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
-        </ErrorWrap>
-      </Container>
+        </Stack>
+      </Stack>
     )
   }
 
   return (
-    <Container>
-      <Header>
+    <Stack gap={9} style={CONTAINER_STYLE}>
+      <Inline justify="space-between">
         <Text as="h3" size="16px" weight={600}>{title}</Text>
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>
-      </Header>
+      </Inline>
 
       {overview}
 
@@ -106,13 +79,13 @@ export function StorageAnalyticsTab({
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
       {projectChart}
 
-      <Grid>
+      <Grid gap={9} columns="1fr 1fr">
         <div>
-          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={{ marginBottom: 8 }}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={{ marginBottom: 8 }}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
@@ -129,6 +102,6 @@ export function StorageAnalyticsTab({
           {recommendations}
         </>
       ) : null}
-    </Container>
+    </Stack>
   )
 }

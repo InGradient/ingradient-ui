@@ -1,32 +1,28 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Stack } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField, TextareaField } from '../../components/inputs/text-fields'
 import { ClassInfoSection } from './class-info-section'
 import { ColorInputRow } from './color-input-row'
 
-const Sidebar = styled.aside`
-  width: 300px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-`
+const SIDEBAR_STYLE = {
+  width: 300,
+  flexShrink: 0,
+  background: 'var(--ig-color-surface-panel)',
+  borderRadius: 'var(--ig-radius-xl)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  height: '100%',
+  minHeight: 0,
+  overflow: 'hidden' as const,
+}
 
-const Panel = styled.div`
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: var(--ig-space-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-9);
-`
+const PANEL_STYLE = {
+  flex: 1,
+  minHeight: 0,
+  overflowY: 'auto' as const,
+  padding: 'var(--ig-space-7)',
+}
 
 const NameInput = styled(TextField).attrs({ size: 'sm' as const })`
   max-width: 280px;
@@ -78,8 +74,8 @@ export function ClassInfoSidebar({
   descriptionPlaceholder = 'Class description (optional)',
 }: ClassInfoSidebarProps) {
   return (
-    <Sidebar>
-      <Panel>
+    <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
+      <Stack gap={9} style={PANEL_STYLE}>
         <ClassInfoSection title="Name">
           <NameInput
             value={selectedClass.name}
@@ -112,7 +108,7 @@ export function ClassInfoSidebar({
         <ClassInfoSection title="Danger zone">
           <DeleteBtn type="button" onClick={onDelete}>{deleteLabel}</DeleteBtn>
         </ClassInfoSection>
-      </Panel>
-    </Sidebar>
+      </Stack>
+    </Stack>
   )
 }

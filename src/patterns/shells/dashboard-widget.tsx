@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { surfaceCard, Text } from '../../primitives'
+import { Inline, Stack, surfaceCard, Text } from '../../primitives'
 
 const Root = styled.div<{ $span: number }>`
   ${surfaceCard}
@@ -13,37 +13,8 @@ const Root = styled.div<{ $span: number }>`
   min-width: 0;
 `
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-3);
-`
-
-const TitleBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
-
-
-const Subtitle = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-`
-
-const Actions = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
-
-const Body = styled.div`
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-`
+const TITLE_BLOCK_STYLE = { gap: 2 }
+const BODY_STYLE = { flex: 1, minHeight: 0 }
 
 export interface DashboardWidgetProps {
   title: React.ReactNode
@@ -59,14 +30,14 @@ export function DashboardWidget({
 }: DashboardWidgetProps) {
   return (
     <Root $span={span} className={className}>
-      <Header>
-        <TitleBlock>
+      <Inline justify="space-between" gap={3}>
+        <Stack gap={0} style={TITLE_BLOCK_STYLE}>
           <Text as="h4" size="var(--ig-font-size-md)" weight={600}>{title}</Text>
-          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-        </TitleBlock>
-        {actions ? <Actions>{actions}</Actions> : null}
-      </Header>
-      <Body>{children}</Body>
+          {subtitle ? <Text size="var(--ig-font-size-xs)" tone="muted">{subtitle}</Text> : null}
+        </Stack>
+        {actions ? <Inline gap={2}>{actions}</Inline> : null}
+      </Inline>
+      <Stack gap={0} style={BODY_STYLE}>{children}</Stack>
     </Root>
   )
 }

@@ -1,68 +1,43 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button, Checkbox, IconButton } from '../../components/inputs'
 import { Spinner } from '../../components/feedback/spinner'
 import { ClosePanelIcon } from '../../components/icons/catalog-icons'
 import { DatasetListItem } from './dataset-list-item'
 import type { DatasetTaskType } from './dataset-task-tag'
 
-const Panel = styled.aside`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: var(--ig-color-surface-panel);
-  border-right: 1px solid var(--ig-color-border-subtle);
-`
+const PANEL_STYLE = {
+  height: '100%',
+  background: 'var(--ig-color-surface-panel)',
+  borderRight: '1px solid var(--ig-color-border-subtle)',
+}
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 72px;
-  padding: 0 var(--ig-space-7);
-  gap: var(--ig-space-4);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  flex-shrink: 0;
-`
+const HEADER_STYLE = {
+  minHeight: 72,
+  padding: '0 var(--ig-space-7)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  flexShrink: 0,
+}
+
+const SELECT_ALL_ROW_STYLE = {
+  padding: 'var(--ig-space-4) var(--ig-space-6)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+}
+
+const LIST_STYLE = {
+  flex: 1,
+  minHeight: 0,
+  overflowY: 'auto' as const,
+  padding: 'var(--ig-space-2)',
+  gap: 2,
+}
+
+const PLACEHOLDER_STYLE = {
+  padding: 'var(--ig-space-7)',
+}
 
 const TITLE_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
-
-const SelectAllRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-5);
-  padding: var(--ig-space-4) var(--ig-space-6);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-`
-
-const List = styled.div`
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: var(--ig-space-2);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
-
-
-const HeaderActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
-
-const Placeholder = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--ig-space-7);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
-  text-align: center;
-`
+const SELECTED_COUNT_STYLE = { color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }
 
 export interface DatasetListPanelDataset {
   id: string
@@ -95,10 +70,10 @@ export function DatasetListPanel({
   const someSelected = datasets.some((d) => selectedIds.has(d.id))
 
   return (
-    <Panel data-ig-component="DatasetListPanel" data-ig-layer="patterns">
-      <Header>
+    <Stack as="aside" gap={0} data-ig-component="DatasetListPanel" data-ig-layer="patterns" style={PANEL_STYLE}>
+      <Inline justify="space-between" gap={4} style={HEADER_STYLE}>
         <Text as="h2" size="var(--ig-font-size-lg)" weight={600} style={TITLE_STYLE}>{title}</Text>
-        <HeaderActions>
+        <Inline gap={2}>
           <Button
             variant="accent"
             size="sm"
@@ -120,10 +95,10 @@ export function DatasetListPanel({
               <ClosePanelIcon size={16} />
             </IconButton>
           ) : null}
-        </HeaderActions>
-      </Header>
+        </Inline>
+      </Inline>
       {!noProject && !loading && datasets.length > 0 ? (
-        <SelectAllRow>
+        <Inline justify="space-between" gap={5} style={SELECT_ALL_ROW_STYLE}>
           <Checkbox
             checked={allSelected}
             indeterminate={!allSelected && someSelected}
@@ -131,19 +106,19 @@ export function DatasetListPanel({
             label={allSelected ? 'Deselect all' : 'Select all'}
           />
           {selectedIds.size > 0 ? (
-            <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }}>
+            <span style={SELECTED_COUNT_STYLE}>
               {selectedIds.size} selected
             </span>
           ) : null}
-        </SelectAllRow>
+        </Inline>
       ) : null}
-      <List>
+      <Stack gap={0} style={LIST_STYLE}>
         {noProject ? (
-          <Placeholder>No project selected</Placeholder>
+          <Inline justify="center" style={PLACEHOLDER_STYLE}><Text tone="muted" size="var(--ig-font-size-sm)" align="center">No project selected</Text></Inline>
         ) : loading ? (
-          <Placeholder><Spinner size="md" /></Placeholder>
+          <Inline justify="center" style={PLACEHOLDER_STYLE}><Spinner size="md" /></Inline>
         ) : datasets.length === 0 ? (
-          <Placeholder>No datasets</Placeholder>
+          <Inline justify="center" style={PLACEHOLDER_STYLE}><Text tone="muted" size="var(--ig-font-size-sm)" align="center">No datasets</Text></Inline>
         ) : (
           datasets.map((d) => (
             <DatasetListItem
@@ -160,7 +135,7 @@ export function DatasetListPanel({
             />
           ))
         )}
-      </List>
-    </Panel>
+      </Stack>
+    </Stack>
   )
 }

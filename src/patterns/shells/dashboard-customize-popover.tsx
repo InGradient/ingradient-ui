@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { MenuPopover } from '../../components/overlays/popovers'
 import { Checkbox } from '../../components/inputs/toggles'
 
@@ -12,20 +13,7 @@ const Wrap = styled(MenuPopover)`
   border-radius: var(--ig-radius-lg);
 `
 
-const Title = styled.div`
-  margin-bottom: var(--ig-space-4);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ig-color-text-soft);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-`
-
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
+const TITLE_STYLE = { marginBottom: 'var(--ig-space-4)' }
 
 export interface DashboardCustomizeItem {
   key: string
@@ -47,8 +35,8 @@ export function DashboardCustomizePopover<K extends string = string>({
 }: DashboardCustomizePopoverProps<K>) {
   return (
     <Wrap className={className} role="menu">
-      <Title>{title}</Title>
-      <List>
+      <Text size="12px" weight={700} tone="soft" uppercase letterSpacing="0.05em" style={TITLE_STYLE}>{title}</Text>
+      <Stack gap={3}>
         {items.map((item) => (
           <Checkbox
             key={item.key}
@@ -57,7 +45,7 @@ export function DashboardCustomizePopover<K extends string = string>({
             onChange={(e) => onToggle(item.key as K, e.target.checked)}
           />
         ))}
-      </List>
+      </Stack>
     </Wrap>
   )
 }
