@@ -13,15 +13,15 @@
 
 **새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
 
-## 현재 상태 (last update: 2026-05-25, 15 커밋 누적)
+## 현재 상태 (last update: 2026-05-25, 37 커밋 누적)
 
 | 항목 | 값 |
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **264 개** |
-| 제거된 인라인 | **235 개 (47%)** |
-| 마이그레이션된 patterns 파일 | ~55 개 |
+| 인라인 styled 정의 (현재) | **133 개** |
+| 제거된 인라인 | **366 개 (73%)** |
+| 마이그레이션된 patterns 파일 | ~100 개 |
 | TypeScript 통과 | ✅ 매 커밋 |
 
 ## Phase 완료 상태
@@ -128,6 +128,11 @@ CLAUDE.md 규칙: 200 줄 미만 / 하드코딩 금지 / 한국어 커밋 / 기�
 - `src/patterns/shells/project-settings-form.tsx` — 다수 Row + Label + Input + Textarea (focus 유지)
 - `src/patterns/cards/stat-card.tsx` — uppercase letterSpacing Text 활용
 - `src/patterns/shells/labeling-progress-bar.tsx` — ColorSwatch + dynamic Segment styled 유지 패턴
+- `src/patterns/shells/image-detail-info-panel.tsx` — Stack 의 Section + DetailsToggle hover 유지
+- `src/patterns/shells/image-detail-sidebar.tsx` — Stack as="aside" + last-child border 만 styled 유지
+- `src/patterns/shells/delete-account-dialog.tsx` — Stack as="label" + 인라인 Button props
+- `src/patterns/shells/project-permission-matrix.tsx` — sticky th/td 만 styled + 검색/스크롤 wrap 은 primitives
+- `src/patterns/shells/comments-panel.tsx` — Composer textarea (focus-visible) 만 styled + 나머지는 primitives
 
 ## 남은 파일 우선순위 (~50 개)
 
