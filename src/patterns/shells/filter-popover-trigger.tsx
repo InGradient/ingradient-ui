@@ -1,10 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { FloatingOverlay } from '../../components/overlays/floating-overlay'
 
-const Wrap = styled.span`
-  position: relative;
-  display: inline-flex;
-`
+const WRAP_STYLE = { position: 'relative' as const, display: 'inline-flex' as const }
+
+const BACKDROP_STYLE = {
+  position: 'fixed' as const,
+  inset: 0,
+  zIndex: 'calc(var(--ig-z-context-menu) - 1)' as unknown as number,
+}
+
+const PANEL_BASE_STYLE = { minWidth: 280, padding: 'var(--ig-space-4)' }
 
 const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   display: inline-flex;
@@ -25,23 +31,6 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   &:hover:not(:disabled) {
     background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)')};
   }
-`
-
-const Backdrop = styled.div`
-  position: fixed;
-  inset: 0;
-  z-index: calc(var(--ig-z-context-menu) - 1);
-`
-
-const Panel = styled.div`
-  position: fixed;
-  z-index: var(--ig-z-context-menu);
-  min-width: 280px;
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-md);
-  box-shadow: var(--ig-shadow-popover);
-  padding: var(--ig-space-4);
 `
 
 export interface FilterPopoverTriggerProps {
@@ -82,7 +71,7 @@ export function FilterPopoverTrigger({
   }, [open])
 
   return (
-    <Wrap className={className}>
+    <span className={className} style={WRAP_STYLE}>
       <Trigger
         ref={triggerRef}
         type="button"
@@ -97,16 +86,23 @@ export function FilterPopoverTrigger({
       </Trigger>
       {open && pos ? (
         <>
-          <Backdrop onClick={() => setOpen(false)} />
-          <Panel
+          <div onClick={() => setOpen(false)} style={BACKDROP_STYLE} />
+          <FloatingOverlay
+            variant="menu"
+            top={pos.top}
+            left={pos.left}
             role="dialog"
-            style={{ top: pos.top, left: pos.left, ...(panelWidth ? { width: panelWidth } : {}), ...(panelMinWidth ? { minWidth: panelMinWidth } : {}) }}
+            style={{
+              ...PANEL_BASE_STYLE,
+              ...(panelWidth ? { width: panelWidth } : {}),
+              ...(panelMinWidth ? { minWidth: panelMinWidth } : {}),
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {panel}
-          </Panel>
+          </FloatingOverlay>
         </>
       ) : null}
-    </Wrap>
+    </span>
   )
 }

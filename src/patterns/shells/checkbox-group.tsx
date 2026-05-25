@@ -1,33 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Box, Inline } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextButton } from '../../components/inputs/text-button'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
-const Wrap = styled.div<{ $maxHeight: number }>`
-  max-height: ${(p) => `${p.$maxHeight}px`};
-  overflow-y: auto;
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-2) 0;
-  min-width: 0;
-`
+const WRAP_BASE_STYLE = {
+  overflowY: 'auto' as const,
+  border: '1px solid var(--ig-color-border-subtle)',
+  borderRadius: 'var(--ig-radius-sm)',
+  padding: 'var(--ig-space-2) 0',
+  minWidth: 0,
+}
 
-const Header = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-2) var(--ig-space-4);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-`
+const HEADER_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+}
 
-const ItemRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-2) var(--ig-space-4);
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-primary);
-`
+const ITEM_ROW_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  fontSize: 'var(--ig-font-size-sm)',
+  color: 'var(--ig-color-text-primary)',
+}
 
 export interface CheckboxGroupItem {
   id: string
@@ -58,19 +52,19 @@ export function CheckboxGroup({
   }
 
   return (
-    <Wrap $maxHeight={maxHeight}>
+    <Box style={{ ...WRAP_BASE_STYLE, maxHeight }}>
       {showSelectAll && (
-        <Header>
+        <Inline gap={3} style={HEADER_STYLE}>
           <TextButton tone="accent" size="xs" onClick={() => onChange(new Set(items.map((it) => it.id)))}>
             Select All
           </TextButton>
           <TextButton tone="muted" size="xs" onClick={() => onChange(new Set())}>
             Deselect All
           </TextButton>
-        </Header>
+        </Inline>
       )}
       {items.map((item) => (
-        <ItemRow key={item.id}>
+        <Inline key={item.id} gap={3} style={ITEM_ROW_STYLE}>
           <Checkbox
             checked={selectedIds.has(item.id)}
             onChange={() => handleToggle(item.id)}
@@ -81,8 +75,8 @@ export function CheckboxGroup({
               </>
             }
           />
-        </ItemRow>
+        </Inline>
       ))}
-    </Wrap>
+    </Box>
   )
 }

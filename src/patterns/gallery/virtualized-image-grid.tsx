@@ -1,21 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useVirtualizer } from '@tanstack/react-virtual'
+import { Text } from '../../primitives'
 import { ImageGridCell } from './image-grid-cell'
 import type { ImageGridProps } from './image-grid'
 
-const Scroll = styled.div`
-  height: 100%;
-  overflow-y: auto;
-  min-width: 0;
-  position: relative;
-`
+const SCROLL_STYLE = {
+  height: '100%',
+  overflowY: 'auto' as const,
+  minWidth: 0,
+  position: 'relative' as const,
+}
 
-const Inner = styled.div<{ $totalHeight: number }>`
-  height: ${(p) => `${p.$totalHeight}px`};
-  position: relative;
-  width: 100%;
-`
+const INNER_BASE_STYLE = { position: 'relative' as const, width: '100%' }
+
+const LOAD_MORE_STYLE = { textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
 
 const RowWrap = styled.div<{ $top: number; $columns: number; $gap: number }>`
   position: absolute;
@@ -26,13 +25,6 @@ const RowWrap = styled.div<{ $top: number; $columns: number; $gap: number }>`
   grid-template-columns: ${(p) => `repeat(${p.$columns}, minmax(0, 1fr))`};
   gap: ${(p) => `var(--ig-space-${p.$gap})`};
   padding: 0 var(--ig-space-1);
-`
-
-const LoadMoreHint = styled.div`
-  text-align: center;
-  padding: var(--ig-space-5);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
 `
 
 export interface VirtualizedImageGridProps<T extends { id: string }> extends ImageGridProps<T> {
@@ -93,8 +85,8 @@ export function VirtualizedImageGrid<T extends { id: string }>(props: Virtualize
   const gap = layout?.gap ?? 6
 
   return (
-    <Scroll ref={parentRef}>
-      <Inner $totalHeight={totalHeight}>
+    <div ref={parentRef} style={SCROLL_STYLE}>
+      <div style={{ ...INNER_BASE_STYLE, height: totalHeight }}>
         {virtualizer.getVirtualItems().map((virtualRow) => {
           const start = virtualRow.index * columns
           const rowItems = items.slice(start, start + columns)
@@ -129,8 +121,8 @@ export function VirtualizedImageGrid<T extends { id: string }>(props: Virtualize
             </RowWrap>
           )
         })}
-      </Inner>
-      {isLoadingMore ? <LoadMoreHint>Loading…</LoadMoreHint> : null}
-    </Scroll>
+      </div>
+      {isLoadingMore ? <Text as="div" tone="muted" size="var(--ig-font-size-xs)" style={LOAD_MORE_STYLE}>Loading…</Text> : null}
+    </div>
   )
 }
