@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextField } from '../../components/inputs/text-fields'
+import { Textarea } from '../../components/inputs/textarea'
 import { AutoSaveStatus, type AutoSaveState } from './auto-save-status'
 import { ProjectTypeTag, type ProjectTypeTone } from './project-type-tag'
 
@@ -15,23 +15,6 @@ const LABEL_STYLE = { cursor: 'pointer' as const }
 const INPUT_STYLE = { minWidth: 200 }
 const INPUT_FLEX_STYLE = { minWidth: 0 }
 const NESTED_FIELD_STYLE = { flex: 1, minWidth: 0 }
-
-const Textarea = styled.textarea`
-  width: 100%;
-  min-height: 80px;
-  padding: var(--ig-space-3) var(--ig-space-5);
-  font-size: 14px;
-  color: var(--ig-color-text-primary);
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-2xs);
-  resize: vertical;
-  box-sizing: border-box;
-  &:focus {
-    outline: none;
-    border-color: var(--ig-color-accent);
-  }
-`
 
 export type GroupVisible = 'owner' | 'owner_and_manager' | 'all'
 
@@ -100,7 +83,7 @@ export function ProjectSettingsForm({
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Description</Text>
       <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
-        <Textarea value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
+        <Textarea minHeight={80} value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
       </Inline>
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Data grouping</Text>

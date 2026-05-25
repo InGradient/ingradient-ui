@@ -1,10 +1,10 @@
 import { forwardRef, type Ref } from 'react'
-import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { CopyButton } from '../../components/inputs/copy-button'
 import { DropdownSelect } from '../../components/inputs/dropdown-select'
 import { TextField } from '../../components/inputs/text-fields'
+import { Textarea } from '../../components/inputs/textarea'
 
 const FORM_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
@@ -24,19 +24,6 @@ const FLEX_1_STYLE = { flex: 1 }
 const WIDTH_160_STYLE = { width: 160 }
 const WIDTH_200_STYLE = { width: 200 }
 
-const TokenText = styled.textarea`
-  width: 100%;
-  min-height: 72px;
-  background: var(--ig-color-surface-panel);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-2xs);
-  padding: var(--ig-space-3);
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--ig-color-text-primary);
-  resize: vertical;
-  box-sizing: border-box;
-`
 
 export interface IssuedToken {
   token: string
@@ -93,7 +80,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
           <Text size="12px" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
-          <TokenText readOnly value={issuedToken.token} />
+          <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>
@@ -169,7 +156,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
           <Text size="12px" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
-          <TokenText readOnly value={issuedToken.token} />
+          <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>

@@ -5,6 +5,7 @@ import { Box, Inline, Stack, Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
 import { Button } from '../../components/inputs/button'
 import { IconButton } from '../../components/inputs/icon-button'
+import { Textarea } from '../../components/inputs/textarea'
 import { CommentItem } from '../../components/data-display/comment-thread'
 import { CommentThread } from '../comment/comment-thread'
 import { MentionTextarea, type MentionCandidate } from '../../components/inputs/mention-textarea'
@@ -24,26 +25,6 @@ const Header = styled.button`
 const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
 const LIST_WRAP_STYLE = { maxHeight: 200, overflowY: 'auto' as const }
 const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
-
-const Textarea = styled.textarea`
-  width: 100%;
-  min-height: 60px;
-  padding: var(--ig-space-3);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-md);
-  background: var(--ig-color-surface-muted);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  font-family: inherit;
-  resize: vertical;
-  &::placeholder {
-    color: var(--ig-color-text-soft);
-  }
-  &:focus-visible {
-    outline: none;
-    border-color: var(--ig-color-accent);
-  }
-`
 
 const ERROR_BOX_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-3)',
