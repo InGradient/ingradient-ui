@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
-import styled from 'styled-components'
 import { X, ZoomIn, ZoomOut } from 'lucide-react'
+import { Inline } from '../../primitives'
 import {
   useCanvasMouse,
   useDrawingCanvas,
@@ -30,15 +30,12 @@ export interface AnnotationPolygon {
   fillOpacity?: number
 }
 
-const TopRightGroup = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
+const TOP_RIGHT_STYLE = {
+  position: 'absolute' as const,
+  top: 8,
+  right: 16,
+  zIndex: 20,
+}
 
 export interface InspectorPoint {
   id: string
@@ -145,7 +142,7 @@ export function ImageInspectorCanvas({
   const zoomOut = () => handleWheel(fakeWheelEvent(100))
 
   const floatingControls = showZoomControls || onClose ? (
-    <TopRightGroup>
+    <Inline gap={2} style={TOP_RIGHT_STYLE}>
       {showZoomControls ? (
         <>
           <IconButton
@@ -186,7 +183,7 @@ export function ImageInspectorCanvas({
           <X size={18} />
         </IconButton>
       ) : null}
-    </TopRightGroup>
+    </Inline>
   ) : null
 
   return (

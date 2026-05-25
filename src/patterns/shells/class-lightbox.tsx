@@ -5,44 +5,41 @@ import { PatternTabs, type PatternTabsItem } from './pattern-tabs'
 
 const OVERLAY_STYLE = { position: 'absolute' as const, inset: 0, width: '100%', height: '100%', pointerEvents: 'none' as const }
 const CLOSE_BTN_STYLE = { position: 'absolute' as const, top: 12, right: 12, borderRadius: 'var(--ig-radius-pill)', background: 'var(--ig-color-lightbox-surface)' }
-
-const Backdrop = styled.div`
-  position: fixed;
-  inset: 0;
-  background: var(--ig-color-lightbox-backdrop);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  cursor: pointer;
-`
-
-const PanelWrap = styled.div`
-  position: relative;
-  width: min(92vw, 1200px);
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: default;
-`
+const BACKDROP_STYLE = {
+  position: 'fixed' as const,
+  inset: 0,
+  background: 'var(--ig-color-lightbox-backdrop)',
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  zIndex: 1000,
+  cursor: 'pointer' as const,
+}
+const PANEL_WRAP_STYLE = {
+  position: 'relative' as const,
+  width: 'min(92vw, 1200px)',
+  maxHeight: '90vh',
+  display: 'flex' as const,
+  flexDirection: 'column' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  cursor: 'default' as const,
+}
+const IMAGE_STYLE = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'contain' as const,
+  borderRadius: 'var(--ig-radius-sm)',
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+  cursor: 'default' as const,
+  display: 'block' as const,
+}
 
 const Frame = styled.div<{ $aspect: number }>`
   position: relative;
   width: min(92vw, calc((90vh - 32px) * ${(p) => p.$aspect}));
   aspect-ratio: ${(p) => p.$aspect};
   max-height: 90vh;
-`
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: var(--ig-radius-sm);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  cursor: default;
-  display: block;
 `
 
 
@@ -118,15 +115,16 @@ export function ClassLightbox({
   const aspect = aspectOf(item, loadedSize)
 
   return (
-    <Backdrop onClick={onClose} aria-label="Close enlarged view">
-      <PanelWrap onClick={(e) => e.stopPropagation()}>
+    <div onClick={onClose} aria-label="Close enlarged view" style={BACKDROP_STYLE}>
+      <div onClick={(e) => e.stopPropagation()} style={PANEL_WRAP_STYLE}>
         <PatternTabs items={siblings} currentId={activeItem.id} onSelect={(s) => setSelectedSibling(s as ClassLightboxItem)} />
         <Frame $aspect={aspect}>
-          <Image
+          <img
             src={imageUrl}
             alt={activeItem.name ?? 'Enlarged'}
             role="presentation"
             onLoad={(e) => onImageLoad?.(e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
+            style={IMAGE_STYLE}
           />
           <svg viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden style={OVERLAY_STYLE}>
             {bboxes.map((b, i) => {
@@ -144,7 +142,7 @@ export function ClassLightbox({
           </svg>
           <IconButton variant="secondary" type="button" onClick={onClose} aria-label="Close enlarged view" style={CLOSE_BTN_STYLE}>×</IconButton>
         </Frame>
-      </PanelWrap>
-    </Backdrop>
+      </div>
+    </div>
   )
 }

@@ -1,42 +1,31 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
+import { Box, Stack } from '../../primitives'
 
-const Root = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background: var(--ig-color-surface-page);
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-`
+const ROOT_STYLE = {
+  height: '100%',
+  width: '100%',
+  background: 'var(--ig-color-surface-page)',
+  color: 'var(--ig-color-text-primary)',
+  overflow: 'hidden' as const,
+}
 
-const TopBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-4) var(--ig-space-6);
-  background: var(--ig-color-surface-raised);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 20;
-`
+const TOP_BAR_STYLE = {
+  padding: 'var(--ig-space-4) var(--ig-space-6)',
+  background: 'var(--ig-color-surface-raised)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  flexShrink: 0,
+  position: 'relative' as const,
+  zIndex: 20,
+}
 
-const Body = styled.div`
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`
+const BODY_STYLE = { flex: 1, overflow: 'hidden' as const }
 
-const BottomBar = styled.div`
-  flex-shrink: 0;
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
-`
+const BOTTOM_BAR_STYLE = {
+  flexShrink: 0,
+  position: 'sticky' as const,
+  bottom: 0,
+  zIndex: 10,
+}
 
 export interface CatalogMobileShellProps {
   topBar: ReactNode
@@ -46,10 +35,10 @@ export interface CatalogMobileShellProps {
 
 export function CatalogMobileShell({ topBar, body, bottomBar }: CatalogMobileShellProps) {
   return (
-    <Root>
-      <TopBar>{topBar}</TopBar>
-      <Body>{body}</Body>
-      {bottomBar ? <BottomBar>{bottomBar}</BottomBar> : null}
-    </Root>
+    <Stack gap={0} style={ROOT_STYLE}>
+      <Box style={TOP_BAR_STYLE}>{topBar}</Box>
+      <Stack gap={0} style={BODY_STYLE}>{body}</Stack>
+      {bottomBar ? <Box style={BOTTOM_BAR_STYLE}>{bottomBar}</Box> : null}
+    </Stack>
   )
 }

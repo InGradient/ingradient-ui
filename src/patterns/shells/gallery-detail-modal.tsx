@@ -1,55 +1,35 @@
 import React from 'react'
-import styled from 'styled-components'
 import { X } from 'lucide-react'
+import { Inline, Stack, Text } from '../../primitives'
 import { IconButton } from '../../components/inputs/icon-button'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
 import { MediaDialogShell } from './media-dialog-shell'
 
-const Toolbar = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
+const TOOLBAR_STYLE = {
+  position: 'absolute' as const,
+  top: 8,
+  right: 16,
+  zIndex: 20,
+}
 
-const DefaultMain = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  padding: var(--ig-space-7);
-  gap: var(--ig-space-4);
-`
+const DEFAULT_MAIN_STYLE = {
+  height: '100%',
+  padding: 'var(--ig-space-7)',
+}
 
-const DefaultThumb = styled.img`
-  width: 100%;
-  flex: 1;
-  min-height: 0;
-  object-fit: contain;
-  border-radius: var(--ig-radius-md);
-  background: var(--ig-color-surface-muted);
-  display: block;
-`
+const DEFAULT_THUMB_STYLE = {
+  width: '100%',
+  flex: 1,
+  minHeight: 0,
+  objectFit: 'contain' as const,
+  borderRadius: 'var(--ig-radius-md)',
+  background: 'var(--ig-color-surface-muted)',
+  display: 'block' as const,
+}
 
-const DefaultSidebar = styled.div`
-  padding: var(--ig-space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
-const DefaultMetaTitle = styled.div`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: var(--ig-space-2);
-`
+const DEFAULT_SIDEBAR_STYLE = { padding: 'var(--ig-space-5)' }
+const META_TITLE_STYLE = { marginBottom: 'var(--ig-space-2)' }
 
 export interface GalleryDetailModalImage {
   id: string
@@ -93,16 +73,16 @@ function formatSize(bytes?: number): string {
 
 function defaultMain(image: GalleryDetailModalImage) {
   return (
-    <DefaultMain>
-      <DefaultThumb src={image.thumb_url} alt={image.name} />
-    </DefaultMain>
+    <Stack gap={4} style={DEFAULT_MAIN_STYLE}>
+      <img src={image.thumb_url} alt={image.name} style={DEFAULT_THUMB_STYLE} />
+    </Stack>
   )
 }
 
 function defaultSidebar(image: GalleryDetailModalImage) {
   return (
-    <DefaultSidebar>
-      <DefaultMetaTitle>Image info</DefaultMetaTitle>
+    <Stack gap={3} style={DEFAULT_SIDEBAR_STYLE}>
+      <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em" style={META_TITLE_STYLE}>Image info</Text>
       {image.sync_state ? (
         <InfoRow>
           <InfoRowLabel>Sync</InfoRowLabel>
@@ -137,7 +117,7 @@ function defaultSidebar(image: GalleryDetailModalImage) {
           {image.uploader ? ` by ${image.uploader}` : ''}
         </InfoRowValue>
       </InfoRow>
-    </DefaultSidebar>
+    </Stack>
   )
 }
 
@@ -167,7 +147,7 @@ export function GalleryDetailModal({
       main={
         <>
           {hideDefaultClose && !actions ? null : (
-            <Toolbar>
+            <Inline gap={2} style={TOOLBAR_STYLE}>
               {actions}
               {hideDefaultClose ? null : (
                 <IconButton
@@ -182,7 +162,7 @@ export function GalleryDetailModal({
                   <X size={18} />
                 </IconButton>
               )}
-            </Toolbar>
+            </Inline>
           )}
           {mainContent}
         </>

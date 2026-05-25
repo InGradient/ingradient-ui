@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { GroupCountBadge } from '../../components/feedback/group-count-badge'
 import { MediaOverlay } from '../../components/feedback/media-overlay'
@@ -22,46 +23,41 @@ const Card = styled.div<{ $selected: boolean }>`
   }
 `
 
-const Thumb = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-`
+const THUMB_STYLE = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover' as const,
+  display: 'block' as const,
+}
 
-const TopRight = styled.div`
-  position: absolute;
-  top: var(--ig-space-2);
-  right: var(--ig-space-2);
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-1);
-  z-index: 2;
-`
+const TOP_RIGHT_STYLE = {
+  position: 'absolute' as const,
+  top: 'var(--ig-space-2)',
+  right: 'var(--ig-space-2)',
+  zIndex: 2,
+}
 
-const GroupSlot = styled.div`
-  position: absolute;
-  top: var(--ig-space-2);
-  right: var(--ig-space-2);
-  transform: translate(12px, -10px);
-  z-index: 3;
-`
+const GROUP_SLOT_STYLE = {
+  position: 'absolute' as const,
+  top: 'var(--ig-space-2)',
+  right: 'var(--ig-space-2)',
+  transform: 'translate(12px, -10px)',
+  zIndex: 3,
+}
 
-
-const Footer = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: var(--ig-space-3);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
-  color: var(--ig-color-on-accent);
-  font-size: var(--ig-font-size-xs);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  pointer-events: none;
-`
+const FOOTER_STYLE = {
+  position: 'absolute' as const,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  padding: 'var(--ig-space-3)',
+  background: 'linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent)',
+  color: 'var(--ig-color-on-accent)',
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+  pointerEvents: 'none' as const,
+}
 
 export interface GalleryImageCardImage {
   id: string
@@ -95,8 +91,8 @@ export function GalleryImageCard({
       onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
       data-image-id={image.id}
     >
-      <Thumb src={image.thumb_url} alt={image.name} loading="lazy" />
-      <TopRight>
+      <img src={image.thumb_url} alt={image.name} loading="lazy" style={THUMB_STYLE} />
+      <Inline gap={1} style={TOP_RIGHT_STYLE}>
         {image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} /> : null}
         {showKebab ? (
           <IconButton
@@ -112,9 +108,9 @@ export function GalleryImageCard({
             <KebabIcon size={14} />
           </IconButton>
         ) : null}
-      </TopRight>
-      {groupCount > 1 ? <GroupSlot><GroupCountBadge count={groupCount} /></GroupSlot> : null}
-      {showName ? <Footer title={image.name}>{image.name}</Footer> : null}
+      </Inline>
+      {groupCount > 1 ? <div style={GROUP_SLOT_STYLE}><GroupCountBadge count={groupCount} /></div> : null}
+      {showName ? <Text as="div" size="var(--ig-font-size-xs)" title={image.name} style={FOOTER_STYLE}>{image.name}</Text> : null}
       {image.archived ? <MediaOverlay variant="archived" /> : null}
       {image.processing ? <MediaOverlay variant="processing" /> : null}
     </Card>

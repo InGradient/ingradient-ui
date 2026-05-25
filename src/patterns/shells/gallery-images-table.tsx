@@ -1,26 +1,26 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Table, type TableColumn } from '../../components/data-display/table'
 import { Checkbox, IconButton } from '../../components/inputs'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '../../components/icons/catalog-icons'
 
-const Thumb = styled.img`
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: var(--ig-radius-sm);
-  display: block;
-`
+const THUMB_STYLE = {
+  width: 64,
+  height: 64,
+  objectFit: 'cover' as const,
+  borderRadius: 'var(--ig-radius-sm)',
+  display: 'block' as const,
+}
 
-const NameCell = styled.span`
-  display: inline-block;
-  max-width: 280px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: middle;
-`
+const NAME_CELL_STYLE = {
+  display: 'inline-block' as const,
+  maxWidth: 280,
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+  verticalAlign: 'middle' as const,
+}
 
 export interface GalleryImagesTableImage {
   id: string
@@ -67,8 +67,8 @@ export function GalleryImagesTable({
         />
       ),
     },
-    { key: 'thumb', header: '', render: (row) => <Thumb src={row.thumb_url} alt={row.name} loading="lazy" /> },
-    { key: 'name', header: 'Name', render: (row) => <NameCell title={row.name}>{row.name}</NameCell> },
+    { key: 'thumb', header: '', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
+    { key: 'name', header: 'Name', render: (row) => <Text as="span" title={row.name} style={NAME_CELL_STYLE}>{row.name}</Text> },
     {
       key: 'dataset', header: 'Dataset',
       render: (row) => row.dataset_id ? (datasetNameById?.[row.dataset_id] ?? row.dataset_id) : '—',
@@ -90,7 +90,7 @@ export function GalleryImagesTable({
     },
   ]
 
-  void allSelected; void someSelected; void onSelectAll  // header checkbox 는 toolbar 가 담당
+  void allSelected; void someSelected; void onSelectAll
 
   return (
     <Table<Row>
