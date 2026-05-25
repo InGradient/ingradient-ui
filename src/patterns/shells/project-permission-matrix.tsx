@@ -29,44 +29,39 @@ const HEADER_CONTENT_STYLE = {
 const StyledTable = styled.table`
   width: max-content;
   border-collapse: collapse;
-`
-
-const HeaderCell = styled.th`
-  padding: var(--ig-space-4) var(--ig-space-3);
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  border-right: 1px solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-raised);
-  color: var(--ig-color-text-secondary);
-  font-size: 12px;
-  text-align: center;
-  vertical-align: bottom;
-`
-
-const StickyRoleHeaderCell = styled(HeaderCell)`
-  position: sticky;
-  left: 0;
-  z-index: 2;
-`
-
-const RoleCell = styled.td`
-  padding: var(--ig-space-4) var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  border-right: 1px solid var(--ig-color-border-subtle);
-  color: var(--ig-color-text-primary);
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  background: var(--ig-color-surface-panel);
-`
-
-const Cell = styled.td`
-  padding: var(--ig-space-3);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  border-right: 1px solid var(--ig-color-border-subtle);
-  text-align: center;
+  & th {
+    padding: var(--ig-space-4) var(--ig-space-3);
+    border-bottom: 1px solid var(--ig-color-border-strong);
+    border-right: 1px solid var(--ig-color-border-subtle);
+    background: var(--ig-color-surface-raised);
+    color: var(--ig-color-text-secondary);
+    font-size: 12px;
+    text-align: center;
+    vertical-align: bottom;
+  }
+  & th.sticky-role {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+  & td {
+    padding: var(--ig-space-3);
+    border-bottom: 1px solid var(--ig-color-border-subtle);
+    border-right: 1px solid var(--ig-color-border-subtle);
+    text-align: center;
+  }
+  & td.role {
+    padding: var(--ig-space-4) var(--ig-space-5);
+    color: var(--ig-color-text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--ig-color-surface-panel);
+    text-align: left;
+  }
 `
 
 export interface PermissionMatrixRole {
@@ -142,20 +137,20 @@ export function ProjectPermissionMatrix({
           <StyledTable>
             <thead>
               <tr>
-                <StickyRoleHeaderCell rowSpan={2} style={{ minWidth: 120 }}>Role</StickyRoleHeaderCell>
+                <th className="sticky-role" rowSpan={2} style={{ minWidth: 120 }}>Role</th>
                 {visibleGroups.map((group) => (
-                  <HeaderCell key={group.key} colSpan={group.permissions.length}>{group.label}</HeaderCell>
+                  <th key={group.key} colSpan={group.permissions.length}>{group.label}</th>
                 ))}
               </tr>
               <tr>
                 {visibleGroups.flatMap((group) =>
                   group.permissions.map((permission) => (
-                    <HeaderCell key={permission.key}>
+                    <th key={permission.key}>
                       <Inline as="span" gap={2} style={HEADER_CONTENT_STYLE}>
                         <span>{permission.label}</span>
                         {permission.description ? <PermissionHelpTooltip text={permission.description} /> : null}
                       </Inline>
-                    </HeaderCell>
+                    </th>
                   )),
                 )}
               </tr>
@@ -163,21 +158,21 @@ export function ProjectPermissionMatrix({
             <tbody>
               {visibleRoles.map((role) => (
                 <tr key={role.value}>
-                  <RoleCell>{role.label}</RoleCell>
+                  <td className="role">{role.label}</td>
                   {expandAll
                     ? groups.flatMap((group) =>
                         group.permissions.map((permission) => {
                           const disabled = role.value === ownerRoleValue
                           const checked = Boolean(draftRoles[role.value]?.[permission.key])
                           return (
-                            <Cell key={`${role.value}-${permission.key}`}>
+                            <td key={`${role.value}-${permission.key}`}>
                               <Checkbox
                                 checked={checked}
                                 disabled={disabled}
                                 onChange={(e) => onChangeRolePermission(role.value, permission.key, e.target.checked)}
                                 aria-label={`${role.label} ${permission.label}`}
                               />
-                            </Cell>
+                            </td>
                           )
                         }),
                       )
@@ -187,7 +182,7 @@ export function ProjectPermissionMatrix({
                           const rolePermissions = draftRoles[role.value] ?? {}
                           const state = getSummaryPermissionState(rolePermissions, permission.permissionKeys)
                           return (
-                            <Cell key={`${role.value}-${permission.key}`}>
+                            <td key={`${role.value}-${permission.key}`}>
                               <Checkbox
                                 checked={state.checked}
                                 indeterminate={state.indeterminate}
@@ -203,7 +198,7 @@ export function ProjectPermissionMatrix({
                                 }}
                                 aria-label={`${role.label} ${permission.label}`}
                               />
-                            </Cell>
+                            </td>
                           )
                         }),
                       )}

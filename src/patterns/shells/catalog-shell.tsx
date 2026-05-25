@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { Box, Inline, Stack } from '../../primitives'
 import { ResizeHandle } from '../../components/inputs/resize-handle'
 
-const Root = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  background: var(--ig-color-bg-canvas);
-`
+const ROOT_STYLE = {
+  width: '100%',
+  height: '100%',
+  minHeight: 0,
+  background: 'var(--ig-color-bg-canvas)',
+}
 
 const Left = styled.aside<{ $width: number; $collapsed: boolean }>`
   flex: 0 0 ${(p) => (p.$collapsed ? '0px' : `${p.$width}px`)};
@@ -18,28 +18,9 @@ const Left = styled.aside<{ $width: number; $collapsed: boolean }>`
   transition: ${(p) => (p.$collapsed ? 'flex-basis var(--ig-motion-fast), width var(--ig-motion-fast)' : 'none')};
 `
 
-const Center = styled.div`
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-`
-
-const Toolbar = styled.div`
-  flex: 0 0 auto;
-`
-
-const Body = styled.div`
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  position: relative;
-`
-
-const SelectionBarSlot = styled.div`
-  flex: 0 0 auto;
-`
+const CENTER_STYLE = { flex: 1, minWidth: 0, minHeight: 0 }
+const SLOT_STYLE = { flex: '0 0 auto' }
+const BODY_STYLE = { flex: 1, minHeight: 0, overflow: 'auto' as const, position: 'relative' as const }
 
 const Right = styled.aside<{ $width: number }>`
   flex: 0 0 ${(p) => p.$width}px;
@@ -107,17 +88,17 @@ export function CatalogShell({
   useEffect(() => { if (storageKey) writeStored(storageKey, 'right', rightW) }, [rightW, storageKey])
 
   return (
-    <Root className={className} data-ig-component="CatalogShell" data-ig-layer="patterns">
+    <Inline gap={0} wrap="nowrap" className={className} data-ig-component="CatalogShell" data-ig-layer="patterns" style={ROOT_STYLE}>
       {leftSidebar ? <Left $width={leftW} $collapsed={sidebarCollapsed}>{leftSidebar}</Left> : null}
       {resizable && leftSidebar && !sidebarCollapsed ? <ResizeHandle onMouseDown={(e) => startResize('left', e)} /> : null}
-      <Center>
-        {toolbar ? <Toolbar>{toolbar}</Toolbar> : null}
-        <Body>{body}</Body>
-        {selectionBar ? <SelectionBarSlot>{selectionBar}</SelectionBarSlot> : null}
-      </Center>
+      <Stack gap={0} style={CENTER_STYLE}>
+        {toolbar ? <Box style={SLOT_STYLE}>{toolbar}</Box> : null}
+        <Box style={BODY_STYLE}>{body}</Box>
+        {selectionBar ? <Box style={SLOT_STYLE}>{selectionBar}</Box> : null}
+      </Stack>
       {resizable && rightSidebar ? <ResizeHandle onMouseDown={(e) => startResize('right', e)} /> : null}
       {rightSidebar ? <Right $width={rightW}>{rightSidebar}</Right> : null}
-    </Root>
+    </Inline>
   )
 }
 
