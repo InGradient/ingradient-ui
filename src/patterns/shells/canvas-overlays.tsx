@@ -1,20 +1,19 @@
 import { useId, type CSSProperties, type ReactNode } from 'react'
-import styled from 'styled-components'
 import { X, ZoomIn, ZoomOut } from 'lucide-react'
 import { IconButton } from '../../components/inputs/icon-button'
 import { Spinner } from '../../components/feedback/spinner'
 
 // ─── CanvasZoomCloseControls ──────────────────────────────────────────────────
 
-const ZoomCloseGroup = styled.div`
-  position: absolute;
-  top: var(--ig-space-2);
-  right: var(--ig-space-4);
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
+const ZOOM_CLOSE_GROUP_STYLE = {
+  position: 'absolute' as const,
+  top: 'var(--ig-space-2)',
+  right: 'var(--ig-space-4)',
+  zIndex: 20,
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  gap: 'var(--ig-space-2)',
+}
 
 export interface CanvasZoomCloseControlsProps {
   zoom: number
@@ -39,7 +38,7 @@ export function CanvasZoomCloseControls({
   className,
 }: CanvasZoomCloseControlsProps) {
   return (
-    <ZoomCloseGroup className={className}>
+    <div className={className} style={ZOOM_CLOSE_GROUP_STYLE}>
       <IconButton
         variant="secondary"
         aria-label="Zoom out"
@@ -74,22 +73,22 @@ export function CanvasZoomCloseControls({
       >
         <X size={18} />
       </IconButton>
-    </ZoomCloseGroup>
+    </div>
   )
 }
 
 // ─── CanvasImageLoadingOverlay ────────────────────────────────────────────────
 
-const ImageLoadingOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ig-color-canvas-overlay-soft);
-  pointer-events: none;
-`
+const LOADING_OVERLAY_STYLE = {
+  position: 'absolute' as const,
+  inset: 0,
+  zIndex: 3,
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  background: 'var(--ig-color-canvas-overlay-soft)',
+  pointerEvents: 'none' as const,
+}
 
 export interface CanvasImageLoadingOverlayProps {
   className?: string
@@ -101,30 +100,30 @@ export interface CanvasImageLoadingOverlayProps {
  */
 export function CanvasImageLoadingOverlay({ className }: CanvasImageLoadingOverlayProps) {
   return (
-    <ImageLoadingOverlay className={className}>
+    <div className={className} style={LOADING_OVERLAY_STYLE}>
       <Spinner size="md" tone="white" />
-    </ImageLoadingOverlay>
+    </div>
   )
 }
 
 // ─── CanvasHiResLoadingPill ───────────────────────────────────────────────────
 
-const HiResPill = styled.div`
-  position: absolute;
-  top: var(--ig-space-3);
-  right: var(--ig-space-3);
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) var(--ig-space-3);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-canvas-overlay-strong);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-xs);
-  line-height: 1;
-  pointer-events: none;
-`
+const HI_RES_PILL_STYLE = {
+  position: 'absolute' as const,
+  top: 'var(--ig-space-3)',
+  right: 'var(--ig-space-3)',
+  zIndex: 4,
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  gap: 'var(--ig-space-2)',
+  padding: 'var(--ig-space-2) var(--ig-space-3)',
+  borderRadius: 'var(--ig-radius-pill)',
+  background: 'var(--ig-color-canvas-overlay-strong)',
+  color: 'var(--ig-color-text-primary)',
+  fontSize: 'var(--ig-font-size-xs)',
+  lineHeight: 1,
+  pointerEvents: 'none' as const,
+}
 
 export interface CanvasHiResLoadingPillProps {
   /** Default: "Loading hi-res…". */
@@ -141,10 +140,10 @@ export function CanvasHiResLoadingPill({
   className,
 }: CanvasHiResLoadingPillProps) {
   return (
-    <HiResPill role="status" aria-live="polite" className={className}>
+    <div role="status" aria-live="polite" className={className} style={HI_RES_PILL_STYLE}>
       <Spinner size="sm" tone="white" />
       <span>{label}</span>
-    </HiResPill>
+    </div>
   )
 }
 

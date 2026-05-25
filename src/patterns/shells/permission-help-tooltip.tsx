@@ -7,21 +7,21 @@ const Wrap = styled.span`
   align-items: center;
 `
 
-const Icon = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: var(--ig-radius-pill);
-  border: 1px solid var(--ig-color-border-strong);
-  color: var(--ig-color-text-muted);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: help;
-  background: var(--ig-color-surface-raised);
-`
+const ICON_STYLE = {
+  display: 'inline-flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  width: 16,
+  height: 16,
+  borderRadius: 'var(--ig-radius-pill)',
+  border: '1px solid var(--ig-color-border-strong)',
+  color: 'var(--ig-color-text-muted)',
+  fontSize: 10,
+  fontWeight: 700,
+  lineHeight: 1,
+  cursor: 'help' as const,
+  background: 'var(--ig-color-surface-raised)',
+}
 
 const Bubble = styled(TooltipBubble)`
   position: absolute;
@@ -55,7 +55,7 @@ export interface PermissionHelpTooltipProps {
 export function PermissionHelpTooltip({ text, className }: PermissionHelpTooltipProps) {
   return (
     <Wrap className={className}>
-      <Icon aria-hidden="true">?</Icon>
+      <span aria-hidden="true" style={ICON_STYLE}>?</span>
       <Bubble role="tooltip">{text}</Bubble>
     </Wrap>
   )
