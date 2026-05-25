@@ -2,19 +2,13 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { useClickOutside } from '../../hooks/useClickOutside'
+import { FloatingOverlay } from '../../components/overlays/floating-overlay'
 
-const Menu = styled.div<{ $top: number; $left: number }>`
-  position: fixed;
-  top: ${(p) => p.$top}px;
-  left: ${(p) => p.$left}px;
-  min-width: 200px;
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-white-08);
-  border-radius: var(--ig-radius-sm);
-  box-shadow: var(--ig-shadow-menu);
-  overflow: hidden;
-  z-index: 1200;
-`
+const MENU_STYLE = {
+  minWidth: 200,
+  borderRadius: 'var(--ig-radius-sm)',
+  overflow: 'hidden' as const,
+}
 
 const Item = styled.button<{ $disabled?: boolean }>`
   width: 100%;
@@ -59,7 +53,7 @@ export function ImageContextMenu({ position, items, onClose }: ImageContextMenuP
 
   return createPortal(
     <div ref={ref}>
-      <Menu role="menu" $top={position.top} $left={position.left}>
+      <FloatingOverlay variant="menu" role="menu" top={position.top} left={position.left} style={MENU_STYLE}>
         {items.map((item) => (
           <Item
             key={item.key}
@@ -76,7 +70,7 @@ export function ImageContextMenu({ position, items, onClose }: ImageContextMenuP
             {item.label}
           </Item>
         ))}
-      </Menu>
+      </FloatingOverlay>
     </div>,
     document.body,
   )

@@ -1,28 +1,17 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Stack, Text } from '../../primitives'
+import { FloatingOverlay } from '../../components/overlays/floating-overlay'
 
 const CARD_WIDTH = 280
 const CARD_HORIZONTAL_PADDING = 24
 const CARD_VERTICAL_OFFSET = 10
 const CARD_BOTTOM_GUARD = 220
 
-const Card = styled.div<{ $top: number; $left: number }>`
-  position: fixed;
-  top: ${(p) => p.$top}px;
-  left: ${(p) => p.$left}px;
-  width: min(${CARD_WIDTH}px, calc(100vw - ${CARD_HORIZONTAL_PADDING}px));
-  padding: var(--ig-space-4);
-  border-radius: var(--ig-radius-lg);
-  border: 1px solid var(--ig-color-white-08);
-  background: var(--ig-color-surface-raised);
-  box-shadow: var(--ig-shadow-floating);
-  z-index: var(--ig-z-tooltip);
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
+const CARD_STYLE = {
+  width: `min(${CARD_WIDTH}px, calc(100vw - ${CARD_HORIZONTAL_PADDING}px))`,
+  padding: 'var(--ig-space-4)',
+  borderRadius: 'var(--ig-radius-lg)',
+}
 
 const DESCRIPTION_STYLE = { lineHeight: 1.5, whiteSpace: 'pre-wrap' as const }
 const IMAGE_STYLE = {
@@ -63,15 +52,17 @@ export function ClassHoverCard({ item, top, left, resolveAssetUrl }: ClassHoverC
   if (!item) return null
   const resolved = resolveAssetUrl ?? ((p) => p)
   return (
-    <Card $top={top} $left={left}>
-      <Text as="span" size="var(--ig-font-size-sm)" weight={700}>{item.name}</Text>
-      {item.reference_image_url ? (
-        <img src={resolved(item.reference_image_url)} alt={`${item.name} reference`} style={IMAGE_STYLE} />
-      ) : null}
-      {item.description?.trim() ? (
-        <Text as="span" size="var(--ig-font-size-xs)" tone="muted" style={DESCRIPTION_STYLE}>{item.description.trim()}</Text>
-      ) : null}
-    </Card>
+    <FloatingOverlay variant="tooltip" top={top} left={left} style={CARD_STYLE}>
+      <Stack gap={3}>
+        <Text as="span" size="var(--ig-font-size-sm)" weight={700}>{item.name}</Text>
+        {item.reference_image_url ? (
+          <img src={resolved(item.reference_image_url)} alt={`${item.name} reference`} style={IMAGE_STYLE} />
+        ) : null}
+        {item.description?.trim() ? (
+          <Text as="span" size="var(--ig-font-size-xs)" tone="muted" style={DESCRIPTION_STYLE}>{item.description.trim()}</Text>
+        ) : null}
+      </Stack>
+    </FloatingOverlay>
   )
 }
 

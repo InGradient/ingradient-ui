@@ -1,25 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { FloatingOverlay } from '../../components/overlays/floating-overlay'
 
-const Backdrop = styled.div`
-  position: fixed;
-  inset: 0;
-  z-index: calc(var(--ig-z-context-menu) - 1);
-`
+const BACKDROP_STYLE = {
+  position: 'fixed' as const,
+  inset: 0,
+  zIndex: 'calc(var(--ig-z-context-menu) - 1)' as unknown as number,
+}
 
-const Menu = styled.div`
-  position: fixed;
-  z-index: var(--ig-z-context-menu);
-  min-width: 180px;
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-md);
-  box-shadow: var(--ig-shadow-popover);
-  padding: var(--ig-space-2);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
+const MENU_STYLE = {
+  minWidth: 180,
+  padding: 'var(--ig-space-2)',
+  display: 'flex' as const,
+  flexDirection: 'column' as const,
+  gap: 2,
+}
 
 const Item = styled.button<{ $tone?: 'default' | 'danger' }>`
   display: flex;
@@ -124,8 +119,8 @@ export function DatasetMenu({
 
   return (
     <>
-      <Backdrop onClick={onClose} />
-      <Menu ref={menuRef} style={{ top, left }} role="menu">
+      <div onClick={onClose} style={BACKDROP_STYLE} />
+      <FloatingOverlay ref={menuRef} variant="menu" top={top} left={left} style={MENU_STYLE} role="menu">
         {actions.map((a, i) => {
           if (a.separator) return <Separator key={`sep-${i}`} />
           const hasSub = !!a.subActions && a.subActions.length > 0
@@ -159,9 +154,9 @@ export function DatasetMenu({
             </ItemRow>
           )
         })}
-      </Menu>
+      </FloatingOverlay>
       {submenuKey && subActions && submenuPos ? (
-        <Menu style={{ top: submenuPos.top, left: submenuPos.left }} role="menu">
+        <FloatingOverlay variant="menu" top={submenuPos.top} left={submenuPos.left} style={MENU_STYLE} role="menu">
           {subActions.map((sa) => (
             <Item
               key={sa.key}
@@ -173,7 +168,7 @@ export function DatasetMenu({
               {sa.label}
             </Item>
           ))}
-        </Menu>
+        </FloatingOverlay>
       ) : null}
     </>
   )

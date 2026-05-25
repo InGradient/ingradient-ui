@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { FloatingOverlay } from '../../components/overlays/floating-overlay'
 
 type Placement = 'right' | 'left' | 'top' | 'bottom'
 
@@ -11,14 +12,7 @@ const Wrapper = styled.span<{ $open: boolean; $scale: number }>`
   ${(p) => p.$open && p.$scale !== 1 && `transform: scale(${p.$scale}); z-index: 2;`}
 `
 
-const FLOATING_STYLE = {
-  position: 'fixed' as const,
-  zIndex: 'var(--ig-z-tooltip)' as unknown as number,
-  pointerEvents: 'none' as const,
-  background: 'var(--ig-color-surface-raised)',
-  border: '1px solid var(--ig-color-border-strong)',
-  borderRadius: 'var(--ig-radius-md)',
-  boxShadow: 'var(--ig-shadow-floating)',
+const PREVIEW_STYLE = {
   padding: 'var(--ig-space-3)',
   maxWidth: 'min(80vw, 480px)',
 }
@@ -67,9 +61,9 @@ export function HoverPreview({
     <Wrapper ref={wrapRef} $open={open} $scale={scale} onMouseEnter={handleEnter} onMouseLeave={handleLeave} className={className}>
       {children}
       {open && pos ? (
-        <div role="tooltip" style={{ ...FLOATING_STYLE, top: pos.top, left: pos.left }}>
+        <FloatingOverlay variant="tooltip" top={pos.top} left={pos.left} role="tooltip" style={PREVIEW_STYLE}>
           {preview}
-        </div>
+        </FloatingOverlay>
       ) : null}
     </Wrapper>
   )
