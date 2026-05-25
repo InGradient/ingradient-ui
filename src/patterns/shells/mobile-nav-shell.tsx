@@ -2,6 +2,7 @@ import { type MouseEvent, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Menu, X } from 'lucide-react'
 import { media } from '../../tokens'
+import { Inline, Stack } from '../../primitives'
 import { IconButton } from '../../components/inputs/icon-button'
 
 const AppHeader = styled.header`
@@ -23,16 +24,12 @@ const AppHeader = styled.header`
   }
 `
 
-
-const HeaderTitle = styled.div`
-  flex: 1;
-  font-size: var(--ig-font-size-md);
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
+const HEADER_TITLE_STYLE = {
+  flex: 1,
+  fontSize: 'var(--ig-font-size-md)',
+  fontWeight: 700,
+  color: 'var(--ig-color-text-primary)',
+}
 
 const Backdrop = styled.div<{ $visible: boolean }>`
   display: none;
@@ -68,13 +65,10 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
   }
 `
 
-const DrawerHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--ig-space-5) var(--ig-space-6) var(--ig-space-4);
-  border-bottom: 1px solid var(--ig-color-white-07);
-`
+const DRAWER_HEADER_STYLE = {
+  padding: 'var(--ig-space-5) var(--ig-space-6) var(--ig-space-4)',
+  borderBottom: '1px solid var(--ig-color-white-07)',
+}
 
 const DrawerTitleRow = styled.button`
   display: flex;
@@ -95,20 +89,7 @@ const DrawerTitleRow = styled.button`
   }
 `
 
-
-const Section = styled.nav`
-  padding: var(--ig-space-3) var(--ig-space-4);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
-
-const BottomSection = styled.div`
-  padding: var(--ig-space-3) var(--ig-space-4);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-`
+const SECTION_STYLE = { padding: 'var(--ig-space-3) var(--ig-space-4)', gap: 2 }
 
 const Item = styled.button<{ $active?: boolean }>`
   display: flex;
@@ -133,26 +114,26 @@ const Item = styled.button<{ $active?: boolean }>`
   svg { width: 22px; height: 22px; flex-shrink: 0; }
 `
 
-const Divider = styled.div`
-  height: 1px;
-  background: var(--ig-color-white-07);
-  margin: var(--ig-space-1) var(--ig-space-4);
-`
+const DIVIDER_STYLE = {
+  height: 1,
+  background: 'var(--ig-color-white-07)',
+  margin: 'var(--ig-space-1) var(--ig-space-4)',
+}
 
-const Badge = styled.span`
-  margin-left: auto;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 var(--ig-space-2);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-danger);
-  color: var(--ig-color-text-primary);
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+const BADGE_STYLE = {
+  marginLeft: 'auto',
+  minWidth: 20,
+  height: 20,
+  padding: '0 var(--ig-space-2)',
+  borderRadius: 'var(--ig-radius-pill)',
+  background: 'var(--ig-color-danger)',
+  color: 'var(--ig-color-text-primary)',
+  fontSize: 11,
+  fontWeight: 700,
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+}
 
 export interface MobileNavShellItem {
   key: string
@@ -227,10 +208,10 @@ export function MobileNavShell({
         <IconButton variant="secondary" type="button" aria-label="Open menu" onClick={onOpen}>
           {hamburgerIcon ?? <Menu size={22} />}
         </IconButton>
-        <HeaderTitle>
+        <Inline gap={2} style={HEADER_TITLE_STYLE}>
           {appHeaderBrand}
           {appHeaderTitle}
-        </HeaderTitle>
+        </Inline>
       </AppHeader>
 
       <Backdrop $visible={open} onClick={onClose} />
@@ -241,7 +222,7 @@ export function MobileNavShell({
         aria-label="Navigation menu"
         className={className}
       >
-        <DrawerHeader>
+        <Inline justify="space-between" style={DRAWER_HEADER_STYLE}>
           <DrawerTitleRow type="button" onClick={onDrawerTitleClick}>
             {drawerBrand}
             {drawerTitle ? <span>{drawerTitle}</span> : null}
@@ -250,29 +231,29 @@ export function MobileNavShell({
           <IconButton variant="secondary" size="sm" type="button" aria-label="Close menu" onClick={onClose}>
             {closeIcon ?? <X size={20} />}
           </IconButton>
-        </DrawerHeader>
+        </Inline>
 
-        <Section aria-label={navLabel}>
+        <Stack as="nav" gap={0} aria-label={navLabel} style={SECTION_STYLE}>
           {mainItems.map((it) => (
             <Item key={it.key} type="button" $active={it.active} onClick={it.onClick}>
               {it.icon}
               <span>{it.label}</span>
-              {it.badge != null && it.badge > 0 ? <Badge>{it.badge}</Badge> : null}
+              {it.badge != null && it.badge > 0 ? <span style={BADGE_STYLE}>{it.badge}</span> : null}
             </Item>
           ))}
-        </Section>
+        </Stack>
 
-        <Divider />
+        <div style={DIVIDER_STYLE} />
 
-        <BottomSection>
+        <Stack gap={0} style={SECTION_STYLE}>
           {bottomItems.map((it) => (
             <Item key={it.key} type="button" $active={it.active} onClick={it.onClick}>
               {it.icon}
               <span>{it.label}</span>
-              {it.badge != null && it.badge > 0 ? <Badge>{it.badge}</Badge> : null}
+              {it.badge != null && it.badge > 0 ? <span style={BADGE_STYLE}>{it.badge}</span> : null}
             </Item>
           ))}
-        </BottomSection>
+        </Stack>
       </DrawerPanel>
     </>
   )

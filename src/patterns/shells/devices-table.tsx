@@ -12,39 +12,27 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-`
-
-const Th = styled.th`
-  text-align: left;
-  padding: var(--ig-space-2) var(--ig-space-3);
-  font-weight: 500;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  white-space: nowrap;
-`
-
-const Td = styled.td`
-  padding: var(--ig-space-3);
-  border-bottom: 1px solid var(--ig-color-white-04);
-  vertical-align: middle;
-`
-
-const MonoTd = styled(Td)`
-  font-family: monospace;
-  font-size: 12px;
-`
-
-const MutedTd = styled(Td)`
-  color: var(--ig-color-text-muted);
-`
-
-const ActionsTd = styled(Td)`
-  white-space: nowrap;
-`
-
-const EmptyTd = styled.td`
-  padding: var(--ig-space-7) var(--ig-space-3);
-  text-align: center;
-  color: var(--ig-color-text-muted);
+  & th {
+    text-align: left;
+    padding: var(--ig-space-2) var(--ig-space-3);
+    font-weight: 500;
+    border-bottom: 1px solid var(--ig-color-border-subtle);
+    white-space: nowrap;
+  }
+  & td {
+    padding: var(--ig-space-3);
+    border-bottom: 1px solid var(--ig-color-white-04);
+    vertical-align: middle;
+  }
+  & td.mono { font-family: monospace; font-size: 12px; }
+  & td.muted { color: var(--ig-color-text-muted); }
+  & td.actions { white-space: nowrap; }
+  & td.empty {
+    padding: var(--ig-space-7) var(--ig-space-3);
+    text-align: center;
+    color: var(--ig-color-text-muted);
+    border-bottom: none;
+  }
 `
 
 export type DeviceFilterStatus = 'all' | 'active' | 'revoked'
@@ -122,31 +110,31 @@ export function DevicesTable({
       <Table>
         <thead>
           <tr>
-            <Th>Device UID</Th>
-            <Th>Name</Th>
-            <Th>Status</Th>
-            <Th>Registered</Th>
-            <Th>Last seen</Th>
-            {isAdmin ? <Th style={TH_ACTIONS_STYLE} /> : null}
+            <th>Device UID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Registered</th>
+            <th>Last seen</th>
+            {isAdmin ? <th style={TH_ACTIONS_STYLE} /> : null}
           </tr>
         </thead>
         <tbody>
           {loading ? (
-            <tr><EmptyTd colSpan={6}>Loading…</EmptyTd></tr>
+            <tr><td className="empty" colSpan={6}>Loading…</td></tr>
           ) : filteredDevices.length === 0 ? (
-            <tr><EmptyTd colSpan={6}>{devices.length === 0 ? 'No devices registered' : 'No devices match the filter'}</EmptyTd></tr>
+            <tr><td className="empty" colSpan={6}>{devices.length === 0 ? 'No devices registered' : 'No devices match the filter'}</td></tr>
           ) : (
             filteredDevices.map((device) => (
               <tr key={device.id}>
-                <MonoTd>{device.deviceUid}</MonoTd>
-                <Td>{device.name ?? '—'}</Td>
-                <Td>
+                <td className="mono">{device.deviceUid}</td>
+                <td>{device.name ?? '—'}</td>
+                <td>
                   <DeviceStatusBadge tone={statusTone(device.status)}>{formatStatus(device.status)}</DeviceStatusBadge>
-                </Td>
-                <MutedTd>{new Date(device.registeredAt).toLocaleDateString()}</MutedTd>
-                <MutedTd>{device.lastSeenAt ? new Date(device.lastSeenAt).toLocaleString() : '—'}</MutedTd>
+                </td>
+                <td className="muted">{new Date(device.registeredAt).toLocaleDateString()}</td>
+                <td className="muted">{device.lastSeenAt ? new Date(device.lastSeenAt).toLocaleString() : '—'}</td>
                 {isAdmin ? (
-                  <ActionsTd>
+                  <td className="actions">
                     <Inline gap={3}>
                       <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(device)}>Details</Button>
                       {device.status !== 'REVOKED' ? (
@@ -154,7 +142,7 @@ export function DevicesTable({
                       ) : null}
                       <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onDelete?.(device.id)}>Delete</Button>
                     </Inline>
-                  </ActionsTd>
+                  </td>
                 ) : null}
               </tr>
             ))
