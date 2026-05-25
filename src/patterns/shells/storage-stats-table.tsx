@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Box } from '../../primitives'
 import { Skeleton } from '../../components/feedback/skeleton'
 
-const Card = styled.div`
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-7);
-`
+const CARD_STYLE = {
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-border-strong)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  padding: 'var(--ig-space-7)',
+}
 
 const Table = styled.table`
   width: 100%;
@@ -59,7 +60,7 @@ export function StorageStatsTable<T>({
 }: StorageStatsTableProps<T>) {
   if (loading) return <Skeleton $height={loadingHeight} />
   return (
-    <Card>
+    <Box style={CARD_STYLE}>
       <Table>
         <thead>
           <tr>
@@ -87,6 +88,6 @@ export function StorageStatsTable<T>({
           </tfoot>
         ) : null}
       </Table>
-    </Card>
+    </Box>
   )
 }

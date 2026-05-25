@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Box } from '../../primitives'
 
-const Wrap = styled.div`
-  overflow-x: auto;
-`
+const WRAP_STYLE = { overflowX: 'auto' as const }
 
 const Table = styled.table`
   border-collapse: separate;
@@ -58,7 +57,7 @@ export function DatasetDistributionHeatmap({
 }: DatasetDistributionHeatmapProps) {
   const max = matrix.reduce((acc, row) => Math.max(acc, ...row), 0) || 1
   return (
-    <Wrap className={className}>
+    <Box className={className} style={WRAP_STYLE}>
       <Table>
         <thead>
           <tr>
@@ -77,6 +76,6 @@ export function DatasetDistributionHeatmap({
           ))}
         </tbody>
       </Table>
-    </Wrap>
+    </Box>
   )
 }
