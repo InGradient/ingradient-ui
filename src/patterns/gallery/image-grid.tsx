@@ -1,21 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { ImageGridCell } from './image-grid-cell'
 import type { GridSelectionAction } from '../../components/data-display/use-grid-selection'
 import { GridContainer } from '../../components/data-display/grid-container'
 
-const Sentinel = styled.div`
-  grid-column: 1 / -1;
-  height: 1px;
-`
-
-const LoadMoreHint = styled.div`
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: var(--ig-space-5);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-`
+const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 1 }
+const LOAD_MORE_STYLE = { gridColumn: '1 / -1', textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
 
 export interface ImageGridLayout {
   minWidth?: number
@@ -117,8 +107,8 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
           renderCellTopRight={renderCellTopRight}
         />
       ))}
-      {hasMore ? <Sentinel ref={sentinelRef} aria-hidden /> : null}
-      {isLoadingMore ? <LoadMoreHint>Loading…</LoadMoreHint> : null}
+      {hasMore ? <div ref={sentinelRef} aria-hidden style={SENTINEL_STYLE} /> : null}
+      {isLoadingMore ? <Text as="div" tone="muted" size="var(--ig-font-size-xs)" style={LOAD_MORE_STYLE}>Loading…</Text> : null}
     </GridContainer>
   )
 }

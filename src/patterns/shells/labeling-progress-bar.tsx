@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
-const Bar = styled.div`
-  display: flex;
-  width: 100%;
-  height: 24px;
-  border-radius: var(--ig-radius-pill);
-  overflow: hidden;
-  background: var(--ig-color-progress-track);
-`
+const BAR_STYLE = {
+  display: 'flex' as const,
+  width: '100%',
+  height: 24,
+  borderRadius: 'var(--ig-radius-pill)',
+  overflow: 'hidden' as const,
+  background: 'var(--ig-color-progress-track)',
+}
 
 const Segment = styled.div<{ $width: number; $color: string }>`
   flex: 0 0 ${(p) => p.$width}%;
@@ -37,11 +37,11 @@ export function LabelingProgressBar({
   const sum = total ?? segments.reduce((acc, s) => acc + s.value, 0)
   return (
     <Stack gap={3} className={className}>
-      <Bar role="progressbar" aria-valuemin={0} aria-valuemax={sum} aria-valuenow={segments[0]?.value ?? 0}>
+      <div role="progressbar" aria-valuemin={0} aria-valuemax={sum} aria-valuenow={segments[0]?.value ?? 0} style={BAR_STYLE}>
         {segments.map((s, i) => (
           <Segment key={i} $width={sum > 0 ? (s.value / sum) * 100 : 0} $color={s.color} title={`${s.label}: ${s.value}`} />
         ))}
-      </Bar>
+      </div>
       {showLegend ? (
         <Inline gap={5}>
           {segments.map((s, i) => (

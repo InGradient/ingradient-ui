@@ -5,13 +5,13 @@ import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Button } from '../../components/inputs/button'
 import { Spinner } from '../../components/feedback/spinner'
 
-const ProgressTrack = styled.div`
-  width: 100%;
-  height: 8px;
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-progress-track);
-  overflow: hidden;
-`
+const PROGRESS_TRACK_STYLE = {
+  width: '100%',
+  height: 8,
+  borderRadius: 'var(--ig-radius-pill)',
+  background: 'var(--ig-color-progress-track)',
+  overflow: 'hidden' as const,
+}
 
 const ProgressFill = styled.div<{ $pct: number }>`
   height: 100%;
@@ -72,9 +72,9 @@ export function IgpExportModal({
           </Text>
         </Inline>
         {busy ? (
-          <ProgressTrack>
+          <div style={PROGRESS_TRACK_STYLE}>
             <ProgressFill $pct={progress} />
-          </ProgressTrack>
+          </div>
         ) : null}
         {phase === 'ready' && downloadUrl ? (
           <Text as="a" tone="accent" size="var(--ig-font-size-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>

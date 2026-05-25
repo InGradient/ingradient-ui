@@ -1,28 +1,12 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
+import { Inline } from '../../primitives'
 
-const Row = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-7);
-  padding: var(--ig-space-5) 0;
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  color: var(--ig-color-text-primary);
-  font-size: 14px;
-`
-
-const PlainRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-7);
-  padding: var(--ig-space-5) 0;
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  color: var(--ig-color-text-primary);
-  font-size: 14px;
-  flex-wrap: wrap;
-`
+const ROW_STYLE = {
+  padding: 'var(--ig-space-5) 0',
+  borderBottom: '1px solid var(--ig-color-border-strong)',
+  color: 'var(--ig-color-text-primary)',
+  fontSize: 14,
+}
 
 export interface SettingsRowProps {
   label?: ReactNode
@@ -44,11 +28,15 @@ export function SettingsRow({ label, control, children, asLabel = true, htmlFor,
     </>
   )
   if (!asLabel) {
-    return <PlainRow className={className}>{content}</PlainRow>
+    return (
+      <Inline justify="space-between" gap={7} wrap="wrap" className={className} style={ROW_STYLE}>
+        {content}
+      </Inline>
+    )
   }
   return (
-    <Row className={className} htmlFor={htmlFor}>
+    <Inline as="label" justify="space-between" gap={7} className={className} style={ROW_STYLE} {...(htmlFor ? { htmlFor } : {})}>
       {content}
-    </Row>
+    </Inline>
   )
 }
