@@ -19,8 +19,8 @@
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **~60 개** |
-| 제거된 인라인 | **~439 개 (88%)** |
+| 인라인 styled 정의 (현재) | **57 개** |
+| 제거된 인라인 | **442 개 (89%)** |
 | 마이그레이션된 patterns 파일 | ~100 개 |
 | Phase 2 신규 컴포넌트 | **10 개 완료** (FloatingOverlay / TextButton / Textarea / CollapsibleSectionHeader / ColorInput / ResizeHandle / AspectRatioImage / OverlayLayer / MenuItem / DropZone) |
 | Phase 3 도메인 wrapper | ✅ device-status-badge / project-type-tag (내부 styled → generic Badge) |
