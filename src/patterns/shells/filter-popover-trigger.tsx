@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
 const Wrap = styled.span`
@@ -30,18 +31,22 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
 const Backdrop = styled.div`
   position: fixed;
   inset: 0;
-  z-index: calc(var(--ig-z-context-menu) - 1);
+  z-index: calc(var(--ig-z-tooltip) - 1);
 `
+
+const PANEL_GAP = 6
 
 const Panel = styled.div`
   position: fixed;
-  z-index: var(--ig-z-context-menu);
+  z-index: var(--ig-z-tooltip);
   min-width: 280px;
+  max-width: min(420px, calc(100vw - 24px));
   background: var(--ig-color-surface-raised);
   border: 1px solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-md);
   box-shadow: var(--ig-shadow-popover);
   padding: var(--ig-space-4);
+  overflow: visible;
 `
 
 export interface FilterPopoverTriggerProps {
@@ -69,17 +74,40 @@ export function FilterPopoverTrigger({
     const compute = () => {
       const rect = triggerRef.current?.getBoundingClientRect()
       if (!rect) return
-      setPos({ top: rect.bottom + 6, left: rect.left })
+      setPos({ top: rect.bottom + PANEL_GAP, left: rect.left })
     }
     compute()
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
-    window.addEventListener('keydown', onKey)
     window.addEventListener('resize', compute)
+    window.addEventListener('scroll', compute, true)
+    window.addEventListener('keydown', onKey)
     return () => {
-      window.removeEventListener('keydown', onKey)
       window.removeEventListener('resize', compute)
+      window.removeEventListener('scroll', compute, true)
+      window.removeEventListener('keydown', onKey)
     }
   }, [open])
+
+  const popover = open && pos && typeof document !== 'undefined'
+    ? createPortal(
+      <>
+        <Backdrop onClick={() => setOpen(false)} />
+        <Panel
+          role="dialog"
+          style={{
+            top: pos.top,
+            left: pos.left,
+            ...(panelWidth ? { width: panelWidth } : {}),
+            ...(panelMinWidth ? { minWidth: panelMinWidth } : {}),
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {panel}
+        </Panel>
+      </>,
+      document.body,
+    )
+    : null
 
   return (
     <Wrap className={className}>
@@ -95,18 +123,7 @@ export function FilterPopoverTrigger({
         {icon}
         {iconOnly ? null : label}
       </Trigger>
-      {open && pos ? (
-        <>
-          <Backdrop onClick={() => setOpen(false)} />
-          <Panel
-            role="dialog"
-            style={{ top: pos.top, left: pos.left, ...(panelWidth ? { width: panelWidth } : {}), ...(panelMinWidth ? { minWidth: panelMinWidth } : {}) }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {panel}
-          </Panel>
-        </>
-      ) : null}
+      {popover}
     </Wrap>
   )
 }

@@ -4,7 +4,7 @@ import { ChartContainer } from './chart-container'
 import { ChartLegend } from './chart-legend'
 import { ChartResponsive } from './chart-responsive'
 import { ChartTooltipContent } from './chart-tooltip'
-import { chartPalette, type CartesianSeries } from './types'
+import { chartAxisTick, chartPalette, type CartesianSeries } from './types'
 
 export function BarChartCard<T extends Record<string, string | number>>({
   title,
@@ -69,13 +69,13 @@ export function BarChartCard<T extends Record<string, string | number>>({
             <CartesianGrid stroke="var(--ig-color-chart-grid)" strokeDasharray="3 3" vertical={isVertical} horizontal={!isVertical} />
             {isVertical ? (
               <>
-                <XAxis type="number" stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
-                <YAxis type="category" dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+                <XAxis type="number" stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
+                <YAxis type="category" dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
               </>
             ) : (
               <>
-                <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
-                <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+                <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
+                <YAxis stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
               </>
             )}
             <Tooltip

@@ -9,9 +9,12 @@ import { FilterSearchableList, type FilterSearchableItem } from './filter-search
 const Panel = styled.div`
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 380px;
+  max-width: 100%;
   max-height: 70vh;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 `
 
 const Header = styled.div`

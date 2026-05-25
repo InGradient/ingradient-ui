@@ -6,7 +6,7 @@ const SidebarRoot = styled.aside`
   flex-direction: column;
   min-height: 0;
   height: 100%;
-  background: var(--ig-color-surface-panel);
+  background: var(--ig-color-surface-raised);
   overflow: hidden;
 `
 

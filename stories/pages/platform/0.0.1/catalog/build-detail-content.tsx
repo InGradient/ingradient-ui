@@ -35,24 +35,24 @@ const MAIN_WRAP_STYLE: React.CSSProperties = {
   flexDirection: 'column',
   height: '100%',
   minHeight: 0,
-  gap: 12,
-  padding: 12,
 }
 const CANVAS_WRAP_STYLE: React.CSSProperties = { flex: 1, minHeight: 0, position: 'relative' }
 const TOOLBAR_WRAP_STYLE: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   flexShrink: 0,
+  minHeight: 64,
+  borderTop: '1px solid var(--ig-color-border-subtle)',
+  background: 'var(--ig-color-surface-raised)',
 }
 
 function DetailMainMount({
   image,
   variant,
-  onClose,
 }: {
   image: CatalogScene['images'][number]
   variant: CatalogScene['detailVariant']
-  onClose: () => void
 }) {
   const [mode, setMode] = useState<DetailMode>('cursor')
   const noop = () => undefined
@@ -74,7 +74,6 @@ function DetailMainMount({
           imageUrl={image.thumb_url}
           imageAlt={image.name}
           boxes={variant === 'minimal' ? [] : sampleAnnotations}
-          onClose={onClose}
         />
       </div>
       <div style={TOOLBAR_WRAP_STYLE}>
@@ -165,11 +164,10 @@ export function buildDetailContent(
   image: CatalogScene['images'][number] | undefined,
   datasetNameById: Record<string, string>,
   variant: CatalogScene['detailVariant'],
-  onClose: () => void,
 ): { main: ReactNode; sidebar: ReactNode } | undefined {
   if (!image) return undefined
   return {
-    main: <DetailMainMount image={image} variant={variant} onClose={onClose} />,
+    main: <DetailMainMount image={image} variant={variant} />,
     sidebar: (
       <DetailSidebarMount image={image} datasetNameById={datasetNameById} variant={variant} />
     ),

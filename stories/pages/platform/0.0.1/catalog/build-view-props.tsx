@@ -125,9 +125,7 @@ export function buildCatalogViewProps(
         }
       : undefined,
     statsContent: s.viewMode === 'stats' ? buildStatsContent() : undefined,
-    detailContent: buildDetailContent(currentImage, datasetNameById, scenario.detailVariant, () =>
-      s.setDetailImageId(undefined),
-    ),
+    detailContent: buildDetailContent(currentImage, datasetNameById, scenario.detailVariant),
     overlays: buildCatalogOverlays(scenario, s),
   }
 }

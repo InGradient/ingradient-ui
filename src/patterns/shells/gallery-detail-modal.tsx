@@ -6,23 +6,11 @@ import { SyncStatusChip, type SyncState } from '../../components/feedback/sync-s
 import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
 import { MediaDialogShell } from './media-dialog-shell'
 
-const Toolbar = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-`
-
 const DefaultMain = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  padding: var(--ig-space-7);
-  gap: var(--ig-space-4);
 `
 
 const DefaultThumb = styled.img`
@@ -30,8 +18,7 @@ const DefaultThumb = styled.img`
   flex: 1;
   min-height: 0;
   object-fit: contain;
-  border-radius: var(--ig-radius-md);
-  background: var(--ig-color-surface-muted);
+  background: var(--ig-color-bg-canvas);
   display: block;
 `
 
@@ -157,6 +144,24 @@ export function GalleryDetailModal({
   if (!open || !image) return null
   const mainContent = main ?? children ?? defaultMain(image)
   const sidebarContent = sidebar ?? defaultSidebar(image)
+  const topRight = hideDefaultClose && !actions ? null : (
+    <>
+      {actions}
+      {hideDefaultClose ? null : (
+        <IconButton
+          variant="secondary"
+          aria-label="Close"
+          title="Close"
+          onClick={(e) => {
+            e.stopPropagation()
+            onClose()
+          }}
+        >
+          <X size={18} />
+        </IconButton>
+      )}
+    </>
+  )
   return (
     <MediaDialogShell
       onClose={onClose}
@@ -164,29 +169,8 @@ export function GalleryDetailModal({
       positioning={positioning}
       sidebarWidth={sidebarWidth}
       onSidebarResize={onSidebarResize}
-      main={
-        <>
-          {hideDefaultClose && !actions ? null : (
-            <Toolbar>
-              {actions}
-              {hideDefaultClose ? null : (
-                <IconButton
-                  variant="secondary"
-                  aria-label="Close"
-                  title="Close"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onClose()
-                  }}
-                >
-                  <X size={18} />
-                </IconButton>
-              )}
-            </Toolbar>
-          )}
-          {mainContent}
-        </>
-      }
+      topRight={topRight}
+      main={mainContent}
       sidebar={sidebarContent}
     />
   )
