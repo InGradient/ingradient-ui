@@ -1,32 +1,32 @@
-import styled from 'styled-components'
+import type { ReactNode } from 'react'
+import { Badge } from '../../components/feedback/badge'
 
 export type DeviceStatusTone = 'active' | 'revoked' | 'pending' | 'expired' | 'soon' | 'ok'
 
-const toneStyles = {
-  active: 'background: var(--ig-color-status-running-bg); color: var(--ig-color-status-running-text);',
-  ok: 'background: var(--ig-color-status-running-bg); color: var(--ig-color-status-running-text);',
-  revoked: 'background: var(--ig-color-status-failed-bg); color: var(--ig-color-status-failed-text);',
-  expired: 'background: var(--ig-color-status-failed-bg); color: var(--ig-color-status-failed-text);',
-  pending: 'background: var(--ig-color-status-warning-bg); color: var(--ig-color-status-warning-text);',
-  soon: 'background: var(--ig-color-status-warning-bg); color: var(--ig-color-status-warning-text);',
+const TONE_TO_BADGE: Record<DeviceStatusTone, 'success' | 'danger' | 'warning'> = {
+  active: 'success',
+  ok: 'success',
+  revoked: 'danger',
+  expired: 'danger',
+  pending: 'warning',
+  soon: 'warning',
 }
-
-const Badge = styled.span<{ $tone: DeviceStatusTone }>`
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 7px;
-  border-radius: var(--ig-radius-4xl);
-  font-size: 11px;
-  font-weight: 600;
-  ${(p) => toneStyles[p.$tone]}
-`
 
 export interface DeviceStatusBadgeProps {
   tone: DeviceStatusTone
-  children: React.ReactNode
+  children: ReactNode
   className?: string
 }
 
+/**
+ * Device status pill — maps 6 device-specific tones onto the generic Badge palette
+ * (success / danger / warning). 시각 표준 Badge 사용; 도메인 라벨링은 caller 가
+ * children 으로 결정한다.
+ */
 export function DeviceStatusBadge({ tone, children, className }: DeviceStatusBadgeProps) {
-  return <Badge $tone={tone} className={className}>{children}</Badge>
+  return (
+    <Badge $tone={TONE_TO_BADGE[tone]} className={className}>
+      {children}
+    </Badge>
+  )
 }
