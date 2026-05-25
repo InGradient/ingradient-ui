@@ -1,18 +1,13 @@
 import { useState, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Archive, Pencil } from 'lucide-react'
-import { Text } from '../../primitives'
+import { Box, Inline, Stack, Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
 import { Button } from '../../components/inputs/button'
 import { IconButton } from '../../components/inputs/icon-button'
 import { CommentItem } from '../../components/data-display/comment-thread'
 import { CommentThread } from '../comment/comment-thread'
 import { MentionTextarea, type MentionCandidate } from '../../components/inputs/mention-textarea'
-
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const Header = styled.button`
   display: flex;
@@ -26,36 +21,9 @@ const Header = styled.button`
   user-select: none;
 `
 
-const Title = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-1);
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  margin-top: var(--ig-space-3);
-`
-
-const ListWrap = styled.div`
-  max-height: 200px;
-  overflow-y: auto;
-`
-
+const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
+const LIST_WRAP_STYLE = { maxHeight: 200, overflowY: 'auto' as const }
 const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
-
-const ComposerWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
 
 const Textarea = styled.textarea`
   width: 100%;
@@ -77,42 +45,13 @@ const Textarea = styled.textarea`
   }
 `
 
-const ComposerActions = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-2);
-`
-
-const Hint = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-`
-
-const ActionsGroup = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-1);
-`
-
-const ButtonsGroup = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
-
-const ErrorBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) var(--ig-space-3);
-  border: 1px solid var(--ig-color-danger-dim-bg);
-  border-radius: var(--ig-radius-md);
-  background: var(--ig-color-danger-dim-bg);
-  color: var(--ig-color-danger);
-  font-size: var(--ig-font-size-xs);
-`
+const ERROR_BOX_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-3)',
+  border: '1px solid var(--ig-color-danger-dim-bg)',
+  borderRadius: 'var(--ig-radius-md)',
+  background: 'var(--ig-color-danger-dim-bg)',
+  color: 'var(--ig-color-danger)',
+}
 
 export interface Comment {
   id: string
@@ -177,12 +116,6 @@ export interface CommentsPanelProps {
 
 /**
  * Image detail sidebar 의 comments section.
- * - Collapsible 헤더 + Badge count
- * - `CommentThread` + `CommentItem` (muted background, no border)
- * - 200px max-height scrollable list
- * - Composer: 단순 textarea (mentionCandidates 없을 때) 또는 MentionTextarea
- * - Edit mode 지원 (editingCommentId 일 때 Update/Cancel 버튼)
- * - Error display + 옵션 Retry
  */
 export function CommentsPanel(props: CommentsPanelProps) {
   const {
@@ -232,7 +165,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
   const renderActions = (c: Comment): ReactNode => {
     if (!c.canEdit || (!onEdit && !onArchive)) return undefined
     return (
-      <ActionsGroup>
+      <Inline as="span" gap={1}>
         {onEdit ? (
           <IconButton
             variant="secondary"
@@ -256,7 +189,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
             <Archive size={14} />
           </IconButton>
         ) : null}
-      </ActionsGroup>
+      </Inline>
     )
   }
 
@@ -270,20 +203,20 @@ export function CommentsPanel(props: CommentsPanelProps) {
   }))
 
   return (
-    <Root className={className}>
+    <Stack gap={0} className={className}>
       <Header type="button" onClick={() => setOpen((v) => !v)}>
-        <Title>
-          <span>{open ? '▾' : '▸'}</span>
-          {title}
-        </Title>
+        <Inline as="span" gap={1}>
+          <Text as="span">{open ? '▾' : '▸'}</Text>
+          <Text as="span" size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
+        </Inline>
         <Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>
       </Header>
       {open ? (
-        <Body>
+        <Stack gap={3} style={BODY_STYLE}>
           {count === 0 ? (
             <Text tone="muted" size="var(--ig-font-size-xs)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
-            <ListWrap>
+            <Box style={LIST_WRAP_STYLE}>
               <CommentThread>
                 {comments.map((c) => (
                   <CommentItem
@@ -295,10 +228,10 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   />
                 ))}
               </CommentThread>
-            </ListWrap>
+            </Box>
           )}
           {composerEnabled ? (
-            <ComposerWrap>
+            <Stack gap={2}>
               {mentionInputCandidates ? (
                 <MentionTextarea
                   value={draft}
@@ -321,8 +254,8 @@ export function CommentsPanel(props: CommentsPanelProps) {
                 />
               )}
               {error ? (
-                <ErrorBox>
-                  <span>{error}</span>
+                <Inline gap={2} justify="space-between" style={ERROR_BOX_STYLE}>
+                  <Text as="span" size="var(--ig-font-size-xs)">{error}</Text>
                   {canRetry && onRetry ? (
                     <Button
                       type="button"
@@ -335,11 +268,11 @@ export function CommentsPanel(props: CommentsPanelProps) {
                       Retry
                     </Button>
                   ) : null}
-                </ErrorBox>
+                </Inline>
               ) : null}
-              <ComposerActions>
-                <Hint>Press Ctrl/Cmd+Enter to submit.</Hint>
-                <ButtonsGroup>
+              <Inline gap={2} justify="space-between">
+                <Text as="span" size="var(--ig-font-size-xs)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
+                <Inline as="span" gap={2}>
                   {editingCommentId && onCancelEdit ? (
                     <Button
                       type="button"
@@ -360,12 +293,12 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   >
                     {submitting ? 'Posting…' : editingCommentId ? 'Update' : 'Post'}
                   </Button>
-                </ButtonsGroup>
-              </ComposerActions>
-            </ComposerWrap>
+                </Inline>
+              </Inline>
+            </Stack>
           ) : null}
-        </Body>
+        </Stack>
       ) : null}
-    </Root>
+    </Stack>
   )
 }

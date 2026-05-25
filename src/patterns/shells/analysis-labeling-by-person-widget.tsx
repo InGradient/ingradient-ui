@@ -1,18 +1,13 @@
 import styled from 'styled-components'
+import { Stack } from '../../primitives'
 import { BarChartCard } from '../charts/bar-chart-card'
 
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-7);
-`
-
-const TableCard = styled.div`
-  padding: var(--ig-space-5) var(--ig-space-7);
-  background: var(--ig-color-surface-panel);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-lg);
-`
+const TABLE_CARD_STYLE = {
+  padding: 'var(--ig-space-5) var(--ig-space-7)',
+  background: 'var(--ig-color-surface-panel)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  borderRadius: 'var(--ig-radius-lg)',
+}
 
 const PersonTable = styled.table`
   width: 100%;
@@ -49,7 +44,7 @@ export function AnalysisLabelingByPersonWidget({
   chartData,
 }: AnalysisLabelingByPersonWidgetProps) {
   return (
-    <Stack>
+    <Stack gap={7}>
       <BarChartCard
         title="Uploader activity"
         data={byPerson.length === 0 ? [] : chartData}
@@ -62,7 +57,7 @@ export function AnalysisLabelingByPersonWidget({
         emptyMessage="No uploader activity yet."
       />
       {byPerson.length > 0 ? (
-        <TableCard>
+        <div style={TABLE_CARD_STYLE}>
           <PersonTable>
             <thead>
               <tr>
@@ -81,7 +76,7 @@ export function AnalysisLabelingByPersonWidget({
               ))}
             </tbody>
           </PersonTable>
-        </TableCard>
+        </div>
       ) : null}
     </Stack>
   )

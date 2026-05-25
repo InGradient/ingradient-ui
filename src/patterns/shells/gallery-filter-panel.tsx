@@ -1,32 +1,18 @@
-import React from 'react'
 import styled from 'styled-components'
+import { Inline, Stack, Text } from '../../primitives'
 import { ModeSwitcher } from '../../components/inputs/mode-switcher'
 import { DateRangeField } from './date-range-field'
 import { FilterSection } from './filter-section'
 import { FilterClassChip } from './filter-class-chip'
 import { FilterSearchableList, type FilterSearchableItem } from './filter-searchable-list'
 
-const Panel = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  max-height: 70vh;
-  overflow-y: auto;
-`
+const PANEL_STYLE = { width: 320, maxHeight: '70vh', overflowY: 'auto' as const }
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0 var(--ig-space-3);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  margin-bottom: var(--ig-space-2);
-`
-
-const Title = styled.strong`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-primary);
-`
+const HEADER_STYLE = {
+  padding: '0 0 var(--ig-space-3)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  marginBottom: 'var(--ig-space-2)',
+}
 
 const ResetBtn = styled.button`
   background: none;
@@ -87,11 +73,11 @@ export function GalleryFilterPanel({
   }
 
   return (
-    <Panel>
-      <Header>
-        <Title>Filter images</Title>
+    <Stack gap={0} style={PANEL_STYLE}>
+      <Inline justify="space-between" gap={3} style={HEADER_STYLE}>
+        <Text as="strong" size="var(--ig-font-size-sm)">Filter images</Text>
         {onReset ? <ResetBtn type="button" onClick={onReset}>Reset</ResetBtn> : null}
-      </Header>
+      </Inline>
 
       <FilterSection title="Upload date">
         <DateRangeField
@@ -172,7 +158,7 @@ export function GalleryFilterPanel({
           />
         </FilterSection>
       ) : null}
-    </Panel>
+    </Stack>
   )
 }
 

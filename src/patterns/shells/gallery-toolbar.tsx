@@ -1,25 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Box, Inline, Stack, Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 
-const Bar = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-header);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  position: relative;
-`
+const BAR_STYLE = {
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  background: 'var(--ig-color-surface-header)',
+  backdropFilter: 'blur(12px)',
+  WebkitBackdropFilter: 'blur(12px)',
+  position: 'relative' as const,
+}
 
-const ProgressTrack = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: transparent;
-`
+const PROGRESS_TRACK_STYLE = {
+  position: 'absolute' as const,
+  top: 0,
+  left: 0,
+  right: 0,
+  height: 3,
+  background: 'transparent',
+}
 
 const ProgressFill = styled.div<{ $pct: number }>`
   height: 100%;
@@ -28,34 +27,19 @@ const ProgressFill = styled.div<{ $pct: number }>`
   transition: width var(--ig-motion-normal);
 `
 
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  min-height: 72px;
-  padding: var(--ig-space-7);
-`
+const ROW_STYLE = { minHeight: 72, padding: 'var(--ig-space-7)' }
 
-const SelectionRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-7);
-  border-top: 1px solid var(--ig-color-border-subtle);
-`
+const SELECTION_ROW_STYLE = {
+  padding: 'var(--ig-space-3) var(--ig-space-7)',
+  borderTop: '1px solid var(--ig-color-border-subtle)',
+}
 
-const SelectionRowActive = styled(SelectionRow)`
-  background: var(--ig-color-accent-soft-surface);
-`
+const SELECTION_ROW_ACTIVE_STYLE = {
+  ...SELECTION_ROW_STYLE,
+  background: 'var(--ig-color-accent-soft-surface)',
+}
 
-const Spacer = styled.div`
-  flex: 1;
-`
-
-const Count = styled.span`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-secondary);
-`
+const SPACER_STYLE = { flex: 1 }
 
 const SelectAllLink = styled.button`
   background: none;
@@ -107,37 +91,35 @@ export function GalleryToolbar({
         onChange={(e) => onToggleSelectAll?.(e.target.checked)}
         aria-label="Select all images"
       />
-      <Count>
+      <Text as="span" size="var(--ig-font-size-sm)" tone="secondary">
         {hasSelection
           ? `${selectionCount}${typeof totalCount === 'number' ? ` of ${totalCount}` : ''} ${itemLabel}${selectionCount === 1 ? '' : 's'} selected`
           : `${totalCount ?? 0} ${itemLabel}${(totalCount ?? 0) === 1 ? '' : 's'}`}
-      </Count>
+      </Text>
       {hiddenCount > 0 && totalCount ? (
         <SelectAllLink type="button" onClick={onSelectAllVisible}>Select all {totalCount}</SelectAllLink>
       ) : null}
       {hasSelection ? selectionActions : null}
-      <Spacer />
+      <Box style={SPACER_STYLE} />
       {viewMode}
     </>
   )
 
-  const Selection = hasSelection ? SelectionRowActive : SelectionRow
-
   return (
-    <Bar data-ig-component="GalleryToolbar" data-ig-layer="patterns">
+    <Stack gap={0} data-ig-component="GalleryToolbar" data-ig-layer="patterns" style={BAR_STYLE}>
       {typeof uploadProgress === 'number' && uploadProgress > 0 && uploadProgress < 100 ? (
-        <ProgressTrack>
+        <div style={PROGRESS_TRACK_STYLE}>
           <ProgressFill $pct={uploadProgress} aria-label={`Upload progress ${uploadProgress}%`} />
-        </ProgressTrack>
+        </div>
       ) : null}
-      <Row>
+      <Inline gap={3} style={ROW_STYLE}>
         {leftStart}
         {search}
         {filters}
-        <Spacer />
+        <Box style={SPACER_STYLE} />
         {actions}
-      </Row>
-      <Selection>{selectionBar}</Selection>
-    </Bar>
+      </Inline>
+      <Inline gap={3} style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
+    </Stack>
   )
 }
