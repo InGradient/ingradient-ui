@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const Item = styled.li<{ $selected?: boolean }>`
@@ -13,30 +14,9 @@ const Item = styled.li<{ $selected?: boolean }>`
   }
 `
 
-const Wrap = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  min-width: 0;
-`
-
-const Name = styled.span`
-  flex: 1;
-  min-width: 0;
-  font-size: 14px;
-  color: var(--ig-color-text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`
-
-const Count = styled.span`
-  flex-shrink: 0;
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
-`
+const NAME_STYLE = { flex: 1, minWidth: 0, whiteSpace: 'nowrap' as const, overflow: 'hidden' as const, textOverflow: 'ellipsis' as const }
+const COUNT_STYLE = { flexShrink: 0 }
+const WRAP_STYLE = { position: 'relative' as const, width: '100%', minWidth: 0 }
 
 export interface ClassListRowProps {
   id: string
@@ -56,11 +36,11 @@ export function ClassListRow({ id, name, color, count, selected, onClick }: Clas
       role="option"
       aria-selected={selected}
     >
-      <Wrap>
+      <Inline gap={4} style={WRAP_STYLE}>
         <ColorSwatch $color={color} $size="md" $shape="square" />
-        <Name title={name}>{name}</Name>
-        {typeof count === 'number' ? <Count>{count.toLocaleString()}</Count> : null}
-      </Wrap>
+        <Text size="14px" title={name} style={NAME_STYLE}>{name}</Text>
+        {typeof count === 'number' ? <Text size="12px" tone="soft" style={COUNT_STYLE}>{count.toLocaleString()}</Text> : null}
+      </Inline>
     </Item>
   )
 }

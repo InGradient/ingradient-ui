@@ -1,18 +1,7 @@
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 
-const Hint = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
-  line-height: 1.5;
-`
-
-const Expired = styled.p`
-  margin: 0;
-  color: var(--ig-color-danger);
-  font-size: 13px;
-  font-weight: 600;
-`
+const HINT_STYLE = { margin: 0, lineHeight: 1.5 }
+const EXPIRED_STYLE = { margin: 0 }
 
 export interface LicenseInfo {
   type: 'organization' | 'personal'
@@ -42,8 +31,8 @@ export function LicenseInfoDisplay({
   organizationTemplate = DEFAULT_ORG,
   personalTemplate = DEFAULT_PERSONAL,
 }: LicenseInfoDisplayProps) {
-  if (!license) return <Hint>{loadingText}</Hint>
-  if (license.expired) return <Expired>{expiredText}</Expired>
-  if (license.type === 'organization') return <Hint>{organizationTemplate(license)}</Hint>
-  return <Hint>{personalTemplate(license)}</Hint>
+  if (!license) return <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>{loadingText}</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="13px" weight={600} style={EXPIRED_STYLE}>{expiredText}</Text>
+  if (license.type === 'organization') return <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>{organizationTemplate(license)}</Text>
+  return <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>{personalTemplate(license)}</Text>
 }
