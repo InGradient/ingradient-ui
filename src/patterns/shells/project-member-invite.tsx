@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { TextField } from '../../components/inputs/text-fields'
 import { OptionRow } from '../../components/data-display/option-row'
 
@@ -32,11 +33,7 @@ const Input = styled(TextField)`
   min-width: 0;
 `
 
-const Placeholder = styled.p`
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  margin: 0;
-`
+const PLACEHOLDER_STYLE = { margin: 0 }
 
 const Results = styled.div`
   display: flex;
@@ -103,16 +100,16 @@ export function ProjectMemberInvite({
                   onClick={() => onAdd(c.id)}
                 />
               ))}
-              {!isSearching && candidates.length === 0 ? <Placeholder>{noResultsHint}</Placeholder> : null}
+              {!isSearching && candidates.length === 0 ? <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{noResultsHint}</Text> : null}
             </Results>
           ) : (
-            <Placeholder>{hintBelow}</Placeholder>
+            <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{hintBelow}</Text>
           )}
         </Stack>
       </Row>
       {inviteMessage ? (
         <Row>
-          <Placeholder>{inviteMessage}</Placeholder>
+          <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{inviteMessage}</Text>
         </Row>
       ) : null}
     </>

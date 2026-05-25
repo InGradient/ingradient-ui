@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
@@ -31,22 +32,7 @@ const FormRow = styled.div`
   flex-wrap: wrap;
 `
 
-const Empty = styled.p`
-  margin: var(--ig-space-7) 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
-`
-
-const Muted = styled.span`
-  color: var(--ig-color-text-muted);
-`
-
-const CodeText = styled.span`
-  font-family: var(--ig-font-mono, monospace);
-  font-size: 12px;
-  letter-spacing: 1px;
-`
+const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 
 export interface JoinCodesRoleOption {
   value: string
@@ -91,10 +77,10 @@ export function JoinCodesSection({
   description = DEFAULT_DESC,
 }: JoinCodesSectionProps) {
   const columns: TableColumn<JoinCodeRow>[] = [
-    { key: 'code', header: 'Code', render: (r) => <CodeText>{r.code}</CodeText> },
-    { key: 'role', header: 'Role', render: (r) => <Muted>{r.roleId}</Muted> },
-    { key: 'uses', header: 'Uses', render: (r) => <Muted>{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Muted> },
-    { key: 'expires', header: 'Expires', render: (r) => <Muted>{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Muted> },
+    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="12px" letterSpacing="1px">{r.code}</Text> },
+    { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
+    { key: 'uses', header: 'Uses', render: (r) => <Text tone="muted">{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Text> },
+    { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },
     ...(isAdmin
       ? [{
           key: 'actions',
@@ -140,7 +126,7 @@ export function JoinCodesSection({
       )}
 
       {joinCodes.length === 0 ? (
-        <Empty>No join codes</Empty>
+        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>No join codes</Text>
       ) : (
         <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
       )}

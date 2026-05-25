@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Button } from '../../components/inputs/button'
 import { Spinner } from '../../components/feedback/spinner'
@@ -25,20 +26,7 @@ const ProgressFill = styled.div<{ $pct: number }>`
   transition: width var(--ig-motion-normal);
 `
 
-const StatusLine = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-secondary);
-`
-
-const Link = styled.a`
-  color: var(--ig-color-accent);
-  text-decoration: none;
-  font-size: var(--ig-font-size-sm);
-  &:hover { text-decoration: underline; }
-`
+const LINK_STYLE = { textDecoration: 'none' }
 
 export type IgpExportPhase = 'preparing' | 'compressing' | 'ready' | 'error'
 
@@ -83,17 +71,19 @@ export function IgpExportModal({
       }
     >
       <Wrap>
-        <StatusLine>
+        <Inline gap={2}>
           {busy ? <Spinner size="sm" /> : null}
-          {phase === 'error' && errorMessage ? errorMessage : PHASE_LABEL[phase]}
-        </StatusLine>
+          <Text tone="secondary" size="var(--ig-font-size-sm)">
+            {phase === 'error' && errorMessage ? errorMessage : PHASE_LABEL[phase]}
+          </Text>
+        </Inline>
         {busy ? (
           <ProgressTrack>
             <ProgressFill $pct={progress} />
           </ProgressTrack>
         ) : null}
         {phase === 'ready' && downloadUrl ? (
-          <Link href={downloadUrl} download={filename}>Download {filename}</Link>
+          <Text as="a" tone="accent" size="var(--ig-font-size-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
         ) : null}
       </Wrap>
     </DialogShell>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Table, type TableColumn } from '../../components/data-display/table'
@@ -17,16 +18,7 @@ const SectionTitle = styled.h3`
   color: var(--ig-color-text-primary);
 `
 
-const Empty = styled.p`
-  margin: var(--ig-space-7) 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
-`
-
-const Muted = styled.span`
-  color: var(--ig-color-text-muted);
-`
+const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 
 const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
 
@@ -74,14 +66,14 @@ export function OrgMembersTab({
 }: OrgMembersTabProps) {
   const [pendingRemove, setPendingRemove] = useState<OrgMember | null>(null)
 
-  if (loading) return <Empty>{loadingText}</Empty>
-  if (error) return <Empty>{error}</Empty>
+  if (loading) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{loadingText}</Text>
+  if (error) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{error}</Text>
 
   const columns: TableColumn<OrgMember>[] = [
     { key: 'loginId', header: 'Login ID', render: (r) => r.user.loginId },
     { key: 'name', header: 'Name', render: (r) => r.user.displayName },
-    { key: 'role', header: 'Role', render: (r) => <Muted>{r.role.code}</Muted> },
-    { key: 'status', header: 'Status', render: (r) => <Muted>{r.status}</Muted> },
+    { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.role.code}</Text> },
+    { key: 'status', header: 'Status', render: (r) => <Text tone="muted">{r.status}</Text> },
     ...(isAdmin
       ? [{
           key: 'actions',
@@ -99,7 +91,7 @@ export function OrgMembersTab({
     <Wrap>
       <SectionTitle>{title}</SectionTitle>
       {members.length === 0 ? (
-        <Empty>{emptyText}</Empty>
+        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         <Table<OrgMember> columns={columns} rows={members} ariaLabel="Members table" />
       )}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { ClassInfoSection } from './class-info-section'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import { BboxNavigation } from './bbox-navigation'
@@ -41,11 +42,6 @@ const EmptyStateWrap = styled.div`
   align-items: flex-start;
 `
 
-const Status = styled.span`
-  color: var(--ig-color-accent-soft);
-  font-size: 12px;
-  font-weight: 600;
-`
 
 export interface ReferenceImageBboxCandidate {
   imageId: string
@@ -101,8 +97,8 @@ export function ReferenceImageSection({
           {candidates.length > 1 ? (
             <BboxNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} />
           ) : null}
-          {pending ? <Status>Updating reference image…</Status> : null}
-          {errorMessage ? <Status>{errorMessage}</Status> : null}
+          {pending ? <Text tone="accent" size="12px" weight={600}>Updating reference image…</Text> : null}
+          {errorMessage ? <Text tone="accent" size="12px" weight={600}>{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
     </ClassInfoSection>

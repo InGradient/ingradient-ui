@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Archive, Pencil } from 'lucide-react'
+import { Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
 import { Button } from '../../components/inputs/button'
 import { IconButton } from '../../components/inputs/icon-button'
@@ -48,11 +49,7 @@ const ListWrap = styled.div`
   overflow-y: auto;
 `
 
-const Empty = styled.div`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  padding: var(--ig-space-2);
-`
+const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 const ComposerWrap = styled.div`
   display: flex;
@@ -284,7 +281,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
       {open ? (
         <Body>
           {count === 0 ? (
-            <Empty>{emptyTextValue}</Empty>
+            <Text tone="muted" size="var(--ig-font-size-xs)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
             <ListWrap>
               <CommentThread>

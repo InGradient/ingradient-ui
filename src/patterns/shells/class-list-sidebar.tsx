@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { ClassListRow } from './class-list-row'
 
@@ -30,12 +31,7 @@ const List = styled.ul`
   flex: 1;
 `
 
-const Placeholder = styled.div`
-  padding: var(--ig-space-9) var(--ig-space-6);
-  color: var(--ig-color-text-muted);
-  font-size: 14px;
-  text-align: center;
-`
+const PLACEHOLDER_STYLE = { padding: 'var(--ig-space-9) var(--ig-space-6)' }
 
 export interface ClassListSidebarClass {
   id: string
@@ -68,9 +64,9 @@ export function ClassListSidebar({
         </Button>
       </Header>
       {loading ? (
-        <Placeholder>Loading…</Placeholder>
+        <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>Loading…</Text>
       ) : classes.length === 0 ? (
-        <Placeholder>{emptyText}</Placeholder>
+        <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
       ) : (
         <List role="listbox" aria-label="Classes">
           {classes.map((c) => (

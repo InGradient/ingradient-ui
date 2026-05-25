@@ -46,7 +46,7 @@ const TextRoot = styled.span<{
   ${(p) => p.$tabularNums && css`font-variant-numeric: tabular-nums;`}
 `
 
-export interface TextProps extends React.HTMLAttributes<HTMLElement> {
+export interface TextProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> {
   as?: React.ElementType
   tone?: Tone
   size?: string

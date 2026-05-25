@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DatePickerField } from '../../components/inputs/date-picker'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
@@ -69,11 +70,7 @@ const ErrMsg = styled.span`
   color: var(--ig-color-danger);
 `
 
-const Placeholder = styled.p`
-  margin: 0;
-  font-size: 13px;
-  color: var(--ig-color-text-muted);
-`
+const PLACEHOLDER_STYLE = { margin: 0 }
 
 export interface DeviceLicense {
   planCode: string
@@ -128,7 +125,7 @@ export function DevicesLicenseSection({
         ) : null}
       </Header>
 
-      {loading ? <Placeholder>Loading…</Placeholder> : null}
+      {loading ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>Loading…</Text> : null}
       {!loading && error ? <ErrMsg>{error}</ErrMsg> : null}
       {!loading && !error && license ? (
         <InfoGrid>
@@ -147,7 +144,7 @@ export function DevicesLicenseSection({
           </InfoValue>
         </InfoGrid>
       ) : null}
-      {!loading && !error && !license ? <Placeholder>No license found.</Placeholder> : null}
+      {!loading && !error && !license ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>No license found.</Text> : null}
 
       {isAdmin && showRenew ? (
         <FormBox>
