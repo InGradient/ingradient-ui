@@ -1,5 +1,6 @@
 import { DayPicker, type DateRange } from 'react-day-picker'
 import styled from 'styled-components'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { MenuPopover } from '../../components/overlays/popovers'
 import { SmallText } from '../../components/feedback/status'
@@ -12,31 +13,6 @@ const Popover = styled(MenuPopover)`
   width: min(360px, calc(100vw - 40px));
   padding: var(--ig-space-7);
   border-radius: var(--ig-radius-2xl);
-`
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  margin-bottom: var(--ig-space-6);
-`
-
-const Title = styled.div`
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
-`
-
-const Subtitle = styled.div`
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
-`
-
-const PresetRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-space-3);
-  margin-bottom: var(--ig-space-6);
 `
 
 const PresetButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
@@ -79,23 +55,10 @@ const Calendar = styled.div`
   }
 `
 
-const Summary = styled.div`
-  margin-top: var(--ig-space-5);
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
-`
-
-const Footer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: var(--ig-space-4);
-  margin-top: var(--ig-space-6);
-`
-
-const FooterActions = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-`
+const HEADER_STYLE = { marginBottom: 'var(--ig-space-6)' }
+const PRESET_ROW_STYLE = { marginBottom: 'var(--ig-space-6)' }
+const SUMMARY_STYLE = { marginTop: 'var(--ig-space-5)' }
+const FOOTER_STYLE = { marginTop: 'var(--ig-space-6)' }
 
 export type DateRangePreset = 'today' | 'last7' | 'thisMonth'
 
@@ -124,26 +87,26 @@ export function DashboardDateRangePopover({
   if (!open) return null
   return (
     <Popover className={className} role="dialog" aria-label={title}>
-      <Header>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-      </Header>
-      <PresetRow>
+      <Stack gap={2} style={HEADER_STYLE}>
+        <Text size="13px" weight={700}>{title}</Text>
+        <Text size="12px" tone="soft">{subtitle}</Text>
+      </Stack>
+      <Inline gap={3} wrap="wrap" style={PRESET_ROW_STYLE}>
         <PresetButton type="button" onClick={() => onSelectPreset('today')}>Today</PresetButton>
         <PresetButton type="button" onClick={() => onSelectPreset('last7')}>Last 7 days</PresetButton>
         <PresetButton type="button" onClick={() => onSelectPreset('thisMonth')}>This month</PresetButton>
-      </PresetRow>
+      </Inline>
       <Calendar>
         <DayPicker mode="range" selected={dateDraft} onSelect={onChangeDraft} numberOfMonths={1} showOutsideDays />
       </Calendar>
-      <Summary>{summaryLabel}</Summary>
-      <Footer>
+      <Text size="12px" tone="soft" style={SUMMARY_STYLE}>{summaryLabel}</Text>
+      <Inline justify="space-between" gap={4} style={FOOTER_STYLE}>
         <SmallText>{footerHint}</SmallText>
-        <FooterActions>
+        <Inline gap={3}>
           <PresetButton type="button" onClick={onReset}>Reset</PresetButton>
           <Button variant="secondary" type="button" onClick={onApply}>Apply</Button>
-        </FooterActions>
-      </Footer>
+        </Inline>
+      </Inline>
     </Popover>
   )
 }

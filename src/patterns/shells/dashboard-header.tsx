@@ -1,42 +1,17 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { PageHeader, PageSubtitle, PageTitle } from '../page/page-shell'
-
-const Top = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--ig-space-7);
-  flex-wrap: wrap;
-`
 
 const Subtitle = styled(PageSubtitle)`
   margin-top: var(--ig-space-2);
 `
 
-const ProjectName = styled.span`
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--ig-color-text-secondary);
-  text-align: right;
-  flex-shrink: 0;
-  margin-left: auto;
-`
-
-const Actions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  flex-wrap: wrap;
-  position: relative;
-  justify-content: flex-end;
-  padding: var(--ig-space-3) var(--ig-space-11);
-`
-
-const Message = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
-`
+const PROJECT_NAME_STYLE = { textAlign: 'right' as const, flexShrink: 0, marginLeft: 'auto' }
+const ACTIONS_STYLE = {
+  position: 'relative' as const,
+  padding: 'var(--ig-space-3) var(--ig-space-11)',
+}
 
 export interface DashboardHeaderProps {
   title?: string
@@ -61,20 +36,20 @@ export function DashboardHeader({
   return (
     <div className={className}>
       <PageHeader>
-        <Top>
+        <Inline justify="space-between" align="flex-start" gap={7} wrap="wrap">
           <div>
             <PageTitle>{title}</PageTitle>
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
           </div>
-          {projectName ? <ProjectName>{projectName}</ProjectName> : null}
-        </Top>
+          {projectName ? <Text size="18px" weight={700} tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
+        </Inline>
       </PageHeader>
       {(actions || saveMessage) ? (
-        <Actions data-report-hide>
-          {saveMessage ? <Message>{saveMessage}</Message> : null}
+        <Inline gap={4} wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
+          {saveMessage ? <Text size="12px" tone="soft">{saveMessage}</Text> : null}
           {actions}
           {actionsExtra}
-        </Actions>
+        </Inline>
       ) : null}
     </div>
   )

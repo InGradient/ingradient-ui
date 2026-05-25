@@ -1,22 +1,6 @@
-import styled from 'styled-components'
+import { Inline, Stack, Text } from '../../primitives'
 
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-`
-
-const Row = styled.span`
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
-`
-
-const Value = styled.strong`
-  color: var(--ig-color-text-primary);
-  margin-left: var(--ig-space-7);
-`
+const VALUE_STYLE = { marginLeft: 'var(--ig-space-7)' }
 
 export interface DashboardStatItem {
   label: string
@@ -30,12 +14,12 @@ export interface DashboardStatsHeaderProps {
 
 export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderProps) {
   return (
-    <Stack className={className}>
+    <Stack gap={1} className={className}>
       {items.map((item) => (
-        <Row key={item.label}>
-          <span>{item.label}</span>
-          <Value>{item.value}</Value>
-        </Row>
+        <Inline as="span" key={item.label} justify="space-between">
+          <Text as="span" size="12px" tone="muted">{item.label}</Text>
+          <Text as="strong" size="12px" weight={700} style={VALUE_STYLE}>{item.value}</Text>
+        </Inline>
       ))}
     </Stack>
   )
