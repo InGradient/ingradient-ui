@@ -1,22 +1,6 @@
-import styled from 'styled-components'
 import { Inline, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
-
-const NativeColor = styled.input.attrs({ type: 'color' })`
-  width: 40px;
-  height: 40px;
-  padding: 2px;
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
-  cursor: pointer;
-  background: var(--ig-color-surface-raised);
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
-  &::-webkit-color-swatch-wrapper { padding: 0; }
-  &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-2xs); }
-`
+import { ColorInput } from '../../components/inputs/color-input'
 
 const RANDOM_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
@@ -41,7 +25,7 @@ export function ColorInputRow({
 }: ColorInputRowProps) {
   return (
     <Inline gap={5}>
-      <NativeColor
+      <ColorInput
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         aria-label={ariaLabel}
