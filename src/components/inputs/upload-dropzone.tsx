@@ -1,38 +1,20 @@
 import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
-
-const DropArea = styled.div<{ $active: boolean; $disabled: boolean }>`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-10) var(--ig-space-6);
-  border: 2px dashed ${(p) =>
-    p.$disabled
-      ? 'var(--ig-color-border-subtle)'
-      : p.$active
-        ? 'var(--ig-color-accent-soft)'
-        : 'var(--ig-color-border-subtle)'};
-  border-radius: var(--ig-radius-lg);
-  background: ${(p) =>
-    p.$disabled
-      ? 'repeating-linear-gradient(135deg, var(--ig-color-surface-muted) 0 10px, var(--ig-color-bg-canvas) 10px 20px)'
-      : p.$active
-        ? 'var(--ig-color-accent-soft-surface)'
-        : 'transparent'};
-  color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-muted)')};
-  font-size: var(--ig-font-size-sm);
-  text-align: center;
-  cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${(p) => (p.$disabled ? 0.6 : 1)};
-  transition: border-color var(--ig-motion-fast), background var(--ig-motion-fast), color var(--ig-motion-fast);
-`
+import { DropZone } from './drop-zone'
 
 const HiddenInput = styled.input`
   display: none;
 `
+
+const ZONE_STYLE = {
+  flexDirection: 'column' as const,
+  gap: 'var(--ig-space-4)',
+  padding: 'var(--ig-space-10) var(--ig-space-6)',
+  textAlign: 'center' as const,
+  fontSize: 'var(--ig-font-size-sm)',
+}
+
+const ZONE_CLICKABLE_STYLE = { ...ZONE_STYLE, cursor: 'pointer' as const }
 
 export interface UploadDropzoneProps {
   accept?: string
@@ -83,10 +65,12 @@ export function UploadDropzone({
   )
 
   return (
-    <DropArea
+    <DropZone
+      variant="outlined"
+      active={active}
+      disabled={disabled}
       className={className}
-      $active={active}
-      $disabled={disabled}
+      style={disabled ? ZONE_STYLE : ZONE_CLICKABLE_STYLE}
       onClick={() => !disabled && inputRef.current?.click()}
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
@@ -101,6 +85,6 @@ export function UploadDropzone({
         onChange={(e) => { handleFiles(e.target.files); e.target.value = '' }}
       />
       {children ?? 'Drop files here or click to browse'}
-    </DropArea>
+    </DropZone>
   )
 }

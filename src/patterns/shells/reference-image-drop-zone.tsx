@@ -1,21 +1,20 @@
 import type { DragEvent, ReactNode } from 'react'
-import styled from 'styled-components'
+import { DropZone } from '../../components/inputs/drop-zone'
 
-const Zone = styled.div<{ $dragging?: boolean; $hasImage?: boolean }>`
-  padding: ${(p) => (p.$hasImage ? 'var(--ig-space-4)' : 'var(--ig-space-9)')};
-  border: 1px solid ${(p) => (p.$dragging ? 'rgba(77, 136, 255, 0.7)' : 'var(--ig-color-white-12)')};
-  border-radius: var(--ig-radius-xxs);
-  background: ${(p) => (p.$dragging ? 'var(--ig-color-blue-tint-12)' : 'var(--ig-color-surface-raised)')};
-  color: var(--ig-color-text-soft);
-  font-size: 13px;
-  text-align: left;
-  min-height: ${(p) => (p.$hasImage ? '0' : '180px')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.16s ease, background 0.16s ease;
-  overflow: visible;
-`
+const EMPTY_STYLE = {
+  padding: 'var(--ig-space-9)',
+  minHeight: 180,
+  fontSize: 13,
+  textAlign: 'left' as const,
+  overflow: 'visible' as const,
+}
+
+const HAS_IMAGE_STYLE = {
+  padding: 'var(--ig-space-4)',
+  fontSize: 13,
+  textAlign: 'left' as const,
+  overflow: 'visible' as const,
+}
 
 export interface ReferenceImageDropZoneProps {
   dragging?: boolean
@@ -50,16 +49,17 @@ export function ReferenceImageDropZone({
     if (imageId) onDropImageId?.(imageId)
   }
   return (
-    <Zone
-      $dragging={dragging}
-      $hasImage={hasImage}
+    <DropZone
+      variant="filled"
+      active={dragging}
       className={className}
+      style={hasImage ? HAS_IMAGE_STYLE : EMPTY_STYLE}
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
       {children}
-    </Zone>
+    </DropZone>
   )
 }
