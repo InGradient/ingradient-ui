@@ -29,7 +29,9 @@ export const DragOverFull = styled.div`
 `
 
 export const GridWrap = styled.div`
-  padding: 0 var(--ig-space-7) var(--ig-space-7);
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: var(--ig-space-7);
   position: relative;
 `
 

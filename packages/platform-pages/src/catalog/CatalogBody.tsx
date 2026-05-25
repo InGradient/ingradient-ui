@@ -2,18 +2,34 @@ import type { CSSProperties, ReactNode } from 'react'
 import { Alert, EmptyState, Spinner } from '@ingradient/ui/components'
 import { GalleryImagesTable } from '@ingradient/ui/patterns'
 import { Stack } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
 import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'
 import type { CatalogImagesPaneProps, CatalogViewMode } from './types'
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const LOADING_STYLE: CSSProperties = { padding: 'var(--ig-space-12)' }
 const PERMISSION_DENIED_TEXT = "You don't have permission to view images."
 const LOADING_TEXT = 'Loading images…'
 const EMPTY_TITLE = 'No images'
 const EMPTY_DESC = 'Upload images or select a different dataset.'
 const STATS_EMPTY_TITLE = 'No data'
 const STATS_EMPTY_DESC = 'Stats are available when at least one image is uploaded.'
+
+const EmptyStateWrap = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  padding: var(--ig-space-7);
+`
+
+const LoadingText = styled.span`
+  color: var(--ig-color-text-primary);
+  font-size: var(--ig-font-size-sm);
+  font-weight: 600;
+`
 
 interface CatalogBodyProps {
   permissionDenied?: boolean
@@ -48,17 +64,27 @@ export function CatalogBody({
   }
   if (imagesPane.loading) {
     return (
-      <Stack gap={3} align="center" style={LOADING_STYLE}>
-        <Spinner size="lg" />
-        <span>{LOADING_TEXT}</span>
-      </Stack>
+      <EmptyStateWrap>
+        <Stack gap={3} align="center">
+          <Spinner size="lg" />
+          <LoadingText>{LOADING_TEXT}</LoadingText>
+        </Stack>
+      </EmptyStateWrap>
     )
   }
   if (imagesPane.images.length === 0) {
     if (viewMode === 'stats') {
-      return <EmptyState title={STATS_EMPTY_TITLE} description={STATS_EMPTY_DESC} />
+      return (
+        <EmptyStateWrap>
+          <EmptyState title={STATS_EMPTY_TITLE} description={STATS_EMPTY_DESC} />
+        </EmptyStateWrap>
+      )
     }
-    return <EmptyState title={EMPTY_TITLE} description={EMPTY_DESC} />
+    return (
+      <EmptyStateWrap>
+        <EmptyState title={EMPTY_TITLE} description={EMPTY_DESC} />
+      </EmptyStateWrap>
+    )
   }
   if (viewMode === 'table') {
     return (

@@ -1,5 +1,17 @@
 import { css } from 'styled-components'
 
+const buttonDisabled = css`
+  &:disabled {
+    opacity: 0.52;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    border: 1px solid var(--ig-color-border-subtle);
+    background: var(--ig-color-surface-muted);
+    color: var(--ig-color-text-soft);
+  }
+`
+
 export const buttonPrimary = css`
   border-radius: var(--ig-radius-sm);
   border: 1px solid var(--ig-color-accent-strong);
@@ -22,13 +34,7 @@ export const buttonPrimary = css`
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-style: dashed;
-    background: var(--ig-color-surface-muted);
-    color: var(--ig-color-text-soft);
-  }
+  ${buttonDisabled}
 `
 
 export const buttonSecondary = css`
@@ -55,13 +61,7 @@ export const buttonSecondary = css`
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-style: dashed;
-    background: var(--ig-color-surface-muted);
-    color: var(--ig-color-text-soft);
-  }
+  ${buttonDisabled}
 `
 
 export const buttonAccent = css`
@@ -87,13 +87,7 @@ export const buttonAccent = css`
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-style: dashed;
-    background: var(--ig-color-surface-muted);
-    color: var(--ig-color-text-soft);
-  }
+  ${buttonDisabled}
 `
 
 export const buttonDanger = css`
@@ -119,13 +113,7 @@ export const buttonDanger = css`
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-style: dashed;
-    background: var(--ig-color-surface-muted);
-    color: var(--ig-color-text-soft);
-  }
+  ${buttonDisabled}
 `
 
 export const buttonDangerSecondary = css`
@@ -152,11 +140,5 @@ export const buttonDangerSecondary = css`
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-style: dashed;
-    background: var(--ig-color-surface-muted);
-    color: var(--ig-color-text-soft);
-  }
+  ${buttonDisabled}
 `

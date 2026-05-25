@@ -74,7 +74,7 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
   },
 }))<{ $layout: DropdownMenuLayout }>`
   position: fixed;
-  z-index: var(--ig-z-popover);
+  z-index: calc(var(--ig-z-modal) + 10);
   padding: var(--ig-space-2);
   border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);

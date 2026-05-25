@@ -10,14 +10,23 @@ const Card = styled.div<{ $selected: boolean }>`
   width: 100%;
   aspect-ratio: 4 / 3;
   background: var(--ig-color-surface-muted);
-  border: 2px solid ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'transparent')};
+  border: 2px solid transparent;
   border-radius: var(--ig-radius-md);
   overflow: hidden;
   cursor: pointer;
   transition: border-color var(--ig-motion-fast), box-shadow var(--ig-motion-fast);
-  box-shadow: ${(p) => (p.$selected ? '0 0 0 3px var(--ig-color-image-card-selected-ring)' : 'none')};
+  box-shadow: none;
   &:hover {
-    border-color: ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'var(--ig-color-image-card-hover-border)')};
+    border-color: ${(p) => (p.$selected ? 'transparent' : 'var(--ig-color-image-card-hover-border)')};
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 4;
   }
 `
 
