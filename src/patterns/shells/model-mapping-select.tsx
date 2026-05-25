@@ -1,22 +1,12 @@
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { SelectField } from '../../components/inputs/select-field'
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
 
 const StyledSelect = styled(SelectField)`
   max-width: 280px;
   padding: var(--ig-space-3) var(--ig-space-5);
   font-size: 13px;
   border-radius: var(--ig-radius-2xs);
-`
-
-const Hint = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
 `
 
 export interface ModelMappingSelectProps {
@@ -41,10 +31,10 @@ export function ModelMappingSelect({
   title = 'Map this class to a COCO class',
 }: ModelMappingSelectProps) {
   if (!enabled) {
-    return <Hint>{disabledHint}</Hint>
+    return <Text size="12px" tone="soft">{disabledHint}</Text>
   }
   return (
-    <Wrap>
+    <Stack gap={3}>
       <StyledSelect
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}
@@ -56,7 +46,7 @@ export function ModelMappingSelect({
           <option key={name} value={name}>{name}</option>
         ))}
       </StyledSelect>
-      <Hint>{enabledHint}</Hint>
-    </Wrap>
+      <Text size="12px" tone="soft">{enabledHint}</Text>
+    </Stack>
   )
 }
