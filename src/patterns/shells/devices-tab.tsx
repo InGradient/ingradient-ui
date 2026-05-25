@@ -1,13 +1,7 @@
-import styled from 'styled-components'
+import { Stack } from '../../primitives'
 import { DevicesLicenseSection, type DevicesLicenseSectionProps } from './devices-license-section'
 import { DevicesForms, type DevicesFormsProps } from './devices-forms'
 import { DevicesTable, type DevicesTableProps } from './devices-table'
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-11);
-`
 
 export interface DevicesTabProps {
   license: DevicesLicenseSectionProps
@@ -17,10 +11,10 @@ export interface DevicesTabProps {
 
 export function DevicesTab({ license, forms, table }: DevicesTabProps) {
   return (
-    <Wrap>
+    <Stack gap={11}>
       <DevicesLicenseSection {...license} />
       <DevicesForms {...forms} />
       <DevicesTable {...table} />
-    </Wrap>
+    </Stack>
   )
 }

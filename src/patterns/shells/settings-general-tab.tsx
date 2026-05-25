@@ -1,19 +1,11 @@
-import styled from 'styled-components'
+import { Box, Stack } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { DropdownSelect, type DropdownOption } from '../../components/inputs/dropdown-select'
 import { SettingsSection } from './settings-section'
 import { SettingsRow } from './settings-row'
 import { SettingsHint } from './settings-hint'
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-const SelectWrap = styled.div`
-  min-width: 160px;
-`
+const SELECT_WRAP_STYLE = { minWidth: 160 }
 
 export interface SettingsGeneralTabProps {
   locale: string
@@ -46,15 +38,15 @@ export function SettingsGeneralTab({
   hint = DEFAULT_HINT,
 }: SettingsGeneralTabProps) {
   return (
-    <Wrap>
+    <Stack gap={5}>
       <SettingsSection title="Language">
         <SettingsRow
           asLabel={false}
           label="Interface language"
           control={
-            <SelectWrap>
+            <Box style={SELECT_WRAP_STYLE}>
               <DropdownSelect value={locale} options={localeOptions} onChange={onChangeLocale} />
-            </SelectWrap>
+            </Box>
           }
         />
       </SettingsSection>
@@ -75,6 +67,6 @@ export function SettingsGeneralTab({
       </SettingsSection>
 
       <SettingsHint>{hint}</SettingsHint>
-    </Wrap>
+    </Stack>
   )
 }

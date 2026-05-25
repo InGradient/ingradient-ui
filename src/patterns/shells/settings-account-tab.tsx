@@ -1,23 +1,11 @@
 import styled from 'styled-components'
+import { Inline, Stack } from '../../primitives'
 import { Alert } from '../../components/feedback/alert'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 import { SettingsSection } from './settings-section'
 import { SettingsHint } from './settings-hint'
 import { LicenseInfoDisplay, type LicenseInfo } from './license-info-display'
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-5);
-  flex-wrap: wrap;
-`
 
 const Field = styled(TextField)`
   min-width: 240px;
@@ -63,9 +51,9 @@ export function SettingsAccountTab({
   const saveDisabled = !!accountSaving || !accountName.trim() || sameAsCurrent
 
   return (
-    <Wrap>
+    <Stack gap={5}>
       <SettingsSection title="Profile">
-        <Row>
+        <Inline gap={5} wrap="wrap">
           <Field
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
@@ -75,7 +63,7 @@ export function SettingsAccountTab({
           <Button type="button" variant="accent" disabled={saveDisabled} onClick={onSaveName}>
             {accountSaving ? 'Saving…' : 'Save'}
           </Button>
-        </Row>
+        </Inline>
         <SettingsHint>{user?.email ? `Signed in as ${user.email}` : 'Signed in user account.'}</SettingsHint>
         {accountMessage ? (
           <Alert $tone={accountMessage === 'Saved.' ? 'success' : 'info'}>{accountMessage}</Alert>
@@ -87,10 +75,10 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Access">
-        <Row>
+        <Inline gap={5} wrap="wrap">
           <Button type="button" variant="secondary" onClick={onOpenPassword}>Change password</Button>
           <Button type="button" variant="secondary" onClick={onLogout}>Log out</Button>
-        </Row>
+        </Inline>
       </SettingsSection>
 
       <SettingsSection title="Delete account">
@@ -98,7 +86,7 @@ export function SettingsAccountTab({
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
         </SettingsHint>
-        <Row>
+        <Inline gap={5} wrap="wrap">
           <Field
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}
@@ -112,9 +100,9 @@ export function SettingsAccountTab({
           >
             {deleteAccountPreviewLoading ? 'Preparing…' : 'Delete Account'}
           </DangerButton>
-        </Row>
+        </Inline>
         {deleteAccountMessage ? <Alert $tone="danger">{deleteAccountMessage}</Alert> : null}
       </SettingsSection>
-    </Wrap>
+    </Stack>
   )
 }
