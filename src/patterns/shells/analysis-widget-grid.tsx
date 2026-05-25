@@ -1,11 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-
-const Rows = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-9);
-`
+import { Stack } from '../../primitives'
 
 const Row = styled.div<{ $count: number }>`
   position: relative;
@@ -46,7 +41,7 @@ export function AnalysisWidgetGrid<K extends string = string>({
   }
 
   return (
-    <Rows className={className}>
+    <Stack gap={9} className={className}>
       {visibleRows.map((row, rowIndex) => (
         <Row key={`row-${rowIndex}-${row.join('-')}`} $count={row.length}>
           {row.map((key) => (
@@ -56,6 +51,6 @@ export function AnalysisWidgetGrid<K extends string = string>({
           ))}
         </Row>
       ))}
-    </Rows>
+    </Stack>
   )
 }

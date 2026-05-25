@@ -1,22 +1,11 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Download } from 'lucide-react'
+import { Box, Inline } from '../../primitives'
 import { IconButton } from '../../components/inputs/icon-button'
 
-const Shell = styled.div`
-  position: relative;
-  min-width: 0;
-`
-
-const Actions = styled.div`
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 8;
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-`
+const SHELL_STYLE = { position: 'relative' as const, minWidth: 0 }
+const ACTIONS_STYLE = { position: 'absolute' as const, top: 14, right: 14, zIndex: 8 }
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`
   color: var(--ig-color-text-secondary);
@@ -44,18 +33,18 @@ export function AnalysisWidgetShell({
   className,
 }: AnalysisWidgetShellProps) {
   return (
-    <Shell className={className}>
+    <Box className={className} style={SHELL_STYLE}>
       {(onDownload || extraActions) ? (
-        <Actions data-report-hide>
+        <Inline gap={3} data-report-hide style={ACTIONS_STYLE}>
           {onDownload ? (
             <ActionButton type="button" onClick={onDownload} title={downloadLabel} aria-label={downloadLabel}>
               <Download />
             </ActionButton>
           ) : null}
           {extraActions}
-        </Actions>
+        </Inline>
       ) : null}
       {children}
-    </Shell>
+    </Box>
   )
 }

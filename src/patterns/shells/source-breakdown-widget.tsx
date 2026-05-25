@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Box, Inline, Text } from '../../primitives'
 import { BarChartCard } from '../charts/bar-chart-card'
 import { SectionPanel } from '../../components/data-display/layout'
 
@@ -10,42 +11,9 @@ const Card = styled(SectionPanel)`
   gap: var(--ig-space-5);
 `
 
-const Head = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-4);
-`
-
-const Title = styled.span`
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-secondary);
-`
-
-const Empty = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-`
-
 const Block = styled.div`
   margin-bottom: var(--ig-space-7);
   &:last-child { margin-bottom: 0; }
-`
-
-const Chip = styled.span`
-  display: inline-block;
-  padding: 2px var(--ig-space-3);
-  background: var(--ig-color-surface-raised);
-  border-radius: var(--ig-radius-2xs);
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
-`
-
-const TableWrap = styled.div`
-  margin-top: var(--ig-space-3);
 `
 
 const Table = styled.table`
@@ -60,6 +28,18 @@ const Table = styled.table`
   th { color: var(--ig-color-text-muted); font-weight: 500; }
   td { color: var(--ig-color-text-primary); }
 `
+
+const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
+const CHIP_STYLE = {
+  display: 'inline-block' as const,
+  padding: '2px var(--ig-space-3)',
+  background: 'var(--ig-color-surface-raised)',
+  borderRadius: 'var(--ig-radius-2xs)',
+}
+const EMPTY_STYLE = { margin: 0 }
+const EMPTY_OFFSET_STYLE = { margin: 0, marginTop: 12 }
+const TABLE_WRAP_STYLE = { marginTop: 'var(--ig-space-3)' }
+const CHART_STYLE = { marginTop: 12 }
 
 const SOURCE_COLORS = ['var(--ig-color-accent)', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055', '#74b9ff', '#a29bfe', '#55efc4']
 
@@ -92,17 +72,19 @@ export function SourceBreakdownWidget({
 }: SourceBreakdownWidgetProps) {
   return (
     <Card className={className}>
-      <Head><Title>{title}</Title></Head>
+      <Inline justify="space-between" gap={5} style={HEAD_STYLE}>
+        <Text size="13px" weight={600} tone="secondary">{title}</Text>
+      </Inline>
       {bySource.length === 0 ? (
-        <Empty>{emptyText}</Empty>
+        <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         bySource.map((source) => (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Chip>{source.source === 'camera' && source.camera_ip ? `Camera ${source.camera_ip}` : source.source}</Chip>
+            <Text size="12px" tone="muted" style={CHIP_STYLE}>{source.source === 'camera' && source.camera_ip ? `Camera ${source.camera_ip}` : source.source}</Text>
             {source.defect_counts.length === 0 ? (
-              <Empty style={{ marginTop: 12 }}>{noDefectText}</Empty>
+              <Text as="p" tone="soft" size="14px" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
-              <TableWrap>
+              <Box style={TABLE_WRAP_STYLE}>
                 <Table>
                   <thead><tr><th>Class</th><th>Count</th></tr></thead>
                   <tbody>
@@ -114,7 +96,7 @@ export function SourceBreakdownWidget({
                     ))}
                   </tbody>
                 </Table>
-                <div style={{ marginTop: 12 }}>
+                <div style={CHART_STYLE}>
                   <BarChartCard
                     data={source.defect_counts.map((d, i) => ({ name: d.name, count: d.count, color: SOURCE_COLORS[i % SOURCE_COLORS.length] }))}
                     xKey="name"
@@ -123,7 +105,7 @@ export function SourceBreakdownWidget({
                     getCellColor={(row) => row.color as string}
                   />
                 </div>
-              </TableWrap>
+              </Box>
             )}
           </Block>
         ))

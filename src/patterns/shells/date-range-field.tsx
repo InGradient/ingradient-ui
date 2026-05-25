@@ -1,22 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Box, Inline, Text } from '../../primitives'
 import { DatePickerField } from '../../components/inputs/date-picker'
 
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
-
-const Dash = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
-`
-
-const PickerSlot = styled.div`
-  flex: 1;
-  min-width: 0;
-`
+const SLOT_STYLE = { flex: 1, minWidth: 0 }
 
 export interface DateRangeFieldProps {
   from: string
@@ -34,24 +20,24 @@ export function DateRangeField({
   disabled, className,
 }: DateRangeFieldProps) {
   return (
-    <Row className={className}>
-      <PickerSlot>
+    <Inline gap={2} className={className}>
+      <Box style={SLOT_STYLE}>
         <DatePickerField
           value={from}
           onChange={(v) => onChange({ from: v, to })}
           placeholder={fromPlaceholder}
           disabled={disabled}
         />
-      </PickerSlot>
-      <Dash>—</Dash>
-      <PickerSlot>
+      </Box>
+      <Text tone="muted" size="var(--ig-font-size-sm)">—</Text>
+      <Box style={SLOT_STYLE}>
         <DatePickerField
           value={to}
           onChange={(v) => onChange({ from, to: v })}
           placeholder={toPlaceholder}
           disabled={disabled}
         />
-      </PickerSlot>
-    </Row>
+      </Box>
+    </Inline>
   )
 }
