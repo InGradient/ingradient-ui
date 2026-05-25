@@ -1,24 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Stack, Text } from '../../primitives'
 import { Card } from '../../components/data-display/card'
 import { ActionBar } from '../../components/data-display/layout'
+import { AspectRatioImage } from '../../components/data-display/aspect-ratio-image'
 
 const BODY_STYLE = { padding: 'var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)' }
 const CARD_STYLE = { display: 'flex' as const, flexDirection: 'column' as const }
-
-const PreviewMedia = styled.div`
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, var(--ig-color-image-card-gradient-a) 0%, var(--ig-color-image-card-gradient-b) 100%), var(--ig-color-surface-interactive);
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-`
-
 
 export function PreviewCard({
   title,
@@ -41,9 +28,7 @@ export function PreviewCard({
       overflow="hidden"
       style={CARD_STYLE}
     >
-      <PreviewMedia>
-        <img src={imageSrc} alt={typeof title === 'string' ? title : 'Preview card'} />
-      </PreviewMedia>
+      <AspectRatioImage ratio="16/10" src={imageSrc} alt={typeof title === 'string' ? title : 'Preview card'} />
       <Stack gap={3} style={BODY_STYLE}>
         <ActionBar>
           <Text size="14px" weight={700}>{title}</Text>

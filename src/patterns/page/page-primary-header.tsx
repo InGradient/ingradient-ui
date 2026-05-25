@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 import {
   PageHeader,
   PageHeaderRow,
@@ -8,13 +8,7 @@ import {
   PageTitleBlock,
 } from './page-shell'
 
-const RightSlot = styled.span`
-  font-size: var(--ig-font-size-lg);
-  font-weight: 700;
-  color: var(--ig-color-text-secondary);
-  text-align: right;
-  flex-shrink: 0;
-`
+const RIGHT_SLOT_STYLE = { flexShrink: 0 }
 
 export interface PagePrimaryHeaderProps {
   title: React.ReactNode
@@ -44,7 +38,11 @@ export function PagePrimaryHeader({
           <PageTitle>{title}</PageTitle>
           {subtitle ? <PageSubtitle>{subtitle}</PageSubtitle> : null}
         </PageTitleBlock>
-        {rightSlot ? <RightSlot>{rightSlot}</RightSlot> : null}
+        {rightSlot ? (
+          <Text as="span" size="var(--ig-font-size-lg)" weight={700} tone="secondary" align="right" style={RIGHT_SLOT_STYLE}>
+            {rightSlot}
+          </Text>
+        ) : null}
       </PageHeaderRow>
     </PageHeader>
   )

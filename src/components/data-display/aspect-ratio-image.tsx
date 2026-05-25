@@ -1,7 +1,7 @@
 import type { ImgHTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
 
-export type AspectRatio = '1/1' | '4/3' | '16/9'
+export type AspectRatio = '1/1' | '4/3' | '16/9' | '16/10'
 
 const Frame = styled.div<{ $ratio: AspectRatio }>`
   position: relative;
