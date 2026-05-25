@@ -1,50 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Stack } from '../../primitives'
 import { SelectableGridCell } from '../../components/data-display/selectable-grid-cell'
+import { AspectRatioImage } from '../../components/data-display/aspect-ratio-image'
+import { OverlayLayer } from '../../components/data-display/overlay-layer'
 import { classifySelectionAction, type GridSelectionAction } from '../../components/data-display/use-grid-selection'
 
-const Media = styled.div`
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: linear-gradient(
-      135deg,
-      var(--ig-color-image-card-gradient-a) 0%,
-      var(--ig-color-image-card-gradient-b) 100%
-    ),
-    var(--ig-color-surface-interactive);
+const TOP_RIGHT_STYLE = {
+  position: 'absolute' as const,
+  top: 'var(--ig-space-3)',
+  right: 'var(--ig-space-3)',
+  display: 'flex' as const,
+  gap: 'var(--ig-space-2)',
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-`
-
-const OverlayLayer = styled.div`
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  > * {
-    pointer-events: auto;
-  }
-`
-
-const TopRightLayer = styled.div`
-  position: absolute;
-  top: var(--ig-space-3);
-  right: var(--ig-space-3);
-  display: flex;
-  gap: var(--ig-space-2);
-`
-
-const Footer = styled.div`
-  padding: var(--ig-space-4) var(--ig-space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  min-width: 0;
-`
+const FOOTER_STYLE = {
+  padding: 'var(--ig-space-4) var(--ig-space-5)',
+  minWidth: 0,
+}
 
 export interface ImageGridCellProps<T extends { id: string }> {
   item: T
@@ -104,12 +76,11 @@ export function ImageGridCell<T extends { id: string }>(props: ImageGridCellProp
       onMouseEnter={onCellMouseEnter ? (event) => onCellMouseEnter(item, index, event) : undefined}
       onMouseLeave={onCellMouseLeave ? () => onCellMouseLeave(item, index) : undefined}
     >
-      <Media>
-        <img src={thumbnailUrl} alt="" />
+      <AspectRatioImage src={thumbnailUrl}>
         {overlay ? <OverlayLayer>{overlay}</OverlayLayer> : null}
-        {topRight ? <TopRightLayer>{topRight}</TopRightLayer> : null}
-      </Media>
-      {footer ? <Footer>{footer}</Footer> : null}
+        {topRight ? <div style={TOP_RIGHT_STYLE}>{topRight}</div> : null}
+      </AspectRatioImage>
+      {footer ? <Stack gap={2} style={FOOTER_STYLE}>{footer}</Stack> : null}
     </SelectableGridCell>
   )
 }

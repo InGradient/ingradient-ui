@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { ResizeHandle } from '../../components/inputs/resize-handle'
 
 const Root = styled.div`
   display: flex;
@@ -15,23 +16,6 @@ const Left = styled.aside<{ $width: number; $collapsed: boolean }>`
   min-width: 0;
   overflow: hidden;
   transition: ${(p) => (p.$collapsed ? 'flex-basis var(--ig-motion-fast), width var(--ig-motion-fast)' : 'none')};
-`
-
-const Handle = styled.div`
-  flex: 0 0 8px;
-  position: relative;
-  cursor: col-resize;
-  z-index: 10;
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0 3px;
-    background: transparent;
-    transition: background var(--ig-motion-fast);
-  }
-  &:hover::after, &:active::after {
-    background: var(--ig-color-white-12);
-  }
 `
 
 const Center = styled.div`
@@ -125,13 +109,13 @@ export function CatalogShell({
   return (
     <Root className={className} data-ig-component="CatalogShell" data-ig-layer="patterns">
       {leftSidebar ? <Left $width={leftW} $collapsed={sidebarCollapsed}>{leftSidebar}</Left> : null}
-      {resizable && leftSidebar && !sidebarCollapsed ? <Handle onMouseDown={(e) => startResize('left', e)} role="separator" aria-orientation="vertical" /> : null}
+      {resizable && leftSidebar && !sidebarCollapsed ? <ResizeHandle onMouseDown={(e) => startResize('left', e)} /> : null}
       <Center>
         {toolbar ? <Toolbar>{toolbar}</Toolbar> : null}
         <Body>{body}</Body>
         {selectionBar ? <SelectionBarSlot>{selectionBar}</SelectionBarSlot> : null}
       </Center>
-      {resizable && rightSidebar ? <Handle onMouseDown={(e) => startResize('right', e)} role="separator" aria-orientation="vertical" /> : null}
+      {resizable && rightSidebar ? <ResizeHandle onMouseDown={(e) => startResize('right', e)} /> : null}
       {rightSidebar ? <Right $width={rightW}>{rightSidebar}</Right> : null}
     </Root>
   )
