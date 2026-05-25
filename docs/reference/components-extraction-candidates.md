@@ -5,6 +5,206 @@
 결정 확정일: 2026-05-25
 방향 전환일: 2026-05-25 — **인라인 zero 목표** 채택
 전수 재검증일: 2026-05-25 — patterns 499 개 styled 정의 카테고리별 스캔 (gap-check)
+실행 시작일: 2026-05-25 — refactor/components-vs-patterns-audit 브랜치
+
+---
+
+# 🚀 진행 현황 (Single Source of Truth)
+
+**새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
+
+## 현재 상태 (last update: 2026-05-25, 15 커밋 누적)
+
+| 항목 | 값 |
+|---|---|
+| 브랜치 | `refactor/components-vs-patterns-audit` |
+| 인라인 styled 정의 (시작) | 499 개 |
+| 인라인 styled 정의 (현재) | **264 개** |
+| 제거된 인라인 | **235 개 (47%)** |
+| 마이그레이션된 patterns 파일 | ~55 개 |
+| TypeScript 통과 | ✅ 매 커밋 |
+
+## Phase 완료 상태
+
+- ✅ **Phase 0**: Text primitive 6 props 확장 (`align`, `uppercase`, `letterSpacing`, `fontFamily`, `tabularNums`, `as`)
+- ✅ **Phase 1.1**: DragHandle 승격 (`patterns/shells/widget-drag-handle` → `components/inputs/drag-handle`)
+- ✅ **Phase 1.2**: ColorSwatch 교체 (3 곳)
+- ✅ **Phase 1.3**: Checkbox 교체 (1 곳)
+- ✅ **Phase 1.4**: Empty/Placeholder/Muted/Status → Text (15 곳)
+- ✅ **Phase 1.5**: IconButton 교체 (8 곳)
+- ✅ **Phase 1.6**: Heading 교체 (21 곳)
+- 🔄 **Phase 1.7**: Layout glue → primitives (진행 중 — ~50 파일 남음)
+- ⏳ **Phase 2**: 신규 컴포넌트 추출 (TextButton, MenuItem, Textarea, ColorInput, DropZone, FloatingOverlay, ResizeHandle, AspectRatioImage, OverlayLayer, CollapsibleSectionHeader)
+- ⏳ **Phase 3**: 도메인 wrapper refactor (device-status-badge, project-type-tag)
+- ⏳ **Phase 4**: 특수 Table 분리 (HeatmapTable, StatsTable)
+- ⏳ **Phase 5**: 시각 일치 정리
+
+## 작업 패턴 (Phase 1.7)
+
+### styled → primitives/components 매핑
+
+| 인라인 패턴 | 교체 |
+|---|---|
+| `styled.div` flex column + gap | `<Stack gap={N}>` |
+| `styled.div` flex row + gap | `<Inline gap={N} justify=... wrap=...>` |
+| `styled.div` grid | `<Grid gap={N} columns="..." minItemWidth={N}>` |
+| 일반 `styled.div` (padding/bg/border) | `<Box style={{...}}>` |
+| `styled.section/aside/header/nav/main/ul/label` | 위 primitives 에 `as="..."` |
+| `styled.h1~h4` | `<Text as="h*" size="..." weight={...}>` |
+| `styled.p` (margin:0 텍스트) | `<Text as="p" tone="..." size="...">` |
+| `styled.span` (단순 텍스트 스타일) | `<Text size tone weight>` |
+| uppercase + letter-spacing 섹션 라벨 | `<Text uppercase letterSpacing="0.04em">` |
+| monospace 텍스트 | `<Text fontFamily="mono">` |
+| `styled.button` (icon-only) | `<IconButton variant="..." size="...">` |
+| `styled.button` (icon + danger) | `<IconButton variant="secondary" tone="danger">` |
+| 인라인 Empty/Placeholder | `<Text tone="muted" align="center" size="13px">` |
+| 인라인 Muted | `<Text tone="muted">` |
+| 인라인 native checkbox | 기존 `Checkbox` 컴포넌트 |
+| 작은 색상 점 (8~10px) | `<ColorSwatch size="xs">` |
+
+### styled 유지 조건 (인라인이 정당한 경우)
+
+다음 CSS 기능이 필요하면 styled 유지:
+- `:hover`, `:focus`, `:disabled`, `:active` 가상 클래스
+- `:last-child`, `:first-of-type` 형제 선택자
+- `::before`, `::after` 의사 요소
+- 자식 selector (`img {}`, `> *`, `th, td`)
+- `@media` 쿼리
+- 동적 prop 으로 CSS 값 계산 (예: `grid-template-columns: repeat(${p.$count}, ...)`)
+- styled-components mixin 적용 (`${surfaceCard}`)
+- DayPicker 같은 라이브러리 deep 스타일링
+
+## primitives API 위치
+
+`src/primitives/index.ts` 에서 모두 export. 주요:
+
+```ts
+// 레이아웃
+import { Box, Stack, Inline, Grid, Container } from '../../primitives'
+// 타이포
+import { Text, Heading } from '../../primitives'
+```
+
+### Box / Stack / Inline / Grid props
+- `as?: ElementType` — semantic element (section/aside/ul/header 등)
+- `gap?: Space` — gap (number 0-13)
+- `align?: string` — align-items
+- `justify?: string` — justify-content
+- `wrap?: string` — flex-wrap
+- (Grid) `columns?: string` — grid-template-columns
+- (Grid) `minItemWidth?: string | number`
+- `style?` — 나머지 CSS 인라인 style
+
+### Text props (확장됨)
+- `as?: ElementType` — p, span, h1~6, label, a, strong 등
+- `tone?: 'default' | 'secondary' | 'muted' | 'soft' | 'accent' | 'success' | 'warning' | 'danger'`
+- `size?: string` — CSS size 값 (px or var)
+- `weight?: number` — font-weight
+- `align?: 'left' | 'center' | 'right'`
+- `uppercase?: boolean`
+- `letterSpacing?: string`
+- `fontFamily?: 'default' | 'mono'`
+- `tabularNums?: boolean`
+- 기본적으로 `margin: 0` 적용됨 (heading/p 와 호환)
+
+## 검증 + 커밋 절차
+
+매 batch (5-10 파일) 끝나면:
+```bash
+npx tsc --noEmit                       # 통과 확인
+git add <files>
+git commit -m "refactor(patterns): ..."  # 한국어, refactor 접두사
+```
+
+CLAUDE.md 규칙: 200 줄 미만 / 하드코딩 금지 / 한국어 커밋 / 기존 패턴 유지.
+
+## 처리 완료된 파일 (참고 예시)
+
+깨끗하게 마이그레이션된 파일 — 다른 파일 작업 시 패턴 참고:
+- `src/patterns/shells/invitations-section.tsx` — Stack/Inline/Text + Table 컬럼 render 에 Text 활용
+- `src/patterns/shells/dashboard-overview-panel.tsx` — Stack/Inline/Box/Text 합성 + Panel 유지
+- `src/patterns/shells/storage-overview.tsx` — Grid + Box card 패턴
+- `src/patterns/shells/devices-license-section.tsx` — 복잡한 InfoGrid 인라인 style + Stack/Inline
+- `src/patterns/shells/project-settings-form.tsx` — 다수 Row + Label + Input + Textarea (focus 유지)
+- `src/patterns/cards/stat-card.tsx` — uppercase letterSpacing Text 활용
+- `src/patterns/shells/labeling-progress-bar.tsx` — ColorSwatch + dynamic Segment styled 유지 패턴
+
+## 남은 파일 우선순위 (~50 개)
+
+### 큰 파일 (복잡)
+- `mobile-nav-shell.tsx` (306 줄, drawer + nav layouts)
+- `comments-panel.tsx` (composer + thread + textarea)
+- `catalog-shell.tsx`, `catalog-mobile-shell.tsx`
+
+### 갤러리 / 이미지
+- `gallery-image-card.tsx`, `gallery-mobile-toolbar.tsx`
+- `gallery-images-table.tsx`, `gallery-toolbar.tsx`
+- `gallery-filter-panel.tsx`, `gallery-detail-modal.tsx`
+- `gallery-export-*.tsx` 시리즈 (4 파일)
+- `gallery-delete-dialog.tsx`, `gallery-dataset-transfer-dialog.tsx`
+- `class-lightbox.tsx`, `image-context-menu.tsx`
+
+### Analysis widget 시리즈
+- `analysis-class-ratio-widget.tsx`
+- `analysis-data-collection-widget.tsx`
+- `analysis-labeling-by-person-widget.tsx`
+- `analysis-labeling-status-widget.tsx`
+- `analysis-pending-processed-widget.tsx`
+- `analysis-timeline-widget.tsx`
+- `analysis-dashboard.tsx` (이미 처리됨)
+
+### Image detail / labeling
+- `image-detail-sidebar.tsx`, `image-detail-info-panel.tsx`
+- `image-detail-class-list.tsx`, `image-detail-labelers-list.tsx`
+- `image-inspector-canvas.tsx`
+- `labeling-canvas.tsx`, `annotation-toolbar.tsx`
+- `bbox-navigation.tsx` (이미 처리됨)
+- `canvas-overlays.tsx`
+
+### Class / Dataset
+- `class-info-sidebar.tsx` (이미 처리됨), `class-images-panel.tsx`
+- `class-hover-card.tsx`, `add-class-dialog.tsx`
+- `add-dataset-modal.tsx`, `duplicate-dataset-modal.tsx`
+- `dataset-list-item.tsx`, `dataset-menu.tsx`, `dataset-filter-chip-row.tsx`
+- `dataset-selector-mobile.tsx`, `dataset-distribution-heatmap.tsx`
+
+### Filter / Sort
+- `filter-popover-trigger.tsx`, `filter-searchable-list.tsx`
+- `sort-popover-trigger.tsx`, `filter-class-chip.tsx`
+
+### 기타
+- `password-change-dialog.tsx`, `delete-account-dialog.tsx`
+- `device-detail-dialog.tsx`, `upload-quality-modal.tsx`
+- `drag-drop-decide-modal.tsx`, `igp-export-modal.tsx` (이미 처리됨)
+- `model-mapping-select.tsx` (이미 처리됨)
+- `media-dialog-shell.tsx`, `sidebar-shell.tsx`
+- `mobile-nav-shell.tsx`, `navigation.tsx`
+- `org-settings-tab.tsx` (이미 처리됨)
+- `project-members-list.tsx`, `project-member-row.tsx`
+- `project-permission-matrix.tsx`, `project-resolution-card.tsx`
+- `permission-help-tooltip.tsx`
+- `color-input-row.tsx`, `reference-image-drop-zone.tsx`
+- `auto-save-status.tsx` (이미 처리됨)
+
+### Page / Charts / Cards / Gallery / Annotation
+- `patterns/page/page-shell.tsx` — **public API exports, 신중하게 처리**
+- `patterns/page/page-primary-header.tsx`
+- `patterns/charts/{bar,line,pie}-chart-card.tsx`
+- `patterns/gallery/{image-grid,image-grid-cell,virtualized-image-grid}.tsx`
+- `patterns/annotation/{annotation-overlay,drawing-layer}.tsx`
+- `patterns/layouts/layouts.tsx` — **public API exports, 그대로 유지 추천**
+
+## 빠른 시작 (새 대화)
+
+1. 이 문서 (`docs/reference/components-extraction-candidates.md`) 의 "진행 현황" 섹션 읽기
+2. `git log refactor/components-vs-patterns-audit ^main --oneline | head -20` 으로 최근 커밋 확인
+3. `grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" -l | grep -v "stories\|test"` 로 남은 파일 목록
+4. 위 "남은 파일 우선순위" 에서 처리할 파일 선택 (큰 파일은 후순위, 작은 파일부터)
+5. 위 "작업 패턴" + "처리 완료된 파일" 참고하여 패턴 적용
+6. 5-10 파일마다 `npx tsc --noEmit` → `git commit`
+7. 작업 후 이 문서의 진행 현황 섹션 업데이트 (인라인 카운트, Phase 상태)
+
+---
 
 ## 목적
 `src/patterns/*` 내부의 **인라인 styled-component / sub-component 를 가능한 모두 제거**한다. 패턴 파일 통째 이동이 아니라, 패턴 안에 흩어진 인라인 부품들을:
