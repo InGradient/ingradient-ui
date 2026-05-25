@@ -1,21 +1,9 @@
 import { useState, type CSSProperties } from 'react'
-import styled from 'styled-components'
 import { User } from 'lucide-react'
 import { Inline, Stack, Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
+import { CollapsibleSectionHeader } from '../../components/data-display/collapsible-section-header'
 import { SelectableListItem } from '../../components/data-display/selectable-list-item'
-
-const Header = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-`
 
 const LIST_STYLE = {
   listStyle: 'none' as const,
@@ -70,13 +58,12 @@ export function ImageDetailLabelersList({
   if (users.length === 0) return null
   return (
     <Stack gap={0} className={className}>
-      <Header type="button" onClick={() => setOpen((v) => !v)}>
-        <Inline as="span" gap={1}>
-          <Text as="span">{open ? '▾' : '▸'}</Text>
-          <Text as="span" size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
-        </Inline>
-        <Badge $tone="accent">{users.length}</Badge>
-      </Header>
+      <CollapsibleSectionHeader
+        title={title}
+        open={open}
+        onClick={() => setOpen((v) => !v)}
+        badge={<Badge $tone="accent">{users.length}</Badge>}
+      />
       {open ? (
         <Stack as="ul" gap={1} style={LIST_STYLE}>
           {users.map((user) => {

@@ -1,5 +1,4 @@
 import { useState, type ReactNode } from 'react'
-import styled from 'styled-components'
 import { Archive, Pencil } from 'lucide-react'
 import { Box, Inline, Stack, Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
@@ -7,20 +6,9 @@ import { Button } from '../../components/inputs/button'
 import { IconButton } from '../../components/inputs/icon-button'
 import { Textarea } from '../../components/inputs/textarea'
 import { CommentItem } from '../../components/data-display/comment-thread'
+import { CollapsibleSectionHeader } from '../../components/data-display/collapsible-section-header'
 import { CommentThread } from '../comment/comment-thread'
 import { MentionTextarea, type MentionCandidate } from '../../components/inputs/mention-textarea'
-
-const Header = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-`
 
 const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
 const LIST_WRAP_STYLE = { maxHeight: 200, overflowY: 'auto' as const }
@@ -185,13 +173,12 @@ export function CommentsPanel(props: CommentsPanelProps) {
 
   return (
     <Stack gap={0} className={className}>
-      <Header type="button" onClick={() => setOpen((v) => !v)}>
-        <Inline as="span" gap={1}>
-          <Text as="span">{open ? '▾' : '▸'}</Text>
-          <Text as="span" size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
-        </Inline>
-        <Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>
-      </Header>
+      <CollapsibleSectionHeader
+        title={title}
+        open={open}
+        onClick={() => setOpen((v) => !v)}
+        badge={<Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>}
+      />
       {open ? (
         <Stack gap={3} style={BODY_STYLE}>
           {count === 0 ? (
