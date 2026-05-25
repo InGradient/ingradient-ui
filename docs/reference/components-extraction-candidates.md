@@ -13,17 +13,23 @@
 
 **새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
 
-## 현재 상태 (last update: 2026-05-25, Phase 2 대부분 완료)
+## 현재 상태 (last update: 2026-05-25, Phase 2 완료)
 
 | 항목 | 값 |
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **~110 개** (Phase 2 ~23 정의 추가 제거) |
-| 제거된 인라인 | **~389 개 (78%)** |
+| 인라인 styled 정의 (현재) | **~95 개** (Phase 2 ~38 정의 추가 제거) |
+| 제거된 인라인 | **~404 개 (81%)** |
 | 마이그레이션된 patterns 파일 | ~100 개 |
-| Phase 2 신규 컴포넌트 (현재까지) | **7 개** (FloatingOverlay / TextButton / Textarea / CollapsibleSectionHeader / ColorInput / ResizeHandle / AspectRatioImage / OverlayLayer) |
+| Phase 2 신규 컴포넌트 | **10 개 완료** (FloatingOverlay / TextButton / Textarea / CollapsibleSectionHeader / ColorInput / ResizeHandle / AspectRatioImage / OverlayLayer / MenuItem / DropZone) |
 | TypeScript 통과 | ✅ 매 커밋 |
+
+## 다음 단계
+- **Phase 1.7**: 남은 patterns/ 파일 layout glue → primitives (~95 개 인라인)
+- **Phase 3**: 도메인 wrapper refactor — device-status-badge / project-type-tag → features/
+- **Phase 4**: 특수 Table (HeatmapTable, StatsTable) features/ 분리
+- **Phase 5**: 시각 일관성 정리 — MenuItem 4 곳, DropZone 2 곳, TextButton hover 통일 등
 
 ## Phase 완료 상태
 
@@ -35,7 +41,7 @@
 - ✅ **Phase 1.5**: IconButton 교체 (8 곳)
 - ✅ **Phase 1.6**: Heading 교체 (21 곳)
 - 🔄 **Phase 1.7**: Layout glue → primitives (진행 중 — ~50 파일 남음)
-- 🔄 **Phase 2**: 신규 컴포넌트 추출 (대부분 완료, 7/10)
+- ✅ **Phase 2**: 신규 컴포넌트 추출 **완료 (10/10)**
   - ✅ FloatingOverlay (commit 06ed814) — class-hover-card / hover-preview / dataset-menu / image-context-menu (4 곳)
   - ✅ TextButton (commit 4eff321) — checkbox-group / gallery-toolbar / gallery-filter-panel(3) / image-detail-info-panel (6 사용)
   - ✅ Textarea (commit 00588ae) — comments-panel / devices-forms / project-settings-form (3 곳)
@@ -44,8 +50,8 @@
   - ✅ ResizeHandle (commit 33d142b) — catalog-shell (left/right 2 곳)
   - ✅ AspectRatioImage (commit 33d142b) — image-grid-cell Media (1 곳, fundamental)
   - ✅ OverlayLayer (commit 33d142b) — image-grid-cell OverlayLayer (1 곳, fundamental)
-  - ⏳ MenuItem (보류 — 4 사용처 시각 차이 큼, 표준화 결정 필요)
-  - ⏳ DropZone (보류 — UploadDropzone 시각 차이 큼, 표준화 결정 필요)
+  - ✅ MenuItem (commit f72df21) — dataset-menu / image-context-menu / sort-popover-trigger / dataset-selector-mobile (4 곳, 시각 표준화)
+  - ✅ DropZone (commit 7736024) — upload-dropzone / reference-image-drop-zone (2 곳, variant: outlined | filled)
 - ⏳ **Phase 3**: 도메인 wrapper refactor (device-status-badge, project-type-tag)
 - ⏳ **Phase 4**: 특수 Table 분리 (HeatmapTable, StatsTable)
 - ⏳ **Phase 5**: 시각 일치 정리
