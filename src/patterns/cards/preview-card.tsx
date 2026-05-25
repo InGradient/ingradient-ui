@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Stack, Text } from '../../primitives'
 import { Card } from '../../components/data-display/card'
 import { ActionBar } from '../../components/data-display/layout'
+
+const BODY_STYLE = { padding: 'var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)' }
+const CARD_STYLE = { display: 'flex' as const, flexDirection: 'column' as const }
 
 const PreviewMedia = styled.div`
   aspect-ratio: 16 / 10;
@@ -16,12 +19,6 @@ const PreviewMedia = styled.div`
   }
 `
 
-const PreviewBody = styled.div`
-  padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
 
 export function PreviewCard({
   title,
@@ -42,19 +39,19 @@ export function PreviewCard({
       radius="var(--ig-radius-2xl)"
       padding="0"
       overflow="hidden"
-      style={{ display: 'flex', flexDirection: 'column' }}
+      style={CARD_STYLE}
     >
       <PreviewMedia>
         <img src={imageSrc} alt={typeof title === 'string' ? title : 'Preview card'} />
       </PreviewMedia>
-      <PreviewBody>
+      <Stack gap={3} style={BODY_STYLE}>
         <ActionBar>
           <Text size="14px" weight={700}>{title}</Text>
           {meta}
         </ActionBar>
         {description ? <Text size="12px" tone="muted">{description}</Text> : null}
         {actions}
-      </PreviewBody>
+      </Stack>
     </Card>
   )
 }

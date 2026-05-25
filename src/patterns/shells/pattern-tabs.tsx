@@ -1,13 +1,8 @@
 import styled from 'styled-components'
+import { Inline } from '../../primitives'
 import { formatPatternTab, type FormatPatternTabItem } from '../../utils/format-pattern-tab'
 
-const Row = styled.div`
-  display: flex;
-  gap: var(--ig-space-1);
-  padding: var(--ig-space-3) var(--ig-space-5);
-  flex-wrap: wrap;
-  justify-content: center;
-`
+const ROW_STYLE = { padding: 'var(--ig-space-3) var(--ig-space-5)' }
 
 const Tab = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-1) var(--ig-space-4);
@@ -37,7 +32,7 @@ export interface PatternTabsProps {
 export function PatternTabs({ items, currentId, onSelect, className }: PatternTabsProps) {
   if (items.length <= 1) return null
   return (
-    <Row className={className} role="tablist">
+    <Inline gap={1} justify="center" wrap="wrap" className={className} role="tablist" style={ROW_STYLE}>
       {items.map((item, i) => (
         <Tab
           key={item.id}
@@ -50,6 +45,6 @@ export function PatternTabs({ items, currentId, onSelect, className }: PatternTa
           {formatPatternTab(item, i)}
         </Tab>
       ))}
-    </Row>
+    </Inline>
   )
 }

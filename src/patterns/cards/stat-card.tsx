@@ -1,32 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { Card } from '../../components/data-display/card'
 import { ActionBar } from '../../components/data-display/layout'
 
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
-const StatLabel = styled.span`
-  font-size: var(--ig-font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ig-color-text-soft);
-`
-
-const StatValue = styled.span`
-  font-size: var(--ig-font-size-3xl);
-  line-height: 1;
-  font-weight: 800;
-  color: var(--ig-color-text-primary);
-`
-
-const StatHint = styled.span`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-muted);
-`
+const VALUE_STYLE = { lineHeight: 1 }
 
 export function StatCard({
   label,
@@ -41,14 +18,14 @@ export function StatCard({
 }) {
   return (
     <Card elevation="card" radius="var(--ig-radius-xl)" padding="var(--ig-space-8)">
-      <Body>
+      <Stack gap={3}>
         <ActionBar>
-          <StatLabel>{label}</StatLabel>
+          <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="0.05em">{label}</Text>
           {meta}
         </ActionBar>
-        <StatValue>{value}</StatValue>
-        {hint ? <StatHint>{hint}</StatHint> : null}
-      </Body>
+        <Text size="var(--ig-font-size-3xl)" weight={800} style={VALUE_STYLE}>{value}</Text>
+        {hint ? <Text size="var(--ig-font-size-sm)" tone="muted">{hint}</Text> : null}
+      </Stack>
     </Card>
   )
 }

@@ -1,10 +1,6 @@
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 
-const Status = styled.p<{ $error?: boolean }>`
-  margin: 0 0 var(--ig-space-7);
-  font-size: 13px;
-  color: ${(p) => (p.$error ? 'var(--ig-color-danger)' : 'var(--ig-color-text-muted)')};
-`
+const STATUS_STYLE = { margin: '0 0 var(--ig-space-7)' }
 
 export type AutoSaveState = 'idle' | 'pending' | 'saving' | 'saved' | 'error'
 
@@ -48,5 +44,5 @@ export function AutoSaveStatus({
     if (state === 'error') return errorMessage ?? fallbackErrorMessage
     return idleMessage
   })()
-  return <Status $error={isError} className={className}>{message}</Status>
+  return <Text as="p" size="13px" tone={isError ? 'danger' : 'muted'} className={className} style={STATUS_STYLE}>{message}</Text>
 }
