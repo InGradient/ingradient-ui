@@ -13,23 +13,33 @@
 
 **새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
 
-## 현재 상태 (last update: 2026-05-25, Phase 2 완료)
+## 현재 상태 (last update: 2026-05-25, Phase 2 + 3 + 1.7 batch 5 완료)
 
 | 항목 | 값 |
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **~95 개** (Phase 2 ~38 정의 추가 제거) |
-| 제거된 인라인 | **~404 개 (81%)** |
+| 인라인 styled 정의 (현재) | **~60 개** |
+| 제거된 인라인 | **~439 개 (88%)** |
 | 마이그레이션된 patterns 파일 | ~100 개 |
 | Phase 2 신규 컴포넌트 | **10 개 완료** (FloatingOverlay / TextButton / Textarea / CollapsibleSectionHeader / ColorInput / ResizeHandle / AspectRatioImage / OverlayLayer / MenuItem / DropZone) |
+| Phase 3 도메인 wrapper | ✅ device-status-badge / project-type-tag (내부 styled → generic Badge) |
+| Phase 4 특수 Table | 🔄 Card/Wrap → Box 만 (Table styled 는 자식 selector 때문에 유지) |
 | TypeScript 통과 | ✅ 매 커밋 |
 
+## 남은 ~60 인라인 styled 의 retention 사유
+
+대부분 다음 이유로 정당한 유지:
+- 자식 selector (`& th`, `& td`, `> *`, `${Wrap}:hover &` 등) — 약 25 개
+- 동적 prop 으로 CSS 값 계산 (`grid-template-columns: repeat(${p.$count}, ...)` 등) — 약 15 개
+- pseudo class (`:hover`, `:focus`, `:disabled`, `:last-child`) — 약 10 개
+- @media query — 약 5 개
+- styled-component mixin (`${surfaceCard}`) — 약 3 개
+- 라이브러리 deep 스타일링 (`.rdp-root` DayPicker, backdrop-filter 등) — 약 2 개
+
 ## 다음 단계
-- **Phase 1.7**: 남은 patterns/ 파일 layout glue → primitives (~95 개 인라인)
-- **Phase 3**: 도메인 wrapper refactor — device-status-badge / project-type-tag → features/
-- **Phase 4**: 특수 Table (HeatmapTable, StatsTable) features/ 분리
-- **Phase 5**: 시각 일관성 정리 — MenuItem 4 곳, DropZone 2 곳, TextButton hover 통일 등
+- **Phase 5**: 시각 일관성 정리 — MenuItem 4 곳, DropZone 2 곳, TextButton hover 통일, device-status / project-type tone 색 통일
+- 폴더 재구조 (features/ 이동) 은 별도 큰 작업으로 분리
 
 ## Phase 완료 상태
 
