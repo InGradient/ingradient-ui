@@ -1,15 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 
-const Panel = styled.aside`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: var(--ig-color-surface-panel);
-  overflow-y: auto;
-  flex-shrink: 0;
-`
+const PANEL_STYLE = {
+  height: '100%',
+  background: 'var(--ig-color-surface-panel)',
+  overflowY: 'auto' as const,
+  flexShrink: 0,
+}
+
+const HEADER_ROW_STYLE = {
+  minHeight: 72,
+  padding: '0 var(--ig-space-7)',
+}
+
+const SECTION_BODY_STYLE = {
+  padding: '0 var(--ig-space-7) var(--ig-space-7)',
+}
 
 const Section = styled.section`
   display: flex;
@@ -18,23 +25,6 @@ const Section = styled.section`
   &:last-child {
     border-bottom: none;
   }
-`
-
-const SectionHeaderRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-3);
-  min-height: 72px;
-  padding: 0 var(--ig-space-7);
-`
-
-
-const SectionBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  padding: 0 var(--ig-space-7) var(--ig-space-7);
 `
 
 export interface CatalogRightPanelSection {
@@ -50,16 +40,16 @@ export interface CatalogRightPanelProps {
 
 export function CatalogRightPanel({ sections, className }: CatalogRightPanelProps) {
   return (
-    <Panel className={className}>
+    <Stack as="aside" gap={0} className={className} style={PANEL_STYLE}>
       {sections.map((s, i) => (
         <Section key={i}>
-          <SectionHeaderRow>
+          <Inline justify="space-between" gap={3} style={HEADER_ROW_STYLE}>
             <Text as="h3" size="var(--ig-font-size-md)" weight={600}>{s.title}</Text>
             {s.headerActions}
-          </SectionHeaderRow>
-          <SectionBody>{s.body}</SectionBody>
+          </Inline>
+          <Stack gap={3} style={SECTION_BODY_STYLE}>{s.body}</Stack>
         </Section>
       ))}
-    </Panel>
+    </Stack>
   )
 }

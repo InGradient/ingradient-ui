@@ -1,33 +1,14 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Table, type TableColumn } from '../../components/data-display/table'
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-7);
-`
-
-
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
+const DESCRIPTION_STYLE = { lineHeight: 1.5 }
 
 const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
-
-const Description = styled.p`
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ig-color-text-muted);
-`
-
-const DialogStack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
 
 export interface OrgMember {
   id: string
@@ -82,7 +63,7 @@ export function OrgMembersTab({
   ]
 
   return (
-    <Wrap>
+    <Stack gap={7}>
       <Text as="h3" size="15px" weight={600}>{title}</Text>
       {members.length === 0 ? (
         <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{emptyText}</Text>
@@ -110,13 +91,13 @@ export function OrgMembersTab({
             </>
           }
         >
-          <DialogStack>
-            <Description>
+          <Stack gap={5}>
+            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.user.displayName}</strong> ({pendingRemove.user.loginId}) from the organization?
-            </Description>
-          </DialogStack>
+            </Text>
+          </Stack>
         </DialogShell>
       )}
-    </Wrap>
+    </Stack>
   )
 }

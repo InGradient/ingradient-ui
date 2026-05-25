@@ -1,36 +1,12 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DropdownSelect } from '../../components/inputs/dropdown-select'
 import { SearchField } from '../../components/inputs/search-field'
 import { DeviceStatusBadge } from './device-status-badge'
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-`
-
-
-const Actions = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-`
-
-const FilterBar = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  align-items: center;
-  flex-wrap: wrap;
-`
+const SEARCH_FIELD_STYLE = { width: 200 }
+const TH_ACTIONS_STYLE = { width: 120 }
 
 const Table = styled.table`
   width: 100%;
@@ -111,26 +87,26 @@ export function DevicesTable({
   const statusTone = (status: string) => status === 'ACTIVE' ? 'active' : status === 'REVOKED' ? 'revoked' : 'pending'
 
   return (
-    <Section>
-      <Header>
+    <Stack as="section" gap={4}>
+      <Inline justify="space-between" gap={3} wrap="wrap">
         <Text as="h3" size="15px" weight={600}>{title}</Text>
         {isAdmin ? (
-          <Actions>
+          <Inline gap={3}>
             {offlineEnabled ? (
               <Button type="button" size="sm" variant="secondary" onClick={onToggleIssue}>Issue License</Button>
             ) : null}
             <Button type="button" size="sm" onClick={onToggleRegister}>Register Device</Button>
-          </Actions>
+          </Inline>
         ) : null}
-      </Header>
+      </Inline>
 
-      <FilterBar>
+      <Inline gap={3} wrap="wrap">
         <SearchField
           placeholder="Search UID or name…"
           value={filterSearch}
           onChange={(e) => onChangeFilterSearch(e.target.value)}
           onClear={() => onChangeFilterSearch('')}
-          style={{ width: 200 }}
+          style={SEARCH_FIELD_STYLE}
         />
         <DropdownSelect
           value={filterStatus}
@@ -141,7 +117,7 @@ export function DevicesTable({
           ]}
           onChange={(v) => onChangeFilterStatus(v as DeviceFilterStatus)}
         />
-      </FilterBar>
+      </Inline>
 
       <Table>
         <thead>
@@ -151,7 +127,7 @@ export function DevicesTable({
             <Th>Status</Th>
             <Th>Registered</Th>
             <Th>Last seen</Th>
-            {isAdmin ? <Th style={{ width: 120 }} /> : null}
+            {isAdmin ? <Th style={TH_ACTIONS_STYLE} /> : null}
           </tr>
         </thead>
         <tbody>
@@ -171,13 +147,13 @@ export function DevicesTable({
                 <MutedTd>{device.lastSeenAt ? new Date(device.lastSeenAt).toLocaleString() : '—'}</MutedTd>
                 {isAdmin ? (
                   <ActionsTd>
-                    <Actions>
+                    <Inline gap={3}>
                       <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(device)}>Details</Button>
                       {device.status !== 'REVOKED' ? (
                         <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke?.(device.id)}>Revoke</Button>
                       ) : null}
                       <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onDelete?.(device.id)}>Delete</Button>
-                    </Actions>
+                    </Inline>
                   </ActionsTd>
                 ) : null}
               </tr>
@@ -185,6 +161,6 @@ export function DevicesTable({
           )}
         </tbody>
       </Table>
-    </Section>
+    </Stack>
   )
 }

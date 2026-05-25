@@ -1,16 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { IconButton } from '../../components/inputs/icon-button'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
+const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
+const LABEL_STYLE = { flex: 1, overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
 
 const Row = styled.li`
   display: flex;
@@ -24,22 +19,6 @@ const Row = styled.li`
     background: var(--ig-color-surface-interactive-hover);
   }
 `
-
-const Label = styled.span`
-  flex: 1;
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
-
-const Count = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  font-variant-numeric: tabular-nums;
-`
-
 
 export interface ClassPoolItem {
   id: string
@@ -58,7 +37,7 @@ export interface ClassPoolListProps {
 
 export function ClassPoolList({ classes, onRemove, onHover, removeIcon, className }: ClassPoolListProps) {
   return (
-    <List className={className}>
+    <Stack as="ul" gap={2} className={className} style={LIST_STYLE}>
       {classes.map((cls) => (
         <Row
           key={cls.id}
@@ -66,8 +45,8 @@ export function ClassPoolList({ classes, onRemove, onHover, removeIcon, classNam
           onMouseLeave={() => onHover?.(null)}
         >
           <ColorSwatch $color={cls.color} $size="xs" />
-          <Label title={cls.name}>{cls.name}</Label>
-          {typeof cls.count === 'number' ? <Count>{cls.count}</Count> : null}
+          <Text size="var(--ig-font-size-sm)" title={cls.name} style={LABEL_STYLE}>{cls.name}</Text>
+          {typeof cls.count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{cls.count}</Text> : null}
           {onRemove ? (
             <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove class ${cls.name}`} onClick={() => onRemove(cls.id)}>
               {removeIcon ?? '×'}
@@ -75,6 +54,6 @@ export function ClassPoolList({ classes, onRemove, onHover, removeIcon, classNam
           ) : null}
         </Row>
       ))}
-    </List>
+    </Stack>
   )
 }

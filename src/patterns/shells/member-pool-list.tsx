@@ -1,50 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Inline, Stack, Text } from '../../primitives'
 import { Avatar } from '../../components/feedback/avatar'
 import { IconButton } from '../../components/inputs/icon-button'
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const Row = styled.li`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-2) var(--ig-space-4);
-  border-radius: var(--ig-radius-2xs);
-  background: var(--ig-color-surface-interactive);
-  border: 1px solid var(--ig-color-border-subtle);
-`
-
-const TextBlock = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-`
-
-const Name = styled.span`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
-
-const Role = styled.span`
-  font-size: var(--ig-font-size-2xs);
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-`
-
+const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
+const ROW_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  borderRadius: 'var(--ig-radius-2xs)',
+  background: 'var(--ig-color-surface-interactive)',
+  border: '1px solid var(--ig-color-border-subtle)',
+}
+const NAME_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
+const TEXT_BLOCK_STYLE = { flex: 1, minWidth: 0, gap: 2 }
 
 export interface MemberPoolItem {
   id: string
@@ -63,21 +30,21 @@ export interface MemberPoolListProps {
 
 export function MemberPoolList({ members, onRemove, removeIcon, className }: MemberPoolListProps) {
   return (
-    <List className={className}>
+    <Stack as="ul" gap={2} className={className} style={LIST_STYLE}>
       {members.map((m) => (
-        <Row key={m.id}>
+        <Inline as="li" key={m.id} gap={3} style={ROW_STYLE}>
           <Avatar src={m.avatarUrl} initials={m.initials ?? m.name.charAt(0).toUpperCase()} size={28} />
-          <TextBlock>
-            <Name title={m.name}>{m.name}</Name>
-            {m.role ? <Role>{m.role}</Role> : null}
-          </TextBlock>
+          <Stack gap={0} style={TEXT_BLOCK_STYLE}>
+            <Text size="var(--ig-font-size-sm)" title={m.name} style={NAME_STYLE}>{m.name}</Text>
+            {m.role ? <Text size="var(--ig-font-size-2xs)" tone="muted" uppercase letterSpacing="0.05em">{m.role}</Text> : null}
+          </Stack>
           {onRemove ? (
             <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove member ${m.name}`} onClick={() => onRemove(m.id)}>
               {removeIcon ?? '×'}
             </IconButton>
           ) : null}
-        </Row>
+        </Inline>
       ))}
-    </List>
+    </Stack>
   )
 }

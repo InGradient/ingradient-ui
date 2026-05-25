@@ -1,48 +1,12 @@
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
 import { OptionRow } from '../../components/data-display/option-row'
 import { Table, type TableColumn } from '../../components/data-display/table'
 
-const Wrap = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-
-const SearchRow = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  align-items: center;
-`
-
-const Results = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const Hint = styled.p`
-  margin: 0;
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
-`
-
-const Feedback = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
-`
-
-const SearchWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
+const SEARCH_FIELD_STYLE = { flex: 1 }
 
 function statusTone(status: string): 'success' | 'danger' | 'muted' {
   if (status === 'accepted') return 'success'
@@ -119,18 +83,18 @@ export function InvitationsSection({
   ]
 
   return (
-    <Wrap>
+    <Stack as="section" gap={5}>
       <Text as="h3" size="15px" weight={600}>{title}</Text>
       <Text as="p" tone="muted" size="12px">{description}</Text>
 
       {isAdmin && (
-        <SearchWrap>
-          <SearchRow>
+        <Stack gap={3}>
+          <Inline gap={3}>
             <TextField
               placeholder="Search users by name or email"
               value={searchQuery}
               onChange={(e) => onChangeSearchQuery(e.target.value)}
-              style={{ flex: 1 }}
+              style={SEARCH_FIELD_STYLE}
               title="Search users"
             />
             <SelectField
@@ -141,11 +105,11 @@ export function InvitationsSection({
             >
               {roleOptions.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
             </SelectField>
-          </SearchRow>
+          </Inline>
 
           {readyToSearch ? (
-            <Results>
-              {isSearching && <Hint>Searching…</Hint>}
+            <Stack gap={2}>
+              {isSearching && <Text as="p" tone="muted" size="12px">Searching…</Text>}
               {!isSearching && searchResults.map((u) => (
                 <OptionRow
                   key={u.id}
@@ -156,14 +120,14 @@ export function InvitationsSection({
                   onClick={() => onInviteUser(u)}
                 />
               ))}
-              {!isSearching && searchResults.length === 0 && <Hint>No registered users found.</Hint>}
-            </Results>
+              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="12px">No registered users found.</Text>}
+            </Stack>
           ) : (
-            <Hint>Type at least {minSearchLength} characters to search registered users.</Hint>
+            <Text as="p" tone="muted" size="12px">Type at least {minSearchLength} characters to search registered users.</Text>
           )}
 
-          {inviteMessage && <Feedback>{inviteMessage}</Feedback>}
-        </SearchWrap>
+          {inviteMessage && <Text tone="muted" size="12px">{inviteMessage}</Text>}
+        </Stack>
       )}
 
       {invitations.length === 0 ? (
@@ -171,6 +135,6 @@ export function InvitationsSection({
       ) : (
         <Table<InvitationRow> columns={columns} rows={invitations} ariaLabel="Invitations table" />
       )}
-    </Wrap>
+    </Stack>
   )
 }

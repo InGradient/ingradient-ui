@@ -1,25 +1,11 @@
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
 import { Table, type TableColumn } from '../../components/data-display/table'
 
-const Wrap = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-
-const FormRow = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  align-items: center;
-  flex-wrap: wrap;
-`
-
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
+const MAX_USES_STYLE = { width: 160 }
 
 export interface JoinCodesRoleOption {
   value: string
@@ -80,12 +66,12 @@ export function JoinCodesSection({
   ]
 
   return (
-    <Wrap>
+    <Stack as="section" gap={5}>
       <Text as="h3" size="15px" weight={600}>{title}</Text>
       <Text as="p" tone="muted" size="12px">{description}</Text>
 
       {isAdmin && (
-        <FormRow>
+        <Inline gap={3} wrap="wrap">
           <SelectField
             value={codeRoleId}
             onChange={(e) => onChangeCodeRoleId((e.target as HTMLSelectElement).value)}
@@ -98,7 +84,7 @@ export function JoinCodesSection({
             placeholder="Max uses (optional)"
             value={codeMaxUses}
             onChange={(e) => onChangeCodeMaxUses(e.target.value.replace(/\D/g, ''))}
-            style={{ width: 160 }}
+            style={MAX_USES_STYLE}
             title="Max uses"
           />
           <Button
@@ -109,7 +95,7 @@ export function JoinCodesSection({
           >
             {createLabel}
           </Button>
-        </FormRow>
+        </Inline>
       )}
 
       {joinCodes.length === 0 ? (
@@ -117,6 +103,6 @@ export function JoinCodesSection({
       ) : (
         <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
       )}
-    </Wrap>
+    </Stack>
   )
 }

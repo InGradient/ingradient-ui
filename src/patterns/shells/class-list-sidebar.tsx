@@ -1,35 +1,32 @@
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Box, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { ClassListRow } from './class-list-row'
 
-const Sidebar = styled.aside`
-  width: 280px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-`
+const SIDEBAR_STYLE = {
+  width: 280,
+  flexShrink: 0,
+  background: 'var(--ig-color-surface-panel)',
+  borderRadius: 'var(--ig-radius-xl)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  height: '100%',
+  minHeight: 0,
+  overflow: 'hidden' as const,
+}
 
-const Header = styled.div`
-  padding: var(--ig-space-7) var(--ig-space-7) var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  flex-shrink: 0;
-`
+const HEADER_STYLE = {
+  padding: 'var(--ig-space-7) var(--ig-space-7) var(--ig-space-5)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  flexShrink: 0,
+}
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: var(--ig-space-3) 0;
-  overflow-y: auto;
-  min-height: 0;
-  flex: 1;
-`
+const LIST_STYLE = {
+  listStyle: 'none' as const,
+  margin: 0,
+  padding: 'var(--ig-space-3) 0',
+  overflowY: 'auto' as const,
+  minHeight: 0,
+  flex: 1,
+}
 
 const PLACEHOLDER_STYLE = { padding: 'var(--ig-space-9) var(--ig-space-6)' }
 
@@ -57,18 +54,18 @@ export function ClassListSidebar({
   onSelectClass, onAddClass,
 }: ClassListSidebarProps) {
   return (
-    <Sidebar>
-      <Header>
+    <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
+      <Box style={HEADER_STYLE}>
         <Button variant="accent" type="button" onClick={onAddClass}>
           {addClassLabel}
         </Button>
-      </Header>
+      </Box>
       {loading ? (
         <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>Loading…</Text>
       ) : classes.length === 0 ? (
         <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
       ) : (
-        <List role="listbox" aria-label="Classes">
+        <Box as="ul" role="listbox" aria-label="Classes" style={LIST_STYLE}>
           {classes.map((c) => (
             <ClassListRow
               key={c.id}
@@ -80,8 +77,8 @@ export function ClassListSidebar({
               onClick={onSelectClass}
             />
           ))}
-        </List>
+        </Box>
       )}
-    </Sidebar>
+    </Stack>
   )
 }

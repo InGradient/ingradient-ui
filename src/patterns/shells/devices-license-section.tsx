@@ -1,69 +1,25 @@
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Box, Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DatePickerField } from '../../components/inputs/date-picker'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
+const INFO_GRID_STYLE = {
+  display: 'grid' as const,
+  gridTemplateColumns: '160px 1fr',
+  gap: 'var(--ig-space-2) var(--ig-space-5)',
+  fontSize: 13,
+  alignItems: 'center' as const,
+}
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-3);
-`
+const INFO_LABEL_STYLE = { fontWeight: 500 }
+const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-space-3)', color: 'var(--ig-color-text-muted)' }
 
-
-const InfoGrid = styled.div`
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: var(--ig-space-2) var(--ig-space-5);
-  font-size: 13px;
-  align-items: center;
-`
-
-const InfoLabel = styled.span`
-  font-weight: 500;
-`
-
-const InfoValue = styled.span`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  color: var(--ig-color-text-muted);
-`
-
-const FormBox = styled.div`
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
-
-const FormRow = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  align-items: center;
-  flex-wrap: wrap;
-`
-
-const FormLabel = styled.span`
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ig-color-text-muted);
-`
-
-const ErrMsg = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-danger);
-`
+const FORM_BOX_STYLE = {
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  padding: 'var(--ig-space-5)',
+}
 
 const PLACEHOLDER_STYLE = { margin: 0 }
 
@@ -110,50 +66,50 @@ export function DevicesLicenseSection({
   renewDate, onChangeRenewDate, renewing, renewError, onRenew,
 }: DevicesLicenseSectionProps) {
   return (
-    <Section>
-      <Header>
+    <Stack as="section" gap={4}>
+      <Inline justify="space-between" gap={3}>
         <Text as="h3" size="15px" weight={600}>License</Text>
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}
           </Button>
         ) : null}
-      </Header>
+      </Inline>
 
       {loading ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>Loading…</Text> : null}
-      {!loading && error ? <ErrMsg>{error}</ErrMsg> : null}
+      {!loading && error ? <Text tone="danger" size="12px">{error}</Text> : null}
       {!loading && !error && license ? (
-        <InfoGrid>
-          <InfoLabel>Plan</InfoLabel>
-          <InfoValue>{license.planCode}</InfoValue>
-          <InfoLabel>Offline Mode</InfoLabel>
-          <InfoValue>{license.offlineEnabled ? `Enabled (up to ${license.offlineMaxDays} days)` : 'Disabled'}</InfoValue>
-          <InfoLabel>Max Users</InfoLabel>
-          <InfoValue>{license.maxUsers}</InfoValue>
-          <InfoLabel>Max Devices</InfoLabel>
-          <InfoValue>{license.maxDevices}</InfoValue>
-          <InfoLabel>Expires</InfoLabel>
-          <InfoValue>
+        <Box style={INFO_GRID_STYLE}>
+          <Text style={INFO_LABEL_STYLE}>Plan</Text>
+          <Text style={INFO_VALUE_STYLE}>{license.planCode}</Text>
+          <Text style={INFO_LABEL_STYLE}>Offline Mode</Text>
+          <Text style={INFO_VALUE_STYLE}>{license.offlineEnabled ? `Enabled (up to ${license.offlineMaxDays} days)` : 'Disabled'}</Text>
+          <Text style={INFO_LABEL_STYLE}>Max Users</Text>
+          <Text style={INFO_VALUE_STYLE}>{license.maxUsers}</Text>
+          <Text style={INFO_LABEL_STYLE}>Max Devices</Text>
+          <Text style={INFO_VALUE_STYLE}>{license.maxDevices}</Text>
+          <Text style={INFO_LABEL_STYLE}>Expires</Text>
+          <Text style={INFO_VALUE_STYLE}>
             {expiry?.label ?? (license.expiresAt ? new Date(license.expiresAt).toLocaleDateString() : '—')}
             {expiry ? <DeviceStatusBadge tone={expiryToneLabel[expiry.tone].tone}>{expiryToneLabel[expiry.tone].label}</DeviceStatusBadge> : null}
-          </InfoValue>
-        </InfoGrid>
+          </Text>
+        </Box>
       ) : null}
       {!loading && !error && !license ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>No license found.</Text> : null}
 
       {isAdmin && showRenew ? (
-        <FormBox>
-          <FormLabel>Set a new expiry date for this organization's license.</FormLabel>
-          <FormRow>
+        <Stack gap={4} style={FORM_BOX_STYLE}>
+          <Text size="12px" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
+          <Inline gap={3} wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
               {renewing ? 'Saving…' : 'Save'}
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRenew}>Cancel</Button>
-          </FormRow>
-          {renewError ? <ErrMsg>{renewError}</ErrMsg> : null}
-        </FormBox>
+          </Inline>
+          {renewError ? <Text tone="danger" size="12px">{renewError}</Text> : null}
+        </Stack>
       ) : null}
-    </Section>
+    </Stack>
   )
 }

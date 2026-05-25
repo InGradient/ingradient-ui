@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Text } from '../../primitives'
 
 const Section = styled.section`
   display: flex;
@@ -13,20 +13,6 @@ const Section = styled.section`
   }
 `
 
-const HeaderRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-3);
-`
-
-
-const Actions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-`
-
 export interface FilterSectionProps {
   title: React.ReactNode
   actions?: React.ReactNode
@@ -37,10 +23,10 @@ export interface FilterSectionProps {
 export function FilterSection({ title, actions, children, className }: FilterSectionProps) {
   return (
     <Section className={className}>
-      <HeaderRow>
+      <Inline justify="space-between" gap={3}>
         <Text as="h4" tone="muted" size="var(--ig-font-size-xs)" weight={600} uppercase letterSpacing="0.04em">{title}</Text>
-        {actions ? <Actions>{actions}</Actions> : null}
-      </HeaderRow>
+        {actions ? <Inline gap={2}>{actions}</Inline> : null}
+      </Inline>
       {children}
     </Section>
   )

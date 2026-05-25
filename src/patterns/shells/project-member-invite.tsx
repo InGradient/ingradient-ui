@@ -1,38 +1,20 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack as PrimStack, Text } from '../../primitives'
 import { TextField } from '../../components/inputs/text-fields'
 import { OptionRow } from '../../components/data-display/option-row'
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
-
-const Row = styled.div`
-  padding: var(--ig-space-5) 0;
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-`
-
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-  width: 100%;
-`
+const ROW_STYLE = {
+  padding: 'var(--ig-space-5) 0',
+  borderBottom: '1px solid var(--ig-color-border-strong)',
+  width: '100%',
+}
+const STACK_STYLE = { width: '100%' }
+const PLACEHOLDER_STYLE = { margin: 0 }
 
 const Input = styled(TextField)`
   width: 100%;
   min-width: 0;
-`
-
-const PLACEHOLDER_STYLE = { margin: 0 }
-
-const Results = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  width: 100%;
 `
 
 export interface SearchableUserCandidate {
@@ -72,8 +54,8 @@ export function ProjectMemberInvite({
   return (
     <>
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
-      <Row>
-        <Stack>
+      <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
+        <PrimStack gap={4} style={STACK_STYLE}>
           <Input
             type="search"
             value={query}
@@ -82,7 +64,7 @@ export function ProjectMemberInvite({
             aria-label="Search registered users"
           />
           {readyToSearch ? (
-            <Results>
+            <PrimStack gap={3} style={STACK_STYLE}>
               {candidates.map((c) => (
                 <OptionRow
                   key={c.id}
@@ -94,16 +76,16 @@ export function ProjectMemberInvite({
                 />
               ))}
               {!isSearching && candidates.length === 0 ? <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{noResultsHint}</Text> : null}
-            </Results>
+            </PrimStack>
           ) : (
             <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{hintBelow}</Text>
           )}
-        </Stack>
-      </Row>
+        </PrimStack>
+      </Inline>
       {inviteMessage ? (
-        <Row>
+        <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
           <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{inviteMessage}</Text>
-        </Row>
+        </Inline>
       ) : null}
     </>
   )

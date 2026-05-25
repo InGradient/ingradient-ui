@@ -1,38 +1,20 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextField } from '../../components/inputs/text-fields'
 import { AutoSaveStatus, type AutoSaveState } from './auto-save-status'
 import { ProjectTypeTag, type ProjectTypeTone } from './project-type-tag'
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
-
-const TitleRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-`
-
-const Row = styled.div`
-  padding: var(--ig-space-5) 0;
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-7);
-  flex-wrap: wrap;
-`
-
-const Label = styled.label`
-  color: var(--ig-color-text-primary);
-  font-size: 14px;
-  cursor: pointer;
-`
-
-const Input = styled(TextField)`
-  min-width: 200px;
-`
+const FIRST_TITLE_STYLE = { marginTop: 0, marginBottom: 0 }
+const ROW_STYLE = {
+  padding: 'var(--ig-space-5) 0',
+  borderBottom: '1px solid var(--ig-color-border-strong)',
+}
+const LABEL_STYLE = { cursor: 'pointer' as const }
+const INPUT_STYLE = { minWidth: 200 }
+const INPUT_FLEX_STYLE = { minWidth: 0 }
+const NESTED_FIELD_STYLE = { flex: 1, minWidth: 0 }
 
 const Textarea = styled.textarea`
   width: 100%;
@@ -49,21 +31,6 @@ const Textarea = styled.textarea`
     outline: none;
     border-color: var(--ig-color-accent);
   }
-`
-
-const Hint = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 12px;
-  line-height: 1.5;
-`
-
-const NestedField = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  flex: 1;
-  min-width: 0;
 `
 
 export type GroupVisible = 'owner' | 'owner_and_manager' | 'all'
@@ -123,81 +90,81 @@ export function ProjectSettingsForm({
         fallbackErrorMessage="Failed to save project settings."
       />
 
-      <TitleRow>
-        <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={{ marginTop: 0, marginBottom: 0 }}>Project name</Text>
+      <Inline gap={3} wrap="wrap">
+        <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={FIRST_TITLE_STYLE}>Project name</Text>
         <ProjectTypeTag tone={projectType} />
-      </TitleRow>
-      <Row>
-        <Input value={name} onChange={(e) => onChangeName(e.target.value)} placeholder="Project name" aria-label="Project name" disabled={!canEdit} />
-      </Row>
+      </Inline>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+        <TextField value={name} onChange={(e) => onChangeName(e.target.value)} placeholder="Project name" aria-label="Project name" disabled={!canEdit} style={INPUT_STYLE} />
+      </Inline>
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Description</Text>
-      <Row>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
         <Textarea value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
-      </Row>
+      </Inline>
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Data grouping</Text>
-      <Row>
-        <Label htmlFor="multi-image-group">Group multiple images as one item (for labeling)</Label>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+        <Text as="label" htmlFor="multi-image-group" size="14px" style={LABEL_STYLE}>Group multiple images as one item (for labeling)</Text>
         <Checkbox id="multi-image-group" checked={groupEnabled} onChange={(e) => onChangeGroupEnabled(e.target.checked)} disabled={!canEdit} />
-      </Row>
+      </Inline>
       {groupEnabled && (
         <>
-          <Row>
-            <NestedField>
-              <Label htmlFor="group-key-regex">Group key pattern (regex with one capture group)</Label>
-              <Input id="group-key-regex" value={groupRegex} onChange={(e) => onChangeGroupRegex(e.target.value)} placeholder="e.g. ^([^_]+_[^_]+)_" disabled={!canEdit} style={{ minWidth: 0 }} />
-              <Hint>File name is matched against this regex; the first captured group becomes the group key.</Hint>
-            </NestedField>
-          </Row>
-          <Row>
-            <NestedField>
-              <Label htmlFor="group-representative-regex">Representative image pattern (optional regex)</Label>
-              <Input id="group-representative-regex" value={groupRepRegex} onChange={(e) => onChangeGroupRepRegex(e.target.value)} placeholder="e.g. _x_orig\.png$" disabled={!canEdit} style={{ minWidth: 0 }} />
-              <Hint>If set, the matching file becomes the representative image for each group.</Hint>
-            </NestedField>
-          </Row>
+          <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+            <Stack gap={2} style={NESTED_FIELD_STYLE}>
+              <Text as="label" htmlFor="group-key-regex" size="14px" style={LABEL_STYLE}>Group key pattern (regex with one capture group)</Text>
+              <TextField id="group-key-regex" value={groupRegex} onChange={(e) => onChangeGroupRegex(e.target.value)} placeholder="e.g. ^([^_]+_[^_]+)_" disabled={!canEdit} style={INPUT_FLEX_STYLE} />
+              <Text as="p" tone="soft" size="12px" style={{ margin: 0, lineHeight: 1.5 }}>File name is matched against this regex; the first captured group becomes the group key.</Text>
+            </Stack>
+          </Inline>
+          <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+            <Stack gap={2} style={NESTED_FIELD_STYLE}>
+              <Text as="label" htmlFor="group-representative-regex" size="14px" style={LABEL_STYLE}>Representative image pattern (optional regex)</Text>
+              <TextField id="group-representative-regex" value={groupRepRegex} onChange={(e) => onChangeGroupRepRegex(e.target.value)} placeholder="e.g. _x_orig\.png$" disabled={!canEdit} style={INPUT_FLEX_STYLE} />
+              <Text as="p" tone="soft" size="12px" style={{ margin: 0, lineHeight: 1.5 }}>If set, the matching file becomes the representative image for each group.</Text>
+            </Stack>
+          </Inline>
         </>
       )}
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Upload</Text>
-      <Row>
-        <Label htmlFor="allow-duplicate-filenames">Allow duplicate file names</Label>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+        <Text as="label" htmlFor="allow-duplicate-filenames" size="14px" style={LABEL_STYLE}>Allow duplicate file names</Text>
         <Checkbox id="allow-duplicate-filenames" checked={allowDup} onChange={(e) => onChangeAllowDup(e.target.checked)} disabled={!canEdit} />
-      </Row>
+      </Inline>
 
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Display</Text>
-      <Row>
-        <Label htmlFor="show-filename-in-gallery">Show file name below each thumbnail in Catalog</Label>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+        <Text as="label" htmlFor="show-filename-in-gallery" size="14px" style={LABEL_STYLE}>Show file name below each thumbnail in Catalog</Text>
         <Checkbox id="show-filename-in-gallery" checked={showFilenameInGallery} onChange={(e) => onChangeShowFilenameInGallery(e.target.checked)} disabled={!canEdit} />
-      </Row>
-      <Row>
-        <Label htmlFor="show-bbox-class-names-in-detail">Show class name on bbox in Image Detail</Label>
+      </Inline>
+      <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+        <Text as="label" htmlFor="show-bbox-class-names-in-detail" size="14px" style={LABEL_STYLE}>Show class name on bbox in Image Detail</Text>
         <Checkbox id="show-bbox-class-names-in-detail" checked={showBboxClassNamesInDetail} onChange={(e) => onChangeShowBboxClassNamesInDetail(e.target.checked)} disabled={!canEdit} />
-      </Row>
+      </Inline>
 
       {isOwner && (
         <>
           <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Group visibility (owner only)</Text>
-          <Row>
-            <Label htmlFor="group-visible-owner-only">Only owner can see all images in group</Label>
+          <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+            <Text as="label" htmlFor="group-visible-owner-only" size="14px" style={LABEL_STYLE}>Only owner can see all images in group</Text>
             <Checkbox
               id="group-visible-owner-only"
               checked={groupVisible !== 'all'}
               onChange={(e) => onChangeGroupVisible(e.target.checked ? 'owner' : 'all')}
               disabled={!canEdit}
             />
-          </Row>
+          </Inline>
           {groupVisible !== 'all' && (
-            <Row>
-              <Label htmlFor="group-visible-include-manager">Include manager</Label>
+            <Inline justify="space-between" gap={7} wrap="wrap" style={ROW_STYLE}>
+              <Text as="label" htmlFor="group-visible-include-manager" size="14px" style={LABEL_STYLE}>Include manager</Text>
               <Checkbox
                 id="group-visible-include-manager"
                 checked={groupVisible === 'owner_and_manager'}
                 onChange={(e) => onChangeGroupVisible(e.target.checked ? 'owner_and_manager' : 'owner')}
                 disabled={!canEdit}
               />
-            </Row>
+            </Inline>
           )}
         </>
       )}

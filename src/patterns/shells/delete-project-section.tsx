@@ -1,29 +1,17 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Box, Inline, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 
-const Wrap = styled.div`
-  margin-top: var(--ig-space-11);
-  padding-top: var(--ig-space-9);
-  border-top: 1px solid var(--ig-color-border-subtle);
-`
+const WRAP_STYLE = {
+  marginTop: 'var(--ig-space-11)',
+  paddingTop: 'var(--ig-space-9)',
+  borderTop: '1px solid var(--ig-color-border-subtle)',
+}
 
 const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
-
-const Hint = styled.p`
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  margin: 0 0 var(--ig-space-3);
-`
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-  margin-top: var(--ig-space-3);
-`
+const HINT_STYLE = { marginBottom: 'var(--ig-space-3)' }
+const ROW_STYLE = { marginTop: 'var(--ig-space-3)' }
 
 const ConfirmInput = styled(TextField)`
   min-width: 200px;
@@ -51,10 +39,10 @@ export function DeleteProjectSection({
 }: DeleteProjectSectionProps) {
   const disabled = confirmInput !== projectName || !!pending
   return (
-    <Wrap>
+    <Box style={WRAP_STYLE}>
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
-      <Hint>{hintTemplate(projectName)}</Hint>
-      <Row>
+      <Text as="p" tone="soft" size="14px" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
+      <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
         <ConfirmInput
           type="text"
           value={confirmInput}
@@ -65,7 +53,7 @@ export function DeleteProjectSection({
         <DangerButton type="button" disabled={disabled} onClick={onDelete}>
           {pending ? 'Deleting…' : 'Delete project'}
         </DangerButton>
-      </Row>
-    </Wrap>
+      </Inline>
+    </Box>
   )
 }

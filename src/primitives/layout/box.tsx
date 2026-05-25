@@ -26,6 +26,7 @@ const BoxRoot = styled.div<{
 `
 
 export type BoxProps = React.HTMLAttributes<HTMLDivElement> & {
+  as?: React.ElementType
   display?: string
   padding?: Space
   gap?: Space
@@ -38,6 +39,7 @@ export type BoxProps = React.HTMLAttributes<HTMLDivElement> & {
 }
 
 export function Box({
+  as,
   display,
   padding,
   gap,
@@ -51,6 +53,7 @@ export function Box({
 }: BoxProps) {
   return (
     <BoxRoot
+      as={as}
       $display={display}
       $padding={padding}
       $gap={gap}
