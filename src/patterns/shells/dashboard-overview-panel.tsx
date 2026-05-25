@@ -1,22 +1,13 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Box, Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { Panel, PanelHeader, PanelHint, PanelTitle } from '../page/page-shell'
 
-const HeaderMain = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-  min-width: 0;
-`
-
-const HeaderActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  position: relative;
-  flex-wrap: wrap;
-`
+const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
+const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
+const BODY_STYLE = { padding: 'var(--ig-space-7)', overflow: 'visible' as const }
+const PLACEHOLDER_STYLE = { margin: 0 }
 
 const DateButton = styled(Button).attrs({ variant: 'secondary' as const })`
   padding: var(--ig-space-3) var(--ig-space-5);
@@ -27,18 +18,6 @@ const DateButton = styled(Button).attrs({ variant: 'secondary' as const })`
 
 const ResetButton = styled(DateButton)`
   min-width: 0;
-`
-
-const Body = styled.div`
-  padding: var(--ig-space-7);
-  overflow: visible;
-`
-
-const Placeholder = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  text-align: center;
 `
 
 export interface DashboardOverviewPanelProps {
@@ -73,23 +52,23 @@ export function DashboardOverviewPanel({
   return (
     <Panel className={className}>
       <PanelHeader>
-        <HeaderMain>
+        <Stack gap={1} style={HEADER_MAIN_STYLE}>
           <PanelTitle>{title}</PanelTitle>
           {hint ? <PanelHint>{hint}</PanelHint> : null}
-        </HeaderMain>
-        <HeaderActions data-report-hide>
+        </Stack>
+        <Inline gap={4} wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
           {onResetLayout ? <ResetButton type="button" onClick={onResetLayout}>Reset</ResetButton> : null}
           <DateButton type="button" onClick={onToggleDate}>{dateLabel}</DateButton>
           {datePopover}
-        </HeaderActions>
+        </Inline>
       </PanelHeader>
-      <Body>
-        {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
-          : state === 'loading' ? <Placeholder>{loadingText}</Placeholder>
-          : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
+      <Box style={BODY_STYLE}>
+        {state === 'no-project' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
+          : state === 'loading' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
+          : state === 'error' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{errorMessage ?? 'Error'}</Text>
           : children ? children
-          : <Placeholder>{noDataText}</Placeholder>}
-      </Body>
+          : <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{noDataText}</Text>}
+      </Box>
     </Panel>
   )
 }

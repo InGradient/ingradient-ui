@@ -1,37 +1,15 @@
-import styled from 'styled-components'
+import { Box, Grid, Text } from '../../primitives'
 import { Skeleton } from '../../components/feedback/skeleton'
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--ig-space-5);
-`
+const CARD_STYLE = {
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-border-strong)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  padding: 'var(--ig-space-6)',
+}
 
-const Card = styled.div`
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-6);
-`
-
-const Label = styled.div`
-  font-size: 11px;
-  color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-1);
-`
-
-const Value = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-`
-
-const Sub = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-text-soft);
-  font-weight: 400;
-  margin-left: var(--ig-space-1);
-`
+const LABEL_STYLE = { marginBottom: 'var(--ig-space-1)' }
+const SUB_STYLE = { marginLeft: 'var(--ig-space-1)' }
 
 export interface StorageOverviewItem {
   label: string
@@ -49,21 +27,21 @@ export interface StorageOverviewProps {
 export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOverviewProps) {
   if (loading) {
     return (
-      <Grid>
+      <Grid gap={5} columns="repeat(4, 1fr)">
         {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="72px" />)}
       </Grid>
     )
   }
   return (
-    <Grid>
+    <Grid gap={5} columns="repeat(4, 1fr)">
       {items.map((item, i) => (
-        <Card key={i}>
-          <Label>{item.label}</Label>
-          <Value>
+        <Box key={i} style={CARD_STYLE}>
+          <Text size="11px" tone="muted" style={LABEL_STYLE}>{item.label}</Text>
+          <Text size="20px" weight={600}>
             {item.value}
-            {item.sub ? <Sub>{item.sub}</Sub> : null}
-          </Value>
-        </Card>
+            {item.sub ? <Text as="span" size="12px" tone="soft" weight={400} style={SUB_STYLE}>{item.sub}</Text> : null}
+          </Text>
+        </Box>
       ))}
     </Grid>
   )

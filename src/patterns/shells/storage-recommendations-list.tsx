@@ -1,14 +1,8 @@
 import styled from 'styled-components'
+import { Stack } from '../../primitives'
 import { Skeleton } from '../../components/feedback/skeleton'
 
-const List = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
+const LIST_STYLE = { listStyle: 'none' as const, padding: 0, margin: 0 }
 
 const Item = styled.li<{ $tone: 'info' | 'warn' }>`
   font-size: 13px;
@@ -38,10 +32,10 @@ export function StorageRecommendationsList({
   if (loading) return <Skeleton $height={loadingHeight} />
   if (recommendations.length === 0) return null
   return (
-    <List>
+    <Stack as="ul" gap={2} style={LIST_STYLE}>
       {recommendations.map((r, i) => (
         <Item key={i} $tone={r.tone}>{r.text}</Item>
       ))}
-    </List>
+    </Stack>
   )
 }
