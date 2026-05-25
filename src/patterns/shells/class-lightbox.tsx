@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { IconButton } from '../../components/inputs/icon-button'
 import { PatternTabs, type PatternTabsItem } from './pattern-tabs'
+
+const OVERLAY_STYLE = { position: 'absolute' as const, inset: 0, width: '100%', height: '100%', pointerEvents: 'none' as const }
+const CLOSE_BTN_STYLE = { position: 'absolute' as const, top: 12, right: 12, borderRadius: 'var(--ig-radius-pill)', background: 'var(--ig-color-lightbox-surface)' }
 
 const Backdrop = styled.div`
   position: fixed;
@@ -41,27 +45,6 @@ const Image = styled.img`
   display: block;
 `
 
-const Overlay = styled.svg`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-`
-
-const CloseBtn = styled.button`
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-lightbox-surface);
-  color: var(--ig-color-text-primary);
-  font-size: 18px;
-  cursor: pointer;
-`
 
 export interface ClassLightboxBbox {
   classId?: string
@@ -145,7 +128,7 @@ export function ClassLightbox({
             role="presentation"
             onLoad={(e) => onImageLoad?.(e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
           />
-          <Overlay viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden>
+          <svg viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden style={OVERLAY_STYLE}>
             {bboxes.map((b, i) => {
               const color = colorFor(b.classId, classIdToColor, defaultAnnotationColor)
               return (
@@ -158,8 +141,8 @@ export function ClassLightbox({
                 fill={colorFor(p.classId, classIdToColor, defaultAnnotationColor)}
                 stroke="var(--ig-color-text-primary)" strokeWidth={0.004} />
             ))}
-          </Overlay>
-          <CloseBtn type="button" onClick={onClose} aria-label="Close enlarged view">×</CloseBtn>
+          </svg>
+          <IconButton variant="secondary" type="button" onClick={onClose} aria-label="Close enlarged view" style={CLOSE_BTN_STYLE}>×</IconButton>
         </Frame>
       </PanelWrap>
     </Backdrop>

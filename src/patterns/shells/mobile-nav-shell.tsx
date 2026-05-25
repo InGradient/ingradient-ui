@@ -2,6 +2,7 @@ import { type MouseEvent, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Menu, X } from 'lucide-react'
 import { media } from '../../tokens'
+import { IconButton } from '../../components/inputs/icon-button'
 
 const AppHeader = styled.header`
   display: none;
@@ -22,19 +23,6 @@ const AppHeader = styled.header`
   }
 `
 
-const HamburgerBtn = styled.button`
-  background: none;
-  border: none;
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  padding: var(--ig-space-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ig-radius-md);
-  &:hover { background: var(--ig-color-white-08); }
-  svg { width: 22px; height: 22px; }
-`
 
 const HeaderTitle = styled.div`
   flex: 1;
@@ -107,21 +95,6 @@ const DrawerTitleRow = styled.button`
   }
 `
 
-const CloseBtn = styled.button`
-  background: none;
-  border: none;
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  padding: var(--ig-space-2);
-  display: flex;
-  align-items: center;
-  border-radius: var(--ig-radius-md);
-  &:hover {
-    color: var(--ig-color-text-primary);
-    background: var(--ig-color-white-08);
-  }
-  svg { width: 20px; height: 20px; }
-`
 
 const Section = styled.nav`
   padding: var(--ig-space-3) var(--ig-space-4);
@@ -251,9 +224,9 @@ export function MobileNavShell({
   return (
     <>
       <AppHeader>
-        <HamburgerBtn type="button" aria-label="Open menu" onClick={onOpen}>
+        <IconButton variant="secondary" type="button" aria-label="Open menu" onClick={onOpen}>
           {hamburgerIcon ?? <Menu size={22} />}
-        </HamburgerBtn>
+        </IconButton>
         <HeaderTitle>
           {appHeaderBrand}
           {appHeaderTitle}
@@ -274,9 +247,9 @@ export function MobileNavShell({
             {drawerTitle ? <span>{drawerTitle}</span> : null}
             {drawerTitleIcon}
           </DrawerTitleRow>
-          <CloseBtn type="button" aria-label="Close menu" onClick={onClose}>
+          <IconButton variant="secondary" size="sm" type="button" aria-label="Close menu" onClick={onClose}>
             {closeIcon ?? <X size={20} />}
-          </CloseBtn>
+          </IconButton>
         </DrawerHeader>
 
         <Section aria-label={navLabel}>

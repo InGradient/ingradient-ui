@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { GroupCountBadge } from '../../components/feedback/group-count-badge'
 import { MediaOverlay } from '../../components/feedback/media-overlay'
+import { IconButton } from '../../components/inputs/icon-button'
 import { KebabIcon } from '../../components/icons/catalog-icons'
 
 const Card = styled.div<{ $selected: boolean }>`
@@ -46,25 +47,6 @@ const GroupSlot = styled.div`
   z-index: 3;
 `
 
-const OptionButton = styled.button`
-  width: 18px;
-  height: 18px;
-  padding: 0;
-  border: none;
-  border-radius: var(--ig-radius-2xs);
-  background: var(--ig-color-image-option-bg);
-  color: var(--ig-color-on-accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
-  transition: background var(--ig-motion-fast);
-  &:hover {
-    background: var(--ig-color-image-option-bg-hover);
-  }
-`
 
 const Footer = styled.div`
   position: absolute;
@@ -117,7 +99,9 @@ export function GalleryImageCard({
       <TopRight>
         {image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} /> : null}
         {showKebab ? (
-          <OptionButton
+          <IconButton
+            variant="accent"
+            size="sm"
             ref={menuBtnRef}
             aria-label={`Open menu for ${image.name}`}
             onClick={(e) => {
@@ -126,7 +110,7 @@ export function GalleryImageCard({
             }}
           >
             <KebabIcon size={14} />
-          </OptionButton>
+          </IconButton>
         ) : null}
       </TopRight>
       {groupCount > 1 ? <GroupSlot><GroupCountBadge count={groupCount} /></GroupSlot> : null}

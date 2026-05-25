@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { IconButton } from '../../components/inputs'
+import { IconButton } from '../../components/inputs/icon-button'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const List = styled.ul`
@@ -40,21 +40,6 @@ const Count = styled.span`
   font-variant-numeric: tabular-nums;
 `
 
-const RemoveBtn = styled.button`
-  background: none;
-  border: none;
-  padding: var(--ig-space-1);
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ig-radius-xs);
-  &:hover {
-    color: var(--ig-color-danger);
-    background: var(--ig-color-alert-danger-bg);
-  }
-`
 
 export interface ClassPoolItem {
   id: string
@@ -84,9 +69,9 @@ export function ClassPoolList({ classes, onRemove, onHover, removeIcon, classNam
           <Label title={cls.name}>{cls.name}</Label>
           {typeof cls.count === 'number' ? <Count>{cls.count}</Count> : null}
           {onRemove ? (
-            <RemoveBtn type="button" aria-label={`Remove class ${cls.name}`} onClick={() => onRemove(cls.id)}>
+            <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove class ${cls.name}`} onClick={() => onRemove(cls.id)}>
               {removeIcon ?? '×'}
-            </RemoveBtn>
+            </IconButton>
           ) : null}
         </Row>
       ))}

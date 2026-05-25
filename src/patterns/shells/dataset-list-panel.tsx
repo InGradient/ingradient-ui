@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Checkbox } from '../../components/inputs'
+import { Button, Checkbox, IconButton } from '../../components/inputs'
 import { Spinner } from '../../components/feedback/spinner'
 import { ClosePanelIcon } from '../../components/icons/catalog-icons'
 import { DatasetListItem } from './dataset-list-item'
@@ -54,19 +54,6 @@ const List = styled.div`
   gap: 2px;
 `
 
-const CollapseBtn = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: transparent;
-  border-radius: var(--ig-radius-sm);
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  &:hover { background: var(--ig-color-surface-interactive-hover); color: var(--ig-color-text-primary); }
-`
 
 const HeaderActions = styled.div`
   display: flex;
@@ -129,14 +116,16 @@ export function DatasetListPanel({
             + Add
           </Button>
           {onCollapse ? (
-            <CollapseBtn
+            <IconButton
+              variant="secondary"
+              size="sm"
               type="button"
               aria-label="Collapse sidebar"
               onClick={onCollapse}
               data-ig-component="DatasetListPanel.CollapseButton"
             >
               <ClosePanelIcon size={16} />
-            </CollapseBtn>
+            </IconButton>
           ) : null}
         </HeaderActions>
       </Header>

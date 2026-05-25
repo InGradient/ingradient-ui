@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '../../components/feedback/avatar'
+import { IconButton } from '../../components/inputs/icon-button'
 
 const List = styled.ul`
   list-style: none;
@@ -44,18 +45,6 @@ const Role = styled.span`
   letter-spacing: 0.05em;
 `
 
-const RemoveBtn = styled.button`
-  background: none;
-  border: none;
-  padding: var(--ig-space-1);
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  border-radius: var(--ig-radius-xs);
-  &:hover {
-    color: var(--ig-color-danger);
-    background: var(--ig-color-alert-danger-bg);
-  }
-`
 
 export interface MemberPoolItem {
   id: string
@@ -83,9 +72,9 @@ export function MemberPoolList({ members, onRemove, removeIcon, className }: Mem
             {m.role ? <Role>{m.role}</Role> : null}
           </TextBlock>
           {onRemove ? (
-            <RemoveBtn type="button" aria-label={`Remove member ${m.name}`} onClick={() => onRemove(m.id)}>
+            <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove member ${m.name}`} onClick={() => onRemove(m.id)}>
               {removeIcon ?? '×'}
-            </RemoveBtn>
+            </IconButton>
           ) : null}
         </Row>
       ))}
