@@ -13,15 +13,16 @@
 
 **새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
 
-## 현재 상태 (last update: 2026-05-25, 37 커밋 누적)
+## 현재 상태 (last update: 2026-05-25, 40 커밋 누적 + Phase 2 시작)
 
 | 항목 | 값 |
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **133 개** |
-| 제거된 인라인 | **366 개 (73%)** |
+| 인라인 styled 정의 (현재) | **~121 개** (Phase 2 12 정의 추가 제거) |
+| 제거된 인라인 | **~378 개 (76%)** |
 | 마이그레이션된 patterns 파일 | ~100 개 |
+| Phase 2 신규 컴포넌트 (현재까지) | 3 개 (FloatingOverlay / TextButton / Textarea) |
 | TypeScript 통과 | ✅ 매 커밋 |
 
 ## Phase 완료 상태
@@ -34,7 +35,11 @@
 - ✅ **Phase 1.5**: IconButton 교체 (8 곳)
 - ✅ **Phase 1.6**: Heading 교체 (21 곳)
 - 🔄 **Phase 1.7**: Layout glue → primitives (진행 중 — ~50 파일 남음)
-- ⏳ **Phase 2**: 신규 컴포넌트 추출 (TextButton, MenuItem, Textarea, ColorInput, DropZone, FloatingOverlay, ResizeHandle, AspectRatioImage, OverlayLayer, CollapsibleSectionHeader)
+- 🔄 **Phase 2**: 신규 컴포넌트 추출 (진행 중)
+  - ✅ FloatingOverlay (commit 06ed814) — class-hover-card / hover-preview / dataset-menu / image-context-menu (4 곳)
+  - ✅ TextButton (commit 4eff321) — checkbox-group / gallery-toolbar / gallery-filter-panel(3) / image-detail-info-panel (6 사용)
+  - ✅ Textarea (commit 00588ae) — comments-panel / devices-forms / project-settings-form (3 곳)
+  - ⏳ 남음: MenuItem, ColorInput, DropZone, ResizeHandle, AspectRatioImage, OverlayLayer, CollapsibleSectionHeader
 - ⏳ **Phase 3**: 도메인 wrapper refactor (device-status-badge, project-type-tag)
 - ⏳ **Phase 4**: 특수 Table 분리 (HeatmapTable, StatsTable)
 - ⏳ **Phase 5**: 시각 일치 정리
