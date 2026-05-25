@@ -1,29 +1,21 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Box, Stack, Text } from '../../primitives'
 
-const SidebarRoot = styled.aside`
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  height: 100%;
-  background: var(--ig-color-surface-panel);
-  overflow: hidden;
-`
+const SIDEBAR_ROOT_STYLE = {
+  height: '100%',
+  background: 'var(--ig-color-surface-panel)',
+  overflow: 'hidden' as const,
+}
 
-const FixedTop = styled.div`
-  flex-shrink: 0;
-`
+const FIXED_TOP_STYLE = { flexShrink: 0 }
 
-const GrowSection = styled.div`
-  flex: 1 1 0;
-  min-height: 0;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-`
+const GROW_SECTION_STYLE = {
+  flex: '1 1 0',
+  overflowY: 'auto' as const,
+  padding: 'var(--ig-space-5)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+}
 
 const FixedSection = styled.div`
   flex-shrink: 0;
@@ -35,14 +27,6 @@ const FixedSection = styled.div`
   &:last-child {
     border-bottom: none;
   }
-`
-
-const SectionTitle = styled.div`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 `
 
 export interface ImageDetailSidebarProps {
@@ -88,16 +72,16 @@ export function ImageDetailSidebar({
   className,
 }: ImageDetailSidebarProps) {
   return (
-    <SidebarRoot className={className}>
-      <FixedTop>{infoPanel}</FixedTop>
+    <Stack as="aside" gap={0} className={className} style={SIDEBAR_ROOT_STYLE}>
+      <Box style={FIXED_TOP_STYLE}>{infoPanel}</Box>
       {classSlot ? (
-        <GrowSection>
-          <SectionTitle>{classSectionTitle}</SectionTitle>
+        <Stack gap={3} style={GROW_SECTION_STYLE}>
+          <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{classSectionTitle}</Text>
           {classSlot}
-        </GrowSection>
+        </Stack>
       ) : null}
       {commentsSlot ? <FixedSection>{commentsSlot}</FixedSection> : null}
       {labelersSlot ? <FixedSection>{labelersSlot}</FixedSection> : null}
-    </SidebarRoot>
+    </Stack>
   )
 }

@@ -1,29 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Grid, Inline, Text } from '../../primitives'
 import { Checkbox, IconButton } from '../../components/inputs'
 import { SelectableListItem } from '../../components/data-display/selectable-list-item'
 import { DatasetTaskTag, type DatasetTaskType } from './dataset-task-tag'
 import { KebabIcon } from '../../components/icons/catalog-icons'
 
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  align-items: center;
-  gap: var(--ig-space-3);
-  width: 100%;
-`
-
-const Name = styled.span`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
-
-const Slot = styled.span`
-  display: inline-flex;
-  align-items: center;
-  min-width: 0;
-`
+const ROW_STYLE = { width: '100%', alignItems: 'center' }
+const NAME_STYLE = {
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+}
+const SLOT_STYLE = { minWidth: 0 }
 
 export interface DatasetListItemProps {
   id: string
@@ -50,8 +38,18 @@ export function DatasetListItem({
       onClick={() => onSelectCurrent?.(id)}
       data-dataset-id={id}
     >
-      <Row data-ig-component="DatasetListItem" data-ig-layer="patterns" data-ig-label={name}>
-        <Slot
+      <Grid
+        gap={3}
+        columns="auto 1fr auto auto"
+        style={ROW_STYLE}
+        data-ig-component="DatasetListItem"
+        data-ig-layer="patterns"
+        data-ig-label={name}
+      >
+        <Inline
+          as="span"
+          gap={0}
+          style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.Checkbox"
           data-ig-kind="checkbox"
           data-ig-label={`Select dataset ${name}`}
@@ -63,23 +61,31 @@ export function DatasetListItem({
             aria-label={`Select dataset ${name}`}
             data-ig-slot="DatasetListItem.Checkbox"
           />
-        </Slot>
-        <Name
+        </Inline>
+        <Text
+          as="span"
           title={name}
+          style={NAME_STYLE}
           data-ig-slot="DatasetListItem.Name"
           data-ig-kind="text"
           data-ig-label={name}
         >
           {name}
-        </Name>
-        <Slot
+        </Text>
+        <Inline
+          as="span"
+          gap={0}
+          style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.TaskTag"
           data-ig-kind="tag"
           data-ig-label={taskType}
         >
           <DatasetTaskTag taskType={taskType} data-ig-slot="DatasetListItem.TaskTag" />
-        </Slot>
-        <Slot
+        </Inline>
+        <Inline
+          as="span"
+          gap={0}
+          style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.MenuButtonSlot"
           data-ig-kind="button-group"
           data-ig-label={`Actions for ${name}`}
@@ -96,8 +102,8 @@ export function DatasetListItem({
           >
             <KebabIcon size={18} />
           </IconButton>
-        </Slot>
-      </Row>
+        </Inline>
+      </Grid>
     </SelectableListItem>
   )
 }

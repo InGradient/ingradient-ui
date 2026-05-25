@@ -38,7 +38,7 @@ export function PagePrimaryHeader({
   className,
 }: PagePrimaryHeaderProps) {
   return (
-    <PageHeader className={className}>
+    <PageHeader className={className} data-ig-component="PagePrimaryHeader" data-ig-layer="patterns">
       <PageHeaderRow>
         <PageTitleBlock>
           <PageTitle>{title}</PageTitle>

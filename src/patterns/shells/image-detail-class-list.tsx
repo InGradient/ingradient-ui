@@ -1,11 +1,6 @@
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
-
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-`
 
 const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
   display: flex;
@@ -45,12 +40,7 @@ const NameText = styled.span<{ $active?: boolean }>`
   white-space: nowrap;
 `
 
-const EmptyText = styled.p`
-  margin: 0;
-  padding: var(--ig-space-2);
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-`
+const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 export interface ImageDetailClassListClass {
   id: string
@@ -88,11 +78,11 @@ export function ImageDetailClassList({
   className,
 }: ImageDetailClassListProps) {
   if (classes.length === 0) {
-    return <EmptyText>{emptyText}</EmptyText>
+    return <Text as="p" size="var(--ig-font-size-xs)" tone="muted" style={EMPTY_STYLE}>{emptyText}</Text>
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (
-    <List className={className}>
+    <Stack gap={1} className={className}>
       {classes.map((cls) => {
         const isSelected = selectedClassId === cls.id
         const isClassified = classifiedSet.has(cls.id)
@@ -116,6 +106,6 @@ export function ImageDetailClassList({
           </Row>
         )
       })}
-    </List>
+    </Stack>
   )
 }

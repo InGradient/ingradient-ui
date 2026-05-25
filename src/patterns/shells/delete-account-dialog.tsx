@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { Alert } from '../../components/feedback/alert'
 import { Button } from '../../components/inputs/button'
 import { PasswordField, TextField } from '../../components/inputs/text-fields'
@@ -11,59 +11,16 @@ import {
 
 export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-7);
-`
+const SOLO_CARD_STYLE = {
+  padding: 'var(--ig-space-5) var(--ig-space-6)',
+  border: '1px solid var(--ig-color-alert-danger-border)',
+  borderRadius: 'var(--ig-radius-xs)',
+  background: 'var(--ig-color-alert-danger-bg)',
+}
 
-const Copy = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  line-height: 1.55;
-`
-
-const SoloCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-5) var(--ig-space-6);
-  border: 1px solid var(--ig-color-alert-danger-border);
-  border-radius: var(--ig-radius-xs);
-  background: var(--ig-color-alert-danger-bg);
-`
-
-const Title = styled.div`
-  color: var(--ig-color-text-primary);
-  font-size: 14px;
-  font-weight: 600;
-`
-
-const Meta = styled.div`
-  color: var(--ig-color-text-muted);
-  font-size: 12px;
-`
-
-const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  color: var(--ig-color-text-primary);
-  font-size: 13px;
-  font-weight: 600;
-`
-
-const FullPasswordField = styled(PasswordField)`
-  width: 100%;
-  min-width: 260px;
-`
-
-const FullConfirmField = styled(TextField)`
-  width: 100%;
-`
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
+const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 260 }
+const FULL_CONFIRM_STYLE = { width: '100%' }
+const COPY_STYLE = { lineHeight: 1.55 }
 
 export interface DeleteAccountSoloProject {
   project_id: string
@@ -122,27 +79,27 @@ export function DeleteAccountDialog({
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose} disabled={!!pending}>Cancel</Button>
-          <DangerButton type="button" onClick={onSubmit} disabled={submitDisabled}>
+          <Button type="button" variant="secondary" tone="danger" onClick={onSubmit} disabled={submitDisabled}>
             {pending ? 'Deleting…' : 'Delete account'}
-          </DangerButton>
+          </Button>
         </>
       }
     >
-      <Stack>
-        <Copy>
+      <Stack gap={7}>
+        <Text as="p" tone="soft" size="14px" style={COPY_STYLE}>
           This account owns or participates in projects that need resolution before deletion. Review each shared project below
           and decide whether to transfer ownership or delete the project.
-        </Copy>
+        </Text>
         {preview.solo_projects.length > 0 && (
           <>
             <Alert $tone="warning">
               You are the only member of the following project{preview.solo_projects.length === 1 ? '' : 's'}. They will be permanently deleted along with your account.
             </Alert>
             {preview.solo_projects.map((p) => (
-              <SoloCard key={p.project_id}>
-                <Title>{p.project_name}</Title>
-                <Meta>role: {p.role} · members: {p.member_count}</Meta>
-              </SoloCard>
+              <Stack key={p.project_id} gap={2} style={SOLO_CARD_STYLE}>
+                <Text size="14px" weight={600}>{p.project_name}</Text>
+                <Text tone="muted" size="12px">role: {p.role} · members: {p.member_count}</Text>
+              </Stack>
             ))}
           </>
         )}
@@ -157,28 +114,30 @@ export function DeleteAccountDialog({
         {unresolvedCount > 0 && (
           <Alert $tone="danger">Select a transfer target or choose delete for every shared project before continuing.</Alert>
         )}
-        <Label>
-          Enter your password to confirm
-          <FullPasswordField
+        <Stack as="label" gap={2}>
+          <Text size="13px" weight={600}>Enter your password to confirm</Text>
+          <PasswordField
             value={password}
             onChange={(e) => onChangePassword(e.target.value)}
             placeholder="Current password"
             aria-label="Current password"
             autoComplete="new-password"
             name="delete-account-password"
+            style={FULL_PASSWORD_STYLE}
           />
-        </Label>
-        <Label>
-          Type <strong>{confirmKeyword}</strong> to confirm deletion
-          <FullConfirmField
+        </Stack>
+        <Stack as="label" gap={2}>
+          <Text size="13px" weight={600}>Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
+          <TextField
             value={finalConfirmText}
             onChange={(e) => onChangeFinalConfirmText(e.target.value)}
             placeholder={confirmKeyword}
             aria-label="Final delete confirmation"
             autoComplete="off"
             name="delete-account-final-confirm"
+            style={FULL_CONFIRM_STYLE}
           />
-        </Label>
+        </Stack>
         {deleteAccountMessage && <Alert $tone="danger">{deleteAccountMessage}</Alert>}
       </Stack>
     </DialogShell>

@@ -1,23 +1,13 @@
-import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 import { ActionChip } from '../../components/data-display/action-chip'
 
-const Wrap = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-space-2);
-  align-items: center;
-`
-
-const MoreChip = styled.span`
-  display: inline-flex;
-  align-items: center;
-  padding: var(--ig-space-1) var(--ig-space-3);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-surface-interactive);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
-`
+const MORE_CHIP_STYLE = {
+  display: 'inline-flex' as const,
+  alignItems: 'center' as const,
+  padding: 'var(--ig-space-1) var(--ig-space-3)',
+  borderRadius: 'var(--ig-radius-pill)',
+  background: 'var(--ig-color-surface-interactive)',
+}
 
 export interface ChipGroupItem {
   id: string
@@ -37,7 +27,7 @@ export function ChipGroup({ items, maxVisible, onItemClick, className }: ChipGro
   const overflow = maxVisible != null ? items.length - maxVisible : 0
 
   return (
-    <Wrap className={className}>
+    <Inline gap={2} wrap="wrap" className={className}>
       {visible.map((item) => (
         <ActionChip
           key={item.id}
@@ -47,7 +37,9 @@ export function ChipGroup({ items, maxVisible, onItemClick, className }: ChipGro
           {item.label}
         </ActionChip>
       ))}
-      {overflow > 0 && <MoreChip>+{overflow} more</MoreChip>}
-    </Wrap>
+      {overflow > 0 ? (
+        <Text as="span" tone="muted" size="var(--ig-font-size-2xs)" weight={600} style={MORE_CHIP_STYLE}>+{overflow} more</Text>
+      ) : null}
+    </Inline>
   )
 }

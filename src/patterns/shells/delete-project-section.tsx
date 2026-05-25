@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Box, Inline, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
@@ -12,13 +11,7 @@ const WRAP_STYLE = {
 const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 const HINT_STYLE = { marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = { marginTop: 'var(--ig-space-3)' }
-
-const ConfirmInput = styled(TextField)`
-  min-width: 200px;
-  flex: 1;
-`
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
+const CONFIRM_INPUT_STYLE = { minWidth: 200, flex: 1 }
 
 export interface DeleteProjectSectionProps {
   projectName: string
@@ -43,16 +36,17 @@ export function DeleteProjectSection({
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
       <Text as="p" tone="soft" size="14px" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
       <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
-        <ConfirmInput
+        <TextField
           type="text"
           value={confirmInput}
           onChange={(e) => onChangeConfirmInput(e.target.value)}
           placeholder={projectName}
           aria-label="Type project name to confirm delete"
+          style={CONFIRM_INPUT_STYLE}
         />
-        <DangerButton type="button" disabled={disabled} onClick={onDelete}>
+        <Button type="button" variant="secondary" tone="danger" disabled={disabled} onClick={onDelete}>
           {pending ? 'Deleting…' : 'Delete project'}
-        </DangerButton>
+        </Button>
       </Inline>
     </Box>
   )

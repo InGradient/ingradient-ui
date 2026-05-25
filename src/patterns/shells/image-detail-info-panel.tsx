@@ -1,22 +1,12 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
 
-const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-`
-
-const Title = styled.div`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+const SECTION_STYLE = {
+  padding: 'var(--ig-space-5)',
+  borderBottom: '1px solid var(--ig-color-border-subtle)',
+}
 
 const DetailsToggle = styled.button`
   background: none;
@@ -34,12 +24,7 @@ const DetailsToggle = styled.button`
   }
 `
 
-const DetailsBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  padding-top: var(--ig-space-2);
-`
+const DETAILS_BODY_STYLE = { paddingTop: 'var(--ig-space-2)' }
 
 export interface ImageDetailInfo {
   name?: string
@@ -98,8 +83,8 @@ export function ImageDetailInfoPanel({
   title = 'Image info',
 }: ImageDetailInfoPanelProps) {
   return (
-    <Section>
-      <Title>{title}</Title>
+    <Stack gap={3} style={SECTION_STYLE}>
+      <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
       {positionLabel ? (
         <InfoRow>
           <InfoRowLabel>Position</InfoRowLabel>
@@ -123,7 +108,7 @@ export function ImageDetailInfoPanel({
         {detailsOpen ? 'Hide details' : 'Show details'}
       </DetailsToggle>
       {detailsOpen ? (
-        <DetailsBody>
+        <Stack gap={3} style={DETAILS_BODY_STYLE}>
           {rowIfValue('Upload Source', image.upload_source)}
           {rowIfValue('Camera IP', image.camera_ip)}
           {rowIfValue('Camera Type', image.camera_type)}
@@ -150,9 +135,9 @@ export function ImageDetailInfoPanel({
               )
             : null}
           {rowIfValue('Pattern', image.pattern_label)}
-        </DetailsBody>
+        </Stack>
       ) : null}
       {cameraParamsSlot}
-    </Section>
+    </Stack>
   )
 }

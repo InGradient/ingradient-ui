@@ -1,24 +1,11 @@
 import styled from 'styled-components'
+import { Inline, Text } from '../../primitives'
 
-const Row = styled.div`
-  padding: var(--ig-space-5) var(--ig-space-9);
-  border-bottom: 1px solid var(--ig-color-border-strong);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-space-3);
-  align-items: center;
-  flex-shrink: 0;
-  min-width: 0;
-`
-
-const Label = styled.span`
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ig-color-text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-right: var(--ig-space-1);
-`
+const ROW_STYLE = {
+  padding: 'var(--ig-space-5) var(--ig-space-9)',
+  borderBottom: '1px solid var(--ig-color-border-strong)',
+  flexShrink: 0,
+}
 
 const Chip = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-2) var(--ig-space-5);
@@ -38,16 +25,7 @@ const Chip = styled.button<{ $active: boolean }>`
   }
 `
 
-const Count = styled.span`
-  font-size: 11px;
-  color: var(--ig-color-text-soft);
-  margin-left: 2px;
-`
-
-const Hint = styled.span`
-  color: var(--ig-color-text-soft);
-  font-size: 13px;
-`
+const COUNT_STYLE = { marginLeft: 2 }
 
 export interface DatasetFilterChipRowItem {
   id: string
@@ -73,12 +51,12 @@ export function DatasetFilterChipRow({
   onToggle,
 }: DatasetFilterChipRowProps) {
   return (
-    <Row>
-      <Label>{label}</Label>
+    <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
+      <Text as="span" size="12px" weight={600} tone="soft" uppercase letterSpacing="0.04em" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
       {loading ? (
-        <Hint>{loadingText}</Hint>
+        <Text as="span" tone="soft" size="13px">{loadingText}</Text>
       ) : datasets.length === 0 ? (
-        <Hint>{emptyText}</Hint>
+        <Text as="span" tone="soft" size="13px">{emptyText}</Text>
       ) : (
         datasets.map((d) => {
           const isActive = activeIds.size === 0 || activeIds.has(d.id)
@@ -91,11 +69,11 @@ export function DatasetFilterChipRow({
               aria-pressed={isActive}
             >
               {d.name}
-              <Count>{d.image_count}</Count>
+              <Text as="span" size="11px" tone="soft" style={COUNT_STYLE}>{d.image_count}</Text>
             </Chip>
           )
         })
       )}
-    </Row>
+    </Inline>
   )
 }
