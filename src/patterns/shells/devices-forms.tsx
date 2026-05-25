@@ -1,53 +1,28 @@
 import { forwardRef, type Ref } from 'react'
 import styled from 'styled-components'
+import { Inline, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { CopyButton } from '../../components/inputs/copy-button'
 import { DropdownSelect } from '../../components/inputs/dropdown-select'
 import { TextField } from '../../components/inputs/text-fields'
 
-const FormBox = styled.div`
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
+const FORM_BOX_STYLE = {
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  padding: 'var(--ig-space-5)',
+}
 
-const FormRow = styled.div`
-  display: flex;
-  gap: var(--ig-space-3);
-  align-items: center;
-  flex-wrap: wrap;
-`
+const TOKEN_BOX_STYLE = {
+  background: 'var(--ig-color-surface-raised)',
+  border: '1px solid var(--ig-color-accent)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  padding: 'var(--ig-space-5)',
+}
 
-const FormLabel = styled.span`
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ig-color-text-muted);
-`
-
-const ErrMsg = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-danger);
-`
-
-const TokenBox = styled.div`
-  background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-accent);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
-const TokenLabel = styled.span`
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ig-color-text-muted);
-`
+const FLEX_1_STYLE = { flex: 1 }
+const WIDTH_160_STYLE = { width: 160 }
+const WIDTH_200_STYLE = { width: 200 }
 
 const TokenText = styled.textarea`
   width: 100%;
@@ -61,18 +36,6 @@ const TokenText = styled.textarea`
   color: var(--ig-color-text-primary);
   resize: vertical;
   box-sizing: border-box;
-`
-
-const TokenFooter = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-`
-
-const TokenMeta = styled.span`
-  font-size: 12px;
-  color: var(--ig-color-text-muted);
 `
 
 export interface IssuedToken {
@@ -126,16 +89,16 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   if (!isAdmin) {
     return issuedToken ? (
       <div ref={ref}>
-        <TokenBox>
-          <TokenLabel>
+        <Stack gap={3} style={TOKEN_BOX_STYLE}>
+          <Text size="12px" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
-          </TokenLabel>
+          </Text>
           <TokenText readOnly value={issuedToken.token} />
-          <TokenFooter>
+          <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <TokenMeta>Paste this token into the Edge app's license field.</TokenMeta>
-          </TokenFooter>
-        </TokenBox>
+            <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>
+          </Inline>
+        </Stack>
       </div>
     ) : null
   }
@@ -147,37 +110,37 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   return (
     <div ref={ref}>
       {showRegister ? (
-        <FormBox>
-          <FormLabel>Register a new device by entering the Device UID shown in the Edge app.</FormLabel>
-          <FormRow>
+        <Stack gap={4} style={FORM_BOX_STYLE}>
+          <Text size="12px" weight={500} tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
+          <Inline gap={3} wrap="wrap">
             <TextField
               ref={uidInputRef}
               placeholder="Device UID"
               value={registerUid}
               onChange={(e) => onChangeRegisterUid(e.target.value)}
               title="Device UID"
-              style={{ flex: 1 }}
+              style={FLEX_1_STYLE}
             />
             <TextField
               placeholder="Name (optional)"
               value={registerName}
               onChange={(e) => onChangeRegisterName(e.target.value)}
               title="Device name"
-              style={{ width: 160 }}
+              style={WIDTH_160_STYLE}
             />
             <Button type="button" onClick={onRegister} disabled={!!registering || !registerUid.trim()}>
               {registering ? 'Registering…' : 'Register'}
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRegister}>Cancel</Button>
-          </FormRow>
-          {registerError ? <ErrMsg>{registerError}</ErrMsg> : null}
-        </FormBox>
+          </Inline>
+          {registerError ? <Text size="12px" tone="danger">{registerError}</Text> : null}
+        </Stack>
       ) : null}
 
       {showIssue && offlineEnabled ? (
-        <FormBox>
-          <FormLabel>Select a registered device to issue an offline license token.</FormLabel>
-          <FormRow>
+        <Stack gap={4} style={FORM_BOX_STYLE}>
+          <Text size="12px" weight={500} tone="muted">Select a registered device to issue an offline license token.</Text>
+          <Inline gap={3} wrap="wrap">
             <DropdownSelect
               value={issueDeviceId}
               options={deviceOptions}
@@ -191,27 +154,27 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
               value={issueValidDays}
               onChange={(e) => onChangeIssueValidDays(e.target.value)}
               title="Offline token valid days (1-365)"
-              style={{ width: 200 }}
+              style={WIDTH_200_STYLE}
             />
             <Button type="button" onClick={onIssue} disabled={!!issuing || !issueDeviceId || activeDevices.length === 0}>
               {issuing ? 'Issuing…' : 'Issue'}
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelIssue}>Cancel</Button>
-          </FormRow>
-        </FormBox>
+          </Inline>
+        </Stack>
       ) : null}
 
       {issuedToken ? (
-        <TokenBox>
-          <TokenLabel>
+        <Stack gap={3} style={TOKEN_BOX_STYLE}>
+          <Text size="12px" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
-          </TokenLabel>
+          </Text>
           <TokenText readOnly value={issuedToken.token} />
-          <TokenFooter>
+          <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <TokenMeta>Paste this token into the Edge app's license field.</TokenMeta>
-          </TokenFooter>
-        </TokenBox>
+            <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>
+          </Inline>
+        </Stack>
       ) : null}
     </div>
   )
