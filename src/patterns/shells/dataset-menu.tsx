@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
 import { FloatingOverlay } from '../../components/overlays/floating-overlay'
+import { MenuItem } from '../../components/overlays/menu-item'
 
 const BACKDROP_STYLE = {
   position: 'fixed' as const,
@@ -16,49 +16,18 @@ const MENU_STYLE = {
   gap: 2,
 }
 
-const Item = styled.button<{ $tone?: 'default' | 'danger' }>`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-2) var(--ig-space-3);
-  border: none;
-  background: transparent;
-  color: ${(p) => (p.$tone === 'danger' ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};
-  font-size: var(--ig-font-size-sm);
-  text-align: left;
-  cursor: pointer;
-  border-radius: var(--ig-radius-sm);
-  transition: background-color var(--ig-motion-fast);
-  &:hover:not(:disabled), &[data-active='true']:not(:disabled) {
-    background: var(--ig-color-surface-interactive-hover);
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`
+const SEPARATOR_STYLE = {
+  margin: 'var(--ig-space-1) 0',
+  border: 'none',
+  borderTop: '1px solid var(--ig-color-border-subtle)',
+}
 
-const ItemRow = styled.div`
-  position: relative;
-  display: flex;
-`
-
-const ItemLabel = styled.span`
-  flex: 1;
-  text-align: left;
-`
-
-const Chevron = styled.span`
-  margin-left: var(--ig-space-3);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-`
-
-const Separator = styled.hr`
-  margin: var(--ig-space-1) 0;
-  border: none;
-  border-top: 1px solid var(--ig-color-border-subtle);
-`
+const ITEM_LABEL_STYLE = { flex: 1, textAlign: 'left' as const }
+const CHEVRON_STYLE = {
+  marginLeft: 'var(--ig-space-3)',
+  color: 'var(--ig-color-text-muted)',
+  fontSize: 'var(--ig-font-size-xs)',
+}
 
 export interface DatasetMenuAction {
   key: string
@@ -122,51 +91,49 @@ export function DatasetMenu({
       <div onClick={onClose} style={BACKDROP_STYLE} />
       <FloatingOverlay ref={menuRef} variant="menu" top={top} left={left} style={MENU_STYLE} role="menu">
         {actions.map((a, i) => {
-          if (a.separator) return <Separator key={`sep-${i}`} />
+          if (a.separator) return <hr key={`sep-${i}`} style={SEPARATOR_STYLE} />
           const hasSub = !!a.subActions && a.subActions.length > 0
           return (
-            <ItemRow key={a.key}>
-              <Item
-                role={hasSub ? 'menuitem' : 'menuitem'}
-                $tone={a.tone}
-                disabled={a.disabled}
-                data-menu-key={a.key}
-                data-active={submenuKey === a.key ? 'true' : 'false'}
-                aria-haspopup={hasSub || undefined}
-                aria-expanded={hasSub ? submenuKey === a.key : undefined}
-                onMouseEnter={(e) => {
-                  if (!hasSub) { setSubmenuKey(null); return }
-                  const target = e.currentTarget as HTMLElement
-                  const r = target.getBoundingClientRect()
-                  setSubmenuPos({ top: r.top, left: r.right + 4 })
-                  setSubmenuKey(a.key)
-                }}
-                onClick={() => {
-                  if (hasSub) return
-                  a.onClick?.()
-                  onClose()
-                }}
-                style={{ width: '100%' }}
-              >
-                <ItemLabel>{a.label}</ItemLabel>
-                {hasSub ? <Chevron>›</Chevron> : null}
-              </Item>
-            </ItemRow>
+            <MenuItem
+              key={a.key}
+              role="menuitem"
+              tone={a.tone}
+              disabled={a.disabled}
+              data-menu-key={a.key}
+              data-active={submenuKey === a.key ? 'true' : 'false'}
+              aria-haspopup={hasSub || undefined}
+              aria-expanded={hasSub ? submenuKey === a.key : undefined}
+              onMouseEnter={(e) => {
+                if (!hasSub) { setSubmenuKey(null); return }
+                const target = e.currentTarget as HTMLElement
+                const r = target.getBoundingClientRect()
+                setSubmenuPos({ top: r.top, left: r.right + 4 })
+                setSubmenuKey(a.key)
+              }}
+              onClick={() => {
+                if (hasSub) return
+                a.onClick?.()
+                onClose()
+              }}
+              iconTrailing={hasSub ? <span style={CHEVRON_STYLE}>›</span> : undefined}
+            >
+              <span style={ITEM_LABEL_STYLE}>{a.label}</span>
+            </MenuItem>
           )
         })}
       </FloatingOverlay>
       {submenuKey && subActions && submenuPos ? (
         <FloatingOverlay variant="menu" top={submenuPos.top} left={submenuPos.left} style={MENU_STYLE} role="menu">
           {subActions.map((sa) => (
-            <Item
+            <MenuItem
               key={sa.key}
               role="menuitem"
-              $tone={sa.tone}
+              tone={sa.tone}
               disabled={sa.disabled}
               onClick={() => { sa.onClick?.(); onClose() }}
             >
               {sa.label}
-            </Item>
+            </MenuItem>
           ))}
         </FloatingOverlay>
       ) : null}

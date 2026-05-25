@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { ChevronDown } from 'lucide-react'
 import { Box, Text } from '../../primitives'
+import { MenuItem } from '../../components/overlays/menu-item'
 
 const WRAP_STYLE = { flex: 1, minWidth: 0, position: 'relative' as const }
 const TRIGGER_LABEL_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const }
@@ -42,22 +43,9 @@ const Dropdown = styled.div`
   max-height: 55vh;
   overflow-y: auto;
   min-height: 0;
-`
-
-const Option = styled.button<{ $active: boolean }>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-5) var(--ig-space-7);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'none')};
-  border: none;
-  color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-primary)')};
-  font-size: 14px;
-  text-align: left;
-  cursor: pointer;
-  &:hover { background: var(--ig-color-white-08); }
-  &:not(:last-child) { border-bottom: 1px solid var(--ig-color-white-06); }
+  > button:not(:last-child) {
+    border-bottom: 1px solid var(--ig-color-white-06);
+  }
 `
 
 export interface DatasetSelectorMobileOption {
@@ -96,17 +84,17 @@ export function DatasetSelectorMobile({
       {open && datasets.length > 0 ? (
         <Dropdown role="listbox">
           {datasets.map((d) => (
-            <Option
+            <MenuItem
               key={d.id}
-              type="button"
-              $active={d.id === currentId}
               role="option"
+              size="md"
+              active={d.id === currentId}
               aria-selected={d.id === currentId}
               onClick={() => { onSelect(d.id); onToggle(false) }}
+              iconTrailing={d.id === currentId ? <Text as="span" tone="accent" size="12px" style={CHECK_STYLE}>✓</Text> : undefined}
             >
               {d.name}
-              {d.id === currentId ? <Text as="span" tone="accent" size="12px" style={CHECK_STYLE}>✓</Text> : null}
-            </Option>
+            </MenuItem>
           ))}
         </Dropdown>
       ) : null}
