@@ -1,30 +1,10 @@
-import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { Alert } from '../../components/feedback/alert'
 import { Button } from '../../components/inputs/button'
 import { PasswordField } from '../../components/inputs/text-fields'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-const FieldRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const Label = styled.label`
-  color: var(--ig-color-text-secondary);
-  font-size: 13px;
-  font-weight: 600;
-`
-
-const FullPasswordField = styled(PasswordField)`
-  width: 100%;
-`
+const FULL_FIELD_STYLE = { width: '100%' }
 
 export interface PasswordChangeDialogProps {
   open: boolean
@@ -69,31 +49,34 @@ export function PasswordChangeDialog({
         </>
       }
     >
-      <Stack>
-        <FieldRow>
-          <Label htmlFor="settings-current-password">Current password</Label>
-          <FullPasswordField
+      <Stack gap={5}>
+        <Stack gap={2}>
+          <Text as="label" htmlFor="settings-current-password" tone="secondary" size="13px" weight={600}>Current password</Text>
+          <PasswordField
             id="settings-current-password"
             value={currentPassword}
             onChange={(e) => onChangeCurrentPassword(e.target.value)}
+            style={FULL_FIELD_STYLE}
           />
-        </FieldRow>
-        <FieldRow>
-          <Label htmlFor="settings-new-password">New password</Label>
-          <FullPasswordField
+        </Stack>
+        <Stack gap={2}>
+          <Text as="label" htmlFor="settings-new-password" tone="secondary" size="13px" weight={600}>New password</Text>
+          <PasswordField
             id="settings-new-password"
             value={newPassword}
             onChange={(e) => onChangeNewPassword(e.target.value)}
+            style={FULL_FIELD_STYLE}
           />
-        </FieldRow>
-        <FieldRow>
-          <Label htmlFor="settings-confirm-password">Confirm new password</Label>
-          <FullPasswordField
+        </Stack>
+        <Stack gap={2}>
+          <Text as="label" htmlFor="settings-confirm-password" tone="secondary" size="13px" weight={600}>Confirm new password</Text>
+          <PasswordField
             id="settings-confirm-password"
             value={newPasswordConfirm}
             onChange={(e) => onChangeNewPasswordConfirm(e.target.value)}
+            style={FULL_FIELD_STYLE}
           />
-        </FieldRow>
+        </Stack>
         {invalidConfirm ? <Alert $tone="danger">New password and confirmation must match.</Alert> : null}
         {passwordMessage ? (
           <Alert $tone={passwordMessage === successText ? 'success' : 'danger'}>{passwordMessage}</Alert>

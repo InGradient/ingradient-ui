@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styled from 'styled-components'
+import { Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import {
@@ -8,32 +8,8 @@ import {
   type ProjectMemberRowRoleOption,
 } from './project-member-row'
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`
-
-const Placeholder = styled.p`
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  margin: 0;
-`
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
-
-const DialogStack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-const Description = styled.p`
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ig-color-text-muted);
-`
+const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
+const DESCRIPTION_STYLE = { lineHeight: 1.5 }
 
 export interface ProjectMembersListProps {
   members: ProjectMemberRowMember[]
@@ -58,15 +34,15 @@ export function ProjectMembersList({
 }: ProjectMembersListProps) {
   const [pendingRemove, setPendingRemove] = useState<{ id: string; email: string } | null>(null)
 
-  if (loading) return <Placeholder>{loadingText}</Placeholder>
-  if (error) return <Placeholder>{error}</Placeholder>
-  if (members.length === 0) return <Placeholder>{emptyText}</Placeholder>
+  if (loading) return <Text as="p" tone="soft" size="14px">{loadingText}</Text>
+  if (error) return <Text as="p" tone="soft" size="14px">{error}</Text>
+  if (members.length === 0) return <Text as="p" tone="soft" size="14px">{emptyText}</Text>
 
   const ownerCount = members.filter((m) => m.role === 'owner').length
 
   return (
     <>
-      <List>
+      <Stack as="ul" gap={0} style={LIST_STYLE}>
         {members.map((m) => {
           const isOnlyOwner = m.role === 'owner' && ownerCount <= 1
           return (
@@ -83,7 +59,7 @@ export function ProjectMembersList({
             />
           )
         })}
-      </List>
+      </Stack>
       {pendingRemove && (
         <DialogShell
           title="Remove Member"
@@ -92,8 +68,10 @@ export function ProjectMembersList({
           actions={
             <>
               <Button type="button" variant="secondary" onClick={() => setPendingRemove(null)} disabled={!!removingMemberId}>Cancel</Button>
-              <DangerButton
+              <Button
                 type="button"
+                variant="secondary"
+                tone="danger"
                 disabled={!!removingMemberId}
                 onClick={() => {
                   onRemove?.(pendingRemove.id)
@@ -101,16 +79,16 @@ export function ProjectMembersList({
                 }}
               >
                 {removingMemberId === pendingRemove.id ? 'Removing…' : 'Remove'}
-              </DangerButton>
+              </Button>
             </>
           }
         >
-          <DialogStack>
-            <Description>
+          <Stack gap={5}>
+            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
-            </Description>
-            <Description>This member will lose access to the project immediately.</Description>
-          </DialogStack>
+            </Text>
+            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
+          </Stack>
         </DialogShell>
       )}
     </>

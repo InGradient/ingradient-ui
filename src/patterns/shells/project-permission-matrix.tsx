@@ -1,27 +1,30 @@
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
+import { Box, Inline } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextField } from '../../components/inputs/text-fields'
 import { getSummaryPermissionState } from '../../utils/permission-state'
 import { PermissionHelpTooltip } from './permission-help-tooltip'
 
-const SearchWrap = styled.div`
-  margin-bottom: var(--ig-space-5);
-  max-width: 240px;
-`
+const SEARCH_WRAP_STYLE = {
+  marginBottom: 'var(--ig-space-5)',
+  maxWidth: 240,
+}
 
-const Scroller = styled.div`
-  overflow: auto;
-  max-width: 100%;
-`
+const SCROLLER_STYLE = { overflow: 'auto' as const, maxWidth: '100%' }
 
-const TableWrap = styled.div`
-  display: inline-block;
-  width: fit-content;
-  border: 1px solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
-  background: var(--ig-color-surface-panel);
-`
+const TABLE_WRAP_STYLE = {
+  display: 'inline-block' as const,
+  width: 'fit-content',
+  border: '1px solid var(--ig-color-border-strong)',
+  borderRadius: 'var(--ig-radius-xxs)',
+  background: 'var(--ig-color-surface-panel)',
+}
+
+const HEADER_CONTENT_STYLE = {
+  justifyContent: 'center' as const,
+  flexWrap: 'wrap' as const,
+}
 
 const StyledTable = styled.table`
   width: max-content;
@@ -43,14 +46,6 @@ const StickyRoleHeaderCell = styled(HeaderCell)`
   position: sticky;
   left: 0;
   z-index: 2;
-`
-
-const HeaderContent = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--ig-space-2);
-  flex-wrap: wrap;
 `
 
 const RoleCell = styled.td`
@@ -134,16 +129,16 @@ export function ProjectPermissionMatrix({
 
   return (
     <div className={className}>
-      <SearchWrap>
+      <Box style={SEARCH_WRAP_STYLE}>
         <TextField
           placeholder={searchPlaceholder}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           aria-label="Search role"
         />
-      </SearchWrap>
-      <Scroller>
-        <TableWrap>
+      </Box>
+      <Box style={SCROLLER_STYLE}>
+        <Box style={TABLE_WRAP_STYLE}>
           <StyledTable>
             <thead>
               <tr>
@@ -156,10 +151,10 @@ export function ProjectPermissionMatrix({
                 {visibleGroups.flatMap((group) =>
                   group.permissions.map((permission) => (
                     <HeaderCell key={permission.key}>
-                      <HeaderContent>
+                      <Inline as="span" gap={2} style={HEADER_CONTENT_STYLE}>
                         <span>{permission.label}</span>
                         {permission.description ? <PermissionHelpTooltip text={permission.description} /> : null}
-                      </HeaderContent>
+                      </Inline>
                     </HeaderCell>
                   )),
                 )}
@@ -216,8 +211,8 @@ export function ProjectPermissionMatrix({
               ))}
             </tbody>
           </StyledTable>
-        </TableWrap>
-      </Scroller>
+        </Box>
+      </Box>
     </div>
   )
 }

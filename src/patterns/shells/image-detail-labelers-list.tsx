@@ -1,13 +1,9 @@
 import { useState, type CSSProperties } from 'react'
 import styled from 'styled-components'
 import { User } from 'lucide-react'
+import { Inline, Stack, Text } from '../../primitives'
 import { Badge } from '../../components/feedback/badge'
 import { SelectableListItem } from '../../components/data-display/selectable-list-item'
-
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const Header = styled.button`
   display: flex;
@@ -21,45 +17,24 @@ const Header = styled.button`
   user-select: none;
 `
 
-const Title = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-1);
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-`
+const LIST_STYLE = {
+  listStyle: 'none' as const,
+  margin: 'var(--ig-space-2) 0 0',
+  padding: 0,
+  maxHeight: 180,
+  overflowY: 'auto' as const,
+}
 
-const List = styled.ul`
-  list-style: none;
-  margin: var(--ig-space-2) 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-  max-height: 180px;
-  overflow-y: auto;
-`
+const ROW_CONTENT_STYLE = { width: '100%' }
 
-const RowContent = styled.span`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  width: 100%;
-  min-width: 0;
-`
-
-const RowText = styled.span`
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--ig-font-size-sm);
-  text-align: left;
-`
+const ROW_TEXT_STYLE = {
+  flex: 1,
+  minWidth: 0,
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+  textAlign: 'left' as const,
+}
 
 const ROW_INACTIVE_STYLE: CSSProperties = { opacity: 0.55 }
 
@@ -94,16 +69,16 @@ export function ImageDetailLabelersList({
   const [open, setOpen] = useState(defaultOpen)
   if (users.length === 0) return null
   return (
-    <Root className={className}>
+    <Stack gap={0} className={className}>
       <Header type="button" onClick={() => setOpen((v) => !v)}>
-        <Title>
-          <span>{open ? '▾' : '▸'}</span>
-          {title}
-        </Title>
+        <Inline as="span" gap={1}>
+          <Text as="span">{open ? '▾' : '▸'}</Text>
+          <Text as="span" size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
+        </Inline>
         <Badge $tone="accent">{users.length}</Badge>
       </Header>
       {open ? (
-        <List>
+        <Stack as="ul" gap={1} style={LIST_STYLE}>
           {users.map((user) => {
             const active = selectedUsers.has(user.email)
             return (
@@ -117,15 +92,15 @@ export function ImageDetailLabelersList({
                 onMouseLeave={() => onHoverUser?.(null)}
                 style={active ? undefined : ROW_INACTIVE_STYLE}
               >
-                <RowContent>
+                <Inline as="span" gap={3} style={ROW_CONTENT_STYLE}>
                   <User size={14} />
-                  <RowText title={user.email}>{user.name || user.email}</RowText>
-                </RowContent>
+                  <Text as="span" size="var(--ig-font-size-sm)" title={user.email} style={ROW_TEXT_STYLE}>{user.name || user.email}</Text>
+                </Inline>
               </SelectableListItem>
             )
           })}
-        </List>
+        </Stack>
       ) : null}
-    </Root>
+    </Stack>
   )
 }

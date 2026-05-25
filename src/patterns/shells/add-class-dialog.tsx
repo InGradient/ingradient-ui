@@ -1,12 +1,9 @@
 import { useEffect, useRef, type KeyboardEvent } from 'react'
-import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 
-const Input = styled(TextField).attrs({ size: 'sm' as const })`
-  margin-bottom: var(--ig-space-7);
-`
+const INPUT_STYLE = { marginBottom: 'var(--ig-space-7)' }
 
 export interface AddClassDialogProps {
   open: boolean
@@ -57,14 +54,16 @@ export function AddClassDialog({
         </>
       }
     >
-      <Input
+      <TextField
         ref={inputRef}
+        size="sm"
         type="text"
         value={name}
         onChange={(e) => onChangeName(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         aria-label={title}
+        style={INPUT_STYLE}
       />
     </DialogShell>
   )

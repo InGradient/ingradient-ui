@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { SelectField } from '../../components/inputs/select-field'
 
@@ -15,23 +16,15 @@ const Row = styled.li`
   }
 `
 
-const Cell = styled.span`
-  font-size: 14px;
-  color: var(--ig-color-text-primary);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
+const CELL_STYLE = {
+  minWidth: 0,
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+}
 
-const RoleSelect = styled(SelectField)`
-  min-width: 100px;
-`
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })`
-  padding: var(--ig-space-2) var(--ig-space-4);
-  font-size: 12px;
-`
+const ROLE_SELECT_STYLE = { minWidth: 100 }
+const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 12 }
 
 export interface ProjectMemberRowMember {
   id: string
@@ -65,28 +58,32 @@ export function ProjectMemberRow({
   const onlyOwnerRemoveTitle = isOnlyOwner ? 'Add another owner before removing this account.' : 'Remove from project'
   return (
     <Row>
-      <Cell title={member.name ?? member.email}>{member.name || '-'}</Cell>
-      <Cell title={member.organization ?? ''}>{member.organization || '-'}</Cell>
-      <Cell title={member.email}>{member.email}</Cell>
-      <RoleSelect
+      <Text as="span" size="14px" title={member.name ?? member.email} style={CELL_STYLE}>{member.name || '-'}</Text>
+      <Text as="span" size="14px" title={member.organization ?? ''} style={CELL_STYLE}>{member.organization || '-'}</Text>
+      <Text as="span" size="14px" title={member.email} style={CELL_STYLE}>{member.email}</Text>
+      <SelectField
         value={member.role}
         onChange={(e) => onRoleChange?.((e.target as HTMLSelectElement).value)}
         disabled={!canManagePermissions || updatingRole || isOnlyOwner}
         aria-label={`Role for ${member.email}`}
         title={onlyOwnerTitle}
+        style={ROLE_SELECT_STYLE}
       >
         {roleOptions.map((role) => (
           <option key={role.value} value={role.value}>{role.label}</option>
         ))}
-      </RoleSelect>
-      <DangerButton
+      </SelectField>
+      <Button
         type="button"
+        variant="secondary"
+        tone="danger"
         onClick={onRemove}
         disabled={!canManagePermissions || removing || isOnlyOwner}
         title={onlyOwnerRemoveTitle}
+        style={DANGER_BTN_STYLE}
       >
         Remove
-      </DangerButton>
+      </Button>
     </Row>
   )
 }

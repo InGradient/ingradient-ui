@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Inline, Stack as PrimStack, Text } from '../../primitives'
 import { TextField } from '../../components/inputs/text-fields'
 import { OptionRow } from '../../components/data-display/option-row'
@@ -11,11 +10,7 @@ const ROW_STYLE = {
 }
 const STACK_STYLE = { width: '100%' }
 const PLACEHOLDER_STYLE = { margin: 0 }
-
-const Input = styled(TextField)`
-  width: 100%;
-  min-width: 0;
-`
+const INPUT_STYLE = { width: '100%', minWidth: 0 }
 
 export interface SearchableUserCandidate {
   id: string
@@ -56,12 +51,13 @@ export function ProjectMemberInvite({
       <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
       <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
         <PrimStack gap={4} style={STACK_STYLE}>
-          <Input
+          <TextField
             type="search"
             value={query}
             onChange={(e) => onChangeQuery(e.target.value)}
             placeholder={searchPlaceholder}
             aria-label="Search registered users"
+            style={INPUT_STYLE}
           />
           {readyToSearch ? (
             <PrimStack gap={3} style={STACK_STYLE}>
