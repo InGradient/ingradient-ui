@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Inline, Text } from '../../primitives'
 import { BarChartCard } from '../charts/bar-chart-card'
 import { SectionPanel } from '../../components/data-display/layout'
 
@@ -11,32 +11,10 @@ const Card = styled(SectionPanel)`
   gap: var(--ig-space-5);
 `
 
-const Head = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-4);
-`
-
-const Title = styled.span`
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ig-color-text-secondary);
-`
-
-const Empty = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-`
-
 const Block = styled.div`
   margin-bottom: var(--ig-space-9);
   &:last-child { margin-bottom: 0; }
 `
-
-const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
 const Table = styled.table`
   width: 100%;
@@ -50,6 +28,11 @@ const Table = styled.table`
   th { color: var(--ig-color-text-muted); font-weight: 500; }
   td { color: var(--ig-color-text-primary); }
 `
+
+const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
+const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
+const CHART_STYLE = { marginTop: 12 }
+const EMPTY_STYLE = { margin: 0 }
 
 const CLASS_COLORS = ['var(--ig-color-accent)', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055', '#74b9ff', '#a29bfe', '#55efc4']
 
@@ -82,15 +65,17 @@ export function PerDatasetDistributionWidget({
 }: PerDatasetDistributionWidgetProps) {
   return (
     <Card className={className}>
-      <Head><Title>{title}</Title></Head>
+      <Inline justify="space-between" gap={5} style={HEAD_STYLE}>
+        <Text size="13px" weight={600} tone="secondary">{title}</Text>
+      </Inline>
       {datasetDistribution.length === 0 ? (
-        <Empty>{emptyText}</Empty>
+        <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         datasetDistribution.map((dataset) => (
           <Block key={dataset.dataset_id}>
             <Text as="h3" tone="secondary" size="14px" weight={600} style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
             {dataset.class_counts.length === 0 ? (
-              <Empty>{noLabelsText}</Empty>
+              <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{noLabelsText}</Text>
             ) : (
               <>
                 <Table>
@@ -104,7 +89,7 @@ export function PerDatasetDistributionWidget({
                     ))}
                   </tbody>
                 </Table>
-                <div style={{ marginTop: 12 }}>
+                <div style={CHART_STYLE}>
                   <BarChartCard
                     data={dataset.class_counts.map((d, i) => ({ name: d.name, count: d.count, color: CLASS_COLORS[i % CLASS_COLORS.length] }))}
                     xKey="name"

@@ -1,47 +1,19 @@
 import { useState } from 'react'
-import styled from 'styled-components'
-import { Text } from '../../primitives'
+import { Stack, Text } from '../../primitives'
 import { ClassInfoSection } from './class-info-section'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import { BboxNavigation } from './bbox-navigation'
 
-const Hint = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: 12px;
-  line-height: 1.5;
-  display: block;
-  margin-top: -2px;
-`
-
-const Stack = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-const Preview = styled.img`
-  width: 100%;
-  border-radius: var(--ig-radius-xs);
-  border: 1px solid var(--ig-color-white-12);
-  background: var(--ig-color-white-04);
-  object-fit: contain;
-  max-height: 300px;
-`
-
-const EmptyText = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: 12px;
-  line-height: 1.5;
-`
-
-const EmptyStateWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-  align-items: flex-start;
-`
-
+const HINT_STYLE = { marginTop: -2 }
+const STACK_STYLE = { width: '100%' }
+const PREVIEW_STYLE = {
+  width: '100%',
+  borderRadius: 'var(--ig-radius-xs)',
+  border: '1px solid var(--ig-color-white-12)',
+  background: 'var(--ig-color-white-04)',
+  objectFit: 'contain' as const,
+  maxHeight: 300,
+}
 
 export interface ReferenceImageBboxCandidate {
   imageId: string
@@ -79,20 +51,20 @@ export function ReferenceImageSection({
   }
   return (
     <ClassInfoSection title={title}>
-      <Hint>{hint}</Hint>
+      <Text tone="muted" size="12px" style={{ ...HINT_STYLE, display: 'block', lineHeight: 1.5 }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
         onDropImageId={(id) => onApply?.(id)}
         onSetDragging={onSetDragging}
       >
-        <Stack>
+        <Stack gap={5} style={STACK_STYLE}>
           {imageUrl ? (
-            <Preview src={imageUrl} alt={alt} />
+            <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
-            <EmptyStateWrap>
-              <EmptyText>{emptyText}</EmptyText>
-            </EmptyStateWrap>
+            <Stack gap={3} align="flex-start">
+              <Text tone="muted" size="12px" style={{ lineHeight: 1.5 }}>{emptyText}</Text>
+            </Stack>
           )}
           {candidates.length > 1 ? (
             <BboxNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} />

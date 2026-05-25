@@ -1,15 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Inline, Text } from '../../primitives'
+import { Inline, Stack, Text } from '../../primitives'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Button } from '../../components/inputs/button'
 import { Spinner } from '../../components/feedback/spinner'
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
 
 const ProgressTrack = styled.div`
   width: 100%;
@@ -70,7 +64,7 @@ export function IgpExportModal({
         </>
       }
     >
-      <Wrap>
+      <Stack gap={4}>
         <Inline gap={2}>
           {busy ? <Spinner size="sm" /> : null}
           <Text tone="secondary" size="var(--ig-font-size-sm)">
@@ -85,7 +79,7 @@ export function IgpExportModal({
         {phase === 'ready' && downloadUrl ? (
           <Text as="a" tone="accent" size="var(--ig-font-size-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
         ) : null}
-      </Wrap>
+      </Stack>
     </DialogShell>
   )
 }
