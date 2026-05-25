@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 
 const CARD_WIDTH = 280
 const CARD_HORIZONTAL_PADDING = 24
@@ -23,27 +24,15 @@ const Card = styled.div<{ $top: number; $left: number }>`
   gap: var(--ig-space-3);
 `
 
-const Title = styled.span`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
-`
-
-const Description = styled.span`
-  font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
-  color: var(--ig-color-text-muted);
-  white-space: pre-wrap;
-`
-
-const Image = styled.img`
-  width: 100%;
-  max-height: 180px;
-  object-fit: contain;
-  border-radius: var(--ig-radius-md);
-  border: 1px solid var(--ig-color-white-08);
-  background: var(--ig-color-white-04);
-`
+const DESCRIPTION_STYLE = { lineHeight: 1.5, whiteSpace: 'pre-wrap' as const }
+const IMAGE_STYLE = {
+  width: '100%',
+  maxHeight: 180,
+  objectFit: 'contain' as const,
+  borderRadius: 'var(--ig-radius-md)',
+  border: '1px solid var(--ig-color-white-08)',
+  background: 'var(--ig-color-white-04)',
+}
 
 /**
  * Class hover card 의 표시 데이터 shape.
@@ -75,12 +64,12 @@ export function ClassHoverCard({ item, top, left, resolveAssetUrl }: ClassHoverC
   const resolved = resolveAssetUrl ?? ((p) => p)
   return (
     <Card $top={top} $left={left}>
-      <Title>{item.name}</Title>
+      <Text as="span" size="var(--ig-font-size-sm)" weight={700}>{item.name}</Text>
       {item.reference_image_url ? (
-        <Image src={resolved(item.reference_image_url)} alt={`${item.name} reference`} />
+        <img src={resolved(item.reference_image_url)} alt={`${item.name} reference`} style={IMAGE_STYLE} />
       ) : null}
       {item.description?.trim() ? (
-        <Description>{item.description.trim()}</Description>
+        <Text as="span" size="var(--ig-font-size-xs)" tone="muted" style={DESCRIPTION_STYLE}>{item.description.trim()}</Text>
       ) : null}
     </Card>
   )

@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 import { Stack } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField, TextareaField } from '../../components/inputs/text-fields'
@@ -24,23 +23,13 @@ const PANEL_STYLE = {
   padding: 'var(--ig-space-7)',
 }
 
-const NameInput = styled(TextField).attrs({ size: 'sm' as const })`
-  max-width: 280px;
-  border-radius: var(--ig-radius-2xs);
-`
-
-const Description = styled(TextareaField)`
-  min-height: 72px;
-  max-width: 100%;
-  font-size: 13px;
-  resize: vertical;
-`
-
-const DeleteBtn = styled(Button).attrs({ variant: 'secondary', tone: 'danger' as const })`
-  margin-top: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-7);
-  border-radius: var(--ig-radius-xs);
-`
+const NAME_INPUT_STYLE = { maxWidth: 280, borderRadius: 'var(--ig-radius-2xs)' }
+const DESCRIPTION_STYLE = { minHeight: 72, maxWidth: '100%', fontSize: 13, resize: 'vertical' as const }
+const DELETE_BTN_STYLE = {
+  marginTop: 'var(--ig-space-3)',
+  padding: 'var(--ig-space-3) var(--ig-space-7)',
+  borderRadius: 'var(--ig-radius-xs)',
+}
 
 export interface ClassInfoSidebarClass {
   id: string
@@ -77,10 +66,12 @@ export function ClassInfoSidebar({
     <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
       <Stack gap={9} style={PANEL_STYLE}>
         <ClassInfoSection title="Name">
-          <NameInput
+          <TextField
+            size="sm"
             value={selectedClass.name}
             onChange={(e) => onChangeName?.(e.target.value)}
             aria-label="Class name"
+            style={NAME_INPUT_STYLE}
           />
         </ClassInfoSection>
 
@@ -94,11 +85,12 @@ export function ClassInfoSidebar({
         </ClassInfoSection>
 
         <ClassInfoSection title="Description">
-          <Description
+          <TextareaField
             value={selectedClass.description ?? ''}
             onChange={(e) => onChangeDescription?.(e.target.value || undefined)}
             placeholder={descriptionPlaceholder}
             rows={3}
+            style={DESCRIPTION_STYLE}
           />
         </ClassInfoSection>
 
@@ -106,7 +98,7 @@ export function ClassInfoSidebar({
         {mappingSlot}
 
         <ClassInfoSection title="Danger zone">
-          <DeleteBtn type="button" onClick={onDelete}>{deleteLabel}</DeleteBtn>
+          <Button type="button" variant="secondary" tone="danger" onClick={onDelete} style={DELETE_BTN_STYLE}>{deleteLabel}</Button>
         </ClassInfoSection>
       </Stack>
     </Stack>

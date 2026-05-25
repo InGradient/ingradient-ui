@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import styled from 'styled-components'
 import { Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
@@ -7,8 +6,6 @@ import { Table, type TableColumn } from '../../components/data-display/table'
 
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 const DESCRIPTION_STYLE = { lineHeight: 1.5 }
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
 
 export interface OrgMember {
   id: string
@@ -78,8 +75,10 @@ export function OrgMembersTab({
           actions={
             <>
               <Button type="button" variant="secondary" onClick={() => setPendingRemove(null)} disabled={!!removingMemberId}>Cancel</Button>
-              <DangerButton
+              <Button
                 type="button"
+                variant="secondary"
+                tone="danger"
                 disabled={!!removingMemberId}
                 onClick={() => {
                   onRemove?.(pendingRemove.id)
@@ -87,7 +86,7 @@ export function OrgMembersTab({
                 }}
               >
                 {removingMemberId === pendingRemove.id ? 'Removing…' : 'Remove'}
-              </DangerButton>
+              </Button>
             </>
           }
         >

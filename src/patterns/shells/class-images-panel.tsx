@@ -1,42 +1,29 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
+import { Box, Stack, Text } from '../../primitives'
 
-const Main = styled.main`
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
-  overflow: hidden;
-`
+const MAIN_STYLE = {
+  flex: 1,
+  background: 'var(--ig-color-surface-panel)',
+  borderRadius: 'var(--ig-radius-xl)',
+  border: '1px solid var(--ig-color-border-subtle)',
+  overflow: 'hidden' as const,
+}
 
-const EmptyArea = styled.div`
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  padding: var(--ig-space-11);
-  text-align: center;
-`
+const EMPTY_STYLE = {
+  flex: 1,
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  padding: 'var(--ig-space-11)',
+  textAlign: 'center' as const,
+}
 
-const LoadingArea = styled.div`
-  padding: var(--ig-space-9);
-  color: var(--ig-color-text-muted);
-  font-size: 14px;
-  text-align: center;
-`
+const LOADING_STYLE = {
+  padding: 'var(--ig-space-9)',
+  textAlign: 'center' as const,
+}
 
-const GridArea = styled.div`
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-`
+const GRID_STYLE = { flex: 1, overflow: 'auto' as const }
 
 export interface ClassImagesPanelProps {
   /** null/undefined → "Select a class…" empty state */
@@ -59,21 +46,21 @@ export function ClassImagesPanel({
 }: ClassImagesPanelProps) {
   if (!selectedClassId) {
     return (
-      <Main>
-        <EmptyArea>{noSelectionText}</EmptyArea>
-      </Main>
+      <Stack as="main" gap={0} style={MAIN_STYLE}>
+        <Text tone="soft" size="14px" style={EMPTY_STYLE}>{noSelectionText}</Text>
+      </Stack>
     )
   }
   return (
-    <Main>
+    <Stack as="main" gap={0} style={MAIN_STYLE}>
       {chipsRow}
       {imagesLoading ? (
-        <LoadingArea>{imagesLoadingText}</LoadingArea>
+        <Text tone="muted" size="14px" style={LOADING_STYLE}>{imagesLoadingText}</Text>
       ) : imagesEmpty ? (
-        <EmptyArea>{imagesEmptyText}</EmptyArea>
+        <Text tone="soft" size="14px" style={EMPTY_STYLE}>{imagesEmptyText}</Text>
       ) : (
-        <GridArea>{grid}</GridArea>
+        <Box style={GRID_STYLE}>{grid}</Box>
       )}
-    </Main>
+    </Stack>
   )
 }

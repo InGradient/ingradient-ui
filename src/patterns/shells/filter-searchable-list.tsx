@@ -1,28 +1,10 @@
-import React, { useMemo, useState } from 'react'
-import styled from 'styled-components'
+import { useMemo, useState } from 'react'
+import { Stack, Text } from '../../primitives'
 import { SearchField } from '../../components/inputs/search-field'
 import { FilterClassChip } from './filter-class-chip'
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  max-height: 180px;
-  overflow-y: auto;
-  padding-right: var(--ig-space-1);
-`
-
-const Empty = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  padding: var(--ig-space-2);
-`
+const LIST_STYLE = { maxHeight: 180, overflowY: 'auto' as const, paddingRight: 'var(--ig-space-1)' }
+const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 export interface FilterSearchableItem {
   id: string
@@ -51,7 +33,7 @@ export function FilterSearchableList({
   }, [items, query])
 
   return (
-    <Wrap className={className}>
+    <Stack gap={2} className={className}>
       <SearchField
         size="sm"
         placeholder={placeholder}
@@ -59,9 +41,9 @@ export function FilterSearchableList({
         onChange={(e) => setQuery(e.target.value)}
       />
       {filtered.length === 0 ? (
-        <Empty>{emptyMessage}</Empty>
+        <Text as="span" size="var(--ig-font-size-xs)" tone="muted" style={EMPTY_STYLE}>{emptyMessage}</Text>
       ) : (
-        <List>
+        <Stack gap={0} style={LIST_STYLE}>
           {filtered.map((item) => (
             <FilterClassChip
               key={item.id}
@@ -71,8 +53,8 @@ export function FilterSearchableList({
               onChange={(checked) => onToggle(item.id, checked)}
             />
           ))}
-        </List>
+        </Stack>
       )}
-    </Wrap>
+    </Stack>
   )
 }

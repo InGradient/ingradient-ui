@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
 
@@ -17,13 +18,11 @@ const Chip = styled.label<{ $checked: boolean }>`
   }
 `
 
-const Label = styled.span`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
+const LABEL_STYLE = {
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+}
 
 export interface FilterClassChipProps {
   checked: boolean
@@ -42,7 +41,7 @@ export function FilterClassChip({ checked, label, color, onChange, className }: 
         aria-label={typeof label === 'string' ? label : undefined}
       />
       {color ? <ColorSwatch $color={color} $size="sm" /> : null}
-      <Label>{label}</Label>
+      <Text as="span" size="var(--ig-font-size-sm)" style={LABEL_STYLE}>{label}</Text>
     </Chip>
   )
 }

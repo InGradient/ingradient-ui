@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Inline, Stack } from '../../primitives'
 import { Alert } from '../../components/feedback/alert'
 import { Button } from '../../components/inputs/button'
@@ -7,11 +6,7 @@ import { SettingsSection } from './settings-section'
 import { SettingsHint } from './settings-hint'
 import { LicenseInfoDisplay, type LicenseInfo } from './license-info-display'
 
-const Field = styled(TextField)`
-  min-width: 240px;
-`
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
+const FIELD_STYLE = { minWidth: 240 }
 
 export interface SettingsAccountTabUser {
   id?: string
@@ -54,11 +49,12 @@ export function SettingsAccountTab({
     <Stack gap={5}>
       <SettingsSection title="Profile">
         <Inline gap={5} wrap="wrap">
-          <Field
+          <TextField
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
             placeholder="Display name"
             aria-label="Display name"
+            style={FIELD_STYLE}
           />
           <Button type="button" variant="accent" disabled={saveDisabled} onClick={onSaveName}>
             {accountSaving ? 'Saving…' : 'Save'}
@@ -87,19 +83,22 @@ export function SettingsAccountTab({
           and any shared projects will need to be transferred or deleted before the account is removed.
         </SettingsHint>
         <Inline gap={5} wrap="wrap">
-          <Field
+          <TextField
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}
             placeholder={user?.email ?? 'Type your email to confirm'}
             aria-label="Type email to confirm account deletion"
+            style={FIELD_STYLE}
           />
-          <DangerButton
+          <Button
             type="button"
+            variant="secondary"
+            tone="danger"
             disabled={!deleteAccountEmailMatches || !!deleteAccountPreviewLoading}
             onClick={onOpenDeleteAccountPreview}
           >
             {deleteAccountPreviewLoading ? 'Preparing…' : 'Delete Account'}
-          </DangerButton>
+          </Button>
         </Inline>
         {deleteAccountMessage ? <Alert $tone="danger">{deleteAccountMessage}</Alert> : null}
       </SettingsSection>
