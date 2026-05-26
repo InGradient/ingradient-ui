@@ -250,7 +250,7 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 
 모든 의존자는 patterns/ 안에 있으므로 매 rename 후 patterns 내부 import 갱신만 하면 됨. **순서는 plan 의 X1.1~X1.21 그대로 진행** (leaf-first 와 자연 일치).
 
-### Phase X1 — B rename (18/21)
+### Phase X1 — B rename (19/21)
 - [x] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`) — CanvasCoordReadout 별도 분리 (`patterns/shells/canvas-coord-readout.tsx`)
 - [x] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
 - [x] X1.3 `labeling-progress-bar` → **SegmentedProgressBar** (`components/feedback/`) — type LabelingSegment → ProgressSegment
@@ -269,7 +269,7 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] X1.16 `image-context-menu` (이름 OK) → `components/overlays/` (위치만 이동) — API 변경 없음, ClassManageOverlays import 갱신
 - [x] X1.17 `catalog-mobile-shell` → **MobileShell** (`components/data-display/`) — props 변경 없음, CatalogMobileView import 갱신
 - [x] X1.18 `catalog-right-panel` → **SidePanelLayout** (`components/data-display/`) — type CatalogRightPanelSection → SidePanelLayoutSection, CatalogRightSidebar import 갱신
-- [ ] X1.19 `analysis-dashboard` → **LayoutDashboard** (`patterns/`)
+- [x] X1.19 `analysis-dashboard` → **LayoutDashboard** (`patterns/`) — types AnalysisStat → DashboardStat, AnalysisWidget → LayoutDashboardWidget (기존 `DashboardWidget` 컴포넌트와 이름 충돌 회피), AnalysisDashboardProps → LayoutDashboardProps
 - [ ] X1.20 `analysis-widget-grid` → **WidgetGrid** (`patterns/`)
 - [ ] X1.21 `igp-export-modal` → **ExportProgressModal** (`patterns/`)
 

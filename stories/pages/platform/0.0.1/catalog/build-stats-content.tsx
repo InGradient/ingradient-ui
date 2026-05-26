@@ -1,7 +1,7 @@
 import {
-  AnalysisDashboard,
   DashboardWidget,
   DistributionHeatmap,
+  LayoutDashboard,
 } from '@ingradient/ui/patterns'
 import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { SegmentedProgressBar } from '@ingradient/ui/components'
@@ -17,7 +17,7 @@ const PCT_STYLE: React.CSSProperties = { color: 'var(--ig-color-text-muted)' }
 
 export function buildStatsContent() {
   return (
-    <AnalysisDashboard
+    <LayoutDashboard
       stats={dashboardStats}
       widgetColumns={2}
       widgets={[
