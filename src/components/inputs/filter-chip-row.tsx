@@ -27,16 +27,17 @@ const Chip = styled.button<{ $active: boolean }>`
 
 const COUNT_STYLE = { marginLeft: 2 }
 
-export interface DatasetFilterChipRowItem {
+export interface FilterChipItem {
   id: string
-  name: string
-  image_count: number
+  label: string
+  count?: number
 }
 
-export interface DatasetFilterChipRowProps {
+export interface FilterChipRowProps {
+  /** uppercase 라벨 (왼쪽). 기본 'Filter'. */
   label?: string
-  datasets: DatasetFilterChipRowItem[]
-  /** 빈 set 이면 모두 active 로 간주 (platform 규칙 — toggle 로 explicitly off 되기 전엔 전체 노출) */
+  items: FilterChipItem[]
+  /** 빈 set 이면 모두 active 로 간주 (toggle 로 explicitly off 되기 전엔 전체 노출). */
   activeIds: Set<string>
   loading?: boolean
   loadingText?: string
@@ -44,32 +45,39 @@ export interface DatasetFilterChipRowProps {
   onToggle?: (id: string) => void
 }
 
-export function DatasetFilterChipRow({
-  label = 'Dataset', datasets, activeIds, loading,
-  loadingText = 'Loading datasets…',
-  emptyText = 'No linked datasets',
+/**
+ * Horizontal toggle chip row with label + per-item count badge.
+ * Empty activeIds set 은 "전체 활성" 으로 해석 (toggle 시작 전 default state).
+ * Dataset / class / member / 일반 다중 선택 필터링에 generic.
+ */
+export function FilterChipRow({
+  label = 'Filter', items, activeIds, loading,
+  loadingText = 'Loading…',
+  emptyText = 'No items',
   onToggle,
-}: DatasetFilterChipRowProps) {
+}: FilterChipRowProps) {
   return (
     <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
       <Text as="span" size="12px" weight={600} tone="soft" uppercase letterSpacing="0.04em" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
       {loading ? (
         <Text as="span" tone="soft" size="13px">{loadingText}</Text>
-      ) : datasets.length === 0 ? (
+      ) : items.length === 0 ? (
         <Text as="span" tone="soft" size="13px">{emptyText}</Text>
       ) : (
-        datasets.map((d) => {
-          const isActive = activeIds.size === 0 || activeIds.has(d.id)
+        items.map((it) => {
+          const isActive = activeIds.size === 0 || activeIds.has(it.id)
           return (
             <Chip
-              key={d.id}
+              key={it.id}
               type="button"
               $active={isActive}
-              onClick={() => onToggle?.(d.id)}
+              onClick={() => onToggle?.(it.id)}
               aria-pressed={isActive}
             >
-              {d.name}
-              <Text as="span" size="11px" tone="soft" style={COUNT_STYLE}>{d.image_count}</Text>
+              {it.label}
+              {typeof it.count === 'number' ? (
+                <Text as="span" size="11px" tone="soft" style={COUNT_STYLE}>{it.count}</Text>
+              ) : null}
             </Chip>
           )
         })

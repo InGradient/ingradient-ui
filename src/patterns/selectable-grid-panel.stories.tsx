@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SelectableGridPanel } from './selectable-grid-panel'
-import { DatasetFilterChipRow } from './shells/dataset-filter-chip-row'
+import { FilterChipRow } from '../components/inputs/filter-chip-row'
 import { Badge } from '../components'
 import { AnnotationOverlay } from './annotation/annotation-overlay'
 import { ImageGrid } from './gallery/image-grid'
@@ -36,7 +36,7 @@ export const NoSelection: Story = {
 export const WithGrid: Story = {
   args: {
     selectedId: 'c-1',
-    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    headerSlot: <FilterChipRow label="Dataset" items={datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))} activeIds={new Set()} />,
     gridSlot: (
       <ImageGrid
         items={images}
@@ -62,7 +62,7 @@ export const WithGrid: Story = {
 export const Loading: Story = {
   args: {
     selectedId: 'c-1',
-    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    headerSlot: <FilterChipRow label="Dataset" items={datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))} activeIds={new Set()} />,
     loading: true,
   },
 }
@@ -70,7 +70,7 @@ export const Loading: Story = {
 export const EmptyImages: Story = {
   args: {
     selectedId: 'c-1',
-    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    headerSlot: <FilterChipRow label="Dataset" items={datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))} activeIds={new Set()} />,
     empty: true,
   },
 }

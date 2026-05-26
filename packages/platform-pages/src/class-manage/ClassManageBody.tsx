@@ -3,12 +3,12 @@ import {
   Alert,
   Badge,
   EmptyState,
+  FilterChipRow,
 } from '@ingradient/ui/components'
 import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import {
   ClassInfoSidebar,
   ClassListSidebar,
-  DatasetFilterChipRow,
   ModelMappingSelect,
   ReferenceImageSection,
   SelectableGridPanel,
@@ -94,8 +94,9 @@ export function ClassManageBody({
         loadingText="Loading images…"
         emptyText="No images with this class in the selected datasets."
         headerSlot={
-          <DatasetFilterChipRow
-            datasets={images.datasets}
+          <FilterChipRow
+            label="Dataset"
+            items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
             activeIds={images.activeDatasetIds}
             loading={images.detailLoading}
             onToggle={images.onToggleDataset}

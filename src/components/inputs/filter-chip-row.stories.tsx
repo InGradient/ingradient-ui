@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { DatasetFilterChipRow } from './dataset-filter-chip-row'
+import { FilterChipRow } from './filter-chip-row'
 
-const datasets = [
-  { id: 'd-1', name: 'Wafer line A', image_count: 312 },
-  { id: 'd-2', name: 'Surface defects', image_count: 187 },
-  { id: 'd-3', name: 'Pixel segmentation', image_count: 94 },
-  { id: 'd-4', name: 'Keypoint annotations', image_count: 41 },
+const items = [
+  { id: 'd-1', label: 'Wafer line A', count: 312 },
+  { id: 'd-2', label: 'Surface defects', count: 187 },
+  { id: 'd-3', label: 'Pixel segmentation', count: 94 },
+  { id: 'd-4', label: 'Keypoint annotations', count: 41 },
 ]
 
-const meta: Meta<typeof DatasetFilterChipRow> = {
-  title: 'Patterns/Shells/DatasetFilterChipRow',
-  component: DatasetFilterChipRow,
+const meta: Meta<typeof FilterChipRow> = {
+  title: 'Components/Inputs/FilterChipRow',
+  component: FilterChipRow,
   decorators: [(Story) => <div style={{ background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
 export default meta
@@ -19,27 +19,28 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const AllActive: Story = {
-  args: { datasets, activeIds: new Set() },
+  args: { label: 'Dataset', items, activeIds: new Set() },
 }
 
 export const SomeActive: Story = {
-  args: { datasets, activeIds: new Set(['d-1', 'd-3']) },
+  args: { label: 'Dataset', items, activeIds: new Set(['d-1', 'd-3']) },
 }
 
 export const Loading: Story = {
-  args: { datasets: [], activeIds: new Set(), loading: true },
+  args: { label: 'Dataset', items: [], activeIds: new Set(), loading: true },
 }
 
 export const Empty: Story = {
-  args: { datasets: [], activeIds: new Set() },
+  args: { label: 'Dataset', items: [], activeIds: new Set() },
 }
 
 export const Interactive: Story = {
   render: () => {
     const [active, setActive] = useState<Set<string>>(new Set())
     return (
-      <DatasetFilterChipRow
-        datasets={datasets}
+      <FilterChipRow
+        label="Dataset"
+        items={items}
         activeIds={active}
         onToggle={(id) => setActive((prev) => {
           const next = new Set(prev)
