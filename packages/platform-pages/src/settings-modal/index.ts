@@ -1,4 +1,5 @@
 export * from './SettingsModalView'
+export * from './account'
 export * from './edge-tab'
 export * from './devices'
 export * from './organization'

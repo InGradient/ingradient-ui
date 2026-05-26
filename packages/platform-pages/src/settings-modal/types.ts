@@ -1,21 +1,25 @@
 import type { ReactNode } from 'react'
 import type {
   AutoSaveState,
-  DeleteAccountPreview,
-  DeleteAccountResolutions,
-  GroupVisible,
   LicenseInfo,
-  ProjectMemberRowMember,
-  ProjectMemberRowRoleOption,
   ProjectTypeTone,
-  SearchableUserCandidate,
   SettingsAccountTabUser,
 } from '@ingradient/ui/patterns'
+import type {
+  DeleteAccountPreview,
+  DeleteAccountResolutions,
+} from './account'
 import type {
   InvitationsTabProps,
   OrgMembersTabProps,
   OrgSettingsTabProps,
 } from './organization'
+import type {
+  GroupVisible,
+  ProjectMemberRowMember,
+  ProjectMemberRowRoleOption,
+  SearchableUserCandidate,
+} from './project'
 import type {
   DevicesFormsProps,
   DevicesLicenseSectionProps,

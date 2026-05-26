@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { SelectField } from '../../components/inputs/select-field'
+import { Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { SelectField } from '@ingradient/ui/components'
 
 const Row = styled.li`
   display: grid;

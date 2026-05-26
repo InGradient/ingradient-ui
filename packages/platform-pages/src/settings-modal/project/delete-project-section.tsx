@@ -1,6 +1,6 @@
-import { Box, Inline, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { TextField } from '../../components/inputs/text-fields'
+import { Box, Inline, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
 
 const WRAP_STYLE = {
   marginTop: 'var(--ig-space-11)',

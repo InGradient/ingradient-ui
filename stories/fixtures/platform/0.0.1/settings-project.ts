@@ -1,13 +1,12 @@
 import type {
+  ExpandedPermissionGroup,
+  GroupVisible,
   ProjectMemberRowMember,
   ProjectMemberRowRoleOption,
-} from '@ingradient/ui/patterns'
-import type {
-  ExpandedPermissionGroup,
   RoleMatrix,
   SummaryPermissionGroup,
 } from '@ingradient/platform-pages'
-import type { GroupVisible, ProjectTypeTone } from '@ingradient/ui/patterns'
+import type { ProjectTypeTone } from '@ingradient/ui/patterns'
 
 export interface SettingsProject {
   id: string

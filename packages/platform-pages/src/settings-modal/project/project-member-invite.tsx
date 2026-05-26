@@ -1,6 +1,6 @@
-import { Inline, Stack as PrimStack, Text } from '../../primitives'
-import { TextField } from '../../components/inputs/text-fields'
-import { OptionRow } from '../../components/data-display/option-row'
+import { Inline, Stack as PrimStack, Text } from '@ingradient/ui/primitives'
+import { TextField } from '@ingradient/ui/components'
+import { OptionRow } from '@ingradient/ui/components'
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = {

@@ -1,5 +1,5 @@
 import type { AutoSaveState, LicenseInfo } from '@ingradient/ui/patterns'
-import type { DeleteAccountPreview } from '@ingradient/ui/patterns'
+import type { DeleteAccountPreview } from '@ingradient/platform-pages'
 import { mockUser, orgLicense, personalLicense, expiredLicense, type SettingsUser } from './settings-account'
 import { mockProject, mockDeflectometryProject, type SettingsProject } from './settings-project'
 

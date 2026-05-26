@@ -280,17 +280,17 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] invitations-tab → `platform-pages/settings-modal/organization/`
 - [x] join-codes-section → `platform-pages/settings-modal/organization/`
 
-### Phase X2.2 — project (0/6)
-- [ ] delete-project-section → `platform-pages/settings-modal/project/`
-- [ ] project-member-invite → `platform-pages/settings-modal/project/`
-- [ ] project-member-row → `platform-pages/settings-modal/project/`
-- [ ] project-members-list → `platform-pages/settings-modal/project/`
-- [ ] project-resolution-card → `platform-pages/settings-modal/project/` (account 관련이지만 ProjectResolution 이름)
-- [ ] project-settings-form → `platform-pages/settings-modal/project/`
+### Phase X2.2 — project (6/6)
+- [x] delete-project-section → `platform-pages/settings-modal/project/`
+- [x] project-member-invite → `platform-pages/settings-modal/project/`
+- [x] project-member-row → `platform-pages/settings-modal/project/`
+- [x] project-members-list → `platform-pages/settings-modal/project/`
+- [x] project-resolution-card → `platform-pages/settings-modal/project/` (account 관련이지만 ProjectResolution 이름) — delete-account-dialog 의 의존 때문에 X2.3 의 delete-account-dialog 도 동시에 이동 (`platform-pages/settings-modal/account/`)
+- [x] project-settings-form → `platform-pages/settings-modal/project/` — `./auto-save-status`, `./project-type-tag` import 는 `@ingradient/ui/patterns` 로 (patterns 잔존)
 
-### Phase X2.3 — settings account + general (0/4)
+### Phase X2.3 — settings account + general (1/4)
 - [ ] settings-account-tab → `platform-pages/settings-modal/account/`
-- [ ] delete-account-dialog → `platform-pages/settings-modal/account/`
+- [x] delete-account-dialog → `platform-pages/settings-modal/account/` (X2.2 에 의존성 때문에 미리 이동됨)
 - [ ] password-change-dialog → `platform-pages/settings-modal/account/`
 - [ ] settings-general-tab → `platform-pages/settings-modal/general/`
 

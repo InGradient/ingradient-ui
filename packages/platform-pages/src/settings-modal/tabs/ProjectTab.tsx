@@ -2,9 +2,9 @@ import {
   DeleteProjectSection,
   ProjectMemberInvite,
   ProjectMembersList,
+  ProjectPermissionMatrix,
   ProjectSettingsForm,
-} from '@ingradient/ui/patterns'
-import { ProjectPermissionMatrix } from '../project'
+} from '../project'
 import {
   ExpandToggle,
   Placeholder,

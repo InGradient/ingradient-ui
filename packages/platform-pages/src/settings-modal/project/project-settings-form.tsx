@@ -1,9 +1,8 @@
-import { Inline, Stack, Text } from '../../primitives'
-import { Checkbox } from '../../components/inputs/toggles'
-import { TextField } from '../../components/inputs/text-fields'
-import { Textarea } from '../../components/inputs/textarea'
-import { AutoSaveStatus, type AutoSaveState } from './auto-save-status'
-import { ProjectTypeTag, type ProjectTypeTone } from './project-type-tag'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Checkbox } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
+import { Textarea } from '@ingradient/ui/components'
+import { AutoSaveStatus, type AutoSaveState, ProjectTypeTag, type ProjectTypeTone } from '@ingradient/ui/patterns'
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const FIRST_TITLE_STYLE = { marginTop: 0, marginBottom: 0 }

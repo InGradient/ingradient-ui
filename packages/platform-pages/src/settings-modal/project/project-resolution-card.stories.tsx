@@ -18,7 +18,7 @@ const project = {
 }
 
 const meta: Meta<typeof ProjectResolutionCard> = {
-  title: 'Patterns/Shells/ProjectResolutionCard',
+  title: 'Platform Pages/Settings Modal/Project/ProjectResolutionCard',
   component: ProjectResolutionCard,
   decorators: [(Story) => <div style={{ width: 520, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

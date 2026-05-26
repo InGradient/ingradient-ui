@@ -1,13 +1,13 @@
-import { Stack, Text } from '../../primitives'
-import { Alert } from '../../components/feedback/alert'
-import { Button } from '../../components/inputs/button'
-import { PasswordField, TextField } from '../../components/inputs/text-fields'
-import { DialogShell } from '../../components/overlays/dialog-shell'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { Alert } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { PasswordField, TextField } from '@ingradient/ui/components'
+import { DialogShell } from '@ingradient/ui/components'
 import {
   ProjectResolutionCard,
   type ProjectResolution,
   type ProjectResolutionInfo,
-} from './project-resolution-card'
+} from '../project'
 
 export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 

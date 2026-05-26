@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { DialogShell } from '../../components/overlays/dialog-shell'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { DialogShell } from '@ingradient/ui/components'
 import {
   ProjectMemberRow,
   type ProjectMemberRowMember,
