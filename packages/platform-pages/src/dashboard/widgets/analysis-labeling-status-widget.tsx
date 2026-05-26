@@ -1,5 +1,5 @@
-import { PieChartCard } from '../charts/pie-chart-card'
-import { DashboardStatsHeader } from './dashboard-stats-header'
+import { PieChartCard } from '@ingradient/ui/patterns'
+import { DashboardStatsHeader } from '@ingradient/ui/patterns'
 
 export interface AnalysisLabelingStatusWidgetProps {
   totalLabeled: number

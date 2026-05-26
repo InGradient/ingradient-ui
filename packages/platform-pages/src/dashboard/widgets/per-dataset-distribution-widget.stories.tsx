@@ -28,7 +28,7 @@ const distribution: PerDatasetDistributionDataset[] = [
 ]
 
 const meta: Meta<typeof PerDatasetDistributionWidget> = {
-  title: 'Patterns/Shells/PerDatasetDistributionWidget',
+  title: 'Platform Pages/Dashboard Widgets/PerDatasetDistributionWidget',
   component: PerDatasetDistributionWidget,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 700, padding: 20, background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

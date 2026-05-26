@@ -1,4 +1,4 @@
-import { BarChartCard } from '../charts/bar-chart-card'
+import { BarChartCard } from '@ingradient/ui/patterns'
 
 export interface AnalysisClassRatioWidgetProps {
   classRatio: Array<unknown>

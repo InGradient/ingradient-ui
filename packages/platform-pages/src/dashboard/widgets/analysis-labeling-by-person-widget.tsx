@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Stack } from '../../primitives'
-import { BarChartCard } from '../charts/bar-chart-card'
+import { Stack } from '@ingradient/ui/primitives'
+import { BarChartCard } from '@ingradient/ui/patterns'
 
 const TABLE_CARD_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-7)',

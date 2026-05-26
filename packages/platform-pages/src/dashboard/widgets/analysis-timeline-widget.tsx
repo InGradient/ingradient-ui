@@ -1,4 +1,4 @@
-import { LineChartCard } from '../charts/line-chart-card'
+import { LineChartCard } from '@ingradient/ui/patterns'
 
 export type AnalysisTimelineGranularity = 'hour' | 'daily' | string
 

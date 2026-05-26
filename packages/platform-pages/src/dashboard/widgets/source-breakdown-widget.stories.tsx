@@ -30,7 +30,7 @@ const bySource: SourceBreakdownSource[] = [
 ]
 
 const meta: Meta<typeof SourceBreakdownWidget> = {
-  title: 'Patterns/Shells/SourceBreakdownWidget',
+  title: 'Platform Pages/Dashboard Widgets/SourceBreakdownWidget',
   component: SourceBreakdownWidget,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 700, padding: 20, background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisClassRatioWidget } from './analysis-class-ratio-widget'
 
 const meta: Meta<typeof AnalysisClassRatioWidget> = {
-  title: 'Patterns/Shells/AnalysisClassRatioWidget',
+  title: 'Platform Pages/Dashboard Widgets/AnalysisClassRatioWidget',
   component: AnalysisClassRatioWidget,
 }
 export default meta

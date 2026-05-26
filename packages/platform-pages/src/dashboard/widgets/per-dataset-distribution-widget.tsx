@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Inline, Text } from '../../primitives'
-import { BarChartCard } from '../charts/bar-chart-card'
-import { SectionPanel } from '../../components/data-display/layout'
+import { Inline, Text } from '@ingradient/ui/primitives'
+import { BarChartCard } from '@ingradient/ui/patterns'
+import { SectionPanel } from '@ingradient/ui/components'
 
 const Card = styled(SectionPanel)`
   background: var(--ig-color-surface-raised);
