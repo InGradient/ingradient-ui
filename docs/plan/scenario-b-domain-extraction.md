@@ -114,46 +114,102 @@ cross-app 재사용 leaning. `@ingradient/ui/patterns/` 유지.
 
 ---
 
-## 작업 순서
+## 작업 절차 (Workflow)
 
-### Phase X1 — B 카테고리 rename + igp-export-modal rename (21 컴포넌트, 안전)
+작업 도중 잊지 않도록 매 commit 의 표준 단계 + 검증 명령어 명시.
 
-각 1 commit. 의존성 leaf-first 순서. 외부 (`platform-pages`, `edge-pages`, `stories`) import 갱신 포함.
+### ⚙️ Phase X1 — B 카테고리 rename: 매 commit 10 단계 체크리스트
 
-**각 commit 패턴**:
-1. 새 파일 생성: `src/components/{folder}/{new-name}.tsx` (또는 patterns/)
-2. 코드 옮김 + 이름 변경 (export function/type 모두 새 이름으로)
-3. props 의 도메인 어휘 제거 (예: GalleryToolbarProps 의 prop 이름 generic 화)
-4. stories 파일 같이 옮기 + title 변경 (옛 title 알리어스 없음)
-5. 기존 위치 삭제 + `src/patterns/index.ts` 에서 export 제거
-6. `src/components/{folder}/index.ts` 에 새 export 추가
-7. patterns 안 의존 (예: class-info-sidebar 가 reference-image-section 사용) 갱신
-8. 외부 사용처 import + 사용 코드 갱신 (옛 이름 → 새 이름)
-9. `npx tsc --noEmit` + 필요 시 `npm run build:package`
+각 컴포넌트마다 다음 단계를 순서대로:
 
-### Phase X2 — A 카테고리 외부 이동 (도메인별 PR 분리, 6 batch)
+1. **[사전 분석]** 의존성 + 외부 사용처 grep
+   ```bash
+   grep -rn "{OldName}\|{old-name}" src/ packages/ stories/ --include="*.ts" --include="*.tsx" | grep -v "lib/"
+   ```
+2. **[새 파일 생성]** `src/{components|patterns}/{folder}/{new-name}.tsx`
+   - 코드 복사 + export 이름 변경 (function + type 모두)
+   - import 경로 새 위치 기준 갱신 (`../../primitives` → `../../primitives` 또는 `../primitives` 등)
+   - props 의 도메인 어휘 제거 (예: `GalleryToolbarProps` → `MediaToolbarProps`, prop 이름 `gallery*` → generic)
+3. **[새 stories 파일]** `{new-name}.stories.tsx`
+   - title: `Components/{Category}/{NewName}` (또는 `Patterns/{NewName}`)
+   - 알리어스 없음 (Q-S1)
+4. **[기존 파일 삭제]** `rm src/patterns/shells/{old-name}.{tsx,stories.tsx}`
+5. **[index 갱신]**
+   - `src/patterns/index.ts` 에서 옛 export 라인 제거
+   - `src/{components|patterns}/{folder}/index.ts` 에 새 export 추가
+6. **[patterns 내부 의존 갱신]** patterns 안에 옛 컴포넌트 import 한 파일들의 import + 사용 코드 갱신
+7. **[외부 사용처 갱신]** 다음 위치 모두:
+   - `packages/platform-pages/src/**`
+   - `packages/edge-pages/src/**`
+   - `stories/**` (fixtures, builders, pages)
+8. **[TS 검증]** `npx tsc --noEmit` 통과
+9. **[잔존 확인]** `grep -rn "{OldName}" src/ packages/ stories/ --include="*.ts" --include="*.tsx" | grep -v "lib/"` → 결과 0 (변경 누락 없음)
+10. **[commit]** `git commit -m "refactor(components): X1.N {OldName} → {NewName}"` 형식
 
-| Phase | 도메인 | 컴포넌트 수 | 비고 |
-|---|---|---|---|
-| X2.1 | organization | 5 | 가장 격리됨 |
-| X2.2 | project | 6 | settings-modal/project/ 이미 존재 |
-| X2.3 | settings account+general | 4 | settings-modal/{account,general}/ 신설 |
-| X2.4 | image-detail (+ comments + model-mapping) | 4 | platform-pages/image-detail/ 신설 |
-| X2.5 | gallery | 9 | platform-pages/catalog/gallery/ 신설 |
-| X2.6 | dashboard-overview + dataset-task-tag | 2 | 각각 dashboard/ + catalog/ |
+### ⚙️ Phase X2 — A 카테고리 외부 이동: 매 batch 11 단계 체크리스트
 
-**각 Phase X2.* 마다**:
-1. patterns/shells/{file} → `packages/platform-pages/src/{path}/{file}` (git mv)
-2. import 경로 갱신:
+각 도메인 batch 마다 다음 단계를 순서대로:
+
+1. **[사전 분석]** batch 의 모든 컴포넌트의 외부 사용처 grep
+   ```bash
+   for c in <component list>; do grep -rn "$c\|/$c" packages/ stories/ --include="*.ts" --include="*.tsx" | grep -v "lib/"; done
+   ```
+2. **[폴더 생성]** `mkdir -p packages/platform-pages/src/{path}`
+3. **[git mv]** `git mv src/patterns/shells/{file}.{tsx,stories.tsx} packages/platform-pages/src/{path}/`
+4. **[이동된 파일 import 경로 갱신]**
    - `../../primitives` → `@ingradient/ui/primitives`
    - `../../components/*` → `@ingradient/ui/components`
    - `../charts/*` → `@ingradient/ui/patterns`
-3. stories title: `Patterns/Shells/*` → `Platform Pages/{Domain}/*`
-4. `src/patterns/index.ts` 에서 export 제거
-5. `packages/platform-pages/src/{path}/index.ts` 신규 + 상위 index.ts re-export
-6. 외부 import 갱신 (stories/fixtures, edge-pages, platform-pages 내부 다른 파일 등):
-   - `@ingradient/ui/patterns` → `@ingradient/platform-pages`
-7. `npx tsc --noEmit` + `npm run build:package`
+   - `./sibling` → 검토 (같이 옮긴 sibling 인지 외부 patterns 인지)
+   - sed 일괄: `cd packages/platform-pages/src/{path} && sed -i "s|...|...|g" *.tsx`
+5. **[stories title 갱신]** `Patterns/Shells/{Old}` → `Platform Pages/{Domain}/{Old}`
+   ```bash
+   sed -i "s|title: 'Patterns/Shells/|title: 'Platform Pages/{Domain}/|g" *.stories.tsx
+   ```
+6. **[patterns/index.ts 갱신]** 옮긴 컴포넌트 export 모두 제거
+7. **[platform-pages index.ts 생성/갱신]**
+   - `packages/platform-pages/src/{path}/index.ts` 신규 (각 파일 export)
+   - 상위 index.ts (예: `settings-modal/index.ts`) 에서 `export * from './{path}'` 추가
+8. **[외부 사용처 갱신]** 옛 import 경로 → 새 경로
+   - `@ingradient/ui/patterns` → `@ingradient/platform-pages` (외부 패키지에서)
+   - 또는 `../../{path}` (platform-pages 내부 다른 폴더에서)
+   - 갱신 대상: 사전 분석 결과의 모든 파일
+9. **[TS 검증]** `npx tsc --noEmit | grep -v "tsup.config\|rootDir\|The file is in the program"` → 결과 0
+10. **[Workspace build]** `npm run build:package` 통과
+11. **[commit]** `git commit -m "refactor(patterns): X2.N {Domain} N개 → platform-pages/{path}"` 형식
+
+### 🔍 자주 쓰는 검증 명령어
+
+```bash
+# 1. TypeScript 통과 (every commit)
+npx tsc --noEmit
+
+# 2. Workspace build (Phase X2 끝마다)
+npm run build:package
+
+# 3. 옛 이름 잔존 확인 (rename 후)
+grep -rn "{OldName}" src/ packages/ stories/ --include="*.ts" --include="*.tsx" | grep -v "lib/"
+
+# 4. 옛 import 경로 잔존 (외부 이동 후)
+grep -rn "@ingradient/ui/patterns" packages/ stories/ --include="*.ts" --include="*.tsx" | grep "{OldExport}"
+
+# 5. patterns/shells 잔여 파일 수
+ls src/patterns/shells/ 2>/dev/null | grep -vE "\.stories|\.test" | grep "\.tsx$" | wc -l
+
+# 6. 인라인 styled 카운트 (Phase 5 모니터링)
+grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" | grep -v "stories\|test" | wc -l
+```
+
+### 🚨 자주 빠뜨리는 것들 (체크포인트)
+
+매 commit 전 다음 항상 확인:
+- [ ] **stories 파일** 도 같이 옮겼나? (rename 시 .stories.tsx 누락 잦음)
+- [ ] **stories title** 갱신했나?
+- [ ] **type export** 도 옮겼나? (예: `MobileDropdownOption` 같은 도메인 type)
+- [ ] **patterns 내부 의존** 갱신했나? (예: sort-popover-trigger 가 filter-popover-trigger 사용)
+- [ ] **fixtures** 도 import 갱신했나? (`stories/fixtures/platform/0.0.1/*`)
+- [ ] **builders** 도? (`stories/pages/platform/0.0.1/{dashboard,settings,catalog}/build-*.tsx`)
+- [ ] **lib/** 빌드 결과물은 무시 (rebuild 시 갱신)
 
 ---
 
@@ -180,9 +236,88 @@ cross-app 재사용 leaning. `@ingradient/ui/patterns/` 유지.
 
 ---
 
+## 진척 상황 (라이브 update — 매 commit 후 갱신)
+
+### Phase X1 — B rename (0/21)
+- [ ] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`)
+- [ ] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
+- [ ] X1.3 `labeling-progress-bar` → **SegmentedProgressBar** (`components/feedback/`)
+- [ ] X1.4 `add-class-dialog` → **TextInputDialog** (`components/overlays/`)
+- [ ] X1.5 `class-images-panel` → **SelectableGridPanel** (`patterns/`)
+- [ ] X1.6 `class-info-section` → **InfoSection** (`components/data-display/`)
+- [ ] X1.7 `class-list-row` → **LabeledSwatchRow** (`components/data-display/`)
+- [ ] X1.8 `class-pool-list` → **SwatchItemList** (`components/data-display/`)
+- [ ] X1.9 `dataset-filter-chip-row` → **FilterChipRow** (`components/inputs/`)
+- [ ] X1.10 `dataset-menu` → **ContextMenuWithSubmenus** (`components/overlays/`)
+- [ ] X1.11 `duplicate-dataset-modal` → **DuplicateItemModal** (`components/overlays/`)
+- [ ] X1.12 `filter-class-chip` → **ColorChip** (`components/inputs/`)
+- [ ] X1.13 `gallery-mobile-toolbar` → **MobileBottomToolbar** (`components/navigation/`)
+- [ ] X1.14 `image-detail-labelers-list` → **UserPoolList** (`components/data-display/`)
+- [ ] X1.15 `image-detail-sidebar` → **DetailPanelSidebar** (`components/data-display/`)
+- [ ] X1.16 `image-context-menu` (이름 OK) → `components/overlays/` (위치만 이동)
+- [ ] X1.17 `catalog-mobile-shell` → **MobileShell** (`components/data-display/`)
+- [ ] X1.18 `catalog-right-panel` → **SidePanelLayout** (`components/data-display/`)
+- [ ] X1.19 `analysis-dashboard` → **LayoutDashboard** (`patterns/`)
+- [ ] X1.20 `analysis-widget-grid` → **WidgetGrid** (`patterns/`)
+- [ ] X1.21 `igp-export-modal` → **ExportProgressModal** (`patterns/`)
+
+### Phase X2.1 — organization (0/5)
+- [ ] org-members-tab → `platform-pages/settings-modal/organization/`
+- [ ] org-settings-tab → `platform-pages/settings-modal/organization/`
+- [ ] invitations-section → `platform-pages/settings-modal/organization/`
+- [ ] invitations-tab → `platform-pages/settings-modal/organization/`
+- [ ] join-codes-section → `platform-pages/settings-modal/organization/`
+
+### Phase X2.2 — project (0/6)
+- [ ] delete-project-section → `platform-pages/settings-modal/project/`
+- [ ] project-member-invite → `platform-pages/settings-modal/project/`
+- [ ] project-member-row → `platform-pages/settings-modal/project/`
+- [ ] project-members-list → `platform-pages/settings-modal/project/`
+- [ ] project-resolution-card → `platform-pages/settings-modal/project/` (account 관련이지만 ProjectResolution 이름)
+- [ ] project-settings-form → `platform-pages/settings-modal/project/`
+
+### Phase X2.3 — settings account + general (0/4)
+- [ ] settings-account-tab → `platform-pages/settings-modal/account/`
+- [ ] delete-account-dialog → `platform-pages/settings-modal/account/`
+- [ ] password-change-dialog → `platform-pages/settings-modal/account/`
+- [ ] settings-general-tab → `platform-pages/settings-modal/general/`
+
+### Phase X2.4 — image-detail + comments + model-mapping (0/4)
+- [ ] image-detail-class-list → `platform-pages/image-detail/`
+- [ ] image-detail-info-panel → `platform-pages/image-detail/`
+- [ ] comments-panel → `platform-pages/image-detail/`
+- [ ] model-mapping-select → `platform-pages/settings-modal/project/class/`
+
+### Phase X2.5 — gallery (0/9)
+- [ ] gallery-delete-dialog → `platform-pages/catalog/gallery/`
+- [ ] gallery-detail-modal → `platform-pages/catalog/gallery/`
+- [ ] gallery-export-config-dialog → `platform-pages/catalog/gallery/`
+- [ ] gallery-export-progress-dialog → `platform-pages/catalog/gallery/`
+- [ ] gallery-filter-panel → `platform-pages/catalog/gallery/`
+- [ ] gallery-image-menu → `platform-pages/catalog/gallery/`
+- [ ] gallery-images-table → `platform-pages/catalog/gallery/`
+- [ ] gallery-toolbar → `platform-pages/catalog/gallery/`
+- [ ] gallery-dataset-transfer-dialog → `platform-pages/catalog/gallery/`
+
+### Phase X2.6 — dashboard-overview + dataset-task-tag (0/2)
+- [ ] dashboard-overview-panel → `platform-pages/dashboard/`
+- [ ] dataset-task-tag → `platform-pages/catalog/`
+
+### 최종 검증
+- [ ] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
+- [ ] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
+- [ ] `ls src/patterns/shells/` 잔여 ~24 파일 (C 카테고리 만)
+- [ ] plan 문서 진척 상황 모두 ✅
+- [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
+
+---
+
 ## 다음 단계
 
-1. Phase X1 의존성 그래프 분석 (leaf-first 순서 확정)
-2. Phase X1 첫 commit 시작 — 가장 leaf 인 컴포넌트 부터
-3. 매 commit 후 인라인 카운트 / patterns 파일 수 갱신 (이 문서)
+1. Phase X1 의존성 그래프 분석 (leaf-first 순서 확정) — Task #65
+2. Phase X1.1 첫 commit 시작
+3. 매 commit 후 위 진척 상황 체크박스 update
 4. Phase X1 끝나면 Phase X2.1 (organization) 시작
+5. Phase X2 끝나면 최종 검증
+
+**중요**: 매 commit 끝나면 이 문서의 **진척 상황** 체크박스를 `[ ]` → `[x]` 로 update + commit hash 옆에 기록.
