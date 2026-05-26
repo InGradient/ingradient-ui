@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { DropdownSelect } from '../../components/inputs/dropdown-select'
-import { SearchField } from '../../components/inputs/search-field'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { DropdownSelect } from '@ingradient/ui/components'
+import { SearchField } from '@ingradient/ui/components'
 import { DeviceStatusBadge } from './device-status-badge'
 
 const SEARCH_FIELD_STYLE = { width: 200 }

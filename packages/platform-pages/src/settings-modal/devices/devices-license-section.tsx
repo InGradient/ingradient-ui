@@ -1,6 +1,6 @@
-import { Box, Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { DatePickerField } from '../../components/inputs/date-picker'
+import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { DatePickerField } from '@ingradient/ui/components'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
 const INFO_GRID_STYLE = {

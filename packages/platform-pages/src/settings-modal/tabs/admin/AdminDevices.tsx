@@ -1,9 +1,9 @@
-import { DevicesTab } from '@ingradient/ui/patterns'
+import { DevicesTab } from '../../devices'
 import type {
   DevicesFormsProps,
   DevicesLicenseSectionProps,
   DevicesTableProps,
-} from '@ingradient/ui/patterns'
+} from '../../devices'
 
 interface Props {
   license: DevicesLicenseSectionProps

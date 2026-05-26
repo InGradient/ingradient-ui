@@ -23,7 +23,7 @@ const devices: DeviceRow[] = [
 const deviceOptions: DeviceOption[] = devices.filter((d) => d.status === 'ACTIVE').map((d) => ({ id: d.id, deviceUid: d.deviceUid, name: d.name }))
 
 const meta: Meta<typeof DevicesTab> = {
-  title: 'Patterns/Shells/DevicesTab',
+  title: 'Platform Pages/Devices/DevicesTab',
   component: DevicesTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1000, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

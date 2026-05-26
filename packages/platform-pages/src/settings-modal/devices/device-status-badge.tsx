@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Badge } from '../../components/feedback/badge'
+import { Badge } from '@ingradient/ui/components'
 
 export type DeviceStatusTone = 'active' | 'revoked' | 'pending' | 'expired' | 'soon' | 'ok'
 

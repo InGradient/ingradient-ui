@@ -1,4 +1,4 @@
-import type { DeviceLicense, DeviceRow, DeviceOption, DevicesLicenseSectionExpiry } from '@ingradient/ui/patterns'
+import type { DeviceLicense, DeviceRow, DeviceOption, DevicesLicenseSectionExpiry } from '@ingradient/platform-pages'
 
 export const mockDeviceLicense: DeviceLicense = {
   planCode: 'PRO_OFFLINE',

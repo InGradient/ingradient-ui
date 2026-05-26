@@ -20,7 +20,7 @@ const baseArgs = {
 }
 
 const meta: Meta<typeof DevicesLicenseSection> = {
-  title: 'Patterns/Shells/DevicesLicenseSection',
+  title: 'Platform Pages/Devices/DevicesLicenseSection',
   component: DevicesLicenseSection,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 720, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

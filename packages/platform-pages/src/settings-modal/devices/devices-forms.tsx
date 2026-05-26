@@ -1,10 +1,10 @@
 import { forwardRef, type Ref } from 'react'
-import { Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { CopyButton } from '../../components/inputs/copy-button'
-import { DropdownSelect } from '../../components/inputs/dropdown-select'
-import { TextField } from '../../components/inputs/text-fields'
-import { Textarea } from '../../components/inputs/textarea'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { CopyButton } from '@ingradient/ui/components'
+import { DropdownSelect } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
+import { Textarea } from '@ingradient/ui/components'
 
 const FORM_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',

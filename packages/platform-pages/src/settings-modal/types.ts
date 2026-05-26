@@ -3,9 +3,6 @@ import type {
   AutoSaveState,
   DeleteAccountPreview,
   DeleteAccountResolutions,
-  DevicesFormsProps,
-  DevicesLicenseSectionProps,
-  DevicesTableProps,
   ExpandedPermissionGroup,
   GroupVisible,
   InvitationsTabProps,
@@ -21,6 +18,11 @@ import type {
   SettingsAccountTabUser,
   SummaryPermissionGroup,
 } from '@ingradient/ui/patterns'
+import type {
+  DevicesFormsProps,
+  DevicesLicenseSectionProps,
+  DevicesTableProps,
+} from './devices'
 import type { EdgeTabKey } from './edge-tab'
 
 export interface EdgeTabPaneProps {

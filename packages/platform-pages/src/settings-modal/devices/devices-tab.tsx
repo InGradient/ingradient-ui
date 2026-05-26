@@ -1,4 +1,4 @@
-import { Stack } from '../../primitives'
+import { Stack } from '@ingradient/ui/primitives'
 import { DevicesLicenseSection, type DevicesLicenseSectionProps } from './devices-license-section'
 import { DevicesForms, type DevicesFormsProps } from './devices-forms'
 import { DevicesTable, type DevicesTableProps } from './devices-table'

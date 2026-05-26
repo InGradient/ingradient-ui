@@ -21,7 +21,7 @@ const baseArgs = {
 }
 
 const meta: Meta<typeof DevicesTable> = {
-  title: 'Patterns/Shells/DevicesTable',
+  title: 'Platform Pages/Devices/DevicesTable',
   component: DevicesTable,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1000, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

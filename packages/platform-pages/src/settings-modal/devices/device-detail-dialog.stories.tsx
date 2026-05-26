@@ -12,7 +12,7 @@ const device = {
 }
 
 const meta: Meta<typeof DeviceDetailDialog> = {
-  title: 'Patterns/Shells/DeviceDetailDialog',
+  title: 'Platform Pages/Devices/DeviceDetailDialog',
   component: DeviceDetailDialog,
   parameters: { layout: 'fullscreen' },
 }
