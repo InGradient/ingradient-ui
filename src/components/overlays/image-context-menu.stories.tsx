@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ImageContextMenu } from './image-context-menu'
 
 const meta: Meta<typeof ImageContextMenu> = {
-  title: 'Patterns/Shells/ImageContextMenu',
+  title: 'Components/Overlays/ImageContextMenu',
   component: ImageContextMenu,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ minHeight: 400, padding: 40 }}><Story /></div>],

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useClickOutside } from '../../hooks/useClickOutside'
-import { FloatingOverlay } from '../../components/overlays/floating-overlay'
-import { MenuItem } from '../../components/overlays/menu-item'
+import { FloatingOverlay } from './floating-overlay'
+import { MenuItem } from './menu-item'
 
 const MENU_STYLE = {
   minWidth: 200,
