@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { LabelingProgressBar } from './labeling-progress-bar'
+import { SegmentedProgressBar } from './segmented-progress-bar'
 
-const meta: Meta<typeof LabelingProgressBar> = {
-  title: 'Patterns/LabelingProgressBar',
-  component: LabelingProgressBar,
+const meta: Meta<typeof SegmentedProgressBar> = {
+  title: 'Components/Feedback/SegmentedProgressBar',
+  component: SegmentedProgressBar,
   parameters: { layout: 'padded' },
   decorators: [(Story) => <div style={{ width: 360 }}><Story /></div>],
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
-import { ColorSwatch } from '../../components/data-display/color-swatch'
+import { ColorSwatch } from '../data-display/color-swatch'
 
 const BAR_STYLE = {
   display: 'flex' as const,
@@ -18,22 +18,27 @@ const Segment = styled.div<{ $width: number; $color: string }>`
   transition: flex-basis var(--ig-motion-normal);
 `
 
-export interface LabelingSegment {
+export interface ProgressSegment {
   label: string
   value: number
   color: string
 }
 
-export interface LabelingProgressBarProps {
-  segments: LabelingSegment[]
+export interface SegmentedProgressBarProps {
+  segments: ProgressSegment[]
   total?: number
   showLegend?: boolean
   className?: string
 }
 
-export function LabelingProgressBar({
+/**
+ * Multi-segment progress bar with optional legend.
+ * 각 세그먼트는 색 + 라벨 + 값. total 미지정 시 segments 의 value 합산.
+ * Labeling progress / 분석 단계별 진척 / 분포 시각화 등에 generic.
+ */
+export function SegmentedProgressBar({
   segments, total, showLegend = true, className,
-}: LabelingProgressBarProps) {
+}: SegmentedProgressBarProps) {
   const sum = total ?? segments.reduce((acc, s) => acc + s.value, 0)
   return (
     <Stack gap={3} className={className}>

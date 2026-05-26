@@ -2,9 +2,9 @@ import {
   AnalysisDashboard,
   DashboardWidget,
   DistributionHeatmap,
-  LabelingProgressBar,
 } from '@ingradient/ui/patterns'
 import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
+import { SegmentedProgressBar } from '@ingradient/ui/components'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 import {
   classRatioData, dashboardStats, dataCollectionData, datasetDistribution, defectsBySourceData,
@@ -102,7 +102,7 @@ export function buildStatsContent() {
               title="Labeling progress"
               subtitle={`${labelingProgress.processed.toLocaleString()} of ${(labelingProgress.processed + labelingProgress.pending).toLocaleString()}`}
             >
-              <LabelingProgressBar
+              <SegmentedProgressBar
                 segments={[
                   { label: 'Processed', value: labelingProgress.processed, color: 'var(--ig-color-success)' },
                   { label: 'Pending', value: labelingProgress.pending, color: 'var(--ig-color-warning)' },
