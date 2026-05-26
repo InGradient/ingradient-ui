@@ -1,7 +1,7 @@
 import {
   AnalysisDashboard,
   DashboardWidget,
-  DatasetDistributionHeatmap,
+  DistributionHeatmap,
   LabelingProgressBar,
 } from '@ingradient/ui/patterns'
 import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
@@ -116,7 +116,7 @@ export function buildStatsContent() {
           span: 2,
           content: (
             <DashboardWidget title="Per-dataset class counts" span={2}>
-              <DatasetDistributionHeatmap {...datasetDistribution} />
+              <DistributionHeatmap {...datasetDistribution} />
             </DashboardWidget>
           ),
         },
