@@ -6,7 +6,7 @@ const Item = styled.li<{ $selected?: boolean }>`
   padding: var(--ig-space-4) var(--ig-space-6);
   cursor: pointer;
   list-style: none;
-  background: ${(p) => (p.$selected ? 'rgba(77, 136, 255, 0.1)' : 'transparent')};
+  background: ${(p) => (p.$selected ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   border-left: 3px solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast);
   &:hover {
