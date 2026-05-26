@@ -1,4 +1,4 @@
-import type { SourceBreakdownSource, PerDatasetDistributionDataset } from '@ingradient/ui/patterns'
+import type { SourceBreakdownSource, PerDatasetDistributionDataset } from '@ingradient/platform-pages'
 
 export type DashboardWidgetKey =
   | 'data_collection'

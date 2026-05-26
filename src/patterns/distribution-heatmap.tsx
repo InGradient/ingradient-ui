@@ -8,26 +8,24 @@ const Table = styled.table`
   border-collapse: separate;
   border-spacing: 2px;
   width: 100%;
-`
-
-const HeadCell = styled.th`
-  font-size: var(--ig-font-size-xs);
-  font-weight: 600;
-  color: var(--ig-color-text-muted);
-  text-align: center;
-  padding: var(--ig-space-2);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-`
-
-const RowLabel = styled.th`
-  font-size: var(--ig-font-size-xs);
-  font-weight: 500;
-  color: var(--ig-color-text-secondary);
-  text-align: left;
-  padding: var(--ig-space-2) var(--ig-space-3);
-  white-space: nowrap;
+  & th {
+    font-size: var(--ig-font-size-xs);
+    font-weight: 600;
+    color: var(--ig-color-text-muted);
+    text-align: center;
+    padding: var(--ig-space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  & th.row-label {
+    font-weight: 500;
+    color: var(--ig-color-text-secondary);
+    text-align: left;
+    padding: var(--ig-space-2) var(--ig-space-3);
+    text-transform: none;
+    letter-spacing: 0;
+  }
 `
 
 const Cell = styled.td<{ $intensity: number }>`
@@ -69,14 +67,14 @@ export function DistributionHeatmap({
       <Table>
         <thead>
           <tr>
-            <HeadCell />
-            {columnLabels.map((c) => (<HeadCell key={c}>{c}</HeadCell>))}
+            <th />
+            {columnLabels.map((c) => (<th key={c}>{c}</th>))}
           </tr>
         </thead>
         <tbody>
           {rowLabels.map((rowLabel, i) => (
             <tr key={rowLabel}>
-              <RowLabel scope="row">{rowLabel}</RowLabel>
+              <th scope="row" className="row-label">{rowLabel}</th>
               {(matrix[i] ?? []).map((value, j) => (
                 <Cell key={j} $intensity={value / max}>{format(value)}</Cell>
               ))}

@@ -23,7 +23,7 @@ const columns: StorageStatsTableColumn<CostRow>[] = [
 ]
 
 const meta: Meta = {
-  title: 'Patterns/Shells/StorageStatsTable',
+  title: 'Platform Pages/Storage/StorageStatsTable',
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 720, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

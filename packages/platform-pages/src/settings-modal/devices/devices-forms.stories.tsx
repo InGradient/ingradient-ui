@@ -22,7 +22,7 @@ const baseArgs = {
 }
 
 const meta: Meta<typeof DevicesForms> = {
-  title: 'Patterns/Shells/DevicesForms',
+  title: 'Platform Pages/Devices/DevicesForms',
   component: DevicesForms,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 720, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
