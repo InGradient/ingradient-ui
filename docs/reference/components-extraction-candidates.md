@@ -13,19 +13,16 @@
 
 **새 대화에서 이어서 작업 시 이 섹션부터 읽으세요.**
 
-## 현재 상태 (last update: 2026-05-25, Phase 2 + 3 + 1.7 batch 5 완료)
+## 현재 상태 (last update: 2026-05-26, Plan 실행 완료)
 
 | 항목 | 값 |
 |---|---|
 | 브랜치 | `refactor/components-vs-patterns-audit` |
 | 인라인 styled 정의 (시작) | 499 개 |
-| 인라인 styled 정의 (현재) | **57 개** |
-| 제거된 인라인 | **442 개 (89%)** |
-| 마이그레이션된 patterns 파일 | ~100 개 |
-| Phase 2 신규 컴포넌트 | **10 개 완료** (FloatingOverlay / TextButton / Textarea / CollapsibleSectionHeader / ColorInput / ResizeHandle / AspectRatioImage / OverlayLayer / MenuItem / DropZone) |
-| Phase 3 도메인 wrapper | ✅ device-status-badge / project-type-tag (내부 styled → generic Badge) |
-| Phase 4 특수 Table | 🔄 Card/Wrap → Box 만 (Table styled 는 자식 selector 때문에 유지) |
-| TypeScript 통과 | ✅ 매 커밋 |
+| 인라인 styled 정의 (현재) | **30 개** |
+| 제거된 인라인 | **469 개 (94%)** |
+| Plan 실행 단계 | A1(7) → B1 → B2(2) → A2(2) → B3(5) → cleanup |
+| TypeScript / workspace build | ✅ 모든 단계 통과 |
 
 ## 남은 ~60 인라인 styled 의 retention 사유
 
