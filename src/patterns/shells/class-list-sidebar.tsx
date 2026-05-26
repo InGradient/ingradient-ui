@@ -1,6 +1,6 @@
 import { Box, Stack, Text } from '../../primitives'
 import { Button } from '../../components/inputs/button'
-import { ClassListRow } from './class-list-row'
+import { LabeledSwatchRow } from '../../components/data-display/labeled-swatch-row'
 
 const SIDEBAR_STYLE = {
   width: 280,
@@ -67,10 +67,10 @@ export function ClassListSidebar({
       ) : (
         <Box as="ul" role="listbox" aria-label="Classes" style={LIST_STYLE}>
           {classes.map((c) => (
-            <ClassListRow
+            <LabeledSwatchRow
               key={c.id}
               id={c.id}
-              name={c.name}
+              label={c.name}
               color={c.color}
               count={c.image_count}
               selected={selectedClassId === c.id}

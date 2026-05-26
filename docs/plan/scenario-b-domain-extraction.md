@@ -250,14 +250,14 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 
 모든 의존자는 patterns/ 안에 있으므로 매 rename 후 patterns 내부 import 갱신만 하면 됨. **순서는 plan 의 X1.1~X1.21 그대로 진행** (leaf-first 와 자연 일치).
 
-### Phase X1 — B rename (6/21)
+### Phase X1 — B rename (7/21)
 - [x] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`) — CanvasCoordReadout 별도 분리 (`patterns/shells/canvas-coord-readout.tsx`)
 - [x] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
 - [x] X1.3 `labeling-progress-bar` → **SegmentedProgressBar** (`components/feedback/`) — type LabelingSegment → ProgressSegment
 - [x] X1.4 `add-class-dialog` → **TextInputDialog** (`components/overlays/`) — props generic 화 (name → value, onChangeName → onChange) + isInvalid 옵션 추가
 - [x] X1.5 `class-images-panel` → **SelectableGridPanel** (`patterns/`) — props generic 화 (selectedClassId → selectedId, chipsRow → headerSlot, imagesLoading → loading, imagesEmpty → empty, grid → gridSlot)
 - [x] X1.6 `class-info-section` → **InfoSection** (`components/data-display/`)
-- [ ] X1.7 `class-list-row` → **LabeledSwatchRow** (`components/data-display/`)
+- [x] X1.7 `class-list-row` → **LabeledSwatchRow** (`components/data-display/`) — prop name → label
 - [ ] X1.8 `class-pool-list` → **SwatchItemList** (`components/data-display/`)
 - [ ] X1.9 `dataset-filter-chip-row` → **FilterChipRow** (`components/inputs/`)
 - [ ] X1.10 `dataset-menu` → **ContextMenuWithSubmenus** (`components/overlays/`)
