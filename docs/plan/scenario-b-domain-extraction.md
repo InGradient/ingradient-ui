@@ -250,7 +250,7 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 
 모든 의존자는 patterns/ 안에 있으므로 매 rename 후 patterns 내부 import 갱신만 하면 됨. **순서는 plan 의 X1.1~X1.21 그대로 진행** (leaf-first 와 자연 일치).
 
-### Phase X1 — B rename (10/21)
+### Phase X1 — B rename (11/21)
 - [x] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`) — CanvasCoordReadout 별도 분리 (`patterns/shells/canvas-coord-readout.tsx`)
 - [x] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
 - [x] X1.3 `labeling-progress-bar` → **SegmentedProgressBar** (`components/feedback/`) — type LabelingSegment → ProgressSegment
@@ -261,7 +261,7 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] X1.8 `class-pool-list` → **SwatchItemList** (`components/data-display/`) — items prop + ClassPoolItem → SwatchItem (id/label/color/count)
 - [x] X1.9 `dataset-filter-chip-row` → **FilterChipRow** (`components/inputs/`) — datasets → items + name → label + image_count → count, default label 'Dataset' → 'Filter'
 - [x] X1.10 `dataset-menu` → **ContextMenuWithSubmenus** (`components/overlays/`) — type DatasetMenuAction → ContextMenuWithSubmenusAction, 신규 stories 추가
-- [ ] X1.11 `duplicate-dataset-modal` → **DuplicateItemModal** (`components/overlays/`)
+- [x] X1.11 `duplicate-dataset-modal` → **DuplicateItemModal** (`components/overlays/`) — title/nameLabel/submitLabel props 추가, copyLabels checkbox → 일반 `option?: { label; defaultChecked }` props 화
 - [ ] X1.12 `filter-class-chip` → **ColorChip** (`components/inputs/`)
 - [ ] X1.13 `gallery-mobile-toolbar` → **MobileBottomToolbar** (`components/navigation/`)
 - [ ] X1.14 `image-detail-labelers-list` → **UserPoolList** (`components/data-display/`)

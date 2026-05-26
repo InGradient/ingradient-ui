@@ -1,8 +1,7 @@
-import { ConfirmDialog, ContextMenuWithSubmenus } from '@ingradient/ui/components'
+import { ConfirmDialog, ContextMenuWithSubmenus, DuplicateItemModal } from '@ingradient/ui/components'
 import {
   AddDatasetModal,
   DragDropDecideModal,
-  DuplicateDatasetModal,
   GalleryDatasetTransferDialog,
   GalleryDeleteDialog,
   GalleryDetailModal,
@@ -77,11 +76,13 @@ export function CatalogOverlays({
         onSubmit={addDataset.onSubmit}
         classes={addDataset.classes.map((c) => ({ id: c.id, name: c.name, color: c.color }))}
       />
-      <DuplicateDatasetModal
+      <DuplicateItemModal
         open={!!duplicateDataset.datasetId}
         onClose={duplicateDataset.onClose}
         onSubmit={duplicateDataset.onSubmit}
         defaultName={duplicateDataset.defaultName}
+        title="Duplicate dataset"
+        option={{ label: 'Copy labels and annotations', defaultChecked: true }}
       />
       <DragDropDecideModal
         open={dragDrop.open}
