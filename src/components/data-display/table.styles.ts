@@ -14,8 +14,8 @@ export const StyledTable = styled.table`
   table-layout: fixed;
 `
 
-export const Th = styled.th`
-  text-align: left;
+export const Th = styled.th<{ $numeric?: boolean }>`
+  text-align: ${(p) => (p.$numeric ? 'right' : 'left')};
   padding: var(--ig-space-4) var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-xs);
@@ -23,10 +23,21 @@ export const Th = styled.th`
   border-bottom: 1px solid var(--ig-color-border-subtle);
 `
 
-export const Td = styled.td`
+export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: boolean }>`
   padding: var(--ig-space-5);
-  color: var(--ig-color-text-secondary);
+  color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
   border-bottom: 1px solid var(--ig-color-border-subtle);
+  ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
+  ${(p) => p.$mono && 'font-family: monospace; font-size: 12px;'}
+`
+
+export const Tfoot = styled.tfoot`
+  & td {
+    font-weight: 600;
+    color: var(--ig-color-text-primary);
+    border-top: 1px solid var(--ig-color-border-subtle);
+    border-bottom: none;
+  }
 `
 
 export const DragTh = styled(Th)`width: 36px; padding: var(--ig-space-4) var(--ig-space-2);`
