@@ -319,10 +319,10 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [ ] ~~dataset-task-tag → `platform-pages/catalog/`~~ — 결정 변경: 이동하지 않고 patterns 잔존. edge-pages 도 사용하는 shared annotation primitive 라 scenario B 의 "@ingradient/ui 가 annotation apps 의 design system 도 함께 한다" 원칙에 부합
 
 ### 최종 검증
-- [ ] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
-- [ ] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
-- [ ] `ls src/patterns/shells/` 잔여 ~24 파일 (C 카테고리 만)
-- [ ] plan 문서 진척 상황 모두 ✅
+- [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
+- [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
+- [x] `ls src/patterns/shells/` 잔여 41 .tsx (C 카테고리 + B rename 후 patterns/ 잔존 + dataset-task-tag 결정 변경)
+- [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
 ---
