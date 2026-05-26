@@ -1,9 +1,9 @@
 import {
   CatalogMobileShell,
-  DatasetSelectorMobile,
   GalleryFilterPanel,
   GalleryMobileToolbar,
 } from '@ingradient/ui/patterns'
+import { MobileDropdown } from '@ingradient/ui/components'
 import { CatalogBody } from './CatalogBody'
 import { MobileBottomSheet } from './CatalogView.styles'
 import type {
@@ -35,8 +35,8 @@ export function CatalogMobileView({
     <>
       <CatalogMobileShell
         topBar={
-          <DatasetSelectorMobile
-            datasets={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}
+          <MobileDropdown
+            options={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}
             currentId={datasets.currentId}
             loading={datasets.loading}
             open={mobile.datasetSelectorOpen}

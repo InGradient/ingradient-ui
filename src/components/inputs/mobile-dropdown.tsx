@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ChevronDown } from 'lucide-react'
 import { Box, Text } from '../../primitives'
-import { MenuItem } from '../../components/overlays/menu-item'
+import { MenuItem } from '../overlays/menu-item'
 
 const WRAP_STYLE = { flex: 1, minWidth: 0, position: 'relative' as const }
 const TRIGGER_LABEL_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const }
@@ -48,13 +48,13 @@ const Dropdown = styled.div`
   }
 `
 
-export interface DatasetSelectorMobileOption {
+export interface MobileDropdownOption {
   id: string
   name: string
 }
 
-export interface DatasetSelectorMobileProps {
-  datasets: DatasetSelectorMobileOption[]
+export interface MobileDropdownProps {
+  options: MobileDropdownOption[]
   currentId?: string
   loading?: boolean
   open: boolean
@@ -63,11 +63,15 @@ export interface DatasetSelectorMobileProps {
   placeholder?: string
 }
 
-export function DatasetSelectorMobile({
-  datasets, currentId, loading, open, onToggle, onSelect,
-  placeholder = 'Select dataset',
-}: DatasetSelectorMobileProps) {
-  const current = datasets.find((d) => d.id === currentId)
+/**
+ * Mobile-only full-width dropdown — sticky-blur glass dropdown surface.
+ * Desktop 환경에선 DropdownSelect / DropdownLayout 을 사용.
+ */
+export function MobileDropdown({
+  options, currentId, loading, open, onToggle, onSelect,
+  placeholder = 'Select an option',
+}: MobileDropdownProps) {
+  const current = options.find((d) => d.id === currentId)
   const label = current?.name ?? (loading ? 'Loading…' : placeholder)
   return (
     <Box style={WRAP_STYLE}>
@@ -81,9 +85,9 @@ export function DatasetSelectorMobile({
         <Text as="span" style={TRIGGER_LABEL_STYLE}>{label}</Text>
         <ChevronDown size={16} />
       </Trigger>
-      {open && datasets.length > 0 ? (
+      {open && options.length > 0 ? (
         <Dropdown role="listbox">
-          {datasets.map((d) => (
+          {options.map((d) => (
             <MenuItem
               key={d.id}
               role="option"
