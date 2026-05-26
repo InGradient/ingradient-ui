@@ -72,62 +72,81 @@ A 카테고리도 마찬가지로 generic 화 우선 — `CatalogShell` 같은 �
 
 ---
 
-## 추가 검토 사항
+## 검토 완료 — 권고안
 
-### 1. 기존 Table 컴포넌트 확인 필요
-> "이거 table이 이미 따로 있지 않아?"
+### 1. 기존 Table — 확장 후 흡수 ✅
+`components/data-display/Table` 이미 generic. **`TableColumn` 에 `numeric?: boolean` + `muted?: boolean` 추가** 하면 devices-table 흡수 가능.
+- **DevicesTable** → 외부 pages 로 (확장된 Table 사용한 단순 컴포지션)
+- **StatsTable** → footer 다르니 patterns 에 별도 추출 (혹은 Table 에 `footer?: ReactNode[]` 추가 검토)
 
-`components/data-display/table.tsx` 가 이미 존재. devices-table 의 자식 selector 패턴이 이 generic Table 로 흡수 가능한지 검토.
-- 가능하면 → DevicesTable 는 generic Table 사용한 단순 컴포지션
-- 불가능하면 → StatsTable 처럼 patterns 에 별도 footer-table 추출
+### 2. ColumnsLayout — SplitLayout 과 별개 유지 ✅
+기존 `SplitLayout` 은 정적 grid (resize 불가). CatalogShell 은 flex + drag-resize — **별개 컴포넌트**.
+- **CatalogShell** → `ResizableColumnsLayout` 으로 generic 화
+- **SplitLayout** → 그대로 유지 (정적 grid 용)
 
-### 2. ColumnsLayout 의 API 설계
-> "components에 columns 또는 layout 같은 걸로 만든 후 숫자를 넣으면 유연하게"
-
-후보 API:
+권고 API (옵션 C — 객체 배열):
 ```tsx
-// 옵션 A — 단순 숫자
-<ColumnsLayout columns={3} gap={4}>
-  <aside>Sidebar</aside>
+<ResizableColumnsLayout
+  columns={[
+    { width: 320, resizable: true, minWidth: 220, maxWidth: 480, collapsible: true },
+    { width: 'auto' },
+    { width: 320, resizable: true, minWidth: 220, maxWidth: 480 },
+  ]}
+  storageKey="my-shell"
+>
+  <aside>Left</aside>
   <main>Body</main>
-  <aside>Inspector</aside>
-</ColumnsLayout>
-
-// 옵션 B — 각 컬럼 너비 명시
-<ColumnsLayout columns={[320, 'auto', 320]} resizable={[0, 2]}>
-  ...
-</ColumnsLayout>
-
-// 옵션 C — 객체 배열 (더 풍부한 props)
-<ColumnsLayout columns={[
-  { width: 320, resizable: true, collapsible: true },
-  { width: 'auto' },
-  { width: 320, resizable: true },
-]}>
-  ...
-</ColumnsLayout>
+  <aside>Right</aside>
+</ResizableColumnsLayout>
 ```
 
-기존 `patterns/layouts/layouts.tsx` 의 `SplitLayout` 과의 관계도 검토 필요.
+### 3. BarChartWidget 신규 추출 불필요 ✅
+`BarChartCard` (patterns/charts/) 이미 generic + 충분한 옵션 (layout, stacked, getCellColor, tooltipContent, headerExtra). 5 widget 들은 `BarChartCard + 도메인 사이드 table` 단순 컴포지션.
+- **BarChartCard 그대로 유지**
+- 사이드 table 들 → 확장된 Table 또는 StatsTable 로 흡수
+- 5 widget 자체 → 외부 pages 책임 (BarChartCard + Table 합성)
 
-### 3. BarChartWidget 의 옵션 범위
-> "AnalysisLabelingByPersonWidget 이런 건 바그래프에 옵션을 넣어서 쓸 수 있게"
+### 4. PatternTabs — ModeSwitcher 와 별개 + 이름 변경 ✅
+시각도 ARIA 도 다른 컴포넌트:
+- **ModeSwitcher**: segmented control (붙어있는 옵션들, role=radiogroup)
+- **PatternTabs**: separate chip tabs (떨어진 옵션들, role=tablist)
 
-옵션 후보:
-- 데이터 그룹화 (by-person / by-class / by-source 등)
-- range / 기간 필터
-- 색 매핑 (도메인별 색)
-- legend / tooltip 형식
+**별개 유지**. `pattern-tabs` 라는 이름이 도메인 ambiguous → **`ChipTabs` 같은 시각 명시 이름으로 변경** 후 components/inputs/ 로 promotion.
 
-기존 `patterns/charts/bar-chart-card.tsx` 와의 관계 — 통합 또는 확장?
+### 5. Storybook viewport addon — 별도 PR 로 추가 ✅
+mobile-only 3-4 컴포넌트 검토 필수. 비용 작음 (1 package + 1 config 줄). 단 **이 refactor PR 과 분리** — 별도 PR.
 
-### 4. PatternTabs vs mode-switcher
-> "기존 mode-switcher 와의 차별점 확인 필요"
+---
 
-코드 검토 후 결정 — 통합 또는 별개.
+## 업데이트된 작업 계획
 
-### 5. Storybook viewport addon
-mobile-nav-shell 안 보이는 이유는 viewport addon 미설치. 별도 작업으로 viewport addon 추가 결정 가능.
+### Phase A1: 단순 components/ promotion (선행)
+1. **A4. HoverPreview** → `components/overlays/hover-preview.tsx` (그대로)
+2. **A5. FilterPopoverTrigger** → `components/inputs/filter-popover-trigger.tsx` (그대로)
+3. **A6. PatternTabs → ChipTabs** → `components/inputs/chip-tabs.tsx` (이름 변경)
+4. **A7. PermissionHelpTooltip → HelpTooltip** → `components/overlays/help-tooltip.tsx` (이름 변경)
+5. **A2. MobileNavShell** → `components/navigation/mobile-nav-shell.tsx` (navigation/ 폴더 신설)
+6. **A8. GalleryImageCard → ImageCard** → `components/data-display/image-card.tsx` (이름 변경 + AspectRatioImage 활용)
+7. **B8. DatasetSelectorMobile → MobileDropdown** → `components/inputs/mobile-dropdown.tsx` (이름 변경)
+
+### Phase A2: API 설계 필요한 promotion
+8. **A1. DateRangePicker** → DayPicker + range 지원 추가
+9. **A3. ResizableColumnsLayout** → 옵션 C API + storageKey 지원
+
+### Phase B1: generic patterns 추출 (3개로 축소)
+1. **PermissionMatrix** → B2 generic 화 (기존 Table 확장으로 가능한지 먼저 검토 — sticky-col 패턴 때문에 안 될 수도)
+2. **DistributionHeatmap** → B3 generic 화 (cell `$intensity` 패턴 보존)
+3. **StatsTable** → B4 generic 화 (footer 가능한 범용 table — 또는 기존 Table 에 footer prop 추가하는 방향 고려)
+
+### Phase B2: 기존 Table 확장
+- `TableColumn` 에 `numeric?: boolean` + `muted?: boolean` 추가
+- (선택) `footer?: ReactNode[]` 추가하면 StatsTable 흡수 가능 — 검토
+
+### Phase B3: 외부 pages 책임 분리
+- DevicesTable + 5 analysis widget 도메인 컴포지션을 외부로
+- `@ingradient/ui` 에서 제거 또는 deprecate
+
+### Phase 5 (별도 PR): Storybook viewport addon 설치
 
 ---
 
