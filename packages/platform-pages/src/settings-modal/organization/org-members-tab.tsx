@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { DialogShell } from '../../components/overlays/dialog-shell'
-import { Table, type TableColumn } from '../../components/data-display/table'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { DialogShell } from '@ingradient/ui/components'
+import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 const DESCRIPTION_STYLE = { lineHeight: 1.5 }

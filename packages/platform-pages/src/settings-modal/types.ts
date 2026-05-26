@@ -4,16 +4,18 @@ import type {
   DeleteAccountPreview,
   DeleteAccountResolutions,
   GroupVisible,
-  InvitationsTabProps,
   LicenseInfo,
-  OrgMembersTabProps,
-  OrgSettingsTabProps,
   ProjectMemberRowMember,
   ProjectMemberRowRoleOption,
   ProjectTypeTone,
   SearchableUserCandidate,
   SettingsAccountTabUser,
 } from '@ingradient/ui/patterns'
+import type {
+  InvitationsTabProps,
+  OrgMembersTabProps,
+  OrgSettingsTabProps,
+} from './organization'
 import type {
   DevicesFormsProps,
   DevicesLicenseSectionProps,

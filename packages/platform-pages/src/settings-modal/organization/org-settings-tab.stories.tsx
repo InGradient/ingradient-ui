@@ -5,7 +5,7 @@ import { OrgSettingsTab } from './org-settings-tab'
 const org = { code: 'ING-2026', name: 'Ingradient', status: 'active' }
 
 const meta: Meta<typeof OrgSettingsTab> = {
-  title: 'Patterns/Shells/OrgSettingsTab',
+  title: 'Platform Pages/Settings Modal/Organization/OrgSettingsTab',
   component: OrgSettingsTab,
   decorators: [(Story) => <div style={{ padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

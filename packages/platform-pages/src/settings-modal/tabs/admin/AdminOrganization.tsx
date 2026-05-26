@@ -1,5 +1,5 @@
-import { OrgSettingsTab } from '@ingradient/ui/patterns'
-import type { OrgSettingsTabProps } from '@ingradient/ui/patterns'
+import { OrgSettingsTab } from '../../organization'
+import type { OrgSettingsTabProps } from '../../organization'
 
 export function AdminOrganization(props: OrgSettingsTabProps) {
   return <OrgSettingsTab {...props} />

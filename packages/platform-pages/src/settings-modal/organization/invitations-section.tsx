@@ -1,9 +1,9 @@
-import { Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { SelectField } from '../../components/inputs/select-field'
-import { TextField } from '../../components/inputs/text-fields'
-import { OptionRow } from '../../components/data-display/option-row'
-import { Table, type TableColumn } from '../../components/data-display/table'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { SelectField } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
+import { OptionRow } from '@ingradient/ui/components'
+import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 const SEARCH_FIELD_STYLE = { flex: 1 }

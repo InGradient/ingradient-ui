@@ -1,4 +1,4 @@
-import { Stack, Text } from '../../primitives'
+import { Stack, Text } from '@ingradient/ui/primitives'
 import {
   InvitationsSection,
   type InvitationsSectionProps,

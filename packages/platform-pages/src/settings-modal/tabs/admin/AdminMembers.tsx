@@ -1,5 +1,5 @@
-import { InvitationsTab, OrgMembersTab } from '@ingradient/ui/patterns'
-import type { InvitationsTabProps, OrgMembersTabProps } from '@ingradient/ui/patterns'
+import { InvitationsTab, OrgMembersTab } from '../../organization'
+import type { InvitationsTabProps, OrgMembersTabProps } from '../../organization'
 
 const INVITATIONS_WRAPPER_STYLE: React.CSSProperties = { marginTop: 24 }
 

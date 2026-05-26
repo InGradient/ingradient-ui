@@ -1,6 +1,6 @@
-import { Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { TextField } from '../../components/inputs/text-fields'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
 
 const WRAP_STYLE = { maxWidth: 480 }
 const PLACEHOLDER_STYLE = { margin: 0 }

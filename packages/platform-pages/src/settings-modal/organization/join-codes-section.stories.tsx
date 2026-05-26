@@ -14,7 +14,7 @@ const codes: JoinCodeRow[] = [
 ]
 
 const meta: Meta<typeof JoinCodesSection> = {
-  title: 'Patterns/Shells/JoinCodesSection',
+  title: 'Platform Pages/Settings Modal/Organization/JoinCodesSection',
   component: JoinCodesSection,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 900, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

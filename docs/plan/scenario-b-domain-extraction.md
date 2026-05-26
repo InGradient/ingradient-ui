@@ -273,12 +273,12 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] X1.20 `analysis-widget-grid` → **WidgetGrid** (`patterns/`) — AnalysisWidgetGridProps → WidgetGridProps, DashboardView 갱신 (Draggable wrapper 은 그대로 유지)
 - [x] X1.21 `igp-export-modal` → **ExportProgressModal** (`patterns/`) — IgpExportPhase → ExportProgressPhase (compressing → processing), title/description/phaseLabel props 추가, 외부 사용처(CatalogOverlays) 가 title='Export (.igp)' + phaseLabel={{ processing: 'Compressing files…' }} 로 호환, overlay-types/catalog-scenarios/use-catalog-scene/build-overlays 전부 'processing' 으로 갱신
 
-### Phase X2.1 — organization (0/5)
-- [ ] org-members-tab → `platform-pages/settings-modal/organization/`
-- [ ] org-settings-tab → `platform-pages/settings-modal/organization/`
-- [ ] invitations-section → `platform-pages/settings-modal/organization/`
-- [ ] invitations-tab → `platform-pages/settings-modal/organization/`
-- [ ] join-codes-section → `platform-pages/settings-modal/organization/`
+### Phase X2.1 — organization (5/5)
+- [x] org-members-tab → `platform-pages/settings-modal/organization/`
+- [x] org-settings-tab → `platform-pages/settings-modal/organization/`
+- [x] invitations-section → `platform-pages/settings-modal/organization/`
+- [x] invitations-tab → `platform-pages/settings-modal/organization/`
+- [x] join-codes-section → `platform-pages/settings-modal/organization/`
 
 ### Phase X2.2 — project (0/6)
 - [ ] delete-project-section → `platform-pages/settings-modal/project/`
