@@ -1,5 +1,5 @@
-import { ConfirmDialog } from '@ingradient/ui/components'
-import { AddClassDialog, ClassLightbox, ImageContextMenu } from '@ingradient/ui/patterns'
+import { ConfirmDialog, TextInputDialog } from '@ingradient/ui/components'
+import { ClassLightbox, ImageContextMenu } from '@ingradient/ui/patterns'
 import type { ClassManageOverlaysProps } from './types'
 
 const CONTEXT_MENU_BASE = [{ key: 'add-ref', label: 'Add to Reference Image' }] as const
@@ -12,12 +12,14 @@ export function ClassManageOverlays({
 }: ClassManageOverlaysProps) {
   return (
     <>
-      <AddClassDialog
+      <TextInputDialog
         open={addClass.open}
-        name={addClass.name}
-        onChangeName={addClass.onNameChange}
+        value={addClass.name}
+        onChange={addClass.onNameChange}
         onClose={addClass.onClose}
         onConfirm={addClass.onConfirm}
+        title="Class name"
+        placeholder="Enter class name"
       />
       <ImageContextMenu
         position={contextMenu.position}
