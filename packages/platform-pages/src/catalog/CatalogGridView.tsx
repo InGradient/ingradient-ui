@@ -1,5 +1,4 @@
-import { GalleryImageCard } from '@ingradient/ui/patterns'
-import { HoverPreview } from '@ingradient/ui/components'
+import { HoverPreview, ImageCard } from '@ingradient/ui/components'
 import { Grid } from '@ingradient/ui/primitives'
 import { DragOverGrid, GridWrap } from './CatalogView.styles'
 import type { CatalogImage, CatalogImagesPaneProps } from './types'
@@ -23,7 +22,7 @@ function renderCard(
   onOpenMenu: (id: string, anchor: HTMLElement) => void,
 ) {
   return (
-    <GalleryImageCard
+    <ImageCard
       key={image.id}
       image={image}
       selected={selected}

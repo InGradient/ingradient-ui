@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Inline, Text } from '../../primitives'
-import { SyncStatusChip, type SyncState } from './sync-status-chip'
-import { GroupCountBadge } from '../../components/feedback/group-count-badge'
-import { MediaOverlay } from '../../components/feedback/media-overlay'
-import { IconButton } from '../../components/inputs/icon-button'
-import { KebabIcon } from '../../components/icons/catalog-icons'
+import { SyncStatusChip, type SyncState } from '../../patterns/shells/sync-status-chip'
+import { GroupCountBadge } from '../feedback/group-count-badge'
+import { MediaOverlay } from '../feedback/media-overlay'
+import { IconButton } from '../inputs/icon-button'
+import { KebabIcon } from '../icons/catalog-icons'
 
 const Card = styled.div<{ $selected: boolean }>`
   position: relative;
@@ -59,7 +59,7 @@ const FOOTER_STYLE = {
   pointerEvents: 'none' as const,
 }
 
-export interface GalleryImageCardImage {
+export interface ImageCardImage {
   id: string
   name: string
   thumb_url: string
@@ -69,8 +69,8 @@ export interface GalleryImageCardImage {
   group_count?: number
 }
 
-export interface GalleryImageCardProps {
-  image: GalleryImageCardImage
+export interface ImageCardProps {
+  image: ImageCardImage
   selected?: boolean
   showName?: boolean
   showKebab?: boolean
@@ -79,10 +79,10 @@ export interface GalleryImageCardProps {
   onOpenMenu?: (id: string, anchor: HTMLElement) => void
 }
 
-export function GalleryImageCard({
+export function ImageCard({
   image, selected = false, showName = false, showKebab = true,
   onSelect, onOpen, onOpenMenu,
-}: GalleryImageCardProps) {
+}: ImageCardProps) {
   const menuBtnRef = React.useRef<HTMLButtonElement>(null)
   const groupCount = image.group_count ?? 0
   return (
