@@ -288,11 +288,11 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] project-resolution-card → `platform-pages/settings-modal/project/` (account 관련이지만 ProjectResolution 이름) — delete-account-dialog 의 의존 때문에 X2.3 의 delete-account-dialog 도 동시에 이동 (`platform-pages/settings-modal/account/`)
 - [x] project-settings-form → `platform-pages/settings-modal/project/` — `./auto-save-status`, `./project-type-tag` import 는 `@ingradient/ui/patterns` 로 (patterns 잔존)
 
-### Phase X2.3 — settings account + general (1/4)
-- [ ] settings-account-tab → `platform-pages/settings-modal/account/`
+### Phase X2.3 — settings account + general (4/4)
+- [x] settings-account-tab → `platform-pages/settings-modal/account/` — settings-section/hint/license-info-display import 은 patterns 잔존이므로 `@ingradient/ui/patterns` 로
 - [x] delete-account-dialog → `platform-pages/settings-modal/account/` (X2.2 에 의존성 때문에 미리 이동됨)
-- [ ] password-change-dialog → `platform-pages/settings-modal/account/`
-- [ ] settings-general-tab → `platform-pages/settings-modal/general/`
+- [x] password-change-dialog → `platform-pages/settings-modal/account/`
+- [x] settings-general-tab → `platform-pages/settings-modal/general/` — settings-section/row/hint import 동일하게 `@ingradient/ui/patterns` 로
 
 ### Phase X2.4 — image-detail + comments + model-mapping (0/4)
 - [ ] image-detail-class-list → `platform-pages/image-detail/`

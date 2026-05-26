@@ -1,9 +1,7 @@
-import { Box, Stack } from '../../primitives'
-import { Checkbox } from '../../components/inputs/toggles'
-import { DropdownSelect, type DropdownOption } from '../../components/inputs/dropdown-select'
-import { SettingsSection } from './settings-section'
-import { SettingsRow } from './settings-row'
-import { SettingsHint } from './settings-hint'
+import { Box, Stack } from '@ingradient/ui/primitives'
+import { Checkbox } from '@ingradient/ui/components'
+import { DropdownSelect, type DropdownOption } from '@ingradient/ui/components'
+import { SettingsHint, SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
 
 const SELECT_WRAP_STYLE = { minWidth: 160 }
 

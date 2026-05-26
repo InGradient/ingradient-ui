@@ -9,7 +9,7 @@ const personalLicense = { type: 'personal' as const, expiresAt: '2026-08-30', re
 const expiredLicense = { type: 'personal' as const, expiresAt: '2026-01-01', remainingDays: -134, expired: true }
 
 const meta: Meta<typeof SettingsAccountTab> = {
-  title: 'Patterns/Shells/SettingsAccountTab',
+  title: 'Platform Pages/Settings Modal/Account/SettingsAccountTab',
   component: SettingsAccountTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 760, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

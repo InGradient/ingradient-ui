@@ -1,4 +1,4 @@
-import { SettingsGeneralTab } from '@ingradient/ui/patterns'
+import { SettingsGeneralTab } from '../general'
 import type { GeneralTabProps } from '../types'
 
 export function GeneralTab(props: GeneralTabProps) {

@@ -3,11 +3,11 @@ import type {
   AutoSaveState,
   LicenseInfo,
   ProjectTypeTone,
-  SettingsAccountTabUser,
 } from '@ingradient/ui/patterns'
 import type {
   DeleteAccountPreview,
   DeleteAccountResolutions,
+  SettingsAccountTabUser,
 } from './account'
 import type {
   InvitationsTabProps,

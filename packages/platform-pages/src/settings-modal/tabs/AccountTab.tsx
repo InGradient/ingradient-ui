@@ -1,8 +1,8 @@
 import {
+  DeleteAccountDialog,
   PasswordChangeDialog,
   SettingsAccountTab,
-} from '@ingradient/ui/patterns'
-import { DeleteAccountDialog } from '../account'
+} from '../account'
 import type { AccountTabProps } from '../types'
 
 export function AccountTab(props: AccountTabProps) {

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { PasswordChangeDialog } from './password-change-dialog'
 
 const meta: Meta<typeof PasswordChangeDialog> = {
-  title: 'Patterns/Shells/PasswordChangeDialog',
+  title: 'Platform Pages/Settings Modal/Account/PasswordChangeDialog',
   component: PasswordChangeDialog,
   parameters: { layout: 'fullscreen' },
 }

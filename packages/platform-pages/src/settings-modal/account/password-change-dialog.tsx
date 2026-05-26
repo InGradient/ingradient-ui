@@ -1,8 +1,8 @@
-import { Stack, Text } from '../../primitives'
-import { Alert } from '../../components/feedback/alert'
-import { Button } from '../../components/inputs/button'
-import { PasswordField } from '../../components/inputs/text-fields'
-import { DialogShell } from '../../components/overlays/dialog-shell'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { Alert } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { PasswordField } from '@ingradient/ui/components'
+import { DialogShell } from '@ingradient/ui/components'
 
 const FULL_FIELD_STYLE = { width: '100%' }
 

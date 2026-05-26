@@ -1,10 +1,8 @@
-import { Inline, Stack } from '../../primitives'
-import { Alert } from '../../components/feedback/alert'
-import { Button } from '../../components/inputs/button'
-import { TextField } from '../../components/inputs/text-fields'
-import { SettingsSection } from './settings-section'
-import { SettingsHint } from './settings-hint'
-import { LicenseInfoDisplay, type LicenseInfo } from './license-info-display'
+import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Alert } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { TextField } from '@ingradient/ui/components'
+import { LicenseInfoDisplay, type LicenseInfo, SettingsHint, SettingsSection } from '@ingradient/ui/patterns'
 
 const FIELD_STYLE = { minWidth: 240 }
 
