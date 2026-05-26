@@ -238,6 +238,18 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 
 ## 진척 상황 (라이브 update — 매 commit 후 갱신)
 
+### Phase X1 의존성 분석 결과 (Task #65 완료)
+
+**외부 사용처**: 21 컴포넌트 모두 `packages/*`, `stories/*` 에서 직접 import 0 (모두 patterns 안에서만 사용).
+**patterns 내부 의존** (총 5 컴포넌트):
+- bbox-navigation ← `reference-image-section` (C 유지)
+- class-info-section ← `class-info-sidebar` (C 유지) + `reference-image-section` (C)
+- class-list-row ← `class-list-sidebar` (C 유지)
+- dataset-menu ← `gallery-image-menu` (A — Phase X2.5 이동 예정)
+- filter-class-chip ← `filter-searchable-list` (patterns 유지) + `gallery-filter-panel` (A — Phase X2.5)
+
+모든 의존자는 patterns/ 안에 있으므로 매 rename 후 patterns 내부 import 갱신만 하면 됨. **순서는 plan 의 X1.1~X1.21 그대로 진행** (leaf-first 와 자연 일치).
+
 ### Phase X1 — B rename (0/21)
 - [ ] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`)
 - [ ] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
