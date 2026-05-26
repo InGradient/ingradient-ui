@@ -1,6 +1,6 @@
 import React from 'react'
 import { MenuItem } from '../../components/overlays/menu-item'
-import { FilterPopoverTrigger } from './filter-popover-trigger'
+import { FilterPopoverTrigger } from '../../components/inputs/filter-popover-trigger'
 
 const OPTION_LIST_STYLE = {
   listStyle: 'none' as const,

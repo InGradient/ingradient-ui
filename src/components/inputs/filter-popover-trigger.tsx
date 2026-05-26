@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { FloatingOverlay } from '../../components/overlays/floating-overlay'
+import { FloatingOverlay } from '../overlays/floating-overlay'
 
 const WRAP_STYLE = { position: 'relative' as const, display: 'inline-flex' as const }
 

@@ -1,5 +1,6 @@
 import {
   FilterIcon,
+  FilterPopoverTrigger,
   GridIcon,
   ModeSwitcher,
   SearchField,
@@ -10,7 +11,6 @@ import {
 } from '@ingradient/ui/components'
 import {
   ExpandSidebarBtn,
-  FilterPopoverTrigger,
   GalleryFilterPanel,
   GalleryToolbar,
   SortPopoverTrigger,
@@ -121,10 +121,20 @@ export function CatalogToolbarRow({
       }
       actions={
         <>
-          <Button variant="secondary" size="sm" onClick={onExport}>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={onExport}
+            data-ig-component="CatalogToolbarRow.ExportButton"
+          >
             Export
           </Button>
-          <Button variant="accent" size="sm" onClick={onUpload}>
+          <Button
+            variant="accent"
+            size="sm"
+            onClick={onUpload}
+            data-ig-component="CatalogToolbarRow.UploadButton"
+          >
             Upload
           </Button>
         </>
@@ -136,7 +146,11 @@ export function CatalogToolbarRow({
       allSelected={allSelected}
       uploadProgress={uploadProgress}
       selectionActions={
-        <DangerDimButton type="button" onClick={onDelete}>
+        <DangerDimButton
+          type="button"
+          onClick={onDelete}
+          data-ig-component="CatalogToolbarRow.DeleteButton"
+        >
           Delete
         </DangerDimButton>
       }

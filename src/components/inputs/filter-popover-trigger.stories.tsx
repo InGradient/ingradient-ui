@@ -3,7 +3,7 @@ import { FilterPopoverTrigger } from './filter-popover-trigger'
 import { Stack } from '../../primitives'
 
 const meta: Meta<typeof FilterPopoverTrigger> = {
-  title: 'Patterns/FilterPopoverTrigger',
+  title: 'Components/Inputs/FilterPopoverTrigger',
   component: FilterPopoverTrigger,
   parameters: { layout: 'centered' },
 }
