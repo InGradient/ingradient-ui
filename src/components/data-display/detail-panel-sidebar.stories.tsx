@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ImageDetailSidebar } from './image-detail-sidebar'
-import { UserPoolList, type UserPoolItem } from '../../components/data-display/user-pool-list'
+import { DetailPanelSidebar } from './detail-panel-sidebar'
+import { UserPoolList, type UserPoolItem } from './user-pool-list'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/ImageDetailSidebar',
-  component: ImageDetailSidebar,
+  title: 'Components/Data Display/DetailPanelSidebar',
+  component: DetailPanelSidebar,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     a11y: { test: 'error' },
   },
-} satisfies Meta<typeof ImageDetailSidebar>
+} satisfies Meta<typeof DetailPanelSidebar>
 
 export default meta
 
@@ -32,7 +32,7 @@ const slotStyle = {
   color: 'var(--ig-color-text-muted)',
 } as const
 
-const InfoSlot = (
+const HeaderSlot = (
   <div style={{ padding: 'var(--ig-space-5)', borderBottom: '1px solid var(--ig-color-border-subtle)' }}>
     <div style={{ fontWeight: 700, color: 'var(--ig-color-text-primary)', marginBottom: 'var(--ig-space-2)' }}>
       wafer-line-a-batch-04.jpg
@@ -43,7 +43,7 @@ const InfoSlot = (
   </div>
 )
 
-const ClassSlot = (
+const BodySlot = (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
     {['Defect', 'Crack', 'Stain', 'Scratch', 'Dent', 'Rust', 'Edge anomaly', 'Particle'].map((label) => (
       <div key={label} style={slotStyle}>{label}</div>
@@ -52,7 +52,7 @@ const ClassSlot = (
 )
 
 const CommentsSlot = (
-  <div style={slotStyle}>CommentsPanel slot — 자체 collapsible header를 가진 컴포넌트가 들어온다고 가정</div>
+  <div style={slotStyle}>CommentsPanel slot — 자체 collapsible header 를 가진 컴포넌트가 들어온다고 가정</div>
 )
 
 function LabelersSlot() {
@@ -75,32 +75,32 @@ function LabelersSlot() {
 }
 
 export const Review: Story = {
-  args: { infoPanel: <div /> },
+  args: { headerSlot: <div /> },
   render: () => (
     <StorybookPage
-      title="ImageDetailSidebar"
-      description="MediaDialogShell의 sidebar slot에 들어가는 표준 image detail 사이드바. 위(고정) Info → 가운데(flex-grow, 스크롤) Class → 아래(고정) Comments + Labelers 레이아웃."
+      title="DetailPanelSidebar"
+      description="dialog 의 sidebar slot 에 들어가는 표준 상세 패널 사이드바. 위(고정) header → 가운데(flex-grow, 스크롤) body → 아래(고정) footerSlots[] 레이아웃."
     >
       <StorybookSection title="Slot composition" description="채워진 슬롯 조합별 사이드바 모습.">
         <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
-          <StorybookCard title="All slots filled" subtitle="info + class + comments + labelers">
+          <StorybookCard title="All slots filled" subtitle="header + body + 2 footer slots">
             <div style={{ width: 320, height: 560, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)', overflow: 'hidden' }}>
-              <ImageDetailSidebar
-                infoPanel={InfoSlot}
-                classSlot={ClassSlot}
-                commentsSlot={CommentsSlot}
-                labelersSlot={<LabelersSlot />}
+              <DetailPanelSidebar
+                headerSlot={HeaderSlot}
+                bodySlot={BodySlot}
+                bodySectionTitle="Class"
+                footerSlots={[CommentsSlot, <LabelersSlot key="l" />]}
               />
             </div>
           </StorybookCard>
-          <StorybookCard title="Info + class only" subtitle="하단 고정 슬롯 없음">
+          <StorybookCard title="Header + body only" subtitle="footer 없음">
             <div style={{ width: 320, height: 560, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)', overflow: 'hidden' }}>
-              <ImageDetailSidebar infoPanel={InfoSlot} classSlot={ClassSlot} />
+              <DetailPanelSidebar headerSlot={HeaderSlot} bodySlot={BodySlot} bodySectionTitle="Class" />
             </div>
           </StorybookCard>
-          <StorybookCard title="Info only" subtitle="최소 구성">
+          <StorybookCard title="Header only" subtitle="최소 구성">
             <div style={{ width: 320, height: 320, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)', overflow: 'hidden' }}>
-              <ImageDetailSidebar infoPanel={InfoSlot} />
+              <DetailPanelSidebar headerSlot={HeaderSlot} />
             </div>
           </StorybookCard>
         </StorybookGrid>

@@ -9,12 +9,11 @@ import {
   Trash2,
   Undo2,
 } from 'lucide-react'
-import { ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
+import { DetailPanelSidebar, ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
 import {
   CommentsPanel,
   ImageDetailClassList,
   ImageDetailInfoPanel,
-  ImageDetailSidebar,
   ImageInspectorCanvas,
   type ImageDetailInfo,
 } from '@ingradient/ui/patterns'
@@ -120,29 +119,30 @@ function DetailSidebarMount({
     color: c.color,
   }))
   return (
-    <ImageDetailSidebar
-      infoPanel={
+    <DetailPanelSidebar
+      headerSlot={
         <ImageDetailInfoPanel
           image={info}
           detailsOpen={detailsOpen}
           onToggleDetails={() => setDetailsOpen((v) => !v)}
         />
       }
-      classSlot={
+      bodySlot={
         <ImageDetailClassList
           classes={classes}
           selectedClassId={selectedClassId}
           onSelectClass={(id) => setSelectedClassId((prev) => (prev === id ? null : id))}
         />
       }
-      commentsSlot={
+      bodySectionTitle="Class"
+      footerSlots={[
         <CommentsPanel
+          key="comments"
           comments={variant === 'with-comments' ? sampleComments : []}
           onReply={() => undefined}
-        />
-      }
-      labelersSlot={
+        />,
         <UserPoolList
+          key="labelers"
           users={MOCK_LABELERS.map((u) => ({ id: u.email, label: u.name ?? u.email, tooltip: u.email }))}
           selectedIds={selectedUsers}
           onToggle={(id) =>
@@ -153,8 +153,8 @@ function DetailSidebarMount({
               return next
             })
           }
-        />
-      }
+        />,
+      ]}
     />
   )
 }
