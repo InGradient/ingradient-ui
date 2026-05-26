@@ -1,13 +1,11 @@
-import {
-  CatalogMobileShell,
-  GalleryFilterPanel,
-} from '@ingradient/ui/patterns'
+import { GalleryFilterPanel } from '@ingradient/ui/patterns'
 import {
   DownloadIcon,
   FilterIcon,
   GridIcon,
   MobileBottomToolbar,
   MobileDropdown,
+  MobileShell,
   SortIcon,
   TableIcon,
   UploadIcon,
@@ -41,7 +39,7 @@ export function CatalogMobileView({
 }: Props) {
   return (
     <>
-      <CatalogMobileShell
+      <MobileShell
         topBar={
           <MobileDropdown
             options={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}

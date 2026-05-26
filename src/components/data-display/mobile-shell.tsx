@@ -27,13 +27,13 @@ const BOTTOM_BAR_STYLE = {
   zIndex: 10,
 }
 
-export interface CatalogMobileShellProps {
+export interface MobileShellProps {
   topBar: ReactNode
   body: ReactNode
   bottomBar?: ReactNode
 }
 
-export function CatalogMobileShell({ topBar, body, bottomBar }: CatalogMobileShellProps) {
+export function MobileShell({ topBar, body, bottomBar }: MobileShellProps) {
   return (
     <Stack gap={0} style={ROOT_STYLE}>
       <Box style={TOP_BAR_STYLE}>{topBar}</Box>

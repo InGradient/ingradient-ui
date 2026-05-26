@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CatalogMobileShell } from './catalog-mobile-shell'
-import { MobileDropdown } from '../../components/inputs/mobile-dropdown'
-import { MobileBottomToolbar } from '../../components/navigation/mobile-bottom-toolbar'
-import { DownloadIcon, FilterIcon, GridIcon, SortIcon, UploadIcon } from '../../components/icons/catalog-icons'
+import { MobileShell } from './mobile-shell'
+import { MobileDropdown } from '../inputs/mobile-dropdown'
+import { MobileBottomToolbar } from '../navigation/mobile-bottom-toolbar'
+import { DownloadIcon, FilterIcon, GridIcon, SortIcon, UploadIcon } from '../icons/catalog-icons'
 
 const options = [
   { id: 'd1', name: 'Wafer line A — production batch 2024Q4' },
@@ -18,9 +18,9 @@ const galleryActions = [
   { key: 'upload', label: 'Upload', icon: <UploadIcon /> },
 ]
 
-const meta: Meta<typeof CatalogMobileShell> = {
-  title: 'Patterns/Shells/CatalogMobileShell',
-  component: CatalogMobileShell,
+const meta: Meta<typeof MobileShell> = {
+  title: 'Components/Data Display/MobileShell',
+  component: MobileShell,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 390, height: 720, border: '1px solid var(--ig-color-border-subtle)' }}><Story /></div>],
 }
@@ -31,15 +31,15 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     topBar: <MobileDropdown options={options} currentId="d1" open={false} onToggle={() => undefined} onSelect={() => undefined} />,
-    body: <div style={{ flex: 1, padding: 16, color: 'var(--ig-color-text-muted)' }}>Gallery content</div>,
+    body: <div style={{ flex: 1, padding: 16, color: 'var(--ig-color-text-muted)' }}>Body content</div>,
     bottomBar: <MobileBottomToolbar actions={galleryActions} />,
   },
 }
 
-export const DatasetDropdownOpen: Story = {
+export const DropdownOpen: Story = {
   args: {
     topBar: <MobileDropdown options={options} currentId="d1" open onToggle={() => undefined} onSelect={() => undefined} />,
-    body: <div style={{ flex: 1, padding: 16, color: 'var(--ig-color-text-muted)' }}>Gallery content</div>,
+    body: <div style={{ flex: 1, padding: 16, color: 'var(--ig-color-text-muted)' }}>Body content</div>,
     bottomBar: <MobileBottomToolbar actions={galleryActions} />,
   },
 }
