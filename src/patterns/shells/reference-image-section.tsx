@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Stack, Text } from '../../primitives'
 import { ClassInfoSection } from './class-info-section'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
-import { BboxNavigation } from './bbox-navigation'
+import { IndexedNavigation } from '../../components/navigation/indexed-navigation'
 
 const HINT_STYLE = { marginTop: -2 }
 const STACK_STYLE = { width: '100%' }
@@ -67,7 +67,7 @@ export function ReferenceImageSection({
             </Stack>
           )}
           {candidates.length > 1 ? (
-            <BboxNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} />
+            <IndexedNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} prevLabel="Previous bbox" nextLabel="Next bbox" />
           ) : null}
           {pending ? <Text tone="accent" size="12px" weight={600}>Updating reference image…</Text> : null}
           {errorMessage ? <Text tone="accent" size="12px" weight={600}>{errorMessage}</Text> : null}

@@ -250,9 +250,9 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 
 모든 의존자는 patterns/ 안에 있으므로 매 rename 후 patterns 내부 import 갱신만 하면 됨. **순서는 plan 의 X1.1~X1.21 그대로 진행** (leaf-first 와 자연 일치).
 
-### Phase X1 — B rename (0/21)
+### Phase X1 — B rename (2/21)
 - [x] X1.1 `annotation-toolbar` → **ToolbarShell** (`components/inputs/`) — CanvasCoordReadout 별도 분리 (`patterns/shells/canvas-coord-readout.tsx`)
-- [ ] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
+- [x] X1.2 `bbox-navigation` → **IndexedNavigation** (`components/navigation/`)
 - [ ] X1.3 `labeling-progress-bar` → **SegmentedProgressBar** (`components/feedback/`)
 - [ ] X1.4 `add-class-dialog` → **TextInputDialog** (`components/overlays/`)
 - [ ] X1.5 `class-images-panel` → **SelectableGridPanel** (`patterns/`)

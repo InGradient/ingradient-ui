@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { BboxNavigation } from './bbox-navigation'
+import { IndexedNavigation } from './indexed-navigation'
 
-const meta: Meta<typeof BboxNavigation> = {
-  title: 'Patterns/Shells/BboxNavigation',
-  component: BboxNavigation,
+const meta: Meta<typeof IndexedNavigation> = {
+  title: 'Components/Navigation/IndexedNavigation',
+  component: IndexedNavigation,
   decorators: [(Story) => <div style={{ padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
 export default meta
@@ -19,6 +19,6 @@ export const SingleHidden: Story = { args: { index: 0, total: 1, onChange: () =>
 export const Interactive: Story = {
   render: () => {
     const [i, setI] = useState(0)
-    return <BboxNavigation index={i} total={5} onChange={setI} />
+    return <IndexedNavigation index={i} total={5} onChange={setI} />
   },
 }
