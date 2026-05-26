@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HoverPreview } from './hover-preview'
-import { Card } from '../../components'
+import { Card } from '../data-display/card'
 import { Stack, Inline } from '../../primitives'
 
 const meta: Meta<typeof HoverPreview> = {
-  title: 'Patterns/HoverPreview',
+  title: 'Components/Overlays/HoverPreview',
   component: HoverPreview,
   tags: ['autodocs'],
 }

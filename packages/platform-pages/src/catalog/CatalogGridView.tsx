@@ -1,4 +1,5 @@
-import { GalleryImageCard, HoverPreview } from '@ingradient/ui/patterns'
+import { GalleryImageCard } from '@ingradient/ui/patterns'
+import { HoverPreview } from '@ingradient/ui/components'
 import { Grid } from '@ingradient/ui/primitives'
 import { DragOverGrid, GridWrap } from './CatalogView.styles'
 import type { CatalogImage, CatalogImagesPaneProps } from './types'
