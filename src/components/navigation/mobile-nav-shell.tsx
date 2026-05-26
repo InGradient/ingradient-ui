@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Menu, X } from 'lucide-react'
 import { media } from '../../tokens'
 import { Inline, Stack } from '../../primitives'
-import { IconButton } from '../../components/inputs/icon-button'
+import { IconButton } from '../inputs/icon-button'
 
 const AppHeader = styled.header`
   display: none;

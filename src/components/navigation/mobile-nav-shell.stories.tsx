@@ -4,7 +4,7 @@ import { Bell, FolderClosed, Image as ImageIcon, LayoutDashboard, MessageCircle,
 import { MobileNavShell, type MobileNavShellItem } from './mobile-nav-shell'
 
 const meta: Meta<typeof MobileNavShell> = {
-  title: 'Patterns/Shells/MobileNavShell',
+  title: 'Components/Navigation/MobileNavShell',
   component: MobileNavShell,
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 }
