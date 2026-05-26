@@ -1,4 +1,4 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 
@@ -27,18 +27,18 @@ const Section = styled.section`
   }
 `
 
-export interface CatalogRightPanelSection {
-  title: React.ReactNode
-  headerActions?: React.ReactNode
-  body: React.ReactNode
+export interface SidePanelLayoutSection {
+  title: ReactNode
+  headerActions?: ReactNode
+  body: ReactNode
 }
 
-export interface CatalogRightPanelProps {
-  sections: CatalogRightPanelSection[]
+export interface SidePanelLayoutProps {
+  sections: SidePanelLayoutSection[]
   className?: string
 }
 
-export function CatalogRightPanel({ sections, className }: CatalogRightPanelProps) {
+export function SidePanelLayout({ sections, className }: SidePanelLayoutProps) {
   return (
     <Stack as="aside" gap={0} className={className} style={PANEL_STYLE}>
       {sections.map((s, i) => (

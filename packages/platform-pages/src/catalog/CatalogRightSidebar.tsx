@@ -1,8 +1,5 @@
-import { SwatchItemList, TagListSearch } from '@ingradient/ui/components'
-import {
-  CatalogRightPanel,
-  MemberPoolList,
-} from '@ingradient/ui/patterns'
+import { SidePanelLayout, SwatchItemList, TagListSearch } from '@ingradient/ui/components'
+import { MemberPoolList } from '@ingradient/ui/patterns'
 import { RightSideLoadingText } from './CatalogView.styles'
 import type { CatalogRightSidebarPaneProps } from './types'
 
@@ -53,7 +50,7 @@ export function CatalogRightSidebar({
   )
 
   return (
-    <CatalogRightPanel
+    <SidePanelLayout
       sections={[
         { title: 'Class', body: classBody },
         { title: 'Members', body: memberBody },
