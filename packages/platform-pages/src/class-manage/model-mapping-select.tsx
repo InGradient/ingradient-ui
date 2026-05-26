@@ -1,5 +1,5 @@
-import { Stack, Text } from '../../primitives'
-import { SelectField } from '../../components/inputs/select-field'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { SelectField } from '@ingradient/ui/components'
 
 const SELECT_STYLE = {
   maxWidth: 280,

@@ -10,13 +10,13 @@ import {
   Undo2,
 } from 'lucide-react'
 import { DetailPanelSidebar, ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
+import { ImageInspectorCanvas } from '@ingradient/ui/patterns'
 import {
   CommentsPanel,
   ImageDetailClassList,
   ImageDetailInfoPanel,
-  ImageInspectorCanvas,
   type ImageDetailInfo,
-} from '@ingradient/ui/patterns'
+} from '@ingradient/platform-pages'
 import type { CatalogScene } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 import {
   sampleAnnotations,

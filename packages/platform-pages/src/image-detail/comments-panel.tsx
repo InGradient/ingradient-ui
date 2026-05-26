@@ -1,14 +1,14 @@
 import { useState, type ReactNode } from 'react'
 import { Archive, Pencil } from 'lucide-react'
-import { Box, Inline, Stack, Text } from '../../primitives'
-import { Badge } from '../../components/feedback/badge'
-import { Button } from '../../components/inputs/button'
-import { IconButton } from '../../components/inputs/icon-button'
-import { Textarea } from '../../components/inputs/textarea'
-import { CommentItem } from '../../components/data-display/comment-thread'
-import { CollapsibleSectionHeader } from '../../components/data-display/collapsible-section-header'
-import { CommentThread } from '../comment/comment-thread'
-import { MentionTextarea, type MentionCandidate } from '../../components/inputs/mention-textarea'
+import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Badge } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { IconButton } from '@ingradient/ui/components'
+import { Textarea } from '@ingradient/ui/components'
+import { CommentItem } from '@ingradient/ui/components'
+import { CollapsibleSectionHeader } from '@ingradient/ui/components'
+import { CommentThread } from '@ingradient/ui/patterns'
+import { MentionTextarea, type MentionCandidate } from '@ingradient/ui/components'
 
 const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
 const LIST_WRAP_STYLE = { maxHeight: 200, overflowY: 'auto' as const }

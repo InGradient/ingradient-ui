@@ -1,4 +1,5 @@
 export * from './ClassManageView'
+export * from './model-mapping-select'
 export type {
   ClassDataset,
   ClassEntry,

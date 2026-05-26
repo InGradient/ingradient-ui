@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { Stack, Text } from '../../primitives'
-import { TextButton } from '../../components/inputs/text-button'
-import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { TextButton } from '@ingradient/ui/components'
+import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
 const SECTION_STYLE = {
   padding: 'var(--ig-space-5)',

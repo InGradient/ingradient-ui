@@ -9,10 +9,10 @@ import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import {
   ClassInfoSidebar,
   ClassListSidebar,
-  ModelMappingSelect,
   ReferenceImageSection,
   SelectableGridPanel,
 } from '@ingradient/ui/patterns'
+import { ModelMappingSelect } from './model-mapping-select'
 import { BodyRow } from './ClassManageView.styles'
 import type {
   ClassImage,

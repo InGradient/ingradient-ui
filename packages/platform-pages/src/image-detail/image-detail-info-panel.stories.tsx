@@ -8,7 +8,7 @@ function Demo(props: Omit<ImageDetailInfoPanelProps, 'detailsOpen' | 'onToggleDe
 }
 
 const meta = {
-  title: 'Patterns/Shells/ImageDetailInfoPanel',
+  title: 'Platform Pages/Image Detail/ImageDetailInfoPanel',
   component: Demo,
   parameters: { layout: 'centered' },
   decorators: [

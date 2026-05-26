@@ -22,7 +22,7 @@ function Demo(props: Omit<ImageDetailClassListProps, 'onSelectClass'>) {
 }
 
 const meta = {
-  title: 'Patterns/Shells/ImageDetailClassList',
+  title: 'Platform Pages/Image Detail/ImageDetailClassList',
   component: Demo,
   parameters: { layout: 'centered' },
   decorators: [

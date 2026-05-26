@@ -294,11 +294,11 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] password-change-dialog → `platform-pages/settings-modal/account/`
 - [x] settings-general-tab → `platform-pages/settings-modal/general/` — settings-section/row/hint import 동일하게 `@ingradient/ui/patterns` 로
 
-### Phase X2.4 — image-detail + comments + model-mapping (0/4)
-- [ ] image-detail-class-list → `platform-pages/image-detail/`
-- [ ] image-detail-info-panel → `platform-pages/image-detail/`
-- [ ] comments-panel → `platform-pages/image-detail/`
-- [ ] model-mapping-select → `platform-pages/settings-modal/project/class/`
+### Phase X2.4 — image-detail + comments + model-mapping (4/4)
+- [x] image-detail-class-list → `platform-pages/image-detail/`
+- [x] image-detail-info-panel → `platform-pages/image-detail/`
+- [x] comments-panel → `platform-pages/image-detail/` — `./comment/comment-thread` import 은 patterns 잔존이므로 `@ingradient/ui/patterns` 로
+- [x] model-mapping-select → `platform-pages/class-manage/` (실제 consumer 는 class-manage 이므로 settings-modal/project/class/ 보다 정확)
 
 ### Phase X2.5 — gallery (0/9)
 - [ ] gallery-delete-dialog → `platform-pages/catalog/gallery/`

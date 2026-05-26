@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Stack, Text } from '../../primitives'
-import { ColorSwatch } from '../../components/data-display/color-swatch'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { ColorSwatch } from '@ingradient/ui/components'
 
 const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
   display: flex;
