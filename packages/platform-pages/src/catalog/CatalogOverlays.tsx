@@ -8,7 +8,7 @@ import {
   GalleryExportConfigDialog,
   GalleryExportProgressDialog,
   GalleryImageMenu,
-  IgpExportModal,
+  ExportProgressModal,
   UploadQualityModal,
 } from '@ingradient/ui/patterns'
 import type { CatalogOverlaysProps } from './types'
@@ -92,13 +92,16 @@ export function CatalogOverlays({
         targetDatasetName={dragDrop.targetDatasetName}
         itemCount={dragDrop.itemCount}
       />
-      <IgpExportModal
+      <ExportProgressModal
         open={igpExport.open}
         onClose={igpExport.onClose}
         phase={igpExport.phase}
         progress={igpExport.progress}
         downloadUrl={igpExport.downloadUrl}
         filename={igpExport.filename}
+        title="Export (.igp)"
+        description="Export the dataset as a single .igp archive containing images, labels, and metadata."
+        phaseLabel={{ processing: 'Compressing files…' }}
       />
       <UploadQualityModal
         open={uploadQuality.open}

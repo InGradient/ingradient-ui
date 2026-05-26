@@ -58,7 +58,7 @@ export interface CatalogOverlaysProps {
   }
   igpExport: {
     open: boolean
-    phase: 'preparing' | 'compressing' | 'ready' | 'error'
+    phase: 'preparing' | 'processing' | 'ready' | 'error'
     progress: number
     downloadUrl?: string
     filename: string

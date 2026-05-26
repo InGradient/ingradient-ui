@@ -62,7 +62,7 @@ export function buildCatalogOverlays(
     igpExport: {
       open: s.igpExportOpen,
       phase: s.igpExportPhase,
-      progress: s.igpExportPhase === 'compressing' ? 64 : 0,
+      progress: s.igpExportPhase === 'processing' ? 64 : 0,
       downloadUrl: s.igpExportPhase === 'ready' ? '#' : undefined,
       filename: 'wafer-batch.igp',
       onClose: () => s.setIgpExportOpen(false),

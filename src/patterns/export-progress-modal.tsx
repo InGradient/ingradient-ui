@@ -1,9 +1,8 @@
-import React from 'react'
 import styled from 'styled-components'
-import { Inline, Stack, Text } from '../../primitives'
-import { DialogShell } from '../../components/overlays/dialog-shell'
-import { Button } from '../../components/inputs/button'
-import { Spinner } from '../../components/feedback/spinner'
+import { Inline, Stack, Text } from '../primitives'
+import { DialogShell } from '../components/overlays/dialog-shell'
+import { Button } from '../components/inputs/button'
+import { Spinner } from '../components/feedback/spinner'
 
 const PROGRESS_TRACK_STYLE = {
   width: '100%',
@@ -22,35 +21,42 @@ const ProgressFill = styled.div<{ $pct: number }>`
 
 const LINK_STYLE = { textDecoration: 'none' }
 
-export type IgpExportPhase = 'preparing' | 'compressing' | 'ready' | 'error'
+export type ExportProgressPhase = 'preparing' | 'processing' | 'ready' | 'error'
 
-export interface IgpExportModalProps {
+export interface ExportProgressModalProps {
   open: boolean
   onClose: () => void
-  phase: IgpExportPhase
+  phase: ExportProgressPhase
   progress?: number
   downloadUrl?: string
   filename?: string
   errorMessage?: string
+  title?: string
+  description?: string
+  phaseLabel?: Partial<Record<ExportProgressPhase, string>>
 }
 
-const PHASE_LABEL: Record<IgpExportPhase, string> = {
+const DEFAULT_PHASE_LABEL: Record<ExportProgressPhase, string> = {
   preparing: 'Preparing export…',
-  compressing: 'Compressing files…',
+  processing: 'Processing…',
   ready: 'Export ready',
   error: 'Export failed',
 }
 
-export function IgpExportModal({
-  open, onClose, phase, progress = 0, downloadUrl, filename = 'dataset.igp', errorMessage,
-}: IgpExportModalProps) {
+export function ExportProgressModal({
+  open, onClose, phase, progress = 0, downloadUrl, filename = 'export', errorMessage,
+  title = 'Export',
+  description,
+  phaseLabel,
+}: ExportProgressModalProps) {
   if (!open) return null
-  const busy = phase === 'preparing' || phase === 'compressing'
+  const busy = phase === 'preparing' || phase === 'processing'
+  const labelMap = { ...DEFAULT_PHASE_LABEL, ...phaseLabel }
 
   return (
     <DialogShell
-      title="Export (.igp)"
-      description={`Export the dataset as a single .igp archive containing images, labels, and metadata.`}
+      title={title}
+      description={description}
       onClose={onClose}
       width="min(520px, 100%)"
       actions={
@@ -68,7 +74,7 @@ export function IgpExportModal({
         <Inline gap={2}>
           {busy ? <Spinner size="sm" /> : null}
           <Text tone="secondary" size="var(--ig-font-size-sm)">
-            {phase === 'error' && errorMessage ? errorMessage : PHASE_LABEL[phase]}
+            {phase === 'error' && errorMessage ? errorMessage : labelMap[phase]}
           </Text>
         </Inline>
         {busy ? (
