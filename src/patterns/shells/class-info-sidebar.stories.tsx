@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassInfoSidebar } from './class-info-sidebar'
-import { ClassInfoSection } from './class-info-section'
+import { InfoSection } from '../../components/data-display/info-section'
 
 import type { ClassInfoSidebarClass } from './class-info-sidebar'
 
@@ -29,16 +29,16 @@ export const WithSlots: Story = {
   args: {
     selectedClass: baseClass,
     referenceImageSlot: (
-      <ClassInfoSection title="Reference image">
+      <InfoSection title="Reference image">
         <div style={{ height: 180, border: '1px dashed var(--ig-color-border-strong)', borderRadius: 8, background: 'var(--ig-color-surface-raised)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ig-color-text-muted)', fontSize: 12 }}>
           (Reference image drop zone — Phase 4)
         </div>
-      </ClassInfoSection>
+      </InfoSection>
     ),
     mappingSlot: (
-      <ClassInfoSection title="Model mapping">
+      <InfoSection title="Model mapping">
         <span style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>Map this class to the detection model's class (COCO) for auto-labeling.</span>
-      </ClassInfoSection>
+      </InfoSection>
     ),
   },
 }

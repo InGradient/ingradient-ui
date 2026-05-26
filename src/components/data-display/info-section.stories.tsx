@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ClassInfoSection } from './class-info-section'
+import { InfoSection } from './info-section'
 
-const meta: Meta<typeof ClassInfoSection> = {
-  title: 'Patterns/Shells/ClassInfoSection',
-  component: ClassInfoSection,
+const meta: Meta<typeof InfoSection> = {
+  title: 'Components/Data Display/InfoSection',
+  component: InfoSection,
   decorators: [(Story) => <div style={{ width: 268, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
 export default meta

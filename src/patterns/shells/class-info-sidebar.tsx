@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Stack } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField, TextareaField } from '../../components/inputs/text-fields'
-import { ClassInfoSection } from './class-info-section'
+import { InfoSection } from '../../components/data-display/info-section'
 import { ColorInputRow } from './color-input-row'
 
 const SIDEBAR_STYLE = {
@@ -65,7 +65,7 @@ export function ClassInfoSidebar({
   return (
     <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
       <Stack gap={9} style={PANEL_STYLE}>
-        <ClassInfoSection title="Name">
+        <InfoSection title="Name">
           <TextField
             size="sm"
             value={selectedClass.name}
@@ -73,18 +73,18 @@ export function ClassInfoSidebar({
             aria-label="Class name"
             style={NAME_INPUT_STYLE}
           />
-        </ClassInfoSection>
+        </InfoSection>
 
-        <ClassInfoSection title="Color">
+        <InfoSection title="Color">
           <ColorInputRow
             value={selectedClass.color}
             onChange={onChangeColor}
             onRandomize={onRandomizeColor}
             ariaLabel="Class color"
           />
-        </ClassInfoSection>
+        </InfoSection>
 
-        <ClassInfoSection title="Description">
+        <InfoSection title="Description">
           <TextareaField
             value={selectedClass.description ?? ''}
             onChange={(e) => onChangeDescription?.(e.target.value || undefined)}
@@ -92,14 +92,14 @@ export function ClassInfoSidebar({
             rows={3}
             style={DESCRIPTION_STYLE}
           />
-        </ClassInfoSection>
+        </InfoSection>
 
         {referenceImageSlot}
         {mappingSlot}
 
-        <ClassInfoSection title="Danger zone">
+        <InfoSection title="Danger zone">
           <Button type="button" variant="secondary" tone="danger" onClick={onDelete} style={DELETE_BTN_STYLE}>{deleteLabel}</Button>
-        </ClassInfoSection>
+        </InfoSection>
       </Stack>
     </Stack>
   )

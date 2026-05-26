@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Stack, Text } from '../../primitives'
-import { ClassInfoSection } from './class-info-section'
+import { InfoSection } from '../../components/data-display/info-section'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import { IndexedNavigation } from '../../components/navigation/indexed-navigation'
 
@@ -50,7 +50,7 @@ export function ReferenceImageSection({
     if (c) onApply?.(c.imageId, c.bboxIndex)
   }
   return (
-    <ClassInfoSection title={title}>
+    <InfoSection title={title}>
       <Text tone="muted" size="12px" style={{ ...HINT_STYLE, display: 'block', lineHeight: 1.5 }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
@@ -73,6 +73,6 @@ export function ReferenceImageSection({
           {errorMessage ? <Text tone="accent" size="12px" weight={600}>{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
-    </ClassInfoSection>
+    </InfoSection>
   )
 }
