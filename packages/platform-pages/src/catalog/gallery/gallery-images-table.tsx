@@ -1,9 +1,9 @@
 import React from 'react'
-import { Text } from '../../primitives'
-import { Table, type TableColumn } from '../../components/data-display/table'
-import { Checkbox, IconButton } from '../../components/inputs'
-import { SyncStatusChip, type SyncState } from './sync-status-chip'
-import { KebabIcon } from '../../components/icons/catalog-icons'
+import { Text } from '@ingradient/ui/primitives'
+import { Table, type TableColumn } from '@ingradient/ui/components'
+import { Checkbox, IconButton } from '@ingradient/ui/components'
+import { SyncStatusChip, type SyncState } from '@ingradient/ui/patterns'
+import { KebabIcon } from '@ingradient/ui/components'
 
 const THUMB_STYLE = {
   width: 64,

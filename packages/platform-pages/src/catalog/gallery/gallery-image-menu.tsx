@@ -1,4 +1,4 @@
-import { ContextMenuWithSubmenus, type ContextMenuWithSubmenusAction } from '../../components/overlays/context-menu-with-submenus'
+import { ContextMenuWithSubmenus, type ContextMenuWithSubmenusAction } from '@ingradient/ui/components'
 
 export interface GalleryImageMenuDatasetOption {
   id: string

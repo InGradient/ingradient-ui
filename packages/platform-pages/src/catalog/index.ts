@@ -1,4 +1,5 @@
 export * from './CatalogView'
+export * from './gallery'
 export type {
   CatalogClass,
   CatalogDataset,

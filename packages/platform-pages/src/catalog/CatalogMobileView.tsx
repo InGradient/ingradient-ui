@@ -1,4 +1,4 @@
-import { GalleryFilterPanel } from '@ingradient/ui/patterns'
+import { GalleryFilterPanel } from './gallery'
 import {
   DownloadIcon,
   FilterIcon,

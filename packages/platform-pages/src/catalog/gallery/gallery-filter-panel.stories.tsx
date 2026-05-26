@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { emptyGalleryFilterPanelState, GalleryFilterPanel, type GalleryFilterPanelState } from './gallery-filter-panel'
 
 const meta: Meta<typeof GalleryFilterPanel> = {
-  title: 'Patterns/GalleryFilterPanel',
+  title: 'Platform Pages/Catalog/Gallery/GalleryFilterPanel',
   component: GalleryFilterPanel,
   parameters: { layout: 'centered' },
 }

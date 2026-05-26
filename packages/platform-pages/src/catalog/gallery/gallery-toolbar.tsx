@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Inline, Stack, Text } from '../../primitives'
-import { Checkbox } from '../../components/inputs/toggles'
-import { TextButton } from '../../components/inputs/text-button'
+import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Checkbox } from '@ingradient/ui/components'
+import { TextButton } from '@ingradient/ui/components'
 
 const BAR_STYLE = {
   borderBottom: '1px solid var(--ig-color-border-subtle)',

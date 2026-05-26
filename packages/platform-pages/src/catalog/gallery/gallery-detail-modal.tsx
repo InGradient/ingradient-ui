@@ -1,10 +1,10 @@
 import React from 'react'
 import { X } from 'lucide-react'
-import { Inline, Stack, Text } from '../../primitives'
-import { IconButton } from '../../components/inputs/icon-button'
-import { SyncStatusChip, type SyncState } from './sync-status-chip'
-import { InfoRow, InfoRowLabel, InfoRowValue } from '../../components/data-display/info-row'
-import { MediaDialogShell } from './media-dialog-shell'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { IconButton } from '@ingradient/ui/components'
+import { SyncStatusChip, type SyncState } from '@ingradient/ui/patterns'
+import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
+import { MediaDialogShell } from '@ingradient/ui/patterns'
 
 const TOOLBAR_STYLE = {
   position: 'absolute' as const,

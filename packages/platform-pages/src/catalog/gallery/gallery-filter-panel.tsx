@@ -1,10 +1,10 @@
-import { Inline, Stack, Text } from '../../primitives'
-import { ModeSwitcher } from '../../components/inputs/mode-switcher'
-import { TextButton } from '../../components/inputs/text-button'
-import { DateRangeField } from './date-range-field'
-import { FilterSection } from './filter-section'
-import { ColorChip } from '../../components/inputs/color-chip'
-import { FilterSearchableList, type FilterSearchableItem } from './filter-searchable-list'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { ModeSwitcher } from '@ingradient/ui/components'
+import { TextButton } from '@ingradient/ui/components'
+import { DateRangeField } from '@ingradient/ui/patterns'
+import { FilterSection } from '@ingradient/ui/patterns'
+import { ColorChip } from '@ingradient/ui/components'
+import { FilterSearchableList, type FilterSearchableItem } from '@ingradient/ui/patterns'
 
 const PANEL_STYLE = { width: 320, maxHeight: '70vh', overflowY: 'auto' as const }
 

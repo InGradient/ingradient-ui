@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GalleryToolbar } from './gallery-toolbar'
-import { Button } from '../../components/inputs/button'
-import { SearchField } from '../../components/inputs/search-field'
-import { ModeSwitcher } from '../../components/inputs/mode-switcher'
+import { Button } from '@ingradient/ui/components'
+import { SearchField } from '@ingradient/ui/components'
+import { ModeSwitcher } from '@ingradient/ui/components'
 
 const meta: Meta<typeof GalleryToolbar> = {
-  title: 'Patterns/GalleryToolbar',
+  title: 'Platform Pages/Catalog/Gallery/GalleryToolbar',
   component: GalleryToolbar,
   parameters: { layout: 'fullscreen' },
 }

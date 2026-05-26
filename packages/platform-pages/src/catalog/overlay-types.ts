@@ -5,7 +5,7 @@ import type {
   GalleryExportJobView,
   GalleryExportRange,
   GalleryExportType,
-} from '@ingradient/ui/patterns'
+} from './gallery'
 import type { CatalogClass, CatalogDataset, CatalogImage } from './types'
 
 export interface CatalogOverlaysProps {

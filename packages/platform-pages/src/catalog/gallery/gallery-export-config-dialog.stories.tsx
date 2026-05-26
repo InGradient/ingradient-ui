@@ -9,7 +9,7 @@ import {
 } from './gallery-export-config-dialog'
 
 const meta: Meta<typeof GalleryExportConfigDialog> = {
-  title: 'Patterns/Shells/GalleryExportConfigDialog',
+  title: 'Platform Pages/Catalog/Gallery/GalleryExportConfigDialog',
   component: GalleryExportConfigDialog,
   parameters: { layout: 'fullscreen' },
 }

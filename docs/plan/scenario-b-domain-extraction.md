@@ -300,16 +300,19 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] comments-panel → `platform-pages/image-detail/` — `./comment/comment-thread` import 은 patterns 잔존이므로 `@ingradient/ui/patterns` 로
 - [x] model-mapping-select → `platform-pages/class-manage/` (실제 consumer 는 class-manage 이므로 settings-modal/project/class/ 보다 정확)
 
-### Phase X2.5 — gallery (0/9)
-- [ ] gallery-delete-dialog → `platform-pages/catalog/gallery/`
-- [ ] gallery-detail-modal → `platform-pages/catalog/gallery/`
-- [ ] gallery-export-config-dialog → `platform-pages/catalog/gallery/`
-- [ ] gallery-export-progress-dialog → `platform-pages/catalog/gallery/`
-- [ ] gallery-filter-panel → `platform-pages/catalog/gallery/`
-- [ ] gallery-image-menu → `platform-pages/catalog/gallery/`
-- [ ] gallery-images-table → `platform-pages/catalog/gallery/`
-- [ ] gallery-toolbar → `platform-pages/catalog/gallery/`
-- [ ] gallery-dataset-transfer-dialog → `platform-pages/catalog/gallery/`
+### Phase X2.5 — gallery (9/9)
+- [x] gallery-delete-dialog → `platform-pages/catalog/gallery/`
+- [x] gallery-detail-modal → `platform-pages/catalog/gallery/`
+- [x] gallery-export-config-dialog → `platform-pages/catalog/gallery/`
+- [x] gallery-export-progress-dialog → `platform-pages/catalog/gallery/`
+- [x] gallery-filter-panel → `platform-pages/catalog/gallery/`
+- [x] gallery-image-menu → `platform-pages/catalog/gallery/`
+- [x] gallery-images-table → `platform-pages/catalog/gallery/`
+- [x] gallery-toolbar → `platform-pages/catalog/gallery/`
+- [x] gallery-dataset-transfer-dialog → `platform-pages/catalog/gallery/`
+- + `gallery-export-dialog.styles.ts` 함께 이동 (4 gallery 파일이 의존)
+- sibling sync-status-chip/media-dialog-shell/date-range-field/filter-section/filter-searchable-list import 은 `@ingradient/ui/patterns` 로 (patterns 잔존)
+- catalog/overlay-types, CatalogBody, CatalogMobileView, CatalogToolbarRow, CatalogOverlays, types, stories(use-catalog-scene) import 갱신
 
 ### Phase X2.6 — dashboard-overview + dataset-task-tag (0/2)
 - [ ] dashboard-overview-panel → `platform-pages/dashboard/`

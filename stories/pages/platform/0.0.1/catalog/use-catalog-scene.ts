@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { emptyGalleryFilterPanelState, type GalleryFilterPanelState } from '@ingradient/ui/patterns'
+import { emptyGalleryFilterPanelState, type GalleryFilterPanelState } from '@ingradient/platform-pages'
 import type { CatalogScene, CatalogViewMode, FilterKey } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 import { useCatalogExtraDialogs, type CatalogExtraDialogState } from './use-catalog-extra-dialogs'
 

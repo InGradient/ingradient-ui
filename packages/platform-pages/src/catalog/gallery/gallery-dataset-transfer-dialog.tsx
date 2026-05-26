@@ -1,6 +1,6 @@
-import { DialogShell } from '../../components/overlays/dialog-shell'
-import { Button } from '../../components/inputs/button'
-import { DropdownSelect } from '../../components/inputs/dropdown-select'
+import { DialogShell } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { DropdownSelect } from '@ingradient/ui/components'
 import { DialogRow } from './gallery-export-dialog.styles'
 
 export type DatasetTransferAction = 'copy' | 'move'

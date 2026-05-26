@@ -11,10 +11,9 @@ import {
 } from '@ingradient/ui/components'
 import {
   ExpandSidebarBtn,
-  GalleryFilterPanel,
-  GalleryToolbar,
   SortPopoverTrigger,
 } from '@ingradient/ui/patterns'
+import { GalleryFilterPanel, GalleryToolbar } from './gallery'
 import { DangerDimButton } from './CatalogView.styles'
 import type { CatalogToolbarPaneProps, CatalogViewMode } from './types'
 

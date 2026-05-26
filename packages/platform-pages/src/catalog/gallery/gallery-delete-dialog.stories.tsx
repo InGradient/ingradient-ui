@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GalleryDeleteDialog } from './gallery-delete-dialog'
 
 const meta: Meta<typeof GalleryDeleteDialog> = {
-  title: 'Patterns/Shells/GalleryDeleteDialog',
+  title: 'Platform Pages/Catalog/Gallery/GalleryDeleteDialog',
   component: GalleryDeleteDialog,
   parameters: { layout: 'fullscreen' },
 }

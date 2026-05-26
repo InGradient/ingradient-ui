@@ -2,15 +2,17 @@ import { ConfirmDialog, ContextMenuWithSubmenus, DuplicateItemModal } from '@ing
 import {
   AddDatasetModal,
   DragDropDecideModal,
+  ExportProgressModal,
+  UploadQualityModal,
+} from '@ingradient/ui/patterns'
+import {
   GalleryDatasetTransferDialog,
   GalleryDeleteDialog,
   GalleryDetailModal,
   GalleryExportConfigDialog,
   GalleryExportProgressDialog,
   GalleryImageMenu,
-  ExportProgressModal,
-  UploadQualityModal,
-} from '@ingradient/ui/patterns'
+} from './gallery'
 import type { CatalogOverlaysProps } from './types'
 import type { ReactNode } from 'react'
 

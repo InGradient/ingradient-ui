@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GalleryImageMenu } from './gallery-image-menu'
-import { Button } from '../../components/inputs/button'
+import { Button } from '@ingradient/ui/components'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/GalleryImageMenu',
+  title: 'Platform Pages/Catalog/Gallery/GalleryImageMenu',
   component: GalleryImageMenu,
   tags: ['autodocs'],
   parameters: {

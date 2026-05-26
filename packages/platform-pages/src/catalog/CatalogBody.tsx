@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Alert, EmptyState, Spinner } from '@ingradient/ui/components'
-import { GalleryImagesTable } from '@ingradient/ui/patterns'
+import { GalleryImagesTable } from './gallery'
 import { Stack } from '@ingradient/ui/primitives'
 import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'

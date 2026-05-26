@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GalleryDetailModal } from './gallery-detail-modal'
-import { Button } from '../../components/inputs/button'
-import sample1 from '../../../stories/assets/20230808.jpg'
+import { Button } from '@ingradient/ui/components'
+import sample1 from '../../../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof GalleryDetailModal> = {
-  title: 'Patterns/GalleryDetailModal',
+  title: 'Platform Pages/Catalog/Gallery/GalleryDetailModal',
   component: GalleryDetailModal,
   parameters: { layout: 'fullscreen' },
 }
