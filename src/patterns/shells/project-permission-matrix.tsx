@@ -4,7 +4,7 @@ import { Box, Inline } from '../../primitives'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextField } from '../../components/inputs/text-fields'
 import { getSummaryPermissionState } from '../../utils/permission-state'
-import { PermissionHelpTooltip } from './permission-help-tooltip'
+import { HelpTooltip } from '../../components/overlays/help-tooltip'
 
 const SEARCH_WRAP_STYLE = {
   marginBottom: 'var(--ig-space-5)',
@@ -148,7 +148,7 @@ export function ProjectPermissionMatrix({
                     <th key={permission.key}>
                       <Inline as="span" gap={2} style={HEADER_CONTENT_STYLE}>
                         <span>{permission.label}</span>
-                        {permission.description ? <PermissionHelpTooltip text={permission.description} /> : null}
+                        {permission.description ? <HelpTooltip text={permission.description} /> : null}
                       </Inline>
                     </th>
                   )),

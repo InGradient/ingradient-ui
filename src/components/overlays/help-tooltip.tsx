@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TooltipBubble } from '../../components/overlays/popovers'
+import { TooltipBubble } from './popovers'
 
 const Wrap = styled.span`
   position: relative;
@@ -47,12 +47,16 @@ const Bubble = styled(TooltipBubble)`
   }
 `
 
-export interface PermissionHelpTooltipProps {
+export interface HelpTooltipProps {
   text: string
   className?: string
 }
 
-export function PermissionHelpTooltip({ text, className }: PermissionHelpTooltipProps) {
+/**
+ * 작은 "?" 아이콘 + hover 시 표시되는 텍스트 tooltip.
+ * 필드 / 매트릭스 셀 등에 도움말이 필요한 곳에 사용.
+ */
+export function HelpTooltip({ text, className }: HelpTooltipProps) {
   return (
     <Wrap className={className}>
       <span aria-hidden="true" style={ICON_STYLE}>?</span>

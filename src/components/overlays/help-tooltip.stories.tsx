@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { PermissionHelpTooltip } from './permission-help-tooltip'
+import { HelpTooltip } from './help-tooltip'
 
-const meta: Meta<typeof PermissionHelpTooltip> = {
-  title: 'Patterns/Shells/PermissionHelpTooltip',
-  component: PermissionHelpTooltip,
+const meta: Meta<typeof HelpTooltip> = {
+  title: 'Components/Overlays/HelpTooltip',
+  component: HelpTooltip,
   decorators: [(Story) => <div style={{ padding: 60, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
 export default meta
