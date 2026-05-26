@@ -1,9 +1,9 @@
 import { useState, type CSSProperties } from 'react'
 import { User } from 'lucide-react'
 import { Inline, Stack, Text } from '../../primitives'
-import { Badge } from '../../components/feedback/badge'
-import { CollapsibleSectionHeader } from '../../components/data-display/collapsible-section-header'
-import { SelectableListItem } from '../../components/data-display/selectable-list-item'
+import { Badge } from '../feedback/badge'
+import { CollapsibleSectionHeader } from './collapsible-section-header'
+import { SelectableListItem } from './selectable-list-item'
 
 const LIST_STYLE = {
   listStyle: 'none' as const,
@@ -26,34 +26,31 @@ const ROW_TEXT_STYLE = {
 
 const ROW_INACTIVE_STYLE: CSSProperties = { opacity: 0.55 }
 
-export interface ImageDetailLabelersListUser {
-  email: string
-  name?: string | null
+export interface UserPoolItem {
+  id: string
+  label: string
+  tooltip?: string
 }
 
-export interface ImageDetailLabelersListProps {
-  users: ImageDetailLabelersListUser[]
-  selectedUsers: Set<string>
-  onToggleUser: (email: string) => void
-  onHoverUser?: (email: string | null) => void
+export interface UserPoolListProps {
+  users: UserPoolItem[]
+  selectedIds: Set<string>
+  onToggle: (id: string) => void
+  onHover?: (id: string | null) => void
   title?: string
   defaultOpen?: boolean
   className?: string
 }
 
-/**
- * Image detail sidebar 의 labelers section — collapsible 헤더 + count badge +
- * 사용자 row 리스트. platform 의 `ImageDetailLabelers` 와 시각 동일.
- */
-export function ImageDetailLabelersList({
+export function UserPoolList({
   users,
-  selectedUsers,
-  onToggleUser,
-  onHoverUser,
+  selectedIds,
+  onToggle,
+  onHover,
   title = 'Users',
   defaultOpen = false,
   className,
-}: ImageDetailLabelersListProps) {
+}: UserPoolListProps) {
   const [open, setOpen] = useState(defaultOpen)
   if (users.length === 0) return null
   return (
@@ -67,21 +64,21 @@ export function ImageDetailLabelersList({
       {open ? (
         <Stack as="ul" gap={1} style={LIST_STYLE}>
           {users.map((user) => {
-            const active = selectedUsers.has(user.email)
+            const active = selectedIds.has(user.id)
             return (
               <SelectableListItem
-                key={user.email}
+                key={user.id}
                 as="li"
                 variant="flat"
                 selected={active}
-                onClick={() => onToggleUser(user.email)}
-                onMouseEnter={() => onHoverUser?.(user.email)}
-                onMouseLeave={() => onHoverUser?.(null)}
+                onClick={() => onToggle(user.id)}
+                onMouseEnter={() => onHover?.(user.id)}
+                onMouseLeave={() => onHover?.(null)}
                 style={active ? undefined : ROW_INACTIVE_STYLE}
               >
                 <Inline as="span" gap={3} style={ROW_CONTENT_STYLE}>
                   <User size={14} />
-                  <Text as="span" size="var(--ig-font-size-sm)" title={user.email} style={ROW_TEXT_STYLE}>{user.name || user.email}</Text>
+                  <Text as="span" size="var(--ig-font-size-sm)" title={user.tooltip ?? user.label} style={ROW_TEXT_STYLE}>{user.label}</Text>
                 </Inline>
               </SelectableListItem>
             )

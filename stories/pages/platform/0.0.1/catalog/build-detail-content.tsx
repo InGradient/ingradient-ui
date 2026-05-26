@@ -9,12 +9,11 @@ import {
   Trash2,
   Undo2,
 } from 'lucide-react'
-import { ToolbarShell, type ToolbarShellAction } from '@ingradient/ui/components'
+import { ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
 import {
   CommentsPanel,
   ImageDetailClassList,
   ImageDetailInfoPanel,
-  ImageDetailLabelersList,
   ImageDetailSidebar,
   ImageInspectorCanvas,
   type ImageDetailInfo,
@@ -143,14 +142,14 @@ function DetailSidebarMount({
         />
       }
       labelersSlot={
-        <ImageDetailLabelersList
-          users={MOCK_LABELERS}
-          selectedUsers={selectedUsers}
-          onToggleUser={(email) =>
+        <UserPoolList
+          users={MOCK_LABELERS.map((u) => ({ id: u.email, label: u.name ?? u.email, tooltip: u.email }))}
+          selectedIds={selectedUsers}
+          onToggle={(id) =>
             setSelectedUsers((prev) => {
               const next = new Set(prev)
-              if (next.has(email)) next.delete(email)
-              else next.add(email)
+              if (next.has(id)) next.delete(id)
+              else next.add(id)
               return next
             })
           }

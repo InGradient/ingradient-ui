@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ImageDetailSidebar } from './image-detail-sidebar'
-import { ImageDetailLabelersList, type ImageDetailLabelersListUser } from './image-detail-labelers-list'
+import { UserPoolList, type UserPoolItem } from '../../components/data-display/user-pool-list'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
@@ -18,10 +18,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const USERS: ImageDetailLabelersListUser[] = [
-  { email: 'alice@example.com', name: 'Alice Park' },
-  { email: 'bob@example.com', name: 'Bob Kim' },
-  { email: 'carol@example.com', name: 'Carol Lim' },
+const USERS: UserPoolItem[] = [
+  { id: 'alice@example.com', label: 'Alice Park', tooltip: 'alice@example.com' },
+  { id: 'bob@example.com', label: 'Bob Kim', tooltip: 'bob@example.com' },
+  { id: 'carol@example.com', label: 'Carol Lim', tooltip: 'carol@example.com' },
 ]
 
 const slotStyle = {
@@ -58,15 +58,15 @@ const CommentsSlot = (
 function LabelersSlot() {
   const [selected, setSelected] = useState<Set<string>>(new Set(['alice@example.com']))
   return (
-    <ImageDetailLabelersList
+    <UserPoolList
       users={USERS}
-      selectedUsers={selected}
+      selectedIds={selected}
       defaultOpen
-      onToggleUser={(email) =>
+      onToggle={(id) =>
         setSelected((prev) => {
           const next = new Set(prev)
-          if (next.has(email)) next.delete(email)
-          else next.add(email)
+          if (next.has(id)) next.delete(id)
+          else next.add(id)
           return next
         })
       }

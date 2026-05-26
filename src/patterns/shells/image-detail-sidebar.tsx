@@ -46,7 +46,7 @@ export interface ImageDetailSidebarProps {
   commentsSlot?: ReactNode
   /**
    * 하단 고정 — Labelers / user filter 섹션. 없으면 미렌더.
-   * 다른 슬롯과 달리 자체 header 를 가지는 콘텐츠 (e.g. `ImageDetailLabelersList`) 가
+   * 다른 슬롯과 달리 자체 header 를 가지는 콘텐츠 (e.g. `UserPoolList`) 가
    * 들어오는 것을 가정해 wrapper 가 title 을 추가하지 않음.
    */
   labelersSlot?: ReactNode
