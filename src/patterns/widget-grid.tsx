@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Stack } from '../../primitives'
+import { Stack } from '../primitives'
 
 const Row = styled.div<{ $count: number }>`
   position: relative;
@@ -15,7 +15,7 @@ const Row = styled.div<{ $count: number }>`
 
 export type WidgetGridLayout<K extends string = string> = Array<Array<K>>
 
-export interface AnalysisWidgetGridProps<K extends string = string> {
+export interface WidgetGridProps<K extends string = string> {
   /** Row 2D 배열의 widget key. 빈 row 는 자동 제거됨 */
   layout: WidgetGridLayout<K>
   /** 각 widget 의 시각화 element. visible 일 때만 렌더 */
@@ -27,9 +27,9 @@ export interface AnalysisWidgetGridProps<K extends string = string> {
   className?: string
 }
 
-export function AnalysisWidgetGrid<K extends string = string>({
+export function WidgetGrid<K extends string = string>({
   layout, widgets, visibility, emptyState, className,
-}: AnalysisWidgetGridProps<K>) {
+}: WidgetGridProps<K>) {
   const isVisible = (key: K) => visibility?.[key] !== false && !!widgets[key]
 
   const visibleRows = layout

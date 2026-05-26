@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { AnalysisWidgetGrid, type WidgetGridLayout } from './analysis-widget-grid'
+import { WidgetGrid, type WidgetGridLayout } from './widget-grid'
 
 type WidgetKey =
   | 'data_collection'
@@ -49,9 +49,9 @@ const defaultLayout: WidgetGridLayout<WidgetKey> = [
   ['dataset_distribution'],
 ]
 
-const meta: Meta<typeof AnalysisWidgetGrid<WidgetKey>> = {
-  title: 'Patterns/Shells/AnalysisWidgetGrid',
-  component: AnalysisWidgetGrid,
+const meta: Meta<typeof WidgetGrid<WidgetKey>> = {
+  title: 'Patterns/WidgetGrid',
+  component: WidgetGrid,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1100, padding: 20, background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],
 }

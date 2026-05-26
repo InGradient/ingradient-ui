@@ -1,10 +1,10 @@
 import type { DateRange } from 'react-day-picker'
 import { Button, DateRangePicker, type DateRangePickerValue } from '@ingradient/ui/components'
 import {
-  AnalysisWidgetGrid,
   DashboardCustomizePopover,
   DashboardHeader,
   DashboardOverviewPanel,
+  WidgetGrid,
 } from '@ingradient/ui/patterns'
 import { DraggableAnalysisWidgetGrid } from './DraggableAnalysisWidgetGrid'
 import { DeflectometryDashboardSection } from './DeflectometryDashboardSection'
@@ -94,7 +94,7 @@ export function DashboardView<K extends string = string>({
                 emptyState={widgets.emptyState}
               />
             ) : (
-              <AnalysisWidgetGrid<K>
+              <WidgetGrid<K>
                 layout={widgets.layout}
                 widgets={widgets.widgets}
                 visibility={widgets.visibility}
