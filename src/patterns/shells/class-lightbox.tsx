@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../../components/inputs/icon-button'
-import { PatternTabs, type PatternTabsItem } from './pattern-tabs'
+import { ChipTabs, type ChipTabsItem } from '../../components/inputs/chip-tabs'
 
 const OVERLAY_STYLE = { position: 'absolute' as const, inset: 0, width: '100%', height: '100%', pointerEvents: 'none' as const }
 const CLOSE_BTN_STYLE = { position: 'absolute' as const, top: 12, right: 12, borderRadius: 'var(--ig-radius-pill)', background: 'var(--ig-color-lightbox-surface)' }
@@ -57,7 +57,7 @@ export interface ClassLightboxPoint {
   y: number
 }
 
-export interface ClassLightboxItem extends PatternTabsItem {
+export interface ClassLightboxItem extends ChipTabsItem {
   id: string
   name?: string | null
   bboxes?: ClassLightboxBbox[] | null
@@ -117,7 +117,7 @@ export function ClassLightbox({
   return (
     <div onClick={onClose} aria-label="Close enlarged view" style={BACKDROP_STYLE}>
       <div onClick={(e) => e.stopPropagation()} style={PANEL_WRAP_STYLE}>
-        <PatternTabs items={siblings} currentId={activeItem.id} onSelect={(s) => setSelectedSibling(s as ClassLightboxItem)} />
+        <ChipTabs items={siblings} currentId={activeItem.id} onSelect={(s) => setSelectedSibling(s as ClassLightboxItem)} />
         <Frame $aspect={aspect}>
           <img
             src={imageUrl}

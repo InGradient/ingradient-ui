@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { PatternTabs, type PatternTabsItem } from './pattern-tabs'
+import { ChipTabs, type ChipTabsItem } from './chip-tabs'
 
-const siblings: PatternTabsItem[] = [
+const siblings: ChipTabsItem[] = [
   { id: 's1', pattern_label: 'solid' },
   { id: 's2', pattern_label: 'black' },
   { id: 's3', pattern_label: 'x_phase_0_of_3' },
@@ -11,9 +11,9 @@ const siblings: PatternTabsItem[] = [
   { id: 's6', pattern_label: 'y_phase_0_of_3' },
 ]
 
-const meta: Meta<typeof PatternTabs> = {
-  title: 'Patterns/Shells/PatternTabs',
-  component: PatternTabs,
+const meta: Meta<typeof ChipTabs> = {
+  title: 'Components/Inputs/ChipTabs',
+  component: ChipTabs,
   decorators: [(Story) => <div style={{ padding: 16, background: 'rgba(0, 0, 0, 0.85)' }}><Story /></div>],
 }
 export default meta
@@ -39,6 +39,6 @@ export const PlainNames: Story = {
 export const Interactive: Story = {
   render: () => {
     const [current, setCurrent] = useState('s3')
-    return <PatternTabs items={siblings} currentId={current} onSelect={(s) => setCurrent(s.id)} />
+    return <ChipTabs items={siblings} currentId={current} onSelect={(s) => setCurrent(s.id)} />
   },
 }

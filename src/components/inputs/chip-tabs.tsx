@@ -18,18 +18,18 @@ const Tab = styled.button<{ $active: boolean }>`
   }
 `
 
-export interface PatternTabsItem extends FormatPatternTabItem {
+export interface ChipTabsItem extends FormatPatternTabItem {
   id: string
 }
 
-export interface PatternTabsProps {
-  items: PatternTabsItem[]
+export interface ChipTabsProps {
+  items: ChipTabsItem[]
   currentId: string
-  onSelect: (item: PatternTabsItem) => void
+  onSelect: (item: ChipTabsItem) => void
   className?: string
 }
 
-export function PatternTabs({ items, currentId, onSelect, className }: PatternTabsProps) {
+export function ChipTabs({ items, currentId, onSelect, className }: ChipTabsProps) {
   if (items.length <= 1) return null
   return (
     <Inline gap={1} justify="center" wrap="wrap" className={className} role="tablist" style={ROW_STYLE}>
