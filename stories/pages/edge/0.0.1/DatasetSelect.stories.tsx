@@ -1,122 +1,183 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Badge, Card, EmptyState, SectionPanel, StatusPill, type StatusTone } from '@ingradient/ui/components'
-import { Grid, Inline, Stack } from '@ingradient/ui/primitives'
-import { mockDatasets, mockDevices } from '../../../fixtures/edge/0.0.1'
+import { useState } from 'react'
+import {
+  DatasetSelectView,
+  AddDatasetModalView,
+  ExportModalView,
+  type DatasetSelectLabels,
+  type AddDatasetModalLabels,
+  type ExportModalLabels,
+  type EdgeProjectGroup,
+  type RecentDatasetEntry,
+  type AddDatasetClass,
+} from '@ingradient/edge-pages'
+import { SAMPLE_GROUPS, SAMPLE_RECENT } from '../../../fixtures/edge/0.0.1/dataset-groups'
 import { defineHandoff } from '../../../support/handoff'
 
 const handoff = defineHandoff({
   service: 'edge',
   version: '0.0.1',
   page: 'DatasetSelect',
-  referenceStory: 'Pages / Edge / 0.0.1 / DatasetSelect / WithDatasets',
+  referenceStory: 'Pages / Edge / 0.0.1 / DatasetSelect / WithGroups',
   preset: 'edge-0.0.1',
-  fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
-  requiredScenarios: ['with-datasets', 'empty'],
+  fixturesPath: 'stories/fixtures/edge/0.0.1/dataset-groups.ts',
+  requiredScenarios: ['empty-offline', 'empty-online', 'with-groups', 'with-recent', 'loading', 'fetch-error', 'add-modal', 'export-modal'],
   interactions: [
-    'device card 클릭 → 캡처 화면 진입',
-    'dataset card 클릭 → 해당 dataset 의 라벨링 화면',
-    'device status 변경 시 status pill 실시간 업데이트',
+    'dataset card 클릭 → 캡처 화면 진입',
+    'Add dataset 버튼 → AddDatasetModalView slot 열림',
+    'dot menu → Export → ExportModalView slot 열림',
+    'recent dataset 가로 스크롤',
   ],
   platformIntegration: [
-    'replace mock devices with Electron device discovery (USB/IP camera scan)',
-    'dataset 은 local SQLite + 동기화된 cloud dataset 의 union',
-    'status (online/offline/capturing) 는 device 와의 heartbeat 결과',
+    'groupedDatasets 는 useDatasetFetch hook 결과',
+    'AccountMenu / CameraSettingsDialog / LangSelector 는 slot 으로 주입',
+    'session expired ConfirmDialog 는 view 가 직접 render',
   ],
 })
 
-const pageStyle: React.CSSProperties = {
-  minHeight: '100vh',
-  padding: 'var(--ig-space-7)',
-  background: 'var(--ig-color-bg-canvas)',
+const DEFAULT_LABELS: DatasetSelectLabels = {
+  title: 'Datasets',
+  online: 'Online',
+  offline: 'Offline',
+  refresh: 'Refresh',
+  settingsTitle: 'Settings',
+  settingsDisabledTitle: 'Camera setup — permission required',
+  recentLabel: 'Recent',
+  recentBadge: 'Latest',
+  addDataset: 'Add dataset',
+  noClasses: 'No classes',
+  more: 'More',
+  export: 'Export',
+  loading: 'Loading…',
+  emptyOffline: 'No datasets available offline.',
+  emptyOnline: 'No datasets yet.',
+  createOnPlatform: 'Create the first project on the Platform.',
+  sessionExpiredTitle: 'Session expired',
+  sessionExpiredDesc: 'Please sign in again to continue.',
+  sessionExpiredConfirm: 'Sign in',
+  cancel: 'Cancel',
+  images: (count) => `${count} images`,
+  roleLabel: (role) => role,
 }
 
-const headerStyle: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-2xl)',
-  fontWeight: 600,
-  margin: 0,
+const ADD_DATASET_LABELS: AddDatasetModalLabels = {
+  title: 'Add dataset',
+  cancel: 'Cancel',
+  add: 'Add',
+  adding: 'Adding…',
+  datasetNameLabel: 'Dataset name',
+  taskTypeLabel: 'Task type',
+  classesLabel: (s, t) => `Classes (${s}/${t})`,
+  taskTypeOptions: {
+    classification: 'Classification',
+    object_detection: 'Object Detection',
+    segmentation: 'Segmentation',
+    point: 'Point',
+  },
 }
 
-const sectionTitleStyle: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-lg)',
-  fontWeight: 600,
-  margin: '0 0 var(--ig-space-4)',
-  color: 'var(--ig-color-text-secondary)',
+const EXPORT_LABELS: ExportModalLabels = {
+  title: 'Export',
+  cancel: 'Cancel',
+  close: 'Close',
+  export: 'Export',
+  exporting: 'Exporting…',
+  complete: 'Export complete.',
+  images: (count) => `${count} images`,
+  localImages: (count) => `${count} local`,
 }
 
-const cardBodyStyle: React.CSSProperties = {
-  padding: 'var(--ig-space-5)',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--ig-space-3)',
-}
+const SAMPLE_CLASSES: AddDatasetClass[] = [
+  { class_id: 'c1', class_name: 'scratch', color: '#f43f5e' },
+  { class_id: 'c2', class_name: 'dent', color: '#f59e0b' },
+  { class_id: 'c3', class_name: 'stain', color: '#10b981' },
+]
 
-const titleStyle: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-md)',
-  fontWeight: 600,
-  color: 'var(--ig-color-text-primary)',
-}
+const LANG_SLOT = <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 12 }}>EN</span>
+const ACCOUNT_SLOT = <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 12 }}>Account ▾</span>
 
-const metaStyle: React.CSSProperties = {
-  fontSize: 'var(--ig-font-size-xs)',
-  color: 'var(--ig-color-text-muted)',
-}
-
-const deviceTone: Record<string, StatusTone> = {
-  online: 'completed',
-  capturing: 'running',
-  offline: 'failed',
-}
-
-type Scene = {
-  showDatasets?: boolean
-}
-
-function DatasetSelectScene({ showDatasets = true }: Scene) {
+function AddModalScene() {
+  const [name, setName] = useState('')
+  const [taskType, setTaskType] = useState<'object_detection'>('object_detection')
+  const [selectedClassIds, setSelectedClassIds] = useState(new Set(SAMPLE_CLASSES.map((c) => c.class_id)))
   return (
-    <div style={pageStyle}>
-      <Stack gap={7}>
-        <Inline justify="space-between" align="center">
-          <h1 style={headerStyle}>Edge Workstation</h1>
-          <Badge $tone="accent">Online</Badge>
-        </Inline>
+    <AddDatasetModalView
+      name={name}
+      taskType={taskType}
+      selectedClassIds={selectedClassIds}
+      allClasses={SAMPLE_CLASSES}
+      namePlaceholder="2026-05-19"
+      adding={false}
+      error={null}
+      labels={ADD_DATASET_LABELS}
+      onNameChange={setName}
+      onTaskTypeChange={(v) => setTaskType(v as 'object_detection')}
+      onClassesChange={setSelectedClassIds}
+      onSubmit={(e) => e.preventDefault()}
+      onClose={() => undefined}
+    />
+  )
+}
 
-        <SectionPanel>
-          <h2 style={sectionTitleStyle}>Connected devices</h2>
-          <Grid gap={3} columns="repeat(2, minmax(0, 1fr))">
-            {mockDevices.map((d) => (
-              <Card key={d.id}>
-                <div style={cardBodyStyle}>
-                  <Inline justify="space-between" align="center">
-                    <span style={titleStyle}>{d.name}</span>
-                    <StatusPill tone={deviceTone[d.status]}>{d.status}</StatusPill>
-                  </Inline>
-                  <span style={metaStyle}>Last seen {d.lastSeenAt}</span>
-                </div>
-              </Card>
-            ))}
-          </Grid>
-        </SectionPanel>
+function ExportModalScene() {
+  return (
+    <ExportModalView
+      datasetName="2026-05-19 morning shift"
+      imageCount={1248}
+      localImageCount={812}
+      phase="idle"
+      error={null}
+      labels={EXPORT_LABELS}
+      onClose={() => undefined}
+      onExport={() => undefined}
+    />
+  )
+}
 
-        <SectionPanel>
-          <h2 style={sectionTitleStyle}>Recent datasets</h2>
-          {showDatasets ? (
-            <Grid gap={3} columns="repeat(3, minmax(0, 1fr))">
-              {mockDatasets.map((ds) => (
-                <Card key={ds.id}>
-                  <div style={cardBodyStyle}>
-                    <span style={titleStyle}>{ds.name}</span>
-                    <span style={metaStyle}>{ds.imageCount.toLocaleString()} images</span>
-                    <span style={metaStyle}>Captured {ds.lastCapturedAt}</span>
-                  </div>
-                </Card>
-              ))}
-            </Grid>
-          ) : (
-            <EmptyState title="아직 데이터셋이 없음" description="라이선스가 활성화된 후 첫 캡처를 시작하세요." />
-          )}
-        </SectionPanel>
-      </Stack>
-    </div>
+type SceneArgs = Parameters<typeof DatasetSelectScene>[0]
+
+function DatasetSelectScene(args: {
+  mode?: 'online' | 'offline'
+  loading?: boolean
+  fetchError?: string | null
+  groups?: EdgeProjectGroup[]
+  recentDatasets?: RecentDatasetEntry[]
+  showAddModal?: boolean
+  showExportModal?: boolean
+}) {
+  const groups = args.groups ?? []
+  const recent = args.recentDatasets ?? []
+  const totalDatasets = groups.reduce((acc, g) => acc + g.datasets.length, 0)
+  const [openDotMenuDatasetId, setOpenDotMenuDatasetId] = useState<string | null>(null)
+  return (
+    <DatasetSelectView
+      mode={args.mode ?? 'online'}
+      connectionStatus="connected"
+      connectionTitle="Connected"
+      canSetupCamera
+      loading={args.loading ?? false}
+      fetchError={args.fetchError ?? null}
+      recentDatasets={recent}
+      groups={groups}
+      totalDatasets={totalDatasets}
+      latestDatasetId={recent.find((r) => r.isLatest)?.dataset.dataset_id ?? null}
+      openDotMenuDatasetId={openDotMenuDatasetId}
+      sessionExpired={false}
+      labels={DEFAULT_LABELS}
+      langSelector={LANG_SLOT}
+      accountMenu={ACCOUNT_SLOT}
+      settingsDialog={null}
+      exportModal={args.showExportModal ? <ExportModalScene /> : null}
+      addDatasetModal={args.showAddModal ? <AddModalScene /> : null}
+      onRefresh={() => undefined}
+      onOpenSettings={() => undefined}
+      onSelectDataset={() => undefined}
+      onAddDatasetClick={() => undefined}
+      onExportClick={() => undefined}
+      onToggleDotMenu={setOpenDotMenuDatasetId}
+      onSessionExpiredConfirm={() => undefined}
+      onSessionExpiredCancel={() => undefined}
+    />
   )
 }
 
@@ -129,7 +190,28 @@ const meta = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<SceneArgs>
 
-export const WithDatasets: Story = { args: { showDatasets: true } }
-export const Empty: Story = { args: { showDatasets: false } }
+export const EmptyOffline: Story = { args: { mode: 'offline' } }
+
+export const EmptyOnline: Story = { args: { mode: 'online' } }
+
+export const WithGroups: Story = { args: { mode: 'online', groups: SAMPLE_GROUPS } }
+
+export const WithRecent: Story = {
+  args: { mode: 'online', groups: SAMPLE_GROUPS, recentDatasets: SAMPLE_RECENT },
+}
+
+export const Loading: Story = { args: { mode: 'online', loading: true } }
+
+export const FetchError: Story = {
+  args: { mode: 'online', fetchError: 'Failed to fetch datasets. Check connectivity.' },
+}
+
+export const AddDatasetModalOpen: Story = {
+  args: { mode: 'online', groups: SAMPLE_GROUPS, showAddModal: true },
+}
+
+export const ExportModalOpen: Story = {
+  args: { mode: 'online', groups: SAMPLE_GROUPS, showExportModal: true },
+}

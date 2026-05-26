@@ -67,7 +67,11 @@ export const Default: Story = {
                 Storybook page story that reflects role, data scale, and filter state without leaving the design system.
               </PageSubtitle>
             </PageTitleBlock>
-            {canEdit ? <Button variant="accent">Create workspace</Button> : null}
+            {canEdit ? (
+              <Button variant="accent" data-ig-component="TablePage.CreateWorkspaceButton">
+                Create workspace
+              </Button>
+            ) : null}
           </PageHeaderRow>
         </PageHeader>
         <PageContent>

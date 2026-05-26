@@ -1,0 +1,269 @@
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+export const Spinner = styled.span`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--ig-color-text-primary);
+  border-radius: 50%;
+  animation: ${spin} 0.7s linear infinite;
+  vertical-align: -2px;
+  margin-right: 8px;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-4);
+  padding-top: var(--ig-space-4);
+  border-top: 1px solid var(--ig-color-border-subtle);
+`;
+
+export const SectionTitle = styled.div`
+  font-size: var(--ig-font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ig-color-text-muted);
+`;
+
+export const CollapsibleHeader = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--ig-font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ig-color-text-muted);
+  &:hover { color: var(--ig-color-text-primary); }
+  svg { transition: transform 0.15s ease; }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const Label = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--ig-font-size-xs);
+  color: var(--ig-color-text-secondary);
+`;
+
+export const LabelName = styled.span`
+  color: var(--ig-color-text-muted);
+`;
+
+export const LabelValue = styled.span`
+  color: var(--ig-color-text-primary);
+  font-variant-numeric: tabular-nums;
+`;
+
+export const Slider = styled.input.attrs({ type: 'range' })`
+  width: 100%;
+  accent-color: rgba(77, 136, 255, 0.9);
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: var(--ig-radius-xs);
+  border: 1px solid var(--ig-color-border-subtle);
+  background: var(--ig-color-white-06);
+  color: var(--ig-color-text-primary);
+  font-size: var(--ig-font-size-sm);
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  option {
+    background: var(--ig-color-surface-panel);
+    color: var(--ig-color-text-primary);
+  }
+  optgroup {
+    background: var(--ig-color-surface-panel);
+    color: var(--ig-color-text-soft);
+    font-style: italic;
+    font-weight: 600;
+  }
+`;
+
+export const CheckRow = styled.label`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--ig-font-size-xs);
+  color: var(--ig-color-text-secondary);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  input[type='checkbox'] {
+    accent-color: rgba(77, 136, 255, 0.9);
+    margin: 0;
+  }
+`;
+
+/** 슬라이더 + 체크박스를 한 줄에 배치. 슬라이더가 남은 공간을 가져가고 체크박스는 우측. */
+export const SliderInline = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  input[type='range'] {
+    flex: 1;
+    min-width: 0;
+  }
+`;
+
+export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $danger?: boolean }>`
+  height: 32px;
+  border-radius: var(--ig-radius-xs);
+  border: 1px solid ${(p) =>
+    p.$danger ? 'rgba(239, 68, 68, 0.6)'
+    : p.$active ? 'rgba(77, 136, 255, 0.8)'
+    : 'var(--ig-color-border-subtle)'};
+  background: ${(p) =>
+    p.$danger ? 'rgba(239, 68, 68, 0.15)'
+    : p.$primary ? 'rgba(77, 136, 255, 0.9)'
+    : p.$active ? 'var(--ig-color-blue-tint-18)'
+    : 'var(--ig-color-white-06)'};
+  color: ${(p) =>
+    p.$danger ? 'var(--ig-color-danger)'
+    : p.$primary ? 'var(--ig-color-text-primary)'
+    : 'var(--ig-color-text-primary)'};
+  font-size: var(--ig-font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+`;
+
+export const BtnRow = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
+export const MetricRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--ig-font-size-xs);
+  color: var(--ig-color-text-secondary);
+  font-variant-numeric: tabular-nums;
+`;
+
+export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
+  padding: 6px 8px;
+  border-radius: var(--ig-radius-xs);
+  font-size: var(--ig-font-size-xs);
+  font-weight: 600;
+  background: ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.14)' : 'var(--ig-color-blue-tint-14)')};
+  color: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-warning)' : 'var(--ig-color-accent-soft)')};
+  border: 1px solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'rgba(77, 136, 255, 0.35)')};
+`;
+
+// ── Setup Quality Indicator ─────────────────────────────────────────────────
+
+export type QualityStatusValue =
+  | 'good' | 'fair' | 'poor'
+  | 'high' | 'medium' | 'low'
+  | null;
+
+export const QualityCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--ig-space-3);
+  background: var(--ig-color-white-04);
+  border: 1px solid var(--ig-color-border-subtle);
+  border-radius: var(--ig-radius-xs);
+`;
+
+export const QualityHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--ig-font-size-sm);
+`;
+
+export const IndicatorRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--ig-font-size-sm);
+`;
+
+export const QualityLabel = styled.span`
+  color: var(--ig-color-text-muted);
+`;
+
+export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: ${(p) =>
+    p.$status === 'good' || p.$status === 'high' ? 'var(--ig-color-success)'
+    : p.$status === 'fair' || p.$status === 'medium' ? 'var(--ig-color-warning)'
+    : p.$status === 'poor' || p.$status === 'low' ? 'var(--ig-color-danger)'
+    : 'var(--ig-color-text-muted)'};
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+`;
+
+export const BestAxisValue = styled.span`
+  font-weight: 700;
+  color: var(--ig-color-text-primary);
+`;
+
+export const IndicatorRight = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const IndicatorValue = styled.span`
+  font-size: var(--ig-font-size-xs);
+  color: var(--ig-color-text-muted);
+  font-variant-numeric: tabular-nums;
+`;
+
+export const QualityDivider = styled.div`
+  height: 1px;
+  background: var(--ig-color-border-subtle);
+  margin: 2px 0;
+`;
+
+export const RoiSectionLabel = styled.div`
+  font-size: var(--ig-font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ig-color-text-muted);
+  margin-top: 2px;
+`;

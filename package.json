@@ -17,10 +17,6 @@
       "types": "./lib/brand.d.ts",
       "import": "./lib/brand.js"
     },
-    "./legacy": {
-      "types": "./lib/legacy.d.ts",
-      "import": "./lib/legacy.js"
-    },
     "./tokens.css": "./lib/tokens.css",
     "./tokens": {
       "types": "./lib/tokens.d.ts",
@@ -58,7 +54,7 @@
     "validate:consumer-smoke": "npm run build:package && npm run build:smoke-consumer",
     "build": "npm run build:package && npm run build:docs",
     "build:smoke-consumer": "npm run build --workspace apps/storybook-smoke-consumer",
-    "build:package": "rimraf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs && npm run build --workspace packages/platform-pages",
+    "build:package": "rimraf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs && npm run build --workspace packages/platform-pages && npm run build --workspace packages/edge-pages",
     "build:docs": "npm run build:storybook",
     "check:style-literals": "node scripts/check-style-literals.mjs",
     "check:doc-coverage": "node scripts/check-doc-coverage.mjs",

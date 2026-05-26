@@ -74,7 +74,7 @@ export const controlField = css`
     &::-webkit-datetime-edit-year-field {
       color: var(--ig-color-text-primary);
       padding: 2px;
-      border-radius: 2px;
+      border-radius: var(--ig-radius-xs);
     }
 
     &::-webkit-datetime-edit-month-field:focus,

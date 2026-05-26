@@ -9,9 +9,8 @@ import {
   Trash2,
   Undo2,
 } from 'lucide-react'
+import { ToolbarShell, type ToolbarShellAction } from '@ingradient/ui/components'
 import {
-  AnnotationToolbar,
-  type AnnotationToolbarAction,
   CommentsPanel,
   ImageDetailClassList,
   ImageDetailInfoPanel,
@@ -56,7 +55,7 @@ function DetailMainMount({
 }) {
   const [mode, setMode] = useState<DetailMode>('cursor')
   const noop = () => undefined
-  const actions: Array<AnnotationToolbarAction | 'separator'> = [
+  const actions: Array<ToolbarShellAction | 'separator'> = [
     { key: 'cursor', title: 'Cursor (select)', icon: <MousePointer2 size={18} />, active: mode === 'cursor', onClick: () => setMode('cursor') },
     { key: 'bbox', title: 'Draw bbox', icon: <Square size={18} />, active: mode === 'bbox', onClick: () => setMode('bbox') },
     { key: 'point', title: 'Add point', icon: <CircleDot size={18} />, active: mode === 'point', onClick: () => setMode('point') },
@@ -78,7 +77,7 @@ function DetailMainMount({
         />
       </div>
       <div style={TOOLBAR_WRAP_STYLE}>
-        <AnnotationToolbar placement="bottom" actions={actions} ariaLabel="Image detail toolbar" />
+        <ToolbarShell placement="bottom" actions={actions} ariaLabel="Image detail toolbar" />
       </div>
     </div>
   )

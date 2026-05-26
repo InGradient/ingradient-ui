@@ -56,9 +56,21 @@ export function CatalogBody({
   }
   if (imagesPane.images.length === 0) {
     if (viewMode === 'stats') {
-      return <EmptyState title={STATS_EMPTY_TITLE} description={STATS_EMPTY_DESC} />
+      return (
+        <EmptyState
+          title={STATS_EMPTY_TITLE}
+          description={STATS_EMPTY_DESC}
+          data-ig-slot="CatalogBody.EmptyStatsState"
+        />
+      )
     }
-    return <EmptyState title={EMPTY_TITLE} description={EMPTY_DESC} />
+    return (
+      <EmptyState
+        title={EMPTY_TITLE}
+        description={EMPTY_DESC}
+        data-ig-slot="CatalogBody.EmptyImagesState"
+      />
+    )
   }
   if (viewMode === 'table') {
     return (

@@ -1,0 +1,39 @@
+import { AlertTriangle } from 'lucide-react'
+import { DialogShell } from '@ingradient/ui'
+import { ConfirmButton, FailureCode } from './WorkspaceView.styles'
+import type { SequenceFailureInfo, WorkspaceLabels } from './types'
+
+interface SequenceFailureDialogProps {
+  info: SequenceFailureInfo
+  labels: Pick<WorkspaceLabels, 'sequenceFailed' | 'errorCode' | 'cancel' | 'retry'>
+  onCancel: () => void
+  onRetry: () => void
+}
+
+export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.Element {
+  const { info, labels, onCancel, onRetry } = props
+  return (
+    <DialogShell
+      title={
+        <>
+          <AlertTriangle size={18} color="var(--ig-color-danger)" style={{ marginRight: 6 }} />
+          {labels.sequenceFailed}
+        </>
+      }
+      description={
+        <>
+          {info.message}
+          <FailureCode>{labels.errorCode} {info.errorCode}</FailureCode>
+        </>
+      }
+      onClose={onCancel}
+      width="min(480px, 100%)"
+      actions={
+        <>
+          <ConfirmButton type="button" onClick={onCancel}>{labels.cancel}</ConfirmButton>
+          <ConfirmButton type="button" $danger onClick={onRetry}>{labels.retry}</ConfirmButton>
+        </>
+      }
+    />
+  )
+}

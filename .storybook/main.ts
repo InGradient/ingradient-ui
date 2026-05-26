@@ -100,6 +100,7 @@ const config: StorybookConfig = {
         '@ingradient/ui/patterns': path.resolve(__dirname, '../src/patterns/index.ts'),
         '@ingradient/ui/utils': path.resolve(__dirname, '../src/utils/index.ts'),
         '@ingradient/platform-pages': path.resolve(__dirname, '../packages/platform-pages/src/index.ts'),
+        '@ingradient/edge-pages': path.resolve(__dirname, '../packages/edge-pages/src/index.ts'),
         '@ingradient/ui': path.resolve(__dirname, '../src/index.ts'),
         '@storybook-support': path.resolve(__dirname, '../stories/support'),
       },

@@ -87,4 +87,3 @@ export const RightSideLoadingText = styled.span`
 export const TableWrap = styled.div`
   padding: var(--ig-space-5);
 `
-

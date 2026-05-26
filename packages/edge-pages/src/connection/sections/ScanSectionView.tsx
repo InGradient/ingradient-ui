@@ -1,0 +1,122 @@
+import styled from 'styled-components'
+import { Camera, RefreshCw, CheckCircle, ChevronRight, Usb, Wifi, AlertCircle, Wrench } from 'lucide-react'
+import { Badge, Button, Spinner, FormSection, SectionTitle } from '@ingradient/ui'
+import { EmptyState } from '@ingradient/ui/components'
+import {
+  DiscoverBar, DiscoverHint, DeviceList, DeviceCard,
+  DeviceInfo, DeviceName, DeviceMeta,
+} from '../ConnectionTabView.styles'
+import type { ScanSectionViewProps, GigEDevice, USBDevice, NicBadge } from '../types'
+
+const SubTitle = styled.div`
+  font-size: var(--ig-font-size-2xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ig-color-text-muted);
+  margin-bottom: 6px;
+`
+
+function nicBadgeTone(badge: NicBadge): 'success' | 'accent' | 'danger' {
+  return badge === 'recommended' ? 'success' : badge === 'possible' ? 'accent' : 'danger'
+}
+
+function nicBadgeLabel(badge: NicBadge, labels: ScanSectionViewProps['labels']): string {
+  return badge === 'recommended' ? labels.nicBadgeRecommended
+    : badge === 'possible' ? labels.nicBadgePossible
+    : labels.nicBadgeUnsuitable
+}
+
+export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
+  const {
+    isScanning, discoveredDevices, nicCandidates, isLoadingCandidates,
+    selectedCamera, selectedNic, isBlocked = false, labels,
+    onScan, onSelectCamera, onSelectNic, onRequestForceIp,
+  } = props
+  const isLoading = isScanning || isLoadingCandidates
+
+  return (
+    <FormSection>
+      <SectionTitle>{labels.scanTitle}</SectionTitle>
+      <DiscoverBar>
+        <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
+          {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshCw size={14} />}
+          {isLoading ? labels.scanning : labels.scan}
+        </Button>
+        <DiscoverHint>{labels.scanHint}</DiscoverHint>
+      </DiscoverBar>
+
+      {!isScanning && discoveredDevices.length > 0 && (
+        <>
+          <SubTitle>{labels.cameras} ({discoveredDevices.length})</SubTitle>
+          <DeviceList>
+            {discoveredDevices.map((device) => {
+              const isUSB = device.type === 'usb'
+              const gige = !isUSB ? (device as GigEDevice) : null
+              const key = isUSB ? `usb-${(device as USBDevice).index}` : `gige-${(device as GigEDevice).ip}`
+              const isSelected = selectedCamera === device
+                || (isUSB && selectedCamera?.type === 'usb' && (selectedCamera as USBDevice).index === (device as USBDevice).index)
+                || (!isUSB && selectedCamera?.type === 'gige' && (selectedCamera as GigEDevice).ip === (device as GigEDevice).ip)
+              return (
+                <DeviceCard key={key} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectCamera(device) }}>
+                  {isUSB
+                    ? <Usb size={18} style={{ flexShrink: 0 }} />
+                    : <Camera size={18} style={{ flexShrink: 0 }} />}
+                  <DeviceInfo>
+                    <DeviceName>
+                      {isUSB ? (device as USBDevice).name : `${gige?.manufacturer || 'Unknown'} ${gige?.model || 'Camera'}`}
+                    </DeviceName>
+                    <DeviceMeta>
+                      {isUSB
+                        ? `Index ${(device as USBDevice).index} · ${(device as USBDevice).width ?? '?'}×${(device as USBDevice).height ?? '?'}`
+                        : `${gige?.ip} · ${gige?.mac}`}
+                    </DeviceMeta>
+                  </DeviceInfo>
+                  {gige && gige.reachable === false && (
+                    <Badge $tone="danger"><AlertCircle size={11} style={{ marginRight: 3 }} />{labels.notReachable}</Badge>
+                  )}
+                  {gige && gige.reachable === true && (
+                    <Badge $tone="success">{labels.reachable}</Badge>
+                  )}
+                  {gige && gige.reachable === false && !isBlocked && onRequestForceIp && (
+                    <Button size="sm" variant="secondary" type="button"
+                      onClick={(e) => { e.stopPropagation(); onRequestForceIp(gige) }}>
+                      <Wrench size={11} />{labels.forceIp}
+                    </Button>
+                  )}
+                  <Badge $tone={isUSB ? 'accent' : 'neutral'}>{isUSB ? 'USB' : 'GigE'}</Badge>
+                  {isSelected ? <CheckCircle size={16} style={{ flexShrink: 0 }} />
+                    : <ChevronRight size={14} style={{ flexShrink: 0 }} />}
+                </DeviceCard>
+              )
+            })}
+          </DeviceList>
+        </>
+      )}
+      {!isScanning && discoveredDevices.length === 0 && <EmptyState>{labels.noDevices}</EmptyState>}
+
+      {nicCandidates && nicCandidates.length > 0 && (
+        <>
+          <SubTitle style={{ marginTop: 16 }}>{labels.nicCandidates} ({nicCandidates.length})</SubTitle>
+          <DeviceList>
+            {nicCandidates.map((nic) => {
+              const isSelected = selectedNic?.name === nic.name
+              return (
+                <DeviceCard key={nic.name} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectNic(nic) }}>
+                  <Wifi size={18} style={{ flexShrink: 0 }} />
+                  <DeviceInfo>
+                    <DeviceName>{nic.name}</DeviceName>
+                    <DeviceMeta>{nic.description} · {nic.ipv4 || '—'} · {nic.status}</DeviceMeta>
+                  </DeviceInfo>
+                  <Badge $tone={nicBadgeTone(nic.badge)}>{nicBadgeLabel(nic.badge, labels)}</Badge>
+                  {isSelected ? <CheckCircle size={16} style={{ flexShrink: 0 }} />
+                    : <ChevronRight size={14} style={{ flexShrink: 0 }} />}
+                </DeviceCard>
+              )
+            })}
+          </DeviceList>
+        </>
+      )}
+    </FormSection>
+  )
+}
