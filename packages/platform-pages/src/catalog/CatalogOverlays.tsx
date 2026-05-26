@@ -1,7 +1,6 @@
-import { ConfirmDialog } from '@ingradient/ui/components'
+import { ConfirmDialog, ContextMenuWithSubmenus } from '@ingradient/ui/components'
 import {
   AddDatasetModal,
-  DatasetMenu,
   DragDropDecideModal,
   DuplicateDatasetModal,
   GalleryDatasetTransferDialog,
@@ -54,7 +53,7 @@ export function CatalogOverlays({
         onDelete={imageMenu.onDelete}
         onOpenLabeling={imageMenu.onOpenLabeling}
       />
-      <DatasetMenu
+      <ContextMenuWithSubmenus
         anchorEl={datasetMenu.anchorEl}
         onClose={datasetMenu.onClose}
         actions={[

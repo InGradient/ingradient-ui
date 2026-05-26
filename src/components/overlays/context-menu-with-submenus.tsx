@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { FloatingOverlay } from '../../components/overlays/floating-overlay'
-import { MenuItem } from '../../components/overlays/menu-item'
+import { useEffect, useRef, useState } from 'react'
+import { FloatingOverlay } from './floating-overlay'
+import { MenuItem } from './menu-item'
 
 const BACKDROP_STYLE = {
   position: 'fixed' as const,
@@ -29,28 +29,28 @@ const CHEVRON_STYLE = {
   fontSize: 'var(--ig-font-size-xs)',
 }
 
-export interface DatasetMenuAction {
+export interface ContextMenuWithSubmenusAction {
   key: string
   label: string
   tone?: 'default' | 'danger'
   disabled?: boolean
   onClick?: () => void
-  subActions?: DatasetMenuAction[]
+  subActions?: ContextMenuWithSubmenusAction[]
   separator?: boolean
 }
 
-export interface DatasetMenuProps {
+export interface ContextMenuWithSubmenusProps {
   anchorEl: HTMLElement | null
   onClose: () => void
-  actions: DatasetMenuAction[]
+  actions: ContextMenuWithSubmenusAction[]
   offset?: number
   defaultOpenSubmenuKey?: string
   alignRight?: boolean
 }
 
-export function DatasetMenu({
+export function ContextMenuWithSubmenus({
   anchorEl, onClose, actions, offset = 4, defaultOpenSubmenuKey, alignRight = true,
-}: DatasetMenuProps) {
+}: ContextMenuWithSubmenusProps) {
   const menuRef = useRef<HTMLDivElement>(null)
   const [submenuKey, setSubmenuKey] = useState<string | null>(defaultOpenSubmenuKey ?? null)
   const [submenuPos, setSubmenuPos] = useState<{ top: number; left: number } | null>(null)

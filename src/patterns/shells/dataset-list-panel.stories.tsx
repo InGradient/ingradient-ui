@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatasetListPanel, type DatasetListPanelDataset } from './dataset-list-panel'
-import { DatasetMenu } from './dataset-menu'
+import { ContextMenuWithSubmenus } from '../../components/overlays/context-menu-with-submenus'
 
 const SAMPLE: DatasetListPanelDataset[] = [
   { id: 'd1', name: 'Wafer line A — production batch 2024Q4', task_type: 'object_detection' },
@@ -49,7 +49,7 @@ function InteractiveDemo({ initial }: { initial: DatasetListPanelDataset[] }) {
         onAddDataset={() => alert('Add dataset')}
         onOpenDatasetMenu={(id, anchor) => setMenuFor({ id, anchor })}
       />
-      <DatasetMenu
+      <ContextMenuWithSubmenus
         anchorEl={menuFor?.anchor ?? null}
         onClose={() => setMenuFor(null)}
         actions={[

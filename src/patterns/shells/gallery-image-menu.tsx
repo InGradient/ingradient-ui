@@ -1,4 +1,4 @@
-import { DatasetMenu, type DatasetMenuAction } from './dataset-menu'
+import { ContextMenuWithSubmenus, type ContextMenuWithSubmenusAction } from '../../components/overlays/context-menu-with-submenus'
 
 export interface GalleryImageMenuDatasetOption {
   id: string
@@ -22,7 +22,7 @@ export interface GalleryImageMenuProps {
   onUnarchive?: () => void
   onDelete?: () => void
   onOpenLabeling?: () => void
-  customActions?: DatasetMenuAction[]
+  customActions?: ContextMenuWithSubmenusAction[]
   defaultOpenSubmenuKey?: string
 }
 
@@ -31,12 +31,12 @@ export function GalleryImageMenu({
   onCopyTo, onMoveTo, onCut, onPaste, onArchive, onUnarchive, onDelete, onOpenLabeling,
   customActions, defaultOpenSubmenuKey,
 }: GalleryImageMenuProps) {
-  const actions: DatasetMenuAction[] = customActions ?? buildDefaultActions({
+  const actions: ContextMenuWithSubmenusAction[] = customActions ?? buildDefaultActions({
     datasets, clipboardHasImages, archived,
     onCopyTo, onMoveTo, onCut, onPaste, onArchive, onUnarchive, onDelete, onOpenLabeling,
   })
   return (
-    <DatasetMenu
+    <ContextMenuWithSubmenus
       anchorEl={anchorEl}
       onClose={onClose}
       actions={actions}
@@ -48,8 +48,8 @@ export function GalleryImageMenu({
 function buildDefaultActions({
   datasets, clipboardHasImages, archived,
   onCopyTo, onMoveTo, onCut, onPaste, onArchive, onUnarchive, onDelete, onOpenLabeling,
-}: Omit<GalleryImageMenuProps, 'anchorEl' | 'onClose' | 'customActions' | 'defaultOpenSubmenuKey'>): DatasetMenuAction[] {
-  const out: DatasetMenuAction[] = []
+}: Omit<GalleryImageMenuProps, 'anchorEl' | 'onClose' | 'customActions' | 'defaultOpenSubmenuKey'>): ContextMenuWithSubmenusAction[] {
+  const out: ContextMenuWithSubmenusAction[] = []
   if (onOpenLabeling) out.push({ key: 'label', label: 'Open in labeling', onClick: onOpenLabeling })
   if (onOpenLabeling) out.push({ key: 'sep-1', label: '', separator: true })
   if (datasets && onCopyTo) {

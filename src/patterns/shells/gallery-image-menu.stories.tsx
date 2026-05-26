@@ -45,7 +45,7 @@ export const Review: Story = {
   render: () => (
     <StorybookPage
       title="GalleryImageMenu"
-      description="이미지 셀의 컨텍스트 메뉴. DatasetMenu를 기반으로 Open in labeling / Copy to / Move to / Cut / Paste / Archive / Delete 같은 표준 액션을 조립한다."
+      description="이미지 셀의 컨텍스트 메뉴. ContextMenuWithSubmenus 를 기반으로 Open in labeling / Copy to / Move to / Cut / Paste / Archive / Delete 같은 표준 액션을 조립한다."
     >
       <StorybookSection title="Action presets" description="props 조합에 따른 메뉴 구성 차이.">
         <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
