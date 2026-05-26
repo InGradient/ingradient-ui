@@ -1,4 +1,4 @@
-import { StorageAnalyticsTab } from '@ingradient/ui/patterns'
+import { StorageAnalyticsTab } from '../../storage'
 import type { AdminStorageProps } from '../../types'
 
 export function AdminStorage({

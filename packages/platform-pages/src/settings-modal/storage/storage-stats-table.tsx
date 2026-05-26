@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Box } from '../../primitives'
-import { Skeleton } from '../../components/feedback/skeleton'
+import { Box } from '@ingradient/ui/primitives'
+import { Skeleton } from '@ingradient/ui/components'
 
 const CARD_STYLE = {
   background: 'var(--ig-color-surface-raised)',

@@ -1,5 +1,5 @@
-import { Box, Grid, Text } from '../../primitives'
-import { Skeleton } from '../../components/feedback/skeleton'
+import { Box, Grid, Text } from '@ingradient/ui/primitives'
+import { Skeleton } from '@ingradient/ui/components'
 
 const CARD_STYLE = {
   background: 'var(--ig-color-surface-raised)',

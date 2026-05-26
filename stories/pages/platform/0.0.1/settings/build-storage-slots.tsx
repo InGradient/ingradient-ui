@@ -1,10 +1,10 @@
+import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import {
   StorageOverview,
   StorageRecommendationsList,
   StorageStatsTable,
-} from '@ingradient/ui/patterns'
-import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
-import type { AdminStorageProps } from '@ingradient/platform-pages'
+  type AdminStorageProps,
+} from '@ingradient/platform-pages'
 import type { SettingsScene } from '../../../../fixtures/platform/0.0.1/settings-scenarios'
 import {
   storageCostTableColumns,

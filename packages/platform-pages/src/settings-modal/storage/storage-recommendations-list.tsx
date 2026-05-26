@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Stack } from '../../primitives'
-import { Skeleton } from '../../components/feedback/skeleton'
+import { Stack } from '@ingradient/ui/primitives'
+import { Skeleton } from '@ingradient/ui/components'
 
 const LIST_STYLE = { listStyle: 'none' as const, padding: 0, margin: 0 }
 

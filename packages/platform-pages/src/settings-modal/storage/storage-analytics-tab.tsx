@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { Grid, Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
+import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
 
 const CONTAINER_STYLE = { padding: 'var(--ig-space-1) 0' }
 const ERROR_WRAP_STYLE = {
