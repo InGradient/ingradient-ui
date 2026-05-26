@@ -1,5 +1,6 @@
 export * from './shared/surfaces'
 export * from './permission-matrix'
+export * from './distribution-heatmap'
 export * from './page/page-shell'
 export * from './layouts/layouts'
 export * from './shells/navigation'
