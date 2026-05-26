@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { DateRange } from 'react-day-picker'
 import { DashboardOverviewPanel } from './dashboard-overview-panel'
-import { DashboardDateRangePopover } from './dashboard-date-range-popover'
+import { DateRangePicker, type DateRangePickerValue } from '../../components/inputs/date-range-picker'
 
 const meta: Meta<typeof DashboardOverviewPanel> = {
   title: 'Patterns/Shells/DashboardOverviewPanel',
@@ -75,15 +75,17 @@ export const WithDatePopoverOpen: Story = {
         onToggleDate={() => setOpen((v) => !v)}
         onResetLayout={noop}
         datePopover={
-          <DashboardDateRangePopover
-            open={open}
-            dateDraft={draft}
-            onChangeDraft={setDraft}
-            onSelectPreset={noop}
-            onReset={() => setDraft(undefined)}
-            onApply={() => setOpen(false)}
-            summaryLabel={draft?.from ? `${draft.from.toISOString().slice(0, 10)} → ${(draft.to ?? draft.from).toISOString().slice(0, 10)}` : 'All time'}
-          />
+          open ? (
+            <DateRangePicker
+              mode="range"
+              value={draft}
+              onChange={(next: DateRangePickerValue) => setDraft(next as DateRange | undefined)}
+              onReset={() => setDraft(undefined)}
+              onApply={() => setOpen(false)}
+              summaryLabel={draft?.from ? `${draft.from.toISOString().slice(0, 10)} → ${(draft.to ?? draft.from).toISOString().slice(0, 10)}` : 'All time'}
+              title="Overview Date Range"
+            />
+          ) : null
         }
       >
         <div style={{ padding: 16, color: 'var(--ig-color-text-muted)' }}>Body content</div>
