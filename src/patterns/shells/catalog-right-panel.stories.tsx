@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { CatalogRightPanel } from './catalog-right-panel'
-import { ClassPoolList } from './class-pool-list'
+import { SwatchItemList } from '../../components/data-display/swatch-item-list'
 import { MemberPoolList } from './member-pool-list'
 import { TagListSearch } from '../../components/data-display/tag-list-panel'
 
@@ -39,7 +39,7 @@ export const Default: Story = {
         title: 'Class',
         body: <>
           <TagListSearch placeholder="Search class to add" candidates={candidates} onSelect={() => undefined} emptyMessage="No more classes." />
-          <ClassPoolList classes={CLASSES} onRemove={() => undefined} />
+          <SwatchItemList items={CLASSES.map((c) => ({ id: c.id, label: c.name, color: c.color, count: c.count }))} onRemove={() => undefined} />
         </>,
       },
       {

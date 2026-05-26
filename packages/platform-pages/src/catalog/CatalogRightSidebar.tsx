@@ -1,7 +1,6 @@
-import { TagListSearch } from '@ingradient/ui/components'
+import { SwatchItemList, TagListSearch } from '@ingradient/ui/components'
 import {
   CatalogRightPanel,
-  ClassPoolList,
   MemberPoolList,
 } from '@ingradient/ui/patterns'
 import { RightSideLoadingText } from './CatalogView.styles'
@@ -35,7 +34,10 @@ export function CatalogRightSidebar({
         emptyMessage="No more classes."
       />
       {connectedClasses.length > 0 ? (
-        <ClassPoolList classes={connectedClasses} onRemove={onRemoveClass} />
+        <SwatchItemList
+          items={connectedClasses.map((c) => ({ id: c.id, label: c.name, color: c.color, count: c.count }))}
+          onRemove={onRemoveClass}
+        />
       ) : (
         <RightSideLoadingText>{NO_CLASS_CONNECTED_TEXT}</RightSideLoadingText>
       )}

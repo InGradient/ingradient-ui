@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Stack, Text } from '../../primitives'
-import { IconButton } from '../../components/inputs/icon-button'
-import { ColorSwatch } from '../../components/data-display/color-swatch'
+import { IconButton } from '../inputs/icon-button'
+import { ColorSwatch } from './color-swatch'
 
 const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
 const LABEL_STYLE = { flex: 1, overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
@@ -20,35 +20,39 @@ const Row = styled.li`
   }
 `
 
-export interface ClassPoolItem {
+export interface SwatchItem {
   id: string
-  name: string
+  label: string
   color: string
   count?: number
 }
 
-export interface ClassPoolListProps {
-  classes: ClassPoolItem[]
+export interface SwatchItemListProps {
+  items: SwatchItem[]
   onRemove?: (id: string) => void
   onHover?: (id: string | null) => void
   removeIcon?: React.ReactNode
   className?: string
 }
 
-export function ClassPoolList({ classes, onRemove, onHover, removeIcon, className }: ClassPoolListProps) {
+/**
+ * Color swatch + label + optional count + (옵셔널) remove 버튼 의 inline list.
+ * 각 row 는 hover background. 도메인 class / tag / category pool 등에 generic.
+ */
+export function SwatchItemList({ items, onRemove, onHover, removeIcon, className }: SwatchItemListProps) {
   return (
     <Stack as="ul" gap={2} className={className} style={LIST_STYLE}>
-      {classes.map((cls) => (
+      {items.map((it) => (
         <Row
-          key={cls.id}
-          onMouseEnter={() => onHover?.(cls.id)}
+          key={it.id}
+          onMouseEnter={() => onHover?.(it.id)}
           onMouseLeave={() => onHover?.(null)}
         >
-          <ColorSwatch $color={cls.color} $size="xs" />
-          <Text size="var(--ig-font-size-sm)" title={cls.name} style={LABEL_STYLE}>{cls.name}</Text>
-          {typeof cls.count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{cls.count}</Text> : null}
+          <ColorSwatch $color={it.color} $size="xs" />
+          <Text size="var(--ig-font-size-sm)" title={it.label} style={LABEL_STYLE}>{it.label}</Text>
+          {typeof it.count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{it.count}</Text> : null}
           {onRemove ? (
-            <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove class ${cls.name}`} onClick={() => onRemove(cls.id)}>
+            <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove ${it.label}`} onClick={() => onRemove(it.id)}>
               {removeIcon ?? '×'}
             </IconButton>
           ) : null}
