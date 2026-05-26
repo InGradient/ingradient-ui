@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Stack, Text } from '../../primitives'
 import { SearchField } from '../../components/inputs/search-field'
-import { FilterClassChip } from './filter-class-chip'
+import { ColorChip } from '../../components/inputs/color-chip'
 
 const LIST_STYLE = { maxHeight: 180, overflowY: 'auto' as const, paddingRight: 'var(--ig-space-1)' }
 const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
@@ -45,7 +45,7 @@ export function FilterSearchableList({
       ) : (
         <Stack gap={0} style={LIST_STYLE}>
           {filtered.map((item) => (
-            <FilterClassChip
+            <ColorChip
               key={item.id}
               checked={selectedIds.has(item.id)}
               color={item.color}

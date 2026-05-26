@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { FilterSection } from './filter-section'
-import { FilterClassChip } from './filter-class-chip'
+import { ColorChip } from '../../components/inputs/color-chip'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
@@ -46,17 +46,17 @@ export const Review: Story = {
           <StorybookCard title="Title + content">
             <div style={{ width: 260 }}>
               <FilterSection title="Status">
-                <FilterClassChip checked label="Pending" color="#eab308" onChange={() => undefined} />
-                <FilterClassChip checked={false} label="Approved" color="#22c55e" onChange={() => undefined} />
-                <FilterClassChip checked={false} label="Rejected" color="#ef4444" onChange={() => undefined} />
+                <ColorChip checked label="Pending" color="#eab308" onChange={() => undefined} />
+                <ColorChip checked={false} label="Approved" color="#22c55e" onChange={() => undefined} />
+                <ColorChip checked={false} label="Rejected" color="#ef4444" onChange={() => undefined} />
               </FilterSection>
             </div>
           </StorybookCard>
           <StorybookCard title="With actions slot" subtitle="우측에 Clear 등 액션">
             <div style={{ width: 260 }}>
               <FilterSection title="Class" actions={clearAction}>
-                <FilterClassChip checked label="Defect" color="#ef4444" onChange={() => undefined} />
-                <FilterClassChip checked label="Crack" color="#f97316" onChange={() => undefined} />
+                <ColorChip checked label="Defect" color="#ef4444" onChange={() => undefined} />
+                <ColorChip checked label="Crack" color="#f97316" onChange={() => undefined} />
               </FilterSection>
             </div>
           </StorybookCard>
@@ -76,16 +76,16 @@ export const Review: Story = {
               }}
             >
               <FilterSection title="Status" actions={clearAction}>
-                <FilterClassChip checked label="Pending" onChange={() => undefined} />
-                <FilterClassChip checked={false} label="Approved" onChange={() => undefined} />
+                <ColorChip checked label="Pending" onChange={() => undefined} />
+                <ColorChip checked={false} label="Approved" onChange={() => undefined} />
               </FilterSection>
               <FilterSection title="Class" actions={clearAction}>
-                <FilterClassChip checked label="Defect" color="#ef4444" onChange={() => undefined} />
-                <FilterClassChip checked label="Crack" color="#f97316" onChange={() => undefined} />
+                <ColorChip checked label="Defect" color="#ef4444" onChange={() => undefined} />
+                <ColorChip checked label="Crack" color="#f97316" onChange={() => undefined} />
               </FilterSection>
               <FilterSection title="Source">
-                <FilterClassChip checked={false} label="Upload" onChange={() => undefined} />
-                <FilterClassChip checked={false} label="Auto-label" onChange={() => undefined} />
+                <ColorChip checked={false} label="Upload" onChange={() => undefined} />
+                <ColorChip checked={false} label="Auto-label" onChange={() => undefined} />
               </FilterSection>
             </div>
           </StorybookCard>

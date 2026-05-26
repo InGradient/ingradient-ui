@@ -3,7 +3,7 @@ import { ModeSwitcher } from '../../components/inputs/mode-switcher'
 import { TextButton } from '../../components/inputs/text-button'
 import { DateRangeField } from './date-range-field'
 import { FilterSection } from './filter-section'
-import { FilterClassChip } from './filter-class-chip'
+import { ColorChip } from '../../components/inputs/color-chip'
 import { FilterSearchableList, type FilterSearchableItem } from './filter-searchable-list'
 
 const PANEL_STYLE = { width: 320, maxHeight: '70vh', overflowY: 'auto' as const }
@@ -104,7 +104,7 @@ export function GalleryFilterPanel({
       </FilterSection>
 
       <FilterSection title="Commented">
-        <FilterClassChip
+        <ColorChip
           checked={state.hasComments}
           label="Has comments"
           onChange={(checked) => patch({ hasComments: checked })}

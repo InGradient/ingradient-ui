@@ -62,7 +62,7 @@ export const Review: Story = {
   render: () => (
     <StorybookPage
       title="FilterSearchableList"
-      description="SearchField + FilterClassChip 리스트 composition. 검색어로 필터링되고, 결과 없을 땐 empty 메시지 표시."
+      description="SearchField + ColorChip 리스트 composition. 검색어로 필터링되고, 결과 없을 땐 empty 메시지 표시."
     >
       <StorybookSection title="Variants" description="기본 / 사전 선택 / empty 상태.">
         <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">

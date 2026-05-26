@@ -1,8 +1,8 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Text } from '../../primitives'
-import { Checkbox } from '../../components/inputs/toggles'
-import { ColorSwatch } from '../../components/data-display/color-swatch'
+import { Checkbox } from './toggles'
+import { ColorSwatch } from '../data-display/color-swatch'
 
 const Chip = styled.label<{ $checked: boolean }>`
   display: inline-flex;
@@ -24,15 +24,15 @@ const LABEL_STYLE = {
   whiteSpace: 'nowrap' as const,
 }
 
-export interface FilterClassChipProps {
+export interface ColorChipProps {
   checked: boolean
-  label: React.ReactNode
+  label: ReactNode
   color?: string
   onChange: (checked: boolean) => void
   className?: string
 }
 
-export function FilterClassChip({ checked, label, color, onChange, className }: FilterClassChipProps) {
+export function ColorChip({ checked, label, color, onChange, className }: ColorChipProps) {
   return (
     <Chip $checked={checked} className={className}>
       <Checkbox
