@@ -3,26 +3,28 @@ import type {
   AutoSaveState,
   DeleteAccountPreview,
   DeleteAccountResolutions,
-  ExpandedPermissionGroup,
   GroupVisible,
   InvitationsTabProps,
   LicenseInfo,
   OrgMembersTabProps,
   OrgSettingsTabProps,
-  PermissionMatrixRole,
   ProjectMemberRowMember,
   ProjectMemberRowRoleOption,
   ProjectTypeTone,
-  RoleMatrix,
   SearchableUserCandidate,
   SettingsAccountTabUser,
-  SummaryPermissionGroup,
 } from '@ingradient/ui/patterns'
 import type {
   DevicesFormsProps,
   DevicesLicenseSectionProps,
   DevicesTableProps,
 } from './devices'
+import type {
+  ExpandedPermissionGroup,
+  PermissionMatrixRole,
+  RoleMatrix,
+  SummaryPermissionGroup,
+} from './project'
 import type { EdgeTabKey } from './edge-tab'
 
 export interface EdgeTabPaneProps {

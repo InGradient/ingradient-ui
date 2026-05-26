@@ -1,6 +1,7 @@
 export * from './SettingsModalView'
 export * from './edge-tab'
 export * from './devices'
+export * from './project'
 export type {
   AccountTabProps,
   AdminStorageProps,
