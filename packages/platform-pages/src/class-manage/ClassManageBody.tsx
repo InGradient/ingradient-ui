@@ -6,12 +6,12 @@ import {
 } from '@ingradient/ui/components'
 import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import {
-  ClassImagesPanel,
   ClassInfoSidebar,
   ClassListSidebar,
   DatasetFilterChipRow,
   ModelMappingSelect,
   ReferenceImageSection,
+  SelectableGridPanel,
 } from '@ingradient/ui/patterns'
 import { BodyRow } from './ClassManageView.styles'
 import type {
@@ -88,9 +88,12 @@ export function ClassManageBody({
         onSelectClass={list.onSelectClass}
         onAddClass={list.onAddClass}
       />
-      <ClassImagesPanel
-        selectedClassId={images.selectedClassId}
-        chipsRow={
+      <SelectableGridPanel
+        selectedId={images.selectedClassId}
+        noSelectionText="Select a class to see linked datasets and images."
+        loadingText="Loading images…"
+        emptyText="No images with this class in the selected datasets."
+        headerSlot={
           <DatasetFilterChipRow
             datasets={images.datasets}
             activeIds={images.activeDatasetIds}
@@ -98,9 +101,9 @@ export function ClassManageBody({
             onToggle={images.onToggleDataset}
           />
         }
-        imagesLoading={images.imagesLoading}
-        imagesEmpty={images.images.length === 0}
-        grid={
+        loading={images.imagesLoading}
+        empty={images.images.length === 0}
+        gridSlot={
           <ImageGrid
             items={images.images}
             getThumbnailUrl={(img) => img.thumb_url}

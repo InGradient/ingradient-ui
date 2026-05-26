@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ClassImagesPanel } from './class-images-panel'
-import { DatasetFilterChipRow } from './dataset-filter-chip-row'
-import { Badge } from '../../components'
-import { AnnotationOverlay } from '../annotation/annotation-overlay'
-import { ImageGrid } from '../gallery/image-grid'
-import sample1 from '../../../stories/assets/20230808.jpg'
-import sample2 from '../../../stories/assets/20230816.jpg'
-import sample3 from '../../../stories/assets/20230823.jpg'
+import { SelectableGridPanel } from './selectable-grid-panel'
+import { DatasetFilterChipRow } from './shells/dataset-filter-chip-row'
+import { Badge } from '../components'
+import { AnnotationOverlay } from './annotation/annotation-overlay'
+import { ImageGrid } from './gallery/image-grid'
+import sample1 from '../../stories/assets/20230808.jpg'
+import sample2 from '../../stories/assets/20230816.jpg'
+import sample3 from '../../stories/assets/20230823.jpg'
 
 const datasets = [
   { id: 'd-1', name: 'Wafer line A', image_count: 312 },
@@ -19,9 +19,9 @@ const images = [
   { id: 'img-3', thumb_url: sample3 as string, name: 'wafer-003.jpg', width: 1024, height: 768, bboxes: [{ classId: 'c-1', x: 0.20, y: 0.50, w: 0.18, h: 0.18 }] },
 ]
 
-const meta: Meta<typeof ClassImagesPanel> = {
-  title: 'Patterns/Shells/ClassImagesPanel',
-  component: ClassImagesPanel,
+const meta: Meta<typeof SelectableGridPanel> = {
+  title: 'Patterns/SelectableGridPanel',
+  component: SelectableGridPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 600, display: 'flex' }}><Story /></div>],
 }
@@ -30,14 +30,14 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const NoSelection: Story = {
-  args: { selectedClassId: null },
+  args: { selectedId: null },
 }
 
 export const WithGrid: Story = {
   args: {
-    selectedClassId: 'c-1',
-    chipsRow: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
-    grid: (
+    selectedId: 'c-1',
+    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    gridSlot: (
       <ImageGrid
         items={images}
         getThumbnailUrl={(img) => img.thumb_url}
@@ -61,24 +61,16 @@ export const WithGrid: Story = {
 
 export const Loading: Story = {
   args: {
-    selectedClassId: 'c-1',
-    chipsRow: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
-    imagesLoading: true,
+    selectedId: 'c-1',
+    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    loading: true,
   },
 }
 
 export const EmptyImages: Story = {
   args: {
-    selectedClassId: 'c-1',
-    chipsRow: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
-    imagesEmpty: true,
-  },
-}
-
-export const NoLinkedDatasets: Story = {
-  args: {
-    selectedClassId: 'c-1',
-    chipsRow: <DatasetFilterChipRow datasets={[]} activeIds={new Set()} />,
-    imagesEmpty: true,
+    selectedId: 'c-1',
+    headerSlot: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
+    empty: true,
   },
 }
