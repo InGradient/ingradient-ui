@@ -2,10 +2,10 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { DateRange } from 'react-day-picker'
 import { DashboardOverviewPanel } from './dashboard-overview-panel'
-import { DateRangePicker, type DateRangePickerValue } from '../../components/inputs/date-range-picker'
+import { DateRangePicker, type DateRangePickerValue } from '@ingradient/ui/components'
 
 const meta: Meta<typeof DashboardOverviewPanel> = {
-  title: 'Patterns/Shells/DashboardOverviewPanel',
+  title: 'Platform Pages/Dashboard/DashboardOverviewPanel',
   component: DashboardOverviewPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ padding: 24, background: 'var(--ig-color-bg-canvas)', minHeight: 600 }}><Story /></div>],

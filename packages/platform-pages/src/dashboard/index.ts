@@ -1,4 +1,5 @@
 export * from './DashboardView'
+export * from './dashboard-overview-panel'
 export * from './widgets'
 export * from './DraggableAnalysisWidgetGrid'
 export * from './widget-layout'

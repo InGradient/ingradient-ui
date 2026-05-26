@@ -314,9 +314,9 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - sibling sync-status-chip/media-dialog-shell/date-range-field/filter-section/filter-searchable-list import 은 `@ingradient/ui/patterns` 로 (patterns 잔존)
 - catalog/overlay-types, CatalogBody, CatalogMobileView, CatalogToolbarRow, CatalogOverlays, types, stories(use-catalog-scene) import 갱신
 
-### Phase X2.6 — dashboard-overview + dataset-task-tag (0/2)
-- [ ] dashboard-overview-panel → `platform-pages/dashboard/`
-- [ ] dataset-task-tag → `platform-pages/catalog/`
+### Phase X2.6 — dashboard-overview + dataset-task-tag (1/2)
+- [x] dashboard-overview-panel → `platform-pages/dashboard/` — `../page/page-shell` import 은 patterns 잔존이므로 `@ingradient/ui/patterns` 로
+- [ ] ~~dataset-task-tag → `platform-pages/catalog/`~~ — 결정 변경: 이동하지 않고 patterns 잔존. edge-pages 도 사용하는 shared annotation primitive 라 scenario B 의 "@ingradient/ui 가 annotation apps 의 design system 도 함께 한다" 원칙에 부합
 
 ### 최종 검증
 - [ ] `npm run build:package` 통과 (ui + platform-pages + edge-pages)

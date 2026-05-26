@@ -3,9 +3,9 @@ import { Button, DateRangePicker, type DateRangePickerValue } from '@ingradient/
 import {
   DashboardCustomizePopover,
   DashboardHeader,
-  DashboardOverviewPanel,
   WidgetGrid,
 } from '@ingradient/ui/patterns'
+import { DashboardOverviewPanel } from './dashboard-overview-panel'
 import { DraggableAnalysisWidgetGrid } from './DraggableAnalysisWidgetGrid'
 import { DeflectometryDashboardSection } from './DeflectometryDashboardSection'
 import { EdgeAnalyticsSection } from './EdgeAnalyticsSection'

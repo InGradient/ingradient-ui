@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { Box, Inline, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { Panel, PanelHeader, PanelHint, PanelTitle } from '../page/page-shell'
+import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { Panel, PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
 const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
 const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
