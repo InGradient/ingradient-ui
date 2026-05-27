@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SelectableGridPanel } from './selectable-grid-panel'
-import { FilterChipRow } from '../components/inputs/filter-chip-row'
-import { Badge } from '../components'
-import { AnnotationOverlay } from './annotation/annotation-overlay'
-import { ImageGrid } from './gallery/image-grid'
-import sample1 from '../../stories/assets/20230808.jpg'
-import sample2 from '../../stories/assets/20230816.jpg'
-import sample3 from '../../stories/assets/20230823.jpg'
+import { FilterChipRow } from '@ingradient/ui/components'
+import { Badge } from '@ingradient/ui/components'
+import { AnnotationOverlay } from '@ingradient/ui/patterns'
+import { ImageGrid } from '@ingradient/ui/patterns'
+import sample1 from '../../../../stories/assets/20230808.jpg'
+import sample2 from '../../../../stories/assets/20230816.jpg'
+import sample3 from '../../../../stories/assets/20230823.jpg'
 
 const datasets = [
   { id: 'd-1', name: 'Wafer line A', image_count: 312 },
@@ -20,7 +20,7 @@ const images = [
 ]
 
 const meta: Meta<typeof SelectableGridPanel> = {
-  title: 'Patterns/SelectableGridPanel',
+  title: 'Platform Pages/Class Manage/SelectableGridPanel',
   component: SelectableGridPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 600, display: 'flex' }}><Story /></div>],

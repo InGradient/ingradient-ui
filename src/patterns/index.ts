@@ -1,5 +1,4 @@
 export * from './shared/surfaces'
-export * from './selectable-grid-panel'
 export * from './page/page-shell'
 export * from './layouts/layouts'
 export * from './navigation/navigation'

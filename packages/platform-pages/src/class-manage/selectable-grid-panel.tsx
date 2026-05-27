@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Box, Stack, Text } from '../primitives'
+import { Box, Stack, Text } from '@ingradient/ui/primitives'
 
 const MAIN_STYLE = {
   flex: 1,

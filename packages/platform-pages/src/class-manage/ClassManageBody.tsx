@@ -5,7 +5,8 @@ import {
   EmptyState,
   FilterChipRow,
 } from '@ingradient/ui/components'
-import { AnnotationOverlay, ImageGrid, SelectableGridPanel } from '@ingradient/ui/patterns'
+import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
+import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
 import { ClassListSidebar } from './class-list-sidebar'
 import { ReferenceImageSection } from './reference-image-section'
