@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Stack } from '../primitives'
+import { Stack } from '@ingradient/ui/primitives'
 
 const Row = styled.div<{ $count: number }>`
   position: relative;

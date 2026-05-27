@@ -1,6 +1,6 @@
 import { Fragment, type ReactNode } from 'react'
-import { Grid, Stack, Text } from '../primitives'
-import { StatCard } from './cards/stat-card'
+import { Grid, Stack, Text } from '@ingradient/ui/primitives'
+import { StatCard } from '@ingradient/ui/patterns'
 
 const ROOT_STYLE = { padding: 'var(--ig-space-7)' }
 const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }

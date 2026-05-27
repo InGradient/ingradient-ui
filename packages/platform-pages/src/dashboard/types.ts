@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import type { DateRange } from 'react-day-picker'
-import type { WidgetGridLayout } from '@ingradient/ui/patterns'
+import type { WidgetGridLayout } from './widget-grid'
 import type { DashboardCustomizeItem } from './dashboard-customize-popover'
 import type { EdgeAnalyticsView } from './edge-analytics-types'
 

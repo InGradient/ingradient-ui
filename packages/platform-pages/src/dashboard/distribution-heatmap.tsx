@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box } from '../primitives'
+import { Box } from '@ingradient/ui/primitives'
 
 const WRAP_STYLE = { overflowX: 'auto' as const }
 

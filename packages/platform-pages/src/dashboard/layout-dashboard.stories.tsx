@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { LayoutDashboard } from './layout-dashboard'
-import { Card } from '../components'
+import { Card } from '@ingradient/ui/components'
 
 const meta: Meta<typeof LayoutDashboard> = {
-  title: 'Patterns/LayoutDashboard',
+  title: 'Platform Pages/Dashboard/LayoutDashboard',
   component: LayoutDashboard,
   parameters: { layout: 'fullscreen' },
 }
