@@ -1,10 +1,37 @@
-import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Alert } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
-import { LicenseInfoDisplay, type LicenseInfo, SettingsHint, SettingsSection } from '@ingradient/ui/patterns'
+import { SettingsHint, SettingsSection } from '@ingradient/ui/patterns'
 
 const FIELD_STYLE = { minWidth: 240 }
+const HINT_STYLE = { margin: 0, lineHeight: 1.5 }
+const EXPIRED_STYLE = { margin: 0 }
+
+export interface LicenseInfo {
+  type: 'organization' | 'personal'
+  organizationName?: string | null
+  expiresAt: string | null
+  remainingDays: number | null
+  expired: boolean
+}
+
+function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
+  if (!license) return <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>라이선스 정보를 불러오는 중…</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="13px" weight={600} style={EXPIRED_STYLE}>만료됨</Text>
+  if (license.type === 'organization') {
+    return (
+      <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>
+        {`조직 라이선스 (${license.organizationName ?? ''}) | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
+      </Text>
+    )
+  }
+  return (
+    <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>
+      {`개인 라이선스 | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
+    </Text>
+  )
+}
 
 export interface SettingsAccountTabUser {
   id?: string

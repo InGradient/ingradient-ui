@@ -1,4 +1,4 @@
-import type { LicenseInfo } from '@ingradient/ui/patterns'
+import type { LicenseInfo } from '@ingradient/platform-pages'
 
 export interface SettingsUser {
   id: string

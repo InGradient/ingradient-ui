@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react'
 import type {
   AutoSaveState,
-  LicenseInfo,
   ProjectTypeTone,
 } from '@ingradient/ui/patterns'
 import type {
   DeleteAccountPreview,
   DeleteAccountResolutions,
+  LicenseInfo,
   SettingsAccountTabUser,
 } from './account'
 import type {
