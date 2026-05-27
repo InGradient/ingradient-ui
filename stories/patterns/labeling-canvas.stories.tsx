@@ -56,7 +56,7 @@ import {
 } from './labeling-canvas.stories.helpers'
 
 const meta = {
-  title: 'Patterns/LabelingCanvas',
+  title: 'Patterns/Annotation/LabelingCanvas',
   component: LabelingCanvas,
   tags: ['autodocs'],
   parameters: {

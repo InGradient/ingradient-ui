@@ -12,7 +12,7 @@ import {
 } from './media-dialog-shell.stories.helpers'
 
 const meta = {
-  title: 'Patterns/MediaDialogShell',
+  title: 'Patterns/Dialogs/MediaDialogShell',
   component: MediaDialogShell,
   tags: ['autodocs'],
   parameters: {
