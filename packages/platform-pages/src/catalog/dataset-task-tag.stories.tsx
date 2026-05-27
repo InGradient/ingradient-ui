@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatasetTaskTag } from './dataset-task-tag'
-import { Inline, Stack } from '../../primitives'
+import { Inline, Stack } from '@ingradient/ui/primitives'
 
 const meta: Meta<typeof DatasetTaskTag> = {
-  title: 'Patterns/DatasetTaskTag',
+  title: 'Platform Pages/Catalog/DatasetTaskTag',
   component: DatasetTaskTag,
   tags: ['autodocs'],
 }

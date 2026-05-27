@@ -4,7 +4,7 @@ import { Button, Checkbox, IconButton } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
 import { ClosePanelIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
-import type { DatasetTaskType } from '@ingradient/ui/patterns'
+import type { DatasetTaskType } from './dataset-task-tag'
 
 const PANEL_STYLE = {
   height: '100%',

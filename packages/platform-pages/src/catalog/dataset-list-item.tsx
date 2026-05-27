@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Inline, Text } from '@ingradient/ui/primitives'
 import { Checkbox, IconButton } from '@ingradient/ui/components'
 import { SelectableListItem } from '@ingradient/ui/components'
-import { DatasetTaskTag, type DatasetTaskType } from '@ingradient/ui/patterns'
+import { DatasetTaskTag, type DatasetTaskType } from './dataset-task-tag'
 import { KebabIcon } from '@ingradient/ui/components'
 
 const ROW_STYLE = { width: '100%', alignItems: 'center' }

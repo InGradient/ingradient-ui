@@ -1,6 +1,7 @@
-import { Tag } from '../../components/data-display/tag'
+import { Tag } from '@ingradient/ui/components'
+import { type DatasetTaskType } from '@ingradient/ui/patterns'
 
-export type DatasetTaskType = 'object_detection' | 'classification' | 'segmentation' | 'point'
+export type { DatasetTaskType }
 
 const taskTypeStyles: Record<DatasetTaskType, { bg: string; color: string; short: string; full: string }> = {
   object_detection: {

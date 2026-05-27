@@ -369,11 +369,20 @@ X5 후 사용자 추가 검토. root 6개도 single-consumer 라 page 이동, + 
 - 폴더 안 single-consumer 8개 (CommentThread, ExpandSidebarBtn, SortPopoverTrigger, FilterSearchableList, DateRangeField, ColorInputRow, AutoSaveStatus, ImageInspectorCanvas) — **patterns 잔존**. "역할 폴더 안 = generic 의도".
 - sync-status-chip layering 위반 — 별도 작업.
 
+### Phase X7 — patterns/shells 잔여 3개 완전 정리 (3/3)
+
+X6 후 shells/ 잔여 3개를 사용자가 재검토. 모두 page 안에서 구현 가능하다는 판단.
+
+- [x] X7.1 ProjectTypeTag — project-settings-form.tsx 안에 inline (edge-pages 는 이미 자체 styled-component 보유라 사실상 platform 단일 사용)
+- [x] X7.2 SyncStatusChip → `platform-pages/catalog/gallery/` + ImageCard 의 sync_state prop 제거, generic `topRightSlot?: ReactNode` prop 추가 (components→patterns 역방향 의존 해소)
+- [x] X7.3 DatasetTaskTag → `platform-pages/catalog/`, DatasetTaskType type 은 `patterns/dialogs/add-dataset-modal.tsx` 안에 정의 (cross-package type 의존 해결) + catalog/dataset-task-tag 가 re-export
+- [x] **src/patterns/shells/ 폴더 완전 제거** (빈 폴더)
+
 ### 최종 검증
 - [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
 - [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
 - [x] `ls src/patterns/*.tsx` (root 평탄) = 0
-- [x] `ls src/patterns/shells/` 잔여 3 .tsx (그대로 — cross-app)
+- [x] **`src/patterns/shells/` 폴더 자체 삭제** (X7 후 0개)
 - [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
