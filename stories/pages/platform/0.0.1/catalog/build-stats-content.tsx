@@ -1,8 +1,8 @@
 import {
-  DashboardWidget,
   DistributionHeatmap,
   LayoutDashboard,
 } from '@ingradient/ui/patterns'
+import { DashboardWidget } from '@ingradient/platform-pages'
 import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { SegmentedProgressBar } from '@ingradient/ui/components'
 import { Inline, Stack } from '@ingradient/ui/primitives'

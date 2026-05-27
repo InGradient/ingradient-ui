@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Stack, Text } from '../../primitives'
-import { MenuPopover } from '../../components/overlays/popovers'
-import { Checkbox } from '../../components/inputs/toggles'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { MenuPopover } from '@ingradient/ui/components'
+import { Checkbox } from '@ingradient/ui/components'
 
 const Wrap = styled(MenuPopover)`
   position: absolute;

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DashboardHeader } from './dashboard-header'
-import { Button } from '../../components/inputs/button'
+import { Button } from '@ingradient/ui/components'
 
 const meta: Meta<typeof DashboardHeader> = {
-  title: 'Patterns/DashboardHeader',
+  title: 'Platform Pages/Dashboard/DashboardHeader',
   component: DashboardHeader,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

@@ -1,10 +1,8 @@
 import type { DateRange } from 'react-day-picker'
 import { Button, DateRangePicker, type DateRangePickerValue } from '@ingradient/ui/components'
-import {
-  DashboardCustomizePopover,
-  DashboardHeader,
-  WidgetGrid,
-} from '@ingradient/ui/patterns'
+import { WidgetGrid } from '@ingradient/ui/patterns'
+import { DashboardCustomizePopover } from './dashboard-customize-popover'
+import { DashboardHeader } from './dashboard-header'
 import { DashboardOverviewPanel } from './dashboard-overview-panel'
 import { DraggableAnalysisWidgetGrid } from './DraggableAnalysisWidgetGrid'
 import { DeflectometryDashboardSection } from './DeflectometryDashboardSection'

@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Download } from 'lucide-react'
-import { Box, Inline } from '../../primitives'
-import { IconButton } from '../../components/inputs/icon-button'
+import { Box, Inline } from '@ingradient/ui/primitives'
+import { IconButton } from '@ingradient/ui/components'
 
 const SHELL_STYLE = { position: 'relative' as const, minWidth: 0 }
 const ACTIONS_STYLE = { position: 'absolute' as const, top: 14, right: 14, zIndex: 8 }

@@ -1,7 +1,7 @@
 import { useCallback, type ReactNode } from 'react'
 import { DndContext, DragOverlay, pointerWithin, useDraggable, useDroppable } from '@dnd-kit/core'
 import { DragHandle } from '@ingradient/ui'
-import { AnalysisWidgetShell } from '@ingradient/ui/patterns'
+import { AnalysisWidgetShell } from './analysis-widget-shell'
 import { useWidgetDragLayout } from './use-widget-drag-layout'
 import {
   rowBelowDropId,

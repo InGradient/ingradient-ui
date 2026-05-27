@@ -18,7 +18,7 @@ const allOff = Object.fromEntries(dashboardItems.map((i) => [i.key, false]))
 const mixed = { ...allOff, show_data_collection: true, show_timeline: true, show_labeling_status: true }
 
 const meta: Meta<typeof DashboardCustomizePopover> = {
-  title: 'Patterns/DashboardCustomizePopover',
+  title: 'Platform Pages/Dashboard/DashboardCustomizePopover',
   component: DashboardCustomizePopover,
   decorators: [(Story) => <div style={{ position: 'relative', padding: 60, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisWidgetShell } from './analysis-widget-shell'
 
 const meta: Meta<typeof AnalysisWidgetShell> = {
-  title: 'Patterns/AnalysisWidgetShell',
+  title: 'Platform Pages/Dashboard/AnalysisWidgetShell',
   component: AnalysisWidgetShell,
   decorators: [(Story) => <div style={{ width: 480, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

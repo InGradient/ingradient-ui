@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Inline, Stack, surfaceCard, Text } from '../../primitives'
+import { Inline, Stack, surfaceCard, Text } from '@ingradient/ui/primitives'
 
 const Root = styled.div<{ $span: number }>`
   ${surfaceCard}

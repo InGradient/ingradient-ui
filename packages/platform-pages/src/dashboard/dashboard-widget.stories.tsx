@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DashboardWidget } from './dashboard-widget'
 
 const meta: Meta<typeof DashboardWidget> = {
-  title: 'Patterns/DashboardWidget',
+  title: 'Platform Pages/Dashboard/DashboardWidget',
   component: DashboardWidget,
   parameters: { layout: 'padded' },
 }

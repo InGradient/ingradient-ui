@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { Inline, Text } from '../../primitives'
-import { PageHeader, PageSubtitle, PageTitle } from '../page/page-shell'
+import { Inline, Text } from '@ingradient/ui/primitives'
+import { PageHeader, PageSubtitle, PageTitle } from '@ingradient/ui/patterns'
 
 const SUBTITLE_STYLE = { marginTop: 'var(--ig-space-2)' }
 const PROJECT_NAME_STYLE = { textAlign: 'right' as const, flexShrink: 0, marginLeft: 'auto' }

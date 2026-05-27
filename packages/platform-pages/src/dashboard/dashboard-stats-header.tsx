@@ -1,4 +1,4 @@
-import { Inline, Stack, Text } from '../../primitives'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 
 const VALUE_STYLE = { marginLeft: 'var(--ig-space-7)' }
 
