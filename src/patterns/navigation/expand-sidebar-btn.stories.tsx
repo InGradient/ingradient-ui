@@ -3,7 +3,7 @@ import { ExpandSidebarBtn } from './expand-sidebar-btn'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/ExpandSidebarBtn',
+  title: 'Patterns/Navigation/ExpandSidebarBtn',
   component: ExpandSidebarBtn,
   tags: ['autodocs'],
   parameters: {
