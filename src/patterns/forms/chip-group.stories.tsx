@@ -3,7 +3,7 @@ import { ChipGroup } from './chip-group'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/ChipGroup',
+  title: 'Patterns/Forms/ChipGroup',
   component: ChipGroup,
   tags: ['autodocs'],
   parameters: {

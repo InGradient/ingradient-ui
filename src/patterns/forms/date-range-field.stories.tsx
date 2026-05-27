@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DateRangeField } from './date-range-field'
 
 const meta: Meta<typeof DateRangeField> = {
-  title: 'Patterns/DateRangeField',
+  title: 'Patterns/Forms/DateRangeField',
   component: DateRangeField,
   parameters: { layout: 'centered' },
   decorators: [(Story) => <div style={{ width: 360 }}><Story /></div>],

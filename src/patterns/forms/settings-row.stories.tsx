@@ -3,7 +3,7 @@ import { SettingsRow } from './settings-row'
 import { Checkbox } from '../../components/inputs/toggles'
 
 const meta: Meta<typeof SettingsRow> = {
-  title: 'Patterns/SettingsRow',
+  title: 'Patterns/Forms/SettingsRow',
   component: SettingsRow,
   decorators: [(Story) => <div style={{ width: 480, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

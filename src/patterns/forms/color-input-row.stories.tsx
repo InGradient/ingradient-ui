@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ColorInputRow } from './color-input-row'
 
 const meta: Meta<typeof ColorInputRow> = {
-  title: 'Patterns/ColorInputRow',
+  title: 'Patterns/Forms/ColorInputRow',
   component: ColorInputRow,
   decorators: [(Story) => <div style={{ padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

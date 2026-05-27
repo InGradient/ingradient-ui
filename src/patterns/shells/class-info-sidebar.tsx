@@ -3,7 +3,7 @@ import { Stack } from '../../primitives'
 import { Button } from '../../components/inputs/button'
 import { TextField, TextareaField } from '../../components/inputs/text-fields'
 import { InfoSection } from '../../components/data-display/info-section'
-import { ColorInputRow } from './color-input-row'
+import { ColorInputRow } from '../forms/color-input-row'
 
 const SIDEBAR_STYLE = {
   width: 300,

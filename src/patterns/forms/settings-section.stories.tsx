@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsSection } from './settings-section'
 
 const meta: Meta<typeof SettingsSection> = {
-  title: 'Patterns/SettingsSection',
+  title: 'Patterns/Forms/SettingsSection',
   component: SettingsSection,
   decorators: [(Story) => <div style={{ width: 480, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
