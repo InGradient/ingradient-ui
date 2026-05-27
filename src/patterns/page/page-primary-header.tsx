@@ -22,8 +22,6 @@ export interface PagePrimaryHeaderProps {
  * Platform 페이지 (Catalog / ClassManage 등) 의 hero-style top header.
  * 좌측: PageTitleBlock (title + subtitle, 2xl 타이포)
  * 우측: rightSlot (project name 등)
- *
- * 작은 fixed-height app top bar 가 필요한 경우 `PageTopBar` 사용.
  */
 export function PagePrimaryHeader({
   title,
