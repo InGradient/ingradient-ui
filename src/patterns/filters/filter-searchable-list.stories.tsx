@@ -4,7 +4,7 @@ import { FilterSearchableList, type FilterSearchableItem } from './filter-search
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/FilterSearchableList',
+  title: 'Patterns/Filters/FilterSearchableList',
   component: FilterSearchableList,
   tags: ['autodocs'],
   parameters: {

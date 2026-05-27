@@ -4,7 +4,7 @@ import { ColorChip } from '../../components/inputs/color-chip'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/FilterSection',
+  title: 'Patterns/Filters/FilterSection',
   component: FilterSection,
   tags: ['autodocs'],
   parameters: {

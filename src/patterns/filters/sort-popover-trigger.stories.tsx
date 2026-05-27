@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SortPopoverTrigger } from './sort-popover-trigger'
 
 const meta: Meta<typeof SortPopoverTrigger> = {
-  title: 'Patterns/SortPopoverTrigger',
+  title: 'Patterns/Filters/SortPopoverTrigger',
   component: SortPopoverTrigger,
   parameters: { layout: 'centered' },
 }
