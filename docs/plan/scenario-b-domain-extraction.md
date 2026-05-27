@@ -318,10 +318,19 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - [x] dashboard-overview-panel → `platform-pages/dashboard/` — `../page/page-shell` import 은 patterns 잔존이므로 `@ingradient/ui/patterns` 로
 - [ ] ~~dataset-task-tag → `platform-pages/catalog/`~~ — 결정 변경: 이동하지 않고 patterns 잔존. edge-pages 도 사용하는 shared annotation primitive 라 scenario B 의 "@ingradient/ui 가 annotation apps 의 design system 도 함께 한다" 원칙에 부합
 
+### Phase X3 — platform-specific 추가 외부 이동 (7/7)
+- [x] X3.A dashboard 5개: dashboard-header / dashboard-customize-popover / dashboard-widget / dashboard-stats-header / analysis-widget-shell → `platform-pages/dashboard/`
+- [x] X3.B catalog overlays 2개: drag-drop-decide-modal / upload-quality-modal → `platform-pages/catalog/`
+
+명시적 잔존 (이번 Phase 에 미포함):
+- **add-dataset-modal**: edge-pages 도 사용 (annotation shared) → patterns 잔존
+- **project-type-tag**: edge-pages 도 사용 (annotation shared) → patterns 잔존
+- **sync-status-chip**: `components/data-display/image-card.tsx` 가 import (components→patterns 역방향 의존). **layering 위반** — 별도 작업으로 미룸
+
 ### 최종 검증
 - [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
 - [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
-- [x] `ls src/patterns/shells/` 잔여 41 .tsx (C 카테고리 + B rename 후 patterns/ 잔존 + dataset-task-tag 결정 변경)
+- [x] `ls src/patterns/shells/` 잔여 34 .tsx (Phase X3 후 41 → 34, 7개 추가 이동)
 - [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
