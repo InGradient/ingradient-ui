@@ -4,6 +4,7 @@ export * from './drag-drop-decide-modal'
 export * from './upload-quality-modal'
 export * from './dataset-list-panel'
 export * from './dataset-list-item'
+export * from './export-progress-modal'
 export type {
   CatalogClass,
   CatalogDataset,

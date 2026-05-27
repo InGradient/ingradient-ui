@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Inline, Stack, Text } from '../primitives'
-import { DialogShell } from '../components/overlays/dialog-shell'
-import { Button } from '../components/inputs/button'
-import { Spinner } from '../components/feedback/spinner'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { DialogShell } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { Spinner } from '@ingradient/ui/components'
 
 const PROGRESS_TRACK_STYLE = {
   width: '100%',

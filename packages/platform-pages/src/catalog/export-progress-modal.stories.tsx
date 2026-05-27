@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ExportProgressModal } from './export-progress-modal'
 
 const meta: Meta<typeof ExportProgressModal> = {
-  title: 'Patterns/ExportProgressModal',
+  title: 'Platform Pages/Catalog/ExportProgressModal',
   component: ExportProgressModal,
   parameters: { layout: 'fullscreen' },
 }
