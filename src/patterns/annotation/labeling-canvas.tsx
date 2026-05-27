@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import { DrawingLayer, type DrawingObject, type DrawingPreview } from '../annotation/drawing-layer'
+import { DrawingLayer, type DrawingObject, type DrawingPreview } from './drawing-layer'
 import {
   CaptureLayer,
   ImageAreaWrap,

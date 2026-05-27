@@ -5,7 +5,7 @@ import { ImageInspectorCanvas } from './image-inspector-canvas'
 const SAMPLE_URL = sample as unknown as string
 
 const meta = {
-  title: 'Patterns/ImageInspectorCanvas',
+  title: 'Patterns/Annotation/ImageInspectorCanvas',
   component: ImageInspectorCanvas,
   parameters: { layout: 'centered' },
   decorators: [
