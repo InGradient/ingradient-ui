@@ -355,10 +355,25 @@ patterns/shells/ 최종 잔존 3개 (cross-app 또는 layering):
 - project-type-tag (edge + platform 양쪽 사용)
 - sync-status-chip (components/image-card 가 import — 별도 layering 작업)
 
+### Phase X6 — patterns root 6개 page 이동 + 죽은 코드 6개 삭제 (6/6 + 6/6)
+
+X5 후 사용자 추가 검토. root 6개도 single-consumer 라 page 이동, + 0 consumer 죽은 코드 삭제.
+
+- [x] X6.A1 dashboard 3개: LayoutDashboard / WidgetGrid / DistributionHeatmap → `platform-pages/dashboard/`
+- [x] X6.A2 ExportProgressModal → `platform-pages/catalog/`
+- [x] X6.A3 PermissionMatrix → `platform-pages/settings-modal/project/`
+- [x] X6.A4 SelectableGridPanel → `platform-pages/class-manage/`
+- [x] X6.B 죽은 코드 6개 삭제: CanvasOverlays, AnnotationOverlayInteractive(helpers+stories), ProgressBlock, LabelValueRow, PreviewCard, useConfirm + workspace-blocks.stories
+
+원칙 적용 (사용자 가이드):
+- 폴더 안 single-consumer 8개 (CommentThread, ExpandSidebarBtn, SortPopoverTrigger, FilterSearchableList, DateRangeField, ColorInputRow, AutoSaveStatus, ImageInspectorCanvas) — **patterns 잔존**. "역할 폴더 안 = generic 의도".
+- sync-status-chip layering 위반 — 별도 작업.
+
 ### 최종 검증
 - [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
 - [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
-- [x] `ls src/patterns/shells/` 잔여 3 .tsx (X5 후 13 → 3)
+- [x] `ls src/patterns/*.tsx` (root 평탄) = 0
+- [x] `ls src/patterns/shells/` 잔여 3 .tsx (그대로 — cross-app)
 - [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
