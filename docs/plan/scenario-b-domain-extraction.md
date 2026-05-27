@@ -338,14 +338,27 @@ shells/ 평탄 34개 → 역할 폴더로 분류. 사용자 의도: "재활용 �
 - [x] X4.5 `navigation/` 신규: sidebar-shell, expand-sidebar-btn, navigation (3)
 - [x] X4.6 `status/` 신규: auto-save-status (1)
 
-shells/ 잔존 13개 (도메인 특화, 이번에 손대지 않음):
-- class-* (4), dataset-list-* (2), dataset-task-tag, project-type-tag, sync-status-chip (annotation tags)
-- reference-image-* (2), member-pool-list, license-info-display
+shells/ 잔존 13개 (도메인 특화, X4 에서 손대지 않음 — X5 에서 정리).
+
+### Phase X5 — single-consumer → page 안으로 책임 이동 (9/9)
+
+원칙: patterns 는 재사용 레이어. consumer 1개뿐이면 추상화 비용. 외부 grep 검증으로 single-consumer 9개 식별.
+
+- [x] X5.A class-manage 5개 별도 파일 이동: class-info-sidebar, class-list-sidebar, class-lightbox, reference-image-section, reference-image-drop-zone → `platform-pages/class-manage/`
+- [x] X5.B catalog dataset-list 2개 별도 파일 이동: dataset-list-panel, dataset-list-item → `platform-pages/catalog/`
+- [x] X5.C license-info-display inline → `settings-account-tab.tsx` 안에 함수 + LicenseInfo type 직접 정의 (별도 파일 없음)
+- [x] X5.D member-pool-list inline → `CatalogRightSidebar.tsx` 안에 함수 직접 정의 (별도 파일 없음)
+- [x] X5.E class-hover-card 삭제 (외부 사용 0, stories-only 죽은 코드)
+
+patterns/shells/ 최종 잔존 3개 (cross-app 또는 layering):
+- dataset-task-tag (DatasetTaskType type cross-package)
+- project-type-tag (edge + platform 양쪽 사용)
+- sync-status-chip (components/image-card 가 import — 별도 layering 작업)
 
 ### 최종 검증
 - [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
 - [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
-- [x] `ls src/patterns/shells/` 잔여 13 .tsx (X4 후 34 → 13, 21개 역할 폴더로 분류)
+- [x] `ls src/patterns/shells/` 잔여 3 .tsx (X5 후 13 → 3)
 - [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
