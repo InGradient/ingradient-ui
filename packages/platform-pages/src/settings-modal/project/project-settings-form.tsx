@@ -1,8 +1,32 @@
+import type { ReactNode } from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { Checkbox } from '@ingradient/ui/components'
-import { TextField } from '@ingradient/ui/components'
-import { Textarea } from '@ingradient/ui/components'
-import { AutoSaveStatus, type AutoSaveState, ProjectTypeTag, type ProjectTypeTone } from '@ingradient/ui/patterns'
+import { Badge, Checkbox, TextField, Textarea } from '@ingradient/ui/components'
+import { AutoSaveStatus, type AutoSaveState } from '@ingradient/ui/patterns'
+
+export type ProjectTypeTone = 'general' | 'deflectometry'
+
+const PROJECT_TYPE_TONE_BG: Record<ProjectTypeTone, string> = {
+  general: 'rgba(100, 116, 139, 0.92)',
+  deflectometry: 'rgba(14, 165, 233, 0.92)',
+}
+
+const PROJECT_TYPE_LABELS: Record<ProjectTypeTone, string> = {
+  general: 'General Project',
+  deflectometry: 'Deflectometry Project',
+}
+
+const PROJECT_TYPE_TAG_STYLE = {
+  letterSpacing: '0.06em',
+  textTransform: 'uppercase' as const,
+}
+
+function ProjectTypeTag({ tone, children }: { tone: ProjectTypeTone; children?: ReactNode }) {
+  return (
+    <Badge $tone="neutral" style={{ ...PROJECT_TYPE_TAG_STYLE, background: PROJECT_TYPE_TONE_BG[tone] }}>
+      {children ?? PROJECT_TYPE_LABELS[tone]}
+    </Badge>
+  )
+}
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const FIRST_TITLE_STYLE = { marginTop: 0, marginBottom: 0 }

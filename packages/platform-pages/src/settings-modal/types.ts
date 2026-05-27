@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react'
-import type {
-  AutoSaveState,
-  ProjectTypeTone,
-} from '@ingradient/ui/patterns'
+import type { AutoSaveState } from '@ingradient/ui/patterns'
+import type { ProjectTypeTone } from './project'
 import type {
   DeleteAccountPreview,
   DeleteAccountResolutions,
