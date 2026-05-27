@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatasetListPanel, type DatasetListPanelDataset } from './dataset-list-panel'
-import { ContextMenuWithSubmenus } from '../../components/overlays/context-menu-with-submenus'
+import { ContextMenuWithSubmenus } from '@ingradient/ui/components'
 
 const SAMPLE: DatasetListPanelDataset[] = [
   { id: 'd1', name: 'Wafer line A — production batch 2024Q4', task_type: 'object_detection' },
@@ -12,7 +12,7 @@ const SAMPLE: DatasetListPanelDataset[] = [
 ]
 
 const meta: Meta<typeof DatasetListPanel> = {
-  title: 'Patterns/DatasetListPanel',
+  title: 'Platform Pages/Catalog/DatasetListPanel',
   component: DatasetListPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [

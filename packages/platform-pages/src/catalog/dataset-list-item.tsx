@@ -1,9 +1,9 @@
 import React from 'react'
-import { Grid, Inline, Text } from '../../primitives'
-import { Checkbox, IconButton } from '../../components/inputs'
-import { SelectableListItem } from '../../components/data-display/selectable-list-item'
-import { DatasetTaskTag, type DatasetTaskType } from './dataset-task-tag'
-import { KebabIcon } from '../../components/icons/catalog-icons'
+import { Grid, Inline, Text } from '@ingradient/ui/primitives'
+import { Checkbox, IconButton } from '@ingradient/ui/components'
+import { SelectableListItem } from '@ingradient/ui/components'
+import { DatasetTaskTag, type DatasetTaskType } from '@ingradient/ui/patterns'
+import { KebabIcon } from '@ingradient/ui/components'
 
 const ROW_STYLE = { width: '100%', alignItems: 'center' }
 const NAME_STYLE = {

@@ -4,7 +4,7 @@ import { DatasetListItem } from './dataset-list-item'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/DatasetListItem',
+  title: 'Platform Pages/Catalog/DatasetListItem',
   component: DatasetListItem,
   tags: ['autodocs'],
   parameters: {

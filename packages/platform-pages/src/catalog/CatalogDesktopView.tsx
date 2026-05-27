@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { DatasetListPanel, PagePrimaryHeader } from '@ingradient/ui/patterns'
+import { PagePrimaryHeader } from '@ingradient/ui/patterns'
+import { DatasetListPanel } from './dataset-list-panel'
 import { ResizableColumnsLayout, type ResizableColumn } from '@ingradient/ui/components'
 import { Stack, Box } from '@ingradient/ui/primitives'
 import { CatalogBody } from './CatalogBody'

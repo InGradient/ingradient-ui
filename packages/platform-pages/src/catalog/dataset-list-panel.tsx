@@ -1,10 +1,10 @@
 import React from 'react'
-import { Inline, Stack, Text } from '../../primitives'
-import { Button, Checkbox, IconButton } from '../../components/inputs'
-import { Spinner } from '../../components/feedback/spinner'
-import { ClosePanelIcon } from '../../components/icons/catalog-icons'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button, Checkbox, IconButton } from '@ingradient/ui/components'
+import { Spinner } from '@ingradient/ui/components'
+import { ClosePanelIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
-import type { DatasetTaskType } from './dataset-task-tag'
+import type { DatasetTaskType } from '@ingradient/ui/patterns'
 
 const PANEL_STYLE = {
   height: '100%',
