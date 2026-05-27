@@ -4,7 +4,7 @@ import { ReferenceImageSection } from './reference-image-section'
 import sample1 from '../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof ReferenceImageSection> = {
-  title: 'Patterns/Shells/ReferenceImageSection',
+  title: 'Patterns/ReferenceImageSection',
   component: ReferenceImageSection,
   decorators: [(Story) => <div style={{ width: 268, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

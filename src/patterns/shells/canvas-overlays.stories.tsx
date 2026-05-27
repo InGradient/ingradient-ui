@@ -8,7 +8,7 @@ import {
 } from './canvas-overlays'
 
 const meta: Meta = {
-  title: 'Patterns/Shells/CanvasOverlays',
+  title: 'Patterns/CanvasOverlays',
 }
 export default meta
 

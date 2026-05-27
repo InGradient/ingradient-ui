@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsHint } from './settings-hint'
 
 const meta: Meta<typeof SettingsHint> = {
-  title: 'Patterns/Shells/SettingsHint',
+  title: 'Patterns/SettingsHint',
   component: SettingsHint,
   decorators: [(Story) => <div style={{ width: 480, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

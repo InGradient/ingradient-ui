@@ -9,7 +9,7 @@ const baseClasses = [
 ]
 
 const meta: Meta<typeof ClassListSidebar> = {
-  title: 'Patterns/Shells/ClassListSidebar',
+  title: 'Patterns/ClassListSidebar',
   component: ClassListSidebar,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 600, display: 'flex' }}><Story /></div>],

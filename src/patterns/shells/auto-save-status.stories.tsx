@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AutoSaveStatus } from './auto-save-status'
 
 const meta: Meta<typeof AutoSaveStatus> = {
-  title: 'Patterns/Shells/AutoSaveStatus',
+  title: 'Patterns/AutoSaveStatus',
   component: AutoSaveStatus,
   decorators: [(Story) => <div style={{ width: 480, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

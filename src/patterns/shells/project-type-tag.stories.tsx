@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ProjectTypeTag } from './project-type-tag'
 
 const meta: Meta<typeof ProjectTypeTag> = {
-  title: 'Patterns/Shells/ProjectTypeTag',
+  title: 'Patterns/ProjectTypeTag',
   component: ProjectTypeTag,
   decorators: [(Story) => <div style={{ padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

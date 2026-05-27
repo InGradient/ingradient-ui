@@ -19,7 +19,7 @@ const baseItem: ClassLightboxItem = {
 }
 
 const meta: Meta<typeof ClassLightbox> = {
-  title: 'Patterns/Shells/ClassLightbox',
+  title: 'Patterns/ClassLightbox',
   component: ClassLightbox,
   parameters: { layout: 'fullscreen' },
 }

@@ -5,7 +5,7 @@ import { TextField } from '../../components/inputs/text-fields'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Patterns/Shells/FormGroup',
+  title: 'Patterns/FormGroup',
   component: FormGroup,
   tags: ['autodocs'],
   parameters: {

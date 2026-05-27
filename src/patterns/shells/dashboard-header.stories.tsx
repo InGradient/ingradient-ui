@@ -3,7 +3,7 @@ import { DashboardHeader } from './dashboard-header'
 import { Button } from '../../components/inputs/button'
 
 const meta: Meta<typeof DashboardHeader> = {
-  title: 'Patterns/Shells/DashboardHeader',
+  title: 'Patterns/DashboardHeader',
   component: DashboardHeader,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { LicenseInfoDisplay } from './license-info-display'
 
 const meta: Meta<typeof LicenseInfoDisplay> = {
-  title: 'Patterns/Shells/LicenseInfoDisplay',
+  title: 'Patterns/LicenseInfoDisplay',
   component: LicenseInfoDisplay,
   decorators: [(Story) => <div style={{ width: 480, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

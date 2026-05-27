@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassHoverCard, useClassHoverCard } from './class-hover-card'
 
 const meta: Meta<typeof ClassHoverCard> = {
-  title: 'Patterns/Shells/ClassHoverCard',
+  title: 'Patterns/ClassHoverCard',
   component: ClassHoverCard,
 }
 export default meta
