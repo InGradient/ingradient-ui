@@ -1,5 +1,6 @@
 import { HoverPreview, ImageCard } from '@ingradient/ui/components'
 import { Grid } from '@ingradient/ui/primitives'
+import { SyncStatusChip } from './gallery/sync-status-chip'
 import { DragOverGrid, GridWrap } from './CatalogView.styles'
 import type { CatalogImage, CatalogImagesPaneProps } from './types'
 
@@ -26,6 +27,7 @@ function renderCard(
       key={image.id}
       image={image}
       selected={selected}
+      topRightSlot={image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} /> : null}
       onSelect={(id) => onToggleSelect(id, !selected)}
       onOpen={(id) => onOpenDetail(id)}
       onOpenMenu={onOpenMenu}

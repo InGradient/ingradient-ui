@@ -2,7 +2,7 @@ import React from 'react'
 import { X } from 'lucide-react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { IconButton } from '@ingradient/ui/components'
-import { SyncStatusChip, type SyncState } from '@ingradient/ui/patterns'
+import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 import { MediaDialogShell } from '@ingradient/ui/patterns'
 

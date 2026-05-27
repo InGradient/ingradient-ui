@@ -2,7 +2,7 @@ import React from 'react'
 import { Text } from '@ingradient/ui/primitives'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 import { Checkbox, IconButton } from '@ingradient/ui/components'
-import { SyncStatusChip, type SyncState } from '@ingradient/ui/patterns'
+import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '@ingradient/ui/components'
 
 const THUMB_STYLE = {

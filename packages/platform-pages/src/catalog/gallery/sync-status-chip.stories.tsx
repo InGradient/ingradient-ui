@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SyncStatusChip } from './sync-status-chip'
-import { Inline, Stack } from '../../primitives'
+import { Inline, Stack } from '@ingradient/ui/primitives'
 
 const meta: Meta<typeof SyncStatusChip> = {
-  title: 'Patterns/SyncStatusChip',
+  title: 'Platform Pages/Catalog/Gallery/SyncStatusChip',
   component: SyncStatusChip,
   tags: ['autodocs'],
 }
