@@ -327,10 +327,25 @@ grep -rEh "^const [A-Z][a-zA-Z0-9_]+ ?= ?styled" src/patterns --include="*.tsx" 
 - **project-type-tag**: edge-pages 도 사용 (annotation shared) → patterns 잔존
 - **sync-status-chip**: `components/data-display/image-card.tsx` 가 import (components→patterns 역방향 의존). **layering 위반** — 별도 작업으로 미룸
 
+### Phase X4 — patterns/shells 역할 단위 폴더 재구성 (21/21)
+
+shells/ 평탄 34개 → 역할 폴더로 분류. 사용자 의도: "재활용 가능한 것들의 모음 — 역할 단위 폴더만 OK, 도메인 단위 폴더 NO".
+
+- [x] X4.1 `annotation/` 확장: canvas-coord-readout, canvas-overlays, image-inspector-canvas, labeling-canvas (4)
+- [x] X4.2 `dialogs/` 확장: add-dataset-modal, media-dialog-shell (2)
+- [x] X4.3 `forms/` 신규: form-group, checkbox-group, chip-group, color-input-row, date-range-field, settings-section, settings-row, settings-hint (8)
+- [x] X4.4 `filters/` 신규: filter-section, filter-searchable-list, sort-popover-trigger (3)
+- [x] X4.5 `navigation/` 신규: sidebar-shell, expand-sidebar-btn, navigation (3)
+- [x] X4.6 `status/` 신규: auto-save-status (1)
+
+shells/ 잔존 13개 (도메인 특화, 이번에 손대지 않음):
+- class-* (4), dataset-list-* (2), dataset-task-tag, project-type-tag, sync-status-chip (annotation tags)
+- reference-image-* (2), member-pool-list, license-info-display
+
 ### 최종 검증
 - [x] `npm run build:package` 통과 (ui + platform-pages + edge-pages)
 - [x] `grep -rn "@ingradient/ui/patterns" packages/ stories/` 결과에 옛 이동 컴포넌트 0
-- [x] `ls src/patterns/shells/` 잔여 34 .tsx (Phase X3 후 41 → 34, 7개 추가 이동)
+- [x] `ls src/patterns/shells/` 잔여 13 .tsx (X4 후 34 → 13, 21개 역할 폴더로 분류)
 - [x] plan 문서 진척 상황 모두 ✅
 - [ ] 인라인 styled 카운트 갱신 (Phase 5 후 이미 ~27)
 
