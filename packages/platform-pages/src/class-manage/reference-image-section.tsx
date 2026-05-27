@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Stack, Text } from '../../primitives'
-import { InfoSection } from '../../components/data-display/info-section'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { InfoSection } from '@ingradient/ui/components'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
-import { IndexedNavigation } from '../../components/navigation/indexed-navigation'
+import { IndexedNavigation } from '@ingradient/ui/components'
 
 const HINT_STYLE = { marginTop: -2 }
 const STACK_STYLE = { width: '100%' }

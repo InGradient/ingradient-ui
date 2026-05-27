@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
-import { Stack } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { TextField, TextareaField } from '../../components/inputs/text-fields'
-import { InfoSection } from '../../components/data-display/info-section'
-import { ColorInputRow } from '../forms/color-input-row'
+import { Stack } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { TextField, TextareaField } from '@ingradient/ui/components'
+import { InfoSection } from '@ingradient/ui/components'
+import { ColorInputRow } from '@ingradient/ui/patterns'
 
 const SIDEBAR_STYLE = {
   width: 300,

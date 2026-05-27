@@ -3,7 +3,7 @@ import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import sample1 from '../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof ReferenceImageDropZone> = {
-  title: 'Patterns/ReferenceImageDropZone',
+  title: 'Platform Pages/Class Manage/ReferenceImageDropZone',
   component: ReferenceImageDropZone,
   decorators: [(Story) => <div style={{ width: 268, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

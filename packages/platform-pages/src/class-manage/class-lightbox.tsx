@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { IconButton } from '../../components/inputs/icon-button'
-import { ChipTabs, type ChipTabsItem } from '../../components/inputs/chip-tabs'
+import { IconButton } from '@ingradient/ui/components'
+import { ChipTabs, type ChipTabsItem } from '@ingradient/ui/components'
 
 const OVERLAY_STYLE = { position: 'absolute' as const, inset: 0, width: '100%', height: '100%', pointerEvents: 'none' as const }
 const CLOSE_BTN_STYLE = { position: 'absolute' as const, top: 12, right: 12, borderRadius: 'var(--ig-radius-pill)', background: 'var(--ig-color-lightbox-surface)' }

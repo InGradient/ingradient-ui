@@ -1,5 +1,5 @@
 import type { DragEvent, ReactNode } from 'react'
-import { DropZone } from '../../components/inputs/drop-zone'
+import { DropZone } from '@ingradient/ui/components'
 
 const EMPTY_STYLE = {
   padding: 'var(--ig-space-9)',

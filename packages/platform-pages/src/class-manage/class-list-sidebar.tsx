@@ -1,6 +1,6 @@
-import { Box, Stack, Text } from '../../primitives'
-import { Button } from '../../components/inputs/button'
-import { LabeledSwatchRow } from '../../components/data-display/labeled-swatch-row'
+import { Box, Stack, Text } from '@ingradient/ui/primitives'
+import { Button } from '@ingradient/ui/components'
+import { LabeledSwatchRow } from '@ingradient/ui/components'
 
 const SIDEBAR_STYLE = {
   width: 280,

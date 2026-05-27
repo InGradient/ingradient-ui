@@ -1,5 +1,5 @@
 import { ConfirmDialog, ImageContextMenu, TextInputDialog } from '@ingradient/ui/components'
-import { ClassLightbox } from '@ingradient/ui/patterns'
+import { ClassLightbox } from './class-lightbox'
 import type { ClassManageOverlaysProps } from './types'
 
 const CONTEXT_MENU_BASE = [{ key: 'add-ref', label: 'Add to Reference Image' }] as const

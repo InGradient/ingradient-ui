@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassInfoSidebar } from './class-info-sidebar'
-import { InfoSection } from '../../components/data-display/info-section'
+import { InfoSection } from '@ingradient/ui/components'
 
 import type { ClassInfoSidebarClass } from './class-info-sidebar'
 
 const baseClass: ClassInfoSidebarClass = { id: 'c-1', name: 'Crack', color: '#ef4444', description: 'Surface micro-crack defect' }
 
 const meta: Meta<typeof ClassInfoSidebar> = {
-  title: 'Patterns/ClassInfoSidebar',
+  title: 'Platform Pages/Class Manage/ClassInfoSidebar',
   component: ClassInfoSidebar,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 700, display: 'flex' }}><Story /></div>],
