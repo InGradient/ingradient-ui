@@ -10,7 +10,7 @@ const CLASSES = [
 ]
 
 const meta: Meta<typeof AddDatasetModal> = {
-  title: 'Patterns/AddDatasetModal',
+  title: 'Patterns/Dialogs/AddDatasetModal',
   component: AddDatasetModal,
   parameters: { layout: 'fullscreen' },
 }

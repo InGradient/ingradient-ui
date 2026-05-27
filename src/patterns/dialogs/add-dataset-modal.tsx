@@ -7,7 +7,7 @@ import { TextField } from '../../components/inputs/text-fields'
 import { RadioCardGroup } from '../../components/inputs/radio-card-group'
 import { Checkbox } from '../../components/inputs/toggles'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
-import { type DatasetTaskType } from './dataset-task-tag'
+import { type DatasetTaskType } from '../shells/dataset-task-tag'
 
 import { FormField } from '../../components/inputs'
 
