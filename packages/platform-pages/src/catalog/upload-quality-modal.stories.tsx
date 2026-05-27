@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { UploadQualityModal } from './upload-quality-modal'
 
 const meta: Meta<typeof UploadQualityModal> = {
-  title: 'Patterns/UploadQualityModal',
+  title: 'Platform Pages/Catalog/UploadQualityModal',
   component: UploadQualityModal,
   parameters: { layout: 'fullscreen' },
 }

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DragDropDecideModal } from './drag-drop-decide-modal'
 
 const meta: Meta<typeof DragDropDecideModal> = {
-  title: 'Patterns/DragDropDecideModal',
+  title: 'Platform Pages/Catalog/DragDropDecideModal',
   component: DragDropDecideModal,
   parameters: { layout: 'fullscreen' },
 }

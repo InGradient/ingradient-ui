@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { DialogShell } from '../../components/overlays/dialog-shell'
-import { Button } from '../../components/inputs/button'
-import { RadioCardGroup, type RadioCardGroupOption } from '../../components/inputs/radio-card-group'
+import { DialogShell } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
+import { RadioCardGroup, type RadioCardGroupOption } from '@ingradient/ui/components'
 
 export type UploadQuality = 'high' | 'medium' | 'low' | 'lossless'
 

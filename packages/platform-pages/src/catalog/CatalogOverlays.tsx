@@ -1,10 +1,10 @@
 import { ConfirmDialog, ContextMenuWithSubmenus, DuplicateItemModal } from '@ingradient/ui/components'
 import {
   AddDatasetModal,
-  DragDropDecideModal,
   ExportProgressModal,
-  UploadQualityModal,
 } from '@ingradient/ui/patterns'
+import { DragDropDecideModal } from './drag-drop-decide-modal'
+import { UploadQualityModal } from './upload-quality-modal'
 import {
   GalleryDatasetTransferDialog,
   GalleryDeleteDialog,

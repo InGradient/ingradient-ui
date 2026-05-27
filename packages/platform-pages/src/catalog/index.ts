@@ -1,5 +1,7 @@
 export * from './CatalogView'
 export * from './gallery'
+export * from './drag-drop-decide-modal'
+export * from './upload-quality-modal'
 export type {
   CatalogClass,
   CatalogDataset,
