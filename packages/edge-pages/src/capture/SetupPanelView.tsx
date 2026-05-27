@@ -1,7 +1,26 @@
+import styled from 'styled-components'
 import { Check, ChevronDown, Save } from 'lucide-react'
-import { Accordion, Button, Switch } from '@ingradient/ui'
+import { Button, Switch } from '@ingradient/ui'
 import { FieldGroup, FieldHint, SectionTitle } from '@ingradient/ui/patterns'
 import { NumberField } from '@ingradient/ui/components'
+import { surfacePanel } from '@ingradient/ui/primitives'
+
+const Accordion = styled.details`
+  ${surfacePanel}
+  border-radius: var(--ig-radius-xl);
+  overflow: hidden;
+  summary {
+    cursor: pointer;
+    padding: var(--ig-space-6) var(--ig-space-7);
+    list-style: none;
+    font-weight: 600;
+  }
+  summary::-webkit-details-marker { display: none; }
+  > div {
+    padding: 0 var(--ig-space-7) var(--ig-space-7);
+    color: var(--ig-color-text-muted);
+  }
+`
 import {
   SetupPanel as SetupPanelWrap, SetupPanelHeader, SetupPanelTitle,
   SetupHeaderActions, SetupPanelBody,
