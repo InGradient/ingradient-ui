@@ -1,8 +1,8 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import styled from 'styled-components'
-import { Box, Inline } from '../primitives'
-import { TextField } from '../components/inputs/text-fields'
-import { HelpTooltip } from '../components/overlays/help-tooltip'
+import { Box, Inline } from '@ingradient/ui/primitives'
+import { TextField } from '@ingradient/ui/components'
+import { HelpTooltip } from '@ingradient/ui/components'
 
 const SEARCH_WRAP_STYLE = {
   marginBottom: 'var(--ig-space-5)',

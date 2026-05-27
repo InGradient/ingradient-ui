@@ -1,3 +1,4 @@
+export * from './permission-matrix'
 export * from './project-permission-matrix'
 export * from './delete-project-section'
 export * from './project-member-invite'

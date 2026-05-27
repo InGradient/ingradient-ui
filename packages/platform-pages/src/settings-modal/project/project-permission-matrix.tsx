@@ -1,10 +1,10 @@
 import { Checkbox } from '@ingradient/ui/components'
+import { getSummaryPermissionState } from '@ingradient/ui/utils'
 import {
   PermissionMatrix,
   type PermissionMatrixColumnGroup,
   type PermissionMatrixRow,
-} from '@ingradient/ui/patterns'
-import { getSummaryPermissionState } from '@ingradient/ui/utils'
+} from './permission-matrix'
 
 export interface PermissionMatrixRole {
   value: string
