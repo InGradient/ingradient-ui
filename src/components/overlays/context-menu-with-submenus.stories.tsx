@@ -44,20 +44,32 @@ const NESTED_ACTIONS: ContextMenuWithSubmenusAction[] = [
 ]
 
 function MenuDemo({ actions }: { actions: ContextMenuWithSubmenusAction[] }) {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const btnRef = useRef<HTMLButtonElement>(null)
-  const [open, setOpen] = useState(true)
   return (
-    <div style={{ padding: 24 }}>
-      <button ref={btnRef} type="button" onClick={() => setOpen((v) => !v)}>
-        Toggle menu
+    <div style={{ padding: 24, minHeight: 360, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <button
+        ref={btnRef}
+        type="button"
+        onClick={() => setAnchorEl(anchorEl ? null : btnRef.current)}
+        style={{
+          alignSelf: 'flex-start',
+          padding: '8px 14px',
+          fontSize: 13,
+          borderRadius: 6,
+          border: '1px solid var(--ig-color-border-subtle)',
+          background: 'var(--ig-color-surface-raised)',
+          color: 'var(--ig-color-text-primary)',
+          cursor: 'pointer',
+        }}
+      >
+        {anchorEl ? 'Close menu' : 'Open menu'}
       </button>
-      {open ? (
-        <ContextMenuWithSubmenus
-          anchorEl={btnRef.current}
-          onClose={() => setOpen(false)}
-          actions={actions}
-        />
-      ) : null}
+      <ContextMenuWithSubmenus
+        anchorEl={anchorEl}
+        onClose={() => setAnchorEl(null)}
+        actions={actions}
+      />
     </div>
   )
 }

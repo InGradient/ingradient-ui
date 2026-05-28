@@ -12,32 +12,52 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const TRIGGER_STYLE = {
+  alignSelf: 'flex-start' as const,
+  padding: '8px 14px',
+  fontSize: 13,
+  borderRadius: 6,
+  border: '1px solid var(--ig-color-border-subtle)',
+  background: 'var(--ig-color-surface-raised)',
+  color: 'var(--ig-color-text-primary)',
+  cursor: 'pointer' as const,
+}
+
+function ButtonTriggered({ items, label = 'Open menu' }: { items: { key: string; label: string; disabled?: boolean; onClick?: () => void }[]; label?: string }) {
+  const [pos, setPos] = useState<{ top: number; left: number } | null>(null)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <button
+        type="button"
+        style={TRIGGER_STYLE}
+        onClick={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect()
+          setPos(pos ? null : { top: rect.bottom + 4, left: rect.left })
+        }}
+      >
+        {pos ? 'Close menu' : label}
+      </button>
+      <ImageContextMenu position={pos} items={items} onClose={() => setPos(null)} />
+    </div>
+  )
+}
+
 export const SingleItem: Story = {
-  args: {
-    position: { top: 120, left: 200 },
-    items: [{ key: 'add-ref', label: 'Add to Reference Image' }],
-    onClose: () => undefined,
-  },
+  render: () => <ButtonTriggered items={[{ key: 'add-ref', label: 'Add to Reference Image' }]} />,
 }
 
 export const Pending: Story = {
-  args: {
-    position: { top: 120, left: 200 },
-    items: [{ key: 'add-ref', label: 'Adding…', disabled: true }],
-    onClose: () => undefined,
-  },
+  render: () => <ButtonTriggered items={[{ key: 'add-ref', label: 'Adding…', disabled: true }]} />,
 }
 
 export const MultiItem: Story = {
-  args: {
-    position: { top: 120, left: 200 },
-    items: [
+  render: () => (
+    <ButtonTriggered items={[
       { key: 'open', label: 'Open in lightbox' },
       { key: 'ref', label: 'Add to Reference Image' },
       { key: 'copy-id', label: 'Copy image ID' },
-    ],
-    onClose: () => undefined,
-  },
+    ]} />
+  ),
 }
 
 export const Closed: Story = {
