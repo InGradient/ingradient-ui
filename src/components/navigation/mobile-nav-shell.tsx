@@ -56,7 +56,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     overflow-y: auto;
     background: var(--ig-color-surface-header);
     border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-    box-shadow: 0 16px 48px var(--ig-color-modal-backdrop);
+    box-shadow: var(--ig-shadow-drawer-lift);
     z-index: var(--ig-z-mobile-nav);
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});
     /* Material standard ease — slow tier 의 360ms ease 보다 specific 한 곡선 의도 */

@@ -6,6 +6,9 @@ export const shadowScale = {
   menu: '0 20px 40px rgba(0, 0, 0, 0.35)',
   hoverLift: '0 12px 24px rgba(41, 98, 217, 0.24)',
   focusRing: '0 0 0 3px rgba(77, 136, 255, 0.16)',
+  drawerLift: '0 16px 48px rgba(4, 8, 14, 0.72)',
+  dangerHoverLift: '0 10px 28px rgba(127, 29, 29, 0.32)',
+  controlElevated: 'inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 24px rgba(0, 0, 0, 0.12)',
 } as const
 
 // Light mode shadows — much softer drop shadow (alpha cut by ~50%) so cards
@@ -18,6 +21,9 @@ export const shadowScaleLight = {
   menu: '0 16px 32px rgba(15, 23, 42, 0.10)',
   hoverLift: '0 12px 24px rgba(58, 115, 230, 0.16)',
   focusRing: '0 0 0 3px rgba(58, 115, 230, 0.20)',
+  drawerLift: '0 16px 48px rgba(15, 23, 42, 0.32)',
+  dangerHoverLift: '0 10px 28px rgba(185, 28, 28, 0.20)',
+  controlElevated: '0 10px 24px rgba(15, 23, 42, 0.08)',
 } as const
 
 const _shadowShapeCheck: Record<keyof typeof shadowScale, string> = shadowScaleLight

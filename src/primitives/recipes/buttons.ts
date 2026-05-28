@@ -110,7 +110,7 @@ export const buttonDanger = css`
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 10px 28px rgba(127, 29, 29, 0.32);
+    box-shadow: var(--ig-shadow-danger-hover-lift);
   }
 
   &:focus-visible {

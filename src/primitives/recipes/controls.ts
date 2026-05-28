@@ -100,8 +100,6 @@ export const controlField = css`
     background-repeat: no-repeat;
     background-position: calc(100% - var(--ig-space-7)) center;
     background-size: 10px 6px;
-    box-shadow:
-      inset 0 1px 0 var(--ig-color-inset-highlight),
-      0 10px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--ig-shadow-control-elevated);
   }
 `

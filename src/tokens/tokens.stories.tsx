@@ -125,6 +125,24 @@ function RadiusTile({ varName, label }: { varName: string; label: string }) {
   )
 }
 
+function ShadowTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+      <div
+        style={{
+          width: '100%',
+          height: 72,
+          borderRadius: 'var(--ig-radius-lg)',
+          background: 'var(--ig-color-surface-raised)',
+          boxShadow: `var(${varName})`,
+        }}
+      />
+      <TokenName>{label}</TokenName>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function FontWeightTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
@@ -253,6 +271,20 @@ export const Review: Story = {
             <BorderWidthTile varName="--ig-border-3px" />
           </div>
         </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Shadow" description="Elevation + ring + drawer / danger / control surface.">
+        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+          <ShadowTile varName="--ig-shadow-panel" label="panel" />
+          <ShadowTile varName="--ig-shadow-floating" label="floating" />
+          <ShadowTile varName="--ig-shadow-popover" label="popover" />
+          <ShadowTile varName="--ig-shadow-menu" label="menu" />
+          <ShadowTile varName="--ig-shadow-hover-lift" label="hover-lift" />
+          <ShadowTile varName="--ig-shadow-focus-ring" label="focus-ring" />
+          <ShadowTile varName="--ig-shadow-drawer-lift" label="drawer-lift" />
+          <ShadowTile varName="--ig-shadow-danger-hover-lift" label="danger-hover-lift" />
+          <ShadowTile varName="--ig-shadow-control-elevated" label="control-elevated" />
+        </StorybookGrid>
       </StorybookSection>
 
       <StorybookSection title="Motion" description="Transition + animation duration tokens. 막대가 token duration 마다 좌우로 이동.">
