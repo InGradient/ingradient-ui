@@ -7,11 +7,11 @@ import type { ComponentProps } from 'react'
  *
  * | 토큰 | font-size | weight | 용도 |
  * |---|---|---|---|
- * | H1 | 5xl (32px) | 800 | Page hero title |
- * | H2 | 4xl (28px) | 700 | Section title |
- * | H3 | 2xl (20px) | 600 | Subsection title |
- * | H4 | xl  (18px) | 600 | Block title, dialog title |
- * | B1 | lg  (16px) | 400 | Body large — emphasis body |
+ * | H1 | 5xl (28px) | 800 | Page hero title |
+ * | H2 | 4xl (24px) | 700 | Section title |
+ * | H3 | 2xl (18px) | 600 | Subsection title |
+ * | H4 | xl  (16px) | 600 | Block title, dialog title |
+ * | B1 | lg  (15px) | 400 | Body large — emphasis body |
  * | B2 | md  (14px) | 400 | Body medium — default body |
  * | B3 | sm  (13px) | 400 | Body small — dense table, secondary |
  * | C1 | xs  (12px) | 400 | Caption — meta, footnote |
@@ -19,6 +19,9 @@ import type { ComponentProps } from 'react'
  *
  * Heading 은 의미적 h1~h4 element 로 렌더 (a11y). Body/Caption/Label 은 span 기본.
  * 기본 동작이 부족하면 underlying Heading/Text 의 props 전달 가능.
+ *
+ * 더 작은 텍스트 (10/11px) 는 type scale 에 없음. `<Text size="var(--ig-font-size-3xs)" />`
+ * 또는 `2xs` 토큰 직접 사용 (mobile small label, icon-sized chip 등).
  */
 
 type HeadingProps = ComponentProps<typeof Heading>

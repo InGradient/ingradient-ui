@@ -1,6 +1,7 @@
 export const typographyScale = {
   fontSans: '"IBM Plex Sans", "Segoe UI", sans-serif',
   fontMono: '"IBM Plex Mono", "SFMono-Regular", Consolas, monospace',
+  size3xs: '10px',
   size2xs: '11px',
   sizeXs: '12px',
   sizeSm: '13px',

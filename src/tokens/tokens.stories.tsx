@@ -185,6 +185,7 @@ export const Review: Story = {
       <StorybookSection title="Typography" description="Font size scale.">
         <StorybookCard title="Font sizes">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <FontSizeTile varName="--ig-font-size-3xs" label="3xs" />
             <FontSizeTile varName="--ig-font-size-2xs" label="2xs" />
             <FontSizeTile varName="--ig-font-size-xs" label="xs" />
             <FontSizeTile varName="--ig-font-size-sm" label="sm" />

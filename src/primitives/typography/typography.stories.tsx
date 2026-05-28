@@ -18,11 +18,11 @@ const meta = {
 
 | 토큰 | 출처 | font-size | weight | 권장 용도 |
 |---|---|---|---|---|
-| **H1** | Heading level=1 | \`5xl\` (32px) | 800 | Page hero title |
-| **H2** | Heading level=2 | \`4xl\` (28px) | 700 | Section title |
-| **H3** | Heading level=3 | \`2xl\` (20px) | 600 | Subsection title |
-| **H4** | Heading level=4 | \`xl\` (18px) | 600 | Block title, dialog title |
-| **B1** | Text | \`lg\` (16px) | 400 | Body large — emphasis body |
+| **H1** | Heading level=1 | \`5xl\` (28px) | 800 | Page hero title |
+| **H2** | Heading level=2 | \`4xl\` (24px) | 700 | Section title |
+| **H3** | Heading level=3 | \`2xl\` (18px) | 600 | Subsection title |
+| **H4** | Heading level=4 | \`xl\` (16px) | 600 | Block title, dialog title |
+| **B1** | Text | \`lg\` (15px) | 400 | Body large — emphasis body |
 | **B2** | Text | \`md\` (14px) | 400 | Body medium — default body |
 | **B3** | Text | \`sm\` (13px) | 400 | Body small — dense table, secondary |
 | **C1** | Text + muted | \`xs\` (12px) | 400 | Caption — meta, footnote |
@@ -31,6 +31,7 @@ const meta = {
 - \`H1~H4\` 는 의미적 \`h1~h4\` element 로 렌더 (a11y).
 - \`B1/B2/B3\`, \`C1\`, \`L1\` 은 \`span\` 기본 — \`as\` prop 으로 다른 태그.
 - 자유로운 size/weight 가 필요하면 underlying \`<Heading>\` / \`<Text>\` 직접 사용.
+- 더 작은 텍스트 (10px, 11px) 는 \`<Text size="var(--ig-font-size-3xs)" />\` 또는 \`2xs\` 토큰 직접 사용 (mobile small label, icon-sized chip 등).
         `,
       },
     },

@@ -19,14 +19,17 @@ inline style 또는 hardcoded px 로 텍스트를 그리는 곳을 type scale �
 ### px → 토큰 매핑
 | px | 토큰 |
 |---|---|
-| 10 | (없음, mobile-specific 유지 가능) |
+| 10 | `var(--ig-font-size-3xs)` ← **신규 추가** |
 | 11 | `var(--ig-font-size-2xs)` |
 | 12 | `var(--ig-font-size-xs)` |
 | 13 | `var(--ig-font-size-sm)` |
 | 14 | `var(--ig-font-size-md)` |
-| 16 | `var(--ig-font-size-lg)` |
-| 18 | `var(--ig-font-size-xl)` |
-| 20 | `var(--ig-font-size-2xl)` |
+| 15 | `var(--ig-font-size-lg)` |
+| 16 | `var(--ig-font-size-xl)` |
+| 18 | `var(--ig-font-size-2xl)` |
+| 20 | `var(--ig-font-size-3xl)` |
+| 24 | `var(--ig-font-size-4xl)` |
+| 28 | `var(--ig-font-size-5xl)` |
 
 ### 토큰 → type scale 매핑
 | 토큰 + 속성 | type scale |
@@ -60,22 +63,21 @@ type scale 으로 직접 대체 부적절. 토큰은 이미 사용 중이라 유
 
 | 파일 | 라인 | 현재 | 권장 처리 | 완료 |
 |---|---|---|---|---|
-| `navigation/mobile-bottom-toolbar.tsx` | 41 | `span { font-size: 10px }` | mobile small label — 10px 유지 (토큰 없음) | ⏸ |
+| `navigation/mobile-bottom-toolbar.tsx` | 41 | `span { font-size: 10px }` | `var(--ig-font-size-3xs)` | ⏳ |
 | `inputs/textarea.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ⏳ |
 | `data-display/table.styles.ts` | 31 | `font-size: 12px;` (`$mono` cell) | `var(--ig-font-size-xs)` | ⏳ |
-| `feedback/toast.tsx` | 72 | `font-size: 16px;` | `var(--ig-font-size-lg)` | ⏳ |
+| `feedback/toast.tsx` | 72 | `font-size: 16px;` | `var(--ig-font-size-xl)` | ⏳ |
 | `inputs/date-range-picker.tsx` | 39, 43 | `font-size: 14px;` `font-size: 13px;` (DayPicker) | `var(--ig-font-size-md)`, `var(--ig-font-size-sm)` | ⏳ |
-| `data-display/tag.tsx` | 14 | `font-size: 10px;` | tag 의 작은 라벨 — 유지 검토 | ⏸ |
+| `data-display/tag.tsx` | 14 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
 | `overlays/help-tooltip.tsx` | 34 | `font-size: 12px;` (Bubble) | `var(--ig-font-size-xs)` | ⏳ |
-| `feedback/state-chip.tsx` | 24 | `font-size: 10px;` | state chip 작은 라벨 — 유지 검토 | ⏸ |
+| `feedback/state-chip.tsx` | 24 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
 | `feedback/group-count-badge.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ⏳ |
 | `inputs/filter-chip-row.tsx` | 12 | `font-size: 13px;` | `var(--ig-font-size-sm)` | ⏳ |
-| `inputs/mobile-dropdown.tsx` | 17 | `font-size: 15px;` | `var(--ig-font-size-md)` (14px) 또는 `lg` (16px) — 가까운 쪽 | ⏳ |
+| `inputs/mobile-dropdown.tsx` | 17 | `font-size: 15px;` | `var(--ig-font-size-lg)` | ⏳ |
 | `inputs/chip-tabs.tsx` | 11 | `font-size: 12px;` | `var(--ig-font-size-xs)` | ⏳ |
-| `inputs/number-field.tsx` | 37 | `font-size: 10px;` | 작은 step 버튼 — 유지 검토 | ⏸ |
+| `inputs/number-field.tsx` | 37 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
 
-**유지 (⏸)**: 10px (토큰 없음, mobile/icon-specific 의도) — 5건. 추후 `--ig-font-size-3xs` 토큰 추가 검토.
-**처리 (⏳)**: 8건 → 토큰화.
+**처리 (⏳)**: 13건 전부 토큰화 가능. `--ig-font-size-3xs` (10px) 토큰 추가 후 mobile/icon-specific 작은 라벨도 일관되게 토큰 사용.
 
 ---
 
@@ -115,5 +117,8 @@ Category A 단순 case 만 ~11건. 나머지 styled.span 들은 specific layout/
 
 ## 명시적 잔존 (⏸)
 
-- 10px font-size 5건 (mobile-bottom-toolbar, tag, state-chip, number-field 등) — 토큰 없는 작은 element 라벨. 추후 `--ig-font-size-3xs` 토큰 도입 시 일괄 토큰화.
 - comment-thread 의 Author/Body — styled.span 안에 특수 align/positioning 포함. type scale 단순 대체 부적절.
+
+## 갱신 기록
+
+- `--ig-font-size-3xs` (10px) 토큰 신규 추가 (commit pending) — 10px 4건 (mobile-bottom-toolbar, tag, state-chip, number-field) 모두 토큰화 가능해짐.

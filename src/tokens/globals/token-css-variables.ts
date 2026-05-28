@@ -197,6 +197,7 @@ const staticVars = {
   // ── Typography ────────────────────────────────────────────────
   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
   '--ig-font-mono': ingradientThemeDark.typography.fontMono,
+  '--ig-font-size-3xs': typographyScale.size3xs,
   '--ig-font-size-2xs': typographyScale.size2xs,
   '--ig-font-size-xs': typographyScale.sizeXs,
   '--ig-font-size-sm': typographyScale.sizeSm,
