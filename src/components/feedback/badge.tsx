@@ -12,7 +12,7 @@ export const Badge = styled.span<{ $tone?: keyof typeof badgeTone }>`
   padding: var(--ig-space-1) var(--ig-space-4);
   border-radius: var(--ig-radius-pill);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   background: ${(p) => badgeTone[p.$tone ?? 'neutral']};
 `

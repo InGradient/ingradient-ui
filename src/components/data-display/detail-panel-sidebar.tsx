@@ -56,7 +56,7 @@ export function DetailPanelSidebar({
       <Box style={FIXED_TOP_STYLE}>{headerSlot}</Box>
       {bodySlot ? (
         <Stack gap={3} style={GROW_SECTION_STYLE}>
-          <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{bodySectionTitle}</Text>
+          <Text size="var(--ig-font-size-sm)" weight="semibold" tone="muted" uppercase letterSpacing="0.04em">{bodySectionTitle}</Text>
           {bodySlot}
         </Stack>
       ) : null}

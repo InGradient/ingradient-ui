@@ -36,7 +36,7 @@ export const PageTitleBlock = styled.div`
 export const PageTitle = styled.h1`
   margin: 0;
   font-size: var(--ig-font-size-2xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   letter-spacing: -0.02em;
 
   ${media.md} {
@@ -83,7 +83,7 @@ export const PanelHeader = styled.div`
 export const PanelTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `
 
 export const PanelHint = styled.span`
@@ -94,7 +94,7 @@ export const PanelHint = styled.span`
 export const SectionTitle = styled.h3`
   margin: 0 0 var(--ig-space-5);
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
 
@@ -134,7 +134,7 @@ export const FieldGroup = styled.div`
 
 export const FieldLabel = styled.label`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
 `
 

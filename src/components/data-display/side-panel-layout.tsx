@@ -44,7 +44,7 @@ export function SidePanelLayout({ sections, className }: SidePanelLayoutProps) {
       {sections.map((s, i) => (
         <Section key={i}>
           <Inline justify="space-between" gap={3} style={HEADER_ROW_STYLE}>
-            <Text as="h3" size="var(--ig-font-size-md)" weight={600}>{s.title}</Text>
+            <Text as="h3" size="var(--ig-font-size-md)" weight="semibold">{s.title}</Text>
             {s.headerActions}
           </Inline>
           <Stack gap={3} style={SECTION_BODY_STYLE}>{s.body}</Stack>

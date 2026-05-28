@@ -17,7 +17,7 @@ const ICON_STYLE = {
   border: '1px solid var(--ig-color-border-strong)',
   color: 'var(--ig-color-text-muted)',
   fontSize: 'var(--ig-font-size-3xs)',
-  fontWeight: 700,
+  fontWeight: 'var(--ig-font-weight-bold)',
   lineHeight: 1,
   cursor: 'help' as const,
   background: 'var(--ig-color-surface-raised)',
@@ -32,7 +32,7 @@ const Bubble = styled(TooltipBubble)`
   max-width: 320px;
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-xs);
-  font-weight: 400;
+  font-weight: var(--ig-font-weight-regular);
   line-height: 1.45;
   white-space: pre-line;
   text-align: left;

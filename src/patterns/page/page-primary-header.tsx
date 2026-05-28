@@ -37,7 +37,7 @@ export function PagePrimaryHeader({
           {subtitle ? <PageSubtitle>{subtitle}</PageSubtitle> : null}
         </PageTitleBlock>
         {rightSlot ? (
-          <Text as="span" size="var(--ig-font-size-lg)" weight={700} tone="secondary" align="right" style={RIGHT_SLOT_STYLE}>
+          <Text as="span" size="var(--ig-font-size-lg)" weight="bold" tone="secondary" align="right" style={RIGHT_SLOT_STYLE}>
             {rightSlot}
           </Text>
         ) : null}

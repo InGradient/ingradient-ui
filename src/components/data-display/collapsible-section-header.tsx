@@ -34,7 +34,7 @@ export function CollapsibleSectionHeader({
     <Btn type="button" onClick={onClick} className={className}>
       <Inline as="span" gap={1}>
         <Text as="span">{open ? '▾' : '▸'}</Text>
-        <Text as="span" size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
+        <Text as="span" size="var(--ig-font-size-sm)" weight="semibold" tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
       </Inline>
       {badge}
     </Btn>

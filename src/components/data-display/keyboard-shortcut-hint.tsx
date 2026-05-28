@@ -18,7 +18,7 @@ const Key = styled.kbd<{ $size: 'sm' | 'md' }>`
   color: var(--ig-color-text-soft);
   font-family: inherit;
   font-size: ${(p) => (p.$size === 'sm' ? '10px' : 'var(--ig-font-size-2xs)')};
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
   line-height: 1;
 `
 

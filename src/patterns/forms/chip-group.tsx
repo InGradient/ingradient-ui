@@ -38,7 +38,7 @@ export function ChipGroup({ items, maxVisible, onItemClick, className }: ChipGro
         </ActionChip>
       ))}
       {overflow > 0 ? (
-        <Text as="span" tone="muted" size="var(--ig-font-size-2xs)" weight={600} style={MORE_CHIP_STYLE}>+{overflow} more</Text>
+        <Text as="span" tone="muted" size="var(--ig-font-size-2xs)" weight="semibold" style={MORE_CHIP_STYLE}>+{overflow} more</Text>
       ) : null}
     </Inline>
   )

@@ -14,7 +14,7 @@ export interface InfoSectionProps {
 export function InfoSection({ title, children, className }: InfoSectionProps) {
   return (
     <Stack as="section" gap={3} className={className}>
-      <Text as="h3" tone="muted" size="12px" weight={600} uppercase letterSpacing="0.04em">{title}</Text>
+      <Text as="h3" tone="muted" size="12px" weight="semibold" uppercase letterSpacing="0.04em">{title}</Text>
       {children}
     </Stack>
   )

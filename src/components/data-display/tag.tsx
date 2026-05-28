@@ -12,7 +12,7 @@ export const Tag = styled.span<{ $bg: string; $color: string }>`
   padding: var(--ig-space-1px) var(--ig-space-2);
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-3xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   letter-spacing: 0.03em;
   white-space: nowrap;
   flex-shrink: 0;

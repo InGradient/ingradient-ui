@@ -14,7 +14,7 @@ const Bar = styled.div`
 `
 
 const Count = styled.span`
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   white-space: nowrap;
 `
 

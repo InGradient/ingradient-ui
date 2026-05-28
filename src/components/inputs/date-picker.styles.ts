@@ -41,7 +41,7 @@ export const Popover = styled.div`
     align-items: center;
     justify-content: center;
     padding: var(--ig-space-2) 0 var(--ig-space-3);
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
     font-size: var(--ig-font-size-sm);
   }
 
@@ -77,7 +77,7 @@ export const Popover = styled.div`
   .rdp-weekday {
     font-size: var(--ig-font-size-xs);
     color: var(--ig-color-text-muted);
-    font-weight: 500;
+    font-weight: var(--ig-font-weight-medium);
     padding-bottom: var(--ig-space-2);
   }
 
@@ -104,11 +104,11 @@ export const Popover = styled.div`
   .rdp-selected .rdp-day_button {
     background: var(--ig-color-accent);
     color: white;
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
   }
 
   .rdp-today .rdp-day_button {
-    font-weight: 700;
+    font-weight: var(--ig-font-weight-bold);
     color: var(--ig-color-accent);
   }
 

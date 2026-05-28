@@ -23,7 +23,7 @@ export function StatCard({
           <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="0.05em">{label}</Text>
           {meta}
         </ActionBar>
-        <Text size="var(--ig-font-size-3xl)" weight={800} style={VALUE_STYLE}>{value}</Text>
+        <Text size="var(--ig-font-size-3xl)" weight="black" style={VALUE_STYLE}>{value}</Text>
         {hint ? <Text size="var(--ig-font-size-sm)" tone="muted">{hint}</Text> : null}
       </Stack>
     </Card>

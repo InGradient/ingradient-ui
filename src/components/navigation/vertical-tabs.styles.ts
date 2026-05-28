@@ -102,6 +102,6 @@ export const ItemBadge = styled.span`
   background: var(--ig-color-badge-accent);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   line-height: 1;
 `

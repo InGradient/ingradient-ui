@@ -25,7 +25,7 @@ export const NotificationBubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   align-items: center;
   justify-content: center;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 0 0 2px var(--ig-color-bg-canvas);

@@ -27,7 +27,7 @@ const AppHeader = styled.header`
 const HEADER_TITLE_STYLE = {
   flex: 1,
   fontSize: 'var(--ig-font-size-md)',
-  fontWeight: 700,
+  fontWeight: 'var(--ig-font-weight-bold)',
   color: 'var(--ig-color-text-primary)',
 }
 
@@ -82,7 +82,7 @@ const DrawerTitleRow = styled.button`
   color: var(--ig-color-text-primary);
   span {
     font-size: var(--ig-font-size-md);
-    font-weight: 700;
+    font-weight: var(--ig-font-weight-bold);
     max-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -104,7 +104,7 @@ const Item = styled.button<{ $active?: boolean }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-16)' : 'none')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-md);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
   text-align: left;
   cursor: pointer;
   transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
@@ -130,7 +130,7 @@ const BADGE_STYLE = {
   background: 'var(--ig-color-danger)',
   color: 'var(--ig-color-text-primary)',
   fontSize: 'var(--ig-font-size-2xs)',
-  fontWeight: 700,
+  fontWeight: 'var(--ig-font-weight-bold)',
   display: 'flex' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,

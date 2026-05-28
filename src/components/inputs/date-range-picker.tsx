@@ -19,7 +19,7 @@ const Popover = styled(MenuPopover)`
 const PRESET_BTN_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-4)',
   fontSize: 'var(--ig-font-size-xs)',
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
 }
 
 const Calendar = styled.div`
@@ -37,7 +37,7 @@ const Calendar = styled.div`
   .rdp-month { width: 100%; }
   .rdp-caption_label {
     font-size: var(--ig-font-size-md);
-    font-weight: 700;
+    font-weight: var(--ig-font-weight-bold);
     color: var(--ig-color-text-primary);
   }
   .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
@@ -116,7 +116,7 @@ export function DateRangePicker({
     <Popover className={className} role="dialog" aria-label={typeof title === 'string' ? title : undefined}>
       {(title || subtitle) ? (
         <Stack gap={2} style={HEADER_STYLE}>
-          {title ? <Text size="13px" weight={700}>{title}</Text> : null}
+          {title ? <Text size="13px" weight="bold">{title}</Text> : null}
           {subtitle ? <Text size="12px" tone="soft">{subtitle}</Text> : null}
         </Stack>
       ) : null}

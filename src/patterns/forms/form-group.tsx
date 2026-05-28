@@ -13,7 +13,7 @@ export interface FormGroupProps {
 export function FormGroup({ title, description, children, className }: FormGroupProps) {
   return (
     <Stack gap={4} className={className}>
-      {title && <Text size="var(--ig-font-size-sm)" weight={700}>{title}</Text>}
+      {title && <Text size="var(--ig-font-size-sm)" weight="bold">{title}</Text>}
       {description && <Text size="var(--ig-font-size-xs)" tone="muted" style={DESC_STYLE}>{description}</Text>}
       {children}
     </Stack>

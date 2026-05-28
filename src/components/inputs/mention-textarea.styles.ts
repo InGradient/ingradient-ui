@@ -42,7 +42,7 @@ export const Option = styled.button<{ $active: boolean }>`
 
 export const Primary = styled.span`
   font-size: var(--ig-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
 `
 
 export const Secondary = styled.span`

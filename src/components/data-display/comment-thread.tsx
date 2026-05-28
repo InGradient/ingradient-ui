@@ -17,7 +17,7 @@ const Meta = styled.div`
 `
 
 const Author = styled.span`
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   margin-right: auto;
 `
@@ -61,7 +61,7 @@ const SendBtn = styled.button`
   background: var(--ig-color-accent-strong);
   color: var(--ig-color-on-accent);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   &:disabled { opacity: 0.4; cursor: default; }
   &:hover:not(:disabled) { opacity: 0.85; }

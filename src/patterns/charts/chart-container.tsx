@@ -48,7 +48,7 @@ export function ChartContainer({
       {(title || description || headerExtra || legend) ? (
         <Inline justify="space-between" align="flex-start" gap={5} wrap="wrap">
           <Stack gap={1}>
-            {title ? <Text as="h3" size="var(--ig-font-size-md)" weight={700}>{title}</Text> : null}
+            {title ? <Text as="h3" size="var(--ig-font-size-md)" weight="bold">{title}</Text> : null}
             {description ? <Text as="p" size="var(--ig-font-size-xs)" tone="muted" style={{ lineHeight: 1.5 }}>{description}</Text> : null}
           </Stack>
           {(headerExtra || legend) ? (

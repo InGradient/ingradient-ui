@@ -19,7 +19,7 @@ const IconWrap = styled.div`
 
 const Title = styled.div`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
 

@@ -125,6 +125,28 @@ function RadiusTile({ varName, label }: { varName: string; label: string }) {
   )
 }
 
+function FontWeightTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+      <div style={{ fontWeight: `var(${varName})`, fontSize: 'var(--ig-font-size-lg)', color: 'var(--ig-color-text-primary)' }}>
+        {label} · The quick brown fox jumps
+      </div>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
+function LetterSpacingTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+      <div style={{ letterSpacing: `var(${varName})`, fontSize: 'var(--ig-font-size-sm)', fontWeight: 'var(--ig-font-weight-semibold)', textTransform: 'uppercase', color: 'var(--ig-color-text-primary)' }}>
+        {label} · Section label sample
+      </div>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function FontSizeTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
@@ -292,6 +314,30 @@ export const Review: Story = {
             <FontSizeTile varName="--ig-font-size-md" label="md" />
             <FontSizeTile varName="--ig-font-size-lg" label="lg" />
             <FontSizeTile varName="--ig-font-size-xl" label="xl" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Font weight" description="5-tier weight scale (400/500/600/700/800).">
+        <StorybookCard title="Font weights">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <FontWeightTile varName="--ig-font-weight-regular" label="regular (400)" />
+            <FontWeightTile varName="--ig-font-weight-medium" label="medium (500)" />
+            <FontWeightTile varName="--ig-font-weight-semibold" label="semibold (600)" />
+            <FontWeightTile varName="--ig-font-weight-bold" label="bold (700)" />
+            <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Letter spacing" description="Uppercase / chip label 용 tracking scale.">
+        <StorybookCard title="Letter spacing">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <LetterSpacingTile varName="--ig-letter-spacing-tight" label="tight (0.03em)" />
+            <LetterSpacingTile varName="--ig-letter-spacing-normal" label="normal (0.04em)" />
+            <LetterSpacingTile varName="--ig-letter-spacing-wide" label="wide (0.05em)" />
+            <LetterSpacingTile varName="--ig-letter-spacing-wider" label="wider (0.06em)" />
+            <LetterSpacingTile varName="--ig-letter-spacing-widest" label="widest (0.08em)" />
           </div>
         </StorybookCard>
       </StorybookSection>

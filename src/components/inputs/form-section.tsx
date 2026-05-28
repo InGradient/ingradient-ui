@@ -59,7 +59,7 @@ const FieldWrap = styled.div`
 
 const FieldLabelText = styled.label`
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;

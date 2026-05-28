@@ -53,7 +53,7 @@ export function SegmentedProgressBar({
             <Inline as="span" key={i} gap={2}>
               <ColorSwatch $color={s.color} $size="xs" />
               <Text size="var(--ig-font-size-sm)" tone="secondary">{s.label}</Text>
-              <Text as="strong" weight={700} tabularNums>{s.value.toLocaleString()}</Text>
+              <Text as="strong" weight="bold" tabularNums>{s.value.toLocaleString()}</Text>
             </Inline>
           ))}
         </Inline>

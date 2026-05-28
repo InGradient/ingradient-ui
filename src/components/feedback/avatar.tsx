@@ -10,7 +10,7 @@ const AvatarRoot = styled.div<{ $size: number }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   flex-shrink: 0;
 
   img {

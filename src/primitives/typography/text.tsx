@@ -17,14 +17,43 @@ const fontFamilyVar = {
   mono: 'var(--ig-font-mono)',
 } as const
 
+const fontWeightVar = {
+  regular: 'var(--ig-font-weight-regular)',
+  medium: 'var(--ig-font-weight-medium)',
+  semibold: 'var(--ig-font-weight-semibold)',
+  bold: 'var(--ig-font-weight-bold)',
+  black: 'var(--ig-font-weight-black)',
+} as const
+
+const letterSpacingVar = {
+  tight: 'var(--ig-letter-spacing-tight)',
+  normal: 'var(--ig-letter-spacing-normal)',
+  wide: 'var(--ig-letter-spacing-wide)',
+  wider: 'var(--ig-letter-spacing-wider)',
+  widest: 'var(--ig-letter-spacing-widest)',
+} as const
+
 type Tone = keyof typeof toneColor
 type FontFamily = keyof typeof fontFamilyVar
+type FontWeightAlias = keyof typeof fontWeightVar
+type LetterSpacingAlias = keyof typeof letterSpacingVar
 type Align = 'left' | 'center' | 'right'
+
+function resolveWeight(w?: number | FontWeightAlias): string | number {
+  if (typeof w === 'string') return fontWeightVar[w]
+  return w ?? 400
+}
+
+function resolveLetterSpacing(ls?: string | LetterSpacingAlias): string | undefined {
+  if (!ls) return undefined
+  if (ls in letterSpacingVar) return letterSpacingVar[ls as LetterSpacingAlias]
+  return ls
+}
 
 const TextRoot = styled.span<{
   $tone?: Tone
   $size?: string
-  $weight?: number
+  $weight?: string | number
   $align?: Align
   $uppercase?: boolean
   $letterSpacing?: string
@@ -34,7 +63,7 @@ const TextRoot = styled.span<{
   margin: 0;
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
-  font-weight: ${(p) => p.$weight ?? 400};
+  font-weight: ${(p) => p.$weight ?? 'var(--ig-font-weight-regular)'};
   line-height: 1.45;
   word-break: break-word;
   ${(p) => p.$align && css`text-align: ${p.$align};`}
@@ -51,10 +80,10 @@ export interface TextProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'a
   as?: React.ElementType
   tone?: Tone
   size?: string
-  weight?: number
+  weight?: number | FontWeightAlias
   align?: Align
   uppercase?: boolean
-  letterSpacing?: string
+  letterSpacing?: string | LetterSpacingAlias
   fontFamily?: FontFamily
   tabularNums?: boolean
 }
@@ -76,10 +105,10 @@ export function Text({
       as={as}
       $tone={tone}
       $size={size}
-      $weight={weight}
+      $weight={resolveWeight(weight)}
       $align={align}
       $uppercase={uppercase}
-      $letterSpacing={letterSpacing}
+      $letterSpacing={resolveLetterSpacing(letterSpacing)}
       $fontFamily={fontFamily}
       $tabularNums={tabularNums}
       {...props}

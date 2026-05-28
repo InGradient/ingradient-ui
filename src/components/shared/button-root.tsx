@@ -18,7 +18,7 @@ export const ButtonRoot = styled.button<{
   height: ${(p) => p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'};
   ${(p) => p.$iconOnly ? `width: ${p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-sm)' : p.$size === 'lg' ? 'var(--ig-font-size-lg)' : 'var(--ig-font-size-md)')};
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   line-height: 1;
   ${(p) => {
     if (p.$tone === 'danger') {
