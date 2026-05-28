@@ -154,6 +154,38 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
   )
 }
 
+function BlurTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: 88,
+          borderRadius: 'var(--ig-radius-lg)',
+          backgroundImage: 'linear-gradient(45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(-45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--ig-color-accent) 75%), linear-gradient(-45deg, transparent 75%, var(--ig-color-accent) 75%)',
+          backgroundSize: '16px 16px',
+          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            inset: 'var(--ig-space-4)',
+            background: 'var(--ig-color-surface-card-a)',
+            borderRadius: 'var(--ig-radius-md)',
+            backdropFilter: `var(${varName})`,
+            border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+          }}
+        />
+      </div>
+      <TokenName>{label}</TokenName>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function OpacityTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
@@ -383,6 +415,13 @@ export const Review: Story = {
             <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
           </div>
         </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Blur" description="backdrop-filter blur scale — sm / md.">
+        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+          <BlurTile varName="--ig-blur-sm" label="sm (14px)" />
+          <BlurTile varName="--ig-blur-md" label="md (16px)" />
+        </StorybookGrid>
       </StorybookSection>
 
       <StorybookSection title="Opacity" description="의미 tier — faded / disabled / overlay / muted / subtle / loud.">

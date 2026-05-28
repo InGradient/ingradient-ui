@@ -1,5 +1,6 @@
 export * from './colors'
 export * from './opacity'
+export * from './effects'
 export * from './spacing'
 export * from './borders'
 export * from './radius'

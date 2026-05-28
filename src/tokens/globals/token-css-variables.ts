@@ -1,5 +1,6 @@
 import {
   borderWidthScale,
+  effectsScale,
   foundationColors,
   foundationColorsLight,
   motionScale,
@@ -251,6 +252,8 @@ const staticVars = {
   '--ig-opacity-muted': String(opacityScale.muted),
   '--ig-opacity-subtle': String(opacityScale.subtle),
   '--ig-opacity-loud': String(opacityScale.loud),
+  '--ig-blur-sm': effectsScale.blurSm,
+  '--ig-blur-md': effectsScale.blurMd,
   '--ig-space-0': spacingScale[0],
   '--ig-space-1px': spacingScale['1px'],
   '--ig-space-2px': spacingScale['2px'],

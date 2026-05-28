@@ -20,7 +20,7 @@ const AppHeader = styled.header`
     padding: 0 var(--ig-space-4);
     background: var(--ig-color-surface-header);
     border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-    backdrop-filter: blur(14px);
+    backdrop-filter: var(--ig-blur-sm);
   }
 `
 
