@@ -124,3 +124,18 @@ type scale 과 정확히 일치하는 경우).
 ## 갱신 기록
 
 - `--ig-font-size-3xs` (10px) 토큰 신규 추가 (commit pending) — 10px 4건 (mobile-bottom-toolbar, tag, state-chip, number-field) 모두 토큰화 가능해짐.
+
+---
+
+## Category D — inline style 객체의 hardcoded fontSize (Phase 3 추가 발견)
+
+Phase 1+2 후 components 전수 inline scan 으로 추가 발견된 3건. inline `style={{...}}` 객체
+안에 `fontSize: NN` 숫자 박힌 케이스 — Category C 의 inline 버전.
+
+| 파일 | 라인 | 현재 | 권장 처리 | 완료 |
+|---|---|---|---|---|
+| `navigation/mobile-nav-shell.tsx` | 131 | `fontSize: 11` (BADGE_STYLE) | `'var(--ig-font-size-2xs)'` | ✅ Phase 3 |
+| `inputs/date-range-picker.tsx` | 21 | `fontSize: 12` (PRESET_BTN_STYLE) | `'var(--ig-font-size-xs)'` | ✅ Phase 3 |
+| `overlays/help-tooltip.tsx` | 19 | `fontSize: 10` (ICON_STYLE) | `'var(--ig-font-size-3xs)'` | ✅ Phase 3 |
+
+이로써 components 안 hardcoded font-size 0 (styled-component 안 + inline style 객체 안 모두).

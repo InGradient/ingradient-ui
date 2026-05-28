@@ -18,7 +18,7 @@ const Popover = styled(MenuPopover)`
 
 const PRESET_BTN_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-4)',
-  fontSize: 12,
+  fontSize: 'var(--ig-font-size-xs)',
   fontWeight: 600,
 }
 

@@ -16,7 +16,7 @@ const ICON_STYLE = {
   borderRadius: 'var(--ig-radius-pill)',
   border: '1px solid var(--ig-color-border-strong)',
   color: 'var(--ig-color-text-muted)',
-  fontSize: 10,
+  fontSize: 'var(--ig-font-size-3xs)',
   fontWeight: 700,
   lineHeight: 1,
   cursor: 'help' as const,

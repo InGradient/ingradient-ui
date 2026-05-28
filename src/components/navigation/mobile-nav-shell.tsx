@@ -128,7 +128,7 @@ const BADGE_STYLE = {
   borderRadius: 'var(--ig-radius-pill)',
   background: 'var(--ig-color-danger)',
   color: 'var(--ig-color-text-primary)',
-  fontSize: 11,
+  fontSize: 'var(--ig-font-size-2xs)',
   fontWeight: 700,
   display: 'flex' as const,
   alignItems: 'center' as const,
