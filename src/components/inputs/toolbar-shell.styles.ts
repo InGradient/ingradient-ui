@@ -79,7 +79,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   }
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline-offset: var(--ig-space-neg-2px);
   }
   &:disabled {
     opacity: var(--ig-opacity-disabled);
@@ -99,7 +99,7 @@ export const Separator = styled.span<{ $placement: Placement }>`
       ? css`
           width: var(--ig-space-1px);
           height: 22px;
-          margin: 0 2px;
+          margin: 0 var(--ig-space-2px);
         `
       : css`
           width: 22px;

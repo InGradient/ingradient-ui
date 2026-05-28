@@ -18,7 +18,7 @@ export const buttonPrimary = css`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: 2px;
+    outline-offset: var(--ig-space-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
@@ -51,7 +51,7 @@ export const buttonSecondary = css`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: 2px;
+    outline-offset: var(--ig-space-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
@@ -83,7 +83,7 @@ export const buttonAccent = css`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: 2px;
+    outline-offset: var(--ig-space-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
@@ -115,7 +115,7 @@ export const buttonDanger = css`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: 2px;
+    outline-offset: var(--ig-space-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
@@ -148,7 +148,7 @@ export const buttonDangerSecondary = css`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: 2px;
+    outline-offset: var(--ig-space-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 

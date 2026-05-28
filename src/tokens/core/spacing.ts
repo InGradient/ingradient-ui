@@ -3,6 +3,8 @@ export const spacingScale = {
   '1px': '1px',
   '2px': '2px',
   '3px': '3px',
+  '-1px': '-1px',
+  '-2px': '-2px',
   1: '4px',
   2: '6px',
   3: '8px',

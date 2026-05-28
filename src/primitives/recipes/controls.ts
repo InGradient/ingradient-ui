@@ -22,8 +22,8 @@ export const controlField = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
     box-shadow: var(--ig-shadow-focus-ring);
     background: var(--ig-color-surface-focus);
   }
@@ -73,7 +73,7 @@ export const controlField = css`
     &::-webkit-datetime-edit-day-field,
     &::-webkit-datetime-edit-year-field {
       color: var(--ig-color-text-primary);
-      padding: 2px;
+      padding: var(--ig-space-2px);
       border-radius: var(--ig-radius-xs);
     }
 
@@ -86,7 +86,7 @@ export const controlField = css`
 
     &::-webkit-datetime-edit-text {
       color: var(--ig-color-text-muted);
-      padding: 0 1px;
+      padding: 0 var(--ig-space-1px);
     }
   }
 

@@ -7,12 +7,12 @@ const orientationStyles = {
   vertical: css`
     flex: 0 0 8px;
     cursor: col-resize;
-    &::after { inset: 0 3px; }
+    &::after { inset: 0 var(--ig-space-3px); }
   `,
   horizontal: css`
     flex: 0 0 8px;
     cursor: row-resize;
-    &::after { inset: 3px 0; }
+    &::after { inset: var(--ig-space-3px) 0; }
   `,
 }
 

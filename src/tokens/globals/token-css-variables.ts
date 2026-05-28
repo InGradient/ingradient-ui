@@ -269,6 +269,8 @@ const staticVars = {
   '--ig-space-1px': spacingScale['1px'],
   '--ig-space-2px': spacingScale['2px'],
   '--ig-space-3px': spacingScale['3px'],
+  '--ig-space-neg-1px': spacingScale['-1px'],
+  '--ig-space-neg-2px': spacingScale['-2px'],
   '--ig-space-1': spacingScale[1],
   '--ig-space-2': spacingScale[2],
   '--ig-space-3': spacingScale[3],

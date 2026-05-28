@@ -4,7 +4,7 @@ export const TableWrap = styled.div.attrs({ tabIndex: 0, role: 'region' })`
   overflow-x: auto;
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline-offset: var(--ig-space-neg-2px);
   }
 `
 
@@ -48,7 +48,7 @@ export const VisuallyHidden = styled.span`
   width: var(--ig-space-1px);
   height: var(--ig-space-1px);
   padding: 0;
-  margin: -1px;
+  margin: var(--ig-space-neg-1px);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;

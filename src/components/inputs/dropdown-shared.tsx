@@ -118,7 +118,7 @@ export const HiddenSelectInput = styled.select`
   width: var(--ig-space-1px);
   height: var(--ig-space-1px);
   padding: 0;
-  margin: -1px;
+  margin: var(--ig-space-neg-1px);
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

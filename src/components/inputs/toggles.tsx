@@ -23,7 +23,7 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   &::after {
     content: '';
     position: absolute;
-    top: 2px;
+    top: var(--ig-space-2px);
     left: ${(p) => (p.$checked ? '18px' : '2px')};
     width: 18px;
     height: 18px;

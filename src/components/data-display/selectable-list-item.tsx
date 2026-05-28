@@ -47,7 +47,7 @@ const Root = styled.button<{
     css`
       background: var(--ig-color-blue-tint-18);
       outline: var(--ig-border-2px) solid var(--ig-color-accent);
-      outline-offset: -2px;
+      outline-offset: var(--ig-space-neg-2px);
     `}
 
   &:hover:not(:disabled) {
