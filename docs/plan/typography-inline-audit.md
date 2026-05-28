@@ -448,14 +448,19 @@ JSX / SVG / 잡색 22건 (새 토큰 정의 없이 기존 토큰 사용).
 | Opacity (정적값) | 17건 + 토큰 신규 6 | **0** (dynamic 0/1 keyframe 만) |
 | Blur (backdrop-filter) | 6건 + 토큰 신규 2 | **0** |
 | Icon size (styled svg child) | 4건 + 토큰 신규 6 (xs..2xl) | **0** |
+| Icon size JSX prop (lucide-react) | 12건 + iconSizeNumbers numeric variant | **0** |
 | SVG strokeWidth (attribute + styled) | 9건 + svgStrokeWidths thin/regular/bold | **0** |
 | Divider 1px (width/height) | 7건 → space-1px 재사용 | **0** |
+| Outline-offset (±2px) | 6건 + space-neg-2px 신규 + space-2px 재사용 | **0** |
+| Micro positioning (inset/top 2-3px) | 3건 → space-2px/3px 재사용 | **0** |
+| Margin/padding micro (±1px/2px) | 5건 + space-neg-1px 신규 | **0** |
+| Popup width (minWidth JSX) | 5건 + popup-size 5-tier 신규 | **0** |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
 
 `@ingradient/ui` 의 components + patterns + primitives 안 hardcoded magic number **완전히 0** —
-typography (size + weight + letter-spacing + line-height) + spacing + position + border-width + color + z-index + motion + shadow + opacity + blur + icon-size + svg-stroke (**13개 토큰 카테고리**) 모두 토큰만 사용.
+typography (size + weight + letter-spacing + line-height) + spacing (1px..13 + neg-1px/-2px) + position + border-width + color + z-index + motion + shadow + opacity + blur + icon-size (string + numeric) + svg-stroke + popup-size (**14개 토큰 카테고리**) 모두 토큰만 사용.
 
 남은 의도 raw:
 - CSS keyword (`transparent`, `currentColor`, `inherit`, `none`, `flex-shrink: 0`, `width/height: 100%`)
