@@ -38,7 +38,7 @@ const Dropdown = styled.div`
   border-radius: var(--ig-radius-xl);
   box-shadow: var(--ig-shadow-popover);
   backdrop-filter: blur(16px);
-  z-index: 200;
+  z-index: var(--ig-z-mobile-menu);
   overflow: hidden;
   max-height: 55vh;
   overflow-y: auto;

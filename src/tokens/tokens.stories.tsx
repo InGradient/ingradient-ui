@@ -65,6 +65,17 @@ function BorderWidthTile({ varName }: { varName: string }) {
   )
 }
 
+function ZIndexTile({ varName, value }: { varName: string; value: number }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ig-space-3)' }}>
+      <div style={{ width: 56, textAlign: 'right', fontFamily: 'var(--ig-font-mono)', color: 'var(--ig-color-text-primary)' }}>
+        {value}
+      </div>
+      <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function RadiusTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div>
@@ -187,6 +198,28 @@ export const Review: Story = {
             <BorderWidthTile varName="--ig-border-1px" />
             <BorderWidthTile varName="--ig-border-2px" />
             <BorderWidthTile varName="--ig-border-3px" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Z-index" description="Layering scale — micro layer 부터 tooltip 까지.">
+        <StorybookCard title="Z-index tokens">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            <ZIndexTile varName="--ig-z-base" value={1} />
+            <ZIndexTile varName="--ig-z-raised" value={2} />
+            <ZIndexTile varName="--ig-z-capture" value={5} />
+            <ZIndexTile varName="--ig-z-sticky" value={10} />
+            <ZIndexTile varName="--ig-z-header" value={20} />
+            <ZIndexTile varName="--ig-z-overlay" value={24} />
+            <ZIndexTile varName="--ig-z-dropdown" value={100} />
+            <ZIndexTile varName="--ig-z-mobile-nav-backdrop" value={110} />
+            <ZIndexTile varName="--ig-z-mobile-nav" value={120} />
+            <ZIndexTile varName="--ig-z-mobile-menu" value={200} />
+            <ZIndexTile varName="--ig-z-popover" value={500} />
+            <ZIndexTile varName="--ig-z-context-menu" value={1000} />
+            <ZIndexTile varName="--ig-z-drawer" value={1100} />
+            <ZIndexTile varName="--ig-z-modal" value={1200} />
+            <ZIndexTile varName="--ig-z-tooltip" value={9999} />
           </div>
         </StorybookCard>
       </StorybookSection>

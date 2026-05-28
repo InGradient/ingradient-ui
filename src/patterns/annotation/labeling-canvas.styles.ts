@@ -46,5 +46,5 @@ export const LabelingImage = styled.img`
 export const CaptureLayer = styled.div`
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: var(--ig-z-capture);
 `

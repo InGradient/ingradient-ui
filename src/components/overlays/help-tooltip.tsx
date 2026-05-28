@@ -40,7 +40,7 @@ const Bubble = styled(TooltipBubble)`
   opacity: 0;
   pointer-events: none;
   transition: opacity 120ms ease;
-  z-index: 20;
+  z-index: var(--ig-z-header);
 
   ${Wrap}:hover & {
     opacity: 1;

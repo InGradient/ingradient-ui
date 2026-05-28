@@ -16,7 +16,7 @@ const Bar = styled.div`
   background: var(--ig-color-surface-header);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   backdrop-filter: blur(14px);
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
 `
 
 const ToolBtn = styled.button<{ $active?: boolean }>`

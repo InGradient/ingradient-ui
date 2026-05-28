@@ -50,7 +50,7 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
 
 const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underline' }>`
   position: relative;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   border: 0;
   border-radius: ${(p) => (p.$variant === 'underline' ? '0' : 'var(--ig-radius-sm)')};
   background: transparent;

@@ -9,7 +9,7 @@ const Wrapper = styled.span<{ $open: boolean; $scale: number }>`
   position: relative;
   transition: transform 160ms ease;
   transform-origin: center;
-  ${(p) => p.$open && p.$scale !== 1 && `transform: scale(${p.$scale}); z-index: 2;`}
+  ${(p) => p.$open && p.$scale !== 1 && `transform: scale(${p.$scale}); z-index: var(--ig-z-raised);`}
 `
 
 const PREVIEW_STYLE = {

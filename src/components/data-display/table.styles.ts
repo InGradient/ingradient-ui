@@ -76,7 +76,7 @@ export const HandleBtn = styled.button.attrs({ type: 'button', 'aria-label': 'Re
 
 const draggingRow = css`
   position: relative;
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
   box-shadow: var(--ig-shadow-menu);
   background: var(--ig-color-surface-raised);
 `

@@ -14,7 +14,7 @@ const AppHeader = styled.header`
     left: 0;
     right: 0;
     height: 52px;
-    z-index: 100;
+    z-index: var(--ig-z-dropdown);
     align-items: center;
     gap: var(--ig-space-3);
     padding: 0 var(--ig-space-4);
@@ -38,7 +38,7 @@ const Backdrop = styled.div<{ $visible: boolean }>`
     position: fixed;
     inset: 0;
     background: var(--ig-color-modal-backdrop);
-    z-index: 110;
+    z-index: var(--ig-z-mobile-nav-backdrop);
     opacity: ${(p) => (p.$visible ? 1 : 0)};
     pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
     transition: opacity 0.22s ease;
@@ -57,7 +57,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     background: var(--ig-color-surface-header);
     border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     box-shadow: 0 16px 48px var(--ig-color-modal-backdrop);
-    z-index: 120;
+    z-index: var(--ig-z-mobile-nav);
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));

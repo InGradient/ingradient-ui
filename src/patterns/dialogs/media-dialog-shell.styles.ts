@@ -24,7 +24,7 @@ export const MediaDialogBackdrop = styled.div`
 
 export const MediaDialogContent = styled.div<{ $width?: string; $height?: string }>`
   position: relative;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   display: flex;
   flex-direction: row;
   align-items: stretch;

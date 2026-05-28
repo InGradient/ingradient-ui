@@ -18,7 +18,7 @@ const orientationStyles = {
 
 const Root = styled.div<{ $orientation: ResizeHandleOrientation }>`
   position: relative;
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
   ${(p) => orientationStyles[p.$orientation]}
   &::after {
     content: '';

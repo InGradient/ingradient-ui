@@ -40,7 +40,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
 
 export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTabsRadius }>`
   position: relative;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
