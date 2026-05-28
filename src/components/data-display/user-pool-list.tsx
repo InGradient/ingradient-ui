@@ -24,7 +24,7 @@ const ROW_TEXT_STYLE = {
   textAlign: 'left' as const,
 }
 
-const ROW_INACTIVE_STYLE: CSSProperties = { opacity: var(--ig-opacity-overlay) }
+const ROW_INACTIVE_STYLE: CSSProperties = { opacity: 'var(--ig-opacity-overlay)' }
 
 export interface UserPoolItem {
   id: string
