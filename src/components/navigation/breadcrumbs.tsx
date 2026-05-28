@@ -1,4 +1,6 @@
 import React from 'react'
+import { Inline } from '../../primitives'
+import { B3 } from '../../primitives/typography/type-scale'
 
 export function Breadcrumbs({
   items,
@@ -10,14 +12,20 @@ export function Breadcrumbs({
 }) {
   return (
     <nav aria-label={ariaLabel}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--ig-color-text-muted)', fontSize: 13 }}>
+      <Inline gap={2} align="center">
         {items.map((item, index) => (
           <React.Fragment key={`${item.label}-${index}`}>
-            {index > 0 ? <span>/</span> : null}
-            {item.href ? <a href={item.href} style={{ textDecoration: 'none' }}>{item.label}</a> : <span style={{ color: 'var(--ig-color-text-primary)' }}>{item.label}</span>}
+            {index > 0 ? <B3 tone="muted">/</B3> : null}
+            {item.href ? (
+              <B3 as="a" tone="muted" href={item.href} style={{ textDecoration: 'none' }}>
+                {item.label}
+              </B3>
+            ) : (
+              <B3>{item.label}</B3>
+            )}
           </React.Fragment>
         ))}
-      </div>
+      </Inline>
     </nav>
   )
 }
