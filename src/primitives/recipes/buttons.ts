@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 export const buttonPrimary = css`
   border-radius: var(--ig-radius-sm);
-  border: 1px solid var(--ig-color-accent-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-accent-strong);
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
   color: white;
   cursor: pointer;
@@ -17,7 +17,7 @@ export const buttonPrimary = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: 2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }
@@ -33,7 +33,7 @@ export const buttonPrimary = css`
 
 export const buttonSecondary = css`
   border-radius: var(--ig-radius-sm);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
   color: var(--ig-color-text-secondary);
   cursor: pointer;
@@ -50,7 +50,7 @@ export const buttonSecondary = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: 2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }
@@ -66,7 +66,7 @@ export const buttonSecondary = css`
 
 export const buttonAccent = css`
   border-radius: var(--ig-radius-sm);
-  border: 1px solid var(--ig-color-accent);
+  border: var(--ig-border-1px) solid var(--ig-color-accent);
   background: var(--ig-color-accent-soft-surface);
   color: var(--ig-color-accent-soft);
   cursor: pointer;
@@ -82,7 +82,7 @@ export const buttonAccent = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: 2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }
@@ -98,9 +98,9 @@ export const buttonAccent = css`
 
 export const buttonDanger = css`
   border-radius: var(--ig-radius-sm);
-  border: 1px solid color-mix(in srgb, var(--ig-color-alert-danger-border) 90%, transparent);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--ig-color-danger) 88%, #7f1d1d) 0%, #8f2f2f 100%);
-  color: #fff4f4;
+  border: var(--ig-border-1px) solid color-mix(in srgb, var(--ig-color-alert-danger-border) 90%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ig-color-danger) 88%, var(--ig-color-danger-button-gradient-mid)) 0%, var(--ig-color-danger-button-gradient-end) 100%);
+  color: var(--ig-color-danger-button-text);
   cursor: pointer;
   transition:
     transform var(--ig-motion-fast),
@@ -114,7 +114,7 @@ export const buttonDanger = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: 2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }
@@ -130,7 +130,7 @@ export const buttonDanger = css`
 
 export const buttonDangerSecondary = css`
   border-radius: var(--ig-radius-sm);
-  border: 1px solid color-mix(in srgb, var(--ig-color-alert-danger-border) 78%, transparent);
+  border: var(--ig-border-1px) solid color-mix(in srgb, var(--ig-color-alert-danger-border) 78%, transparent);
   background: color-mix(in srgb, var(--ig-color-alert-danger-bg) 82%, transparent);
   color: var(--ig-color-alert-danger-text);
   cursor: pointer;
@@ -143,11 +143,11 @@ export const buttonDangerSecondary = css`
   &:hover:not(:disabled) {
     border-color: var(--ig-color-alert-danger-border);
     background: color-mix(in srgb, var(--ig-color-alert-danger-bg) 96%, transparent);
-    color: #ffe1e1;
+    color: var(--ig-color-danger-button-text-strong);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: 2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }

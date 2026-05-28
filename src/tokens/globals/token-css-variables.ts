@@ -171,6 +171,11 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-surface-calendar-bottom': isLight ? 'rgba(247, 249, 251, 0.96)' : 'rgba(10, 14, 20, 0.96)',
     // Danger button soft surface (toolbar hover)
     '--ig-color-danger-soft-surface': 'rgba(164, 44, 44, 0.22)',
+    // Danger button gradient + text colors (buttonDanger / buttonDangerSecondary)
+    '--ig-color-danger-button-gradient-mid': isLight ? '#a23030' : '#7f1d1d',
+    '--ig-color-danger-button-gradient-end': isLight ? '#b13838' : '#8f2f2f',
+    '--ig-color-danger-button-text': isLight ? '#ffffff' : '#fff4f4',
+    '--ig-color-danger-button-text-strong': isLight ? '#ffffff' : '#ffe1e1',
     // SVG stroke / fill for annotation canvas / chart text on dark overlay
     '--ig-color-svg-stroke-on-overlay': '#ffffff',
     '--ig-color-pie-slice-label': isLight ? '#0f1219' : '#eef4ff',
