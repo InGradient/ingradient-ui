@@ -304,6 +304,44 @@ raw rgba / hex literal 전수 조사 후 토큰화. 9건 모두 처리.
 | 9 | drawing-layer SVG selected stroke (×2) | `'#fff'` | `var(--ig-color-svg-stroke-on-overlay)` via `style` (SVG presentation attr 은 var() 미지원) |
 | 10 | pie-slice-label SVG text fill | `'#eef4ff'` + `rgba(238,244,255,0.86)` | `var(--ig-color-pie-slice-label)` + `fill-opacity: 0.86` |
 
+## Category Z-Index — z-index 토큰 audit (Phase 11)
+
+raw `z-index: <number>` 전수 조사. 16건 토큰화 (z-index:0 default 1건은 유지).
+
+신규 토큰 (`src/tokens/core/z-index.ts` 확장):
+- `base` (1) — 같은 stacking context 내 살짝 위
+- `raised` (2) — hover lift / scale
+- `capture` (5) — annotation capture layer
+- `sticky` (10) — sticky table header, bottom toolbar, resize-handle
+- `header` (20) — help-tooltip 등 작은 floating
+- `overlay` (24) — date-range-picker calendar 등 mid-range
+- `mobileNavBackdrop` (110), `mobileNav` (120), `mobileMenu` (200) — mobile drawer + mobile dropdown 컨텍스트
+- 기존 dropdown(100) / popover(500) / contextMenu(1000) / drawer(1100) / modal(1200) / tooltip(9999) 유지
+
+토큰화 완료 (16건): tabs(1)/vertical-tabs(1) → base, hover-preview(2) → raised, labeling-canvas(5) → capture, mobile-bottom-toolbar(10)/table.styles(10)/resize-handle(10) → sticky, help-tooltip(20) → header, date-range-picker(24) → overlay, filter-popover(100)/mobile-nav-shell(100) → dropdown, mobile-nav-shell(110/120) → mobile-nav-backdrop / mobile-nav, mobile-dropdown(200) → mobile-menu, media-dialog-shell(1) → base.
+
+`tokens.stories` 에 Z-Index 섹션 + ZIndexTile.
+
+## Category Motion — motion 토큰 audit (Phase 12)
+
+raw `transition: <duration>` + `animation: <duration>` 전수 조사. 18건 토큰화 (cubic-bezier 1건은 의도 유지).
+
+신규 토큰 (`src/tokens/core/motion.ts` 확장):
+- `slow` ('0.36s ease') — page-level transition / slide drawer
+- `spinner` ('0.7s') / `shimmer` ('1s') / `skeleton` ('1.3s') — keyframes duration 전용
+
+Transition 반올림 (3-tier fast/normal/slow):
+- `120ms / 0.14s / 0.15s / 160ms / 0.16s` → `var(--ig-motion-fast)` (10건)
+- `0.2s / 0.22s / 0.25s` → `var(--ig-motion-normal)` (5건)
+- `0.28s cubic-bezier(0.4,0,0.2,1)` (mobile-nav-shell drawer) → raw 유지 + 주석 (Material standard ease, slow tier 의 단순 ease 와 다른 곡선)
+
+Animation 전용 토큰:
+- spinner / progress shimmer / skeleton → `var(--ig-motion-spinner|shimmer|skeleton)`
+- media-overlay fadeIn 160ms → `var(--ig-motion-fast)`
+- toast slideIn/Out 200ms → `var(--ig-motion-normal)`
+
+`tokens.stories` 에 Motion 섹션 + MotionTile (token duration 마다 막대가 좌우 이동하는 데모).
+
 ## 전체 audit 최종 결과
 
 | 카테고리 | 처리 | 잔여 |
@@ -313,8 +351,11 @@ raw rgba / hex literal 전수 조사 후 토큰화. 9건 모두 처리.
 | Position offset (top/right/bottom/left) | 2건 | **0** |
 | Border width / outline | 63건 + 토큰 신규 3 | **0** |
 | Color (raw rgba / hex literal) | 9건 + palette 신규 2 + semantic 신규 9 | **0** |
-| 죽은 코드 | breadcrumbs ✓ | — |
+| Z-index | 16건 + 토큰 신규 9 | **0** (z-index:0 default 만) |
+| Motion (transition + animation) | 18건 + 토큰 신규 4 | **0** (cubic-bezier 1건 의도 유지) |
+| 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
+| Primitives stories | Layout / Surfaces / SVG 추가 | — |
 
-`@ingradient/ui` 의 components + patterns 안 hardcoded magic number **완전히 0** —
-typography + spacing + position + border-width + color 모두 토큰만 사용.
+`@ingradient/ui` 의 components + patterns + primitives 안 hardcoded magic number **완전히 0** —
+typography + spacing + position + border-width + color + z-index + motion 모두 토큰만 사용.
