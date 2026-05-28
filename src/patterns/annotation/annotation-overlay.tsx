@@ -101,9 +101,9 @@ export function AnnotationOverlay({
             {emphasize ? (
               <>
                 <rect x={x} y={y} width={rw} height={rh}
-                  fill="none" stroke="rgba(0, 0, 0, 0.6)" strokeWidth={strokeEmphasis} />
+                  fill="none" style={{ stroke: 'var(--ig-color-annotation-outline-dark)' }} strokeWidth={strokeEmphasis} />
                 <rect x={x} y={y} width={rw} height={rh}
-                  fill="none" stroke="rgba(255, 255, 255, 0.9)" strokeWidth={strokeBase * 0.6} />
+                  fill="none" style={{ stroke: 'var(--ig-color-annotation-outline-light)' }} strokeWidth={strokeBase * 0.6} />
               </>
             ) : null}
             <rect
@@ -127,7 +127,7 @@ export function AnnotationOverlay({
         return (
           <g key={`point-${i}`}>
             {emphasize ? (
-              <circle cx={cx} cy={cy} r={pointRadius * 1.4} fill="rgba(0, 0, 0, 0.55)" />
+              <circle cx={cx} cy={cy} r={pointRadius * 1.4} style={{ fill: 'var(--ig-color-overlay-strong)' }} />
             ) : null}
             <circle
               cx={cx}

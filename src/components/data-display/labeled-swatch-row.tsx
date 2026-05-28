@@ -43,8 +43,8 @@ export function LabeledSwatchRow({ id, label, color, count, selected, onClick }:
     >
       <Inline gap={4} style={WRAP_STYLE}>
         <ColorSwatch $color={color} $size="md" $shape="square" />
-        <Text size="14px" title={label} style={NAME_STYLE}>{label}</Text>
-        {typeof count === 'number' ? <Text size="12px" tone="soft" style={COUNT_STYLE}>{count.toLocaleString()}</Text> : null}
+        <Text size="var(--ig-font-size-md)" title={label} style={NAME_STYLE}>{label}</Text>
+        {typeof count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="soft" style={COUNT_STYLE}>{count.toLocaleString()}</Text> : null}
       </Inline>
     </Item>
   )

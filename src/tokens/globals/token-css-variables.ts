@@ -179,6 +179,9 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     // SVG stroke / fill for annotation canvas / chart text on dark overlay
     '--ig-color-svg-stroke-on-overlay': '#ffffff',
     '--ig-color-pie-slice-label': isLight ? '#0f1219' : '#eef4ff',
+    // Annotation overlay — bbox/point emphasize outline + halo (canvas 위 항상 dark/light contrast)
+    '--ig-color-annotation-outline-dark': 'rgba(0, 0, 0, 0.6)',
+    '--ig-color-annotation-outline-light': 'rgba(255, 255, 255, 0.9)',
 
     // Direct alpha aliases (consumer raw rgba 마이그레이션 용) — palette-aware
     '--ig-color-white-04': palette.white04,

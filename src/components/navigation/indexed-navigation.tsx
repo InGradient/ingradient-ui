@@ -26,7 +26,7 @@ export function IndexedNavigation({
   return (
     <Inline className={className} role="group" aria-label="Navigation" justify="center" gap={3} style={{ marginTop: 'var(--ig-space-2)' }}>
       <IconButton variant="secondary" size="sm" type="button" disabled={atStart} onClick={() => onChange(index - 1)} aria-label={prevLabel}>‹</IconButton>
-      <Text size="12px" tone="muted" tabularNums>{index + 1} / {total}</Text>
+      <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{index + 1} / {total}</Text>
       <IconButton variant="secondary" size="sm" type="button" disabled={atEnd} onClick={() => onChange(index + 1)} aria-label={nextLabel}>›</IconButton>
     </Inline>
   )

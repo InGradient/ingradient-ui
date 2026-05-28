@@ -95,7 +95,7 @@ export function MobileDropdown({
               active={d.id === currentId}
               aria-selected={d.id === currentId}
               onClick={() => { onSelect(d.id); onToggle(false) }}
-              iconTrailing={d.id === currentId ? <Text as="span" tone="accent" size="12px" style={CHECK_STYLE}>✓</Text> : undefined}
+              iconTrailing={d.id === currentId ? <Text as="span" tone="accent" size="var(--ig-font-size-xs)" style={CHECK_STYLE}>✓</Text> : undefined}
             >
               {d.name}
             </MenuItem>

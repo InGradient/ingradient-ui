@@ -34,7 +34,7 @@ export function ColorInputRow({
       <Button type="button" variant="secondary" size="sm" onClick={onRandomize} disabled={disabled} style={RANDOM_BTN_STYLE}>
         {randomLabel}
       </Button>
-      <Text as="span" size="13px" tone="muted" fontFamily="mono">{value}</Text>
+      <Text as="span" size="var(--ig-font-size-sm)" tone="muted" fontFamily="mono">{value}</Text>
     </Inline>
   )
 }

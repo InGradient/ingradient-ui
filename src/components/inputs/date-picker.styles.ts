@@ -103,7 +103,7 @@ export const Popover = styled.div`
 
   .rdp-selected .rdp-day_button {
     background: var(--ig-color-accent);
-    color: white;
+    color: var(--ig-color-on-accent);
     font-weight: var(--ig-font-weight-semibold);
   }
 
@@ -113,7 +113,7 @@ export const Popover = styled.div`
   }
 
   .rdp-today.rdp-selected .rdp-day_button {
-    color: white;
+    color: var(--ig-color-on-accent);
   }
 
   .rdp-outside .rdp-day_button {

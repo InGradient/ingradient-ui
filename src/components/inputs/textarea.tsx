@@ -9,7 +9,7 @@ const variantStyles = {
     font-size: var(--ig-font-size-sm);
   `,
   monospace: css`
-    font-family: monospace;
+    font-family: var(--ig-font-mono);
     font-size: var(--ig-font-size-2xs);
   `,
 }

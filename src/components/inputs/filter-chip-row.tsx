@@ -58,11 +58,11 @@ export function FilterChipRow({
 }: FilterChipRowProps) {
   return (
     <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
-      <Text as="span" size="12px" weight="semibold" tone="soft" uppercase letterSpacing="normal" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
+      <Text as="span" size="var(--ig-font-size-xs)" weight="semibold" tone="soft" uppercase letterSpacing="normal" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
       {loading ? (
-        <Text as="span" tone="soft" size="13px">{loadingText}</Text>
+        <Text as="span" tone="soft" size="var(--ig-font-size-sm)">{loadingText}</Text>
       ) : items.length === 0 ? (
-        <Text as="span" tone="soft" size="13px">{emptyText}</Text>
+        <Text as="span" tone="soft" size="var(--ig-font-size-sm)">{emptyText}</Text>
       ) : (
         items.map((it) => {
           const isActive = activeIds.size === 0 || activeIds.has(it.id)
@@ -76,7 +76,7 @@ export function FilterChipRow({
             >
               {it.label}
               {typeof it.count === 'number' ? (
-                <Text as="span" size="11px" tone="soft" style={COUNT_STYLE}>{it.count}</Text>
+                <Text as="span" size="var(--ig-font-size-2xs)" tone="soft" style={COUNT_STYLE}>{it.count}</Text>
               ) : null}
             </Chip>
           )

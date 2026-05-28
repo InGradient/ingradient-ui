@@ -116,8 +116,8 @@ export function DateRangePicker({
     <Popover className={className} role="dialog" aria-label={typeof title === 'string' ? title : undefined}>
       {(title || subtitle) ? (
         <Stack gap={2} style={HEADER_STYLE}>
-          {title ? <Text size="13px" weight="bold">{title}</Text> : null}
-          {subtitle ? <Text size="12px" tone="soft">{subtitle}</Text> : null}
+          {title ? <Text size="var(--ig-font-size-sm)" weight="bold">{title}</Text> : null}
+          {subtitle ? <Text size="var(--ig-font-size-xs)" tone="soft">{subtitle}</Text> : null}
         </Stack>
       ) : null}
       {presets && presets.length > 0 ? (
@@ -155,7 +155,7 @@ export function DateRangePicker({
           />
         )}
       </Calendar>
-      {summaryLabel ? <Text size="12px" tone="soft" style={SUMMARY_STYLE}>{summaryLabel}</Text> : null}
+      {summaryLabel ? <Text size="var(--ig-font-size-xs)" tone="soft" style={SUMMARY_STYLE}>{summaryLabel}</Text> : null}
       {(footerHint || onApply || onReset) ? (
         <Inline justify="space-between" gap={4} style={FOOTER_STYLE}>
           {footerHint ? <SmallText>{footerHint}</SmallText> : <span />}
