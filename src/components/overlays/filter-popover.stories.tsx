@@ -100,21 +100,52 @@ export const Review: Story = {
 
         <StorybookSection
           title="Anchored (fixed positioning)"
-          description="Pass anchor={{ top, left }} → fixed position with viewport-bounded max-height. Used for context-menu-style popovers triggered by buttons."
+          description="Pass anchor={{ top, left }} → fixed position with viewport-bounded max-height. Trigger button calls getBoundingClientRect() to compute the anchor."
         >
           <StorybookGrid columns="1fr">
-            <StorybookCard title="anchor prop" subtitle="floating at fixed coordinates (top: 80, left: 40)">
-              <div style={{ position: 'relative', minHeight: 200 }}>
-                <FilterPopover anchor={{ top: 80, left: 40 }} width={260}>
-                  <FilterPopoverSection title="Source">
-                    <Switch checked onChange={() => undefined} label="Local only" />
-                  </FilterPopoverSection>
-                </FilterPopover>
-              </div>
+            <StorybookCard title="anchor prop" subtitle="button-triggered with rect-based positioning">
+              <AnchoredDemo />
             </StorybookCard>
           </StorybookGrid>
         </StorybookSection>
       </StorybookPage>
     )
   },
+}
+
+function AnchoredDemo() {
+  const [anchor, setAnchor] = React.useState<{ top: number; left: number } | null>(null)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <button
+        type="button"
+        onClick={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect()
+          setAnchor(anchor ? null : { top: rect.bottom + 4, left: rect.left })
+        }}
+        style={{
+          alignSelf: 'flex-start',
+          padding: '6px 12px',
+          fontSize: 13,
+          borderRadius: 6,
+          border: '1px solid var(--ig-color-border-subtle)',
+          background: 'var(--ig-color-surface-raised)',
+          color: 'var(--ig-color-text-primary)',
+          cursor: 'pointer',
+        }}
+      >
+        {anchor ? 'Close popover' : 'Open anchored popover'}
+      </button>
+      {anchor ? (
+        <FilterPopover anchor={anchor} width={260}>
+          <FilterPopoverSection title="Source">
+            <Switch checked onChange={() => undefined} label="Local only" />
+          </FilterPopoverSection>
+          <FilterPopoverSection title="Date">
+            <div style={{ fontSize: 12, color: 'var(--ig-color-text-muted)' }}>Last 7 days</div>
+          </FilterPopoverSection>
+        </FilterPopover>
+      ) : null}
+    </div>
+  )
 }

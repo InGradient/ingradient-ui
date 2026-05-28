@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HoverCard, Menu, MenuPopover, PopoverCard } from './popovers'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
@@ -56,14 +57,8 @@ export const Review: Story = {
               <MenuItem>Sign out</MenuItem>
             </MenuPopover>
           </StorybookCard>
-          <StorybookCard title="With anchor" subtitle="anchor={{top: 60, left: 30}} → fixed positioning">
-            <div style={{ position: 'relative', minHeight: 180 }}>
-              <MenuPopover anchor={{ top: 60, left: 30 }}>
-                <MenuItem>Top item</MenuItem>
-                <MenuItem>Middle item</MenuItem>
-                <MenuItem>Bottom item</MenuItem>
-              </MenuPopover>
-            </div>
+          <StorybookCard title="With anchor" subtitle="button-triggered with rect-based positioning">
+            <AnchoredMenuPopoverDemo />
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>
@@ -117,5 +112,39 @@ function MenuItem({ children, $danger }: { children: React.ReactNode; $danger?: 
     >
       {children}
     </button>
+  )
+}
+
+function AnchoredMenuPopoverDemo() {
+  const [anchor, setAnchor] = React.useState<{ top: number; left: number } | null>(null)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <button
+        type="button"
+        onClick={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect()
+          setAnchor(anchor ? null : { top: rect.bottom + 4, left: rect.left })
+        }}
+        style={{
+          alignSelf: 'flex-start',
+          padding: '6px 12px',
+          fontSize: 13,
+          borderRadius: 6,
+          border: '1px solid var(--ig-color-border-subtle)',
+          background: 'var(--ig-color-surface-raised)',
+          color: 'var(--ig-color-text-primary)',
+          cursor: 'pointer',
+        }}
+      >
+        {anchor ? 'Close menu' : 'Open anchored menu'}
+      </button>
+      {anchor ? (
+        <MenuPopover anchor={anchor}>
+          <MenuItem>Top item</MenuItem>
+          <MenuItem>Middle item</MenuItem>
+          <MenuItem>Bottom item</MenuItem>
+        </MenuPopover>
+      ) : null}
+    </div>
   )
 }

@@ -27,9 +27,19 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 function ContextMenuReviewDemo() {
-  const [open, setOpen] = React.useState(false)
+  const [anchor, setAnchor] = React.useState<{ x: number; y: number } | null>(null)
   const [subOpen, setSubOpen] = React.useState(false)
   const [selection, setSelection] = React.useState('No action selected yet.')
+
+  const openAtButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    setAnchor({ x: rect.left, y: rect.bottom + 4 })
+  }
+
+  const close = () => {
+    setAnchor(null)
+    setSubOpen(false)
+  }
 
   return (
     <StorybookGrid columns="minmax(0, 1.1fr) minmax(280px, 0.9fr)">
@@ -39,7 +49,7 @@ function ContextMenuReviewDemo() {
             Open the menu from the trigger below. In product surfaces this usually maps to a right-click event or an item overflow action.
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Button variant="secondary" onClick={() => setOpen(true)}>
+            <Button variant="secondary" onClick={openAtButton}>
               Open context menu
             </Button>
             <span style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>{selection}</span>
@@ -50,72 +60,64 @@ function ContextMenuReviewDemo() {
               border: '1px dashed var(--ig-color-border-subtle)',
               borderRadius: 20,
               padding: 18,
-              position: 'relative',
               color: 'var(--ig-color-text-soft)',
               background: 'var(--ig-color-surface-panel)',
             }}
           >
-            Triggering surface placeholder
-            {open ? (
-              <>
-                <ContextMenuBackdrop
-                  aria-hidden
-                  onClick={() => {
-                    setOpen(false)
-                    setSubOpen(false)
-                  }}
-                />
-                <ContextMenuList $x={220} $y={260} onClick={(event) => event.stopPropagation()}>
-                  <ContextMenuButton
-                    $danger
-                    onClick={() => {
-                      setSelection('Delete selected.')
-                      setOpen(false)
-                    }}
-                  >
-                    Delete
-                  </ContextMenuButton>
-                  <ContextMenuItem
-                    onMouseEnter={() => setSubOpen(true)}
-                    onMouseLeave={() => setSubOpen(false)}
-                  >
-                    <ContextMenuButton as="div" style={{ cursor: 'default' }}>
-                      Set class ›
-                    </ContextMenuButton>
-                    {subOpen ? (
-                      <ContextMenuSub $left={352} $top={260}>
-                        {['Primary', 'Review', 'Archived'].map((label) => (
-                          <ContextMenuSubItem
-                            key={label}
-                            type="button"
-                            onClick={() => {
-                              setSelection(`Class changed to ${label}.`)
-                              setOpen(false)
-                              setSubOpen(false)
-                            }}
-                          >
-                            {label}
-                          </ContextMenuSubItem>
-                        ))}
-                      </ContextMenuSub>
-                    ) : null}
-                  </ContextMenuItem>
-                </ContextMenuList>
-              </>
-            ) : null}
+            Triggering surface placeholder — open the menu via the button above.
           </div>
+          {anchor ? (
+            <>
+              <ContextMenuBackdrop aria-hidden onClick={close} />
+              <ContextMenuList $x={anchor.x} $y={anchor.y} onClick={(event) => event.stopPropagation()}>
+                <ContextMenuButton
+                  $danger
+                  onClick={() => {
+                    setSelection('Delete selected.')
+                    close()
+                  }}
+                >
+                  Delete
+                </ContextMenuButton>
+                <ContextMenuItem
+                  onMouseEnter={() => setSubOpen(true)}
+                  onMouseLeave={() => setSubOpen(false)}
+                >
+                  <ContextMenuButton as="div" style={{ cursor: 'default' }}>
+                    Set class ›
+                  </ContextMenuButton>
+                  {subOpen ? (
+                    <ContextMenuSub $left={anchor.x + 150} $top={anchor.y + 36}>
+                      {['Primary', 'Review', 'Archived'].map((label) => (
+                        <ContextMenuSubItem
+                          key={label}
+                          type="button"
+                          onClick={() => {
+                            setSelection(`Class changed to ${label}.`)
+                            close()
+                          }}
+                        >
+                          {label}
+                        </ContextMenuSubItem>
+                      ))}
+                    </ContextMenuSub>
+                  ) : null}
+                </ContextMenuItem>
+              </ContextMenuList>
+            </>
+          ) : null}
         </StorybookStack>
       </StorybookCard>
       <StorybookCard title="Usage notes" subtitle="when to use it">
         <StorybookStack gap={10}>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>
-            Use ContextMenu when you already have cursor coordinates and want a fixed-position action list.
+            Use ContextMenu when you already have cursor coordinates (mouse event, right-click) and want a fixed-position action list.
           </div>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>
             Prefer `MenuPopover` for anchored button menus and `DialogShell` for explicit confirmation flows.
           </div>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
-            This story keeps submenu and click-outside behavior visible without coupling the primitive to domain actions.
+            This story uses the trigger button's bounding rect to position the menu, mirroring the production usage pattern.
           </div>
         </StorybookStack>
       </StorybookCard>
