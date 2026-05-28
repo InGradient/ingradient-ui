@@ -104,6 +104,6 @@ export const Separator = styled.span<{ $placement: Placement }>`
       : css`
           width: 22px;
           height: 1px;
-          margin: 2px 0;
+          margin: var(--ig-space-2px) 0;
         `}
 `

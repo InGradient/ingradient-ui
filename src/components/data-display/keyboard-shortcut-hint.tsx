@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Wrap = styled.span<{ $size: 'sm' | 'md' }>`
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--ig-space-2px);
 `
 
 const Key = styled.kbd<{ $size: 'sm' | 'md' }>`

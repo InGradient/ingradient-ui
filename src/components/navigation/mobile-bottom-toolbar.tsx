@@ -24,7 +24,7 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: var(--ig-space-3px);
   min-width: 48px;
   height: 48px;
   padding: 0 var(--ig-space-2);

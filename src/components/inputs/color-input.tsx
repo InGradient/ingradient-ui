@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Input = styled.input.attrs({ type: 'color' })`
   width: 40px;
   height: 40px;
-  padding: 2px;
+  padding: var(--ig-space-2px);
   border: 1px solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-xxs);
   cursor: pointer;

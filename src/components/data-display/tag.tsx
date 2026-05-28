@@ -9,7 +9,7 @@ import styled from 'styled-components'
 export const Tag = styled.span<{ $bg: string; $color: string }>`
   display: inline-flex;
   align-items: center;
-  padding: 1px var(--ig-space-2);
+  padding: var(--ig-space-1px) var(--ig-space-2);
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-3xs);
   font-weight: 600;

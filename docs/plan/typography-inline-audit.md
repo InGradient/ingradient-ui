@@ -213,7 +213,31 @@ font-size 와 동일 audit 를 spacing (padding/margin/gap) 에 적용.
 **Phase 5 결과**: 매핑 가능한 4건 토큰화 완료. 잔여 ~10건은 1-3px 의 작은 spacing 으로
 현재 토큰 scale (최소 4px = space-1) 에 매핑 없음. 별도 결정 필요:
 
-- **옵션 A**: 1-3px 토큰 추가 (예: `space-px=1px`, `space-half=2px`, `space-0.5=3px`). 모든
-  spacing 토큰화 가능. 단 design system 일반 관행은 1-3px 토큰 안 만듦 (Material 4dp baseline,
-  Tailwind 1=4px 부터). 작은 값은 case-specific.
-- **옵션 B**: 그대로 둠. 1-3px 은 의도적 fine-tuning 으로 hardcoded 유지.
+**사용자 결정: 1-3px 토큰 추가**.
+
+### Phase 6 — 1-3px 토큰 신규 + 잔여 토큰화 (✅)
+
+신규 토큰 (`spacingScale` 0 과 1 사이에 추가):
+- `--ig-space-1px` = 1px (hairline)
+- `--ig-space-2px` = 2px
+- `--ig-space-3px` = 3px
+
+`tokens.stories` 의 Spacing 타일에도 3개 추가.
+
+토큰화 완료 (10건):
+| 파일 | 처리 |
+|---|---|
+| `data-display/option-row.tsx` | `gap: 2px` → space-2px |
+| `navigation/mobile-bottom-toolbar.tsx` | `gap: 3px` → space-3px |
+| `data-display/keyboard-shortcut-hint.tsx` | `gap: 2px`, `padding 0 3px` → 2px/3px |
+| `feedback/toast.tsx` | `padding: 2px ...` → space-2px |
+| `inputs/color-input.tsx` | `padding: 2px` → space-2px |
+| `data-display/tag.tsx` | `padding: 1px ...` → space-1px |
+| `inputs/drag-handle.tsx` | `gap: 2px` → space-2px |
+| `inputs/toolbar-shell.styles.ts` | `margin: 2px 0` → space-2px |
+| `navigation/mobile-nav-shell.tsx` (SECTION_STYLE) | inline `gap: 2` → space-2px |
+| `overlays/context-menu-with-submenus.tsx` (MENU_STYLE) | inline `gap: 2` → space-2px |
+| `patterns/filters/sort-popover-trigger.tsx` | inline `gap: 2` → space-2px |
+
+**최종 결과: components + patterns 모두 hardcoded font-size, spacing 0** —
+typography + spacing 완전 토큰화.

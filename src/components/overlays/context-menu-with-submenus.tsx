@@ -13,7 +13,7 @@ const MENU_STYLE = {
   padding: 'var(--ig-space-2)',
   display: 'flex' as const,
   flexDirection: 'column' as const,
-  gap: 2,
+  gap: 'var(--ig-space-2px)',
 }
 
 const SEPARATOR_STYLE = {

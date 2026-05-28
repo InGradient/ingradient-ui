@@ -25,7 +25,7 @@ const DragDots = styled.span`
   width: 14px;
   height: 14px;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  gap: var(--ig-space-2px);
   span {
     width: 100%;
     height: 100%;

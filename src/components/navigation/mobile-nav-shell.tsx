@@ -89,7 +89,7 @@ const DrawerTitleRow = styled.button`
   }
 `
 
-const SECTION_STYLE = { padding: 'var(--ig-space-3) var(--ig-space-4)', gap: 2 }
+const SECTION_STYLE = { padding: 'var(--ig-space-3) var(--ig-space-4)', gap: 'var(--ig-space-2px)' }
 
 const Item = styled.button<{ $active?: boolean }>`
   display: flex;

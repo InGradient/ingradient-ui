@@ -58,7 +58,7 @@ const ActionButton = styled.button`
   border-radius: var(--ig-radius-sm);
   color: inherit;
   font: inherit;
-  padding: 2px var(--ig-space-3);
+  padding: var(--ig-space-2px) var(--ig-space-3);
   cursor: pointer;
   opacity: 0.85;
   &:hover { opacity: 1; }
@@ -71,7 +71,7 @@ const CloseButton = styled.button`
   color: inherit;
   font-size: var(--ig-font-size-xl);
   line-height: 1;
-  padding: 0 2px;
+  padding: 0 var(--ig-space-2px);
   cursor: pointer;
   opacity: 0.55;
   &:hover { opacity: 1; }

@@ -8,7 +8,7 @@ const OPTION_LIST_STYLE = {
   padding: 0,
   display: 'flex' as const,
   flexDirection: 'column' as const,
-  gap: 2,
+  gap: 'var(--ig-space-2px)',
 }
 
 export interface SortOption {

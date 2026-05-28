@@ -27,7 +27,7 @@ const Root = styled.button`
 const TextStack = styled.span`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--ig-space-2px);
   min-width: 0;
   font-size: var(--ig-font-size-sm);
 `

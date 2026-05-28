@@ -162,6 +162,9 @@ export const Review: Story = {
       <StorybookSection title="Spacing" description="--ig-space-1 through --ig-space-13. Reference scale.">
         <StorybookCard title="Spacing scale" subtitle="bar width = token value">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            <SpacingTile varName="--ig-space-1px" />
+            <SpacingTile varName="--ig-space-2px" />
+            <SpacingTile varName="--ig-space-3px" />
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((n) => (
               <SpacingTile key={n} varName={`--ig-space-${n}`} />
             ))}
