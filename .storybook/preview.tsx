@@ -18,7 +18,7 @@ import { ComponentInspector } from '../stories/support/ComponentInspector'
 
 type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
 type VersionId = '0.0.1'
-type InspectorLayer = 'foundations' | 'components' | 'patterns' | 'pages' | 'unknown'
+type InspectorLayer = 'foundations' | 'primitives' | 'components' | 'patterns' | 'pages' | 'unknown'
 
 const presetMatrix: Partial<Record<ServiceId, Partial<Record<VersionId, Preset>>>> = {
   platform: { '0.0.1': platformV001 },
@@ -37,6 +37,7 @@ function normalizeBasePath(basePath: string | undefined) {
 
 function inferStoryLayer(title: string): InspectorLayer {
   if (title.startsWith('Foundations/')) return 'foundations'
+  if (title.startsWith('Primitives/')) return 'primitives'
   if (title.startsWith('Components/')) return 'components'
   if (title.startsWith('Patterns/')) return 'patterns'
   if (title.startsWith('Pages/')) return 'pages'
@@ -83,7 +84,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Guides', 'Foundations', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
+        order: ['Guides', 'Foundations', 'Primitives', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
       },
     },
   },

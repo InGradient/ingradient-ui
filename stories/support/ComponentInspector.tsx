@@ -1,6 +1,6 @@
 import React from 'react'
 
-type LayerId = 'foundations' | 'components' | 'patterns' | 'pages' | 'unknown'
+type LayerId = 'foundations' | 'primitives' | 'components' | 'patterns' | 'pages' | 'unknown'
 
 type ComponentEntry = {
   name: string
@@ -19,10 +19,11 @@ type ComponentMarker = {
   groupedLayers: Record<LayerId, string[]>
 }
 
-const LAYER_ORDER: LayerId[] = ['foundations', 'components', 'patterns', 'pages']
+const LAYER_ORDER: LayerId[] = ['foundations', 'primitives', 'components', 'patterns', 'pages']
 
 const LAYER_LABELS: Record<LayerId, string> = {
   foundations: 'Foundations',
+  primitives: 'Primitives',
   components: 'Components',
   patterns: 'Patterns',
   pages: 'Pages',
@@ -85,7 +86,7 @@ function readAttrChain(
 }
 
 function readLayer(value: string | undefined): LayerId {
-  if (value === 'foundations' || value === 'components' || value === 'patterns' || value === 'pages') {
+  if (value === 'foundations' || value === 'primitives' || value === 'components' || value === 'patterns' || value === 'pages') {
     return value
   }
   return 'unknown'
@@ -113,6 +114,7 @@ function readComponentEntries(target: HTMLElement | null, boundary: HTMLElement 
 function groupEntriesByLayer(entries: ComponentEntry[]): Record<LayerId, string[]> {
   const grouped: Record<LayerId, string[]> = {
     foundations: [],
+    primitives: [],
     components: [],
     patterns: [],
     pages: [],
