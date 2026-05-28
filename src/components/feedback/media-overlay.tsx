@@ -9,12 +9,12 @@ const overlayVariantStyles: Record<MediaOverlayVariant, ReturnType<typeof css>> 
     background:
       repeating-linear-gradient(
         45deg,
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5) 2px,
+        var(--ig-color-overlay-mid),
+        var(--ig-color-overlay-mid) 2px,
         transparent 2px,
         transparent 4px
       ),
-      rgba(0, 0, 0, 0.3);
+      var(--ig-color-overlay-soft);
     color: var(--ig-color-text-secondary);
   `,
   processing: css`

@@ -152,7 +152,9 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-toolbar-surface': isLight ? 'rgba(247, 249, 251, 0.84)' : 'rgba(8, 12, 18, 0.84)',
     '--ig-color-modal-backdrop': palette.overlayBackdrop,
     // Canvas overlay (annotation-toolbar / coord readout 등 어두운 surface)
+    '--ig-color-overlay-soft': 'rgba(0, 0, 0, 0.3)',
     '--ig-color-overlay-dim': 'rgba(0, 0, 0, 0.45)',
+    '--ig-color-overlay-mid': 'rgba(0, 0, 0, 0.5)',
     '--ig-color-overlay-strong': 'rgba(0, 0, 0, 0.55)',
     // Lightbox (full-viewport image preview)
     '--ig-color-lightbox-backdrop': 'rgba(0, 0, 0, 0.85)',
@@ -163,16 +165,28 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     // Sidebar shell gradient backgrounds
     '--ig-color-sidebar-bg-top': 'rgba(12, 15, 20, 0.96)',
     '--ig-color-sidebar-bg-bottom': 'rgba(10, 14, 20, 0.94)',
+    // Mobile-dropdown gradient backgrounds (dropdown-menu 와 거의 동일, 별도 토큰 분리)
+    '--ig-color-surface-dropdown-mobile-top': isLight ? 'rgba(255, 255, 255, 0.98)' : 'rgba(18, 24, 34, 0.98)',
+    '--ig-color-surface-dropdown-mobile-bottom': isLight ? 'rgba(247, 249, 251, 0.98)' : 'rgba(10, 14, 20, 0.98)',
+    // Date-range-picker (calendar surface) gradient — 살짝 더 투명
+    '--ig-color-surface-calendar-top': isLight ? 'rgba(255, 255, 255, 0.96)' : 'rgba(17, 23, 32, 0.96)',
+    '--ig-color-surface-calendar-bottom': isLight ? 'rgba(247, 249, 251, 0.96)' : 'rgba(10, 14, 20, 0.96)',
     // Danger button soft surface (toolbar hover)
     '--ig-color-danger-soft-surface': 'rgba(164, 44, 44, 0.22)',
+    // SVG stroke / fill for annotation canvas / chart text on dark overlay
+    '--ig-color-svg-stroke-on-overlay': '#ffffff',
+    '--ig-color-pie-slice-label': isLight ? '#0f1219' : '#eef4ff',
 
     // Direct alpha aliases (consumer raw rgba 마이그레이션 용) — palette-aware
     '--ig-color-white-04': palette.white04,
     '--ig-color-white-06': palette.white06,
     '--ig-color-white-07': palette.white07,
     '--ig-color-white-08': palette.white08,
+    '--ig-color-white-10': palette.white10,
     '--ig-color-white-12': palette.white12,
     '--ig-color-white-18': palette.white18,
+    '--ig-color-white-24': palette.white24,
+    '--ig-color-slate-tint-18': palette.borderStrong,
     '--ig-color-blue-tint-12': palette.blueTint12,
     '--ig-color-blue-tint-14': palette.blueTint14,
     '--ig-color-blue-tint-16': palette.blueTint16,

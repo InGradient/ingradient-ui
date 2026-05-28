@@ -272,6 +272,38 @@ inline `top/right/bottom/left` raw number 도 spacing 의 일종. 추가 확인.
 - `border-left: 3px solid` (2건) → `var(--ig-border-3px)`
 - `outline: 2px solid` (4건) → `var(--ig-border-2px)`
 
+## Category Color — color 토큰 audit (Phase 9)
+
+raw rgba / hex literal 전수 조사 후 토큰화. 9건 모두 처리.
+
+신규 palette 항목 (`src/tokens/core/colors.ts` 추가):
+- `white10` = `rgba(255, 255, 255, 0.10)` (light: `rgba(15, 18, 25, 0.09)`)
+- `white24` = `rgba(255, 255, 255, 0.24)` (light: `rgba(15, 18, 25, 0.18)`)
+
+신규 semantic 토큰 (`token-css-variables.ts` 추가):
+- `--ig-color-overlay-soft` = `rgba(0, 0, 0, 0.3)`
+- `--ig-color-overlay-mid` = `rgba(0, 0, 0, 0.5)`
+- `--ig-color-white-10` / `--ig-color-white-24` (palette alias)
+- `--ig-color-slate-tint-18` = `palette.borderStrong` (rgba(148,163,184,0.18))
+- `--ig-color-surface-dropdown-mobile-top/-bottom` (light/dark 변형 — mobile-dropdown gradient stops)
+- `--ig-color-surface-calendar-top/-bottom` (light/dark — date-range-picker calendar gradient)
+- `--ig-color-svg-stroke-on-overlay` = `#ffffff` (annotation canvas SVG stroke)
+- `--ig-color-pie-slice-label` = `#eef4ff` (dark) / `#0f1219` (light)
+
+토큰화 완료 (9건):
+| # | 위치 | 원본 | → |
+|---|---|---|---|
+| 1 | image-card FOOTER_STYLE gradient | `rgba(0,0,0,0.55)` | `var(--ig-color-overlay-strong)` |
+| 2 | progress shimmer baseline (×2) | `rgba(255,255,255,0.06)` | `var(--ig-color-white-06)` |
+| 3 | progress shimmer peak | `rgba(255,255,255,0.24)` | `var(--ig-color-white-24)` |
+| 4 | media-overlay archived stripe | `rgba(0,0,0,0.5)` | `var(--ig-color-overlay-mid)` |
+| 5 | media-overlay archived base | `rgba(0,0,0,0.3)` | `var(--ig-color-overlay-soft)` |
+| 6 | mobile-dropdown trigger border | `rgba(255,255,255,0.10)` | `var(--ig-color-white-10)` |
+| 7 | mobile-dropdown panel gradient + border | `rgba(18,24,34,0.98)→rgba(10,14,20,0.98)`, `rgba(148,163,184,0.18)` | `var(--ig-color-surface-dropdown-mobile-top/-bottom)`, `var(--ig-color-slate-tint-18)` |
+| 8 | date-range-picker calendar gradient | `rgba(17,23,32,0.96)→rgba(10,14,20,0.96)` | `var(--ig-color-surface-calendar-top/-bottom)` |
+| 9 | drawing-layer SVG selected stroke (×2) | `'#fff'` | `var(--ig-color-svg-stroke-on-overlay)` via `style` (SVG presentation attr 은 var() 미지원) |
+| 10 | pie-slice-label SVG text fill | `'#eef4ff'` + `rgba(238,244,255,0.86)` | `var(--ig-color-pie-slice-label)` + `fill-opacity: 0.86` |
+
 ## 전체 audit 최종 결과
 
 | 카테고리 | 처리 | 잔여 |
@@ -280,8 +312,9 @@ inline `top/right/bottom/left` raw number 도 spacing 의 일종. 추가 확인.
 | Spacing hardcoded (padding/margin/gap, components, patterns) | 14건 + 토큰 신규 3 | **0** |
 | Position offset (top/right/bottom/left) | 2건 | **0** |
 | Border width / outline | 63건 + 토큰 신규 3 | **0** |
+| Color (raw rgba / hex literal) | 9건 + palette 신규 2 + semantic 신규 9 | **0** |
 | 죽은 코드 | breadcrumbs ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 
 `@ingradient/ui` 의 components + patterns 안 hardcoded magic number **완전히 0** —
-typography + spacing + position + border-width 모두 토큰만 사용.
+typography + spacing + position + border-width + color 모두 토큰만 사용.

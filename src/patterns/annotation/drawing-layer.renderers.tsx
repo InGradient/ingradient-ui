@@ -123,26 +123,29 @@ export function PointObject({
 }) {
   const { cw, ch, uniform, z, s } = ctx
   const size = isSelected ? POINT_SELECTED_PX : POINT_PX
+  const strokeStyle: React.CSSProperties | undefined = isSelected
+    ? { ...gStyle, stroke: 'var(--ig-color-svg-stroke-on-overlay)' }
+    : gStyle
   return uniform ? (
     <SvgPointDot
-      style={gStyle}
+      style={strokeStyle}
       cx={obj.x}
       cy={obj.y}
       rx={size / (cw * z)}
       ry={size / (ch * z)}
       color={color}
-      stroke={isSelected ? '#fff' : 'none'}
+      stroke={isSelected ? undefined : 'none'}
       strokeWidth={s(1.5)}
       vectorEffect="non-scaling-stroke"
     />
   ) : (
     <SvgPointDot
-      style={gStyle}
+      style={strokeStyle}
       cx={obj.x}
       cy={obj.y}
       rx={isSelected ? 0.008 : 0.006}
       color={color}
-      stroke={isSelected ? '#fff' : 'none'}
+      stroke={isSelected ? undefined : 'none'}
       strokeWidth={0.002}
     />
   )

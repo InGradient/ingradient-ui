@@ -10,8 +10,10 @@ export const foundationColors = {
   white06: 'rgba(255, 255, 255, 0.06)',
   white07: 'rgba(255, 255, 255, 0.07)',
   white08: 'rgba(255, 255, 255, 0.08)',
+  white10: 'rgba(255, 255, 255, 0.10)',
   white12: 'rgba(255, 255, 255, 0.12)',
   white18: 'rgba(255, 255, 255, 0.18)',
+  white24: 'rgba(255, 255, 255, 0.24)',
   blue500: '#4d88ff',
   blue600: '#2962d9',
   blue300: '#8cb6ff',
@@ -88,8 +90,10 @@ export const foundationColorsLight = {
   white06: 'rgba(15, 18, 25, 0.05)',
   white07: 'rgba(15, 18, 25, 0.06)',
   white08: 'rgba(15, 18, 25, 0.08)',
+  white10: 'rgba(15, 18, 25, 0.09)',
   white12: 'rgba(15, 18, 25, 0.10)',
   white18: 'rgba(15, 18, 25, 0.14)',
+  white24: 'rgba(15, 18, 25, 0.18)',
   // Accent — saturated variants for light bg contrast.
   // All three meet 4.5:1 on white and on accent-soft-surface tints. Hierarchy
   // is "deeper accent" rather than "lighter tint" in light mode (the soft tier

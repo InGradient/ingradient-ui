@@ -34,11 +34,17 @@ export function renderPieSliceLabel(props: PieSliceLabelProps) {
   const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180)
 
   return (
-    <text x={x} y={y} fill="#eef4ff" textAnchor="middle" dominantBaseline="central">
+    <text
+      x={x}
+      y={y}
+      textAnchor="middle"
+      dominantBaseline="central"
+      style={{ fill: 'var(--ig-color-pie-slice-label)' }}
+    >
       <tspan x={x} dy="-0.2em" fontSize="11" fontWeight="700">
         {name}
       </tspan>
-      <tspan x={x} dy="1.2em" fontSize="10" fill="rgba(238, 244, 255, 0.86)">
+      <tspan x={x} dy="1.2em" fontSize="10" style={{ fillOpacity: 0.86 }}>
         {value.toLocaleString()}
       </tspan>
     </text>

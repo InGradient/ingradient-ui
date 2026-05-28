@@ -25,7 +25,7 @@ const PRESET_BTN_STYLE = {
 const Calendar = styled.div`
   padding: var(--ig-space-5);
   border-radius: var(--ig-radius-xl);
-  background: linear-gradient(180deg, rgba(17, 23, 32, 0.96) 0%, rgba(10, 14, 20, 0.96) 100%);
+  background: linear-gradient(180deg, var(--ig-color-surface-calendar-top) 0%, var(--ig-color-surface-calendar-bottom) 100%);
   border: var(--ig-border-1px) solid var(--ig-color-white-06);
   .rdp-root {
     --rdp-accent-color: var(--ig-color-accent);

@@ -27,9 +27,9 @@ const activeOverlay = css`
      */
     background-image: repeating-linear-gradient(
       ${ANGLE_DEG}deg,
-      rgba(255, 255, 255, 0.06) 0,
-      rgba(255, 255, 255, 0.24) ${STRIPE_PERIOD_PX / 2}px,
-      rgba(255, 255, 255, 0.06) ${STRIPE_PERIOD_PX}px
+      var(--ig-color-white-06) 0,
+      var(--ig-color-white-24) ${STRIPE_PERIOD_PX / 2}px,
+      var(--ig-color-white-06) ${STRIPE_PERIOD_PX}px
     );
     animation: ${shimmer} 1s linear infinite;
   }

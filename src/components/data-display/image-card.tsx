@@ -50,7 +50,7 @@ const FOOTER_STYLE = {
   right: 0,
   bottom: 0,
   padding: 'var(--ig-space-3)',
-  background: 'linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent)',
+  background: 'linear-gradient(to top, var(--ig-color-overlay-strong), transparent)',
   color: 'var(--ig-color-on-accent)',
   overflow: 'hidden' as const,
   textOverflow: 'ellipsis' as const,
