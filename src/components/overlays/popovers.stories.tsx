@@ -116,14 +116,34 @@ function MenuItem({ children, $danger }: { children: React.ReactNode; $danger?: 
 }
 
 function AnchoredMenuPopoverDemo() {
+  const wrapperRef = React.useRef<HTMLDivElement>(null)
   const [anchor, setAnchor] = React.useState<{ top: number; left: number } | null>(null)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <div
+      ref={wrapperRef}
+      style={{
+        position: 'relative',
+        transform: 'translateZ(0)',
+        minHeight: 220,
+        padding: 16,
+        border: '1px dashed var(--ig-color-border-subtle)',
+        borderRadius: 12,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+      }}
+    >
       <button
         type="button"
         onClick={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect()
-          setAnchor(anchor ? null : { top: rect.bottom + 4, left: rect.left })
+          if (anchor) {
+            setAnchor(null)
+            return
+          }
+          const btnRect = event.currentTarget.getBoundingClientRect()
+          const wrapRect = wrapperRef.current?.getBoundingClientRect()
+          if (!wrapRect) return
+          setAnchor({ top: btnRect.bottom - wrapRect.top + 4, left: btnRect.left - wrapRect.left })
         }}
         style={{
           alignSelf: 'flex-start',
@@ -139,7 +159,7 @@ function AnchoredMenuPopoverDemo() {
         {anchor ? 'Close menu' : 'Open anchored menu'}
       </button>
       {anchor ? (
-        <MenuPopover anchor={anchor}>
+        <MenuPopover anchor={anchor} style={{ position: 'absolute' }}>
           <MenuItem>Top item</MenuItem>
           <MenuItem>Middle item</MenuItem>
           <MenuItem>Bottom item</MenuItem>
