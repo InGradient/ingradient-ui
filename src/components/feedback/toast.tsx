@@ -40,7 +40,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
   box-shadow: var(--ig-shadow-floating);
   pointer-events: auto;
   animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} var(--ig-motion-normal) forwards;
-  max-width: 420px;
+  max-width: var(--ig-popup-lg);
   word-break: break-word;
   display: flex;
   align-items: center;

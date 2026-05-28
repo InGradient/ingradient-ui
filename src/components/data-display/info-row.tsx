@@ -12,7 +12,7 @@ export const InfoRowLabel = styled.span`
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   flex-shrink: 0;
-  min-width: 80px;
+  min-width: var(--ig-popup-3xs);
 `
 
 export const InfoRowValue = styled.span`

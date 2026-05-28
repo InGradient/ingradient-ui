@@ -1,14 +1,15 @@
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
+import { iconSizeNumbers } from '../../tokens/core'
 
 const spin = keyframes`
   to { transform: rotate(360deg); }
 `
 
 const sizeMap = {
-  sm: 14,
-  md: 18,
-  lg: 24,
+  sm: iconSizeNumbers.sm,
+  md: iconSizeNumbers.lg,
+  lg: iconSizeNumbers['3xl'],
 } as const
 
 const toneColorMap = {
@@ -33,7 +34,7 @@ const SpinnerEl = styled.span<{ $px: number; $color: string }>`
 `
 
 export interface SpinnerProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  /** Spinner 크기. sm=14px, md=18px, lg=24px, 또는 직접 pixel 값 */
+  /** Spinner 크기. sm=14px (icon-sm), md=18px (icon-lg), lg=24px (icon-3xl), 또는 직접 pixel 값 */
   size?: SpinnerSize
   /** 색상 tone. accent=브랜드 색, white=텍스트 primary, muted=텍스트 soft */
   tone?: SpinnerTone

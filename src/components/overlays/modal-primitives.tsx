@@ -25,7 +25,7 @@ export const ModalCard = styled.div`
 
 export const CompactModalCard = styled(ModalCard)`
   width: auto;
-  min-width: 320px;
+  min-width: var(--ig-popup-md);
   max-width: min(560px, calc(100vw - 48px));
   padding: var(--ig-space-9);
   border-radius: var(--ig-radius-lg);

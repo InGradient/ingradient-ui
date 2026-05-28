@@ -84,7 +84,7 @@ const DrawerTitleRow = styled.button`
   span {
     font-size: var(--ig-font-size-md);
     font-weight: var(--ig-font-weight-bold);
-    max-width: 160px;
+    max-width: var(--ig-popup-xs);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -15,7 +15,7 @@ const ChartCard = styled.div`
 const ChartFrame = styled.div<{ $height: number }>`
   width: 100%;
   height: ${(p) => `${p.$height}px`};
-  min-width: 240px;
+  min-width: var(--ig-popup-sm);
   min-height: ${(p) => `${p.$height}px`};
 `
 

@@ -10,7 +10,7 @@ export const Trigger = styled.button`
   text-align: left;
   cursor: pointer;
   border-radius: var(--ig-radius-md);
-  min-width: 150px;
+  min-width: var(--ig-popup-2xs);
 `
 
 export const Placeholder = styled.span`

@@ -6,7 +6,7 @@ const Card = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-md);
   padding: var(--ig-space-4) var(--ig-space-5);
-  min-width: 140px;
+  min-width: var(--ig-popup-2xs);
 `
 
 export interface TooltipCardProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -15,8 +15,8 @@ export const NotificationBubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   top: 0;
   right: 0;
   transform: translate(42%, -42%);
-  min-width: 18px;
-  height: 18px;
+  min-width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$tone === 'accent' ? 'var(--ig-color-accent)' : 'var(--ig-color-danger)')};

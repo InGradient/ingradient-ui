@@ -95,7 +95,7 @@ export const ItemBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
+  min-width: var(--ig-icon-lg);
   height: 18px;
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);

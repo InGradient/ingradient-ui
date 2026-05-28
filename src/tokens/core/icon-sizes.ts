@@ -6,6 +6,7 @@ export const iconSizes = {
   lg: '18px',
   xl: '20px',
   '2xl': '22px',
+  '3xl': '24px',
 } as const
 
 // Numeric variant — lucide-react `<Icon size={N} />` / SVG width|height attribute / JSX size prop.
@@ -16,6 +17,7 @@ export const iconSizeNumbers = {
   lg: 18,
   xl: 20,
   '2xl': 22,
+  '3xl': 24,
 } as const
 
 // SVG `stroke-width` is a presentation attribute and does not accept CSS var().

@@ -26,7 +26,7 @@ const Title = styled.div`
 const Description = styled.div`
   font-size: var(--ig-font-size-xs);
   line-height: var(--ig-line-height-relaxed);
-  max-width: 320px;
+  max-width: var(--ig-popup-md);
 `
 
 const ActionBtn = styled.button`

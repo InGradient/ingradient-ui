@@ -12,8 +12,8 @@ const Bubble = styled.div`
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-3) var(--ig-space-4);
   font-size: var(--ig-font-size-xs);
-  max-width: 260px;
-  min-width: 160px;
+  max-width: var(--ig-popup-sm);
+  min-width: var(--ig-popup-xs);
   line-height: var(--ig-line-height-snug);
   white-space: normal;
   box-shadow: var(--ig-shadow-popover);

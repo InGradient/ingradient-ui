@@ -448,6 +448,8 @@ export const Review: Story = {
       <StorybookSection title="Popup size" description="Popover / context menu / dropdown 의 width.">
         <StorybookCard title="Popup sizes">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <PopupSizeTile varName="--ig-popup-3xs" label="3xs (80px)" />
+            <PopupSizeTile varName="--ig-popup-2xs" label="2xs (140px)" />
             <PopupSizeTile varName="--ig-popup-xs" label="xs (220px)" />
             <PopupSizeTile varName="--ig-popup-sm" label="sm (280px)" />
             <PopupSizeTile varName="--ig-popup-md" label="md (320px)" />
@@ -466,6 +468,7 @@ export const Review: Story = {
             <IconSizeTile varName="--ig-icon-lg" label="lg (18px)" />
             <IconSizeTile varName="--ig-icon-xl" label="xl (20px)" />
             <IconSizeTile varName="--ig-icon-2xl" label="2xl (22px)" />
+            <IconSizeTile varName="--ig-icon-3xl" label="3xl (24px)" />
           </div>
         </StorybookCard>
       </StorybookSection>

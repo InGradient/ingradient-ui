@@ -12,14 +12,14 @@ export const Menu = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-3);
-  min-width: 180px;
+  min-width: var(--ig-popup-xs);
 `
 
 const MenuPopoverRoot = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-4);
-  min-width: 220px;
+  min-width: var(--ig-popup-xs);
   box-shadow: var(--ig-shadow-popover);
 `
 
@@ -43,14 +43,14 @@ export const TooltipBubble = styled.div`
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-3) var(--ig-space-4);
   font-size: var(--ig-font-size-xs);
-  max-width: 240px;
+  max-width: var(--ig-popup-sm);
 `
 
 export const HoverCard = styled(PopoverCard)`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-4);
-  min-width: 220px;
-  max-width: 320px;
+  min-width: var(--ig-popup-xs);
+  max-width: var(--ig-popup-md);
   box-shadow: var(--ig-shadow-popover);
 `

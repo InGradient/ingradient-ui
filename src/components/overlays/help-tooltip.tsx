@@ -29,8 +29,8 @@ const Bubble = styled(TooltipBubble)`
   left: 50%;
   bottom: calc(100% + 8px);
   transform: translateX(-50%);
-  min-width: 220px;
-  max-width: 320px;
+  min-width: var(--ig-popup-xs);
+  max-width: var(--ig-popup-md);
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-regular);
