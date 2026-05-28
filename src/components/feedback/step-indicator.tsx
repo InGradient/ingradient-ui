@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { CheckCircle, Circle, XCircle } from 'lucide-react'
 import { Spinner } from './spinner'
+import { iconSizeNumbers } from '../../tokens/core'
 
 export type StepStatus = 'pending' | 'running' | 'done' | 'error'
 
@@ -51,9 +52,9 @@ export function StepIndicator({ items, className }: StepIndicatorProps) {
         <Row key={i} role="listitem">
           <Icon $status={item.status}>
             {item.status === 'running' && <Spinner size="sm" />}
-            {item.status === 'done' && <CheckCircle size={14} />}
-            {item.status === 'error' && <XCircle size={14} />}
-            {item.status === 'pending' && <Circle size={14} />}
+            {item.status === 'done' && <CheckCircle size={iconSizeNumbers.sm} />}
+            {item.status === 'error' && <XCircle size={iconSizeNumbers.sm} />}
+            {item.status === 'pending' && <Circle size={iconSizeNumbers.sm} />}
           </Icon>
           <Label $status={item.status}>{item.label || '…'}</Label>
         </Row>

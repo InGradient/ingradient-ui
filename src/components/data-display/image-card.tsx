@@ -1,6 +1,7 @@
 import React, { type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Inline, Text } from '../../primitives'
+import { iconSizeNumbers } from '../../tokens/core'
 import { GroupCountBadge } from '../feedback/group-count-badge'
 import { MediaOverlay } from '../feedback/media-overlay'
 import { IconButton } from '../inputs/icon-button'
@@ -106,7 +107,7 @@ export function ImageCard({
               if (menuBtnRef.current) onOpenMenu?.(image.id, menuBtnRef.current)
             }}
           >
-            <KebabIcon size={14} />
+            <KebabIcon size={iconSizeNumbers.sm} />
           </IconButton>
         ) : null}
       </Inline>

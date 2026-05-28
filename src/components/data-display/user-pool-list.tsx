@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from 'react'
 import { User } from 'lucide-react'
 import { Inline, Stack, Text } from '../../primitives'
+import { iconSizeNumbers } from '../../tokens/core'
 import { Badge } from '../feedback/badge'
 import { CollapsibleSectionHeader } from './collapsible-section-header'
 import { SelectableListItem } from './selectable-list-item'
@@ -77,7 +78,7 @@ export function UserPoolList({
                 style={active ? undefined : ROW_INACTIVE_STYLE}
               >
                 <Inline as="span" gap={3} style={ROW_CONTENT_STYLE}>
-                  <User size={14} />
+                  <User size={iconSizeNumbers.sm} />
                   <Text as="span" size="var(--ig-font-size-sm)" title={user.tooltip ?? user.label} style={ROW_TEXT_STYLE}>{user.label}</Text>
                 </Inline>
               </SelectableListItem>

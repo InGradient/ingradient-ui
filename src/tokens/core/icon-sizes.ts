@@ -1,5 +1,4 @@
 // Icon dimensions for inline SVG inside styled-components.
-// JSX <Icon size={N} /> calls (lucide-react etc) keep numeric props directly.
 export const iconSizes = {
   xs: '12px',
   sm: '14px',
@@ -7,6 +6,16 @@ export const iconSizes = {
   lg: '18px',
   xl: '20px',
   '2xl': '22px',
+} as const
+
+// Numeric variant — lucide-react `<Icon size={N} />` / SVG width|height attribute / JSX size prop.
+export const iconSizeNumbers = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 22,
 } as const
 
 // SVG `stroke-width` is a presentation attribute and does not accept CSS var().

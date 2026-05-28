@@ -2,6 +2,7 @@ import { type MouseEvent, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Menu, X } from 'lucide-react'
 import { media } from '../../tokens'
+import { iconSizeNumbers } from '../../tokens/core'
 import { Inline, Stack } from '../../primitives'
 import { IconButton } from '../inputs/icon-button'
 
@@ -207,7 +208,7 @@ export function MobileNavShell({
     <>
       <AppHeader>
         <IconButton variant="secondary" type="button" aria-label="Open menu" onClick={onOpen}>
-          {hamburgerIcon ?? <Menu size={22} />}
+          {hamburgerIcon ?? <Menu size={iconSizeNumbers['2xl']} />}
         </IconButton>
         <Inline gap={2} style={HEADER_TITLE_STYLE}>
           {appHeaderBrand}
@@ -230,7 +231,7 @@ export function MobileNavShell({
             {drawerTitleIcon}
           </DrawerTitleRow>
           <IconButton variant="secondary" size="sm" type="button" aria-label="Close menu" onClick={onClose}>
-            {closeIcon ?? <X size={20} />}
+            {closeIcon ?? <X size={iconSizeNumbers.xl} />}
           </IconButton>
         </Inline>
 

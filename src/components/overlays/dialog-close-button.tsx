@@ -2,6 +2,7 @@ import type React from 'react'
 import { X } from 'lucide-react'
 import styled from 'styled-components'
 import { IconButton } from '../inputs/icon-button'
+import { iconSizeNumbers } from '../../tokens/core'
 
 const Root = styled(IconButton)`
   border-color: transparent;
@@ -23,7 +24,7 @@ export function DialogCloseButton({
 }: React.ComponentPropsWithoutRef<typeof IconButton>) {
   return (
     <Root type="button" variant="secondary" aria-label={ariaLabel} title={title} {...props}>
-      {children ?? <X size={16} />}
+      {children ?? <X size={iconSizeNumbers.md} />}
     </Root>
   )
 }

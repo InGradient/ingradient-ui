@@ -1,5 +1,6 @@
 import { IconButton } from '../../components/inputs/icon-button'
 import { MenuIcon } from '../../components/icons/catalog-icons'
+import { iconSizeNumbers } from '../../tokens/core'
 
 export interface ExpandSidebarBtnProps {
   onClick?: () => void
@@ -9,7 +10,7 @@ export interface ExpandSidebarBtnProps {
 export function ExpandSidebarBtn({ onClick, ariaLabel = 'Expand sidebar' }: ExpandSidebarBtnProps) {
   return (
     <IconButton variant="secondary" size="sm" aria-label={ariaLabel} onClick={onClick} data-ig-component="ExpandSidebarBtn">
-      <MenuIcon size={18} />
+      <MenuIcon size={iconSizeNumbers.lg} />
     </IconButton>
   )
 }

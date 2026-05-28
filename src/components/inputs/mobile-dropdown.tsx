@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { ChevronDown } from 'lucide-react'
 import { Box, Text } from '../../primitives'
 import { MenuItem } from '../overlays/menu-item'
+import { iconSizeNumbers } from '../../tokens/core'
 
 const WRAP_STYLE = { flex: 1, minWidth: 0, position: 'relative' as const }
 const TRIGGER_LABEL_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const }
@@ -83,7 +84,7 @@ export function MobileDropdown({
         onClick={() => onToggle(!open)}
       >
         <Text as="span" style={TRIGGER_LABEL_STYLE}>{label}</Text>
-        <ChevronDown size={16} />
+        <ChevronDown size={iconSizeNumbers.md} />
       </Trigger>
       {open && options.length > 0 ? (
         <Dropdown role="listbox">

@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { X, ZoomIn, ZoomOut } from 'lucide-react'
 import { Inline } from '../../primitives'
+import { iconSizeNumbers } from '../../tokens/core'
 import {
   useCanvasMouse,
   useDrawingCanvas,
@@ -155,7 +156,7 @@ export function ImageInspectorCanvas({
               zoomOut()
             }}
           >
-            <ZoomOut size={18} />
+            <ZoomOut size={iconSizeNumbers.lg} />
           </IconButton>
           <IconButton
             variant="secondary"
@@ -166,7 +167,7 @@ export function ImageInspectorCanvas({
               zoomIn()
             }}
           >
-            <ZoomIn size={18} />
+            <ZoomIn size={iconSizeNumbers.lg} />
           </IconButton>
         </>
       ) : null}
@@ -180,7 +181,7 @@ export function ImageInspectorCanvas({
             onClose()
           }}
         >
-          <X size={18} />
+          <X size={iconSizeNumbers.lg} />
         </IconButton>
       ) : null}
     </Inline>
