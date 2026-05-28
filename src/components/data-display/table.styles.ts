@@ -82,7 +82,7 @@ const draggingRow = css`
 `
 
 const animatingRow = css`
-  transition: transform 0.2s ease;
+  transition: transform var(--ig-motion-normal);
 `
 
 export const StyledTr = styled.tr<{

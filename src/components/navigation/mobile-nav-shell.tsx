@@ -41,7 +41,7 @@ const Backdrop = styled.div<{ $visible: boolean }>`
     z-index: var(--ig-z-mobile-nav-backdrop);
     opacity: ${(p) => (p.$visible ? 1 : 0)};
     pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
-    transition: opacity 0.22s ease;
+    transition: opacity var(--ig-motion-normal);
   }
 `
 
@@ -59,6 +59,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     box-shadow: 0 16px 48px var(--ig-color-modal-backdrop);
     z-index: var(--ig-z-mobile-nav);
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});
+    /* Material standard ease — slow tier 의 360ms ease 보다 specific 한 곡선 의도 */
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
     border-radius: 0 0 var(--ig-radius-xl) var(--ig-radius-xl);
@@ -106,7 +107,7 @@ const Item = styled.button<{ $active?: boolean }>`
   font-weight: 500;
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
   &:hover {
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-07);

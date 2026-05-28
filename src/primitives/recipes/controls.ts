@@ -53,7 +53,7 @@ export const controlField = css`
       padding: var(--ig-space-1);
       border-radius: var(--ig-radius-xs);
       opacity: 0.7;
-      transition: opacity 0.15s;
+      transition: opacity var(--ig-motion-fast);
     }
 
     &::-webkit-calendar-picker-indicator:hover {

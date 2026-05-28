@@ -7,7 +7,7 @@ type Placement = 'right' | 'left' | 'top' | 'bottom'
 const Wrapper = styled.span<{ $open: boolean; $scale: number }>`
   display: inline-block;
   position: relative;
-  transition: transform 160ms ease;
+  transition: transform var(--ig-motion-fast);
   transform-origin: center;
   ${(p) => p.$open && p.$scale !== 1 && `transform: scale(${p.$scale}); z-index: var(--ig-z-raised);`}
 `

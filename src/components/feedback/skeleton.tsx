@@ -9,7 +9,7 @@ const shimmer = css`
       var(--ig-color-skeleton-start) 100%
     )
     0 0 / 200% 100%;
-  animation: skeletonShift 1.3s linear infinite;
+  animation: skeletonShift var(--ig-motion-skeleton) linear infinite;
 
   @keyframes skeletonShift {
     to {

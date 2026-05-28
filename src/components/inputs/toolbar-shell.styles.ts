@@ -72,7 +72,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.14s ease, color 0.14s ease;
+  transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
   &:hover:not(:disabled) {
     background: ${(p) => (p.$danger ? 'var(--ig-color-danger-soft-surface)' : 'var(--ig-color-white-08)')};
     color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger-soft)' : 'var(--ig-color-text-primary)')};

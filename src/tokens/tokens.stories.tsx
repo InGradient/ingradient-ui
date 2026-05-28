@@ -65,6 +65,37 @@ function BorderWidthTile({ varName }: { varName: string }) {
   )
 }
 
+function MotionTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      <div
+        style={{
+          width: 80,
+          height: 12,
+          borderRadius: 'var(--ig-radius-pill)',
+          background: 'var(--ig-color-accent-soft-surface)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            height: '100%',
+            width: '30%',
+            background: 'var(--ig-color-accent)',
+            animation: `motionDemo var(${varName}) infinite alternate`,
+          }}
+        />
+      </div>
+      <div style={{ minWidth: 90, color: 'var(--ig-color-text-primary)' }}>{label}</div>
+      <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function ZIndexTile({ varName, value }: { varName: string; value: number }) {
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ig-space-3)' }}>
@@ -198,6 +229,20 @@ export const Review: Story = {
             <BorderWidthTile varName="--ig-border-1px" />
             <BorderWidthTile varName="--ig-border-2px" />
             <BorderWidthTile varName="--ig-border-3px" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Motion" description="Transition + animation duration tokens. 막대가 token duration 마다 좌우로 이동.">
+        <StorybookCard title="Motion tokens">
+          <style>{`@keyframes motionDemo { from { transform: translateX(0); } to { transform: translateX(160%); } }`}</style>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <MotionTile varName="--ig-motion-fast" label="fast (0.16s)" />
+            <MotionTile varName="--ig-motion-normal" label="normal (0.24s)" />
+            <MotionTile varName="--ig-motion-slow" label="slow (0.36s)" />
+            <MotionTile varName="--ig-motion-spinner" label="spinner (0.7s)" />
+            <MotionTile varName="--ig-motion-shimmer" label="shimmer (1s)" />
+            <MotionTile varName="--ig-motion-skeleton" label="skeleton (1.3s)" />
           </div>
         </StorybookCard>
       </StorybookSection>

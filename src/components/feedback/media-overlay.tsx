@@ -45,7 +45,7 @@ const Label = styled.span`
 const fadeIn = keyframes`from { opacity: 0 } to { opacity: 1 }`
 
 const Animated = styled(Root)`
-  animation: ${fadeIn} 160ms ease;
+  animation: ${fadeIn} var(--ig-motion-fast);
 `
 
 export interface MediaOverlayProps {

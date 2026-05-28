@@ -55,6 +55,6 @@ export const MobileNavDrawer = styled.aside<{ $open?: boolean }>`
   flex-direction: column;
   gap: var(--ig-space-6);
   transform: translateX(${(p) => (p.$open === false ? '-100%' : '0')});
-  transition: transform 0.2s ease;
+  transition: transform var(--ig-motion-normal);
   z-index: var(--ig-z-drawer);
 `

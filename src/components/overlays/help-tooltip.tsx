@@ -39,7 +39,7 @@ const Bubble = styled(TooltipBubble)`
   box-shadow: var(--ig-shadow-popover);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 120ms ease;
+  transition: opacity var(--ig-motion-fast);
   z-index: var(--ig-z-header);
 
   ${Wrap}:hover & {

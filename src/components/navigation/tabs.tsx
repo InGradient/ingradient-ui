@@ -45,7 +45,7 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
         `}
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   pointer-events: none;
-  transition: left 0.22s ease, width 0.22s ease, opacity 0.16s ease;
+  transition: left var(--ig-motion-normal), width var(--ig-motion-normal), opacity var(--ig-motion-fast);
 `
 
 const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underline' }>`

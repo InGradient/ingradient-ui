@@ -14,7 +14,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
     var(--ig-color-bg-canvas);
   border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   flex-shrink: 0;
-  transition: width 0.2s ease;
+  transition: width var(--ig-motion-normal);
   ${media.md} {
     display: none;
   }
@@ -76,7 +76,7 @@ const rowMixin = `
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  transition: color var(--ig-motion-fast), background var(--ig-motion-fast);
   cursor: pointer;
   border: none;
   background: none;

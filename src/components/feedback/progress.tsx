@@ -31,7 +31,7 @@ const activeOverlay = css`
       var(--ig-color-white-24) ${STRIPE_PERIOD_PX / 2}px,
       var(--ig-color-white-06) ${STRIPE_PERIOD_PX}px
     );
-    animation: ${shimmer} 1s linear infinite;
+    animation: ${shimmer} var(--ig-motion-shimmer) linear infinite;
   }
 `
 
@@ -49,7 +49,7 @@ export const ProgressFill = styled.div<{ $value: number; $active: boolean }>`
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
-  transition: width 0.25s ease;
+  transition: width var(--ig-motion-normal);
   overflow: hidden;
   ${(p) => p.$active && activeOverlay}
 `

@@ -258,6 +258,10 @@ const staticVars = {
   '--ig-control-height-lg': controlSizes.lg,
   '--ig-motion-fast': motionScale.fast,
   '--ig-motion-normal': motionScale.normal,
+  '--ig-motion-slow': motionScale.slow,
+  '--ig-motion-spinner': motionScale.spinner,
+  '--ig-motion-shimmer': motionScale.shimmer,
+  '--ig-motion-skeleton': motionScale.skeleton,
 } as const
 
 export function buildTokenCssVariables(mode: 'dark' | 'light' = 'dark') {

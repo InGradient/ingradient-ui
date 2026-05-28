@@ -104,7 +104,7 @@ export function DrawingLayer({
         const isSelected = obj.id === selectedId
         const color = obj.color ?? 'var(--ig-color-accent)'
         const gStyle = obj.opacity != null && obj.opacity < 1
-          ? { opacity: obj.opacity, transition: 'opacity 0.15s' } as const
+          ? { opacity: obj.opacity, transition: 'opacity var(--ig-motion-fast)' } as const
           : undefined
 
         if (obj.type === 'rect' && obj.w != null && obj.h != null) {

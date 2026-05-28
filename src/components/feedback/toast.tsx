@@ -39,7 +39,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
   font-size: var(--ig-font-size-sm);
   box-shadow: var(--ig-shadow-floating);
   pointer-events: auto;
-  animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} 200ms ease forwards;
+  animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} var(--ig-motion-normal) forwards;
   max-width: 420px;
   word-break: break-word;
   display: flex;

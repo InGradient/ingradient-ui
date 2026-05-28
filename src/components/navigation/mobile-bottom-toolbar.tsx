@@ -34,7 +34,7 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   cursor: pointer;
   border-radius: var(--ig-radius-xs);
   -webkit-tap-highlight-color: transparent;
-  transition: color 0.15s, background 0.15s;
+  transition: color var(--ig-motion-fast), background var(--ig-motion-fast);
   &:hover:not(:disabled) { color: var(--ig-color-text-primary); background: var(--ig-color-white-07); }
   &:disabled { opacity: 0.4; cursor: not-allowed; }
   svg { width: 20px; height: 20px; flex-shrink: 0; }
