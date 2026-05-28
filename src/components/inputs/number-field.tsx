@@ -39,7 +39,7 @@ const SpinBtn = styled.button`
   padding: 0;
   &:hover { background: var(--ig-color-surface-interactive); color: var(--ig-color-text-primary); }
   &:first-child { border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
-  &:disabled { opacity: 0.3; cursor: default; }
+  &:disabled { opacity: var(--ig-opacity-overlay); cursor: default; }
 `
 
 export interface NumberFieldProps {

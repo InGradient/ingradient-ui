@@ -23,7 +23,7 @@ export const buttonPrimary = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -56,7 +56,7 @@ export const buttonSecondary = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -88,7 +88,7 @@ export const buttonAccent = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -120,7 +120,7 @@ export const buttonDanger = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -153,7 +153,7 @@ export const buttonDangerSecondary = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);

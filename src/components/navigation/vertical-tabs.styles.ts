@@ -72,7 +72,7 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   }
 
   &:disabled {
-    opacity: 0.48;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
 `

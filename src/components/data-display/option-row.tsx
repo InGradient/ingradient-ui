@@ -19,7 +19,7 @@ const Root = styled.button`
     border-color: var(--ig-color-accent);
   }
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
 `

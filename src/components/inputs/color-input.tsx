@@ -11,7 +11,7 @@ const Input = styled.input.attrs({ type: 'color' })`
   background: var(--ig-color-surface-raised);
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: var(--ig-opacity-subtle);
   }
   &::-webkit-color-swatch-wrapper { padding: 0; }
   &::-webkit-color-swatch { border: none; border-radius: var(--ig-radius-2xs); }

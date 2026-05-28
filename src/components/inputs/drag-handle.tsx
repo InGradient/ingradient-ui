@@ -31,7 +31,7 @@ const DragDots = styled.span`
     height: 100%;
     border-radius: var(--ig-radius-pill);
     background: currentColor;
-    opacity: 0.72;
+    opacity: var(--ig-opacity-subtle);
   }
 `
 

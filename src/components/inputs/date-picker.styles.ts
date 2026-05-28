@@ -118,11 +118,11 @@ export const Popover = styled.div`
 
   .rdp-outside .rdp-day_button {
     color: var(--ig-color-text-muted);
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
   }
 
   .rdp-disabled .rdp-day_button {
-    opacity: 0.3;
+    opacity: var(--ig-opacity-overlay);
     cursor: default;
   }
 `

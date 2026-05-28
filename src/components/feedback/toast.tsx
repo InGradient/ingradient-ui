@@ -60,7 +60,7 @@ const ActionButton = styled.button`
   font: inherit;
   padding: var(--ig-space-2px) var(--ig-space-3);
   cursor: pointer;
-  opacity: 0.85;
+  opacity: var(--ig-opacity-loud);
   &:hover { opacity: 1; }
 `
 
@@ -73,7 +73,7 @@ const CloseButton = styled.button`
   line-height: var(--ig-line-height-none);
   padding: 0 var(--ig-space-2px);
   cursor: pointer;
-  opacity: 0.55;
+  opacity: var(--ig-opacity-overlay);
   &:hover { opacity: 1; }
 `
 

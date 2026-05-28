@@ -25,7 +25,7 @@ const Trigger = styled.button<{ $loading?: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   &:hover { background: var(--ig-color-surface-interactive-hover); }
-  ${(p) => p.$loading && 'opacity: 0.7;'}
+  ${(p) => p.$loading && 'opacity: var(--ig-opacity-subtle);'}
 `
 
 const Dropdown = styled.div`

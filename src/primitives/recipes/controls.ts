@@ -29,7 +29,7 @@ export const controlField = css`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -52,7 +52,7 @@ export const controlField = css`
       cursor: pointer;
       padding: var(--ig-space-1);
       border-radius: var(--ig-radius-xs);
-      opacity: 0.7;
+      opacity: var(--ig-opacity-subtle);
       transition: opacity var(--ig-motion-fast);
     }
 

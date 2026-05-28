@@ -39,7 +39,7 @@ const Btn = styled.button<{ $tone: MenuItemTone; $size: MenuItemSize; $active: b
     background: var(--ig-color-surface-interactive-hover);
   }
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
 `

@@ -14,7 +14,7 @@ const Wrap = styled.div`
 
 const IconWrap = styled.div`
   color: var(--ig-color-text-soft);
-  opacity: 0.6;
+  opacity: var(--ig-opacity-muted);
 `
 
 const Title = styled.div`

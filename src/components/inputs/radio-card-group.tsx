@@ -30,7 +30,7 @@ const OptionBtn = styled.button<{ $active: boolean }>`
   }
 
   &:disabled {
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
   }
 `

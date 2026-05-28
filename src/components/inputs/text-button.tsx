@@ -31,7 +31,7 @@ const Btn = styled.button<{ $tone: TextButtonTone; $size: TextButtonSize }>`
     text-decoration: underline;
   }
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
 `

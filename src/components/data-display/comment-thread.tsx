@@ -63,8 +63,8 @@ const SendBtn = styled.button`
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  &:disabled { opacity: 0.4; cursor: default; }
-  &:hover:not(:disabled) { opacity: 0.85; }
+  &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
+  &:hover:not(:disabled) { opacity: var(--ig-opacity-loud); }
 `
 
 export interface CommentItemProps {

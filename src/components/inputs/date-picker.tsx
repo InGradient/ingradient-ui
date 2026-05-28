@@ -5,7 +5,7 @@ import { Placeholder, Popover, Trigger } from './date-picker.styles'
 import { FloatingPanelField } from './floating-panel-field'
 
 const CalendarIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: 0.6 }}>
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: var(--ig-opacity-muted) }}>
     <rect x="1" y="2" width="12" height="11" rx="2" />
     <path d="M1 5.5h12M4.5 1v2M9.5 1v2" />
   </svg>

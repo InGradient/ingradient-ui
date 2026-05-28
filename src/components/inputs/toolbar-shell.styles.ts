@@ -82,7 +82,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
     outline-offset: -2px;
   }
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
   svg {

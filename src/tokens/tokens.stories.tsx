@@ -154,6 +154,16 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
   )
 }
 
+function OpacityTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      <div style={{ width: 80, height: 40, borderRadius: 'var(--ig-radius-md)', background: 'var(--ig-color-accent)', opacity: `var(${varName})` }} />
+      <TokenName>{label}</TokenName>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function LineHeightTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
@@ -371,6 +381,19 @@ export const Review: Story = {
             <FontWeightTile varName="--ig-font-weight-semibold" label="semibold (600)" />
             <FontWeightTile varName="--ig-font-weight-bold" label="bold (700)" />
             <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Opacity" description="의미 tier — faded / disabled / overlay / muted / subtle / loud.">
+        <StorybookCard title="Opacity tokens">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            <OpacityTile varName="--ig-opacity-faded" label="faded (0.4)" />
+            <OpacityTile varName="--ig-opacity-disabled" label="disabled (0.5)" />
+            <OpacityTile varName="--ig-opacity-overlay" label="overlay (0.55)" />
+            <OpacityTile varName="--ig-opacity-muted" label="muted (0.6)" />
+            <OpacityTile varName="--ig-opacity-subtle" label="subtle (0.7)" />
+            <OpacityTile varName="--ig-opacity-loud" label="loud (0.85)" />
           </div>
         </StorybookCard>
       </StorybookSection>
