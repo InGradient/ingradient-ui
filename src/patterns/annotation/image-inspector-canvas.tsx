@@ -32,8 +32,8 @@ export interface AnnotationPolygon {
 
 const TOP_RIGHT_STYLE = {
   position: 'absolute' as const,
-  top: 8,
-  right: 16,
+  top: 'var(--ig-space-3)',
+  right: 'var(--ig-space-7)',
   zIndex: 20,
 }
 

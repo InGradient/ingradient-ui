@@ -241,3 +241,32 @@ font-size 와 동일 audit 를 spacing (padding/margin/gap) 에 적용.
 
 **최종 결과: components + patterns 모두 hardcoded font-size, spacing 0** —
 typography + spacing 완전 토큰화.
+
+---
+
+## Category P2 — position offset audit (Phase 7)
+
+inline `top/right/bottom/left` raw number 도 spacing 의 일종. 추가 확인.
+
+| 파일 | 라인 | 처리 |
+|---|---|---|
+| `patterns/annotation/image-inspector-canvas.tsx` | 35-36 | `top: 8, right: 16` → space-3, space-7 ✅ |
+| `components/inputs/input-adornment.tsx` | 9 | `top: 1px; bottom: 1px` → space-1px ✅ |
+
+`inset: 0`, `top: 0`, `left: 0` 등 0 값은 토큰 의미 없음 — 유지.
+
+**별도 (border-width)**: `border: 1px solid ...` 형식은 다수 (~30+ 곳)이나 border-width 는
+spacing 과 분리된 개념. 향후 별도 border 토큰 작업.
+
+## 전체 audit 최종 결과
+
+| 카테고리 | 처리 | 잔여 |
+|---|---|---|
+| Typography hardcoded font-size (components, patterns) | 24건 | **0** |
+| Spacing hardcoded (padding/margin/gap, components, patterns) | 14건 + 토큰 신규 3 | **0** |
+| Position offset (top/right/bottom/left) | 2건 | **0** |
+| 죽은 코드 | breadcrumbs ✓ | — |
+| Type scale 대체 | 2건 (H4, B3) | — |
+
+`@ingradient/ui` 의 components + patterns 안 hardcoded magic number **완전히 0** —
+typography + spacing + position 모두 토큰만 사용.

@@ -6,7 +6,7 @@ const Adornment = styled.div<{ $side: 'left' | 'right'; $inset: string; $stretch
   ${(p) => (p.$side === 'left' ? `left: ${p.$inset};` : `right: ${p.$inset};`)}
   ${(p) =>
     p.$stretchY
-      ? `top: 1px; bottom: 1px;`
+      ? `top: var(--ig-space-1px); bottom: var(--ig-space-1px);`
       : `top: 50%; transform: translateY(-50%);`}
   display: flex;
   align-items: center;
