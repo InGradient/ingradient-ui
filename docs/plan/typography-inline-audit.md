@@ -447,9 +447,21 @@ JSX / SVG / 잡색 22건 (새 토큰 정의 없이 기존 토큰 사용).
 | Line-height (styled + JSX) | 23건 + 토큰 신규 5 | **0** |
 | Opacity (정적값) | 17건 + 토큰 신규 6 | **0** (dynamic 0/1 keyframe 만) |
 | Blur (backdrop-filter) | 6건 + 토큰 신규 2 | **0** |
+| Icon size (styled svg child) | 4건 + 토큰 신규 6 (xs..2xl) | **0** |
+| SVG strokeWidth (attribute + styled) | 9건 + svgStrokeWidths thin/regular/bold | **0** |
+| Divider 1px (width/height) | 7건 → space-1px 재사용 | **0** |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
 
 `@ingradient/ui` 의 components + patterns + primitives 안 hardcoded magic number **완전히 0** —
-typography (size + weight + letter-spacing + line-height) + spacing + position + border-width + color + z-index + motion + shadow + opacity + blur (**11개 토큰 카테고리**) 모두 토큰만 사용.
+typography (size + weight + letter-spacing + line-height) + spacing + position + border-width + color + z-index + motion + shadow + opacity + blur + icon-size + svg-stroke (**13개 토큰 카테고리**) 모두 토큰만 사용.
+
+남은 의도 raw:
+- CSS keyword (`transparent`, `currentColor`, `inherit`, `none`, `flex-shrink: 0`, `width/height: 100%`)
+- dynamic state toggle (`opacity: 0/1`, transform translate 분기, ring shadow 분기, z-index:0 backdrop default)
+- specific keyframe (background-position 0 0, transform translateY(12px) toast slide)
+- mobile-nav-shell cubic-bezier 0.28s (Phase 12 의도 유지)
+- JSX `<Icon size={N} />` lucide-react prop (component-level numeric)
+- popup/dialog 차원 width JSX (320/360/480 등 — layout 결정, 토큰화 가치 낮음)
+- form-section grid `140px 1fr`, max-width `420px` 등 layout-specific raw
