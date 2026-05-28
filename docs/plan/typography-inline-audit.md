@@ -342,6 +342,56 @@ Animation 전용 토큰:
 
 `tokens.stories` 에 Motion 섹션 + MotionTile (token duration 마다 막대가 좌우 이동하는 데모).
 
+## Category Font-Weight — font-weight 토큰 audit (Phase 13)
+
+styled / inline / JSX 전수 조사. 53건 토큰화.
+
+신규 토큰 (`src/tokens/core/typography.ts` 확장):
+- `weightRegular` (400) / `weightMedium` (500) / `weightSemibold` (600) / `weightBold` (700) / `weightBlack` (800)
+- CSS var: `--ig-font-weight-regular/-medium/-semibold/-bold/-black`
+
+Text primitives — `weight` prop 에 alias union `number | 'regular' | 'medium' | 'semibold' | 'bold' | 'black'`. resolveWeight 에서 alias → var() 변환, 기존 number 호출 backward-compat 유지.
+Heading primitives — level 별 weight 토큰 사용 (1=black, 2=bold, 3-4=semibold).
+
+토큰화 완료:
+- styled `font-weight: <N>` (39건) → `var(--ig-font-weight-*)`
+- inline style `fontWeight: N` (4건) → `'var(--ig-font-weight-*)'`
+- JSX `weight={N}` (14건) → `weight="alias"`
+
+값 분포: 600(27) / 700(19) / 500(6) / 800(1) / 400(1).
+
+`tokens.stories` 에 Font weight 섹션 + FontWeightTile.
+
+## Category Letter-Spacing — letter-spacing 토큰 audit (Phase 14)
+
+styled + JSX letterSpacing 전수. 15건 토큰화.
+
+신규 토큰:
+- `letterSpacingTight` (0.03em) / `Normal` (0.04em) / `Wide` (0.05em) / `Wider` (0.06em) / `Widest` (0.08em)
+- CSS var: `--ig-letter-spacing-tight/-normal/-wide/-wider/-widest`
+
+Text primitives — `letterSpacing` prop alias `string | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'`. raw string 도 backward-compat.
+
+토큰화: styled 8건 + JSX 7건 → `var(--ig-letter-spacing-*)` 또는 alias.
+
+`tokens.stories` 에 Letter spacing 섹션 + LetterSpacingTile.
+
+## Category Shadow — box-shadow 토큰 audit (Phase 15)
+
+raw box-shadow 3건 처리. 새 shadow 토큰 3개 추가.
+
+신규 토큰 (`src/tokens/core/shadows.ts` 확장, dark + light 변형):
+- `drawerLift` — mobile-nav drawer 위로 띄움
+- `dangerHoverLift` — danger button hover transform lift
+- `controlElevated` — select/dropdown elevated surface (dark = inset highlight + drop, light = drop only)
+
+토큰화 완료:
+- `mobile-nav-shell:59` (`0 16px 48px var(--ig-color-modal-backdrop)`) → `var(--ig-shadow-drawer-lift)`
+- `recipes/buttons.ts:113` (`0 10px 28px rgba(127, 29, 29, 0.32)`) → `var(--ig-shadow-danger-hover-lift)`
+- `recipes/controls.ts:103-105` (inset + drop 복합) → `var(--ig-shadow-control-elevated)` 단일 토큰
+
+`tokens.stories` 에 Shadow 섹션 + ShadowTile (9개 토큰 grid).
+
 ## 전체 audit 최종 결과
 
 | 카테고리 | 처리 | 잔여 |
@@ -353,9 +403,12 @@ Animation 전용 토큰:
 | Color (raw rgba / hex literal) | 9건 + palette 신규 2 + semantic 신규 9 | **0** |
 | Z-index | 16건 + 토큰 신규 9 | **0** (z-index:0 default 만) |
 | Motion (transition + animation) | 18건 + 토큰 신규 4 | **0** (cubic-bezier 1건 의도 유지) |
+| Font-weight (styled + inline + JSX) | 57건 + 토큰 신규 5 | **0** |
+| Letter-spacing (styled + JSX) | 15건 + 토큰 신규 5 | **0** |
+| Box-shadow | 3건 + 토큰 신규 3 | **0** (dynamic ring shadow 의도 raw 만) |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
 
 `@ingradient/ui` 의 components + patterns + primitives 안 hardcoded magic number **완전히 0** —
-typography + spacing + position + border-width + color + z-index + motion 모두 토큰만 사용.
+typography (size + weight + letter-spacing) + spacing + position + border-width + color + z-index + motion + shadow 모두 토큰만 사용.
