@@ -392,23 +392,64 @@ raw box-shadow 3건 처리. 새 shadow 토큰 3개 추가.
 
 `tokens.stories` 에 Shadow 섹션 + ShadowTile (9개 토큰 grid).
 
+## Category 잔여 — Phase 16 (기존 토큰 사용 가능 raw 정리)
+
+JSX / SVG / 잡색 22건 (새 토큰 정의 없이 기존 토큰 사용).
+
+- font-size JSX `size="Npx"` 15건 → `var(--ig-font-size-*)` (2xs/xs/sm/md)
+- annotation-overlay SVG rgba 3건 → style prop 으로 var() 적용 (신규 `annotation-outline-dark/-light` 2개 + `overlay-strong` 재사용)
+- chip-tabs `rgba(77,136,255,0.3)` → `var(--ig-color-blue-tint-28)` (2% alpha 차이 흡수)
+- date-picker `color: white` 2건 → `var(--ig-color-on-accent)`
+- textarea `font-family: monospace` → `var(--ig-font-mono)`
+
+의도 raw 유지: drawing-layer / svg-shape-* default prop `'#fff'` / `'rgba(...)'` (SVG attribute var() 미지원, 호출자 override 가능).
+
+## Category Line-Height — Phase 17
+
+신규 토큰 5-tier (`src/tokens/core/typography.ts`):
+- `lineHeightNone(1)` / `Snug(1.4)` / `Base(1.45)` / `Relaxed(1.5)` / `Loose(1.6)`
+
+토큰화 23건 (styled 17 + JSX 5 + Text primitives 1).
+`tokens.stories` Line height 섹션 + LineHeightTile.
+
+## Category Opacity — Phase 18
+
+신규 카테고리 `src/tokens/core/opacity.ts`. 의미 tier 6-tier:
+- `faded(0.4)` / `disabled(0.5)` / `overlay(0.55)` / `muted(0.6)` / `subtle(0.7)` / `loud(0.85)`
+
+매핑: 0.4 → faded / 0.5/0.48 → disabled / 0.55/0.3 → overlay / 0.6 → muted / 0.7/0.72 → subtle / 0.85/0.86 → loud.
+
+토큰화 17건. dynamic `0`/`1` (keyframe / state toggle) 은 raw 의도 유지.
+`tokens.stories` Opacity 섹션 + OpacityTile.
+
+## Category Blur — Phase 19
+
+신규 카테고리 `src/tokens/core/effects.ts`. 2-tier:
+- `blurSm(blur(14px))` / `blurMd(blur(16px))`
+
+토큰화 6건 (mobile-bottom-toolbar, mobile-nav-shell, recipes/patterns, date-picker.styles, dropdown-shared, mobile-dropdown).
+`tokens.stories` Blur 섹션 + BlurTile.
+
 ## 전체 audit 최종 결과
 
 | 카테고리 | 처리 | 잔여 |
 |---|---|---|
-| Typography hardcoded font-size (components, patterns) | 24건 | **0** |
+| Typography hardcoded font-size (components, patterns + JSX `size="Npx"`) | 24 + 15건 | **0** |
 | Spacing hardcoded (padding/margin/gap, components, patterns) | 14건 + 토큰 신규 3 | **0** |
 | Position offset (top/right/bottom/left) | 2건 | **0** |
-| Border width / outline | 63건 + 토큰 신규 3 | **0** |
-| Color (raw rgba / hex literal) | 9건 + palette 신규 2 + semantic 신규 9 | **0** |
+| Border width / outline | 63건 + 토큰 신규 3 (+11 buttons.ts) | **0** |
+| Color (raw rgba / hex literal) | 9 + 22건 + palette/semantic 신규 11+ | **0** (SVG default prop 의도 raw) |
 | Z-index | 16건 + 토큰 신규 9 | **0** (z-index:0 default 만) |
 | Motion (transition + animation) | 18건 + 토큰 신규 4 | **0** (cubic-bezier 1건 의도 유지) |
 | Font-weight (styled + inline + JSX) | 57건 + 토큰 신규 5 | **0** |
 | Letter-spacing (styled + JSX) | 15건 + 토큰 신규 5 | **0** |
 | Box-shadow | 3건 + 토큰 신규 3 | **0** (dynamic ring shadow 의도 raw 만) |
+| Line-height (styled + JSX) | 23건 + 토큰 신규 5 | **0** |
+| Opacity (정적값) | 17건 + 토큰 신규 6 | **0** (dynamic 0/1 keyframe 만) |
+| Blur (backdrop-filter) | 6건 + 토큰 신규 2 | **0** |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
 
 `@ingradient/ui` 의 components + patterns + primitives 안 hardcoded magic number **완전히 0** —
-typography (size + weight + letter-spacing) + spacing + position + border-width + color + z-index + motion + shadow 모두 토큰만 사용.
+typography (size + weight + letter-spacing + line-height) + spacing + position + border-width + color + z-index + motion + shadow + opacity + blur (**11개 토큰 카테고리**) 모두 토큰만 사용.
