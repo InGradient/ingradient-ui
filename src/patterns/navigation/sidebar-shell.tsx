@@ -10,6 +10,7 @@ import {
   SidebarShellWrap,
   SidebarTopActionWrap,
 } from './sidebar-shell.styles'
+import { svgStrokeWidths } from '../../tokens/core'
 
 export interface SidebarShellItem {
   key: string
@@ -53,7 +54,7 @@ const DEFAULT_WIDTH_COLLAPSED = 72
 
 function CloseIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <polyline points="15 18 9 12 15 6" />
     </svg>
   )

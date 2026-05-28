@@ -112,7 +112,7 @@ const Item = styled.button<{ $active?: boolean }>`
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-07);
   }
-  svg { width: 22px; height: 22px; flex-shrink: 0; }
+  svg { width: var(--ig-icon-2xl); height: var(--ig-icon-2xl); flex-shrink: 0; }
 `
 
 const DIVIDER_STYLE = {

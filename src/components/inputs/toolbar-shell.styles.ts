@@ -97,13 +97,13 @@ export const Separator = styled.span<{ $placement: Placement }>`
   ${(p) =>
     p.$placement === 'bottom' || p.$placement === 'top'
       ? css`
-          width: 1px;
+          width: var(--ig-space-1px);
           height: 22px;
           margin: 0 2px;
         `
       : css`
           width: 22px;
-          height: 1px;
+          height: var(--ig-space-1px);
           margin: var(--ig-space-2px) 0;
         `}
 `

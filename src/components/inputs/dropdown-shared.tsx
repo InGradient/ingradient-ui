@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { controlField } from '../../primitives'
+import { svgStrokeWidths } from '../../tokens/core'
 
 export interface DropdownMenuLayout {
   left: number
@@ -114,8 +115,8 @@ export const DropdownOptionDescription = styled.div`
 
 export const HiddenSelectInput = styled.select`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--ig-space-1px);
+  height: var(--ig-space-1px);
   padding: 0;
   margin: -1px;
   overflow: hidden;
@@ -148,7 +149,7 @@ export function renderChevron(open: boolean) {
         <path
           d="M1 1L5 5L9 1"
           stroke="currentColor"
-          strokeWidth="1.4"
+          strokeWidth={svgStrokeWidths.thin}
           strokeLinecap="round"
           strokeLinejoin="round"
         />

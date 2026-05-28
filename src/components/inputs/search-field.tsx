@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import styled from 'styled-components'
 import { controlField } from '../../primitives'
+import { svgStrokeWidths } from '../../tokens/core'
 import { InputAdornment } from './input-adornment'
 
 const Wrap = styled.div<{ $size: 'sm' | 'md' }>`
@@ -55,7 +56,7 @@ export function SearchField({ onClear, size = 'md', value, ...rest }: SearchFiel
     <Wrap $size={size}>
       <InputAdornment side="left" inset="var(--ig-space-4)">
         <SearchIconHost>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
           </svg>
         </SearchIconHost>
@@ -64,7 +65,7 @@ export function SearchField({ onClear, size = 'md', value, ...rest }: SearchFiel
       {showClear && (
         <InputAdornment side="right" inset="var(--ig-space-3)">
           <ClearBtn type="button" onClick={handleClear} aria-label="Clear search">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.bold} strokeLinecap="round">
               <path d="M18 6 6 18" /><path d="m6 6 12 12" />
             </svg>
           </ClearBtn>

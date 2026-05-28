@@ -50,7 +50,7 @@ export const SidebarCloseButton = styled.button`
   align-items: center;
   justify-content: center;
   &:hover { color: var(--ig-color-text-primary); }
-  svg { width: 18px; height: 18px; }
+  svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); }
 `
 
 export const SidebarTopActionWrap = styled.div`
@@ -87,7 +87,7 @@ const rowMixin = `
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-06);
   }
-  & svg { width: 20px; height: 20px; flex-shrink: 0; }
+  & svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @container sidebar-shell (max-width: 100px) {
     grid-template-columns: 20px;

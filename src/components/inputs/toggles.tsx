@@ -55,10 +55,10 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
 
   svg {
-    width: 12px;
-    height: 12px;
-    stroke: white;
-    stroke-width: 2.5;
+    width: var(--ig-icon-xs);
+    height: var(--ig-icon-xs);
+    stroke: var(--ig-color-on-accent);
+    stroke-width: var(--ig-svg-stroke-bold);
     fill: none;
     opacity: ${(p) => (p.$checked ? 1 : 0)};
     transition: opacity var(--ig-motion-fast);

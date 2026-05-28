@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Divider = styled.hr`
   width: 100%;
-  height: 1px;
+  height: var(--ig-space-1px);
   margin: 0;
   border: 0;
   background: var(--ig-color-border-subtle);

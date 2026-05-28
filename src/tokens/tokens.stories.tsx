@@ -154,6 +154,24 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
   )
 }
 
+function IconSizeTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      <div
+        style={{
+          width: `var(${varName})`,
+          height: `var(${varName})`,
+          background: 'var(--ig-color-accent)',
+          borderRadius: 'var(--ig-radius-2xs)',
+          flexShrink: 0,
+        }}
+      />
+      <TokenName>{label}</TokenName>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function BlurTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
@@ -413,6 +431,19 @@ export const Review: Story = {
             <FontWeightTile varName="--ig-font-weight-semibold" label="semibold (600)" />
             <FontWeightTile varName="--ig-font-weight-bold" label="bold (700)" />
             <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Icon size" description="Inline SVG icon dimensions (styled-components 안). JSX size prop 은 numeric 그대로 사용.">
+        <StorybookCard title="Icon sizes">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            <IconSizeTile varName="--ig-icon-xs" label="xs (12px)" />
+            <IconSizeTile varName="--ig-icon-sm" label="sm (14px)" />
+            <IconSizeTile varName="--ig-icon-md" label="md (16px)" />
+            <IconSizeTile varName="--ig-icon-lg" label="lg (18px)" />
+            <IconSizeTile varName="--ig-icon-xl" label="xl (20px)" />
+            <IconSizeTile varName="--ig-icon-2xl" label="2xl (22px)" />
           </div>
         </StorybookCard>
       </StorybookSection>

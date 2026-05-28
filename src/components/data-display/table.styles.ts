@@ -45,8 +45,8 @@ export const DragTd = styled(Td)`width: 36px; padding: var(--ig-space-3) var(--i
 
 export const VisuallyHidden = styled.span`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--ig-space-1px);
+  height: var(--ig-space-1px);
   padding: 0;
   margin: -1px;
   overflow: hidden;

@@ -37,7 +37,7 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   transition: color var(--ig-motion-fast), background var(--ig-motion-fast);
   &:hover:not(:disabled) { color: var(--ig-color-text-primary); background: var(--ig-color-white-07); }
   &:disabled { opacity: var(--ig-opacity-faded); cursor: not-allowed; }
-  svg { width: 20px; height: 20px; flex-shrink: 0; }
+  svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
   span { font-size: var(--ig-font-size-3xs); line-height: var(--ig-line-height-none); white-space: nowrap; }
 `
 
