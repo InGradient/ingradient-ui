@@ -70,7 +70,7 @@ const CloseButton = styled.button`
   border: none;
   color: inherit;
   font-size: var(--ig-font-size-xl);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
   padding: 0 var(--ig-space-2px);
   cursor: pointer;
   opacity: 0.55;

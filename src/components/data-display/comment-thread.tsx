@@ -24,7 +24,7 @@ const Author = styled.span`
 
 const Body = styled.div`
   font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
   white-space: pre-wrap;
   color: var(--ig-color-text-primary);
 `

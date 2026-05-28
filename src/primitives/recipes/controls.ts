@@ -11,7 +11,7 @@ export const controlField = css`
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
   transition:
     border-color var(--ig-motion-fast),
     box-shadow var(--ig-motion-fast),
@@ -39,7 +39,7 @@ export const controlField = css`
   &:where(textarea) {
     height: auto;
     padding: var(--ig-space-4) var(--ig-space-5);
-    line-height: 1.4;
+    line-height: var(--ig-line-height-snug);
   }
 
   &:where([type='date']),

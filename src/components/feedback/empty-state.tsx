@@ -25,7 +25,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
   max-width: 320px;
 `
 

@@ -64,7 +64,7 @@ const TextRoot = styled.span<{
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 'var(--ig-font-weight-regular)'};
-  line-height: 1.45;
+  line-height: var(--ig-line-height-base);
   word-break: break-word;
   ${(p) => p.$align && css`text-align: ${p.$align};`}
   ${(p) => p.$uppercase && css`text-transform: uppercase;`}

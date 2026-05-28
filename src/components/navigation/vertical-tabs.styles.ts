@@ -103,5 +103,5 @@ export const ItemBadge = styled.span`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
 `

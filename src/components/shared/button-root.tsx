@@ -19,7 +19,7 @@ export const ButtonRoot = styled.button<{
   ${(p) => p.$iconOnly ? `width: ${p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-sm)' : p.$size === 'lg' ? 'var(--ig-font-size-lg)' : 'var(--ig-font-size-md)')};
   font-weight: var(--ig-font-weight-semibold);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
   ${(p) => {
     if (p.$tone === 'danger') {
       return p.$variant === 'secondary' ? buttonDangerSecondary : buttonDanger

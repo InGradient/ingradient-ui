@@ -19,7 +19,7 @@ const Key = styled.kbd<{ $size: 'sm' | 'md' }>`
   font-family: inherit;
   font-size: ${(p) => (p.$size === 'sm' ? '10px' : 'var(--ig-font-size-2xs)')};
   font-weight: var(--ig-font-weight-medium);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
 `
 
 export interface KeyboardShortcutHintProps {

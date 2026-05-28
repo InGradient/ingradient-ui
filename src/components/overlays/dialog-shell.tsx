@@ -16,7 +16,7 @@ const DialogContent = styled.div`
   overflow-y: auto;
 `
 
-const DIALOG_DESCRIPTION_STYLE = { margin: 0, lineHeight: 1.6 }
+const DIALOG_DESCRIPTION_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-loose)' }
 
 export function DialogShell({
   title,

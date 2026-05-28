@@ -154,6 +154,19 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
   )
 }
 
+function LineHeightTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+      <div style={{ lineHeight: `var(${varName})`, fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-text-primary)' }}>
+        {label} · The quick brown fox jumps over the lazy dog.<br />
+        Second line for line-height comparison.<br />
+        Third line continues here.
+      </div>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function LetterSpacingTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
@@ -358,6 +371,18 @@ export const Review: Story = {
             <FontWeightTile varName="--ig-font-weight-semibold" label="semibold (600)" />
             <FontWeightTile varName="--ig-font-weight-bold" label="bold (700)" />
             <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Line height" description="None / snug / base / relaxed / loose 5-tier.">
+        <StorybookCard title="Line height">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-4)' }}>
+            <LineHeightTile varName="--ig-line-height-none" label="none (1)" />
+            <LineHeightTile varName="--ig-line-height-snug" label="snug (1.4)" />
+            <LineHeightTile varName="--ig-line-height-base" label="base (1.45)" />
+            <LineHeightTile varName="--ig-line-height-relaxed" label="relaxed (1.5)" />
+            <LineHeightTile varName="--ig-line-height-loose" label="loose (1.6)" />
           </div>
         </StorybookCard>
       </StorybookSection>

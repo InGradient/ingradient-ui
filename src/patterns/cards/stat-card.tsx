@@ -3,7 +3,7 @@ import { Stack, Text } from '../../primitives'
 import { Card } from '../../components/data-display/card'
 import { ActionBar } from '../../components/data-display/layout'
 
-const VALUE_STYLE = { lineHeight: 1 }
+const VALUE_STYLE = { lineHeight: 'var(--ig-line-height-none)' }
 
 export function StatCard({
   label,
