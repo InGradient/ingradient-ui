@@ -9,7 +9,7 @@ const ROW_STYLE = {
 
 const Chip = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-2) var(--ig-space-5);
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   border-radius: var(--ig-radius-pill);
   border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};

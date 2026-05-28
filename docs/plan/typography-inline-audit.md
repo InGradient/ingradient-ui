@@ -63,21 +63,21 @@ type scale 으로 직접 대체 부적절. 토큰은 이미 사용 중이라 유
 
 | 파일 | 라인 | 현재 | 권장 처리 | 완료 |
 |---|---|---|---|---|
-| `navigation/mobile-bottom-toolbar.tsx` | 41 | `span { font-size: 10px }` | `var(--ig-font-size-3xs)` | ⏳ |
-| `inputs/textarea.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ⏳ |
-| `data-display/table.styles.ts` | 31 | `font-size: 12px;` (`$mono` cell) | `var(--ig-font-size-xs)` | ⏳ |
-| `feedback/toast.tsx` | 72 | `font-size: 16px;` | `var(--ig-font-size-xl)` | ⏳ |
-| `inputs/date-range-picker.tsx` | 39, 43 | `font-size: 14px;` `font-size: 13px;` (DayPicker) | `var(--ig-font-size-md)`, `var(--ig-font-size-sm)` | ⏳ |
-| `data-display/tag.tsx` | 14 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
-| `overlays/help-tooltip.tsx` | 34 | `font-size: 12px;` (Bubble) | `var(--ig-font-size-xs)` | ⏳ |
-| `feedback/state-chip.tsx` | 24 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
-| `feedback/group-count-badge.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ⏳ |
-| `inputs/filter-chip-row.tsx` | 12 | `font-size: 13px;` | `var(--ig-font-size-sm)` | ⏳ |
-| `inputs/mobile-dropdown.tsx` | 17 | `font-size: 15px;` | `var(--ig-font-size-lg)` | ⏳ |
-| `inputs/chip-tabs.tsx` | 11 | `font-size: 12px;` | `var(--ig-font-size-xs)` | ⏳ |
-| `inputs/number-field.tsx` | 37 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ⏳ |
+| `navigation/mobile-bottom-toolbar.tsx` | 41 | `span { font-size: 10px }` | `var(--ig-font-size-3xs)` | ✅ Phase 1 |
+| `inputs/textarea.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ✅ Phase 1 |
+| `data-display/table.styles.ts` | 31 | `font-size: 12px;` (`$mono` cell) | `var(--ig-font-size-xs)` | ✅ Phase 1 |
+| `feedback/toast.tsx` | 72 | `font-size: 16px;` | `var(--ig-font-size-xl)` | ✅ Phase 1 |
+| `inputs/date-range-picker.tsx` | 39, 43 | `font-size: 14px;` `font-size: 13px;` (DayPicker) | `var(--ig-font-size-md)`, `var(--ig-font-size-sm)` | ✅ Phase 1 |
+| `data-display/tag.tsx` | 14 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ✅ Phase 1 |
+| `overlays/help-tooltip.tsx` | 34 | `font-size: 12px;` (Bubble) | `var(--ig-font-size-xs)` | ✅ Phase 1 |
+| `feedback/state-chip.tsx` | 24 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ✅ Phase 1 |
+| `feedback/group-count-badge.tsx` | 13 | `font-size: 11px;` | `var(--ig-font-size-2xs)` | ✅ Phase 1 |
+| `inputs/filter-chip-row.tsx` | 12 | `font-size: 13px;` | `var(--ig-font-size-sm)` | ✅ Phase 1 |
+| `inputs/mobile-dropdown.tsx` | 17 | `font-size: 15px;` | `var(--ig-font-size-lg)` | ✅ Phase 1 |
+| `inputs/chip-tabs.tsx` | 11 | `font-size: 12px;` | `var(--ig-font-size-xs)` | ✅ Phase 1 |
+| `inputs/number-field.tsx` | 37 | `font-size: 10px;` | `var(--ig-font-size-3xs)` | ✅ Phase 1 |
 
-**처리 (⏳)**: 13건 전부 토큰화 가능. `--ig-font-size-3xs` (10px) 토큰 추가 후 mobile/icon-specific 작은 라벨도 일관되게 토큰 사용.
+**완료 (✅)**: 13건 전부 토큰화 — Phase 1 (commit pending).
 
 ---
 
@@ -89,16 +89,16 @@ type scale 과 정확히 일치하는 경우).
 | 파일 | 정의 | 현재 | 권장 처리 | 완료 |
 |---|---|---|---|---|
 | `data-display/comment-thread.tsx` | Timestamp(L17), Author(L19), Body(L26) | styled.span: 2xs muted, xs primary | inline `<C1>` 또는 `<B3>` 활용 검토 | ⏸ |
-| `data-display/info-row.tsx` | InfoRowLabel(L10), InfoRowValue(L18) | xs muted, sm primary | `<C1>` / `<B3>` 매핑 가능 | ⏳ |
-| `data-display/option-row.tsx` | OptionLabel 등 | xs muted | `<C1>` | ⏳ |
-| `data-display/tag-list-item.tsx` | text styled | sm primary | `<B3>` | ⏳ |
-| `data-display/keyboard-shortcut-hint.tsx` | label | xs muted | `<C1>` | ⏳ |
-| `feedback/step-indicator.tsx` | label styled | xs muted | `<C1>` | ⏳ |
-| `feedback/status.tsx` | message text | sm muted | `<B3 tone="muted">` | ⏳ |
-| `feedback/error-boundary.tsx` | FallbackTitle (h2) | xl + 600 | `<H4>` | ⏳ |
-| `overlays/dialog-shell.tsx` | DialogDescription (p) | sm muted | `<B3 tone="muted">` | ⏳ |
-| `overlays/modal-primitives.tsx` | ModalTitle (h2) | xl + 600 | `<H4>` | ⏳ |
-| `overlays/two-column-dialog.tsx` | Title (h2) | xl + 600 | `<H4>` | ⏳ |
+| `data-display/info-row.tsx` | InfoRowLabel(L10), InfoRowValue(L18) | xs muted, sm primary | `<C1>` / `<B3>` 매핑 가능 | ⏳ Phase 2 |
+| `data-display/option-row.tsx` | OptionLabel 등 | xs muted | `<C1>` | ⏳ Phase 2 |
+| `data-display/tag-list-item.tsx` | text styled | sm primary | `<B3>` | ⏳ Phase 2 |
+| `data-display/keyboard-shortcut-hint.tsx` | label | xs muted | `<C1>` | ⏳ Phase 2 |
+| `feedback/step-indicator.tsx` | label styled | xs muted | `<C1>` | ⏳ Phase 2 |
+| `feedback/status.tsx` | message text | sm muted | `<B3 tone="muted">` | ⏳ Phase 2 |
+| `feedback/error-boundary.tsx` | FallbackTitle (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
+| `overlays/dialog-shell.tsx` | DialogDescription (p) | sm muted | `<B3 tone="muted">` | ⏳ Phase 2 |
+| `overlays/modal-primitives.tsx` | ModalTitle (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
+| `overlays/two-column-dialog.tsx` | Title (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
 
 Category A 단순 case 만 ~11건. 나머지 styled.span 들은 specific layout/interaction
 포함이라 type scale 로 단순 대체 불가능 — 유지.

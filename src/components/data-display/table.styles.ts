@@ -28,7 +28,7 @@ export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: bool
   color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
   border-bottom: 1px solid var(--ig-color-border-subtle);
   ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
-  ${(p) => p.$mono && 'font-family: monospace; font-size: 12px;'}
+  ${(p) => p.$mono && 'font-family: monospace; font-size: var(--ig-font-size-xs);'}
 `
 
 export const Tfoot = styled.tfoot`

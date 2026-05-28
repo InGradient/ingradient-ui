@@ -14,7 +14,7 @@ const Trigger = styled.button<{ $loading?: boolean }>`
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-3) var(--ig-space-6);
   color: var(--ig-color-text-primary);
-  font-size: 15px;
+  font-size: var(--ig-font-size-lg);
   font-weight: 600;
   cursor: pointer;
   display: flex;

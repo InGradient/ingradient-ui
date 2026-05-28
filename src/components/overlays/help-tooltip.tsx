@@ -31,7 +31,7 @@ const Bubble = styled(TooltipBubble)`
   min-width: 220px;
   max-width: 320px;
   color: var(--ig-color-text-secondary);
-  font-size: 12px;
+  font-size: var(--ig-font-size-xs);
   font-weight: 400;
   line-height: 1.45;
   white-space: pre-line;

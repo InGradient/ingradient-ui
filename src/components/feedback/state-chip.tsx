@@ -21,7 +21,7 @@ const Chip = styled.span<{ $bg: string; $color: string }>`
   height: 20px;
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
-  font-size: 10px;
+  font-size: var(--ig-font-size-3xs);
   font-weight: 700;
   letter-spacing: 0.04em;
   white-space: nowrap;

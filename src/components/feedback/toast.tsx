@@ -69,7 +69,7 @@ const CloseButton = styled.button`
   background: transparent;
   border: none;
   color: inherit;
-  font-size: 16px;
+  font-size: var(--ig-font-size-xl);
   line-height: 1;
   padding: 0 2px;
   cursor: pointer;

@@ -10,7 +10,7 @@ const Badge = styled.span<{ $size: 'sm' | 'md' }>`
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-image-group-circle-bg);
   color: var(--ig-color-text-primary);
-  font-size: 11px;
+  font-size: var(--ig-font-size-2xs);
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;

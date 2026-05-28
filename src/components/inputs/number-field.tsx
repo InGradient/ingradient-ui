@@ -34,7 +34,7 @@ const SpinBtn = styled.button`
   border: none;
   color: var(--ig-color-text-soft);
   cursor: pointer;
-  font-size: 10px;
+  font-size: var(--ig-font-size-3xs);
   line-height: 1;
   padding: 0;
   &:hover { background: var(--ig-color-surface-interactive); color: var(--ig-color-text-primary); }

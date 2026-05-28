@@ -38,7 +38,7 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   &:hover:not(:disabled) { color: var(--ig-color-text-primary); background: var(--ig-color-white-07); }
   &:disabled { opacity: 0.4; cursor: not-allowed; }
   svg { width: 20px; height: 20px; flex-shrink: 0; }
-  span { font-size: 10px; line-height: 1; white-space: nowrap; }
+  span { font-size: var(--ig-font-size-3xs); line-height: 1; white-space: nowrap; }
 `
 
 export interface MobileBottomToolbarAction {

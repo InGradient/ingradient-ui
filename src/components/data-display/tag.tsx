@@ -11,7 +11,7 @@ export const Tag = styled.span<{ $bg: string; $color: string }>`
   align-items: center;
   padding: 1px var(--ig-space-2);
   border-radius: var(--ig-radius-xs);
-  font-size: 10px;
+  font-size: var(--ig-font-size-3xs);
   font-weight: 600;
   letter-spacing: 0.03em;
   white-space: nowrap;

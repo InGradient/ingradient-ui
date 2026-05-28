@@ -36,11 +36,11 @@ const Calendar = styled.div`
   .rdp-months { justify-content: center; }
   .rdp-month { width: 100%; }
   .rdp-caption_label {
-    font-size: 14px;
+    font-size: var(--ig-font-size-md);
     font-weight: 700;
     color: var(--ig-color-text-primary);
   }
-  .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: 13px; color: var(--ig-color-text-secondary); }
+  .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
   .rdp-day_button { width: 100%; height: 100%; border-radius: var(--ig-radius-sm); }
   .rdp-selected .rdp-day_button, .rdp-day_button:hover {
     background: var(--ig-color-blue-tint-16);

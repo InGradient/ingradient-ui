@@ -10,7 +10,7 @@ const variantStyles = {
   `,
   monospace: css`
     font-family: monospace;
-    font-size: 11px;
+    font-size: var(--ig-font-size-2xs);
   `,
 }
 
