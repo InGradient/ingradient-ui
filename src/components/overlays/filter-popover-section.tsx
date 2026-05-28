@@ -11,7 +11,7 @@ const SectionTitle = styled.div`
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 const SectionHeader = styled.div`

@@ -62,7 +62,7 @@ const FieldLabelText = styled.label`
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--ig-letter-spacing-normal);
 `
 
 export interface FormFieldProps {

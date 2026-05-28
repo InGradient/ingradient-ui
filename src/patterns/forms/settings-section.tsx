@@ -10,7 +10,7 @@ export interface SettingsSectionProps {
 export function SettingsSection({ title, children, className }: SettingsSectionProps) {
   return (
     <Stack as="section" gap={5} className={className}>
-      {title ? <Text as="h3" tone="muted" size="13px" weight="semibold" uppercase letterSpacing="0.04em">{title}</Text> : null}
+      {title ? <Text as="h3" tone="muted" size="13px" weight="semibold" uppercase letterSpacing="normal">{title}</Text> : null}
       {children}
     </Stack>
   )

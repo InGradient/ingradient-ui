@@ -20,7 +20,7 @@ export function StatCard({
     <Card elevation="card" radius="var(--ig-radius-xl)" padding="var(--ig-space-8)">
       <Stack gap={3}>
         <ActionBar>
-          <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="0.05em">{label}</Text>
+          <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="wide">{label}</Text>
           {meta}
         </ActionBar>
         <Text size="var(--ig-font-size-3xl)" weight="black" style={VALUE_STYLE}>{value}</Text>

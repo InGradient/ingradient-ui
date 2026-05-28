@@ -39,7 +39,7 @@ const Label = styled.span`
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 const fadeIn = keyframes`from { opacity: 0 } to { opacity: 1 }`

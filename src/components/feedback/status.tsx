@@ -23,5 +23,5 @@ export const StatusPill = styled.span<{ $tone?: StatusTone; tone?: StatusTone }>
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
