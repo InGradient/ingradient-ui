@@ -4,7 +4,7 @@ import { ColorInput } from '../../components/inputs/color-input'
 
 const RANDOM_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
-  fontSize: 12,
+  fontSize: 'var(--ig-font-size-xs)',
   lineHeight: 1,
 }
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 /** Coord readout — toolbar 와 분리된 별도 컴포넌트. 보통 canvas 아래 sibling 으로 배치.
  *  min-height + line-height 로 텍스트가 비어도 height 고정 (layout shift 방지). */
 const CoordReadoutRoot = styled.div`
-  font-size: 12px;
+  font-size: var(--ig-font-size-xs);
   font-family: ui-monospace, monospace;
   color: var(--ig-color-text-muted);
   user-select: all;

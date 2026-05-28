@@ -139,3 +139,23 @@ Phase 1+2 후 components 전수 inline scan 으로 추가 발견된 3건. inline
 | `overlays/help-tooltip.tsx` | 19 | `fontSize: 10` (ICON_STYLE) | `'var(--ig-font-size-3xs)'` | ✅ Phase 3 |
 
 이로써 components 안 hardcoded font-size 0 (styled-component 안 + inline style 객체 안 모두).
+
+---
+
+## Category P — patterns 영역 audit (Phase 4)
+
+components 와 동일 패턴으로 patterns/ 전수 scan.
+
+| 파일 | 라인 | Category | 현재 | 권장 처리 | 완료 |
+|---|---|---|---|---|---|
+| `navigation/sidebar-shell.styles.ts` | 77 | C (styled) | `font-size: 13px` | `var(--ig-font-size-sm)` | ✅ Phase 4 |
+| `annotation/canvas-coord-readout.tsx` | 7 | C (styled) | `font-size: 12px` | `var(--ig-font-size-xs)` | ✅ Phase 4 |
+| `forms/settings-hint.tsx` | 6 | C (styled) | `font-size: 13px` | `var(--ig-font-size-sm)` | ✅ Phase 4 |
+| `forms/settings-row.tsx` | 8 | D (inline obj) | `fontSize: 14` | `'var(--ig-font-size-md)'` | ✅ Phase 4 |
+| `forms/color-input-row.tsx` | 7 | D (inline obj) | `fontSize: 12` | `'var(--ig-font-size-xs)'` | ✅ Phase 4 |
+
+Category B (inline raw text): **0건** — patterns 는 깨끗.
+Category A (styled wrapper 토큰 사용): page-shell.tsx 1 파일에 다수 styled element 존재.
+대부분 layout/element 다르므로 단순 type scale 대체 부적합. 토큰 이미 사용 — OK.
+
+**결과: patterns 안 hardcoded font-size 0** (styled + inline 모두).

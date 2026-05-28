@@ -74,7 +74,7 @@ const rowMixin = `
   padding: 0 ${SIDEBAR_INSET}px;
   gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   text-decoration: none;
   transition: color 0.15s, background 0.15s;
   cursor: pointer;
