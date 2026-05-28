@@ -124,8 +124,8 @@ const DIVIDER_STYLE = {
 
 const BADGE_STYLE = {
   marginLeft: 'auto',
-  minWidth: 20,
-  height: 20,
+  minWidth: iconSizeNumbers.xl,
+  height: iconSizeNumbers.xl,
   padding: '0 var(--ig-space-2)',
   borderRadius: 'var(--ig-radius-pill)',
   background: 'var(--ig-color-danger)',

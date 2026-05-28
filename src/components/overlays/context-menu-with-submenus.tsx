@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { popupSizeNumbers } from '../../tokens/core'
 import { FloatingOverlay } from './floating-overlay'
 import { MenuItem } from './menu-item'
 
@@ -9,7 +10,7 @@ const BACKDROP_STYLE = {
 }
 
 const MENU_STYLE = {
-  minWidth: 180,
+  minWidth: popupSizeNumbers.xs,
   padding: 'var(--ig-space-2)',
   display: 'flex' as const,
   flexDirection: 'column' as const,

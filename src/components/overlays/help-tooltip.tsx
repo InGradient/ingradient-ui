@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { iconSizeNumbers } from '../../tokens/core'
 import { TooltipBubble } from './popovers'
 
 const Wrap = styled.span`
@@ -11,10 +12,10 @@ const ICON_STYLE = {
   display: 'inline-flex' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
-  width: 16,
-  height: 16,
+  width: iconSizeNumbers.md,
+  height: iconSizeNumbers.md,
   borderRadius: 'var(--ig-radius-pill)',
-  border: '1px solid var(--ig-color-border-strong)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   color: 'var(--ig-color-text-muted)',
   fontSize: 'var(--ig-font-size-3xs)',
   fontWeight: 'var(--ig-font-weight-bold)',

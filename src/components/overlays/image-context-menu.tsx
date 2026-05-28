@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useClickOutside } from '../../hooks/useClickOutside'
+import { popupSizeNumbers } from '../../tokens/core'
 import { FloatingOverlay } from './floating-overlay'
 import { MenuItem } from './menu-item'
 
 const MENU_STYLE = {
-  minWidth: 200,
+  minWidth: popupSizeNumbers.xs,
   borderRadius: 'var(--ig-radius-sm)',
   overflow: 'hidden' as const,
 }

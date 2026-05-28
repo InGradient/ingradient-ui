@@ -154,6 +154,16 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
   )
 }
 
+function PopupSizeTile({ varName, label }: { varName: string; label: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      <div style={{ width: `var(${varName})`, height: 32, background: 'var(--ig-color-surface-raised)', border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)' }} />
+      <TokenName>{label}</TokenName>
+      <TokenLabel>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function IconSizeTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
@@ -431,6 +441,18 @@ export const Review: Story = {
             <FontWeightTile varName="--ig-font-weight-semibold" label="semibold (600)" />
             <FontWeightTile varName="--ig-font-weight-bold" label="bold (700)" />
             <FontWeightTile varName="--ig-font-weight-black" label="black (800)" />
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Popup size" description="Popover / context menu / dropdown 의 width.">
+        <StorybookCard title="Popup sizes">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            <PopupSizeTile varName="--ig-popup-xs" label="xs (220px)" />
+            <PopupSizeTile varName="--ig-popup-sm" label="sm (280px)" />
+            <PopupSizeTile varName="--ig-popup-md" label="md (320px)" />
+            <PopupSizeTile varName="--ig-popup-lg" label="lg (360px)" />
+            <PopupSizeTile varName="--ig-popup-xl" label="xl (480px)" />
           </div>
         </StorybookCard>
       </StorybookSection>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { popupSizeNumbers } from '../../tokens/core'
 import { FloatingOverlay } from '../overlays/floating-overlay'
 
 const WRAP_STYLE = { position: 'relative' as const, display: 'inline-flex' as const }
@@ -10,7 +11,7 @@ const BACKDROP_STYLE = {
   zIndex: 'calc(var(--ig-z-context-menu) - 1)' as unknown as number,
 }
 
-const PANEL_BASE_STYLE = { minWidth: 280, padding: 'var(--ig-space-4)' }
+const PANEL_BASE_STYLE = { minWidth: popupSizeNumbers.sm, padding: 'var(--ig-space-4)' }
 
 const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   display: inline-flex;
