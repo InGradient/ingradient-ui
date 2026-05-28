@@ -12,7 +12,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   background:
     linear-gradient(180deg, var(--ig-color-sidebar-bg-top) 0%, var(--ig-color-sidebar-bg-bottom) 100%),
     var(--ig-color-bg-canvas);
-  border-right: 1px solid var(--ig-color-border-subtle);
+  border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   flex-shrink: 0;
   transition: width 0.2s ease;
   ${media.md} {
@@ -34,7 +34,7 @@ export const SidebarBrandRow = styled.div`
   justify-content: space-between;
   flex-shrink: 0;
   background: var(--ig-color-surface-header);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   box-sizing: border-box;
   &:hover { background: var(--ig-color-surface-interactive); }
 `
@@ -54,7 +54,7 @@ export const SidebarCloseButton = styled.button`
 `
 
 export const SidebarTopActionWrap = styled.div`
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
 export const SidebarNavList = styled.nav`
@@ -114,7 +114,7 @@ export const SidebarBottom = styled.div`
   display: flex;
   flex-direction: column;
   padding: var(--ig-space-5) 0;
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   gap: var(--ig-space-1);
   flex-shrink: 0;
 `

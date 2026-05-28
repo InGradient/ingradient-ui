@@ -78,7 +78,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
     color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger-soft)' : 'var(--ig-color-text-primary)')};
   }
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: -2px;
   }
   &:disabled {

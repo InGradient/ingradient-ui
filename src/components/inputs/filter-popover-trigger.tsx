@@ -21,7 +21,7 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   padding: ${(p) => (p.$iconOnly ? '0' : '0 var(--ig-space-4)')};
   justify-content: center;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-16)' : 'var(--ig-color-surface-interactive)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);

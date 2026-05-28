@@ -21,7 +21,7 @@ const SECTION_BODY_STYLE = {
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   &:last-child {
     border-bottom: none;
   }

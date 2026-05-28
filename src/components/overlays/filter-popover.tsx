@@ -6,7 +6,7 @@ const PopoverRoot = styled.div<{ $width: number }>`
   ${surfaceRaised}
   width: ${(p) => `${p.$width}px`};
   padding: var(--ig-space-5);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-popover);
   z-index: 100;

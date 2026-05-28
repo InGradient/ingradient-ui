@@ -33,7 +33,7 @@ export const CompactModalCard = styled(ModalCard)`
 
 export const ModalHeader = styled.div`
   padding: var(--ig-space-9) var(--ig-space-10) var(--ig-space-7);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -56,6 +56,15 @@ function SpacingTile({ varName }: { varName: string }) {
   )
 }
 
+function BorderWidthTile({ varName }: { varName: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      <div style={{ width: 80, height: 24, borderTop: `var(${varName}) solid var(--ig-color-accent)` }} />
+      <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
+    </div>
+  )
+}
+
 function RadiusTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div>
@@ -168,6 +177,16 @@ export const Review: Story = {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((n) => (
               <SpacingTile key={n} varName={`--ig-space-${n}`} />
             ))}
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Border width" description="--ig-border-1px / -2px / -3px.">
+        <StorybookCard title="Border widths">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            <BorderWidthTile varName="--ig-border-1px" />
+            <BorderWidthTile varName="--ig-border-2px" />
+            <BorderWidthTile varName="--ig-border-3px" />
           </div>
         </StorybookCard>
       </StorybookSection>

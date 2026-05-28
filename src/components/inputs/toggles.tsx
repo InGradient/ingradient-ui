@@ -16,7 +16,7 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   height: 24px;
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-bg)' : 'var(--ig-color-toggle-off-bg)')};
-  border: 1px solid ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-border)' : 'var(--ig-color-toggle-off-border)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-border)' : 'var(--ig-color-toggle-off-border)')};
   position: relative;
   transition: background-color var(--ig-motion-fast);
 

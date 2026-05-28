@@ -9,7 +9,7 @@ const Shell = styled.div<{ $width: string; $maxHeight: string }>`
   max-width: calc(100vw - 32px);
   max-height: ${(p) => p.$maxHeight};
   background-color: var(--ig-color-surface-muted);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-lg);
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ const Shell = styled.div<{ $width: string; $maxHeight: string }>`
 
 const Header = styled.div`
   padding: var(--ig-space-7) var(--ig-space-11);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@ const Body = styled.div`
 const Sidebar = styled.div<{ $width: string }>`
   width: ${(p) => p.$width};
   background-color: var(--ig-color-surface-panel);
-  border-right: 1px solid var(--ig-color-border-subtle);
+  border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   padding: var(--ig-space-5) 0;
   flex-shrink: 0;
   overflow-y: auto;

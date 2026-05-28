@@ -11,7 +11,7 @@ const OptionBtn = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-3) var(--ig-space-5);
   text-align: left;
   border-radius: var(--ig-radius-md);
-  border: 1px solid
+  border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
   background: ${(p) =>
     p.$active ? 'var(--ig-color-accent-soft-surface)' : 'var(--ig-color-surface-muted)'};

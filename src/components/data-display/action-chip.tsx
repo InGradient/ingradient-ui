@@ -7,7 +7,7 @@ const Chip = styled.button`
   align-items: center;
   gap: var(--ig-space-2);
   padding: var(--ig-space-1) var(--ig-space-3);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);

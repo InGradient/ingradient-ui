@@ -73,7 +73,7 @@ export const Panel = styled.section`
 
 export const PanelHeader = styled.div`
   padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,7 +106,7 @@ export const Toolbar = styled.div`
   flex-wrap: wrap;
   padding: var(--ig-space-6) var(--ig-space-7);
   border-radius: var(--ig-radius-lg);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-toolbar-surface);
 `
 

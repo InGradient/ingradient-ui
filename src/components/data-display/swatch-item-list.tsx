@@ -14,7 +14,7 @@ const Row = styled.li`
   padding: var(--ig-space-2) var(--ig-space-4) var(--ig-space-2) var(--ig-space-5);
   border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-surface-interactive);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
   }

@@ -1,4 +1,5 @@
 import {
+  borderWidthScale,
   foundationColors,
   foundationColorsLight,
   motionScale,
@@ -225,6 +226,9 @@ const staticVars = {
   '--ig-space-11': spacingScale[11],
   '--ig-space-12': spacingScale[12],
   '--ig-space-13': spacingScale[13],
+  '--ig-border-1px': borderWidthScale['1px'],
+  '--ig-border-2px': borderWidthScale['2px'],
+  '--ig-border-3px': borderWidthScale['3px'],
   '--ig-z-dropdown': String(zIndexScale.dropdown),
   '--ig-z-popover': String(zIndexScale.popover),
   '--ig-z-context-menu': String(zIndexScale.contextMenu),

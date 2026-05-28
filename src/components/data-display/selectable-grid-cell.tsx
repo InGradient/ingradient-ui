@@ -8,7 +8,7 @@ const Cell = styled.div<{ $selected: boolean }>`
   border-radius: var(--ig-radius-2xl);
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid
+  border: var(--ig-border-1px) solid
     ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'var(--ig-color-border-subtle)')};
   box-shadow: ${(p) =>
     p.$selected

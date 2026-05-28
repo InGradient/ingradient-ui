@@ -255,8 +255,22 @@ inline `top/right/bottom/left` raw number 도 spacing 의 일종. 추가 확인.
 
 `inset: 0`, `top: 0`, `left: 0` 등 0 값은 토큰 의미 없음 — 유지.
 
-**별도 (border-width)**: `border: 1px solid ...` 형식은 다수 (~30+ 곳)이나 border-width 는
-spacing 과 분리된 개념. 향후 별도 border 토큰 작업.
+---
+
+## Category B-Width — border-width audit (Phase 8)
+
+신규 토큰 (`src/tokens/core/borders.ts` 추가):
+- `--ig-border-1px` = 1px (hairline default)
+- `--ig-border-2px` = 2px (selected / focus outline)
+- `--ig-border-3px` = 3px (strong highlight)
+
+`tokens.stories` 에 BorderWidthTile + 새 섹션 추가.
+
+토큰화 완료 (63건 일괄):
+- `border: 1px solid` (36건) + `border-bottom/top/right/left: 1px solid` (22건) → `var(--ig-border-1px)`
+- `border: 2px solid` (2건), `border: 2px dashed` (1건) → `var(--ig-border-2px)`
+- `border-left: 3px solid` (2건) → `var(--ig-border-3px)`
+- `outline: 2px solid` (4건) → `var(--ig-border-2px)`
 
 ## 전체 audit 최종 결과
 
@@ -265,8 +279,9 @@ spacing 과 분리된 개념. 향후 별도 border 토큰 작업.
 | Typography hardcoded font-size (components, patterns) | 24건 | **0** |
 | Spacing hardcoded (padding/margin/gap, components, patterns) | 14건 + 토큰 신규 3 | **0** |
 | Position offset (top/right/bottom/left) | 2건 | **0** |
+| Border width / outline | 63건 + 토큰 신규 3 | **0** |
 | 죽은 코드 | breadcrumbs ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 
 `@ingradient/ui` 의 components + patterns 안 hardcoded magic number **완전히 0** —
-typography + spacing + position 모두 토큰만 사용.
+typography + spacing + position + border-width 모두 토큰만 사용.

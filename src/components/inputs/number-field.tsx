@@ -22,7 +22,7 @@ const SpinnerGroup = styled.div`
   flex-direction: column;
   height: 100%;
   width: 28px;
-  border-left: 1px solid var(--ig-color-border-subtle);
+  border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
 const SpinBtn = styled.button`
@@ -38,7 +38,7 @@ const SpinBtn = styled.button`
   line-height: 1;
   padding: 0;
   &:hover { background: var(--ig-color-surface-interactive); color: var(--ig-color-text-primary); }
-  &:first-child { border-bottom: 1px solid var(--ig-color-border-subtle); }
+  &:first-child { border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
   &:disabled { opacity: 0.3; cursor: default; }
 `
 

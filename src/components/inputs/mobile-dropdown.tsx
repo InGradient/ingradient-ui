@@ -10,7 +10,7 @@ const CHECK_STYLE = { marginLeft: 'auto' }
 const Trigger = styled.button<{ $loading?: boolean }>`
   width: 100%;
   background: var(--ig-color-white-06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: var(--ig-border-1px) solid rgba(255, 255, 255, 0.10);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-3) var(--ig-space-6);
   color: var(--ig-color-text-primary);
@@ -34,7 +34,7 @@ const Dropdown = styled.div`
   left: 0;
   right: 0;
   background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(10, 14, 20, 0.98) 100%);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: var(--ig-border-1px) solid rgba(148, 163, 184, 0.18);
   border-radius: var(--ig-radius-xl);
   box-shadow: var(--ig-shadow-popover);
   backdrop-filter: blur(16px);
@@ -44,7 +44,7 @@ const Dropdown = styled.div`
   overflow-y: auto;
   min-height: 0;
   > button:not(:last-child) {
-    border-bottom: 1px solid var(--ig-color-white-06);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-white-06);
   }
 `
 

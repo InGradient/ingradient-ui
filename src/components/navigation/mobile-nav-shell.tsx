@@ -19,7 +19,7 @@ const AppHeader = styled.header`
     gap: var(--ig-space-3);
     padding: 0 var(--ig-space-4);
     background: var(--ig-color-surface-header);
-    border-bottom: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     backdrop-filter: blur(14px);
   }
 `
@@ -55,7 +55,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     max-height: 85vh;
     overflow-y: auto;
     background: var(--ig-color-surface-header);
-    border-bottom: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     box-shadow: 0 16px 48px var(--ig-color-modal-backdrop);
     z-index: 120;
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});

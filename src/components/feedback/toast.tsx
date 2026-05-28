@@ -34,7 +34,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
     color: ${alertToneStyles[$tone].color};
   `}
   padding: var(--ig-space-4) var(--ig-space-6);
-  border: 1px solid;
+  border: var(--ig-border-1px) solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
   box-shadow: var(--ig-shadow-floating);
@@ -54,7 +54,7 @@ const Message = styled.span`
 const ActionButton = styled.button`
   flex-shrink: 0;
   background: transparent;
-  border: 1px solid currentColor;
+  border: var(--ig-border-1px) solid currentColor;
   border-radius: var(--ig-radius-sm);
   color: inherit;
   font: inherit;

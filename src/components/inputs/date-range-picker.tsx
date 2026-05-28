@@ -26,7 +26,7 @@ const Calendar = styled.div`
   padding: var(--ig-space-5);
   border-radius: var(--ig-radius-xl);
   background: linear-gradient(180deg, rgba(17, 23, 32, 0.96) 0%, rgba(10, 14, 20, 0.96) 100%);
-  border: 1px solid var(--ig-color-white-06);
+  border: var(--ig-border-1px) solid var(--ig-color-white-06);
   .rdp-root {
     --rdp-accent-color: var(--ig-color-accent);
     --rdp-accent-background-color: var(--ig-color-blue-tint-16);

@@ -6,7 +6,7 @@ const tabsTone = css`
   position: relative;
   padding: var(--ig-space-1);
   border-radius: var(--ig-radius-lg);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-tab-surface);
   gap: var(--ig-space-1);
 `
@@ -20,7 +20,7 @@ const TabsRoot = styled.div<{ $variant: 'pill' | 'underline' }>`
           align-items: stretch;
           gap: 0;
           width: 100%;
-          border-bottom: 1px solid var(--ig-color-border-subtle);
+          border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
         `
       : tabsTone}
 `

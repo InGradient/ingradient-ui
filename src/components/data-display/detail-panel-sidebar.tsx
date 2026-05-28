@@ -23,7 +23,7 @@ const FixedSection = styled.div`
   flex-direction: column;
   gap: var(--ig-space-3);
   padding: var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   &:last-child {
     border-bottom: none;
   }

@@ -8,7 +8,7 @@ export const Alert = styled.div<{ $tone?: keyof typeof alertToneStyles }>`
     color: ${alertToneStyles[$tone].color};
   `}
   padding: var(--ig-space-5) var(--ig-space-6);
-  border: 1px solid;
+  border: var(--ig-border-1px) solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
 `

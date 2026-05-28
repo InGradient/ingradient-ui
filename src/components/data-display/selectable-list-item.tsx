@@ -11,7 +11,7 @@ const flatStyles = css`
 
 const cardStyles = css`
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
 
@@ -46,7 +46,7 @@ const Root = styled.button<{
     p.$dragOver &&
     css`
       background: var(--ig-color-blue-tint-18);
-      outline: 2px solid var(--ig-color-accent);
+      outline: var(--ig-border-2px) solid var(--ig-color-accent);
       outline-offset: -2px;
     `}
 

@@ -16,7 +16,7 @@ export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
   gap: var(--ig-space-1);
   width: 100%;
   padding: var(--ig-space-2);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].root};
   background: var(--ig-color-surface-panel);
 `
@@ -27,7 +27,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   right: var(--ig-space-2);
   top: ${(p) => `${p.$top}px`};
   height: ${(p) => `${p.$height}px`};
-  border-left: 3px solid var(--ig-color-accent-soft);
+  border-left: var(--ig-border-3px) solid var(--ig-color-accent-soft);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].item};
   background: var(--ig-color-tab-highlight);
   opacity: ${(p) => (p.$visible ? 1 : 0)};
@@ -66,7 +66,7 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: -2px;
     box-shadow: var(--ig-shadow-focus-ring);
   }

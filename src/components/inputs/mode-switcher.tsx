@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Row = styled.div<{ $size: 'sm' | 'md'; $shape: 'rounded' | 'pill' }>`
   display: inline-flex;
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => (p.$shape === 'pill' ? 'var(--ig-radius-pill)' : 'var(--ig-radius-md)')};
   overflow: hidden;
   background: ${(p) => (p.$shape === 'pill' ? 'var(--ig-color-surface-raised)' : 'var(--ig-color-surface-muted)')};

@@ -21,7 +21,7 @@ export const Menu = styled.div`
   max-height: 160px;
   overflow-y: auto;
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);
   z-index: var(--ig-z-dropdown);

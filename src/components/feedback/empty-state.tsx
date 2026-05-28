@@ -30,7 +30,7 @@ const Description = styled.div`
 `
 
 const ActionBtn = styled.button`
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-sm);
   background: transparent;
   color: var(--ig-color-text-primary);

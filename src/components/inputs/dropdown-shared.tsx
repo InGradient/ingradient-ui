@@ -78,7 +78,7 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
   padding: var(--ig-space-2);
   border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   box-shadow: var(--ig-shadow-popover);
   backdrop-filter: blur(16px);
   overflow-y: auto;

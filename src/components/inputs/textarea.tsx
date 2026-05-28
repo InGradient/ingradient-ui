@@ -19,7 +19,7 @@ const Field = styled.textarea<{ $variant: TextareaVariant; $minHeight: number }>
   min-height: ${(p) => p.$minHeight}px;
   padding: var(--ig-space-3);
   background: var(--ig-color-surface-muted);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   color: var(--ig-color-text-primary);
   resize: vertical;

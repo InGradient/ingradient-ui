@@ -5,12 +5,12 @@ export type DropZoneVariant = 'outlined' | 'filled'
 
 const variantBase = {
   outlined: css`
-    border: 2px dashed var(--ig-color-border-subtle);
+    border: var(--ig-border-2px) dashed var(--ig-color-border-subtle);
     border-radius: var(--ig-radius-lg);
     background: transparent;
   `,
   filled: css`
-    border: 1px solid var(--ig-color-border-subtle);
+    border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     border-radius: var(--ig-radius-xxs);
     background: var(--ig-color-surface-raised);
   `,

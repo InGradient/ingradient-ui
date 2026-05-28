@@ -40,7 +40,7 @@ const Textarea = styled.textarea`
   min-height: 56px;
   resize: vertical;
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);

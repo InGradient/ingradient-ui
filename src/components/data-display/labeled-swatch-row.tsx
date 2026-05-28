@@ -7,7 +7,7 @@ const Item = styled.li<{ $selected?: boolean }>`
   cursor: pointer;
   list-style: none;
   background: ${(p) => (p.$selected ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
-  border-left: 3px solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
+  border-left: var(--ig-border-3px) solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast);
   &:hover {
     background: var(--ig-color-white-04);

@@ -14,7 +14,7 @@ const Badge = styled.span<{ $size: 'sm' | 'md' }>`
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  border: 1px solid var(--ig-color-image-group-circle-border);
+  border: var(--ig-border-1px) solid var(--ig-color-image-group-circle-border);
 `
 
 export interface GroupCountBadgeProps {

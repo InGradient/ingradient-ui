@@ -25,7 +25,7 @@ const SpinnerEl = styled.span<{ $px: number; $color: string }>`
   flex-shrink: 0;
   width: ${(p) => p.$px}px;
   height: ${(p) => p.$px}px;
-  border: 2px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-2px) solid var(--ig-color-border-subtle);
   border-top-color: ${(p) => p.$color};
   border-radius: 50%;
   animation: ${spin} 0.7s linear infinite;

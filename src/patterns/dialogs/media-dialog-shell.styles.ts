@@ -64,7 +64,7 @@ export const MediaDialogSidebar = styled.aside.attrs<{ $width: number }>((p) => 
   style: { width: `${p.$width}px` },
 }))`
   flex-shrink: 0;
-  border-left: 1px solid var(--ig-color-border-subtle);
+  border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-panel);
   display: flex;
   flex-direction: column;

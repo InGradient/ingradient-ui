@@ -11,7 +11,7 @@ const Card = styled.div<{ $selected: boolean }>`
   width: 100%;
   aspect-ratio: 4 / 3;
   background: var(--ig-color-surface-muted);
-  border: 2px solid ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'transparent')};
+  border: var(--ig-border-2px) solid ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'transparent')};
   border-radius: var(--ig-radius-md);
   overflow: hidden;
   cursor: pointer;

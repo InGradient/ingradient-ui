@@ -7,7 +7,7 @@ const Btn = styled.button<{ $size: 'sm' | 'md' }>`
   align-items: center;
   gap: var(--ig-space-2);
   padding: ${(p) => (p.$size === 'sm' ? 'var(--ig-space-1) var(--ig-space-3)' : 'var(--ig-space-2) var(--ig-space-4)')};
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-muted);

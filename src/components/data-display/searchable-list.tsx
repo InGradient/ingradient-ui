@@ -9,7 +9,7 @@ const Wrap = styled.div`
 const SearchInput = styled.input`
   width: 100%;
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
@@ -27,7 +27,7 @@ const Dropdown = styled.div`
   max-height: 200px;
   overflow-y: auto;
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-md);
   margin-top: var(--ig-space-1);
@@ -43,7 +43,7 @@ const EmptyMsg = styled.div`
 const ActionLink = styled.button`
   display: block;
   margin: var(--ig-space-2) auto var(--ig-space-3);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-sm);
   background: transparent;
   color: var(--ig-color-accent-soft);
