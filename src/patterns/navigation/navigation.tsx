@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { surfacePanel, surfaceRaised } from '../../primitives'
-import { headerSurface } from '../shared/surfaces'
+import { headerSurface } from '../../primitives/recipes/patterns'
 
 export const SidebarNav = styled.nav`
   ${surfacePanel}
