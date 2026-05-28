@@ -159,3 +159,61 @@ Category A (styled wrapper 토큰 사용): page-shell.tsx 1 파일에 다수 sty
 대부분 layout/element 다르므로 단순 type scale 대체 부적합. 토큰 이미 사용 — OK.
 
 **결과: patterns 안 hardcoded font-size 0** (styled + inline 모두).
+
+---
+
+## Category S — spacing 토큰 audit (Phase 5)
+
+font-size 와 동일 audit 를 spacing (padding/margin/gap) 에 적용.
+
+### spacing tokens
+| 토큰 | px |
+|---|---|
+| --ig-space-0 | 0 |
+| --ig-space-1 | 4 |
+| --ig-space-2 | 6 |
+| --ig-space-3 | 8 |
+| --ig-space-4 | 10 |
+| --ig-space-5 | 12 |
+| --ig-space-6 | 14 |
+| --ig-space-7 | 16 |
+| --ig-space-8 | 18 |
+| --ig-space-9 | 20 |
+| --ig-space-10 | 22 |
+| --ig-space-11 | 24 |
+| --ig-space-12 | 28 |
+| --ig-space-13 | 32 |
+
+(1-3px 작은 값 토큰 없음 — 매핑 불가)
+
+### 처리 가능 inline (✅ Phase 5)
+
+| 파일 | 라인 | 현재 | 처리 | 완료 |
+|---|---|---|---|---|
+| `navigation/stepper.tsx` | 11 | `gap: 12` | `'var(--ig-space-5)'` | ✅ Phase 5 |
+| `navigation/stepper.tsx` | 13 | `gap: 8` | `'var(--ig-space-3)'` | ✅ Phase 5 |
+| `navigation/pagination.tsx` | 14 | `gap: 6` | `'var(--ig-space-2)'` | ✅ Phase 5 |
+| `patterns/charts/chart-container.tsx` | 23 | `gap: 10` | `'var(--ig-space-4)'` | ✅ Phase 5 |
+
+### 잔여 (1-3px — 토큰 없음, ⏸)
+
+| 파일 | 라인 | 현재 | 비고 |
+|---|---|---|---|
+| `components/data-display/option-row.tsx` | 30 | `gap: 2px` | 작은 spacing, 토큰 없음 |
+| `components/navigation/mobile-bottom-toolbar.tsx` | 27 | `gap: 3px` | 작은 spacing |
+| `components/data-display/keyboard-shortcut-hint.tsx` | 6, 15 | `gap: 2px`, `padding: 0 3px` | 작은 spacing |
+| `components/feedback/toast.tsx` | 61, 74 | `padding: 2px var(--ig-space-3)`, `padding: 0 2px` | mixed (2px) |
+| `components/inputs/color-input.tsx` | 7 | `padding: 2px` | 작은 spacing |
+| `components/data-display/tag.tsx` | 12 | `padding: 1px var(--ig-space-2)` | 1px |
+| `components/inputs/drag-handle.tsx` | 28 | `gap: 2px` | 작은 spacing |
+| `components/inputs/toolbar-shell.styles.ts` | 107 | `margin: 2px 0` | 2px |
+| `components/navigation/mobile-nav-shell.tsx` | 92 | `gap: 2` (SECTION_STYLE) | 작은 spacing |
+| `components/overlays/context-menu-with-submenus.tsx` | 16 | `gap: 2` (MENU_STYLE) | 작은 spacing |
+
+**Phase 5 결과**: 매핑 가능한 4건 토큰화 완료. 잔여 ~10건은 1-3px 의 작은 spacing 으로
+현재 토큰 scale (최소 4px = space-1) 에 매핑 없음. 별도 결정 필요:
+
+- **옵션 A**: 1-3px 토큰 추가 (예: `space-px=1px`, `space-half=2px`, `space-0.5=3px`). 모든
+  spacing 토큰화 가능. 단 design system 일반 관행은 1-3px 토큰 안 만듦 (Material 4dp baseline,
+  Tailwind 1=4px 부터). 작은 값은 case-specific.
+- **옵션 B**: 그대로 둠. 1-3px 은 의도적 fine-tuning 으로 hardcoded 유지.

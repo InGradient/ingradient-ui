@@ -20,7 +20,7 @@ const ChartFrame = styled.div<{ $height: number }>`
 `
 
 const EMPTY_STYLE = { padding: 'var(--ig-space-12)' }
-const LOADING_STYLE = { display: 'grid' as const, gap: 10 }
+const LOADING_STYLE = { display: 'grid' as const, gap: 'var(--ig-space-4)' }
 
 export function ChartContainer({
   title,
