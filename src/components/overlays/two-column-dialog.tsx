@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { H4 } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
 import { DialogCloseButton } from './dialog-close-button'
 
@@ -23,13 +24,6 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-`
-
-const Title = styled.h2`
-  font-size: var(--ig-font-size-xl);
-  font-weight: 600;
-  color: var(--ig-color-text-primary);
-  margin: 0;
 `
 
 const Body = styled.div`
@@ -77,7 +71,7 @@ export function TwoColumnDialog({
     <ModalBackdrop onClick={() => onClose()}>
       <Shell $width={width} $maxHeight={maxHeight} onClick={(e) => e.stopPropagation()}>
         <Header>
-          <Title>{title}</Title>
+          <H4>{title}</H4>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Body>

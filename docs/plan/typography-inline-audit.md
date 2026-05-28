@@ -89,19 +89,21 @@ type scale 과 정확히 일치하는 경우).
 | 파일 | 정의 | 현재 | 권장 처리 | 완료 |
 |---|---|---|---|---|
 | `data-display/comment-thread.tsx` | Timestamp(L17), Author(L19), Body(L26) | styled.span: 2xs muted, xs primary | inline `<C1>` 또는 `<B3>` 활용 검토 | ⏸ |
-| `data-display/info-row.tsx` | InfoRowLabel(L10), InfoRowValue(L18) | xs muted, sm primary | `<C1>` / `<B3>` 매핑 가능 | ⏳ Phase 2 |
-| `data-display/option-row.tsx` | OptionLabel 등 | xs muted | `<C1>` | ⏳ Phase 2 |
-| `data-display/tag-list-item.tsx` | text styled | sm primary | `<B3>` | ⏳ Phase 2 |
-| `data-display/keyboard-shortcut-hint.tsx` | label | xs muted | `<C1>` | ⏳ Phase 2 |
-| `feedback/step-indicator.tsx` | label styled | xs muted | `<C1>` | ⏳ Phase 2 |
-| `feedback/status.tsx` | message text | sm muted | `<B3 tone="muted">` | ⏳ Phase 2 |
-| `feedback/error-boundary.tsx` | FallbackTitle (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
-| `overlays/dialog-shell.tsx` | DialogDescription (p) | sm muted | `<B3 tone="muted">` | ⏳ Phase 2 |
-| `overlays/modal-primitives.tsx` | ModalTitle (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
-| `overlays/two-column-dialog.tsx` | Title (h2) | xl + 600 | `<H4>` | ⏳ Phase 2 |
+| `data-display/info-row.tsx` | InfoRowLabel(L10), InfoRowValue(L18) | xs+600+min-width 80, sm+flex | weight 600 + layout 포함 — type scale 미일치 | ⏸ 유지 |
+| `data-display/option-row.tsx` | TextStack(L27), Secondary(L35), Action(L40) | sm+flex, xs muted, xs+nowrap | flex layout 포함 | ⏸ 유지 |
+| `data-display/tag-list-item.tsx` | Count(L30) | 2xs soft | type scale 매핑 없음 (soft tone + 2xs) | ⏸ 유지 |
+| `data-display/keyboard-shortcut-hint.tsx` | Wrap, Key | kbd element + flex | element/layout 다름 | ⏸ 유지 |
+| `feedback/step-indicator.tsx` | label | xs muted | flex/state 같이 포함 | ⏸ 유지 |
+| `feedback/status.tsx` | SmallText(L6) | xs muted + word-break | word-break 추가 | ⏸ 유지 |
+| `feedback/error-boundary.tsx` | FallbackTitle (L31) | h2 + lg + default | weight default + lg — H4(xl+600) 매핑 X | ⏸ 유지 |
+| `overlays/dialog-shell.tsx` | DialogDescription (L18) | p + sm + muted + line-height | **B3 as="p" tone="muted"** | ✅ Phase 2 |
+| `overlays/modal-primitives.tsx` | ModalTitle (L45) | h2 + 3xl + 700 | 3xl + 700 — type scale 매핑 없음 | ⏸ 유지 |
+| `overlays/two-column-dialog.tsx` | Title (L28) | h2 + xl + 600 | **H4** | ✅ Phase 2 |
 
-Category A 단순 case 만 ~11건. 나머지 styled.span 들은 specific layout/interaction
-포함이라 type scale 로 단순 대체 불가능 — 유지.
+**처리 결과**: 11건 중 2건만 type scale 으로 단순 대체 가능. 나머지 9건은 styled-component
+가 font-size + color 외에 layout property (flex, min-width, white-space, gap, word-break)
+또는 다른 element (kbd) 또는 type scale 에 없는 size/weight 조합 (lg default, 3xl 700)
+을 가져 단순 대체 부적절. **토큰은 이미 사용 중**이라 design system 차원에서 OK 한 상태로 잔존.
 
 ---
 

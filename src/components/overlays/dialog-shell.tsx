@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { B3 } from '../../primitives'
 import { Button } from '../inputs/button'
 import { DialogCloseButton } from './dialog-close-button'
 import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from './modal-primitives'
@@ -15,12 +16,7 @@ const DialogContent = styled.div`
   overflow-y: auto;
 `
 
-const DialogDescription = styled.p`
-  margin: 0;
-  font-size: var(--ig-font-size-sm);
-  line-height: 1.6;
-  color: var(--ig-color-text-muted);
-`
+const DIALOG_DESCRIPTION_STYLE = { margin: 0, lineHeight: 1.6 }
 
 export function DialogShell({
   title,
@@ -63,7 +59,7 @@ export function DialogShell({
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}
         </ModalHeader>
         <DialogContent>
-          {description ? <DialogDescription>{description}</DialogDescription> : null}
+          {description ? <B3 as="p" tone="muted" style={DIALOG_DESCRIPTION_STYLE}>{description}</B3> : null}
           {children}
           {actions ? <ModalActions>{actions}</ModalActions> : null}
         </DialogContent>
