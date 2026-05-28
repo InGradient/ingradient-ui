@@ -122,8 +122,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-sync-chip-local-bg': palette.syncChipLocalBg,
     '--ig-color-sync-chip-on-text': palette.syncChipOnText,
     // Image card overlay buttons / group count
-    '--ig-color-image-option-bg': palette.imageOptionBg,
-    '--ig-color-image-option-bg-hover': palette.imageOptionBgHover,
     '--ig-color-image-group-circle-bg': palette.imageGroupCircleBg,
     '--ig-color-image-group-circle-border': palette.imageGroupCircleBorder,
     '--ig-color-danger-dim-bg': palette.dangerDimBg,
@@ -159,9 +157,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     // Lightbox (full-viewport image preview)
     '--ig-color-lightbox-backdrop': 'rgba(0, 0, 0, 0.85)',
     '--ig-color-lightbox-surface': 'rgba(7, 10, 20, 0.7)',
-    // Canvas image-area overlay (image-viewer 위 archived / loading state)
-    '--ig-color-canvas-overlay-soft': 'rgba(12, 12, 12, 0.28)',
-    '--ig-color-canvas-overlay-strong': 'rgba(12, 12, 12, 0.72)',
     // Sidebar shell gradient backgrounds
     '--ig-color-sidebar-bg-top': 'rgba(12, 15, 20, 0.96)',
     '--ig-color-sidebar-bg-bottom': 'rgba(10, 14, 20, 0.94)',
