@@ -461,6 +461,9 @@ JSX / SVG / 잡색 22건 (새 토큰 정의 없이 기존 토큰 사용).
 | Icon styled width/height (14-22px) | 8건 → iconSizes 흡수 | **0** |
 | Micro 4/6/8px (handle/dot/bar) | 8건 → space-1/-2/-3 흡수 | **0** |
 | Tabs underline height: 2px | 1건 → space-2px | **0** |
+| Phase 24-A1 — 1라운드 누락 흡수 (partial 1px solid 8, keyboard-hint, color-swatch, marginLeft 2, ring 2px, divider 1, calc 12px, type-scale, Container/Icon defaults, svg-shape-label padX/padY) | 21건 | **0** |
+| Phase 24-A2 — agent 시스템적 누락 (dynamic opacity / background:white / calc 안 space) | 12건 | **0** |
+| Phase 24-B — 신규 토큰 3개 (letter-spacing-heading / page-max-width / layout-topbar) + 4 사용처 | 4건 + 토큰 신규 3 | **0** |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
