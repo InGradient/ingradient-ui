@@ -35,7 +35,7 @@ const TOP_RIGHT_STYLE = {
   position: 'absolute' as const,
   top: 'var(--ig-space-3)',
   right: 'var(--ig-space-7)',
-  zIndex: 20,
+  zIndex: 'var(--ig-z-header)' as unknown as number,
 }
 
 export interface InspectorPoint {

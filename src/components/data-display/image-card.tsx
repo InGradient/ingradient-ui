@@ -34,7 +34,7 @@ const TOP_RIGHT_STYLE = {
   position: 'absolute' as const,
   top: 'var(--ig-space-2)',
   right: 'var(--ig-space-2)',
-  zIndex: 2,
+  zIndex: 'var(--ig-z-raised)' as unknown as number,
 }
 
 const GROUP_SLOT_STYLE = {
@@ -42,7 +42,7 @@ const GROUP_SLOT_STYLE = {
   top: 'var(--ig-space-2)',
   right: 'var(--ig-space-2)',
   transform: 'translate(12px, -10px)',
-  zIndex: 3,
+  zIndex: 'var(--ig-z-capture)' as unknown as number,
 }
 
 const FOOTER_STYLE = {

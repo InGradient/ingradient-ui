@@ -15,7 +15,7 @@ const TOP_BAR_STYLE = {
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   flexShrink: 0,
   position: 'relative' as const,
-  zIndex: 20,
+  zIndex: 'var(--ig-z-header)' as unknown as number,
 }
 
 const BODY_STYLE = { flex: 1, overflow: 'hidden' as const }
@@ -24,7 +24,7 @@ const BOTTOM_BAR_STYLE = {
   flexShrink: 0,
   position: 'sticky' as const,
   bottom: 0,
-  zIndex: 10,
+  zIndex: 'var(--ig-z-sticky)' as unknown as number,
 }
 
 export interface MobileShellProps {
