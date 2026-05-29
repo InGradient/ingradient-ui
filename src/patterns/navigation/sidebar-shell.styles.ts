@@ -69,7 +69,7 @@ export const SidebarNavList = styled.nav`
 
 const rowMixin = `
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
+  grid-template-columns: var(--ig-icon-xl) minmax(0, 1fr);
   align-items: center;
   height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
@@ -91,7 +91,7 @@ const rowMixin = `
   & svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @container sidebar-shell (max-width: 100px) {
-    grid-template-columns: 20px;
+    grid-template-columns: var(--ig-icon-xl);
     justify-content: center;
     padding: 0;
   }
