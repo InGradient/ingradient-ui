@@ -18,7 +18,7 @@ const OptionBtn = styled.button<{ $active: boolean; $size: 'sm' | 'md' }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
-  font-weight: ${(p) => (p.$active ? 600 : 400)};
+  font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-regular)')};
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--ig-motion-fast), color var(--ig-motion-fast);

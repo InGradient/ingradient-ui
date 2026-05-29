@@ -53,7 +53,7 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   background: transparent;
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
-  font-weight: ${(p) => (p.$active ? 600 : 500)};
+  font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)')};
   text-align: left;
   cursor: pointer;
   transition:

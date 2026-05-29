@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
+import { iconSizeNumbers } from '../../tokens/core'
 import { ColorSwatch } from '../data-display/color-swatch'
 
 const BAR_STYLE = {
   display: 'flex' as const,
   width: '100%',
-  height: 24,
+  height: iconSizeNumbers['3xl'],
   borderRadius: 'var(--ig-radius-pill)',
   overflow: 'hidden' as const,
   background: 'var(--ig-color-progress-track)',

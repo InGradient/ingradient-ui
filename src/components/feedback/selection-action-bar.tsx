@@ -6,7 +6,7 @@ const Bar = styled.div`
   align-items: center;
   gap: var(--ig-space-4);
   padding: var(--ig-space-3) var(--ig-space-5);
-  background: var(--ig-color-surface-elevated);
+  background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
