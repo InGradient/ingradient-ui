@@ -17,6 +17,7 @@ export const typographyScale = {
   weightSemibold: 600,
   weightBold: 700,
   weightBlack: 800,
+  letterSpacingHeading: '-0.02em',
   letterSpacingTight: '0.03em',
   letterSpacingNormal: '0.04em',
   letterSpacingWide: '0.05em',

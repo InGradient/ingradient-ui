@@ -60,7 +60,7 @@ export function Grid({
 
 const ContainerRoot = styled.div<{ $maxWidth?: string | number; $padding?: Space }>`
   width: 100%;
-  max-width: ${(p) => numberOrString(p.$maxWidth) ?? '1280px'};
+  max-width: ${(p) => numberOrString(p.$maxWidth) ?? 'var(--ig-page-max-width)'};
   margin: 0 auto;
   padding-inline: ${(p) => space(p.$padding) ?? 'var(--ig-space-11)'};
 `
