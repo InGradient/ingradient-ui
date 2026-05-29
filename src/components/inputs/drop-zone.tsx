@@ -42,8 +42,8 @@ const Root = styled.div<{ $variant: DropZoneVariant; $active: boolean; $disabled
     css`
       background: repeating-linear-gradient(
         135deg,
-        var(--ig-color-surface-muted) 0 10px,
-        var(--ig-color-bg-canvas) 10px 20px
+        var(--ig-color-surface-muted) 0 var(--ig-space-4),
+        var(--ig-color-bg-canvas) var(--ig-space-4) var(--ig-space-9)
       );
     `}
 `

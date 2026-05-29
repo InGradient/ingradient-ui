@@ -312,6 +312,7 @@ const staticVars = {
   '--ig-z-context-menu': String(zIndexScale.contextMenu),
   '--ig-z-drawer': String(zIndexScale.drawer),
   '--ig-z-modal': String(zIndexScale.modal),
+  '--ig-z-toast': String(zIndexScale.toast),
   '--ig-z-tooltip': String(zIndexScale.tooltip),
   '--ig-control-height-xs': controlSizes.xs,
   '--ig-control-height-sm': controlSizes.sm,

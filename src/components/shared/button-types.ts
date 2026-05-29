@@ -18,9 +18,9 @@ export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 }
 
 export const buttonPadding = {
-  sm: '8px 14px',
-  md: '10px 18px',
-  lg: '12px 22px',
+  sm: 'var(--ig-space-3) var(--ig-space-6)',
+  md: 'var(--ig-space-4) var(--ig-space-8)',
+  lg: 'var(--ig-space-5) var(--ig-space-10)',
 } as const
 
 export function normalizeVariant(variant?: ButtonVariant, legacyVariant?: LegacyButtonVariant): ButtonVariant {

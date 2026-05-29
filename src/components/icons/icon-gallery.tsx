@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
+import { iconSizeNumbers } from '../../tokens/core'
 import { icons, type IconName } from './registry'
 
 const IconGalleryGrid = styled.div`
@@ -39,7 +40,7 @@ const IconLabel = styled.div`
 
 export function IconGallery({
   names = Object.keys(icons) as IconName[],
-  size = 20,
+  size = iconSizeNumbers.xl,
 }: {
   names?: IconName[]
   size?: number

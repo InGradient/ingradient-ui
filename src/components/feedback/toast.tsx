@@ -79,12 +79,12 @@ const CloseButton = styled.button`
 
 const Container = styled.div`
   position: fixed;
-  bottom: var(--ig-space-6, 24px);
-  right: var(--ig-space-6, 24px);
-  z-index: var(--ig-z-toast, 9000);
+  bottom: var(--ig-space-6);
+  right: var(--ig-space-6);
+  z-index: var(--ig-z-toast);
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--ig-space-3, var(--ig-space-3));
+  gap: var(--ig-space-3);
   pointer-events: none;
 `
 
