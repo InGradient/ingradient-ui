@@ -457,6 +457,10 @@ JSX / SVG / 잡색 22건 (새 토큰 정의 없이 기존 토큰 사용).
 | Popup width (minWidth JSX) | 5건 + popup-size 5-tier 신규 | **0** |
 | Popup width (styled CSS min/max-width) + 7-tier 확장 | 18건 + 3xs(80)/2xs(140) 추가 | **0** |
 | Spinner sizeMap → iconSize 통합 + icon-3xl(24) | 1건 + 토큰 1 | **0** |
+| Control sizes 7-tier 확장 (xs/xl/2xl/3xl 추가) + styled 토큰화 | 15건 + 토큰 신규 4 | **0** |
+| Icon styled width/height (14-22px) | 8건 → iconSizes 흡수 | **0** |
+| Micro 4/6/8px (handle/dot/bar) | 8건 → space-1/-2/-3 흡수 | **0** |
+| Tabs underline height: 2px | 1건 → space-2px | **0** |
 | 죽은 코드 | breadcrumbs + dead color token 4 + patterns/shared/surfaces ✓ | — |
 | Type scale 대체 | 2건 (H4, B3) | — |
 | Primitives stories | Layout / Surfaces / SVG 추가 | — |
