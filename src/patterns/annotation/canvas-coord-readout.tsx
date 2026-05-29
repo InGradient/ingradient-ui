@@ -5,7 +5,7 @@ import styled from 'styled-components'
  *  min-height + line-height 로 텍스트가 비어도 height 고정 (layout shift 방지). */
 const CoordReadoutRoot = styled.div`
   font-size: var(--ig-font-size-xs);
-  font-family: ui-monospace, monospace;
+  font-family: var(--ig-font-mono);
   color: var(--ig-color-text-muted);
   user-select: all;
   padding: var(--ig-space-2) var(--ig-space-4);

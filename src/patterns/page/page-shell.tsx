@@ -37,7 +37,7 @@ export const PageTitle = styled.h1`
   margin: 0;
   font-size: var(--ig-font-size-2xl);
   font-weight: var(--ig-font-weight-bold);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ig-letter-spacing-heading);
 
   ${media.md} {
     font-size: var(--ig-font-size-xl);

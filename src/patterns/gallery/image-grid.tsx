@@ -4,7 +4,7 @@ import { ImageGridCell } from './image-grid-cell'
 import type { GridSelectionAction } from '../../components/data-display/use-grid-selection'
 import { GridContainer } from '../../components/data-display/grid-container'
 
-const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 1 }
+const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 'var(--ig-space-1px)' }
 const LOAD_MORE_STYLE = { gridColumn: '1 / -1', textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
 
 export interface ImageGridLayout {
