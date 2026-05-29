@@ -14,7 +14,7 @@ const Wrapper = styled.span<{ $open: boolean; $scale: number }>`
 
 const PREVIEW_STYLE = {
   padding: 'var(--ig-space-3)',
-  maxWidth: 'min(80vw, 480px)',
+  maxWidth: 'min(80vw, var(--ig-popup-xl))',
 }
 
 export interface HoverPreviewProps {

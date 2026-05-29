@@ -57,7 +57,7 @@ const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underlin
   padding: ${(p) => (p.$variant === 'underline' ? 'var(--ig-space-4) var(--ig-space-9)' : 'var(--ig-space-4) var(--ig-space-6)')};
   color: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)') : p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
-  font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 600 : 500) : 600)};
+  font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)') : 'var(--ig-font-weight-semibold)')};
   transition: color var(--ig-motion-fast);
 `
 
