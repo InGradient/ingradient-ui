@@ -69,7 +69,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
 
 const DRAWER_HEADER_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-6) var(--ig-space-4)',
-  borderBottom: '1px solid var(--ig-color-white-07)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-white-07)',
 }
 
 const DrawerTitleRow = styled.button`
@@ -117,7 +117,7 @@ const Item = styled.button<{ $active?: boolean }>`
 `
 
 const DIVIDER_STYLE = {
-  height: 1,
+  height: 'var(--ig-space-1px)',
   background: 'var(--ig-color-white-07)',
   margin: 'var(--ig-space-1) var(--ig-space-4)',
 }

@@ -29,6 +29,7 @@ export interface SvgShapeLabelProps {
  * Label tag (background rect + text) for SVG annotations.
  * Wrapping <g transform> controls placement + zoom-invariant scaling.
  */
+// padX = spacingScale[2] (6px), padY = spacingScale['3px'] (3px) — SVG attribute numeric
 export function SvgShapeLabel({
   width, height, color, opacity = 0.85, radius = 3,
   text, padX = 6, padY = 3, fontSize, textColor = '#fff', transform,

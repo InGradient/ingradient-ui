@@ -7,7 +7,7 @@ export const controlField = css`
   height: var(--ig-control-height-md);
   padding: 0 var(--ig-space-5);
   border-radius: var(--ig-radius-md);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);

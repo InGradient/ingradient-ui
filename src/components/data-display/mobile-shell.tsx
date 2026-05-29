@@ -12,7 +12,7 @@ const ROOT_STYLE = {
 const TOP_BAR_STYLE = {
   padding: 'var(--ig-space-4) var(--ig-space-6)',
   background: 'var(--ig-color-surface-raised)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   flexShrink: 0,
   position: 'relative' as const,
   zIndex: 20,

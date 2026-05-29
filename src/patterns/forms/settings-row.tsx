@@ -3,7 +3,7 @@ import { Inline } from '../../primitives'
 
 const ROW_STYLE = {
   padding: 'var(--ig-space-5) 0',
-  borderBottom: '1px solid var(--ig-color-border-strong)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   color: 'var(--ig-color-text-primary)',
   fontSize: 'var(--ig-font-size-md)',
 }

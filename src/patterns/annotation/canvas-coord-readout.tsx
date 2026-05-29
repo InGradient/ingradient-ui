@@ -15,7 +15,7 @@ const CoordReadoutRoot = styled.div`
   text-overflow: ellipsis;
   flex-shrink: 0;
   line-height: var(--ig-line-height-snug);
-  min-height: calc(1.4em + 12px);
+  min-height: calc(1.4em + var(--ig-space-5));
   box-sizing: border-box;
 `
 

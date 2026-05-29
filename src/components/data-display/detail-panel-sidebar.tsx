@@ -14,7 +14,7 @@ const GROW_SECTION_STYLE = {
   flex: '1 1 0',
   overflowY: 'auto' as const,
   padding: 'var(--ig-space-5)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const FixedSection = styled.div`

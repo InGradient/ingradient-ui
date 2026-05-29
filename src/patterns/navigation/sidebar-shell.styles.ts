@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { media } from '../../tokens/core/breakpoints'
 
+// = spacingScale[8] (18px) — used as numeric for template literal interpolation
 const SIDEBAR_INSET = 18
 
 export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpanded: number; $widthCollapsed: number }>`

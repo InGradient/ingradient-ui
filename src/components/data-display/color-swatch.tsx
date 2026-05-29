@@ -5,8 +5,8 @@ export type ColorSwatchShape = 'circle' | 'square'
 
 const sizeMap: Record<ColorSwatchSize, string> = {
   xs: '8px',
-  sm: '12px',
-  md: '16px',
+  sm: 'var(--ig-icon-xs)',
+  md: 'var(--ig-icon-md)',
 }
 
 export const ColorSwatch = styled.span<{

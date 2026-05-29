@@ -62,9 +62,9 @@ export function L1(props: Omit<TextProps, 'size' | 'weight' | 'uppercase' | 'let
   return (
     <Text
       size="var(--ig-font-size-xs)"
-      weight={600}
+      weight="semibold"
       uppercase
-      letterSpacing="0.06em"
+      letterSpacing="wider"
       tone={props.tone ?? 'muted'}
       {...props}
     />

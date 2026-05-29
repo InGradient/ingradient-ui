@@ -6,7 +6,7 @@ import { ColorSwatch } from '../../components/data-display/color-swatch'
 
 const WRAP_BASE_STYLE = {
   overflowY: 'auto' as const,
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   borderRadius: 'var(--ig-radius-sm)',
   padding: 'var(--ig-space-2) 0',
   minWidth: 0,
@@ -14,7 +14,7 @@ const WRAP_BASE_STYLE = {
 
 const HEADER_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-4)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const ITEM_ROW_STYLE = {

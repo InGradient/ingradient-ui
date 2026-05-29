@@ -3,7 +3,7 @@ import { Inline, Text } from '../../primitives'
 
 const ROW_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-9)',
-  borderBottom: '1px solid var(--ig-color-border-strong)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   flexShrink: 0,
 }
 
@@ -25,7 +25,7 @@ const Chip = styled.button<{ $active: boolean }>`
   }
 `
 
-const COUNT_STYLE = { marginLeft: 2 }
+const COUNT_STYLE = { marginLeft: 'var(--ig-space-2px)' }
 
 export interface FilterChipItem {
   id: string
