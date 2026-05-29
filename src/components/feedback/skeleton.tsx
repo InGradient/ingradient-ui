@@ -21,6 +21,6 @@ const shimmer = css`
 export const Skeleton = styled.div<{ $height?: string }>`
   ${shimmer}
   width: 100%;
-  height: ${(p) => p.$height ?? '16px'};
+  height: ${(p) => p.$height ?? 'var(--ig-icon-md)'};
   border-radius: var(--ig-radius-sm);
 `

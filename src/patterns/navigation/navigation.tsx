@@ -13,7 +13,7 @@ export const SidebarNav = styled.nav`
 
 export const AppSidebar = styled.aside<{ $width?: number | string }>`
   ${surfacePanel}
-  width: ${(p) => (typeof p.$width === 'number' ? `${p.$width}px` : p.$width ?? '280px')};
+  width: ${(p) => (typeof p.$width === 'number' ? `${p.$width}px` : p.$width ?? 'var(--ig-popup-sm)')};
   min-width: 0;
   min-height: 0;
   border-radius: var(--ig-radius-2xl);
