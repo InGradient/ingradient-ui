@@ -1,4 +1,5 @@
 import React from 'react'
+import { popupSizeNumbers } from '../../tokens/core'
 import {
   MediaDialogBackdrop,
   MediaDialogContent,
@@ -41,7 +42,7 @@ export interface MediaDialogShellProps {
   positioning?: 'fixed' | 'absolute'
 }
 
-const DEFAULT_SIDEBAR_WIDTH = 320
+const DEFAULT_SIDEBAR_WIDTH = popupSizeNumbers.md
 
 export function MediaDialogShell({
   onClose,
