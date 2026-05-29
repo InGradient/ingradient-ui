@@ -28,7 +28,7 @@ export const IngradientGlobalStyle = createGlobalStyle`
 
   body {
     font-family: var(--ig-font-sans);
-    line-height: 1.4;
+    line-height: var(--ig-line-height-snug);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -40,8 +40,8 @@ export const IngradientGlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: var(--ig-space-4);
+    height: var(--ig-space-4);
   }
 
   *::-webkit-scrollbar-track {
@@ -49,8 +49,8 @@ export const IngradientGlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    border: 2px solid transparent;
-    border-radius: 999px;
+    border: var(--ig-border-2px) solid transparent;
+    border-radius: var(--ig-radius-pill);
     background: var(--ig-scrollbar-thumb);
     background-clip: padding-box;
   }
