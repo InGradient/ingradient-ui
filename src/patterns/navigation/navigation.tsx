@@ -49,7 +49,7 @@ export const MobileNavDrawer = styled.aside<{ $open?: boolean }>`
   ${surfaceRaised}
   position: fixed;
   inset: 0 auto 0 0;
-  width: min(320px, calc(100vw - 24px));
+  width: min(320px, calc(100vw - var(--ig-space-11)));
   padding: var(--ig-space-8) var(--ig-space-7);
   display: flex;
   flex-direction: column;

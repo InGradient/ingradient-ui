@@ -27,7 +27,7 @@ const ICON_STYLE = {
 const Bubble = styled(TooltipBubble)`
   position: absolute;
   left: 50%;
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + var(--ig-space-3));
   transform: translateX(-50%);
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);

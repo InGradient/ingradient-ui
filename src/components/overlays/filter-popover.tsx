@@ -28,7 +28,7 @@ export const FilterPopover = forwardRef<HTMLDivElement, FilterPopoverProps>(
           position: 'fixed',
           top: anchor.top,
           left: anchor.left,
-          maxHeight: `calc(100vh - ${anchor.top}px - 16px)`,
+          maxHeight: `calc(100vh - ${anchor.top}px - var(--ig-space-7))`,
           overflowY: 'auto',
         }
       : undefined

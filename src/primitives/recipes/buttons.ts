@@ -4,7 +4,7 @@ export const buttonPrimary = css`
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid var(--ig-color-accent-strong);
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
-  color: white;
+  color: var(--ig-color-on-accent);
   cursor: pointer;
   transition:
     transform var(--ig-motion-fast),

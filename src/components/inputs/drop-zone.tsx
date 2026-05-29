@@ -23,7 +23,7 @@ const Root = styled.div<{ $variant: DropZoneVariant; $active: boolean; $disabled
   justify-content: center;
   color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-muted)')};
   cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'inherit')};
-  opacity: ${(p) => (p.$disabled ? 0.6 : 1)};
+  opacity: ${(p) => (p.$disabled ? 'var(--ig-opacity-muted)' : 1)};
   transition:
     border-color var(--ig-motion-fast),
     background var(--ig-motion-fast),

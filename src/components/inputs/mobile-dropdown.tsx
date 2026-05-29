@@ -31,7 +31,7 @@ const Trigger = styled.button<{ $loading?: boolean }>`
 
 const Dropdown = styled.div`
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + var(--ig-space-2));
   left: 0;
   right: 0;
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-mobile-top) 0%, var(--ig-color-surface-dropdown-mobile-bottom) 100%);

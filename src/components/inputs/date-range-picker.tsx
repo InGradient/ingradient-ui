@@ -8,7 +8,7 @@ import { SmallText } from '../feedback/status'
 
 const Popover = styled(MenuPopover)`
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + var(--ig-space-4));
   right: 0;
   z-index: var(--ig-z-overlay);
   width: min(360px, calc(100vw - 40px));

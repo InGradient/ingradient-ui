@@ -6,7 +6,7 @@ import { DialogCloseButton } from './dialog-close-button'
 
 const Shell = styled.div<{ $width: string; $maxHeight: string }>`
   width: ${(p) => p.$width};
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - var(--ig-space-13));
   max-height: ${(p) => p.$maxHeight};
   background-color: var(--ig-color-surface-muted);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
@@ -64,7 +64,7 @@ export function TwoColumnDialog({
   children,
   onClose,
   width = '820px',
-  maxHeight = 'calc(100dvh - 32px)',
+  maxHeight = 'calc(100dvh - var(--ig-space-13))',
   sidebarWidth = '190px',
 }: TwoColumnDialogProps) {
   return (
