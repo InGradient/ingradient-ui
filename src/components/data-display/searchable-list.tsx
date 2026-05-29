@@ -29,7 +29,7 @@ const Dropdown = styled.div`
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
-  box-shadow: var(--ig-shadow-md);
+  box-shadow: var(--ig-shadow-menu);
   margin-top: var(--ig-space-1);
 `
 

@@ -32,7 +32,7 @@ export const MediaDialogContent = styled.div<{ $width?: string; $height?: string
   max-width: ${(p) => p.$width ?? '95vw'};
   height: ${(p) => p.$height ?? 'calc(100vh - var(--ig-layout-topbar))'};
   max-height: ${(p) => p.$height ?? 'calc(100vh - var(--ig-layout-topbar))'};
-  background: var(--ig-color-surface-canvas);
+  background: var(--ig-color-bg-canvas);
   border-radius: var(--ig-radius-lg);
   overflow: hidden;
   ${media.md} {

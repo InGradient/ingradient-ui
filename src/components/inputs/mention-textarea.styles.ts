@@ -23,7 +23,7 @@ export const Menu = styled.div`
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
-  box-shadow: var(--ig-shadow-md);
+  box-shadow: var(--ig-shadow-menu);
   z-index: var(--ig-z-dropdown);
 `
 

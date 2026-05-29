@@ -10,7 +10,7 @@ const meta = {
   parameters: { layout: 'centered' },
   decorators: [
     (Story) => (
-      <div style={{ width: 640, background: 'var(--ig-color-surface-canvas)', padding: 16 }}>
+      <div style={{ width: 640, background: 'var(--ig-color-bg-canvas)', padding: 16 }}>
         <Story />
       </div>
     ),

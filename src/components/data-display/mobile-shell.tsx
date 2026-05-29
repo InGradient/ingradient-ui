@@ -4,7 +4,7 @@ import { Box, Stack } from '../../primitives'
 const ROOT_STYLE = {
   height: '100%',
   width: '100%',
-  background: 'var(--ig-color-surface-page)',
+  background: 'var(--ig-color-bg-canvas)',
   color: 'var(--ig-color-text-primary)',
   overflow: 'hidden' as const,
 }

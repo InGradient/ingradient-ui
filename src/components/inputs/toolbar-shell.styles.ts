@@ -67,7 +67,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   border: none;
   border-radius: var(--ig-radius-xxs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-12)' : 'transparent')};
-  color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger)' : 'var(--ig-color-text-primary)')};
+  color: ${(p) => (p.$danger ? 'var(--ig-color-alert-danger-text)' : 'var(--ig-color-text-primary)')};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
   transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
   &:hover:not(:disabled) {
     background: ${(p) => (p.$danger ? 'var(--ig-color-danger-soft-surface)' : 'var(--ig-color-white-08)')};
-    color: ${(p) => (p.$danger ? 'var(--ig-color-text-danger-soft)' : 'var(--ig-color-text-primary)')};
+    color: ${(p) => (p.$danger ? 'var(--ig-color-status-failed-text)' : 'var(--ig-color-text-primary)')};
   }
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);

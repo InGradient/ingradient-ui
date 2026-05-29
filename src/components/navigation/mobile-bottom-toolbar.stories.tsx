@@ -7,7 +7,7 @@ import {
 const meta: Meta<typeof MobileBottomToolbar> = {
   title: 'Components/Navigation/MobileBottomToolbar',
   component: MobileBottomToolbar,
-  decorators: [(Story) => <div style={{ width: 390, background: 'var(--ig-color-surface-page)' }}><Story /></div>],
+  decorators: [(Story) => <div style={{ width: 390, background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],
 }
 export default meta
 
