@@ -60,7 +60,7 @@ export function ChartContainer({
         </Inline>
       ) : null}
       <ChartFrame $height={height}>
-        {loading ? <div style={LOADING_STYLE}><Skeleton $height="18px" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <Text align="center" tone="muted" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyMessage}</Text> : children}
+        {loading ? <div style={LOADING_STYLE}><Skeleton $height="var(--ig-icon-lg)" /><Skeleton $height={`${Math.max(180, height - 42)}px`} /></div> : empty ? <Text align="center" tone="muted" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyMessage}</Text> : children}
       </ChartFrame>
     </ChartCard>
   )
