@@ -52,8 +52,8 @@ export const TrailingArea = styled.div<{ $placement: Placement }>`
 
 const sizeCss = {
   sm: css`
-    width: 36px;
-    height: 36px;
+    width: var(--ig-control-height-md);
+    height: var(--ig-control-height-md);
   `,
   md: css`
     width: 40px;
@@ -86,8 +86,8 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
     cursor: not-allowed;
   }
   svg {
-    width: 18px;
-    height: 18px;
+    width: var(--ig-icon-lg);
+    height: var(--ig-icon-lg);
   }
 `
 
@@ -98,11 +98,11 @@ export const Separator = styled.span<{ $placement: Placement }>`
     p.$placement === 'bottom' || p.$placement === 'top'
       ? css`
           width: var(--ig-space-1px);
-          height: 22px;
+          height: var(--ig-icon-2xl);
           margin: 0 var(--ig-space-2px);
         `
       : css`
-          width: 22px;
+          width: var(--ig-icon-2xl);
           height: var(--ig-space-1px);
           margin: var(--ig-space-2px) 0;
         `}

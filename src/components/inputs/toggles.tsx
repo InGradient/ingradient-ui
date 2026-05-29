@@ -25,8 +25,8 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
     position: absolute;
     top: var(--ig-space-2px);
     left: ${(p) => (p.$checked ? '18px' : '2px')};
-    width: 18px;
-    height: 18px;
+    width: var(--ig-icon-lg);
+    height: var(--ig-icon-lg);
     border-radius: var(--ig-radius-pill);
     background: white;
     transition: left var(--ig-motion-fast);
@@ -45,8 +45,8 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-2xs);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
@@ -69,8 +69,8 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-pill);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: transparent;
@@ -80,8 +80,8 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
 
   &::after {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: var(--ig-space-3);
+    height: var(--ig-space-3);
     border-radius: var(--ig-radius-pill);
     background: var(--ig-color-accent);
     opacity: ${(p) => (p.$checked ? 1 : 0)};

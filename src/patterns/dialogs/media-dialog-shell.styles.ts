@@ -53,7 +53,7 @@ export const MediaDialogMain = styled.div`
 `
 
 export const MediaDialogResizer = styled.div`
-  width: 4px;
+  width: var(--ig-space-1);
   flex-shrink: 0;
   cursor: col-resize;
   background: transparent;

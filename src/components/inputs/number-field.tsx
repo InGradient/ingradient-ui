@@ -21,7 +21,7 @@ const SpinnerGroup = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 28px;
+  width: var(--ig-control-height-xs);
   border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 

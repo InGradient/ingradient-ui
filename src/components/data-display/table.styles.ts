@@ -60,8 +60,8 @@ export const HandleBtn = styled.button.attrs({ type: 'button', 'aria-label': 'Re
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: var(--ig-control-height-xs);
+  height: var(--ig-control-height-xs);
   border: none;
   border-radius: var(--ig-radius-sm);
   background: transparent;

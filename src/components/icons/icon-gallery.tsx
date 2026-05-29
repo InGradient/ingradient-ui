@@ -20,8 +20,8 @@ const IconTile = styled.div`
 `
 
 const IconPreview = styled.div`
-  width: 44px;
-  height: 44px;
+  width: var(--ig-control-height-lg);
+  height: var(--ig-control-height-lg);
   border-radius: var(--ig-radius-md);
   display: inline-flex;
   align-items: center;

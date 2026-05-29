@@ -14,7 +14,7 @@ const AppHeader = styled.header`
     top: 0;
     left: 0;
     right: 0;
-    height: 52px;
+    height: var(--ig-control-height-2xl);
     z-index: var(--ig-z-dropdown);
     align-items: center;
     gap: var(--ig-space-3);
@@ -97,7 +97,7 @@ const Item = styled.button<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);
-  height: 52px;
+  height: var(--ig-control-height-2xl);
   width: 100%;
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-lg);

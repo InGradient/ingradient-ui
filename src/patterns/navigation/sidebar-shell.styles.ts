@@ -70,7 +70,7 @@ const rowMixin = `
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
   align-items: center;
-  height: 44px;
+  height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
   gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);

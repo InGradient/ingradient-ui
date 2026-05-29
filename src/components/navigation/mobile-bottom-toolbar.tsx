@@ -6,7 +6,7 @@ const Bar = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: var(--ig-control-height-3xl);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -25,8 +25,8 @@ const ToolBtn = styled.button<{ $active?: boolean }>`
   align-items: center;
   justify-content: center;
   gap: var(--ig-space-3px);
-  min-width: 48px;
-  height: 48px;
+  min-width: var(--ig-control-height-xl);
+  height: var(--ig-control-height-xl);
   padding: 0 var(--ig-space-2);
   border: none;
   background: none;

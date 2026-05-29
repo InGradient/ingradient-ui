@@ -19,8 +19,8 @@ const Handle = styled.div<{ $direction: 'horizontal' | 'vertical' }>`
   flex-shrink: 0;
   ${(p) =>
     p.$direction === 'horizontal'
-      ? 'width: 4px; cursor: col-resize;'
-      : 'height: 4px; cursor: row-resize;'}
+      ? 'width: var(--ig-space-1); cursor: col-resize;'
+      : 'height: var(--ig-space-1); cursor: row-resize;'}
   background: transparent;
   transition: background var(--ig-motion-fast);
   &:hover, &:active {

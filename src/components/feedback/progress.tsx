@@ -37,7 +37,7 @@ const activeOverlay = css`
 
 export const ProgressTrack = styled.div`
   width: 100%;
-  height: 8px;
+  height: var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-progress-track);
   overflow: hidden;

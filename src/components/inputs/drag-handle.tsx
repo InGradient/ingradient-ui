@@ -15,15 +15,15 @@ const Handle = styled(IconButton).attrs({
     cursor: grabbing;
   }
   svg {
-    width: 16px;
-    height: 16px;
+    width: var(--ig-icon-md);
+    height: var(--ig-icon-md);
   }
 `
 
 const DragDots = styled.span`
   display: inline-grid;
-  width: 14px;
-  height: 14px;
+  width: var(--ig-icon-sm);
+  height: var(--ig-icon-sm);
   grid-template-columns: repeat(2, 1fr);
   gap: var(--ig-space-2px);
   span {

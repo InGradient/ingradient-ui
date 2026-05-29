@@ -29,8 +29,8 @@ export const Popover = styled.div`
   .rdp-root {
     --rdp-accent-color: var(--ig-color-accent);
     --rdp-accent-background-color: var(--ig-color-accent-soft-surface);
-    --rdp-day_button-height: 32px;
-    --rdp-day_button-width: 32px;
+    --rdp-day_button-height: var(--ig-control-height-sm);
+    --rdp-day_button-width: var(--ig-control-height-sm);
     font-family: var(--ig-font-sans);
     font-size: var(--ig-font-size-sm);
     color: var(--ig-color-text-primary);
@@ -55,8 +55,8 @@ export const Popover = styled.div`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: var(--ig-control-height-xs);
+    height: var(--ig-control-height-xs);
     border: none;
     border-radius: var(--ig-radius-sm);
     background: var(--ig-color-surface-interactive);

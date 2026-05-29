@@ -46,7 +46,7 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   justify-content: space-between;
   gap: var(--ig-space-3);
   width: 100%;
-  min-height: 44px;
+  min-height: var(--ig-control-height-lg);
   padding: var(--ig-space-4) var(--ig-space-4) var(--ig-space-4) var(--ig-space-5);
   border: 0;
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].item};
@@ -96,7 +96,7 @@ export const ItemBadge = styled.span`
   align-items: center;
   justify-content: center;
   min-width: var(--ig-icon-lg);
-  height: 18px;
+  height: var(--ig-icon-lg);
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-badge-accent);

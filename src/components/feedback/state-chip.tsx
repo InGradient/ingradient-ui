@@ -18,7 +18,7 @@ const Chip = styled.span<{ $bg: string; $color: string }>`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-1);
-  height: 20px;
+  height: var(--ig-icon-xl);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   font-size: var(--ig-font-size-3xs);
@@ -30,8 +30,8 @@ const Chip = styled.span<{ $bg: string; $color: string }>`
 `
 
 const Dot = styled.span`
-  width: 6px;
-  height: 6px;
+  width: var(--ig-space-2);
+  height: var(--ig-space-2);
   border-radius: 50%;
   background: currentColor;
 `

@@ -17,8 +17,8 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   display: inline-flex;
   align-items: center;
   gap: ${(p) => (p.$iconOnly ? '0' : 'var(--ig-space-2)')};
-  height: 32px;
-  width: ${(p) => (p.$iconOnly ? '32px' : 'auto')};
+  height: var(--ig-control-height-sm);
+  width: ${(p) => (p.$iconOnly ? 'var(--ig-control-height-sm)' : 'auto')};
   padding: ${(p) => (p.$iconOnly ? '0' : '0 var(--ig-space-4)')};
   justify-content: center;
   border-radius: var(--ig-radius-xs);

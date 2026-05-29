@@ -28,8 +28,8 @@ const ClearBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: var(--ig-icon-xl);
+  height: var(--ig-icon-xl);
   border: none;
   border-radius: var(--ig-radius-xs);
   background: transparent;
