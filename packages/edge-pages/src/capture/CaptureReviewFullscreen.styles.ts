@@ -8,7 +8,7 @@ export const CaptureReview = styled.div`
   align-items: center;
   justify-content: center;
   gap: var(--ig-space-7);
-  padding: 24px;
+  padding: var(--ig-space-11);
   &:fullscreen { background: var(--ig-color-bg-canvas); }
 `
 
@@ -52,12 +52,12 @@ export const CaptureReviewActions = styled.div`
 export const CaptureReviewSkipBtn = styled.button`
   height: 40px;
   padding: 0 18px;
-  border: 1px solid var(--ig-color-white-18);
+  border: var(--ig-border-1px) solid var(--ig-color-white-18);
   border-radius: var(--ig-radius-xs);
   background: transparent;
   color: rgba(255,255,255,0.7);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   &:hover { background: var(--ig-color-white-07); }
 `
@@ -70,7 +70,7 @@ export const CaptureReviewSaveBtn = styled.button`
   background: rgba(77, 136, 255, 0.85);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   &:hover { background: rgba(77, 136, 255, 1); }
 `

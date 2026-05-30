@@ -14,7 +14,7 @@ const mockChart = (
   <div style={{
     height: 200,
     background: 'var(--ig-color-surface-raised)',
-    border: '1px solid var(--ig-color-border-strong)',
+    border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
     borderRadius: 8,
     display: 'flex',
     alignItems: 'center',

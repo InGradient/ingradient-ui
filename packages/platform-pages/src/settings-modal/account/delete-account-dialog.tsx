@@ -13,7 +13,7 @@ export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 
 const SOLO_CARD_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-6)',
-  border: '1px solid var(--ig-color-alert-danger-border)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-alert-danger-border)',
   borderRadius: 'var(--ig-radius-xs)',
   background: 'var(--ig-color-alert-danger-bg)',
 }
@@ -86,7 +86,7 @@ export function DeleteAccountDialog({
       }
     >
       <Stack gap={7}>
-        <Text as="p" tone="soft" size="14px" style={COPY_STYLE}>
+        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={COPY_STYLE}>
           This account owns or participates in projects that need resolution before deletion. Review each shared project below
           and decide whether to transfer ownership or delete the project.
         </Text>
@@ -97,8 +97,8 @@ export function DeleteAccountDialog({
             </Alert>
             {preview.solo_projects.map((p) => (
               <Stack key={p.project_id} gap={2} style={SOLO_CARD_STYLE}>
-                <Text size="14px" weight={600}>{p.project_name}</Text>
-                <Text tone="muted" size="12px">role: {p.role} · members: {p.member_count}</Text>
+                <Text size="var(--ig-font-size-md)" weight={600}>{p.project_name}</Text>
+                <Text tone="muted" size="var(--ig-font-size-xs)">role: {p.role} · members: {p.member_count}</Text>
               </Stack>
             ))}
           </>
@@ -115,7 +115,7 @@ export function DeleteAccountDialog({
           <Alert $tone="danger">Select a transfer target or choose delete for every shared project before continuing.</Alert>
         )}
         <Stack as="label" gap={2}>
-          <Text size="13px" weight={600}>Enter your password to confirm</Text>
+          <Text size="var(--ig-font-size-sm)" weight={600}>Enter your password to confirm</Text>
           <PasswordField
             value={password}
             onChange={(e) => onChangePassword(e.target.value)}
@@ -127,7 +127,7 @@ export function DeleteAccountDialog({
           />
         </Stack>
         <Stack as="label" gap={2}>
-          <Text size="13px" weight={600}>Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
+          <Text size="var(--ig-font-size-sm)" weight={600}>Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
           <TextField
             value={finalConfirmText}
             onChange={(e) => onChangeFinalConfirmText(e.target.value)}

@@ -10,7 +10,7 @@ const PANEL_STYLE = { width: 320, maxHeight: '70vh', overflowY: 'auto' as const 
 
 const HEADER_STYLE = {
   padding: '0 0 var(--ig-space-3)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   marginBottom: 'var(--ig-space-2)',
 }
 

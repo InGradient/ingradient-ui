@@ -11,7 +11,7 @@ const LogList = styled.div`
   font-family: 'Courier New', monospace;
   font-size: var(--ig-font-size-xs);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-3);
 `

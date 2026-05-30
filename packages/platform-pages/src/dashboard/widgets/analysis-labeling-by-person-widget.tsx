@@ -5,21 +5,21 @@ import { BarChartCard } from '@ingradient/ui/patterns'
 const TABLE_CARD_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-7)',
   background: 'var(--ig-color-surface-panel)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   borderRadius: 'var(--ig-radius-lg)',
 }
 
 const PersonTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   th, td {
     padding: var(--ig-space-3) var(--ig-space-5);
     text-align: left;
-    border-bottom: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   }
   th {
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
     color: var(--ig-color-text-soft);
   }
   td {

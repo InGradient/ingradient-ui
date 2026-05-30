@@ -22,8 +22,8 @@ export function InvitationsTab({
   loading, error, invitations, joinCodes,
   loadingText = 'Loading…',
 }: InvitationsTabProps) {
-  if (loading) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{loadingText}</Text>
-  if (error) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{error}</Text>
+  if (loading) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{loadingText}</Text>
+  if (error) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{error}</Text>
   return (
     <Stack gap={13}>
       <InvitationsSection {...invitations} />

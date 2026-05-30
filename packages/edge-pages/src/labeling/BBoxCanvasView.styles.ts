@@ -16,8 +16,8 @@ export const Toolbar = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--ig-color-surface-panel);
-  border-top: 1px solid var(--ig-color-white-08);
-  padding: 0 16px;
+  border-top: var(--ig-border-1px) solid var(--ig-color-white-08);
+  padding: 0 var(--ig-space-7);
   position: relative;
 `;
 
@@ -42,7 +42,7 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
   align-items: center;
   justify-content: center;
   border-radius: var(--ig-radius-pill);
-  border: 1px solid transparent;
+  border: var(--ig-border-1px) solid transparent;
   cursor: pointer;
   transition: opacity 0.15s;
   &:hover { opacity: 0.8; }
@@ -70,7 +70,7 @@ export const HintOverlay = styled.div`
   color: rgba(255, 255, 255, 0.45);
   pointer-events: none;
   background: rgba(0, 0, 0, 0.5);
-  padding: 4px 8px;
+  padding: var(--ig-space-1) 8px;
   border-radius: var(--ig-radius-xs);
   z-index: 5;
 `;
@@ -83,14 +83,14 @@ export const PixelInfo = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: rgba(255, 255, 255, 0.9);
   background: rgba(0, 0, 0, 0.65);
-  padding: 4px 8px;
+  padding: var(--ig-space-1) 8px;
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `;
 
 export const PixelSwatch = styled.span<{ $color: string }>`
@@ -99,7 +99,7 @@ export const PixelSwatch = styled.span<{ $color: string }>`
   height: 10px;
   border-radius: 2px;
   background: ${(p) => p.$color};
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: var(--ig-border-1px) solid rgba(255, 255, 255, 0.3);
 `;
 
 export const BlockMsg = styled.div`
@@ -110,7 +110,7 @@ export const BlockMsg = styled.div`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-warning);
   background: var(--ig-color-modal-backdrop);
-  padding: 4px 12px;
+  padding: var(--ig-space-1) 12px;
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
@@ -151,13 +151,13 @@ export const Header = styled.div`
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  gap: 8px;
-  padding: 10px 12px 0;
+  gap: var(--ig-space-3);
+  padding: var(--ig-space-4) 12px 0;
 `;
 
 export const HeaderLeft = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-shrink: 0;
 `;
 
@@ -169,7 +169,7 @@ export const HeaderIconBtn = styled.button<{ $active?: boolean }>`
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-04)')};
   color: var(--ig-color-text-primary);
@@ -185,7 +185,7 @@ export const HintBar = styled.div`
   text-align: center;
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
-  padding: 4px 12px;
+  padding: var(--ig-space-1) 12px;
 `;
 
 export const ToolbarSpacer = styled.div`
@@ -194,14 +194,14 @@ export const ToolbarSpacer = styled.div`
 
 export const ModeToggleGroup = styled.div`
   display: flex;
-  gap: 6px;
+  gap: var(--ig-space-2);
   margin-right: var(--ig-space-3);
 `;
 
 export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
   width: 36px;
   height: 36px;
-  border: 1px solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-12)')};
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.18)' : 'transparent')};
   color: var(--ig-color-text-primary);

@@ -5,7 +5,7 @@ import { OptionRow } from '@ingradient/ui/components'
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = {
   padding: 'var(--ig-space-5) 0',
-  borderBottom: '1px solid var(--ig-color-border-strong)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   width: '100%',
 }
 const STACK_STYLE = { width: '100%' }
@@ -48,7 +48,7 @@ export function ProjectMemberInvite({
 
   return (
     <>
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
       <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
         <PrimStack gap={4} style={STACK_STYLE}>
           <TextField
@@ -71,16 +71,16 @@ export function ProjectMemberInvite({
                   onClick={() => onAdd(c.id)}
                 />
               ))}
-              {!isSearching && candidates.length === 0 ? <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{noResultsHint}</Text> : null}
+              {!isSearching && candidates.length === 0 ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{noResultsHint}</Text> : null}
             </PrimStack>
           ) : (
-            <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{hintBelow}</Text>
+            <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{hintBelow}</Text>
           )}
         </PrimStack>
       </Inline>
       {inviteMessage ? (
         <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
-          <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{inviteMessage}</Text>
+          <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{inviteMessage}</Text>
         </Inline>
       ) : null}
     </>

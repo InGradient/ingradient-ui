@@ -22,14 +22,14 @@ export const Wrap = styled.div`
   flex-direction: column;
   gap: var(--ig-space-4);
   padding-top: var(--ig-space-4);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
 export const SectionTitle = styled.div`
   font-size: var(--ig-font-size-xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
 `;
 
@@ -43,9 +43,9 @@ export const CollapsibleHeader = styled.button`
   border: none;
   cursor: pointer;
   font-size: var(--ig-font-size-xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
   &:hover { color: var(--ig-color-text-primary); }
   svg { transition: transform 0.15s ease; }
@@ -54,7 +54,7 @@ export const CollapsibleHeader = styled.button`
 export const Row = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--ig-space-1);
 `;
 
 export const Label = styled.div`
@@ -81,9 +81,9 @@ export const Slider = styled.input.attrs({ type: 'range' })`
 export const Select = styled.select`
   width: 100%;
   height: 28px;
-  padding: 0 8px;
+  padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-white-06);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
@@ -100,14 +100,14 @@ export const Select = styled.select`
     background: var(--ig-color-surface-panel);
     color: var(--ig-color-text-soft);
     font-style: italic;
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
   }
 `;
 
 export const CheckRow = styled.label`
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ig-space-1);
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-secondary);
   cursor: pointer;
@@ -123,7 +123,7 @@ export const CheckRow = styled.label`
 export const SliderInline = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   input[type='range'] {
     flex: 1;
     min-width: 0;
@@ -133,7 +133,7 @@ export const SliderInline = styled.div`
 export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $danger?: boolean }>`
   height: 32px;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid ${(p) =>
+  border: var(--ig-border-1px) solid ${(p) =>
     p.$danger ? 'rgba(239, 68, 68, 0.6)'
     : p.$active ? 'rgba(77, 136, 255, 0.8)'
     : 'var(--ig-color-border-subtle)'};
@@ -147,7 +147,7 @@ export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $dange
     : p.$primary ? 'var(--ig-color-text-primary)'
     : 'var(--ig-color-text-primary)'};
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   &:hover {
     opacity: 0.9;
@@ -160,7 +160,7 @@ export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $dange
 
 export const BtnRow = styled.div`
   display: flex;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `;
 
 export const MetricRow = styled.div`
@@ -172,13 +172,13 @@ export const MetricRow = styled.div`
 `;
 
 export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
-  padding: 6px 8px;
+  padding: var(--ig-space-2) 8px;
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   background: ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.14)' : 'var(--ig-color-blue-tint-14)')};
   color: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-warning)' : 'var(--ig-color-accent-soft)')};
-  border: 1px solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'rgba(77, 136, 255, 0.35)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'rgba(77, 136, 255, 0.35)')};
 `;
 
 // ── Setup Quality Indicator ─────────────────────────────────────────────────
@@ -191,10 +191,10 @@ export type QualityStatusValue =
 export const QualityCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--ig-space-2);
   padding: var(--ig-space-3);
   background: var(--ig-color-white-04);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
 `;
 
@@ -219,8 +219,8 @@ export const QualityLabel = styled.span`
 export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 700;
+  gap: var(--ig-space-2);
+  font-weight: var(--ig-font-weight-bold);
   color: ${(p) =>
     p.$status === 'good' || p.$status === 'high' ? 'var(--ig-color-success)'
     : p.$status === 'fair' || p.$status === 'medium' ? 'var(--ig-color-warning)'
@@ -237,14 +237,14 @@ export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
 `;
 
 export const BestAxisValue = styled.span`
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `;
 
 export const IndicatorRight = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `;
 
 export const IndicatorValue = styled.span`
@@ -261,9 +261,9 @@ export const QualityDivider = styled.div`
 
 export const RoiSectionLabel = styled.div`
   font-size: var(--ig-font-size-xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
   margin-top: 2px;
 `;

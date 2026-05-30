@@ -6,7 +6,7 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   background: var(--ig-color-surface-panel);
-  border-left: 1px solid var(--ig-color-border-subtle);
+  border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   height: 100%;
 `
 
@@ -15,7 +15,7 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-3);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
 export const GrowSection = styled(Section)`
@@ -26,9 +26,9 @@ export const GrowSection = styled(Section)`
 
 export const Label = styled.div`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
 `
 
@@ -53,11 +53,11 @@ export const PatternGrid = styled.div`
 export const PatternButton = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   background: ${({ $active }) => ($active ? 'rgba(59, 130, 246, 0.18)' : 'var(--ig-color-white-04)')};
-  border: 1px solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
   color: var(--ig-color-text-primary);
 `
 
@@ -68,10 +68,10 @@ export const RoiPrimaryButton = styled.button<{ $active: boolean }>`
   justify-content: center;
   padding: var(--ig-space-3);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   background: ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-04)')};
-  border: 1px solid ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-12)')};
   color: var(--ig-color-text-primary);
 `

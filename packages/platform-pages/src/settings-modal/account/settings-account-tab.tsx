@@ -17,17 +17,17 @@ export interface LicenseInfo {
 }
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
-  if (!license) return <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>라이선스 정보를 불러오는 중…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="13px" weight={600} style={EXPIRED_STYLE}>만료됨</Text>
+  if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>라이선스 정보를 불러오는 중…</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight={600} style={EXPIRED_STYLE}>만료됨</Text>
   if (license.type === 'organization') {
     return (
-      <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>
+      <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
         {`조직 라이선스 (${license.organizationName ?? ''}) | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
       </Text>
     )
   }
   return (
-    <Text as="p" tone="muted" size="13px" style={HINT_STYLE}>
+    <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
       {`개인 라이선스 | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
     </Text>
   )

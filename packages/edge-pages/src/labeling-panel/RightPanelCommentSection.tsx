@@ -15,7 +15,7 @@ const CommentList = styled.div`
 const CommentItem = styled.div<{ $synced?: boolean }>`
   padding: var(--ig-space-3);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-sm);
   opacity: ${({ $synced }) => ($synced === false ? 0.6 : 1)};

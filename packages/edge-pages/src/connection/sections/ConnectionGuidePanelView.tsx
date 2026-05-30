@@ -6,7 +6,7 @@ const Panel = styled.div`
   position: relative;
   padding: var(--ig-space-5);
   background: var(--ig-color-blue-tint-14, rgba(77, 136, 255, 0.1));
-  border: 1px solid rgba(77, 136, 255, 0.34);
+  border: var(--ig-border-1px) solid rgba(77, 136, 255, 0.34);
   border-radius: var(--ig-radius-sm);
   display: flex;
   flex-direction: column;
@@ -16,16 +16,16 @@ const Panel = styled.div`
 
 const StepLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-accent);
 `
 
 const Message = styled.div`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
 `
 
 const Hint = styled.div`

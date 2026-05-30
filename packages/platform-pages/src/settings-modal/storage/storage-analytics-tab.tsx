@@ -6,7 +6,7 @@ const CONTAINER_STYLE = { padding: 'var(--ig-space-1) 0' }
 const ERROR_WRAP_STYLE = {
   padding: 'var(--ig-space-7)',
   background: 'var(--ig-color-alert-danger-bg)',
-  border: '1px solid var(--ig-color-alert-danger-border)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-alert-danger-border)',
   borderRadius: 'var(--ig-radius-xxs)',
 }
 const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
@@ -55,7 +55,7 @@ export function StorageAnalyticsTab({
     return (
       <Stack gap={9} style={CONTAINER_STYLE}>
         <Stack gap={3} style={ERROR_WRAP_STYLE}>
-          <Text as="p" size="13px" style={ERROR_TEXT_STYLE}>{error}</Text>
+          <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
           {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
         </Stack>
       </Stack>
@@ -65,7 +65,7 @@ export function StorageAnalyticsTab({
   return (
     <Stack gap={9} style={CONTAINER_STYLE}>
       <Inline justify="space-between">
-        <Text as="h3" size="16px" weight={600}>{title}</Text>
+        <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>
@@ -73,32 +73,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
       {projectChart}
 
       <Grid gap={9} columns="1fr 1fr">
         <div>
-          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.5px">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}

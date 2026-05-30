@@ -10,16 +10,16 @@ const Table = styled.table`
   width: 100%;
   & th {
     font-size: var(--ig-font-size-xs);
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
     color: var(--ig-color-text-muted);
     text-align: center;
     padding: var(--ig-space-2);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: var(--ig-letter-spacing-tight);
     white-space: nowrap;
   }
   & th.row-label {
-    font-weight: 500;
+    font-weight: var(--ig-font-weight-medium);
     color: var(--ig-color-text-secondary);
     text-align: left;
     padding: var(--ig-space-2) var(--ig-space-3);

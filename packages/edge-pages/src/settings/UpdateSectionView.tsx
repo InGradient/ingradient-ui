@@ -11,10 +11,10 @@ const Wrap = styled.div`
   background: var(--ig-color-surface-raised);
   border-radius: var(--ig-radius-md);
 `
-const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: 700; margin: 0; color: var(--ig-color-text-primary);`
+const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
 const Row = styled.div`display: flex; justify-content: space-between; align-items: center;`
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: 600;`
+const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-font-size-sm);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {

@@ -13,7 +13,7 @@ const Accordion = styled.details`
     cursor: pointer;
     padding: var(--ig-space-6) var(--ig-space-7);
     list-style: none;
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
   }
   summary::-webkit-details-marker { display: none; }
   > div {

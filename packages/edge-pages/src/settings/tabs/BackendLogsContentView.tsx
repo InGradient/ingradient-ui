@@ -11,7 +11,7 @@ const LogList = styled.div`
   font-family: 'Courier New', monospace;
   font-size: var(--ig-font-size-xs);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-3);
 `
@@ -23,7 +23,7 @@ const LogRow = styled.div<{ $level: string }>`
     'var(--ig-color-text-secondary)'};
 `
 const Timestamp = styled.span`color: var(--ig-color-text-muted); margin-right: var(--ig-space-2);`
-const LevelBadge = styled.span`text-transform: uppercase; font-weight: 700; margin-right: var(--ig-space-2);`
+const LevelBadge = styled.span`text-transform: uppercase; font-weight: var(--ig-font-weight-bold); margin-right: var(--ig-space-2);`
 const EmptyText = styled.div`text-align: center; padding: var(--ig-space-9) 0; color: var(--ig-color-text-muted);`
 
 export function BackendLogsContentView(props: BackendLogsContentViewProps): JSX.Element {

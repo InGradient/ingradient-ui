@@ -9,9 +9,9 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   padding: var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,7 @@ export const FilterActionButton = styled.button`
   gap: var(--ig-space-2);
   height: 32px;
   padding: 0 10px;
-  border: 1px solid transparent;
+  border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
   background: transparent;
   color: var(--ig-color-text-muted);
@@ -51,7 +51,7 @@ export const FilterPopover = styled.div`
   min-width: 210px;
   padding: var(--ig-space-5);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-panel);
   z-index: 100;
@@ -66,12 +66,12 @@ export const FilterSection = styled.div`
 `;
 
 export const FilterSectionTitle = styled.div`
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   margin-bottom: var(--ig-space-3);
   font-size: var(--ig-font-size-2xs);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--ig-letter-spacing-wider);
 `;
 
 export const FilterRow = styled.label`
@@ -133,7 +133,7 @@ export const LogTime = styled.span`
 export const LogMessage = styled.div`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-secondary);
-  line-height: 1.4;
+  line-height: var(--ig-line-height-snug);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -158,7 +158,7 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
 export const DetailImageClickable = styled.img`
   width: 100%;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   margin-bottom: 10px;
   background: var(--ig-color-bg-canvas);
   cursor: zoom-in;
@@ -172,7 +172,7 @@ export const ImageModalImg = styled.img`
   max-width: 90vw;
   max-height: 90vh;
   border-radius: var(--ig-radius-sm);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
   object-fit: contain;
 `;
@@ -188,7 +188,7 @@ export const DetailPlaceholder = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);
   text-align: center;
-  padding: 16px 8px;
+  padding: var(--ig-space-7) 8px;
 `;
 
 export const OpenImageButton = styled.button`
@@ -196,11 +196,11 @@ export const OpenImageButton = styled.button`
   align-items: center;
   gap: var(--ig-space-2);
   margin-bottom: 10px;
-  padding: 6px 10px;
+  padding: var(--ig-space-2) 10px;
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-accent-soft);
   background: rgba(77, 136, 255, 0.1);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   transition: background 0.16s ease;

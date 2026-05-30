@@ -14,7 +14,7 @@ const SCROLLER_STYLE = { overflow: 'auto' as const, maxWidth: '100%' }
 const TABLE_WRAP_STYLE = {
   display: 'inline-block' as const,
   width: 'fit-content',
-  border: '1px solid var(--ig-color-border-strong)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   borderRadius: 'var(--ig-radius-xxs)',
   background: 'var(--ig-color-surface-panel)',
 }
@@ -29,11 +29,11 @@ const StyledTable = styled.table`
   border-collapse: collapse;
   & th {
     padding: var(--ig-space-4) var(--ig-space-3);
-    border-bottom: 1px solid var(--ig-color-border-strong);
-    border-right: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+    border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     background: var(--ig-color-surface-raised);
     color: var(--ig-color-text-secondary);
-    font-size: 12px;
+    font-size: var(--ig-font-size-xs);
     text-align: center;
     vertical-align: bottom;
   }
@@ -44,15 +44,15 @@ const StyledTable = styled.table`
   }
   & td {
     padding: var(--ig-space-3);
-    border-bottom: 1px solid var(--ig-color-border-subtle);
-    border-right: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     text-align: center;
   }
   & td.row-label {
     padding: var(--ig-space-4) var(--ig-space-5);
     color: var(--ig-color-text-primary);
-    font-size: 13px;
-    font-weight: 600;
+    font-size: var(--ig-font-size-sm);
+    font-weight: var(--ig-font-weight-semibold);
     white-space: nowrap;
     position: sticky;
     left: 0;

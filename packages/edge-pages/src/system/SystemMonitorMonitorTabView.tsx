@@ -13,7 +13,7 @@ const StatsGrid = styled.div`
 const StatCard = styled.div`
   padding: var(--ig-space-4);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
 `
 
@@ -21,12 +21,12 @@ const StatLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 const StatValue = styled.div`
   font-size: var(--ig-font-size-2xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin-top: var(--ig-space-2);
 `

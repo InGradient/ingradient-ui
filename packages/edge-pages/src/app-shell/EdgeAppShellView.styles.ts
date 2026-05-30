@@ -16,12 +16,12 @@ export const AppContent = styled.div`
 
 export const AppFooterBar = styled.footer`
   height: 28px;
-  padding: 0 12px;
+  padding: 0 var(--ig-space-5);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   backdrop-filter: blur(14px);
 `
 

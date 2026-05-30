@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const DeletingLabel = styled.span`
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--ig-space-2);
 `;
 
 export const GroupBadge = styled.div`
   background: rgba(0,0,0,0.55);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   padding: 2px 6px;
   border-radius: var(--ig-radius-xs);
 `;
@@ -31,7 +31,7 @@ export const GroupDeleteBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
   border-radius: var(--ig-radius-pill);
   background: rgba(239, 68, 68, 0.92);
   color: var(--ig-color-text-primary);
@@ -66,7 +66,7 @@ export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
   align-items: center;
   justify-content: center;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'transparent')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'transparent')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
@@ -134,8 +134,8 @@ export const ModalBBoxCanvasWrap = styled.div`
 export const ModalBBoxToolbar = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: var(--ig-space-3);
+  padding: var(--ig-space-3) 12px;
   background: rgba(0, 0, 0, 0.55);
   border-radius: 0 0 12px 12px;
   flex-shrink: 0;
@@ -145,7 +145,7 @@ export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
   width: 36px;
   height: 36px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--ig-radius-md);
   background: ${(p) => (p.$active ? 'var(--ig-color-surface-active)' : 'transparent')};
   color: var(--ig-color-text-primary);
   cursor: pointer;
@@ -164,7 +164,7 @@ export const ModalCloseBtn = styled.button`
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
   border-radius: var(--ig-radius-xs);
   background: rgba(0,0,0,0.5);
   color: white;
@@ -186,7 +186,7 @@ export const ModalHeader = styled.div`
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `;
 
 export const ModalHeaderCenter = styled.div`
@@ -194,7 +194,7 @@ export const ModalHeaderCenter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   min-width: 0;
   overflow: hidden;
 `;
@@ -215,10 +215,10 @@ export const ModalInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   width: 100%;
   height: 100%;
-  padding: 10px 12px 14px;
+  padding: var(--ig-space-4) 12px 14px;
   min-height: 0;
 `;
 
@@ -244,8 +244,8 @@ export const SelectionToolbar = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);
-  padding: 6px 16px;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  padding: var(--ig-space-2) 16px;
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-panel);
   flex-shrink: 0;
 `;
@@ -290,7 +290,7 @@ export const SyncSummary = styled.div`
 // ── Modal header left (Eye + Fullscreen) ─────────────────────────────────────
 export const ModalHeaderLeft = styled.div`
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   flex-shrink: 0;
 `;
 
@@ -298,7 +298,7 @@ export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.5)')};
   color: white;
@@ -317,6 +317,6 @@ export const ModalToolbarSpacer = styled.div`
 export const ModalBboxCount = styled.div`
   color: rgba(255,255,255,0.7);
   font-size: var(--ig-font-size-xs);
-  padding: 0 8px;
-  font-weight: 600;
+  padding: 0 var(--ig-space-3);
+  font-weight: var(--ig-font-weight-semibold);
 `;

@@ -8,7 +8,7 @@ export const DurationGrid = styled.div`
 
 export const DurationCard = styled.div`
   background: var(--ig-color-white-04);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-5);
 `;
@@ -22,7 +22,7 @@ export const DurationLabel = styled.div`
 export const DurationValue = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-3xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `;
 
 export const Table = styled.table`
@@ -34,14 +34,14 @@ export const Th = styled.th`
   text-align: left;
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   padding: 0 0 10px;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
 export const Td = styled.td`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--ig-color-white-06);
+  padding: var(--ig-space-4) 0;
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-white-06);
 `;

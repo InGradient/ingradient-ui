@@ -56,7 +56,7 @@ export const IconBtn = styled.button`
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 1px solid transparent;
+  border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
   background: transparent;
   color: var(--ig-color-text-muted);
@@ -81,7 +81,7 @@ export const BackBtn = styled.button`
   gap: 2px;
   height: 28px;
   padding: 0 var(--ig-space-3);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   background: transparent;
   color: var(--ig-color-text-muted);
@@ -116,6 +116,6 @@ export const BreadcrumbSep = styled.span`
 
 export const BreadcrumbDataset = styled.span`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `

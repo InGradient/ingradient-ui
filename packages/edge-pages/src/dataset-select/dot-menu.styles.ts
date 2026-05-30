@@ -35,9 +35,9 @@ export const DotMenuWrap = styled.div`
   right: 8px;
   z-index: 201;
   background: var(--ig-color-surface-panel);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);
-  padding: 4px 0;
+  padding: var(--ig-space-1) 0;
   min-width: 140px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 `
@@ -47,7 +47,7 @@ export const DotMenuItem = styled.button`
   align-items: center;
   gap: var(--ig-space-3);
   width: 100%;
-  padding: 8px 14px;
+  padding: var(--ig-space-3) 14px;
   border: none;
   background: transparent;
   color: var(--ig-color-text-primary);

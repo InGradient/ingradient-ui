@@ -8,10 +8,10 @@ const Row = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: var(--ig-space-4) 0;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: 600;`
+const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const PathBox = styled.div`
   font-family: 'Courier New', monospace;
   font-size: var(--ig-font-size-xs);

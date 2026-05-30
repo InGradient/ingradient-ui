@@ -30,7 +30,7 @@ export function ModelMappingSelect({
   title = 'Map this class to a COCO class',
 }: ModelMappingSelectProps) {
   if (!enabled) {
-    return <Text size="12px" tone="soft">{disabledHint}</Text>
+    return <Text size="var(--ig-font-size-xs)" tone="soft">{disabledHint}</Text>
   }
   return (
     <Stack gap={3}>
@@ -46,7 +46,7 @@ export function ModelMappingSelect({
           <option key={name} value={name}>{name}</option>
         ))}
       </SelectField>
-      <Text size="12px" tone="soft">{enabledHint}</Text>
+      <Text size="var(--ig-font-size-xs)" tone="soft">{enabledHint}</Text>
     </Stack>
   )
 }

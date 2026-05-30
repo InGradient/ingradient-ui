@@ -10,7 +10,7 @@ const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) var(--ig-space-4);
   border-radius: var(--ig-radius-md);
-  border: 1px solid
+  border: var(--ig-border-1px) solid
     ${(p) =>
       p.$selected || p.$classified
         ? 'var(--ig-color-blue-tint-38)'

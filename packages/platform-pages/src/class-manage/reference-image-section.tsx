@@ -9,7 +9,7 @@ const STACK_STYLE = { width: '100%' }
 const PREVIEW_STYLE = {
   width: '100%',
   borderRadius: 'var(--ig-radius-xs)',
-  border: '1px solid var(--ig-color-white-12)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-white-12)',
   background: 'var(--ig-color-white-04)',
   objectFit: 'contain' as const,
   maxHeight: 300,
@@ -51,7 +51,7 @@ export function ReferenceImageSection({
   }
   return (
     <InfoSection title={title}>
-      <Text tone="muted" size="12px" style={{ ...HINT_STYLE, display: 'block', lineHeight: 1.5 }}>{hint}</Text>
+      <Text tone="muted" size="var(--ig-font-size-xs)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 1.5 }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
@@ -63,14 +63,14 @@ export function ReferenceImageSection({
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
             <Stack gap={3} align="flex-start">
-              <Text tone="muted" size="12px" style={{ lineHeight: 1.5 }}>{emptyText}</Text>
+              <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 1.5 }}>{emptyText}</Text>
             </Stack>
           )}
           {candidates.length > 1 ? (
             <IndexedNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} prevLabel="Previous bbox" nextLabel="Next bbox" />
           ) : null}
-          {pending ? <Text tone="accent" size="12px" weight={600}>Updating reference image…</Text> : null}
-          {errorMessage ? <Text tone="accent" size="12px" weight={600}>{errorMessage}</Text> : null}
+          {pending ? <Text tone="accent" size="var(--ig-font-size-xs)" weight={600}>Updating reference image…</Text> : null}
+          {errorMessage ? <Text tone="accent" size="var(--ig-font-size-xs)" weight={600}>{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
     </InfoSection>

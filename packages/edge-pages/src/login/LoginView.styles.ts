@@ -17,7 +17,7 @@ export const LangCorner = styled.div`
   top: 16px;
   right: 16px;
   display: flex;
-  gap: 8px;
+  gap: var(--ig-space-3);
   align-items: center;
 `
 
@@ -26,10 +26,10 @@ export const SettingsIconBtn = styled.button`
   border: none;
   cursor: pointer;
   color: var(--ig-color-text-muted);
-  padding: 4px;
+  padding: var(--ig-space-1);
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--ig-radius-2xs);
   &:hover { color: var(--ig-color-text-primary); }
 `
 
@@ -37,7 +37,7 @@ export const Card = styled.div`
   width: 100%;
   max-width: 420px;
   background: var(--ig-color-white-04);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-13);
   display: flex;
@@ -47,7 +47,7 @@ export const Card = styled.div`
 
 export const Title = styled.h1`
   font-size: var(--ig-font-size-3xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin: 0;
   text-align: center;
@@ -66,7 +66,7 @@ export const PackageInfo = styled.div`
   padding: var(--ig-space-4);
   background: var(--ig-color-white-04);
   border-radius: var(--ig-radius-xs);
-  border: 1px solid var(--ig-color-white-07);
+  border: var(--ig-border-1px) solid var(--ig-color-white-07);
 `
 
 export const Divider = styled.div`
@@ -88,10 +88,10 @@ export const Field = styled.div`
 
 export const FieldLabel = styled.label`
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 export const CheckOptions = styled.div`
@@ -106,7 +106,7 @@ export const Btn = styled.button<{ $variant?: 'primary' | 'secondary' | 'ghost' 
   border: none;
   cursor: pointer;
   font-size: var(--ig-font-size-md);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   transition: opacity 0.15s;
   &:hover {
     opacity: 0.85;
@@ -137,7 +137,7 @@ export const SessionBox = styled.div`
 
 export const SessionGreeting = styled.div`
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   text-align: center;
 `
@@ -161,7 +161,7 @@ export const AccountItem = styled.button`
   gap: 2px;
   padding: var(--ig-space-4) var(--ig-space-5);
   background: var(--ig-color-white-04);
-  border: 1px solid var(--ig-color-white-08);
+  border: var(--ig-border-1px) solid var(--ig-color-white-08);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   text-align: left;
@@ -184,7 +184,7 @@ export const AccountItemEmail = styled.span`
 export const ModeTag = styled.span<{ $online: boolean }>`
   display: inline-block;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
   margin-left: 6px;

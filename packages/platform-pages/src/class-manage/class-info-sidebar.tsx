@@ -10,7 +10,7 @@ const SIDEBAR_STYLE = {
   flexShrink: 0,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   height: '100%',
   minHeight: 0,
   overflow: 'hidden' as const,

@@ -14,7 +14,7 @@ const MEMBER_ROW_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-4)',
   borderRadius: 'var(--ig-radius-2xs)',
   background: 'var(--ig-color-surface-interactive)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 const MEMBER_NAME_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
 const MEMBER_TEXT_BLOCK_STYLE = { flex: 1, minWidth: 0, gap: 2 }

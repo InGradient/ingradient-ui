@@ -19,13 +19,13 @@ const Block = styled.div`
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--ig-font-size-md);
   th, td {
     padding: var(--ig-space-3) var(--ig-space-5);
     text-align: left;
-    border-bottom: 1px solid var(--ig-color-border-strong);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   }
-  th { color: var(--ig-color-text-muted); font-weight: 500; }
+  th { color: var(--ig-color-text-muted); font-weight: var(--ig-font-weight-medium); }
   td { color: var(--ig-color-text-primary); }
 `
 
@@ -73,16 +73,16 @@ export function SourceBreakdownWidget({
   return (
     <Card className={className}>
       <Inline justify="space-between" gap={5} style={HEAD_STYLE}>
-        <Text size="13px" weight={600} tone="secondary">{title}</Text>
+        <Text size="var(--ig-font-size-sm)" weight={600} tone="secondary">{title}</Text>
       </Inline>
       {bySource.length === 0 ? (
-        <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         bySource.map((source) => (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Text size="12px" tone="muted" style={CHIP_STYLE}>{source.source === 'camera' && source.camera_ip ? `Camera ${source.camera_ip}` : source.source}</Text>
+            <Text size="var(--ig-font-size-xs)" tone="muted" style={CHIP_STYLE}>{source.source === 'camera' && source.camera_ip ? `Camera ${source.camera_ip}` : source.source}</Text>
             {source.defect_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="14px" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
+              <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
               <Box style={TABLE_WRAP_STYLE}>
                 <Table>

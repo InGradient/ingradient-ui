@@ -8,14 +8,14 @@ import { Textarea } from '@ingradient/ui/components'
 
 const FORM_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   borderRadius: 'var(--ig-radius-xxs)',
   padding: 'var(--ig-space-5)',
 }
 
 const TOKEN_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
-  border: '1px solid var(--ig-color-accent)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-accent)',
   borderRadius: 'var(--ig-radius-xxs)',
   padding: 'var(--ig-space-5)',
 }
@@ -77,13 +77,13 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
     return issuedToken ? (
       <div ref={ref}>
         <Stack gap={3} style={TOKEN_BOX_STYLE}>
-          <Text size="12px" weight={500} tone="muted">
+          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>
+            <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
         </Stack>
       </div>
@@ -98,7 +98,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
     <div ref={ref}>
       {showRegister ? (
         <Stack gap={4} style={FORM_BOX_STYLE}>
-          <Text size="12px" weight={500} tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
+          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
           <Inline gap={3} wrap="wrap">
             <TextField
               ref={uidInputRef}
@@ -120,13 +120,13 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRegister}>Cancel</Button>
           </Inline>
-          {registerError ? <Text size="12px" tone="danger">{registerError}</Text> : null}
+          {registerError ? <Text size="var(--ig-font-size-xs)" tone="danger">{registerError}</Text> : null}
         </Stack>
       ) : null}
 
       {showIssue && offlineEnabled ? (
         <Stack gap={4} style={FORM_BOX_STYLE}>
-          <Text size="12px" weight={500} tone="muted">Select a registered device to issue an offline license token.</Text>
+          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Select a registered device to issue an offline license token.</Text>
           <Inline gap={3} wrap="wrap">
             <DropdownSelect
               value={issueDeviceId}
@@ -153,13 +153,13 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
 
       {issuedToken ? (
         <Stack gap={3} style={TOKEN_BOX_STYLE}>
-          <Text size="12px" weight={500} tone="muted">
+          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap={3} wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <Text size="12px" tone="muted">Paste this token into the Edge app's license field.</Text>
+            <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
         </Stack>
       ) : null}

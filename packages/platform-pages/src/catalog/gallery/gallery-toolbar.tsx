@@ -5,7 +5,7 @@ import { Checkbox } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
 
 const BAR_STYLE = {
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   background: 'var(--ig-color-surface-header)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
@@ -32,7 +32,7 @@ const ROW_STYLE = { minHeight: 72, padding: 'var(--ig-space-7)' }
 
 const SELECTION_ROW_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-7)',
-  borderTop: '1px solid var(--ig-color-border-subtle)',
+  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const SELECTION_ROW_ACTIVE_STYLE = {

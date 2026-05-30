@@ -29,20 +29,20 @@ export function OrgSettingsTab({
   noOrgText = 'No organization',
   loadingText = 'Loading…',
 }: OrgSettingsTabProps) {
-  if (noOrganization) return <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{noOrgText}</Text>
-  if (!organization) return <Text as="p" tone="soft" size="14px" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
+  if (noOrganization) return <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{noOrgText}</Text>
+  if (!organization) return <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
 
   return (
     <Stack gap={9} style={WRAP_STYLE}>
-      <Text as="h3" size="16px" weight={600}>{title}</Text>
+      <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
 
       <Stack gap={2}>
-        <Text as="label" size="13px" weight={500}>Code</Text>
-        <Text size="14px" tone="muted">{organization.code}</Text>
+        <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Code</Text>
+        <Text size="var(--ig-font-size-md)" tone="muted">{organization.code}</Text>
       </Stack>
 
       <Stack gap={2}>
-        <Text as="label" htmlFor="org-name-input" size="13px" weight={500}>Name</Text>
+        <Text as="label" htmlFor="org-name-input" size="var(--ig-font-size-sm)" weight={500}>Name</Text>
         {isAdmin ? (
           <TextField
             id="org-name-input"
@@ -52,13 +52,13 @@ export function OrgSettingsTab({
             title="Organization name"
           />
         ) : (
-          <Text size="14px" tone="muted">{organization.name}</Text>
+          <Text size="var(--ig-font-size-md)" tone="muted">{organization.name}</Text>
         )}
       </Stack>
 
       <Stack gap={2}>
-        <Text as="label" size="13px" weight={500}>Status</Text>
-        <Text size="14px" tone="muted">{organization.status}</Text>
+        <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Status</Text>
+        <Text size="var(--ig-font-size-md)" tone="muted">{organization.status}</Text>
       </Stack>
 
       {isAdmin && (
@@ -66,8 +66,8 @@ export function OrgSettingsTab({
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>
             {saving ? 'Saving…' : 'Save'}
           </Button>
-          {message && <Text size="13px" tone="success">{message}</Text>}
-          {error && <Text size="13px" tone="danger">{error}</Text>}
+          {message && <Text size="var(--ig-font-size-sm)" tone="success">{message}</Text>}
+          {error && <Text size="var(--ig-font-size-sm)" tone="danger">{error}</Text>}
         </Inline>
       )}
     </Stack>

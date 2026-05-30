@@ -5,9 +5,9 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-space-1);
-  padding: 14px 16px;
+  padding: var(--ig-space-6) 16px;
   border-radius: var(--ig-radius-sm);
-  border: 1px solid ${(p) => (p.$isLatest ? 'rgba(77,136,255,0.55)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'rgba(77,136,255,0.55)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isLatest ? 'rgba(77,136,255,0.1)' : 'var(--ig-color-white-04)')};
   cursor: pointer;
   text-align: left;
@@ -32,9 +32,9 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-space-1);
-  padding: 16px 18px;
+  padding: var(--ig-space-7) 18px;
   border-radius: var(--ig-radius-sm);
-  border: 1px solid ${(p) => (p.$isRecent ? 'rgba(77,136,255,0.5)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'rgba(77,136,255,0.5)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isRecent ? 'rgba(77,136,255,0.08)' : 'var(--ig-color-white-04)')};
   cursor: pointer;
   text-align: left;
@@ -57,7 +57,7 @@ export const DatasetNameRow = styled.div`
 
 export const DatasetName = styled.div`
   font-size: var(--ig-font-size-md);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   flex: 1;
   min-width: 0;
@@ -72,10 +72,10 @@ export const DatasetName = styled.div`
 
 export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   padding: 1px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
+  border-radius: var(--ig-radius-2xs);
+  letter-spacing: var(--ig-letter-spacing-tight);
   flex-shrink: 0;
   white-space: nowrap;
   background: ${(p) =>
@@ -106,7 +106,7 @@ export const CardBottom = styled.div`
 
 export const ImageCount = styled.div`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
   flex-shrink: 0;
@@ -124,12 +124,12 @@ export const ClassChip = styled.span<{ $color: string }>`
   align-items: center;
   gap: var(--ig-space-1);
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   padding: 2px 7px;
   border-radius: 99px;
   background: ${(p) => `${p.$color}22`};
   color: ${(p) => p.$color};
-  border: 1px solid ${(p) => `${p.$color}44`};
+  border: var(--ig-border-1px) solid ${(p) => `${p.$color}44`};
   white-space: nowrap;
   max-width: 8em;
 `
@@ -151,12 +151,12 @@ export const ClassChipDot = styled.span<{ $color: string }>`
 
 export const MoreChip = styled.span`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   padding: 2px 7px;
   border-radius: 99px;
   background: var(--ig-color-white-06);
   color: var(--ig-color-text-muted);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 
 export const DatasetProjectLabel = styled.div`
@@ -167,9 +167,9 @@ export const DatasetProjectLabel = styled.div`
 export const RecentBadge = styled.div`
   flex-shrink: 0;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--ig-radius-2xs);
   background: rgba(77, 136, 255, 0.2);
   color: var(--ig-color-accent);
   white-space: nowrap;

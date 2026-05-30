@@ -7,8 +7,8 @@ export const ExportSection = styled.div`
 export const ExportSectionLabel = styled.div`
   margin-bottom: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: var(--ig-font-weight-bold);
+  letter-spacing: var(--ig-letter-spacing-normal);
   text-transform: uppercase;
   color: var(--ig-color-text-soft);
 `
@@ -20,7 +20,7 @@ export const ExportOption = styled.label<{ $active?: boolean; $disabled?: boolea
   padding: var(--ig-space-5);
   margin-bottom: var(--ig-space-3);
   border-radius: var(--ig-radius-lg);
-  border: 1px solid
+  border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-12)' : 'var(--ig-color-white-04)')};
   color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-primary)')};
@@ -42,7 +42,7 @@ export const ExportOptionBody = styled.span`
 
 export const ExportOptionTitle = styled.span`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const ExportOptionHint = styled.span`
@@ -55,7 +55,7 @@ export const ExportRegexInput = styled.input`
   margin-top: var(--ig-space-3);
   padding: var(--ig-space-3) var(--ig-space-4);
   border-radius: var(--ig-radius-md);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-white-04);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
@@ -101,7 +101,7 @@ export const ExportErrorText = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4);
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-alert-danger-bg);
-  border: 1px solid var(--ig-color-alert-danger-border);
+  border: var(--ig-border-1px) solid var(--ig-color-alert-danger-border);
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-sm);
 `

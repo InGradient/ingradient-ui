@@ -6,16 +6,16 @@ const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spa
 const Section = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-4);`
 const SectionTitle = styled.h3`
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   margin: 0;
   color: var(--ig-color-text-primary);
 `
 const Label = styled.label`
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 const Status = styled.div<{ $tone: 'success' | 'danger' }>`
   font-size: var(--ig-font-size-sm);

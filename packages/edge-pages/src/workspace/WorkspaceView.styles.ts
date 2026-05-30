@@ -17,28 +17,28 @@ export const CapturingStatusPill = styled.div`
   z-index: 9999;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--ig-space-3);
   background: rgba(0, 0, 0, 0.82);
   color: var(--ig-color-text-primary);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 8px 18px;
+  font-size: var(--ig-font-size-md);
+  font-weight: var(--ig-font-weight-semibold);
+  letter-spacing: var(--ig-letter-spacing-normal);
+  padding: var(--ig-space-3) 18px;
   border-radius: var(--ig-radius-md, 8px);
   pointer-events: none;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 
 export const ConfirmButton = styled.button<{ $danger?: boolean }>`
   height: 36px;
   padding: 0 14px;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.35)' : 'var(--ig-color-border-subtle)')};
+  border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.35)' : 'var(--ig-color-border-subtle)')};
   background: ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.12)' : 'transparent')};
   color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   transition: all 0.16s ease;
   &:hover {
@@ -51,8 +51,8 @@ export const FailureCode = styled.div`
   margin-top: 8px;
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: var(--ig-font-weight-bold);
+  letter-spacing: var(--ig-letter-spacing-tight);
 `
 
 const spin = keyframes`from { transform: rotate(0deg); } to { transform: rotate(360deg); }`
@@ -65,11 +65,11 @@ export const SavingOverlay = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: var(--ig-space-5);
   background: rgba(0, 0, 0, 0.6);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
 `
 
 export const SavingSpinner = styled.div`

@@ -7,11 +7,11 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   padding: var(--ig-space-3) 0;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: 600;`
-const Title = styled.div`font-size: var(--ig-font-size-md); font-weight: 700; color: var(--ig-color-text-primary);`
+const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
+const Title = styled.div`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-font-size-sm);`
 
 function formatBytes(bytes: number): string {

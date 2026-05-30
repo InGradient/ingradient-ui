@@ -9,7 +9,7 @@ const Row = styled.li`
   align-items: center;
   gap: var(--ig-space-5);
   padding: var(--ig-space-4) 0;
-  border-bottom: 1px solid var(--ig-color-border-strong);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   list-style: none;
   &:last-child {
     border-bottom: none;
@@ -58,9 +58,9 @@ export function ProjectMemberRow({
   const onlyOwnerRemoveTitle = isOnlyOwner ? 'Add another owner before removing this account.' : 'Remove from project'
   return (
     <Row>
-      <Text as="span" size="14px" title={member.name ?? member.email} style={CELL_STYLE}>{member.name || '-'}</Text>
-      <Text as="span" size="14px" title={member.organization ?? ''} style={CELL_STYLE}>{member.organization || '-'}</Text>
-      <Text as="span" size="14px" title={member.email} style={CELL_STYLE}>{member.email}</Text>
+      <Text as="span" size="var(--ig-font-size-md)" title={member.name ?? member.email} style={CELL_STYLE}>{member.name || '-'}</Text>
+      <Text as="span" size="var(--ig-font-size-md)" title={member.organization ?? ''} style={CELL_STYLE}>{member.organization || '-'}</Text>
+      <Text as="span" size="var(--ig-font-size-md)" title={member.email} style={CELL_STYLE}>{member.email}</Text>
       <SelectField
         value={member.role}
         onChange={(e) => onRoleChange?.((e.target as HTMLSelectElement).value)}

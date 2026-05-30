@@ -5,7 +5,7 @@ import { TextField } from '@ingradient/ui/components'
 const WRAP_STYLE = {
   marginTop: 'var(--ig-space-11)',
   paddingTop: 'var(--ig-space-9)',
-  borderTop: '1px solid var(--ig-color-border-subtle)',
+  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
@@ -33,8 +33,8 @@ export function DeleteProjectSection({
   const disabled = confirmInput !== projectName || !!pending
   return (
     <Box style={WRAP_STYLE}>
-      <Text as="h4" tone="muted" size="13px" weight={600} uppercase letterSpacing="0.04em" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
-      <Text as="p" tone="soft" size="14px" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
+      <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
       <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
         <TextField
           type="text"

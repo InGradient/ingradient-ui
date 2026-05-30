@@ -7,18 +7,18 @@ export const TabContent = styled(UiPageContent)`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--ig-space-11);
 `
 
 export const Section = FormSection
 
 export const SectionTitle = styled.h3`
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--ig-font-size-sm);
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-secondary);
   margin: 0 0 14px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 export const SectionTitleMt = styled(SectionTitle)`
@@ -28,14 +28,14 @@ export const SectionTitleMt = styled(SectionTitle)`
 export const CheckList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--ig-space-3);
 `
 
 export const CheckItem = styled.label`
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: var(--ig-space-3);
+  font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
   cursor: pointer;
   input[type='checkbox'] {
@@ -48,13 +48,13 @@ export const CheckItem = styled.label`
 export const CheckDivider = styled.div`
   height: 1px;
   background: var(--ig-color-border-subtle);
-  margin: 4px 0 2px;
+  margin: var(--ig-space-1) 0 2px;
 `
 
 export const FieldRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--ig-space-5);
   margin-top: 12px;
   flex-wrap: wrap;
 `
@@ -105,17 +105,17 @@ export const StatusPillMb = styled(StatusPill)`
 `
 
 export const ReportBox = styled.div`
-  padding: 16px;
+  padding: var(--ig-space-7);
   background: var(--ig-color-bg-canvas);
-  border: 1px solid var(--ig-color-border-subtle);
-  border-radius: 8px;
-  font-size: 13px;
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  border-radius: var(--ig-radius-md);
+  font-size: var(--ig-font-size-sm);
 `
 
 export const ReportGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: var(--ig-space-5);
   margin-bottom: 12px;
 `
 
@@ -124,11 +124,11 @@ export const ReportStat = styled.div`
   span:first-child {
     display: block;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: var(--ig-font-weight-bold);
     color: var(--ig-color-text-primary);
   }
   span:last-child {
-    font-size: 11px;
+    font-size: var(--ig-font-size-2xs);
     color: var(--ig-color-text-muted);
   }
 `

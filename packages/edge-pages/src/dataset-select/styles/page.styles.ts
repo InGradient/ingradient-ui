@@ -19,22 +19,22 @@ export const Content = styled.div`
 
 export const SectionLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--ig-letter-spacing-widest);
 `
 
 export const ErrorMsg = styled.div`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-danger);
-  padding: 24px 0;
+  padding: var(--ig-space-11) 0;
   text-align: center;
 `
 
 export const Spinner = styled.div`
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-md);
-  padding: 32px 0;
+  padding: var(--ig-space-13) 0;
   text-align: center;
 `

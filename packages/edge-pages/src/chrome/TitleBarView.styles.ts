@@ -6,7 +6,7 @@ export const Bar = styled.div`
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   backdrop-filter: blur(14px);
   -webkit-app-region: drag;
   user-select: none;
@@ -16,7 +16,7 @@ export const LogoArea = styled.div`
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 0 12px;
+  padding: 0 var(--ig-space-5);
   flex-shrink: 0;
   -webkit-app-region: no-drag;
 `
@@ -24,13 +24,13 @@ export const LogoArea = styled.div`
 export const LogoImg = styled.img`
   width: 18px;
   height: 18px;
-  border-radius: 4px;
+  border-radius: var(--ig-radius-2xs);
   opacity: 0.9;
 `
 
 export const LogoText = styled.span`
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--ig-font-size-xs);
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   letter-spacing: 0.01em;
   opacity: 0.85;

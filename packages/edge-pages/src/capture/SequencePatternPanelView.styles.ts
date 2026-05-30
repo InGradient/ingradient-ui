@@ -14,7 +14,7 @@ export const Segment = styled.div`
   padding: 3px;
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-white-06);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
 export const SegmentBtn = styled.button<{ $active: boolean }>`
@@ -23,7 +23,7 @@ export const SegmentBtn = styled.button<{ $active: boolean }>`
   border: none;
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.9)' : 'transparent')};
@@ -46,7 +46,7 @@ export const Item = styled.button<{ $active: boolean }>`
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.7)' : 'transparent')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.7)' : 'transparent')};
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
@@ -71,9 +71,9 @@ export const SubSectionLabel = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4) var(--ig-space-2);
   margin-top: var(--ig-space-3);
   color: var(--ig-color-text-muted);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--ig-font-size-2xs);
+  font-weight: var(--ig-font-weight-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-top: 1px solid var(--ig-color-border-subtle);
+  letter-spacing: var(--ig-letter-spacing-widest);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;

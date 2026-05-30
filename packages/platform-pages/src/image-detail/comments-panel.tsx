@@ -16,7 +16,7 @@ const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 const ERROR_BOX_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-3)',
-  border: '1px solid var(--ig-color-danger-dim-bg)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-danger-dim-bg)',
   borderRadius: 'var(--ig-radius-md)',
   background: 'var(--ig-color-danger-dim-bg)',
   color: 'var(--ig-color-danger)',

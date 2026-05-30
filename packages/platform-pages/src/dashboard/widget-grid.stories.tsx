@@ -19,7 +19,7 @@ function placeholder(key: WidgetKey, color: string) {
       height: 220,
       background: color,
       borderRadius: 8,
-      border: '1px solid var(--ig-color-border-strong)',
+      border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',

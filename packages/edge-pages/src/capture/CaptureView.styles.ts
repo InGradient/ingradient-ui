@@ -42,21 +42,21 @@ export const SetupMetrics = styled.div`
 
 export const MetricCard = styled.div`
   background: rgba(17, 24, 39, 0.7);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-sm);
-  padding: 8px 10px;
+  padding: var(--ig-space-3) 10px;
 `;
 
 export const MetricLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: rgba(255,255,255,0.62);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--ig-letter-spacing-normal);
 `;
 
 export const MetricValue = styled.div`
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin-top: 2px;
 `;
@@ -74,7 +74,7 @@ export const SetupBlockingOverlay = styled.div`
 
 export const SetupBlockingCard = styled.div`
   background: rgba(17, 24, 39, 0.86);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
   padding: 18px 22px;
   color: var(--ig-color-text-primary);
@@ -82,7 +82,7 @@ export const SetupBlockingCard = styled.div`
   align-items: center;
   gap: var(--ig-space-4);
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `;
 
 export const PlaceholderText = styled.div`
@@ -97,7 +97,7 @@ export const OverlayControls = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+  gap: var(--ig-space-2);
   z-index: 4;
 `;
 
@@ -118,11 +118,11 @@ export const OverlayHeader = styled.button`
 
 export const OverlayPopover = styled.div`
   background: var(--ig-color-surface-header);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   backdrop-filter: blur(10px);
   box-shadow: var(--ig-shadow-panel);
-  padding: 10px 12px;
+  padding: var(--ig-space-4) 12px;
   min-width: 160px;
   display: flex;
   flex-direction: column;
@@ -146,7 +146,7 @@ export const ControlLabel = styled.span`
 export const CaptureBar = styled.div`
   height: 100px;
   background-color: var(--ig-color-surface-panel);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -304,7 +304,7 @@ export const HistogramOverlay = styled.div`
   padding: var(--ig-space-3);
   border-radius: var(--ig-radius-sm);
   background: rgba(12, 16, 22, 0.82);
-  border: 1px solid var(--ig-color-white-12);
+  border: var(--ig-border-1px) solid var(--ig-color-white-12);
   backdrop-filter: blur(8px);
 `;
 
@@ -328,10 +328,10 @@ export const CapturingBadge = styled.div`
   z-index: 9999;
   background: rgba(0, 0, 0, 0.78);
   color: var(--ig-color-text-primary);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 6px 16px;
+  font-size: var(--ig-font-size-md);
+  font-weight: var(--ig-font-weight-semibold);
+  letter-spacing: var(--ig-letter-spacing-normal);
+  padding: var(--ig-space-2) 16px;
   border-radius: var(--ig-radius-sm, 6px);
   pointer-events: none;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);

@@ -3,7 +3,7 @@ import { SelectField } from '@ingradient/ui/components'
 
 const CARD_STYLE = {
   padding: 'var(--ig-space-6)',
-  border: '1px solid var(--ig-color-border-strong)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   borderRadius: 'var(--ig-radius-xs)',
   background: 'var(--ig-color-surface-raised)',
 }
@@ -40,8 +40,8 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
   return (
     <Stack gap={4} style={CARD_STYLE}>
       <Box>
-        <Text size="14px" weight={600}>{project.project_name}</Text>
-        <Text tone="muted" size="12px">
+        <Text size="var(--ig-font-size-md)" weight={600}>{project.project_name}</Text>
+        <Text tone="muted" size="var(--ig-font-size-xs)">
           role: {project.role} · members: {project.member_count}
           {project.owner_count !== undefined ? ` · owners: ${project.owner_count}` : ''}
         </Text>

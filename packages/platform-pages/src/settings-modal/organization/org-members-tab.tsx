@@ -38,8 +38,8 @@ export function OrgMembersTab({
 }: OrgMembersTabProps) {
   const [pendingRemove, setPendingRemove] = useState<OrgMember | null>(null)
 
-  if (loading) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{loadingText}</Text>
-  if (error) return <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{error}</Text>
+  if (loading) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{loadingText}</Text>
+  if (error) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{error}</Text>
 
   const columns: TableColumn<OrgMember>[] = [
     { key: 'loginId', header: 'Login ID', render: (r) => r.user.loginId },
@@ -61,9 +61,9 @@ export function OrgMembersTab({
 
   return (
     <Stack gap={7}>
-      <Text as="h3" size="15px" weight={600}>{title}</Text>
+      <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
       {members.length === 0 ? (
-        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         <Table<OrgMember> columns={columns} rows={members} ariaLabel="Members table" />
       )}
@@ -91,7 +91,7 @@ export function OrgMembersTab({
           }
         >
           <Stack gap={5}>
-            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>
+            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.user.displayName}</strong> ({pendingRemove.user.loginId}) from the organization?
             </Text>
           </Stack>

@@ -4,11 +4,11 @@ import { ProgressBar } from '@ingradient/ui/components'
 import type { FieldTestTabViewProps } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-7);`
-const Desc = styled.div`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted); line-height: 1.6;`
-const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: 700; margin: 0; color: var(--ig-color-text-primary);`
+const Desc = styled.div`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted); line-height: var(--ig-line-height-loose);`
+const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
 const LogBox = styled.pre`
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-4);
   font-family: 'Courier New', monospace;

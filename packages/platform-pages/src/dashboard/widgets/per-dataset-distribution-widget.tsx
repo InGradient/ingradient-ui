@@ -19,13 +19,13 @@ const Block = styled.div`
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--ig-font-size-md);
   th, td {
     padding: var(--ig-space-3) var(--ig-space-5);
     text-align: left;
-    border-bottom: 1px solid var(--ig-color-border-strong);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   }
-  th { color: var(--ig-color-text-muted); font-weight: 500; }
+  th { color: var(--ig-color-text-muted); font-weight: var(--ig-font-weight-medium); }
   td { color: var(--ig-color-text-primary); }
 `
 
@@ -66,16 +66,16 @@ export function PerDatasetDistributionWidget({
   return (
     <Card className={className}>
       <Inline justify="space-between" gap={5} style={HEAD_STYLE}>
-        <Text size="13px" weight={600} tone="secondary">{title}</Text>
+        <Text size="var(--ig-font-size-sm)" weight={600} tone="secondary">{title}</Text>
       </Inline>
       {datasetDistribution.length === 0 ? (
-        <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         datasetDistribution.map((dataset) => (
           <Block key={dataset.dataset_id}>
-            <Text as="h3" tone="secondary" size="14px" weight={600} style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
+            <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
             {dataset.class_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="14px" style={EMPTY_STYLE}>{noLabelsText}</Text>
+              <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noLabelsText}</Text>
             ) : (
               <>
                 <Table>

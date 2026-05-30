@@ -42,7 +42,7 @@ export function DashboardHeader({
       </PageHeader>
       {(actions || saveMessage) ? (
         <Inline gap={4} wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
-          {saveMessage ? <Text size="12px" tone="soft">{saveMessage}</Text> : null}
+          {saveMessage ? <Text size="var(--ig-font-size-xs)" tone="soft">{saveMessage}</Text> : null}
           {actions}
           {actionsExtra}
         </Inline>

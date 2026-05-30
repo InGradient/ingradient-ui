@@ -24,7 +24,7 @@ export const DragOverFull = styled.div`
   justify-content: center;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xl);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const GridWrap = styled.div`
@@ -45,7 +45,7 @@ export const DragOverGrid = styled.div`
   pointer-events: none;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const DangerDimButton = styled.button`
@@ -56,10 +56,10 @@ export const DangerDimButton = styled.button`
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-danger-dim-bg);
-  border: 1px solid var(--ig-color-danger-dim-border);
+  border: var(--ig-border-1px) solid var(--ig-color-danger-dim-border);
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
   cursor: pointer;
   &:hover:not(:disabled) {
     background: var(--ig-color-alert-danger-bg);
@@ -73,7 +73,7 @@ export const MobileBottomSheet = styled.div`
   bottom: 60px;
   z-index: 30;
   background: var(--ig-color-surface-raised);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-space-5);

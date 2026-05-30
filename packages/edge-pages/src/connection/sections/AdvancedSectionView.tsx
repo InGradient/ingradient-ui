@@ -10,7 +10,7 @@ const Header = styled.button`
   background: transparent;
   border: none;
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   cursor: pointer;
   padding: 0;

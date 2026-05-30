@@ -31,7 +31,7 @@ export const Card = styled(UiCard)`
 export const Title = styled.h1`
   margin: 0 0 var(--ig-space-6);
   font-size: var(--ig-font-size-xl);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const Form = styled.form`
@@ -43,7 +43,7 @@ export const Form = styled.form`
 export const OptionalLabel = styled.span`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
-  font-weight: 400;
+  font-weight: var(--ig-font-weight-regular);
   margin-left: var(--ig-space-2);
 `
 
@@ -98,7 +98,7 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
   padding: var(--ig-space-5);
   text-align: left;
   border-radius: var(--ig-radius-lg);
-  border: 1px solid
+  border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
   background: ${(p) =>
     p.$active ? 'var(--ig-color-surface-focus)' : 'var(--ig-color-surface-muted)'};
@@ -117,12 +117,12 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
 
 export const OptionTitle = styled.div`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   margin-bottom: var(--ig-space-2);
 `
 
 export const OptionText = styled.div`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
 `

@@ -7,7 +7,7 @@ const SIDEBAR_STYLE = {
   flexShrink: 0,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   height: '100%',
   minHeight: 0,
   overflow: 'hidden' as const,
@@ -15,7 +15,7 @@ const SIDEBAR_STYLE = {
 
 const HEADER_STYLE = {
   padding: 'var(--ig-space-7) var(--ig-space-7) var(--ig-space-5)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   flexShrink: 0,
 }
 
@@ -61,9 +61,9 @@ export function ClassListSidebar({
         </Button>
       </Box>
       {loading ? (
-        <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>Loading…</Text>
+        <Text tone="muted" align="center" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>Loading…</Text>
       ) : classes.length === 0 ? (
-        <Text tone="muted" align="center" size="14px" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
+        <Text tone="muted" align="center" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
       ) : (
         <Box as="ul" role="listbox" aria-label="Classes" style={LIST_STYLE}>
           {classes.map((c) => (

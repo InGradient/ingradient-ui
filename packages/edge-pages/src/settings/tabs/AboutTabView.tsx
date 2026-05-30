@@ -5,7 +5,7 @@ import type { AboutTabViewProps } from '../types'
 const Section = styled.div`margin-bottom: var(--ig-space-9);`
 const SectionTitle = styled.h3`
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   margin: 0 0 var(--ig-space-4);
   color: var(--ig-color-text-primary);
 `
@@ -16,25 +16,25 @@ const Hero = styled.div`
   margin-bottom: var(--ig-space-7);
 `
 const TitleGroup = styled.div`display: flex; flex-direction: column; gap: 2px;`
-const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: 700; color: var(--ig-color-text-primary);`
+const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: monospace;`
 
 const InfoRowWrap = styled.div`
   display: flex;
   justify-content: space-between;
   padding: var(--ig-space-3) 0;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   &:last-child { border-bottom: none; }
 `
 const InfoLabel = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const InfoValue = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: 600;`
+const InfoValue = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 
 const FingerprintBox = styled.div`
   font-family: 'Courier New', monospace;
   font-size: var(--ig-font-size-sm);
   padding: var(--ig-space-4);
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   margin-top: var(--ig-space-3);
   user-select: all;

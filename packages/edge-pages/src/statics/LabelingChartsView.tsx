@@ -20,7 +20,7 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
   return (
     <div style={{
       background: 'var(--ig-color-surface-raised)',
-      border: '1px solid var(--ig-color-border-strong)',
+      border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       borderRadius: 6,
       padding: '8px 10px',
       color: 'var(--ig-color-text-primary)',
@@ -44,7 +44,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
   return (
     <div style={{
       background: 'var(--ig-color-surface-raised)',
-      border: '1px solid var(--ig-color-border-strong)',
+      border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       borderRadius: 6,
       padding: '8px 10px',
       color: 'var(--ig-color-text-primary)',

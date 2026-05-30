@@ -10,9 +10,9 @@ import type { ScanSectionViewProps, GigEDevice, USBDevice, NicBadge } from '../t
 
 const SubTitle = styled.div`
   font-size: var(--ig-font-size-2xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--ig-letter-spacing-normal);
   color: var(--ig-color-text-muted);
   margin-bottom: 6px;
 `

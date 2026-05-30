@@ -84,8 +84,8 @@ export function InvitationsSection({
 
   return (
     <Stack as="section" gap={5}>
-      <Text as="h3" size="15px" weight={600}>{title}</Text>
-      <Text as="p" tone="muted" size="12px">{description}</Text>
+      <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
+      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
 
       {isAdmin && (
         <Stack gap={3}>
@@ -109,7 +109,7 @@ export function InvitationsSection({
 
           {readyToSearch ? (
             <Stack gap={2}>
-              {isSearching && <Text as="p" tone="muted" size="12px">Searching…</Text>}
+              {isSearching && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Searching…</Text>}
               {!isSearching && searchResults.map((u) => (
                 <OptionRow
                   key={u.id}
@@ -120,18 +120,18 @@ export function InvitationsSection({
                   onClick={() => onInviteUser(u)}
                 />
               ))}
-              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="12px">No registered users found.</Text>}
+              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">No registered users found.</Text>}
             </Stack>
           ) : (
-            <Text as="p" tone="muted" size="12px">Type at least {minSearchLength} characters to search registered users.</Text>
+            <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Type at least {minSearchLength} characters to search registered users.</Text>
           )}
 
-          {inviteMessage && <Text tone="muted" size="12px">{inviteMessage}</Text>}
+          {inviteMessage && <Text tone="muted" size="var(--ig-font-size-xs)">{inviteMessage}</Text>}
         </Stack>
       )}
 
       {invitations.length === 0 ? (
-        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>No invitations</Text>
+        <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>No invitations</Text>
       ) : (
         <Table<InvitationRow> columns={columns} rows={invitations} ariaLabel="Invitations table" />
       )}

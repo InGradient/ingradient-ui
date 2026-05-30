@@ -60,11 +60,11 @@ export function DashboardOverviewPanel({
         </Inline>
       </PanelHeader>
       <Box style={BODY_STYLE}>
-        {state === 'no-project' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
-          : state === 'loading' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
-          : state === 'error' ? <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{errorMessage ?? 'Error'}</Text>
+        {state === 'no-project' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
+          : state === 'loading' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
+          : state === 'error' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{errorMessage ?? 'Error'}</Text>
           : children ? children
-          : <Text as="p" tone="soft" size="14px" align="center" style={PLACEHOLDER_STYLE}>{noDataText}</Text>}
+          : <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{noDataText}</Text>}
       </Box>
     </Panel>
   )

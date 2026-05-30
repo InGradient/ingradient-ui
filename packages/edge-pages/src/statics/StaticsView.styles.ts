@@ -42,9 +42,9 @@ export const SummaryGrid = styled.div`
 
 export const SummaryCard = styled.div`
   background: var(--ig-color-surface-panel);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
-  padding: 14px 16px;
+  padding: var(--ig-space-6) 16px;
 `;
 
 export const SummaryLabel = styled.div`
@@ -56,7 +56,7 @@ export const SummaryLabel = styled.div`
 export const SummaryValue = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-4xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `;
 
 export const PanelGrid = styled.div`
@@ -67,16 +67,16 @@ export const PanelGrid = styled.div`
 
 export const Panel = styled.div`
   background: var(--ig-color-surface-panel);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-lg);
-  padding: 14px 16px 16px;
+  padding: var(--ig-space-6) 16px 16px;
   min-height: 300px;
 `;
 
 export const PanelTitle = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   margin-bottom: var(--ig-space-5);
 `;
 
@@ -92,7 +92,7 @@ export const SectionHeader = styled.button`
   margin-top: var(--ig-space-5);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   text-align: left;
   &:hover { color: var(--ig-color-text-soft); }
 `;

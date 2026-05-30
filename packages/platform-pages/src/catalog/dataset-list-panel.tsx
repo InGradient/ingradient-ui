@@ -9,19 +9,19 @@ import type { DatasetTaskType } from './dataset-task-tag'
 const PANEL_STYLE = {
   height: '100%',
   background: 'var(--ig-color-surface-panel)',
-  borderRight: '1px solid var(--ig-color-border-subtle)',
+  borderRight: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const HEADER_STYLE = {
   minHeight: 72,
   padding: '0 var(--ig-space-7)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   flexShrink: 0,
 }
 
 const SELECT_ALL_ROW_STYLE = {
   padding: 'var(--ig-space-4) var(--ig-space-6)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const LIST_STYLE = {

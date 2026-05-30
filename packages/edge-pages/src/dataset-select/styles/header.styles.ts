@@ -5,8 +5,8 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   min-height: 48px;
-  padding: 0 16px;
-  border-bottom: 1px solid var(--ig-color-white-08);
+  padding: 0 var(--ig-space-7);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   flex-shrink: 0;
 `
 
@@ -18,7 +18,7 @@ export const HeaderLeft = styled.div`
 
 export const Title = styled.h1`
   font-size: var(--ig-font-size-2xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin: 0;
 `
@@ -32,7 +32,7 @@ export const HeaderRight = styled.div`
 export const ModeTag = styled.span<{ $online: boolean }>`
   display: inline-block;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
   margin-left: 8px;
@@ -44,7 +44,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
 export const RoleBadge = styled.span<{ $role: string }>`
   display: inline-block;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   padding: 2px 8px;
   border-radius: var(--ig-radius-xs);
   background: ${(p) => {
@@ -75,7 +75,7 @@ export const RefreshBtn = styled.button<{ $spinning?: boolean }>`
   height: 36px;
   padding: 0;
   border-radius: var(--ig-radius-xs);
-  border: 1px solid transparent;
+  border: var(--ig-border-1px) solid transparent;
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
@@ -99,7 +99,7 @@ export const IconBtn = styled.button`
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 1px solid transparent;
+  border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
   background: transparent;
   color: var(--ig-color-text-muted);

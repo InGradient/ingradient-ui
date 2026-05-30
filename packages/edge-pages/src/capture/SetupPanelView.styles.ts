@@ -8,8 +8,8 @@ export const SetupPanel = styled.div`
 `;
 
 export const SetupPanelHeader = styled.div`
-  padding: 16px 16px 14px;
-  border-bottom: 1px solid var(--ig-color-white-08);
+  padding: var(--ig-space-7) 16px 14px;
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,7 +19,7 @@ export const SetupPanelHeader = styled.div`
 export const SetupPanelTitle = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `;
 
 // SetupResetButton / SetupSaveButton: ui Button (variant secondary/accent, size sm) (PR-B1, 2026-05-09)
@@ -31,7 +31,7 @@ export const SetupHeaderActions = styled.div`
 `;
 
 export const SetupPanelBody = styled.div`
-  padding: 14px 16px 16px;
+  padding: var(--ig-space-6) 16px 16px;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
@@ -54,20 +54,20 @@ export const PatternGrid = styled.div`
 `;
 
 export const PatternButton = styled.button<{ $active: boolean }>`
-  border: 1px solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
   background: ${({ $active }) => ($active ? 'rgba(59, 130, 246, 0.18)' : 'var(--ig-color-white-04)')};
   color: var(--ig-color-text-primary);
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-4);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
 `;
 
 export const SetupMetaText = styled.div`
   color: rgba(255,255,255,0.7);
   font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
 `;
 
 export const SetupInlineRow = styled.div`

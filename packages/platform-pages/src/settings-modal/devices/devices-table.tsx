@@ -11,20 +11,20 @@ const TH_ACTIONS_STYLE = { width: 120 }
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   & th {
     text-align: left;
     padding: var(--ig-space-2) var(--ig-space-3);
-    font-weight: 500;
-    border-bottom: 1px solid var(--ig-color-border-subtle);
+    font-weight: var(--ig-font-weight-medium);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     white-space: nowrap;
   }
   & td {
     padding: var(--ig-space-3);
-    border-bottom: 1px solid var(--ig-color-white-04);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-white-04);
     vertical-align: middle;
   }
-  & td.mono { font-family: monospace; font-size: 12px; }
+  & td.mono { font-family: monospace; font-size: var(--ig-font-size-xs); }
   & td.muted { color: var(--ig-color-text-muted); }
   & td.actions { white-space: nowrap; }
   & td.empty {
@@ -77,7 +77,7 @@ export function DevicesTable({
   return (
     <Stack as="section" gap={4}>
       <Inline justify="space-between" gap={3} wrap="wrap">
-        <Text as="h3" size="15px" weight={600}>{title}</Text>
+        <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
         {isAdmin ? (
           <Inline gap={3}>
             {offlineEnabled ? (

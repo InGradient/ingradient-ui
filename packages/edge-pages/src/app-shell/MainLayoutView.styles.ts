@@ -15,12 +15,12 @@ export const AppShell = styled.div`
 
 export const AppHeader = styled.header`
   height: 48px;
-  padding: 0 16px;
+  padding: 0 var(--ig-space-7);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   backdrop-filter: blur(14px);
 `
 
@@ -28,8 +28,8 @@ export const PanelsRow = styled.div`
   flex: 1;
   min-height: 0;
   display: flex;
-  gap: 10px;
-  padding: 10px 14px 10px;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-4) 14px 10px;
   overflow: hidden;
 `
 

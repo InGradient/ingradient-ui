@@ -5,7 +5,7 @@ const MAIN_STYLE = {
   flex: 1,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   overflow: 'hidden' as const,
 }
 
@@ -57,7 +57,7 @@ export function SelectableGridPanel({
   if (!selectedId) {
     return (
       <Stack as="main" gap={0} style={MAIN_STYLE}>
-        <Text tone="soft" size="14px" style={EMPTY_STYLE}>{noSelectionText}</Text>
+        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noSelectionText}</Text>
       </Stack>
     )
   }
@@ -65,9 +65,9 @@ export function SelectableGridPanel({
     <Stack as="main" gap={0} style={MAIN_STYLE}>
       {headerSlot}
       {loading ? (
-        <Text tone="muted" size="14px" style={LOADING_STYLE}>{loadingText}</Text>
+        <Text tone="muted" size="var(--ig-font-size-md)" style={LOADING_STYLE}>{loadingText}</Text>
       ) : empty ? (
-        <Text tone="soft" size="14px" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         <Box style={GRID_STYLE}>{gridSlot}</Box>
       )}

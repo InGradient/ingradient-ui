@@ -7,7 +7,7 @@ const Card = styled.div`
   flex-direction: column;
   gap: var(--ig-space-2);
   padding: var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-raised);
 `
@@ -20,7 +20,7 @@ const Row = styled.div`
 `
 
 const Label = styled.span`color: var(--ig-color-text-muted);`
-const Value = styled.span`color: var(--ig-color-text-primary); font-weight: 600;`
+const Value = styled.span`color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 
 const ErrorList = styled.ul`
   margin: var(--ig-space-2) 0 0;

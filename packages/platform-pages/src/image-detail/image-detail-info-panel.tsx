@@ -5,7 +5,7 @@ import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
 const SECTION_STYLE = {
   padding: 'var(--ig-space-5)',
-  borderBottom: '1px solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const DETAILS_TOGGLE_STYLE = { padding: 'var(--ig-space-2) 0' }

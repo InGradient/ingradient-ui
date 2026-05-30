@@ -11,9 +11,9 @@ const Table = styled.table`
 const Th = styled.th`
   text-align: left;
   padding: var(--ig-space-2) var(--ig-space-3);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-muted);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   vertical-align: top;
   white-space: nowrap;
 `
@@ -21,7 +21,7 @@ const Th = styled.th`
 const Td = styled.td`
   padding: var(--ig-space-2) var(--ig-space-3);
   color: var(--ig-color-text-secondary);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   vertical-align: top;
   word-break: break-word;
 `

@@ -34,9 +34,9 @@ export function ProjectMembersList({
 }: ProjectMembersListProps) {
   const [pendingRemove, setPendingRemove] = useState<{ id: string; email: string } | null>(null)
 
-  if (loading) return <Text as="p" tone="soft" size="14px">{loadingText}</Text>
-  if (error) return <Text as="p" tone="soft" size="14px">{error}</Text>
-  if (members.length === 0) return <Text as="p" tone="soft" size="14px">{emptyText}</Text>
+  if (loading) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{loadingText}</Text>
+  if (error) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{error}</Text>
+  if (members.length === 0) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{emptyText}</Text>
 
   const ownerCount = members.filter((m) => m.role === 'owner').length
 
@@ -84,10 +84,10 @@ export function ProjectMembersList({
           }
         >
           <Stack gap={5}>
-            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>
+            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
             </Text>
-            <Text as="p" tone="muted" size="14px" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
+            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
           </Stack>
         </DialogShell>
       )}

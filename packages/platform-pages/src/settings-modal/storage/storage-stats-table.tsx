@@ -5,7 +5,7 @@ import { Skeleton } from '@ingradient/ui/components'
 
 const CARD_STYLE = {
   background: 'var(--ig-color-surface-raised)',
-  border: '1px solid var(--ig-color-border-strong)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   borderRadius: 'var(--ig-radius-xxs)',
   padding: 'var(--ig-space-7)',
 }
@@ -13,18 +13,18 @@ const CARD_STYLE = {
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   & th {
     text-align: left;
     color: var(--ig-color-text-muted);
-    font-weight: 500;
+    font-weight: var(--ig-font-weight-medium);
     padding: var(--ig-space-3) var(--ig-space-5);
-    border-bottom: 1px solid var(--ig-color-border-strong);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   }
   & td {
     color: var(--ig-color-text-secondary);
     padding: var(--ig-space-3) var(--ig-space-5);
-    border-bottom: 1px solid var(--ig-color-border-subtle);
+    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   }
   & td.num {
     text-align: right;
@@ -32,9 +32,9 @@ const Table = styled.table`
   }
   & tr:last-child td { border-bottom: none; }
   & tfoot td {
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
     color: var(--ig-color-text-primary);
-    border-top: 1px solid var(--ig-color-border-subtle);
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   }
 `
 

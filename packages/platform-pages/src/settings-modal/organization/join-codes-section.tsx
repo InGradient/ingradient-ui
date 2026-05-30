@@ -50,7 +50,7 @@ export function JoinCodesSection({
   description = DEFAULT_DESC,
 }: JoinCodesSectionProps) {
   const columns: TableColumn<JoinCodeRow>[] = [
-    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="12px" letterSpacing="1px">{r.code}</Text> },
+    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-font-size-xs)" letterSpacing="1px">{r.code}</Text> },
     { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
     { key: 'uses', header: 'Uses', render: (r) => <Text tone="muted">{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Text> },
     { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },
@@ -67,8 +67,8 @@ export function JoinCodesSection({
 
   return (
     <Stack as="section" gap={5}>
-      <Text as="h3" size="15px" weight={600}>{title}</Text>
-      <Text as="p" tone="muted" size="12px">{description}</Text>
+      <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
+      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
 
       {isAdmin && (
         <Inline gap={3} wrap="wrap">
@@ -99,7 +99,7 @@ export function JoinCodesSection({
       )}
 
       {joinCodes.length === 0 ? (
-        <Text as="p" tone="muted" align="center" size="13px" style={EMPTY_STYLE}>No join codes</Text>
+        <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>No join codes</Text>
       ) : (
         <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
       )}

@@ -5,32 +5,32 @@ import { SettingsShell } from '@ingradient/ui/patterns'
 export const Modal = styled(ModalCard)`
   width: 1200px;
   height: 820px;
-  max-width: calc(100vw - 32px);
-  max-height: calc(100vh - 32px);
+  max-width: calc(100vw - var(--ig-space-13));
+  max-height: calc(100vh - var(--ig-space-13));
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--ig-radius-md);
 `
 
 export const Header = styled(ModalHeader)`
-  padding: 16px 20px;
+  padding: var(--ig-space-7) var(--ig-space-9);
   flex-shrink: 0;
 `
 
 export const Title = styled(ModalTitle)`
-  font-size: 18px;
+  font-size: var(--ig-font-size-2xl);
 `
 
 export const Main = styled(SettingsShell)`
   flex: 1;
   min-height: 0;
   gap: 0;
-  grid-template-columns: 140px minmax(0, 1fr);
+  grid-template-columns: var(--ig-popup-2xs) minmax(0, 1fr);
 `
 
 export const Body = styled.div`
-  padding: 20px;
+  padding: var(--ig-space-9);
   overflow: auto;
   flex: 1;
   min-width: 0;
@@ -50,14 +50,14 @@ export const AdminBody = styled.div`
 
 export const AdminSubTabsWrap = styled.div`
   flex-shrink: 0;
-  margin-bottom: 8px;
+  margin-bottom: var(--ig-space-3);
 `
 
 export const AdminDesc = styled.p`
-  margin: 8px 0 16px;
-  font-size: 13px;
+  margin: var(--ig-space-3) 0 var(--ig-space-7);
+  font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
 `
 
 export const AdminContent = styled.div`
@@ -67,36 +67,36 @@ export const AdminContent = styled.div`
 `
 
 export const SubsectionTitle = styled.h4`
-  margin: 16px 0 8px;
-  font-size: 13px;
-  font-weight: 600;
+  margin: var(--ig-space-7) 0 var(--ig-space-3);
+  font-size: var(--ig-font-size-sm);
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--ig-letter-spacing-normal);
 `
 
 export const PermissionsHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin: 16px 0 8px;
+  gap: var(--ig-space-3);
+  margin: var(--ig-space-7) 0 var(--ig-space-3);
 `
 
 export const PermissionsScopeNote = styled.p`
-  margin: 0 0 12px;
-  font-size: 12px;
+  margin: 0 0 var(--ig-space-5);
+  font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-soft);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
 `
 
 export const ExpandToggle = styled.button`
   background: none;
   border: none;
   color: var(--ig-color-accent);
-  font-size: 13px;
+  font-size: var(--ig-font-size-sm);
   cursor: pointer;
-  padding: 4px 8px;
+  padding: var(--ig-space-1) var(--ig-space-3);
   &:hover {
     text-decoration: underline;
   }
@@ -105,5 +105,5 @@ export const ExpandToggle = styled.button`
 export const Placeholder = styled.p`
   margin: 0;
   color: var(--ig-color-text-soft);
-  font-size: 14px;
+  font-size: var(--ig-font-size-md);
 `

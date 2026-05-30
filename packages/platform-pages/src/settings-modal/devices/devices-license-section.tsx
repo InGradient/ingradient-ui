@@ -16,7 +16,7 @@ const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as con
 
 const FORM_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
-  border: '1px solid var(--ig-color-border-subtle)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   borderRadius: 'var(--ig-radius-xxs)',
   padding: 'var(--ig-space-5)',
 }
@@ -68,7 +68,7 @@ export function DevicesLicenseSection({
   return (
     <Stack as="section" gap={4}>
       <Inline justify="space-between" gap={3}>
-        <Text as="h3" size="15px" weight={600}>License</Text>
+        <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>License</Text>
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}
@@ -76,8 +76,8 @@ export function DevicesLicenseSection({
         ) : null}
       </Inline>
 
-      {loading ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>Loading…</Text> : null}
-      {!loading && error ? <Text tone="danger" size="12px">{error}</Text> : null}
+      {loading ? <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={PLACEHOLDER_STYLE}>Loading…</Text> : null}
+      {!loading && error ? <Text tone="danger" size="var(--ig-font-size-xs)">{error}</Text> : null}
       {!loading && !error && license ? (
         <Box style={INFO_GRID_STYLE}>
           <Text style={INFO_LABEL_STYLE}>Plan</Text>
@@ -95,11 +95,11 @@ export function DevicesLicenseSection({
           </Text>
         </Box>
       ) : null}
-      {!loading && !error && !license ? <Text as="p" tone="muted" size="13px" style={PLACEHOLDER_STYLE}>No license found.</Text> : null}
+      {!loading && !error && !license ? <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={PLACEHOLDER_STYLE}>No license found.</Text> : null}
 
       {isAdmin && showRenew ? (
         <Stack gap={4} style={FORM_BOX_STYLE}>
-          <Text size="12px" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
+          <Text size="var(--ig-font-size-xs)" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
           <Inline gap={3} wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
@@ -107,7 +107,7 @@ export function DevicesLicenseSection({
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRenew}>Cancel</Button>
           </Inline>
-          {renewError ? <Text tone="danger" size="12px">{renewError}</Text> : null}
+          {renewError ? <Text tone="danger" size="var(--ig-font-size-xs)">{renewError}</Text> : null}
         </Stack>
       ) : null}
     </Stack>
