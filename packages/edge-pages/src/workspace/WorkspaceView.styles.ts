@@ -26,12 +26,12 @@ export const CapturingStatusPill = styled.div`
   padding: var(--ig-space-3) 18px;
   border-radius: var(--ig-radius-md, 8px);
   pointer-events: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 20px var(--ig-color-overlay-dim);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 
 export const ConfirmButton = styled.button<{ $danger?: boolean }>`
-  height: 36px;
+  height: var(--ig-control-height-md);
   padding: 0 14px;
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.35)' : 'var(--ig-color-border-subtle)')};
@@ -73,8 +73,8 @@ export const SavingOverlay = styled.div`
 `
 
 export const SavingSpinner = styled.div`
-  width: 32px;
-  height: 32px;
+  width: var(--ig-control-height-sm);
+  height: var(--ig-control-height-sm);
   border: 3px solid rgba(255,255,255,0.2);
   border-top-color: rgba(255,255,255,0.8);
   border-radius: 50%;

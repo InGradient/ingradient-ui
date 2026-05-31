@@ -52,7 +52,7 @@ export const DangerDimButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  height: 32px;
+  height: var(--ig-control-height-sm);
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-danger-dim-bg);

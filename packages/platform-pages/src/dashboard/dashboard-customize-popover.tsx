@@ -5,10 +5,10 @@ import { Checkbox } from '@ingradient/ui/components'
 
 const Wrap = styled(MenuPopover)`
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + var(--ig-space-3));
   right: 0;
   z-index: 20;
-  width: min(320px, calc(100vw - 32px));
+  width: min(320px, calc(100vw - var(--ig-space-13)));
   padding: var(--ig-space-6);
   border-radius: var(--ig-radius-lg);
 `

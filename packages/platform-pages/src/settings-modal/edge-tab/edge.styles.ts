@@ -66,7 +66,7 @@ export const Label = styled.label`
 `
 
 export const NumberInput = styled(NumberField)`
-  width: 80px;
+  width: var(--ig-popup-3xs);
 `
 
 export const Hint = styled.p`

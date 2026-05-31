@@ -4,7 +4,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 48px;
+  min-height: var(--ig-control-height-xl);
   padding: 0 var(--ig-space-7);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   flex-shrink: 0;
@@ -71,8 +71,8 @@ export const RefreshBtn = styled.button<{ $spinning?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   padding: 0;
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid transparent;
@@ -96,8 +96,8 @@ export const IconBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   padding: 0;
   border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);

@@ -26,8 +26,8 @@ export const GroupBadgeWrap = styled.div`
 `;
 
 export const GroupDeleteBtn = styled.button`
-  width: 28px;
-  height: 28px;
+  width: var(--ig-control-height-xs);
+  height: var(--ig-control-height-xs);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,8 +60,8 @@ export const GroupDeleteBtn = styled.button`
 // @ingradient/ui ImageGrid + EdgeImagesGrid 로 이동 (PR-1.5, 2026-05-09)
 
 export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
-  width: 32px;
-  height: 32px;
+  width: var(--ig-control-height-sm);
+  height: var(--ig-control-height-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -136,14 +136,14 @@ export const ModalBBoxToolbar = styled.div`
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) 12px;
-  background: rgba(0, 0, 0, 0.55);
+  background: var(--ig-color-overlay-strong);
   border-radius: 0 0 12px 12px;
   flex-shrink: 0;
 `;
 
 export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   border: none;
   border-radius: var(--ig-radius-md);
   background: ${(p) => (p.$active ? 'var(--ig-color-surface-active)' : 'transparent')};
@@ -178,7 +178,7 @@ export const ModalFilename = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 320px;
+  max-width: var(--ig-popup-md);
 `;
 
 export const ModalHeader = styled.div`
@@ -270,7 +270,7 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--ig-color-overlay-mid);
   color: ${(p) =>
     p.$state === 'upload_failed' ? 'var(--ig-color-danger)' :
     p.$state === 'uploading' ? 'var(--ig-color-accent)' :

@@ -14,14 +14,14 @@ export const AppShell = styled.div`
 `
 
 export const AppHeader = styled.header`
-  height: 48px;
+  height: var(--ig-control-height-xl);
   padding: 0 var(--ig-space-7);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  backdrop-filter: blur(14px);
+  backdrop-filter: var(--ig-blur-sm);
 `
 
 export const PanelsRow = styled.div`
@@ -53,7 +53,7 @@ export const CenterPanel = styled(Panel)`
 `
 
 export const RightPanelContainer = styled(Panel)`
-  width: 280px;
+  width: var(--ig-popup-sm);
   flex-shrink: 0;
   overflow-y: auto;
 `

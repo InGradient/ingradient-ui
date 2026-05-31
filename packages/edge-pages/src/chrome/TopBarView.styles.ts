@@ -53,8 +53,8 @@ export const IconBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   padding: 0;
   border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
@@ -79,7 +79,7 @@ export const BackBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 2px;
-  height: 28px;
+  height: var(--ig-control-height-xs);
   padding: 0 var(--ig-space-3);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);

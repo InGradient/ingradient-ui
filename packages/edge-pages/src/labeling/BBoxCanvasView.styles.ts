@@ -58,7 +58,7 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
 export const BBoxCount = styled.div`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
-  min-width: 60px;
+  min-width: var(--ig-control-height-3xl);
   text-align: center;
 `;
 
@@ -69,7 +69,7 @@ export const HintOverlay = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: rgba(255, 255, 255, 0.45);
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--ig-color-overlay-mid);
   padding: var(--ig-space-1) 8px;
   border-radius: var(--ig-radius-xs);
   z-index: 5;
@@ -121,12 +121,12 @@ export const FullscreenBtn = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--ig-color-overlay-dim);
   border: none;
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);
@@ -138,7 +138,7 @@ export const FullscreenBtn = styled.button`
 
 export const AnnotationToggleBtn = styled(FullscreenBtn)<{ $active?: boolean }>`
   right: 54px;
-  background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.62)' : 'rgba(0, 0, 0, 0.45)')};
+  background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.62)' : 'var(--ig-color-overlay-dim)')};
   &:hover {
     background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.78)' : 'var(--ig-color-modal-backdrop)')};
   }
@@ -199,8 +199,8 @@ export const ModeToggleGroup = styled.div`
 `;
 
 export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-12)')};
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.18)' : 'transparent')};

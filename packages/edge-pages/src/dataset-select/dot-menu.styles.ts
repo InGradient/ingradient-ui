@@ -38,7 +38,7 @@ export const DotMenuWrap = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-1) 0;
-  min-width: 140px;
+  min-width: var(--ig-popup-2xs);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 `
 

@@ -12,8 +12,8 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   cursor: pointer;
   text-align: left;
   flex-shrink: 0;
-  min-width: 220px;
-  max-width: 280px;
+  min-width: var(--ig-popup-xs);
+  max-width: var(--ig-popup-sm);
   min-height: 112px;
   position: relative;
   transition: background 0.15s, border-color 0.15s;

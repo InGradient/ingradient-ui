@@ -91,7 +91,7 @@ export function ExportHistory({
               key: 'actions',
               header: 'Actions',
               render: (pkg) => (
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: 'var(--ig-space-3)', flexWrap: 'wrap' }}>
                   <Button
                     variant="secondary"
                     type="button"

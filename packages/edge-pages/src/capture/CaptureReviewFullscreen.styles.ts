@@ -16,12 +16,12 @@ export const CaptureReviewFullscreenBtn = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 36px;
-  height: 36px;
+  width: var(--ig-control-height-md);
+  height: var(--ig-control-height-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--ig-color-overlay-dim);
   border: none;
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);

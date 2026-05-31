@@ -27,7 +27,7 @@ export const FilterActionButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  height: 32px;
+  height: var(--ig-control-height-sm);
   padding: 0 10px;
   border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
@@ -91,7 +91,7 @@ export const DateRow = styled.div`
 `;
 
 export const DateLabel = styled.span`
-  min-width: 36px;
+  min-width: var(--ig-control-height-md);
   color: var(--ig-color-text-muted);
 `;
 

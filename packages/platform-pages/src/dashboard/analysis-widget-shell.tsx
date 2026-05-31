@@ -14,7 +14,7 @@ const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, s
     color: var(--ig-color-text-primary);
     box-shadow: 0 0 0 1px var(--ig-color-blue-tint-28);
   }
-  svg { width: 16px; height: 16px; }
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
 `
 
 export interface AnalysisWidgetShellProps {

@@ -14,7 +14,7 @@ export const Page = styled.div`
 `
 
 export const Content = styled(Stack)`
-  width: min(520px, calc(100vw - 32px));
+  width: min(520px, calc(100vw - var(--ig-space-13)));
   gap: var(--ig-space-6);
 `
 

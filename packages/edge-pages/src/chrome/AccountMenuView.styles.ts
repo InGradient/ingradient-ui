@@ -4,7 +4,7 @@ export const AccountBtn = styled.button`
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);
-  height: 36px;
+  height: var(--ig-control-height-md);
   padding: 0 var(--ig-space-4);
   border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);

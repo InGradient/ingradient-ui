@@ -35,7 +35,7 @@ export function GalleryDeleteDialog({
     <DialogShell
       title={title}
       onClose={onClose}
-      width="360px"
+      width="var(--ig-popup-lg)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose} disabled={isDeleting}>

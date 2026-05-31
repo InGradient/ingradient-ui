@@ -5,7 +5,7 @@ import { SelectField } from '@ingradient/ui/components'
 
 const Row = styled.li`
   display: grid;
-  grid-template-columns: minmax(140px, 1.1fr) minmax(140px, 1fr) minmax(220px, 1.3fr) auto auto;
+  grid-template-columns: minmax(var(--ig-popup-2xs), 1.1fr) minmax(var(--ig-popup-2xs), 1fr) minmax(var(--ig-popup-xs), 1.3fr) auto auto;
   align-items: center;
   gap: var(--ig-space-5);
   padding: var(--ig-space-4) 0;

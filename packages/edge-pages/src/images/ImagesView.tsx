@@ -76,7 +76,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
             {filterOpen && (
               <FilterPopover
                 width={260}
-                style={{ position: 'absolute', top: 'calc(100% + 6px)', right: 0 }}
+                style={{ position: 'absolute', top: 'calc(100% + var(--ig-space-2))', right: 0 }}
               >
                 <FilterPopoverSection title={labels.dateFilter.title}>
                   <DropdownSelect

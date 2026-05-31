@@ -52,7 +52,7 @@ export function GalleryDatasetTransferDialog({
     <DialogShell
       title={action === 'copy' ? 'Copy to dataset' : 'Move to dataset'}
       onClose={() => setAction(null)}
-      width="360px"
+      width="var(--ig-popup-lg)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={() => setAction(null)}>

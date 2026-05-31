@@ -35,7 +35,7 @@ export const RowDropZone = styled.div<{ $active: boolean }>`
   left: 0;
   right: 0;
   bottom: -20px;
-  height: 28px;
+  height: var(--ig-control-height-xs);
   z-index: 6;
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
@@ -94,7 +94,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
         top: 16px;
         bottom: 16px;
         left: -14px;
-        width: 28px;
+        width: var(--ig-control-height-xs);
       `
       : ''}
   ${(p) =>
@@ -103,15 +103,15 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
         top: 16px;
         bottom: 16px;
         right: -14px;
-        width: 28px;
+        width: var(--ig-control-height-xs);
       `
       : ''}
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
 
 export const DragOverlayCard = styled.div`
-  min-width: 220px;
-  max-width: 320px;
+  min-width: var(--ig-popup-xs);
+  max-width: var(--ig-popup-md);
   padding: var(--ig-space-6) 16px;
   border-radius: 18px;
   border: var(--ig-border-1px) solid var(--ig-color-blue-tint-28);

@@ -80,7 +80,7 @@ export const Slider = styled.input.attrs({ type: 'range' })`
 
 export const Select = styled.select`
   width: 100%;
-  height: 28px;
+  height: var(--ig-control-height-xs);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
@@ -131,7 +131,7 @@ export const SliderInline = styled.div`
 `;
 
 export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $danger?: boolean }>`
-  height: 32px;
+  height: var(--ig-control-height-sm);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${(p) =>
     p.$danger ? 'rgba(239, 68, 68, 0.6)'
