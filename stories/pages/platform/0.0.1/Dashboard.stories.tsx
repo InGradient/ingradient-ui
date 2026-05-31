@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import styled from 'styled-components'
 import { DashboardView, DraggableAnalysisWidgetGrid } from '@ingradient/platform-pages'
 import { AnalysisWidgetShell, DashboardOverviewPanel } from '@ingradient/ui/patterns'
+import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { downloadCaptureAsPng } from '@ingradient/ui/utils'
 import {
   customizeToggleItems,
@@ -45,11 +46,11 @@ const handoff = defineHandoff({
 
 type Args = { scenario: DashboardScenarioKey }
 
-const EMPTY_STATE_STYLE: React.CSSProperties = {
-  padding: 24,
-  textAlign: 'center',
-  color: 'var(--ig-color-text-muted)',
-}
+const EmptyState = styled.div`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  padding: var(--ig-space-7);
+`
 
 const noop = () => undefined
 
@@ -156,7 +157,7 @@ function DashboardScene({ scenario: key }: Args) {
           dataset_distribution: s.preferences.show_dataset_distribution,
         },
         emptyState: (
-          <div style={EMPTY_STATE_STYLE}>All widgets hidden. Enable some via Customize.</div>
+          <EmptyState>All widgets hidden. Enable some via Customize.</EmptyState>
         ),
       }}
     />

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 import { Button, Checkbox } from '../../components/inputs'
 import { Spinner } from '../../components/feedback/spinner'
 import { ClosePanelIcon } from '../../components/icons/catalog-icons'
@@ -75,15 +76,9 @@ const HeaderActions = styled.div`
 `
 
 const Placeholder = styled.div`
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${stateTitleText}
+  ${stateCenteredLayout}
   padding: var(--ig-space-7);
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
-  text-align: center;
 `
 
 export interface DatasetListPanelDataset {

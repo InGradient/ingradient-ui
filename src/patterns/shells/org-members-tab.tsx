@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
 import { Table, type TableColumn } from '../../components/data-display/table'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 
 const Wrap = styled.div`
   display: flex;
@@ -18,10 +19,9 @@ const SectionTitle = styled.h3`
 `
 
 const Empty = styled.p`
-  margin: 16px 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  margin: 0;
 `
 
 const Muted = styled.span`

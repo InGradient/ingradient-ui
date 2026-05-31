@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
+import { Spinner } from '../../components/feedback/spinner'
+import { Stack, stateCenteredLayout, stateTitleText } from '../../primitives'
 import { Panel, PanelHeader, PanelHint, PanelTitle } from '../page/page-shell'
 
 const HeaderMain = styled.div`
@@ -29,16 +31,23 @@ const ResetButton = styled(DateButton)`
   min-width: 0;
 `
 
+const OverviewPanel = styled(Panel)`
+  flex: 1;
+`
+
 const Body = styled.div`
+  flex: 1;
+  min-height: 0;
   padding: 16px;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
 `
 
 const Placeholder = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
   margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
-  text-align: center;
 `
 
 export interface DashboardOverviewPanelProps {
@@ -71,7 +80,7 @@ export function DashboardOverviewPanel({
   children, className,
 }: DashboardOverviewPanelProps) {
   return (
-    <Panel className={className}>
+    <OverviewPanel className={className}>
       <PanelHeader>
         <HeaderMain>
           <PanelTitle>{title}</PanelTitle>
@@ -85,11 +94,11 @@ export function DashboardOverviewPanel({
       </PanelHeader>
       <Body>
         {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
-          : state === 'loading' ? <Placeholder>{loadingText}</Placeholder>
+          : state === 'loading' ? <Placeholder><Stack gap={3} align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
           : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
           : children ? children
           : <Placeholder>{noDataText}</Placeholder>}
       </Body>
-    </Panel>
+    </OverviewPanel>
   )
 }

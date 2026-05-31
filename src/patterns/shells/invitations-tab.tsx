@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 import {
   InvitationsSection,
   type InvitationsSectionProps,
@@ -15,10 +16,9 @@ const Wrap = styled.div`
 `
 
 const Empty = styled.p`
-  margin: 16px 0 0;
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  margin: 0;
 `
 
 export interface InvitationsTabProps {

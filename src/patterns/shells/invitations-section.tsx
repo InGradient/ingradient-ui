@@ -4,6 +4,7 @@ import { SelectField } from '../../components/inputs/select-field'
 import { TextField } from '../../components/inputs/text-fields'
 import { SearchResultRow } from '../../components/data-display/search-result-row'
 import { Table, type TableColumn } from '../../components/data-display/table'
+import { stateTitleText } from '../../primitives'
 
 const Wrap = styled.section`
   display: flex;
@@ -55,10 +56,9 @@ const SearchWrap = styled.div`
 `
 
 const Empty = styled.p`
+  ${stateTitleText}
   margin: 16px 0 0;
   text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: 13px;
 `
 
 const Muted = styled.span`

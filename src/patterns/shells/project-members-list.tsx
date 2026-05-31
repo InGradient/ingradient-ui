@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { DialogShell } from '../../components/overlays/dialog-shell'
+import { stateTitleText } from '../../primitives'
 import {
   ProjectMemberRow,
   type ProjectMemberRowMember,
@@ -15,8 +16,7 @@ const List = styled.ul`
 `
 
 const Placeholder = styled.p`
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
+  ${stateTitleText}
   margin: 0;
 `
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { ModalCard, ModalHeader, ModalTitle, VerticalTabs } from '@ingradient/ui/components'
 import { SettingsShell } from '@ingradient/ui/patterns'
 
@@ -34,6 +35,8 @@ export const Body = styled.div`
   overflow: auto;
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 export const TabsList = styled(VerticalTabs)`
@@ -103,7 +106,7 @@ export const ExpandToggle = styled.button`
 `
 
 export const Placeholder = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
   margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
 `

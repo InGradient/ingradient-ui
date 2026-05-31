@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { TextField } from '../../components/inputs/text-fields'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 
 const Wrap = styled.div`
   display: flex;
@@ -50,9 +51,9 @@ const ErrorMsg = styled.span`
 `
 
 const Placeholder = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
   margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
 `
 
 export interface OrgSettingsTabProps {

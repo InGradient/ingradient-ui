@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const Page = styled.div`
   height: 100vh;
@@ -83,8 +84,7 @@ export const MobileBottomSheet = styled.div`
 `
 
 export const RightSideLoadingText = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  ${stateTitleText}
 `
 
 export const TableWrap = styled.div`

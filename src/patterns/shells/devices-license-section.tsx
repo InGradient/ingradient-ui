@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { DatePickerField } from '../../components/inputs/date-picker'
+import { stateTitleText } from '../../primitives'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
 const Section = styled.section`
@@ -70,9 +71,8 @@ const ErrMsg = styled.span`
 `
 
 const Placeholder = styled.p`
+  ${stateTitleText}
   margin: 0;
-  font-size: 13px;
-  color: var(--ig-color-text-muted);
 `
 
 export interface DeviceLicense {

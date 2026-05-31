@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { SectionPanel } from '@ingradient/ui/components'
+import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const CHART_COLORS = [
   'var(--ig-color-accent)',
@@ -66,9 +67,8 @@ export const EdgeSection = styled.div`
 `
 
 export const Empty = styled.p`
+  ${stateTitleText}
   margin: 0;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
 `
 
 export const Table = styled.table`

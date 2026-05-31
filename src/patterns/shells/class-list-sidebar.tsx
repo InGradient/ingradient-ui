@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 import { ClassListRow } from './class-list-row'
 
 const Sidebar = styled.aside`
@@ -31,10 +32,9 @@ const List = styled.ul`
 `
 
 const Placeholder = styled.div`
+  ${stateTitleText}
+  ${stateCenteredLayout}
   padding: 20px 14px;
-  color: var(--ig-color-text-muted);
-  font-size: 14px;
-  text-align: center;
 `
 
 export interface ClassListSidebarClass {

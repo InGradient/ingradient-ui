@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Alert, EmptyState, Spinner } from '@ingradient/ui/components'
 import { GalleryImagesTable } from '@ingradient/ui/patterns'
-import { Stack } from '@ingradient/ui/primitives'
+import { Stack, stateTitleText } from '@ingradient/ui/primitives'
 import styled from 'styled-components'
 import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'
@@ -26,9 +26,7 @@ const EmptyStateWrap = styled.div`
 `
 
 const LoadingText = styled.span`
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  ${stateTitleText}
 `
 
 interface CatalogBodyProps {

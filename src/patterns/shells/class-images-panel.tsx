@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { stateCenteredLayout, stateTitleText } from '../../primitives'
 
 const Main = styled.main`
   flex: 1;
@@ -14,22 +15,15 @@ const Main = styled.main`
 `
 
 const EmptyArea = styled.div`
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
+  ${stateTitleText}
+  ${stateCenteredLayout}
   padding: 24px;
-  text-align: center;
 `
 
 const LoadingArea = styled.div`
+  ${stateTitleText}
+  ${stateCenteredLayout}
   padding: 20px;
-  color: var(--ig-color-text-muted);
-  font-size: 14px;
-  text-align: center;
 `
 
 const GridArea = styled.div`

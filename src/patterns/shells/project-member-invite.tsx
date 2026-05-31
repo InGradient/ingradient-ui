@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { TextField } from '../../components/inputs/text-fields'
 import { SearchResultRow } from '../../components/data-display/search-result-row'
+import { stateTitleText } from '../../primitives'
 
 const SectionTitle = styled.h4`
   margin: 16px 0 8px;
@@ -33,8 +34,7 @@ const Input = styled(TextField)`
 `
 
 const Placeholder = styled.p`
-  color: var(--ig-color-text-soft);
-  font-size: 14px;
+  ${stateTitleText}
   margin: 0;
 `
 

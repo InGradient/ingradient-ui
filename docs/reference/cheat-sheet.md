@@ -251,6 +251,7 @@ CSS-in-JS recipes — styled 정의 안에서 `${recipe}` 로 mixin:
 | **`pageContentLayout`** | 페이지 본문 padding + grid |
 | **`controlField`** | 인풋 field 표준 스타일 (height/padding/border/disabled) |
 | **`buttonPrimary` / `buttonSecondary` / `buttonAccent` / `buttonDanger` / `buttonDangerSecondary`** | 버튼 variant CSS blocks |
+| **`stateTitleText` / `stateDescriptionText` / `stateCenteredLayout`** | empty / loading 대표 문구, 보조 설명, full-area 중앙 배치 |
 
 ---
 

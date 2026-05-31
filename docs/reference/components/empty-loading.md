@@ -4,6 +4,7 @@
 
 ```ts
 import { EmptyState, LoadingState } from '@ingradient/ui/components'
+import { stateCenteredLayout, stateDescriptionText, stateTitleText } from '@ingradient/ui/primitives'
 ```
 
 ## What It Is
@@ -27,6 +28,19 @@ import { EmptyState, LoadingState } from '@ingradient/ui/components'
 - `PageContent + EmptyState`
 - `Panel + LoadingState`
 - `Table area + EmptyState`
+
+## State Text Recipes
+
+- `stateTitleText`
+  - empty / loading 상태의 대표 문구에 사용한다
+  - `--ig-font-size-state-title`, `--ig-font-weight-state-title`, `--ig-color-state-title`
+- `stateDescriptionText`
+  - 대표 문구 아래의 보조 설명에 사용한다
+  - `--ig-font-size-state-description`, `--ig-line-height-state-description`, `--ig-color-state-description`
+- `stateCenteredLayout`
+  - 영역 전체를 대체하는 empty / loading 상태를 가로·세로 중앙에 배치한다
+
+페이지별로 상태 문구의 font size와 color를 다시 선언하지 않는다.
 
 ## Do
 

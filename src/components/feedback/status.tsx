@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { stateTitleText } from '../../primitives'
 import { statusToneStyles, type StatusTone } from '../../tokens/semantic/states'
 
 export type { StatusTone } from '../../tokens/semantic/states'
@@ -11,10 +12,9 @@ export const SmallText = styled.span`
 
 /** @deprecated Use `EmptyState` from `empty-state` instead */
 export const EmptyStateText = styled.div`
+  ${stateTitleText}
   padding: var(--ig-space-12);
   text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-md);
 `
 
 export const LoadingState = styled(EmptyStateText)`
