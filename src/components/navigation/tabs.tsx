@@ -32,7 +32,7 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
   ${({ $variant }) =>
     $variant === 'underline'
       ? css`
-          bottom: -1px;
+          bottom: var(--ig-space-neg-1px);
           height: var(--ig-space-2px);
           border-radius: var(--ig-radius-pill);
           background: var(--ig-color-accent-soft);

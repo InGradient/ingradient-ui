@@ -4,7 +4,7 @@ export const Container = styled.div`
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding: 18px;
+  padding: var(--ig-space-8);
   background: var(--ig-color-bg-canvas);
 `;
 

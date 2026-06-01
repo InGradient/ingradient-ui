@@ -98,7 +98,7 @@ export const FingerprintText = styled.span`
 
 export const CopyBtn = styled.button`
   height: var(--ig-control-height-xs);
-  padding: 0 10px;
+  padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-xs);
   border: none;
   background: var(--ig-color-blue-tint-14);

@@ -59,7 +59,7 @@ export const AddDatasetBtn = styled.button`
   height: 22px;
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
-  border: 1px dashed rgba(77, 136, 255, 0.4);
+  border: var(--ig-border-1px) dashed rgba(77, 136, 255, 0.4);
   background: transparent;
   color: var(--ig-color-accent);
   font-size: var(--ig-font-size-2xs);

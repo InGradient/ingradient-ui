@@ -100,7 +100,7 @@ export const BreadcrumbWrap = styled.div`
   align-items: center;
   gap: var(--ig-space-2);
   padding: 0 var(--ig-space-4);
-  border-left: 2px solid var(--ig-color-border-subtle);
+  border-left: var(--ig-space-2px) solid var(--ig-color-border-subtle);
 `
 
 export const BreadcrumbProject = styled.span`

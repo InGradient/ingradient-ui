@@ -104,7 +104,7 @@ export const HistoryName = styled.span`
 export const HistoryEmail = styled.span`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
-  margin-top: 2px;
+  margin-top: var(--ig-space-2px);
 `
 
 export const ModalEmptyText = styled.p`

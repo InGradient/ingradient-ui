@@ -46,7 +46,7 @@ export const CheckItem = styled.label`
 `
 
 export const CheckDivider = styled.div`
-  height: 1px;
+  height: var(--ig-space-1px);
   background: var(--ig-color-border-subtle);
   margin: var(--ig-space-1) 0 2px;
 `

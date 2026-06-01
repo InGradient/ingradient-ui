@@ -70,7 +70,7 @@ export const PackageInfo = styled.div`
 `
 
 export const Divider = styled.div`
-  height: 1px;
+  height: var(--ig-space-1px);
   background: var(--ig-color-white-08);
 `
 

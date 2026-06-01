@@ -73,7 +73,7 @@ export const DatasetName = styled.div`
 export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: 1px 6px;
+  padding: var(--ig-space-1px) var(--ig-space-2);
   border-radius: var(--ig-radius-2xs);
   letter-spacing: var(--ig-letter-spacing-tight);
   flex-shrink: 0;
@@ -168,7 +168,7 @@ export const RecentBadge = styled.div`
   flex-shrink: 0;
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
-  padding: 2px 6px;
+  padding: var(--ig-space-2px) var(--ig-space-2);
   border-radius: var(--ig-radius-2xs);
   background: rgba(77, 136, 255, 0.2);
   color: var(--ig-color-accent);

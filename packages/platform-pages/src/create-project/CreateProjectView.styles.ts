@@ -50,7 +50,7 @@ export const OptionalLabel = styled.span`
 export const Dropzone = styled.button<{ $active?: boolean }>`
   display: block;
   width: 100%;
-  border: 2px dashed
+  border: var(--ig-border-2px) dashed
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-7);

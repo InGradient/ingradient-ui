@@ -58,7 +58,7 @@ export const MetricValue = styled.div`
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
-  margin-top: 2px;
+  margin-top: var(--ig-space-2px);
 `;
 
 export const SetupBlockingOverlay = styled.div`
@@ -76,7 +76,7 @@ export const SetupBlockingCard = styled.div`
   background: rgba(17, 24, 39, 0.86);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
-  padding: 18px 22px;
+  padding: var(--ig-space-8) 22px;
   color: var(--ig-color-text-primary);
   display: flex;
   align-items: center;
@@ -246,7 +246,7 @@ export const CenterCrosshair = styled.div`
     position: absolute;
     top: 50%;
     left: 0; right: 0;
-    height: 1px;
+    height: var(--ig-space-1px);
     background-color: rgba(255, 255, 0, 0.5);
     transform: translateY(-50%);
   }
@@ -255,7 +255,7 @@ export const CenterCrosshair = styled.div`
     position: absolute;
     left: 50%;
     top: 0; bottom: 0;
-    width: 1px;
+    width: var(--ig-space-1px);
     background-color: rgba(255, 255, 0, 0.5);
     transform: translateX(-50%);
   }

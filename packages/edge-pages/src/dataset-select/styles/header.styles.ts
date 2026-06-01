@@ -45,7 +45,7 @@ export const RoleBadge = styled.span<{ $role: string }>`
   display: inline-block;
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
-  padding: 2px 8px;
+  padding: var(--ig-space-2px) var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => {
     switch (p.$role) {

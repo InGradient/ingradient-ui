@@ -24,7 +24,7 @@ const CommentItem = styled.div<{ $synced?: boolean }>`
 const CommentMeta = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
-  margin-bottom: 2px;
+  margin-bottom: var(--ig-space-2px);
 `
 
 const Empty = styled.div`

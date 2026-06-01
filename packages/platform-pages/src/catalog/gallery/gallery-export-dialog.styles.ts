@@ -29,7 +29,7 @@ export const ExportOption = styled.label<{ $active?: boolean; $disabled?: boolea
 `
 
 export const ExportOptionRadio = styled.input.attrs({ type: 'radio' })`
-  margin-top: 2px;
+  margin-top: var(--ig-space-2px);
   accent-color: var(--ig-color-accent);
 `
 

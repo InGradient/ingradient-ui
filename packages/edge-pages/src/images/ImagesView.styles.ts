@@ -11,7 +11,7 @@ export const GroupBadge = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: 2px 6px;
+  padding: var(--ig-space-2px) var(--ig-space-2);
   border-radius: var(--ig-radius-xs);
 `;
 

@@ -14,7 +14,7 @@ export const Content = styled.div`
   padding: var(--ig-space-11);
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: var(--ig-space-12);
 `
 
 export const SectionLabel = styled.div`

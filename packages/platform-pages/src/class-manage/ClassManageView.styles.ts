@@ -8,7 +8,7 @@ export const Page = styled(AppShell)`
 export const BodyRow = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 18px;
+  gap: var(--ig-space-8);
   flex: 1;
   min-height: 0;
   overflow: hidden;

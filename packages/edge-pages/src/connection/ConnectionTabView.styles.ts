@@ -31,7 +31,7 @@ export const NetworkSummaryItem = styled.div`
   border-radius:var(--ig-radius-xs);
   min-width:0;
 `;
-export const NetworkSummaryLabel = styled.div`font-size:var(--ig-font-size-2xs);text-transform:uppercase;letter-spacing:.04em;color:var(--ig-color-text-muted);margin-bottom:2px;`;
+export const NetworkSummaryLabel = styled.div`font-size:var(--ig-font-size-2xs);text-transform:uppercase;letter-spacing:.04em;color:var(--ig-color-text-muted);margin-bottom: var(--ig-space-2px);`;
 export const NetworkSummaryValue = styled.div`font-size:var(--ig-font-size-xs);font-weight: var(--ig-font-weight-semibold);color:var(--ig-color-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`;
 
 // ── Camera Discovery ──
@@ -58,7 +58,7 @@ export const DeviceCard = styled.button<{$selected?:boolean}>`
 `;
 export const DeviceInfo = styled.div`flex:1;min-width:0;`;
 export const DeviceName = styled.div`font-size: var(--ig-font-size-sm);font-weight: var(--ig-font-weight-semibold);display:flex;align-items:center;gap: var(--ig-space-3);`;
-export const DeviceMeta = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`;
+export const DeviceMeta = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);margin-top: var(--ig-space-2px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`;
 export const DeviceSelectedTag = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-success);font-weight: var(--ig-font-weight-bold);`;
 
 // ── Activity Log ──
@@ -105,7 +105,7 @@ export const GigeDiagCard = styled.div`
 // DiagRow / DiagLabel / DiagValue: @ingradient/ui InfoRow 로 이동 (PR-0.2, 2026-05-09)
 export const DiagDivider = styled.div`height:1px;background:var(--ig-color-border-subtle);`;
 export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing:.04em;padding: var(--ig-space-2) 12px 2px;`;
-export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding:5px 12px;font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top:2px;}`;
+export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding:5px 12px;font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
 
 // ── Diagnostic Report ──
 export const DiagReportWrap = styled.div`
@@ -119,7 +119,7 @@ export const DiagReportToolbar = styled.div`
   display:flex;
   gap: var(--ig-space-2);
   padding: var(--ig-space-3) 10px;
-  border-bottom:1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-space-1px) solid var(--ig-color-border-subtle);
 `;
 export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height:320px;min-height:0;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
 export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top:8px;font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'rgba(239,68,68,0.08)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;

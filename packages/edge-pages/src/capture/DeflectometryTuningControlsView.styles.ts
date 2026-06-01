@@ -254,7 +254,7 @@ export const IndicatorValue = styled.span`
 `;
 
 export const QualityDivider = styled.div`
-  height: 1px;
+  height: var(--ig-space-1px);
   background: var(--ig-color-border-subtle);
   margin: 2px 0;
 `;
@@ -265,5 +265,5 @@ export const RoiSectionLabel = styled.div`
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
-  margin-top: 2px;
+  margin-top: var(--ig-space-2px);
 `;

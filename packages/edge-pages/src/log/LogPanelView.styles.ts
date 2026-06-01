@@ -28,7 +28,7 @@ export const FilterActionButton = styled.button`
   align-items: center;
   gap: var(--ig-space-2);
   height: var(--ig-control-height-sm);
-  padding: 0 10px;
+  padding: 0 var(--ig-space-4);
   border: var(--ig-border-1px) solid transparent;
   border-radius: var(--ig-radius-xs);
   background: transparent;
@@ -126,7 +126,7 @@ export const LogTime = styled.span`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-soft);
   min-width: 45px;
-  margin-top: 2px;
+  margin-top: var(--ig-space-2px);
   flex-shrink: 0;
 `;
 
