@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useClickOutside } from './useClickOutside'
 import { Button } from '../components/inputs/button'
+import { Checkbox } from '../components/inputs/toggles'
 import { MenuPopover } from '../components/overlays/popovers'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
@@ -63,10 +64,7 @@ function DisabledDemo() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
-      <label style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
-        <input type="checkbox" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
-        <span>Listener enabled</span>
-      </label>
+      <Checkbox label="Listener enabled" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
       {open ? (
         <MenuPopover ref={popoverRef} style={{ padding: 'var(--ig-space-5)' }}>
           <div style={{ fontSize: 'var(--ig-font-size-sm)' }}>

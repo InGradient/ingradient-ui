@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Checkbox } from '../../components/inputs/toggles'
 import { MenuPopover } from '../../components/overlays/popovers'
 
 const Wrap = styled(MenuPopover)`
@@ -26,22 +27,6 @@ const List = styled.div`
   gap: 8px;
 `
 
-const Row = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-`
-
-const Checkbox = styled.input.attrs({ type: 'checkbox' })`
-  width: 16px;
-  height: 16px;
-  accent-color: var(--ig-color-accent);
-  cursor: pointer;
-`
-
 export interface DashboardCustomizeItem {
   key: string
   label: string
@@ -65,13 +50,12 @@ export function DashboardCustomizePopover<K extends string = string>({
       <Title>{title}</Title>
       <List>
         {items.map((item) => (
-          <Row key={item.key}>
-            <Checkbox
-              checked={!!visibility[item.key as K]}
-              onChange={(e) => onToggle(item.key as K, e.target.checked)}
-            />
-            <span>{item.label}</span>
-          </Row>
+          <Checkbox
+            key={item.key}
+            label={item.label}
+            checked={!!visibility[item.key as K]}
+            onChange={(e) => onToggle(item.key as K, e.target.checked)}
+          />
         ))}
       </List>
     </Wrap>

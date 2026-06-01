@@ -31,18 +31,9 @@ export const CheckList = styled.div`
   gap: 8px;
 `
 
-export const CheckItem = styled.label`
+export const CheckItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  input[type='checkbox'] {
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-  }
 `
 
 export const CheckDivider = styled.div`

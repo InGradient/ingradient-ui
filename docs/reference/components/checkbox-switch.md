@@ -41,6 +41,7 @@ boolean setting과 opt-in 선택을 위한 compact control이다.
 ## Do
 
 - 설정 토글은 `Switch`, 목록 선택은 `Checkbox`를 우선 쓴다
+- 제품 패턴에서도 native checkbox를 다시 스타일링하지 않고 `Checkbox`를 재사용한다
 - 라벨로 상태 의미를 분명하게 쓴다
 
 ## Don’t

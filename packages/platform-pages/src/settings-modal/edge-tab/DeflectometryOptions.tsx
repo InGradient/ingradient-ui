@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react'
-import { SelectField } from '@ingradient/ui/components'
+import { Checkbox, SelectField } from '@ingradient/ui/components'
 import type { DeflectometryConfig, DeflectometryPatternLabel } from './edge-types'
 import {
   CheckItem,
@@ -100,21 +100,19 @@ export function DeflectometryOptions({
       </Hint>
       <CheckList>
         <CheckItem>
-          <input
-            type="checkbox"
+          <Checkbox
+            label="Include solid (white reference)"
             checked={defl.include_solid}
             onChange={(e) => setDefl((c) => ({ ...c, include_solid: e.target.checked }))}
           />
-          Include solid (white reference)
         </CheckItem>
         <Hint>Fully-lit reference frame for ambient light and surface albedo correction.</Hint>
         <CheckItem>
-          <input
-            type="checkbox"
+          <Checkbox
+            label="Include black (dark current)"
             checked={defl.include_black}
             onChange={(e) => setDefl((c) => ({ ...c, include_black: e.target.checked }))}
           />
-          Include black (dark current)
         </CheckItem>
         <Hint>Dark frame to subtract sensor noise and bias from pattern captures.</Hint>
       </CheckList>

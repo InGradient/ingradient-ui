@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Checkbox } from '../../components/inputs/toggles'
 import {
   ProjectPermissionMatrix,
   type RoleMatrix,
@@ -99,10 +100,7 @@ export const Interactive: Story = {
     return (
       <>
         <div style={{ marginBottom: 12 }}>
-          <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--ig-color-text-primary)' }}>
-            <input type="checkbox" checked={expandAll} onChange={(e) => setExpandAll(e.target.checked)} />
-            Expand all permissions
-          </label>
+          <Checkbox label="Expand all permissions" checked={expandAll} onChange={(e) => setExpandAll(e.target.checked)} />
         </div>
         <ProjectPermissionMatrix
           roles={roles}
