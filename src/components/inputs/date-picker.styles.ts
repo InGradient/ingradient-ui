@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { controlField } from '../../primitives'
+import { calendarDayStates, calendarNavigation, controlField } from '../../primitives'
 
 export const Wrap = styled.div`
   position: relative;
@@ -22,6 +22,7 @@ export const Placeholder = styled.span`
 `
 
 export const Popover = styled.div<{ $top: number; $left: number }>`
+  ${calendarNavigation}
   position: fixed;
   top: ${(p) => p.$top}px;
   left: ${(p) => p.$left}px;
@@ -52,84 +53,16 @@ export const Popover = styled.div<{ $top: number; $left: number }>`
     font-size: var(--ig-font-size-sm);
   }
 
-  .rdp-nav {
-    display: flex;
-    gap: var(--ig-space-2);
-  }
-
-  .rdp-button_previous,
-  .rdp-button_next {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border: none;
-    border-radius: var(--ig-radius-sm);
-    background: var(--ig-color-surface-interactive);
-    color: var(--ig-color-text-primary);
-    cursor: pointer;
-
-    svg { color: var(--ig-color-text-primary); }
-  }
-
-  .rdp-button_previous:hover,
-  .rdp-button_next:hover {
-    background: var(--ig-color-surface-active);
-    color: var(--ig-color-accent);
-
-    svg { color: var(--ig-color-accent); }
-  }
-
-  .rdp-weekday {
-    font-size: var(--ig-font-size-xs);
-    color: var(--ig-color-text-muted);
-    font-weight: 500;
-    padding-bottom: var(--ig-space-2);
-  }
-
   .rdp-day {
     border-radius: var(--ig-radius-sm);
   }
 
   .rdp-day_button {
-    border: none;
-    background: transparent;
-    color: var(--ig-color-text-secondary);
-    cursor: pointer;
     border-radius: var(--ig-radius-sm);
     font-size: var(--ig-font-size-sm);
     width: var(--rdp-day_button-width);
     height: var(--rdp-day_button-height);
   }
 
-  .rdp-day_button:hover {
-    background: var(--ig-color-surface-interactive);
-    color: var(--ig-color-text-primary);
-  }
-
-  .rdp-selected .rdp-day_button {
-    background: var(--ig-color-accent);
-    color: white;
-    font-weight: 600;
-  }
-
-  .rdp-today .rdp-day_button {
-    font-weight: 700;
-    color: var(--ig-color-accent);
-  }
-
-  .rdp-today.rdp-selected .rdp-day_button {
-    color: white;
-  }
-
-  .rdp-outside .rdp-day_button {
-    color: var(--ig-color-text-muted);
-    opacity: 0.4;
-  }
-
-  .rdp-disabled .rdp-day_button {
-    opacity: 0.3;
-    cursor: default;
-  }
+  ${calendarDayStates}
 `

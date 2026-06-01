@@ -1,6 +1,7 @@
 export * from './shared'
 export * from './styles/surfaces'
 export * from './styles/controls'
+export * from './styles/calendars'
 export * from './styles/buttons'
 export * from './styles/states'
 export * from './layout/box'

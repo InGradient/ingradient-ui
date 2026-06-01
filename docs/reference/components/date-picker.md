@@ -28,6 +28,8 @@ import { DatePickerField } from '@ingradient/ui/components'
 
 - From/To 범위, 만료일, 유효기간 등 날짜 입력에 사용한다
 - 네이티브 date input 대신 이 컴포넌트를 사용한다
+- 달력의 이전/다음 이동 버튼은 secondary 버튼 스타일과 제목 양 끝 배치를 유지한다
+- 요일, 외부 월 날짜, 선택 범위 상태는 공용 달력 상태 레시피를 사용한다
 
 ## Don't
 

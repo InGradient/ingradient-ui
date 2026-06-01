@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
 import { MenuPopover } from '../../components/overlays/popovers'
 import { SmallText } from '../../components/feedback/status'
+import { calendarDayStates, calendarNavigation } from '../../primitives'
 
 const Popover = styled(MenuPopover)`
   position: absolute;
@@ -46,6 +47,7 @@ const PresetButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as 
 `
 
 const Calendar = styled.div`
+  ${calendarNavigation}
   padding: 12px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(17, 23, 32, 0.96) 0%, rgba(10, 14, 20, 0.96) 100%);
@@ -65,18 +67,7 @@ const Calendar = styled.div`
   }
   .rdp-day { width: 38px; height: 38px; border-radius: 12px; font-size: 13px; color: var(--ig-color-text-secondary); }
   .rdp-day_button { width: 100%; height: 100%; border-radius: 12px; }
-  .rdp-selected .rdp-day_button, .rdp-day_button:hover {
-    background: var(--ig-color-blue-tint-16);
-    color: var(--ig-color-text-primary);
-  }
-  .rdp-range_middle .rdp-day_button {
-    background: rgba(77, 136, 255, 0.1);
-    color: var(--ig-color-text-primary);
-  }
-  .rdp-range_start .rdp-day_button, .rdp-range_end .rdp-day_button {
-    background: var(--ig-color-accent);
-    color: white;
-  }
+  ${calendarDayStates}
 `
 
 const Summary = styled.div`
@@ -134,14 +125,14 @@ export function DashboardDateRangePopover({
         <PresetButton type="button" onClick={() => onSelectPreset('thisMonth')}>This month</PresetButton>
       </PresetRow>
       <Calendar>
-        <DayPicker mode="range" selected={dateDraft} onSelect={onChangeDraft} numberOfMonths={1} showOutsideDays />
+        <DayPicker mode="range" selected={dateDraft} onSelect={onChangeDraft} numberOfMonths={1} navLayout="around" showOutsideDays />
       </Calendar>
       <Summary>{summaryLabel}</Summary>
       <Footer>
         <SmallText>{footerHint}</SmallText>
         <FooterActions>
-          <PresetButton type="button" onClick={onReset}>Reset</PresetButton>
-          <Button variant="secondary" type="button" onClick={onApply}>Apply</Button>
+          <Button variant="secondary" size="sm" type="button" onClick={onReset}>Reset</Button>
+          <Button variant="solid" size="sm" type="button" onClick={onApply}>Apply</Button>
         </FooterActions>
       </Footer>
     </Popover>
