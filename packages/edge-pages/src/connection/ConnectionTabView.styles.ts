@@ -14,7 +14,7 @@ export const GuideCard = styled.div`
   align-items:start;
   padding: var(--ig-space-7);
   border-radius: var(--ig-radius-xs);
-  border:1px solid var(--ig-color-border-subtle);
+  border:var(--ig-border-1px) solid var(--ig-color-border-subtle);
   margin-bottom: var(--ig-space-7);
   @media (max-width: 720px){ grid-template-columns:1fr; }
 `;
@@ -45,7 +45,7 @@ export const DeviceCard = styled.button<{$selected?:boolean}>`
   gap: var(--ig-space-5);
   padding: var(--ig-space-4) 14px;
   border-radius: var(--ig-radius-xs);
-  border:1px solid ${p=>p.$selected?'var(--ig-color-accent-border-strong)':'var(--ig-color-border-subtle)'};
+  border:var(--ig-border-1px) solid ${p=>p.$selected?'var(--ig-color-accent-border-strong)':'var(--ig-color-border-subtle)'};
   background:${p=>p.$selected?'var(--ig-color-accent-soft-surface)':'var(--ig-color-surface-interactive)'};
   color:var(--ig-color-text-primary);
   cursor:pointer;

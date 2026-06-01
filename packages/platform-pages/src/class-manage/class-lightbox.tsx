@@ -30,7 +30,7 @@ const IMAGE_STYLE = {
   height: '100%',
   objectFit: 'contain' as const,
   borderRadius: 'var(--ig-radius-sm)',
-  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+  boxShadow: '0 8px 32px var(--ig-color-overlay-mid)',
   cursor: 'default' as const,
   display: 'block' as const,
 }

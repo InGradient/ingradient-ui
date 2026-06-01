@@ -75,7 +75,7 @@ export const SavingOverlay = styled.div`
 export const SavingSpinner = styled.div`
   width: var(--ig-control-height-sm);
   height: var(--ig-control-height-sm);
-  border: 3px solid rgba(255,255,255,0.2);
+  border: var(--ig-border-3px) solid rgba(255,255,255,0.2);
   border-top-color: rgba(255,255,255,0.8);
   border-radius: 50%;
   animation: ${spin} 0.8s linear infinite;

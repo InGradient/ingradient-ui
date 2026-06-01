@@ -27,7 +27,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
   // For light mode, surface-card / dropdown / toolbar etc. use light tints instead of dark slate
   const lightOnDarkInsetHighlight = isLight
     ? 'rgba(15, 18, 25, 0.04)'
-    : 'rgba(255, 255, 255, 0.04)'
+    : 'var(--ig-color-white-04)'
   return {
     // ── Background ────────────────────────────────────────────────
     '--ig-color-bg-canvas': theme.colors.bgCanvas,
@@ -112,7 +112,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-chart-4': palette.red300,
     '--ig-color-chart-5': palette.blue300,
     '--ig-color-chart-6': palette.violet300,
-    '--ig-color-chart-grid': isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.08)',
+    '--ig-color-chart-grid': isLight ? 'rgba(15, 23, 42, 0.08)' : 'var(--ig-color-white-08)',
     '--ig-color-badge-neutral': palette.white08,
     '--ig-color-badge-accent': palette.blueTint18,
     '--ig-color-badge-success': palette.greenTint18,
@@ -159,12 +159,12 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-toolbar-surface': isLight ? 'rgba(247, 249, 251, 0.84)' : 'rgba(8, 12, 18, 0.84)',
     '--ig-color-modal-backdrop': palette.overlayBackdrop,
     // Canvas overlay (annotation-toolbar / coord readout 등 어두운 surface)
-    '--ig-color-overlay-soft': 'rgba(0, 0, 0, 0.3)',
-    '--ig-color-overlay-dim': 'rgba(0, 0, 0, 0.45)',
-    '--ig-color-overlay-mid': 'rgba(0, 0, 0, 0.5)',
-    '--ig-color-overlay-strong': 'rgba(0, 0, 0, 0.55)',
+    '--ig-color-overlay-soft': 'var(--ig-color-overlay-soft)',
+    '--ig-color-overlay-dim': 'var(--ig-color-overlay-dim)',
+    '--ig-color-overlay-mid': 'var(--ig-color-overlay-mid)',
+    '--ig-color-overlay-strong': 'var(--ig-color-overlay-strong)',
     // Lightbox (full-viewport image preview)
-    '--ig-color-lightbox-backdrop': 'rgba(0, 0, 0, 0.85)',
+    '--ig-color-lightbox-backdrop': 'var(--ig-color-lightbox-backdrop)',
     '--ig-color-lightbox-surface': 'rgba(7, 10, 20, 0.7)',
     // Sidebar shell gradient backgrounds
     '--ig-color-sidebar-bg-top': 'rgba(12, 15, 20, 0.96)',
