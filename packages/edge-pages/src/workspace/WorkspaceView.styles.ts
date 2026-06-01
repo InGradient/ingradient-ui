@@ -66,7 +66,7 @@ export const SavingOverlay = styled.div`
   align-items: center;
   justify-content: center;
   gap: var(--ig-space-5);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ig-color-image-option-bg);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-medium);

@@ -17,7 +17,7 @@ export const DragOverFull = styled.div`
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ig-color-image-option-bg);
   border: var(--ig-border-3px) dashed rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@ export const GridWrap = styled.div`
 export const DragOverGrid = styled.div`
   position: absolute;
   inset: var(--ig-space-7);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ig-color-image-option-bg);
   display: flex;
   align-items: center;
   justify-content: center;

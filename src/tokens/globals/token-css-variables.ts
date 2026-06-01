@@ -131,6 +131,8 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-sync-chip-local-bg': palette.syncChipLocalBg,
     '--ig-color-sync-chip-on-text': palette.syncChipOnText,
     // Image card overlay buttons / group count
+    '--ig-color-image-option-bg': isLight ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.6)',
+    '--ig-color-image-option-bg-hover': isLight ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.8)',
     '--ig-color-image-group-circle-bg': palette.imageGroupCircleBg,
     '--ig-color-image-group-circle-border': palette.imageGroupCircleBorder,
     '--ig-color-danger-dim-bg': palette.dangerDimBg,
@@ -146,7 +148,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-avatar-bg': palette.blueTint18,
     '--ig-color-dropdown-open-shadow': isLight
       ? '0 0 0 3px rgba(58, 115, 230, 0.20), 0 18px 36px rgba(15, 23, 42, 0.10)'
-      : '0 0 0 3px rgba(77, 136, 255, 0.16), 0 18px 36px rgba(0, 0, 0, 0.18)',
+      : '0 0 0 3px var(--ig-color-blue-tint-16), 0 18px 36px rgba(0, 0, 0, 0.18)',
     '--ig-color-dropdown-menu-a': isLight ? 'rgba(255, 255, 255, 0.98)' : 'rgba(18, 24, 34, 0.98)',
     '--ig-color-dropdown-menu-b': isLight ? 'rgba(247, 249, 251, 0.98)' : 'rgba(10, 14, 20, 0.98)',
     '--ig-color-dropdown-option-hover': palette.white06,
@@ -186,7 +188,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-svg-stroke-on-overlay': '#ffffff',
     '--ig-color-pie-slice-label': isLight ? '#0f1219' : '#eef4ff',
     // Annotation overlay — bbox/point emphasize outline + halo (canvas 위 항상 dark/light contrast)
-    '--ig-color-annotation-outline-dark': 'rgba(0, 0, 0, 0.6)',
+    '--ig-color-annotation-outline-dark': 'var(--ig-color-image-option-bg)',
     '--ig-color-annotation-outline-light': 'rgba(255, 255, 255, 0.9)',
 
     // Direct alpha aliases (consumer raw rgba 마이그레이션 용) — palette-aware

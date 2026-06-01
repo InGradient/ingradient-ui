@@ -7,7 +7,7 @@ export const DeletingLabel = styled.span`
 `;
 
 export const GroupBadge = styled.div`
-  background: rgba(0,0,0,0.55);
+  background: var(--ig-color-overlay-strong);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
@@ -166,7 +166,7 @@ export const ModalCloseBtn = styled.button`
   height: 40px;
   border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
   border-radius: var(--ig-radius-xs);
-  background: rgba(0,0,0,0.5);
+  background: var(--ig-color-overlay-mid);
   color: white;
   cursor: pointer;
   &:hover { background: var(--ig-color-white-12); }
@@ -300,7 +300,7 @@ export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
   height: 40px;
   border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
   border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.5)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-white-18)' : 'var(--ig-color-overlay-mid)')};
   color: white;
   cursor: pointer;
   display: flex;
