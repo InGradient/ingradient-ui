@@ -95,7 +95,7 @@ export const ProgressNote = styled.span`
 
 export const UserEmailNote = styled.span`
   color: var(--ig-color-text-muted);
-  margin-left: 4px;
+  margin-left: var(--ig-space-1);
 `
 
 export const StatusPill = UiStatusPill

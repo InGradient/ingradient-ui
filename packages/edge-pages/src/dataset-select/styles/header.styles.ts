@@ -115,7 +115,7 @@ export const IconBtn = styled.button`
 export const StatusItem = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 4px;
+  margin-right: var(--ig-space-1);
 `
 
 export const StatusDot = styled.button<{ $status: 'connected' | 'connecting' | 'disconnected' }>`

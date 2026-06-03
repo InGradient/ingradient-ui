@@ -76,7 +76,7 @@ export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding
 
 // ── Recovery / NIC Status ──
 export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap:5px;font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
-export const NicDetailText = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-success,var(--ig-color-success));margin-left:4px;`;
+export const NicDetailText = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-success,var(--ig-color-success));margin-left: var(--ig-space-1);`;
 
 // ── GigE Advanced ──
 export const GigeHint = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);line-height: var(--ig-line-height-relaxed);`;

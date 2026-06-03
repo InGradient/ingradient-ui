@@ -96,7 +96,7 @@ export const DateLabel = styled.span`
 `;
 
 export const FilterButtonLabel = styled.span`
-  margin-left: 4px;
+  margin-left: var(--ig-space-1);
 `;
 
 export const LogList = styled.div`
@@ -145,7 +145,7 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
   position: fixed;
   left: 254px;
   top: 58px;
-  bottom: 14px;
+  bottom: var(--ig-space-6);
   width: 272px;
   z-index: 50;
   border-radius: var(--ig-radius-lg);
