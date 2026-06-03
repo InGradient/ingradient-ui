@@ -20,6 +20,6 @@ export const ProgressBarFill = styled.div<{ $done?: boolean; $error?: boolean }>
     ? 'width: 100%;'
     : p.$error
       ? 'width: 100%;'
-      : css`width: 30%; animation: ${progressAnim} 1.2s linear infinite;`
+      : css`width: 30%; animation: ${progressAnim} var(--ig-motion-progress-bar) linear infinite;`
   }
 `

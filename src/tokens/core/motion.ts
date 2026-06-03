@@ -8,6 +8,10 @@ export const motionScale = {
   mobileNav: '0.28s cubic-bezier(0.4, 0, 0.2, 1)',
   slow: '0.36s ease',
   spinner: '0.7s',
+  spinnerFast: '0.75s',
+  spinnerSlow: '0.8s',
   shimmer: '1s',
+  progressBar: '1.2s',
   skeleton: '1.3s',
+  syncSpin: '1.5s',
 } as const

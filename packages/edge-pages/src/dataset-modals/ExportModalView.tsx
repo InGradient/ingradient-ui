@@ -22,7 +22,7 @@ const LOCAL_COUNT_STYLE: CSSProperties = {
 
 const STATUS_MSG_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-sm)',
-  fontWeight: 500,
+  fontWeight: 'var(--ig-font-weight-medium)',
   minHeight: 20,
 }
 

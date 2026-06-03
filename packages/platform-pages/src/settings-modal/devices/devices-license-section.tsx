@@ -11,7 +11,7 @@ const INFO_GRID_STYLE = {
   alignItems: 'center' as const,
 }
 
-const INFO_LABEL_STYLE = { fontWeight: 500 }
+const INFO_LABEL_STYLE = { fontWeight: 'var(--ig-font-weight-medium)' }
 const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-space-3)', color: 'var(--ig-color-text-muted)' }
 
 const FORM_BOX_STYLE = {

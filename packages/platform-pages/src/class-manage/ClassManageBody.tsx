@@ -34,7 +34,7 @@ const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'col
 const MAPPING_LABEL_STYLE: CSSProperties = {
   margin: 0,
   fontSize: iconSizeNumbers.xs,
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
   color: 'var(--ig-color-text-muted)',
   textTransform: 'uppercase',
   letterSpacing: '0.04em',

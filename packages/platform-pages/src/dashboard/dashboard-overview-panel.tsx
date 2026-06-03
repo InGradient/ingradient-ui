@@ -13,7 +13,7 @@ const DATE_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
   minHeight: 'var(--ig-control-height-md)',
   fontSize: iconSizeNumbers.xs,
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
 }
 
 const RESET_BTN_STYLE = { ...DATE_BTN_STYLE, minWidth: 0 }

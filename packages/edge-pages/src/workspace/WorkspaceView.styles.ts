@@ -78,5 +78,5 @@ export const SavingSpinner = styled.div`
   border: var(--ig-border-3px) solid var(--ig-color-white-20);
   border-top-color: var(--ig-color-white-80);
   border-radius: 50%;
-  animation: ${spin} 0.8s linear infinite;
+  animation: ${spin} var(--ig-motion-spinner-slow) linear infinite;
 `

@@ -276,7 +276,7 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
     p.$state === 'uploading' ? 'var(--ig-color-accent)' :
     'var(--ig-color-white-70)'};
   @keyframes sync-spin { to { transform: rotate(360deg); } }
-  ${(p) => p.$state === 'uploading' ? '& > svg { animation: sync-spin 1.5s linear infinite; }' : ''}
+  ${(p) => p.$state === 'uploading' ? '& > svg { animation: sync-spin var(--ig-motion-sync-spin) linear infinite; }' : ''}
 `;
 
 export const SyncSummary = styled.div`

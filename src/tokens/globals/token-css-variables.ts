@@ -462,6 +462,10 @@ const staticVars = {
   '--ig-motion-mobile-nav': motionScale.mobileNav,
   '--ig-motion-slow': motionScale.slow,
   '--ig-motion-spinner': motionScale.spinner,
+  '--ig-motion-spinner-fast': motionScale.spinnerFast,
+  '--ig-motion-spinner-slow': motionScale.spinnerSlow,
+  '--ig-motion-progress-bar': motionScale.progressBar,
+  '--ig-motion-sync-spin': motionScale.syncSpin,
   '--ig-motion-shimmer': motionScale.shimmer,
   '--ig-motion-skeleton': motionScale.skeleton,
 } as const

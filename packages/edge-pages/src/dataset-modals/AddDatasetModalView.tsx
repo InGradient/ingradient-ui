@@ -5,7 +5,7 @@ import type { AddDatasetModalViewProps, EdgeTaskType } from './types'
 
 const FIELD_LABEL_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-xs)',
-  fontWeight: 500,
+  fontWeight: 'var(--ig-font-weight-medium)',
   color: 'var(--ig-color-text-muted)',
 }
 
