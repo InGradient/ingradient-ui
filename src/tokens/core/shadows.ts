@@ -2,9 +2,9 @@
 export const shadowScale = {
   panel: '0 20px 60px rgba(0, 0, 0, 0.25)',
   floating: '0 30px 80px var(--ig-color-overlay-dim)',
-  popover: '0 24px 60px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+  popover: '0 24px 60px var(--ig-color-blue-tint-34), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
   menu: '0 20px 40px rgba(0, 0, 0, 0.35)',
-  hoverLift: '0 12px 24px rgba(41, 98, 217, 0.24)',
+  hoverLift: '0 12px 24px var(--ig-color-blue-strong-tint-24)',
   focusRing: '0 0 0 3px var(--ig-color-blue-tint-16)',
   drawerLift: '0 16px 48px rgba(4, 8, 14, 0.72)',
   dangerHoverLift: '0 10px 28px rgba(127, 29, 29, 0.32)',

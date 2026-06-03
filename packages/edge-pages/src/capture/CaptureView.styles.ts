@@ -173,12 +173,12 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 0;
-  box-shadow: 0 8px 24px rgba(41, 98, 217, 0.3);
+  box-shadow: 0 8px 24px var(--ig-color-blue-strong-tint-30);
   position: relative;
 
   &:active {
     transform: scale(0.95);
-    box-shadow: 0 4px 12px rgba(41, 98, 217, 0.2);
+    box-shadow: 0 4px 12px var(--ig-color-blue-strong-tint-20);
   }
 
   ${(p) => p.$capturing

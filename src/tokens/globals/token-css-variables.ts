@@ -235,6 +235,12 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-green-tint-15': 'rgba(60, 210, 120, 0.15)',
     '--ig-color-amber-tint-15': 'rgba(255, 180, 60, 0.15)',
     '--ig-color-red-tint-08': 'rgba(239, 68, 68, 0.08)',
+    '--ig-color-red-tint-12': 'rgba(239, 68, 68, 0.12)',
+    '--ig-color-red-tint-18': 'rgba(239, 68, 68, 0.18)',
+    '--ig-color-blue-tint-34': 'rgba(77, 136, 255, 0.34)',
+    '--ig-color-blue-strong-tint-20': 'rgba(41, 98, 217, 0.2)',
+    '--ig-color-blue-strong-tint-24': 'rgba(41, 98, 217, 0.24)',
+    '--ig-color-blue-strong-tint-30': 'rgba(41, 98, 217, 0.3)',
   } as const
 }
 
