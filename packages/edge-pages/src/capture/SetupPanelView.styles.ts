@@ -81,7 +81,7 @@ export const SetupInlineRow = styled.div`
 export const SetupFieldLabelRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: var(--ig-space-1-plus);
 `;
 
 export const SetupAccordionSummaryRow = styled.div`

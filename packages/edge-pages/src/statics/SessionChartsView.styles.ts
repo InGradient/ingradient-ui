@@ -35,7 +35,7 @@ export const Th = styled.th`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: 0 0 10px;
+  padding: 0 0 var(--ig-space-4);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 

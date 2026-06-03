@@ -28,7 +28,7 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
             items={tabItems}
             value={activeTab}
             onChange={(v) => onTabChange(v as WorkspaceTab)}
-            style={{ margin: '0 0 4px' }}
+            style={{ margin: '0 0 var(--ig-space-1)' }}
           />
           {isSetupMode && setupPanelTarget && setupPanelContent
             && ReactDOM.createPortal(setupPanelContent, setupPanelTarget)}

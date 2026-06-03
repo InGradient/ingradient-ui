@@ -5,12 +5,12 @@ export type ResizeHandleOrientation = 'vertical' | 'horizontal'
 
 const orientationStyles = {
   vertical: css`
-    flex: 0 0 8px;
+    flex: 0 0 var(--ig-space-3);
     cursor: col-resize;
     &::after { inset: 0 var(--ig-space-3px); }
   `,
   horizontal: css`
-    flex: 0 0 8px;
+    flex: 0 0 var(--ig-space-3);
     cursor: row-resize;
     &::after { inset: var(--ig-space-3px) 0; }
   `,

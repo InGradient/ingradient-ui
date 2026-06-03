@@ -7,7 +7,7 @@ const CreateProjectWrap = styled.div`
   flex-direction: column;
   align-items: center;
   gap: var(--ig-space-9);
-  padding: 40px 0;
+  padding: var(--ig-space-13) 0;
 `
 
 const StatusMsg = styled.div`

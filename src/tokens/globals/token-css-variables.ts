@@ -422,6 +422,8 @@ const staticVars = {
   '--ig-layout-log-detail-width': layoutScale.logDetailWidth,
   '--ig-space-modal-shadow-y': layoutScale.modalShadowY,
   '--ig-space-modal-shadow-blur': layoutScale.modalShadowBlur,
+  '--ig-layout-sidebar-brand': layoutScale.sidebarBrand,
+  '--ig-layout-sidebar-collapse-threshold': layoutScale.sidebarCollapseThreshold,
   '--ig-motion-fast': motionScale.fast,
   '--ig-motion-normal': motionScale.normal,
   '--ig-motion-slow': motionScale.slow,

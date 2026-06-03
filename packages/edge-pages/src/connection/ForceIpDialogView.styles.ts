@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Hint = styled.div`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-soft);
-  margin-bottom: 8px;
+  margin-bottom: var(--ig-space-3);
 `;
 
 export const RecRow = styled.div`
@@ -24,7 +24,7 @@ export const Field = styled.label`
 `;
 
 export const Input = styled.input`
-  padding: var(--ig-space-2) 8px;
+  padding: var(--ig-space-2) var(--ig-space-3);
   font-size: var(--ig-font-size-sm);
   font-family: monospace;
   background: var(--ig-color-surface-panel);
@@ -52,19 +52,19 @@ export const ConfirmRow = styled.div`
 export const ConflictText = styled.div`
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-xs);
-  margin-bottom: 8px;
+  margin-bottom: var(--ig-space-3);
 `;
 
 export const ErrorText = styled.div`
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-xs);
-  margin-bottom: 8px;
+  margin-bottom: var(--ig-space-3);
 `;
 
 export const SuccessText = styled.div`
   color: var(--ig-color-success);
   font-size: var(--ig-font-size-xs);
-  margin-bottom: 8px;
+  margin-bottom: var(--ig-space-3);
 `;
 
 export const Footer = styled.div`

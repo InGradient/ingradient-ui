@@ -8,7 +8,7 @@ export const DotsBtn = styled.button`
   flex-shrink: 0;
   width: var(--ig-icon-2xl);
   height: var(--ig-icon-2xl);
-  border-radius: 5px;
+  border-radius: var(--ig-space-1-plus);
   border: none;
   background: transparent;
   color: var(--ig-color-text-muted);
@@ -32,7 +32,7 @@ export const DotMenuOverlay = styled.div`
 export const DotMenuWrap = styled.div`
   position: absolute;
   top: var(--ig-space-13);
-  right: 8px;
+  right: var(--ig-space-3);
   z-index: 201;
   background: var(--ig-color-surface-panel);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);

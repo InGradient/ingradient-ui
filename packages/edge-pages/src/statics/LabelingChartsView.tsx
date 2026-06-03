@@ -22,7 +22,7 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
       background: 'var(--ig-color-surface-raised)',
       border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       borderRadius: 6,
-      padding: '8px 10px',
+      padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
       fontSize: 12,
       boxShadow: '0 var(--ig-space-3) var(--ig-space-11) rgba(0,0,0,0.35)',
@@ -46,7 +46,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
       background: 'var(--ig-color-surface-raised)',
       border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       borderRadius: 6,
-      padding: '8px 10px',
+      padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
       fontSize: 12,
     }}>

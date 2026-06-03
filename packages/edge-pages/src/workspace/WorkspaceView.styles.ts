@@ -11,7 +11,7 @@ export const Container = styled.div<{ $row?: boolean }>`
 
 export const CapturingStatusPill = styled.div`
   position: fixed;
-  top: 64px;
+  top: var(--ig-control-height-capture);
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -48,7 +48,7 @@ export const ConfirmButton = styled.button<{ $danger?: boolean }>`
 `
 
 export const FailureCode = styled.div`
-  margin-top: 8px;
+  margin-top: var(--ig-space-3);
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-bold);

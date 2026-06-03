@@ -14,8 +14,8 @@ export const CaptureReview = styled.div`
 
 export const CaptureReviewFullscreenBtn = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--ig-space-4);
+  right: var(--ig-space-4);
   width: var(--ig-control-height-md);
   height: var(--ig-control-height-md);
   display: flex;

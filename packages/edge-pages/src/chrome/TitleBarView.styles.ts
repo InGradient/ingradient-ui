@@ -15,7 +15,7 @@ export const Bar = styled.div`
 export const LogoArea = styled.div`
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: var(--ig-space-2-plus);
   padding: 0 var(--ig-space-5);
   flex-shrink: 0;
   -webkit-app-region: no-drag;

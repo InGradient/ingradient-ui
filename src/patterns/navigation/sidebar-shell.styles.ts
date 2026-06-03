@@ -28,7 +28,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
 `
 
 export const SidebarBrandRow = styled.div`
-  min-height: 72px;
+  min-height: var(--ig-layout-sidebar-brand);
   padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@ const rowMixin = `
   }
   & svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  @container sidebar-shell (max-width: 100px) {
+  @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse-threshold)) {
     grid-template-columns: var(--ig-icon-xl);
     justify-content: center;
     padding: 0;

@@ -13,4 +13,6 @@ export const layoutScale = {
   logDetailWidth: '272px',
   modalShadowY: '40px',
   modalShadowBlur: '80px',
+  sidebarBrand: '72px',
+  sidebarCollapseThreshold: '100px',
 } as const
