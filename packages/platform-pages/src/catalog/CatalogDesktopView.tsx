@@ -3,6 +3,7 @@ import { PagePrimaryHeader } from '@ingradient/ui/patterns'
 import { DatasetListPanel } from './dataset-list-panel'
 import { ResizableColumnsLayout, type ResizableColumn } from '@ingradient/ui/components'
 import { Stack, Box } from '@ingradient/ui/primitives'
+import { popupSizeNumbers } from '@ingradient/ui/tokens'
 import { CatalogBody } from './CatalogBody'
 import { CatalogRightSidebar } from './CatalogRightSidebar'
 import { CatalogToolbarRow } from './CatalogToolbarRow'
@@ -41,18 +42,18 @@ export function CatalogDesktopView({
 }: Props) {
   const columns: ResizableColumn[] = [
     {
-      width: 'var(--ig-popup-md)',
+      width: popupSizeNumbers.md,
       resizable: true,
-      minWidth: 'var(--ig-popup-xs)',
-      maxWidth: 'var(--ig-popup-xl)',
+      minWidth: popupSizeNumbers.xs,
+      maxWidth: popupSizeNumbers.xl,
       collapsed: datasets.sidebarCollapsed,
     },
     { width: 'auto' },
     {
-      width: 'var(--ig-popup-md)',
+      width: popupSizeNumbers.md,
       resizable: true,
-      minWidth: 'var(--ig-popup-xs)',
-      maxWidth: 'var(--ig-popup-xl)',
+      minWidth: popupSizeNumbers.xs,
+      maxWidth: popupSizeNumbers.xl,
       background: 'var(--ig-color-surface-panel)',
       hidden: !rightSidebar,
     },
