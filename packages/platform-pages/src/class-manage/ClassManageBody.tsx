@@ -1,12 +1,7 @@
 import type { CSSProperties } from 'react'
+import { Alert, EmptyState } from '@ingradient/ui/components'
 import {
-  Alert,
-  AnnotationOverlay,
-  Badge,
-  EmptyState,
-  ImageGrid,
-} from '@ingradient/ui/components'
-import {
+  CatalogShell,
   ClassImagesPanel,
   ClassInfoSidebar,
   ClassListSidebar,
@@ -14,13 +9,9 @@ import {
   ModelMappingSelect,
   ReferenceImageSection,
 } from '@ingradient/ui/patterns'
-import { BodyRow } from './ClassManageView.styles'
-import type {
-  ClassImage,
-  ClassImagesPaneProps,
-  ClassInfoPaneProps,
-  ClassListPaneProps,
-} from './types'
+import { ClassManageImageGrid } from './ClassManageImageGrid'
+import { ContentArea, StatusArea } from './ClassManageView.styles'
+import type { ClassImagesPaneProps, ClassInfoPaneProps, ClassListPaneProps } from './types'
 
 interface ClassManageBodyProps {
   permissionDenied?: boolean
@@ -31,7 +22,7 @@ interface ClassManageBodyProps {
   info: ClassInfoPaneProps | null
 }
 
-const ALERT_STYLE: CSSProperties = { flex: 1 }
+const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
 const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 8 }
 const MAPPING_LABEL_STYLE: CSSProperties = {
   margin: 0,
@@ -45,6 +36,7 @@ const MAPPING_LABEL_STYLE: CSSProperties = {
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
 const NO_PROJECT_DESC = 'Select a project from the sidebar to manage classes.'
+const STORAGE_KEY = 'ig-class-manage-shell'
 
 export function ClassManageBody({
   permissionDenied,
@@ -56,85 +48,66 @@ export function ClassManageBody({
 }: ClassManageBodyProps) {
   if (permissionDenied) {
     return (
-      <BodyRow>
+      <ContentArea>
         <Alert $tone="warning" style={ALERT_STYLE}>
           {PERMISSION_DENIED_TEXT}
         </Alert>
-      </BodyRow>
+      </ContentArea>
     )
   }
   if (error) {
     return (
-      <BodyRow>
+      <ContentArea>
         <Alert $tone="danger" style={ALERT_STYLE}>
           {error}
         </Alert>
-      </BodyRow>
+      </ContentArea>
     )
   }
   if (noProject) {
     return (
-      <BodyRow>
-        <EmptyState title={NO_PROJECT_TITLE} description={NO_PROJECT_DESC} />
-      </BodyRow>
+      <ContentArea>
+        <StatusArea>
+          <EmptyState title={NO_PROJECT_TITLE} description={NO_PROJECT_DESC} />
+        </StatusArea>
+      </ContentArea>
     )
   }
 
   return (
-    <BodyRow>
-      <ClassListSidebar
-        classes={list.classes}
-        selectedClassId={list.selectedClassId}
-        loading={list.loading}
-        onSelectClass={list.onSelectClass}
-        onAddClass={list.onAddClass}
-      />
-      <ClassImagesPanel
-        selectedClassId={images.selectedClassId}
-        chipsRow={
-          <DatasetFilterChipRow
-            datasets={images.datasets}
-            activeIds={images.activeDatasetIds}
-            loading={images.detailLoading}
-            onToggle={images.onToggleDataset}
+    <ContentArea>
+      <CatalogShell
+        storageKey={STORAGE_KEY}
+        leftSidebar={
+          <ClassListSidebar
+            classes={list.classes}
+            selectedClassId={list.selectedClassId}
+            loading={list.loading}
+            flush
+            onSelectClass={list.onSelectClass}
+            onAddClass={list.onAddClass}
           />
         }
-        imagesLoading={images.imagesLoading}
-        imagesEmpty={images.images.length === 0}
-        grid={
-          <ImageGrid
-            items={images.images}
-            getThumbnailUrl={(img) => img.thumb_url}
-            layout={{ minWidth: 120, gap: 12 }}
-            onItemClick={(img) => images.onOpenImage(img)}
-            onContextMenu={(img, _i, e) => {
-              e.preventDefault()
-              images.onOpenContextMenu(img, { top: e.clientY, left: e.clientX })
-            }}
-            onDragStart={(img, _i, e) => {
-              e.dataTransfer.setData('text/plain', img.id)
-              e.dataTransfer.effectAllowed = 'copy'
-            }}
-            renderCellOverlay={(img) => (
-              <AnnotationOverlay
-                bboxes={img.bboxes}
-                points={img.points}
-                getColor={(id) => (id ? images.classIdToColor[id] : undefined)}
-                selectedClassId={images.selectedClassId}
-                imageWidth={img.width}
-                imageHeight={img.height}
-                fillOpacity={0.22}
-                emphasize
+        body={
+          <ClassImagesPanel
+            selectedClassId={images.selectedClassId}
+            chipsRow={
+              <DatasetFilterChipRow
+                datasets={images.datasets}
+                activeIds={images.activeDatasetIds}
+                loading={images.detailLoading}
+                onToggle={images.onToggleDataset}
               />
-            )}
-            renderCellTopRight={(img: ClassImage) =>
-              img.sequence_id ? <Badge $tone="neutral">4</Badge> : null
             }
+            imagesLoading={images.imagesLoading}
+            imagesEmpty={images.images.length === 0}
+            flush
+            grid={<ClassManageImageGrid {...images} />}
           />
         }
+        rightSidebar={info ? <ClassInfoPane {...info} flush /> : undefined}
       />
-      {info ? <ClassInfoPane {...info} /> : null}
-    </BodyRow>
+    </ContentArea>
   )
 }
 
@@ -153,7 +126,8 @@ function ClassInfoPane({
   onSetReferenceDragOver,
   onApplyReferenceImage,
   onChangeMapping,
-}: ClassInfoPaneProps) {
+  flush = false,
+}: ClassInfoPaneProps & { flush?: boolean }) {
   return (
     <ClassInfoSidebar
       selectedClass={selectedClass}
@@ -162,6 +136,7 @@ function ClassInfoPane({
       onChangeDescription={(description) => onChangeClass({ description: description ?? null })}
       onRandomizeColor={onRandomizeColor}
       onDelete={onDeleteClass}
+      flush={flush}
       referenceImageSlot={
         <ReferenceImageSection
           imageUrl={selectedClass.reference_image_url}

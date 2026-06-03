@@ -2,15 +2,16 @@ import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { stateCenteredLayout, stateTitleText } from '../../primitives'
 
-const Main = styled.main`
+const Main = styled.main<{ $flush: boolean }>`
   flex: 1;
   min-width: 0;
   min-height: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
+  background: ${(p) => (p.$flush ? 'transparent' : 'var(--ig-color-surface-panel)')};
+  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
+  border: ${(p) => (p.$flush ? 'none' : '1px solid var(--ig-color-border-subtle)')};
   overflow: hidden;
 `
 
@@ -39,6 +40,7 @@ export interface ClassImagesPanelProps {
   imagesLoading?: boolean
   imagesEmpty?: boolean
   grid?: ReactNode
+  flush?: boolean
   noSelectionText?: string
   imagesLoadingText?: string
   imagesEmptyText?: string
@@ -46,20 +48,20 @@ export interface ClassImagesPanelProps {
 
 export function ClassImagesPanel({
   selectedClassId, chipsRow,
-  imagesLoading, imagesEmpty, grid,
+  imagesLoading, imagesEmpty, grid, flush = false,
   noSelectionText = 'Select a class to see linked datasets and images.',
   imagesLoadingText = 'Loading images…',
   imagesEmptyText = 'No images with this class in the selected datasets.',
 }: ClassImagesPanelProps) {
   if (!selectedClassId) {
     return (
-      <Main>
+      <Main $flush={flush}>
         <EmptyArea>{noSelectionText}</EmptyArea>
       </Main>
     )
   }
   return (
-    <Main>
+    <Main $flush={flush}>
       {chipsRow}
       {imagesLoading ? (
         <LoadingArea>{imagesLoadingText}</LoadingArea>

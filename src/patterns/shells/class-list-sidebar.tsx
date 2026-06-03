@@ -3,32 +3,49 @@ import { Button } from '../../components/inputs/button'
 import { stateCenteredLayout, stateTitleText } from '../../primitives'
 import { ClassListRow } from './class-list-row'
 
-const Sidebar = styled.aside`
-  width: 280px;
+const Sidebar = styled.aside<{ $flush: boolean }>`
+  width: ${(p) => (p.$flush ? '100%' : '280px')};
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
+  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
+  border: ${(p) => (p.$flush ? 'none' : '1px solid var(--ig-color-border-subtle)')};
+  border-right: ${(p) =>
+    p.$flush ? '1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))' : undefined};
   height: 100%;
   min-height: 0;
   overflow: hidden;
 `
 
 const Header = styled.div`
-  padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  min-height: 72px;
+  padding: 0 var(--ig-space-7);
+  border-bottom: 1px solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ig-space-4);
+`
+
+const Title = styled.h2`
+  margin: 0;
+  color: var(--ig-color-text-primary);
+  font-size: var(--ig-font-size-lg);
+  font-weight: 600;
 `
 
 const List = styled.ul`
   list-style: none;
   margin: 0;
-  padding: 8px 0;
+  padding: var(--ig-space-2);
   overflow-y: auto;
   min-height: 0;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 `
 
 const Placeholder = styled.div`
@@ -48,6 +65,8 @@ export interface ClassListSidebarProps {
   classes: ClassListSidebarClass[]
   selectedClassId?: string | null
   loading?: boolean
+  flush?: boolean
+  title?: string
   emptyText?: string
   addClassLabel?: string
   onSelectClass?: (id: string) => void
@@ -55,15 +74,16 @@ export interface ClassListSidebarProps {
 }
 
 export function ClassListSidebar({
-  classes, selectedClassId, loading,
+  classes, selectedClassId, loading, flush = false, title = 'Classes',
   emptyText = 'No classes yet.',
-  addClassLabel = '+ Add class',
+  addClassLabel = '+ Add',
   onSelectClass, onAddClass,
 }: ClassListSidebarProps) {
   return (
-    <Sidebar>
+    <Sidebar $flush={flush}>
       <Header>
-        <Button variant="accent" type="button" onClick={onAddClass}>
+        <Title>{title}</Title>
+        <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
           {addClassLabel}
         </Button>
       </Header>

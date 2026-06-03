@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassImagesPanel } from './class-images-panel'
 import { DatasetFilterChipRow } from './dataset-filter-chip-row'
-import { ImageGrid, AnnotationOverlay, Badge } from '../../components'
+import { GalleryImageGrid } from './gallery-image-grid'
+import { AnnotationOverlay, Badge } from '../../components'
 import sample1 from '../../../stories/assets/20230808.jpg'
 import sample2 from '../../../stories/assets/20230816.jpg'
 import sample3 from '../../../stories/assets/20230823.jpg'
@@ -36,11 +37,11 @@ export const WithGrid: Story = {
     selectedClassId: 'c-1',
     chipsRow: <DatasetFilterChipRow datasets={datasets} activeIds={new Set()} />,
     grid: (
-      <ImageGrid
+      <GalleryImageGrid
         items={images}
-        getThumbnailUrl={(img) => img.thumb_url}
-        layout={{ minWidth: 120, gap: 12 }}
-        renderCellOverlay={(img) => (
+        padded
+        showKebab={false}
+        renderOverlay={(img) => (
           <AnnotationOverlay
             bboxes={img.bboxes}
             getColor={() => '#ef4444'}
@@ -51,7 +52,7 @@ export const WithGrid: Story = {
             emphasize
           />
         )}
-        renderCellTopRight={() => <Badge $tone="neutral">3</Badge>}
+        renderTopRight={() => <Badge $tone="neutral">3</Badge>}
       />
     ),
   },

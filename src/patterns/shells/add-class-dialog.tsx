@@ -23,7 +23,7 @@ export interface AddClassDialogProps {
 
 export function AddClassDialog({
   open, name, onChangeName, onClose, onConfirm,
-  title = 'Class name',
+  title = 'Add Class',
   placeholder = 'Enter class name',
   confirmLabel = 'Add',
   cancelLabel = 'Cancel',

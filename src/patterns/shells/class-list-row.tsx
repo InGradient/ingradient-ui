@@ -1,32 +1,29 @@
 import styled from 'styled-components'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
+import {
+  SelectableListItem,
+  type SelectableListItemProps,
+} from '../../components/data-display/selectable-list-item'
 
-const Item = styled.li<{ $selected?: boolean }>`
-  padding: 10px 14px;
-  cursor: pointer;
-  list-style: none;
-  background: ${(p) => (p.$selected ? 'rgba(77, 136, 255, 0.1)' : 'transparent')};
-  border-left: 3px solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
-  transition: background-color var(--ig-motion-fast);
-  &:hover {
-    background: var(--ig-color-white-04);
-  }
+const ClassSelectableListItem = (props: Omit<SelectableListItemProps, 'as' | 'variant'>) => (
+  <SelectableListItem as="li" variant="flat" {...props} />
+)
+
+const Item = styled(ClassSelectableListItem)`
+  min-height: calc((var(--ig-space-3) * 2) + var(--ig-space-12));
 `
 
 const Wrap = styled.div`
-  position: relative;
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 10px;
+  gap: var(--ig-space-3);
   min-width: 0;
 `
 
 const Name = styled.span`
-  flex: 1;
   min-width: 0;
-  font-size: 14px;
-  color: var(--ig-color-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,7 +31,7 @@ const Name = styled.span`
 
 const Count = styled.span`
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-soft);
 `
 
@@ -51,13 +48,13 @@ export function ClassListRow({ id, name, color, count, selected, onClick }: Clas
   return (
     <Item
       data-class-id={id}
-      $selected={selected}
+      selected={selected}
       onClick={() => onClick?.(id)}
       role="option"
       aria-selected={selected}
     >
       <Wrap>
-        <ColorSwatch $color={color} $size="md" $shape="square" />
+        <ColorSwatch $color={color} $size="md" $shape="circle" />
         <Name title={name}>{name}</Name>
         {typeof count === 'number' ? <Count>{count.toLocaleString()}</Count> : null}
       </Wrap>

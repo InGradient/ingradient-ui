@@ -48,6 +48,16 @@ const TopRight = styled.div`
   z-index: 2;
 `
 
+const OverlayLayer = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  > * {
+    pointer-events: auto;
+  }
+`
+
 const TopLeft = styled.div`
   position: absolute;
   top: var(--ig-space-2);
@@ -110,23 +120,34 @@ export interface GalleryImageCardProps {
   onSelect?: (id: string, e: React.MouseEvent) => void
   onOpen?: (id: string) => void
   onOpenMenu?: (id: string, anchor: HTMLElement) => void
+  onContextMenu?: (image: GalleryImageCardImage, event: React.MouseEvent) => void
+  onDragStart?: (image: GalleryImageCardImage, event: React.DragEvent) => void
+  renderOverlay?: (image: GalleryImageCardImage) => React.ReactNode
+  renderTopRight?: (image: GalleryImageCardImage) => React.ReactNode
 }
 
 export function GalleryImageCard({
   image, selected = false, showName = false, showKebab = true,
-  onSelect, onOpen, onOpenMenu,
+  onSelect, onOpen, onOpenMenu, onContextMenu, onDragStart, renderOverlay, renderTopRight,
 }: GalleryImageCardProps) {
   const menuBtnRef = React.useRef<HTMLButtonElement>(null)
   const groupCount = image.group_count ?? 0
+  const overlay = renderOverlay?.(image)
+  const topRight = renderTopRight?.(image)
   return (
     <Card
       $selected={selected}
+      draggable={!!onDragStart}
       onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
+      onContextMenu={(e) => onContextMenu?.(image, e)}
+      onDragStart={onDragStart ? (e) => onDragStart(image, e) : undefined}
       data-image-id={image.id}
       data-sync-chip-hover-scope="true"
     >
       <Thumb src={image.thumb_url} alt={image.name} loading="lazy" $archived={Boolean(image.archived)} />
+      {overlay ? <OverlayLayer>{overlay}</OverlayLayer> : null}
       <TopRight>
+        {topRight}
         {image.sync_state ? (
           <SyncStatusChip
             state={image.sync_state}

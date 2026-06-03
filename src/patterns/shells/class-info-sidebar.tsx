@@ -5,14 +5,14 @@ import { TextField, TextareaField } from '../../components/inputs/text-fields'
 import { ClassInfoSection } from './class-info-section'
 import { ColorInputRow } from './color-input-row'
 
-const Sidebar = styled.aside`
-  width: 300px;
+const Sidebar = styled.aside<{ $flush: boolean }>`
+  width: ${(p) => (p.$flush ? '100%' : '300px')};
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  background: var(--ig-color-surface-panel);
-  border-radius: var(--ig-radius-xl);
-  border: 1px solid var(--ig-color-border-subtle);
+  background: ${(p) => (p.$flush ? 'transparent' : 'var(--ig-color-surface-panel)')};
+  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
+  border: ${(p) => (p.$flush ? 'none' : '1px solid var(--ig-color-border-subtle)')};
   height: 100%;
   min-height: 0;
   overflow: hidden;
@@ -22,10 +22,10 @@ const Panel = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 16px;
+  padding: var(--ig-space-7);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--ig-space-7);
 `
 
 const NameInput = styled(TextField).attrs({ size: 'sm' as const })`
@@ -65,6 +65,7 @@ export interface ClassInfoSidebarProps {
   /** 6-2-E — Model mapping 섹션 콘텐츠 (Phase 6 의 ModelMappingSelect 등) */
   mappingSlot?: ReactNode
   /** Danger zone 버튼 라벨 커스텀 */
+  flush?: boolean
   deleteLabel?: string
   descriptionPlaceholder?: string
 }
@@ -74,11 +75,12 @@ export function ClassInfoSidebar({
   onChangeName, onChangeColor, onChangeDescription,
   onRandomizeColor, onDelete,
   referenceImageSlot, mappingSlot,
+  flush = false,
   deleteLabel = 'Delete class',
   descriptionPlaceholder = 'Class description (optional)',
 }: ClassInfoSidebarProps) {
   return (
-    <Sidebar>
+    <Sidebar $flush={flush}>
       <Panel>
         <ClassInfoSection title="Name">
           <NameInput
