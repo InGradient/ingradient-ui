@@ -13,7 +13,7 @@ export const Spinner = styled.span`
   border-top-color: var(--ig-color-text-primary);
   border-radius: 50%;
   animation: ${spin} 0.7s linear infinite;
-  vertical-align: -2px;
+  vertical-align: var(--ig-space-neg-2px);
   margin-right: var(--ig-space-3);
 `;
 
@@ -256,7 +256,7 @@ export const IndicatorValue = styled.span`
 export const QualityDivider = styled.div`
   height: var(--ig-space-1px);
   background: var(--ig-color-border-subtle);
-  margin: 2px 0;
+  margin: var(--ig-space-2px) 0;
 `;
 
 export const RoiSectionLabel = styled.div`
