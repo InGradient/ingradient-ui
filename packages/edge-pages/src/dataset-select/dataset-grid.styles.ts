@@ -12,7 +12,7 @@ export const RecentScroll = styled.div`
   gap: var(--ig-space-4);
   overflow-x: auto;
   padding-bottom: 4px;
-  &::-webkit-scrollbar { height: 4px; }
+  &::-webkit-scrollbar { height: var(--ig-space-1); }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb { background: var(--ig-color-white-12); border-radius: 2px; }
 `

@@ -22,7 +22,7 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   left: 0;
   right: 0;
   bottom: -10px;
-  height: 4px;
+  height: var(--ig-space-1);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-blue-tint-92);
   opacity: ${(p) => (p.$active ? 1 : 0)};
@@ -65,10 +65,10 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     p.$dropTarget === 'before'
       ? `
         &::after {
-          top: 18px;
-          bottom: 18px;
+          top: var(--ig-space-8);
+          bottom: var(--ig-space-8);
           left: -12px;
-          width: 4px;
+          width: var(--ig-space-1);
         }
       `
       : ''}
@@ -76,10 +76,10 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     p.$dropTarget === 'after'
       ? `
         &::after {
-          top: 18px;
-          bottom: 18px;
+          top: var(--ig-space-8);
+          bottom: var(--ig-space-8);
           right: -12px;
-          width: 4px;
+          width: var(--ig-space-1);
         }
       `
       : ''}
@@ -91,8 +91,8 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
   ${(p) =>
     p.$position === 'before'
       ? `
-        top: 16px;
-        bottom: 16px;
+        top: var(--ig-space-7);
+        bottom: var(--ig-space-7);
         left: -14px;
         width: var(--ig-control-height-xs);
       `
@@ -100,8 +100,8 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
   ${(p) =>
     p.$position === 'after'
       ? `
-        top: 16px;
-        bottom: 16px;
+        top: var(--ig-space-7);
+        bottom: var(--ig-space-7);
         right: -14px;
         width: var(--ig-control-height-xs);
       `
@@ -113,7 +113,7 @@ export const DragOverlayCard = styled.div`
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);
   padding: var(--ig-space-6) 16px;
-  border-radius: 18px;
+  border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-blue-tint-28);
   background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(12, 16, 24, 0.98) 100%);
   box-shadow: 0 24px 56px var(--ig-color-blue-tint-34);

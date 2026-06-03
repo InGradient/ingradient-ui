@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components'
 
 export const ProgressBarTrack = styled.div`
-  height: 6px;
+  height: var(--ig-space-2);
   border-radius: 3px;
   background: var(--ig-color-white-08);
   overflow: hidden;

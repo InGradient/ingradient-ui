@@ -13,7 +13,7 @@ export const Header = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--ig-space-7);
-  margin-bottom: 18px;
+  margin-bottom: var(--ig-space-8);
 `;
 
 export const TitleBlock = styled.div`

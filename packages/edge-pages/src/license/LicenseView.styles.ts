@@ -16,7 +16,7 @@ export const Wrap = styled.div`
 export const LangCorner = styled.div`
   position: fixed;
   top: 46px;
-  right: 16px;
+  right: var(--ig-space-7);
   z-index: 10;
   display: flex;
   gap: var(--ig-space-3);

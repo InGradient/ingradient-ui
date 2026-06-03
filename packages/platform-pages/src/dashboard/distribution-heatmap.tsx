@@ -6,7 +6,7 @@ const WRAP_STYLE = { overflowX: 'auto' as const }
 
 const Table = styled.table`
   border-collapse: separate;
-  border-spacing: 2px;
+  border-spacing: var(--ig-space-2px);
   width: 100%;
   & th {
     font-size: var(--ig-font-size-xs);

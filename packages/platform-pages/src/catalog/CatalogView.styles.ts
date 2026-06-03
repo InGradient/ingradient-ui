@@ -70,7 +70,7 @@ export const MobileBottomSheet = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 60px;
+  bottom: var(--ig-control-height-3xl);
   z-index: 30;
   background: var(--ig-color-surface-raised);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);

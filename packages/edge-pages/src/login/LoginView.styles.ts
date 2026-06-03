@@ -14,8 +14,8 @@ export const Wrap = styled.div`
 
 export const LangCorner = styled.div`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: var(--ig-space-7);
+  right: var(--ig-space-7);
   display: flex;
   gap: var(--ig-space-3);
   align-items: center;
@@ -187,7 +187,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
   font-weight: var(--ig-font-weight-bold);
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
-  margin-left: 6px;
+  margin-left: var(--ig-space-2);
   background: ${(p) => (p.$online ? 'var(--ig-color-green-tint-15)' : 'var(--ig-color-amber-tint-15)')};
   color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
   vertical-align: middle;

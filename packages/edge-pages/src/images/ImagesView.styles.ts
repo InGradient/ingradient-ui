@@ -17,8 +17,8 @@ export const GroupBadge = styled.div`
 
 export const GroupBadgeWrap = styled.div`
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: var(--ig-space-2);
+  right: var(--ig-space-2);
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);
@@ -251,8 +251,8 @@ export const SelectionToolbar = styled.div`
 `;
 
 export const SyncDot = styled.span<{ $color: string }>`
-  width: 6px;
-  height: 6px;
+  width: var(--ig-space-2);
+  height: var(--ig-space-2);
   border-radius: 50%;
   background: ${(p) => p.$color};
   display: inline-block;
@@ -262,7 +262,7 @@ export const SyncDot = styled.span<{ $color: string }>`
 export const SyncStateIcon = styled.div<{ $state: string }>`
   position: absolute;
   bottom: 28px;
-  left: 6px;
+  left: var(--ig-space-2);
   z-index: 3;
   width: 22px;
   height: 22px;

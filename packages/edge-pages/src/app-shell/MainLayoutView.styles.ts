@@ -35,7 +35,7 @@ export const PanelsRow = styled.div`
 
 const Panel = styled.div`
   ${surfacePanel}
-  border-radius: 20px;
+  border-radius: var(--ig-radius-2xl);
   overflow: hidden;
   display: flex;
   flex-direction: column;

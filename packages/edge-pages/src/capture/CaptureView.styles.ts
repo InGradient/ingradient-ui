@@ -31,8 +31,8 @@ export const CaptureZoomWrap = styled.div.attrs<{ $zoom: number; $panX: number; 
 
 export const SetupMetrics = styled.div`
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: var(--ig-space-7);
+  left: var(--ig-space-7);
   z-index: 3;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -340,7 +340,7 @@ export const CapturingBadge = styled.div`
 export const CapturePreviewFullscreenBtn = styled.button`
   position: absolute;
   top: 10px;
-  right: 60px;
+  right: var(--ig-control-height-3xl);
   width: var(--ig-control-height-md);
   height: var(--ig-control-height-md);
   display: flex;

@@ -29,7 +29,7 @@ export const CenterActions = styled.div`
 
 export const RightActions = styled.div`
   position: absolute;
-  right: 16px;
+  right: var(--ig-space-7);
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);

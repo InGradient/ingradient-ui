@@ -14,7 +14,7 @@ const SubTitle = styled.div`
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-normal);
   color: var(--ig-color-text-muted);
-  margin-bottom: 6px;
+  margin-bottom: var(--ig-space-2);
 `
 
 function nicBadgeTone(badge: NicBadge): 'success' | 'accent' | 'danger' {

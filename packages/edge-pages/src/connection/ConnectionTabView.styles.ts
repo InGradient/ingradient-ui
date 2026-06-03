@@ -18,7 +18,7 @@ export const GuideCard = styled.div`
   margin-bottom: var(--ig-space-7);
   @media (max-width: 720px){ grid-template-columns:1fr; }
 `;
-export const GuideHeader = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom:6px;`;
+export const GuideHeader = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom: var(--ig-space-2);`;
 export const GuideTitle = styled.div`font-size:var(--ig-font-size-lg);font-weight: var(--ig-font-weight-bold);color:var(--ig-color-text-primary);`;
 export const GuideSummary = styled.div`font-size:var(--ig-font-size-xs);color:var(--ig-color-text-secondary);line-height: var(--ig-line-height-relaxed);`;
 export const GuideActions = styled.div`display:flex;align-items:center;justify-content:flex-end;gap: var(--ig-space-3);flex-wrap:wrap;`;
