@@ -16,6 +16,8 @@ import {
   typographyScale,
   zIndexScale,
   controlSizes,
+  transformScale,
+  aspectRatios,
 } from '../core'
 import { ingradientThemeDark, ingradientThemeLight } from '../modes'
 import type { IngradientTheme } from '../semantic/types'
@@ -431,6 +433,14 @@ const staticVars = {
   '--ig-z-modal': String(zIndexScale.modal),
   '--ig-z-toast': String(zIndexScale.toast),
   '--ig-z-tooltip': String(zIndexScale.tooltip),
+  '--ig-scale-press': String(transformScale.press),
+  '--ig-scale-drag': String(transformScale.drag),
+  '--ig-scale-hover-lift': String(transformScale.hoverLift),
+  '--ig-aspect-square': aspectRatios.square,
+  '--ig-aspect-landscape': aspectRatios.landscape,
+  '--ig-aspect-wide': aspectRatios.wide,
+  '--ig-aspect-ultra-wide': aspectRatios.ultraWide,
+  '--ig-aspect-portrait': aspectRatios.portrait,
   '--ig-control-height-xs': controlSizes.xs,
   '--ig-control-height-xs-plus': controlSizes.xsPlus,
   '--ig-control-height-sm': controlSizes.sm,

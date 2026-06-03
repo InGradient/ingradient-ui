@@ -10,7 +10,7 @@ import { KebabIcon } from '../icons/catalog-icons'
 const Card = styled.div<{ $selected: boolean }>`
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--ig-aspect-landscape);
   background: var(--ig-color-surface-muted);
   border: var(--ig-border-2px) solid ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'transparent')};
   border-radius: var(--ig-radius-md);

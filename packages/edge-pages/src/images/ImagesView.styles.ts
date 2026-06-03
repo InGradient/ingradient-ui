@@ -52,7 +52,7 @@ export const GroupDeleteBtn = styled.button`
   &:hover:not(:disabled) {
     background: var(--ig-color-red-tint-96);
     border-color: var(--ig-color-white-32);
-    transform: scale(1.04);
+    transform: scale(var(--ig-scale-hover-lift));
   }
 `;
 

@@ -46,7 +46,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
   min-width: 0;
   cursor: default;
   opacity: ${(p) => (p.$dragging ? 0.5 : 1)};
-  transform: ${(p) => (p.$dragging ? 'scale(0.985)' : 'none')};
+  transform: ${(p) => (p.$dragging ? 'scale(var(--ig-scale-drag))' : 'none')};
   transition:
     opacity 0.16s ease,
     transform 0.16s ease,

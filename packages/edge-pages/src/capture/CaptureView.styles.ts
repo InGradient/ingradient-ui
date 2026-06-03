@@ -177,7 +177,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   position: relative;
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(var(--ig-scale-press));
     box-shadow: 0 var(--ig-space-1) var(--ig-space-5) var(--ig-color-blue-strong-tint-20);
   }
 
