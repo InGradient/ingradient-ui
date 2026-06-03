@@ -39,7 +39,7 @@ export const GroupDeleteBtn = styled.button`
   opacity: 1;
   transform: translateX(0);
   transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.28);
+  box-shadow: 0 var(--ig-space-1) var(--ig-space-5) rgba(0, 0, 0, 0.28);
   pointer-events: auto;
   position: relative;
   z-index: 5;

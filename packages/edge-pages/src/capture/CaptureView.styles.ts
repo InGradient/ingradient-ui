@@ -120,7 +120,7 @@ export const OverlayPopover = styled.div`
   background: var(--ig-color-surface-header);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--ig-blur-lg);
   box-shadow: var(--ig-shadow-panel);
   padding: var(--ig-space-4) 12px;
   min-width: 160px;
@@ -305,7 +305,7 @@ export const HistogramOverlay = styled.div`
   border-radius: var(--ig-radius-sm);
   background: rgba(12, 16, 22, 0.82);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
-  backdrop-filter: blur(8px);
+  backdrop-filter: var(--ig-blur-xs);
 `;
 
 export const HistogramImage = styled.img`
