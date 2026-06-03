@@ -13,7 +13,7 @@ const LogBox = styled.pre`
   padding: var(--ig-space-4);
   font-family: 'Courier New', monospace;
   font-size: var(--ig-font-size-xs);
-  max-height: 320px;
+  max-height: var(--ig-popup-md);
   overflow-y: auto;
   margin: 0;
   white-space: pre-wrap;

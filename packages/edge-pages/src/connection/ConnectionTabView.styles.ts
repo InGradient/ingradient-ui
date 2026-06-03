@@ -121,7 +121,7 @@ export const DiagReportToolbar = styled.div`
   padding: var(--ig-space-3) 10px;
   border-bottom: var(--ig-space-1px) solid var(--ig-color-border-subtle);
 `;
-export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height:320px;min-height:0;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
+export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height: var(--ig-popup-md);min-height:0;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
 export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'var(--ig-color-red-tint-08)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)
