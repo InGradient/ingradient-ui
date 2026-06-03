@@ -22,7 +22,7 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -10px;
+  bottom: calc(var(--ig-space-4) * -1);
   height: var(--ig-space-1);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-blue-tint-92);
@@ -35,7 +35,7 @@ export const RowDropZone = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -20px;
+  bottom: calc(var(--ig-space-9) * -1);
   height: var(--ig-control-height-xs);
   z-index: 6;
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
@@ -68,7 +68,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
         &::after {
           top: var(--ig-space-8);
           bottom: var(--ig-space-8);
-          left: -12px;
+          left: calc(var(--ig-space-5) * -1);
           width: var(--ig-space-1);
         }
       `
@@ -79,7 +79,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
         &::after {
           top: var(--ig-space-8);
           bottom: var(--ig-space-8);
-          right: -12px;
+          right: calc(var(--ig-space-5) * -1);
           width: var(--ig-space-1);
         }
       `
@@ -94,7 +94,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
       ? `
         top: var(--ig-space-7);
         bottom: var(--ig-space-7);
-        left: -14px;
+        left: calc(var(--ig-space-6) * -1);
         width: var(--ig-control-height-xs);
       `
       : ''}
@@ -103,7 +103,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
       ? `
         top: var(--ig-space-7);
         bottom: var(--ig-space-7);
-        right: -14px;
+        right: calc(var(--ig-space-6) * -1);
         width: var(--ig-control-height-xs);
       `
       : ''}
