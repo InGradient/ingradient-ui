@@ -103,7 +103,7 @@ export const SidebarItemRow = styled.a`
   &.active,
   &[aria-current='page'] {
     color: var(--ig-color-accent-soft);
-    background: var(--ig-color-blue-tint-16);
+    background: var(--ig-color-focus-bg-soft);
   }
 `
 

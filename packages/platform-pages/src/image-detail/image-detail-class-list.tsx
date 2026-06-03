@@ -17,14 +17,14 @@ const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
         : 'var(--ig-color-slate-gray-tint-16)'};
   background: ${(p) =>
     p.$selected || p.$classified
-      ? 'var(--ig-color-blue-tint-18)'
+      ? 'var(--ig-color-accent-soft-surface-hover)'
       : 'var(--ig-color-slate-gray-tint-12)'};
   cursor: pointer;
   text-align: left;
   &:hover {
     background: ${(p) =>
       p.$selected || p.$classified
-        ? 'var(--ig-color-blue-tint-28)'
+        ? 'var(--ig-color-active-bg)'
         : 'var(--ig-color-slate-gray-tint-18)'};
   }
 `

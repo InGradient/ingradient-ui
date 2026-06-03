@@ -101,7 +101,7 @@ export const CopyBtn = styled.button`
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-xs);
   border: none;
-  background: var(--ig-color-blue-tint-14);
+  background: var(--ig-color-selection-bg);
   color: var(--ig-color-accent-soft);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
@@ -172,6 +172,6 @@ export const HintBox = styled.div`
   padding: var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-blue-tint-06);
-  border: var(--ig-border-1px) solid var(--ig-color-blue-tint-14);
+  border: var(--ig-border-1px) solid var(--ig-color-selection-bg);
   line-height: var(--ig-line-height-loose);
 `

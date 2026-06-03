@@ -203,7 +203,7 @@ export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
   height: var(--ig-control-height-md);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'transparent')};
   color: var(--ig-color-text-primary);
   cursor: pointer;
   display: flex;

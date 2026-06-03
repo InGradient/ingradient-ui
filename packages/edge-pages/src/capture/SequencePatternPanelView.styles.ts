@@ -48,7 +48,7 @@ export const Item = styled.button<{ $active: boolean }>`
   padding: var(--ig-space-3) var(--ig-space-4);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-70)' : 'transparent')};
   border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);
   text-align: left;

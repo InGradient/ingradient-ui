@@ -19,7 +19,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   position: relative;
   transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
-    background: var(--ig-color-blue-tint-14);
+    background: var(--ig-color-selection-bg);
     border-color: var(--ig-color-blue-tint-50);
   }
 `
@@ -43,7 +43,7 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   min-height: var(--ig-layout-dataset-card-recent-min-height);
   transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
-    background: var(--ig-color-blue-tint-12);
+    background: var(--ig-color-accent-soft-surface);
     border-color: var(--ig-color-blue-tint-50);
   }
 `

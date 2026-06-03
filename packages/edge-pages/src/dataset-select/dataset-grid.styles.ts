@@ -43,7 +43,7 @@ export const ProjectTypeTag = styled.span`
   height: var(--ig-icon-xl);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-blue-tint-14);
+  background: var(--ig-color-selection-bg);
   border: var(--ig-border-1px) solid rgba(77, 136, 255, 0.34);
   color: var(--ig-color-accent-soft);
   font-size: var(--ig-font-size-2xs);

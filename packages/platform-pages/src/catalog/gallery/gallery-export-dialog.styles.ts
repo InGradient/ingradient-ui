@@ -22,7 +22,7 @@ export const ExportOption = styled.label<{ $active?: boolean; $disabled?: boolea
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-12)' : 'var(--ig-color-white-04)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'var(--ig-color-white-04)')};
   color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-primary)')};
   opacity: ${(p) => (p.$disabled ? 0.55 : 1)};
   cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};

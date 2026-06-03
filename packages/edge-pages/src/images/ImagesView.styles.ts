@@ -67,7 +67,7 @@ export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
   justify-content: center;
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'transparent')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
   transition: all var(--ig-motion-fast-ease);

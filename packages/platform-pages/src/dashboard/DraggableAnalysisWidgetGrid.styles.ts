@@ -52,7 +52,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     transform 0.16s ease,
     filter 0.16s ease;
   filter: ${(p) =>
-    p.$dropTarget ? 'drop-shadow(0 0 0.85rem var(--ig-color-blue-tint-18))' : 'none'};
+    p.$dropTarget ? 'drop-shadow(0 0 0.85rem var(--ig-color-accent-soft-surface-hover))' : 'none'};
   &::after {
     content: '';
     position: absolute;
@@ -115,7 +115,7 @@ export const DragOverlayCard = styled.div`
   max-width: var(--ig-popup-md);
   padding: var(--ig-space-6) 16px;
   border-radius: var(--ig-radius-xl);
-  border: var(--ig-border-1px) solid var(--ig-color-blue-tint-28);
+  border: var(--ig-border-1px) solid var(--ig-color-active-bg);
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
   box-shadow: 0 24px 56px var(--ig-color-blue-tint-34);
 `
