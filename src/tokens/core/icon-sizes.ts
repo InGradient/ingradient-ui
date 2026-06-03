@@ -1,5 +1,6 @@
 // Icon dimensions for inline SVG inside styled-components.
 export const iconSizes = {
+  sub: '8px',
   '2xs': '11px',
   xs: '12px',
   xsPlus: '13px',

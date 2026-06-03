@@ -4,7 +4,7 @@ export type ColorSwatchSize = 'xs' | 'sm' | 'md'
 export type ColorSwatchShape = 'circle' | 'square'
 
 const sizeMap: Record<ColorSwatchSize, string> = {
-  xs: '8px',
+  xs: 'var(--ig-icon-sub)',
   sm: 'var(--ig-icon-xs)',
   md: 'var(--ig-icon-md)',
 }

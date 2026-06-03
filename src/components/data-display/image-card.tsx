@@ -41,7 +41,7 @@ const GROUP_SLOT_STYLE = {
   position: 'absolute' as const,
   top: 'var(--ig-space-2)',
   right: 'var(--ig-space-2)',
-  transform: 'translate(12px, -10px)',
+  transform: 'translate(var(--ig-space-5), var(--ig-space-neg-4))',
   zIndex: 'var(--ig-z-capture)' as unknown as number,
 }
 

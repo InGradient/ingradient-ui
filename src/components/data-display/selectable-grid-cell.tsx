@@ -18,7 +18,7 @@ const Cell = styled.div<{ $selected: boolean }>`
     box-shadow var(--ig-motion-fast), background-color var(--ig-motion-fast);
 
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(var(--ig-transform-hover-lift-y));
     border-color: var(--ig-color-image-card-hover-border);
   }
 `

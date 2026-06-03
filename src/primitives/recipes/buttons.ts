@@ -12,7 +12,7 @@ export const buttonPrimary = css`
     opacity var(--ig-motion-fast);
 
   &:hover:not(:disabled) {
-    transform: translateY(-1px);
+    transform: translateY(var(--ig-transform-hover-lift-y));
     box-shadow: var(--ig-shadow-hover-lift);
   }
 
@@ -109,7 +109,7 @@ export const buttonDanger = css`
     background-color var(--ig-motion-fast);
 
   &:hover:not(:disabled) {
-    transform: translateY(-1px);
+    transform: translateY(var(--ig-transform-hover-lift-y));
     box-shadow: var(--ig-shadow-danger-hover-lift);
   }
 
