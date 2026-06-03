@@ -29,8 +29,8 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
     }}>
       <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
       {visible.map((item) => (
-        <div key={String(item.dataKey ?? item.name)} style={{ display: 'flex', alignItems: 'center', gap: 8, lineHeight: 1.6 }}>
-          <span style={{ width: 8, height: 8, borderRadius: 999, background: item.color ?? CHART_LEGEND_FALLBACK }} />
+        <div key={String(item.dataKey ?? item.name)} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', lineHeight: 1.6 }}>
+          <span style={{ width: 8, height: 'var(--ig-space-3)', borderRadius: 999, background: item.color ?? CHART_LEGEND_FALLBACK }} />
           <span>{item.name}</span>
           <span style={{ marginLeft: 8, fontWeight: 700 }}>{Number(item.value)}</span>
         </div>

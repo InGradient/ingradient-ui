@@ -10,7 +10,7 @@ const PLACEHOLDER_STYLE = { margin: 0 }
 
 const DATE_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
-  minHeight: 36,
+  minHeight: 'var(--ig-control-height-md)',
   fontSize: 12,
   fontWeight: 600,
 }

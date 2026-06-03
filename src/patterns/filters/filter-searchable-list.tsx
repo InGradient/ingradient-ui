@@ -3,7 +3,7 @@ import { Stack, Text } from '../../primitives'
 import { SearchField } from '../../components/inputs/search-field'
 import { ColorChip } from '../../components/inputs/color-chip'
 
-const LIST_STYLE = { maxHeight: 180, overflowY: 'auto' as const, paddingRight: 'var(--ig-space-1)' }
+const LIST_STYLE = { maxHeight: 'var(--ig-popup-xs)', overflowY: 'auto' as const, paddingRight: 'var(--ig-space-1)' }
 const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 export interface FilterSearchableItem {

@@ -6,7 +6,7 @@ import { InfoSection } from '@ingradient/ui/components'
 import { ColorInputRow } from '@ingradient/ui/patterns'
 
 const SIDEBAR_STYLE = {
-  width: 300,
+  width: '300px',
   flexShrink: 0,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',
@@ -23,8 +23,8 @@ const PANEL_STYLE = {
   padding: 'var(--ig-space-7)',
 }
 
-const NAME_INPUT_STYLE = { maxWidth: 280, borderRadius: 'var(--ig-radius-2xs)' }
-const DESCRIPTION_STYLE = { minHeight: 72, maxWidth: '100%', fontSize: 13, resize: 'vertical' as const }
+const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-popup-sm)', borderRadius: 'var(--ig-radius-2xs)' }
+const DESCRIPTION_STYLE = { minHeight: 72, maxWidth: '100%', fontSize: 'var(--ig-font-size-sm)', resize: 'vertical' as const }
 const DELETE_BTN_STYLE = {
   marginTop: 'var(--ig-space-3)',
   padding: 'var(--ig-space-3) var(--ig-space-7)',

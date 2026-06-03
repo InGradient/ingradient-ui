@@ -121,7 +121,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
               </tbody>
             </Table>
           ) : (
-            <div style={{ color: 'var(--ig-color-text-muted)', fontSize: 13, padding: '24px 0', textAlign: 'center' }}>
+            <div style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-sm)', padding: '24px 0', textAlign: 'center' }}>
               {labels.noWorkerStats}
             </div>
           )}

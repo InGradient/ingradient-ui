@@ -9,8 +9,8 @@ interface Props extends CatalogImagesPaneProps {
 }
 
 const PREVIEW_STYLE: React.CSSProperties = {
-  width: 320,
-  height: 240,
+  width: 'var(--ig-popup-md)',
+  height: '240px',
   objectFit: 'cover',
   borderRadius: 'var(--ig-radius-md)',
 }

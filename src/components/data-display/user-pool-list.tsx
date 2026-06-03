@@ -10,7 +10,7 @@ const LIST_STYLE = {
   listStyle: 'none' as const,
   margin: 'var(--ig-space-2) 0 0',
   padding: 0,
-  maxHeight: 180,
+  maxHeight: 'var(--ig-popup-xs)',
   overflowY: 'auto' as const,
 }
 

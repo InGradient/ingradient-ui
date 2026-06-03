@@ -3,7 +3,7 @@ import { Button } from '@ingradient/ui/components'
 import { LabeledSwatchRow } from '@ingradient/ui/components'
 
 const SIDEBAR_STYLE = {
-  width: 280,
+  width: 'var(--ig-popup-sm)',
   flexShrink: 0,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',

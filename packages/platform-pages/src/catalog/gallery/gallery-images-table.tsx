@@ -6,8 +6,8 @@ import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '@ingradient/ui/components'
 
 const THUMB_STYLE = {
-  width: 64,
-  height: 64,
+  width: '64px',
+  height: '64px',
   objectFit: 'cover' as const,
   borderRadius: 'var(--ig-radius-sm)',
   display: 'block' as const,
@@ -15,7 +15,7 @@ const THUMB_STYLE = {
 
 const NAME_CELL_STYLE = {
   display: 'inline-block' as const,
-  maxWidth: 280,
+  maxWidth: 'var(--ig-popup-sm)',
   overflow: 'hidden' as const,
   textOverflow: 'ellipsis' as const,
   whiteSpace: 'nowrap' as const,

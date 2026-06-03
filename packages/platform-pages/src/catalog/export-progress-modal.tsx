@@ -6,7 +6,7 @@ import { Spinner } from '@ingradient/ui/components'
 
 const PROGRESS_TRACK_STYLE = {
   width: '100%',
-  height: 8,
+  height: 'var(--ig-space-3)',
   borderRadius: 'var(--ig-radius-pill)',
   background: 'var(--ig-color-progress-track)',
   overflow: 'hidden' as const,

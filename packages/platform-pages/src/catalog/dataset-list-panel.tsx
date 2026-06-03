@@ -29,7 +29,7 @@ const LIST_STYLE = {
   minHeight: 0,
   overflowY: 'auto' as const,
   padding: 'var(--ig-space-2)',
-  gap: 2,
+  gap: 'var(--ig-space-2px)',
 }
 
 const PLACEHOLDER_STYLE = {

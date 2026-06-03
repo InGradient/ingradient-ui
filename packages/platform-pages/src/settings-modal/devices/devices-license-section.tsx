@@ -7,7 +7,7 @@ const INFO_GRID_STYLE = {
   display: 'grid' as const,
   gridTemplateColumns: '160px 1fr',
   gap: 'var(--ig-space-2) var(--ig-space-5)',
-  fontSize: 13,
+  fontSize: 'var(--ig-font-size-sm)',
   alignItems: 'center' as const,
 }
 

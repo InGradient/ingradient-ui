@@ -5,7 +5,7 @@ import { Box, Inline } from '@ingradient/ui/primitives'
 import { IconButton } from '@ingradient/ui/components'
 
 const SHELL_STYLE = { position: 'relative' as const, minWidth: 0 }
-const ACTIONS_STYLE = { position: 'absolute' as const, top: 14, right: 14, zIndex: 8 }
+const ACTIONS_STYLE = { position: 'absolute' as const, top: 'var(--ig-space-6)', right: 'var(--ig-space-6)', zIndex: 8 }
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`
   color: var(--ig-color-text-secondary);

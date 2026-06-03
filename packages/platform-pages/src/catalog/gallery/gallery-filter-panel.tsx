@@ -6,7 +6,7 @@ import { FilterSection } from '@ingradient/ui/patterns'
 import { ColorChip } from '@ingradient/ui/components'
 import { FilterSearchableList, type FilterSearchableItem } from '@ingradient/ui/patterns'
 
-const PANEL_STYLE = { width: 320, maxHeight: '70vh', overflowY: 'auto' as const }
+const PANEL_STYLE = { width: 'var(--ig-popup-md)', maxHeight: '70vh', overflowY: 'auto' as const }
 
 const HEADER_STYLE = {
   padding: '0 0 var(--ig-space-3)',

@@ -41,18 +41,18 @@ export function CatalogDesktopView({
 }: Props) {
   const columns: ResizableColumn[] = [
     {
-      width: 320,
+      width: 'var(--ig-popup-md)',
       resizable: true,
-      minWidth: 220,
-      maxWidth: 480,
+      minWidth: 'var(--ig-popup-xs)',
+      maxWidth: 'var(--ig-popup-xl)',
       collapsed: datasets.sidebarCollapsed,
     },
     { width: 'auto' },
     {
-      width: 320,
+      width: 'var(--ig-popup-md)',
       resizable: true,
-      minWidth: 220,
-      maxWidth: 480,
+      minWidth: 'var(--ig-popup-xs)',
+      maxWidth: 'var(--ig-popup-xl)',
       background: 'var(--ig-color-surface-panel)',
       hidden: !rightSidebar,
     },

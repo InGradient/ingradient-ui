@@ -3,15 +3,15 @@ import { DropZone } from '@ingradient/ui/components'
 
 const EMPTY_STYLE = {
   padding: 'var(--ig-space-9)',
-  minHeight: 180,
-  fontSize: 13,
+  minHeight: 'var(--ig-popup-xs)',
+  fontSize: 'var(--ig-font-size-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }
 
 const HAS_IMAGE_STYLE = {
   padding: 'var(--ig-space-4)',
-  fontSize: 13,
+  fontSize: 'var(--ig-font-size-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }
