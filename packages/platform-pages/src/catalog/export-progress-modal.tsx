@@ -58,7 +58,7 @@ export function ExportProgressModal({
       title={title}
       description={description}
       onClose={onClose}
-      width="min(520px, 100%)"
+      width="min(var(--ig-popup-2xl-wide), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>{phase === 'ready' ? 'Close' : 'Cancel'}</Button>

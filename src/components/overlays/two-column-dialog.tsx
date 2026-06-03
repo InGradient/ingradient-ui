@@ -63,9 +63,9 @@ export function TwoColumnDialog({
   sidebar,
   children,
   onClose,
-  width = '820px',
+  width = 'var(--ig-popup-3xl-wide)',
   maxHeight = 'calc(100dvh - var(--ig-space-13))',
-  sidebarWidth = '190px',
+  sidebarWidth = 'var(--ig-popup-dialog-sidebar)',
 }: TwoColumnDialogProps) {
   return (
     <ModalBackdrop onClick={() => onClose()}>

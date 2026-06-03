@@ -17,7 +17,7 @@ const BACKDROP_STYLE = {
 }
 const PANEL_WRAP_STYLE = {
   position: 'relative' as const,
-  width: 'min(92vw, 1200px)',
+  width: 'min(92vw, var(--ig-popup-4xl))',
   maxHeight: '90vh',
   display: 'flex' as const,
   flexDirection: 'column' as const,
@@ -37,7 +37,7 @@ const IMAGE_STYLE = {
 
 const Frame = styled.div<{ $aspect: number }>`
   position: relative;
-  width: min(92vw, calc((90vh - 32px) * ${(p) => p.$aspect}));
+  width: min(92vw, calc((90vh - var(--ig-space-13)) * ${(p) => p.$aspect}));
   aspect-ratio: ${(p) => p.$aspect};
   max-height: 90vh;
 `

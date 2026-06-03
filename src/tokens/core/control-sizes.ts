@@ -1,9 +1,12 @@
 export const controlSizes = {
   xs: '28px',
+  xsPlus: '30px',
   sm: '32px',
   smPlus: '34px',
   md: '36px',
   midPlus: '40px',
+  midPlusTall: '60px',
+  '2xlWide': '56px',
   lg: '44px',
   xl: '48px',
   '2xl': '52px',

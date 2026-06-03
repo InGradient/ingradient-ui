@@ -12,7 +12,7 @@ const PREVIEW_STYLE = {
   border: 'var(--ig-border-1px) solid var(--ig-color-white-12)',
   background: 'var(--ig-color-white-04)',
   objectFit: 'contain' as const,
-  maxHeight: '300px',
+  maxHeight: 'var(--ig-layout-stats-min)',
 }
 
 export interface ReferenceImageBboxCandidate {

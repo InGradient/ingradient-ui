@@ -15,4 +15,8 @@ export const layoutScale = {
   modalShadowBlur: '80px',
   sidebarBrand: '72px',
   sidebarCollapseThreshold: '100px',
+  statsMin: '300px',
+  loadingStats: '180px',
+  gridLabelCol: '140px',
+  gridLabelColWide: '160px',
 } as const

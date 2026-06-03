@@ -56,7 +56,7 @@ export interface StorageStatsTableProps<T> {
 }
 
 export function StorageStatsTable<T>({
-  columns, rows, footer, loading, loadingHeight = '180px',
+  columns, rows, footer, loading, loadingHeight = 'var(--ig-layout-loading-stats)',
 }: StorageStatsTableProps<T>) {
   if (loading) return <Skeleton $height={loadingHeight} />
   return (

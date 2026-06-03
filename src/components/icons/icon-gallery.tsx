@@ -5,7 +5,7 @@ import { icons, type IconName } from './registry'
 
 const IconGalleryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--ig-icon-gallery-min), 1fr));
   gap: var(--ig-space-5);
 `
 

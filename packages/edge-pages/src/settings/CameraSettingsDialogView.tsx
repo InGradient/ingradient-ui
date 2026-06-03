@@ -42,7 +42,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   }
 
   return (
-    <SettingsDialog title={labels.title} onClose={onClose} width="min(960px, 92vw)">
+    <SettingsDialog title={labels.title} onClose={onClose} width="min(var(--ig-popup-4xl-narrow), 92vw)">
       <VerticalTabs
         items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon }))}
         value={activeTab}

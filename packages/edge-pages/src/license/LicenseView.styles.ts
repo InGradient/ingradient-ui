@@ -15,7 +15,7 @@ export const Wrap = styled.div`
 
 export const LangCorner = styled.div`
   position: fixed;
-  top: 46px;
+  top: var(--ig-control-height-xl);
   right: var(--ig-space-7);
   z-index: 10;
   display: flex;
@@ -37,7 +37,7 @@ export const SettingsIconBtn = styled.button`
 
 export const Card = styled.div`
   width: 100%;
-  max-width: 440px;
+  max-width: var(--ig-popup-license-narrow);
   background: var(--ig-color-white-04);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);

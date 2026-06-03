@@ -23,7 +23,7 @@ export function SplitLayout({
   sidebar,
   content,
   inspector,
-  sidebarWidth = '260px',
+  sidebarWidth = 'var(--ig-popup-page-card-min)',
   inspectorWidth = 'var(--ig-popup-md)',
 }: {
   sidebar?: React.ReactNode
@@ -48,7 +48,7 @@ export function SplitLayout({
 
 export const DashboardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr));
   gap: var(--ig-space-7);
 `
 

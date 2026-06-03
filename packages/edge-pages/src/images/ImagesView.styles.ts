@@ -234,8 +234,8 @@ export const ModalOverlay = styled.div`
 `;
 
 export const SelectAllCheckbox = styled.input`
-  width: 15px;
-  height: 15px;
+  width: var(--ig-icon-sm-plus);
+  height: var(--ig-icon-sm-plus);
   accent-color: var(--ig-color-accent);
   cursor: pointer;
 `;

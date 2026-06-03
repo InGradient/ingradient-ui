@@ -75,7 +75,7 @@ export function DeleteAccountDialog({
     <DialogShell
       title={title}
       onClose={onClose}
-      width="min(640px, 100%)"
+      width="min(var(--ig-popup-3xl-narrow), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose} disabled={!!pending}>Cancel</Button>

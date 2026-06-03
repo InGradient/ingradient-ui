@@ -71,7 +71,7 @@ export function AddDatasetModal({
     <DialogShell
       title="Add dataset"
       onClose={onClose}
-      width="min(560px, 100%)"
+      width="min(var(--ig-popup-2xl), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>

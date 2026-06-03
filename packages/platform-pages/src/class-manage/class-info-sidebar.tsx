@@ -6,7 +6,7 @@ import { InfoSection } from '@ingradient/ui/components'
 import { ColorInputRow } from '@ingradient/ui/patterns'
 
 const SIDEBAR_STYLE = {
-  width: '300px',
+  width: 'var(--ig-popup-class-sidebar)',
   flexShrink: 0,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',

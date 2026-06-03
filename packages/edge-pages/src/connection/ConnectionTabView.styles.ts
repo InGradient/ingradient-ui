@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '@ingradient/ui';
 import { surfacePanel, surfaceRaised } from '@ingradient/ui';
 
 // ── Layout ──
@@ -16,7 +17,7 @@ export const GuideCard = styled.div`
   border-radius: var(--ig-radius-xs);
   border:var(--ig-border-1px) solid var(--ig-color-border-subtle);
   margin-bottom: var(--ig-space-7);
-  @media (max-width: 720px){ grid-template-columns:1fr; }
+  ${media.smPlus}{ grid-template-columns:1fr; }
 `;
 export const GuideHeader = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom: var(--ig-space-2);`;
 export const GuideTitle = styled.div`font-size:var(--ig-font-size-lg);font-weight: var(--ig-font-weight-bold);color:var(--ig-color-text-primary);`;
@@ -64,7 +65,7 @@ export const DeviceSelectedTag = styled.span`font-size: var(--ig-font-size-2xs);
 // ── Activity Log ──
 export const LogArea = styled.div`
   ${surfacePanel}
-  max-height:120px;
+  max-height: var(--ig-icon-gallery-min);
   min-height:0;
   overflow-y:auto;
   padding: var(--ig-space-4);

@@ -11,7 +11,7 @@ const Popover = styled(MenuPopover)`
   top: calc(100% + var(--ig-space-4));
   right: 0;
   z-index: var(--ig-z-overlay);
-  width: min(360px, calc(100vw - 40px));
+  width: min(var(--ig-popup-lg), calc(100vw - var(--ig-control-height-mid-plus)));
   padding: var(--ig-space-7);
   border-radius: var(--ig-radius-2xl);
 `

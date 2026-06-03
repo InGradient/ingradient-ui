@@ -37,7 +37,7 @@ const InputWrap = styled.div`
 
 const Textarea = styled.textarea`
   width: 100%;
-  min-height: 56px;
+  min-height: var(--ig-control-height-2xl-wide);
   resize: vertical;
   padding: var(--ig-space-3) var(--ig-space-4);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);

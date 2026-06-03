@@ -109,7 +109,7 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
         <DialogShell
           title={labels.deactivationCodeTitle}
           onClose={onCloseDeactivationCode}
-          width="min(420px, 90vw)"
+          width="min(var(--ig-popup-2xl-narrow), 90vw)"
         >
           <div style={{ fontSize: 'var(--ig-font-size-sm)', marginBottom: 'var(--ig-space-3)' }}>
             {labels.deactivationCodeHint}

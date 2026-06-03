@@ -99,7 +99,7 @@ export const controlField = css`
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2398A2B3' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - var(--ig-space-7)) center;
-    background-size: 10px 6px;
+    background-size: var(--ig-space-4) var(--ig-space-2);
     box-shadow: var(--ig-shadow-control-elevated);
   }
 `

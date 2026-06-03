@@ -75,7 +75,7 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
       (entries) => {
         if (entries[0]?.isIntersecting) onLoadMore()
       },
-      { rootMargin: '200px' },
+      { rootMargin: 'var(--ig-popup-list-min)' },
     )
     observer.observe(node)
     return () => observer.disconnect()

@@ -18,13 +18,13 @@ export interface ToastItem {
 }
 
 const slideIn = keyframes`
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(var(--ig-space-5)); }
   to   { opacity: 1; transform: translateY(0); }
 `
 
 const slideOut = keyframes`
   from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 0; transform: translateY(var(--ig-space-5)); }
 `
 
 const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`

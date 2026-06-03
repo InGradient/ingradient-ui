@@ -64,7 +64,7 @@ export function ProjectMembersList({
         <DialogShell
           title="Remove Member"
           onClose={() => { if (!removingMemberId) setPendingRemove(null) }}
-          width="min(420px, 100%)"
+          width="min(var(--ig-popup-2xl-narrow), 100%)"
           actions={
             <>
               <Button type="button" variant="secondary" onClick={() => setPendingRemove(null)} disabled={!!removingMemberId}>Cancel</Button>

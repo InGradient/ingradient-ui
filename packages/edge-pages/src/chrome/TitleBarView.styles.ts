@@ -51,7 +51,7 @@ export const Btn = styled.button<{ $variant?: 'close' }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
+  width: var(--ig-control-height-xl);
   height: 100%;
   padding: 0;
   border: none;

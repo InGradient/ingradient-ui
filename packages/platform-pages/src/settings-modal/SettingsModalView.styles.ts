@@ -3,8 +3,8 @@ import { ModalCard, ModalHeader, ModalTitle, VerticalTabs } from '@ingradient/ui
 import { SettingsShell } from '@ingradient/ui/patterns'
 
 export const Modal = styled(ModalCard)`
-  width: 1200px;
-  height: 820px;
+  width: var(--ig-popup-4xl);
+  height: var(--ig-popup-3xl-wide);
   max-width: calc(100vw - var(--ig-space-13));
   max-height: calc(100vh - var(--ig-space-13));
   display: flex;

@@ -8,7 +8,7 @@ const CommentList = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-3);
-  max-height: 200px;
+  max-height: var(--ig-popup-list-min);
   overflow-y: auto;
 `
 

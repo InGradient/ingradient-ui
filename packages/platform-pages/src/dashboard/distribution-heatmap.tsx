@@ -36,7 +36,7 @@ const Cell = styled.td<{ $intensity: number }>`
   text-align: center;
   padding: var(--ig-space-2) var(--ig-space-3);
   font-variant-numeric: tabular-nums;
-  min-width: 56px;
+  min-width: var(--ig-control-height-2xl-wide);
 `
 
 export interface DistributionHeatmapProps {

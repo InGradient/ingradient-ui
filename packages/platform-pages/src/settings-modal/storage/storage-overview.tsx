@@ -28,7 +28,7 @@ export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOve
   if (loading) {
     return (
       <Grid gap={5} columns="repeat(4, 1fr)">
-        {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="72px" />)}
+        {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="var(--ig-layout-sidebar-brand)" />)}
       </Grid>
     )
   }
@@ -37,7 +37,7 @@ export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOve
       {items.map((item, i) => (
         <Box key={i} style={CARD_STYLE}>
           <Text size="var(--ig-font-size-2xs)" tone="muted" style={LABEL_STYLE}>{item.label}</Text>
-          <Text size="20px" weight={600}>
+          <Text size="var(--ig-font-size-3xl)" weight={600}>
             {item.value}
             {item.sub ? <Text as="span" size="var(--ig-font-size-xs)" tone="soft" weight={400} style={SUB_STYLE}>{item.sub}</Text> : null}
           </Text>

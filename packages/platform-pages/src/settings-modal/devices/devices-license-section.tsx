@@ -5,7 +5,7 @@ import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
 const INFO_GRID_STYLE = {
   display: 'grid' as const,
-  gridTemplateColumns: '160px 1fr',
+  gridTemplateColumns: 'var(--ig-grid-label-col-wide) 1fr',
   gap: 'var(--ig-space-2) var(--ig-space-5)',
   fontSize: 'var(--ig-font-size-sm)',
   alignItems: 'center' as const,

@@ -19,7 +19,7 @@ export const Segment = styled.div`
 
 export const SegmentBtn = styled.button<{ $active: boolean }>`
   flex: 1;
-  height: 30px;
+  height: var(--ig-control-height-xs-plus);
   border: none;
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-sm);

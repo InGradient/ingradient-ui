@@ -24,7 +24,7 @@ export function DialogShell({
   children,
   actions,
   onClose,
-  width = 'min(720px, 100%)',
+  width = 'min(var(--ig-popup-3xl-mid), 100%)',
   height,
 }: {
   title: React.ReactNode
@@ -92,7 +92,7 @@ export function ConfirmDialog({
       title={title}
       description={description}
       onClose={onCancel}
-      width="min(520px, 100%)"
+      width="min(var(--ig-popup-2xl-wide), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onCancel}>{cancelLabel}</Button>

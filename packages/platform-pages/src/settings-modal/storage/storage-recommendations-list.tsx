@@ -27,7 +27,7 @@ export interface StorageRecommendationsListProps {
 }
 
 export function StorageRecommendationsList({
-  recommendations, loading, loadingHeight = '80px',
+  recommendations, loading, loadingHeight = 'var(--ig-layout-topbar)',
 }: StorageRecommendationsListProps) {
   if (loading) return <Skeleton $height={loadingHeight} />
   if (recommendations.length === 0) return null

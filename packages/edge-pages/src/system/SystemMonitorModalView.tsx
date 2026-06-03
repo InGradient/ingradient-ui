@@ -14,7 +14,7 @@ const Body = styled.div`
 export function SystemMonitorModalView(props: SystemMonitorModalViewProps): JSX.Element {
   const { activeTab, labels, monitorContent, cleanupContent, onClose, onSetActiveTab } = props
   return (
-    <SettingsDialog title={labels.title} onClose={onClose} width="min(720px, 92vw)">
+    <SettingsDialog title={labels.title} onClose={onClose} width="min(var(--ig-popup-3xl-mid), 92vw)">
       <Body>
         <Tabs
           items={[

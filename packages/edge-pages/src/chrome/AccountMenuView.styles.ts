@@ -36,7 +36,7 @@ export const AccountDropdown = styled.div`
   position: absolute;
   top: calc(100% + var(--ig-space-2));
   right: 0;
-  min-width: 200px;
+  min-width: var(--ig-popup-list-min);
   padding: var(--ig-space-2);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);

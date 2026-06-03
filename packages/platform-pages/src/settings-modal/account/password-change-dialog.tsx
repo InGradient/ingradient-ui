@@ -39,7 +39,7 @@ export function PasswordChangeDialog({
     <DialogShell
       title={title}
       onClose={onClose}
-      width="min(420px, 100%)"
+      width="min(var(--ig-popup-2xl-narrow), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose} disabled={!!saving}>Cancel</Button>

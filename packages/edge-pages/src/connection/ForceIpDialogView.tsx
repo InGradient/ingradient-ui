@@ -10,7 +10,7 @@ export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
     <DialogShell
       title={labels.forceIpDialogTitle}
       onClose={onCancel}
-      width="min(420px, 90vw)"
+      width="min(var(--ig-popup-2xl-narrow), 90vw)"
       actions={
         <>
           <Button size="sm" variant="secondary" type="button" onClick={onCancel}>{labels.forceIpCancel}</Button>
