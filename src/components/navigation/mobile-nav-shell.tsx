@@ -102,7 +102,7 @@ const Item = styled.button<{ $active?: boolean }>`
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-lg);
   border: none;
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-16)' : 'none')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-focus-bg-soft)' : 'none')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-medium);

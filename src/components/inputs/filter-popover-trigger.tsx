@@ -23,7 +23,7 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   justify-content: center;
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-16)' : 'var(--ig-color-surface-interactive)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-focus-bg-soft)' : 'var(--ig-color-surface-interactive)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-medium);

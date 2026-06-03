@@ -29,7 +29,7 @@ const Calendar = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-06);
   .rdp-root {
     --rdp-accent-color: var(--ig-color-accent);
-    --rdp-accent-background-color: var(--ig-color-blue-tint-16);
+    --rdp-accent-background-color: var(--ig-color-focus-bg-soft);
     margin: 0;
     color: var(--ig-color-text-primary);
   }
@@ -43,11 +43,11 @@ const Calendar = styled.div`
   .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
   .rdp-day_button { width: 100%; height: 100%; border-radius: var(--ig-radius-sm); }
   .rdp-selected .rdp-day_button, .rdp-day_button:hover {
-    background: var(--ig-color-blue-tint-16);
+    background: var(--ig-color-focus-bg-soft);
     color: var(--ig-color-text-primary);
   }
   .rdp-range_middle .rdp-day_button {
-    background: var(--ig-color-blue-tint-12);
+    background: var(--ig-color-accent-soft-surface);
     color: var(--ig-color-text-primary);
   }
   .rdp-range_start .rdp-day_button, .rdp-range_end .rdp-day_button {

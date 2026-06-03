@@ -27,7 +27,7 @@ const Btn = styled.button<{ $tone: MenuItemTone; $size: MenuItemSize; $active: b
   width: 100%;
   border: none;
   border-radius: var(--ig-radius-sm);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : TONE_COLOR[p.$tone])};
   text-align: left;
   cursor: pointer;

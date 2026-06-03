@@ -12,7 +12,7 @@ const Chip = styled.button<{ $active: boolean }>`
   font-size: var(--ig-font-size-sm);
   border-radius: var(--ig-radius-pill);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
   display: inline-flex;

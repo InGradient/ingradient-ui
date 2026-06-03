@@ -37,7 +37,7 @@ const Root = styled.button<{
   ${(p) =>
     p.$selected &&
     css`
-      background: var(--ig-color-blue-tint-14);
+      background: var(--ig-color-selection-bg);
       ${p.$variant === 'card' && 'border-color: var(--ig-color-accent);'}
       color: var(--ig-color-accent);
     `}
@@ -45,14 +45,14 @@ const Root = styled.button<{
   ${(p) =>
     p.$dragOver &&
     css`
-      background: var(--ig-color-blue-tint-18);
+      background: var(--ig-color-accent-soft-surface-hover);
       outline: var(--ig-border-2px) solid var(--ig-color-accent);
       outline-offset: var(--ig-space-neg-2px);
     `}
 
   &:hover:not(:disabled) {
     background: ${(p) =>
-      p.$selected ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-surface-interactive-hover)'};
+      p.$selected ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
   }
 `
 

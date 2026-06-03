@@ -10,7 +10,7 @@ const Tab = styled.button<{ $active: boolean }>`
   border: none;
   font-size: var(--ig-font-size-xs);
   cursor: pointer;
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-28)' : 'var(--ig-color-white-08)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-active-bg)' : 'var(--ig-color-white-08)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   transition: background var(--ig-motion-fast);
   &:hover {

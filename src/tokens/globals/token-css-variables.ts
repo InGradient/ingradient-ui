@@ -148,6 +148,11 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-image-card-gradient-a': palette.blueTint14,
     '--ig-color-image-card-gradient-b': palette.greenTint12,
     '--ig-color-avatar-bg': palette.blueTint18,
+    // Semantic state-interaction aliases — blue tint family 의미 layer
+    // (accent-soft-surface = blueTint12, accent-soft-surface-hover = blueTint18 가 이미 존재)
+    '--ig-color-selection-bg': palette.blueTint14,
+    '--ig-color-focus-bg-soft': palette.blueTint16,
+    '--ig-color-active-bg': palette.blueTint28,
     '--ig-color-dropdown-open-shadow': isLight
       ? '0 0 0 3px rgba(58, 115, 230, 0.20), 0 18px 36px rgba(15, 23, 42, 0.10)'
       : '0 0 0 3px var(--ig-color-blue-tint-16), 0 18px 36px rgba(0, 0, 0, 0.18)',
