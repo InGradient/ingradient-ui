@@ -159,7 +159,7 @@ export const DetailImageClickable = styled.img`
   width: 100%;
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  margin-bottom: 10px;
+  margin-bottom: var(--ig-space-4);
   background: var(--ig-color-bg-canvas);
   cursor: zoom-in;
   transition: opacity 0.16s ease;
@@ -195,7 +195,7 @@ export const OpenImageButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  margin-bottom: 10px;
+  margin-bottom: var(--ig-space-4);
   padding: var(--ig-space-2) 10px;
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-accent-soft);

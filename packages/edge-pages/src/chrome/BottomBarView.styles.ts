@@ -50,7 +50,7 @@ export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
 export const StatChip = styled.div<{ $pct?: number }>`
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: var(--ig-space-3px);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-medium);
   color: ${({ $pct }) => ($pct != null ? statColor($pct) : 'var(--ig-color-text-muted)')};

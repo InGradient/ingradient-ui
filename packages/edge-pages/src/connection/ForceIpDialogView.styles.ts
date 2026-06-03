@@ -19,7 +19,7 @@ export const Field = styled.label`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-1);
-  margin-bottom: 10px;
+  margin-bottom: var(--ig-space-4);
   font-size: var(--ig-font-size-sm);
 `;
 
@@ -36,7 +36,7 @@ export const Input = styled.input`
 export const ModeRow = styled.div`
   display: flex;
   gap: var(--ig-space-5);
-  margin-bottom: 10px;
+  margin-bottom: var(--ig-space-4);
   font-size: var(--ig-font-size-sm);
 `;
 

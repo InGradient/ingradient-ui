@@ -125,7 +125,7 @@ export const ClassChip = styled.span<{ $color: string }>`
   gap: var(--ig-space-1);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: 2px 7px;
+  padding: var(--ig-space-2px) 7px;
   border-radius: 99px;
   background: ${(p) => `${p.$color}22`};
   color: ${(p) => p.$color};
@@ -152,7 +152,7 @@ export const ClassChipDot = styled.span<{ $color: string }>`
 export const MoreChip = styled.span`
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: 2px 7px;
+  padding: var(--ig-space-2px) 7px;
   border-radius: 99px;
   background: var(--ig-color-white-06);
   color: var(--ig-color-text-muted);

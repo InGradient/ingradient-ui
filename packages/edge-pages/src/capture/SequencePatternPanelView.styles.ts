@@ -10,8 +10,8 @@ export const Container = styled.div`
 
 export const Segment = styled.div`
   display: flex;
-  gap: 2px;
-  padding: 3px;
+  gap: var(--ig-space-2px);
+  padding: var(--ig-space-3px);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-white-06);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
@@ -38,7 +38,7 @@ export const List = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--ig-space-2px);
 `;
 
 export const Item = styled.button<{ $active: boolean }>`

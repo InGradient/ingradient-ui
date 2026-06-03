@@ -16,7 +16,7 @@ const LogList = styled.div`
   padding: var(--ig-space-3);
 `
 const LogRow = styled.div<{ $level: string }>`
-  padding: 2px 0;
+  padding: var(--ig-space-2px) 0;
   color: ${({ $level }) =>
     $level === 'error' ? 'var(--ig-color-danger)' :
     $level === 'warn'  ? 'var(--ig-color-warning)' :

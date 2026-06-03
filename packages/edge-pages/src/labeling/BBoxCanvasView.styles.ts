@@ -97,7 +97,7 @@ export const PixelSwatch = styled.span<{ $color: string }>`
   display: inline-block;
   width: var(--ig-space-4);
   height: var(--ig-space-4);
-  border-radius: 2px;
+  border-radius: var(--ig-space-2px);
   background: ${(p) => p.$color};
   border: var(--ig-border-1px) solid var(--ig-color-white-30);
 `;

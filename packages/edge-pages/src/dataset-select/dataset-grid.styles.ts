@@ -14,7 +14,7 @@ export const RecentScroll = styled.div`
   padding-bottom: 4px;
   &::-webkit-scrollbar { height: var(--ig-space-1); }
   &::-webkit-scrollbar-track { background: transparent; }
-  &::-webkit-scrollbar-thumb { background: var(--ig-color-white-12); border-radius: 2px; }
+  &::-webkit-scrollbar-thumb { background: var(--ig-color-white-12); border-radius: var(--ig-space-2px); }
 `
 
 export const ProjectSection = styled.div`

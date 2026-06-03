@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components'
 
 export const ProgressBarTrack = styled.div`
   height: var(--ig-space-2);
-  border-radius: 3px;
+  border-radius: var(--ig-space-3px);
   background: var(--ig-color-white-08);
   overflow: hidden;
 `
@@ -14,7 +14,7 @@ const progressAnim = keyframes`
 
 export const ProgressBarFill = styled.div<{ $done?: boolean; $error?: boolean }>`
   height: 100%;
-  border-radius: 3px;
+  border-radius: var(--ig-space-3px);
   background: ${(p) => p.$error ? 'var(--ig-color-danger)' : 'var(--ig-color-accent)'};
   ${(p) => p.$done
     ? 'width: 100%;'

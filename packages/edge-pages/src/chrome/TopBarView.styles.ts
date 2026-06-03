@@ -78,7 +78,7 @@ export const EdgeInfoSection = styled.div`
 export const BackBtn = styled.button`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--ig-space-2px);
   height: var(--ig-control-height-xs);
   padding: 0 var(--ig-space-3);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);

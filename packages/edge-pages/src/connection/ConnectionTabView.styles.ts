@@ -22,7 +22,7 @@ export const GuideHeader = styled.div`display:flex;align-items:center;gap: var(-
 export const GuideTitle = styled.div`font-size:var(--ig-font-size-lg);font-weight: var(--ig-font-weight-bold);color:var(--ig-color-text-primary);`;
 export const GuideSummary = styled.div`font-size:var(--ig-font-size-xs);color:var(--ig-color-text-secondary);line-height: var(--ig-line-height-relaxed);`;
 export const GuideActions = styled.div`display:flex;align-items:center;justify-content:flex-end;gap: var(--ig-space-3);flex-wrap:wrap;`;
-export const GuideWarningList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-1);margin-top:10px;`;
+export const GuideWarningList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-1);margin-top: var(--ig-space-4);`;
 export const GuideWarning = styled.div`font-size:var(--ig-font-size-2xs);color:var(--ig-color-warning);line-height: var(--ig-line-height-snug);`;
 export const NetworkSummaryGrid = styled.div`display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap: var(--ig-space-3);margin:10px 0 0;@media (max-width: 860px){grid-template-columns:repeat(2,minmax(0,1fr));}`;
 export const NetworkSummaryItem = styled.div`
@@ -72,7 +72,7 @@ export const LogArea = styled.div`
   font-family:'JetBrains Mono',monospace;
   font-size: var(--ig-font-size-2xs);
 `;
-export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding:3px 6px;font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
+export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) 6px;font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
 
 // ── Recovery / NIC Status ──
 export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap:5px;font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
@@ -105,7 +105,7 @@ export const GigeDiagCard = styled.div`
 // DiagRow / DiagLabel / DiagValue: @ingradient/ui InfoRow 로 이동 (PR-0.2, 2026-05-09)
 export const DiagDivider = styled.div`height:1px;background:var(--ig-color-border-subtle);`;
 export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing:.04em;padding: var(--ig-space-2) 12px 2px;`;
-export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding:5px 12px;font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
+export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: 5px 12px;font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
 
 // ── Diagnostic Report ──
 export const DiagReportWrap = styled.div`
@@ -125,8 +125,8 @@ export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max
 export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'var(--ig-color-red-tint-08)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)
-export const ProgressWrap = styled.div`margin-top: var(--ig-space-5);height:6px;border-radius:3px;background:var(--ig-color-border-subtle);overflow:hidden;position:relative;`;
-export const ProgressBar = styled.div`height:100%;border-radius:3px;background:var(--ig-color-accent);transition:width 0.3s ease;`;
+export const ProgressWrap = styled.div`margin-top: var(--ig-space-5);height:6px;border-radius: var(--ig-space-3px);background:var(--ig-color-border-subtle);overflow:hidden;position:relative;`;
+export const ProgressBar = styled.div`height:100%;border-radius: var(--ig-space-3px);background:var(--ig-color-accent);transition:width 0.3s ease;`;
 export const ProgressLabel = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-align:right;margin-top: var(--ig-space-1);`;
 
 // ── DLL Path ──

@@ -15,7 +15,7 @@ const Hero = styled.div`
   gap: var(--ig-space-5);
   margin-bottom: var(--ig-space-7);
 `
-const TitleGroup = styled.div`display: flex; flex-direction: column; gap: 2px;`
+const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-2px);`
 const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: monospace;`
 

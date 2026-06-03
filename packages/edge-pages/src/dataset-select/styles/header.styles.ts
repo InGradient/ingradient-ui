@@ -33,7 +33,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
   display: inline-block;
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
-  padding: 2px 7px;
+  padding: var(--ig-space-2px) 7px;
   border-radius: var(--ig-radius-xs);
   margin-left: var(--ig-space-3);
   background: ${(p) => (p.$online ? 'var(--ig-color-green-tint-15)' : 'var(--ig-color-amber-tint-15)')};
