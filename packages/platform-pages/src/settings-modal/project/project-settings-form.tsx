@@ -6,8 +6,8 @@ import { AutoSaveStatus, type AutoSaveState } from '@ingradient/ui/patterns'
 export type ProjectTypeTone = 'general' | 'deflectometry'
 
 const PROJECT_TYPE_TONE_BG: Record<ProjectTypeTone, string> = {
-  general: 'rgba(100, 116, 139, 0.92)',
-  deflectometry: 'rgba(14, 165, 233, 0.92)',
+  general: 'var(--ig-color-project-tag-general)',
+  deflectometry: 'var(--ig-color-project-tag-deflectometry)',
 }
 
 const PROJECT_TYPE_LABELS: Record<ProjectTypeTone, string> = {

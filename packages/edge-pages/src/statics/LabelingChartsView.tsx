@@ -25,7 +25,7 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
       padding: '8px 10px',
       color: 'var(--ig-color-text-primary)',
       fontSize: 12,
-      boxShadow: '0 8px 24px rgba(0,0,0,0.35)',
+      boxShadow: '0 var(--ig-space-3) var(--ig-space-11) rgba(0,0,0,0.35)',
     }}>
       <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
       {visible.map((item) => (

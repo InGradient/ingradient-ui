@@ -116,7 +116,7 @@ export const DragOverlayCard = styled.div`
   padding: var(--ig-space-6) 16px;
   border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-blue-tint-28);
-  background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(12, 16, 24, 0.98) 100%);
+  background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
   box-shadow: 0 24px 56px var(--ig-color-blue-tint-34);
 `
 

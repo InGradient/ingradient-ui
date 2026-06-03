@@ -5,7 +5,7 @@ const Card = styled.div<{ $ok: boolean }>`
   padding: var(--ig-space-4);
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${({ $ok }) => ($ok ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
-  background: ${({ $ok }) => ($ok ? 'rgba(52, 211, 153, 0.06)' : 'rgba(250, 204, 21, 0.06)')};
+  background: ${({ $ok }) => ($ok ? 'var(--ig-color-green-tint-success-soft)' : 'var(--ig-color-amber-tint-warning-soft)')};
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
 `
