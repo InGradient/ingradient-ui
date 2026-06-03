@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { Text } from '@ingradient/ui/primitives'
 import { Table, type TableColumn } from '@ingradient/ui/components'
@@ -116,7 +117,7 @@ function RowMenuButton({
         if (ref.current) onOpenMenu?.(imageId, ref.current)
       }}
     >
-      <KebabIcon size={18} />
+      <KebabIcon size={iconSizeNumbers.lg} />
     </IconButton>
   )
 }

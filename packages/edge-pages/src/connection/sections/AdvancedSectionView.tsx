@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { FormSection } from '@ingradient/ui'
+import { FormSection, iconSizeNumbers } from '@ingradient/ui'
 import type { AdvancedSectionViewProps } from '../types'
 
 const Header = styled.button`
@@ -22,7 +22,7 @@ export function AdvancedSectionView(props: AdvancedSectionViewProps): JSX.Elemen
   return (
     <FormSection>
       <Header type="button" onClick={onToggleExpanded}>
-        {expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+        {expanded ? <ChevronDown size={iconSizeNumbers.sm} /> : <ChevronRight size={iconSizeNumbers.sm} />}
         {labels.advancedTitle}
       </Header>
       {expanded && <div>{children}</div>}

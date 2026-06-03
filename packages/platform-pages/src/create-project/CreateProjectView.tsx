@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { type FormEvent } from 'react'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { Alert, Button } from '@ingradient/ui/components'
@@ -39,7 +40,7 @@ export function CreateProjectView({
     <Page>
       <Content>
         <LogoWrap>
-          <BrandLogo width={220} />
+          <BrandLogo width={chartHeights.smPlus} />
         </LogoWrap>
         <Card>
           <Title>Add Project</Title>

@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import { RefreshCw, Settings } from 'lucide-react'
 import {
@@ -64,7 +65,7 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
           $spinning={loading}
           title={refreshLabel}
         >
-          <RefreshCw size={18} />
+          <RefreshCw size={iconSizeNumbers.lg} />
         </RefreshBtn>
 
         <IconBtn
@@ -72,7 +73,7 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
           onClick={() => canSetupCamera && onOpenSettings()}
           disabled={!canSetupCamera}
         >
-          <Settings size={18} />
+          <Settings size={iconSizeNumbers.lg} />
         </IconBtn>
 
         {accountMenu}

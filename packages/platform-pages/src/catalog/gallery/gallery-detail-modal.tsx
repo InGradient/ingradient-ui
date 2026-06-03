@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { X } from 'lucide-react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
@@ -159,7 +160,7 @@ export function GalleryDetailModal({
                     onClose()
                   }}
                 >
-                  <X size={18} />
+                  <X size={iconSizeNumbers.lg} />
                 </IconButton>
               )}
             </Inline>

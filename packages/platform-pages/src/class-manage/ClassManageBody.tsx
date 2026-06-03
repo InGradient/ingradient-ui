@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import type { CSSProperties } from 'react'
 import {
   Alert,
@@ -32,7 +33,7 @@ const ALERT_STYLE: CSSProperties = { flex: 1 }
 const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 8 }
 const MAPPING_LABEL_STYLE: CSSProperties = {
   margin: 0,
-  fontSize: 12,
+  fontSize: iconSizeNumbers.xs,
   fontWeight: 600,
   color: 'var(--ig-color-text-muted)',
   textTransform: 'uppercase',

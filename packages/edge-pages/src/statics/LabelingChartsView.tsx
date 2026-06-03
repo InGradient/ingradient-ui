@@ -1,3 +1,5 @@
+import { chartHeights } from '@ingradient/ui'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { useMemo } from 'react'
 import { DropdownSelect } from '@ingradient/ui/components'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -24,7 +26,7 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
       borderRadius: 6,
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: 12,
+      fontSize: iconSizeNumbers.xs,
       boxShadow: '0 var(--ig-space-3) var(--ig-space-11) rgba(0,0,0,0.35)',
     }}>
       <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
@@ -48,7 +50,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
       borderRadius: 6,
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: 12,
+      fontSize: iconSizeNumbers.xs,
     }}>
       <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
       {payload.map((item) => {
@@ -103,7 +105,7 @@ export function LabelingChartsView(props: LabelingChartsViewProps): JSX.Element 
         xKey="label"
         series={trendSeries}
         stacked
-        height={280}
+        height={chartHeights.xl}
         tooltipContent={<TrendTooltip />}
         headerExtra={
           <div style={{ width: 180 }}>
@@ -137,7 +139,7 @@ export function LabelingChartsView(props: LabelingChartsViewProps): JSX.Element 
         data={data.bbox_per_image_distribution}
         xKey="bucket"
         series={[{ key: 'count', label: labels.count, color: CHART_PURPLE }]}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noLabelingData}
       />
       <BarChartCard

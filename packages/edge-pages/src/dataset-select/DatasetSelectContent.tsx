@@ -1,5 +1,5 @@
 import { Plus } from 'lucide-react'
-import { EmptyState } from '@ingradient/ui'
+import { EmptyState, iconSizeNumbers } from '@ingradient/ui'
 import { Content, SectionLabel, ErrorMsg, Spinner } from './styles/page.styles'
 import { RoleBadge } from './styles/header.styles'
 import {
@@ -75,7 +75,7 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
             {group.deflectometry_enabled && <ProjectTypeTag>Deflectometry</ProjectTypeTag>}
             <RoleBadge $role={group.role}>{labels.roleLabel(group.role)}</RoleBadge>
             <AddDatasetBtn onClick={(e) => { e.stopPropagation(); onAddDatasetClick(group.project_id) }}>
-              <Plus size={11} />
+              <Plus size={iconSizeNumbers["2xs"]} />
               {labels.addDataset}
             </AddDatasetBtn>
           </ProjectHeader>

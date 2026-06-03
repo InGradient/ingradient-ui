@@ -1,6 +1,8 @@
 // Icon dimensions for inline SVG inside styled-components.
 export const iconSizes = {
+  '2xs': '11px',
   xs: '12px',
+  xsPlus: '13px',
   sm: '14px',
   smPlus: '15px',
   md: '16px',
@@ -12,7 +14,9 @@ export const iconSizes = {
 
 // Numeric variant — lucide-react `<Icon size={N} />` / SVG width|height attribute / JSX size prop.
 export const iconSizeNumbers = {
+  '2xs': 11,
   xs: 12,
+  xsPlus: 13,
   sm: 14,
   smPlus: 15,
   md: 16,

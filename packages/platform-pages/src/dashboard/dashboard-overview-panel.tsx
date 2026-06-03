@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
@@ -11,7 +12,7 @@ const PLACEHOLDER_STYLE = { margin: 0 }
 const DATE_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
   minHeight: 'var(--ig-control-height-md)',
-  fontSize: 12,
+  fontSize: iconSizeNumbers.xs,
   fontWeight: 600,
 }
 

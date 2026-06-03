@@ -1,5 +1,5 @@
 import { Camera, FileText, Info, Server, Database, FlaskConical, SlidersHorizontal } from 'lucide-react'
-import { SettingsDialog, VerticalTabs } from '@ingradient/ui'
+import { SettingsDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
 import type { CameraSettingsDialogViewProps, SettingsTab } from './types'
 
 interface TabDef {
@@ -20,13 +20,13 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   const isPrivileged = currentUserRole === 'owner' || currentUserRole === 'manager'
 
   const tabs: TabDef[] = [
-    { value: 'connection', label: labels.tabConnection, icon: <Camera size={14} />, visible: true },
-    { value: 'camera',     label: labels.tabCamera,     icon: <SlidersHorizontal size={14} />, visible: isPrivileged },
-    { value: 'server',     label: labels.tabServer,     icon: <Server size={14} />, visible: isPrivileged },
-    { value: 'data',       label: labels.tabData,       icon: <Database size={14} />, visible: isPrivileged },
-    { value: 'fieldtest',  label: labels.tabFieldTest,  icon: <FlaskConical size={14} />, visible: isPrivileged },
-    { value: 'logs',       label: labels.tabLogs,       icon: <FileText size={14} />, visible: true },
-    { value: 'about',      label: labels.tabAbout,      icon: <Info size={14} />, visible: true },
+    { value: 'connection', label: labels.tabConnection, icon: <Camera size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'camera',     label: labels.tabCamera,     icon: <SlidersHorizontal size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'server',     label: labels.tabServer,     icon: <Server size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'data',       label: labels.tabData,       icon: <Database size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'fieldtest',  label: labels.tabFieldTest,  icon: <FlaskConical size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'logs',       label: labels.tabLogs,       icon: <FileText size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'about',      label: labels.tabAbout,      icon: <Info size={iconSizeNumbers.sm} />, visible: true },
   ]
 
   const visibleTabs = tabs.filter((t) => t.visible)

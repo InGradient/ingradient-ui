@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { Grid, Inline, Text } from '@ingradient/ui/primitives'
 import { Checkbox, IconButton } from '@ingradient/ui/components'
@@ -100,7 +101,7 @@ export function DatasetListItem({
             }}
             size="sm"
           >
-            <KebabIcon size={18} />
+            <KebabIcon size={iconSizeNumbers.lg} />
           </IconButton>
         </Inline>
       </Grid>

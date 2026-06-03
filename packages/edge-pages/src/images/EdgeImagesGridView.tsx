@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Loader, AlertTriangle, CloudOff, Trash2 } from 'lucide-react'
-import { AnnotationOverlay, VirtualizedImageGrid } from '@ingradient/ui'
+import { AnnotationOverlay, VirtualizedImageGrid, iconSizeNumbers } from '@ingradient/ui'
 import {
   GroupBadge, GroupBadgeWrap, GroupDeleteBtn, ImagesContainer, SyncStateIcon,
 } from './ImagesView.styles'
@@ -90,9 +90,9 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
             <>
               {showSync && (
                 <SyncStateIcon $state={state ?? 'synced'} title={getSyncIconTitle(img)}>
-                  {!isProcessing && img.syncState === 'local_only' && <CloudOff size={12} />}
-                  {isProcessing && <Loader size={12} />}
-                  {!isProcessing && img.syncState === 'upload_failed' && <AlertTriangle size={12} />}
+                  {!isProcessing && img.syncState === 'local_only' && <CloudOff size={iconSizeNumbers.xs} />}
+                  {isProcessing && <Loader size={iconSizeNumbers.xs} />}
+                  {!isProcessing && img.syncState === 'upload_failed' && <AlertTriangle size={iconSizeNumbers.xs} />}
                 </SyncStateIcon>
               )}
               {showBadge && (
@@ -107,7 +107,7 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
                       void onDeleteGroupRequest(img, members, badgeCount)
                     }}
                   >
-                    <Trash2 size={14} />
+                    <Trash2 size={iconSizeNumbers.sm} />
                   </GroupDeleteBtn>
                   <GroupBadge>{badgeCount}</GroupBadge>
                 </GroupBadgeWrap>

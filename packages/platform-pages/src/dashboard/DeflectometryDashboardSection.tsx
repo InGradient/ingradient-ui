@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { BarChartCard } from '@ingradient/ui/patterns'
 import { chartColors } from '@ingradient/ui'
 import { formatDurationMs } from '@ingradient/ui/utils'
@@ -58,7 +59,7 @@ export function DeflectometryDashboardSection({
           data={chartData}
           xKey="name"
           series={[{ key: 'duration', label: 'Average (ms)', color: chartColors.blue }]}
-          height={280}
+          height={chartHeights.xl}
           emptyMessage="No deflectometry sequence data yet."
         />
       </div>

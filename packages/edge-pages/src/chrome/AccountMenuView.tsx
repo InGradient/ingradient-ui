@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { DialogShell, useClickOutside } from '@ingradient/ui'
+import { DialogShell, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
 import { UserCircle } from 'lucide-react'
 import {
   AccountBtn, AccountBtnName, AccountMenuWrap, AccountDropdown,
@@ -33,7 +33,7 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           title={labels.account}
           onClick={(e) => { e.stopPropagation(); onToggleDropdown() }}
         >
-          <UserCircle size={18} />
+          <UserCircle size={iconSizeNumbers.lg} />
           <AccountBtnName>{currentUser.name || currentUser.email}</AccountBtnName>
         </AccountBtn>
         {dropdownOpen && (

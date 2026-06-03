@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import {
   Wrap, CollapsibleHeader, Row, Label, LabelName, LabelValue, Slider, CheckRow, SliderInline,
@@ -28,7 +29,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
     <Wrap>
       <CollapsibleHeader type="button" onClick={onToggleExpanded} aria-expanded={expanded}>
         <span>{labels.title}</span>
-        {expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+        {expanded ? <ChevronDown size={iconSizeNumbers.sm} /> : <ChevronRight size={iconSizeNumbers.sm} />}
       </CollapsibleHeader>
 
       {expanded && (

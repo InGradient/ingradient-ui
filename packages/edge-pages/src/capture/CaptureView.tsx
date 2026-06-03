@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Grid, Maximize2, Minimize2, SlidersHorizontal } from 'lucide-react'
-import { Switch, useZoomPan } from '@ingradient/ui'
+import { Switch, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import {
   ConnectingSpinner, PreviewArea, CaptureZoomWrap, SetupMetrics, MetricCard, MetricLabel, MetricValue,
   SetupBlockingOverlay, SetupBlockingCard, PlaceholderText, OverlayControls, OverlayHeader,
@@ -129,17 +129,17 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             onClick={toggleFullscreen}
             title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
           >
-            {isFullscreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+            {isFullscreen ? <Minimize2 size={iconSizeNumbers.lg} /> : <Maximize2 size={iconSizeNumbers.lg} />}
           </CapturePreviewFullscreenBtn>
         )}
         <OverlayControls>
           <OverlayHeader onClick={onToggleControls} title={labels.controls}>
-            <SlidersHorizontal size={18} />
+            <SlidersHorizontal size={iconSizeNumbers.lg} />
           </OverlayHeader>
           {showControls && (
             <OverlayPopover>
               <ControlRow>
-                <ControlLabel><Grid size={14} /> {labels.grid}</ControlLabel>
+                <ControlLabel><Grid size={iconSizeNumbers.sm} /> {labels.grid}</ControlLabel>
                 <Switch checked={showGrid} onChange={(e) => { void e; onToggleGrid() }} />
               </ControlRow>
             </OverlayPopover>

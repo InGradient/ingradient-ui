@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { PieChartCard } from '@ingradient/ui/patterns'
 import { DashboardStatsHeader } from '../dashboard-stats-header'
 
@@ -24,7 +25,7 @@ export function AnalysisLabelingStatusWidget({
     <PieChartCard
       title="Labeled vs unlabeled"
       data={pieData}
-      height={260}
+      height={chartHeights.lg}
       innerRadius={0}
       outerRadius={92}
       emptyMessage="No labeling data yet."

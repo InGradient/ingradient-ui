@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button, Checkbox, IconButton } from '@ingradient/ui/components'
@@ -92,7 +93,7 @@ export function DatasetListPanel({
               onClick={onCollapse}
               data-ig-component="DatasetListPanel.CollapseButton"
             >
-              <ClosePanelIcon size={16} />
+              <ClosePanelIcon size={iconSizeNumbers.md} />
             </IconButton>
           ) : null}
         </Inline>

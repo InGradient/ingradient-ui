@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { chartColors } from '@ingradient/ui'
 import { formatDurationMs } from '@ingradient/ui/utils'
@@ -65,7 +66,7 @@ export function EdgeAnalyticsSection({ edgeAnalytics }: EdgeAnalyticsSectionProp
       <PieChartCard
         title="Edge outcomes"
         data={outcomeData}
-        height={240}
+        height={chartHeights.md}
         innerRadius={48}
         outerRadius={80}
         paddingAngle={3}
@@ -107,7 +108,7 @@ export function EdgeAnalyticsSection({ edgeAnalytics }: EdgeAnalyticsSectionProp
         data={stepData}
         xKey="name"
         series={[{ key: 'duration', label: 'Average (ms)', color: chartColors.green }]}
-        height={240}
+        height={chartHeights.md}
         emptyMessage="No Edge step timings yet."
       />
 
@@ -122,7 +123,7 @@ export function EdgeAnalyticsSection({ edgeAnalytics }: EdgeAnalyticsSectionProp
           xKey="name"
           series={[{ key: 'count', label: 'Count' }]}
           layout="vertical"
-          height={280}
+          height={chartHeights.xl}
           getCellColor={(row) => (row as { color: string }).color}
           emptyMessage="No Edge labeling class stats yet."
         />

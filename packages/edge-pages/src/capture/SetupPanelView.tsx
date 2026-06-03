@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Check, ChevronDown, Save } from 'lucide-react'
-import { Button, Switch } from '@ingradient/ui'
+import { Button, Switch, iconSizeNumbers } from '@ingradient/ui'
 import { FieldGroup, FieldHint, SectionTitle } from '@ingradient/ui/patterns'
 import { NumberField } from '@ingradient/ui/components'
 import { surfacePanel } from '@ingradient/ui/primitives'
@@ -56,11 +56,11 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
             </Button>
             <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}
               title={isSetupSaved ? labels.saved : labels.save}>
-              {isSetupSaved ? <Check size={12} color={SAVE_SUCCESS_ICON_COLOR} /> : <Save size={12} />}
+              {isSetupSaved ? <Check size={iconSizeNumbers.xs} color={SAVE_SUCCESS_ICON_COLOR} /> : <Save size={iconSizeNumbers.xs} />}
             </Button>
             {canSave && (
               <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}>
-                {isSetupSaved ? <Check size={12} color={SAVE_SUCCESS_ICON_COLOR} /> : null}
+                {isSetupSaved ? <Check size={iconSizeNumbers.xs} color={SAVE_SUCCESS_ICON_COLOR} /> : null}
                 {isSetupSaved ? labels.saved : labels.save}
               </Button>
             )}
@@ -85,7 +85,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
               <summary>
                 <SetupAccordionSummaryRow>
                   {labels.featuresTitle}
-                  <ChevronDown size={16} />
+                  <ChevronDown size={iconSizeNumbers.md} />
                 </SetupAccordionSummaryRow>
               </summary>
               <div>

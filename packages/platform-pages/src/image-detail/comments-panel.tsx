@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { useState, type ReactNode } from 'react'
 import { Archive, Pencil } from 'lucide-react'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
@@ -143,7 +144,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
             title="Edit comment"
             onClick={() => onEdit(c.id)}
           >
-            <Pencil size={14} />
+            <Pencil size={iconSizeNumbers.sm} />
           </IconButton>
         ) : null}
         {onArchive ? (
@@ -155,7 +156,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
             title="Archive comment"
             onClick={() => onArchive(c.id)}
           >
-            <Archive size={14} />
+            <Archive size={iconSizeNumbers.sm} />
           </IconButton>
         ) : null}
       </Inline>

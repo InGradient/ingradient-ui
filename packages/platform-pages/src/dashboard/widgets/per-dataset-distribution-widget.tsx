@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -94,7 +95,7 @@ export function PerDatasetDistributionWidget({
                     data={dataset.class_counts.map((d, i) => ({ name: d.name, count: d.count, color: CLASS_COLORS[i % CLASS_COLORS.length] }))}
                     xKey="name"
                     series={[{ key: 'count', label: 'Images' }]}
-                    height={220}
+                    height={chartHeights.smPlus}
                     getCellColor={(row) => row.color as string}
                   />
                 </div>

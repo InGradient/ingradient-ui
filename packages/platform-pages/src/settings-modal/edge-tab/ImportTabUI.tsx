@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, ProgressBar, UploadDropzone } from '@ingradient/ui/components'
 import {
   ErrorHintInline,
@@ -22,7 +23,7 @@ const PROGRESS_WRAP_STYLE: React.CSSProperties = {
 
 const PROGRESS_LABEL_STYLE: React.CSSProperties = {
   marginTop: 6,
-  fontSize: 12,
+  fontSize: iconSizeNumbers.xs,
   color: 'var(--ig-color-text-muted)',
   fontVariantNumeric: 'tabular-nums',
 }

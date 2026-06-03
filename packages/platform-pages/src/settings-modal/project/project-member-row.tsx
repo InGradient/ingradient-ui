@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
@@ -24,7 +25,7 @@ const CELL_STYLE = {
 }
 
 const ROLE_SELECT_STYLE = { minWidth: 100 }
-const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 12 }
+const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: iconSizeNumbers.xs }
 
 export interface ProjectMemberRowMember {
   id: string

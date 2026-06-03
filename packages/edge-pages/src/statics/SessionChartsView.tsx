@@ -1,3 +1,5 @@
+import { chartHeights } from '@ingradient/ui'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { PanelGrid, Panel, PanelTitle } from './StaticsView.styles'
 import {
@@ -29,7 +31,7 @@ function MsTooltip({ active, label, payload }: { active?: boolean; label?: strin
       borderRadius: 6,
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: 12,
+      fontSize: iconSizeNumbers.xs,
     }}>
       <div style={{ fontWeight: 700, marginBottom: 4 }}>{label}</div>
       <div>{formatMs(value)}</div>
@@ -53,7 +55,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         data={countsByHour}
         xKey="label"
         series={[{ key: 'count', label: labels.count, color: CHART_BLUE }]}
-        height={240}
+        height={chartHeights.md}
       />
       <PieChartCard
         title={labels.outcomeTitle}
@@ -61,7 +63,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         innerRadius={44}
         outerRadius={72}
         paddingAngle={3}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noOutcomeStats}
       />
       <Panel>
@@ -90,7 +92,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         data={stepBreakdown}
         xKey="step_key"
         series={[{ key: 'average_ms', label: labels.avgMs, color: CHART_GREEN }]}
-        height={240}
+        height={chartHeights.md}
         tooltipContent={<MsTooltip />}
         emptyMessage={labels.noDeflectometryData}
       />

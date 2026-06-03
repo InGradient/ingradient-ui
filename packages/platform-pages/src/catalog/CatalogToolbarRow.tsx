@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import {
   FilterIcon,
   FilterPopoverTrigger,
@@ -23,9 +24,9 @@ interface Props extends CatalogToolbarPaneProps {
 }
 
 const VIEW_OPTIONS = [
-  { value: 'grid' as CatalogViewMode, label: 'Grid', icon: <GridIcon size={16} /> },
-  { value: 'table' as CatalogViewMode, label: 'Table', icon: <TableIcon size={16} /> },
-  { value: 'stats' as CatalogViewMode, label: 'Stats', icon: <StatsIcon size={16} /> },
+  { value: 'grid' as CatalogViewMode, label: 'Grid', icon: <GridIcon size={iconSizeNumbers.md} /> },
+  { value: 'table' as CatalogViewMode, label: 'Table', icon: <TableIcon size={iconSizeNumbers.md} /> },
+  { value: 'stats' as CatalogViewMode, label: 'Stats', icon: <StatsIcon size={iconSizeNumbers.md} /> },
 ]
 
 export function CatalogToolbarRow({
@@ -74,7 +75,7 @@ export function CatalogToolbarRow({
           <FilterPopoverTrigger
             label="Filter"
             iconOnly
-            icon={<FilterIcon size={18} />}
+            icon={<FilterIcon size={iconSizeNumbers.lg} />}
             active={hasActiveFilter}
             defaultOpen={filterDefaultOpen}
             panel={
@@ -100,7 +101,7 @@ export function CatalogToolbarRow({
           />
           <SortPopoverTrigger
             iconOnly
-            icon={<SortIcon size={18} />}
+            icon={<SortIcon size={iconSizeNumbers.lg} />}
             value={sortValue}
             onChange={onSortChange}
             options={sortOptions}

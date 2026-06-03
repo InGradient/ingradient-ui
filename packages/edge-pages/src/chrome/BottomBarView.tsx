@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { HardDrive, Cpu, Activity, Wifi, WifiOff, Check, AlertCircle } from 'lucide-react'
 import { Spinner } from '@ingradient/ui/components'
 import {
@@ -17,25 +18,25 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
       <LeftSection>
         {deleteProgress && (
           <SyncChip $status="syncing">
-            <Spinner size={12} />
+            <Spinner size={iconSizeNumbers.xs} />
             {labels.deletingSimple}
           </SyncChip>
         )}
         {syncStatus === 'syncing' && (
           <SyncChip $status="syncing">
-            <Spinner size={12} />
+            <Spinner size={iconSizeNumbers.xs} />
             {syncPending > 0 && labels.syncing(syncPending)}
           </SyncChip>
         )}
         {syncStatus === 'done' && (
           <SyncChip $status="done">
-            <Check size={12} />
+            <Check size={iconSizeNumbers.xs} />
             {labels.syncDone}
           </SyncChip>
         )}
         {syncStatus === 'error' && (
           <SyncChip $status="error">
-            <AlertCircle size={12} />
+            <AlertCircle size={iconSizeNumbers.xs} />
             {labels.syncFailed(syncFailed)}
           </SyncChip>
         )}
@@ -47,18 +48,18 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
         type="button"
       >
         <NetIcon $connected={isConnected} title={isConnected ? labels.connected : labels.disconnected}>
-          {isConnected ? <Wifi size={13} /> : <WifiOff size={13} />}
+          {isConnected ? <Wifi size={iconSizeNumbers.xsPlus} /> : <WifiOff size={iconSizeNumbers.xsPlus} />}
         </NetIcon>
         <StatChip $pct={stats?.disk} title={labels.diskUsage(fmtPct(stats?.disk))}>
-          <HardDrive size={13} />
+          <HardDrive size={iconSizeNumbers.xsPlus} />
           {fmtPct(stats?.disk)}
         </StatChip>
         <StatChip $pct={stats?.cpu} title={labels.cpuUsage(fmtPct(stats?.cpu))}>
-          <Cpu size={13} />
+          <Cpu size={iconSizeNumbers.xsPlus} />
           {fmtPct(stats?.cpu)}
         </StatChip>
         <StatChip $pct={stats?.memory} title={labels.memoryUsage(fmtPct(stats?.memory))}>
-          <Activity size={13} />
+          <Activity size={iconSizeNumbers.xsPlus} />
           {fmtPct(stats?.memory)}
         </StatChip>
       </RightSection>

@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -101,7 +102,7 @@ export function SourceBreakdownWidget({
                     data={source.defect_counts.map((d, i) => ({ name: d.name, count: d.count, color: SOURCE_COLORS[i % SOURCE_COLORS.length] }))}
                     xKey="name"
                     series={[{ key: 'count', label: 'Count' }]}
-                    height={200}
+                    height={chartHeights.sm}
                     getCellColor={(row) => row.color as string}
                   />
                 </div>

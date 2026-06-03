@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Stack } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -54,7 +55,7 @@ export function AnalysisLabelingByPersonWidget({
           { key: 'images', label: 'Images', color: chartColors.violet },
           { key: 'labeled', label: 'Labeled', color: 'var(--ig-color-accent)' },
         ]}
-        height={260}
+        height={chartHeights.lg}
         emptyMessage="No uploader activity yet."
       />
       {byPerson.length > 0 ? (

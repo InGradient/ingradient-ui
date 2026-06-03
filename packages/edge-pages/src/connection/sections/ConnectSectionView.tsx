@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, FormSection, SectionTitle, Spinner } from '@ingradient/ui'
+import { Button, FormSection, SectionTitle, Spinner, iconSizeNumbers } from '@ingradient/ui'
 import { CheckCircle, AlertCircle } from 'lucide-react'
 import type { ConnectSectionViewProps } from '../types'
 
@@ -34,9 +34,9 @@ export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element 
             {isConnecting ? labels.connecting : labels.connect}
           </Button>
         )}
-        {isConnected && <ConnectedMsg><CheckCircle size={14} />Connected</ConnectedMsg>}
+        {isConnected && <ConnectedMsg><CheckCircle size={iconSizeNumbers.sm} />Connected</ConnectedMsg>}
       </div>
-      {connectionError && <ErrorMsg><AlertCircle size={14} />{connectionError}</ErrorMsg>}
+      {connectionError && <ErrorMsg><AlertCircle size={iconSizeNumbers.sm} />{connectionError}</ErrorMsg>}
     </FormSection>
   )
 }

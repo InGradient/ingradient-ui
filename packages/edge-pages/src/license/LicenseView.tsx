@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Settings } from 'lucide-react'
 import {
   Wrap, LangCorner, SettingsIconBtn, Card, Title, Subtitle, Field, FieldLabel,
@@ -21,7 +22,7 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
       <LangCorner>
         {langSelector}
         <SettingsIconBtn type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
-          <Settings size={16} />
+          <Settings size={iconSizeNumbers.md} />
         </SettingsIconBtn>
       </LangCorner>
 

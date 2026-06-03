@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { BarChartCard } from '@ingradient/ui/patterns'
 
 export interface AnalysisClassRatioWidgetProps {
@@ -17,7 +18,7 @@ export function AnalysisClassRatioWidget({ classRatio, chartData }: AnalysisClas
       xKey="name"
       series={[{ key: 'count', label: 'Count' }]}
       layout="vertical"
-      height={260}
+      height={chartHeights.lg}
       emptyMessage="No classes or no labels yet."
       getCellColor={(row) => (row as { color: string }).color}
     />

@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { MoreHorizontal, Download } from 'lucide-react'
 import {
   DatasetCard, DatasetNameRow, DatasetName, Spacer, RecentBadge,
@@ -49,7 +50,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
             }}
             title={moreLabel}
           >
-            <MoreHorizontal size={14} />
+            <MoreHorizontal size={iconSizeNumbers.sm} />
           </DotsBtn>
           {isDotMenuOpen && (
             <>
@@ -62,7 +63,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
                     onExportClick(dataset)
                   }}
                 >
-                  <Download size={13} />
+                  <Download size={iconSizeNumbers.xsPlus} />
                   {exportLabel}
                 </DotMenuItem>
               </DotMenuWrap>

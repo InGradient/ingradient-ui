@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { PanelGrid } from './StaticsView.styles'
 import {
@@ -33,7 +34,7 @@ export function ImageChartsView({ data, labels }: ImageChartsViewProps): JSX.Ele
         data={data.daily_captures}
         xKey="date"
         series={[{ key: 'count', label: labels.captures, color: CHART_BLUE }]}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noImageData}
       />
       <PieChartCard
@@ -42,7 +43,7 @@ export function ImageChartsView({ data, labels }: ImageChartsViewProps): JSX.Ele
         innerRadius={44}
         outerRadius={72}
         paddingAngle={3}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noImageData}
       />
     </PanelGrid>

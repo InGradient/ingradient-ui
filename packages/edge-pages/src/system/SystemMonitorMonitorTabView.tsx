@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import styled from 'styled-components'
 import { LineChartCard } from '@ingradient/ui/patterns'
 import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from '../statics/chart-helpers'
@@ -59,7 +60,7 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
           { key: 'memory', label: labels.memory, color: CHART_PURPLE },
           { key: 'disk',   label: labels.disk,   color: CHART_GREEN },
         ]}
-        height={240}
+        height={chartHeights.md}
       />
     </Wrap>
   )

@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import styled from 'styled-components'
 import { X } from 'lucide-react'
 import type { ConnectionGuidePanelViewProps } from '../types'
@@ -47,7 +48,7 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
   const { state, labels, onDismiss } = props
   return (
     <Panel>
-      <CloseBtn type="button" onClick={onDismiss}><X size={14} /></CloseBtn>
+      <CloseBtn type="button" onClick={onDismiss}><X size={iconSizeNumbers.sm} /></CloseBtn>
       <StepLabel>{state.step}</StepLabel>
       <Message>{labels.guideMessages[state.step] || state.message}</Message>
       {state.recoveryHint && <Hint>{state.recoveryHint}</Hint>}

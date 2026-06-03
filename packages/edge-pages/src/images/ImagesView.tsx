@@ -1,3 +1,5 @@
+import { chartHeights } from '@ingradient/ui'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { useRef } from 'react'
 import { Eye, EyeOff, Filter, Maximize2, Minimize2, MousePointer2, Square, X } from 'lucide-react'
 import {
@@ -71,11 +73,11 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
               title={labels.filterTitle}
               onClick={onToggleFilter}
             >
-              <Filter size={16} />
+              <Filter size={iconSizeNumbers.md} />
             </ImagesFilterButton>
             {filterOpen && (
               <FilterPopover
-                width={260}
+                width={chartHeights.lg}
                 style={{ position: 'absolute', top: 'calc(100% + var(--ig-space-2))', right: 0 }}
               >
                 <FilterPopoverSection title={labels.dateFilter.title}>
@@ -164,7 +166,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                         title={modalAnnotationsVisible ? labels.modal.hideAnnotations : labels.modal.showAnnotations}
                         aria-label={modalAnnotationsVisible ? labels.modal.hideAnnotations : labels.modal.showAnnotations}
                       >
-                        {modalAnnotationsVisible ? <Eye size={16} /> : <EyeOff size={16} />}
+                        {modalAnnotationsVisible ? <Eye size={iconSizeNumbers.md} /> : <EyeOff size={iconSizeNumbers.md} />}
                       </ModalHeaderIconBtn>
                       <ModalHeaderIconBtn
                         type="button"
@@ -172,7 +174,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                         title={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                         aria-label={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                       >
-                        {modalIsFullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+                        {modalIsFullscreen ? <Minimize2 size={iconSizeNumbers.md} /> : <Maximize2 size={iconSizeNumbers.md} />}
                       </ModalHeaderIconBtn>
                     </>
                   )}
@@ -183,7 +185,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                   title={labels.modal.close}
                   aria-label={labels.modal.close}
                 >
-                  <X size={18} />
+                  <X size={iconSizeNumbers.lg} />
                 </ModalCloseBtn>
               </ModalHeader>
               <ModalBBoxCanvasWrap>
@@ -198,7 +200,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     onClick={() => onSetModalEditMode('cursor')}
                     title={labels.modal.cursorMode}
                   >
-                    <MousePointer2 size={16} />
+                    <MousePointer2 size={iconSizeNumbers.md} />
                   </ModalBBoxToolbarBtn>
                   <ModalBBoxToolbarBtn
                     type="button"
@@ -206,7 +208,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     onClick={() => onSetModalEditMode('bbox')}
                     title={labels.modal.bboxMode}
                   >
-                    <Square size={16} />
+                    <Square size={iconSizeNumbers.md} />
                   </ModalBBoxToolbarBtn>
                   <ModalToolbarSpacer />
                   <ModalBboxCount>· {labels.modal.bboxCount(modalBboxCount)}</ModalBboxCount>

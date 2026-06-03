@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { PieChartCard } from '@ingradient/ui/patterns'
 import { DashboardStatsHeader } from '../dashboard-stats-header'
 
@@ -20,7 +21,7 @@ export function AnalysisPendingProcessedWidget({
     <PieChartCard
       title="Labeling progress"
       data={pieData}
-      height={304}
+      height={chartHeights.xlPlus}
       innerRadius={56}
       outerRadius={100}
       emptyMessage="No labeling progress yet."

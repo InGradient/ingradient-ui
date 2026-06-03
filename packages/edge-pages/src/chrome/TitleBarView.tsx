@@ -1,3 +1,4 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Minus, Minimize2, X, Maximize2 } from 'lucide-react'
 import { BrandMark } from '@ingradient/ui/brand'
 import {
@@ -16,21 +17,21 @@ export function TitleBarView(props: TitleBarViewProps): JSX.Element {
       <LogoArea>
         {logoSrc
           ? <LogoImg src={logoSrc} alt={logoAlt} draggable={false} />
-          : <BrandMark size={18} alt={logoAlt} />}
+          : <BrandMark size={iconSizeNumbers.lg} alt={logoAlt} />}
         <LogoText>{labels.appName}</LogoText>
       </LogoArea>
       <DragRegion />
       <Controls>
         <Btn onClick={onMinimize} title={labels.minimize}>
-          <Minus size={12} strokeWidth={2} />
+          <Minus size={iconSizeNumbers.xs} strokeWidth={2} />
         </Btn>
         <Btn onClick={onMaximize} title={isMaximized ? labels.restore : labels.maximize}>
           {isMaximized
-            ? <Minimize2 size={11} strokeWidth={2} />
-            : <Maximize2 size={11} strokeWidth={2} />}
+            ? <Minimize2 size={iconSizeNumbers["2xs"]} strokeWidth={2} />
+            : <Maximize2 size={iconSizeNumbers["2xs"]} strokeWidth={2} />}
         </Btn>
         <Btn $variant="close" onClick={onClose} title={labels.close}>
-          <X size={13} strokeWidth={2} />
+          <X size={iconSizeNumbers.xsPlus} strokeWidth={2} />
         </Btn>
       </Controls>
     </Bar>

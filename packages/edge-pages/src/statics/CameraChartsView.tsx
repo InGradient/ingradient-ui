@@ -1,3 +1,4 @@
+import { chartHeights } from '@ingradient/ui'
 import { useMemo } from 'react'
 import { BarChartCard, LineChartCard } from '@ingradient/ui/patterns'
 import { PanelGrid } from './StaticsView.styles'
@@ -21,7 +22,7 @@ export function CameraChartsView({ data, labels }: CameraChartsViewProps): JSX.E
         data={data.exposure_distribution}
         xKey="bucket"
         series={[{ key: 'count', label: labels.count, color: CHART_WARNING }]}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noCameraData}
       />
       <BarChartCard
@@ -29,7 +30,7 @@ export function CameraChartsView({ data, labels }: CameraChartsViewProps): JSX.E
         data={data.gain_distribution}
         xKey="bucket"
         series={[{ key: 'count', label: labels.count, color: CHART_PURPLE }]}
-        height={240}
+        height={chartHeights.md}
         emptyMessage={labels.noCameraData}
       />
       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
@@ -42,7 +43,7 @@ export function CameraChartsView({ data, labels }: CameraChartsViewProps): JSX.E
             { key: 'gain', label: 'Gain', color: CHART_PURPLE },
           ]}
           secondaryAxisKeys={['gain']}
-          height={260}
+          height={chartHeights.lg}
           emptyMessage={labels.noCameraData}
         />
       </div>

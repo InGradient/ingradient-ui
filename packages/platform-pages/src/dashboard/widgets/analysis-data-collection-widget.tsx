@@ -1,3 +1,5 @@
+import { chartHeights } from '@ingradient/ui'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard } from '@ingradient/ui/patterns'
 
 export interface AnalysisDataCollectionWidgetProps {
@@ -19,10 +21,10 @@ export function AnalysisDataCollectionWidget({
       data={chartData}
       xKey="name"
       series={[{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]}
-      height={260}
+      height={chartHeights.lg}
       emptyMessage="No datasets yet."
       headerExtra={
-        <span style={{ fontSize: 12, color: 'var(--ig-color-text-muted)' }}>
+        <span style={{ fontSize: iconSizeNumbers.xs, color: 'var(--ig-color-text-muted)' }}>
           Total:{' '}
           <strong style={{ color: 'var(--ig-color-text-primary)' }}>
             {totalImages.toLocaleString()}
