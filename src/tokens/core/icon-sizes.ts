@@ -2,6 +2,7 @@
 export const iconSizes = {
   xs: '12px',
   sm: '14px',
+  smPlus: '15px',
   md: '16px',
   lg: '18px',
   xl: '20px',
@@ -13,6 +14,7 @@ export const iconSizes = {
 export const iconSizeNumbers = {
   xs: 12,
   sm: 14,
+  smPlus: 15,
   md: 16,
   lg: 18,
   xl: 20,

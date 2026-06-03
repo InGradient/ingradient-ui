@@ -5,7 +5,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-space-1);
-  padding: var(--ig-space-6) 16px;
+  padding: var(--ig-space-6) var(--ig-space-7);
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-10)' : 'var(--ig-color-white-04)')};
@@ -14,7 +14,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   flex-shrink: 0;
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-sm);
-  min-height: 112px;
+  min-height: var(--ig-layout-dataset-card-min-height);
   position: relative;
   transition: background 0.15s, border-color 0.15s;
   &:hover {
@@ -32,14 +32,14 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-space-1);
-  padding: var(--ig-space-7) 18px;
+  padding: var(--ig-space-7) var(--ig-space-8);
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-50)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-08)' : 'var(--ig-color-white-04)')};
   cursor: pointer;
   text-align: left;
   position: relative;
-  min-height: 108px;
+  min-height: var(--ig-layout-dataset-card-recent-min-height);
   transition: background 0.15s, border-color 0.15s;
   &:hover {
     background: var(--ig-color-blue-tint-12);
@@ -125,8 +125,8 @@ export const ClassChip = styled.span<{ $color: string }>`
   gap: var(--ig-space-1);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) 7px;
-  border-radius: 99px;
+  padding: var(--ig-space-2px) var(--ig-space-2-plus);
+  border-radius: var(--ig-radius-pill);
   background: ${(p) => `${p.$color}22`};
   color: ${(p) => p.$color};
   border: var(--ig-border-1px) solid ${(p) => `${p.$color}44`};
@@ -142,8 +142,8 @@ export const ClassChipName = styled.span`
 `
 
 export const ClassChipDot = styled.span<{ $color: string }>`
-  width: 5px;
-  height: 5px;
+  width: var(--ig-space-1-plus);
+  height: var(--ig-space-1-plus);
   border-radius: 50%;
   background: ${(p) => p.$color};
   flex-shrink: 0;
@@ -152,8 +152,8 @@ export const ClassChipDot = styled.span<{ $color: string }>`
 export const MoreChip = styled.span`
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) 7px;
-  border-radius: 99px;
+  padding: var(--ig-space-2px) var(--ig-space-2-plus);
+  border-radius: var(--ig-radius-pill);
   background: var(--ig-color-white-06);
   color: var(--ig-color-text-muted);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);

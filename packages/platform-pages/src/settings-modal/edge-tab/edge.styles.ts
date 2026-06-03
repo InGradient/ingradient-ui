@@ -16,7 +16,7 @@ export const SectionTitle = styled.h3`
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-secondary);
-  margin: 0 0 14px;
+  margin: 0 0 var(--ig-space-6);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
 `
@@ -39,8 +39,8 @@ export const CheckItem = styled.label`
   color: var(--ig-color-text-primary);
   cursor: pointer;
   input[type='checkbox'] {
-    width: 15px;
-    height: 15px;
+    width: var(--ig-icon-sm-plus);
+    height: var(--ig-icon-sm-plus);
     cursor: pointer;
   }
 `
@@ -48,7 +48,7 @@ export const CheckItem = styled.label`
 export const CheckDivider = styled.div`
   height: var(--ig-space-1px);
   background: var(--ig-color-border-subtle);
-  margin: var(--ig-space-1) 0 2px;
+  margin: var(--ig-space-1) 0 var(--ig-space-2px);
 `
 
 export const FieldRow = styled.div`
@@ -72,11 +72,11 @@ export const NumberInput = styled(NumberField)`
 export const Hint = styled.p`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
-  margin: 6px 0 0;
+  margin: var(--ig-space-2) 0 0;
 `
 
 export const ErrorHint = styled(InlineMessage).attrs({ $tone: 'danger' as const })`
-  margin-top: 8px;
+  margin-top: var(--ig-space-3);
 `
 
 export const ErrorHintInline = styled(InlineMessage).attrs({ $tone: 'danger' as const })`
@@ -84,7 +84,7 @@ export const ErrorHintInline = styled(InlineMessage).attrs({ $tone: 'danger' as 
 `
 
 export const WarningBox = styled(Alert).attrs({ $tone: 'warning' as const })`
-  margin-top: 8px;
+  margin-top: var(--ig-space-3);
 `
 
 export const ProgressNote = styled.span`
@@ -123,7 +123,7 @@ export const ReportStat = styled.div`
   text-align: center;
   span:first-child {
     display: block;
-    font-size: 22px;
+    font-size: var(--ig-font-size-3xl-plus);
     font-weight: var(--ig-font-weight-bold);
     color: var(--ig-color-text-primary);
   }

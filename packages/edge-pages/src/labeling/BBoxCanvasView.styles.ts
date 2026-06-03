@@ -11,7 +11,7 @@ export const Wrap = styled.div`
 // ZoomWrap — PR-E1e-1 (2026-05-11) 에서 ui LabelingCanvas 의 ZoomWrap 으로 흡수.
 
 export const Toolbar = styled.div`
-  height: 64px;
+  height: var(--ig-control-height-capture);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
     p.$variant === 'primary'
       ? `background: var(--ig-color-accent); color: var(--ig-color-text-primary);`
       : p.$variant === 'danger'
-        ? `background: rgba(255,95,122,0.18); color: var(--ig-color-danger); border-color: rgba(255,95,122,0.28);`
+        ? `background: var(--ig-color-coral-tint-18); color: var(--ig-color-danger); border-color: var(--ig-color-coral-tint-28);`
         : `background: var(--ig-color-white-08); color: var(--ig-color-text-primary); border-color: var(--ig-color-white-12);`}
 `;
 
@@ -64,26 +64,26 @@ export const BBoxCount = styled.div`
 
 export const HintOverlay = styled.div`
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: var(--ig-space-4);
+  left: var(--ig-space-4);
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-white-45);
   pointer-events: none;
   background: var(--ig-color-overlay-mid);
-  padding: var(--ig-space-1) 8px;
+  padding: var(--ig-space-1) var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
   z-index: 5;
 `;
 
 export const PixelInfo = styled.div`
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: var(--ig-space-4);
+  right: var(--ig-space-4);
   font-family: var(--ig-font-mono, ui-monospace, Menlo, monospace);
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-white-90);
   background: var(--ig-color-overlay-darker);
-  padding: var(--ig-space-1) 8px;
+  padding: var(--ig-space-1) var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
@@ -104,13 +104,13 @@ export const PixelSwatch = styled.span<{ $color: string }>`
 
 export const BlockMsg = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: var(--ig-space-4);
   left: 50%;
   transform: translateX(-50%);
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-warning);
   background: var(--ig-color-modal-backdrop);
-  padding: var(--ig-space-1) 12px;
+  padding: var(--ig-space-1) var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
@@ -119,8 +119,8 @@ export const BlockMsg = styled.div`
 
 export const FullscreenBtn = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--ig-space-4);
+  right: var(--ig-space-4);
   width: var(--ig-control-height-md);
   height: var(--ig-control-height-md);
   display: flex;
@@ -137,8 +137,8 @@ export const FullscreenBtn = styled.button`
 `;
 
 export const AnnotationToggleBtn = styled(FullscreenBtn)<{ $active?: boolean }>`
-  right: 54px;
-  background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.62)' : 'var(--ig-color-overlay-dim)')};
+  right: var(--ig-control-height-2xl);
+  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-62)' : 'var(--ig-color-overlay-dim)')};
   &:hover {
     background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-78)' : 'var(--ig-color-modal-backdrop)')};
   }
@@ -152,7 +152,7 @@ export const Header = styled.div`
   width: 100%;
   flex-shrink: 0;
   gap: var(--ig-space-3);
-  padding: var(--ig-space-4) 12px 0;
+  padding: var(--ig-space-4) var(--ig-space-5) 0;
 `;
 
 export const HeaderLeft = styled.div`
@@ -185,7 +185,7 @@ export const HintBar = styled.div`
   text-align: center;
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
-  padding: var(--ig-space-1) 12px;
+  padding: var(--ig-space-1) var(--ig-space-5);
 `;
 
 export const ToolbarSpacer = styled.div`

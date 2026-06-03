@@ -10,6 +10,7 @@ export const typographyScale = {
   sizeXl: '16px',
   size2xl: '18px',
   size3xl: '20px',
+  size3xlPlus: '22px',
   size4xl: '24px',
   size5xl: '28px',
   weightRegular: 400,
