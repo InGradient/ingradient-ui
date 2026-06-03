@@ -41,7 +41,7 @@ export const SetupMetrics = styled.div`
 `;
 
 export const MetricCard = styled.div`
-  background: rgba(17, 24, 39, 0.7);
+  background: var(--ig-color-capture-surface);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-3) 10px;
@@ -49,7 +49,7 @@ export const MetricCard = styled.div`
 
 export const MetricLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
-  color: rgba(255,255,255,0.62);
+  color: var(--ig-color-white-62);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-normal);
 `;
@@ -65,7 +65,7 @@ export const SetupBlockingOverlay = styled.div`
   position: absolute;
   inset: 0;
   z-index: 4;
-  background: rgba(0, 0, 0, 0.36);
+  background: var(--ig-color-capture-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ export const SetupBlockingOverlay = styled.div`
 `;
 
 export const SetupBlockingCard = styled.div`
-  background: rgba(17, 24, 39, 0.86);
+  background: var(--ig-color-capture-surface-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-8) 22px;
@@ -247,7 +247,7 @@ export const CenterCrosshair = styled.div`
     top: 50%;
     left: 0; right: 0;
     height: var(--ig-space-1px);
-    background-color: rgba(255, 255, 0, 0.5);
+    background-color: var(--ig-color-yellow-tint-50);
     transform: translateY(-50%);
   }
   &::after {
@@ -256,7 +256,7 @@ export const CenterCrosshair = styled.div`
     left: 50%;
     top: 0; bottom: 0;
     width: var(--ig-space-1px);
-    background-color: rgba(255, 255, 0, 0.5);
+    background-color: var(--ig-color-yellow-tint-50);
     transform: translateX(-50%);
   }
 `;

@@ -67,7 +67,7 @@ export const HintOverlay = styled.div`
   top: 10px;
   left: 10px;
   font-size: var(--ig-font-size-2xs);
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--ig-color-white-45);
   pointer-events: none;
   background: var(--ig-color-overlay-mid);
   padding: var(--ig-space-1) 8px;
@@ -82,7 +82,7 @@ export const PixelInfo = styled.div`
   font-family: var(--ig-font-mono, ui-monospace, Menlo, monospace);
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-white-90);
-  background: rgba(0, 0, 0, 0.65);
+  background: var(--ig-color-overlay-darker);
   padding: var(--ig-space-1) 8px;
   border-radius: var(--ig-radius-xs);
   pointer-events: none;

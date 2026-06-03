@@ -18,7 +18,7 @@ export const CapturingStatusPill = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
-  background: rgba(0, 0, 0, 0.82);
+  background: var(--ig-color-overlay-darkest);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
@@ -76,7 +76,7 @@ export const SavingSpinner = styled.div`
   width: var(--ig-control-height-sm);
   height: var(--ig-control-height-sm);
   border: var(--ig-border-3px) solid var(--ig-color-white-20);
-  border-top-color: rgba(255,255,255,0.8);
+  border-top-color: var(--ig-color-white-80);
   border-radius: 50%;
   animation: ${spin} 0.8s linear infinite;
 `

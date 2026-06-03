@@ -33,7 +33,7 @@ export const GroupDeleteBtn = styled.button`
   justify-content: center;
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-pill);
-  background: rgba(239, 68, 68, 0.92);
+  background: var(--ig-color-red-tint-92);
   color: var(--ig-color-text-primary);
   cursor: pointer;
   opacity: 1;
@@ -46,12 +46,12 @@ export const GroupDeleteBtn = styled.button`
   flex-shrink: 0;
   &:disabled {
     opacity: 0.7;
-    background: rgba(75, 85, 99, 0.86);
+    background: var(--ig-color-slate-tint-86);
     cursor: not-allowed;
   }
   &:hover:not(:disabled) {
-    background: rgba(220, 38, 38, 0.96);
-    border-color: rgba(255,255,255,0.32);
+    background: var(--ig-color-red-tint-96);
+    border-color: var(--ig-color-white-32);
     transform: scale(1.04);
   }
 `;
@@ -173,7 +173,7 @@ export const ModalCloseBtn = styled.button`
 `;
 
 export const ModalFilename = styled.div`
-  color: rgba(255,255,255,0.55);
+  color: var(--ig-color-white-55);
   font-size: var(--ig-font-size-xs);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -206,7 +206,7 @@ export const ModalHeaderSpacer = styled.div`
 
 export const ModalHint = styled.div`
   flex-shrink: 0;
-  color: rgba(255,255,255,0.35);
+  color: var(--ig-color-white-35);
   font-size: var(--ig-font-size-2xs);
   text-align: center;
 `;
@@ -225,7 +225,7 @@ export const ModalInner = styled.div`
 export const ModalOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.92);
+  background: var(--ig-color-overlay-near-opaque);
   display: flex;
   align-items: center;
   justify-content: center;

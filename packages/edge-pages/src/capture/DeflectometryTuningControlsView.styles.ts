@@ -9,7 +9,7 @@ export const Spinner = styled.span`
   display: inline-block;
   width: var(--ig-space-6);
   height: var(--ig-space-6);
-  border: var(--ig-border-2px) solid rgba(255, 255, 255, 0.35);
+  border: var(--ig-border-2px) solid var(--ig-color-white-35);
   border-top-color: var(--ig-color-text-primary);
   border-radius: 50%;
   animation: ${spin} 0.7s linear infinite;

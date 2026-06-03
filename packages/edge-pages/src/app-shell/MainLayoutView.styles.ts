@@ -62,7 +62,7 @@ export const CapturingBlocker = styled.div`
   position: fixed;
   inset: 0;
   z-index: 9998;
-  background: rgba(0, 0, 0, 0.32);
+  background: var(--ig-color-app-backdrop);
   cursor: wait;
   backdrop-filter: var(--ig-blur-2xs);
 `
