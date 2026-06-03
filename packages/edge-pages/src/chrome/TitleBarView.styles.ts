@@ -32,7 +32,7 @@ export const LogoText = styled.span`
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
-  letter-spacing: 0.01em;
+  letter-spacing: var(--ig-letter-spacing-micro);
   opacity: var(--ig-opacity-loud);
 `
 

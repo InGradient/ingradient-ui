@@ -37,7 +37,7 @@ const MAPPING_LABEL_STYLE: CSSProperties = {
   fontWeight: 'var(--ig-font-weight-semibold)',
   color: 'var(--ig-color-text-muted)',
   textTransform: 'uppercase',
-  letterSpacing: '0.04em',
+  letterSpacing: 'var(--ig-letter-spacing-normal)',
 }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."

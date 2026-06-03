@@ -47,7 +47,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
         items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon }))}
         value={activeTab}
         onChange={(v) => onSetActiveTab(v as SettingsTab)}
-        style={{ width: 160, flexShrink: 0 }}
+        style={{ width: 'var(--ig-popup-2xs-plus)', flexShrink: 0 }}
       />
       <div style={{ flex: 1, minWidth: 0, padding: 'var(--ig-space-7)', overflow: 'auto' }}>
         {content[activeTab]}

@@ -16,7 +16,7 @@ const PROJECT_TYPE_LABELS: Record<ProjectTypeTone, string> = {
 }
 
 const PROJECT_TYPE_TAG_STYLE = {
-  letterSpacing: '0.06em',
+  letterSpacing: 'var(--ig-letter-spacing-wider)',
   textTransform: 'uppercase' as const,
 }
 

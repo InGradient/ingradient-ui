@@ -315,6 +315,7 @@ const staticVars = {
   '--ig-font-weight-bold': String(typographyScale.weightBold),
   '--ig-font-weight-black': String(typographyScale.weightBlack),
   '--ig-letter-spacing-heading': typographyScale.letterSpacingHeading,
+  '--ig-letter-spacing-micro': typographyScale.letterSpacingMicro,
   '--ig-letter-spacing-tight': typographyScale.letterSpacingTight,
   '--ig-letter-spacing-normal': typographyScale.letterSpacingNormal,
   '--ig-letter-spacing-wide': typographyScale.letterSpacingWide,

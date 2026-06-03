@@ -17,7 +17,7 @@ const PROGRESS_TRACK_STYLE = {
   top: 0,
   left: 0,
   right: 0,
-  height: 3,
+  height: 'var(--ig-space-3px)',
   background: 'transparent',
 }
 
