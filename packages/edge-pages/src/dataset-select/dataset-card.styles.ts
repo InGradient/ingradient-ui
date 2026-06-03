@@ -79,8 +79,8 @@ export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
   flex-shrink: 0;
   white-space: nowrap;
   background: ${(p) =>
-    p.$type === 'classification' ? 'rgba(110,200,122,0.15)' :
-    p.$type === 'segmentation'   ? 'rgba(180,120,230,0.15)' :
+    p.$type === 'classification' ? 'var(--ig-color-tag-classification-bg)' :
+    p.$type === 'segmentation'   ? 'var(--ig-color-tag-segmentation-bg)' :
                                    'var(--ig-color-blue-tint-15)'};
   color: ${(p) =>
     p.$type === 'classification' ? '#6ec87a' :

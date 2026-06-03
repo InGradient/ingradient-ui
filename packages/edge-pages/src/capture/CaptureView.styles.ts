@@ -303,7 +303,7 @@ export const HistogramOverlay = styled.div`
   z-index: 3;
   padding: var(--ig-space-3);
   border-radius: var(--ig-radius-sm);
-  background: rgba(12, 16, 22, 0.82);
+  background: var(--ig-color-capture-bg-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   backdrop-filter: var(--ig-blur-xs);
 `;
@@ -326,7 +326,7 @@ export const CapturingBadge = styled.div`
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.78);
+  background: var(--ig-color-overlay-deep);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);

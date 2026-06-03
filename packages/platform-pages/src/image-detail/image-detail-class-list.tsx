@@ -14,18 +14,18 @@ const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
     ${(p) =>
       p.$selected || p.$classified
         ? 'var(--ig-color-blue-tint-38)'
-        : 'rgba(127, 139, 157, 0.16)'};
+        : 'var(--ig-color-slate-gray-tint-16)'};
   background: ${(p) =>
     p.$selected || p.$classified
       ? 'var(--ig-color-blue-tint-18)'
-      : 'rgba(127, 139, 157, 0.12)'};
+      : 'var(--ig-color-slate-gray-tint-12)'};
   cursor: pointer;
   text-align: left;
   &:hover {
     background: ${(p) =>
       p.$selected || p.$classified
         ? 'var(--ig-color-blue-tint-28)'
-        : 'rgba(127, 139, 157, 0.18)'};
+        : 'var(--ig-color-slate-gray-tint-18)'};
   }
 `
 

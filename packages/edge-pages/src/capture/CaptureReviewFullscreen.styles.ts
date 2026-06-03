@@ -72,5 +72,5 @@ export const CaptureReviewSaveBtn = styled.button`
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  &:hover { background: rgba(77, 136, 255, 1); }
+  &:hover { background: var(--ig-color-blue-accent-solid); }
 `

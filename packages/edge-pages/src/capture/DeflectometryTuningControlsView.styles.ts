@@ -134,11 +134,11 @@ export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $dange
   height: var(--ig-control-height-sm);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${(p) =>
-    p.$danger ? 'rgba(239, 68, 68, 0.6)'
+    p.$danger ? 'var(--ig-color-red-tint-60)'
     : p.$active ? 'var(--ig-color-blue-tint-80)'
     : 'var(--ig-color-border-subtle)'};
   background: ${(p) =>
-    p.$danger ? 'rgba(239, 68, 68, 0.15)'
+    p.$danger ? 'var(--ig-color-red-tint-15)'
     : p.$primary ? 'var(--ig-color-blue-tint-90)'
     : p.$active ? 'var(--ig-color-blue-tint-18)'
     : 'var(--ig-color-white-06)'};
