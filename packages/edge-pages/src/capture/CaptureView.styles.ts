@@ -200,7 +200,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
           content: '';
           display: block;
           width: 46px;
-          height: 46px;
+          height: var(--ig-control-height-xl);
           border-radius: 50%;
           border: var(--ig-border-2px) solid rgba(255, 255, 255, 0.5);
         }
