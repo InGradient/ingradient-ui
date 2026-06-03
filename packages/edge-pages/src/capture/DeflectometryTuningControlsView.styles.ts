@@ -75,7 +75,7 @@ export const LabelValue = styled.span`
 
 export const Slider = styled.input.attrs({ type: 'range' })`
   width: 100%;
-  accent-color: rgba(77, 136, 255, 0.9);
+  accent-color: var(--ig-color-blue-tint-90);
 `;
 
 export const Select = styled.select`
@@ -114,7 +114,7 @@ export const CheckRow = styled.label`
   user-select: none;
   white-space: nowrap;
   input[type='checkbox'] {
-    accent-color: rgba(77, 136, 255, 0.9);
+    accent-color: var(--ig-color-blue-tint-90);
     margin: 0;
   }
 `;
@@ -135,11 +135,11 @@ export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $dange
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${(p) =>
     p.$danger ? 'rgba(239, 68, 68, 0.6)'
-    : p.$active ? 'rgba(77, 136, 255, 0.8)'
+    : p.$active ? 'var(--ig-color-blue-tint-80)'
     : 'var(--ig-color-border-subtle)'};
   background: ${(p) =>
     p.$danger ? 'rgba(239, 68, 68, 0.15)'
-    : p.$primary ? 'rgba(77, 136, 255, 0.9)'
+    : p.$primary ? 'var(--ig-color-blue-tint-90)'
     : p.$active ? 'var(--ig-color-blue-tint-18)'
     : 'var(--ig-color-white-06)'};
   color: ${(p) =>
@@ -178,7 +178,7 @@ export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
   font-weight: var(--ig-font-weight-semibold);
   background: ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.14)' : 'var(--ig-color-blue-tint-14)')};
   color: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-warning)' : 'var(--ig-color-accent-soft)')};
-  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'rgba(77, 136, 255, 0.35)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'var(--ig-color-blue-tint-35)')};
 `;
 
 // ── Setup Quality Indicator ─────────────────────────────────────────────────

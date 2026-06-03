@@ -81,7 +81,7 @@ export const PixelInfo = styled.div`
   right: 10px;
   font-family: var(--ig-font-mono, ui-monospace, Menlo, monospace);
   font-size: var(--ig-font-size-2xs);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--ig-color-white-90);
   background: rgba(0, 0, 0, 0.65);
   padding: var(--ig-space-1) 8px;
   border-radius: var(--ig-radius-xs);
@@ -99,7 +99,7 @@ export const PixelSwatch = styled.span<{ $color: string }>`
   height: 10px;
   border-radius: 2px;
   background: ${(p) => p.$color};
-  border: var(--ig-border-1px) solid rgba(255, 255, 255, 0.3);
+  border: var(--ig-border-1px) solid var(--ig-color-white-30);
 `;
 
 export const BlockMsg = styled.div`
@@ -140,7 +140,7 @@ export const AnnotationToggleBtn = styled(FullscreenBtn)<{ $active?: boolean }>`
   right: 54px;
   background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.62)' : 'var(--ig-color-overlay-dim)')};
   &:hover {
-    background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.78)' : 'var(--ig-color-modal-backdrop)')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-78)' : 'var(--ig-color-modal-backdrop)')};
   }
 `;
 
@@ -171,7 +171,7 @@ export const HeaderIconBtn = styled.button<{ $active?: boolean }>`
   height: 40px;
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-04)')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-04)')};
   color: var(--ig-color-text-primary);
   cursor: pointer;
   display: flex;
@@ -201,7 +201,7 @@ export const ModeToggleGroup = styled.div`
 export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
   width: var(--ig-control-height-md);
   height: var(--ig-control-height-md);
-  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.55)' : 'var(--ig-color-white-12)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
   color: var(--ig-color-text-primary);

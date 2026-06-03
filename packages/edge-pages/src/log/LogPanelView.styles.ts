@@ -116,8 +116,8 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
   border-radius: var(--ig-radius-xs);
   cursor: default;
   background-color: ${({ type }) =>
-    type === 'error' ? 'rgba(239, 68, 68, 0.08)' :
-    type === 'success' ? 'rgba(43, 181, 114, 0.08)' : 'transparent'};
+    type === 'error' ? 'var(--ig-color-red-tint-08)' :
+    type === 'success' ? 'var(--ig-color-green-tint-08)' : 'transparent'};
 
   &:hover { background-color: var(--ig-color-surface-interactive); }
 `;
@@ -199,12 +199,12 @@ export const OpenImageButton = styled.button`
   padding: var(--ig-space-2) 10px;
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-accent-soft);
-  background: rgba(77, 136, 255, 0.1);
+  background: var(--ig-color-blue-tint-10);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   transition: background 0.16s ease;
-  &:hover { background: rgba(77, 136, 255, 0.2); }
+  &:hover { background: var(--ig-color-blue-tint-20); }
 `;
 
 export const LogPlaceholder = styled.div`

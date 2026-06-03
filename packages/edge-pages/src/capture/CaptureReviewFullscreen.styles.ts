@@ -55,7 +55,7 @@ export const CaptureReviewSkipBtn = styled.button`
   border: var(--ig-border-1px) solid var(--ig-color-white-18);
   border-radius: var(--ig-radius-xs);
   background: transparent;
-  color: rgba(255,255,255,0.7);
+  color: var(--ig-color-white-70);
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
@@ -67,7 +67,7 @@ export const CaptureReviewSaveBtn = styled.button`
   padding: 0 22px;
   border: none;
   border-radius: var(--ig-radius-xs);
-  background: rgba(77, 136, 255, 0.85);
+  background: var(--ig-color-blue-tint-85);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);

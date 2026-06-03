@@ -5,7 +5,7 @@ import type { ConnectionGuidePanelViewProps } from '../types'
 const Panel = styled.div`
   position: relative;
   padding: var(--ig-space-5);
-  background: var(--ig-color-blue-tint-14, rgba(77, 136, 255, 0.1));
+  background: var(--ig-color-blue-tint-14, var(--ig-color-blue-tint-10));
   border: var(--ig-border-1px) solid rgba(77, 136, 255, 0.34);
   border-radius: var(--ig-radius-sm);
   display: flex;

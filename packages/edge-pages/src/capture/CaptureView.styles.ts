@@ -191,7 +191,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
           height: 40px;
           border-radius: 50%;
           border: var(--ig-border-3px) solid rgba(255, 255, 255, 0.25);
-          border-top-color: rgba(255, 255, 255, 0.9);
+          border-top-color: var(--ig-color-white-90);
           animation: ${captureSpinAnim} 0.75s linear infinite;
         }
       `

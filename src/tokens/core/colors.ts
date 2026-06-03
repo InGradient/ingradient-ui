@@ -60,7 +60,7 @@ export const foundationColors = {
   tagClassificationText: '#6ec87a',
   tagSegmentationBg: 'rgba(180, 120, 230, 0.15)',
   tagSegmentationText: '#c07be8',
-  tagObjectDetectionBg: 'rgba(77, 136, 255, 0.15)',
+  tagObjectDetectionBg: 'var(--ig-color-blue-tint-15)',
   syncChipSyncedBg: 'rgba(34, 197, 94, 0.92)',
   syncChipUploadingBg: 'rgba(234, 179, 8, 0.92)',
   syncChipFailedBg: 'rgba(220, 38, 38, 0.92)',

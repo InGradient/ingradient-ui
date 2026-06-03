@@ -168,7 +168,7 @@ export const AccountItem = styled.button`
   transition: background 0.15s, border-color 0.15s;
   &:hover {
     background: var(--ig-color-white-07);
-    border-color: rgba(77, 136, 255, 0.4);
+    border-color: var(--ig-color-blue-tint-40);
   }
 `
 
@@ -188,7 +188,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
   margin-left: 6px;
-  background: ${(p) => (p.$online ? 'rgba(60,210,120,0.15)' : 'rgba(255,180,60,0.15)')};
+  background: ${(p) => (p.$online ? 'var(--ig-color-green-tint-15)' : 'var(--ig-color-amber-tint-15)')};
   color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
   vertical-align: middle;
 `

@@ -36,7 +36,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
   margin-left: 8px;
-  background: ${(p) => (p.$online ? 'rgba(60,210,120,0.15)' : 'rgba(255,180,60,0.15)')};
+  background: ${(p) => (p.$online ? 'var(--ig-color-green-tint-15)' : 'var(--ig-color-amber-tint-15)')};
   color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
   vertical-align: middle;
 `
@@ -49,9 +49,9 @@ export const RoleBadge = styled.span<{ $role: string }>`
   border-radius: var(--ig-radius-xs);
   background: ${(p) => {
     switch (p.$role) {
-      case 'owner':   return 'rgba(255,180,60,0.15)'
-      case 'manager': return 'rgba(77,136,255,0.15)'
-      case 'labeler': return 'rgba(60,210,120,0.15)'
+      case 'owner':   return 'var(--ig-color-amber-tint-15)'
+      case 'manager': return 'var(--ig-color-blue-tint-15)'
+      case 'labeler': return 'var(--ig-color-green-tint-15)'
       default:        return 'var(--ig-color-white-08)'
     }
   }};

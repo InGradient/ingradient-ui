@@ -65,7 +65,7 @@ export const PatternButton = styled.button<{ $active: boolean }>`
 `;
 
 export const SetupMetaText = styled.div`
-  color: rgba(255,255,255,0.7);
+  color: var(--ig-color-white-70);
   font-size: var(--ig-font-size-xs);
   line-height: var(--ig-line-height-relaxed);
 `;

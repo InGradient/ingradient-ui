@@ -24,7 +24,7 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   bottom: -10px;
   height: 4px;
   border-radius: var(--ig-radius-pill);
-  background: rgba(77, 136, 255, 0.92);
+  background: var(--ig-color-blue-tint-92);
   opacity: ${(p) => (p.$active ? 1 : 0)};
   transition: opacity 0.16s ease;
   pointer-events: none;
@@ -57,7 +57,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     position: absolute;
     pointer-events: none;
     border-radius: var(--ig-radius-pill);
-    background: rgba(77, 136, 255, 0.92);
+    background: var(--ig-color-blue-tint-92);
     opacity: ${(p) => (p.$dropTarget ? 1 : 0)};
     transition: opacity 0.16s ease;
   }

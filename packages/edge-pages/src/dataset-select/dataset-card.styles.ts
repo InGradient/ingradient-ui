@@ -7,8 +7,8 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   gap: var(--ig-space-1);
   padding: var(--ig-space-6) 16px;
   border-radius: var(--ig-radius-sm);
-  border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'rgba(77,136,255,0.55)' : 'var(--ig-color-white-12)')};
-  background: ${(p) => (p.$isLatest ? 'rgba(77,136,255,0.1)' : 'var(--ig-color-white-04)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
+  background: ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-10)' : 'var(--ig-color-white-04)')};
   cursor: pointer;
   text-align: left;
   flex-shrink: 0;
@@ -19,7 +19,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   transition: background 0.15s, border-color 0.15s;
   &:hover {
     background: var(--ig-color-blue-tint-14);
-    border-color: rgba(77,136,255,0.5);
+    border-color: var(--ig-color-blue-tint-50);
   }
 `
 
@@ -34,8 +34,8 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   gap: var(--ig-space-1);
   padding: var(--ig-space-7) 18px;
   border-radius: var(--ig-radius-sm);
-  border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'rgba(77,136,255,0.5)' : 'var(--ig-color-white-12)')};
-  background: ${(p) => (p.$isRecent ? 'rgba(77,136,255,0.08)' : 'var(--ig-color-white-04)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-50)' : 'var(--ig-color-white-12)')};
+  background: ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-08)' : 'var(--ig-color-white-04)')};
   cursor: pointer;
   text-align: left;
   position: relative;
@@ -43,7 +43,7 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   transition: background 0.15s, border-color 0.15s;
   &:hover {
     background: var(--ig-color-blue-tint-12);
-    border-color: rgba(77, 136, 255, 0.5);
+    border-color: var(--ig-color-blue-tint-50);
   }
 `
 
@@ -81,7 +81,7 @@ export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
   background: ${(p) =>
     p.$type === 'classification' ? 'rgba(110,200,122,0.15)' :
     p.$type === 'segmentation'   ? 'rgba(180,120,230,0.15)' :
-                                   'rgba(77, 136, 255,0.15)'};
+                                   'var(--ig-color-blue-tint-15)'};
   color: ${(p) =>
     p.$type === 'classification' ? '#6ec87a' :
     p.$type === 'segmentation'   ? '#c07be8' :
@@ -170,7 +170,7 @@ export const RecentBadge = styled.div`
   font-weight: var(--ig-font-weight-bold);
   padding: var(--ig-space-2px) var(--ig-space-2);
   border-radius: var(--ig-radius-2xs);
-  background: rgba(77, 136, 255, 0.2);
+  background: var(--ig-color-blue-tint-20);
   color: var(--ig-color-accent);
   white-space: nowrap;
 `

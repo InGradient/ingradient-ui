@@ -26,7 +26,7 @@ export const SegmentBtn = styled.button<{ $active: boolean }>`
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
-  background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.9)' : 'transparent')};
+  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-90)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   &:hover {
     color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-primary)')};
@@ -46,7 +46,7 @@ export const Item = styled.button<{ $active: boolean }>`
   align-items: center;
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.7)' : 'transparent')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-70)' : 'transparent')};
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
@@ -55,7 +55,7 @@ export const Item = styled.button<{ $active: boolean }>`
   cursor: pointer;
   transition: background 0.12s;
   &:hover {
-    background: ${(p) => (p.$active ? 'rgba(77, 136, 255, 0.2)' : 'var(--ig-color-white-06)')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-20)' : 'var(--ig-color-white-06)')};
   }
 `;
 

@@ -59,7 +59,7 @@ export const AddDatasetBtn = styled.button`
   height: 22px;
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) dashed rgba(77, 136, 255, 0.4);
+  border: var(--ig-border-1px) dashed var(--ig-color-blue-tint-40);
   background: transparent;
   color: var(--ig-color-accent);
   font-size: var(--ig-font-size-2xs);
@@ -68,7 +68,7 @@ export const AddDatasetBtn = styled.button`
   transition: all 0.15s;
   margin-left: auto;
   &:hover {
-    background: rgba(77, 136, 255, 0.1);
+    background: var(--ig-color-blue-tint-10);
     border-style: solid;
   }
 `

@@ -31,7 +31,7 @@ export const GroupDeleteBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-pill);
   background: rgba(239, 68, 68, 0.92);
   color: var(--ig-color-text-primary);
@@ -164,7 +164,7 @@ export const ModalCloseBtn = styled.button`
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-overlay-mid);
   color: white;
@@ -274,7 +274,7 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
   color: ${(p) =>
     p.$state === 'upload_failed' ? 'var(--ig-color-danger)' :
     p.$state === 'uploading' ? 'var(--ig-color-accent)' :
-    'rgba(255,255,255,0.7)'};
+    'var(--ig-color-white-70)'};
   @keyframes sync-spin { to { transform: rotate(360deg); } }
   ${(p) => p.$state === 'uploading' ? '& > svg { animation: sync-spin 1.5s linear infinite; }' : ''}
 `;
@@ -298,7 +298,7 @@ export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border: var(--ig-border-1px) solid rgba(255,255,255,0.2);
+  border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-18)' : 'var(--ig-color-overlay-mid)')};
   color: white;
@@ -315,7 +315,7 @@ export const ModalToolbarSpacer = styled.div`
 `;
 
 export const ModalBboxCount = styled.div`
-  color: rgba(255,255,255,0.7);
+  color: var(--ig-color-white-70);
   font-size: var(--ig-font-size-xs);
   padding: 0 var(--ig-space-3);
   font-weight: var(--ig-font-weight-semibold);

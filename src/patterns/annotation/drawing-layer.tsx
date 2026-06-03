@@ -21,7 +21,7 @@ export interface DrawingLayerProps {
   containerHeight?: number
   /** Color for the drawing preview (defaults to `var(--ig-color-accent)`). */
   previewColor?: string
-  /** Color for the crosshair lines (defaults to `rgba(255, 255, 255, 0.3)`). */
+  /** Color for the crosshair lines (defaults to `var(--ig-color-white-30)`). */
   crosshairColor?: string
   /** Current zoom level — used to keep stroke width and label size constant regardless of zoom */
   zoom?: number
@@ -64,7 +64,7 @@ export function DrawingLayer({
       preserveAspectRatio="none"
     >
       {showCrosshair && cursorX != null && cursorY != null && (() => {
-        const chColor = crosshairColor ?? 'rgba(255,255,255,0.3)'
+        const chColor = crosshairColor ?? 'var(--ig-color-white-30)'
         return (
           <>
             <line

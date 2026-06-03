@@ -108,7 +108,7 @@ export const CopyBtn = styled.button`
   cursor: pointer;
   transition: background 0.15s;
   &:hover {
-    background: rgba(77, 136, 255, 0.25);
+    background: var(--ig-color-blue-tint-25);
   }
 `
 
@@ -126,10 +126,10 @@ export const Input = styled.input`
   box-sizing: border-box;
   outline: none;
   &:focus {
-    border-color: rgba(77, 136, 255, 0.6);
+    border-color: var(--ig-color-blue-tint-60);
   }
   &::placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--ig-color-white-20);
     font-family: inherit;
     letter-spacing: 0;
   }
@@ -171,7 +171,7 @@ export const HintBox = styled.div`
   color: var(--ig-color-text-muted);
   padding: var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
-  background: rgba(77, 136, 255, 0.06);
+  background: var(--ig-color-blue-tint-06);
   border: var(--ig-border-1px) solid var(--ig-color-blue-tint-14);
   line-height: var(--ig-line-height-loose);
 `
