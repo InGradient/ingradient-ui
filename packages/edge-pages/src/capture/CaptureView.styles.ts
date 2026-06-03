@@ -44,7 +44,7 @@ export const MetricCard = styled.div`
   background: var(--ig-color-capture-surface);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-3) 10px;
+  padding: var(--ig-space-3) var(--ig-space-4);
 `;
 
 export const MetricLabel = styled.div`
@@ -76,7 +76,7 @@ export const SetupBlockingCard = styled.div`
   background: var(--ig-color-capture-surface-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-8) 22px;
+  padding: var(--ig-space-8) var(--ig-space-10);
   color: var(--ig-color-text-primary);
   display: flex;
   align-items: center;
@@ -92,8 +92,8 @@ export const PlaceholderText = styled.div`
 
 export const OverlayControls = styled.div`
   position: absolute;
-  top: 10px;
-  right: 14px;
+  top: var(--ig-space-4);
+  right: var(--ig-space-6);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -122,8 +122,8 @@ export const OverlayPopover = styled.div`
   border-radius: var(--ig-radius-xs);
   backdrop-filter: var(--ig-blur-lg);
   box-shadow: var(--ig-shadow-panel);
-  padding: var(--ig-space-4) 12px;
-  min-width: 160px;
+  padding: var(--ig-space-4) var(--ig-space-5);
+  min-width: var(--ig-popup-2xs-plus);
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-4);
@@ -144,13 +144,13 @@ export const ControlLabel = styled.span`
 `;
 
 export const CaptureBar = styled.div`
-  height: 100px;
+  height: var(--ig-layout-capture-bar);
   background-color: var(--ig-color-surface-panel);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 var(--ig-space-9);
   position: relative;
   flex-shrink: 0;
 `;
@@ -162,8 +162,8 @@ export const CaptureButtonWrap = styled.div`
 `;
 
 export const CaptureButton = styled.button<{ $capturing?: boolean }>`
-  width: 64px;
-  height: 64px;
+  width: var(--ig-control-height-capture);
+  height: var(--ig-control-height-capture);
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
   border: var(--ig-border-3px) solid var(--ig-color-border-strong);
@@ -173,12 +173,12 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 0;
-  box-shadow: 0 8px 24px var(--ig-color-blue-strong-tint-30);
+  box-shadow: 0 var(--ig-space-3) var(--ig-space-11) var(--ig-color-blue-strong-tint-30);
   position: relative;
 
   &:active {
     transform: scale(0.95);
-    box-shadow: 0 4px 12px var(--ig-color-blue-strong-tint-20);
+    box-shadow: 0 var(--ig-space-1) var(--ig-space-5) var(--ig-color-blue-strong-tint-20);
   }
 
   ${(p) => p.$capturing
@@ -199,7 +199,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
         &:after {
           content: '';
           display: block;
-          width: 46px;
+          width: var(--ig-control-height-xl);
           height: var(--ig-control-height-xl);
           border-radius: 50%;
           border: var(--ig-border-2px) solid rgba(255, 255, 255, 0.5);
@@ -230,9 +230,9 @@ export const GridOverlay = styled.div`
   pointer-events: none;
   z-index: 2;
   background-image:
-    linear-gradient(to right, transparent 49px, var(--ig-color-white-12) 50px, transparent 51px),
-    linear-gradient(to bottom, transparent 49px, var(--ig-color-white-12) 50px, transparent 51px);
-  background-size: 100px 100px;
+    linear-gradient(to right, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px)),
+    linear-gradient(to bottom, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px));
+  background-size: var(--ig-layout-capture-grid) var(--ig-layout-capture-grid);
   background-position: center center;
 `;
 
@@ -298,8 +298,8 @@ export const FocusPeakingOverlay = styled.img`
 
 export const HistogramOverlay = styled.div`
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: var(--ig-space-6);
+  right: var(--ig-space-6);
   z-index: 3;
   padding: var(--ig-space-3);
   border-radius: var(--ig-radius-sm);
@@ -310,8 +310,8 @@ export const HistogramOverlay = styled.div`
 
 export const HistogramImage = styled.img`
   display: block;
-  width: 224px;
-  height: 84px;
+  width: var(--ig-layout-histogram-width);
+  height: var(--ig-layout-histogram-height);
   border-radius: var(--ig-radius-xs);
 `;
 
@@ -322,7 +322,7 @@ export const AbsolutePlaceholder = styled(PlaceholderText)`
 
 export const CapturingBadge = styled.div`
   position: fixed;
-  top: 64px;
+  top: var(--ig-control-height-capture);
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -331,15 +331,15 @@ export const CapturingBadge = styled.div`
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
-  padding: var(--ig-space-2) 16px;
-  border-radius: var(--ig-radius-sm, 6px);
+  padding: var(--ig-space-2) var(--ig-space-7);
+  border-radius: var(--ig-radius-sm);
   pointer-events: none;
   box-shadow: 0 var(--ig-space-1) var(--ig-space-7) rgba(0, 0, 0, 0.4);
 `;
 
 export const CapturePreviewFullscreenBtn = styled.button`
   position: absolute;
-  top: 10px;
+  top: var(--ig-space-4);
   right: var(--ig-control-height-3xl);
   width: var(--ig-control-height-md);
   height: var(--ig-control-height-md);
