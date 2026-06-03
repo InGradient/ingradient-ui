@@ -26,7 +26,7 @@ export const Review: Story = {
       description="Tiny color tile for class lists, palette previews, and inline color indicators. Three sizes (xs/sm/md) and two shapes (circle/square)."
     >
       <StorybookSection title="Sizes" description="xs / sm / md.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="xs">
             <div style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
               {sampleColors.map((c) => (
@@ -52,7 +52,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Shapes" description="circle (default) / square.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="circle (default)">
             <div style={{ display: 'flex', gap: 'var(--ig-space-3)' }}>
               {sampleColors.map((c) => (

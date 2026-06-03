@@ -70,7 +70,7 @@ export const Review: Story = {
       <DialogShell
         title={scenario.title}
         description={scenario.description}
-        width="min(560px, 100%)"
+        width="min(var(--ig-popup-2xl), 100%)"
         onClose={args.onClose}
         children={
           <StorybookStack gap={12}>

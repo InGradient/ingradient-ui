@@ -50,8 +50,8 @@ function FieldBlock({
   children: React.ReactNode
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-      <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--ig-color-text-muted)' }}>{label}</label>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+      <label style={{ fontSize: 13, fontWeight: 'var(--ig-font-weight-semibold)', color: 'var(--ig-color-text-muted)' }}>{label}</label>
       {children}
       {hint ? <span style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{hint}</span> : null}
     </div>
@@ -66,7 +66,7 @@ function SettingsWorkspacePage() {
   return (
     <AppShell style={{ minHeight: 900 }}>
       <TopBar>
-        <div style={{ fontWeight: 700, color: 'var(--ig-color-text-primary)' }}>Ingradient UI Workspace</div>
+        <div style={{ fontWeight: 'var(--ig-font-weight-bold)', color: 'var(--ig-color-text-primary)' }}>Ingradient UI Workspace</div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <Badge $tone="accent">Settings</Badge>
           <Button variant="secondary">Open Docs</Button>
@@ -107,7 +107,7 @@ function SettingsWorkspacePage() {
                 <PanelHint>editable content</PanelHint>
               </PanelHeader>
               <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 18 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 220px', gap: 12 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) var(--ig-popup-xs)', gap: 'var(--ig-space-5)' }}>
                   <SearchField
                     placeholder="Filter fields"
                     value={query}
@@ -128,7 +128,7 @@ function SettingsWorkspacePage() {
                         defaultValue="Quality Review Portal"
                         style={{
                           width: '100%',
-                          padding: '12px 14px',
+                          padding: 'var(--ig-space-5) var(--ig-space-6)',
                           borderRadius: 12,
                           border: '1px solid var(--ig-color-border-subtle)',
                           background: 'var(--ig-color-surface-muted)',
@@ -155,7 +155,7 @@ function SettingsWorkspacePage() {
           inspector={
             <StorybookStack gap={16}>
               <SectionPanel>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)', alignItems: 'center' }}>
                   <strong style={{ color: 'var(--ig-color-text-primary)' }}>Inspector</strong>
                   <Badge>Live</Badge>
                 </div>

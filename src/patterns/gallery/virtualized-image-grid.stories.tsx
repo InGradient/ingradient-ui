@@ -118,7 +118,7 @@ export const Review: Story = {
         </StorybookSection>
 
         <StorybookSection title="Edge cases">
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
             <StorybookCard title="Empty" subtitle="no items">
               <div style={{ height: 240 }}>
                 <VirtualizedImageGrid<Item>

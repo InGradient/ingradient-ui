@@ -24,7 +24,7 @@ export const Review: Story = {
       description="Vertical list of progress steps with status-driven icons (Spinner / Check / X / Circle). Used for diagnostics flows, multi-step setup, and deployment progress."
     >
       <StorybookSection title="Status combinations" description="Each story shows a different point in a long-running flow.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(300px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-class-sidebar), 1fr))">
           <StorybookCard title="All pending" subtitle="flow not started yet">
             <StepIndicator
               items={[
@@ -69,7 +69,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Edge cases" description="Empty list and missing labels.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(300px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-class-sidebar), 1fr))">
           <StorybookCard title="Empty" subtitle="no items">
             <StepIndicator items={[]} />
           </StorybookCard>

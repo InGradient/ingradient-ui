@@ -30,7 +30,7 @@ export const Review: Story = {
         title="Common progress states"
         description="Review the same component at representative values before introducing product-specific wrappers."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           {[
             ['Queued', 12],
             ['Processing', 48],

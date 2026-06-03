@@ -24,7 +24,7 @@ export const Review: Story = {
       description="recharts Tooltip slot용 컨텐츠. 차트 카드 내부에서 <Tooltip content={<ChartTooltipContent />} /> 형태로 주입된다."
     >
       <StorybookSection title="Variants" description="active state와 payload 조합별 표시.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Single series" subtitle="label + 1 row">
             <ChartTooltipContent
               active

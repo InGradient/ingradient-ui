@@ -25,7 +25,7 @@ export const Review: Story = {
       description="Single-metric card with label, large value, and optional hint + meta. Use for dashboard KPIs and summary panels. (StatCard is also exported as MetricCard for legacy use.)"
     >
       <StorybookSection title="Variants">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Number value">
             <StatCard label="Total images" value="12,450" />
           </StorybookCard>
@@ -51,7 +51,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Dashboard layout" description="Multiple cards in a row.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
           <StatCard label="Datasets" value="42" />
           <StatCard label="Images" value="12.4k" hint="this month" />
           <StatCard label="Active users" value="8" meta={<Badge $tone="accent">live</Badge>} />

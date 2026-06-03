@@ -34,9 +34,9 @@ export const Review: Story = {
         title="Identity and metadata review"
         description="Compare neutral metadata, semantic status, and identity markers in one place."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(240px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-catalog-card), 1fr))">
           <StorybookCard title="Avatar" subtitle="identity marker">
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--ig-space-5)', alignItems: 'center', flexWrap: 'wrap' }}>
               <Avatar initials="JK" />
               <Avatar initials="MP" size={44} />
               <Avatar src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%234d88ff'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' fill='white'%3EIG%3C/text%3E%3C/svg%3E" alt="Ingradient" />

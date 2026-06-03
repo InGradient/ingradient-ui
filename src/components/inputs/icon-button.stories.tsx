@@ -25,7 +25,7 @@ export const Review: Story = {
       description="Icon-only button. Use for compact toolbar actions where the icon is self-explanatory. Always pair with aria-label or a Tooltip for screen readers."
     >
       <StorybookSection title="Variants" description="solid, secondary, accent.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="solid">
             <IconButton variant="solid" aria-label="Search">
               <Search size={16} />
@@ -50,7 +50,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Sizes" description="sm / md / lg.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="sm">
             <IconButton variant="secondary" size="sm" aria-label="Settings">
               <Settings size={14} />
@@ -70,7 +70,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Tones" description="Use tone='danger' for destructive actions.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="default tone">
             <IconButton variant="secondary" aria-label="Delete">
               <Trash2 size={16} />
@@ -90,7 +90,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Disabled">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="disabled">
             <IconButton variant="secondary" disabled aria-label="Add">
               <Plus size={16} />

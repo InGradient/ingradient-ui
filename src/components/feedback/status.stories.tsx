@@ -36,7 +36,7 @@ export const Review: Story = {
       description="Pill-shaped status indicator. Nine semantic tones for job/task/process state. Tone-only ($tone or tone prop) — pure visual semantic mapping."
     >
       <StorybookSection title="All tones" description="Each StatusTone with its label.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(160px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-2xs-plus), 1fr))">
           {tones.map(({ tone, label }) => (
             <StorybookCard key={tone} title={tone}>
               <StatusPill $tone={tone}>{label}</StatusPill>

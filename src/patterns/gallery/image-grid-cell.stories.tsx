@@ -48,7 +48,7 @@ export const Review: Story = {
       description="이미지 그리드의 단일 셀. selected ring, hover lift, 그리고 overlay / topRight / footer slot을 통한 콘텐츠 합성을 지원한다."
     >
       <StorybookSection title="Selection state" description="선택 여부에 따른 ring · border 차이.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Unselected" subtitle="기본">
             <InteractiveCell />
           </StorybookCard>
@@ -59,7 +59,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Slots" description="overlay / topRight / footer slot 활용.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="With footer" subtitle="renderCellFooter">
             <div style={{ width: 220 }}>
               <ImageGridCell

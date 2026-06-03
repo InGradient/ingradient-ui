@@ -71,7 +71,7 @@ export const Review: Story = {
           title="Tag navigation review"
           description="Review single selection and active-set emphasis under the same dataset and label length preset."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
             <StorybookCard title="Single selection" subtitle="active item 하나를 강조">
               <TagList items={items} selectedId={selectedId} onItemClick={setSelectedId} />
             </StorybookCard>

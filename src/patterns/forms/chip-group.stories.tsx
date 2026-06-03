@@ -40,7 +40,7 @@ export const Review: Story = {
       description="Compact list of chips with optional color swatch. Used for class labels, tags, and other small categorical badges. maxVisible truncates with '+N more' overflow indicator."
     >
       <StorybookSection title="Variants" description="With/without color swatch.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="With color" subtitle="domain class chips">
             <ChipGroup items={classItems.slice(0, 5)} />
           </StorybookCard>
@@ -51,7 +51,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="maxVisible" description="Truncate when too many items.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="No truncation" subtitle="7 items, all shown">
             <ChipGroup items={classItems} />
           </StorybookCard>

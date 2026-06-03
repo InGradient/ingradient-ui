@@ -124,7 +124,7 @@ function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutCo
       </Inline>
 
       <Stack gap={3} style={{ marginTop: 'var(--ig-space-6)' }}>
-        <h3 style={{ fontSize: 'var(--ig-font-size-md)', fontWeight: 600, color: 'var(--ig-color-text-secondary)', margin: 0 }}>Drafts (localStorage)</h3>
+        <h3 style={{ fontSize: 'var(--ig-font-size-md)', fontWeight: 'var(--ig-font-weight-semibold)', color: 'var(--ig-color-text-secondary)', margin: 0 }}>Drafts (localStorage)</h3>
         <Inline gap={3} align="center">
           <TextField placeholder="Draft name (e.g. 3-col-cards)" value={draftName} onChange={(e) => setDraftName(e.target.value)} />
           <Button variant="accent" size="sm" onClick={handleSaveDraft}>Save as draft</Button>
@@ -136,7 +136,7 @@ function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutCo
             {drafts.map((d) => (
               <Inline key={d.name} gap={3} justify="space-between" align="center">
                 <Stack gap={0}>
-                  <span style={{ fontWeight: 600 }}>{d.name}</span>
+                  <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{d.name}</span>
                   <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
                     {d.args.primitive} · {new Date(d.savedAt).toLocaleString()}
                   </span>

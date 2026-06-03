@@ -32,7 +32,7 @@ export const Overview: Story = {
           title="Utility review"
           description="Review copy, mode switching, chip overflow, filter rows, and resizable layout behavior from one page."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Copy and mode controls" subtitle="compact interaction utilities">
               <StorybookStack gap={14}>
                 <CopyButton value="ingradient-ui-token">Copy token</CopyButton>
@@ -82,7 +82,7 @@ export const Overview: Story = {
                       defaultValue="Quality Review"
                       style={{
                         width: '100%',
-                        padding: '12px 14px',
+                        padding: 'var(--ig-space-5) var(--ig-space-6)',
                         borderRadius: 12,
                         border: '1px solid var(--ig-color-border-subtle)',
                         background: 'var(--ig-color-surface-muted)',

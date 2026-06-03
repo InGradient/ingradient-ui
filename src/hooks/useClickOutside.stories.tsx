@@ -92,7 +92,7 @@ export const Review: Story = {
         title="Basic dropdown"
         description="Click the button to open the popover. Click anywhere outside (including outside the trigger) to close."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="Trigger + popover" subtitle="event='mousedown', enabled when open">
             <div style={{ minHeight: 220 }}>
               <BasicDropdown />

@@ -34,7 +34,7 @@ const slotStyle = {
 
 const HeaderSlot = (
   <div style={{ padding: 'var(--ig-space-5)', borderBottom: '1px solid var(--ig-color-border-subtle)' }}>
-    <div style={{ fontWeight: 700, color: 'var(--ig-color-text-primary)', marginBottom: 'var(--ig-space-2)' }}>
+    <div style={{ fontWeight: 'var(--ig-font-weight-bold)', color: 'var(--ig-color-text-primary)', marginBottom: 'var(--ig-space-2)' }}>
       wafer-line-a-batch-04.jpg
     </div>
     <div style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
@@ -44,7 +44,7 @@ const HeaderSlot = (
 )
 
 const BodySlot = (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
     {['Defect', 'Crack', 'Stain', 'Scratch', 'Dent', 'Rust', 'Edge anomaly', 'Particle'].map((label) => (
       <div key={label} style={slotStyle}>{label}</div>
     ))}
@@ -82,7 +82,7 @@ export const Review: Story = {
       description="dialog 의 sidebar slot 에 들어가는 표준 상세 패널 사이드바. 위(고정) header → 가운데(flex-grow, 스크롤) body → 아래(고정) footerSlots[] 레이아웃."
     >
       <StorybookSection title="Slot composition" description="채워진 슬롯 조합별 사이드바 모습.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="All slots filled" subtitle="header + body + 2 footer slots">
             <div style={{ width: 320, height: 560, border: '1px solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)', overflow: 'hidden' }}>
               <DetailPanelSidebar

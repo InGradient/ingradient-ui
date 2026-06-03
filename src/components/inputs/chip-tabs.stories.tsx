@@ -14,7 +14,7 @@ const siblings: ChipTabsItem[] = [
 const meta: Meta<typeof ChipTabs> = {
   title: 'Components/Inputs/ChipTabs',
   component: ChipTabs,
-  decorators: [(Story) => <div style={{ padding: 16, background: 'rgba(0, 0, 0, 0.85)' }}><Story /></div>],
+  decorators: [(Story) => <div style={{ padding: 16, background: 'var(--ig-color-overlay-darkest)' }}><Story /></div>],
 }
 export default meta
 

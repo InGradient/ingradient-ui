@@ -50,7 +50,7 @@ function NavigationFamilyDemo() {
   const [activeStep, setActiveStep] = React.useState(1)
 
   return (
-    <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+    <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
       <StorybookCard title="Breadcrumbs" subtitle="location context">
         <StorybookStack gap={14}>
           <Breadcrumbs items={breadcrumbItems} />

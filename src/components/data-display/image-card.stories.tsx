@@ -18,12 +18,12 @@ const baseImage = { id: 'img-1', name: '20230808-wafer-001.jpg', thumb_url: samp
 
 const DemoChip = ({ label }: { label: string }) => (
   <span style={{
-    padding: '2px 6px',
+    padding: 'var(--ig-space-2px) var(--ig-space-2)',
     borderRadius: 'var(--ig-radius-pill)',
     background: 'var(--ig-color-surface-raised)',
     color: 'var(--ig-color-text-primary)',
     fontSize: 11,
-    fontWeight: 600,
+    fontWeight: 'var(--ig-font-weight-semibold)',
   }}>{label}</span>
 )
 

@@ -38,11 +38,11 @@ const pageStyle: React.CSSProperties = {
   background: 'var(--ig-color-bg-canvas)',
 }
 
-const contentStyle: React.CSSProperties = { width: 'min(420px, calc(100vw - 32px))' }
+const contentStyle: React.CSSProperties = { width: 'min(var(--ig-popup-2xl-narrow), calc(100vw - var(--ig-space-13)))' }
 const logoWrapStyle: React.CSSProperties = { display: 'flex', justifyContent: 'center' }
 const cardStyle: React.CSSProperties = { padding: 'var(--ig-space-8)', borderRadius: 'var(--ig-radius-xl)' }
 const titleStyle: React.CSSProperties = {
-  margin: '0 0 var(--ig-space-6)', fontSize: 'var(--ig-font-size-2xl)', fontWeight: 600, textAlign: 'center',
+  margin: '0 0 var(--ig-space-6)', fontSize: 'var(--ig-font-size-2xl)', fontWeight: 'var(--ig-font-weight-semibold)', textAlign: 'center',
 }
 const checkboxRowStyle: React.CSSProperties = {
   display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-3)', flexWrap: 'wrap',

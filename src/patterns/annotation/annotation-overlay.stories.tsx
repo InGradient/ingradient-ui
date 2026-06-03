@@ -73,7 +73,7 @@ export const Review: Story = {
       description="Bbox + point overlay drawn over a thumbnail image. SVG-based with object-fit: cover viewBox correction. Use `emphasize` for catalog-style readable outlines, `fillOpacity` for tinted bboxes, `selectedClassId` to filter."
     >
       <StorybookSection title="Variants" description="emphasize / fillOpacity / point support side by side.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Stroke-only (default)" subtitle="edge labeling style — fillOpacity=0, emphasize=false">
             <ThumbFrame label="Stroke">
               <AnnotationOverlay bboxes={sampleBboxes} getColor={getColor} imageWidth={640} imageHeight={360} />
@@ -118,7 +118,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="selectedClassId filter" description="Show only annotations matching the selected class.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="All classes" subtitle="selectedClassId omitted">
             <ThumbFrame label="All">
               <AnnotationOverlay
@@ -163,7 +163,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="object-fit: cover boundary" description="Landscape vs portrait thumbnails — bboxes anchor to the cropped square region, not the full image.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Landscape source (640×360)" subtitle="cropped to square — horizontal slice">
             <ThumbFrame label="Landscape">
               <AnnotationOverlay

@@ -32,7 +32,7 @@ const pageStyle: React.CSSProperties = {
 }
 
 const contentStyle: React.CSSProperties = {
-  width: 'min(420px, calc(100vw - 32px))',
+  width: 'min(var(--ig-popup-2xl-narrow), calc(100vw - var(--ig-space-13)))',
 }
 
 const cardStyle: React.CSSProperties = {
@@ -43,7 +43,7 @@ const cardStyle: React.CSSProperties = {
 const titleStyle: React.CSSProperties = {
   margin: '0 0 var(--ig-space-2)',
   fontSize: 'var(--ig-font-size-2xl)',
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
   textAlign: 'center',
 }
 

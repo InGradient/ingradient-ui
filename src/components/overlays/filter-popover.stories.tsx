@@ -43,7 +43,7 @@ export const Review: Story = {
           title="Static positioning"
           description="No anchor — caller controls positioning via parent container. Section content is free-form (Switch, DropdownSelect, etc)."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
             <StorybookCard title="Two sections" subtitle="Source + Date filters">
               <FilterPopover>
                 <FilterPopoverSection title="Source">
@@ -145,7 +145,7 @@ function AnchoredDemo() {
         }}
         style={{
           alignSelf: 'flex-start',
-          padding: '6px 12px',
+          padding: 'var(--ig-space-2) var(--ig-space-5)',
           fontSize: 13,
           borderRadius: 6,
           border: '1px solid var(--ig-color-border-subtle)',

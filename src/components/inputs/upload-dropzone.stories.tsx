@@ -35,7 +35,7 @@ export const Review: Story = {
           title="Dropzone review"
           description="Use the native file picker from the drop area to verify callback shape and status rendering."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(300px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-class-sidebar), 1fr))">
             <StorybookCard title="Interactive uploader" subtitle="callback state">
               <StorybookStack gap={12}>
                 <UploadDropzone

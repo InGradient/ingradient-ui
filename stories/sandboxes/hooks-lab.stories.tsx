@@ -33,7 +33,7 @@ function SelectionDemo() {
         onClearSelection={clearSelection}
         onSelectAll={() => selectAll()}
         actions={
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 'var(--ig-space-3)' }}>
             <Button variant="secondary" onClick={() => selectAll()}>Select all</Button>
             <Button variant="secondary" onClick={clearSelection}>Clear</Button>
           </div>
@@ -83,7 +83,7 @@ function UndoRedoDemo() {
       >
         {state}
       </div>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 'var(--ig-space-3)', flexWrap: 'wrap' }}>
         <Button variant="secondary" onClick={() => setState('Draft copy v2')}>Commit v2</Button>
         <Button variant="secondary" onClick={() => setState('Final approved copy')}>Commit final</Button>
         <Button variant="secondary" onClick={undo} disabled={!canUndo}>Undo</Button>
@@ -113,7 +113,7 @@ function ClipboardDemo() {
       <div style={{ color: 'var(--ig-color-text-secondary)', fontSize: 14 }}>
         Copy a deterministic string to validate hook state transitions.
       </div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
         <Button variant="accent" onClick={() => void copy('ingradient-ui smoke copy')}>
           Copy token label
         </Button>
@@ -141,7 +141,7 @@ function ZoomPanDemo() {
       >
         zoom: {zoom.toFixed(2)} / pan: {pan.x}, {pan.y}
       </div>
-      <div style={{ display: 'flex', gap: 8 }}>
+      <div style={{ display: 'flex', gap: 'var(--ig-space-3)' }}>
         <Button variant="secondary" onClick={reset}>Reset</Button>
       </div>
       <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
@@ -161,7 +161,7 @@ export const Overview: Story = {
         title="Reusable state hooks"
         description="Keep hook demos focused on state contract and consumer wiring, not on rebuilding a product screen in Storybook."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
           <StorybookCard title="useSelection" subtitle="selection state and batch actions">
             <SelectionDemo />
           </StorybookCard>

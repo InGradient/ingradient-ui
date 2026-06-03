@@ -63,7 +63,7 @@ function ContextMenuReviewDemo() {
   }
 
   return (
-    <StorybookGrid columns="minmax(0, 1.1fr) minmax(280px, 0.9fr)">
+    <StorybookGrid columns="minmax(0, 1.1fr) minmax(var(--ig-popup-sm), 0.9fr)">
       <StorybookCard title="Menu review" subtitle="trigger button anchors menu">
         <StorybookStack gap={12}>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>

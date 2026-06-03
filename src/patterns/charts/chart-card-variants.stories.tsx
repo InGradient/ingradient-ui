@@ -64,7 +64,7 @@ export const Review: Story = {
       description="Configuration variants for bar layout, stacking, per-Cell color, dual-axis line, and pie radius/labels. Reference when wiring consumer charts to ui chart cards."
     >
       <StorybookSection title="BarChartCard" description="layout, stacked, per-Cell color, header extra slot.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(360px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-lg), 1fr))">
           <StorybookCard title="Horizontal bars (default)" subtitle="layout omitted → vertical bars, X axis at bottom">
             <BarChartCard
               title="Pipeline volume"
@@ -157,7 +157,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="PieChartCard" description="innerRadius, outerRadius, paddingAngle, labelRender.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Full pie + slice labels" subtitle="innerRadius=0 + labelRender">
             <PieChartCard
               title="Upload format"

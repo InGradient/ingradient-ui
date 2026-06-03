@@ -43,7 +43,7 @@ export const Review: Story = {
           <Surface elevation="panel" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
             <Stack gap={12}>
               <Label>Panel</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 600 }}>Default shell background</div>
+              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Default shell background</div>
               <div style={{ color: 'var(--ig-color-text-secondary)' }}>
                 Use for sidebars, settings sections, and neutral content containers.
               </div>
@@ -53,7 +53,7 @@ export const Review: Story = {
           <Surface elevation="raised" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
             <Stack gap={12}>
               <Label>Raised</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 600 }}>Higher emphasis surface</div>
+              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Higher emphasis surface</div>
               <div style={{ color: 'var(--ig-color-text-secondary)' }}>
                 Good for cards, hover states, and elevated control groupings.
               </div>
@@ -63,7 +63,7 @@ export const Review: Story = {
           <Surface elevation="card" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
             <Stack gap={12}>
               <Label>Card</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 600 }}>Dense card treatment</div>
+              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Dense card treatment</div>
               <div style={{ color: 'var(--ig-color-text-secondary)' }}>
                 Tight visual bundle with border and surface treatment already applied.
               </div>
@@ -78,7 +78,7 @@ export const Review: Story = {
               <Icon size={18}>
                 <Camera />
               </Icon>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 600 }}>Icon wrapper keeps SVG sizing consistent.</div>
+              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Icon wrapper keeps SVG sizing consistent.</div>
             </Inline>
             <Divider />
             <ScrollArea

@@ -37,7 +37,7 @@ export const Review: Story = {
       description="필터 panel 용 한 줄 칩 — checkbox + (optional) color swatch + label. checked 일 때 accent-soft 배경으로 active 표시."
     >
       <StorybookSection title="States" description="checked / unchecked + color swatch 유무.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Unchecked, no color">
             <InteractiveChip label="All items" />
           </StorybookCard>

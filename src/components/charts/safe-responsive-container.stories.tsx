@@ -34,7 +34,7 @@ export const Review: Story = {
       description="recharts ResponsiveContainer의 안정 대체. ResizeObserver + window resize로 자식에게 width/height을 주입한다. grid + min-height:0 등에서 size 0 보고 버그를 회피한다."
     >
       <StorybookSection title="Sizing" description="다양한 컨테이너 크기에서 차트가 자동으로 맞춰진다.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="240×180" subtitle="작은 컨테이너">
             <div style={{ width: 240, height: 180 }}>
               <SafeResponsiveContainer>

@@ -44,7 +44,7 @@ export const Review: Story = {
         description="Checkbox list with optional color swatch and Select All / Deselect All header. Used for class selection in Add Dataset flow and similar multi-select use cases."
       >
         <StorybookSection title="Variants" description="With color swatch, plain labels, and Select All hidden.">
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="With color swatch" subtitle="domain class selection">
               <CheckboxGroup
                 items={colorItems}

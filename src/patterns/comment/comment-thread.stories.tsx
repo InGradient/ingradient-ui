@@ -49,9 +49,9 @@ export const Review: Story = {
           title="Thread and composer"
           description="Review the common states together instead of separating thread and input into unrelated examples."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Active thread" subtitle="comments + composer">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-7)' }}>
                 <CommentThread>
                   {comments.map((comment) => (
                     <CommentItem
@@ -82,7 +82,7 @@ export const Review: Story = {
               </div>
             </StorybookCard>
             <StorybookCard title="Empty thread" subtitle="no comments yet">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-7)' }}>
                 <CommentThread>{null}</CommentThread>
                 <CommentInput
                   value=""

@@ -38,7 +38,7 @@ export const Review: Story = {
           title="Boolean controls review"
           description="Compare checkbox, radio, and switch semantics together."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
             <StorybookCard title="Checkbox" subtitle="selection and partial selection">
               <StorybookStack gap={12}>
                 <Checkbox

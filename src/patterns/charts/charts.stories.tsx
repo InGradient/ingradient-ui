@@ -56,7 +56,7 @@ export const Review: Story = {
           title="Operational dashboard review"
           description="Compare line, bar, and pie cards under the same shell before wiring them into a page-level dashboard."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
             <LineChartCard
               title="Weekly review throughput"
               description="Reviewed vs approved items across the working week."
@@ -100,7 +100,7 @@ export const States: Story = {
           title="State variants"
           description="Loading skeletons, empty data, and compact summaries side by side for visual review."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Loading line chart" subtitle="skeleton-like waiting state">
             <LineChartCard
               title="Weekly review throughput"

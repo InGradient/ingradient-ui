@@ -53,7 +53,7 @@ export const Review: Story = {
         description="Single-select dropdown with controlled value. Click trigger → menu opens. Click outside or select to close."
       >
         <StorybookSection title="Variants" description="Common form use cases.">
-          <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
             <StorybookCard title="Task type" subtitle="4 options">
               <DropdownSelect value={task} options={taskOptions} onChange={setTask} />
             </StorybookCard>

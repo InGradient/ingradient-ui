@@ -26,7 +26,7 @@ const SAMPLE = [
 function Demo() {
   const [pendingId, setPendingId] = useState<string | null>(null)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 360 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)', width: 360 }}>
       {SAMPLE.map((u) => (
         <OptionRow
           key={u.id}
@@ -52,7 +52,7 @@ export const Review: Story = {
       description="Full-width selectable button used in user/member search results. Primary line + optional secondary muted line + trailing action label."
     >
       <StorybookSection title="States" description="Idle / hover / disabled — disabled is shown when an async action is pending.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="Idle" subtitle="name + email + Add">
             <OptionRow primary="Joon Ho Lee" secondary="joon@example.com" actionLabel="Add" />
           </StorybookCard>

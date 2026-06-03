@@ -51,7 +51,7 @@ function Placeholder({ label, color }: { label: string; color: string }) {
       flex: 1, minHeight: 280,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       background: color, color: 'var(--ig-color-text-primary)',
-      fontSize: 14, fontWeight: 600, letterSpacing: '0.04em',
+      fontSize: 14, fontWeight: 'var(--ig-font-weight-semibold)', letterSpacing: '0.04em',
     }}>
       {label}
     </div>

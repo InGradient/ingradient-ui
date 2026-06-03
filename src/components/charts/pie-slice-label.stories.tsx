@@ -65,7 +65,7 @@ export const Review: Story = {
       description="recharts <Pie label={renderPieSliceLabel}> 호환. 슬라이스 중앙에 name + value 2줄로 라벨링. percent < 6% 슬라이스는 라벨을 생략한다."
     >
       <StorybookSection title="Variants" description="비율 분포에 따른 라벨 가시성 변화.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Balanced" subtitle="모든 슬라이스 ≥ 6% → 전부 라벨링">
             {renderPie(balanced)}
           </StorybookCard>

@@ -72,7 +72,7 @@ export const Review: Story = {
         description="ImageGrid is the reusable visual browsing shell for gallery-like content. Domain-specific UI (annotation, hover preview, sync state) is injected via render slots."
       >
         <StorybookSection title="Default" description="Basic grid with footer slot only.">
-          <StorybookGrid columns="repeat(auto-fit, minmax(360px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-lg), 1fr))">
             <StorybookCard title="Footer slot" subtitle="title rendered via renderCellFooter">
               <ImageGrid<ImageItem>
                 items={items}

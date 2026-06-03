@@ -72,7 +72,7 @@ export const Review: Story = {
           title="Navigation review"
           description="Compare the same tab family in a default and compact radius context."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
             <StorybookCard title="Default radius" subtitle="settings shell style">
               <VerticalTabs items={baseItems} value={primaryValue} onChange={setPrimaryValue} />
             </StorybookCard>

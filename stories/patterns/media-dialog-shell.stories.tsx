@@ -126,13 +126,13 @@ export const Review: Story = {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      background: 'rgba(0, 0, 0, 0.55)',
+                      background: 'var(--ig-color-modal-backdrop)',
                       zIndex: 60,
                     }}
                   >
-                    <div style={{ background: 'var(--ig-color-surface-raised)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    <div style={{ background: 'var(--ig-color-surface-raised)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-5)' }}>
                       <strong style={{ fontSize: 14 }}>Delete image?</strong>
-                      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+                      <div style={{ display: 'flex', gap: 'var(--ig-space-3)', justifyContent: 'flex-end' }}>
                         <Button variant="secondary" type="button">Cancel</Button>
                         <Button tone="danger" type="button">Delete</Button>
                       </div>

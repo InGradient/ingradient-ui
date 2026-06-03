@@ -22,7 +22,7 @@ function ZoomInvariantCard({ zoom, label }: { zoom: number; label: string }) {
   const imageAreaRef = React.useRef<HTMLDivElement | null>(null)
   const wrapRef = React.useRef<HTMLDivElement | null>(null)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
       <div style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{label}</div>
       <div style={{ position: 'relative', height: 240, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--ig-color-border-subtle)' }}>
         <LabelingCanvas
@@ -182,8 +182,8 @@ function InteractiveDemo() {
   })()
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-5)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--ig-color-text-soft)', fontSize: 12 }}>Class:</span>
         {sampleClasses.map((c) => (
           <ClassChip key={c.id} klass={c} active={c.id === classId} onClick={() => handleClassClick(c.id)} />

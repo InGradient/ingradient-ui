@@ -42,7 +42,7 @@ export const Review: Story = {
       description="필터 panel 내부의 한 섹션 — uppercase title + 옵션 actions + content. 같은 panel 안에 여러 섹션을 쌓을 때 사용한다."
     >
       <StorybookSection title="Single" description="가장 단순한 구성.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Title + content">
             <div style={{ width: 260 }}>
               <FilterSection title="Status">

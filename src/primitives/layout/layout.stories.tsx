@@ -21,7 +21,7 @@ const Page = styled.div`
 `
 
 const DemoBlock = styled.div`
-  min-height: 56px;
+  min-height: var(--ig-control-height-2xl-wide);
   border-radius: var(--ig-radius-md);
   border: 1px solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-raised);

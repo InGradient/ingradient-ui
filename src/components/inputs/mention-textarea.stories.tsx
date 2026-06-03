@@ -49,7 +49,7 @@ export const Review: Story = {
           title="Composer review"
           description="Review candidate discovery, insertion behavior, and submission payload in one place."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
             <StorybookCard title="Interactive composer" subtitle="@ mention flow">
               <StorybookStack gap={12}>
                 <MentionTextarea

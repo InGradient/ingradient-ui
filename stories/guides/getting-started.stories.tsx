@@ -20,7 +20,7 @@ export const Overview: Story = {
       description="This Storybook is the primary interactive catalog for @ingradient/ui. Use it to review component contracts, compare states, inspect page compositions, and validate live examples that used to live in the design showcase app."
     >
       <StorybookSection title="What You Can Do Here">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <div>Browse public components and patterns with autodocs.</div>
           <div>Compare review states like loading, empty, error, and permission variants.</div>
           <div>Inspect page stories with global role and data scale presets.</div>

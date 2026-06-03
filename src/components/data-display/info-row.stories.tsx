@@ -24,7 +24,7 @@ export const Review: Story = {
       description="2-column key-value readout. Used for image metadata, NIC diagnostics, and similar info displays. Domain content (badges, status) is composed inside the value slot."
     >
       <StorybookSection title="Variants" description="Single-row examples covering text, badge, long text, and multi-line values.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <StorybookCard title="Plain text" subtitle="single label + single value">
             <InfoRow>
               <InfoRowLabel>File</InfoRowLabel>

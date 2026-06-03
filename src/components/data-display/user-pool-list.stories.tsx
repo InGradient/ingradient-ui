@@ -54,7 +54,7 @@ export const Review: Story = {
       description="collapsible header + count badge + 사용자 row 리스트. 비활성 row 는 opacity 로 dim 된다."
     >
       <StorybookSection title="States" description="open / closed × selection 조합.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Collapsed (default)" subtitle="header 만 표시">
             <InteractiveList />
           </StorybookCard>

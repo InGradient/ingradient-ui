@@ -23,7 +23,7 @@ export const Review: Story = {
       description="Collapsed sidebar 상태에서 사이드바를 다시 펼치는 트리거 버튼. menu icon + transparent 배경, hover시 surface-interactive로 강조."
     >
       <StorybookSection title="Variants" description="기본과 custom aria-label.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
           <StorybookCard title="Default" subtitle='aria-label="Expand sidebar"'>
             <ExpandSidebarBtn onClick={() => undefined} />
           </StorybookCard>

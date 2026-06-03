@@ -84,7 +84,7 @@ export const Default: Story = {
               <PanelHint>{visibleRows.length} items visible</PanelHint>
             </PanelHeader>
             <Toolbar>
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 220px', gap: 12, width: '100%' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) var(--ig-popup-xs)', gap: 'var(--ig-space-5)', width: '100%' }}>
                 <SearchField
                   placeholder="Search workspace"
                   value={query}

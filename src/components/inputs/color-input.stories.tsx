@@ -24,7 +24,7 @@ export const Controlled: Story = {
   render: () => {
     const [value, setValue] = useState('#22c55e')
     return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
         <ColorInput value={value} onChange={(e) => setValue(e.target.value)} />
         <span style={{ fontFamily: 'monospace', color: 'var(--ig-color-text-muted)' }}>{value}</span>
       </div>

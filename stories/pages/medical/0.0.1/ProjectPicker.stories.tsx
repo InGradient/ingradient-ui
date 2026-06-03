@@ -32,7 +32,7 @@ const pageStyle: React.CSSProperties = {
 
 const titleStyle: React.CSSProperties = {
   fontSize: 'var(--ig-font-size-2xl)',
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
   margin: 0,
 }
 
@@ -51,7 +51,7 @@ const caseCardBodyStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   fontSize: 'var(--ig-font-size-md)',
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
   fontFamily: 'var(--ig-font-mono)',
   color: 'var(--ig-color-text-primary)',
 }

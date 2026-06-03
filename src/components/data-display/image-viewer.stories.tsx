@@ -86,10 +86,10 @@ function ViewerReviewDemo({
   })
 
   return (
-    <StorybookGrid columns="minmax(0, 2fr) minmax(280px, 1fr)">
+    <StorybookGrid columns="minmax(0, 2fr) minmax(var(--ig-popup-sm), 1fr)">
       <StorybookCard title="Viewer + overlay" subtitle="draw, select, inspect">
         <StorybookStack gap={12}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)', flexWrap: 'wrap', alignItems: 'center' }}>
             <ModeSwitcher
               options={[
                 { value: 'cursor', label: 'Select' },
@@ -226,7 +226,7 @@ export const RealImages: Story = {
       description="ImageViewer with real captured images. Each panel is its own zoom/pan context; drag the viewport or wheel-zoom to verify the gesture surface."
     >
       <StorybookSection title="Zoom / pan only">
-        <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
           <AssetViewer src={asset20230808} alt="Captured sample 20230808" label="20230808 — base scene" />
           <AssetViewer src={asset20230816} alt="Captured sample 20230816" label="20230816 — variant scene" />
           <AssetViewer src={asset20230823} alt="Captured sample 20230823" label="20230823 — variant scene" />

@@ -42,10 +42,10 @@ export const Menu: Story = {
     left: 60,
     style: { padding: 'var(--ig-space-2)', minWidth: 220 },
     children: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <div style={{ padding: '6px 12px' }}>Menu item 1</div>
-        <div style={{ padding: '6px 12px' }}>Menu item 2</div>
-        <div style={{ padding: '6px 12px' }}>Menu item 3</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-1)' }}>
+        <div style={{ padding: 'var(--ig-space-2) var(--ig-space-5)' }}>Menu item 1</div>
+        <div style={{ padding: 'var(--ig-space-2) var(--ig-space-5)' }}>Menu item 2</div>
+        <div style={{ padding: 'var(--ig-space-2) var(--ig-space-5)' }}>Menu item 3</div>
       </div>
     ),
   },

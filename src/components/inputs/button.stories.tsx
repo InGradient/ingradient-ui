@@ -103,7 +103,7 @@ export const Review: ButtonStory = {
         title="Intent matrix"
         description="Compare primary, supporting, and critical actions before discussing low-level variant names."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
           <StorybookCard title="Action priority" subtitle="semantic intent first">
             <StorybookStack gap={12}>
               <Button {...resolveButtonProps({ ...args, intent: 'primary', contentLength: 'short' })} />

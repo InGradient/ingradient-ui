@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>
 
 const TRIGGER_STYLE = {
   alignSelf: 'flex-start' as const,
-  padding: '8px 14px',
+  padding: 'var(--ig-space-3) var(--ig-space-6)',
   fontSize: 13,
   borderRadius: 6,
   border: '1px solid var(--ig-color-border-subtle)',
@@ -26,7 +26,7 @@ const TRIGGER_STYLE = {
 function ButtonTriggered({ items, label = 'Open menu' }: { items: { key: string; label: string; disabled?: boolean; onClick?: () => void }[]; label?: string }) {
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-5)' }}>
       <button
         type="button"
         style={TRIGGER_STYLE}

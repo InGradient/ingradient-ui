@@ -29,6 +29,6 @@ export const AsDivRow: Story = {
   args: {
     asLabel: false,
     label: 'Interface language',
-    control: <div style={{ padding: '4px 8px', background: 'var(--ig-color-surface-raised)', borderRadius: 6, fontSize: 13 }}>English ▾</div>,
+    control: <div style={{ padding: 'var(--ig-space-1) var(--ig-space-3)', background: 'var(--ig-color-surface-raised)', borderRadius: 6, fontSize: 13 }}>English ▾</div>,
   },
 }

@@ -28,7 +28,7 @@ export const Playground: Story = {
 
 export const Review: Story = {
   render: () => (
-    <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+    <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
       <StorybookCard title="Empty collection" subtitle="처음 진입했을 때">
         <EmptyState
           title="No workspaces yet"

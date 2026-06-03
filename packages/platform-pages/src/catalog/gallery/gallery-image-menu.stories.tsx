@@ -48,7 +48,7 @@ export const Review: Story = {
       description="이미지 셀의 컨텍스트 메뉴. ContextMenuWithSubmenus 를 기반으로 Open in labeling / Copy to / Move to / Cut / Paste / Archive / Delete 같은 표준 액션을 조립한다."
     >
       <StorybookSection title="Action presets" description="props 조합에 따른 메뉴 구성 차이.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Full menu" subtitle="모든 액션 활성화">
             <MenuTrigger
               label="Full"

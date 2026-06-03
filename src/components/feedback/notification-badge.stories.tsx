@@ -31,7 +31,7 @@ export const Review: Story = {
         title="Compact trigger review"
         description="Review accent and danger usage on icon-sized controls."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Danger tone" subtitle="urgent count">
             <NotificationBadge value="9" tone="danger">
               <IconButton variant="secondary" aria-label="Notifications">

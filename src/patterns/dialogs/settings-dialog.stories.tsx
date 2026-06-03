@@ -43,7 +43,7 @@ export const Review: Story = {
             title="Workspace settings"
             onClose={() => undefined}
             sidebar={
-              <div style={{ padding: '0 12px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ padding: '0 12px', display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-5)' }}>
                 <VerticalTabs
                   items={[
                     { value: 'general', label: 'General' },
@@ -59,7 +59,7 @@ export const Review: Story = {
             }
           >
             <StorybookStack gap={16}>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontSize: 18, fontWeight: 700 }}>
+              <div style={{ color: 'var(--ig-color-text-primary)', fontSize: 18, fontWeight: 'var(--ig-font-weight-bold)' }}>
                 {tab === 'general' && 'General settings'}
                 {tab === 'members' && 'Member permissions'}
                 {tab === 'notifications' && 'Notification rules'}
@@ -73,7 +73,7 @@ export const Review: Story = {
                 defaultValue="Quality Review Workspace"
                 style={{
                   width: '100%',
-                  padding: '12px 14px',
+                  padding: 'var(--ig-space-5) var(--ig-space-6)',
                   borderRadius: 12,
                   border: '1px solid var(--ig-color-border-subtle)',
                   background: 'var(--ig-color-surface-panel)',

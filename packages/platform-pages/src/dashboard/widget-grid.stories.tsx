@@ -24,7 +24,7 @@ function placeholder(key: WidgetKey, color: string) {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'var(--ig-color-text-primary)',
-      fontWeight: 600,
+      fontWeight: 'var(--ig-font-weight-semibold)',
     }}>
       {key}
     </div>

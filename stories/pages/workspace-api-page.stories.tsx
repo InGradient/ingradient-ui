@@ -120,7 +120,7 @@ function ConnectedWorkspacePage({ endpoint }: { endpoint: string }) {
             </PanelHint>
           </PanelHeader>
           <Toolbar>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 220px', gap: 12, width: '100%' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) var(--ig-popup-xs)', gap: 'var(--ig-space-5)', width: '100%' }}>
               <SearchField
                 placeholder="Search workspace"
                 value={query}
@@ -143,7 +143,7 @@ function ConnectedWorkspacePage({ endpoint }: { endpoint: string }) {
           </Toolbar>
           <div style={{ padding: 20 }}>
             {state.status === 'loading' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minHeight: 180 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)', minHeight: 180 }}>
                 <Spinner aria-label="Loading workspaces" />
                 <span style={{ color: 'var(--ig-color-text-muted)' }}>Loading workspaces…</span>
               </div>

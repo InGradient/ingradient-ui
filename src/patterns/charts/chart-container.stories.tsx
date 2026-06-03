@@ -124,7 +124,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="States" description="Loading and empty.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(360px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-lg), 1fr))">
           <StorybookCard title="Loading" subtitle="loading=true → skeleton">
             <ChartContainer title="Capture volume" description="Loading recent data" loading>
               <SampleLineChart height={260} />
