@@ -89,7 +89,7 @@ export const Select = styled.select`
   font-size: var(--ig-font-size-sm);
   cursor: pointer;
   &:disabled {
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
   }
   option {
@@ -150,10 +150,10 @@ export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $dange
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   &:hover {
-    opacity: 0.9;
+    opacity: var(--ig-opacity-near);
   }
   &:disabled {
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
   }
 `;

@@ -28,7 +28,7 @@ function MsTooltip({ active, label, payload }: { active?: boolean; label?: strin
     <div style={{
       background: 'var(--ig-color-surface-raised)',
       border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-      borderRadius: 6,
+      borderRadius: 'var(--ig-radius-sm)',
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
       fontSize: iconSizeNumbers.xs,

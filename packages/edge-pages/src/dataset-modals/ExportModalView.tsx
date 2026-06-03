@@ -12,7 +12,7 @@ const DATASET_NAME_STYLE: CSSProperties = {
   gap: 'var(--ig-space-3)',
 }
 
-const IMAGE_COUNT_STYLE: CSSProperties = { opacity: 0.6 }
+const IMAGE_COUNT_STYLE: CSSProperties = { opacity: 'var(--ig-opacity-muted)' }
 
 const LOCAL_COUNT_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-xs)',

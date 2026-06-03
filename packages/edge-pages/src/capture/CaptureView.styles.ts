@@ -212,7 +212,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   }
 
   &:disabled:not([data-capturing]) {
-    opacity: 0.45;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
     box-shadow: none;
   }

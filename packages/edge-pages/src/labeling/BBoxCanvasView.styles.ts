@@ -45,8 +45,8 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
   border: var(--ig-border-1px) solid transparent;
   cursor: pointer;
   transition: opacity 0.15s;
-  &:hover { opacity: 0.8; }
-  &:disabled { opacity: 0.35; cursor: not-allowed; }
+  &:hover { opacity: var(--ig-opacity-emphatic); }
+  &:disabled { opacity: var(--ig-opacity-ghost); cursor: not-allowed; }
   ${(p) =>
     p.$variant === 'primary'
       ? `background: var(--ig-color-accent); color: var(--ig-color-text-primary);`

@@ -68,7 +68,7 @@ export const Dropzone = styled.button<{ $active?: boolean }>`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: var(--ig-opacity-muted);
   }
 `
 
@@ -111,7 +111,7 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: var(--ig-opacity-muted);
   }
 `
 

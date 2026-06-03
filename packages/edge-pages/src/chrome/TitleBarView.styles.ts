@@ -25,7 +25,7 @@ export const LogoImg = styled.img`
   width: var(--ig-icon-lg);
   height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-2xs);
-  opacity: 0.9;
+  opacity: var(--ig-opacity-near);
 `
 
 export const LogoText = styled.span`
@@ -33,7 +33,7 @@ export const LogoText = styled.span`
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   letter-spacing: 0.01em;
-  opacity: 0.85;
+  opacity: var(--ig-opacity-loud);
 `
 
 export const DragRegion = styled.div`

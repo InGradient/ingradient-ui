@@ -163,7 +163,7 @@ export const DetailImageClickable = styled.img`
   background: var(--ig-color-bg-canvas);
   cursor: zoom-in;
   transition: opacity 0.16s ease;
-  &:hover { opacity: 0.88; }
+  &:hover { opacity: var(--ig-opacity-prominent); }
 `;
 
 export { ModalBackdrop as ImageModalOverlay };

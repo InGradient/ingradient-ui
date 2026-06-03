@@ -152,10 +152,10 @@ export const SubmitBtn = styled.button`
   color: var(--ig-color-text-primary);
   transition: opacity 0.15s;
   &:hover {
-    opacity: 0.85;
+    opacity: var(--ig-opacity-loud);
   }
   &:disabled {
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
   }
 `

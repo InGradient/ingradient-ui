@@ -109,10 +109,10 @@ export const Btn = styled.button<{ $variant?: 'primary' | 'secondary' | 'ghost' 
   font-weight: var(--ig-font-weight-semibold);
   transition: opacity 0.15s;
   &:hover {
-    opacity: 0.85;
+    opacity: var(--ig-opacity-loud);
   }
   &:disabled {
-    opacity: 0.4;
+    opacity: var(--ig-opacity-faded);
     cursor: not-allowed;
   }
   ${(p) =>

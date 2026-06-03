@@ -91,7 +91,7 @@ export const SetupAccordionSummaryRow = styled.div`
 
   svg {
     transition: transform 0.2s ease;
-    opacity: 0.6;
+    opacity: var(--ig-opacity-muted);
   }
 
   details[open] & svg {

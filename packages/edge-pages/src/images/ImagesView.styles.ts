@@ -45,7 +45,7 @@ export const GroupDeleteBtn = styled.button`
   z-index: 5;
   flex-shrink: 0;
   &:disabled {
-    opacity: 0.7;
+    opacity: var(--ig-opacity-subtle);
     background: var(--ig-color-slate-tint-86);
     cursor: not-allowed;
   }
@@ -154,7 +154,7 @@ export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
   justify-content: center;
   transition: background 0.14s ease;
   &:hover { background: var(--ig-color-surface-interactive); }
-  &:disabled { opacity: 0.45; cursor: default; }
+  &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
 `;
 
 export const ModalCloseBtn = styled.button`

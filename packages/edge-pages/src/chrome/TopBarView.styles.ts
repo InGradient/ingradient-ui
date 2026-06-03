@@ -111,7 +111,7 @@ export const BreadcrumbProject = styled.span`
 export const BreadcrumbSep = styled.span`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
-  opacity: 0.4;
+  opacity: var(--ig-opacity-faded);
 `
 
 export const BreadcrumbDataset = styled.span`

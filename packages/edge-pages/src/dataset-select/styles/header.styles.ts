@@ -89,7 +89,7 @@ export const RefreshBtn = styled.button<{ $spinning?: boolean }>`
     background: var(--ig-color-white-06);
     border-color: var(--ig-color-white-12);
   }
-  &:disabled { opacity: 0.4; cursor: not-allowed; }
+  &:disabled { opacity: var(--ig-opacity-faded); cursor: not-allowed; }
 `
 
 export const IconBtn = styled.button`
