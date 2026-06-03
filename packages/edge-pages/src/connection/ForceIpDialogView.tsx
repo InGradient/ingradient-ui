@@ -25,13 +25,13 @@ export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
           {cameraId} · current {currentIp ?? '—'}
         </div>
         <div>
-          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 4 }}>
+          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
             {labels.forceIpStaticIp}
           </label>
           <TextField value={newIp} onChange={(e) => onIpChange(e.target.value)} placeholder="192.168.1.10" />
         </div>
         <div>
-          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 4 }}>
+          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
             {labels.forceIpSubnet}
           </label>
           <TextField value={newSubnet} onChange={(e) => onSubnetChange(e.target.value)} placeholder="255.255.255.0" />

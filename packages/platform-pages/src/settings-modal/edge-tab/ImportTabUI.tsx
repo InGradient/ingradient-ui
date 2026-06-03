@@ -22,13 +22,13 @@ const PROGRESS_WRAP_STYLE: React.CSSProperties = {
 }
 
 const PROGRESS_LABEL_STYLE: React.CSSProperties = {
-  marginTop: 6,
+  marginTop: 'var(--ig-space-2)',
   fontSize: iconSizeNumbers.xs,
   color: 'var(--ig-color-text-muted)',
   fontVariantNumeric: 'tabular-nums',
 }
 
-const DROPZONE_WRAP_STYLE: React.CSSProperties = { marginTop: 16 }
+const DROPZONE_WRAP_STYLE: React.CSSProperties = { marginTop: 'var(--ig-space-7)' }
 
 export interface ImportTabUIProps {
   /** 현재 import job 상태. null 이면 dropzone 만 표시. */
@@ -71,7 +71,7 @@ export function ImportTabUI({ job, busy, pct, label, cancelling = false, onFiles
                   <ProgressBar value={pct} />
                 </div>
                 <div style={PROGRESS_LABEL_STYLE}>{pct}%</div>
-                <div style={{ marginTop: 12 }}>
+                <div style={{ marginTop: 'var(--ig-space-5)' }}>
                   <Button
                     variant="secondary"
                     onClick={(e) => {

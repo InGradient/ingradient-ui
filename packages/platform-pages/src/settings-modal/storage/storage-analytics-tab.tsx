@@ -10,7 +10,7 @@ const ERROR_WRAP_STYLE = {
   borderRadius: 'var(--ig-radius-xxs)',
 }
 const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
-const SUB_TITLE_STYLE = { marginBottom: 8 }
+const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
 export interface StorageAnalyticsTabProps {
   title?: string

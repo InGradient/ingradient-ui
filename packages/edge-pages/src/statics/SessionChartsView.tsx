@@ -33,7 +33,7 @@ function MsTooltip({ active, label, payload }: { active?: boolean; label?: strin
       color: 'var(--ig-color-text-primary)',
       fontSize: iconSizeNumbers.xs,
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 4 }}>{label}</div>
+      <div style={{ fontWeight: 700, marginBottom: 'var(--ig-space-1)' }}>{label}</div>
       <div>{formatMs(value)}</div>
     </div>
   )
@@ -68,8 +68,8 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
       />
       <Panel>
         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
-        <DurationLabel style={{ marginBottom: 10 }}>{labels.captureWorkTime}</DurationLabel>
-        <DurationGrid style={{ marginBottom: 14 }}>
+        <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.captureWorkTime}</DurationLabel>
+        <DurationGrid style={{ marginBottom: 'var(--ig-space-6)' }}>
           {(['average', 'median', 'p95'] as const).map((k) => (
             <DurationCard key={k}>
               <DurationLabel>{labels[k]}</DurationLabel>
@@ -77,7 +77,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
             </DurationCard>
           ))}
         </DurationGrid>
-        <DurationLabel style={{ marginBottom: 10 }}>{labels.labelingTime}</DurationLabel>
+        <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.labelingTime}</DurationLabel>
         <DurationGrid>
           {(['average', 'median', 'p95'] as const).map((k) => (
             <DurationCard key={k}>

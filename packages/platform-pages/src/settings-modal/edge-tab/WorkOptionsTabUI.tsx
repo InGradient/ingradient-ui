@@ -107,11 +107,11 @@ export function WorkOptionsTabUI({
         />
       )}
 
-      <div style={{ marginTop: 16 }}>
+      <div style={{ marginTop: 'var(--ig-space-7)' }}>
         <Button variant="accent" type="button" onClick={onSave} disabled={savePending}>
           {savePending ? 'Saving…' : 'Save Work Options'}
         </Button>
-        {saveError && <ErrorHint style={{ marginTop: 8 }}>{saveError}</ErrorHint>}
+        {saveError && <ErrorHint style={{ marginTop: 'var(--ig-space-3)' }}>{saveError}</ErrorHint>}
       </div>
     </>
   )

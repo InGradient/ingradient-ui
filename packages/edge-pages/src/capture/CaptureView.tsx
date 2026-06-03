@@ -82,7 +82,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
                   <>
                     <PlaceholderText>{snapshotError}</PlaceholderText>
                     {onReconnect && (
-                      <button type="button" onClick={onReconnect} style={{ marginTop: 8 }}>
+                      <button type="button" onClick={onReconnect} style={{ marginTop: 'var(--ig-space-3)' }}>
                         {labels.reconnectStream}
                       </button>
                     )}

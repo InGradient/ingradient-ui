@@ -29,12 +29,12 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
       fontSize: iconSizeNumbers.xs,
       boxShadow: '0 var(--ig-space-3) var(--ig-space-11) rgba(0,0,0,0.35)',
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
+      <div style={{ fontWeight: 700, marginBottom: 'var(--ig-space-2)' }}>{label}</div>
       {visible.map((item) => (
         <div key={String(item.dataKey ?? item.name)} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', lineHeight: 1.6 }}>
           <span style={{ width: 8, height: 'var(--ig-space-3)', borderRadius: 999, background: item.color ?? CHART_LEGEND_FALLBACK }} />
           <span>{item.name}</span>
-          <span style={{ marginLeft: 8, fontWeight: 700 }}>{Number(item.value)}</span>
+          <span style={{ marginLeft: 'var(--ig-space-3)', fontWeight: 700 }}>{Number(item.value)}</span>
         </div>
       ))}
     </div>
@@ -52,7 +52,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
       color: 'var(--ig-color-text-primary)',
       fontSize: iconSizeNumbers.xs,
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
+      <div style={{ fontWeight: 700, marginBottom: 'var(--ig-space-2)' }}>{label}</div>
       {payload.map((item) => {
         const display = item.dataKey === 'avg_w' ? 'Width' : 'Height'
         return (

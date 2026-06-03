@@ -1,7 +1,7 @@
 import { InvitationsTab, OrgMembersTab } from '../../organization'
 import type { InvitationsTabProps, OrgMembersTabProps } from '../../organization'
 
-const INVITATIONS_WRAPPER_STYLE: React.CSSProperties = { marginTop: 24 }
+const INVITATIONS_WRAPPER_STYLE: React.CSSProperties = { marginTop: 'var(--ig-space-11)' }
 
 interface Props {
   members: OrgMembersTabProps

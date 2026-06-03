@@ -32,7 +32,7 @@ const Table = styled.table`
 
 const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
-const CHART_STYLE = { marginTop: 12 }
+const CHART_STYLE = { marginTop: 'var(--ig-space-5)' }
 const EMPTY_STYLE = { margin: 0 }
 
 const CLASS_COLORS = ['var(--ig-color-accent)', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055', '#74b9ff', '#a29bfe', '#55efc4']

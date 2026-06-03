@@ -97,7 +97,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
 
       {nicCandidates && nicCandidates.length > 0 && (
         <>
-          <SubTitle style={{ marginTop: 16 }}>{labels.nicCandidates} ({nicCandidates.length})</SubTitle>
+          <SubTitle style={{ marginTop: 'var(--ig-space-7)' }}>{labels.nicCandidates} ({nicCandidates.length})</SubTitle>
           <DeviceList>
             {nicCandidates.map((nic) => {
               const isSelected = selectedNic?.name === nic.name
