@@ -132,7 +132,7 @@ export function NumberField({
         onKeyDown={handleKeyDown}
       />
       {!disabled && (
-        <InputAdornment side="right" inset="1px" stretchY>
+        <InputAdornment side="right" inset="var(--ig-space-1px)" stretchY>
           <SpinnerGroup>
             <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
               disabled={max !== undefined && value >= max}
