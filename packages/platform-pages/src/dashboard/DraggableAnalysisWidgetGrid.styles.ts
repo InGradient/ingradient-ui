@@ -1,3 +1,4 @@
+import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
 
 export const Rows = styled.div`
@@ -12,7 +13,7 @@ export const Row = styled.div<{ $count: number }>`
   grid-template-columns: repeat(${(p) => Math.max(1, Math.min(3, p.$count))}, minmax(0, 1fr));
   gap: var(--ig-space-9);
   align-items: start;
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `

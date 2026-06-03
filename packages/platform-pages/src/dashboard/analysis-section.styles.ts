@@ -1,3 +1,4 @@
+import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
 import { SectionPanel } from '@ingradient/ui/components'
 
@@ -58,7 +59,7 @@ export const EdgeSection = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--ig-space-9);
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
