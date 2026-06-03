@@ -14,9 +14,9 @@ export const ModalBackdrop = styled.div`
 
 export const ModalCard = styled.div`
   ${surfaceRaised}
-  width: min(920px, 100%);
-  max-height: calc(100vh - 48px);
-  @supports (height: 1dvh) { max-height: calc(100dvh - 48px); }
+  width: min(var(--ig-popup-3xl), 100%);
+  max-height: calc(100vh - var(--ig-control-height-xl));
+  @supports (height: 1dvh) { max-height: calc(100dvh - var(--ig-control-height-xl)); }
   overflow: hidden;
   border-radius: var(--ig-radius-4xl);
   display: flex;
@@ -26,7 +26,7 @@ export const ModalCard = styled.div`
 export const CompactModalCard = styled(ModalCard)`
   width: auto;
   min-width: var(--ig-popup-md);
-  max-width: min(560px, calc(100vw - 48px));
+  max-width: min(var(--ig-popup-2xl), calc(100vw - var(--ig-control-height-xl)));
   padding: var(--ig-space-9);
   border-radius: var(--ig-radius-lg);
 `
@@ -60,7 +60,7 @@ export const Drawer = styled.aside<{ $side?: 'left' | 'right' }>`
   top: 0;
   bottom: 0;
   ${(p) => (p.$side === 'left' ? 'left: 0;' : 'right: 0;')}
-  width: min(420px, 100vw);
+  width: min(var(--ig-popup-2xl-narrow), 100vw);
   z-index: var(--ig-z-drawer);
   padding: var(--ig-space-9);
   border-radius: 0;

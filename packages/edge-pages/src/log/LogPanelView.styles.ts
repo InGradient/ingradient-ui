@@ -48,7 +48,7 @@ export const FilterPopover = styled.div`
   top: 100%;
   right: 0;
   margin-top: var(--ig-space-2);
-  min-width: 210px;
+  min-width: var(--ig-popup-log-filter);
   padding: var(--ig-space-5);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
@@ -125,7 +125,7 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
 export const LogTime = styled.span`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-soft);
-  min-width: 45px;
+  min-width: var(--ig-layout-log-time-min);
   margin-top: var(--ig-space-2px);
   flex-shrink: 0;
 `;
@@ -143,10 +143,10 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
   ${surfacePanel}
   background: var(--ig-color-surface-raised);
   position: fixed;
-  left: 254px;
-  top: 58px;
+  left: var(--ig-layout-log-detail-left);
+  top: var(--ig-layout-log-detail-top);
   bottom: var(--ig-space-6);
-  width: 272px;
+  width: var(--ig-layout-log-detail-width);
   z-index: 50;
   border-radius: var(--ig-radius-lg);
   display: ${({ $visible }) => ($visible ? 'flex' : 'none')};
@@ -173,7 +173,7 @@ export const ImageModalImg = styled.img`
   max-height: 90vh;
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  box-shadow: 0 40px 80px var(--ig-color-image-option-bg);
+  box-shadow: 0 var(--ig-space-modal-shadow-y) var(--ig-space-modal-shadow-blur) var(--ig-color-image-option-bg);
   object-fit: contain;
 `;
 
@@ -188,7 +188,7 @@ export const DetailPlaceholder = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);
   text-align: center;
-  padding: var(--ig-space-7) 8px;
+  padding: var(--ig-space-7) var(--ig-space-3);
 `;
 
 export const OpenImageButton = styled.button`
@@ -196,7 +196,7 @@ export const OpenImageButton = styled.button`
   align-items: center;
   gap: var(--ig-space-2);
   margin-bottom: var(--ig-space-4);
-  padding: var(--ig-space-2) 10px;
+  padding: var(--ig-space-2) var(--ig-space-4);
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-accent-soft);
   background: var(--ig-color-blue-tint-10);

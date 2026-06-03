@@ -7,4 +7,10 @@ export const layoutScale = {
   histogramHeight: '84px',
   datasetCardMinHeight: '112px',
   datasetCardRecentMinHeight: '108px',
+  logTimeMin: '45px',
+  logDetailLeft: '254px',
+  logDetailTop: '58px',
+  logDetailWidth: '272px',
+  modalShadowY: '40px',
+  modalShadowBlur: '80px',
 } as const

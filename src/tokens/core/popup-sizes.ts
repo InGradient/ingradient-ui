@@ -8,6 +8,10 @@ export const popupSizes = {
   md: '320px',
   lg: '360px',
   xl: '480px',
+  '2xlNarrow': '420px',
+  '2xl': '560px',
+  '3xl': '920px',
+  logFilter: '210px',
 } as const
 
 // Numeric variant — JSX inline style 객체 안 prop value 로 들어가는 경우.
@@ -20,4 +24,8 @@ export const popupSizeNumbers = {
   md: 320,
   lg: 360,
   xl: 480,
+  '2xlNarrow': 420,
+  '2xl': 560,
+  '3xl': 920,
+  logFilter: 210,
 } as const
