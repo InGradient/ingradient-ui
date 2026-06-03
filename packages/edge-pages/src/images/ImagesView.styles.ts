@@ -137,7 +137,7 @@ export const ModalBBoxToolbar = styled.div`
   gap: var(--ig-space-3);
   padding: var(--ig-space-3) 12px;
   background: var(--ig-color-overlay-strong);
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 var(--ig-radius-lg) var(--ig-radius-lg);
   flex-shrink: 0;
 `;
 

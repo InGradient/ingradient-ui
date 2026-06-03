@@ -37,7 +37,7 @@ export const NetworkSummaryValue = styled.div`font-size:var(--ig-font-size-xs);f
 // ── Camera Discovery ──
 export const DiscoverBar = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom: var(--ig-space-5);`;
 export const DiscoverHint = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);`;
-export const DeviceList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-2);max-height:200px;min-height:0;overflow-y:auto;padding-right:4px;`;
+export const DeviceList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-2);max-height: 200px;min-height:0;overflow-y:auto;padding-right:4px;`;
 export const DeviceCard = styled.button<{$selected?:boolean}>`
   ${surfaceRaised}
   display:flex;
@@ -80,7 +80,7 @@ export const NicDetailText = styled.span`font-size: var(--ig-font-size-2xs);colo
 
 // ── GigE Advanced ──
 export const GigeHint = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);line-height: var(--ig-line-height-relaxed);`;
-export const GevscpdLabelRow = styled.div`display:flex;align-items:center;justify-content:space-between;gap: var(--ig-space-3);margin-bottom:4px;`;
+export const GevscpdLabelRow = styled.div`display:flex;align-items:center;justify-content:space-between;gap: var(--ig-space-3);margin-bottom: var(--ig-space-1);`;
 export const GevscpdModeRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-2);`;
 export const GevscpdModeLabel = styled.span<{$active:boolean}>`font-size: var(--ig-font-size-2xs);font-weight:${p=>p.$active?600:400};color:${p=>p.$active?'var(--ig-color-text-primary)':'var(--ig-color-text-soft)'};transition:color .15s;`;
 export const GevscpdReadout = styled.div`
@@ -90,13 +90,13 @@ export const GevscpdReadout = styled.div`
   padding: var(--ig-space-2) 10px;
   border-radius: var(--ig-radius-xs);
 `;
-export const GevscpdPresetRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);flex-wrap:wrap;margin-bottom:8px;`;
+export const GevscpdPresetRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);flex-wrap:wrap;margin-bottom: var(--ig-space-3);`;
 export const GevscpdManualRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);`;
 export const GevscpdUnit = styled.span`font-size: var(--ig-font-size-xs);color:var(--ig-color-text-muted);`;
 export const GevscpdUs = styled.span`font-size: var(--ig-font-size-xs);color:var(--ig-color-accent);font-weight: var(--ig-font-weight-medium);`;
 
 // ── Diagnostics Cards ──
-export const DiagActionRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);margin-bottom:12px;`;
+export const DiagActionRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);margin-bottom: var(--ig-space-5);`;
 export const GigeDiagCard = styled.div`
   ${surfacePanel}
   border-radius: var(--ig-radius-xs);
@@ -110,7 +110,7 @@ export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;ali
 // ── Diagnostic Report ──
 export const DiagReportWrap = styled.div`
   ${surfacePanel}
-  margin-top:12px;
+  margin-top: var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
   overflow:hidden;
 `;
@@ -122,12 +122,12 @@ export const DiagReportToolbar = styled.div`
   border-bottom: var(--ig-space-1px) solid var(--ig-color-border-subtle);
 `;
 export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height:320px;min-height:0;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
-export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top:8px;font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'var(--ig-color-red-tint-08)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
+export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'var(--ig-color-red-tint-08)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)
-export const ProgressWrap = styled.div`margin-top:12px;height:6px;border-radius:3px;background:var(--ig-color-border-subtle);overflow:hidden;position:relative;`;
+export const ProgressWrap = styled.div`margin-top: var(--ig-space-5);height:6px;border-radius:3px;background:var(--ig-color-border-subtle);overflow:hidden;position:relative;`;
 export const ProgressBar = styled.div`height:100%;border-radius:3px;background:var(--ig-color-accent);transition:width 0.3s ease;`;
-export const ProgressLabel = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-align:right;margin-top:4px;`;
+export const ProgressLabel = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-align:right;margin-top: var(--ig-space-1);`;
 
 // ── DLL Path ──
 export const DllPathRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-2);`;
