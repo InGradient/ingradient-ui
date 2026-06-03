@@ -33,7 +33,7 @@ export function ExportModalView(props: ExportModalViewProps): JSX.Element {
     <DialogShell
       title={labels.title}
       onClose={handleClose}
-      width="min(480px, 90vw)"
+      width="min(var(--ig-popup-xl), 90vw)"
       actions={
         <>
           <Button variant="secondary" size="sm" type="button" onClick={handleClose} disabled={phase === 'running'}>

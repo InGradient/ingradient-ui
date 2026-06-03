@@ -37,7 +37,7 @@ export const SetupMetrics = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--ig-space-3);
-  width: 240px;
+  width: var(--ig-popup-sm);
 `;
 
 export const MetricCard = styled.div`

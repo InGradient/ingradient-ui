@@ -36,7 +36,7 @@ export function DuplicateItemModal({
     <DialogShell
       title={title}
       onClose={onClose}
-      width="min(480px, 100%)"
+      width="min(var(--ig-popup-xl), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>

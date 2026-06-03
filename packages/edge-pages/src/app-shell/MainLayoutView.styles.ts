@@ -43,7 +43,7 @@ const Panel = styled.div`
 `
 
 export const LeftPanel = styled(Panel)`
-  width: 240px;
+  width: var(--ig-popup-sm);
   flex-shrink: 0;
 `
 

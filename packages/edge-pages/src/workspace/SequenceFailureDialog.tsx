@@ -27,7 +27,7 @@ export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.El
         </>
       }
       onClose={onCancel}
-      width="min(480px, 100%)"
+      width="min(var(--ig-popup-xl), 100%)"
       actions={
         <>
           <ConfirmButton type="button" onClick={onCancel}>{labels.cancel}</ConfirmButton>

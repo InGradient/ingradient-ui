@@ -53,7 +53,7 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
         <DialogShell
           title={labels.accountHistory}
           onClose={onCloseChangeAccount}
-          width="min(480px, 100%)"
+          width="min(var(--ig-popup-xl), 100%)"
           actions={<ModalCancelBtn onClick={onCloseChangeAccount}>{labels.cancel}</ModalCancelBtn>}
         >
           {accountHistory.length === 0 ? (

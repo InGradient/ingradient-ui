@@ -56,7 +56,7 @@ export function TextInputDialog({
     <DialogShell
       title={title}
       onClose={onClose}
-      width="360px"
+      width="var(--ig-popup-lg)"
       actions={
         <>
           <Button type="button" size="sm" variant="secondary" onClick={onClose}>{cancelLabel}</Button>

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.aside`
-  width: 240px;
+  width: var(--ig-popup-sm);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;

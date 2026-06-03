@@ -27,7 +27,7 @@ export function AddDatasetModalView(props: AddDatasetModalViewProps): JSX.Elemen
     <DialogShell
       title={labels.title}
       onClose={onClose}
-      width="320px"
+      width="var(--ig-popup-md)"
       actions={
         <>
           <Button variant="secondary" size="sm" type="button" onClick={onClose}>

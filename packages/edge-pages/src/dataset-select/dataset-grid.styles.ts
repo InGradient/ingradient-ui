@@ -75,6 +75,6 @@ export const AddDatasetBtn = styled.button`
 
 export const DatasetGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--ig-popup-sm), 1fr));
   gap: var(--ig-space-4);
 `

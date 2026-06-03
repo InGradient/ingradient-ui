@@ -31,7 +31,7 @@ export function DragDropDecideModal({
       title="Move or copy?"
       description={desc}
       onClose={onClose}
-      width="min(480px, 100%)"
+      width="min(var(--ig-popup-xl), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>
