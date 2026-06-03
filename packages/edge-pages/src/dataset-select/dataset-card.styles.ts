@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { chartColors } from '@ingradient/ui'
 
 export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   display: flex;
@@ -83,8 +84,8 @@ export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
     p.$type === 'segmentation'   ? 'var(--ig-color-tag-segmentation-bg)' :
                                    'var(--ig-color-blue-tint-15)'};
   color: ${(p) =>
-    p.$type === 'classification' ? '#6ec87a' :
-    p.$type === 'segmentation'   ? '#c07be8' :
+    p.$type === 'classification' ? chartColors.tagClassification :
+    p.$type === 'segmentation'   ? chartColors.tagSegmentation :
                                    'var(--ig-color-accent)'};
 `
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { LineChartCard } from '@ingradient/ui/patterns'
+import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from '../statics/chart-helpers'
 import type { SystemMonitorMonitorTabViewProps } from './types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-5);`
@@ -54,9 +55,9 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
         data={history as unknown as Record<string, string | number>[]}
         xKey="ts"
         series={[
-          { key: 'cpu',    label: labels.cpu,    color: '#60a5fa' },
-          { key: 'memory', label: labels.memory, color: '#a78bfa' },
-          { key: 'disk',   label: labels.disk,   color: '#34d399' },
+          { key: 'cpu',    label: labels.cpu,    color: CHART_BLUE },
+          { key: 'memory', label: labels.memory, color: CHART_PURPLE },
+          { key: 'disk',   label: labels.disk,   color: CHART_GREEN },
         ]}
         height={240}
       />

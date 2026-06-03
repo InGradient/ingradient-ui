@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Stack } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
+import { chartColors } from '@ingradient/ui'
 
 const TABLE_CARD_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-7)',
@@ -50,7 +51,7 @@ export function AnalysisLabelingByPersonWidget({
         data={byPerson.length === 0 ? [] : chartData}
         xKey="name"
         series={[
-          { key: 'images', label: 'Images', color: '#6c5ce7' },
+          { key: 'images', label: 'Images', color: chartColors.violet },
           { key: 'labeled', label: 'Labeled', color: 'var(--ig-color-accent)' },
         ]}
         height={260}

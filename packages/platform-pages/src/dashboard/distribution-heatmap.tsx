@@ -29,7 +29,7 @@ const Table = styled.table`
 `
 
 const Cell = styled.td<{ $intensity: number }>`
-  background: rgba(77, 136, 255, ${(p) => 0.08 + p.$intensity * 0.55});
+  background: color-mix(in srgb, var(--ig-color-accent) ${(p) => Math.round((0.08 + p.$intensity * 0.55) * 100)}%, transparent);
   border-radius: var(--ig-radius-2xs);
   font-size: var(--ig-font-size-xs);
   color: ${(p) => (p.$intensity > 0.5 ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};

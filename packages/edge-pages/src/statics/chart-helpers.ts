@@ -17,3 +17,9 @@ export const CHART_NEUTRAL = '#94a3b8'
 export const CHART_GOLD = '#facc15'
 
 export const CHART_LEGEND_FALLBACK = '#9ca3af'
+
+export const CHART_VIOLET = '#6c5ce7'
+export const CHART_TEAL = '#00b894'
+export const CHART_AMBER = '#fdcb6e'
+export const CHART_TAG_CLASSIFICATION = '#6ec87a'
+export const CHART_TAG_SEGMENTATION = '#c07be8'

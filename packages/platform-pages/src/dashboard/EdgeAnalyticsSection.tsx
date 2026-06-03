@@ -1,4 +1,5 @@
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
+import { chartColors } from '@ingradient/ui'
 import { formatDurationMs } from '@ingradient/ui/utils'
 import {
   CHART_COLORS,
@@ -105,7 +106,7 @@ export function EdgeAnalyticsSection({ edgeAnalytics }: EdgeAnalyticsSectionProp
         title="Deflectometry step duration"
         data={stepData}
         xKey="name"
-        series={[{ key: 'duration', label: 'Average (ms)', color: '#34d399' }]}
+        series={[{ key: 'duration', label: 'Average (ms)', color: chartColors.green }]}
         height={240}
         emptyMessage="No Edge step timings yet."
       />

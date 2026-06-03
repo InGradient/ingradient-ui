@@ -1,4 +1,5 @@
 import { LineChartCard } from '@ingradient/ui/patterns'
+import { chartColors } from '@ingradient/ui'
 
 export type AnalysisTimelineGranularity = 'hour' | 'daily' | string
 
@@ -19,8 +20,8 @@ export function AnalysisTimelineWidget({ granularity, chartData }: AnalysisTimel
       xKey="label"
       series={[
         { key: 'total', label: 'Total', color: 'var(--ig-color-accent)' },
-        { key: 'labeled', label: 'Labeled', color: '#00b894' },
-        { key: 'unlabeled', label: 'Unlabeled', color: '#fdcb6e' },
+        { key: 'labeled', label: 'Labeled', color: chartColors.teal },
+        { key: 'unlabeled', label: 'Unlabeled', color: chartColors.amber },
       ]}
       height={308}
       emptyMessage="No time-series data in the current range."
