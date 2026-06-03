@@ -14,7 +14,7 @@ export const CapturingStatusPill = styled.div`
   top: var(--ig-control-height-capture);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: var(--ig-z-tooltip);
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
@@ -60,7 +60,7 @@ const spin = keyframes`from { transform: rotate(0deg); } to { transform: rotate(
 export const SavingOverlay = styled.div`
   position: absolute;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--ig-z-tooltip);
   display: flex;
   flex-direction: column;
   align-items: center;

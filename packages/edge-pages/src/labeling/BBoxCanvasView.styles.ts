@@ -72,7 +72,7 @@ export const HintOverlay = styled.div`
   background: var(--ig-color-overlay-mid);
   padding: var(--ig-space-1) var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
-  z-index: 5;
+  z-index: var(--ig-z-capture);
 `;
 
 export const PixelInfo = styled.div`
@@ -87,7 +87,7 @@ export const PixelInfo = styled.div`
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
-  z-index: 5;
+  z-index: var(--ig-z-capture);
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
@@ -114,7 +114,7 @@ export const BlockMsg = styled.div`
   border-radius: var(--ig-radius-xs);
   pointer-events: none;
   white-space: nowrap;
-  z-index: 5;
+  z-index: var(--ig-z-capture);
 `;
 
 export const FullscreenBtn = styled.button`
@@ -131,7 +131,7 @@ export const FullscreenBtn = styled.button`
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);
   cursor: pointer;
-  z-index: 6;
+  z-index: var(--ig-z-capture-super);
   transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `;

@@ -18,7 +18,7 @@ export const MediaDialogBackdrop = styled.div`
   position: absolute;
   inset: 0;
   background: var(--ig-color-modal-backdrop);
-  z-index: 0;
+  z-index: var(--ig-z-hidden);
   cursor: default;
 `
 

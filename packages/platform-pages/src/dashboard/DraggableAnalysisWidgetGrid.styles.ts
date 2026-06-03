@@ -37,7 +37,7 @@ export const RowDropZone = styled.div<{ $active: boolean }>`
   right: 0;
   bottom: calc(var(--ig-space-9) * -1);
   height: var(--ig-control-height-xs);
-  z-index: 6;
+  z-index: var(--ig-z-capture-super);
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
 
@@ -88,7 +88,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
 
 export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $active: boolean }>`
   position: absolute;
-  z-index: 7;
+  z-index: var(--ig-z-capture-top);
   ${(p) =>
     p.$position === 'before'
       ? `

@@ -26,7 +26,7 @@ export const CaptureReviewFullscreenBtn = styled.button`
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);
   cursor: pointer;
-  z-index: 6;
+  z-index: var(--ig-z-capture-super);
   transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `

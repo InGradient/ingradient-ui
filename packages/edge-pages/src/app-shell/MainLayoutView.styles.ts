@@ -61,7 +61,7 @@ export const RightPanelContainer = styled(Panel)`
 export const CapturingBlocker = styled.div`
   position: fixed;
   inset: 0;
-  z-index: 9998;
+  z-index: var(--ig-z-topbar);
   background: var(--ig-color-app-backdrop);
   cursor: wait;
   backdrop-filter: var(--ig-blur-2xs);

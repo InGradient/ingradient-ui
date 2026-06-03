@@ -54,7 +54,7 @@ export const FilterPopover = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-panel);
-  z-index: 100;
+  z-index: var(--ig-z-dropdown);
   font-size: var(--ig-font-size-xs);
   font-weight: normal;
   color: var(--ig-color-text-secondary);
@@ -147,7 +147,7 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
   top: var(--ig-layout-log-detail-top);
   bottom: var(--ig-space-6);
   width: var(--ig-layout-log-detail-width);
-  z-index: 50;
+  z-index: var(--ig-z-overlay-low);
   border-radius: var(--ig-radius-lg);
   display: ${({ $visible }) => ($visible ? 'flex' : 'none')};
   flex-direction: column;

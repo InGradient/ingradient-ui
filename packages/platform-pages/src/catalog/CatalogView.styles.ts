@@ -15,7 +15,7 @@ export const ContentArea = styled.div`
 export const DragOverFull = styled.div`
   position: absolute;
   inset: 0;
-  z-index: 50;
+  z-index: var(--ig-z-overlay-low);
   pointer-events: none;
   background: var(--ig-color-image-option-bg);
   border: var(--ig-border-3px) dashed var(--ig-color-white-40);
@@ -41,7 +41,7 @@ export const DragOverGrid = styled.div`
   justify-content: center;
   border: var(--ig-border-3px) dashed var(--ig-color-white-40);
   border-radius: var(--ig-radius-md);
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
   pointer-events: none;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
@@ -71,7 +71,7 @@ export const MobileBottomSheet = styled.div`
   left: 0;
   right: 0;
   bottom: var(--ig-control-height-3xl);
-  z-index: 30;
+  z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   max-height: 60vh;

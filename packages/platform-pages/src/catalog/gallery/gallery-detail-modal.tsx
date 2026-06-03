@@ -11,7 +11,7 @@ const TOOLBAR_STYLE = {
   position: 'absolute' as const,
   top: 8,
   right: 16,
-  zIndex: 20,
+  zIndex: 'var(--ig-z-sticky-plus)',
 }
 
 const DEFAULT_MAIN_STYLE = {

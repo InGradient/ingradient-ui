@@ -40,7 +40,7 @@ const StyledTable = styled.table`
   & th.sticky-row-header {
     position: sticky;
     left: 0;
-    z-index: 2;
+    z-index: var(--ig-z-raised);
   }
   & td {
     padding: var(--ig-space-3);
@@ -56,7 +56,7 @@ const StyledTable = styled.table`
     white-space: nowrap;
     position: sticky;
     left: 0;
-    z-index: 1;
+    z-index: var(--ig-z-base);
     background: var(--ig-color-surface-panel);
     text-align: left;
   }

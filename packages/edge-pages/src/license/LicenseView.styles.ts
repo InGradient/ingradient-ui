@@ -17,7 +17,7 @@ export const LangCorner = styled.div`
   position: fixed;
   top: var(--ig-control-height-xl);
   right: var(--ig-space-7);
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
   display: flex;
   gap: var(--ig-space-3);
   align-items: center;

@@ -19,21 +19,21 @@ export const DotsBtn = styled.button`
   padding: 0;
   transition: background var(--ig-motion-swift), color var(--ig-motion-swift);
   position: relative;
-  z-index: 2;
+  z-index: var(--ig-z-raised);
   &:hover { background: var(--ig-color-white-08); color: var(--ig-color-text-primary); }
 `
 
 export const DotMenuOverlay = styled.div`
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: var(--ig-z-dot-menu);
 `
 
 export const DotMenuWrap = styled.div`
   position: absolute;
   top: var(--ig-space-13);
   right: var(--ig-space-3);
-  z-index: 201;
+  z-index: var(--ig-z-dot-menu-plus);
   background: var(--ig-color-surface-panel);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);

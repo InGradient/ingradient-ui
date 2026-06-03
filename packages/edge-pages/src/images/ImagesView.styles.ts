@@ -22,7 +22,7 @@ export const GroupBadgeWrap = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);
-  z-index: 4;
+  z-index: var(--ig-z-capture-high);
 `;
 
 export const GroupDeleteBtn = styled.button`
@@ -42,7 +42,7 @@ export const GroupDeleteBtn = styled.button`
   box-shadow: 0 var(--ig-space-1) var(--ig-space-5) rgba(0, 0, 0, 0.28);
   pointer-events: auto;
   position: relative;
-  z-index: 5;
+  z-index: var(--ig-z-capture);
   flex-shrink: 0;
   &:disabled {
     opacity: var(--ig-opacity-subtle);
@@ -229,7 +229,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: var(--ig-z-dropdown);
   border-radius: inherit;
 `;
 
@@ -263,7 +263,7 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
   position: absolute;
   bottom: var(--ig-space-12);
   left: var(--ig-space-2);
-  z-index: 3;
+  z-index: var(--ig-z-raised-plus);
   width: var(--ig-icon-2xl);
   height: var(--ig-icon-2xl);
   display: flex;

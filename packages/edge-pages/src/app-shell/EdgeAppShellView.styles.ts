@@ -28,7 +28,7 @@ export const AppFooterBar = styled.footer`
 export const ShutdownOverlay = styled.div`
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--ig-z-tooltip);
   background: var(--ig-color-modal-backdrop);
   display: flex;
   align-items: center;

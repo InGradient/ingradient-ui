@@ -33,7 +33,7 @@ export const SetupMetrics = styled.div`
   position: absolute;
   top: var(--ig-space-7);
   left: var(--ig-space-7);
-  z-index: 3;
+  z-index: var(--ig-z-raised-plus);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--ig-space-3);
@@ -64,7 +64,7 @@ export const MetricValue = styled.div`
 export const SetupBlockingOverlay = styled.div`
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: var(--ig-z-capture-high);
   background: var(--ig-color-capture-overlay);
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ export const OverlayControls = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: var(--ig-space-2);
-  z-index: 4;
+  z-index: var(--ig-z-capture-high);
 `;
 
 export const OverlayHeader = styled.button`
@@ -208,7 +208,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
 
   & > svg {
     position: absolute;
-    z-index: 1;
+    z-index: var(--ig-z-base);
   }
 
   &:disabled:not([data-capturing]) {
@@ -228,7 +228,7 @@ export const GridOverlay = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
+  z-index: var(--ig-z-raised);
   background-image:
     linear-gradient(to right, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px)),
     linear-gradient(to bottom, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px));
@@ -240,7 +240,7 @@ export const CenterCrosshair = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
+  z-index: var(--ig-z-raised);
   &::before {
     content: '';
     position: absolute;
@@ -263,7 +263,7 @@ export const CenterCrosshair = styled.div`
 
 export const ConnectingBox = styled.div`
   position: absolute;
-  z-index: 2;
+  z-index: var(--ig-z-raised);
   text-align: center;
   max-width: 90%;
   display: flex;
@@ -300,7 +300,7 @@ export const HistogramOverlay = styled.div`
   position: absolute;
   top: var(--ig-space-6);
   right: var(--ig-space-6);
-  z-index: 3;
+  z-index: var(--ig-z-raised-plus);
   padding: var(--ig-space-3);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-capture-bg-loud);
@@ -317,7 +317,7 @@ export const HistogramImage = styled.img`
 
 export const AbsolutePlaceholder = styled(PlaceholderText)`
   position: absolute;
-  z-index: 1;
+  z-index: var(--ig-z-base);
 `;
 
 export const CapturingBadge = styled.div`
@@ -325,7 +325,7 @@ export const CapturingBadge = styled.div`
   top: var(--ig-control-height-capture);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: var(--ig-z-tooltip);
   background: var(--ig-color-overlay-deep);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
@@ -351,7 +351,7 @@ export const CapturePreviewFullscreenBtn = styled.button`
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);
   cursor: pointer;
-  z-index: 4;
+  z-index: var(--ig-z-capture-high);
   transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `;

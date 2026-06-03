@@ -12,7 +12,7 @@ const BACKDROP_STYLE = {
   display: 'flex' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
-  zIndex: 1000,
+  zIndex: 'var(--ig-z-context-menu)',
   cursor: 'pointer' as const,
 }
 const PANEL_WRAP_STYLE = {
