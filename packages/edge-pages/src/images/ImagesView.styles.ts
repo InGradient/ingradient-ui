@@ -80,7 +80,7 @@ export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
 `;
 
 export const ImagesFilterDateLabel = styled.span`
-  width: 34px;
+  width: var(--ig-control-height-sm-plus);
   flex-shrink: 0;
   color: var(--ig-color-text-muted);
 `;
@@ -162,8 +162,8 @@ export const ModalCloseBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: var(--ig-control-height-mid-plus);
+  height: var(--ig-control-height-mid-plus);
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-overlay-mid);
@@ -200,7 +200,7 @@ export const ModalHeaderCenter = styled.div`
 `;
 
 export const ModalHeaderSpacer = styled.div`
-  width: 40px;
+  width: var(--ig-control-height-mid-plus);
   flex-shrink: 0;
 `;
 
@@ -296,8 +296,8 @@ export const ModalHeaderLeft = styled.div`
 
 export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: var(--ig-control-height-mid-plus);
+  height: var(--ig-control-height-mid-plus);
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-18)' : 'var(--ig-color-overlay-mid)')};

@@ -101,7 +101,7 @@ export const CheckOptions = styled.div`
 `
 
 export const Btn = styled.button<{ $variant?: 'primary' | 'secondary' | 'ghost' }>`
-  height: 40px;
+  height: var(--ig-control-height-mid-plus);
   border-radius: var(--ig-radius-xs);
   border: none;
   cursor: pointer;

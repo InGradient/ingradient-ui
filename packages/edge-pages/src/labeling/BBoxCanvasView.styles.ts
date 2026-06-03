@@ -36,8 +36,8 @@ export const RightActions = styled.div`
 `;
 
 export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'secondary' }>`
-  width: 40px;
-  height: 40px;
+  width: var(--ig-control-height-mid-plus);
+  height: var(--ig-control-height-mid-plus);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -167,8 +167,8 @@ export const HeaderSpacer = styled.div`
 
 export const HeaderIconBtn = styled.button<{ $active?: boolean }>`
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: var(--ig-control-height-mid-plus);
+  height: var(--ig-control-height-mid-plus);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-04)')};

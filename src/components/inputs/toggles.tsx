@@ -12,7 +12,7 @@ const ToggleLabel = styled.label`
 `
 
 const SwitchTrack = styled.span<{ $checked: boolean }>`
-  width: 40px;
+  width: var(--ig-control-height-mid-plus);
   height: var(--ig-icon-3xl);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-bg)' : 'var(--ig-color-toggle-off-bg)')};

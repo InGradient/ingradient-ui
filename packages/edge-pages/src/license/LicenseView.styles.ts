@@ -114,7 +114,7 @@ export const CopyBtn = styled.button`
 
 export const Input = styled.input`
   width: 100%;
-  height: 40px;
+  height: var(--ig-control-height-mid-plus);
   padding: 0 var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
@@ -142,7 +142,7 @@ export const LicenseForm = styled.form`
 `
 
 export const SubmitBtn = styled.button`
-  height: 40px;
+  height: var(--ig-control-height-mid-plus);
   border-radius: var(--ig-radius-xs);
   border: none;
   cursor: pointer;

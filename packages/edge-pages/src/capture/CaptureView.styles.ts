@@ -187,8 +187,8 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
         &:after {
           content: '';
           display: block;
-          width: 40px;
-          height: 40px;
+          width: var(--ig-control-height-mid-plus);
+          height: var(--ig-control-height-mid-plus);
           border-radius: 50%;
           border: var(--ig-border-3px) solid rgba(255, 255, 255, 0.25);
           border-top-color: var(--ig-color-white-90);

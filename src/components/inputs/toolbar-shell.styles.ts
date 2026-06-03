@@ -56,8 +56,8 @@ const sizeCss = {
     height: var(--ig-control-height-md);
   `,
   md: css`
-    width: 40px;
-    height: 40px;
+    width: var(--ig-control-height-mid-plus);
+    height: var(--ig-control-height-mid-plus);
   `,
 }
 
