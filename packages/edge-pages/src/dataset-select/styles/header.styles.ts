@@ -79,7 +79,7 @@ export const RefreshBtn = styled.button<{ $spinning?: boolean }>`
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
   flex-shrink: 0;
   svg {
     ${(p) => p.$spinning && css`animation: ${spinAnim} 0.7s linear infinite;`}
@@ -104,7 +104,7 @@ export const IconBtn = styled.button`
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
   &:hover {
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-06);

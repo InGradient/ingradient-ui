@@ -9,7 +9,7 @@ const ACTIONS_STYLE = { position: 'absolute' as const, top: 'var(--ig-space-6)',
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`
   color: var(--ig-color-text-secondary);
-  transition: box-shadow 0.16s ease, color 0.16s ease;
+  transition: box-shadow var(--ig-motion-fast-ease), color var(--ig-motion-fast-ease);
   &:hover {
     color: var(--ig-color-text-primary);
     box-shadow: 0 0 0 1px var(--ig-color-blue-tint-28);

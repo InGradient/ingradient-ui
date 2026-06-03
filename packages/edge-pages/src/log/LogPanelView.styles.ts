@@ -34,7 +34,7 @@ export const FilterActionButton = styled.button`
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
 
   &:hover {
     color: var(--ig-color-text-primary);
@@ -162,7 +162,7 @@ export const DetailImageClickable = styled.img`
   margin-bottom: var(--ig-space-4);
   background: var(--ig-color-bg-canvas);
   cursor: zoom-in;
-  transition: opacity 0.16s ease;
+  transition: opacity var(--ig-motion-fast-ease);
   &:hover { opacity: var(--ig-opacity-prominent); }
 `;
 
@@ -203,7 +203,7 @@ export const OpenImageButton = styled.button`
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
-  transition: background 0.16s ease;
+  transition: background var(--ig-motion-fast-ease);
   &:hover { background: var(--ig-color-blue-tint-20); }
 `;
 

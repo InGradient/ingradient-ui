@@ -61,7 +61,7 @@ export const IconBtn = styled.button`
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
   &:hover {
     color: var(--ig-color-text-primary);
     background: var(--ig-color-surface-interactive);
@@ -87,7 +87,7 @@ export const BackBtn = styled.button`
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-xs);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--ig-motion-swift);
   flex-shrink: 0;
   &:hover {
     background: var(--ig-color-surface-interactive);

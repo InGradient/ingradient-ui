@@ -107,7 +107,7 @@ export const Btn = styled.button<{ $variant?: 'primary' | 'secondary' | 'ghost' 
   cursor: pointer;
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
-  transition: opacity 0.15s;
+  transition: opacity var(--ig-motion-swift);
   &:hover {
     opacity: var(--ig-opacity-loud);
   }
@@ -165,7 +165,7 @@ export const AccountItem = styled.button`
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
   text-align: left;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
     background: var(--ig-color-white-07);
     border-color: var(--ig-color-blue-tint-40);

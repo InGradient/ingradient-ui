@@ -112,7 +112,7 @@ export const OverlayHeader = styled.button`
   border-radius: var(--ig-radius-xs);
   color: var(--ig-color-text-primary);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `;
 
@@ -168,7 +168,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
   border: var(--ig-border-3px) solid var(--ig-color-border-strong);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,6 +352,6 @@ export const CapturePreviewFullscreenBtn = styled.button`
   color: var(--ig-color-text-primary);
   cursor: pointer;
   z-index: 4;
-  transition: background 0.15s;
+  transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `;

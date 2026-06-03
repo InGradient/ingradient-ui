@@ -40,7 +40,7 @@ export const ConfirmButton = styled.button<{ $danger?: boolean }>`
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
   &:hover {
     background: ${({ $danger }) => ($danger ? 'var(--ig-color-red-tint-18)' : 'var(--ig-color-surface-interactive)')};
     color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};

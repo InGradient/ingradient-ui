@@ -25,7 +25,7 @@ export const SegmentBtn = styled.button<{ $active: boolean }>`
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background var(--ig-motion-swift), color var(--ig-motion-swift);
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-90)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   &:hover {
@@ -53,7 +53,7 @@ export const Item = styled.button<{ $active: boolean }>`
   font-size: var(--ig-font-size-sm);
   text-align: left;
   cursor: pointer;
-  transition: background 0.12s;
+  transition: background var(--ig-motion-fastest);
   &:hover {
     background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-20)' : 'var(--ig-color-white-06)')};
   }

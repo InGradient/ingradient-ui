@@ -17,7 +17,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   max-width: var(--ig-popup-sm);
   min-height: var(--ig-layout-dataset-card-min-height);
   position: relative;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
     background: var(--ig-color-blue-tint-14);
     border-color: var(--ig-color-blue-tint-50);
@@ -41,7 +41,7 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   text-align: left;
   position: relative;
   min-height: var(--ig-layout-dataset-card-recent-min-height);
-  transition: background 0.15s, border-color 0.15s;
+  transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
     background: var(--ig-color-blue-tint-12);
     border-color: var(--ig-color-blue-tint-50);
@@ -67,7 +67,7 @@ export const DatasetName = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
-  line-height: 1.35;
+  line-height: var(--ig-line-height-tight);
   overflow-wrap: anywhere;
 `
 

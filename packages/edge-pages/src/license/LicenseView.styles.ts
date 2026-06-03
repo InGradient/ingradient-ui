@@ -106,7 +106,7 @@ export const CopyBtn = styled.button`
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background var(--ig-motion-swift);
   &:hover {
     background: var(--ig-color-blue-tint-25);
   }
@@ -150,7 +150,7 @@ export const SubmitBtn = styled.button`
   font-weight: var(--ig-font-weight-semibold);
   background: var(--ig-color-accent);
   color: var(--ig-color-text-primary);
-  transition: opacity 0.15s;
+  transition: opacity var(--ig-motion-swift);
   &:hover {
     opacity: var(--ig-opacity-loud);
   }

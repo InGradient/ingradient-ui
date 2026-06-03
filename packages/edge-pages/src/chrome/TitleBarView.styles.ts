@@ -58,7 +58,7 @@ export const Btn = styled.button<{ $variant?: 'close' }>`
   background: transparent;
   color: var(--ig-color-text-muted);
   cursor: pointer;
-  transition: background 0.12s ease, color 0.12s ease;
+  transition: background var(--ig-motion-fastest) ease, color var(--ig-motion-fastest) ease;
 
   &:hover {
     background: ${({ $variant }) =>

@@ -25,6 +25,7 @@ export const typographyScale = {
   letterSpacingWider: '0.06em',
   letterSpacingWidest: '0.08em',
   lineHeightNone: 1,
+  lineHeightTight: 1.35,
   lineHeightSnug: 1.4,
   lineHeightBase: 1.45,
   lineHeightRelaxed: 1.5,

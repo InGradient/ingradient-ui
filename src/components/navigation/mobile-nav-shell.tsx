@@ -61,7 +61,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
     z-index: var(--ig-z-mobile-nav);
     transform: translateY(${(p) => (p.$open ? '0' : '-105%')});
     /* Material standard ease — slow tier 의 360ms ease 보다 specific 한 곡선 의도 */
-    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform var(--ig-motion-mobile-nav);
     padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
     border-radius: 0 0 var(--ig-radius-xl) var(--ig-radius-xl);
   }

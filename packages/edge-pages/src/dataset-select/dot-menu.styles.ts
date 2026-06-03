@@ -17,7 +17,7 @@ export const DotsBtn = styled.button`
   justify-content: center;
   cursor: pointer;
   padding: 0;
-  transition: background 0.15s, color 0.15s;
+  transition: background var(--ig-motion-swift), color var(--ig-motion-swift);
   position: relative;
   z-index: 2;
   &:hover { background: var(--ig-color-white-08); color: var(--ig-color-text-primary); }

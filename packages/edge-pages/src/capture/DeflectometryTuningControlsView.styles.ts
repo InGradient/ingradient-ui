@@ -48,7 +48,7 @@ export const CollapsibleHeader = styled.button`
   letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
   &:hover { color: var(--ig-color-text-primary); }
-  svg { transition: transform 0.15s ease; }
+  svg { transition: transform var(--ig-motion-swift) ease; }
 `;
 
 export const Row = styled.div`

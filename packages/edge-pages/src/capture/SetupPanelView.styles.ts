@@ -90,7 +90,7 @@ export const SetupAccordionSummaryRow = styled.div`
   justify-content: space-between;
 
   svg {
-    transition: transform 0.2s ease;
+    transition: transform var(--ig-motion-normal-ease);
     opacity: var(--ig-opacity-muted);
   }
 

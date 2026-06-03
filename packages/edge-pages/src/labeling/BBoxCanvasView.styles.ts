@@ -44,7 +44,7 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
   border-radius: var(--ig-radius-pill);
   border: var(--ig-border-1px) solid transparent;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity var(--ig-motion-swift);
   &:hover { opacity: var(--ig-opacity-emphatic); }
   &:disabled { opacity: var(--ig-opacity-ghost); cursor: not-allowed; }
   ${(p) =>
@@ -132,7 +132,7 @@ export const FullscreenBtn = styled.button`
   color: var(--ig-color-text-primary);
   cursor: pointer;
   z-index: 6;
-  transition: background 0.15s;
+  transition: background var(--ig-motion-swift);
   &:hover { background: var(--ig-color-modal-backdrop); }
 `;
 
@@ -209,6 +209,6 @@ export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.14s ease;
+  transition: background var(--ig-motion-fast-ease);
   &:hover { background: var(--ig-color-white-08); }
 `;

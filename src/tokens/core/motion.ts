@@ -1,6 +1,11 @@
 export const motionScale = {
+  fastest: '0.12s',
+  swift: '0.15s',
   fast: '0.16s ease',
+  fastEase: '0.16s ease',
   normal: '0.24s ease',
+  normalEase: '0.2s ease',
+  mobileNav: '0.28s cubic-bezier(0.4, 0, 0.2, 1)',
   slow: '0.36s ease',
   spinner: '0.7s',
   shimmer: '1s',

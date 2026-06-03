@@ -65,7 +65,7 @@ export const AddDatasetBtn = styled.button`
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--ig-motion-swift);
   margin-left: auto;
   &:hover {
     background: var(--ig-color-blue-tint-10);

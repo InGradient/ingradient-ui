@@ -38,7 +38,7 @@ export const GroupDeleteBtn = styled.button`
   cursor: pointer;
   opacity: 1;
   transform: translateX(0);
-  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+  transition: transform var(--ig-motion-fast-ease), background var(--ig-motion-fast-ease), border-color var(--ig-motion-fast-ease);
   box-shadow: 0 var(--ig-space-1) var(--ig-space-5) rgba(0, 0, 0, 0.28);
   pointer-events: auto;
   position: relative;
@@ -70,7 +70,7 @@ export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-14)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all var(--ig-motion-fast-ease);
 
   &:hover {
     color: var(--ig-color-text-primary);
@@ -152,7 +152,7 @@ export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.14s ease;
+  transition: background var(--ig-motion-fast-ease);
   &:hover { background: var(--ig-color-surface-interactive); }
   &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
 `;
