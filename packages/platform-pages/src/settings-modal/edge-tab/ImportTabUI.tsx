@@ -17,7 +17,7 @@ import type { EdgeImportJobView } from './edge-types'
 const PROGRESS_WRAP_STYLE: React.CSSProperties = {
   width: '100%',
   maxWidth: 420,
-  margin: '12px auto 0',
+  margin: 'var(--ig-space-5) auto 0',
 }
 
 const PROGRESS_LABEL_STYLE: React.CSSProperties = {

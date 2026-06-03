@@ -22,7 +22,7 @@ export const SectionTitle = styled.h3`
 `
 
 export const SectionTitleMt = styled(SectionTitle)`
-  margin-top: 12px;
+  margin-top: var(--ig-space-5);
 `
 
 export const CheckList = styled.div`
@@ -55,7 +55,7 @@ export const FieldRow = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-5);
-  margin-top: 12px;
+  margin-top: var(--ig-space-5);
   flex-wrap: wrap;
 `
 
@@ -88,7 +88,7 @@ export const WarningBox = styled(Alert).attrs({ $tone: 'warning' as const })`
 `
 
 export const ProgressNote = styled.span`
-  margin-left: 8px;
+  margin-left: var(--ig-space-3);
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
 `
@@ -101,7 +101,7 @@ export const UserEmailNote = styled.span`
 export const StatusPill = UiStatusPill
 
 export const StatusPillMb = styled(StatusPill)`
-  margin-bottom: 12px;
+  margin-bottom: var(--ig-space-5);
 `
 
 export const ReportBox = styled.div`
@@ -116,7 +116,7 @@ export const ReportGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--ig-space-5);
-  margin-bottom: 12px;
+  margin-bottom: var(--ig-space-5);
 `
 
 export const ReportStat = styled.div`

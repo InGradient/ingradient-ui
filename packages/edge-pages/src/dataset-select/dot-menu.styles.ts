@@ -6,8 +6,8 @@ export const DotsBtnWrap = styled.div`
 
 export const DotsBtn = styled.button`
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
+  width: var(--ig-icon-2xl);
+  height: var(--ig-icon-2xl);
   border-radius: 5px;
   border: none;
   background: transparent;

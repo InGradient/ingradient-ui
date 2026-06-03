@@ -264,8 +264,8 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
   bottom: 28px;
   left: var(--ig-space-2);
   z-index: 3;
-  width: 22px;
-  height: 22px;
+  width: var(--ig-icon-2xl);
+  height: var(--ig-icon-2xl);
   display: flex;
   align-items: center;
   justify-content: center;

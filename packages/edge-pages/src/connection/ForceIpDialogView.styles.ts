@@ -9,7 +9,7 @@ export const Hint = styled.div`
 export const RecRow = styled.div`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-soft);
-  margin-bottom: 12px;
+  margin-bottom: var(--ig-space-5);
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);

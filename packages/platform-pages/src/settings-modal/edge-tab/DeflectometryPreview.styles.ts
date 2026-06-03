@@ -4,7 +4,7 @@ export const PreviewWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-3);
-  margin-top: 12px;
+  margin-top: var(--ig-space-5);
 `
 
 export const BadgeRow = styled.div`

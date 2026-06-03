@@ -68,7 +68,7 @@ export const ExportRegexInput = styled.input`
 
 export const ExportProgressTrack = styled.div`
   width: 100%;
-  height: 12px;
+  height: var(--ig-space-5);
   margin: var(--ig-space-5) 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-white-08);

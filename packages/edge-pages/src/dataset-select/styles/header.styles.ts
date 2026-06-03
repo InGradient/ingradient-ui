@@ -35,7 +35,7 @@ export const ModeTag = styled.span<{ $online: boolean }>`
   font-weight: var(--ig-font-weight-bold);
   padding: 2px 7px;
   border-radius: var(--ig-radius-xs);
-  margin-left: 8px;
+  margin-left: var(--ig-space-3);
   background: ${(p) => (p.$online ? 'var(--ig-color-green-tint-15)' : 'var(--ig-color-amber-tint-15)')};
   color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
   vertical-align: middle;
@@ -119,8 +119,8 @@ export const StatusItem = styled.div`
 `
 
 export const StatusDot = styled.button<{ $status: 'connected' | 'connecting' | 'disconnected' }>`
-  width: 12px;
-  height: 12px;
+  width: var(--ig-space-5);
+  height: var(--ig-space-5);
   border-radius: var(--ig-radius-pill);
   border: none;
   padding: 0;

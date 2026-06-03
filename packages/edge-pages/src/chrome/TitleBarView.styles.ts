@@ -22,8 +22,8 @@ export const LogoArea = styled.div`
 `
 
 export const LogoImg = styled.img`
-  width: 18px;
-  height: 18px;
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-2xs);
   opacity: 0.9;
 `

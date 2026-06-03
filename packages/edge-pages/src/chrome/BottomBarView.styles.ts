@@ -24,7 +24,7 @@ export const RightSection = styled.button`
   padding: 0 var(--ig-space-2);
   cursor: pointer;
   border-radius: var(--ig-radius-sm);
-  height: 22px;
+  height: var(--ig-icon-2xl);
   color: var(--ig-color-text-muted);
 
   &:hover {

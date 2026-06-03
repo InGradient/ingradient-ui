@@ -40,7 +40,7 @@ export const ProjectName = styled.div`
 export const ProjectTypeTag = styled.span`
   display: inline-flex;
   align-items: center;
-  height: 20px;
+  height: var(--ig-icon-xl);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-blue-tint-14);
@@ -56,7 +56,7 @@ export const AddDatasetBtn = styled.button`
   display: flex;
   align-items: center;
   gap: var(--ig-space-1);
-  height: 22px;
+  height: var(--ig-icon-2xl);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) dashed var(--ig-color-blue-tint-40);
