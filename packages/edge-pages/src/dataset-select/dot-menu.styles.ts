@@ -31,7 +31,7 @@ export const DotMenuOverlay = styled.div`
 
 export const DotMenuWrap = styled.div`
   position: absolute;
-  top: 32px;
+  top: var(--ig-space-13);
   right: 8px;
   z-index: 201;
   background: var(--ig-color-surface-panel);
@@ -39,7 +39,7 @@ export const DotMenuWrap = styled.div`
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-1) 0;
   min-width: var(--ig-popup-2xs);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 var(--ig-space-3) var(--ig-space-11) rgba(0,0,0,0.4);
 `
 
 export const DotMenuItem = styled.button`

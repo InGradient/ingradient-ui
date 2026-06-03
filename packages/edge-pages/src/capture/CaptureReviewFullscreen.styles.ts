@@ -51,7 +51,7 @@ export const CaptureReviewActions = styled.div`
 
 export const CaptureReviewSkipBtn = styled.button`
   height: 40px;
-  padding: 0 18px;
+  padding: 0 var(--ig-space-8);
   border: var(--ig-border-1px) solid var(--ig-color-white-18);
   border-radius: var(--ig-radius-xs);
   background: transparent;
@@ -64,7 +64,7 @@ export const CaptureReviewSkipBtn = styled.button`
 
 export const CaptureReviewSaveBtn = styled.button`
   height: 40px;
-  padding: 0 22px;
+  padding: 0 var(--ig-space-10);
   border: none;
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-blue-tint-85);

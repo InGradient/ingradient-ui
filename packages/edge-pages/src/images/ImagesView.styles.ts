@@ -261,7 +261,7 @@ export const SyncDot = styled.span<{ $color: string }>`
 
 export const SyncStateIcon = styled.div<{ $state: string }>`
   position: absolute;
-  bottom: 28px;
+  bottom: var(--ig-space-12);
   left: var(--ig-space-2);
   z-index: 3;
   width: var(--ig-icon-2xl);
