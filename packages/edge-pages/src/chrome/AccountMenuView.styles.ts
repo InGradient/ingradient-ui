@@ -23,7 +23,7 @@ export const AccountBtn = styled.button`
 `
 
 export const AccountBtnName = styled.span`
-  max-width: 120px;
+  max-width: var(--ig-popup-3xs);
   overflow: hidden;
   text-overflow: ellipsis;
 `

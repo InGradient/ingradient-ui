@@ -13,7 +13,7 @@ import { FormField } from '../../components/inputs'
 export type DatasetTaskType = 'object_detection' | 'classification' | 'segmentation' | 'point'
 
 const CLASS_LIST_STYLE = {
-  maxHeight: '200px',
+  maxHeight: 'var(--ig-popup-3xs)',
   overflowY: 'auto' as const,
   paddingRight: 'var(--ig-space-1)',
 }

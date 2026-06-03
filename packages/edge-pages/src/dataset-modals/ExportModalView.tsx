@@ -6,7 +6,7 @@ import type { ExportModalViewProps } from './types'
 const DATASET_NAME_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-sm)',
   color: 'var(--ig-color-text-muted)',
-  marginTop: '-6px',
+  marginTop: 'calc(var(--ig-space-2) * -1)',
   display: 'flex',
   alignItems: 'center',
   gap: 'var(--ig-space-3)',
@@ -17,7 +17,7 @@ const IMAGE_COUNT_STYLE: CSSProperties = { opacity: 0.6 }
 const LOCAL_COUNT_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-xs)',
   color: 'var(--ig-color-text-muted)',
-  marginTop: '-8px',
+  marginTop: 'calc(var(--ig-space-3) * -1)',
 }
 
 const STATUS_MSG_STYLE: CSSProperties = {
