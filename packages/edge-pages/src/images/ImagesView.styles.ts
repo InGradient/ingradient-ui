@@ -33,7 +33,7 @@ export const GroupDeleteBtn = styled.button`
   justify-content: center;
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-red-tint-92);
+  background: var(--ig-color-danger-overlay);
   color: var(--ig-color-text-primary);
   cursor: pointer;
   opacity: 1;
@@ -50,7 +50,7 @@ export const GroupDeleteBtn = styled.button`
     cursor: not-allowed;
   }
   &:hover:not(:disabled) {
-    background: var(--ig-color-red-tint-96);
+    background: var(--ig-color-danger-overlay-hover);
     border-color: var(--ig-color-white-32);
     transform: scale(var(--ig-scale-hover-lift));
   }

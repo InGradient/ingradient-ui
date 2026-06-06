@@ -153,6 +153,18 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-selection-bg': palette.blueTint14,
     '--ig-color-focus-bg-soft': palette.blueTint16,
     '--ig-color-active-bg': palette.blueTint28,
+    // Status state aliases — red / green / amber / coral tint family 의미 layer
+    '--ig-color-danger-bg-soft': 'var(--ig-color-red-tint-08)',
+    '--ig-color-danger-bg': 'var(--ig-color-red-tint-12)',
+    '--ig-color-danger-bg-hover': 'var(--ig-color-red-tint-18)',
+    '--ig-color-danger-bg-strong': 'var(--ig-color-red-tint-60)',
+    '--ig-color-danger-overlay': 'var(--ig-color-red-tint-92)',
+    '--ig-color-danger-overlay-hover': 'var(--ig-color-red-tint-96)',
+    '--ig-color-danger-button-bg': 'var(--ig-color-coral-tint-18)',
+    '--ig-color-danger-button-border': 'var(--ig-color-coral-tint-28)',
+    '--ig-color-success-bg-soft': 'var(--ig-color-green-tint-08)',
+    '--ig-color-success-bg': 'var(--ig-color-green-tint-15)',
+    '--ig-color-warning-bg': 'var(--ig-color-amber-tint-15)',
     '--ig-color-dropdown-open-shadow': isLight
       ? '0 0 0 3px rgba(58, 115, 230, 0.20), 0 18px 36px rgba(15, 23, 42, 0.10)'
       : '0 0 0 3px var(--ig-color-blue-tint-16), 0 18px 36px rgba(0, 0, 0, 0.18)',

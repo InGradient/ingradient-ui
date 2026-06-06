@@ -51,7 +51,7 @@ export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'second
     p.$variant === 'primary'
       ? `background: var(--ig-color-accent); color: var(--ig-color-text-primary);`
       : p.$variant === 'danger'
-        ? `background: var(--ig-color-coral-tint-18); color: var(--ig-color-danger); border-color: var(--ig-color-coral-tint-28);`
+        ? `background: var(--ig-color-danger-button-bg); color: var(--ig-color-danger); border-color: var(--ig-color-danger-button-border);`
         : `background: var(--ig-color-white-08); color: var(--ig-color-text-primary); border-color: var(--ig-color-white-12);`}
 `;
 

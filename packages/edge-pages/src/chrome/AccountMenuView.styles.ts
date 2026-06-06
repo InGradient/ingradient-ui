@@ -71,7 +71,7 @@ export const AccountMenuItem = styled.button`
 
 export const AccountMenuDanger = styled(AccountMenuItem)`
   color: var(--ig-color-danger);
-  &:hover { color: var(--ig-color-danger); background: var(--ig-color-red-tint-08); }
+  &:hover { color: var(--ig-color-danger); background: var(--ig-color-danger-bg-soft); }
 `
 
 export const HistoryList = styled.div`

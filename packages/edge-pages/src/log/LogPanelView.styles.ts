@@ -116,8 +116,8 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
   border-radius: var(--ig-radius-xs);
   cursor: default;
   background-color: ${({ type }) =>
-    type === 'error' ? 'var(--ig-color-red-tint-08)' :
-    type === 'success' ? 'var(--ig-color-green-tint-08)' : 'transparent'};
+    type === 'error' ? 'var(--ig-color-danger-bg-soft)' :
+    type === 'success' ? 'var(--ig-color-success-bg-soft)' : 'transparent'};
 
   &:hover { background-color: var(--ig-color-surface-interactive); }
 `;

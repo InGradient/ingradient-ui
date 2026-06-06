@@ -35,14 +35,14 @@ export const ConfirmButton = styled.button<{ $danger?: boolean }>`
   padding: 0 var(--ig-space-6);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.35)' : 'var(--ig-color-border-subtle)')};
-  background: ${({ $danger }) => ($danger ? 'var(--ig-color-red-tint-12)' : 'transparent')};
+  background: ${({ $danger }) => ($danger ? 'var(--ig-color-danger-bg)' : 'transparent')};
   color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   transition: all var(--ig-motion-fast-ease);
   &:hover {
-    background: ${({ $danger }) => ($danger ? 'var(--ig-color-red-tint-18)' : 'var(--ig-color-surface-interactive)')};
+    background: ${({ $danger }) => ($danger ? 'var(--ig-color-danger-bg-hover)' : 'var(--ig-color-surface-interactive)')};
     color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};
   }
 `
