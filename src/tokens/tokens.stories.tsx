@@ -16,10 +16,10 @@ type Story = StoryObj
 
 const Swatch = styled.div<{ $bg: string; $border?: boolean }>`
   width: 100%;
-  height: 56px;
+  height: var(--ig-control-height-2xl-wide);
   border-radius: var(--ig-radius-sm);
   background: ${(p) => p.$bg};
-  border: ${(p) => (p.$border ? '1px solid var(--ig-color-border-subtle)' : 'none')};
+  border: ${(p) => (p.$border ? 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' : 'none')};
 `
 
 const TokenLabel = styled.div`
@@ -50,7 +50,7 @@ function ColorTile({ varName, label, withBorder }: { varName: string; label?: st
 function SpacingTile({ varName }: { varName: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
-      <div style={{ width: `var(${varName})`, height: 24, background: 'var(--ig-color-accent)', borderRadius: 2 }} />
+      <div style={{ width: `var(${varName})`, height: 'var(--ig-icon-3xl)', background: 'var(--ig-color-accent)', borderRadius: 'var(--ig-radius-2xs)' }} />
       <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
     </div>
   )
@@ -59,7 +59,7 @@ function SpacingTile({ varName }: { varName: string }) {
 function BorderWidthTile({ varName }: { varName: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
-      <div style={{ width: 80, height: 24, borderTop: `var(${varName}) solid var(--ig-color-accent)` }} />
+      <div style={{ width: 'var(--ig-popup-3xs)', height: 'var(--ig-icon-3xl)', borderTop: `var(${varName}) solid var(--ig-color-accent)` }} />
       <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
     </div>
   )
@@ -70,8 +70,8 @@ function MotionTile({ varName, label }: { varName: string; label: string }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
       <div
         style={{
-          width: 80,
-          height: 12,
+          width: 'var(--ig-popup-3xs)',
+          height: 'var(--ig-space-5)',
           borderRadius: 'var(--ig-radius-pill)',
           background: 'var(--ig-color-accent-soft-surface)',
           position: 'relative',
@@ -90,7 +90,7 @@ function MotionTile({ varName, label }: { varName: string; label: string }) {
           }}
         />
       </div>
-      <div style={{ minWidth: 90, color: 'var(--ig-color-text-primary)' }}>{label}</div>
+      <div style={{ minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-primary)' }}>{label}</div>
       <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
     </div>
   )
@@ -99,7 +99,7 @@ function MotionTile({ varName, label }: { varName: string; label: string }) {
 function ZIndexTile({ varName, value }: { varName: string; value: number }) {
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ig-space-3)' }}>
-      <div style={{ width: 56, textAlign: 'right', fontFamily: 'var(--ig-font-mono)', color: 'var(--ig-color-text-primary)' }}>
+      <div style={{ width: 'var(--ig-control-height-2xl-wide)', textAlign: 'right', fontFamily: 'var(--ig-font-mono)', color: 'var(--ig-color-text-primary)' }}>
         {value}
       </div>
       <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
@@ -113,9 +113,9 @@ function RadiusTile({ varName, label }: { varName: string; label: string }) {
       <div
         style={{
           width: '100%',
-          height: 80,
+          height: 'var(--ig-control-height-capture)',
           background: 'var(--ig-color-surface-raised)',
-          border: '1px solid var(--ig-color-border-subtle)',
+          border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
           borderRadius: `var(${varName})`,
         }}
       />
@@ -131,7 +131,7 @@ function ShadowTile({ varName, label }: { varName: string; label: string }) {
       <div
         style={{
           width: '100%',
-          height: 72,
+          height: 'var(--ig-layout-sidebar-brand)',
           borderRadius: 'var(--ig-radius-lg)',
           background: 'var(--ig-color-surface-raised)',
           boxShadow: `var(${varName})`,
@@ -145,7 +145,7 @@ function ShadowTile({ varName, label }: { varName: string; label: string }) {
 
 function FontWeightTile({ varName, label }: { varName: string; label: string }) {
   return (
-    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+    <div style={{ borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
       <div style={{ fontWeight: `var(${varName})`, fontSize: 'var(--ig-font-size-lg)', color: 'var(--ig-color-text-primary)' }}>
         {label} · The quick brown fox jumps
       </div>
@@ -157,7 +157,7 @@ function FontWeightTile({ varName, label }: { varName: string; label: string }) 
 function PopupSizeTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
-      <div style={{ width: `var(${varName})`, height: 32, background: 'var(--ig-color-surface-raised)', border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)' }} />
+      <div style={{ width: `var(${varName})`, height: 'var(--ig-control-height-sm)', background: 'var(--ig-color-surface-raised)', border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-md)' }} />
       <TokenName>{label}</TokenName>
       <TokenLabel>{varName}</TokenLabel>
     </div>
@@ -189,7 +189,7 @@ function BlurTile({ varName, label }: { varName: string; label: string }) {
         style={{
           position: 'relative',
           width: '100%',
-          height: 88,
+          height: 'var(--ig-layout-histogram-height)',
           borderRadius: 'var(--ig-radius-lg)',
           backgroundImage: 'linear-gradient(45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(-45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--ig-color-accent) 75%), linear-gradient(-45deg, transparent 75%, var(--ig-color-accent) 75%)',
           backgroundSize: '16px 16px',
@@ -217,7 +217,7 @@ function BlurTile({ varName, label }: { varName: string; label: string }) {
 function OpacityTile({ varName, label }: { varName: string; label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
-      <div style={{ width: 80, height: 40, borderRadius: 'var(--ig-radius-md)', background: 'var(--ig-color-accent)', opacity: `var(${varName})` }} />
+      <div style={{ width: 'var(--ig-popup-3xs)', height: 'var(--ig-control-height-mid-plus)', borderRadius: 'var(--ig-radius-md)', background: 'var(--ig-color-accent)', opacity: `var(${varName})` }} />
       <TokenName>{label}</TokenName>
       <TokenLabel>{varName}</TokenLabel>
     </div>
@@ -226,7 +226,7 @@ function OpacityTile({ varName, label }: { varName: string; label: string }) {
 
 function LineHeightTile({ varName, label }: { varName: string; label: string }) {
   return (
-    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+    <div style={{ borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
       <div style={{ lineHeight: `var(${varName})`, fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-text-primary)' }}>
         {label} · The quick brown fox jumps over the lazy dog.<br />
         Second line for line-height comparison.<br />
@@ -239,7 +239,7 @@ function LineHeightTile({ varName, label }: { varName: string; label: string }) 
 
 function LetterSpacingTile({ varName, label }: { varName: string; label: string }) {
   return (
-    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+    <div style={{ borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
       <div style={{ letterSpacing: `var(${varName})`, fontSize: 'var(--ig-font-size-sm)', fontWeight: 'var(--ig-font-weight-semibold)', textTransform: 'uppercase', color: 'var(--ig-color-text-primary)' }}>
         {label} · Section label sample
       </div>
@@ -250,7 +250,7 @@ function LetterSpacingTile({ varName, label }: { varName: string; label: string 
 
 function FontSizeTile({ varName, label }: { varName: string; label: string }) {
   return (
-    <div style={{ borderBottom: '1px solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
+    <div style={{ borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', paddingBottom: 'var(--ig-space-3)' }}>
       <div style={{ fontSize: `var(${varName})`, color: 'var(--ig-color-text-primary)' }}>
         {label} · The quick brown fox
       </div>
