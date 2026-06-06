@@ -9,8 +9,8 @@ import { MediaDialogShell } from '@ingradient/ui/patterns'
 
 const TOOLBAR_STYLE = {
   position: 'absolute' as const,
-  top: 8,
-  right: 16,
+  top: 'var(--ig-space-3)',
+  right: 'var(--ig-space-7)',
   zIndex: 'var(--ig-z-sticky-plus)',
 }
 

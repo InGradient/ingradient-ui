@@ -10,7 +10,7 @@ const PANEL_STYLE = {
 }
 
 const HEADER_ROW_STYLE = {
-  minHeight: 72,
+  minHeight: 'var(--ig-layout-sidebar-brand)',
   padding: '0 var(--ig-space-7)',
 }
 
