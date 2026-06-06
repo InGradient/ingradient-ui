@@ -90,7 +90,7 @@ function MotionTile({ varName, label }: { varName: string; label: string }) {
           }}
         />
       </div>
-      <div style={{ minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-primary)' }}>{label}</div>
+      <div style={{ minWidth: 90, color: 'var(--ig-color-text-primary)' }}>{label}</div>
       <TokenLabel style={{ marginTop: 0 }}>{varName}</TokenLabel>
     </div>
   )
@@ -113,7 +113,7 @@ function RadiusTile({ varName, label }: { varName: string; label: string }) {
       <div
         style={{
           width: '100%',
-          height: 'var(--ig-control-height-capture)',
+          height: 'var(--ig-layout-topbar)',
           background: 'var(--ig-color-surface-raised)',
           border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
           borderRadius: `var(${varName})`,
@@ -189,7 +189,7 @@ function BlurTile({ varName, label }: { varName: string; label: string }) {
         style={{
           position: 'relative',
           width: '100%',
-          height: 'var(--ig-layout-histogram-height)',
+          height: 88,
           borderRadius: 'var(--ig-radius-lg)',
           backgroundImage: 'linear-gradient(45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(-45deg, var(--ig-color-accent) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--ig-color-accent) 75%), linear-gradient(-45deg, transparent 75%, var(--ig-color-accent) 75%)',
           backgroundSize: '16px 16px',

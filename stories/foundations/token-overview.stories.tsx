@@ -166,7 +166,7 @@ export const Overview: Story = {
         >
           <StorybookStack gap={14}>
             {shadowEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-control-height-capture) minmax(0, 1fr)', gap: 'var(--ig-space-6)', alignItems: 'center' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-icon-gallery-label-max) minmax(0, 1fr)', gap: 'var(--ig-space-6)', alignItems: 'center' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div
                   style={{
