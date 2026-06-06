@@ -1,10 +1,46 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
+import styled from 'styled-components'
 import { Text } from '@ingradient/ui/primitives'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 import { Checkbox, IconButton } from '@ingradient/ui/components'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '@ingradient/ui/components'
+
+const TextCell = styled.span`
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+`
+
+const TableText = styled.div`
+  font-size: var(--ig-font-size-sm);
+
+  table {
+    min-width: var(--ig-popup-4xl);
+  }
+`
+
+const MenuButton = styled(IconButton).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
+    color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
+  }
+
+  &&:hover:not(:disabled) {
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
+    background: ${(p) =>
+      p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
+    color: var(--ig-color-text-primary);
+  }
+`
 
 const THUMB_STYLE = {
   width: 'var(--ig-control-height-capture)',
@@ -40,6 +76,7 @@ export interface GalleryImagesTableProps {
   images: GalleryImagesTableImage[]
   selectedIds: Set<string>
   datasetNameById?: Record<string, string>
+  openMenuId?: string
   onToggleSelect?: (id: string, checked: boolean) => void
   onSelectAll?: (checked: boolean) => void
   onOpenMenu?: (id: string, anchor: HTMLElement) => void
@@ -49,7 +86,7 @@ export interface GalleryImagesTableProps {
 type Row = GalleryImagesTableImage
 
 export function GalleryImagesTable({
-  images, selectedIds, datasetNameById,
+  images, selectedIds, datasetNameById, openMenuId,
   onToggleSelect, onSelectAll, onOpenMenu, onRowClick,
 }: GalleryImagesTableProps) {
   const allSelected = images.length > 0 && images.every((i) => selectedIds.has(i.id))
@@ -59,6 +96,7 @@ export function GalleryImagesTable({
     {
       key: 'select',
       header: '',
+      width: 'var(--ig-control-height-lg)',
       render: (row) => (
         <Checkbox
           checked={selectedIds.has(row.id)}
@@ -68,56 +106,77 @@ export function GalleryImagesTable({
         />
       ),
     },
-    { key: 'thumb', header: '', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
-    { key: 'name', header: 'Name', render: (row) => <Text as="span" title={row.name} style={NAME_CELL_STYLE}>{row.name}</Text> },
+    { key: 'thumb', header: '', width: 'var(--ig-layout-histogram-height)', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
+    { key: 'name', header: 'Name', width: 'var(--ig-popup-sm)', render: (row) => <Text as="span" title={row.name} style={NAME_CELL_STYLE}>{row.name}</Text> },
     {
       key: 'dataset', header: 'Dataset',
-      render: (row) => row.dataset_id ? (datasetNameById?.[row.dataset_id] ?? row.dataset_id) : '—',
+      width: 'var(--ig-layout-loading-stats)',
+      render: (row) => {
+        const datasetName = row.dataset_id ? (datasetNameById?.[row.dataset_id] ?? row.dataset_id) : '—'
+        return <TextCell title={datasetName}>{datasetName}</TextCell>
+      },
     },
     {
       key: 'sequence', header: 'Sequence',
-      render: (row) => row.sequence_id ? `${row.sequence_id} · ${row.sequence_step ?? 0}` : '—',
+      width: 'var(--ig-popup-2xs)',
+      render: (row) => {
+        const sequence = row.sequence_id ? `${row.sequence_id} · ${row.sequence_step ?? 0}` : '—'
+        return <TextCell title={sequence}>{sequence}</TextCell>
+      },
     },
-    { key: 'pattern', header: 'Pattern', render: (row) => row.pattern_label ?? '—' },
+    { key: 'pattern', header: 'Pattern', width: '104px', render: (row) => row.pattern_label ?? '—' },
     {
       key: 'sync', header: 'Sync',
+      width: '116px',
       render: (row) => row.sync_state ? <SyncStatusChip state={row.sync_state} /> : null,
     },
-    { key: 'created', header: 'Created at', render: (row) => row.created_at ?? '—' },
-    { key: 'labeled', header: 'Labeled', render: (row) => row.labeled_at ? 'Yes' : 'No' },
+    { key: 'created', header: 'Created at', width: '124px', render: (row) => row.created_at ?? '—' },
+    { key: 'labeled', header: 'Labeled', width: 'var(--ig-layout-histogram-height)', render: (row) => row.labeled_at ? 'Yes' : 'No' },
     {
       key: 'menu', header: '',
-      render: (row) => <RowMenuButton imageId={row.id} name={row.name} onOpenMenu={onOpenMenu} />,
+      width: 'var(--ig-control-height-lg)',
+      render: (row) => (
+        <RowMenuButton
+          imageId={row.id}
+          name={row.name}
+          active={openMenuId === row.id}
+          onOpenMenu={onOpenMenu}
+        />
+      ),
     },
   ]
 
   void allSelected; void someSelected; void onSelectAll
 
   return (
-    <Table<Row>
-      columns={columns}
-      rows={images}
-      onRowClick={(row) => onRowClick?.(row.id)}
-      ariaLabel="Gallery images table"
-    />
+    <TableText>
+      <Table<Row>
+        columns={columns}
+        rows={images}
+        onRowClick={(row) => onRowClick?.(row.id)}
+        ariaLabel="Gallery images table"
+      />
+    </TableText>
   )
 }
 
 function RowMenuButton({
-  imageId, name, onOpenMenu,
-}: { imageId: string; name: string; onOpenMenu?: (id: string, anchor: HTMLElement) => void }) {
+  imageId, name, active, onOpenMenu,
+}: { imageId: string; name: string; active: boolean; onOpenMenu?: (id: string, anchor: HTMLElement) => void }) {
   const ref = React.useRef<HTMLButtonElement>(null)
   return (
-    <IconButton
+    <MenuButton
       ref={ref}
       aria-label={`Open menu for ${name}`}
-      size="sm"
+      aria-haspopup="menu"
+      aria-expanded={active}
+      $active={active}
       onClick={(e) => {
         e.stopPropagation()
         if (ref.current) onOpenMenu?.(imageId, ref.current)
       }}
     >
       <KebabIcon size={iconSizeNumbers.lg} />
-    </IconButton>
+    </MenuButton>
   )
 }

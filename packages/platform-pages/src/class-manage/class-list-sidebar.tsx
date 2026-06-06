@@ -1,34 +1,57 @@
-import { Box, Stack, Text } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
-import { LabeledSwatchRow } from '@ingradient/ui/components'
+import styled from 'styled-components'
+import { Button, LabeledSwatchRow } from '@ingradient/ui/components'
+import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 
-const SIDEBAR_STYLE = {
-  width: 'var(--ig-popup-sm)',
-  flexShrink: 0,
-  background: 'var(--ig-color-surface-panel)',
-  borderRadius: 'var(--ig-radius-xl)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  height: '100%',
-  minHeight: 0,
-  overflow: 'hidden' as const,
-}
+const Sidebar = styled.aside<{ $flush: boolean }>`
+  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-sm)')};
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--ig-color-surface-panel);
+  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
+  border: ${(p) => (p.$flush ? 'none' : 'var(--ig-border-1px) solid var(--ig-color-border-subtle)')};
+  border-right: ${(p) =>
+    p.$flush ? 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))' : undefined};
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+`
 
-const HEADER_STYLE = {
-  padding: 'var(--ig-space-7) var(--ig-space-7) var(--ig-space-5)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  flexShrink: 0,
-}
+const Header = styled.div`
+  min-height: var(--ig-layout-sidebar-brand);
+  padding: 0 var(--ig-space-7);
+  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ig-space-4);
+`
 
-const LIST_STYLE = {
-  listStyle: 'none' as const,
-  margin: 0,
-  padding: 'var(--ig-space-3) 0',
-  overflowY: 'auto' as const,
-  minHeight: 0,
-  flex: 1,
-}
+const Title = styled.h2`
+  margin: 0;
+  color: var(--ig-color-text-primary);
+  font-size: var(--ig-font-size-lg);
+  font-weight: 600;
+`
 
-const PLACEHOLDER_STYLE = { padding: 'var(--ig-space-9) var(--ig-space-6)' }
+const List = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: var(--ig-space-2);
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-2px);
+`
+
+const Placeholder = styled.div`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  padding: var(--ig-space-9) var(--ig-space-6);
+`
 
 export interface ClassListSidebarClass {
   id: string
@@ -41,6 +64,8 @@ export interface ClassListSidebarProps {
   classes: ClassListSidebarClass[]
   selectedClassId?: string | null
   loading?: boolean
+  flush?: boolean
+  title?: string
   emptyText?: string
   addClassLabel?: string
   onSelectClass?: (id: string) => void
@@ -48,24 +73,25 @@ export interface ClassListSidebarProps {
 }
 
 export function ClassListSidebar({
-  classes, selectedClassId, loading,
+  classes, selectedClassId, loading, flush = false, title = 'Classes',
   emptyText = 'No classes yet.',
-  addClassLabel = '+ Add class',
+  addClassLabel = '+ Add',
   onSelectClass, onAddClass,
 }: ClassListSidebarProps) {
   return (
-    <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
-      <Box style={HEADER_STYLE}>
-        <Button variant="accent" type="button" onClick={onAddClass}>
+    <Sidebar $flush={flush}>
+      <Header>
+        <Title>{title}</Title>
+        <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
           {addClassLabel}
         </Button>
-      </Box>
+      </Header>
       {loading ? (
-        <Text tone="muted" align="center" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>Loading…</Text>
+        <Placeholder>Loading…</Placeholder>
       ) : classes.length === 0 ? (
-        <Text tone="muted" align="center" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
+        <Placeholder>{emptyText}</Placeholder>
       ) : (
-        <Box as="ul" role="listbox" aria-label="Classes" style={LIST_STYLE}>
+        <List role="listbox" aria-label="Classes">
           {classes.map((c) => (
             <LabeledSwatchRow
               key={c.id}
@@ -77,8 +103,8 @@ export function ClassListSidebar({
               onClick={onSelectClass}
             />
           ))}
-        </Box>
+        </List>
       )}
-    </Stack>
+    </Sidebar>
   )
 }

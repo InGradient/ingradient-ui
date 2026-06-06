@@ -1,19 +1,33 @@
 import type { CSSProperties, ReactNode } from 'react'
+import styled from 'styled-components'
 import { Alert, EmptyState, Spinner } from '@ingradient/ui/components'
 import { GalleryImagesTable } from './gallery'
-import { Stack } from '@ingradient/ui/primitives'
+import { Stack, stateTitleText } from '@ingradient/ui/primitives'
 import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'
 import type { CatalogImagesPaneProps, CatalogViewMode } from './types'
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const LOADING_STYLE: CSSProperties = { padding: 'var(--ig-space-12)' }
 const PERMISSION_DENIED_TEXT = "You don't have permission to view images."
 const LOADING_TEXT = 'Loading images…'
 const EMPTY_TITLE = 'No images'
 const EMPTY_DESC = 'Upload images or select a different dataset.'
 const STATS_EMPTY_TITLE = 'No data'
 const STATS_EMPTY_DESC = 'Stats are available when at least one image is uploaded.'
+
+const EmptyStateWrap = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: var(--ig-popup-md);
+  display: grid;
+  place-items: center;
+  padding: var(--ig-space-7);
+`
+
+const LoadingText = styled.span`
+  ${stateTitleText}
+`
 
 interface CatalogBodyProps {
   permissionDenied?: boolean
@@ -48,28 +62,34 @@ export function CatalogBody({
   }
   if (imagesPane.loading) {
     return (
-      <Stack gap={3} align="center" style={LOADING_STYLE}>
-        <Spinner size="lg" />
-        <span>{LOADING_TEXT}</span>
-      </Stack>
+      <EmptyStateWrap>
+        <Stack gap={3} align="center">
+          <Spinner size="lg" />
+          <LoadingText>{LOADING_TEXT}</LoadingText>
+        </Stack>
+      </EmptyStateWrap>
     )
   }
   if (imagesPane.images.length === 0) {
     if (viewMode === 'stats') {
       return (
-        <EmptyState
-          title={STATS_EMPTY_TITLE}
-          description={STATS_EMPTY_DESC}
-          data-ig-slot="CatalogBody.EmptyStatsState"
-        />
+        <EmptyStateWrap>
+          <EmptyState
+            title={STATS_EMPTY_TITLE}
+            description={STATS_EMPTY_DESC}
+            data-ig-slot="CatalogBody.EmptyStatsState"
+          />
+        </EmptyStateWrap>
       )
     }
     return (
-      <EmptyState
-        title={EMPTY_TITLE}
-        description={EMPTY_DESC}
-        data-ig-slot="CatalogBody.EmptyImagesState"
-      />
+      <EmptyStateWrap>
+        <EmptyState
+          title={EMPTY_TITLE}
+          description={EMPTY_DESC}
+          data-ig-slot="CatalogBody.EmptyImagesState"
+        />
+      </EmptyStateWrap>
     )
   }
   if (viewMode === 'table') {
@@ -79,6 +99,7 @@ export function CatalogBody({
           images={imagesPane.images}
           selectedIds={imagesPane.selectedImageIds}
           datasetNameById={imagesPane.datasetNameById}
+          openMenuId={imagesPane.openMenuId}
           onToggleSelect={imagesPane.onToggleSelect}
           onOpenMenu={imagesPane.onOpenMenu}
           onRowClick={(id) => imagesPane.onOpenDetail(id)}
