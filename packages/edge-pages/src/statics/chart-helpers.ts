@@ -1,25 +1,29 @@
-// Chart color constants — recharts takes color as JS props.
+// Chart color constants — recharts takes color as JS props (CSS var() unsupported in SVG attribute).
+// Hex 값은 src/tokens/core/chart-colors.ts 의 chartColors 를 single source of truth 로 한다.
 
-export const CHART_TICK_COLOR = '#9ca3af'
-export const CHART_TICK_FONT_SIZE_SM = 10
-export const CHART_TICK_FONT_SIZE_MD = 11
+import { chartColors } from '@ingradient/ui'
 
-export const CHART_BLUE = '#60a5fa'
-export const CHART_PURPLE = '#a78bfa'
-export const CHART_GREEN = '#34d399'
-export const CHART_CYAN = '#22d3ee'
+// Hex 색 — chartColors 참조 (DRY)
+export const CHART_BLUE = chartColors.blue
+export const CHART_PURPLE = chartColors.purple
+export const CHART_GREEN = chartColors.green
+export const CHART_CYAN = chartColors.cyan
+export const CHART_NEUTRAL = chartColors.neutral
+export const CHART_GOLD = chartColors.gold
+export const CHART_VIOLET = chartColors.violet
+export const CHART_TEAL = chartColors.teal
+export const CHART_AMBER = chartColors.amber
+export const CHART_TAG_CLASSIFICATION = chartColors.tagClassification
+export const CHART_TAG_SEGMENTATION = chartColors.tagSegmentation
+export const CHART_TICK_COLOR = chartColors.tickColor
+export const CHART_LEGEND_FALLBACK = chartColors.tickColor // 동일 #9ca3af
+export const CHART_SUCCESS = chartColors.green // 동일 #34d399
+
+// CSS var() — 동적 theme-aware (theme provider 가 dark/light 변경)
 export const CHART_LIME = 'var(--ig-color-success)'
-
-export const CHART_SUCCESS = '#34d399'
 export const CHART_WARNING = 'var(--ig-color-warning)'
 export const CHART_DANGER = 'var(--ig-color-danger)'
-export const CHART_NEUTRAL = '#94a3b8'
-export const CHART_GOLD = '#facc15'
 
-export const CHART_LEGEND_FALLBACK = '#9ca3af'
-
-export const CHART_VIOLET = '#6c5ce7'
-export const CHART_TEAL = '#00b894'
-export const CHART_AMBER = '#fdcb6e'
-export const CHART_TAG_CLASSIFICATION = '#6ec87a'
-export const CHART_TAG_SEGMENTATION = '#c07be8'
+// 비-color (font size — recharts tick rendering)
+export const CHART_TICK_FONT_SIZE_SM = 10
+export const CHART_TICK_FONT_SIZE_MD = 11
