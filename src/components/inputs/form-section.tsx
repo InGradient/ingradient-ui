@@ -4,7 +4,7 @@ import { media } from '../../tokens/core/breakpoints'
 
 const RowWrap = styled.div`
   display: grid;
-  grid-template-columns: var(--ig-grid-label-col) 1fr;
+  grid-template-columns: var(--ig-form-label-col) 1fr;
   gap: var(--ig-space-3);
   align-items: start;
   ${media.sm} {

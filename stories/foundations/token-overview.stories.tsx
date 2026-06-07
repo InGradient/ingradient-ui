@@ -170,7 +170,7 @@ export const Overview: Story = {
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div
                   style={{
-                    minHeight: 'var(--ig-layout-sidebar-brand)',
+                    minHeight: 'var(--ig-layout-sidebar-header)',
                     borderRadius: 'var(--ig-radius-xl)',
                     background: 'var(--ig-color-surface-panel)',
                     boxShadow: value,

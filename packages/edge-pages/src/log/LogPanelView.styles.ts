@@ -173,7 +173,7 @@ export const ImageModalImg = styled.img`
   max-height: 90vh;
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  box-shadow: 0 var(--ig-space-modal-shadow-y) var(--ig-space-modal-shadow-blur) var(--ig-color-image-option-bg);
+  box-shadow: 0 var(--ig-layout-shadow-y-offset) var(--ig-layout-shadow-blur) var(--ig-color-image-option-bg);
   object-fit: contain;
 `;
 

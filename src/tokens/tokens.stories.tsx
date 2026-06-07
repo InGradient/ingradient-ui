@@ -131,7 +131,7 @@ function ShadowTile({ varName, label }: { varName: string; label: string }) {
       <div
         style={{
           width: '100%',
-          height: 'var(--ig-layout-sidebar-brand)',
+          height: 'var(--ig-layout-sidebar-header)',
           borderRadius: 'var(--ig-radius-lg)',
           background: 'var(--ig-color-surface-raised)',
           boxShadow: `var(${varName})`,
@@ -623,10 +623,12 @@ export const Review: Story = {
               ['log-detail-left', '254px'],
               ['log-detail-top', '58px'],
               ['log-detail-width', '272px'],
-              ['sidebar-brand', '72px'],
-              ['sidebar-collapse-threshold', '100px'],
-              ['stats-min', '300px'],
-              ['loading-stats', '180px'],
+              ['sidebar-header', '72px'],
+              ['sidebar-collapse', '100px'],
+              ['panel-min-height', '300px'],
+              ['loading-panel-height', '180px'],
+              ['shadow-y-offset', '40px'],
+              ['shadow-blur', '80px'],
             ].map(([name, val]) => (
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
                 <TokenName style={{ minWidth: 'var(--ig-popup-xs)', marginTop: 0 }}>{name}</TokenName>

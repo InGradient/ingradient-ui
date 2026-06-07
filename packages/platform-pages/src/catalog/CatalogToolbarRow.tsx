@@ -130,7 +130,7 @@ export function CatalogToolbarRow({
             Export
           </Button>
           <Button
-            variant="accent"
+            variant="solid"
             size="sm"
             onClick={onUpload}
             data-ig-component="CatalogToolbarRow.UploadButton"

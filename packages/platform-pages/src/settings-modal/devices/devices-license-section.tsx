@@ -1,11 +1,17 @@
-import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Box, Inline, Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DatePickerField } from '@ingradient/ui/components'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
+const Placeholder = styled.p`
+  ${stateTitleText}
+  margin: 0;
+`
+
 const INFO_GRID_STYLE = {
   display: 'grid' as const,
-  gridTemplateColumns: 'var(--ig-grid-label-col-wide) 1fr',
+  gridTemplateColumns: 'var(--ig-form-label-col-wide) 1fr',
   gap: 'var(--ig-space-2) var(--ig-space-5)',
   fontSize: 'var(--ig-font-size-sm)',
   alignItems: 'center' as const,
@@ -20,8 +26,6 @@ const FORM_BOX_STYLE = {
   borderRadius: 'var(--ig-radius-xxs)',
   padding: 'var(--ig-space-5)',
 }
-
-const PLACEHOLDER_STYLE = { margin: 0 }
 
 export interface DeviceLicense {
   planCode: string
@@ -66,8 +70,8 @@ export function DevicesLicenseSection({
   renewDate, onChangeRenewDate, renewing, renewError, onRenew,
 }: DevicesLicenseSectionProps) {
   return (
-    <Stack as="section" gap={4}>
-      <Inline justify="space-between" gap={3}>
+    <Stack as="section" gap="10px">
+      <Inline justify="space-between" gap="8px">
         <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>License</Text>
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
@@ -76,7 +80,7 @@ export function DevicesLicenseSection({
         ) : null}
       </Inline>
 
-      {loading ? <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={PLACEHOLDER_STYLE}>Loading…</Text> : null}
+      {loading ? <Placeholder>Loading…</Placeholder> : null}
       {!loading && error ? <Text tone="danger" size="var(--ig-font-size-xs)">{error}</Text> : null}
       {!loading && !error && license ? (
         <Box style={INFO_GRID_STYLE}>
@@ -95,12 +99,12 @@ export function DevicesLicenseSection({
           </Text>
         </Box>
       ) : null}
-      {!loading && !error && !license ? <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={PLACEHOLDER_STYLE}>No license found.</Text> : null}
+      {!loading && !error && !license ? <Placeholder>No license found.</Placeholder> : null}
 
       {isAdmin && showRenew ? (
-        <Stack gap={4} style={FORM_BOX_STYLE}>
+        <Stack gap="10px" style={FORM_BOX_STYLE}>
           <Text size="var(--ig-font-size-xs)" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
-          <Inline gap={3} wrap="wrap">
+          <Inline gap="8px" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
               {renewing ? 'Saving…' : 'Save'}

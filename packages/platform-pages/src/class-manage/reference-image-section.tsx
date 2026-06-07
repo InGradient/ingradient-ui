@@ -12,7 +12,7 @@ const PREVIEW_STYLE = {
   border: 'var(--ig-border-1px) solid var(--ig-color-white-12)',
   background: 'var(--ig-color-white-04)',
   objectFit: 'contain' as const,
-  maxHeight: 'var(--ig-layout-stats-min)',
+  maxHeight: 'var(--ig-layout-panel-min-height)',
 }
 
 export interface ReferenceImageBboxCandidate {
@@ -58,11 +58,11 @@ export function ReferenceImageSection({
         onDropImageId={(id) => onApply?.(id)}
         onSetDragging={onSetDragging}
       >
-        <Stack gap={5} style={STACK_STYLE}>
+        <Stack gap="12px" style={STACK_STYLE}>
           {imageUrl ? (
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
-            <Stack gap={3} align="flex-start">
+            <Stack gap="8px" align="flex-start">
               <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 1.5 }}>{emptyText}</Text>
             </Stack>
           )}

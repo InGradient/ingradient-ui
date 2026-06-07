@@ -18,7 +18,7 @@ const Sidebar = styled.aside<{ $flush: boolean }>`
 `
 
 const Header = styled.div`
-  min-height: var(--ig-layout-sidebar-brand);
+  min-height: var(--ig-layout-sidebar-header);
   padding: 0 var(--ig-space-7);
   border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;

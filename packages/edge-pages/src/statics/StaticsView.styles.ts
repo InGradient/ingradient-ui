@@ -70,7 +70,7 @@ export const Panel = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-6) 16px 16px;
-  min-height: var(--ig-layout-stats-min);
+  min-height: var(--ig-layout-panel-min-height);
 `;
 
 export const PanelTitle = styled.div`

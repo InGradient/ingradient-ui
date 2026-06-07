@@ -110,7 +110,7 @@ export function GalleryImagesTable({
     { key: 'name', header: 'Name', width: 'var(--ig-popup-sm)', render: (row) => <Text as="span" title={row.name} style={NAME_CELL_STYLE}>{row.name}</Text> },
     {
       key: 'dataset', header: 'Dataset',
-      width: 'var(--ig-layout-loading-stats)',
+      width: 'var(--ig-layout-loading-panel-height)',
       render: (row) => {
         const datasetName = row.dataset_id ? (datasetNameById?.[row.dataset_id] ?? row.dataset_id) : '—'
         return <TextCell title={datasetName}>{datasetName}</TextCell>

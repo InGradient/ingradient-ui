@@ -27,13 +27,13 @@ export interface StorageOverviewProps {
 export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOverviewProps) {
   if (loading) {
     return (
-      <Grid gap={5} columns="repeat(4, 1fr)">
-        {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="var(--ig-layout-sidebar-brand)" />)}
+      <Grid gap="12px" columns="repeat(4, 1fr)">
+        {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="var(--ig-layout-sidebar-header)" />)}
       </Grid>
     )
   }
   return (
-    <Grid gap={5} columns="repeat(4, 1fr)">
+    <Grid gap="12px" columns="repeat(4, 1fr)">
       {items.map((item, i) => (
         <Box key={i} style={CARD_STYLE}>
           <Text size="var(--ig-font-size-2xs)" tone="muted" style={LABEL_STYLE}>{item.label}</Text>
