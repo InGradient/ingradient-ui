@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { opacityScale } from '@ingradient/ui'
 import { IconButton } from '@ingradient/ui/components'
 import { ChipTabs, type ChipTabsItem } from '@ingradient/ui/components'
 
@@ -131,7 +132,7 @@ export function ClassLightbox({
               const color = colorFor(b.classId, classIdToColor, defaultAnnotationColor)
               return (
                 <rect key={`bbox-${i}`} x={b.x} y={b.y} width={b.w} height={b.h}
-                  fill={color} fillOpacity={0.22} stroke={color} strokeWidth={0.006} />
+                  fill={color} fillOpacity={opacityScale.svgFillMedium} stroke={color} strokeWidth={0.006} />
               )
             })}
             {points.map((p, i) => (

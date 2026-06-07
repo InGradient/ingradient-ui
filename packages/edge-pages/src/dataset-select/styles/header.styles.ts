@@ -1,3 +1,4 @@
+import { rotations } from '@ingradient/ui'
 import styled, { css, keyframes } from 'styled-components'
 
 export const Header = styled.div`
@@ -65,7 +66,7 @@ export const RoleBadge = styled.span<{ $role: string }>`
   }};
 `
 
-const spinAnim = keyframes`to { transform: rotate(360deg); }`
+const spinAnim = keyframes`to { transform: rotate(${rotations.full}); }`
 
 export const RefreshBtn = styled.button<{ $spinning?: boolean }>`
   display: flex;

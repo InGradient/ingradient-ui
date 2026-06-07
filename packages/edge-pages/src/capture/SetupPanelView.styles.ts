@@ -1,3 +1,4 @@
+import { rotations } from '@ingradient/ui'
 import styled from 'styled-components';
 
 export const SetupPanel = styled.div`
@@ -95,6 +96,6 @@ export const SetupAccordionSummaryRow = styled.div`
   }
 
   details[open] & svg {
-    transform: rotate(180deg);
+    transform: rotate(${rotations.half});
   }
 `;

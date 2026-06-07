@@ -1,5 +1,6 @@
 import type { DrawingObject } from '../../hooks/useDrawingCanvas'
 import type { ZoomInvariantRendererCtx } from '../../hooks/useZoomInvariantRenderer'
+import { opacityScale } from '../../tokens/core'
 import {
   SvgBboxRect,
   SvgPointDot,
@@ -102,7 +103,7 @@ export function RectObject({
         w={obj.w}
         h={obj.h}
         color={color}
-        fillOpacity={isSelected ? 0.13 : 0.07}
+        fillOpacity={isSelected ? opacityScale.svgFillSubtle : opacityScale.svgFillFaint}
         strokeWidth={uniform ? s(isSelected ? STROKE_SELECTED_PX : STROKE_PX) : (isSelected ? 0.003 : 0.002)}
         vectorEffect={uniform ? 'non-scaling-stroke' : undefined}
       />

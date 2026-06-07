@@ -1,8 +1,9 @@
+import { rotations } from '@ingradient/ui'
 import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(${rotations.zero}); }
+  to { transform: rotate(${rotations.full}); }
 `;
 
 export const Spinner = styled.span`

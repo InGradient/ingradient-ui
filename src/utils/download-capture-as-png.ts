@@ -1,6 +1,7 @@
 import { toPng } from 'html-to-image'
+import { chartColors } from '../tokens/core'
 
-const DEFAULT_BG = '#181818'
+const DEFAULT_BG = chartColors.canvasExportBg
 const MAX_PIXEL_RATIO = 3
 
 function slugifyFileName(value: string): string {
@@ -14,7 +15,7 @@ function slugifyFileName(value: string): string {
 }
 
 export interface DownloadCaptureOptions {
-  /** PNG 배경색. 기본 `#181818`. */
+  /** PNG 배경색. 기본 `chartColors.canvasExportBg` (#181818). */
   backgroundColor?: string
   /** 파일명에 사용할 title. slug 화 후 `.png` 가 붙음. */
   title: string

@@ -2,6 +2,7 @@ import { useContext, useRef } from 'react'
 import type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
 import { useZoomInvariantRenderer } from '../../hooks/useZoomInvariantRenderer'
 import { ImageViewerContext } from '../../components/data-display/image-viewer'
+import { opacityScale } from '../../tokens/core'
 import { PointObject, RectObject } from './drawing-layer.renderers'
 
 export type { DrawingObject, DrawingPreview } from '../../hooks/useDrawingCanvas'
@@ -92,7 +93,7 @@ export function DrawingLayer({
           width={drawingPreview.w}
           height={drawingPreview.h}
           fill={previewColor}
-          fillOpacity={0.15}
+          fillOpacity={opacityScale.svgFillSoft}
           stroke={previewColor}
           strokeWidth={uniform ? s(1.5) : 0.002}
           strokeDasharray={uniform ? `${s(6)} ${s(4)}` : '0.006 0.004'}

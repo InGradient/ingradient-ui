@@ -1,3 +1,4 @@
+import { opacityScale } from '@ingradient/ui'
 import { Badge } from '@ingradient/ui/components'
 import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import type { ClassImage, ClassImagesPaneProps } from './types'
@@ -40,7 +41,7 @@ export function ClassManageImageGrid({
           selectedClassId={selectedClassId}
           imageWidth={img.width}
           imageHeight={img.height}
-          fillOpacity={0.22}
+          fillOpacity={opacityScale.svgFillMedium}
           emphasize
         />
       )}

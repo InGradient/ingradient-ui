@@ -1,4 +1,5 @@
 import React from 'react'
+import { chartColors } from '../../tokens/core'
 
 export interface SvgShapeHandleProps {
   cx: number
@@ -20,7 +21,7 @@ export interface SvgShapeHandleProps {
  * Renders `<circle>` when `rx === ry` (or `ry` omitted), else `<ellipse>`.
  */
 export function SvgShapeHandle({
-  cx, cy, rx, ry, color, fill = '#fff', strokeWidth, vectorEffect, style, className,
+  cx, cy, rx, ry, color, fill = chartColors.white, strokeWidth, vectorEffect, style, className,
 }: SvgShapeHandleProps) {
   if (ry === undefined || ry === rx) {
     return (

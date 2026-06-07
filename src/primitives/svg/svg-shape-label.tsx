@@ -1,5 +1,5 @@
 import React from 'react'
-import { typographyScale } from '../../tokens/core'
+import { chartColors, typographyScale } from '../../tokens/core'
 
 export interface SvgShapeLabelProps {
   /** Background rect width (px in label-local coord). */
@@ -33,7 +33,7 @@ export interface SvgShapeLabelProps {
 // padX = spacingScale[2] (6px), padY = spacingScale['3px'] (3px) — SVG attribute numeric
 export function SvgShapeLabel({
   width, height, color, opacity = 0.85, radius = 3,
-  text, padX = 6, padY = 3, fontSize, textColor = '#fff', transform,
+  text, padX = 6, padY = 3, fontSize, textColor = chartColors.white, transform,
 }: SvgShapeLabelProps) {
   return (
     <g transform={transform}>

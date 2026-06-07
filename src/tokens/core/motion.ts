@@ -1,3 +1,10 @@
+// Rotation keyframe values (spinner animation full cycle).
+export const rotations = {
+  zero: '0deg',
+  half: '180deg',
+  full: '360deg',
+} as const
+
 export const motionScale = {
   fastest: '0.12s',
   swift: '0.15s',

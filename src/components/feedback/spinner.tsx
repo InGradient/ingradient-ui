@@ -1,9 +1,10 @@
+import { rotations } from '../../tokens/core'
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
 import { iconSizeNumbers } from '../../tokens/core'
 
 const spin = keyframes`
-  to { transform: rotate(360deg); }
+  to { transform: rotate(${rotations.full}); }
 `
 
 const sizeMap = {

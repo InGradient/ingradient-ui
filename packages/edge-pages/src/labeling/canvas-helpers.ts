@@ -1,3 +1,4 @@
+import { chartColors } from '@ingradient/ui'
 import type { DrawingObject } from '@ingradient/ui/components'
 
 export interface BBox {
@@ -23,7 +24,7 @@ export interface EdgeOptions {
 export const HANDLE_HIT_PX = 12
 export const DEFAULT_MODULATION_THRESHOLD = 0.08
 export const DEFAULT_MODULATION_DARKEN_FACTOR = 0.3
-export const ROI_COLOR = '#FACC15'
+export const ROI_COLOR = chartColors.gold
 
 export function toDrawingObjects(bboxes: BBox[], classMap: Record<string, ClassInfo>): DrawingObject[] {
   return bboxes.map((b, i) => ({

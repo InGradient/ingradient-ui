@@ -1,6 +1,7 @@
+import { rotations } from '@ingradient/ui'
 import styled, { css, keyframes } from 'styled-components';
 
-const captureSpinAnim = keyframes`to { transform: rotate(360deg); }`;
+const captureSpinAnim = keyframes`to { transform: rotate(${rotations.full}); }`;
 
 export { Spinner as ConnectingSpinner } from '@ingradient/ui/components';
 

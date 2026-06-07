@@ -1,4 +1,4 @@
-import { typographyScale } from '../../tokens/core'
+import { opacityScale, typographyScale } from '../../tokens/core'
 
 export interface PieSliceLabelProps {
   cx?: number
@@ -46,7 +46,7 @@ export function renderPieSliceLabel(props: PieSliceLabelProps) {
       <tspan x={x} dy={typographyScale.svgTspanDyPrimary} fontSize={typographyScale.size2xs} fontWeight={typographyScale.weightBold}>
         {name}
       </tspan>
-      <tspan x={x} dy={typographyScale.svgTspanDySecondary} fontSize={typographyScale.size3xs} style={{ fillOpacity: 0.86 }}>
+      <tspan x={x} dy={typographyScale.svgTspanDySecondary} fontSize={typographyScale.size3xs} style={{ fillOpacity: opacityScale.loudPlus }}>
         {value.toLocaleString()}
       </tspan>
     </text>

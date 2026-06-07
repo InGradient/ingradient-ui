@@ -1,3 +1,4 @@
+import { rotations } from '@ingradient/ui'
 import styled from 'styled-components';
 
 export const DeletingLabel = styled.span`
@@ -275,7 +276,7 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
     p.$state === 'upload_failed' ? 'var(--ig-color-danger)' :
     p.$state === 'uploading' ? 'var(--ig-color-accent)' :
     'var(--ig-color-white-70)'};
-  @keyframes sync-spin { to { transform: rotate(360deg); } }
+  @keyframes sync-spin { to { transform: rotate(${rotations.full}); } }
   ${(p) => p.$state === 'uploading' ? '& > svg { animation: sync-spin var(--ig-motion-sync-spin) linear infinite; }' : ''}
 `;
 

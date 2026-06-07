@@ -1,3 +1,4 @@
+import { rotations } from '../../tokens/core'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { controlField } from '../../primitives'
@@ -61,7 +62,7 @@ export const DropdownChevron = styled.span<{ $open: boolean }>`
   align-items: center;
   justify-content: center;
   color: var(--ig-color-text-soft);
-  transform: ${(p) => (p.$open ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${(p) => (p.$open ? 'rotate(${rotations.half})' : 'rotate(${rotations.zero})')};
   transition: transform var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
@@ -75,7 +76,7 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
   },
 }))<{ $layout: DropdownMenuLayout }>`
   position: fixed;
-  z-index: var(--ig-z-popover);
+  z-index: calc(var(--ig-z-modal) + 10);
   padding: var(--ig-space-2);
   border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);

@@ -16,4 +16,8 @@ export const chartColors = {
   lightBlue: '#74b9ff',
   lightViolet: '#a29bfe',
   mint: '#55efc4',
+  // PNG canvas export 배경 (라이브러리 외부 export 용도)
+  canvasExportBg: '#181818',
+  // SVG attribute default — pure white (CSS var() 불가 영역)
+  white: '#ffffff',
 } as const
