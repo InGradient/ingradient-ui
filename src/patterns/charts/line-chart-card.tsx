@@ -1,10 +1,11 @@
 import React from 'react'
+import { svgStrokeWidths } from '../../tokens/core'
 import { CartesianGrid, Legend, Line, LineChart as RechartsLineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { ChartContainer } from './chart-container'
 import { ChartLegend } from '../../components/charts/chart-legend'
 import { ChartResponsive } from '../../components/charts/chart-responsive'
 import { ChartTooltipContent } from '../../components/charts/chart-tooltip'
-import { chartPalette, type CartesianSeries } from '../../components/charts/types'
+import { chartAxisTick, chartPalette, type CartesianSeries } from '../../components/charts/types'
 
 export function LineChartCard<T extends Record<string, string | number>>({
   title,
@@ -64,16 +65,19 @@ export function LineChartCard<T extends Record<string, string | number>>({
             onClick={onPointClick ? (state: any) => { if (state?.activePayload?.[0]) onPointClick(state.activePayload[0].payload as T, state.activeTooltipIndex ?? 0) } : undefined}
           >
             <CartesianGrid stroke="var(--ig-color-chart-grid)" strokeDasharray="3 3" />
-            <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+            <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
             {dualAxis ? (
               <>
-                <YAxis yAxisId="left" stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
-                <YAxis yAxisId="right" orientation="right" stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+                <YAxis yAxisId="left" stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
+                <YAxis yAxisId="right" orientation="right" stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
               </>
             ) : (
-              <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+              <YAxis stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
             )}
-            <Tooltip content={tooltipContent ?? <ChartTooltipContent />} />
+            <Tooltip
+              content={tooltipContent ?? <ChartTooltipContent />}
+              cursor={{ stroke: 'var(--ig-color-border-subtle)' }}
+            />
             <Legend content={() => null} />
             {series.map((item, index) => {
               const color = item.color ?? chartPalette[index % chartPalette.length]
@@ -85,7 +89,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
                   dataKey={item.key}
                   name={item.label}
                   stroke={color}
-                  strokeWidth={2.4}
+                  strokeWidth={svgStrokeWidths.midBold}
                   dot={false}
                   activeDot={{ r: 4 }}
                   yAxisId={yAxisId}

@@ -31,6 +31,8 @@ export const iconSizeNumbers = {
 // Use this TS constant when authoring inline SVG components.
 export const svgStrokeWidths = {
   thin: 1.3,
+  mid: 1.8,
   regular: 2,
+  midBold: 2.4,
   bold: 2.5,
 } as const

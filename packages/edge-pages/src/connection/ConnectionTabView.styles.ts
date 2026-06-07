@@ -51,7 +51,7 @@ export const DeviceCard = styled.button<{$selected?:boolean}>`
   color:var(--ig-color-text-primary);
   cursor:pointer;
   text-align:left;
-  transition:all .15s;
+  transition: all var(--ig-motion-swift);
   &:hover{
     border-color:var(--ig-color-accent-border-strong);
     background:var(--ig-color-surface-interactive-hover);

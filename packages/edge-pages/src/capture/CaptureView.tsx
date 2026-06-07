@@ -1,3 +1,4 @@
+import { controlSizeNumbers } from '@ingradient/ui'
 import { useEffect, useRef, useState } from 'react'
 import { Grid, Maximize2, Minimize2, SlidersHorizontal } from 'lucide-react'
 import { Switch, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
@@ -75,7 +76,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
               <ConnectingBox>
                 {isAutoReconnecting ? (
                   <>
-                    <ConnectingSpinner size={32} />
+                    <ConnectingSpinner size={controlSizeNumbers.sm} />
                     <PlaceholderText>{labels.cameraReconnecting}</PlaceholderText>
                   </>
                 ) : snapshotError ? (
@@ -108,7 +109,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
           </>
         ) : isConnecting ? (
           <ConnectingSpinnerBox>
-            <ConnectingSpinner size={32} />
+            <ConnectingSpinner size={controlSizeNumbers.sm} />
             <PlaceholderText>{labels.connecting}</PlaceholderText>
           </ConnectingSpinnerBox>
         ) : (

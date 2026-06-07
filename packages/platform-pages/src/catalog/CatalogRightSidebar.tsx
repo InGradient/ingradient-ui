@@ -1,3 +1,4 @@
+import { controlSizeNumbers } from '@ingradient/ui'
 import { SidePanelLayout, SwatchItemList, TagListSearch } from '@ingradient/ui/components'
 import { Avatar, IconButton } from '@ingradient/ui/components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
@@ -32,7 +33,7 @@ function MemberPoolList({ members, onRemove }: { members: MemberItem[]; onRemove
     <Stack as="ul" gap="var(--ig-space-2)" style={MEMBER_LIST_STYLE}>
       {members.map((m) => (
         <Inline as="li" key={m.id} gap="var(--ig-space-3)" style={MEMBER_ROW_STYLE}>
-          <Avatar src={m.avatarUrl} initials={m.initials ?? m.name.charAt(0).toUpperCase()} size={28} />
+          <Avatar src={m.avatarUrl} initials={m.initials ?? m.name.charAt(0).toUpperCase()} size={controlSizeNumbers.xs} />
           <Stack gap={0} style={MEMBER_TEXT_BLOCK_STYLE}>
             <Text size="var(--ig-font-size-sm)" title={m.name} style={MEMBER_NAME_STYLE}>{m.name}</Text>
             {m.role ? <Text size="var(--ig-font-size-2xs)" tone="muted" uppercase letterSpacing="0.05em">{m.role}</Text> : null}

@@ -5,6 +5,12 @@ export const rotations = {
   full: '360deg',
 } as const
 
+// Linear-gradient angle (CSS gradient direction).
+export const gradientAngles = {
+  horizontal: '90deg',
+  diagonal: '135deg',
+} as const
+
 export const motionScale = {
   fastest: '0.12s',
   swift: '0.15s',

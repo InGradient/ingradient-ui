@@ -1,3 +1,4 @@
+import { controlSizeNumbers } from '@ingradient/ui'
 import { Spinner } from '@ingradient/ui/components'
 import {
   AppRoot, AppContent, AppFooterBar, ShutdownOverlay,
@@ -15,12 +16,12 @@ export function EdgeAppShellView(props: EdgeAppShellViewProps): JSX.Element {
       {systemMonitorModal}
       {isShuttingDown && (
         <ShutdownOverlay>
-          <Spinner size={40} tone="white" />
+          <Spinner size={controlSizeNumbers.midPlus} tone="white" />
         </ShutdownOverlay>
       )}
       {isResolving && (
         <ShutdownOverlay>
-          <Spinner size={40} tone="white" />
+          <Spinner size={controlSizeNumbers.midPlus} tone="white" />
         </ShutdownOverlay>
       )}
       <AppRoot>

@@ -1,5 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
 import styled, { css } from 'styled-components'
+import { gradientAngles } from '../../tokens/core'
 
 export type DropZoneVariant = 'outlined' | 'filled'
 
@@ -41,7 +42,7 @@ const Root = styled.div<{ $variant: DropZoneVariant; $active: boolean; $disabled
     p.$variant === 'outlined' &&
     css`
       background: repeating-linear-gradient(
-        135deg,
+        ${gradientAngles.diagonal},
         var(--ig-color-surface-muted) 0 var(--ig-space-4),
         var(--ig-color-bg-canvas) var(--ig-space-4) var(--ig-space-9)
       );

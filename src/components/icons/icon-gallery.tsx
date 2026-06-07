@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
-import { iconSizeNumbers } from '../../tokens/core'
+import { iconSizeNumbers, svgStrokeWidths } from '../../tokens/core'
 import { icons, type IconName } from './registry'
 
 const IconGalleryGrid = styled.div`
@@ -51,7 +51,7 @@ export function IconGallery({
         const Glyph = icons[name]
         return (
           <IconTile key={name}>
-            <IconPreview><Glyph size={size} strokeWidth={1.8} /></IconPreview>
+            <IconPreview><Glyph size={size} strokeWidth={svgStrokeWidths.mid} /></IconPreview>
             <IconLabel>{name}</IconLabel>
           </IconTile>
         )

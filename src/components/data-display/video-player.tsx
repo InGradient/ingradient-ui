@@ -1,5 +1,6 @@
 import type { VideoHTMLAttributes } from 'react'
 import styled from 'styled-components'
+import { gradientAngles } from '../../tokens/core'
 
 export type VideoAspectRatio = '1/1' | '4/3' | '16/9' | '16/10' | '9/16'
 
@@ -8,7 +9,7 @@ const Frame = styled.div<{ $ratio?: VideoAspectRatio }>`
   aspect-ratio: ${(p) => p.$ratio ?? 'auto'};
   background:
     linear-gradient(
-      135deg,
+      ${gradientAngles.diagonal},
       var(--ig-color-image-card-gradient-a) 0%,
       var(--ig-color-image-card-gradient-b) 100%
     ),

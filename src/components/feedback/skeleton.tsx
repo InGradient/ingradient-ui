@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components'
+import { gradientAngles } from '../../tokens/core'
 
 const shimmer = css`
   background:
     linear-gradient(
-      90deg,
+      ${gradientAngles.horizontal},
       var(--ig-color-skeleton-start) 0%,
       var(--ig-color-skeleton-mid) 50%,
       var(--ig-color-skeleton-start) 100%
