@@ -711,6 +711,70 @@ export const Review: Story = {
           ))}
         </StorybookGrid>
       </StorybookSection>
+
+      <StorybookSection title="Status chips" description="Dataset / job status chip 색 (bg + text 쌍). running / queued / completed / draft / failed / stopped / interrupted / idle / warning.">
+        <StorybookCard title="Status chip tokens">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            {['running', 'queued', 'completed', 'draft', 'failed', 'stopped', 'interrupted', 'idle', 'warning'].map((state) => (
+              <div key={state} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+                <span style={{
+                  display: 'inline-block',
+                  padding: 'var(--ig-space-1) var(--ig-space-3)',
+                  borderRadius: 'var(--ig-radius-pill)',
+                  background: `var(--ig-color-status-${state}-bg)`,
+                  color: `var(--ig-color-status-${state}-text)`,
+                  fontSize: 'var(--ig-font-size-xs)',
+                  fontWeight: 'var(--ig-font-weight-semibold)',
+                  minWidth: 'var(--ig-popup-3xs)',
+                  textAlign: 'center',
+                }}>{state}</span>
+                <TokenLabel style={{ marginTop: 0 }}>{`--ig-color-status-${state}-bg / -text`}</TokenLabel>
+              </div>
+            ))}
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Alert tones" description="Alert / inline-message 의 bg + border + text triplet. info / success / warning / danger.">
+        <StorybookCard title="Alert tone tokens">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
+            {['info', 'success', 'warning', 'danger'].map((tone) => (
+              <div key={tone} style={{
+                padding: 'var(--ig-space-3) var(--ig-space-5)',
+                borderRadius: 'var(--ig-radius-md)',
+                background: `var(--ig-color-alert-${tone}-bg)`,
+                border: `var(--ig-border-1px) solid var(--ig-color-alert-${tone}-border)`,
+                color: `var(--ig-color-alert-${tone}-text)`,
+              }}>
+                <strong>{tone}</strong> · Lorem ipsum dolor sit amet, consectetur.
+                <div style={{ fontSize: 'var(--ig-font-size-2xs)', opacity: 'var(--ig-opacity-loud)', marginTop: 'var(--ig-space-1)' }}>
+                  {`--ig-color-alert-${tone}-bg / -border / -text`}
+                </div>
+              </div>
+            ))}
+          </div>
+        </StorybookCard>
+      </StorybookSection>
+
+      <StorybookSection title="Scrollbar" description="WebKit scrollbar thumb 색 — default / hover / active.">
+        <StorybookCard title="Scrollbar thumb tokens">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
+            {['thumb', 'thumb-hover', 'thumb-active'].map((state) => (
+              <div key={state} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+                <span style={{
+                  display: 'inline-block',
+                  width: 'var(--ig-popup-3xs)',
+                  height: 'var(--ig-space-3)',
+                  borderRadius: 'var(--ig-radius-pill)',
+                  background: `var(--ig-scrollbar-${state})`,
+                }} />
+                <TokenName>{state}</TokenName>
+                <TokenLabel style={{ marginTop: 0 }}>{`--ig-scrollbar-${state}`}</TokenLabel>
+              </div>
+            ))}
+          </div>
+        </StorybookCard>
+      </StorybookSection>
     </StorybookPage>
   ),
 }
