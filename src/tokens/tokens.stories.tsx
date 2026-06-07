@@ -470,7 +470,10 @@ export const Review: Story = {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
             <PopupSizeTile varName="--ig-popup-3xs" label="3xs (80px)" />
             <PopupSizeTile varName="--ig-popup-3xs-plus" label="3xs-plus (96px)" />
+            <PopupSizeTile varName="--ig-popup-3xs-wide" label="3xs-wide (104px)" />
+            <PopupSizeTile varName="--ig-popup-2xs-narrow-tight" label="2xs-narrow-tight (116px)" />
             <PopupSizeTile varName="--ig-popup-2xs-narrow" label="2xs-narrow (120px)" />
+            <PopupSizeTile varName="--ig-popup-2xs-tight" label="2xs-tight (124px)" />
             <PopupSizeTile varName="--ig-popup-2xs" label="2xs (140px)" />
             <PopupSizeTile varName="--ig-popup-2xs-plus" label="2xs-plus (160px)" />
             <PopupSizeTile varName="--ig-popup-xs-narrow" label="xs-narrow (190px)" />
@@ -633,6 +636,15 @@ export const Review: Story = {
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
                 <TokenName style={{ minWidth: 'var(--ig-popup-xs)', marginTop: 0 }}>{name}</TokenName>
                 <TokenLabel style={{ marginTop: 0 }}>{`--ig-layout-${name} = ${val}`}</TokenLabel>
+              </div>
+            ))}
+            {[
+              ['form-label-col', '140px'],
+              ['form-label-col-wide', '160px'],
+            ].map(([name, val]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+                <TokenName style={{ minWidth: 'var(--ig-popup-xs)', marginTop: 0 }}>{name}</TokenName>
+                <TokenLabel style={{ marginTop: 0 }}>{`--ig-${name} = ${val}`}</TokenLabel>
               </div>
             ))}
           </div>

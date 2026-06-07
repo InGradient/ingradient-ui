@@ -5,7 +5,6 @@ export const spacingScale = {
   '3px': '3px',
   '-1px': '-1px',
   '-2px': '-2px',
-  '-4': '-10px',
   'hoverLiftY': '-1px',
   1: '4px',
   '1Plus': '5px',

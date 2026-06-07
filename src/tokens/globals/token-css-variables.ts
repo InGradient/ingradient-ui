@@ -416,7 +416,6 @@ const staticVars = {
   '--ig-space-3px': spacingScale['3px'],
   '--ig-space-neg-1px': spacingScale['-1px'],
   '--ig-space-neg-2px': spacingScale['-2px'],
-  '--ig-space-neg-4': spacingScale['-4'],
   '--ig-transform-hover-lift-y': spacingScale.hoverLiftY,
   '--ig-space-1': spacingScale[1],
   '--ig-space-1-plus': spacingScale['1Plus'],
