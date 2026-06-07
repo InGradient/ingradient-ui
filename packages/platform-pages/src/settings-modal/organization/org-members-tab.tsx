@@ -5,7 +5,7 @@ import { Button } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
-const DESCRIPTION_STYLE = { lineHeight: 1.5 }
+const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
 
 const Empty = styled.p`
   ${stateTitleText}

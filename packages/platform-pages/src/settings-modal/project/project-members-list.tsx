@@ -10,7 +10,7 @@ import {
 } from './project-member-row'
 
 const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
-const DESCRIPTION_STYLE = { lineHeight: 1.5 }
+const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
 
 const Placeholder = styled.p`
   ${stateTitleText}

@@ -30,6 +30,7 @@ export const typographyScale = {
   lineHeightSnug: 1.4,
   lineHeightBase: 1.45,
   lineHeightRelaxed: 1.5,
+  lineHeightRelaxedPlus: 1.55,
   lineHeightLoose: 1.6,
   // Text width clamp (em — text-relative, ellipsis chip label 용도)
   textClampNarrow: '5.5em',

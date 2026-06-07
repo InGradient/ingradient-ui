@@ -1,4 +1,5 @@
 import React from 'react'
+import { typographyScale } from '../../tokens/core'
 
 export interface SvgShapeLabelProps {
   /** Background rect width (px in label-local coord). */
@@ -50,7 +51,7 @@ export function SvgShapeLabel({
         y={-padY}
         fill={textColor}
         fontSize={fontSize}
-        fontWeight={600}
+        fontWeight={typographyScale.weightSemibold}
         fontFamily="sans-serif"
         style={{ pointerEvents: 'none' }}
       >

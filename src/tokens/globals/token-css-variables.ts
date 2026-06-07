@@ -332,6 +332,7 @@ const staticVars = {
   '--ig-line-height-snug': String(typographyScale.lineHeightSnug),
   '--ig-line-height-base': String(typographyScale.lineHeightBase),
   '--ig-line-height-relaxed': String(typographyScale.lineHeightRelaxed),
+  '--ig-line-height-relaxed-plus': String(typographyScale.lineHeightRelaxedPlus),
   '--ig-line-height-loose': String(typographyScale.lineHeightLoose),
   '--ig-opacity-ghost': String(opacityScale.ghost),
   '--ig-opacity-faded': String(opacityScale.faded),

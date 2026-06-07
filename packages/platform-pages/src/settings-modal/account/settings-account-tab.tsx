@@ -5,7 +5,7 @@ import { TextField } from '@ingradient/ui/components'
 import { SettingsHint, SettingsSection } from '@ingradient/ui/patterns'
 
 const FIELD_STYLE = { minWidth: 240 }
-const HINT_STYLE = { margin: 0, lineHeight: 1.5 }
+const HINT_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }
 const EXPIRED_STYLE = { margin: 0 }
 
 export interface LicenseInfo {

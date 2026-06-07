@@ -20,7 +20,7 @@ const SOLO_CARD_STYLE = {
 
 const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 260 }
 const FULL_CONFIRM_STYLE = { width: '100%' }
-const COPY_STYLE = { lineHeight: 1.55 }
+const COPY_STYLE = { lineHeight: 'var(--ig-line-height-relaxed-plus)' }
 
 export interface DeleteAccountSoloProject {
   project_id: string
