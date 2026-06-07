@@ -5,11 +5,7 @@ export const transformScale = {
   hoverLift: 1.04,
 } as const
 
-// Common image / video aspect ratios.
+// Image / video aspect ratios — 사용처 추가 시 신규 tier 도입.
 export const aspectRatios = {
-  square: '1 / 1',
   landscape: '4 / 3',
-  wide: '16 / 9',
-  ultraWide: '21 / 9',
-  portrait: '3 / 4',
 } as const

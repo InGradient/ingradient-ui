@@ -1,5 +1,4 @@
 export const opacityScale = {
-  hidden: 0,
   ghost: 0.35,
   faded: 0.4,
   disabled: 0.5,

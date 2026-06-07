@@ -381,7 +381,6 @@ export const Review: Story = {
             <MotionTile varName="--ig-motion-normal-ease" label="normal-ease (0.2s ease)" />
             <MotionTile varName="--ig-motion-normal" label="normal (0.24s ease)" />
             <MotionTile varName="--ig-motion-mobile-nav" label="mobile-nav (0.28s cubic-bezier)" />
-            <MotionTile varName="--ig-motion-slow" label="slow (0.36s)" />
             <MotionTile varName="--ig-motion-spinner" label="spinner (0.7s)" />
             <MotionTile varName="--ig-motion-spinner-fast" label="spinner-fast (0.75s)" />
             <MotionTile varName="--ig-motion-spinner-slow" label="spinner-slow (0.8s)" />
@@ -508,7 +507,6 @@ export const Review: Story = {
             <IconSizeTile varName="--ig-icon-sub" label="sub (8px) — small dot" />
             <IconSizeTile varName="--ig-icon-2xs" label="2xs (11px)" />
             <IconSizeTile varName="--ig-icon-xs" label="xs (12px)" />
-            <IconSizeTile varName="--ig-icon-xs-plus" label="xs-plus (13px)" />
             <IconSizeTile varName="--ig-icon-sm" label="sm (14px)" />
             <IconSizeTile varName="--ig-icon-sm-plus" label="sm-plus (15px)" />
             <IconSizeTile varName="--ig-icon-md" label="md (16px)" />
@@ -530,7 +528,6 @@ export const Review: Story = {
       <StorybookSection title="Opacity" description="의미 tier — hidden / ghost / faded / disabled / overlay / muted / subtle / emphatic / loud / prominent / near.">
         <StorybookCard title="Opacity tokens">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }}>
-            <OpacityTile varName="--ig-opacity-hidden" label="hidden (0)" />
             <OpacityTile varName="--ig-opacity-ghost" label="ghost (0.35)" />
             <OpacityTile varName="--ig-opacity-faded" label="faded (0.4)" />
             <OpacityTile varName="--ig-opacity-disabled" label="disabled (0.5)" />
@@ -704,11 +701,7 @@ export const Review: Story = {
             </div>
           ))}
           {[
-            ['square', '1 / 1'],
             ['landscape', '4 / 3'],
-            ['wide', '16 / 9'],
-            ['ultra-wide', '21 / 9'],
-            ['portrait', '3 / 4'],
           ].map(([name, val]) => (
             <div key={name}>
               <div style={{ width: '100%', aspectRatio: `var(--ig-aspect-${name})`, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-md)' }} />

@@ -6,7 +6,6 @@ export const motionScale = {
   normal: '0.24s ease',
   normalEase: '0.2s ease',
   mobileNav: '0.28s cubic-bezier(0.4, 0, 0.2, 1)',
-  slow: '0.36s ease',
   spinner: '0.7s',
   spinnerFast: '0.75s',
   spinnerSlow: '0.8s',

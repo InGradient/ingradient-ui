@@ -26,10 +26,6 @@ type Palette = Record<keyof typeof foundationColors, string>
 type Shadows = Record<keyof typeof shadowScale, string>
 
 function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shadows, isLight: boolean) {
-  // For light mode, surface-card / dropdown / toolbar etc. use light tints instead of dark slate
-  const lightOnDarkInsetHighlight = isLight
-    ? 'rgba(15, 18, 25, 0.04)'
-    : 'var(--ig-color-white-04)'
   return {
     // ── Background ────────────────────────────────────────────────
     '--ig-color-bg-canvas': theme.colors.bgCanvas,
@@ -67,7 +63,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-accent-soft-surface': palette.blueTint12,
     '--ig-color-accent-soft-surface-hover': palette.blueTint18,
     '--ig-color-on-accent': '#ffffff', // text/icon over accent-strong button — always white
-    '--ig-color-inset-highlight': lightOnDarkInsetHighlight,
     '--ig-shadow-panel': shadows.panel,
     '--ig-shadow-floating': shadows.floating,
     '--ig-shadow-popover': shadows.popover,
@@ -156,18 +151,18 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-selection-bg': palette.blueTint14,
     '--ig-color-focus-bg-soft': palette.blueTint16,
     '--ig-color-active-bg': palette.blueTint28,
-    // Status state aliases — red / green / amber / coral tint family 의미 layer
-    '--ig-color-danger-bg-soft': 'var(--ig-color-red-tint-08)',
-    '--ig-color-danger-bg': 'var(--ig-color-red-tint-12)',
-    '--ig-color-danger-bg-hover': 'var(--ig-color-red-tint-18)',
-    '--ig-color-danger-bg-strong': 'var(--ig-color-red-tint-60)',
-    '--ig-color-danger-overlay': 'var(--ig-color-red-tint-92)',
-    '--ig-color-danger-overlay-hover': 'var(--ig-color-red-tint-96)',
-    '--ig-color-danger-button-bg': 'var(--ig-color-coral-tint-18)',
-    '--ig-color-danger-button-border': 'var(--ig-color-coral-tint-28)',
-    '--ig-color-success-bg-soft': 'var(--ig-color-green-tint-08)',
-    '--ig-color-success-bg': 'var(--ig-color-green-tint-15)',
-    '--ig-color-warning-bg': 'var(--ig-color-amber-tint-15)',
+    // Status state aliases — direct rgba (underlying raw tint token 제거 후 inline)
+    '--ig-color-danger-bg-soft': isLight ? 'rgba(220, 38, 38, 0.10)' : 'rgba(239, 68, 68, 0.08)',
+    '--ig-color-danger-bg': isLight ? 'rgba(220, 38, 38, 0.14)' : 'rgba(239, 68, 68, 0.12)',
+    '--ig-color-danger-bg-hover': isLight ? 'rgba(220, 38, 38, 0.20)' : 'rgba(239, 68, 68, 0.18)',
+    '--ig-color-danger-bg-strong': isLight ? 'rgba(220, 38, 38, 0.6)' : 'rgba(239, 68, 68, 0.6)',
+    '--ig-color-danger-overlay': isLight ? 'rgba(220, 38, 38, 0.92)' : 'rgba(239, 68, 68, 0.92)',
+    '--ig-color-danger-overlay-hover': isLight ? 'rgba(185, 28, 28, 0.96)' : 'rgba(220, 38, 38, 0.96)',
+    '--ig-color-danger-button-bg': isLight ? 'rgba(220, 38, 60, 0.20)' : 'rgba(255, 95, 122, 0.18)',
+    '--ig-color-danger-button-border': isLight ? 'rgba(220, 38, 60, 0.30)' : 'rgba(255, 95, 122, 0.28)',
+    '--ig-color-success-bg-soft': isLight ? 'rgba(22, 163, 74, 0.10)' : 'rgba(43, 181, 114, 0.08)',
+    '--ig-color-success-bg': isLight ? 'rgba(22, 163, 74, 0.18)' : 'rgba(60, 210, 120, 0.15)',
+    '--ig-color-warning-bg': isLight ? 'rgba(217, 119, 6, 0.18)' : 'rgba(255, 180, 60, 0.15)',
     '--ig-color-dropdown-open-shadow': isLight
       ? '0 0 0 3px rgba(58, 115, 230, 0.20), 0 18px 36px rgba(15, 23, 42, 0.10)'
       : '0 0 0 3px var(--ig-color-blue-tint-16), 0 18px 36px rgba(0, 0, 0, 0.18)',
@@ -183,7 +178,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-toolbar-surface': isLight ? 'rgba(247, 249, 251, 0.84)' : 'rgba(8, 12, 18, 0.84)',
     '--ig-color-modal-backdrop': palette.overlayBackdrop,
     // Canvas overlay (annotation-toolbar / coord readout 등 어두운 surface)
-    '--ig-color-overlay-soft': 'rgba(0, 0, 0, 0.3)',
     '--ig-color-overlay-dim': 'rgba(0, 0, 0, 0.45)',
     '--ig-color-overlay-mid': 'rgba(0, 0, 0, 0.5)',
     '--ig-color-overlay-strong': 'rgba(0, 0, 0, 0.55)',
@@ -251,21 +245,11 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-blue-tint-85': isLight ? 'rgba(58, 115, 230, 0.85)' : 'rgba(77, 136, 255, 0.85)',
     '--ig-color-blue-tint-90': isLight ? 'rgba(58, 115, 230, 0.9)' : 'rgba(77, 136, 255, 0.9)',
     '--ig-color-blue-tint-92': isLight ? 'rgba(58, 115, 230, 0.92)' : 'rgba(77, 136, 255, 0.92)',
-    '--ig-color-green-tint-08': isLight ? 'rgba(22, 163, 74, 0.10)' : 'rgba(43, 181, 114, 0.08)',
-    '--ig-color-green-tint-15': isLight ? 'rgba(22, 163, 74, 0.18)' : 'rgba(60, 210, 120, 0.15)',
-    '--ig-color-amber-tint-15': isLight ? 'rgba(217, 119, 6, 0.18)' : 'rgba(255, 180, 60, 0.15)',
-    '--ig-color-red-tint-08': isLight ? 'rgba(220, 38, 38, 0.10)' : 'rgba(239, 68, 68, 0.08)',
-    '--ig-color-red-tint-12': isLight ? 'rgba(220, 38, 38, 0.14)' : 'rgba(239, 68, 68, 0.12)',
-    '--ig-color-red-tint-18': isLight ? 'rgba(220, 38, 38, 0.20)' : 'rgba(239, 68, 68, 0.18)',
-    '--ig-color-coral-tint-18': isLight ? 'rgba(220, 38, 60, 0.20)' : 'rgba(255, 95, 122, 0.18)',
-    '--ig-color-coral-tint-28': isLight ? 'rgba(220, 38, 60, 0.30)' : 'rgba(255, 95, 122, 0.28)',
     '--ig-color-blue-tint-62': isLight ? 'rgba(58, 115, 230, 0.62)' : 'rgba(77, 136, 255, 0.62)',
     '--ig-color-blue-tint-34': isLight ? 'rgba(58, 115, 230, 0.34)' : 'rgba(77, 136, 255, 0.34)',
     '--ig-color-blue-strong-tint-20': isLight ? 'rgba(20, 63, 166, 0.2)' : 'rgba(41, 98, 217, 0.2)',
     '--ig-color-blue-strong-tint-24': isLight ? 'rgba(20, 63, 166, 0.24)' : 'rgba(41, 98, 217, 0.24)',
     '--ig-color-blue-strong-tint-30': isLight ? 'rgba(20, 63, 166, 0.3)' : 'rgba(41, 98, 217, 0.3)',
-    '--ig-color-red-tint-92': isLight ? 'rgba(220, 38, 38, 0.92)' : 'rgba(239, 68, 68, 0.92)',
-    '--ig-color-red-tint-96': isLight ? 'rgba(185, 28, 28, 0.96)' : 'rgba(220, 38, 38, 0.96)',
     '--ig-color-slate-tint-86': isLight ? 'rgba(229, 231, 235, 0.86)' : 'rgba(75, 85, 99, 0.86)',
     '--ig-color-white-32': isLight ? 'rgba(15, 18, 25, 0.24)' : 'rgba(255, 255, 255, 0.32)',
     '--ig-color-white-35': isLight ? 'rgba(15, 18, 25, 0.27)' : 'rgba(255, 255, 255, 0.35)',
@@ -285,8 +269,6 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-slate-gray-tint-12': isLight ? 'rgba(71, 85, 105, 0.12)' : 'rgba(127, 139, 157, 0.12)',
     '--ig-color-slate-gray-tint-16': isLight ? 'rgba(71, 85, 105, 0.16)' : 'rgba(127, 139, 157, 0.16)',
     '--ig-color-slate-gray-tint-18': isLight ? 'rgba(71, 85, 105, 0.18)' : 'rgba(127, 139, 157, 0.18)',
-    '--ig-color-red-tint-60': isLight ? 'rgba(220, 38, 38, 0.6)' : 'rgba(239, 68, 68, 0.6)',
-    '--ig-color-red-tint-15': isLight ? 'rgba(220, 38, 38, 0.18)' : 'rgba(239, 68, 68, 0.15)',
     '--ig-color-overlay-deep': isLight ? 'rgba(0, 0, 0, 0.58)' : 'rgba(0, 0, 0, 0.78)',
     '--ig-color-capture-bg-loud': isLight ? 'rgba(229, 231, 235, 0.82)' : 'rgba(12, 16, 22, 0.82)',
     '--ig-color-blue-accent-solid': isLight ? 'rgba(58, 115, 230, 1)' : 'rgba(77, 136, 255, 1)',
@@ -337,6 +319,8 @@ const staticVars = {
   '--ig-font-weight-bold': String(typographyScale.weightBold),
   '--ig-font-weight-black': String(typographyScale.weightBlack),
   '--ig-letter-spacing-heading': typographyScale.letterSpacingHeading,
+  '--ig-text-clamp-narrow': typographyScale.textClampNarrow,
+  '--ig-text-clamp-mid': typographyScale.textClampMid,
   '--ig-letter-spacing-micro': typographyScale.letterSpacingMicro,
   '--ig-letter-spacing-tight': typographyScale.letterSpacingTight,
   '--ig-letter-spacing-normal': typographyScale.letterSpacingNormal,
@@ -349,7 +333,6 @@ const staticVars = {
   '--ig-line-height-base': String(typographyScale.lineHeightBase),
   '--ig-line-height-relaxed': String(typographyScale.lineHeightRelaxed),
   '--ig-line-height-loose': String(typographyScale.lineHeightLoose),
-  '--ig-opacity-hidden': String(opacityScale.hidden),
   '--ig-opacity-ghost': String(opacityScale.ghost),
   '--ig-opacity-faded': String(opacityScale.faded),
   '--ig-opacity-disabled': String(opacityScale.disabled),
@@ -371,7 +354,6 @@ const staticVars = {
   '--ig-icon-2xs': iconSizes['2xs'],
   '--ig-icon-sm': iconSizes.sm,
   '--ig-icon-sm-plus': iconSizes.smPlus,
-  '--ig-icon-xs-plus': iconSizes.xsPlus,
   '--ig-icon-md': iconSizes.md,
   '--ig-icon-lg': iconSizes.lg,
   '--ig-icon-xl': iconSizes.xl,
@@ -465,11 +447,7 @@ const staticVars = {
   '--ig-scale-press': String(transformScale.press),
   '--ig-scale-drag': String(transformScale.drag),
   '--ig-scale-hover-lift': String(transformScale.hoverLift),
-  '--ig-aspect-square': aspectRatios.square,
   '--ig-aspect-landscape': aspectRatios.landscape,
-  '--ig-aspect-wide': aspectRatios.wide,
-  '--ig-aspect-ultra-wide': aspectRatios.ultraWide,
-  '--ig-aspect-portrait': aspectRatios.portrait,
   '--ig-control-height-xs': controlSizes.xs,
   '--ig-control-height-xs-plus': controlSizes.xsPlus,
   '--ig-control-height-sm': controlSizes.sm,
@@ -510,7 +488,6 @@ const staticVars = {
   '--ig-motion-normal': motionScale.normal,
   '--ig-motion-normal-ease': motionScale.normalEase,
   '--ig-motion-mobile-nav': motionScale.mobileNav,
-  '--ig-motion-slow': motionScale.slow,
   '--ig-motion-spinner': motionScale.spinner,
   '--ig-motion-spinner-fast': motionScale.spinnerFast,
   '--ig-motion-spinner-slow': motionScale.spinnerSlow,

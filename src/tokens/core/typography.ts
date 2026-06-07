@@ -31,4 +31,10 @@ export const typographyScale = {
   lineHeightBase: 1.45,
   lineHeightRelaxed: 1.5,
   lineHeightLoose: 1.6,
+  // Text width clamp (em — text-relative, ellipsis chip label 용도)
+  textClampNarrow: '5.5em',
+  textClampMid: '8em',
+  // SVG tspan dy (multi-line label baseline offset)
+  svgTspanDyPrimary: '-0.2em',
+  svgTspanDySecondary: '1.2em',
 } as const

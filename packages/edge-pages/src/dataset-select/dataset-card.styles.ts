@@ -132,11 +132,11 @@ export const ClassChip = styled.span<{ $color: string }>`
   color: ${(p) => p.$color};
   border: var(--ig-border-1px) solid ${(p) => `${p.$color}44`};
   white-space: nowrap;
-  max-width: 8em;
+  max-width: var(--ig-text-clamp-mid);
 `
 
 export const ClassChipName = styled.span`
-  max-width: 5.5em;
+  max-width: var(--ig-text-clamp-narrow);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
