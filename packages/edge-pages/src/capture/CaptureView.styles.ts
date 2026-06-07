@@ -162,8 +162,8 @@ export const CaptureButtonWrap = styled.div`
 `;
 
 export const CaptureButton = styled.button<{ $capturing?: boolean }>`
-  width: var(--ig-control-height-capture);
-  height: var(--ig-control-height-capture);
+  width: var(--ig-control-height-3xl-plus);
+  height: var(--ig-control-height-3xl-plus);
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
   border: var(--ig-border-3px) solid var(--ig-color-border-strong);
@@ -322,7 +322,7 @@ export const AbsolutePlaceholder = styled(PlaceholderText)`
 
 export const CapturingBadge = styled.div`
   position: fixed;
-  top: var(--ig-control-height-capture);
+  top: var(--ig-control-height-3xl-plus);
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--ig-z-tooltip);

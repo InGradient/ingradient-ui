@@ -40,7 +40,7 @@ export const Overview: Story = {
               <Skeleton $height="var(--ig-font-size-3xl-plus)" />
               <Skeleton $height="var(--ig-font-size-xl)" />
               <Skeleton $height="var(--ig-font-size-xl)" />
-              <Skeleton $height="var(--ig-control-height-capture)" />
+              <Skeleton $height="var(--ig-control-height-3xl-plus)" />
             </StorybookStack>
           </StorybookCard>
 

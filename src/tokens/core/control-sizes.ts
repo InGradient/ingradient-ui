@@ -11,5 +11,5 @@ export const controlSizes = {
   xl: '48px',
   '2xl': '52px',
   '3xl': '60px',
-  capture: '64px',
+  '3xlPlus': '64px',
 } as const

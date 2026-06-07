@@ -480,7 +480,7 @@ const staticVars = {
   '--ig-control-height-xl': controlSizes.xl,
   '--ig-control-height-2xl': controlSizes['2xl'],
   '--ig-control-height-3xl': controlSizes['3xl'],
-  '--ig-control-height-capture': controlSizes.capture,
+  '--ig-control-height-3xl-plus': controlSizes['3xlPlus'],
   '--ig-page-max-width': layoutScale.pageMaxWidth,
   '--ig-layout-topbar': layoutScale.topbarHeight,
   '--ig-layout-capture-bar': layoutScale.captureBar,

@@ -147,8 +147,8 @@ export const Overview: Story = {
               >
                 <div
                   style={{
-                    width: 'var(--ig-control-height-capture)',
-                    height: 'var(--ig-control-height-capture)',
+                    width: 'var(--ig-control-height-3xl-plus)',
+                    height: 'var(--ig-control-height-3xl-plus)',
                     borderRadius: value,
                     border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
                     background: 'var(--ig-color-surface-raised)',

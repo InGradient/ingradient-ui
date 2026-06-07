@@ -595,7 +595,7 @@ export const Review: Story = {
               ['2xl', '52px'],
               ['2xl-wide', '56px'],
               ['3xl', '60px'],
-              ['capture', '64px'],
+              ['3xl-plus', '64px'],
             ].map(([name, size]) => (
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
                 <div style={{ width: 'var(--ig-popup-xs)', height: `var(--ig-control-height-${name})`, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-sm)' }} />

@@ -11,7 +11,7 @@ export const Container = styled.div<{ $row?: boolean }>`
 
 export const CapturingStatusPill = styled.div`
   position: fixed;
-  top: var(--ig-control-height-capture);
+  top: var(--ig-control-height-3xl-plus);
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--ig-z-tooltip);

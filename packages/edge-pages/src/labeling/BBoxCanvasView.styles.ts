@@ -11,7 +11,7 @@ export const Wrap = styled.div`
 // ZoomWrap — PR-E1e-1 (2026-05-11) 에서 ui LabelingCanvas 의 ZoomWrap 으로 흡수.
 
 export const Toolbar = styled.div`
-  height: var(--ig-control-height-capture);
+  height: var(--ig-control-height-3xl-plus);
   display: flex;
   align-items: center;
   justify-content: center;

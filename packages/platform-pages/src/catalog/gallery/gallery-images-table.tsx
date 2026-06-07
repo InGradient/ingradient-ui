@@ -43,8 +43,8 @@ const MenuButton = styled(IconButton).attrs({
 `
 
 const THUMB_STYLE = {
-  width: 'var(--ig-control-height-capture)',
-  height: 'var(--ig-control-height-capture)',
+  width: 'var(--ig-control-height-3xl-plus)',
+  height: 'var(--ig-control-height-3xl-plus)',
   objectFit: 'cover' as const,
   borderRadius: 'var(--ig-radius-sm)',
   display: 'block' as const,
