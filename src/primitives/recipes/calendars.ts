@@ -110,7 +110,7 @@ export const calendarDayStates = css`
   .rdp-selected:not(.rdp-range_middle) .rdp-day_button {
     border-color: var(--ig-color-accent-strong);
     background: var(--ig-color-accent);
-    color: white;
+    color: var(--ig-color-on-accent);
     font-weight: 600;
   }
 

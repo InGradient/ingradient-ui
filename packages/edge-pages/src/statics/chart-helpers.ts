@@ -24,6 +24,9 @@ export const CHART_LIME = 'var(--ig-color-success)'
 export const CHART_WARNING = 'var(--ig-color-warning)'
 export const CHART_DANGER = 'var(--ig-color-danger)'
 
-// 비-color (font size — recharts tick rendering)
-export const CHART_TICK_FONT_SIZE_SM = 10
-export const CHART_TICK_FONT_SIZE_MD = 11
+// 비-color (font size — recharts tick rendering, numeric SVG attribute)
+import { typographyScale } from '@ingradient/ui'
+const SIZE_3XS_NUM = parseInt(typographyScale.size3xs, 10) // 10px
+const SIZE_2XS_NUM = parseInt(typographyScale.size2xs, 10) // 11px
+export const CHART_TICK_FONT_SIZE_SM = SIZE_3XS_NUM
+export const CHART_TICK_FONT_SIZE_MD = SIZE_2XS_NUM

@@ -43,10 +43,10 @@ export function renderPieSliceLabel(props: PieSliceLabelProps) {
       dominantBaseline="central"
       style={{ fill: 'var(--ig-color-pie-slice-label)' }}
     >
-      <tspan x={x} dy={typographyScale.svgTspanDyPrimary} fontSize="11" fontWeight="700">
+      <tspan x={x} dy={typographyScale.svgTspanDyPrimary} fontSize={typographyScale.size2xs} fontWeight={typographyScale.weightBold}>
         {name}
       </tspan>
-      <tspan x={x} dy={typographyScale.svgTspanDySecondary} fontSize="10" style={{ fillOpacity: 0.86 }}>
+      <tspan x={x} dy={typographyScale.svgTspanDySecondary} fontSize={typographyScale.size3xs} style={{ fillOpacity: 0.86 }}>
         {value.toLocaleString()}
       </tspan>
     </text>

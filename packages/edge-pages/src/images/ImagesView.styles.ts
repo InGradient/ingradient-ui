@@ -167,7 +167,7 @@ export const ModalCloseBtn = styled.button`
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-overlay-mid);
-  color: white;
+  color: var(--ig-color-on-accent);
   cursor: pointer;
   &:hover { background: var(--ig-color-white-12); }
 `;
@@ -301,7 +301,7 @@ export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
   border: var(--ig-border-1px) solid var(--ig-color-white-20);
   border-radius: var(--ig-radius-xs);
   background: ${(p) => (p.$active ? 'var(--ig-color-white-18)' : 'var(--ig-color-overlay-mid)')};
-  color: white;
+  color: var(--ig-color-on-accent);
   cursor: pointer;
   display: flex;
   align-items: center;
