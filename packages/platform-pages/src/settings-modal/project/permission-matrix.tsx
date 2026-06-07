@@ -6,7 +6,7 @@ import { HelpTooltip } from '@ingradient/ui/components'
 
 const SEARCH_WRAP_STYLE = {
   marginBottom: 'var(--ig-space-5)',
-  maxWidth: 240,
+  maxWidth: 'var(--ig-popup-xs-plus)',
 }
 
 const SCROLLER_STYLE = { overflow: 'auto' as const, maxWidth: '100%' }

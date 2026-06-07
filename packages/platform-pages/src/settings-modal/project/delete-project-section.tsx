@@ -11,7 +11,7 @@ const WRAP_STYLE = {
 const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 const HINT_STYLE = { marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = { marginTop: 'var(--ig-space-3)' }
-const CONFIRM_INPUT_STYLE = { minWidth: 200, flex: 1 }
+const CONFIRM_INPUT_STYLE = { minWidth: 'var(--ig-popup-list-min)', flex: 1 }
 
 export interface DeleteProjectSectionProps {
   projectName: string

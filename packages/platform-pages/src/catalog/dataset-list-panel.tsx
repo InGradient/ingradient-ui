@@ -21,7 +21,7 @@ const PANEL_STYLE = {
 }
 
 const HEADER_STYLE = {
-  minHeight: 72,
+  minHeight: 'var(--ig-layout-sidebar-header)',
   padding: '0 var(--ig-space-7)',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
   flexShrink: 0,
