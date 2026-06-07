@@ -11,4 +11,9 @@ export const chartColors = {
   tickColor: '#9ca3af',
   tagClassification: '#6ec87a',
   tagSegmentation: '#c07be8',
+  // Distribution / breakdown widget palette extras
+  coral: '#e17055',
+  lightBlue: '#74b9ff',
+  lightViolet: '#a29bfe',
+  mint: '#55efc4',
 } as const

@@ -1,4 +1,5 @@
 import { chartHeights } from '@ingradient/ui'
+import { chartColors } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -42,7 +43,7 @@ const EMPTY_OFFSET_STYLE = { margin: 0, marginTop: 'var(--ig-space-5)' }
 const TABLE_WRAP_STYLE = { marginTop: 'var(--ig-space-3)' }
 const CHART_STYLE = { marginTop: 'var(--ig-space-5)' }
 
-const SOURCE_COLORS = ['var(--ig-color-accent)', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055', '#74b9ff', '#a29bfe', '#55efc4']
+const SOURCE_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
 
 export interface DefectCount {
   class_id: string

@@ -1,4 +1,5 @@
 import { chartHeights } from '@ingradient/ui'
+import { chartColors } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
@@ -35,7 +36,7 @@ const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
 const CHART_STYLE = { marginTop: 'var(--ig-space-5)' }
 const EMPTY_STYLE = { margin: 0 }
 
-const CLASS_COLORS = ['var(--ig-color-accent)', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055', '#74b9ff', '#a29bfe', '#55efc4']
+const CLASS_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
 
 export interface ClassCount {
   class_id: string
