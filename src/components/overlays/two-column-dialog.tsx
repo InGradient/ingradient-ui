@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId } from 'react'
 import styled from 'styled-components'
 import { H4 } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
@@ -67,11 +67,19 @@ export function TwoColumnDialog({
   maxHeight = 'calc(100dvh - var(--ig-space-13))',
   sidebarWidth = 'var(--ig-popup-xs-narrow)',
 }: TwoColumnDialogProps) {
+  const titleId = useId()
   return (
     <ModalBackdrop onClick={() => onClose()}>
-      <Shell $width={width} $maxHeight={maxHeight} onClick={(e) => e.stopPropagation()}>
+      <Shell
+        $width={width}
+        $maxHeight={maxHeight}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+      >
         <Header>
-          <H4>{title}</H4>
+          <H4 id={titleId}>{title}</H4>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Body>

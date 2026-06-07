@@ -77,7 +77,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ content, children, gap = 6 }) 
     <Wrap ref={wrapRef} onMouseEnter={show} onMouseLeave={hide}>
       {children}
       {open && createPortal(
-        <Bubble ref={bubbleRef} style={pos ? { top: pos.top, left: pos.left } : { opacity: 0 }}>
+        <Bubble ref={bubbleRef} role="tooltip" style={pos ? { top: pos.top, left: pos.left } : { opacity: 0 }}>
           {content}
         </Bubble>,
         document.body,
