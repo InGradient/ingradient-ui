@@ -32,7 +32,7 @@ export function DashboardHeader({
   return (
     <div className={className}>
       <PageHeader>
-        <Inline justify="space-between" align="flex-start" gap={7} wrap="wrap">
+        <Inline justify="space-between" align="flex-start" gap="var(--ig-space-7)" wrap="wrap">
           <div>
             <PageTitle>{title}</PageTitle>
             {subtitle ? <PageSubtitle style={SUBTITLE_STYLE}>{subtitle}</PageSubtitle> : null}
@@ -41,7 +41,7 @@ export function DashboardHeader({
         </Inline>
       </PageHeader>
       {(actions || saveMessage) ? (
-        <Inline gap={4} wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
+        <Inline gap="var(--ig-space-4)" wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
           {saveMessage ? <Text size="var(--ig-font-size-xs)" tone="soft">{saveMessage}</Text> : null}
           {actions}
           {actionsExtra}

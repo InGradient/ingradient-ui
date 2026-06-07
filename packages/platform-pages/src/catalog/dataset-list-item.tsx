@@ -1,5 +1,6 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
+import styled, { css } from 'styled-components'
 import { Grid, Inline, Text } from '@ingradient/ui/primitives'
 import { Checkbox, IconButton } from '@ingradient/ui/components'
 import { SelectableListItem } from '@ingradient/ui/components'
@@ -14,6 +15,39 @@ const NAME_STYLE = {
 }
 const SLOT_STYLE = { minWidth: 0 }
 
+const Item = styled(SelectableListItem)<{ $menuOpen: boolean }>`
+  ${(p) =>
+    p.$menuOpen &&
+    css`
+      && {
+        background: var(--ig-color-blue-tint-12);
+        box-shadow: inset -2px 0 0 var(--ig-color-accent);
+      }
+
+      &&:hover:not(:disabled) {
+        background: var(--ig-color-blue-tint-14);
+      }
+    `}
+`
+
+const MenuButton = styled(IconButton).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
+    color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
+  }
+
+  &&:hover:not(:disabled) {
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
+    background: ${(p) =>
+      p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
+    color: var(--ig-color-text-primary);
+  }
+`
+
 export interface DatasetListItemProps {
   id: string
   name: string
@@ -21,26 +55,28 @@ export interface DatasetListItemProps {
   selected?: boolean
   current?: boolean
   dragOver?: boolean
+  menuOpen?: boolean
   onToggleSelect?: (id: string, checked: boolean) => void
   onSelectCurrent?: (id: string) => void
   onOpenMenu?: (id: string, anchor: HTMLElement) => void
 }
 
 export function DatasetListItem({
-  id, name, taskType, selected, current, dragOver,
+  id, name, taskType, selected, current, dragOver, menuOpen = false,
   onToggleSelect, onSelectCurrent, onOpenMenu,
 }: DatasetListItemProps) {
   const menuBtnRef = React.useRef<HTMLButtonElement>(null)
   return (
-    <SelectableListItem
+    <Item
       variant="flat"
       selected={current}
       dragOver={dragOver}
+      $menuOpen={menuOpen}
       onClick={() => onSelectCurrent?.(id)}
       data-dataset-id={id}
     >
       <Grid
-        gap={3}
+        gap="var(--ig-space-3)"
         columns="auto 1fr auto auto"
         style={ROW_STYLE}
         data-ig-component="DatasetListItem"
@@ -91,20 +127,22 @@ export function DatasetListItem({
           data-ig-kind="button-group"
           data-ig-label={`Actions for ${name}`}
         >
-          <IconButton
+          <MenuButton
             ref={menuBtnRef}
             aria-label={`Open menu for ${name}`}
+            aria-haspopup="menu"
+            aria-expanded={menuOpen}
+            $active={menuOpen}
             data-ig-slot="DatasetListItem.MenuButton"
             onClick={(e) => {
               e.stopPropagation()
               if (menuBtnRef.current) onOpenMenu?.(id, menuBtnRef.current)
             }}
-            size="sm"
           >
             <KebabIcon size={iconSizeNumbers.lg} />
-          </IconButton>
+          </MenuButton>
         </Inline>
       </Grid>
-    </SelectableListItem>
+    </Item>
   )
 }

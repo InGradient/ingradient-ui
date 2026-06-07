@@ -1,12 +1,18 @@
-import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Inline, Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { SelectField } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { OptionRow } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
-const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 const SEARCH_FIELD_STYLE = { flex: 1 }
+
+const Empty = styled.p`
+  ${stateTitleText}
+  margin: var(--ig-space-7) 0 0;
+  text-align: center;
+`
 
 function statusTone(status: string): 'success' | 'danger' | 'muted' {
   if (status === 'accepted') return 'success'
@@ -83,13 +89,13 @@ export function InvitationsSection({
   ]
 
   return (
-    <Stack as="section" gap={5}>
+    <Stack as="section" gap="var(--ig-space-5)">
       <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
       <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
 
       {isAdmin && (
-        <Stack gap={3}>
-          <Inline gap={3}>
+        <Stack gap="var(--ig-space-3)">
+          <Inline gap="var(--ig-space-3)">
             <TextField
               placeholder="Search users by name or email"
               value={searchQuery}
@@ -108,7 +114,7 @@ export function InvitationsSection({
           </Inline>
 
           {readyToSearch ? (
-            <Stack gap={2}>
+            <Stack gap="var(--ig-space-2)">
               {isSearching && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Searching…</Text>}
               {!isSearching && searchResults.map((u) => (
                 <OptionRow
@@ -131,7 +137,7 @@ export function InvitationsSection({
       )}
 
       {invitations.length === 0 ? (
-        <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>No invitations</Text>
+        <Empty>No invitations</Empty>
       ) : (
         <Table<InvitationRow> columns={columns} rows={invitations} ariaLabel="Invitations table" />
       )}

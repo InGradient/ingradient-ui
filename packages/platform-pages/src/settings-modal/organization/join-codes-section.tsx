@@ -1,11 +1,17 @@
-import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Inline, Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { SelectField } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
-const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
 const MAX_USES_STYLE = { width: 160 }
+
+const Empty = styled.p`
+  ${stateTitleText}
+  margin: var(--ig-space-7) 0 0;
+  text-align: center;
+`
 
 export interface JoinCodesRoleOption {
   value: string
@@ -66,12 +72,12 @@ export function JoinCodesSection({
   ]
 
   return (
-    <Stack as="section" gap={5}>
+    <Stack as="section" gap="var(--ig-space-5)">
       <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
       <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
 
       {isAdmin && (
-        <Inline gap={3} wrap="wrap">
+        <Inline gap="var(--ig-space-3)" wrap="wrap">
           <SelectField
             value={codeRoleId}
             onChange={(e) => onChangeCodeRoleId((e.target as HTMLSelectElement).value)}
@@ -99,7 +105,7 @@ export function JoinCodesSection({
       )}
 
       {joinCodes.length === 0 ? (
-        <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>No join codes</Text>
+        <Empty>No join codes</Empty>
       ) : (
         <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
       )}

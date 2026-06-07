@@ -32,7 +32,7 @@ export function StorageRecommendationsList({
   if (loading) return <Skeleton $height={loadingHeight} />
   if (recommendations.length === 0) return null
   return (
-    <Stack as="ul" gap={2} style={LIST_STYLE}>
+    <Stack as="ul" gap="var(--ig-space-2)" style={LIST_STYLE}>
       {recommendations.map((r, i) => (
         <Item key={i} $tone={r.tone}>{r.text}</Item>
       ))}

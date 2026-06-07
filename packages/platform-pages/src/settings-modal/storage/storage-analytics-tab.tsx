@@ -53,8 +53,8 @@ export function StorageAnalyticsTab({
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Stack gap={9} style={CONTAINER_STYLE}>
-        <Stack gap={3} style={ERROR_WRAP_STYLE}>
+      <Stack gap="var(--ig-space-9)" style={CONTAINER_STYLE}>
+        <Stack gap="var(--ig-space-3)" style={ERROR_WRAP_STYLE}>
           <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
           {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
         </Stack>
@@ -63,7 +63,7 @@ export function StorageAnalyticsTab({
   }
 
   return (
-    <Stack gap={9} style={CONTAINER_STYLE}>
+    <Stack gap="var(--ig-space-9)" style={CONTAINER_STYLE}>
       <Inline justify="space-between">
         <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
@@ -79,7 +79,7 @@ export function StorageAnalyticsTab({
       <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
       {projectChart}
 
-      <Grid gap={9} columns="1fr 1fr">
+      <Grid gap="var(--ig-space-9)" columns="1fr 1fr">
         <div>
           <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}

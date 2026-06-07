@@ -11,7 +11,7 @@ export interface DevicesTabProps {
 
 export function DevicesTab({ license, forms, table }: DevicesTabProps) {
   return (
-    <Stack gap={11}>
+    <Stack gap="var(--ig-space-11)">
       <DevicesLicenseSection {...license} />
       <DevicesForms {...forms} />
       <DevicesTable {...table} />

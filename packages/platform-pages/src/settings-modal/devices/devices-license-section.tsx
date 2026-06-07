@@ -70,8 +70,8 @@ export function DevicesLicenseSection({
   renewDate, onChangeRenewDate, renewing, renewError, onRenew,
 }: DevicesLicenseSectionProps) {
   return (
-    <Stack as="section" gap="10px">
-      <Inline justify="space-between" gap="8px">
+    <Stack as="section" gap="var(--ig-space-4)">
+      <Inline justify="space-between" gap="var(--ig-space-3)">
         <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>License</Text>
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
@@ -102,9 +102,9 @@ export function DevicesLicenseSection({
       {!loading && !error && !license ? <Placeholder>No license found.</Placeholder> : null}
 
       {isAdmin && showRenew ? (
-        <Stack gap="10px" style={FORM_BOX_STYLE}>
+        <Stack gap="var(--ig-space-4)" style={FORM_BOX_STYLE}>
           <Text size="var(--ig-font-size-xs)" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
-          <Inline gap="8px" wrap="wrap">
+          <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
               {renewing ? 'Saving…' : 'Save'}

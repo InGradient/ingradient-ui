@@ -19,7 +19,7 @@
     - **Opacity**: `opacity.ts` (hidden ~ near, 11 tier)
     - **Layout**: `layout.ts` — 일반 (pageMaxWidth/topbar/sidebarHeader/sidebarCollapse/panelMinHeight/loadingPanelHeight/shadowYOffset/shadowBlur/formLabelCol/formLabelColWide) + domain (capture-bar/-grid/histogram-*/datasetCard-*/log-*)
     - **Control sizes**: `control-sizes.ts` (xs/xsPlus/sm/smPlus/md/midPlus/midPlusTall/lg/xl/2xl/2xlWide/3xl/3xlPlus, 13 tier)
-    - **Popup sizes**: `popup-sizes.ts` (3xs ~ 4xl + 2xs-plus/2xl-narrow/-wide/3xl-narrow/-mid/-wide/4xl-narrow + domain-specific log-filter/list-min/class-sidebar/catalog-card/dialog-sidebar/page-card-min/icon-gallery-min/license-narrow, popupSizes + popupSizeNumbers 변형)
+    - **Popup sizes**: `popup-sizes.ts` (3xs ~ 4xl + 3xsPlus(96)/2xsNarrow(120)/2xsPlus/xsNarrow(190)/xsTight(210)/xsPlus(240)/smNarrow(260)/mdNarrow(300)/lgPlus(440)/2xlNarrow/2xlWide/3xlNarrow/3xlMid/3xlWide/4xlNarrow + listMin(200)/filterPanel(380), popupSizes + popupSizeNumbers 변형)
     - **Icon sizes**: `icon-sizes.ts` (sub/2xs/xs/xsPlus/sm/smPlus/md/lg/xl/2xl/3xl + iconSizeNumbers 변형 + svgStrokeWidths)
     - **Chart heights**: `chart-heights.ts` (sm/smPlus/md/lg/xl/xlPlus/2xl/3xl)
     - **Scales**: `scales.ts` (transformScale press/drag/hoverLift + aspectRatios square/landscape/wide/ultra-wide/portrait)

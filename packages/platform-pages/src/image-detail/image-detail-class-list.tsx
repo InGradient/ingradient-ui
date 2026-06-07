@@ -82,7 +82,7 @@ export function ImageDetailClassList({
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (
-    <Stack gap={1} className={className}>
+    <Stack gap="var(--ig-space-1)" className={className}>
       {classes.map((cls) => {
         const isSelected = selectedClassId === cls.id
         const isClassified = classifiedSet.has(cls.id)

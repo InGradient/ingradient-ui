@@ -14,7 +14,7 @@ export interface DashboardStatsHeaderProps {
 
 export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderProps) {
   return (
-    <Stack gap={1} className={className}>
+    <Stack gap="var(--ig-space-1)" className={className}>
       {items.map((item) => (
         <Inline as="span" key={item.label} justify="space-between">
           <Text as="span" size="var(--ig-font-size-xs)" tone="muted">{item.label}</Text>

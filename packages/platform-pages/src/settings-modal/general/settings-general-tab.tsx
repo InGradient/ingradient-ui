@@ -36,7 +36,7 @@ export function SettingsGeneralTab({
   hint = DEFAULT_HINT,
 }: SettingsGeneralTabProps) {
   return (
-    <Stack gap={5}>
+    <Stack gap="var(--ig-space-5)">
       <SettingsSection title="Language">
         <SettingsRow
           asLabel={false}

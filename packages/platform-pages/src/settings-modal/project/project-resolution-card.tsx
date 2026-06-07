@@ -38,7 +38,7 @@ export interface ProjectResolutionCardProps {
 
 export function ProjectResolutionCard({ project, resolution, onChange }: ProjectResolutionCardProps) {
   return (
-    <Stack gap={4} style={CARD_STYLE}>
+    <Stack gap="var(--ig-space-4)" style={CARD_STYLE}>
       <Box>
         <Text size="var(--ig-font-size-md)" weight={600}>{project.project_name}</Text>
         <Text tone="muted" size="var(--ig-font-size-xs)">
@@ -46,7 +46,7 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
           {project.owner_count !== undefined ? ` · owners: ${project.owner_count}` : ''}
         </Text>
       </Box>
-      <Inline gap={4} wrap="wrap">
+      <Inline gap="var(--ig-space-4)" wrap="wrap">
         <SelectField
           value={resolution.action}
           onChange={(e) => onChange({ ...resolution, action: (e.target as HTMLSelectElement).value as ProjectResolution['action'] })}

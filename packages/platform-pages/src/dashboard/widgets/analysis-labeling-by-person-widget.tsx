@@ -46,7 +46,7 @@ export function AnalysisLabelingByPersonWidget({
   chartData,
 }: AnalysisLabelingByPersonWidgetProps) {
   return (
-    <Stack gap={7}>
+    <Stack gap="var(--ig-space-7)">
       <BarChartCard
         title="Uploader activity"
         data={byPerson.length === 0 ? [] : chartData}

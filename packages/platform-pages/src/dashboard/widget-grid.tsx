@@ -42,7 +42,7 @@ export function WidgetGrid<K extends string = string>({
   }
 
   return (
-    <Stack gap={9} className={className}>
+    <Stack gap="var(--ig-space-9)" className={className}>
       {visibleRows.map((row, rowIndex) => (
         <Row key={`row-${rowIndex}-${row.join('-')}`} $count={row.length}>
           {row.map((key) => (

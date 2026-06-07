@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import {
@@ -10,6 +11,11 @@ import {
 
 const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
 const DESCRIPTION_STYLE = { lineHeight: 1.5 }
+
+const Placeholder = styled.p`
+  ${stateTitleText}
+  margin: 0;
+`
 
 export interface ProjectMembersListProps {
   members: ProjectMemberRowMember[]
@@ -34,9 +40,9 @@ export function ProjectMembersList({
 }: ProjectMembersListProps) {
   const [pendingRemove, setPendingRemove] = useState<{ id: string; email: string } | null>(null)
 
-  if (loading) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{loadingText}</Text>
-  if (error) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{error}</Text>
-  if (members.length === 0) return <Text as="p" tone="soft" size="var(--ig-font-size-md)">{emptyText}</Text>
+  if (loading) return <Placeholder>{loadingText}</Placeholder>
+  if (error) return <Placeholder>{error}</Placeholder>
+  if (members.length === 0) return <Placeholder>{emptyText}</Placeholder>
 
   const ownerCount = members.filter((m) => m.role === 'owner').length
 
@@ -83,7 +89,7 @@ export function ProjectMembersList({
             </>
           }
         >
-          <Stack gap={5}>
+          <Stack gap="var(--ig-space-5)">
             <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
             </Text>

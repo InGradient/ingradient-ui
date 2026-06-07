@@ -36,7 +36,7 @@ export function DashboardCustomizePopover<K extends string = string>({
   return (
     <Wrap className={className} role="menu">
       <Text size="var(--ig-font-size-xs)" weight={700} tone="soft" uppercase letterSpacing="0.05em" style={TITLE_STYLE}>{title}</Text>
-      <Stack gap={3}>
+      <Stack gap="var(--ig-space-3)">
         {items.map((item) => (
           <Checkbox
             key={item.key}

@@ -5,7 +5,7 @@ import { Checkbox } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
 
 const BAR_STYLE = {
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
   background: 'var(--ig-color-surface-header)',
   backdropFilter: 'var(--ig-blur-xl)',
   WebkitBackdropFilter: 'var(--ig-blur-xl)',
@@ -32,7 +32,7 @@ const ROW_STYLE = { minHeight: 72, padding: 'var(--ig-space-7)' }
 
 const SELECTION_ROW_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-7)',
-  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  borderTop: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
 }
 
 const SELECTION_ROW_ACTIVE_STYLE = {
@@ -101,14 +101,14 @@ export function GalleryToolbar({
           <ProgressFill $pct={uploadProgress} aria-label={`Upload progress ${uploadProgress}%`} />
         </div>
       ) : null}
-      <Inline gap={3} style={ROW_STYLE}>
+      <Inline gap="var(--ig-space-3)" wrap="nowrap" style={ROW_STYLE}>
         {leftStart}
         {search}
         {filters}
         <Box style={SPACER_STYLE} />
         {actions}
       </Inline>
-      <Inline gap={3} style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
+      <Inline gap="var(--ig-space-3)" wrap="nowrap" style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
     </Stack>
   )
 }

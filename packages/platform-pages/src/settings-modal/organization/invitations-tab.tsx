@@ -1,4 +1,5 @@
-import { Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Stack, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import {
   InvitationsSection,
   type InvitationsSectionProps,
@@ -8,7 +9,11 @@ import {
   type JoinCodesSectionProps,
 } from './join-codes-section'
 
-const EMPTY_STYLE = { margin: 'var(--ig-space-7) 0 0' }
+const Empty = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  margin: 0;
+`
 
 export interface InvitationsTabProps {
   loading?: boolean
@@ -22,10 +27,10 @@ export function InvitationsTab({
   loading, error, invitations, joinCodes,
   loadingText = 'Loading…',
 }: InvitationsTabProps) {
-  if (loading) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{loadingText}</Text>
-  if (error) return <Text as="p" tone="muted" align="center" size="var(--ig-font-size-sm)" style={EMPTY_STYLE}>{error}</Text>
+  if (loading) return <Empty>{loadingText}</Empty>
+  if (error) return <Empty>{error}</Empty>
   return (
-    <Stack gap={13}>
+    <Stack gap="var(--ig-space-13)">
       <InvitationsSection {...invitations} />
       <JoinCodesSection {...joinCodes} />
     </Stack>

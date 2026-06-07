@@ -30,12 +30,12 @@ export function DashboardWidget({
 }: DashboardWidgetProps) {
   return (
     <Root $span={span} className={className}>
-      <Inline justify="space-between" gap={3}>
+      <Inline justify="space-between" gap="var(--ig-space-3)">
         <Stack gap={0} style={TITLE_BLOCK_STYLE}>
           <Text as="h4" size="var(--ig-font-size-md)" weight={600}>{title}</Text>
           {subtitle ? <Text size="var(--ig-font-size-xs)" tone="muted">{subtitle}</Text> : null}
         </Stack>
-        {actions ? <Inline gap={2}>{actions}</Inline> : null}
+        {actions ? <Inline gap="var(--ig-space-2)">{actions}</Inline> : null}
       </Inline>
       <Stack gap={0} style={BODY_STYLE}>{children}</Stack>
     </Root>

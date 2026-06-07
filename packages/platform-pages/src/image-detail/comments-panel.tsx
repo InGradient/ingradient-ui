@@ -135,7 +135,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
   const renderActions = (c: Comment): ReactNode => {
     if (!c.canEdit || (!onEdit && !onArchive)) return undefined
     return (
-      <Inline as="span" gap={1}>
+      <Inline as="span" gap="var(--ig-space-1)">
         {onEdit ? (
           <IconButton
             variant="secondary"
@@ -181,7 +181,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
         badge={<Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>}
       />
       {open ? (
-        <Stack gap={3} style={BODY_STYLE}>
+        <Stack gap="var(--ig-space-3)" style={BODY_STYLE}>
           {count === 0 ? (
             <Text tone="muted" size="var(--ig-font-size-xs)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
@@ -200,7 +200,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
             </Box>
           )}
           {composerEnabled ? (
-            <Stack gap={2}>
+            <Stack gap="var(--ig-space-2)">
               {mentionInputCandidates ? (
                 <MentionTextarea
                   value={draft}
@@ -223,7 +223,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                 />
               )}
               {error ? (
-                <Inline gap={2} justify="space-between" style={ERROR_BOX_STYLE}>
+                <Inline gap="var(--ig-space-2)" justify="space-between" style={ERROR_BOX_STYLE}>
                   <Text as="span" size="var(--ig-font-size-xs)">{error}</Text>
                   {canRetry && onRetry ? (
                     <Button
@@ -239,9 +239,9 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   ) : null}
                 </Inline>
               ) : null}
-              <Inline gap={2} justify="space-between">
+              <Inline gap="var(--ig-space-2)" justify="space-between">
                 <Text as="span" size="var(--ig-font-size-xs)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
-                <Inline as="span" gap={2}>
+                <Inline as="span" gap="var(--ig-space-2)">
                   {editingCommentId && onCancelEdit ? (
                     <Button
                       type="button"

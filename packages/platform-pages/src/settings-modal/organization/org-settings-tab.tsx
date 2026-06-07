@@ -1,9 +1,15 @@
-import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Inline, Stack, Text, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 
 const WRAP_STYLE = { maxWidth: 480 }
-const PLACEHOLDER_STYLE = { margin: 0 }
+
+const Placeholder = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  margin: 0;
+`
 
 export interface OrgSettingsTabProps {
   /** 조직 정보 (null/undefined → 로딩 placeholder) */
@@ -29,19 +35,19 @@ export function OrgSettingsTab({
   noOrgText = 'No organization',
   loadingText = 'Loading…',
 }: OrgSettingsTabProps) {
-  if (noOrganization) return <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{noOrgText}</Text>
-  if (!organization) return <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
+  if (noOrganization) return <Placeholder>{noOrgText}</Placeholder>
+  if (!organization) return <Placeholder>{loadingText}</Placeholder>
 
   return (
-    <Stack gap={9} style={WRAP_STYLE}>
+    <Stack gap="var(--ig-space-9)" style={WRAP_STYLE}>
       <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
 
-      <Stack gap={2}>
+      <Stack gap="var(--ig-space-2)">
         <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Code</Text>
         <Text size="var(--ig-font-size-md)" tone="muted">{organization.code}</Text>
       </Stack>
 
-      <Stack gap={2}>
+      <Stack gap="var(--ig-space-2)">
         <Text as="label" htmlFor="org-name-input" size="var(--ig-font-size-sm)" weight={500}>Name</Text>
         {isAdmin ? (
           <TextField
@@ -56,13 +62,13 @@ export function OrgSettingsTab({
         )}
       </Stack>
 
-      <Stack gap={2}>
+      <Stack gap="var(--ig-space-2)">
         <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Status</Text>
         <Text size="var(--ig-font-size-md)" tone="muted">{organization.status}</Text>
       </Stack>
 
       {isAdmin && (
-        <Inline gap={5}>
+        <Inline gap="var(--ig-space-5)">
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>
             {saving ? 'Saving…' : 'Save'}
           </Button>

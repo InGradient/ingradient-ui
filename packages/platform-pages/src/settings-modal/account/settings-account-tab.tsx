@@ -71,9 +71,9 @@ export function SettingsAccountTab({
   const saveDisabled = !!accountSaving || !accountName.trim() || sameAsCurrent
 
   return (
-    <Stack gap={5}>
+    <Stack gap="var(--ig-space-5)">
       <SettingsSection title="Profile">
-        <Inline gap={5} wrap="wrap">
+        <Inline gap="var(--ig-space-5)" wrap="wrap">
           <TextField
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
@@ -96,7 +96,7 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Access">
-        <Inline gap={5} wrap="wrap">
+        <Inline gap="var(--ig-space-5)" wrap="wrap">
           <Button type="button" variant="secondary" onClick={onOpenPassword}>Change password</Button>
           <Button type="button" variant="secondary" onClick={onLogout}>Log out</Button>
         </Inline>
@@ -107,7 +107,7 @@ export function SettingsAccountTab({
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
         </SettingsHint>
-        <Inline gap={5} wrap="wrap">
+        <Inline gap="var(--ig-space-5)" wrap="wrap">
           <TextField
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}

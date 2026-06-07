@@ -1,22 +1,14 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { X } from 'lucide-react'
-import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Stack, Text } from '@ingradient/ui/primitives'
 import { IconButton } from '@ingradient/ui/components'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 import { MediaDialogShell } from '@ingradient/ui/patterns'
 
-const TOOLBAR_STYLE = {
-  position: 'absolute' as const,
-  top: 'var(--ig-space-3)',
-  right: 'var(--ig-space-7)',
-  zIndex: 'var(--ig-z-sticky-plus)',
-}
-
 const DEFAULT_MAIN_STYLE = {
   height: '100%',
-  padding: 'var(--ig-space-7)',
 }
 
 const DEFAULT_THUMB_STYLE = {
@@ -24,8 +16,7 @@ const DEFAULT_THUMB_STYLE = {
   flex: 1,
   minHeight: 0,
   objectFit: 'contain' as const,
-  borderRadius: 'var(--ig-radius-md)',
-  background: 'var(--ig-color-surface-muted)',
+  background: 'var(--ig-color-bg-canvas)',
   display: 'block' as const,
 }
 
@@ -74,7 +65,7 @@ function formatSize(bytes?: number): string {
 
 function defaultMain(image: GalleryDetailModalImage) {
   return (
-    <Stack gap={4} style={DEFAULT_MAIN_STYLE}>
+    <Stack style={DEFAULT_MAIN_STYLE}>
       <img src={image.thumb_url} alt={image.name} style={DEFAULT_THUMB_STYLE} />
     </Stack>
   )
@@ -82,7 +73,7 @@ function defaultMain(image: GalleryDetailModalImage) {
 
 function defaultSidebar(image: GalleryDetailModalImage) {
   return (
-    <Stack gap={3} style={DEFAULT_SIDEBAR_STYLE}>
+    <Stack gap="var(--ig-space-3)" style={DEFAULT_SIDEBAR_STYLE}>
       <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em" style={META_TITLE_STYLE}>Image info</Text>
       {image.sync_state ? (
         <InfoRow>
@@ -138,6 +129,24 @@ export function GalleryDetailModal({
   if (!open || !image) return null
   const mainContent = main ?? children ?? defaultMain(image)
   const sidebarContent = sidebar ?? defaultSidebar(image)
+  const topRight = hideDefaultClose && !actions ? null : (
+    <>
+      {actions}
+      {hideDefaultClose ? null : (
+        <IconButton
+          variant="secondary"
+          aria-label="Close"
+          title="Close"
+          onClick={(e) => {
+            e.stopPropagation()
+            onClose()
+          }}
+        >
+          <X size={iconSizeNumbers.lg} />
+        </IconButton>
+      )}
+    </>
+  )
   return (
     <MediaDialogShell
       onClose={onClose}
@@ -145,29 +154,8 @@ export function GalleryDetailModal({
       positioning={positioning}
       sidebarWidth={sidebarWidth}
       onSidebarResize={onSidebarResize}
-      main={
-        <>
-          {hideDefaultClose && !actions ? null : (
-            <Inline gap={2} style={TOOLBAR_STYLE}>
-              {actions}
-              {hideDefaultClose ? null : (
-                <IconButton
-                  variant="secondary"
-                  aria-label="Close"
-                  title="Close"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onClose()
-                  }}
-                >
-                  <X size={iconSizeNumbers.lg} />
-                </IconButton>
-              )}
-            </Inline>
-          )}
-          {mainContent}
-        </>
-      }
+      topRight={topRight}
+      main={mainContent}
       sidebar={sidebarContent}
     />
   )

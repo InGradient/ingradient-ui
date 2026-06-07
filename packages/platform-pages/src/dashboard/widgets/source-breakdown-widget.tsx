@@ -73,7 +73,7 @@ export function SourceBreakdownWidget({
 }: SourceBreakdownWidgetProps) {
   return (
     <Card className={className}>
-      <Inline justify="space-between" gap={5} style={HEAD_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
         <Text size="var(--ig-font-size-sm)" weight={600} tone="secondary">{title}</Text>
       </Inline>
       {bySource.length === 0 ? (

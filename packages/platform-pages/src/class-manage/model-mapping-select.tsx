@@ -33,7 +33,7 @@ export function ModelMappingSelect({
     return <Text size="var(--ig-font-size-xs)" tone="soft">{disabledHint}</Text>
   }
   return (
-    <Stack gap={3}>
+    <Stack gap="var(--ig-space-3)">
       <SelectField
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}

@@ -1,6 +1,12 @@
-import { Inline, Stack as PrimStack, Text } from '@ingradient/ui/primitives'
+import styled from 'styled-components'
+import { Inline, Stack as PrimStack, Text, stateTitleText } from '@ingradient/ui/primitives'
 import { TextField } from '@ingradient/ui/components'
 import { OptionRow } from '@ingradient/ui/components'
+
+const Placeholder = styled.p`
+  ${stateTitleText}
+  margin: 0;
+`
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = {
@@ -9,7 +15,6 @@ const ROW_STYLE = {
   width: '100%',
 }
 const STACK_STYLE = { width: '100%' }
-const PLACEHOLDER_STYLE = { margin: 0 }
 const INPUT_STYLE = { width: '100%', minWidth: 0 }
 
 export interface SearchableUserCandidate {
@@ -49,8 +54,8 @@ export function ProjectMemberInvite({
   return (
     <>
       <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>{title}</Text>
-      <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
-        <PrimStack gap={4} style={STACK_STYLE}>
+      <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
+        <PrimStack gap="var(--ig-space-4)" style={STACK_STYLE}>
           <TextField
             type="search"
             value={query}
@@ -60,7 +65,7 @@ export function ProjectMemberInvite({
             style={INPUT_STYLE}
           />
           {readyToSearch ? (
-            <PrimStack gap={3} style={STACK_STYLE}>
+            <PrimStack gap="var(--ig-space-3)" style={STACK_STYLE}>
               {candidates.map((c) => (
                 <OptionRow
                   key={c.id}
@@ -71,16 +76,16 @@ export function ProjectMemberInvite({
                   onClick={() => onAdd(c.id)}
                 />
               ))}
-              {!isSearching && candidates.length === 0 ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{noResultsHint}</Text> : null}
+              {!isSearching && candidates.length === 0 ? <Placeholder>{noResultsHint}</Placeholder> : null}
             </PrimStack>
           ) : (
-            <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{hintBelow}</Text>
+            <Placeholder>{hintBelow}</Placeholder>
           )}
         </PrimStack>
       </Inline>
       {inviteMessage ? (
-        <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
-          <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={PLACEHOLDER_STYLE}>{inviteMessage}</Text>
+        <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
+          <Placeholder>{inviteMessage}</Placeholder>
         </Inline>
       ) : null}
     </>

@@ -68,7 +68,7 @@ export function ImageDetailInfoPanel({
   title = 'Image info',
 }: ImageDetailInfoPanelProps) {
   return (
-    <Stack gap={3} style={SECTION_STYLE}>
+    <Stack gap="var(--ig-space-3)" style={SECTION_STYLE}>
       <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
       {positionLabel ? (
         <InfoRow>
@@ -98,7 +98,7 @@ export function ImageDetailInfoPanel({
         {detailsOpen ? 'Hide details' : 'Show details'}
       </TextButton>
       {detailsOpen ? (
-        <Stack gap={3} style={DETAILS_BODY_STYLE}>
+        <Stack gap="var(--ig-space-3)" style={DETAILS_BODY_STYLE}>
           {rowIfValue('Upload Source', image.upload_source)}
           {rowIfValue('Camera IP', image.camera_ip)}
           {rowIfValue('Camera Type', image.camera_type)}

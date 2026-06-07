@@ -152,7 +152,7 @@ export function PermissionMatrix({
                 {columnGroups.flatMap((group) =>
                   group.columns.map((column) => (
                     <th key={column.key}>
-                      <Inline as="span" gap={2} style={HEADER_CONTENT_STYLE}>
+                      <Inline as="span" gap="var(--ig-space-2)" style={HEADER_CONTENT_STYLE}>
                         <span>{column.label}</span>
                         {column.description ? <HelpTooltip text={column.description} /> : null}
                       </Inline>

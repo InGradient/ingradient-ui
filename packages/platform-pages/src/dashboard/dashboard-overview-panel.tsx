@@ -1,13 +1,31 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
-import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
+import styled from 'styled-components'
+import { Inline, Stack, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { Button, Spinner } from '@ingradient/ui/components'
 import { Panel, PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
 const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
 const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
-const BODY_STYLE = { padding: 'var(--ig-space-7)', overflow: 'visible' as const }
-const PLACEHOLDER_STYLE = { margin: 0 }
+
+const OverviewPanel = styled(Panel)`
+  flex: 1;
+`
+
+const Body = styled.div`
+  flex: 1;
+  min-height: 0;
+  padding: var(--ig-space-7);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+`
+
+const Placeholder = styled.p`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  margin: 0;
+`
 
 const DATE_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
@@ -48,25 +66,25 @@ export function DashboardOverviewPanel({
   children, className,
 }: DashboardOverviewPanelProps) {
   return (
-    <Panel className={className}>
+    <OverviewPanel className={className}>
       <PanelHeader>
-        <Stack gap={1} style={HEADER_MAIN_STYLE}>
+        <Stack gap="var(--ig-space-1)" style={HEADER_MAIN_STYLE}>
           <PanelTitle>{title}</PanelTitle>
           {hint ? <PanelHint>{hint}</PanelHint> : null}
         </Stack>
-        <Inline gap={4} wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
+        <Inline gap="var(--ig-space-4)" wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
           {onResetLayout ? <Button type="button" variant="secondary" onClick={onResetLayout} style={RESET_BTN_STYLE}>Reset</Button> : null}
           <Button type="button" variant="secondary" onClick={onToggleDate} style={DATE_BTN_STYLE}>{dateLabel}</Button>
           {datePopover}
         </Inline>
       </PanelHeader>
-      <Box style={BODY_STYLE}>
-        {state === 'no-project' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{emptyText}</Text>
-          : state === 'loading' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{loadingText}</Text>
-          : state === 'error' ? <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{errorMessage ?? 'Error'}</Text>
+      <Body>
+        {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
+          : state === 'loading' ? <Placeholder><Stack gap={3} align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
+          : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
           : children ? children
-          : <Text as="p" tone="soft" size="var(--ig-font-size-md)" align="center" style={PLACEHOLDER_STYLE}>{noDataText}</Text>}
-      </Box>
-    </Panel>
+          : <Placeholder>{noDataText}</Placeholder>}
+      </Body>
+    </OverviewPanel>
   )
 }

@@ -75,11 +75,11 @@ export function DevicesTable({
   const statusTone = (status: string) => status === 'ACTIVE' ? 'active' : status === 'REVOKED' ? 'revoked' : 'pending'
 
   return (
-    <Stack as="section" gap={4}>
-      <Inline justify="space-between" gap={3} wrap="wrap">
+    <Stack as="section" gap="var(--ig-space-4)">
+      <Inline justify="space-between" gap="var(--ig-space-3)" wrap="wrap">
         <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
         {isAdmin ? (
-          <Inline gap={3}>
+          <Inline gap="var(--ig-space-3)">
             {offlineEnabled ? (
               <Button type="button" size="sm" variant="secondary" onClick={onToggleIssue}>Issue License</Button>
             ) : null}
@@ -88,7 +88,7 @@ export function DevicesTable({
         ) : null}
       </Inline>
 
-      <Inline gap={3} wrap="wrap">
+      <Inline gap="var(--ig-space-3)" wrap="wrap">
         <SearchField
           placeholder="Search UID or name…"
           value={filterSearch}
@@ -135,7 +135,7 @@ export function DevicesTable({
                 <td className="muted">{device.lastSeenAt ? new Date(device.lastSeenAt).toLocaleString() : '—'}</td>
                 {isAdmin ? (
                   <td className="actions">
-                    <Inline gap={3}>
+                    <Inline gap="var(--ig-space-3)">
                       <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(device)}>Details</Button>
                       {device.status !== 'REVOKED' ? (
                         <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke?.(device.id)}>Revoke</Button>
