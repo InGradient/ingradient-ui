@@ -465,38 +465,36 @@ export const Review: Story = {
         </StorybookCard>
       </StorybookSection>
 
-      <StorybookSection title="Popup size" description="Popover / context menu / dropdown / dialog 의 width.">
-        <StorybookCard title="Popup sizes (core)">
+      <StorybookSection title="Popup size" description="Popover / context menu / dropdown / dialog 의 width. 일반 tier + narrow/plus/tight modifier.">
+        <StorybookCard title="Popup sizes">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
             <PopupSizeTile varName="--ig-popup-3xs" label="3xs (80px)" />
+            <PopupSizeTile varName="--ig-popup-3xs-plus" label="3xs-plus (96px)" />
+            <PopupSizeTile varName="--ig-popup-2xs-narrow" label="2xs-narrow (120px)" />
             <PopupSizeTile varName="--ig-popup-2xs" label="2xs (140px)" />
             <PopupSizeTile varName="--ig-popup-2xs-plus" label="2xs-plus (160px)" />
+            <PopupSizeTile varName="--ig-popup-xs-narrow" label="xs-narrow (190px)" />
+            <PopupSizeTile varName="--ig-popup-list-min" label="list-min (200px)" />
+            <PopupSizeTile varName="--ig-popup-xs-tight" label="xs-tight (210px)" />
             <PopupSizeTile varName="--ig-popup-xs" label="xs (220px)" />
+            <PopupSizeTile varName="--ig-popup-xs-plus" label="xs-plus (240px)" />
+            <PopupSizeTile varName="--ig-popup-sm-narrow" label="sm-narrow (260px)" />
             <PopupSizeTile varName="--ig-popup-sm" label="sm (280px)" />
+            <PopupSizeTile varName="--ig-popup-md-narrow" label="md-narrow (300px)" />
             <PopupSizeTile varName="--ig-popup-md" label="md (320px)" />
             <PopupSizeTile varName="--ig-popup-lg" label="lg (360px)" />
-            <PopupSizeTile varName="--ig-popup-xl" label="xl (480px)" />
+            <PopupSizeTile varName="--ig-popup-filter-panel" label="filter-panel (380px)" />
             <PopupSizeTile varName="--ig-popup-2xl-narrow" label="2xl-narrow (420px)" />
-            <PopupSizeTile varName="--ig-popup-2xl" label="2xl (560px)" />
+            <PopupSizeTile varName="--ig-popup-lg-plus" label="lg-plus (440px)" />
+            <PopupSizeTile varName="--ig-popup-xl" label="xl (480px)" />
             <PopupSizeTile varName="--ig-popup-2xl-wide" label="2xl-wide (520px)" />
+            <PopupSizeTile varName="--ig-popup-2xl" label="2xl (560px)" />
             <PopupSizeTile varName="--ig-popup-3xl-narrow" label="3xl-narrow (640px)" />
             <PopupSizeTile varName="--ig-popup-3xl-mid" label="3xl-mid (720px)" />
             <PopupSizeTile varName="--ig-popup-3xl-wide" label="3xl-wide (820px)" />
             <PopupSizeTile varName="--ig-popup-3xl" label="3xl (920px)" />
             <PopupSizeTile varName="--ig-popup-4xl-narrow" label="4xl-narrow (960px)" />
             <PopupSizeTile varName="--ig-popup-4xl" label="4xl (1200px)" />
-          </div>
-        </StorybookCard>
-        <StorybookCard title="Popup sizes (semantic)" subtitle="domain-specific dimensions">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
-            <PopupSizeTile varName="--ig-popup-log-filter" label="log-filter (210px)" />
-            <PopupSizeTile varName="--ig-popup-list-min" label="list-min (200px)" />
-            <PopupSizeTile varName="--ig-popup-class-sidebar" label="class-sidebar (300px)" />
-            <PopupSizeTile varName="--ig-popup-catalog-card" label="catalog-card (240px)" />
-            <PopupSizeTile varName="--ig-popup-dialog-sidebar" label="dialog-sidebar (190px)" />
-            <PopupSizeTile varName="--ig-popup-page-card-min" label="page-card-min (260px)" />
-            <PopupSizeTile varName="--ig-popup-icon-gallery-min" label="icon-gallery-min (120px)" />
-            <PopupSizeTile varName="--ig-popup-license-narrow" label="license-narrow (440px)" />
           </div>
         </StorybookCard>
       </StorybookSection>

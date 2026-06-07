@@ -46,12 +46,12 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
           &:focus-visible,
           :where([data-state-chip-hover-scope='true']:hover) &,
           :where([data-state-chip-hover-scope='true']:focus-within) & {
-            max-width: var(--ig-popup-icon-gallery-min);
+            max-width: var(--ig-popup-2xs-narrow);
             padding: 0 var(--ig-space-3);
           }
         `
       : css`
-          max-width: var(--ig-popup-icon-gallery-min);
+          max-width: var(--ig-popup-2xs-narrow);
         `}
 `
 
@@ -79,12 +79,12 @@ const Label = styled.span<{ $collapseUntilHover: boolean }>`
           ${Chip}:focus-visible &,
           :where([data-state-chip-hover-scope='true']:hover) ${Chip} &,
           :where([data-state-chip-hover-scope='true']:focus-within) ${Chip} & {
-            max-width: var(--ig-control-height-capture);
+            max-width: var(--ig-popup-3xs-plus);
             opacity: 1;
           }
         `
       : css`
-          max-width: var(--ig-control-height-capture);
+          max-width: var(--ig-popup-3xs-plus);
         `}
 `
 

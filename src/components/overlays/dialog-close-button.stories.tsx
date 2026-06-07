@@ -23,7 +23,7 @@ export const Review: Story = {
       description="다이얼로그 헤더의 닫기 버튼. transparent border / background에서 hover시 surface-interactive로 강조된다."
     >
       <StorybookSection title="States" description="기본 / hover / disabled.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="Default" subtitle="standalone">
             <DialogCloseButton onClick={() => undefined} />
           </StorybookCard>

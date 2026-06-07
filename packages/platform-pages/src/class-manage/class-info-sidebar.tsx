@@ -5,15 +5,27 @@ import { TextField, TextareaField } from '@ingradient/ui/components'
 import { InfoSection } from '@ingradient/ui/components'
 import { ColorInputRow } from '@ingradient/ui/patterns'
 
-const SIDEBAR_STYLE = {
-  width: 'var(--ig-popup-class-sidebar)',
+const SIDEBAR_BASE_STYLE = {
   flexShrink: 0,
-  background: 'var(--ig-color-surface-panel)',
-  borderRadius: 'var(--ig-radius-xl)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
   height: '100%',
   minHeight: 0,
   overflow: 'hidden' as const,
+}
+
+const SIDEBAR_PANEL_STYLE = {
+  ...SIDEBAR_BASE_STYLE,
+  width: 'var(--ig-popup-md-narrow)',
+  background: 'var(--ig-color-surface-panel)',
+  borderRadius: 'var(--ig-radius-xl)',
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+}
+
+const SIDEBAR_FLUSH_STYLE = {
+  ...SIDEBAR_BASE_STYLE,
+  width: '100%',
+  background: 'transparent',
+  borderRadius: 0,
+  border: 'none',
 }
 
 const PANEL_STYLE = {
@@ -49,6 +61,8 @@ export interface ClassInfoSidebarProps {
   referenceImageSlot?: ReactNode
   /** 6-2-E — Model mapping 섹션 콘텐츠 (Phase 6 의 ModelMappingSelect 등) */
   mappingSlot?: ReactNode
+  /** flush 시 패널 표면(배경/테두리/라운드) 제거 — shell 컬럼 내부용. */
+  flush?: boolean
   /** Danger zone 버튼 라벨 커스텀 */
   deleteLabel?: string
   descriptionPlaceholder?: string
@@ -59,12 +73,13 @@ export function ClassInfoSidebar({
   onChangeName, onChangeColor, onChangeDescription,
   onRandomizeColor, onDelete,
   referenceImageSlot, mappingSlot,
+  flush = false,
   deleteLabel = 'Delete class',
   descriptionPlaceholder = 'Class description (optional)',
 }: ClassInfoSidebarProps) {
   return (
-    <Stack as="aside" gap={0} style={SIDEBAR_STYLE}>
-      <Stack gap={9} style={PANEL_STYLE}>
+    <Stack as="aside" gap={0} style={flush ? SIDEBAR_FLUSH_STYLE : SIDEBAR_PANEL_STYLE}>
+      <Stack gap="var(--ig-space-7)" style={PANEL_STYLE}>
         <InfoSection title="Name">
           <TextField
             size="sm"

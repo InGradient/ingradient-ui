@@ -51,7 +51,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Dashboard layout" description="Multiple cards in a row.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StatCard label="Datasets" value="42" />
           <StatCard label="Images" value="12.4k" hint="this month" />
           <StatCard label="Active users" value="8" meta={<Badge $tone="accent">live</Badge>} />

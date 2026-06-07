@@ -37,7 +37,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Menu" description="Dropdown menu container. Pair with menu item buttons.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-catalog-card), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-plus), 1fr))">
           <StorybookCard title="Action menu" subtitle="3 menu items">
             <Menu>
               <MenuItem>Rename</MenuItem>

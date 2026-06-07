@@ -65,7 +65,7 @@ export const DeviceSelectedTag = styled.span`font-size: var(--ig-font-size-2xs);
 // ── Activity Log ──
 export const LogArea = styled.div`
   ${surfacePanel}
-  max-height: var(--ig-icon-gallery-min);
+  max-height: var(--ig-popup-2xs-narrow);
   min-height:0;
   overflow-y:auto;
   padding: var(--ig-space-4);

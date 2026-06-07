@@ -10,7 +10,7 @@ interface Props extends CatalogImagesPaneProps {
 
 const PREVIEW_STYLE: React.CSSProperties = {
   width: 'var(--ig-popup-md)',
-  height: 'var(--ig-popup-catalog-card)',
+  height: 'var(--ig-popup-xs-plus)',
   objectFit: 'cover',
   borderRadius: 'var(--ig-radius-md)',
 }
@@ -27,7 +27,7 @@ function renderCard(
       key={image.id}
       image={image}
       selected={selected}
-      topRightSlot={image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} /> : null}
+      topRightSlot={image.sync_state ? <SyncStatusChip state={image.sync_state} variant="opaque" showDot={false} collapseUntilHover /> : null}
       onSelect={(id) => onToggleSelect(id, !selected)}
       onOpen={(id) => onOpenDetail(id)}
       onOpenMenu={onOpenMenu}
@@ -47,7 +47,7 @@ export function CatalogGridView({
   return (
     <GridWrap>
       {dragOverGrid ? <DragOverGrid>Drop images here to upload</DragOverGrid> : null}
-      <Grid columns="repeat(auto-fill, minmax(var(--ig-popup-2xs), 1fr))" gap={1}>
+      <Grid columns="repeat(auto-fill, minmax(min(var(--ig-popup-2xs), 100%), var(--ig-popup-2xs)))" gap="var(--ig-space-5)">
         {images.map((image) => {
           const card = renderCard(
             image,

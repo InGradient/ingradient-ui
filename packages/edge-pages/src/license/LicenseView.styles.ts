@@ -37,7 +37,7 @@ export const SettingsIconBtn = styled.button`
 
 export const Card = styled.div`
   width: 100%;
-  max-width: var(--ig-popup-license-narrow);
+  max-width: var(--ig-popup-lg-plus);
   background: var(--ig-color-white-04);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);

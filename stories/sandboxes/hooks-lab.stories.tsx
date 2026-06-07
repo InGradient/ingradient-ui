@@ -161,7 +161,7 @@ export const Overview: Story = {
         title="Reusable state hooks"
         description="Keep hook demos focused on state contract and consumer wiring, not on rebuilding a product screen in Storybook."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
           <StorybookCard title="useSelection" subtitle="selection state and batch actions">
             <SelectionDemo />
           </StorybookCard>

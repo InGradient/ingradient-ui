@@ -25,7 +25,7 @@ export const Review: Story = {
       description="Inline tag for category, status, or count. Five tones: neutral / accent / success / warning / danger. Use Chip for the bordered variant."
     >
       <StorybookSection title="Tones" description="Five $tone variants.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="neutral (default)">
             <Badge>Default</Badge>
           </StorybookCard>
@@ -45,7 +45,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Chip variant" description="Same as Badge with subtle border. Use when on busy backgrounds.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-dialog-sidebar), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="neutral">
             <Chip>Tag</Chip>
           </StorybookCard>

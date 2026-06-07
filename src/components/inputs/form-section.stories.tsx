@@ -42,7 +42,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="FormField" description="Vertical label + child. Uppercase muted label for compact forms.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-catalog-card), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-plus), 1fr))">
           <StorybookCard title="Single field">
             <FormField label="Workspace name">
               <TextField size="sm" defaultValue="My Workspace" aria-label="Workspace name" />

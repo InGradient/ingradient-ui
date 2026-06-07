@@ -90,7 +90,7 @@ export const Overview: Story = {
         >
           <StorybookStack gap={12}>
             {typeEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-icon-gallery-min) minmax(0, 1fr)', gap: 'var(--ig-space-5)', alignItems: 'baseline' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-2xs-narrow) minmax(0, 1fr)', gap: 'var(--ig-space-5)', alignItems: 'baseline' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div style={{ fontFamily: typographyScale.fontSans, fontSize: value }}>
                   The quick brown fox jumps over the lazy dog.
@@ -166,7 +166,7 @@ export const Overview: Story = {
         >
           <StorybookStack gap={14}>
             {shadowEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-icon-gallery-label-max) minmax(0, 1fr)', gap: 'var(--ig-space-6)', alignItems: 'center' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-3xs-plus) minmax(0, 1fr)', gap: 'var(--ig-space-6)', alignItems: 'center' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div
                   style={{
@@ -218,7 +218,7 @@ export const Overview: Story = {
             {controlEntries.map(([name, value]) => (
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
                 <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
-                <div style={{ width: 'var(--ig-icon-gallery-min)', height: value, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-sm)' }} />
+                <div style={{ width: 'var(--ig-popup-2xs-narrow)', height: value, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-sm)' }} />
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
               </div>
             ))}

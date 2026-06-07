@@ -49,7 +49,7 @@ export const Review: Story = {
           </StorybookCard>
           <StorybookCard title="Card" subtitle="thumbnail + title + caption">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
-              <Skeleton $height="var(--ig-popup-icon-gallery-min)" />
+              <Skeleton $height="var(--ig-popup-2xs-narrow)" />
               <Skeleton $height="var(--ig-space-8)" style={{ width: '70%' }} />
               <Skeleton style={{ width: '40%' }} />
             </div>

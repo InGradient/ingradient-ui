@@ -48,7 +48,7 @@ export const FilterPopover = styled.div`
   top: 100%;
   right: 0;
   margin-top: var(--ig-space-2);
-  min-width: var(--ig-popup-log-filter);
+  min-width: var(--ig-popup-xs-tight);
   padding: var(--ig-space-5);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);

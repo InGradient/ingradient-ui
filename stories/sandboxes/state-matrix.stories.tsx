@@ -27,7 +27,7 @@ export const Overview: Story = {
         title="Common async states"
         description="Use this matrix when discussing state language, fallback density, and action guidance."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-page-card-min), 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
           <StorybookCard title="Inline loading" subtitle="compact waiting state">
             <div style={{ display: 'flex', gap: 'var(--ig-space-5)', alignItems: 'center', color: 'var(--ig-color-text-secondary)' }}>
               <Spinner aria-label="Loading review data" />
