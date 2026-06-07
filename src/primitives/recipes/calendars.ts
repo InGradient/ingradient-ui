@@ -71,7 +71,7 @@ export const calendarDayStates = css`
   }
 
   .rdp-day_button {
-    border: 1px solid transparent;
+    border: var(--ig-border-1px) solid transparent;
     background: transparent;
     color: var(--ig-color-text-secondary);
     cursor: pointer;

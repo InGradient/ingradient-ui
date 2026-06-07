@@ -2,7 +2,10 @@
 export const popupSizes = {
   '3xs': '80px',
   '3xsPlus': '96px',
+  '3xsWide': '104px',
+  '2xsNarrowTight': '116px',
   '2xsNarrow': '120px',
+  '2xsTight': '124px',
   '2xs': '140px',
   '2xsPlus': '160px',
   xsNarrow: '190px',
@@ -33,7 +36,10 @@ export const popupSizes = {
 export const popupSizeNumbers = {
   '3xs': 80,
   '3xsPlus': 96,
+  '3xsWide': 104,
+  '2xsNarrowTight': 116,
   '2xsNarrow': 120,
+  '2xsTight': 124,
   '2xs': 140,
   '2xsPlus': 160,
   xsNarrow: 190,

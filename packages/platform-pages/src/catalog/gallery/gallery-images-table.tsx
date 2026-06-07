@@ -124,13 +124,13 @@ export function GalleryImagesTable({
         return <TextCell title={sequence}>{sequence}</TextCell>
       },
     },
-    { key: 'pattern', header: 'Pattern', width: '104px', render: (row) => row.pattern_label ?? '—' },
+    { key: 'pattern', header: 'Pattern', width: 'var(--ig-popup-3xs-wide)', render: (row) => row.pattern_label ?? '—' },
     {
       key: 'sync', header: 'Sync',
-      width: '116px',
+      width: 'var(--ig-popup-2xs-narrow-tight)',
       render: (row) => row.sync_state ? <SyncStatusChip state={row.sync_state} /> : null,
     },
-    { key: 'created', header: 'Created at', width: '124px', render: (row) => row.created_at ?? '—' },
+    { key: 'created', header: 'Created at', width: 'var(--ig-popup-2xs-tight)', render: (row) => row.created_at ?? '—' },
     { key: 'labeled', header: 'Labeled', width: 'var(--ig-layout-histogram-height)', render: (row) => row.labeled_at ? 'Yes' : 'No' },
     {
       key: 'menu', header: '',

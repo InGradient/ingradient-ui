@@ -117,7 +117,7 @@ function ClipboardDemo() {
         <Button variant="accent" onClick={() => void copy('ingradient-ui smoke copy')}>
           Copy token label
         </Button>
-        <span style={{ color: copied ? 'var(--ig-color-text-success)' : 'var(--ig-color-text-soft)' }}>
+        <span style={{ color: copied ? 'var(--ig-color-success)' : 'var(--ig-color-text-soft)' }}>
           {copied ? 'Copied' : 'Idle'}
         </span>
       </div>
