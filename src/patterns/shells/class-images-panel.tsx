@@ -56,6 +56,7 @@ export function ClassImagesPanel({
   if (!selectedClassId) {
     return (
       <Main $flush={flush}>
+        {chipsRow}
         <EmptyArea>{noSelectionText}</EmptyArea>
       </Main>
     )

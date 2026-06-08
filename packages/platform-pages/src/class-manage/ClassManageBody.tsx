@@ -6,6 +6,7 @@ import {
   ClassInfoSidebar,
   ClassListSidebar,
   DatasetFilterChipRow,
+  ExpandSidebarBtn,
   ModelMappingSelect,
   ReferenceImageSection,
 } from '@ingradient/ui/patterns'
@@ -24,14 +25,6 @@ interface ClassManageBodyProps {
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
 const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 8 }
-const MAPPING_LABEL_STYLE: CSSProperties = {
-  margin: 0,
-  fontSize: 12,
-  fontWeight: 600,
-  color: 'var(--ig-color-text-muted)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.04em',
-}
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
@@ -78,26 +71,37 @@ export function ClassManageBody({
     <ContentArea>
       <CatalogShell
         storageKey={STORAGE_KEY}
+        sidebarCollapsed={list.sidebarCollapsed}
         leftSidebar={
           <ClassListSidebar
             classes={list.classes}
             selectedClassId={list.selectedClassId}
             loading={list.loading}
+            openMenuId={list.openMenuId}
             flush
             onSelectClass={list.onSelectClass}
             onAddClass={list.onAddClass}
+            onCollapse={list.onCollapse}
+            onOpenClassMenu={list.onOpenClassMenu}
           />
         }
         body={
           <ClassImagesPanel
             selectedClassId={images.selectedClassId}
             chipsRow={
-              <DatasetFilterChipRow
-                datasets={images.datasets}
-                activeIds={images.activeDatasetIds}
-                loading={images.detailLoading}
-                onToggle={images.onToggleDataset}
-              />
+              images.selectedClassId || list.sidebarCollapsed ? (
+                <DatasetFilterChipRow
+                  leading={
+                    list.sidebarCollapsed && list.onExpand ? (
+                      <ExpandSidebarBtn onClick={list.onExpand} ariaLabel="Expand class sidebar" />
+                    ) : undefined
+                  }
+                  datasets={images.datasets}
+                  activeIds={images.activeDatasetIds}
+                  loading={images.detailLoading}
+                  onToggle={images.onToggleDataset}
+                />
+              ) : undefined
             }
             imagesLoading={images.imagesLoading}
             imagesEmpty={images.images.length === 0}
@@ -122,7 +126,6 @@ function ClassInfoPane({
   currentMapping,
   onChangeClass,
   onRandomizeColor,
-  onDeleteClass,
   onSetReferenceDragOver,
   onApplyReferenceImage,
   onChangeMapping,
@@ -135,7 +138,6 @@ function ClassInfoPane({
       onChangeColor={(color) => onChangeClass({ color })}
       onChangeDescription={(description) => onChangeClass({ description: description ?? null })}
       onRandomizeColor={onRandomizeColor}
-      onDelete={onDeleteClass}
       flush={flush}
       referenceImageSlot={
         <ReferenceImageSection
@@ -146,11 +148,11 @@ function ClassInfoPane({
           candidates={referenceBboxCandidates ?? []}
           onSetDragging={onSetReferenceDragOver}
           onApply={onApplyReferenceImage}
+          showTitle={false}
         />
       }
       mappingSlot={
         <div style={MAPPING_WRAP_STYLE}>
-          <h3 style={MAPPING_LABEL_STYLE}>Model mapping</h3>
           <ModelMappingSelect
             enabled={!!showCocoMapping}
             options={[...cocoMappingOptions]}

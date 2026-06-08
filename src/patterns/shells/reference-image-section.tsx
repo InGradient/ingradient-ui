@@ -64,6 +64,7 @@ export interface ReferenceImageSectionProps {
   onApply?: (imageId: string, bboxIndex?: number) => void
   onSetDragging?: (dragging: boolean) => void
   title?: string
+  showTitle?: boolean
 }
 
 export function ReferenceImageSection({
@@ -74,6 +75,7 @@ export function ReferenceImageSection({
   candidates = [],
   onApply, onSetDragging,
   title = 'Reference image',
+  showTitle = true,
 }: ReferenceImageSectionProps) {
   const [bboxIndex, setBboxIndex] = useState(0)
   const handleBboxChange = (next: number) => {
@@ -81,8 +83,8 @@ export function ReferenceImageSection({
     const c = candidates[next]
     if (c) onApply?.(c.imageId, c.bboxIndex)
   }
-  return (
-    <ClassInfoSection title={title}>
+  const content = (
+    <>
       <Hint>{hint}</Hint>
       <ReferenceImageDropZone
         dragging={dragging}
@@ -105,6 +107,7 @@ export function ReferenceImageSection({
           {errorMessage ? <Status>{errorMessage}</Status> : null}
         </Stack>
       </ReferenceImageDropZone>
-    </ClassInfoSection>
+    </>
   )
+  return showTitle ? <ClassInfoSection title={title}>{content}</ClassInfoSection> : content
 }

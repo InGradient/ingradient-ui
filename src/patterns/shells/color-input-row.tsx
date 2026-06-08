@@ -1,39 +1,63 @@
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
+import { TextField } from '../../components/inputs/text-fields'
+import { useClickOutside } from '../../hooks/useClickOutside'
+import { ColorEditorPopover } from './color-editor-popover'
+import { hexToHsl, hslToHex, type HslColor } from './color-input-row.utils'
 
-const Row = styled.div`
+const Field = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: var(--ig-space-2);
 `
 
-const NativeColor = styled.input.attrs({ type: 'color' })`
-  width: 40px;
-  height: 40px;
-  padding: 2px;
+const Label = styled.span`
+  font-size: var(--ig-font-size-xs);
+  font-weight: 600;
+  color: var(--ig-color-text-muted);
+`
+
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: var(--ig-control-height-sm) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ig-space-3);
+`
+
+const Preview = styled.button<{ $color: string }>`
+  width: var(--ig-control-height-sm);
+  height: var(--ig-control-height-sm);
+  padding: 0;
   border: 1px solid var(--ig-color-border-strong);
-  border-radius: 8px;
+  border-radius: var(--ig-radius-md);
+  background: ${(p) => p.$color};
+  box-shadow: inset 0 0 0 2px var(--ig-color-surface-panel);
   cursor: pointer;
-  background: var(--ig-color-surface-raised);
+
+  &:focus-visible {
+    outline: 2px solid var(--ig-color-accent-ring);
+    outline-offset: 2px;
+  }
+
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.5;
   }
-  &::-webkit-color-swatch-wrapper { padding: 0; }
-  &::-webkit-color-swatch { border: none; border-radius: 6px; }
+`
+
+const HexInput = styled(TextField).attrs({ size: 'sm' as const })`
+  min-width: 0;
+  font-family: var(--ig-font-mono);
+  text-transform: lowercase;
 `
 
 const RandomButton = styled(Button).attrs({ variant: 'secondary', size: 'sm' as const })`
-  padding: 8px 12px;
-  font-size: 12px;
-  line-height: 1;
+  white-space: nowrap;
 `
 
-const HexLabel = styled.span`
-  font-size: 13px;
-  color: var(--ig-color-text-muted);
-  font-family: var(--ig-font-mono);
-`
+const HEX_COLOR = /^#[0-9a-f]{6}$/i
 
 export interface ColorInputRowProps {
   value: string
@@ -50,18 +74,90 @@ export function ColorInputRow({
   ariaLabel = 'Color',
   disabled,
 }: ColorInputRowProps) {
+  const [draft, setDraft] = useState(value)
+  const [editorOpen, setEditorOpen] = useState(false)
+  const [editorColor, setEditorColor] = useState<HslColor>(() => hexToHsl(value))
+  const fieldRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setDraft(value)
+    setEditorColor(hexToHsl(value))
+  }, [value])
+
+  useEffect(() => {
+    if (!editorOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setEditorOpen(false)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [editorOpen])
+
+  useClickOutside({
+    refs: fieldRef,
+    enabled: editorOpen,
+    onClickOutside: () => setEditorOpen(false),
+  })
+
+  const commit = () => {
+    const normalized = draft.startsWith('#') ? draft : `#${draft}`
+    if (HEX_COLOR.test(normalized)) {
+      const next = normalized.toLowerCase()
+      onChange?.(next)
+      setDraft(next)
+      setEditorColor(hexToHsl(next))
+      return
+    }
+    setDraft(value)
+  }
+
+  const changeFromEditor = (next: HslColor) => {
+    const hex = hslToHex(next)
+    setEditorColor(next)
+    setDraft(hex)
+    onChange?.(hex)
+  }
+
   return (
-    <Row>
-      <NativeColor
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-        aria-label={ariaLabel}
-        disabled={disabled}
-      />
-      <RandomButton type="button" onClick={onRandomize} disabled={disabled}>
-        {randomLabel}
-      </RandomButton>
-      <HexLabel>{value}</HexLabel>
-    </Row>
+    <Field ref={fieldRef}>
+      <Label>{ariaLabel}</Label>
+      <Row>
+        <Preview
+          type="button"
+          $color={value}
+          aria-label={`Edit ${ariaLabel.toLowerCase()}`}
+          aria-expanded={editorOpen}
+          disabled={disabled}
+          onClick={() => setEditorOpen((open) => !open)}
+        />
+        <HexInput
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+          onBlur={commit}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') event.currentTarget.blur()
+            if (event.key === 'Escape') setDraft(value)
+          }}
+          aria-label={`${ariaLabel} hex value`}
+          disabled={disabled}
+          maxLength={7}
+          spellCheck={false}
+        />
+        <RandomButton type="button" onClick={onRandomize} disabled={disabled}>
+          {randomLabel}
+        </RandomButton>
+      </Row>
+      {editorOpen ? (
+        <ColorEditorPopover
+          color={editorColor}
+          hexDraft={draft}
+          onChange={changeFromEditor}
+          onChangeHexDraft={setDraft}
+          onCommitHex={commit}
+          onRandomize={onRandomize}
+          onClose={() => setEditorOpen(false)}
+        />
+      ) : null}
+    </Field>
   )
 }

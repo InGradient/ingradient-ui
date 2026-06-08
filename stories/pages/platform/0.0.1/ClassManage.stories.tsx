@@ -19,12 +19,13 @@ const handoff = defineHandoff({
   ],
   interactions: [
     'class row 클릭 → selectedClassId 변경 + 가운데/우측 reflow',
+    'class sidebar 닫기/열기 → 가운데 영역 reflow',
     'dataset chip 클릭 → 토글',
     'image 클릭 → lightbox open',
     'image right-click → context menu',
     'image drag-drop → reference image set',
     '+Add class → modal open',
-    'Delete class → confirm dialog',
+    'class kebab → Duplicate / Delete',
   ],
   platformIntegration: [
     'ClassManageView 를 그대로 import — props 에 hook 결과 연결',
@@ -52,8 +53,16 @@ function ClassManageScene({ scenario: key }: Args) {
         classes: s.classes,
         selectedClassId: s.selectedClassId,
         loading: scenario.classesLoading,
+        sidebarCollapsed: s.sidebarCollapsed,
+        openMenuId: s.classMenuOpen?.id,
         onSelectClass: s.setSelectedClassId,
         onAddClass: () => s.setAddClassOpen(true),
+        onCollapse: () => s.setSidebarCollapsed(true),
+        onExpand: () => s.setSidebarCollapsed(false),
+        onOpenClassMenu: (id, anchor) => {
+          s.setSelectedClassId(id)
+          s.setClassMenuOpen({ id, anchor })
+        },
       }}
       images={{
         selectedClassId: s.selectedClassId,
@@ -81,7 +90,6 @@ function ClassManageScene({ scenario: key }: Args) {
               currentMapping: s.currentMapping,
               onChangeClass: (patch) => s.updateClass(selectedClass.id, patch),
               onRandomizeColor: s.randomizeColor,
-              onDeleteClass: () => s.setDeleteConfirmOpen(true),
               onSetReferenceDragOver: s.setReferenceDragOver,
               onApplyReferenceImage: (imageId) =>
                 s.updateClass(selectedClass.id, {
@@ -100,6 +108,12 @@ function ClassManageScene({ scenario: key }: Args) {
           onNameChange: s.setAddClassName,
           onClose: () => s.setAddClassOpen(false),
           onConfirm: () => s.setAddClassOpen(false),
+        },
+        classMenu: {
+          anchorEl: s.classMenuOpen?.anchor ?? null,
+          onClose: () => s.setClassMenuOpen(null),
+          onDuplicate: s.duplicateSelectedClass,
+          onDelete: () => s.setDeleteConfirmOpen(true),
         },
         contextMenu: {
           position: s.contextMenuOpen
@@ -145,6 +159,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
 export const NoClassSelected: Story = { args: { scenario: 'no-class-selected' } }
 export const ClassWithImages: Story = { args: { scenario: 'class-with-images' } }
 export const ClassWithGroupedImages: Story = { args: { scenario: 'class-with-grouped-images' } }
@@ -165,6 +180,7 @@ export const BboxNavMulti: Story = { args: { scenario: 'bbox-nav-multi' } }
 export const LightboxOpen: Story = { args: { scenario: 'lightbox-open' } }
 export const LightboxWithPatternTabs: Story = { args: { scenario: 'lightbox-with-pattern-tabs' } }
 export const ContextMenuOpen: Story = { args: { scenario: 'context-menu-open' } }
+export const ClassMenuOpen: Story = { args: { scenario: 'class-menu-open' } }
 export const AddClassModalOpen: Story = { args: { scenario: 'add-class-modal-open' } }
 export const DeleteConfirmOpen: Story = { args: { scenario: 'delete-confirm-open' } }
 export const MappingCocoActive: Story = { args: { scenario: 'mapping-coco-active' } }

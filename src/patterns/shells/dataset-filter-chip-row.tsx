@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const Row = styled.div`
@@ -56,6 +57,7 @@ export interface DatasetFilterChipRowItem {
 }
 
 export interface DatasetFilterChipRowProps {
+  leading?: ReactNode
   label?: string
   datasets: DatasetFilterChipRowItem[]
   /** 빈 set 이면 모두 active 로 간주 (platform 규칙 — toggle 로 explicitly off 되기 전엔 전체 노출) */
@@ -67,13 +69,14 @@ export interface DatasetFilterChipRowProps {
 }
 
 export function DatasetFilterChipRow({
-  label = 'Dataset', datasets, activeIds, loading,
+  leading, label = 'Dataset', datasets, activeIds, loading,
   loadingText = 'Loading datasets…',
   emptyText = 'No linked datasets',
   onToggle,
 }: DatasetFilterChipRowProps) {
   return (
     <Row>
+      {leading}
       <Label>{label}</Label>
       {loading ? (
         <Hint>{loadingText}</Hint>

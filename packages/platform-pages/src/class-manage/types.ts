@@ -50,8 +50,13 @@ export interface ClassListPaneProps {
   classes: ClassEntry[]
   selectedClassId: string | null
   loading?: boolean
+  sidebarCollapsed?: boolean
+  openMenuId?: string
   onSelectClass: (id: string | null) => void
   onAddClass: () => void
+  onCollapse?: () => void
+  onExpand?: () => void
+  onOpenClassMenu?: (id: string, anchor: HTMLElement) => void
 }
 
 export interface ClassImagesPaneProps {
@@ -78,7 +83,6 @@ export interface ClassInfoPaneProps {
   currentMapping: string
   onChangeClass: (patch: Partial<ClassEntry>) => void
   onRandomizeColor: () => void
-  onDeleteClass: () => void
   onSetReferenceDragOver: (v: boolean) => void
   onApplyReferenceImage: (imageId: string, bboxIndex?: number) => void
   onChangeMapping: (value: string) => void
@@ -91,6 +95,12 @@ export interface ClassManageOverlaysProps {
     onNameChange: (name: string) => void
     onClose: () => void
     onConfirm: () => void
+  }
+  classMenu?: {
+    anchorEl: HTMLElement | null
+    onClose: () => void
+    onDuplicate: () => void
+    onDelete: () => void
   }
   contextMenu: {
     position: { top: number; left: number } | null

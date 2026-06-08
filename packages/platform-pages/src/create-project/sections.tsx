@@ -1,14 +1,9 @@
 import { useRef, useState, type ChangeEvent, type DragEvent } from 'react'
 import { TextField, TextareaField } from '@ingradient/ui/components'
-import {
-  FieldGroup,
-  FieldHint,
-  FieldLabel,
-  FormSection,
-  SectionTitle,
-} from '@ingradient/ui/patterns'
+import { FieldGroup, FieldHint, FieldLabel } from '@ingradient/ui/patterns'
 import {
   Dropzone,
+  FieldsBody,
   FileInput,
   FileItem,
   FileList,
@@ -17,6 +12,11 @@ import {
   OptionText,
   OptionTitle,
   OptionalLabel,
+  Section,
+  SectionBody,
+  SectionDescription,
+  SectionHeader,
+  SectionTitle,
 } from './CreateProjectView.styles'
 import type { ProjectType } from './types'
 
@@ -46,46 +46,52 @@ export function DetailsSection(props: {
   onFirstDatasetNameChange: (value: string) => void
 }) {
   return (
-    <FormSection>
-      <FieldGroup>
-        <FieldLabel htmlFor="project-name">Project name</FieldLabel>
-        <TextField
-          id="project-name"
-          type="text"
-          value={props.name}
-          onChange={(e) => props.onNameChange(e.target.value)}
-          placeholder="Enter project name"
-          required
-          disabled={props.disabled}
-        />
-      </FieldGroup>
-      <FieldGroup>
-        <FieldLabel htmlFor="project-description">
-          Description <OptionalLabel>(optional)</OptionalLabel>
-        </FieldLabel>
-        <TextareaField
-          id="project-description"
-          value={props.description}
-          onChange={(e) => props.onDescriptionChange(e.target.value)}
-          placeholder="Project description"
-          disabled={props.disabled}
-          rows={3}
-        />
-      </FieldGroup>
-      <FieldGroup>
-        <FieldLabel htmlFor="first-dataset-name">
-          First dataset name <OptionalLabel>(optional)</OptionalLabel>
-        </FieldLabel>
-        <TextField
-          id="first-dataset-name"
-          type="text"
-          value={props.firstDatasetName}
-          onChange={(e) => props.onFirstDatasetNameChange(e.target.value)}
-          placeholder="Enter dataset name"
-          disabled={props.disabled}
-        />
-      </FieldGroup>
-    </FormSection>
+    <Section>
+      <SectionHeader>
+        <SectionTitle>Project details</SectionTitle>
+        <SectionDescription>Name the project and prepare its first dataset.</SectionDescription>
+      </SectionHeader>
+      <FieldsBody>
+        <FieldGroup>
+          <FieldLabel htmlFor="project-name">Project name</FieldLabel>
+          <TextField
+            id="project-name"
+            type="text"
+            value={props.name}
+            onChange={(e) => props.onNameChange(e.target.value)}
+            placeholder="Enter project name"
+            required
+            disabled={props.disabled}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor="project-description">
+            Description <OptionalLabel>(optional)</OptionalLabel>
+          </FieldLabel>
+          <TextareaField
+            id="project-description"
+            value={props.description}
+            onChange={(e) => props.onDescriptionChange(e.target.value)}
+            placeholder="Project description"
+            disabled={props.disabled}
+            rows={3}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor="first-dataset-name">
+            First dataset name <OptionalLabel>(optional)</OptionalLabel>
+          </FieldLabel>
+          <TextField
+            id="first-dataset-name"
+            type="text"
+            value={props.firstDatasetName}
+            onChange={(e) => props.onFirstDatasetNameChange(e.target.value)}
+            placeholder="Enter dataset name"
+            disabled={props.disabled}
+          />
+        </FieldGroup>
+      </FieldsBody>
+    </Section>
   )
 }
 
@@ -95,15 +101,19 @@ export function TypeSection(props: {
   onChange: (value: ProjectType) => void
 }) {
   return (
-    <FormSection>
-      <FieldGroup>
-        <FieldLabel>Project type</FieldLabel>
+    <Section>
+      <SectionHeader>
+        <SectionTitle>Project type</SectionTitle>
+        <SectionDescription>Choose the workflow that matches how images will be captured and labeled.</SectionDescription>
+      </SectionHeader>
+      <SectionBody>
         <OptionGrid>
           {TYPE_OPTIONS.map((opt) => (
             <OptionCard
               key={opt.value}
               type="button"
               $active={props.projectType === opt.value}
+              aria-pressed={props.projectType === opt.value}
               onClick={() => props.onChange(opt.value)}
               disabled={props.disabled}
             >
@@ -112,8 +122,8 @@ export function TypeSection(props: {
             </OptionCard>
           ))}
         </OptionGrid>
-      </FieldGroup>
-    </FormSection>
+      </SectionBody>
+    </Section>
   )
 }
 
@@ -144,11 +154,14 @@ export function ImagesSection(props: {
   }
 
   return (
-    <FormSection>
-      <FieldGroup>
+    <Section>
+      <SectionHeader>
         <SectionTitle>
-          Images <OptionalLabel>(optional)</OptionalLabel>
+          Initial images <OptionalLabel>(optional)</OptionalLabel>
         </SectionTitle>
+        <SectionDescription>Add images now, or start with an empty project and upload them later.</SectionDescription>
+      </SectionHeader>
+      <SectionBody>
         <Dropzone
           type="button"
           $active={dragOver}
@@ -180,7 +193,7 @@ export function ImagesSection(props: {
           Only image files are accepted. Uploaded files are added to the first dataset after
           project creation.
         </FieldHint>
-      </FieldGroup>
-    </FormSection>
+      </SectionBody>
+    </Section>
   )
 }

@@ -9,12 +9,11 @@ const Root = styled.div`
   background: var(--ig-color-bg-canvas);
 `
 
-const Left = styled.aside<{ $width: number; $collapsed: boolean }>`
-  flex: 0 0 ${(p) => (p.$collapsed ? '0px' : `${p.$width}px`)};
-  width: ${(p) => (p.$collapsed ? 0 : p.$width)}px;
+const Left = styled.aside<{ $width: number }>`
+  flex: 0 0 ${(p) => `${p.$width}px`};
+  width: ${(p) => p.$width}px;
   min-width: 0;
   overflow: hidden;
-  transition: ${(p) => (p.$collapsed ? 'flex-basis var(--ig-motion-fast), width var(--ig-motion-fast)' : 'none')};
 `
 
 const Handle = styled.div`
@@ -125,7 +124,7 @@ export function CatalogShell({
 
   return (
     <Root className={className}>
-      {leftSidebar ? <Left $width={leftW} $collapsed={sidebarCollapsed}>{leftSidebar}</Left> : null}
+      {leftSidebar && !sidebarCollapsed ? <Left $width={leftW}>{leftSidebar}</Left> : null}
       {resizable && leftSidebar && !sidebarCollapsed ? <Handle onMouseDown={(e) => startResize('left', e)} role="separator" aria-orientation="vertical" /> : null}
       <Center>
         {toolbar ? <Toolbar>{toolbar}</Toolbar> : null}

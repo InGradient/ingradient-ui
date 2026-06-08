@@ -7,6 +7,7 @@ import {
 
 export type ClassScenarioKey =
   | 'default'
+  | 'sidebar-collapsed'
   | 'no-class-selected'
   | 'class-with-images'
   | 'class-with-grouped-images'
@@ -27,6 +28,7 @@ export type ClassScenarioKey =
   | 'lightbox-open'
   | 'lightbox-with-pattern-tabs'
   | 'context-menu-open'
+  | 'class-menu-open'
   | 'add-class-modal-open'
   | 'delete-confirm-open'
   | 'mapping-coco-active'
@@ -35,6 +37,7 @@ export type ClassScenarioKey =
 export interface ClassScene {
   classes: MockClass[]
   selectedClassId: string | null
+  sidebarCollapsed?: boolean
   datasets: MockClassDataset[]
   activeDatasetIds: Set<string>
   images: MockClassImage[]
@@ -51,6 +54,7 @@ export interface ClassScene {
   isAddClassOpen?: boolean
   addClassName?: string
   contextMenuOpen?: { imageId: string; top: number; left: number } | null
+  classMenuOpenId?: string
   lightboxImage?: MockClassImage | null
   lightboxSiblings?: MockClassImage[]
   deleteConfirmOpen?: boolean
@@ -72,6 +76,7 @@ const longClasses: MockClass[] = mockClasses.map((c, i) =>
 
 export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'default': base,
+  'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'no-class-selected': { ...base, selectedClassId: null, datasets: [], images: [] },
   'class-with-images': base,
   'class-with-grouped-images': { ...base, images: manyImagesForCl1 },
@@ -98,6 +103,7 @@ export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'lightbox-open': { ...base, lightboxImage: imagesForCl1[0] },
   'lightbox-with-pattern-tabs': { ...base, images: sequenceImagesForCl1, lightboxImage: sequenceImagesForCl1[1], lightboxSiblings: sequenceImagesForCl1 },
   'context-menu-open': { ...base, contextMenuOpen: { imageId: 'img-cl1-1', top: 240, left: 460 } },
+  'class-menu-open': { ...base, classMenuOpenId: 'cl-1' },
   'add-class-modal-open': { ...base, isAddClassOpen: true, addClassName: 'New defect' },
   'delete-confirm-open': { ...base, deleteConfirmOpen: true },
   'mapping-coco-active': { ...base, showCocoMapping: true, currentMapping: 'person' },

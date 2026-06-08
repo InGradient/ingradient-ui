@@ -1,13 +1,14 @@
 import { type FormEvent } from 'react'
 import { BrandLogo } from '@ingradient/ui/brand'
 import { Alert, Button } from '@ingradient/ui/components'
-import { Inline } from '@ingradient/ui/primitives'
 import {
+  Actions,
   Card,
   Content,
   Form,
   LogoWrap,
   Page,
+  Subtitle,
   Title,
 } from './CreateProjectView.styles'
 import { DetailsSection, ImagesSection, TypeSection } from './sections'
@@ -42,7 +43,8 @@ export function CreateProjectView({
           <BrandLogo width={220} />
         </LogoWrap>
         <Card>
-          <Title>Add Project</Title>
+          <Title>Create Project</Title>
+          <Subtitle>Configure the project workspace, labeling workflow, and initial images.</Subtitle>
           <Form onSubmit={handleSubmit}>
             {error ? <Alert $tone="danger">{error}</Alert> : null}
             {validationError ? <Alert $tone="warning">{validationError}</Alert> : null}
@@ -65,10 +67,7 @@ export function CreateProjectView({
 
             <ImagesSection files={files} disabled={submitting} onFilesAdd={onFilesAdd} />
 
-            <Inline gap={3} justify="flex-start">
-              <Button type="submit" variant="accent" disabled={submitting}>
-                {submitting ? 'Creating…' : 'Create Project'}
-              </Button>
+            <Actions>
               <Button
                 type="button"
                 variant="secondary"
@@ -77,7 +76,10 @@ export function CreateProjectView({
               >
                 Cancel
               </Button>
-            </Inline>
+              <Button type="submit" variant="solid" disabled={submitting}>
+                {submitting ? 'Creating…' : 'Create Project'}
+              </Button>
+            </Actions>
           </Form>
         </Card>
       </Content>

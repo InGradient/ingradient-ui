@@ -143,7 +143,7 @@ export function GalleryDetailModal({
 }: GalleryDetailModalProps) {
   if (!open || !image) return null
   const mainContent = main ?? children ?? defaultMain(image)
-  const sidebarContent = sidebar ?? defaultSidebar(image)
+  const sidebarContent = sidebar === undefined ? defaultSidebar(image) : sidebar
   const topRight = hideDefaultClose && !actions ? null : (
     <>
       {actions}

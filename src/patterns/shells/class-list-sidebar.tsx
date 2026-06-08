@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '../../components/inputs/button'
+import { ClosePanelIcon } from '../../components/icons/catalog-icons'
 import { stateCenteredLayout, stateTitleText } from '../../primitives'
 import { ClassListRow } from './class-list-row'
 
@@ -36,6 +37,29 @@ const Title = styled.h2`
   font-weight: 600;
 `
 
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-2);
+`
+
+const CollapseButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: var(--ig-radius-sm);
+  color: var(--ig-color-text-muted);
+  cursor: pointer;
+  &:hover {
+    background: var(--ig-color-surface-interactive-hover);
+    color: var(--ig-color-text-primary);
+  }
+`
+
 const List = styled.ul`
   list-style: none;
   margin: 0;
@@ -69,23 +93,34 @@ export interface ClassListSidebarProps {
   title?: string
   emptyText?: string
   addClassLabel?: string
+  openMenuId?: string
   onSelectClass?: (id: string) => void
   onAddClass?: () => void
+  onCollapse?: () => void
+  onOpenClassMenu?: (id: string, anchor: HTMLElement) => void
 }
 
 export function ClassListSidebar({
   classes, selectedClassId, loading, flush = false, title = 'Classes',
   emptyText = 'No classes yet.',
   addClassLabel = '+ Add',
-  onSelectClass, onAddClass,
+  openMenuId,
+  onSelectClass, onAddClass, onCollapse, onOpenClassMenu,
 }: ClassListSidebarProps) {
   return (
     <Sidebar $flush={flush}>
       <Header>
         <Title>{title}</Title>
-        <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
-          {addClassLabel}
-        </Button>
+        <HeaderActions>
+          <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
+            {addClassLabel}
+          </Button>
+          {onCollapse ? (
+            <CollapseButton type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
+              <ClosePanelIcon size={16} />
+            </CollapseButton>
+          ) : null}
+        </HeaderActions>
       </Header>
       {loading ? (
         <Placeholder>Loading…</Placeholder>
@@ -101,7 +136,9 @@ export function ClassListSidebar({
               color={c.color}
               count={c.image_count}
               selected={selectedClassId === c.id}
+              menuOpen={openMenuId === c.id}
               onClick={onSelectClass}
+              onOpenMenu={onOpenClassMenu}
             />
           ))}
         </List>
