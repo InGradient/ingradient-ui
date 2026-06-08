@@ -1,12 +1,26 @@
 import type { ReactNode } from 'react'
 import { Box, Stack, Text } from '@ingradient/ui/primitives'
 
-const MAIN_STYLE = {
+const MAIN_BASE_STYLE = {
   flex: 1,
+  minWidth: 0,
+  minHeight: 0,
+  height: '100%',
+  overflow: 'hidden' as const,
+}
+
+const MAIN_PANEL_STYLE = {
+  ...MAIN_BASE_STYLE,
   background: 'var(--ig-color-surface-panel)',
   borderRadius: 'var(--ig-radius-xl)',
   border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  overflow: 'hidden' as const,
+}
+
+const MAIN_FLUSH_STYLE = {
+  ...MAIN_BASE_STYLE,
+  background: 'transparent',
+  borderRadius: 0,
+  border: 'none',
 }
 
 const EMPTY_STYLE = {
@@ -34,6 +48,8 @@ export interface SelectableGridPanelProps {
   empty?: boolean
   /** 그리드 슬롯 — 보통 ImageGrid 등. */
   gridSlot?: ReactNode
+  /** flush 시 패널 표면(배경/테두리/라운드) 제거 — shell 컬럼 내부용. */
+  flush?: boolean
   /** 선택 없음 메시지. */
   noSelectionText?: string
   /** 로딩 메시지. */
@@ -49,20 +65,21 @@ export interface SelectableGridPanelProps {
  */
 export function SelectableGridPanel({
   selectedId, headerSlot,
-  loading, empty, gridSlot,
+  loading, empty, gridSlot, flush = false,
   noSelectionText = 'Select an item to see related entries.',
   loadingText = 'Loading…',
   emptyText = 'No matching entries.',
 }: SelectableGridPanelProps) {
+  const mainStyle = flush ? MAIN_FLUSH_STYLE : MAIN_PANEL_STYLE
   if (!selectedId) {
     return (
-      <Stack as="main" gap={0} style={MAIN_STYLE}>
+      <Stack as="main" gap={0} style={mainStyle}>
         <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noSelectionText}</Text>
       </Stack>
     )
   }
   return (
-    <Stack as="main" gap={0} style={MAIN_STYLE}>
+    <Stack as="main" gap={0} style={mainStyle}>
       {headerSlot}
       {loading ? (
         <Text tone="muted" size="var(--ig-font-size-md)" style={LOADING_STYLE}>{loadingText}</Text>

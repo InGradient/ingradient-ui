@@ -6,15 +6,7 @@ export type MediaOverlayVariant = 'archived' | 'processing'
 
 const overlayVariantStyles: Record<MediaOverlayVariant, ReturnType<typeof css>> = {
   archived: css`
-    background:
-      repeating-linear-gradient(
-        45deg,
-        var(--ig-color-overlay-mid),
-        var(--ig-color-overlay-mid) var(--ig-space-2px),
-        transparent var(--ig-space-2px),
-        transparent var(--ig-space-1)
-      ),
-      var(--ig-color-overlay-soft);
+    background: var(--ig-color-overlay-archived);
     color: var(--ig-color-text-secondary);
   `,
   processing: css`
@@ -36,8 +28,8 @@ const Root = styled.div<{ $variant: MediaOverlayVariant }>`
 `
 
 const Label = styled.span`
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
+  font-size: var(--ig-font-size-2xs);
+  font-weight: var(--ig-font-weight-medium);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
 `

@@ -38,7 +38,7 @@ export function DashboardView<K extends string = string>({
         saveMessage={saveMessage}
         actions={
           <>
-            <Button variant="secondary" type="button" onClick={onSavePdf}>
+            <Button variant="solid" type="button" onClick={onSavePdf}>
               Save PDF
             </Button>
             <Button variant="secondary" type="button" onClick={customize.onToggle}>

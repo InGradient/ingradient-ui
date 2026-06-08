@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { AppShell } from '@ingradient/ui/patterns'
 
 export const Page = styled(AppShell)`
+  height: 100vh;
   overflow: hidden;
 `
 

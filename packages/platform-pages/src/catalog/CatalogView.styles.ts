@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const Page = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  --ig-catalog-divider-color: var(--ig-color-border-strong);
 `
 
 export const ContentArea = styled.div`
@@ -28,7 +30,9 @@ export const DragOverFull = styled.div`
 `
 
 export const GridWrap = styled.div`
-  padding: 0 var(--ig-space-7) var(--ig-space-7);
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: var(--ig-space-7);
   position: relative;
 `
 
@@ -73,15 +77,14 @@ export const MobileBottomSheet = styled.div`
   bottom: var(--ig-control-height-3xl);
   z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-space-5);
 `
 
 export const RightSideLoadingText = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  ${stateTitleText}
 `
 
 export const TableWrap = styled.div`

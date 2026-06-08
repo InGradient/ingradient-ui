@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { DayPicker, type DateRange } from 'react-day-picker'
 import styled from 'styled-components'
-import { Inline, Stack, Text } from '../../primitives'
+import { calendarDayStates, calendarNavigation, Inline, Stack, Text } from '../../primitives'
 import { Button } from './button'
 import { MenuPopover } from '../overlays/popovers'
 import { SmallText } from '../feedback/status'
@@ -23,6 +23,7 @@ const PRESET_BTN_STYLE = {
 }
 
 const Calendar = styled.div`
+  ${calendarNavigation}
   padding: var(--ig-space-5);
   border-radius: var(--ig-radius-xl);
   background: linear-gradient(180deg, var(--ig-color-surface-calendar-top) 0%, var(--ig-color-surface-calendar-bottom) 100%);
@@ -42,18 +43,8 @@ const Calendar = styled.div`
   }
   .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
   .rdp-day_button { width: 100%; height: 100%; border-radius: var(--ig-radius-sm); }
-  .rdp-selected .rdp-day_button, .rdp-day_button:hover {
-    background: var(--ig-color-focus-bg-soft);
-    color: var(--ig-color-text-primary);
-  }
-  .rdp-range_middle .rdp-day_button {
-    background: var(--ig-color-accent-soft-surface);
-    color: var(--ig-color-text-primary);
-  }
-  .rdp-range_start .rdp-day_button, .rdp-range_end .rdp-day_button {
-    background: var(--ig-color-accent);
-    color: var(--ig-color-on-accent);
-  }
+
+  ${calendarDayStates}
 `
 
 const HEADER_STYLE = { marginBottom: 'var(--ig-space-6)' }
@@ -143,6 +134,7 @@ export function DateRangePicker({
             selected={value as DateRange | undefined}
             onSelect={(next) => onChange(next)}
             numberOfMonths={1}
+            navLayout="around"
             showOutsideDays
           />
         ) : (
@@ -151,6 +143,7 @@ export function DateRangePicker({
             selected={value as Date | undefined}
             onSelect={(next) => onChange(next)}
             numberOfMonths={1}
+            navLayout="around"
             showOutsideDays
           />
         )}
@@ -166,7 +159,7 @@ export function DateRangePicker({
               </Button>
             ) : null}
             {onApply ? (
-              <Button variant="secondary" type="button" onClick={onApply}>
+              <Button variant="solid" size="sm" type="button" onClick={onApply}>
                 Apply
               </Button>
             ) : null}
