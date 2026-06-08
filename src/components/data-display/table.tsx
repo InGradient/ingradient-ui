@@ -20,8 +20,6 @@ function GripIcon() {
 export type TableColumn<T> = {
   key: string
   header: string
-  /** 고정 컬럼 너비 (px 또는 CSS 길이). */
-  width?: string | number
   /** Right-align cell + header, tabular-nums (숫자 정렬). */
   numeric?: boolean
   /** 회색 텍스트 (보조 정보 컬럼). */
@@ -69,7 +67,6 @@ export function Table<T extends { id?: string | number }>({
             return (
               <Td
                 key={i}
-                style={{ width: col?.width }}
                 $numeric={col?.numeric}
                 $muted={col?.muted}
                 $mono={col?.mono}
@@ -89,7 +86,7 @@ export function Table<T extends { id?: string | number }>({
           <thead>
             <tr>
               {columns.map((col) => (
-                <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
+                <Th key={col.key} $numeric={col.numeric}>{col.header}</Th>
               ))}
             </tr>
           </thead>
@@ -103,7 +100,6 @@ export function Table<T extends { id?: string | number }>({
                 {columns.map((col) => (
                   <Td
                     key={col.key}
-                    style={{ width: col.width }}
                     $numeric={col.numeric}
                     $muted={col.muted}
                     $mono={col.mono}
@@ -129,7 +125,7 @@ export function Table<T extends { id?: string | number }>({
               <VisuallyHidden>Reorder</VisuallyHidden>
             </DragTh>
             {columns.map((col) => (
-              <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
+              <Th key={col.key} $numeric={col.numeric}>{col.header}</Th>
             ))}
           </tr>
         </thead>
@@ -151,7 +147,6 @@ export function Table<T extends { id?: string | number }>({
               {columns.map((col) => (
                 <Td
                   key={col.key}
-                  style={{ width: col.width }}
                   $numeric={col.numeric}
                   $muted={col.muted}
                   $mono={col.mono}

@@ -1,4 +1,4 @@
-import { Button, Checkbox, TextField } from '@ingradient/ui/components'
+import { Button, TextField } from '@ingradient/ui/components'
 import {
   CheckDivider,
   CheckItem,
@@ -75,22 +75,24 @@ export function ExportTabUI({
         ) : (
           <CheckList>
             <CheckItem>
-              <Checkbox
+              <input
+                type="checkbox"
                 aria-label="Select all datasets"
-                label="Select All"
                 checked={allDatasetsSelected}
                 onChange={(event) => onSelectAllDatasets(event.target.checked)}
               />
+              Select All
             </CheckItem>
             <CheckDivider />
             {datasets.map((dataset) => (
               <CheckItem key={dataset.id}>
-                <Checkbox
+                <input
+                  type="checkbox"
                   aria-label={dataset.name}
-                  label={dataset.name}
                   checked={selectedDatasets.has(dataset.id)}
                   onChange={() => onToggleDataset(dataset.id)}
                 />
+                {dataset.name}
               </CheckItem>
             ))}
           </CheckList>
@@ -105,12 +107,13 @@ export function ExportTabUI({
           <CheckList>
             {members.map((member) => (
               <CheckItem key={member.id}>
-                <Checkbox
+                <input
+                  type="checkbox"
                   aria-label={member.name || member.email}
-                  label={<>{member.name || member.email} <UserEmailNote>({member.email})</UserEmailNote></>}
                   checked={selectedUsers.has(member.user_id)}
                   onChange={() => onToggleUser(member.user_id)}
                 />
+                {member.name || member.email} <UserEmailNote>({member.email})</UserEmailNote>
               </CheckItem>
             ))}
           </CheckList>

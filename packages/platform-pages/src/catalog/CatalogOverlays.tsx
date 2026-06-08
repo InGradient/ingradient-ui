@@ -68,6 +68,7 @@ export function CatalogOverlays({
         onClose={detail.onClose}
         main={detailContent?.main}
         sidebar={detailContent?.sidebar}
+        hideDefaultClose={!!detailContent?.main}
       />
       <AddDatasetModal
         open={addDataset.open}

@@ -1,4 +1,4 @@
-import { Button, Checkbox } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
 import type {
   DeflectometryConfig,
   DeflectometryPatternLabel,
@@ -61,24 +61,26 @@ export function WorkOptionsTabUI({
         <SectionTitle>Locked on Edge</SectionTitle>
         <CheckList>
           <CheckItem>
-            <Checkbox
+            <input
+              type="checkbox"
               aria-label="Require labeling before proceeding"
-              label="Require labeling before proceeding"
               checked={options.require_labeling}
               onChange={(event) =>
                 onOptionsChange({ ...options, require_labeling: event.target.checked })
               }
             />
+            Require labeling before proceeding
           </CheckItem>
           <CheckItem>
-            <Checkbox
+            <input
+              type="checkbox"
               aria-label="Block Save if no label"
-              label={'Block "Save" if no label (hides Skip button)'}
               checked={options.block_next_without_labeling}
               onChange={(event) =>
                 onOptionsChange({ ...options, block_next_without_labeling: event.target.checked })
               }
             />
+            Block "Save" if no label (hides Skip button)
           </CheckItem>
         </CheckList>
         <FieldRow>

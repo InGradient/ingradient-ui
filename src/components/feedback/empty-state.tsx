@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { stateCenteredLayout, stateDescriptionText, stateTitleText } from '../../primitives'
 
 const Wrap = styled.div`
-  ${stateCenteredLayout}
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,11 +18,14 @@ const IconWrap = styled.div`
 `
 
 const Title = styled.div`
-  ${stateTitleText}
+  font-size: var(--ig-font-size-sm);
+  font-weight: var(--ig-font-weight-semibold);
+  color: var(--ig-color-text-primary);
 `
 
 const Description = styled.div`
-  ${stateDescriptionText}
+  font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-line-height-relaxed);
   max-width: var(--ig-popup-md);
 `
 

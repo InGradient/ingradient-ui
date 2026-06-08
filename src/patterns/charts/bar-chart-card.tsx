@@ -4,7 +4,7 @@ import { ChartContainer } from './chart-container'
 import { ChartLegend } from '../../components/charts/chart-legend'
 import { ChartResponsive } from '../../components/charts/chart-responsive'
 import { ChartTooltipContent } from '../../components/charts/chart-tooltip'
-import { chartAxisTick, chartPalette, type CartesianSeries } from '../../components/charts/types'
+import { chartPalette, type CartesianSeries } from '../../components/charts/types'
 
 export function BarChartCard<T extends Record<string, string | number>>({
   title,
@@ -69,19 +69,16 @@ export function BarChartCard<T extends Record<string, string | number>>({
             <CartesianGrid stroke="var(--ig-color-chart-grid)" strokeDasharray="3 3" vertical={isVertical} horizontal={!isVertical} />
             {isVertical ? (
               <>
-                <XAxis type="number" stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
-                <YAxis type="category" dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
+                <XAxis type="number" stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+                <YAxis type="category" dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
               </>
             ) : (
               <>
-                <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
-                <YAxis stroke="var(--ig-color-text-soft)" tick={chartAxisTick} tickLine={false} axisLine={false} />
+                <XAxis dataKey={xKey as string} stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
+                <YAxis stroke="var(--ig-color-text-soft)" tickLine={false} axisLine={false} />
               </>
             )}
-            <Tooltip
-              content={tooltipContent ?? <ChartTooltipContent />}
-              cursor={{ fill: 'var(--ig-color-surface-interactive)' }}
-            />
+            <Tooltip content={tooltipContent ?? <ChartTooltipContent />} />
             <Legend content={() => null} />
             {series.map((item, index) => {
               const fill = item.color ?? chartPalette[index % chartPalette.length]

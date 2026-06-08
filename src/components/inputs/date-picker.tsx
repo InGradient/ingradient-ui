@@ -56,7 +56,6 @@ export function DatePickerField({
             mode="single"
             selected={selected}
             onSelect={handleSelect}
-            navLayout="around"
             showOutsideDays
           />
         </Popover>

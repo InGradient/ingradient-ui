@@ -2,20 +2,19 @@ import { iconSizeNumbers } from '@ingradient/ui'
 import type { CSSProperties } from 'react'
 import {
   Alert,
+  Badge,
   EmptyState,
   FilterChipRow,
-  ResizableColumnsLayout,
-  type ResizableColumn,
 } from '@ingradient/ui/components'
-import { popupSizeNumbers } from '@ingradient/ui/tokens'
-import { ClassManageImageGrid } from './ClassManageImageGrid'
+import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
 import { ClassListSidebar } from './class-list-sidebar'
 import { ReferenceImageSection } from './reference-image-section'
 import { ModelMappingSelect } from './model-mapping-select'
-import { ContentArea, StatusArea } from './ClassManageView.styles'
+import { BodyRow } from './ClassManageView.styles'
 import type {
+  ClassImage,
   ClassImagesPaneProps,
   ClassInfoPaneProps,
   ClassListPaneProps,
@@ -30,9 +29,7 @@ interface ClassManageBodyProps {
   info: ClassInfoPaneProps | null
 }
 
-const STORAGE_KEY = 'ig-class-manage-shell'
-
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
+const ALERT_STYLE: CSSProperties = { flex: 1 }
 const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 8 }
 const MAPPING_LABEL_STYLE: CSSProperties = {
   margin: 0,
@@ -57,83 +54,89 @@ export function ClassManageBody({
 }: ClassManageBodyProps) {
   if (permissionDenied) {
     return (
-      <ContentArea>
+      <BodyRow>
         <Alert $tone="warning" style={ALERT_STYLE}>
           {PERMISSION_DENIED_TEXT}
         </Alert>
-      </ContentArea>
+      </BodyRow>
     )
   }
   if (error) {
     return (
-      <ContentArea>
+      <BodyRow>
         <Alert $tone="danger" style={ALERT_STYLE}>
           {error}
         </Alert>
-      </ContentArea>
+      </BodyRow>
     )
   }
   if (noProject) {
     return (
-      <ContentArea>
-        <StatusArea>
-          <EmptyState title={NO_PROJECT_TITLE} description={NO_PROJECT_DESC} />
-        </StatusArea>
-      </ContentArea>
+      <BodyRow>
+        <EmptyState title={NO_PROJECT_TITLE} description={NO_PROJECT_DESC} />
+      </BodyRow>
     )
   }
 
-  const columns: ResizableColumn[] = [
-    {
-      width: popupSizeNumbers.sm,
-      resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
-    },
-    { width: 'auto' },
-    {
-      width: popupSizeNumbers.mdNarrow,
-      resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
-      background: 'var(--ig-color-surface-panel)',
-      hidden: !info,
-    },
-  ]
-
   return (
-    <ContentArea>
-      <ResizableColumnsLayout storageKey={STORAGE_KEY} columns={columns}>
-        <ClassListSidebar
-          classes={list.classes}
-          selectedClassId={list.selectedClassId}
-          loading={list.loading}
-          flush
-          onSelectClass={list.onSelectClass}
-          onAddClass={list.onAddClass}
-        />
-        <SelectableGridPanel
-          selectedId={images.selectedClassId}
-          noSelectionText="Select a class to see linked datasets and images."
-          loadingText="Loading images…"
-          emptyText="No images with this class in the selected datasets."
-          flush
-          headerSlot={
-            <FilterChipRow
-              label="Dataset"
-              items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
-              activeIds={images.activeDatasetIds}
-              loading={images.detailLoading}
-              onToggle={images.onToggleDataset}
-            />
-          }
-          loading={images.imagesLoading}
-          empty={images.images.length === 0}
-          gridSlot={<ClassManageImageGrid {...images} />}
-        />
-        {info ? <ClassInfoPane {...info} flush /> : <div />}
-      </ResizableColumnsLayout>
-    </ContentArea>
+    <BodyRow>
+      <ClassListSidebar
+        classes={list.classes}
+        selectedClassId={list.selectedClassId}
+        loading={list.loading}
+        onSelectClass={list.onSelectClass}
+        onAddClass={list.onAddClass}
+      />
+      <SelectableGridPanel
+        selectedId={images.selectedClassId}
+        noSelectionText="Select a class to see linked datasets and images."
+        loadingText="Loading images…"
+        emptyText="No images with this class in the selected datasets."
+        headerSlot={
+          <FilterChipRow
+            label="Dataset"
+            items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
+            activeIds={images.activeDatasetIds}
+            loading={images.detailLoading}
+            onToggle={images.onToggleDataset}
+          />
+        }
+        loading={images.imagesLoading}
+        empty={images.images.length === 0}
+        gridSlot={
+          <ImageGrid
+            items={images.images}
+            getThumbnailUrl={(img) => img.thumb_url}
+            layout={{ minWidth: 120, gap: 4 }}
+            onItemClick={(img) => images.onOpenImage(img)}
+            onContextMenu={(img, _i, e) => {
+              e.preventDefault()
+              images.onOpenContextMenu(img, { top: e.clientY, left: e.clientX })
+            }}
+            onDragStart={(img, _i, e) => {
+              e.dataTransfer.setData('text/plain', img.id)
+              e.dataTransfer.effectAllowed = 'copy'
+            }}
+            renderCellOverlay={(img) => (
+              <AnnotationOverlay
+                bboxes={img.bboxes}
+                points={img.points}
+                getColor={(id) => (id ? images.classIdToColor[id] : undefined)}
+                selectedClassId={images.selectedClassId}
+                imageWidth={img.width}
+                imageHeight={img.height}
+                fillOpacity={0.22}
+                emphasize
+              />
+            )}
+            renderCellTopRight={(img: ClassImage) =>
+              img.sequence_id ? <Badge $tone="neutral">4</Badge> : null
+            }
+          />
+        }
+      />
+      {info ? <ClassInfoPane {...info} /> : null}
+    </BodyRow>
   )
 }
 
@@ -152,8 +155,7 @@ function ClassInfoPane({
   onSetReferenceDragOver,
   onApplyReferenceImage,
   onChangeMapping,
-  flush = false,
-}: ClassInfoPaneProps & { flush?: boolean }) {
+}: ClassInfoPaneProps) {
   return (
     <ClassInfoSidebar
       selectedClass={selectedClass}
@@ -162,7 +164,6 @@ function ClassInfoPane({
       onChangeDescription={(description) => onChangeClass({ description: description ?? null })}
       onRandomizeColor={onRandomizeColor}
       onDelete={onDeleteClass}
-      flush={flush}
       referenceImageSlot={
         <ReferenceImageSection
           imageUrl={selectedClass.reference_image_url}

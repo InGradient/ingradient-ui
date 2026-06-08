@@ -15,8 +15,7 @@ export function PieChartCard({
   emptyMessage,
   innerRadius = 60,
   outerRadius = 90,
-  paddingAngle = 0,
-  separator = 'subtle',
+  paddingAngle = 3,
   labelRender,
   tooltipContent,
   headerExtra,
@@ -31,10 +30,8 @@ export function PieChartCard({
   innerRadius?: number
   /** Outer radius. Default 90. */
   outerRadius?: number
-  /** Padding angle (degrees) between slices. Default 0 keeps slices flush. */
+  /** Padding angle (degrees) between slices. Default 3. */
   paddingAngle?: number
-  /** Slice separator. `subtle` keeps adjacent colors readable without creating gaps. */
-  separator?: 'none' | 'subtle'
   /** Slice label renderer. `pct` is value/total in [0,1]. */
   labelRender?: (entry: PieDatum, pct: number) => React.ReactNode
   tooltipContent?: React.ReactElement
@@ -51,8 +48,6 @@ export function PieChartCard({
         return labelRender(entry, (Number(entry.value) || 0) / total) as string | number
       }
     : undefined
-  const separatorStroke = separator === 'subtle' ? 'var(--ig-color-chart-separator)' : 'none'
-  const separatorWidth = separator === 'subtle' ? 1.5 : 0
   return (
     <ChartContainer
       title={title}
@@ -67,10 +62,7 @@ export function PieChartCard({
       <ChartResponsive height={height}>
         {({ width, height: chartHeight }) => (
           <RechartsPieChart width={width} height={chartHeight}>
-            <Tooltip
-              content={tooltipContent ?? <ChartTooltipContent />}
-              cursor={{ fill: 'var(--ig-color-surface-interactive)' }}
-            />
+            <Tooltip content={tooltipContent ?? <ChartTooltipContent />} />
             <Legend content={() => null} />
             <Pie
               data={data}
@@ -82,12 +74,7 @@ export function PieChartCard({
               label={labelFn}
             >
               {data.map((item, index) => (
-                <Cell
-                  key={`${item.name}-${index}`}
-                  fill={item.color ?? chartPalette[index % chartPalette.length]}
-                  stroke={separatorStroke}
-                  strokeWidth={separatorWidth}
-                />
+                <Cell key={`${item.name}-${index}`} fill={item.color ?? chartPalette[index % chartPalette.length]} />
               ))}
             </Pie>
           </RechartsPieChart>

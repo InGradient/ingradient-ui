@@ -22,24 +22,21 @@ export interface SyncStatusChipProps {
   label?: string
   variant?: SyncStatusChipVariant
   showDot?: boolean
-  collapseUntilHover?: boolean
   className?: string
 }
 
 export function SyncStatusChip({
-  state, label, variant = 'soft', showDot = true, collapseUntilHover = false, className,
+  state, label, variant = 'soft', showDot = true, className,
 }: SyncStatusChipProps) {
   const styles = variant === 'opaque' ? OPAQUE_STATE_STYLES : SOFT_STATE_STYLES
-  const statusLabel = label ?? styles[state].label
   return (
     <StateChip
       state={state}
-      label={statusLabel}
+      label={label ?? styles[state].label}
       stateStyles={styles}
       showDot={showDot}
-      collapseUntilHover={collapseUntilHover}
       className={className}
-      aria-label={`Sync state: ${statusLabel}`}
+      aria-label={`Sync state: ${state}`}
     />
   )
 }

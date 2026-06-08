@@ -82,7 +82,7 @@ export function VirtualizedImageGrid<T extends { id: string }>(props: Virtualize
   }, [virtualizer, hasMore, onLoadMore, rowCount, items.length])
 
   const totalHeight = virtualizer.getTotalSize()
-  const gap = layout?.gap ?? 5
+  const gap = layout?.gap ?? 6
 
   return (
     <div ref={parentRef} style={SCROLL_STYLE}>

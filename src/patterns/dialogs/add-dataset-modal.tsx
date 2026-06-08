@@ -104,7 +104,7 @@ export function AddDatasetModal({
       </FormField>
       {classes.length > 0 ? (
         <FormField label="Connect classes (optional)">
-          <Stack gap="var(--ig-space-2)" style={CLASS_LIST_STYLE}>
+          <Stack gap={2} style={CLASS_LIST_STYLE}>
             {classes.map((c) => (
               <ClassRow key={c.id}>
                 <Checkbox

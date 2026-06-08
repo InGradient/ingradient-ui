@@ -6,7 +6,7 @@ const Root = styled.div<{ $minWidth: number; $columns?: number; $gap: number }>`
   grid-template-columns: ${(p) =>
     p.$columns
       ? `repeat(${p.$columns}, minmax(0, 1fr))`
-      : `repeat(auto-fit, minmax(min(${p.$minWidth}px, 100%), 1fr))`};
+      : `repeat(auto-fit, minmax(${p.$minWidth}px, 1fr))`};
   gap: ${(p) => `var(--ig-space-${p.$gap})`};
   min-width: 0;
 `

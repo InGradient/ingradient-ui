@@ -6,7 +6,6 @@ import { GridContainer } from '../../components/data-display/grid-container'
 
 const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 'var(--ig-space-1px)' }
 const LOAD_MORE_STYLE = { gridColumn: '1 / -1', textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
-const PADDED_STYLE = { boxSizing: 'border-box' as const, minHeight: '100%', padding: 'var(--ig-space-7)' }
 
 export interface ImageGridLayout {
   minWidth?: number
@@ -18,8 +17,6 @@ export interface ImageGridProps<T extends { id: string }> {
   items: T[]
   getThumbnailUrl: (item: T) => string
   layout?: ImageGridLayout
-  /** 그리드 둘레에 var(--ig-space-7) 패딩 래퍼(스크롤 영역 안). simon GalleryImageGrid `padded` 대응. */
-  padded?: boolean
   onItemClick?: (item: T, index: number, event: React.MouseEvent) => void
   onItemDoubleClick?: (item: T, index: number, event: React.MouseEvent) => void
   selectedIds?: Set<string>
@@ -44,7 +41,6 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
     items,
     getThumbnailUrl,
     layout,
-    padded = false,
     onItemClick,
     onItemDoubleClick,
     selectedIds = EMPTY_SELECTION,
@@ -85,12 +81,12 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
     return () => observer.disconnect()
   }, [hasMore, onLoadMore])
 
-  const grid = (
+  return (
     <GridContainer
       ref={rootRef}
       minWidth={layout?.minWidth ?? 180}
       columns={layout?.columns}
-      gap={layout?.gap ?? 5}
+      gap={layout?.gap ?? 6}
     >
       {items.map((item, index) => (
         <ImageGridCell
@@ -115,5 +111,4 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
       {isLoadingMore ? <Text as="div" tone="muted" size="var(--ig-font-size-xs)" style={LOAD_MORE_STYLE}>Loading…</Text> : null}
     </GridContainer>
   )
-  return padded ? <div style={PADDED_STYLE}>{grid}</div> : grid
 }

@@ -105,7 +105,7 @@ export function ResizableColumnsLayout({
   }, [widths, autoIdx, columns])
 
   return (
-    <Inline gap={0} align="stretch" wrap="nowrap" className={className} style={{ ...ROOT_STYLE, ...style }}>
+    <Inline gap={0} wrap="nowrap" className={className} style={{ ...ROOT_STYLE, ...style }}>
       {columns.map((c, i) => {
         if (c.hidden) return null
         const collapsed = !!c.collapsed

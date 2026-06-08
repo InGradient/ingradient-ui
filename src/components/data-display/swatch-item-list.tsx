@@ -52,7 +52,7 @@ export function SwatchItemList({ items, onRemove, onHover, removeIcon, className
           <Text size="var(--ig-font-size-sm)" title={it.label} style={LABEL_STYLE}>{it.label}</Text>
           {typeof it.count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{it.count}</Text> : null}
           {onRemove ? (
-            <IconButton variant="ghost" size="sm" tone="danger" type="button" aria-label={`Remove ${it.label}`} onClick={() => onRemove(it.id)}>
+            <IconButton variant="secondary" size="sm" tone="danger" type="button" aria-label={`Remove ${it.label}`} onClick={() => onRemove(it.id)}>
               {removeIcon ?? '×'}
             </IconButton>
           ) : null}
