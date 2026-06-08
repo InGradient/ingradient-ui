@@ -32,15 +32,20 @@ export const MediaDialogContent = styled.div<{ $width?: string; $height?: string
   max-width: ${(p) => p.$width ?? '95vw'};
   height: ${(p) => p.$height ?? 'calc(100vh - var(--ig-layout-topbar))'};
   max-height: ${(p) => p.$height ?? 'calc(100vh - var(--ig-layout-topbar))'};
-  background: var(--ig-color-bg-canvas);
+  background: var(--ig-color-surface-raised);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-lg);
+  box-shadow: var(--ig-shadow-floating);
+  color: var(--ig-color-text-primary);
   overflow: hidden;
+  isolation: isolate;
   ${media.md} {
     width: 100vw;
     max-width: 100vw;
     height: 100dvh;
     max-height: 100dvh;
     border-radius: 0;
+    border: 0;
   }
 `
 
@@ -50,6 +55,17 @@ export const MediaDialogMain = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  background: var(--ig-color-bg-canvas);
+`
+
+export const MediaDialogTopRight = styled.div`
+  position: absolute;
+  top: var(--ig-space-3);
+  right: var(--ig-space-7);
+  z-index: var(--ig-z-sticky-plus);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ig-space-2);
 `
 
 export const MediaDialogResizer = styled.div`
@@ -65,7 +81,7 @@ export const MediaDialogSidebar = styled.aside.attrs<{ $width: number }>((p) => 
 }))`
   flex-shrink: 0;
   border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-panel);
+  background: var(--ig-color-surface-raised);
   display: flex;
   flex-direction: column;
   overflow: hidden;

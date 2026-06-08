@@ -142,3 +142,43 @@ export const buttonDangerSecondary = css`
 
   ${buttonDisabled}
 `
+
+const buttonGhostBase = css`
+  border-radius: var(--ig-radius-sm);
+  border: var(--ig-border-1px) solid transparent;
+  background: transparent;
+  color: var(--ig-color-text-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--ig-motion-fast),
+    border-color var(--ig-motion-fast),
+    color var(--ig-motion-fast),
+    opacity var(--ig-motion-fast);
+
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
+
+  &:disabled {
+    opacity: var(--ig-opacity-disabled);
+    cursor: not-allowed;
+  }
+`
+
+export const buttonGhost = css`
+  ${buttonGhostBase}
+  &:hover:not(:disabled) {
+    background: var(--ig-color-surface-interactive-hover);
+    color: var(--ig-color-text-primary);
+  }
+`
+
+export const buttonGhostDanger = css`
+  ${buttonGhostBase}
+  &:hover:not(:disabled) {
+    background: var(--ig-color-alert-danger-bg);
+    color: var(--ig-color-danger);
+  }
+`

@@ -46,7 +46,7 @@ const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: s
   min-width: 0;
   gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-7)'};
   grid-template-columns: ${(p) =>
-    p.$columns ?? `repeat(auto-fit, minmax(${numberOrString(p.$minItemWidth) ?? 'var(--ig-popup-xs)'}, 1fr))`};
+    p.$columns ?? `repeat(auto-fit, minmax(min(${numberOrString(p.$minItemWidth) ?? 'var(--ig-popup-xs)'}, 100%), 1fr))`};
 `
 
 export function Grid({

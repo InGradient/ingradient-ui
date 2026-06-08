@@ -4,22 +4,48 @@ import { Inline, Text } from '../../primitives'
 import { iconSizeNumbers } from '../../tokens/core'
 import { GroupCountBadge } from '../feedback/group-count-badge'
 import { MediaOverlay } from '../feedback/media-overlay'
-import { IconButton } from '../inputs/icon-button'
 import { KebabIcon } from '../icons/catalog-icons'
+
+const OptionButton = styled.button`
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
+  padding: 0;
+  border: none;
+  border-radius: var(--ig-radius-2xs);
+  background: var(--ig-color-image-option-bg);
+  color: var(--ig-color-on-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--ig-motion-fast);
+  &:hover {
+    background: var(--ig-color-image-option-bg-hover);
+  }
+`
 
 const Card = styled.div<{ $selected: boolean }>`
   position: relative;
   width: 100%;
   aspect-ratio: var(--ig-aspect-landscape);
   background: var(--ig-color-surface-muted);
-  border: var(--ig-border-2px) solid ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'transparent')};
+  border: var(--ig-border-2px) solid transparent;
   border-radius: var(--ig-radius-md);
   overflow: hidden;
   cursor: pointer;
   transition: border-color var(--ig-motion-fast), box-shadow var(--ig-motion-fast);
-  box-shadow: ${(p) => (p.$selected ? '0 0 0 3px var(--ig-color-image-card-selected-ring)' : 'none')};
+  box-shadow: none;
   &:hover {
-    border-color: ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'var(--ig-color-image-card-hover-border)')};
+    border-color: ${(p) => (p.$selected ? 'transparent' : 'var(--ig-color-image-card-hover-border)')};
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--ig-border-2px) solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: var(--ig-z-capture-high);
   }
 `
 
@@ -40,9 +66,10 @@ const TOP_RIGHT_STYLE = {
 const GROUP_SLOT_STYLE = {
   position: 'absolute' as const,
   top: 'var(--ig-space-2)',
-  right: 'var(--ig-space-2)',
-  transform: 'translate(var(--ig-space-5), var(--ig-space-neg-4))',
-  zIndex: 'var(--ig-z-capture)' as unknown as number,
+  left: 'var(--ig-space-2)',
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  zIndex: 'var(--ig-z-raised)' as unknown as number,
 }
 
 const FOOTER_STYLE = {
@@ -92,14 +119,18 @@ export function ImageCard({
       $selected={selected}
       onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
       data-image-id={image.id}
+      data-state-chip-hover-scope="true"
     >
-      <img src={image.thumb_url} alt={image.name} loading="lazy" style={THUMB_STYLE} />
+      <img
+        src={image.thumb_url}
+        alt={image.name}
+        loading="lazy"
+        style={{ ...THUMB_STYLE, filter: image.archived ? 'grayscale(1)' : undefined }}
+      />
       <Inline gap={1} style={TOP_RIGHT_STYLE}>
         {topRightSlot}
         {showKebab ? (
-          <IconButton
-            variant="accent"
-            size="sm"
+          <OptionButton
             ref={menuBtnRef}
             aria-label={`Open menu for ${image.name}`}
             onClick={(e) => {
@@ -108,7 +139,7 @@ export function ImageCard({
             }}
           >
             <KebabIcon size={iconSizeNumbers.sm} />
-          </IconButton>
+          </OptionButton>
         ) : null}
       </Inline>
       {groupCount > 1 ? <div style={GROUP_SLOT_STYLE}><GroupCountBadge count={groupCount} /></div> : null}

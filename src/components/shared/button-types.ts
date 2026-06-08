@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type ButtonVariant = 'solid' | 'secondary' | 'accent'
+export type ButtonVariant = 'solid' | 'secondary' | 'accent' | 'ghost'
 export type LegacyButtonVariant = 'primary' | 'ghost' | 'accent'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 export type ButtonTone = 'default' | 'danger'

@@ -7,6 +7,7 @@ import {
   MediaDialogOverlay,
   MediaDialogResizer,
   MediaDialogSidebar,
+  MediaDialogTopRight,
 } from './media-dialog-shell.styles'
 
 export interface MediaDialogShellProps {
@@ -28,6 +29,8 @@ export interface MediaDialogShellProps {
   overlay?: React.ReactNode
   /** Dialogs / Confirmations sibling — Overlay 외 동일 z-layer. */
   extras?: React.ReactNode
+  /** Content box 기준 오른쪽 상단 floating controls. */
+  topRight?: React.ReactNode
   /** 추가 핸들러 forward (touch swipe, context menu 등). */
   onContextMenu?: (event: React.MouseEvent<HTMLDivElement>) => void
   onTouchStart?: (event: React.TouchEvent<HTMLDivElement>) => void
@@ -54,6 +57,7 @@ export function MediaDialogShell({
   height,
   overlay,
   extras,
+  topRight,
   onContextMenu,
   onTouchStart,
   onTouchEnd,
@@ -79,6 +83,7 @@ export function MediaDialogShell({
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
+        {topRight ? <MediaDialogTopRight>{topRight}</MediaDialogTopRight> : null}
         <MediaDialogMain>{main}</MediaDialogMain>
         {sidebar ? (
           <>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { buttonAccent, buttonDanger, buttonDangerSecondary, buttonPrimary, buttonSecondary } from '../../primitives'
+import { buttonAccent, buttonDanger, buttonDangerSecondary, buttonGhost, buttonGhostDanger, buttonPrimary, buttonSecondary } from '../../primitives'
 import type { ButtonSize, ButtonTone, ButtonVariant } from './button-types'
 import { buttonPadding } from './button-types'
 
@@ -22,8 +22,15 @@ export const ButtonRoot = styled.button<{
   line-height: var(--ig-line-height-none);
   ${(p) => {
     if (p.$tone === 'danger') {
+      if (p.$variant === 'ghost') return buttonGhostDanger
       return p.$variant === 'secondary' ? buttonDangerSecondary : buttonDanger
     }
-    return p.$variant === 'secondary' ? buttonSecondary : p.$variant === 'accent' ? buttonAccent : buttonPrimary
+    return p.$variant === 'ghost'
+      ? buttonGhost
+      : p.$variant === 'secondary'
+        ? buttonSecondary
+        : p.$variant === 'accent'
+          ? buttonAccent
+          : buttonPrimary
   }}
 `

@@ -1,11 +1,38 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Download } from 'lucide-react'
-import { Box, Inline } from '@ingradient/ui/primitives'
 import { IconButton } from '@ingradient/ui/components'
 
-const SHELL_STYLE = { position: 'relative' as const, minWidth: 0 }
-const ACTIONS_STYLE = { position: 'absolute' as const, top: 'var(--ig-space-6)', right: 'var(--ig-space-6)', zIndex: 8 }
+const Shell = styled.div<{ $hasActions: boolean }>`
+  position: relative;
+  min-width: 0;
+
+  ${(p) =>
+    p.$hasActions
+      ? `
+        --ig-analysis-widget-action-space: calc(
+          var(--ig-control-height-sm) +
+          var(--ig-control-height-sm) +
+          var(--ig-space-2) +
+          var(--ig-space-8)
+        );
+
+        [data-ig-chart-head] {
+          padding-right: var(--ig-analysis-widget-action-space);
+        }
+      `
+      : ''}
+`
+
+const Actions = styled.div`
+  position: absolute;
+  top: var(--ig-space-4);
+  right: var(--ig-space-4);
+  z-index: var(--ig-z-capture-top);
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-2);
+`
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`
   color: var(--ig-color-text-secondary);
@@ -32,19 +59,20 @@ export function AnalysisWidgetShell({
   downloadLabel = 'Download widget image',
   className,
 }: AnalysisWidgetShellProps) {
+  const hasActions = !!(onDownload || extraActions)
   return (
-    <Box className={className} style={SHELL_STYLE}>
-      {(onDownload || extraActions) ? (
-        <Inline gap={3} data-report-hide style={ACTIONS_STYLE}>
+    <Shell className={className} $hasActions={hasActions}>
+      {hasActions ? (
+        <Actions data-report-hide>
           {onDownload ? (
             <ActionButton type="button" onClick={onDownload} title={downloadLabel} aria-label={downloadLabel}>
               <Download />
             </ActionButton>
           ) : null}
           {extraActions}
-        </Inline>
+        </Actions>
       ) : null}
       {children}
-    </Box>
+    </Shell>
   )
 }
