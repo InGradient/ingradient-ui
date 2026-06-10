@@ -8,11 +8,12 @@ import {
   JoinCodesSection,
   type JoinCodesSectionProps,
 } from './join-codes-section'
+import { SettingsSection } from './settings-section'
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--ig-space-4);
 `
 
 const Empty = styled.p`
@@ -37,8 +38,12 @@ export function InvitationsTab({
   if (error) return <Empty>{error}</Empty>
   return (
     <Wrap>
-      <InvitationsSection {...invitations} />
-      <JoinCodesSection {...joinCodes} />
+      <SettingsSection title={invitations.title ?? 'Invitations'}>
+        <InvitationsSection {...invitations} title="" />
+      </SettingsSection>
+      <SettingsSection title={joinCodes.title ?? 'Join Codes'}>
+        <JoinCodesSection {...joinCodes} title="" />
+      </SettingsSection>
     </Wrap>
   )
 }

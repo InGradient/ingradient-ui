@@ -143,7 +143,7 @@ export function InvitationsSection({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
+      {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionDesc>{description}</SectionDesc>
 
       {isAdmin && (

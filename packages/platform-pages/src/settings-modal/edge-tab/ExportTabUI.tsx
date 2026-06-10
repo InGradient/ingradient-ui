@@ -1,5 +1,6 @@
 import { Button, Checkbox, TextField } from '@ingradient/ui/components'
 import {
+  ActionsRow,
   CheckDivider,
   CheckItem,
   CheckList,
@@ -137,16 +138,16 @@ export function ExportTabUI({
         )}
       </Section>
 
-      <div>
+      <ActionsRow>
         <Button
-          variant="accent"
+          variant="solid"
           onClick={onCreate}
           disabled={pending.create || !deviceName.trim()}
         >
           {pending.create ? 'Creating…' : 'Create Project File (.ige)'}
         </Button>
         {createError && <ErrorHint>{createError}</ErrorHint>}
-      </div>
+      </ActionsRow>
 
       <ExportHistory
         packages={packages}

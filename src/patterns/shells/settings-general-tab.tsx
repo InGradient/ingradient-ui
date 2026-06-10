@@ -8,7 +8,7 @@ import { SettingsHint } from './settings-hint'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-4);
 `
 
 const SelectWrap = styled.div`

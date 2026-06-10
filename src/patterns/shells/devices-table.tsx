@@ -117,7 +117,7 @@ export function DevicesTable({
   return (
     <Section>
       <Header>
-        <SectionTitle>{title}</SectionTitle>
+        {title ? <SectionTitle>{title}</SectionTitle> : null}
         {isAdmin ? (
           <Actions>
             {offlineEnabled ? (

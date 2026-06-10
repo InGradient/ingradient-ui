@@ -5,23 +5,29 @@ const Row = styled.label`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-4) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   color: var(--ig-color-text-primary);
-  font-size: 14px;
+  font-size: var(--ig-font-size-md);
+  &:last-child {
+    border-bottom: 0;
+  }
 `
 
 const PlainRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
+  gap: var(--ig-space-4);
+  padding: var(--ig-space-4) 0;
   border-bottom: 1px solid var(--ig-color-border-strong);
   color: var(--ig-color-text-primary);
-  font-size: 14px;
+  font-size: var(--ig-font-size-md);
   flex-wrap: wrap;
+  &:last-child {
+    border-bottom: 0;
+  }
 `
 
 export interface SettingsRowProps {

@@ -90,6 +90,7 @@ export interface DevicesLicenseSectionExpiry {
 }
 
 export interface DevicesLicenseSectionProps {
+  title?: string
   isAdmin?: boolean
   loading?: boolean
   error?: string | null
@@ -113,6 +114,7 @@ const expiryToneLabel: Record<'expired' | 'soon' | 'ok', { label: string; tone: 
 }
 
 export function DevicesLicenseSection({
+  title = 'License',
   isAdmin, loading, error, license, expiry,
   showRenew, onToggleRenew, onCancelRenew,
   renewDate, onChangeRenewDate, renewing, renewError, onRenew,
@@ -120,7 +122,7 @@ export function DevicesLicenseSection({
   return (
     <Section>
       <Header>
-        <SectionTitle>License</SectionTitle>
+        {title ? <SectionTitle>{title}</SectionTitle> : null}
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}

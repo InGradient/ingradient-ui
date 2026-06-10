@@ -8,7 +8,7 @@ import { stateCenteredLayout, stateTitleText } from '../../primitives'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--ig-space-4);
 `
 
 const SectionTitle = styled.h3`
@@ -97,7 +97,7 @@ export function OrgMembersTab({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
+      {title ? <SectionTitle>{title}</SectionTitle> : null}
       {members.length === 0 ? (
         <Empty>{emptyText}</Empty>
       ) : (

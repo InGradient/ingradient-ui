@@ -31,14 +31,14 @@ export interface LicenseInfoDisplayProps {
 }
 
 const DEFAULT_ORG = (l: LicenseInfo) =>
-  `조직 라이선스 (${l.organizationName ?? ''}) | 만료: ${l.expiresAt ?? '—'} (${l.remainingDays ?? 0}일)`
+  `Organization license (${l.organizationName ?? ''}) | Expires: ${l.expiresAt ?? '—'} (${l.remainingDays ?? 0} days remaining)`
 const DEFAULT_PERSONAL = (l: LicenseInfo) =>
-  `개인 라이선스 | 만료: ${l.expiresAt ?? '—'} (${l.remainingDays ?? 0}일)`
+  `Personal license | Expires: ${l.expiresAt ?? '—'} (${l.remainingDays ?? 0} days remaining)`
 
 export function LicenseInfoDisplay({
   license,
-  loadingText = '라이선스 정보를 불러오는 중…',
-  expiredText = '만료됨',
+  loadingText = 'Loading license information…',
+  expiredText = 'Expired',
   organizationTemplate = DEFAULT_ORG,
   personalTemplate = DEFAULT_PERSONAL,
 }: LicenseInfoDisplayProps) {

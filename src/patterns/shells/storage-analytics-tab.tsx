@@ -5,8 +5,7 @@ import { Button } from '../../components/inputs/button'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 4px 0;
+  gap: var(--ig-space-4);
 `
 
 const Header = styled.div`
@@ -34,7 +33,7 @@ const SectionTitle = styled.h4`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: var(--ig-space-4);
 `
 
 const ErrorWrap = styled.div`
@@ -106,7 +105,7 @@ export function StorageAnalyticsTab({
   return (
     <Container>
       <Header>
-        <Title>{title}</Title>
+        {title ? <Title>{title}</Title> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>

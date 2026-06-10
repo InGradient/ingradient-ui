@@ -6,8 +6,8 @@ import { stateCenteredLayout, stateTitleText } from '../../primitives'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 480px;
+  gap: var(--ig-space-4);
+  width: 100%;
 `
 
 const SectionTitle = styled.h3`
@@ -37,7 +37,8 @@ const FieldValue = styled.div`
 const SaveRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-end;
+  gap: var(--ig-space-4);
 `
 
 const SuccessMsg = styled.span`
@@ -85,7 +86,7 @@ export function OrgSettingsTab({
 
   return (
     <Wrap>
-      <SectionTitle>{title}</SectionTitle>
+      {title ? <SectionTitle>{title}</SectionTitle> : null}
 
       <Field>
         <FieldLabel>Code</FieldLabel>
@@ -114,11 +115,11 @@ export function OrgSettingsTab({
 
       {isAdmin && (
         <SaveRow>
+          {message && <SuccessMsg>{message}</SuccessMsg>}
+          {error && <ErrorMsg>{error}</ErrorMsg>}
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>
             {saving ? 'Saving…' : 'Save'}
           </Button>
-          {message && <SuccessMsg>{message}</SuccessMsg>}
-          {error && <ErrorMsg>{error}</ErrorMsg>}
         </SaveRow>
       )}
     </Wrap>

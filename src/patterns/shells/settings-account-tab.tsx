@@ -9,21 +9,21 @@ import { LicenseInfoDisplay, type LicenseInfo } from './license-info-display'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--ig-space-4);
 `
 
 const Row = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-end;
+  gap: var(--ig-space-4);
   flex-wrap: wrap;
 `
 
 const Field = styled(TextField)`
   min-width: 240px;
+  flex: 1;
 `
-
-const DangerButton = styled(Button).attrs({ variant: 'secondary' as const, tone: 'danger' as const })``
 
 export interface SettingsAccountTabUser {
   id?: string
@@ -61,6 +61,7 @@ export function SettingsAccountTab({
 }: SettingsAccountTabProps) {
   const sameAsCurrent = accountName.trim() === (user?.name ?? '')
   const saveDisabled = !!accountSaving || !accountName.trim() || sameAsCurrent
+  const deleteDisabled = !deleteAccountEmailMatches || !!deleteAccountPreviewLoading
 
   return (
     <Wrap>
@@ -72,7 +73,7 @@ export function SettingsAccountTab({
             placeholder="Display name"
             aria-label="Display name"
           />
-          <Button type="button" variant="accent" disabled={saveDisabled} onClick={onSaveName}>
+          <Button type="button" variant="solid" disabled={saveDisabled} onClick={onSaveName}>
             {accountSaving ? 'Saving…' : 'Save'}
           </Button>
         </Row>
@@ -93,7 +94,7 @@ export function SettingsAccountTab({
         </Row>
       </SettingsSection>
 
-      <SettingsSection title="Delete account">
+      <SettingsSection title="Delete account" tone="danger">
         <SettingsHint>
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
@@ -105,13 +106,15 @@ export function SettingsAccountTab({
             placeholder={user?.email ?? 'Type your email to confirm'}
             aria-label="Type email to confirm account deletion"
           />
-          <DangerButton
+          <Button
             type="button"
-            disabled={!deleteAccountEmailMatches || !!deleteAccountPreviewLoading}
+            variant={deleteDisabled ? 'secondary' : 'solid'}
+            tone="danger"
+            disabled={deleteDisabled}
             onClick={onOpenDeleteAccountPreview}
           >
             {deleteAccountPreviewLoading ? 'Preparing…' : 'Delete Account'}
-          </DangerButton>
+          </Button>
         </Row>
         {deleteAccountMessage ? <Alert $tone="danger">{deleteAccountMessage}</Alert> : null}
       </SettingsSection>

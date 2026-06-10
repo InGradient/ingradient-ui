@@ -5,6 +5,7 @@ import type {
   EdgePackageOptions,
 } from './edge-types'
 import {
+  ActionsRow,
   CheckItem,
   CheckList,
   ErrorHint,
@@ -105,12 +106,12 @@ export function WorkOptionsTabUI({
         />
       )}
 
-      <div style={{ marginTop: 16 }}>
-        <Button variant="accent" type="button" onClick={onSave} disabled={savePending}>
+      <ActionsRow>
+        <Button variant="solid" type="button" onClick={onSave} disabled={savePending}>
           {savePending ? 'Saving…' : 'Save Work Options'}
         </Button>
-        {saveError && <ErrorHint style={{ marginTop: 8 }}>{saveError}</ErrorHint>}
-      </div>
+        {saveError && <ErrorHint>{saveError}</ErrorHint>}
+      </ActionsRow>
     </>
   )
 }
