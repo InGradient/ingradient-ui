@@ -16,7 +16,7 @@ const noop = () => undefined
 
 const actions = (
   <>
-    <Button variant="secondary" type="button" onClick={noop}>Save PDF</Button>
+    <Button variant="solid" type="button" onClick={noop}>Save PDF</Button>
     <Button variant="secondary" type="button" onClick={noop}>Customize</Button>
   </>
 )
