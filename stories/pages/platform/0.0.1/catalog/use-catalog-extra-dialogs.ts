@@ -6,7 +6,7 @@ import type {
   GalleryExportJobView,
   GalleryExportRange,
   GalleryExportType,
-} from '@ingradient/ui/patterns'
+} from '@ingradient/platform-pages'
 import type { CatalogScene } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 
 export interface CatalogExtraDialogState {

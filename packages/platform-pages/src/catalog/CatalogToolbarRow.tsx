@@ -1,5 +1,7 @@
+import { iconSizeNumbers } from '@ingradient/ui'
 import {
   FilterIcon,
+  FilterPopoverTrigger,
   GridIcon,
   ModeSwitcher,
   SearchField,
@@ -10,11 +12,9 @@ import {
 } from '@ingradient/ui/components'
 import {
   ExpandSidebarBtn,
-  FilterPopoverTrigger,
-  GalleryFilterPanel,
-  GalleryToolbar,
   SortPopoverTrigger,
 } from '@ingradient/ui/patterns'
+import { GalleryFilterPanel, GalleryToolbar } from './gallery'
 import { DangerDimButton } from './CatalogView.styles'
 import type { CatalogToolbarPaneProps, CatalogViewMode } from './types'
 
@@ -24,9 +24,9 @@ interface Props extends CatalogToolbarPaneProps {
 }
 
 const VIEW_OPTIONS = [
-  { value: 'grid' as CatalogViewMode, label: 'Grid', icon: <GridIcon size={16} /> },
-  { value: 'table' as CatalogViewMode, label: 'Table', icon: <TableIcon size={16} /> },
-  { value: 'stats' as CatalogViewMode, label: 'Stats', icon: <StatsIcon size={16} /> },
+  { value: 'grid' as CatalogViewMode, label: 'Grid', icon: <GridIcon size={iconSizeNumbers.md} /> },
+  { value: 'table' as CatalogViewMode, label: 'Table', icon: <TableIcon size={iconSizeNumbers.md} /> },
+  { value: 'stats' as CatalogViewMode, label: 'Stats', icon: <StatsIcon size={iconSizeNumbers.md} /> },
 ]
 
 export function CatalogToolbarRow({
@@ -75,7 +75,7 @@ export function CatalogToolbarRow({
           <FilterPopoverTrigger
             label="Filter"
             iconOnly
-            icon={<FilterIcon size={18} />}
+            icon={<FilterIcon size={iconSizeNumbers.lg} />}
             active={hasActiveFilter}
             defaultOpen={filterDefaultOpen}
             panel={
@@ -101,7 +101,7 @@ export function CatalogToolbarRow({
           />
           <SortPopoverTrigger
             iconOnly
-            icon={<SortIcon size={18} />}
+            icon={<SortIcon size={iconSizeNumbers.lg} />}
             value={sortValue}
             onChange={onSortChange}
             options={sortOptions}
@@ -121,10 +121,20 @@ export function CatalogToolbarRow({
       }
       actions={
         <>
-          <Button variant="secondary" size="sm" onClick={onExport}>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={onExport}
+            data-ig-component="CatalogToolbarRow.ExportButton"
+          >
             Export
           </Button>
-          <Button variant="accent" size="sm" onClick={onUpload}>
+          <Button
+            variant="solid"
+            size="sm"
+            onClick={onUpload}
+            data-ig-component="CatalogToolbarRow.UploadButton"
+          >
             Upload
           </Button>
         </>
@@ -136,7 +146,11 @@ export function CatalogToolbarRow({
       allSelected={allSelected}
       uploadProgress={uploadProgress}
       selectionActions={
-        <DangerDimButton type="button" onClick={onDelete}>
+        <DangerDimButton
+          type="button"
+          onClick={onDelete}
+          data-ig-component="CatalogToolbarRow.DeleteButton"
+        >
           Delete
         </DangerDimButton>
       }

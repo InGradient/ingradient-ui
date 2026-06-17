@@ -1,18 +1,16 @@
-import { ConfirmDialog } from '@ingradient/ui/components'
+import { ConfirmDialog, ContextMenuWithSubmenus, DuplicateItemModal } from '@ingradient/ui/components'
+import { AddDatasetModal } from '@ingradient/ui/patterns'
+import { DragDropDecideModal } from './drag-drop-decide-modal'
+import { ExportProgressModal } from './export-progress-modal'
+import { UploadQualityModal } from './upload-quality-modal'
 import {
-  AddDatasetModal,
-  DatasetMenu,
-  DragDropDecideModal,
-  DuplicateDatasetModal,
   GalleryDatasetTransferDialog,
   GalleryDeleteDialog,
   GalleryDetailModal,
   GalleryExportConfigDialog,
   GalleryExportProgressDialog,
   GalleryImageMenu,
-  IgpExportModal,
-  UploadQualityModal,
-} from '@ingradient/ui/patterns'
+} from './gallery'
 import type { CatalogOverlaysProps } from './types'
 import type { ReactNode } from 'react'
 
@@ -54,7 +52,7 @@ export function CatalogOverlays({
         onDelete={imageMenu.onDelete}
         onOpenLabeling={imageMenu.onOpenLabeling}
       />
-      <DatasetMenu
+      <ContextMenuWithSubmenus
         anchorEl={datasetMenu.anchorEl}
         onClose={datasetMenu.onClose}
         actions={[
@@ -70,7 +68,6 @@ export function CatalogOverlays({
         onClose={detail.onClose}
         main={detailContent?.main}
         sidebar={detailContent?.sidebar}
-        hideDefaultClose={!!detailContent?.main}
       />
       <AddDatasetModal
         open={addDataset.open}
@@ -78,11 +75,13 @@ export function CatalogOverlays({
         onSubmit={addDataset.onSubmit}
         classes={addDataset.classes.map((c) => ({ id: c.id, name: c.name, color: c.color }))}
       />
-      <DuplicateDatasetModal
+      <DuplicateItemModal
         open={!!duplicateDataset.datasetId}
         onClose={duplicateDataset.onClose}
         onSubmit={duplicateDataset.onSubmit}
         defaultName={duplicateDataset.defaultName}
+        title="Duplicate dataset"
+        option={{ label: 'Copy labels and annotations', defaultChecked: true }}
       />
       <DragDropDecideModal
         open={dragDrop.open}
@@ -92,13 +91,16 @@ export function CatalogOverlays({
         targetDatasetName={dragDrop.targetDatasetName}
         itemCount={dragDrop.itemCount}
       />
-      <IgpExportModal
+      <ExportProgressModal
         open={igpExport.open}
         onClose={igpExport.onClose}
         phase={igpExport.phase}
         progress={igpExport.progress}
         downloadUrl={igpExport.downloadUrl}
         filename={igpExport.filename}
+        title="Export (.igp)"
+        description="Export the dataset as a single .igp archive containing images, labels, and metadata."
+        phaseLabel={{ processing: 'Compressing files…' }}
       />
       <UploadQualityModal
         open={uploadQuality.open}

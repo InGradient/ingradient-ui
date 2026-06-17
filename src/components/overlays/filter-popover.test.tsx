@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { createRef } from 'react'
 import { render, screen } from '@testing-library/react'
-import { FilterPopover, FilterPopoverSection } from './filter-popover'
+import { FilterPopover } from './filter-popover'
+import { FilterPopoverSection } from './filter-popover-section'
 
 describe('FilterPopover', () => {
   it('renders children', () => {

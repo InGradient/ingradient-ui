@@ -36,7 +36,7 @@ export const Review: Story = {
           title="Selection review"
           description="Open the calendar, select a date, and compare default and disabled usage in one place."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Interactive picker" subtitle="controlled value">
               <StorybookStack gap={12}>
                 <DatePickerField value={value} onChange={setValue} />

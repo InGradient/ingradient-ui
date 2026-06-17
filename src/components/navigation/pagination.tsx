@@ -11,7 +11,7 @@ export function Pagination({
 }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
   return (
-    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', gap: 'var(--ig-space-2)', flexWrap: 'wrap' }}>
       {pages.map((item) => (
         <Button key={item} type="button" variant={item === page ? 'solid' : 'secondary'} size="sm" onClick={() => onChange(item)}>
           {item}

@@ -1,10 +1,10 @@
 import {
-  AnalysisDashboard,
   DashboardWidget,
-  DatasetDistributionHeatmap,
-  LabelingProgressBar,
-} from '@ingradient/ui/patterns'
-import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/components'
+  DistributionHeatmap,
+  LayoutDashboard,
+} from '@ingradient/platform-pages'
+import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
+import { SegmentedProgressBar } from '@ingradient/ui/components'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 import {
   classRatioData, dashboardStats, dataCollectionData, datasetDistribution, defectsBySourceData,
@@ -17,7 +17,7 @@ const PCT_STYLE: React.CSSProperties = { color: 'var(--ig-color-text-muted)' }
 
 export function buildStatsContent() {
   return (
-    <AnalysisDashboard
+    <LayoutDashboard
       stats={dashboardStats}
       widgetColumns={2}
       widgets={[
@@ -102,7 +102,7 @@ export function buildStatsContent() {
               title="Labeling progress"
               subtitle={`${labelingProgress.processed.toLocaleString()} of ${(labelingProgress.processed + labelingProgress.pending).toLocaleString()}`}
             >
-              <LabelingProgressBar
+              <SegmentedProgressBar
                 segments={[
                   { label: 'Processed', value: labelingProgress.processed, color: 'var(--ig-color-success)' },
                   { label: 'Pending', value: labelingProgress.pending, color: 'var(--ig-color-warning)' },
@@ -116,7 +116,7 @@ export function buildStatsContent() {
           span: 2,
           content: (
             <DashboardWidget title="Per-dataset class counts" span={2}>
-              <DatasetDistributionHeatmap {...datasetDistribution} />
+              <DistributionHeatmap {...datasetDistribution} />
             </DashboardWidget>
           ),
         },

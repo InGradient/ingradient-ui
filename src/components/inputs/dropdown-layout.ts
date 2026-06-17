@@ -1,4 +1,6 @@
 import React from 'react'
+import { useClickOutside } from '../../hooks/useClickOutside'
+import { popupSizeNumbers } from '../../tokens/core'
 import type { DropdownMenuLayout } from './dropdown-shared'
 
 export function useDropdownLayout(
@@ -23,8 +25,8 @@ export function useDropdownLayout(
       Math.max(rect.left, viewportPadding),
       window.innerWidth - viewportPadding - clampedWidth
     )
-    const spaceBelow = Math.max(140, window.innerHeight - rect.bottom - gap - viewportPadding)
-    const spaceAbove = Math.max(140, rect.top - gap - viewportPadding)
+    const spaceBelow = Math.max(popupSizeNumbers['2xs'], window.innerHeight - rect.bottom - gap - viewportPadding)
+    const spaceAbove = Math.max(popupSizeNumbers['2xs'], rect.top - gap - viewportPadding)
     const shouldOpenUpward = window.innerHeight - rect.bottom < 240 && spaceAbove > spaceBelow
 
     setMenuLayout(
@@ -32,44 +34,43 @@ export function useDropdownLayout(
         ? {
             left: clampedLeft,
             width: clampedWidth,
-            maxHeight: Math.min(360, spaceAbove),
+            maxHeight: Math.min(popupSizeNumbers.lg, spaceAbove),
             bottom: window.innerHeight - rect.top + gap,
           }
         : {
             left: clampedLeft,
             width: clampedWidth,
-            maxHeight: Math.min(360, spaceBelow),
+            maxHeight: Math.min(popupSizeNumbers.lg, spaceBelow),
             top: rect.bottom + gap,
           }
     )
   }, [rootRef])
 
+  useClickOutside({
+    refs: [rootRef, menuRef],
+    onClickOutside: onClose,
+    enabled: open,
+    event: 'mousedown',
+  })
+
   React.useEffect(() => {
     if (!open) return
 
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node
-      if (rootRef.current?.contains(target)) return
-      if (menuRef.current?.contains(target)) return
-      onClose()
-    }
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
     }
 
     updateMenuLayout()
-    document.addEventListener('mousedown', handlePointerDown)
     document.addEventListener('keydown', handleEscape)
     window.addEventListener('resize', updateMenuLayout)
     window.addEventListener('scroll', updateMenuLayout, true)
 
     return () => {
-      document.removeEventListener('mousedown', handlePointerDown)
       document.removeEventListener('keydown', handleEscape)
       window.removeEventListener('resize', updateMenuLayout)
       window.removeEventListener('scroll', updateMenuLayout, true)
     }
-  }, [onClose, open, rootRef, menuRef, updateMenuLayout])
+  }, [onClose, open, updateMenuLayout])
 
   return menuLayout
 }

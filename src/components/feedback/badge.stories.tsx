@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Badge, Chip } from './badge'
+import { Badge } from './badge'
+import { Chip } from './chip'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
@@ -24,7 +25,7 @@ export const Review: Story = {
       description="Inline tag for category, status, or count. Five tones: neutral / accent / success / warning / danger. Use Chip for the bordered variant."
     >
       <StorybookSection title="Tones" description="Five $tone variants.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="neutral (default)">
             <Badge>Default</Badge>
           </StorybookCard>
@@ -44,7 +45,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Chip variant" description="Same as Badge with subtle border. Use when on busy backgrounds.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="neutral">
             <Chip>Tag</Chip>
           </StorybookCard>
@@ -58,7 +59,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Use cases" description="Realistic combinations.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Image meta row" subtitle="quality + format">
             <div style={{ display: 'flex', gap: 'var(--ig-space-2)' }}>
               <Badge $tone="success">High (q95)</Badge>

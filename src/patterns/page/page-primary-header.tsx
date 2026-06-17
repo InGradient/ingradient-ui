@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Text } from '../../primitives'
 import {
   PageHeader,
   PageHeaderRow,
@@ -8,13 +8,7 @@ import {
   PageTitleBlock,
 } from './page-shell'
 
-const RightSlot = styled.span`
-  font-size: var(--ig-font-size-lg);
-  font-weight: 700;
-  color: var(--ig-color-text-secondary);
-  text-align: right;
-  flex-shrink: 0;
-`
+const RIGHT_SLOT_STYLE = { flexShrink: 0 }
 
 export interface PagePrimaryHeaderProps {
   title: React.ReactNode
@@ -28,8 +22,6 @@ export interface PagePrimaryHeaderProps {
  * Platform 페이지 (Catalog / ClassManage 등) 의 hero-style top header.
  * 좌측: PageTitleBlock (title + subtitle, 2xl 타이포)
  * 우측: rightSlot (project name 등)
- *
- * 작은 fixed-height app top bar 가 필요한 경우 `PageTopBar` 사용.
  */
 export function PagePrimaryHeader({
   title,
@@ -38,13 +30,17 @@ export function PagePrimaryHeader({
   className,
 }: PagePrimaryHeaderProps) {
   return (
-    <PageHeader className={className}>
+    <PageHeader className={className} data-ig-component="PagePrimaryHeader" data-ig-layer="patterns">
       <PageHeaderRow>
         <PageTitleBlock>
           <PageTitle>{title}</PageTitle>
           {subtitle ? <PageSubtitle>{subtitle}</PageSubtitle> : null}
         </PageTitleBlock>
-        {rightSlot ? <RightSlot>{rightSlot}</RightSlot> : null}
+        {rightSlot ? (
+          <Text as="span" size="var(--ig-font-size-lg)" weight="bold" tone="secondary" align="right" style={RIGHT_SLOT_STYLE}>
+            {rightSlot}
+          </Text>
+        ) : null}
       </PageHeaderRow>
     </PageHeader>
   )

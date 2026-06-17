@@ -14,9 +14,9 @@ export const ModalBackdrop = styled.div`
 
 export const ModalCard = styled.div`
   ${surfaceRaised}
-  width: min(920px, 100%);
-  max-height: calc(100vh - 48px);
-  @supports (height: 1dvh) { max-height: calc(100dvh - 48px); }
+  width: min(var(--ig-popup-3xl), 100%);
+  max-height: calc(100vh - var(--ig-control-height-xl));
+  @supports (height: 1dvh) { max-height: calc(100dvh - var(--ig-control-height-xl)); }
   overflow: hidden;
   border-radius: var(--ig-radius-4xl);
   display: flex;
@@ -25,15 +25,15 @@ export const ModalCard = styled.div`
 
 export const CompactModalCard = styled(ModalCard)`
   width: auto;
-  min-width: 320px;
-  max-width: min(560px, calc(100vw - 48px));
+  min-width: var(--ig-popup-md);
+  max-width: min(var(--ig-popup-2xl), calc(100vw - var(--ig-control-height-xl)));
   padding: var(--ig-space-9);
   border-radius: var(--ig-radius-lg);
 `
 
 export const ModalHeader = styled.div`
   padding: var(--ig-space-9) var(--ig-space-10) var(--ig-space-7);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,7 +45,7 @@ export const ModalHeader = styled.div`
 export const ModalTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-3xl);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `
 
 export const ModalActions = styled.div`
@@ -60,7 +60,7 @@ export const Drawer = styled.aside<{ $side?: 'left' | 'right' }>`
   top: 0;
   bottom: 0;
   ${(p) => (p.$side === 'left' ? 'left: 0;' : 'right: 0;')}
-  width: min(420px, 100vw);
+  width: min(var(--ig-popup-2xl-narrow), 100vw);
   z-index: var(--ig-z-drawer);
   padding: var(--ig-space-9);
   border-radius: 0;

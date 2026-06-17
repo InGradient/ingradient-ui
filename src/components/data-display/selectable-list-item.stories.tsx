@@ -74,7 +74,7 @@ export const Review: Story = {
           title="variant=card"
           description="Bordered card group. Each option is its own card with active state. Default element is <button>."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Class selection" subtitle="active card has accent border + tinted bg">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-1)' }}>
                 {classCards.map((cls) => (

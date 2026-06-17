@@ -27,17 +27,17 @@ const activeOverlay = css`
      */
     background-image: repeating-linear-gradient(
       ${ANGLE_DEG}deg,
-      rgba(255, 255, 255, 0.06) 0,
-      rgba(255, 255, 255, 0.24) ${STRIPE_PERIOD_PX / 2}px,
-      rgba(255, 255, 255, 0.06) ${STRIPE_PERIOD_PX}px
+      var(--ig-color-white-06) 0,
+      var(--ig-color-white-24) ${STRIPE_PERIOD_PX / 2}px,
+      var(--ig-color-white-06) ${STRIPE_PERIOD_PX}px
     );
-    animation: ${shimmer} 1s linear infinite;
+    animation: ${shimmer} var(--ig-motion-shimmer) linear infinite;
   }
 `
 
 export const ProgressTrack = styled.div`
   width: 100%;
-  height: 8px;
+  height: var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-progress-track);
   overflow: hidden;
@@ -49,7 +49,7 @@ export const ProgressFill = styled.div<{ $value: number; $active: boolean }>`
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
-  transition: width 0.25s ease;
+  transition: width var(--ig-motion-normal);
   overflow: hidden;
   ${(p) => p.$active && activeOverlay}
 `

@@ -18,13 +18,13 @@ export interface ToastItem {
 }
 
 const slideIn = keyframes`
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(var(--ig-space-5)); }
   to   { opacity: 1; transform: translateY(0); }
 `
 
 const slideOut = keyframes`
   from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 0; transform: translateY(var(--ig-space-5)); }
 `
 
 const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
@@ -34,13 +34,13 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
     color: ${alertToneStyles[$tone].color};
   `}
   padding: var(--ig-space-4) var(--ig-space-6);
-  border: 1px solid;
+  border: var(--ig-border-1px) solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
   box-shadow: var(--ig-shadow-floating);
   pointer-events: auto;
-  animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} 200ms ease forwards;
-  max-width: 420px;
+  animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} var(--ig-motion-normal) forwards;
+  max-width: var(--ig-popup-lg);
   word-break: break-word;
   display: flex;
   align-items: center;
@@ -54,13 +54,13 @@ const Message = styled.span`
 const ActionButton = styled.button`
   flex-shrink: 0;
   background: transparent;
-  border: 1px solid currentColor;
+  border: var(--ig-border-1px) solid currentColor;
   border-radius: var(--ig-radius-sm);
   color: inherit;
   font: inherit;
-  padding: 2px 8px;
+  padding: var(--ig-space-2px) var(--ig-space-3);
   cursor: pointer;
-  opacity: 0.85;
+  opacity: var(--ig-opacity-loud);
   &:hover { opacity: 1; }
 `
 
@@ -69,22 +69,22 @@ const CloseButton = styled.button`
   background: transparent;
   border: none;
   color: inherit;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0 2px;
+  font-size: var(--ig-font-size-xl);
+  line-height: var(--ig-line-height-none);
+  padding: 0 var(--ig-space-2px);
   cursor: pointer;
-  opacity: 0.55;
+  opacity: var(--ig-opacity-overlay);
   &:hover { opacity: 1; }
 `
 
 const Container = styled.div`
   position: fixed;
-  bottom: var(--ig-space-6, 24px);
-  right: var(--ig-space-6, 24px);
-  z-index: var(--ig-z-toast, 9000);
+  bottom: var(--ig-space-6);
+  right: var(--ig-space-6);
+  z-index: var(--ig-z-toast);
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--ig-space-3, 8px);
+  gap: var(--ig-space-3);
   pointer-events: none;
 `
 

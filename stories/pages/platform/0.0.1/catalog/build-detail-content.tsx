@@ -9,17 +9,14 @@ import {
   Trash2,
   Undo2,
 } from 'lucide-react'
+import { DetailPanelSidebar, ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
+import { ImageInspectorCanvas } from '@ingradient/ui/patterns'
 import {
-  AnnotationToolbar,
-  type AnnotationToolbarAction,
   CommentsPanel,
   ImageDetailClassList,
   ImageDetailInfoPanel,
-  ImageDetailLabelersList,
-  ImageDetailSidebar,
-  ImageInspectorCanvas,
   type ImageDetailInfo,
-} from '@ingradient/ui/patterns'
+} from '@ingradient/platform-pages'
 import type { CatalogScene } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 import {
   sampleAnnotations,
@@ -56,7 +53,7 @@ function DetailMainMount({
 }) {
   const [mode, setMode] = useState<DetailMode>('cursor')
   const noop = () => undefined
-  const actions: Array<AnnotationToolbarAction | 'separator'> = [
+  const actions: Array<ToolbarShellAction | 'separator'> = [
     { key: 'cursor', title: 'Cursor (select)', icon: <MousePointer2 size={18} />, active: mode === 'cursor', onClick: () => setMode('cursor') },
     { key: 'bbox', title: 'Draw bbox', icon: <Square size={18} />, active: mode === 'bbox', onClick: () => setMode('bbox') },
     { key: 'point', title: 'Add point', icon: <CircleDot size={18} />, active: mode === 'point', onClick: () => setMode('point') },
@@ -78,7 +75,7 @@ function DetailMainMount({
         />
       </div>
       <div style={TOOLBAR_WRAP_STYLE}>
-        <AnnotationToolbar placement="bottom" actions={actions} ariaLabel="Image detail toolbar" />
+        <ToolbarShell placement="bottom" actions={actions} ariaLabel="Image detail toolbar" />
       </div>
     </div>
   )
@@ -122,41 +119,42 @@ function DetailSidebarMount({
     color: c.color,
   }))
   return (
-    <ImageDetailSidebar
-      infoPanel={
+    <DetailPanelSidebar
+      headerSlot={
         <ImageDetailInfoPanel
           image={info}
           detailsOpen={detailsOpen}
           onToggleDetails={() => setDetailsOpen((v) => !v)}
         />
       }
-      classSlot={
+      bodySlot={
         <ImageDetailClassList
           classes={classes}
           selectedClassId={selectedClassId}
           onSelectClass={(id) => setSelectedClassId((prev) => (prev === id ? null : id))}
         />
       }
-      commentsSlot={
+      bodySectionTitle="Class"
+      footerSlots={[
         <CommentsPanel
+          key="comments"
           comments={variant === 'with-comments' ? sampleComments : []}
           onReply={() => undefined}
-        />
-      }
-      labelersSlot={
-        <ImageDetailLabelersList
-          users={MOCK_LABELERS}
-          selectedUsers={selectedUsers}
-          onToggleUser={(email) =>
+        />,
+        <UserPoolList
+          key="labelers"
+          users={MOCK_LABELERS.map((u) => ({ id: u.email, label: u.name ?? u.email, tooltip: u.email }))}
+          selectedIds={selectedUsers}
+          onToggle={(id) =>
             setSelectedUsers((prev) => {
               const next = new Set(prev)
-              if (next.has(email)) next.delete(email)
-              else next.add(email)
+              if (next.has(id)) next.delete(id)
+              else next.add(id)
               return next
             })
           }
-        />
-      }
+        />,
+      ]}
     />
   )
 }

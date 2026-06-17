@@ -1,5 +1,6 @@
-import { Button, TextField } from '@ingradient/ui/components'
+import { Button, Checkbox, TextField } from '@ingradient/ui/components'
 import {
+  ActionsRow,
   CheckDivider,
   CheckItem,
   CheckList,
@@ -75,24 +76,22 @@ export function ExportTabUI({
         ) : (
           <CheckList>
             <CheckItem>
-              <input
-                type="checkbox"
+              <Checkbox
                 aria-label="Select all datasets"
+                label="Select All"
                 checked={allDatasetsSelected}
                 onChange={(event) => onSelectAllDatasets(event.target.checked)}
               />
-              Select All
             </CheckItem>
             <CheckDivider />
             {datasets.map((dataset) => (
               <CheckItem key={dataset.id}>
-                <input
-                  type="checkbox"
+                <Checkbox
                   aria-label={dataset.name}
+                  label={dataset.name}
                   checked={selectedDatasets.has(dataset.id)}
                   onChange={() => onToggleDataset(dataset.id)}
                 />
-                {dataset.name}
               </CheckItem>
             ))}
           </CheckList>
@@ -107,13 +106,12 @@ export function ExportTabUI({
           <CheckList>
             {members.map((member) => (
               <CheckItem key={member.id}>
-                <input
-                  type="checkbox"
+                <Checkbox
                   aria-label={member.name || member.email}
+                  label={<>{member.name || member.email} <UserEmailNote>({member.email})</UserEmailNote></>}
                   checked={selectedUsers.has(member.user_id)}
                   onChange={() => onToggleUser(member.user_id)}
                 />
-                {member.name || member.email} <UserEmailNote>({member.email})</UserEmailNote>
               </CheckItem>
             ))}
           </CheckList>
@@ -140,16 +138,16 @@ export function ExportTabUI({
         )}
       </Section>
 
-      <div>
+      <ActionsRow>
         <Button
-          variant="accent"
+          variant="solid"
           onClick={onCreate}
           disabled={pending.create || !deviceName.trim()}
         >
           {pending.create ? 'Creating…' : 'Create Project File (.ige)'}
         </Button>
         {createError && <ErrorHint>{createError}</ErrorHint>}
-      </div>
+      </ActionsRow>
 
       <ExportHistory
         packages={packages}

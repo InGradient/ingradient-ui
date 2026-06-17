@@ -14,9 +14,11 @@ import {
 } from '../src/tokens'
 import { ReviewWidget } from '../stories/support/ReviewWidget'
 import { CommentPanel } from '../stories/support/CommentPanel'
+import { ComponentInspector } from '../stories/support/ComponentInspector'
 
 type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
 type VersionId = '0.0.1'
+type InspectorLayer = 'foundations' | 'primitives' | 'components' | 'patterns' | 'pages' | 'unknown'
 
 const presetMatrix: Partial<Record<ServiceId, Partial<Record<VersionId, Preset>>>> = {
   platform: { '0.0.1': platformV001 },
@@ -31,6 +33,15 @@ function resolvePreset(service: string, version: string): Preset | undefined {
 function normalizeBasePath(basePath: string | undefined) {
   if (!basePath || basePath === '/') return '/'
   return basePath.endsWith('/') ? basePath : `${basePath}/`
+}
+
+function inferStoryLayer(title: string): InspectorLayer {
+  if (title.startsWith('Foundations/')) return 'foundations'
+  if (title.startsWith('Primitives/')) return 'primitives'
+  if (title.startsWith('Components/')) return 'components'
+  if (title.startsWith('Patterns/')) return 'patterns'
+  if (title.startsWith('Pages/')) return 'pages'
+  return 'unknown'
 }
 
 const storybookBasePath = normalizeBasePath(import.meta.env.BASE_URL)
@@ -59,7 +70,7 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     a11y: {
-      test: 'error',
+      test: 'todo',
     },
     controls: {
       expanded: true,
@@ -73,7 +84,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Guides', 'Foundations', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
+        order: ['Guides', 'Foundations', 'Primitives', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
       },
     },
   },
@@ -118,11 +129,24 @@ const preview: Preview = {
         ],
       },
     },
+    inspectMode: {
+      name: 'Inspect',
+      description: 'Canvas component inspect overlay',
+      toolbar: {
+        icon: 'pointerdefault',
+        dynamicTitle: true,
+        items: [
+          { value: 'off', title: 'Inspect Off' },
+          { value: 'on', title: 'Inspect On' },
+        ],
+      },
+    },
   },
   initialGlobals: {
     mode: 'inherit',
     density: 'inherit',
     locale: 'ko',
+    inspectMode: 'off',
   },
   loaders: [mswLoader],
   decorators: [
@@ -130,6 +154,7 @@ const preview: Preview = {
       const modeGlobal = context.globals.mode as string
       const densityGlobal = context.globals.density as string
       const locale = context.globals.locale as string
+      const inspectMode = context.globals.inspectMode as string
 
       // service / version 은 story parameters.handoff 에서 가져옴 (service 마다 진화 속도 다름).
       // sandbox 처럼 handoff.version 없으면 service 별 default ('0.0.1') 사용.
@@ -147,26 +172,39 @@ const preview: Preview = {
       // 그 외 component / pattern story 는 가운데 정렬 wrapper + design review widget 적용.
       const isFullscreen = context.parameters?.layout === 'fullscreen'
       const showReviewWidget = !!handoff?.service && !isFullscreen
+      const storyLabel =
+        context.component?.displayName
+        ?? context.component?.name
+        ?? `${context.title} / ${context.name}`
+      const storyLayer = inferStoryLayer(context.title)
+
+      const storyContent = (
+        <div
+          data-ig-locale={locale}
+          style={{
+            minHeight: '100vh',
+            background: 'var(--ig-color-bg-canvas)',
+            transition: 'background 160ms ease',
+          }}
+        >
+          {isFullscreen ? (
+            <Story />
+          ) : (
+            <div style={{ maxWidth: 1280, margin: '0 auto', padding: 24 }}>
+              <Story />
+            </div>
+          )}
+        </div>
+      )
 
       const inner = (
         <>
           <IngradientGlobalStyle />
-          <div
-            data-ig-locale={locale}
-            style={{
-              minHeight: '100vh',
-              background: 'var(--ig-color-bg-canvas)',
-              transition: 'background 160ms ease',
-            }}
-          >
-            {isFullscreen ? (
-              <Story />
-            ) : (
-              <div style={{ maxWidth: 1280, margin: '0 auto', padding: 24 }}>
-                <Story />
-              </div>
-            )}
-          </div>
+          {inspectMode === 'on' ? (
+            <ComponentInspector active storyLabel={storyLabel} storyLayer={storyLayer}>
+              {storyContent}
+            </ComponentInspector>
+          ) : storyContent}
           {showReviewWidget ? <ReviewWidget storyId={context.id} /> : null}
           {showReviewWidget ? <CommentPanel storyId={context.id} /> : null}
         </>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { emptyGalleryFilterPanelState, type GalleryFilterPanelState } from '@ingradient/ui/patterns'
+import { emptyGalleryFilterPanelState, type GalleryFilterPanelState } from '@ingradient/platform-pages'
 import type { CatalogScene, CatalogViewMode, FilterKey } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 import { useCatalogExtraDialogs, type CatalogExtraDialogState } from './use-catalog-extra-dialogs'
 
@@ -26,7 +26,7 @@ export interface CatalogSceneState {
   duplicateDatasetId: string | undefined
   dragDropOpen: boolean
   igpExportOpen: boolean
-  igpExportPhase: 'preparing' | 'compressing' | 'ready' | 'error'
+  igpExportPhase: 'preparing' | 'processing' | 'ready' | 'error'
   uploadQualityOpen: boolean
   pendingClassRemovalId: string | undefined
   pendingMemberRemovalId: string | undefined
@@ -35,7 +35,7 @@ export interface CatalogSceneState {
   setDuplicateDatasetId: (id: string | undefined) => void
   setDragDropOpen: (v: boolean) => void
   setIgpExportOpen: (v: boolean) => void
-  setIgpExportPhase: (p: 'preparing' | 'compressing' | 'ready' | 'error') => void
+  setIgpExportPhase: (p: 'preparing' | 'processing' | 'ready' | 'error') => void
   setUploadQualityOpen: (v: boolean) => void
   setPendingClassRemovalId: (id: string | undefined) => void
   setPendingMemberRemovalId: (id: string | undefined) => void
@@ -79,7 +79,7 @@ export function useCatalogScene(scenario: CatalogScene): CatalogSceneState {
   const [duplicateDatasetId, setDuplicateDatasetId] = useState<string | undefined>(scenario.duplicateDatasetId)
   const [dragDropOpen, setDragDropOpen] = useState<boolean>(!!scenario.dragDropOpen)
   const [igpExportOpen, setIgpExportOpen] = useState<boolean>(!!scenario.igpExportOpen)
-  const [igpExportPhase, setIgpExportPhase] = useState<'preparing' | 'compressing' | 'ready' | 'error'>(scenario.igpExportPhase ?? 'preparing')
+  const [igpExportPhase, setIgpExportPhase] = useState<'preparing' | 'processing' | 'ready' | 'error'>(scenario.igpExportPhase ?? 'preparing')
   const [uploadQualityOpen, setUploadQualityOpen] = useState<boolean>(!!scenario.uploadQualityOpen)
   const [pendingClassRemovalId, setPendingClassRemovalId] = useState<string | undefined>(scenario.pendingClassRemovalId)
   const [pendingMemberRemovalId, setPendingMemberRemovalId] = useState<string | undefined>(scenario.pendingMemberRemovalId)

@@ -1,4 +1,4 @@
-import type { SyncState } from '@ingradient/ui/components'
+import type { SyncState } from '@ingradient/platform-pages'
 import jpg1 from '../../../assets/20230808.jpg'
 import jpg2 from '../../../assets/20230816.jpg'
 import jpg3 from '../../../assets/20230823.jpg'

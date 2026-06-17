@@ -61,7 +61,7 @@ export const Review: Story = {
         title="Picker-only upload"
         description="Compare the plain system picker contract before introducing UploadDropzone or workflow-specific wrappers."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Basic import" subtitle="single button + picker">
             <FileInputDemo />
           </StorybookCard>

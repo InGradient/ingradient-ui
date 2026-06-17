@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { RoleMatrix } from '@ingradient/ui/patterns'
+import type { RoleMatrix } from '@ingradient/platform-pages'
 import type {
   SettingsScene, SettingsTab, AdminSubTab,
 } from '../../../../fixtures/platform/0.0.1/settings-scenarios'

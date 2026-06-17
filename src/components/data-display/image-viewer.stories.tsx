@@ -2,10 +2,13 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, ModeSwitcher } from '@ingradient/ui/components'
 import { useDrawingCanvas, type DrawingMode, type DrawingObject } from '../../hooks'
-import { DrawingLayer } from './drawing-layer'
+import { DrawingLayer } from '../../patterns/annotation/drawing-layer'
 import { ImageViewer } from './image-viewer'
 import { buildViewerObjects, resolveReviewScale, type ReviewScale } from '@storybook-support/../builders/review-builders'
 import { StorybookCard, StorybookGrid, StorybookMetaBar, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
+import asset20230808 from '../../../stories/assets/20230808.jpg'
+import asset20230816 from '../../../stories/assets/20230816.jpg'
+import asset20230823 from '../../../stories/assets/20230823.jpg'
 
 const VIEWER_WIDTH = 720
 const VIEWER_HEIGHT = 420
@@ -83,10 +86,10 @@ function ViewerReviewDemo({
   })
 
   return (
-    <StorybookGrid columns="minmax(0, 2fr) minmax(280px, 1fr)">
+    <StorybookGrid columns="minmax(0, 2fr) minmax(var(--ig-popup-sm), 1fr)">
       <StorybookCard title="Viewer + overlay" subtitle="draw, select, inspect">
         <StorybookStack gap={12}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)', flexWrap: 'wrap', alignItems: 'center' }}>
             <ModeSwitcher
               options={[
                 { value: 'cursor', label: 'Select' },
@@ -153,6 +156,8 @@ function ViewerReviewDemo({
               fontSize: 13,
               color: 'var(--ig-color-text-soft)',
               whiteSpace: 'pre-wrap',
+              maxHeight: 240,
+              overflow: 'auto',
             }}
           >
             {JSON.stringify(objects, null, 2)}
@@ -190,4 +195,72 @@ export const Review: Story = {
       </StorybookPage>
     )
   },
+}
+
+// ── Asset-backed examples (zoom / pan / overlay) ─────────────────────
+
+function AssetViewer({ src, alt, label }: { src: string; alt: string; label: string }) {
+  return (
+    <StorybookCard title={label} subtitle="wheel = zoom · drag = pan · dbl-click = reset">
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          height: 360,
+          borderRadius: 24,
+          overflow: 'hidden',
+          border: '1px solid var(--ig-color-border-subtle)',
+          background: 'var(--ig-color-surface-panel)',
+        }}
+      >
+        <ImageViewer src={src} alt={alt} />
+      </div>
+    </StorybookCard>
+  )
+}
+
+export const RealImages: Story = {
+  render: () => (
+    <StorybookPage
+      title="Image Viewer — real inspection assets"
+      description="ImageViewer with real captured images. Each panel is its own zoom/pan context; drag the viewport or wheel-zoom to verify the gesture surface."
+    >
+      <StorybookSection title="Zoom / pan only">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
+          <AssetViewer src={asset20230808} alt="Captured sample 20230808" label="20230808 — base scene" />
+          <AssetViewer src={asset20230816} alt="Captured sample 20230816" label="20230816 — variant scene" />
+          <AssetViewer src={asset20230823} alt="Captured sample 20230823" label="20230823 — variant scene" />
+        </StorybookGrid>
+      </StorybookSection>
+
+      <StorybookSection
+        title="With drawing overlay"
+        description="Same ImageViewer, paired with DrawingLayer reading zoom/container size from ImageViewerContext."
+      >
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            height: 420,
+            borderRadius: 24,
+            overflow: 'hidden',
+            border: '1px solid var(--ig-color-border-subtle)',
+            background: 'var(--ig-color-surface-panel)',
+          }}
+        >
+          <ImageViewer src={asset20230816} alt="Captured sample with annotations">
+            <DrawingLayer
+              objects={[
+                { id: 'a', type: 'rect', x: 0.18, y: 0.22, w: 0.28, h: 0.32, color: '#ff7f66', label: 'Region A' },
+                { id: 'b', type: 'rect', x: 0.56, y: 0.46, w: 0.22, h: 0.24, color: '#6fb6ff', label: 'Region B' },
+                { id: 'p1', type: 'point', x: 0.40, y: 0.62, color: '#7ce0be' },
+              ]}
+              showLabels
+              showHandles={false}
+            />
+          </ImageViewer>
+        </div>
+      </StorybookSection>
+    </StorybookPage>
+  ),
 }

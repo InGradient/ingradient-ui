@@ -2,27 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { media } from '../../tokens/core/breakpoints'
 
-const SectionWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
-
-const SectionTitle = styled.div`
-  font-size: var(--ig-font-size-sm);
-  font-weight: 700;
-  color: var(--ig-color-text-primary);
-`
-
-const SectionDesc = styled.div`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  margin-top: calc(-1 * var(--ig-space-2));
-`
-
 const RowWrap = styled.div`
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: var(--ig-form-label-col) 1fr;
   gap: var(--ig-space-3);
   align-items: start;
   ${media.sm} {
@@ -46,25 +28,6 @@ const Hint = styled.div`
   margin-top: var(--ig-space-1);
 `
 
-// ── FormGroup ────────────────────────────────────────────────────
-
-export interface FormGroupProps {
-  title?: string
-  description?: string
-  children: React.ReactNode
-  className?: string
-}
-
-export function FormGroup({ title, description, children, className }: FormGroupProps) {
-  return (
-    <SectionWrap className={className}>
-      {title && <SectionTitle>{title}</SectionTitle>}
-      {description && <SectionDesc>{description}</SectionDesc>}
-      {children}
-    </SectionWrap>
-  )
-}
-
 // ── FieldRow ───────────────────────────────────────────────────────
 
 export interface FieldRowProps {
@@ -83,5 +46,37 @@ export function FieldRow({ label, htmlFor, hint, children }: FieldRowProps) {
         {hint && <Hint>{hint}</Hint>}
       </RowContent>
     </RowWrap>
+  )
+}
+
+// ── FormField ───────────────────────────────────────────────────────
+
+const FieldWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-2);
+`
+
+const FieldLabelText = styled.label`
+  font-size: var(--ig-font-size-xs);
+  font-weight: var(--ig-font-weight-semibold);
+  color: var(--ig-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ig-letter-spacing-normal);
+`
+
+export interface FormFieldProps {
+  label: string
+  htmlFor?: string
+  children: React.ReactNode
+  className?: string
+}
+
+export function FormField({ label, htmlFor, children, className }: FormFieldProps) {
+  return (
+    <FieldWrap className={className}>
+      <FieldLabelText htmlFor={htmlFor}>{label}</FieldLabelText>
+      {children}
+    </FieldWrap>
   )
 }

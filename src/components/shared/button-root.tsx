@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { buttonAccent, buttonDanger, buttonDangerSecondary, buttonPrimary, buttonSecondary } from '../../primitives'
+import { buttonAccent, buttonDanger, buttonDangerSecondary, buttonGhost, buttonGhostDanger, buttonPrimary, buttonSecondary } from '../../primitives'
 import type { ButtonSize, ButtonTone, ButtonVariant } from './button-types'
 import { buttonPadding } from './button-types'
 
@@ -18,12 +18,19 @@ export const ButtonRoot = styled.button<{
   height: ${(p) => p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'};
   ${(p) => p.$iconOnly ? `width: ${p.$size === 'sm' ? 'var(--ig-control-height-sm)' : p.$size === 'lg' ? 'var(--ig-control-height-lg)' : 'var(--ig-control-height-md)'}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-sm)' : p.$size === 'lg' ? 'var(--ig-font-size-lg)' : 'var(--ig-font-size-md)')};
-  font-weight: 600;
-  line-height: 1;
+  font-weight: var(--ig-font-weight-semibold);
+  line-height: var(--ig-line-height-none);
   ${(p) => {
     if (p.$tone === 'danger') {
+      if (p.$variant === 'ghost') return buttonGhostDanger
       return p.$variant === 'secondary' ? buttonDangerSecondary : buttonDanger
     }
-    return p.$variant === 'secondary' ? buttonSecondary : p.$variant === 'accent' ? buttonAccent : buttonPrimary
+    return p.$variant === 'ghost'
+      ? buttonGhost
+      : p.$variant === 'secondary'
+        ? buttonSecondary
+        : p.$variant === 'accent'
+          ? buttonAccent
+          : buttonPrimary
   }}
 `

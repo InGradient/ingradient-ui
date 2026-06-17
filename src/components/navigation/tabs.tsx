@@ -6,7 +6,7 @@ const tabsTone = css`
   position: relative;
   padding: var(--ig-space-1);
   border-radius: var(--ig-radius-lg);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-tab-surface);
   gap: var(--ig-space-1);
 `
@@ -20,7 +20,7 @@ const TabsRoot = styled.div<{ $variant: 'pill' | 'underline' }>`
           align-items: stretch;
           gap: 0;
           width: 100%;
-          border-bottom: 1px solid var(--ig-color-border-subtle);
+          border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
         `
       : tabsTone}
 `
@@ -32,8 +32,8 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
   ${({ $variant }) =>
     $variant === 'underline'
       ? css`
-          bottom: -1px;
-          height: 2px;
+          bottom: var(--ig-space-neg-1px);
+          height: var(--ig-space-2px);
           border-radius: var(--ig-radius-pill);
           background: var(--ig-color-accent-soft);
         `
@@ -45,19 +45,19 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
         `}
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   pointer-events: none;
-  transition: left 0.22s ease, width 0.22s ease, opacity 0.16s ease;
+  transition: left var(--ig-motion-normal), width var(--ig-motion-normal), opacity var(--ig-motion-fast);
 `
 
 const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underline' }>`
   position: relative;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   border: 0;
   border-radius: ${(p) => (p.$variant === 'underline' ? '0' : 'var(--ig-radius-sm)')};
   background: transparent;
   padding: ${(p) => (p.$variant === 'underline' ? 'var(--ig-space-4) var(--ig-space-9)' : 'var(--ig-space-4) var(--ig-space-6)')};
   color: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)') : p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
-  font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 600 : 500) : 600)};
+  font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)') : 'var(--ig-font-weight-semibold)')};
   transition: color var(--ig-motion-fast);
 `
 

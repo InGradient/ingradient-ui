@@ -1,3 +1,5 @@
+import { opacityScale, typographyScale } from '../../tokens/core'
+
 export interface PieSliceLabelProps {
   cx?: number
   cy?: number
@@ -34,11 +36,17 @@ export function renderPieSliceLabel(props: PieSliceLabelProps) {
   const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180)
 
   return (
-    <text x={x} y={y} fill="#eef4ff" textAnchor="middle" dominantBaseline="central">
-      <tspan x={x} dy="-0.2em" fontSize="11" fontWeight="700">
+    <text
+      x={x}
+      y={y}
+      textAnchor="middle"
+      dominantBaseline="central"
+      style={{ fill: 'var(--ig-color-pie-slice-label)' }}
+    >
+      <tspan x={x} dy={typographyScale.svgTspanDyPrimary} fontSize={typographyScale.size2xs} fontWeight={typographyScale.weightBold}>
         {name}
       </tspan>
-      <tspan x={x} dy="1.2em" fontSize="10" fill="rgba(238, 244, 255, 0.86)">
+      <tspan x={x} dy={typographyScale.svgTspanDySecondary} fontSize={typographyScale.size3xs} style={{ fillOpacity: opacityScale.loudPlus }}>
         {value.toLocaleString()}
       </tspan>
     </text>

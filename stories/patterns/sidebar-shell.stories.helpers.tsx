@@ -51,7 +51,7 @@ export function SettingsIcon() {
 export function BrandMark() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--ig-color-text-primary)', fontWeight: 700, fontSize: 14 }}>
-      <span style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg, var(--ig-color-accent), var(--ig-color-info))' }} />
+      <span style={{ width: 'var(--ig-control-height-xs)', height: 'var(--ig-control-height-xs)', borderRadius: 'var(--ig-radius-md)', background: 'linear-gradient(135deg, var(--ig-color-accent), var(--ig-color-success))' }} />
       <span>Ingradient</span>
     </div>
   )

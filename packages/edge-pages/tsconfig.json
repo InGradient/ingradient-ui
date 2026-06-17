@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "composite": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ingradient/ui": ["../../lib/index.d.ts"],
+      "@ingradient/ui/brand": ["../../lib/brand.d.ts"],
+      "@ingradient/ui/tokens": ["../../lib/tokens.d.ts"],
+      "@ingradient/ui/primitives": ["../../lib/primitives.d.ts"],
+      "@ingradient/ui/components": ["../../lib/components.d.ts"],
+      "@ingradient/ui/patterns": ["../../lib/patterns.d.ts"],
+      "@ingradient/ui/utils": ["../../lib/utils.d.ts"]
+    }
+  },
+  "include": ["src", "tsup.config.ts"]
+}

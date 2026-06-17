@@ -1,17 +1,24 @@
 import styled from 'styled-components'
-import { AppShell } from '@ingradient/ui/patterns'
 
-export const Page = styled(AppShell)`
-  overflow: hidden;
+export const Page = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  --ig-catalog-divider-color: var(--ig-color-border-strong);
 `
 
-export const BodyRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
+export const ContentArea = styled.div`
   flex: 1;
   min-height: 0;
-  overflow: hidden;
-  padding: var(--ig-space-8) var(--ig-space-11) var(--ig-space-11);
+  position: relative;
 `
 
+export const StatusArea = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: var(--ig-popup-md);
+  display: grid;
+  place-items: center;
+  padding: var(--ig-space-7);
+`

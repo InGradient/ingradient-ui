@@ -28,16 +28,18 @@ ingradient-ui/
 ├─ .storybook/
 ├─ stories/
 ├─ docs/
+├─ docs-legacy/
 └─ lib/  # generated only
 ```
 
 - `src`: `@ingradient/ui` source of truth
 - `.storybook`, `stories`: Storybook configuration and executable docs
 - `apps/storybook-smoke-consumer`: package 소비 smoke 검증 앱
-- `docs`: 운영 기준 문서
+- `docs`: 새 문서 체계
+- `docs-legacy`: 이전 문서 아카이브
 - `lib`: 빌드 산출물
 
-사용자-facing 포털은 Storybook을 우선하고, 유지보수 규칙은 `docs/`를 본다.
+사용자-facing 포털은 Storybook을 우선하고, 새 운영 기준은 `docs/`에서 다시 쌓는다. 이전 문서는 `docs-legacy/`에 보존한다.
 
 ## Token Source Strategy
 
@@ -76,19 +78,17 @@ ingradient-ui/
 
 - user-facing Storybook: `npm run storybook` 후 `http://localhost:6006`
 - [Docs Index](./docs/README.md)
-- [Philosophy](./docs/concepts/PHILOSOPHY.md)
-- [Architecture](./docs/concepts/ARCHITECTURE.md)
-- [Boundaries](./docs/concepts/BOUNDARIES.md)
-- [Documentation Strategy](./docs/guides/DOCUMENTATION_STRATEGY.md)
-- [Doc Writing Rules](./docs/guides/DOC_WRITING_RULES.md)
-- [Change Guide](./docs/guides/CHANGE_GUIDE.md)
-- [Consumer Onboarding](./docs/guides/CONSUMER_ONBOARDING.md)
-- [Storybook Guide](./docs/guides/STORYBOOK_GUIDE.md)
-- [Workflow](./docs/guides/WORKFLOW.md)
-- [File Rules](./docs/rules/FILE_RULES.md)
+- [Components Vs Patterns](./docs/reference/components-vs-patterns.md)
 - [Reference Docs](./docs/reference/README.md)
-- [Getting Started Reference](./docs/reference/getting-started.md)
-- [Releases](./docs/releases/README.md)
+- [Legacy Docs Index](./docs-legacy/README.md)
+- [Legacy Philosophy](./docs-legacy/concepts/PHILOSOPHY.md)
+- [Legacy Architecture](./docs-legacy/concepts/ARCHITECTURE.md)
+- [Legacy Boundaries](./docs-legacy/concepts/BOUNDARIES.md)
+- [Legacy Documentation Strategy](./docs-legacy/guides/DOCUMENTATION_STRATEGY.md)
+- [Legacy Storybook Guide](./docs-legacy/guides/STORYBOOK_GUIDE.md)
+- [Legacy File Rules](./docs-legacy/rules/FILE_RULES.md)
+- [Legacy Reference Docs](./docs-legacy/reference/README.md)
+- [Legacy Releases](./docs-legacy/releases/README.md)
 - [Changelog](./CHANGELOG.md)
 
 ## Legacy Compatibility

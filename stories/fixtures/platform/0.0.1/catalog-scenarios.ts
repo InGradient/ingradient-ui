@@ -1,4 +1,4 @@
-import type { DatasetTaskType, SyncState } from '@ingradient/ui/components'
+import type { DatasetTaskType, SyncState } from '@ingradient/platform-pages'
 import { mockDatasets, type MockDataset } from './catalog-datasets'
 import { mockImages, type MockGalleryImage } from './catalog-images'
 import { mockClasses, type MockCatalogClass } from './catalog-classes'
@@ -49,7 +49,7 @@ export interface CatalogScene {
   duplicateDatasetId?: string
   dragDropOpen?: boolean
   igpExportOpen?: boolean
-  igpExportPhase?: 'preparing' | 'compressing' | 'ready' | 'error'
+  igpExportPhase?: 'preparing' | 'processing' | 'ready' | 'error'
   uploadQualityOpen?: boolean
   pendingClassRemovalId?: string
   pendingMemberRemovalId?: string
@@ -147,7 +147,7 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'modal-add-dataset': { ...base, addDatasetOpen: true },
   'modal-duplicate': { ...base, duplicateDatasetId: 'd1' },
   'modal-drag-drop': { ...base, dragDropOpen: true },
-  'modal-igp-export-progress': { ...base, igpExportOpen: true, igpExportPhase: 'compressing' },
+  'modal-igp-export-progress': { ...base, igpExportOpen: true, igpExportPhase: 'processing' },
   'modal-igp-export-ready': { ...base, igpExportOpen: true, igpExportPhase: 'ready' },
   'modal-upload-quality': { ...base, uploadQualityOpen: true },
   'modal-confirm-class-removal': { ...base, pendingClassRemovalId: 'cl-1' },

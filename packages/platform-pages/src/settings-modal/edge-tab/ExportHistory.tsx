@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, EmptyState, Table as UiTable, TextField } from '@ingradient/ui/components'
-import { ProgressNote, Section, SectionTitle, StatusPill } from './edge.styles'
+import { InlineActions, ProgressNote, Section, SectionTitle, StatusPill } from './edge.styles'
 import { getEdgeStatusTone } from './edge-status-tone'
 import type { EdgePackageView } from './edge-types'
 
@@ -91,7 +91,7 @@ export function ExportHistory({
               key: 'actions',
               header: 'Actions',
               render: (pkg) => (
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <InlineActions>
                   <Button
                     variant="secondary"
                     type="button"
@@ -108,7 +108,7 @@ export function ExportHistory({
                   >
                     Reissue
                   </Button>
-                </div>
+                </InlineActions>
               ),
             },
           ]}

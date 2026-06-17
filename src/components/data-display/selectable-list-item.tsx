@@ -11,7 +11,7 @@ const flatStyles = css`
 
 const cardStyles = css`
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
 
@@ -37,7 +37,7 @@ const Root = styled.button<{
   ${(p) =>
     p.$selected &&
     css`
-      background: var(--ig-color-blue-tint-14);
+      background: var(--ig-color-selection-bg);
       ${p.$variant === 'card' && 'border-color: var(--ig-color-accent);'}
       color: var(--ig-color-accent);
     `}
@@ -45,14 +45,14 @@ const Root = styled.button<{
   ${(p) =>
     p.$dragOver &&
     css`
-      background: var(--ig-color-blue-tint-18);
-      outline: 2px solid var(--ig-color-accent);
-      outline-offset: -2px;
+      background: var(--ig-color-accent-soft-surface-hover);
+      outline: var(--ig-border-2px) solid var(--ig-color-accent);
+      outline-offset: var(--ig-space-neg-2px);
     `}
 
   &:hover:not(:disabled) {
     background: ${(p) =>
-      p.$selected ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-surface-interactive-hover)'};
+      p.$selected ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
   }
 `
 
@@ -63,11 +63,27 @@ export interface SelectableListItemProps
   dragOver?: boolean
   /** Render element. default 'button' (clickable). use 'li' for semantic list rows. */
   as?: 'button' | 'li'
+  'data-ig-component'?: string
+  'data-ig-slot'?: string
   children: React.ReactNode
 }
 
 export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProps>(
-  ({ variant = 'card', selected = false, dragOver = false, as = 'button', type, children, ...rest }, ref) => (
+  ({
+    variant = 'card',
+    selected = false,
+    dragOver = false,
+    as = 'button',
+    type,
+    children,
+    'data-ig-component': componentHint,
+    'data-ig-slot': slotHint,
+    ...rest
+  }, ref) => {
+    const componentName = 'SelectableListItem'
+    const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+
+    return (
     <Root
       as={as}
       ref={ref as React.Ref<HTMLButtonElement>}
@@ -75,10 +91,14 @@ export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProp
       $variant={variant}
       $selected={selected}
       $dragOver={dragOver}
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
       {...rest}
     >
       {children}
     </Root>
-  ),
+    )
+  },
 )
 SelectableListItem.displayName = 'SelectableListItem'

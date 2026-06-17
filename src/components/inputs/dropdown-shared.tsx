@@ -1,6 +1,8 @@
+import { rotations } from '../../tokens/core'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { controlField } from '../../primitives'
+import { svgStrokeWidths } from '../../tokens/core'
 
 export interface DropdownMenuLayout {
   left: number
@@ -60,7 +62,7 @@ export const DropdownChevron = styled.span<{ $open: boolean }>`
   align-items: center;
   justify-content: center;
   color: var(--ig-color-text-soft);
-  transform: ${(p) => (p.$open ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${(p) => (p.$open ? 'rotate(${rotations.half})' : 'rotate(${rotations.zero})')};
   transition: transform var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 
@@ -74,13 +76,13 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
   },
 }))<{ $layout: DropdownMenuLayout }>`
   position: fixed;
-  z-index: var(--ig-z-popover);
+  z-index: calc(var(--ig-z-modal) + 10);
   padding: var(--ig-space-2);
   border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   box-shadow: var(--ig-shadow-popover);
-  backdrop-filter: blur(16px);
+  backdrop-filter: var(--ig-blur-md);
   overflow-y: auto;
 `
 
@@ -103,7 +105,7 @@ export const DropdownOptionButton = styled.button<{ $active: boolean }>`
 
 export const DropdownOptionLabel = styled.div`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const DropdownOptionDescription = styled.div`
@@ -114,10 +116,10 @@ export const DropdownOptionDescription = styled.div`
 
 export const HiddenSelectInput = styled.select`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--ig-space-1px);
+  height: var(--ig-space-1px);
   padding: 0;
-  margin: -1px;
+  margin: var(--ig-space-neg-1px);
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -148,7 +150,7 @@ export function renderChevron(open: boolean) {
         <path
           d="M1 1L5 5L9 1"
           stroke="currentColor"
-          strokeWidth="1.4"
+          strokeWidth={svgStrokeWidths.thin}
           strokeLinecap="round"
           strokeLinejoin="round"
         />

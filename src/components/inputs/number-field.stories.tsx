@@ -52,7 +52,7 @@ export const Review: Story = {
     const [temperature, setTemperature] = React.useState(37.2)
 
     return (
-      <StorybookGrid columns="repeat(auto-fit, minmax(240px, 1fr))">
+      <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-plus), 1fr))">
         <StorybookCard title="Integer step" subtitle="기본 spinner 입력">
           <NumberField {...args} aria-label="Zoom level" value={zoom} onChange={setZoom} />
         </StorybookCard>

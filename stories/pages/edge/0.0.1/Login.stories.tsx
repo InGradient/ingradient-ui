@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Alert, Button, Card, ModeSwitcher, PasswordField, TextField } from '@ingradient/ui/components'
-import { Stack } from '@ingradient/ui/primitives'
-import { BrandLogo } from '@ingradient/ui/brand'
+import { useState } from 'react'
+import { LoginView, type LoginLabels, type LoginAccountEntry } from '@ingradient/edge-pages'
 import { defineHandoff } from '../../../support/handoff'
 
 const handoff = defineHandoff({
@@ -11,88 +10,101 @@ const handoff = defineHandoff({
   referenceStory: 'Pages / Edge / 0.0.1 / Login / Online',
   preset: 'edge-0.0.1',
   fixturesPath: 'stories/fixtures/edge/0.0.1/devices.ts',
-  requiredScenarios: ['online', 'offline', 'invalid-credentials', 'submitting'],
+  requiredScenarios: ['online', 'offline', 'invalid-credentials', 'submitting', 'session-continue', 'offline-package-loaded'],
   interactions: [
     'Online / Offline mode 토글',
     'Online: email + password 입력',
-    'Offline: 저장된 인증으로 진행',
+    'Offline: package 로드 → 인증 흐름',
+    'Saved session continue 또는 다른 계정 선택',
     'Submit 중 disabled',
   ],
   platformIntegration: [
     'replace handleSubmit with Electron IPC login (edge 의 main process 와 통신)',
     'offline mode 는 keychain 의 saved credentials 사용',
     'license 가 없거나 만료 시 License 페이지로 redirect',
+    'LangSelector slot — i18n 의존 컴포넌트 마운트',
+    'settingsDialog slot — open 시 CameraSettingsDialog 마운트',
   ],
 })
 
-const pageStyle: React.CSSProperties = {
-  minHeight: '100vh',
-  display: 'grid',
-  placeItems: 'center',
-  padding: 'var(--ig-space-8)',
-  background: 'var(--ig-color-bg-canvas)',
+const DEFAULT_LABELS: LoginLabels = {
+  title: 'INGRADIENT Edge',
+  online: 'Online',
+  offline: 'Offline',
+  onlineSupport: 'Online support',
+  loadPackage: 'Load package',
+  loading: 'Loading…',
+  emailLabel: 'Email',
+  emailPlaceholder: 'operator@line-a.local',
+  passwordLabel: 'Password',
+  passwordPlaceholder: 'Enter password',
+  savePassword: 'Save password',
+  keepSignedIn: 'Keep signed in',
+  submit: 'Sign in',
+  submitting: 'Signing in…',
+  register: 'Register',
+  greeting: (name) => `Hi, ${name}`,
+  continueSession: 'Continue',
+  changeAccount: 'Switch account',
+  settingsTitle: 'Settings',
 }
 
-const contentStyle: React.CSSProperties = {
-  width: 'min(440px, calc(100vw - 32px))',
-}
+const LANG_SLOT = <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 12 }}>EN</span>
 
-const cardStyle: React.CSSProperties = {
-  padding: 'var(--ig-space-8)',
-  borderRadius: 'var(--ig-radius-xl)',
-}
+type SceneArgs = Parameters<typeof LoginScene>[0]
 
-const titleStyle: React.CSSProperties = {
-  margin: '0 0 var(--ig-space-6)',
-  fontSize: 'var(--ig-font-size-2xl)',
-  fontWeight: 600,
-  textAlign: 'center',
-}
-
-type LoginScene = {
+function LoginScene(args: {
   mode?: 'online' | 'offline'
-  email?: string
-  password?: string
-  error?: string
-  loading?: boolean
-}
+  emailDefault?: string
+  passwordDefault?: string
+  savePasswordDefault?: boolean
+  keepSignedInDefault?: boolean
+  loggingIn?: boolean
+  loadingPackage?: boolean
+  error?: string | null
+  packageInfo?: { project_name: string; package_version: number; platform_url?: string } | null
+  savedSession?: { user_id: string; name: string; email: string } | null
+  otherAccounts?: LoginAccountEntry[]
+  hasAccountList?: boolean
+  showLoginForm?: boolean
+  externalUrl?: string | null
+}) {
+  const [email, setEmail] = useState(args.emailDefault ?? '')
+  const [password, setPassword] = useState(args.passwordDefault ?? '')
+  const [savePassword, setSavePassword] = useState(args.savePasswordDefault ?? true)
+  const [keepSignedIn, setKeepSignedIn] = useState(args.keepSignedInDefault ?? true)
 
-function LoginScene(scene: LoginScene) {
-  const { mode = 'online', email = '', password = '', error, loading = false } = scene
   return (
-    <div style={pageStyle}>
-      <Stack gap={6} style={contentStyle}>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <BrandLogo width={220} />
-        </div>
-        <Card style={cardStyle}>
-          <h1 style={titleStyle}>Edge Sign in</h1>
-          <Stack gap={4}>
-            <ModeSwitcher
-              size="md"
-              value={mode}
-              onChange={() => undefined}
-              options={[
-                { value: 'online', label: 'Online' },
-                { value: 'offline', label: 'Offline' },
-              ]}
-            />
-            {error ? <Alert $tone="danger">{error}</Alert> : null}
-            {mode === 'online' ? (
-              <>
-                <TextField type="email" placeholder="Email" value={email} readOnly disabled={loading} />
-                <PasswordField placeholder="Password" value={password} readOnly disabled={loading} />
-              </>
-            ) : (
-              <Alert $tone="info">Offline 모드 — 저장된 인증으로 진행합니다.</Alert>
-            )}
-            <Button type="submit" variant="accent" disabled={loading}>
-              {loading ? 'Signing in…' : 'Sign in'}
-            </Button>
-          </Stack>
-        </Card>
-      </Stack>
-    </div>
+    <LoginView
+      mode={args.mode ?? 'online'}
+      email={email}
+      password={password}
+      savePassword={savePassword}
+      keepSignedIn={keepSignedIn}
+      loggingIn={args.loggingIn ?? false}
+      loadingPackage={args.loadingPackage ?? false}
+      error={args.error ?? null}
+      packageInfo={args.packageInfo ?? null}
+      savedSession={args.savedSession ?? null}
+      otherAccounts={args.otherAccounts ?? []}
+      hasAccountList={args.hasAccountList ?? false}
+      showLoginForm={args.showLoginForm ?? true}
+      externalUrl={args.externalUrl ?? 'https://app.ingradient.ai'}
+      labels={DEFAULT_LABELS}
+      langSelector={LANG_SLOT}
+      settingsDialog={null}
+      onEmailChange={setEmail}
+      onPasswordChange={setPassword}
+      onSavePasswordChange={setSavePassword}
+      onKeepSignedInChange={setKeepSignedIn}
+      onSubmit={(e) => e.preventDefault()}
+      onContinueSession={() => undefined}
+      onSelectAccount={() => undefined}
+      onChangeAccount={() => undefined}
+      onLoadPackage={() => undefined}
+      onOpenSignup={() => undefined}
+      onOpenSettings={() => undefined}
+    />
   )
 }
 
@@ -105,16 +117,35 @@ const meta = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<SceneArgs>
 
 export const Online: Story = { args: { mode: 'online' } }
 
 export const Offline: Story = { args: { mode: 'offline' } }
 
 export const InvalidCredentials: Story = {
-  args: { mode: 'online', email: 'operator@line-a.local', password: '••••', error: 'Invalid credentials or device not licensed.' },
+  args: { mode: 'online', emailDefault: 'operator@line-a.local', passwordDefault: '••••', error: 'Invalid credentials or device not licensed.' },
 }
 
 export const Submitting: Story = {
-  args: { mode: 'online', email: 'operator@line-a.local', password: '••••••••', loading: true },
+  args: { mode: 'online', emailDefault: 'operator@line-a.local', passwordDefault: '••••••••', loggingIn: true },
+}
+
+export const SessionContinue: Story = {
+  args: {
+    mode: 'online',
+    hasAccountList: true,
+    savedSession: { user_id: 'u1', name: 'Mina Park', email: 'mina@line-a.local' },
+    otherAccounts: [
+      { name: 'Joon Lee', email: 'joon@line-a.local' },
+      { name: 'Sora Kim', email: 'sora@line-a.local' },
+    ],
+  },
+}
+
+export const OfflinePackageLoaded: Story = {
+  args: {
+    mode: 'offline',
+    packageInfo: { project_name: 'Line A · Surface Inspection', package_version: 12, platform_url: 'https://app.ingradient.ai' },
+  },
 }

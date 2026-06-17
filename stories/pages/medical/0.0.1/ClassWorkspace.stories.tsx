@@ -33,7 +33,7 @@ const pageStyle: React.CSSProperties = {
 
 const titleStyle: React.CSSProperties = {
   fontSize: 'var(--ig-font-size-2xl)',
-  fontWeight: 600,
+  fontWeight: 'var(--ig-font-weight-semibold)',
   margin: 0,
 }
 
@@ -48,7 +48,7 @@ const rowStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   fontSize: 'var(--ig-font-size-md)',
   color: 'var(--ig-color-text-primary)',
-  fontWeight: 500,
+  fontWeight: 'var(--ig-font-weight-medium)',
 }
 
 const countStyle: React.CSSProperties = {

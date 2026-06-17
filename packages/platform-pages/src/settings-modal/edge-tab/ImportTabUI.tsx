@@ -1,7 +1,11 @@
 import { Button, ProgressBar, UploadDropzone } from '@ingradient/ui/components'
 import {
+  CancelAction,
+  DropzoneWrap,
   ErrorHintInline,
   Hint,
+  ProgressLabel,
+  ProgressWrap,
   ReportBox,
   ReportGrid,
   ReportStat,
@@ -13,21 +17,6 @@ import {
 } from './edge.styles'
 import { getEdgeStatusTone } from './edge-status-tone'
 import type { EdgeImportJobView } from './edge-types'
-
-const PROGRESS_WRAP_STYLE: React.CSSProperties = {
-  width: '100%',
-  maxWidth: 420,
-  margin: '12px auto 0',
-}
-
-const PROGRESS_LABEL_STYLE: React.CSSProperties = {
-  marginTop: 6,
-  fontSize: 12,
-  color: 'var(--ig-color-text-muted)',
-  fontVariantNumeric: 'tabular-nums',
-}
-
-const DROPZONE_WRAP_STYLE: React.CSSProperties = { marginTop: 16 }
 
 export interface ImportTabUIProps {
   /** 현재 import job 상태. null 이면 dropzone 만 표시. */
@@ -61,16 +50,16 @@ export function ImportTabUI({ job, busy, pct, label, cancelling = false, onFiles
           Drop the ZIP file exported from an Edge device. Each image_id found in the platform will be overwritten; new
           images will be created.
         </Hint>
-        <div style={DROPZONE_WRAP_STYLE}>
+        <DropzoneWrap>
           <UploadDropzone accept=".igp,.ige,.zip" multiple={false} disabled={busy} onFiles={onFiles}>
             {busy ? (
               <div>
                 <div>{label}</div>
-                <div style={PROGRESS_WRAP_STYLE}>
+                <ProgressWrap>
                   <ProgressBar value={pct} />
-                </div>
-                <div style={PROGRESS_LABEL_STYLE}>{pct}%</div>
-                <div style={{ marginTop: 12 }}>
+                </ProgressWrap>
+                <ProgressLabel>{pct}%</ProgressLabel>
+                <CancelAction>
                   <Button
                     variant="secondary"
                     onClick={(e) => {
@@ -81,13 +70,13 @@ export function ImportTabUI({ job, busy, pct, label, cancelling = false, onFiles
                   >
                     {cancelling ? 'Cancelling…' : 'Cancel'}
                   </Button>
-                </div>
+                </CancelAction>
               </div>
             ) : (
               'Drop .igp or .zip here or click to select'
             )}
           </UploadDropzone>
-        </div>
+        </DropzoneWrap>
       </Section>
 
       {job && (

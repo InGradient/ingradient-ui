@@ -17,7 +17,7 @@ export function CatalogView({
   overlays,
 }: CatalogViewProps) {
   return (
-    <Page>
+    <Page data-ig-component="CatalogView" data-ig-layer="pages">
       {isMobile && mobile ? (
         <CatalogMobileView
           page={page}

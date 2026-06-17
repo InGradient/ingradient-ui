@@ -67,6 +67,45 @@ export const Playground: Story = {
   },
 }
 
+type StorageRow = { id: string; name: string; files: number; sizeBytes: number; lastUsed: string }
+const storageColumns: TableProps<StorageRow>['columns'] = [
+  { key: 'name', header: 'Dataset', render: (row) => row.name },
+  { key: 'files', header: 'Files', numeric: true, render: (row) => row.files.toLocaleString() },
+  { key: 'size', header: 'Size (MB)', numeric: true, render: (row) => (row.sizeBytes / (1024 * 1024)).toFixed(1) },
+  { key: 'lastUsed', header: 'Last used', muted: true, render: (row) => row.lastUsed },
+]
+const storageRows: StorageRow[] = [
+  { id: 'a', name: 'Wafer line A', files: 12_482, sizeBytes: 4_200_000_000, lastUsed: '2026-05-25' },
+  { id: 'b', name: 'Surface defects', files: 3_021, sizeBytes: 980_000_000, lastUsed: '2026-05-21' },
+  { id: 'c', name: 'Keypoint annotations', files: 786, sizeBytes: 220_000_000, lastUsed: '2026-04-30' },
+]
+
+export const WithFooter: Story = {
+  args: { dataset: 'auto', emptyState: false, draggable: false },
+  render: () => {
+    const totalFiles = storageRows.reduce((a, r) => a + r.files, 0)
+    const totalBytes = storageRows.reduce((a, r) => a + r.sizeBytes, 0)
+    return (
+      <StorybookStack gap={12}>
+        <Table<StorageRow>
+          columns={storageColumns}
+          rows={storageRows}
+          footer={[
+            'Total',
+            totalFiles.toLocaleString(),
+            (totalBytes / (1024 * 1024)).toFixed(1),
+            '',
+          ]}
+          ariaLabel="Storage stats table"
+        />
+        <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
+          numeric column 은 right-align + tabular-nums, muted column 은 회색, footer 는 tfoot 으로 강조됨.
+        </div>
+      </StorybookStack>
+    )
+  },
+}
+
 export const Review: Story = {
   render: (args, context) => {
     const scale = args.dataset === 'auto' ? resolveReviewScale(context.globals.dataScale) : args.dataset

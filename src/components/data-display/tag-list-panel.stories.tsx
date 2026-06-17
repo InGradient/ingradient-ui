@@ -37,7 +37,7 @@ export const Review: Story = {
         description="Search-and-pick combobox for tag-style entities (classes, labels). Filters candidates by typed query, shows color swatches, and renders an empty state with optional fallback action."
       >
         <StorybookSection title="Variants">
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Default" subtitle={`selected: ${selected ?? 'none'}`}>
               <TagListSearch candidates={candidates} onSelect={setSelected} />
             </StorybookCard>

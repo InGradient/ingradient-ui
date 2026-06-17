@@ -38,7 +38,7 @@ const FallbackDetail = styled.pre`
   color: var(--ig-color-danger);
   font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-sm);
-  max-width: 600px;
+  max-width: var(--ig-popup-xl);
   overflow: auto;
   white-space: pre-wrap;
   word-break: break-word;

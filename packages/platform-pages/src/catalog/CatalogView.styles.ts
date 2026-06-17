@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const Page = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  --ig-catalog-divider-color: var(--ig-color-border-strong);
 `
 
 export const ContentArea = styled.div`
@@ -15,51 +17,53 @@ export const ContentArea = styled.div`
 export const DragOverFull = styled.div`
   position: absolute;
   inset: 0;
-  z-index: 50;
+  z-index: var(--ig-z-overlay-low);
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.6);
-  border: 3px dashed rgba(255, 255, 255, 0.4);
+  background: var(--ig-color-image-option-bg);
+  border: var(--ig-border-3px) dashed var(--ig-color-white-40);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xl);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const GridWrap = styled.div`
-  padding: 0 var(--ig-space-7) var(--ig-space-7);
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: var(--ig-space-7);
   position: relative;
 `
 
 export const DragOverGrid = styled.div`
   position: absolute;
   inset: var(--ig-space-7);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ig-color-image-option-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px dashed rgba(255, 255, 255, 0.4);
+  border: var(--ig-border-3px) dashed var(--ig-color-white-40);
   border-radius: var(--ig-radius-md);
-  z-index: 10;
+  z-index: var(--ig-z-sticky);
   pointer-events: none;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
 export const DangerDimButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  height: 32px;
+  height: var(--ig-control-height-sm);
   padding: 0 var(--ig-space-4);
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-danger-dim-bg);
-  border: 1px solid var(--ig-color-danger-dim-border);
+  border: var(--ig-border-1px) solid var(--ig-color-danger-dim-border);
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
   cursor: pointer;
   &:hover:not(:disabled) {
     background: var(--ig-color-alert-danger-bg);
@@ -70,21 +74,19 @@ export const MobileBottomSheet = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 60px;
-  z-index: 30;
+  bottom: var(--ig-control-height-3xl);
+  z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
-  border-top: 1px solid var(--ig-color-border-subtle);
+  border-top: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-space-5);
 `
 
 export const RightSideLoadingText = styled.span`
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  ${stateTitleText}
 `
 
 export const TableWrap = styled.div`
   padding: var(--ig-space-5);
 `
-

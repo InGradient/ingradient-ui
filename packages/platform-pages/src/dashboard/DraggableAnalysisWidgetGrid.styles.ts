@@ -1,18 +1,19 @@
+import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
 
 export const Rows = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--ig-space-9);
 `
 
 export const Row = styled.div<{ $count: number }>`
   position: relative;
   display: grid;
   grid-template-columns: repeat(${(p) => Math.max(1, Math.min(3, p.$count))}, minmax(0, 1fr));
-  gap: 20px;
+  gap: var(--ig-space-9);
   align-items: start;
-  @media (max-width: 1024px) {
+  ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
@@ -21,12 +22,12 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -10px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(77, 136, 255, 0.92);
+  bottom: calc(var(--ig-space-4) * -1);
+  height: var(--ig-space-1);
+  border-radius: var(--ig-radius-pill);
+  background: var(--ig-color-blue-tint-92);
   opacity: ${(p) => (p.$active ? 1 : 0)};
-  transition: opacity 0.16s ease;
+  transition: opacity var(--ig-motion-fast-ease);
   pointer-events: none;
 `
 
@@ -34,9 +35,9 @@ export const RowDropZone = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -20px;
-  height: 28px;
-  z-index: 6;
+  bottom: calc(var(--ig-space-9) * -1);
+  height: var(--ig-control-height-xs);
+  z-index: var(--ig-z-capture-super);
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
 
@@ -45,30 +46,30 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
   min-width: 0;
   cursor: default;
   opacity: ${(p) => (p.$dragging ? 0.5 : 1)};
-  transform: ${(p) => (p.$dragging ? 'scale(0.985)' : 'none')};
+  transform: ${(p) => (p.$dragging ? 'scale(var(--ig-scale-drag))' : 'none')};
   transition:
     opacity 0.16s ease,
     transform 0.16s ease,
     filter 0.16s ease;
   filter: ${(p) =>
-    p.$dropTarget ? 'drop-shadow(0 0 0.85rem var(--ig-color-blue-tint-18))' : 'none'};
+    p.$dropTarget ? 'drop-shadow(0 0 0.85rem var(--ig-color-accent-soft-surface-hover))' : 'none'};
   &::after {
     content: '';
     position: absolute;
     pointer-events: none;
-    border-radius: 999px;
-    background: rgba(77, 136, 255, 0.92);
+    border-radius: var(--ig-radius-pill);
+    background: var(--ig-color-blue-tint-92);
     opacity: ${(p) => (p.$dropTarget ? 1 : 0)};
-    transition: opacity 0.16s ease;
+    transition: opacity var(--ig-motion-fast-ease);
   }
   ${(p) =>
     p.$dropTarget === 'before'
       ? `
         &::after {
-          top: 18px;
-          bottom: 18px;
-          left: -12px;
-          width: 4px;
+          top: var(--ig-space-8);
+          bottom: var(--ig-space-8);
+          left: calc(var(--ig-space-5) * -1);
+          width: var(--ig-space-1);
         }
       `
       : ''}
@@ -76,10 +77,10 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     p.$dropTarget === 'after'
       ? `
         &::after {
-          top: 18px;
-          bottom: 18px;
-          right: -12px;
-          width: 4px;
+          top: var(--ig-space-8);
+          bottom: var(--ig-space-8);
+          right: calc(var(--ig-space-5) * -1);
+          width: var(--ig-space-1);
         }
       `
       : ''}
@@ -87,40 +88,40 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
 
 export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $active: boolean }>`
   position: absolute;
-  z-index: 7;
+  z-index: var(--ig-z-capture-top);
   ${(p) =>
     p.$position === 'before'
       ? `
-        top: 16px;
-        bottom: 16px;
-        left: -14px;
-        width: 28px;
+        top: var(--ig-space-7);
+        bottom: var(--ig-space-7);
+        left: calc(var(--ig-space-6) * -1);
+        width: var(--ig-control-height-xs);
       `
       : ''}
   ${(p) =>
     p.$position === 'after'
       ? `
-        top: 16px;
-        bottom: 16px;
-        right: -14px;
-        width: 28px;
+        top: var(--ig-space-7);
+        bottom: var(--ig-space-7);
+        right: calc(var(--ig-space-6) * -1);
+        width: var(--ig-control-height-xs);
       `
       : ''}
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
 
 export const DragOverlayCard = styled.div`
-  min-width: 220px;
-  max-width: 320px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  border: 1px solid var(--ig-color-blue-tint-28);
-  background: linear-gradient(180deg, rgba(18, 24, 34, 0.98) 0%, rgba(12, 16, 24, 0.98) 100%);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.34);
+  min-width: var(--ig-popup-xs);
+  max-width: var(--ig-popup-md);
+  padding: var(--ig-space-6) 16px;
+  border-radius: var(--ig-radius-xl);
+  border: var(--ig-border-1px) solid var(--ig-color-active-bg);
+  background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
+  box-shadow: 0 24px 56px var(--ig-color-blue-tint-34);
 `
 
 export const DragOverlayTitle = styled.div`
-  font-size: 13px;
-  font-weight: 700;
+  font-size: var(--ig-font-size-sm);
+  font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `

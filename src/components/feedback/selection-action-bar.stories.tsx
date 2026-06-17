@@ -6,7 +6,7 @@ import { SelectionActionBar } from './selection-action-bar'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const bulkActions = (
-  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+  <div style={{ display: 'flex', gap: 'var(--ig-space-3)', flexWrap: 'wrap' }}>
     <Button variant="secondary" size="sm">Assign</Button>
     <Button variant="secondary" size="sm">Archive</Button>
     <Button variant="accent" size="sm">Export</Button>
@@ -58,7 +58,7 @@ function PlaygroundDemo() {
           Hidden state: the bar intentionally disappears when nothing is selected.
         </div>
       ) : null}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))', gap: 'var(--ig-space-5)' }}>
         {items.map((item) => {
           const active = selectedIds.includes(item.id)
           return (
@@ -79,7 +79,7 @@ function PlaygroundDemo() {
                 cursor: 'pointer',
               }}
             >
-              <div style={{ fontWeight: 600 }}>{item.label}</div>
+              <div style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{item.label}</div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Badge $tone={item.tone}>{active ? 'Selected' : 'Idle'}</Badge>
                 <span style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>
@@ -118,7 +118,7 @@ export const Review: Story = {
         title="Batch action states"
         description="Check single selection, batch review, and hidden state behavior before composing this into tables, grids, or media browsers."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
           <StorybookCard title="Single selection" subtitle="minimal toolbar">
             <SelectionActionBar
               selectedCount={1}

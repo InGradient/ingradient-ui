@@ -40,7 +40,7 @@ const criticalExports = {
     // Phase 8: Interaction
     'CopyButton', 'ModeSwitcher', 'ResizablePanel',
     // Phase 9: Layout
-    'ChipGroup', 'FormGroup', 'FieldRow', 'FilterBarLayout', 'KeyboardShortcutHint',
+    'ChipGroup', 'FormGroup', 'FieldRow', 'FormField', 'FilterBarLayout', 'KeyboardShortcutHint',
   ],
   'lib/tokens.js': [
     'IngradientThemeProvider', 'IngradientGlobalStyle',

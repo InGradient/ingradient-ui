@@ -27,9 +27,9 @@ export const Overview: Story = {
         title="Common async states"
         description="Use this matrix when discussing state language, fallback density, and action guidance."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
           <StorybookCard title="Inline loading" subtitle="compact waiting state">
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', color: 'var(--ig-color-text-secondary)' }}>
+            <div style={{ display: 'flex', gap: 'var(--ig-space-5)', alignItems: 'center', color: 'var(--ig-color-text-secondary)' }}>
               <Spinner aria-label="Loading review data" />
               Loading review data...
             </div>
@@ -37,10 +37,10 @@ export const Overview: Story = {
 
           <StorybookCard title="Skeleton loading" subtitle="structured placeholder">
             <StorybookStack gap={10}>
-              <Skeleton $height="22px" />
-              <Skeleton $height="16px" />
-              <Skeleton $height="16px" />
-              <Skeleton $height="64px" />
+              <Skeleton $height="var(--ig-font-size-3xl-plus)" />
+              <Skeleton $height="var(--ig-font-size-xl)" />
+              <Skeleton $height="var(--ig-font-size-xl)" />
+              <Skeleton $height="var(--ig-control-height-3xl-plus)" />
             </StorybookStack>
           </StorybookCard>
 

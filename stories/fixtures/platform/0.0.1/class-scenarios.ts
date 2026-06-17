@@ -31,6 +31,8 @@ export type ClassScenarioKey =
   | 'delete-confirm-open'
   | 'mapping-coco-active'
   | 'mapping-disabled'
+  | 'sidebar-collapsed'
+  | 'class-menu-open'
 
 export interface ClassScene {
   classes: MockClass[]
@@ -56,6 +58,8 @@ export interface ClassScene {
   deleteConfirmOpen?: boolean
   showCocoMapping?: boolean
   currentMapping?: string
+  sidebarCollapsed?: boolean
+  openMenuClassId?: string | null
 }
 
 const base: ClassScene = {
@@ -102,6 +106,8 @@ export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'delete-confirm-open': { ...base, deleteConfirmOpen: true },
   'mapping-coco-active': { ...base, showCocoMapping: true, currentMapping: 'person' },
   'mapping-disabled': { ...base, showCocoMapping: false },
+  'sidebar-collapsed': { ...base, sidebarCollapsed: true },
+  'class-menu-open': { ...base, openMenuClassId: 'cl-1' },
 }
 
 export { mockClasses } from './class-classes'

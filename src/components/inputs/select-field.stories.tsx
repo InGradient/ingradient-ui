@@ -47,7 +47,7 @@ export const Review: Story = {
     const [filter, setFilter] = React.useState('all')
 
     return (
-      <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+      <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
         <StorybookCard title="Form field" subtitle="단일 상태 선택">
           <SelectField value={status} onChange={(event) => setStatus(event.target.value)}>
             <option value="active">Active</option>

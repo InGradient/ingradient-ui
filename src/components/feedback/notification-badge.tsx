@@ -10,13 +10,13 @@ const Root = styled.span`
   flex-shrink: 0;
 `
 
-const Bubble = styled.span<{ $tone: 'accent' | 'danger' }>`
+export const NotificationBubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   position: absolute;
   top: 0;
   right: 0;
   transform: translate(42%, -42%);
-  min-width: 18px;
-  height: 18px;
+  min-width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$tone === 'accent' ? 'var(--ig-color-accent)' : 'var(--ig-color-danger)')};
@@ -25,10 +25,10 @@ const Bubble = styled.span<{ $tone: 'accent' | 'danger' }>`
   align-items: center;
   justify-content: center;
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
-  line-height: 1;
+  font-weight: var(--ig-font-weight-bold);
+  line-height: var(--ig-line-height-none);
   white-space: nowrap;
-  box-shadow: 0 0 0 2px var(--ig-color-bg-canvas);
+  box-shadow: 0 0 0 var(--ig-space-2px) var(--ig-color-bg-canvas);
   pointer-events: none;
 `
 
@@ -51,9 +51,9 @@ export function NotificationBadge({
     <Root className={className} style={style}>
       {children}
       {!hidden && value != null ? (
-        <Bubble data-ig-notification-badge="" $tone={tone}>
+        <NotificationBubble data-ig-notification-badge="" $tone={tone}>
           {value}
-        </Bubble>
+        </NotificationBubble>
       ) : null}
     </Root>
   )

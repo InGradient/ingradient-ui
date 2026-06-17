@@ -35,9 +35,9 @@ export const Review: Story = {
         title="Hover review"
         description="Review tooltip usage in action-heavy controls and inside constrained containers."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
           <StorybookCard title="Common triggers" subtitle="buttons and icon buttons">
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--ig-space-7)', alignItems: 'center', flexWrap: 'wrap' }}>
               <Tooltip content="Publish the current review package for downstream consumers.">
                 <Button variant="secondary">Publish</Button>
               </Tooltip>

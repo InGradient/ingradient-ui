@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 export const TableWrap = styled.div.attrs({ tabIndex: 0, role: 'region' })`
   overflow-x: auto;
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
   }
 `
 
@@ -14,19 +14,30 @@ export const StyledTable = styled.table`
   table-layout: fixed;
 `
 
-export const Th = styled.th`
-  text-align: left;
+export const Th = styled.th<{ $numeric?: boolean }>`
+  text-align: ${(p) => (p.$numeric ? 'right' : 'left')};
   padding: var(--ig-space-4) var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-xs);
-  font-weight: 500;
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  font-weight: var(--ig-font-weight-medium);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
-export const Td = styled.td`
+export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: boolean }>`
   padding: var(--ig-space-5);
-  color: var(--ig-color-text-secondary);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
+  ${(p) => p.$mono && 'font-family: monospace; font-size: var(--ig-font-size-xs);'}
+`
+
+export const Tfoot = styled.tfoot`
+  & td {
+    font-weight: var(--ig-font-weight-semibold);
+    color: var(--ig-color-text-primary);
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    border-bottom: none;
+  }
 `
 
 export const DragTh = styled(Th)`width: 36px; padding: var(--ig-space-4) var(--ig-space-2);`
@@ -34,10 +45,10 @@ export const DragTd = styled(Td)`width: 36px; padding: var(--ig-space-3) var(--i
 
 export const VisuallyHidden = styled.span`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--ig-space-1px);
+  height: var(--ig-space-1px);
   padding: 0;
-  margin: -1px;
+  margin: var(--ig-space-neg-1px);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -49,8 +60,8 @@ export const HandleBtn = styled.button.attrs({ type: 'button', 'aria-label': 'Re
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: var(--ig-control-height-xs);
+  height: var(--ig-control-height-xs);
   border: none;
   border-radius: var(--ig-radius-sm);
   background: transparent;
@@ -65,13 +76,13 @@ export const HandleBtn = styled.button.attrs({ type: 'button', 'aria-label': 'Re
 
 const draggingRow = css`
   position: relative;
-  z-index: 10;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: var(--ig-z-sticky);
+  box-shadow: var(--ig-shadow-menu);
   background: var(--ig-color-surface-raised);
 `
 
 const animatingRow = css`
-  transition: transform 0.2s ease;
+  transition: transform var(--ig-motion-normal);
 `
 
 export const StyledTr = styled.tr<{

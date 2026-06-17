@@ -5,7 +5,7 @@ import { surfaceCard, surfacePanel, surfaceRaised } from '../styles/surfaces'
 
 const SurfaceRoot = styled.div<{ $elevation?: 'panel' | 'raised' | 'card'; $radius?: Space }>`
   ${(p) => (p.$elevation === 'raised' ? surfaceRaised : p.$elevation === 'card' ? surfaceCard : surfacePanel)}
-  border-radius: ${(p) => space(p.$radius) ?? '20px'};
+  border-radius: ${(p) => space(p.$radius) ?? 'var(--ig-radius-2xl)'};
 `
 
 export function Surface({

@@ -39,7 +39,7 @@ const stories: StoryTarget[] = [
   { name: 'pages-platform-0-0-1-auth-signup', id: 'pages-platform-0-0-1-auth-signup--default', readyText: 'Sign up', fullPage: true },
   { name: 'pages-platform-0-0-1-catalog', id: 'pages-platform-0-0-1-catalog--default', readyText: 'Catalog', fullPage: true },
   { name: 'pages-platform-0-0-1-classmanage', id: 'pages-platform-0-0-1-classmanage--default', readyText: 'Classes', fullPage: true },
-  { name: 'pages-platform-0-0-1-createproject', id: 'pages-platform-0-0-1-createproject--default', readyText: 'Add Project', fullPage: true },
+  { name: 'pages-platform-0-0-1-createproject', id: 'pages-platform-0-0-1-createproject--default', readyText: 'Create Project', fullPage: true },
 
   // Edge pages (Phase 6)
   { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'Edge Sign in', fullPage: true },

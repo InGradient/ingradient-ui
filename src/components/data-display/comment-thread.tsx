@@ -1,14 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// ── Styled ─────────────────────────────────────────────────────────
-
-const Thread = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-3);
-`
-
 const Item = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4);
   border-radius: var(--ig-radius-sm);
@@ -25,14 +17,14 @@ const Meta = styled.div`
 `
 
 const Author = styled.span`
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   margin-right: auto;
 `
 
 const Body = styled.div`
   font-size: var(--ig-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--ig-line-height-relaxed);
   white-space: pre-wrap;
   color: var(--ig-color-text-primary);
 `
@@ -45,10 +37,10 @@ const InputWrap = styled.div`
 
 const Textarea = styled.textarea`
   width: 100%;
-  min-height: 56px;
+  min-height: var(--ig-control-height-2xl-wide);
   resize: vertical;
   padding: var(--ig-space-3) var(--ig-space-4);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
@@ -69,13 +61,11 @@ const SendBtn = styled.button`
   background: var(--ig-color-accent-strong);
   color: var(--ig-color-on-accent);
   font-size: var(--ig-font-size-xs);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
-  &:disabled { opacity: 0.4; cursor: default; }
-  &:hover:not(:disabled) { opacity: 0.85; }
+  &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
+  &:hover:not(:disabled) { opacity: var(--ig-opacity-loud); }
 `
-
-// ── Components ─────────────────────────────────────────────────────
 
 export interface CommentItemProps {
   author: React.ReactNode
@@ -95,15 +85,6 @@ export function CommentItem({ author, timestamp, body, actions }: CommentItemPro
       <Body>{body}</Body>
     </Item>
   )
-}
-
-export interface CommentThreadProps {
-  children: React.ReactNode
-  className?: string
-}
-
-export function CommentThread({ children, className }: CommentThreadProps) {
-  return <Thread className={className}>{children}</Thread>
 }
 
 export interface CommentInputProps {

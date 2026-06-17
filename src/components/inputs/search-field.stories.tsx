@@ -54,7 +54,7 @@ export const Review: Story = {
     const [dense, setDense] = React.useState('medical-report-long-filename')
 
     return (
-      <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+      <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
         <StorybookCard title="Empty" subtitle="초기 진입 상태">
           <SearchField {...args} value={primary} onChange={(event) => setPrimary(event.target.value)} onClear={() => setPrimary('')} />
         </StorybookCard>

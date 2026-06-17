@@ -23,8 +23,8 @@ export function SplitLayout({
   sidebar,
   content,
   inspector,
-  sidebarWidth = '260px',
-  inspectorWidth = '320px',
+  sidebarWidth = 'var(--ig-popup-sm-narrow)',
+  inspectorWidth = 'var(--ig-popup-md)',
 }: {
   sidebar?: React.ReactNode
   content: React.ReactNode
@@ -48,13 +48,13 @@ export function SplitLayout({
 
 export const DashboardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr));
   gap: var(--ig-space-7);
 `
 
 export const ListDetailLayout = styled.div`
   display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  grid-template-columns: minmax(var(--ig-popup-sm), var(--ig-popup-lg)) minmax(0, 1fr);
   gap: var(--ig-space-7);
   min-width: 0;
 
@@ -65,7 +65,7 @@ export const ListDetailLayout = styled.div`
 
 export const SettingsShell = styled.div`
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  grid-template-columns: minmax(var(--ig-popup-xs), var(--ig-popup-sm)) minmax(0, 1fr);
   gap: var(--ig-space-7);
   min-width: 0;
 
@@ -76,7 +76,7 @@ export const SettingsShell = styled.div`
 
 export const InspectorLayout = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  grid-template-columns: minmax(0, 1fr) minmax(var(--ig-popup-sm), var(--ig-popup-lg));
   gap: var(--ig-space-7);
   min-width: 0;
 

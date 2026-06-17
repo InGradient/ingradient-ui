@@ -13,8 +13,8 @@ export const appShell = css`
 
 export const headerSurface = css`
   background: var(--ig-color-surface-header);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
-  backdrop-filter: blur(14px);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  backdrop-filter: var(--ig-blur-sm);
 `
 
 export const pageHeaderSurface = css`

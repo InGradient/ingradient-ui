@@ -1,4 +1,4 @@
-import type { OrgMember, InvitationRow, JoinCodeRow } from '@ingradient/ui/patterns'
+import type { OrgMember, InvitationRow, JoinCodeRow } from '@ingradient/platform-pages'
 
 export interface SettingsOrganization {
   code: string

@@ -24,7 +24,7 @@ export const Overview: Story = {
         title="Current globals"
         description="지금 선택된 toolbar 값이 preview와 page story에 어떻게 전달되는지 확인한다."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
           <StorybookCard title="Theme">{String(context.globals.theme)}</StorybookCard>
           <StorybookCard title="Density">{String(context.globals.density)}</StorybookCard>
           <StorybookCard title="Role">{String(context.globals.role)}</StorybookCard>
@@ -35,7 +35,7 @@ export const Overview: Story = {
         title="Core surfaces"
         description="대표 피드백/액션 컴포넌트를 같은 화면에 두고 tone과 surface contrast를 빠르게 본다."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
           <StorybookCard title="Actions">
             <StorybookStack gap={12}>
               <Button variant="solid">Primary action</Button>

@@ -73,7 +73,7 @@ export const Review: Story = {
           title="Ephemeral feedback"
           description="Validate tone, stack behavior, and click-to-dismiss interaction before consumers build product-specific wrappers."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md), 1fr))">
             <StorybookCard title="Provider + hook" subtitle="transient alerts">
               <ToastDemo />
             </StorybookCard>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  DragTd, DragTh, HandleBtn, PlainTr, StyledTable, StyledTr, TableWrap, Td, Th, VisuallyHidden,
+  DragTd, DragTh, HandleBtn, PlainTr, StyledTable, StyledTr, TableWrap, Td, Tfoot, Th, VisuallyHidden,
 } from './table.styles'
 import { useTableDrag } from './use-table-drag'
 
@@ -20,6 +20,14 @@ function GripIcon() {
 export type TableColumn<T> = {
   key: string
   header: string
+  /** 고정 컬럼 너비 (px 또는 CSS 길이). */
+  width?: string | number
+  /** Right-align cell + header, tabular-nums (숫자 정렬). */
+  numeric?: boolean
+  /** 회색 텍스트 (보조 정보 컬럼). */
+  muted?: boolean
+  /** Monospace 폰트 (token / UID 같은 코드 표시). */
+  mono?: boolean
   render: (row: T) => React.ReactNode
 }
 
@@ -36,6 +44,8 @@ export type TableProps<T extends { id?: string | number }> = {
   rowHeight?: number
   /** Accessible label for the table's scrollable region. Required when multiple tables on a page. */
   ariaLabel?: string
+  /** Footer row (tfoot). Length should match columns.length. 각 column 의 numeric/mono prop 이 그대로 적용됨. */
+  footer?: React.ReactNode[]
 }
 
 export function Table<T extends { id?: string | number }>({
@@ -46,8 +56,31 @@ export function Table<T extends { id?: string | number }>({
   onReorder,
   rowHeight = 48,
   ariaLabel = 'Data table',
+  footer,
 }: TableProps<T>) {
   const { dragState, fromIdx, getOffset, onDragStart } = useTableDrag<T>({ rows, rowHeight, onReorder })
+
+  const renderFooter = () =>
+    footer ? (
+      <Tfoot>
+        <tr>
+          {footer.map((cell, i) => {
+            const col = columns[i]
+            return (
+              <Td
+                key={i}
+                style={{ width: col?.width }}
+                $numeric={col?.numeric}
+                $muted={col?.muted}
+                $mono={col?.mono}
+              >
+                {cell}
+              </Td>
+            )
+          })}
+        </tr>
+      </Tfoot>
+    ) : null
 
   if (!draggable) {
     return (
@@ -56,7 +89,7 @@ export function Table<T extends { id?: string | number }>({
           <thead>
             <tr>
               {columns.map((col) => (
-                <Th key={col.key}>{col.header}</Th>
+                <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
               ))}
             </tr>
           </thead>
@@ -68,11 +101,20 @@ export function Table<T extends { id?: string | number }>({
                 onClick={() => onRowClick?.(row, i)}
               >
                 {columns.map((col) => (
-                  <Td key={col.key}>{col.render(row)}</Td>
+                  <Td
+                    key={col.key}
+                    style={{ width: col.width }}
+                    $numeric={col.numeric}
+                    $muted={col.muted}
+                    $mono={col.mono}
+                  >
+                    {col.render(row)}
+                  </Td>
                 ))}
               </PlainTr>
             ))}
           </tbody>
+          {renderFooter()}
         </StyledTable>
       </TableWrap>
     )
@@ -87,7 +129,7 @@ export function Table<T extends { id?: string | number }>({
               <VisuallyHidden>Reorder</VisuallyHidden>
             </DragTh>
             {columns.map((col) => (
-              <Th key={col.key}>{col.header}</Th>
+              <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
             ))}
           </tr>
         </thead>
@@ -107,11 +149,20 @@ export function Table<T extends { id?: string | number }>({
                 </HandleBtn>
               </DragTd>
               {columns.map((col) => (
-                <Td key={col.key}>{col.render(row)}</Td>
+                <Td
+                  key={col.key}
+                  style={{ width: col.width }}
+                  $numeric={col.numeric}
+                  $muted={col.muted}
+                  $mono={col.mono}
+                >
+                  {col.render(row)}
+                </Td>
               ))}
             </StyledTr>
           ))}
         </tbody>
+        {renderFooter()}
       </StyledTable>
     </TableWrap>
   )

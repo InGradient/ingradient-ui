@@ -1,0 +1,47 @@
+import type { ReactNode } from 'react'
+import styled from 'styled-components'
+import { Text } from '../../primitives'
+import { Checkbox } from './toggles'
+import { ColorSwatch } from '../data-display/color-swatch'
+
+const Chip = styled.label<{ $checked: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ig-space-2);
+  padding: var(--ig-space-1) var(--ig-space-2);
+  border-radius: var(--ig-radius-2xs);
+  background: ${(p) => (p.$checked ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    background: var(--ig-color-surface-interactive-hover);
+  }
+`
+
+const LABEL_STYLE = {
+  overflow: 'hidden' as const,
+  textOverflow: 'ellipsis' as const,
+  whiteSpace: 'nowrap' as const,
+}
+
+export interface ColorChipProps {
+  checked: boolean
+  label: ReactNode
+  color?: string
+  onChange: (checked: boolean) => void
+  className?: string
+}
+
+export function ColorChip({ checked, label, color, onChange, className }: ColorChipProps) {
+  return (
+    <Chip $checked={checked} className={className}>
+      <Checkbox
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        aria-label={typeof label === 'string' ? label : undefined}
+      />
+      {color ? <ColorSwatch $color={color} $size="sm" /> : null}
+      <Text as="span" size="var(--ig-font-size-sm)" style={LABEL_STYLE}>{label}</Text>
+    </Chip>
+  )
+}

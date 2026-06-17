@@ -15,9 +15,10 @@ export function Stack({
   gap,
   align,
   justify,
+  as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string }) {
-  return <StackRoot $gap={gap} $align={align} $justify={justify} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; as?: React.ElementType }) {
+  return <StackRoot as={as} $gap={gap} $align={align} $justify={justify} {...props} />
 }
 
 const InlineRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string; $wrap?: string }>`
@@ -34,9 +35,10 @@ export function Inline({
   align,
   justify,
   wrap,
+  as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; wrap?: string }) {
-  return <InlineRoot $gap={gap} $align={align} $justify={justify} $wrap={wrap} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; wrap?: string; as?: React.ElementType }) {
+  return <InlineRoot as={as} $gap={gap} $align={align} $justify={justify} $wrap={wrap} {...props} />
 }
 
 const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: string | number }>`
@@ -44,7 +46,7 @@ const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: s
   min-width: 0;
   gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-7)'};
   grid-template-columns: ${(p) =>
-    p.$columns ?? `repeat(auto-fit, minmax(${numberOrString(p.$minItemWidth) ?? '220px'}, 1fr))`};
+    p.$columns ?? `repeat(auto-fit, minmax(min(${numberOrString(p.$minItemWidth) ?? 'var(--ig-popup-xs)'}, 100%), 1fr))`};
 `
 
 export function Grid({
@@ -58,7 +60,7 @@ export function Grid({
 
 const ContainerRoot = styled.div<{ $maxWidth?: string | number; $padding?: Space }>`
   width: 100%;
-  max-width: ${(p) => numberOrString(p.$maxWidth) ?? '1280px'};
+  max-width: ${(p) => numberOrString(p.$maxWidth) ?? 'var(--ig-page-max-width)'};
   margin: 0 auto;
   padding-inline: ${(p) => space(p.$padding) ?? 'var(--ig-space-11)'};
 `

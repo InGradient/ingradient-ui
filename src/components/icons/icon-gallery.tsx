@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
+import { iconSizeNumbers, svgStrokeWidths } from '../../tokens/core'
 import { icons, type IconName } from './registry'
 
 const IconGalleryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--ig-popup-2xs-narrow), 1fr));
   gap: var(--ig-space-5);
 `
 
@@ -20,8 +21,8 @@ const IconTile = styled.div`
 `
 
 const IconPreview = styled.div`
-  width: 44px;
-  height: 44px;
+  width: var(--ig-control-height-lg);
+  height: var(--ig-control-height-lg);
   border-radius: var(--ig-radius-md);
   display: inline-flex;
   align-items: center;
@@ -39,7 +40,7 @@ const IconLabel = styled.div`
 
 export function IconGallery({
   names = Object.keys(icons) as IconName[],
-  size = 20,
+  size = iconSizeNumbers.xl,
 }: {
   names?: IconName[]
   size?: number
@@ -50,7 +51,7 @@ export function IconGallery({
         const Glyph = icons[name]
         return (
           <IconTile key={name}>
-            <IconPreview><Glyph size={size} strokeWidth={1.8} /></IconPreview>
+            <IconPreview><Glyph size={size} strokeWidth={svgStrokeWidths.mid} /></IconPreview>
             <IconLabel>{name}</IconLabel>
           </IconTile>
         )

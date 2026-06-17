@@ -4,17 +4,17 @@ const Badge = styled.span<{ $size: 'sm' | 'md' }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: ${(p) => (p.$size === 'sm' ? '20px' : '22px')};
-  height: ${(p) => (p.$size === 'sm' ? '20px' : '22px')};
+  min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-xl)' : 'var(--ig-icon-2xl)')};
+  height: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-xl)' : 'var(--ig-icon-2xl)')};
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-image-group-circle-bg);
   color: var(--ig-color-text-primary);
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
+  font-size: var(--ig-font-size-2xs);
+  font-weight: var(--ig-font-weight-bold);
+  line-height: var(--ig-line-height-none);
   font-variant-numeric: tabular-nums;
-  border: 1px solid var(--ig-color-image-group-circle-border);
+  border: var(--ig-border-1px) solid var(--ig-color-image-group-circle-border);
 `
 
 export interface GroupCountBadgeProps {

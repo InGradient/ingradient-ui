@@ -24,7 +24,7 @@ export const Review: Story = {
       description="Inline keyboard shortcut hint with key chips. Use in tooltips, menu items, or empty states to show keyboard alternatives."
     >
       <StorybookSection title="Sizes" description="sm and md.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="md (default)">
             <KeyboardShortcutHint keys={['Ctrl', 'K']} />
           </StorybookCard>
@@ -35,7 +35,7 @@ export const Review: Story = {
       </StorybookSection>
 
       <StorybookSection title="Variants" description="Common shortcuts.">
-        <StorybookGrid columns="repeat(auto-fit, minmax(200px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-list-min), 1fr))">
           <StorybookCard title="Single key">
             <KeyboardShortcutHint keys={['Esc']} />
           </StorybookCard>

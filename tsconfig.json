@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@ingradient/ui": ["./src/index.ts"],
-      "@ingradient/ui/legacy": ["./src/legacy/index.ts"],
       "@ingradient/ui/tokens": ["./src/tokens/index.ts"],
       "@ingradient/ui/primitives": ["./src/primitives/index.ts"],
       "@ingradient/ui/components": ["./src/components/index.ts"],
@@ -24,6 +23,7 @@
       "@ingradient/ui/brand": ["./src/brand/index.tsx"],
       "@ingradient/ui/utils": ["./src/utils/index.ts"],
       "@ingradient/platform-pages": ["./packages/platform-pages/src/index.ts"],
+      "@ingradient/edge-pages": ["./packages/edge-pages/src/index.ts"],
       "@storybook-support/*": ["./stories/support/*"]
     }
   },

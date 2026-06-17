@@ -1,10 +1,9 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { ToolbarShell, type ToolbarShellAction } from '../../src/components/inputs/toolbar-shell'
 import {
-  AnnotationToolbar,
   CanvasCoordReadout,
   LabelingCanvas,
-  type AnnotationToolbarAction,
 } from '../../src/patterns'
 import {
   useCanvasMouse,
@@ -23,7 +22,7 @@ function ZoomInvariantCard({ zoom, label }: { zoom: number; label: string }) {
   const imageAreaRef = React.useRef<HTMLDivElement | null>(null)
   const wrapRef = React.useRef<HTMLDivElement | null>(null)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }}>
       <div style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{label}</div>
       <div style={{ position: 'relative', height: 240, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--ig-color-border-subtle)' }}>
         <LabelingCanvas
@@ -57,7 +56,7 @@ import {
 } from './labeling-canvas.stories.helpers'
 
 const meta = {
-  title: 'Patterns/LabelingCanvas',
+  title: 'Patterns/Annotation/LabelingCanvas',
   component: LabelingCanvas,
   tags: ['autodocs'],
   parameters: {
@@ -160,7 +159,7 @@ function InteractiveDemo() {
     }
   }
 
-  const toolbarActions: Array<AnnotationToolbarAction | 'separator'> = [
+  const toolbarActions: Array<ToolbarShellAction | 'separator'> = [
     { key: 'cursor', title: 'Select & move', icon: <CursorIcon />, active: tool === 'cursor', onClick: () => setTool('cursor') },
     { key: 'bbox', title: 'Draw bbox', icon: <BboxIcon />, active: tool === 'bbox', onClick: () => setTool('bbox') },
     { key: 'point', title: 'Add point', icon: <PointIcon />, active: tool === 'point', onClick: () => setTool('point') },
@@ -183,8 +182,8 @@ function InteractiveDemo() {
   })()
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-5)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--ig-color-text-soft)', fontSize: 12 }}>Class:</span>
         {sampleClasses.map((c) => (
           <ClassChip key={c.id} klass={c} active={c.id === classId} onClick={() => handleClassClick(c.id)} />
@@ -217,7 +216,7 @@ function InteractiveDemo() {
           />
         </div>
         <CanvasCoordReadout>{coordText}</CanvasCoordReadout>
-        <AnnotationToolbar placement="bottom" actions={toolbarActions} ariaLabel="Labeling demo" />
+        <ToolbarShell placement="bottom" actions={toolbarActions} ariaLabel="Labeling demo" />
       </div>
     </div>
   )
@@ -240,7 +239,7 @@ export const Review: Story = {
     >
       <StorybookSection title="Interactive labeling demo" description="bbox 드래그 / point 클릭 / cursor mode 에서 zoom>1 시 빈 공간 드래그하면 pan. 우상단 zoom 버튼으로 확대 후 시도해보세요.">
         <StorybookGrid columns="1fr">
-          <StorybookCard title="Full integration" subtitle="useZoomPan + useDrawingCanvas + useCanvasMouse + AnnotationToolbar + CoordReadout">
+          <StorybookCard title="Full integration" subtitle="useZoomPan + useDrawingCanvas + useCanvasMouse + ToolbarShell + CoordReadout">
             <InteractiveDemo />
           </StorybookCard>
         </StorybookGrid>

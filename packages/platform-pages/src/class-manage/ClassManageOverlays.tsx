@@ -1,24 +1,37 @@
-import { ConfirmDialog } from '@ingradient/ui/components'
-import { AddClassDialog, ClassLightbox, ImageContextMenu } from '@ingradient/ui/patterns'
+import { ConfirmDialog, ContextMenuWithSubmenus, ImageContextMenu, TextInputDialog } from '@ingradient/ui/components'
+import { ClassLightbox } from './class-lightbox'
 import type { ClassManageOverlaysProps } from './types'
 
 const CONTEXT_MENU_BASE = [{ key: 'add-ref', label: 'Add to Reference Image' }] as const
 
 export function ClassManageOverlays({
   addClass,
+  classMenu,
   contextMenu,
   lightbox,
   deleteConfirm,
 }: ClassManageOverlaysProps) {
   return (
     <>
-      <AddClassDialog
+      <TextInputDialog
         open={addClass.open}
-        name={addClass.name}
-        onChangeName={addClass.onNameChange}
+        value={addClass.name}
+        onChange={addClass.onNameChange}
         onClose={addClass.onClose}
         onConfirm={addClass.onConfirm}
+        title="Class name"
+        placeholder="Enter class name"
       />
+      {classMenu ? (
+        <ContextMenuWithSubmenus
+          anchorEl={classMenu.anchorEl}
+          onClose={classMenu.onClose}
+          actions={[
+            { key: 'duplicate', label: 'Duplicate', onClick: classMenu.onDuplicate },
+            { key: 'delete', label: 'Delete', tone: 'danger', onClick: classMenu.onDelete },
+          ]}
+        />
+      ) : null}
       <ImageContextMenu
         position={contextMenu.position}
         items={CONTEXT_MENU_BASE.map((item) => ({
@@ -32,7 +45,6 @@ export function ClassManageOverlays({
         open={!!lightbox.image}
         item={lightbox.image}
         imageUrl={lightbox.image?.original_url ?? lightbox.image?.thumb_url ?? null}
-        siblings={lightbox.siblings}
         selectedClassId={lightbox.selectedClassId}
         classIdToColor={lightbox.classIdToColor}
         onClose={lightbox.onClose}

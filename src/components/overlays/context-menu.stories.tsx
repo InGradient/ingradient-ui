@@ -26,51 +26,63 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+// transform: translateZ(0) 로 fixed positioning 의 containing block 을 이 wrapper 로
+// 강제 — demo card 안에 contained. production 에서는 viewport 기준이지만 demo 만 contained.
+const DEMO_WRAPPER_STYLE: React.CSSProperties = {
+  position: 'relative',
+  transform: 'translateZ(0)',
+  minHeight: 280,
+  border: '1px dashed var(--ig-color-border-subtle)',
+  borderRadius: 20,
+  padding: 18,
+  color: 'var(--ig-color-text-soft)',
+  background: 'var(--ig-color-surface-panel)',
+}
+
 function ContextMenuReviewDemo() {
-  const [open, setOpen] = React.useState(false)
+  const wrapperRef = React.useRef<HTMLDivElement>(null)
+  const [anchor, setAnchor] = React.useState<{ x: number; y: number } | null>(null)
   const [subOpen, setSubOpen] = React.useState(false)
   const [selection, setSelection] = React.useState('No action selected yet.')
 
+  const openAtButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = event.currentTarget
+    const wrap = wrapperRef.current
+    if (!wrap) return
+    const btnRect = btn.getBoundingClientRect()
+    const wrapRect = wrap.getBoundingClientRect()
+    setAnchor({
+      x: btnRect.left - wrapRect.left,
+      y: btnRect.bottom - wrapRect.top + 4,
+    })
+  }
+
+  const close = () => {
+    setAnchor(null)
+    setSubOpen(false)
+  }
+
   return (
-    <StorybookGrid columns="minmax(0, 1.1fr) minmax(280px, 0.9fr)">
-      <StorybookCard title="Menu review" subtitle="cursor-positioned actions">
+    <StorybookGrid columns="minmax(0, 1.1fr) minmax(var(--ig-popup-sm), 0.9fr)">
+      <StorybookCard title="Menu review" subtitle="trigger button anchors menu">
         <StorybookStack gap={12}>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
-            Open the menu from the trigger below. In product surfaces this usually maps to a right-click event or an item overflow action.
+            Click the button — menu appears just below it. In production, ContextMenuList uses viewport-fixed positioning from cursor coordinates.
           </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Button variant="secondary" onClick={() => setOpen(true)}>
+          <span style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>{selection}</span>
+          <div ref={wrapperRef} style={DEMO_WRAPPER_STYLE}>
+            <Button variant="secondary" onClick={openAtButton}>
               Open context menu
             </Button>
-            <span style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>{selection}</span>
-          </div>
-          <div
-            style={{
-              minHeight: 220,
-              border: '1px dashed var(--ig-color-border-subtle)',
-              borderRadius: 20,
-              padding: 18,
-              position: 'relative',
-              color: 'var(--ig-color-text-soft)',
-              background: 'var(--ig-color-surface-panel)',
-            }}
-          >
-            Triggering surface placeholder
-            {open ? (
+            {anchor ? (
               <>
-                <ContextMenuBackdrop
-                  aria-hidden
-                  onClick={() => {
-                    setOpen(false)
-                    setSubOpen(false)
-                  }}
-                />
-                <ContextMenuList $x={220} $y={260} onClick={(event) => event.stopPropagation()}>
+                <ContextMenuBackdrop aria-hidden onClick={close} />
+                <ContextMenuList $x={anchor.x} $y={anchor.y} style={{ position: 'absolute' }} onClick={(event) => event.stopPropagation()}>
                   <ContextMenuButton
                     $danger
                     onClick={() => {
                       setSelection('Delete selected.')
-                      setOpen(false)
+                      close()
                     }}
                   >
                     Delete
@@ -83,15 +95,14 @@ function ContextMenuReviewDemo() {
                       Set class ›
                     </ContextMenuButton>
                     {subOpen ? (
-                      <ContextMenuSub $left={352} $top={260}>
+                      <ContextMenuSub $left={anchor.x + 150} $top={anchor.y + 36} style={{ position: 'absolute' }}>
                         {['Primary', 'Review', 'Archived'].map((label) => (
                           <ContextMenuSubItem
                             key={label}
                             type="button"
                             onClick={() => {
                               setSelection(`Class changed to ${label}.`)
-                              setOpen(false)
-                              setSubOpen(false)
+                              close()
                             }}
                           >
                             {label}
@@ -109,13 +120,13 @@ function ContextMenuReviewDemo() {
       <StorybookCard title="Usage notes" subtitle="when to use it">
         <StorybookStack gap={10}>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>
-            Use ContextMenu when you already have cursor coordinates and want a fixed-position action list.
+            Use ContextMenu when you already have cursor coordinates (mouse event, right-click) and want a positioned action list.
           </div>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-secondary)' }}>
             Prefer `MenuPopover` for anchored button menus and `DialogShell` for explicit confirmation flows.
           </div>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
-            This story keeps submenu and click-outside behavior visible without coupling the primitive to domain actions.
+            Production: position: fixed with viewport coords. This story overrides to absolute + wrapper-relative coords so the menu stays inside the demo card.
           </div>
         </StorybookStack>
       </StorybookCard>

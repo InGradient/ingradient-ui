@@ -12,23 +12,23 @@ const ToggleLabel = styled.label`
 `
 
 const SwitchTrack = styled.span<{ $checked: boolean }>`
-  width: 40px;
-  height: 24px;
+  width: var(--ig-control-height-mid-plus);
+  height: var(--ig-icon-3xl);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-bg)' : 'var(--ig-color-toggle-off-bg)')};
-  border: 1px solid ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-border)' : 'var(--ig-color-toggle-off-border)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-border)' : 'var(--ig-color-toggle-off-border)')};
   position: relative;
   transition: background-color var(--ig-motion-fast);
 
   &::after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: ${(p) => (p.$checked ? '18px' : '2px')};
-    width: 18px;
-    height: 18px;
+    top: var(--ig-space-2px);
+    left: ${(p) => (p.$checked ? 'var(--ig-space-8)' : 'var(--ig-space-2px)')};
+    width: var(--ig-icon-lg);
+    height: var(--ig-icon-lg);
     border-radius: var(--ig-radius-pill);
-    background: white;
+    background: var(--ig-color-on-accent);
     transition: left var(--ig-motion-fast);
   }
 `
@@ -45,20 +45,20 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
+  border-radius: var(--ig-radius-2xs);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   flex-shrink: 0;
-  opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
+  opacity: ${(p) => (p.$disabled ? 'var(--ig-opacity-disabled)' : 1)};
 
   svg {
-    width: 12px;
-    height: 12px;
-    stroke: white;
-    stroke-width: 2.5;
+    width: var(--ig-icon-xs);
+    height: var(--ig-icon-xs);
+    stroke: var(--ig-color-on-accent);
+    stroke-width: var(--ig-svg-stroke-bold);
     fill: none;
     opacity: ${(p) => (p.$checked ? 1 : 0)};
     transition: opacity var(--ig-motion-fast);
@@ -69,19 +69,19 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-pill);
   border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: transparent;
   transition: border-color var(--ig-motion-fast);
   flex-shrink: 0;
-  opacity: ${(p) => (p.$disabled ? 0.5 : 1)};
+  opacity: ${(p) => (p.$disabled ? 'var(--ig-opacity-disabled)' : 1)};
 
   &::after {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: var(--ig-space-3);
+    height: var(--ig-space-3);
     border-radius: var(--ig-radius-pill);
     background: var(--ig-color-accent);
     opacity: ${(p) => (p.$checked ? 1 : 0)};
@@ -91,8 +91,25 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
 
 export const Checkbox = React.forwardRef<
   HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode; indeterminate?: boolean }
->(function Checkbox({ label, checked, disabled, indeterminate, ...props }, ref) {
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    label?: React.ReactNode
+    indeterminate?: boolean
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Checkbox({
+  label,
+  checked,
+  disabled,
+  indeterminate,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Checkbox'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
   const innerRef = React.useRef<HTMLInputElement>(null)
   React.useImperativeHandle(ref, () => innerRef.current!)
   React.useEffect(() => {
@@ -100,9 +117,17 @@ export const Checkbox = React.forwardRef<
   }, [indeterminate])
 
   const visual = indeterminate ? 'indeterminate' : !!checked
+  const labelText = typeof label === 'string' ? label : undefined
+  const summaryLabel = componentLabel ?? props['aria-label'] ?? labelText
 
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="checkbox"
+      data-ig-label={summaryLabel}
+    >
       <HiddenInput ref={innerRef} type="checkbox" checked={checked} disabled={disabled} {...props} />
       <CheckboxBox $checked={!!visual} $disabled={disabled}>
         {indeterminate ? (
@@ -118,10 +143,32 @@ export const Checkbox = React.forwardRef<
 
 export const Radio = React.forwardRef<
   HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement> & { label?: React.ReactNode }
->(function Radio({ label, checked, disabled, ...props }, ref) {
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    label?: React.ReactNode
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Radio({
+  label,
+  checked,
+  disabled,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Radio'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+  const labelText = typeof label === 'string' ? label : undefined
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="radio"
+      data-ig-label={componentLabel ?? props['aria-label'] ?? labelText}
+    >
       <HiddenInput ref={ref} type="radio" checked={checked} disabled={disabled} {...props} />
       <RadioDot $checked={!!checked} $disabled={disabled} />
       {label}
@@ -131,10 +178,31 @@ export const Radio = React.forwardRef<
 
 export const Switch = React.forwardRef<
   HTMLInputElement,
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & { label?: React.ReactNode }
->(function Switch({ checked = false, label, ...props }, ref) {
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+    label?: React.ReactNode
+    'data-ig-component'?: string
+    'data-ig-label'?: string
+    'data-ig-slot'?: string
+  }
+>(function Switch({
+  checked = false,
+  label,
+  'data-ig-component': componentHint,
+  'data-ig-label': componentLabel,
+  'data-ig-slot': slotHint,
+  ...props
+}, ref) {
+  const componentName = 'Switch'
+  const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
+  const labelText = typeof label === 'string' ? label : undefined
   return (
-    <ToggleLabel>
+    <ToggleLabel
+      data-ig-component={componentName}
+      data-ig-layer="components"
+      data-ig-slot={slotName}
+      data-ig-kind="switch"
+      data-ig-label={componentLabel ?? props['aria-label'] ?? labelText}
+    >
       <HiddenInput ref={ref} type="checkbox" checked={checked} {...props} />
       <SwitchTrack $checked={checked} />
       {label}

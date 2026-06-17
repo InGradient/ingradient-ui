@@ -49,7 +49,7 @@ export const Review: Story = {
     const [underlineValue, setUnderlineValue] = React.useState('permissions')
 
     return (
-      <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+      <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
         <StorybookCard title="Pill variant" subtitle="툴바나 좁은 panel 내부">
           <Tabs {...args} value={pillValue} onChange={setPillValue} variant="pill" />
         </StorybookCard>

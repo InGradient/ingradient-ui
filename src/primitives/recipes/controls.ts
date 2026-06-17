@@ -7,11 +7,11 @@ export const controlField = css`
   height: var(--ig-control-height-md);
   padding: 0 var(--ig-space-5);
   border-radius: var(--ig-radius-md);
-  border: 1px solid var(--ig-color-border-strong);
+  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  line-height: 1;
+  line-height: var(--ig-line-height-none);
   transition:
     border-color var(--ig-motion-fast),
     box-shadow var(--ig-motion-fast),
@@ -22,14 +22,14 @@ export const controlField = css`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
     box-shadow: var(--ig-shadow-focus-ring);
     background: var(--ig-color-surface-focus);
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
     border-style: dashed;
     background: var(--ig-color-surface-muted);
@@ -39,7 +39,7 @@ export const controlField = css`
   &:where(textarea) {
     height: auto;
     padding: var(--ig-space-4) var(--ig-space-5);
-    line-height: 1.4;
+    line-height: var(--ig-line-height-snug);
   }
 
   &:where([type='date']),
@@ -52,8 +52,8 @@ export const controlField = css`
       cursor: pointer;
       padding: var(--ig-space-1);
       border-radius: var(--ig-radius-xs);
-      opacity: 0.7;
-      transition: opacity 0.15s;
+      opacity: var(--ig-opacity-subtle);
+      transition: opacity var(--ig-motion-fast);
     }
 
     &::-webkit-calendar-picker-indicator:hover {
@@ -73,8 +73,8 @@ export const controlField = css`
     &::-webkit-datetime-edit-day-field,
     &::-webkit-datetime-edit-year-field {
       color: var(--ig-color-text-primary);
-      padding: 2px;
-      border-radius: 2px;
+      padding: var(--ig-space-2px);
+      border-radius: var(--ig-radius-xs);
     }
 
     &::-webkit-datetime-edit-month-field:focus,
@@ -86,7 +86,7 @@ export const controlField = css`
 
     &::-webkit-datetime-edit-text {
       color: var(--ig-color-text-muted);
-      padding: 0 1px;
+      padding: 0 var(--ig-space-1px);
     }
   }
 
@@ -99,9 +99,7 @@ export const controlField = css`
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2398A2B3' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - var(--ig-space-7)) center;
-    background-size: 10px 6px;
-    box-shadow:
-      inset 0 1px 0 var(--ig-color-inset-highlight),
-      0 10px 24px rgba(0, 0, 0, 0.12);
+    background-size: var(--ig-space-4) var(--ig-space-2);
+    box-shadow: var(--ig-shadow-control-elevated);
   }
 `

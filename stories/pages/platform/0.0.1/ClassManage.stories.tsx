@@ -52,8 +52,13 @@ function ClassManageScene({ scenario: key }: Args) {
         classes: s.classes,
         selectedClassId: s.selectedClassId,
         loading: scenario.classesLoading,
+        sidebarCollapsed: s.sidebarCollapsed,
+        openMenuId: s.classMenu?.classId,
         onSelectClass: s.setSelectedClassId,
         onAddClass: () => s.setAddClassOpen(true),
+        onCollapse: s.collapseSidebar,
+        onExpand: s.expandSidebar,
+        onOpenClassMenu: s.openClassMenu,
       }}
       images={{
         selectedClassId: s.selectedClassId,
@@ -81,7 +86,6 @@ function ClassManageScene({ scenario: key }: Args) {
               currentMapping: s.currentMapping,
               onChangeClass: (patch) => s.updateClass(selectedClass.id, patch),
               onRandomizeColor: s.randomizeColor,
-              onDeleteClass: () => s.setDeleteConfirmOpen(true),
               onSetReferenceDragOver: s.setReferenceDragOver,
               onApplyReferenceImage: (imageId) =>
                 s.updateClass(selectedClass.id, {
@@ -101,6 +105,17 @@ function ClassManageScene({ scenario: key }: Args) {
           onClose: () => s.setAddClassOpen(false),
           onConfirm: () => s.setAddClassOpen(false),
         },
+        classMenu: s.classMenu
+          ? {
+              anchorEl: s.classMenu.anchorEl,
+              onClose: s.closeClassMenu,
+              onDuplicate: s.duplicateMenuClass,
+              onDelete: () => {
+                s.closeClassMenu()
+                s.setDeleteConfirmOpen(true)
+              },
+            }
+          : undefined,
         contextMenu: {
           position: s.contextMenuOpen
             ? { top: s.contextMenuOpen.top, left: s.contextMenuOpen.left }
@@ -109,7 +124,6 @@ function ClassManageScene({ scenario: key }: Args) {
         },
         lightbox: {
           image: s.lightboxImage,
-          siblings: scenario.lightboxSiblings ?? [],
           selectedClassId: s.selectedClassId,
           classIdToColor,
           onClose: () => s.setLightboxImage(null),
@@ -169,3 +183,5 @@ export const AddClassModalOpen: Story = { args: { scenario: 'add-class-modal-ope
 export const DeleteConfirmOpen: Story = { args: { scenario: 'delete-confirm-open' } }
 export const MappingCocoActive: Story = { args: { scenario: 'mapping-coco-active' } }
 export const MappingDisabled: Story = { args: { scenario: 'mapping-disabled' } }
+export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
+export const ClassMenuOpen: Story = { args: { scenario: 'class-menu-open' } }

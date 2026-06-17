@@ -16,7 +16,7 @@ export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
   gap: var(--ig-space-1);
   width: 100%;
   padding: var(--ig-space-2);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].root};
   background: var(--ig-color-surface-panel);
 `
@@ -27,7 +27,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   right: var(--ig-space-2);
   top: ${(p) => `${p.$top}px`};
   height: ${(p) => `${p.$height}px`};
-  border-left: 3px solid var(--ig-color-accent-soft);
+  border-left: var(--ig-border-3px) solid var(--ig-color-accent-soft);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].item};
   background: var(--ig-color-tab-highlight);
   opacity: ${(p) => (p.$visible ? 1 : 0)};
@@ -40,20 +40,20 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
 
 export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTabsRadius }>`
   position: relative;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--ig-space-3);
   width: 100%;
-  min-height: 44px;
+  min-height: var(--ig-control-height-lg);
   padding: var(--ig-space-4) var(--ig-space-4) var(--ig-space-4) var(--ig-space-5);
   border: 0;
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].item};
   background: transparent;
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
-  font-weight: ${(p) => (p.$active ? 600 : 500)};
+  font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)')};
   text-align: left;
   cursor: pointer;
   transition:
@@ -66,13 +66,13 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ig-color-accent-ring);
-    outline-offset: -2px;
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
     box-shadow: var(--ig-shadow-focus-ring);
   }
 
   &:disabled {
-    opacity: 0.48;
+    opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
   }
 `
@@ -95,13 +95,13 @@ export const ItemBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
+  min-width: var(--ig-icon-lg);
+  height: var(--ig-icon-lg);
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-badge-accent);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
-  font-weight: 700;
-  line-height: 1;
+  font-weight: var(--ig-font-weight-bold);
+  line-height: var(--ig-line-height-none);
 `

@@ -1,26 +1,34 @@
 import type { ReactNode } from 'react'
+import type { AutoSaveState } from '@ingradient/ui/patterns'
+import type { ProjectTypeTone } from './project'
 import type {
-  AutoSaveState,
   DeleteAccountPreview,
   DeleteAccountResolutions,
+  LicenseInfo,
+  SettingsAccountTabUser,
+} from './account'
+import type {
+  InvitationsTabProps,
+  OrgMembersTabProps,
+  OrgSettingsTabProps,
+} from './organization'
+import type {
+  GroupVisible,
+  ProjectMemberRowMember,
+  ProjectMemberRowRoleOption,
+  SearchableUserCandidate,
+} from './project'
+import type {
   DevicesFormsProps,
   DevicesLicenseSectionProps,
   DevicesTableProps,
+} from './devices'
+import type {
   ExpandedPermissionGroup,
-  GroupVisible,
-  InvitationsTabProps,
-  LicenseInfo,
-  OrgMembersTabProps,
-  OrgSettingsTabProps,
   PermissionMatrixRole,
-  ProjectMemberRowMember,
-  ProjectMemberRowRoleOption,
-  ProjectTypeTone,
   RoleMatrix,
-  SearchableUserCandidate,
-  SettingsAccountTabUser,
   SummaryPermissionGroup,
-} from '@ingradient/ui/patterns'
+} from './project'
 import type { EdgeTabKey } from './edge-tab'
 
 export interface EdgeTabPaneProps {

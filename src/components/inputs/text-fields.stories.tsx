@@ -92,7 +92,7 @@ export const Review: Story = {
           title="Field family review"
           description="Compare single-line, multiline, and password inputs with the same visual language and the same semantic validation state."
         >
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="TextField" subtitle="single-line input">
               <StorybookStack gap={12}>
                 <TextField

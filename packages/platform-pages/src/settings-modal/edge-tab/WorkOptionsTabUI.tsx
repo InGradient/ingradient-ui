@@ -1,10 +1,11 @@
-import { Button } from '@ingradient/ui/components'
+import { Button, Checkbox } from '@ingradient/ui/components'
 import type {
   DeflectometryConfig,
   DeflectometryPatternLabel,
   EdgePackageOptions,
 } from './edge-types'
 import {
+  ActionsRow,
   CheckItem,
   CheckList,
   ErrorHint,
@@ -61,26 +62,24 @@ export function WorkOptionsTabUI({
         <SectionTitle>Locked on Edge</SectionTitle>
         <CheckList>
           <CheckItem>
-            <input
-              type="checkbox"
+            <Checkbox
               aria-label="Require labeling before proceeding"
+              label="Require labeling before proceeding"
               checked={options.require_labeling}
               onChange={(event) =>
                 onOptionsChange({ ...options, require_labeling: event.target.checked })
               }
             />
-            Require labeling before proceeding
           </CheckItem>
           <CheckItem>
-            <input
-              type="checkbox"
+            <Checkbox
               aria-label="Block Save if no label"
+              label={'Block "Save" if no label (hides Skip button)'}
               checked={options.block_next_without_labeling}
               onChange={(event) =>
                 onOptionsChange({ ...options, block_next_without_labeling: event.target.checked })
               }
             />
-            Block "Save" if no label (hides Skip button)
           </CheckItem>
         </CheckList>
         <FieldRow>
@@ -107,12 +106,12 @@ export function WorkOptionsTabUI({
         />
       )}
 
-      <div style={{ marginTop: 16 }}>
-        <Button variant="accent" type="button" onClick={onSave} disabled={savePending}>
+      <ActionsRow>
+        <Button variant="solid" type="button" onClick={onSave} disabled={savePending}>
           {savePending ? 'Saving…' : 'Save Work Options'}
         </Button>
-        {saveError && <ErrorHint style={{ marginTop: 8 }}>{saveError}</ErrorHint>}
-      </div>
+        {saveError && <ErrorHint>{saveError}</ErrorHint>}
+      </ActionsRow>
     </>
   )
 }

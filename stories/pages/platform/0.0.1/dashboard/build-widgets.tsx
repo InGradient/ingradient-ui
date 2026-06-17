@@ -7,7 +7,7 @@ import {
   AnalysisTimelineWidget,
   PerDatasetDistributionWidget,
   SourceBreakdownWidget,
-} from '@ingradient/ui/patterns'
+} from '@ingradient/platform-pages'
 import {
   classRatioData,
   dataCollectionData,

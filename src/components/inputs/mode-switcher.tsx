@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Row = styled.div<{ $size: 'sm' | 'md'; $shape: 'rounded' | 'pill' }>`
   display: inline-flex;
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => (p.$shape === 'pill' ? 'var(--ig-radius-pill)' : 'var(--ig-radius-md)')};
   overflow: hidden;
   background: ${(p) => (p.$shape === 'pill' ? 'var(--ig-color-surface-raised)' : 'var(--ig-color-surface-muted)')};
@@ -18,7 +18,7 @@ const OptionBtn = styled.button<{ $active: boolean; $size: 'sm' | 'md' }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
-  font-weight: ${(p) => (p.$active ? 600 : 400)};
+  font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-regular)')};
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--ig-motion-fast), color var(--ig-motion-fast);
@@ -67,3 +67,7 @@ export function ModeSwitcher({
     </Row>
   )
 }
+
+export const SegmentedControl = ModeSwitcher
+export type SegmentedControlOption = ModeSwitcherOption
+export type SegmentedControlProps = ModeSwitcherProps

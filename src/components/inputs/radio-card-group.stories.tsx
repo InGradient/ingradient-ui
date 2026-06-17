@@ -42,7 +42,7 @@ export const Review: Story = {
         description="Vertical option group for form questions (e.g. Task Type in Add Dataset). Each option is a full-width selectable card with active/disabled state. Use for 2-6 options where the choice is meaningful and labels need to be readable."
       >
         <StorybookSection title="Variants" description="Task type form, simple options, and per-option disabled state.">
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="Task type" subtitle="real form use case (with disabled option)">
               <RadioCardGroup
                 options={taskTypeOptions}

@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import type { DrawingObject } from './useDrawingCanvas'
+import { getNormalizedCoord } from './normalized-coord'
 
 export interface UseCanvasMouseConfig {
   /** Current tool — 'cursor' enables pan-when-zoomed + hit-test. */
@@ -60,11 +61,7 @@ function toNorm(
   event: React.MouseEvent,
   containerRef: React.RefObject<HTMLElement | null>,
 ): { nx: number; ny: number } | null {
-  const el = containerRef.current
-  if (!el) return null
-  const rect = el.getBoundingClientRect()
-  if (rect.width === 0 || rect.height === 0) return null
-  return { nx: (event.clientX - rect.left) / rect.width, ny: (event.clientY - rect.top) / rect.height }
+  return getNormalizedCoord(containerRef, event)
 }
 
 /**

@@ -1,4 +1,4 @@
-import type { StorageOverviewItem, StorageRecommendation, StorageStatsTableColumn } from '@ingradient/ui/patterns'
+import type { StorageOverviewItem, StorageRecommendation, StorageStatsTableColumn } from '@ingradient/platform-pages'
 
 export const storageOverviewItems: StorageOverviewItem[] = [
   { label: 'Total Images', value: '128,402' },

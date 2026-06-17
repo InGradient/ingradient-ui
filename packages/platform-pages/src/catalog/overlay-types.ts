@@ -5,7 +5,7 @@ import type {
   GalleryExportJobView,
   GalleryExportRange,
   GalleryExportType,
-} from '@ingradient/ui/patterns'
+} from './gallery'
 import type { CatalogClass, CatalogDataset, CatalogImage } from './types'
 
 export interface CatalogOverlaysProps {
@@ -58,7 +58,7 @@ export interface CatalogOverlaysProps {
   }
   igpExport: {
     open: boolean
-    phase: 'preparing' | 'compressing' | 'ready' | 'error'
+    phase: 'preparing' | 'processing' | 'ready' | 'error'
     progress: number
     downloadUrl?: string
     filename: string

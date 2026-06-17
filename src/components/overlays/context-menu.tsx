@@ -14,7 +14,7 @@ export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p) 
 }))<{ $x: number; $y: number }>`
   position: fixed;
   z-index: calc(var(--ig-z-context-menu) + 1);
-  min-width: 120px;
+  min-width: var(--ig-popup-2xs);
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
@@ -51,7 +51,7 @@ export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>(
 }))<{ $left: number; $top: number }>`
   position: fixed;
   z-index: calc(var(--ig-z-context-menu) + 2);
-  min-width: 140px;
+  min-width: var(--ig-popup-2xs);
   padding: var(--ig-space-1) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);

@@ -10,7 +10,7 @@ export const Textarea = styled.textarea`
   ${controlField}
   font-size: var(--ig-font-size-xs);
   resize: vertical;
-  min-height: 60px;
+  min-height: var(--ig-control-height-mid-plus-tall);
 `
 
 export const Menu = styled.div`
@@ -18,12 +18,12 @@ export const Menu = styled.div`
   bottom: 100%;
   left: 0;
   right: 0;
-  max-height: 160px;
+  max-height: var(--ig-popup-2xs-plus);
   overflow-y: auto;
   background: var(--ig-color-surface-raised);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
-  box-shadow: var(--ig-shadow-md);
+  box-shadow: var(--ig-shadow-menu);
   z-index: var(--ig-z-dropdown);
 `
 
@@ -42,7 +42,7 @@ export const Option = styled.button<{ $active: boolean }>`
 
 export const Primary = styled.span`
   font-size: var(--ig-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--ig-font-weight-medium);
 `
 
 export const Secondary = styled.span`

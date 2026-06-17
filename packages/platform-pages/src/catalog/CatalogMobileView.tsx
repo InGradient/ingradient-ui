@@ -1,9 +1,15 @@
+import { GalleryFilterPanel } from './gallery'
 import {
-  CatalogMobileShell,
-  DatasetSelectorMobile,
-  GalleryFilterPanel,
-  GalleryMobileToolbar,
-} from '@ingradient/ui/patterns'
+  DownloadIcon,
+  FilterIcon,
+  GridIcon,
+  MobileBottomToolbar,
+  MobileDropdown,
+  MobileShell,
+  SortIcon,
+  TableIcon,
+  UploadIcon,
+} from '@ingradient/ui/components'
 import { CatalogBody } from './CatalogBody'
 import { MobileBottomSheet } from './CatalogView.styles'
 import type {
@@ -33,10 +39,10 @@ export function CatalogMobileView({
 }: Props) {
   return (
     <>
-      <CatalogMobileShell
+      <MobileShell
         topBar={
-          <DatasetSelectorMobile
-            datasets={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}
+          <MobileDropdown
+            options={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}
             currentId={datasets.currentId}
             loading={datasets.loading}
             open={mobile.datasetSelectorOpen}
@@ -55,21 +61,45 @@ export function CatalogMobileView({
           />
         }
         bottomBar={
-          <GalleryMobileToolbar
-            viewMode={toolbar.viewMode === 'grid' ? 'grid' : 'table'}
-            onToggleView={() =>
-              toolbar.onChangeViewMode(toolbar.viewMode === 'grid' ? 'table' : 'grid')
-            }
-            hasActiveFilter={toolbar.hasActiveFilter}
-            onFilterClick={() =>
-              mobile.onSetBottomSheet(mobile.bottomSheet === 'filter' ? null : 'filter')
-            }
-            onSortClick={() =>
-              mobile.onSetBottomSheet(mobile.bottomSheet === 'sort' ? null : 'sort')
-            }
-            canExport={images.images.length > 0}
-            onExportClick={toolbar.onExport}
-            onUploadClick={toolbar.onUpload}
+          <MobileBottomToolbar
+            actions={[
+              {
+                key: 'view',
+                label: 'View',
+                icon: toolbar.viewMode === 'grid' ? <GridIcon /> : <TableIcon />,
+                active: toolbar.viewMode === 'grid',
+                onClick: () =>
+                  toolbar.onChangeViewMode(toolbar.viewMode === 'grid' ? 'table' : 'grid'),
+              },
+              {
+                key: 'filter',
+                label: 'Filter',
+                icon: <FilterIcon />,
+                active: toolbar.hasActiveFilter,
+                onClick: () =>
+                  mobile.onSetBottomSheet(mobile.bottomSheet === 'filter' ? null : 'filter'),
+              },
+              {
+                key: 'sort',
+                label: 'Sort',
+                icon: <SortIcon />,
+                onClick: () =>
+                  mobile.onSetBottomSheet(mobile.bottomSheet === 'sort' ? null : 'sort'),
+              },
+              {
+                key: 'export',
+                label: 'Export',
+                icon: <DownloadIcon />,
+                disabled: images.images.length === 0,
+                onClick: toolbar.onExport,
+              },
+              {
+                key: 'upload',
+                label: 'Upload',
+                icon: <UploadIcon />,
+                onClick: toolbar.onUpload,
+              },
+            ]}
           />
         }
       />

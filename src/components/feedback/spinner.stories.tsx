@@ -27,16 +27,16 @@ export const Review: Story = {
         title="Tone and size review"
         description="Review spinner readability across common size and tone combinations."
       >
-        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="Sizes" subtitle="sm / md / lg">
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: 'var(--ig-space-7)', alignItems: 'center' }}>
               <Spinner size="sm" />
               <Spinner size="md" />
               <Spinner size="lg" />
             </div>
           </StorybookCard>
           <StorybookCard title="Tones" subtitle="accent / white / muted">
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: 'var(--ig-space-7)', alignItems: 'center' }}>
               <Spinner tone="accent" />
               <Spinner tone="white" />
               <Spinner tone="muted" />

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { B3 } from '../../primitives'
 import { Button } from '../inputs/button'
 import { DialogCloseButton } from './dialog-close-button'
 import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from './modal-primitives'
@@ -15,12 +16,7 @@ const DialogContent = styled.div`
   overflow-y: auto;
 `
 
-const DialogDescription = styled.p`
-  margin: 0;
-  font-size: var(--ig-font-size-sm);
-  line-height: 1.6;
-  color: var(--ig-color-text-muted);
-`
+const DIALOG_DESCRIPTION_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-loose)' }
 
 export function DialogShell({
   title,
@@ -28,7 +24,7 @@ export function DialogShell({
   children,
   actions,
   onClose,
-  width = 'min(720px, 100%)',
+  width = 'min(var(--ig-popup-3xl-mid), 100%)',
   height,
 }: {
   title: React.ReactNode
@@ -63,7 +59,7 @@ export function DialogShell({
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}
         </ModalHeader>
         <DialogContent>
-          {description ? <DialogDescription>{description}</DialogDescription> : null}
+          {description ? <B3 as="p" tone="muted" style={DIALOG_DESCRIPTION_STYLE}>{description}</B3> : null}
           {children}
           {actions ? <ModalActions>{actions}</ModalActions> : null}
         </DialogContent>
@@ -96,7 +92,7 @@ export function ConfirmDialog({
       title={title}
       description={description}
       onClose={onCancel}
-      width="min(520px, 100%)"
+      width="min(var(--ig-popup-2xl-wide), 100%)"
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onCancel}>{cancelLabel}</Button>

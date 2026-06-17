@@ -20,7 +20,7 @@ export const Playground: Story = {}
 
 export const Review: Story = {
   render: () => (
-    <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+    <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
       <StorybookCard title="Alert tones" subtitle="페이지 수준 메시지">
         <StorybookStack>
           <Alert $tone="info">Review mode is active for this dataset.</Alert>

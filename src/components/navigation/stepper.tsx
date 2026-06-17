@@ -8,9 +8,9 @@ export function Stepper({
   activeStep: number
 }) {
   return (
-    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', gap: 'var(--ig-space-5)', flexWrap: 'wrap' }}>
       {steps.map((step, index) => (
-        <div key={step} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div key={step} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
           <Badge $tone={index <= activeStep ? 'accent' : 'neutral'}>{index + 1}</Badge>
           <span style={{ color: index <= activeStep ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)' }}>{step}</span>
         </div>

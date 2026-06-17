@@ -1,5 +1,5 @@
 import type { AnnotationBoundingBox } from '@ingradient/ui/patterns'
-import type { Comment } from '@ingradient/ui/patterns'
+import type { Comment } from '@ingradient/platform-pages'
 
 export const sampleAnnotations: AnnotationBoundingBox[] = [
   { id: 'box-1', label: 'Crack', color: '#ff6b6b', x: 0.12, y: 0.18, width: 0.32, height: 0.24 },

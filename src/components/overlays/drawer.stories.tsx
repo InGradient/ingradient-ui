@@ -28,7 +28,7 @@ function DrawerReviewDemo() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <StorybookGrid columns="minmax(0, 1fr) minmax(280px, 0.9fr)">
+    <StorybookGrid columns="minmax(0, 1fr) minmax(var(--ig-popup-sm), 0.9fr)">
       <StorybookCard title="Drawer review" subtitle="supporting side sheet">
         <StorybookStack gap={12}>
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
@@ -55,7 +55,7 @@ function DrawerReviewDemo() {
             <ModalBackdrop onClick={() => setOpen(false)}>
               <Drawer $side="right" onClick={(event) => event.stopPropagation()}>
                 <StorybookStack gap={16}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)', alignItems: 'center' }}>
                     <strong style={{ color: 'var(--ig-color-text-primary)' }}>Workspace Filters</strong>
                     <Button variant="secondary" onClick={() => setOpen(false)}>
                       Close
@@ -70,7 +70,7 @@ function DrawerReviewDemo() {
                       defaultValue="active"
                       style={{
                         width: '100%',
-                        padding: '12px 14px',
+                        padding: 'var(--ig-space-5) var(--ig-space-6)',
                         borderRadius: 12,
                         border: '1px solid var(--ig-color-border-subtle)',
                         background: 'var(--ig-color-surface-muted)',

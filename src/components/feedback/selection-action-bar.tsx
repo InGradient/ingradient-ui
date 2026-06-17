@@ -6,15 +6,15 @@ const Bar = styled.div`
   align-items: center;
   gap: var(--ig-space-4);
   padding: var(--ig-space-3) var(--ig-space-5);
-  background: var(--ig-color-surface-elevated);
-  border: 1px solid var(--ig-color-border-subtle);
+  background: var(--ig-color-surface-raised);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-primary);
 `
 
 const Count = styled.span`
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   white-space: nowrap;
 `
 

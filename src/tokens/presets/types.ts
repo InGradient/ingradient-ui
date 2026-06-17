@@ -29,7 +29,7 @@ export type TokenOverrides = Record<string, string>
 /**
  * 하나의 완성된 제품 디자인 snapshot. Theme + Brand + Density + Mode 조합 + optional override.
  *
- * 상위 문서: docs/storybook_architecture_restructure.md § 4
+ * 상위 문서: docs-legacy/storybook_architecture_restructure.md § 4
  */
 export interface Preset {
   /** unique id (e.g. 'platform-0.0.1') */

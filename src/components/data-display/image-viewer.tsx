@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { useZoomPan, type UseZoomPanOptions } from '../../hooks'
 
 const Wrap = styled.div`
-  position: relative;
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -20,6 +19,8 @@ const ZoomLayer = styled.div<{ $zoom: number; $panX: number; $panY: number }>`
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
+  height: 100%;
 `
 
 const Img = styled.img`

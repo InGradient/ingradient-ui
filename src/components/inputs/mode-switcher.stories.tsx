@@ -30,7 +30,7 @@ export const Review: Story = {
         description="Toolbar segmented selector for view/period/mode toggles. Inline-flex segment row. Use for 2-4 short options where the choice is between tightly-related views."
       >
         <StorybookSection title="With icons" description="Common toolbar pattern (grid / list / table view).">
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="View mode" subtitle={`current: ${view}`}>
               <ModeSwitcher
                 value={view}
@@ -58,7 +58,7 @@ export const Review: Story = {
         </StorybookSection>
 
         <StorybookSection title="Sizes" description="sm and md.">
-          <StorybookGrid columns="repeat(auto-fit, minmax(280px, 1fr))">
+          <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm), 1fr))">
             <StorybookCard title="md (default)">
               <ModeSwitcher
                 value={view}

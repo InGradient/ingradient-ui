@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { surfacePanel } from '../../primitives'
-import { appShell, pageContentLayout, pageHeaderSurface } from '../shared/surfaces'
+import { appShell, pageContentLayout, pageHeaderSurface } from '../../primitives/recipes/patterns'
 import { media } from '../../tokens/core/breakpoints'
 
 export const AppShell = styled.div`
@@ -36,8 +36,8 @@ export const PageTitleBlock = styled.div`
 export const PageTitle = styled.h1`
   margin: 0;
   font-size: var(--ig-font-size-2xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: var(--ig-font-weight-bold);
+  letter-spacing: var(--ig-letter-spacing-heading);
 
   ${media.md} {
     font-size: var(--ig-font-size-xl);
@@ -73,7 +73,7 @@ export const Panel = styled.section`
 
 export const PanelHeader = styled.div`
   padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);
-  border-bottom: 1px solid var(--ig-color-border-subtle);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,7 +83,7 @@ export const PanelHeader = styled.div`
 export const PanelTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-md);
-  font-weight: 700;
+  font-weight: var(--ig-font-weight-bold);
 `
 
 export const PanelHint = styled.span`
@@ -94,7 +94,7 @@ export const PanelHint = styled.span`
 export const SectionTitle = styled.h3`
   margin: 0 0 var(--ig-space-5);
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
 
@@ -106,7 +106,7 @@ export const Toolbar = styled.div`
   flex-wrap: wrap;
   padding: var(--ig-space-6) var(--ig-space-7);
   border-radius: var(--ig-radius-lg);
-  border: 1px solid var(--ig-color-border-subtle);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-toolbar-surface);
 `
 
@@ -134,7 +134,7 @@ export const FieldGroup = styled.div`
 
 export const FieldLabel = styled.label`
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
 `
 

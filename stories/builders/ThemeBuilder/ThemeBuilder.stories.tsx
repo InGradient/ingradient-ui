@@ -114,7 +114,7 @@ function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuild
   return (
     <div style={pageStyle}>
       <Stack gap={7}>
-        <h1 style={{ fontSize: 'var(--ig-font-size-2xl)', fontWeight: 600, margin: 0 }}>ThemeBuilder</h1>
+        <h1 style={{ fontSize: 'var(--ig-font-size-2xl)', fontWeight: 'var(--ig-font-weight-semibold)', margin: 0 }}>ThemeBuilder</h1>
         <PreviewSections />
 
         <Stack gap={3}>
@@ -148,7 +148,7 @@ function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuild
               {drafts.map((d) => (
                 <Inline key={d.name} gap={3} justify="space-between" align="center">
                   <Stack gap={0}>
-                    <span style={{ fontWeight: 600 }}>{d.name}</span>
+                    <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{d.name}</span>
                     <span style={overrideKeyStyle}>
                       {d.args.theme} · {d.args.brand} · {d.args.density} · {d.args.mode} · {new Date(d.savedAt).toLocaleString()}
                     </span>

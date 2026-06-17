@@ -1,0 +1,82 @@
+import React from 'react'
+import { Box, Inline } from '../../primitives'
+import { Checkbox } from '../../components/inputs/toggles'
+import { TextButton } from '../../components/inputs/text-button'
+import { ColorSwatch } from '../../components/data-display/color-swatch'
+
+const WRAP_BASE_STYLE = {
+  overflowY: 'auto' as const,
+  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  borderRadius: 'var(--ig-radius-sm)',
+  padding: 'var(--ig-space-2) 0',
+  minWidth: 0,
+}
+
+const HEADER_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+}
+
+const ITEM_ROW_STYLE = {
+  padding: 'var(--ig-space-2) var(--ig-space-4)',
+  fontSize: 'var(--ig-font-size-sm)',
+  color: 'var(--ig-color-text-primary)',
+}
+
+export interface CheckboxGroupItem {
+  id: string
+  label: string
+  color?: string
+}
+
+export interface CheckboxGroupProps {
+  items: CheckboxGroupItem[]
+  selectedIds: Set<string>
+  onChange: (next: Set<string>) => void
+  maxHeight?: number
+  showSelectAll?: boolean
+}
+
+export function CheckboxGroup({
+  items,
+  selectedIds,
+  onChange,
+  maxHeight = 160,
+  showSelectAll = true,
+}: CheckboxGroupProps) {
+  const handleToggle = (id: string) => {
+    const next = new Set(selectedIds)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    onChange(next)
+  }
+
+  return (
+    <Box style={{ ...WRAP_BASE_STYLE, maxHeight }}>
+      {showSelectAll && (
+        <Inline gap={3} style={HEADER_STYLE}>
+          <TextButton tone="accent" size="xs" onClick={() => onChange(new Set(items.map((it) => it.id)))}>
+            Select All
+          </TextButton>
+          <TextButton tone="muted" size="xs" onClick={() => onChange(new Set())}>
+            Deselect All
+          </TextButton>
+        </Inline>
+      )}
+      {items.map((item) => (
+        <Inline key={item.id} gap={3} style={ITEM_ROW_STYLE}>
+          <Checkbox
+            checked={selectedIds.has(item.id)}
+            onChange={() => handleToggle(item.id)}
+            label={
+              <>
+                {item.color ? <ColorSwatch $color={item.color} $size="sm" $shape="square" /> : null}
+                {item.label}
+              </>
+            }
+          />
+        </Inline>
+      ))}
+    </Box>
+  )
+}

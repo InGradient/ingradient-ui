@@ -9,7 +9,7 @@ import {
 } from './sidebar-shell.stories.helpers'
 
 const meta = {
-  title: 'Patterns/SidebarShell',
+  title: 'Patterns/Navigation/SidebarShell',
   component: SidebarShell,
   tags: ['autodocs'],
   parameters: {

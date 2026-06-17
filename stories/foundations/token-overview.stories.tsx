@@ -1,5 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { foundationColors, motionScale, radiusScale, shadowScale, spacingScale, typographyScale } from '../../src/tokens'
+import {
+  aspectRatios,
+  chartColors,
+  chartHeights,
+  controlSizes,
+  foundationColors,
+  iconSizes,
+  layoutScale,
+  motionScale,
+  opacityScale,
+  popupSizes,
+  radiusScale,
+  shadowScale,
+  spacingScale,
+  transformScale,
+  typographyScale,
+  zIndexScale,
+} from '../../src/tokens'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {
@@ -20,14 +37,24 @@ const radiusEntries = Object.entries(radiusScale)
 const typeEntries = Object.entries(typographyScale)
 const shadowEntries = Object.entries(shadowScale)
 const motionEntries = Object.entries(motionScale)
+const controlEntries = Object.entries(controlSizes)
+const popupEntries = Object.entries(popupSizes)
+const iconEntries = Object.entries(iconSizes)
+const layoutEntries = Object.entries(layoutScale)
+const opacityEntries = Object.entries(opacityScale)
+const zIndexEntries = Object.entries(zIndexScale)
+const aspectEntries = Object.entries(aspectRatios)
+const transformEntries = Object.entries(transformScale)
+const chartColorEntries = Object.entries(chartColors)
+const chartHeightEntries = Object.entries(chartHeights)
 
 function colorPreview(value: string) {
   return (
     <div
       style={{
-        height: 84,
+        height: 'var(--ig-layout-histogram-height)',
         borderRadius: 'var(--ig-radius-lg)',
-        border: '1px solid var(--ig-color-border-subtle)',
+        border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
         background: value,
       }}
     />
@@ -63,7 +90,7 @@ export const Overview: Story = {
         >
           <StorybookStack gap={12}>
             {typeEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: '120px minmax(0, 1fr)', gap: 12, alignItems: 'baseline' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-2xs-narrow) minmax(0, 1fr)', gap: 'var(--ig-space-5)', alignItems: 'baseline' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div style={{ fontFamily: typographyScale.fontSans, fontSize: value }}>
                   The quick brown fox jumps over the lazy dog.
@@ -79,13 +106,13 @@ export const Overview: Story = {
         >
           <StorybookStack gap={10}>
             {spacingEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: '48px minmax(0, 1fr) 56px', gap: 12, alignItems: 'center' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-control-height-xl) minmax(0, 1fr) var(--ig-control-height-2xl-wide)', gap: 'var(--ig-space-5)', alignItems: 'center' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
-                <div style={{ height: 12, borderRadius: 999, background: 'var(--ig-color-surface-active)' }}>
+                <div style={{ height: 'var(--ig-space-5)', borderRadius: 999, background: 'var(--ig-color-surface-active)' }}>
                   <div
                     style={{
                       width: value,
-                      minWidth: 8,
+                      minWidth: 'var(--ig-space-3)',
                       height: '100%',
                       borderRadius: 999,
                       background: 'var(--ig-color-accent-ring)',
@@ -111,19 +138,19 @@ export const Overview: Story = {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 8,
+                  gap: 'var(--ig-space-3)',
                   alignItems: 'center',
-                  padding: 12,
-                  border: '1px solid var(--ig-color-border-subtle)',
+                  padding: 'var(--ig-space-5)',
+                  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
                   borderRadius: 'var(--ig-radius-lg)',
                 }}
               >
                 <div
                   style={{
-                    width: 64,
-                    height: 64,
+                    width: 'var(--ig-control-height-3xl-plus)',
+                    height: 'var(--ig-control-height-3xl-plus)',
                     borderRadius: value,
-                    border: '1px solid var(--ig-color-border-strong)',
+                    border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
                     background: 'var(--ig-color-surface-raised)',
                   }}
                 />
@@ -139,15 +166,15 @@ export const Overview: Story = {
         >
           <StorybookStack gap={14}>
             {shadowEntries.map(([name, value]) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: '96px minmax(0, 1fr)', gap: 14, alignItems: 'center' }}>
+              <div key={name} style={{ display: 'grid', gridTemplateColumns: 'var(--ig-popup-3xs-plus) minmax(0, 1fr)', gap: 'var(--ig-space-6)', alignItems: 'center' }}>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{name}</code>
                 <div
                   style={{
-                    minHeight: 72,
+                    minHeight: 'var(--ig-layout-sidebar-header)',
                     borderRadius: 'var(--ig-radius-xl)',
                     background: 'var(--ig-color-surface-panel)',
                     boxShadow: value,
-                    border: '1px solid var(--ig-color-border-subtle)',
+                    border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
                   }}
                 />
               </div>
@@ -167,15 +194,168 @@ export const Overview: Story = {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: 12,
-                  padding: 12,
-                  border: '1px solid var(--ig-color-border-subtle)',
+                  gap: 'var(--ig-space-5)',
+                  padding: 'var(--ig-space-5)',
+                  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
                   borderRadius: 'var(--ig-radius-lg)',
                   background: 'var(--ig-color-surface-raised)',
                 }}
               >
                 <strong style={{ fontSize: 14 }}>{name}</strong>
                 <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+      </StorybookGrid>
+
+      <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookSection
+          title="Control height"
+          description="Button / input / chip / select tier — `controlSizes` const."
+        >
+          <StorybookStack gap={8}>
+            {controlEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
+                <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
+                <div style={{ width: 'var(--ig-popup-2xs-narrow)', height: value, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-sm)' }} />
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Popup size"
+          description="Popover / dropdown / dialog 의 width tier."
+        >
+          <StorybookStack gap={8}>
+            {popupEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
+                <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
+                <div style={{ width: value, height: 'var(--ig-space-3)', background: 'var(--ig-color-accent-ring)', borderRadius: 999 }} />
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Icon size"
+          description="Inline SVG / lucide icon tier — `iconSizes` const."
+        >
+          <StorybookStack gap={8}>
+            {iconEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
+                <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
+                <div style={{ width: value, height: value, background: 'var(--ig-color-accent)', borderRadius: 'var(--ig-radius-2xs)', flexShrink: 0 }} />
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+      </StorybookGrid>
+
+      <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookSection
+          title="Layout"
+          description="Page dimensions — topbar / sidebar / capture / log / histogram / dataset card."
+        >
+          <StorybookStack gap={6}>
+            {layoutEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', justifyContent: 'space-between', padding: 'var(--ig-space-2) var(--ig-space-4)', border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-sm)' }}>
+                <code style={{ fontSize: 12 }}>{name}</code>
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Opacity"
+          description="Tier — hidden/ghost/faded/disabled/overlay/muted/subtle/emphatic/loud/prominent/near."
+        >
+          <StorybookStack gap={8}>
+            {opacityEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
+                <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
+                <div style={{ width: 80, height: 'var(--ig-control-height-sm)', background: 'var(--ig-color-accent)', opacity: value, borderRadius: 'var(--ig-radius-md)' }} />
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Z-index"
+          description="Layering scale — hidden(0) → tooltip(9999)."
+        >
+          <StorybookStack gap={4}>
+            {zIndexEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', justifyContent: 'space-between', padding: 'var(--ig-space-1) var(--ig-space-4)', borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' }}>
+                <code style={{ fontSize: 12 }}>{name}</code>
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+      </StorybookGrid>
+
+      <StorybookGrid columns="repeat(auto-fit, minmax(260px, 1fr))">
+        <StorybookSection
+          title="Transform scale"
+          description="Press / drag / hover-lift micro motion."
+        >
+          <StorybookStack gap={10}>
+            {transformEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-5)' }}>
+                <code style={{ fontSize: 12, minWidth: 'var(--ig-popup-3xs)', color: 'var(--ig-color-text-soft)' }}>{name}</code>
+                <div style={{ width: 80, height: 'var(--ig-control-height-mid-plus)', background: 'var(--ig-color-accent-soft-surface)', transform: `scale(${value})`, borderRadius: 'var(--ig-radius-md)' }} />
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookStack>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Aspect ratio"
+          description="Image / video 비율 tier — square / landscape / wide / ultra-wide / portrait."
+        >
+          <StorybookGrid columns="repeat(auto-fit, minmax(110px, 1fr))">
+            {aspectEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: '100%', aspectRatio: value, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-md)' }} />
+                <code style={{ fontSize: 12 }}>{name}</code>
+                <code style={{ fontSize: 'var(--ig-icon-2xs)', color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookGrid>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Chart palette"
+          description="Recharts JS const — SVG attribute 영역. CSS var() 적용 불가."
+        >
+          <StorybookGrid columns="repeat(auto-fit, minmax(110px, 1fr))">
+            {chartColorEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: '100%', height: 'var(--ig-control-height-xl)', background: value, borderRadius: 'var(--ig-radius-md)' }} />
+                <code style={{ fontSize: 12 }}>{name}</code>
+                <code style={{ fontSize: 'var(--ig-icon-2xs)', color: 'var(--ig-color-text-soft)' }}>{value}</code>
+              </div>
+            ))}
+          </StorybookGrid>
+        </StorybookSection>
+
+        <StorybookSection
+          title="Chart height"
+          description="LineChartCard / BarChartCard 의 height — `chartHeights` const."
+        >
+          <StorybookStack gap={4}>
+            {chartHeightEntries.map(([name, value]) => (
+              <div key={name} style={{ display: 'flex', justifyContent: 'space-between', padding: 'var(--ig-space-1) var(--ig-space-4)', borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' }}>
+                <code style={{ fontSize: 12 }}>{name}</code>
+                <code style={{ fontSize: 12, color: 'var(--ig-color-text-soft)' }}>{value}px</code>
               </div>
             ))}
           </StorybookStack>

@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { controlField } from '../../primitives'
+import { InputAdornment } from './input-adornment'
 
 const Wrap = styled.div`
   position: relative;
@@ -17,14 +18,11 @@ const Input = styled.input`
 `
 
 const SpinnerGroup = styled.div`
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  bottom: 1px;
   display: flex;
   flex-direction: column;
-  width: 28px;
-  border-left: 1px solid var(--ig-color-border-subtle);
+  height: 100%;
+  width: var(--ig-control-height-xs);
+  border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
 const SpinBtn = styled.button`
@@ -36,12 +34,12 @@ const SpinBtn = styled.button`
   border: none;
   color: var(--ig-color-text-soft);
   cursor: pointer;
-  font-size: 10px;
-  line-height: 1;
+  font-size: var(--ig-font-size-3xs);
+  line-height: var(--ig-line-height-none);
   padding: 0;
   &:hover { background: var(--ig-color-surface-interactive); color: var(--ig-color-text-primary); }
-  &:first-child { border-bottom: 1px solid var(--ig-color-border-subtle); }
-  &:disabled { opacity: 0.3; cursor: default; }
+  &:first-child { border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
+  &:disabled { opacity: var(--ig-opacity-overlay); cursor: default; }
 `
 
 export interface NumberFieldProps {
@@ -134,14 +132,16 @@ export function NumberField({
         onKeyDown={handleKeyDown}
       />
       {!disabled && (
-        <SpinnerGroup>
-          <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
-            disabled={max !== undefined && value >= max}
-            onClick={() => nudge(step)}>&#9650;</SpinBtn>
-          <SpinBtn type="button" tabIndex={-1} aria-label="Decrease"
-            disabled={min !== undefined && value <= min}
-            onClick={() => nudge(-step)}>&#9660;</SpinBtn>
-        </SpinnerGroup>
+        <InputAdornment side="right" inset="var(--ig-space-1px)" stretchY>
+          <SpinnerGroup>
+            <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
+              disabled={max !== undefined && value >= max}
+              onClick={() => nudge(step)}>&#9650;</SpinBtn>
+            <SpinBtn type="button" tabIndex={-1} aria-label="Decrease"
+              disabled={min !== undefined && value <= min}
+              onClick={() => nudge(-step)}>&#9660;</SpinBtn>
+          </SpinnerGroup>
+        </InputAdornment>
       )}
     </Wrap>
   )
