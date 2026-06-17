@@ -4,8 +4,9 @@ import { Button } from '@ingradient/ui/components'
 import { SelectField } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
+import { popupSizeNumbers } from '@ingradient/ui/tokens'
 
-const MAX_USES_STYLE = { width: 160 }
+const MAX_USES_STYLE = { width: popupSizeNumbers['2xsPlus'] }
 
 const Empty = styled.p`
   ${stateTitleText}
