@@ -34,7 +34,7 @@ interface ClassManageBodyProps {
 const STORAGE_KEY = 'ig-class-manage-shell'
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }
+const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }
 const HEADER_INLINE_STYLE: CSSProperties = { width: '100%' }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."

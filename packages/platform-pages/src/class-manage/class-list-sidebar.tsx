@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, IconButton } from '@ingradient/ui/components'
+import { Button } from '@ingradient/ui/components'
 import { ClosePanelIcon } from '@ingradient/ui/components'
 import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { ClassListRow } from './class-list-row'
@@ -41,6 +41,23 @@ const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);
+`
+
+const CollapseButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ig-control-height-xs);
+  height: var(--ig-control-height-xs);
+  border: none;
+  background: transparent;
+  border-radius: var(--ig-radius-sm);
+  color: var(--ig-color-text-muted);
+  cursor: pointer;
+  &:hover {
+    background: var(--ig-color-surface-interactive-hover);
+    color: var(--ig-color-text-primary);
+  }
 `
 
 const List = styled.ul`
@@ -99,9 +116,9 @@ export function ClassListSidebar({
             {addClassLabel}
           </Button>
           {onCollapse ? (
-            <IconButton variant="secondary" size="sm" aria-label="Collapse sidebar" onClick={onCollapse}>
+            <CollapseButton type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
               <ClosePanelIcon size={16} />
-            </IconButton>
+            </CollapseButton>
           ) : null}
         </HeaderActions>
       </Header>

@@ -93,7 +93,7 @@ const Slider = styled.input<{ $track: string }>`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: var(--ig-space-2);
+    outline-offset: var(--ig-space-1);
   }
 `
 

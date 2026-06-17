@@ -38,12 +38,12 @@ const Preview = styled.button<{ $color: string }>`
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: var(--ig-space-2);
+    outline-offset: var(--ig-space-2px);
   }
 
   &:disabled {
     cursor: not-allowed;
-    opacity: var(--ig-opacity-muted);
+    opacity: var(--ig-opacity-disabled);
   }
 `
 

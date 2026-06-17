@@ -39,7 +39,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
   margin: var(--ig-space-2) 0 0;
   font-size: var(--ig-font-size-sm);
-  line-height: var(--ig-line-height-normal);
+  line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
 
@@ -72,7 +72,7 @@ export const SectionTitle = styled.h2`
 export const SectionDescription = styled.p`
   margin: var(--ig-space-2) 0 0;
   font-size: var(--ig-font-size-xs);
-  line-height: var(--ig-line-height-normal);
+  line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
 

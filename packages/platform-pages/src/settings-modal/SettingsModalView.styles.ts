@@ -95,7 +95,7 @@ export const AdminSubTabsWrap = styled.div`
 `
 
 export const AdminDesc = styled.p`
-  margin: var(--ig-space-3) 0 var(--ig-space-7);
+  margin: 0;
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
   line-height: var(--ig-line-height-relaxed);
@@ -105,10 +105,13 @@ export const AdminContent = styled.div`
   flex: 1;
   min-height: 0;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-4);
 `
 
 export const SubsectionTitle = styled.h4`
-  margin: var(--ig-space-7) 0 var(--ig-space-3);
+  margin: var(--ig-space-5) 0 var(--ig-space-3);
   font-size: var(--ig-font-size-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
@@ -121,11 +124,11 @@ export const PermissionsHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: var(--ig-space-3);
-  margin: var(--ig-space-7) 0 var(--ig-space-3);
+  margin: var(--ig-space-5) 0 var(--ig-space-3);
 `
 
 export const PermissionsScopeNote = styled.p`
-  margin: 0 0 var(--ig-space-5);
+  margin: 0 0 var(--ig-space-4);
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-soft);
   line-height: var(--ig-line-height-relaxed);
@@ -137,7 +140,7 @@ export const ExpandToggle = styled.button`
   color: var(--ig-color-accent);
   font-size: var(--ig-font-size-sm);
   cursor: pointer;
-  padding: var(--ig-space-1) var(--ig-space-3);
+  padding: var(--ig-space-2) var(--ig-space-3);
   &:hover {
     text-decoration: underline;
   }
