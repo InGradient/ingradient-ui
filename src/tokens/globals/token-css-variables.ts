@@ -480,6 +480,8 @@ const staticVars = {
   '--ig-layout-log-detail-left': layoutScale.logDetailLeft,
   '--ig-layout-log-detail-top': layoutScale.logDetailTop,
   '--ig-layout-log-detail-width': layoutScale.logDetailWidth,
+  '--ig-layout-color-plane-height': layoutScale.colorPlaneHeight,
+  '--ig-layout-color-thumb-size': layoutScale.colorThumbSize,
   '--ig-layout-shadow-y-offset': layoutScale.shadowYOffset,
   '--ig-layout-shadow-blur': layoutScale.shadowBlur,
   '--ig-layout-sidebar-header': layoutScale.sidebarHeader,

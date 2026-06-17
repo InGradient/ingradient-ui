@@ -23,4 +23,6 @@ export const layoutScale = {
   logDetailLeft: '254px',
   logDetailTop: '58px',
   logDetailWidth: '272px',
+  colorPlaneHeight: '120px',
+  colorThumbSize: '18px',
 } as const
