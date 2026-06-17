@@ -385,6 +385,7 @@ const staticVars = {
   '--ig-popup-3xl-mid': popupSizes['3xlMid'],
   '--ig-popup-3xl-wide': popupSizes['3xlWide'],
   '--ig-popup-4xl-narrow': popupSizes['4xlNarrow'],
+  '--ig-popup-4xl-mid': popupSizes['4xlMid'],
   '--ig-popup-4xl': popupSizes['4xl'],
   '--ig-popup-list-min': popupSizes.listMin,
   '--ig-popup-md-narrow': popupSizes.mdNarrow,

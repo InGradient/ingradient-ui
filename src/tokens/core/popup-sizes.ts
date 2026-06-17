@@ -29,6 +29,7 @@ export const popupSizes = {
   '3xlMid': '720px',
   '3xlWide': '820px',
   '4xlNarrow': '960px',
+  '4xlMid': '1120px',
   '4xl': '1200px',
 } as const
 
@@ -63,5 +64,6 @@ export const popupSizeNumbers = {
   '3xlWide': 820,
   '3xl': 920,
   '4xlNarrow': 960,
+  '4xlMid': 1120,
   '4xl': 1200,
 } as const
