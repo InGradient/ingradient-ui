@@ -46,5 +46,8 @@ export const LongNames: Story = {
 }
 
 export const NoCounts: Story = {
-  args: { classes: baseClasses.map(({ image_count, ...c }) => c), selectedClassId: 'c-2' },
+  args: {
+    classes: baseClasses.map((c) => ({ id: c.id, name: c.name, color: c.color })),
+    selectedClassId: 'c-2',
+  },
 }

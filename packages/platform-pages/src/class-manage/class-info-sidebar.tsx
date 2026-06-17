@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Stack } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
 import { TextField, TextareaField } from '@ingradient/ui/components'
 import { InfoSection } from '@ingradient/ui/components'
 import { ColorInputRow } from '@ingradient/ui/patterns'
@@ -37,11 +36,6 @@ const PANEL_STYLE = {
 
 const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-popup-sm)', borderRadius: 'var(--ig-radius-2xs)' }
 const DESCRIPTION_STYLE = { minHeight: 72, maxWidth: '100%', fontSize: 'var(--ig-font-size-sm)', resize: 'vertical' as const }
-const DELETE_BTN_STYLE = {
-  marginTop: 'var(--ig-space-3)',
-  padding: 'var(--ig-space-3) var(--ig-space-7)',
-  borderRadius: 'var(--ig-radius-xs)',
-}
 
 export interface ClassInfoSidebarClass {
   id: string
@@ -56,25 +50,21 @@ export interface ClassInfoSidebarProps {
   onChangeColor?: (hex: string) => void
   onChangeDescription?: (description: string | undefined) => void
   onRandomizeColor?: () => void
-  onDelete?: () => void
-  /** 6-2-D — Reference image 섹션 콘텐츠 (Phase 4 의 ReferenceImageSection 등) */
+  /** Reference image 섹션 콘텐츠 (ReferenceImageSection 등) */
   referenceImageSlot?: ReactNode
-  /** 6-2-E — Model mapping 섹션 콘텐츠 (Phase 6 의 ModelMappingSelect 등) */
+  /** Model mapping 섹션 콘텐츠 (ModelMappingSelect 등) */
   mappingSlot?: ReactNode
   /** flush 시 패널 표면(배경/테두리/라운드) 제거 — shell 컬럼 내부용. */
   flush?: boolean
-  /** Danger zone 버튼 라벨 커스텀 */
-  deleteLabel?: string
   descriptionPlaceholder?: string
 }
 
 export function ClassInfoSidebar({
   selectedClass,
   onChangeName, onChangeColor, onChangeDescription,
-  onRandomizeColor, onDelete,
+  onRandomizeColor,
   referenceImageSlot, mappingSlot,
   flush = false,
-  deleteLabel = 'Delete class',
   descriptionPlaceholder = 'Class description (optional)',
 }: ClassInfoSidebarProps) {
   return (
@@ -111,10 +101,6 @@ export function ClassInfoSidebar({
 
         {referenceImageSlot}
         {mappingSlot}
-
-        <InfoSection title="Danger zone">
-          <Button type="button" variant="secondary" tone="danger" onClick={onDelete} style={DELETE_BTN_STYLE}>{deleteLabel}</Button>
-        </InfoSection>
       </Stack>
     </Stack>
   )

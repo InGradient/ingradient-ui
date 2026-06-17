@@ -1,4 +1,4 @@
-import { ConfirmDialog, ImageContextMenu, TextInputDialog } from '@ingradient/ui/components'
+import { ConfirmDialog, ContextMenuWithSubmenus, ImageContextMenu, TextInputDialog } from '@ingradient/ui/components'
 import { ClassLightbox } from './class-lightbox'
 import type { ClassManageOverlaysProps } from './types'
 
@@ -6,6 +6,7 @@ const CONTEXT_MENU_BASE = [{ key: 'add-ref', label: 'Add to Reference Image' }] 
 
 export function ClassManageOverlays({
   addClass,
+  classMenu,
   contextMenu,
   lightbox,
   deleteConfirm,
@@ -21,6 +22,16 @@ export function ClassManageOverlays({
         title="Class name"
         placeholder="Enter class name"
       />
+      {classMenu ? (
+        <ContextMenuWithSubmenus
+          anchorEl={classMenu.anchorEl}
+          onClose={classMenu.onClose}
+          actions={[
+            { key: 'duplicate', label: 'Duplicate', onClick: classMenu.onDuplicate },
+            { key: 'delete', label: 'Delete', tone: 'danger', onClick: classMenu.onDelete },
+          ]}
+        />
+      ) : null}
       <ImageContextMenu
         position={contextMenu.position}
         items={CONTEXT_MENU_BASE.map((item) => ({

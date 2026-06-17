@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import { Button, LabeledSwatchRow } from '@ingradient/ui/components'
+import { Button, IconButton } from '@ingradient/ui/components'
+import { ClosePanelIcon } from '@ingradient/ui/components'
 import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { ClassListRow } from './class-list-row'
 
 const Sidebar = styled.aside<{ $flush: boolean }>`
   width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-sm)')};
@@ -32,7 +34,13 @@ const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
+`
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-2);
 `
 
 const List = styled.ul`
@@ -68,23 +76,34 @@ export interface ClassListSidebarProps {
   title?: string
   emptyText?: string
   addClassLabel?: string
+  openMenuId?: string
   onSelectClass?: (id: string) => void
   onAddClass?: () => void
+  onCollapse?: () => void
+  onOpenClassMenu?: (id: string, anchor: HTMLElement) => void
 }
 
 export function ClassListSidebar({
   classes, selectedClassId, loading, flush = false, title = 'Classes',
   emptyText = 'No classes yet.',
   addClassLabel = '+ Add',
-  onSelectClass, onAddClass,
+  openMenuId,
+  onSelectClass, onAddClass, onCollapse, onOpenClassMenu,
 }: ClassListSidebarProps) {
   return (
     <Sidebar $flush={flush}>
       <Header>
         <Title>{title}</Title>
-        <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
-          {addClassLabel}
-        </Button>
+        <HeaderActions>
+          <Button variant="solid" size="sm" type="button" onClick={onAddClass}>
+            {addClassLabel}
+          </Button>
+          {onCollapse ? (
+            <IconButton variant="secondary" size="sm" aria-label="Collapse sidebar" onClick={onCollapse}>
+              <ClosePanelIcon size={16} />
+            </IconButton>
+          ) : null}
+        </HeaderActions>
       </Header>
       {loading ? (
         <Placeholder>Loading…</Placeholder>
@@ -93,14 +112,16 @@ export function ClassListSidebar({
       ) : (
         <List role="listbox" aria-label="Classes">
           {classes.map((c) => (
-            <LabeledSwatchRow
+            <ClassListRow
               key={c.id}
               id={c.id}
-              label={c.name}
+              name={c.name}
               color={c.color}
               count={c.image_count}
               selected={selectedClassId === c.id}
+              menuOpen={openMenuId === c.id}
               onClick={onSelectClass}
+              onOpenMenu={onOpenClassMenu}
             />
           ))}
         </List>

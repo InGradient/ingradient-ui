@@ -1,4 +1,3 @@
-import { iconSizeNumbers } from '@ingradient/ui'
 import type { CSSProperties } from 'react'
 import {
   Alert,
@@ -7,6 +6,8 @@ import {
   ResizableColumnsLayout,
   type ResizableColumn,
 } from '@ingradient/ui/components'
+import { ExpandSidebarBtn } from '@ingradient/ui/patterns'
+import { Inline } from '@ingradient/ui/primitives'
 import { popupSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
@@ -33,15 +34,8 @@ interface ClassManageBodyProps {
 const STORAGE_KEY = 'ig-class-manage-shell'
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 8 }
-const MAPPING_LABEL_STYLE: CSSProperties = {
-  margin: 0,
-  fontSize: iconSizeNumbers.xs,
-  fontWeight: 'var(--ig-font-weight-semibold)',
-  color: 'var(--ig-color-text-muted)',
-  textTransform: 'uppercase',
-  letterSpacing: 'var(--ig-letter-spacing-normal)',
-}
+const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)' }
+const HEADER_INLINE_STYLE: CSSProperties = { width: '100%' }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
@@ -89,6 +83,7 @@ export function ClassManageBody({
       resizable: true,
       minWidth: popupSizeNumbers.xs,
       maxWidth: popupSizeNumbers.xl,
+      hidden: !!list.sidebarCollapsed,
     },
     { width: 'auto' },
     {
@@ -101,6 +96,27 @@ export function ClassManageBody({
     },
   ]
 
+  const showChips = !!images.selectedClassId || !!list.sidebarCollapsed
+  const chipRow = showChips ? (
+    <FilterChipRow
+      label="Dataset"
+      items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
+      activeIds={images.activeDatasetIds}
+      loading={images.detailLoading}
+      onToggle={images.onToggleDataset}
+    />
+  ) : null
+  const headerSlot = showChips
+    ? list.sidebarCollapsed && list.onExpand
+      ? (
+        <Inline gap={3} align="center" style={HEADER_INLINE_STYLE}>
+          <ExpandSidebarBtn onClick={list.onExpand} ariaLabel="Expand class sidebar" />
+          {chipRow}
+        </Inline>
+      )
+      : chipRow
+    : undefined
+
   return (
     <ContentArea>
       <ResizableColumnsLayout storageKey={STORAGE_KEY} columns={columns}>
@@ -108,9 +124,12 @@ export function ClassManageBody({
           classes={list.classes}
           selectedClassId={list.selectedClassId}
           loading={list.loading}
+          openMenuId={list.openMenuId}
           flush
           onSelectClass={list.onSelectClass}
           onAddClass={list.onAddClass}
+          onCollapse={list.onCollapse}
+          onOpenClassMenu={list.onOpenClassMenu}
         />
         <SelectableGridPanel
           selectedId={images.selectedClassId}
@@ -118,15 +137,7 @@ export function ClassManageBody({
           loadingText="Loading images…"
           emptyText="No images with this class in the selected datasets."
           flush
-          headerSlot={
-            <FilterChipRow
-              label="Dataset"
-              items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
-              activeIds={images.activeDatasetIds}
-              loading={images.detailLoading}
-              onToggle={images.onToggleDataset}
-            />
-          }
+          headerSlot={headerSlot}
           loading={images.imagesLoading}
           empty={images.images.length === 0}
           gridSlot={<ClassManageImageGrid {...images} />}
@@ -148,7 +159,6 @@ function ClassInfoPane({
   currentMapping,
   onChangeClass,
   onRandomizeColor,
-  onDeleteClass,
   onSetReferenceDragOver,
   onApplyReferenceImage,
   onChangeMapping,
@@ -161,7 +171,6 @@ function ClassInfoPane({
       onChangeColor={(color) => onChangeClass({ color })}
       onChangeDescription={(description) => onChangeClass({ description: description ?? null })}
       onRandomizeColor={onRandomizeColor}
-      onDelete={onDeleteClass}
       flush={flush}
       referenceImageSlot={
         <ReferenceImageSection
@@ -172,11 +181,11 @@ function ClassInfoPane({
           candidates={referenceBboxCandidates ?? []}
           onSetDragging={onSetReferenceDragOver}
           onApply={onApplyReferenceImage}
+          showTitle={false}
         />
       }
       mappingSlot={
         <div style={MAPPING_WRAP_STYLE}>
-          <h3 style={MAPPING_LABEL_STYLE}>Model mapping</h3>
           <ModelMappingSelect
             enabled={!!showCocoMapping}
             options={[...cocoMappingOptions]}
