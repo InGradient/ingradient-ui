@@ -1,10 +1,24 @@
+import path from 'node:path'
 import { defineConfig } from 'vitest/config'
 
+const root = path.resolve(__dirname)
+
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@ingradient/ui/brand': path.resolve(root, 'src/brand/index.tsx'),
+      '@ingradient/ui/tokens': path.resolve(root, 'src/tokens/index.ts'),
+      '@ingradient/ui/primitives': path.resolve(root, 'src/primitives/index.ts'),
+      '@ingradient/ui/components': path.resolve(root, 'src/components/index.ts'),
+      '@ingradient/ui/patterns': path.resolve(root, 'src/patterns/index.ts'),
+      '@ingradient/ui/utils': path.resolve(root, 'src/utils/index.ts'),
+      '@ingradient/ui': path.resolve(root, 'src/index.ts'),
+    },
+  },
   test: {
     environment: 'jsdom',
     globals: true,
-    include: ['src/**/*.test.{ts,tsx}'],
+    include: ['src/**/*.test.{ts,tsx}', 'packages/**/src/**/*.test.{ts,tsx}'],
     setupFiles: ['./vitest.setup.ts'],
     coverage: {
       provider: 'v8',
