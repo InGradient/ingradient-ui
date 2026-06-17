@@ -45,6 +45,7 @@ export function ClassManageOverlays({
         open={!!lightbox.image}
         item={lightbox.image}
         imageUrl={lightbox.image?.original_url ?? lightbox.image?.thumb_url ?? null}
+        siblings={lightbox.siblings}
         selectedClassId={lightbox.selectedClassId}
         classIdToColor={lightbox.classIdToColor}
         onClose={lightbox.onClose}
