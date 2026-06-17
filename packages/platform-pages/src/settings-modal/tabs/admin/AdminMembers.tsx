@@ -1,7 +1,6 @@
+import { SettingsSection } from '@ingradient/ui/patterns'
 import { InvitationsTab, OrgMembersTab } from '../../organization'
 import type { InvitationsTabProps, OrgMembersTabProps } from '../../organization'
-
-const INVITATIONS_WRAPPER_STYLE: React.CSSProperties = { marginTop: 'var(--ig-space-11)' }
 
 interface Props {
   members: OrgMembersTabProps
@@ -11,10 +10,10 @@ interface Props {
 export function AdminMembers({ members, invitations }: Props) {
   return (
     <>
-      <OrgMembersTab {...members} />
-      <div style={INVITATIONS_WRAPPER_STYLE}>
-        <InvitationsTab {...invitations} />
-      </div>
+      <SettingsSection title={members.title ?? 'Members'}>
+        <OrgMembersTab {...members} title="" />
+      </SettingsSection>
+      <InvitationsTab {...invitations} />
     </>
   )
 }

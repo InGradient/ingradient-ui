@@ -1,3 +1,4 @@
+import { SettingsSection } from '@ingradient/ui/patterns'
 import { StorageAnalyticsTab } from '../../storage'
 import type { AdminStorageProps } from '../../types'
 
@@ -14,17 +15,20 @@ export function AdminStorage({
   onCopyReport,
 }: AdminStorageProps) {
   return (
-    <StorageAnalyticsTab
-      onCopyReport={onCopyReport}
-      error={error}
-      overview={overviewSlot}
-      tierChart={tierChartSlot}
-      projectChart={projectChartSlot}
-      resolutionChart={resolutionChartSlot}
-      formatChart={formatChartSlot}
-      tierTable={tierTableSlot}
-      costTable={costTableSlot}
-      recommendations={recommendationsSlot}
-    />
+    <SettingsSection title="Storage analytics">
+      <StorageAnalyticsTab
+        title=""
+        onCopyReport={onCopyReport}
+        error={error}
+        overview={overviewSlot}
+        tierChart={tierChartSlot}
+        projectChart={projectChartSlot}
+        resolutionChart={resolutionChartSlot}
+        formatChart={formatChartSlot}
+        tierTable={tierTableSlot}
+        costTable={costTableSlot}
+        recommendations={recommendationsSlot}
+      />
+    </SettingsSection>
   )
 }

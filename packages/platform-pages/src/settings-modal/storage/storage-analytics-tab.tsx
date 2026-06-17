@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 
-const CONTAINER_STYLE = { padding: 'var(--ig-space-1) 0' }
+const CONTAINER_STYLE = {}
 const ERROR_WRAP_STYLE = {
   padding: 'var(--ig-space-7)',
   background: 'var(--ig-color-alert-danger-bg)',
@@ -53,7 +53,7 @@ export function StorageAnalyticsTab({
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Stack gap="var(--ig-space-9)" style={CONTAINER_STYLE}>
+      <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
         <Stack gap="var(--ig-space-3)" style={ERROR_WRAP_STYLE}>
           <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
           {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
@@ -63,9 +63,9 @@ export function StorageAnalyticsTab({
   }
 
   return (
-    <Stack gap="var(--ig-space-9)" style={CONTAINER_STYLE}>
+    <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
       <Inline justify="space-between">
-        <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
+        {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>

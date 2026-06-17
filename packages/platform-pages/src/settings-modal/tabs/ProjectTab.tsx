@@ -1,3 +1,4 @@
+import { SettingsSection } from '@ingradient/ui/patterns'
 import {
   DeleteProjectSection,
   ProjectMemberInvite,
@@ -25,52 +26,56 @@ export function ProjectTab(props: ProjectTabProps) {
   }
   return (
     <>
-      <ProjectSettingsForm
-        projectType={props.draft.projectType}
-        canEdit={props.canEdit}
-        isOwner={props.isOwner}
-        saveState={props.saveState}
-        saveErrorMessage={props.saveErrorMessage}
-        nameInvalid={!!props.nameInvalid}
-        name={props.draft.name}
-        onChangeName={(v) => props.onChangeDraft({ name: v })}
-        description={props.draft.description}
-        onChangeDescription={(v) => props.onChangeDraft({ description: v })}
-        groupEnabled={props.draft.groupEnabled}
-        onChangeGroupEnabled={(v) => props.onChangeDraft({ groupEnabled: v })}
-        groupRegex={props.draft.groupRegex}
-        onChangeGroupRegex={(v) => props.onChangeDraft({ groupRegex: v })}
-        groupRepRegex={props.draft.groupRepRegex}
-        onChangeGroupRepRegex={(v) => props.onChangeDraft({ groupRepRegex: v })}
-        allowDup={props.draft.allowDup}
-        onChangeAllowDup={(v) => props.onChangeDraft({ allowDup: v })}
-        showFilenameInGallery={props.draft.showFilenameInGallery}
-        onChangeShowFilenameInGallery={(v) => props.onChangeDraft({ showFilenameInGallery: v })}
-        showBboxClassNamesInDetail={props.draft.showBboxClassNamesInDetail}
-        onChangeShowBboxClassNamesInDetail={(v) =>
-          props.onChangeDraft({ showBboxClassNamesInDetail: v })
-        }
-        groupVisible={props.draft.groupVisible}
-        onChangeGroupVisible={(v) => props.onChangeDraft({ groupVisible: v })}
-      />
-      <ProjectMemberInvite
-        query={props.memberSearchQuery}
-        onChangeQuery={props.onChangeMemberSearchQuery}
-        candidates={props.candidates}
-        onAdd={props.onAddMember}
-      />
-      <SubsectionTitle>Members</SubsectionTitle>
-      <ProjectMembersList
-        members={props.members}
-        roleOptions={props.roleOptions}
-        canManagePermissions={props.canManagePermissions}
-        onChangeRole={props.onChangeRole}
-        onRemove={props.onRemoveMember}
-      />
+      <SettingsSection title="Project details">
+        <ProjectSettingsForm
+          projectType={props.draft.projectType}
+          canEdit={props.canEdit}
+          isOwner={props.isOwner}
+          saveState={props.saveState}
+          saveErrorMessage={props.saveErrorMessage}
+          nameInvalid={!!props.nameInvalid}
+          name={props.draft.name}
+          onChangeName={(v) => props.onChangeDraft({ name: v })}
+          description={props.draft.description}
+          onChangeDescription={(v) => props.onChangeDraft({ description: v })}
+          groupEnabled={props.draft.groupEnabled}
+          onChangeGroupEnabled={(v) => props.onChangeDraft({ groupEnabled: v })}
+          groupRegex={props.draft.groupRegex}
+          onChangeGroupRegex={(v) => props.onChangeDraft({ groupRegex: v })}
+          groupRepRegex={props.draft.groupRepRegex}
+          onChangeGroupRepRegex={(v) => props.onChangeDraft({ groupRepRegex: v })}
+          allowDup={props.draft.allowDup}
+          onChangeAllowDup={(v) => props.onChangeDraft({ allowDup: v })}
+          showFilenameInGallery={props.draft.showFilenameInGallery}
+          onChangeShowFilenameInGallery={(v) => props.onChangeDraft({ showFilenameInGallery: v })}
+          showBboxClassNamesInDetail={props.draft.showBboxClassNamesInDetail}
+          onChangeShowBboxClassNamesInDetail={(v) =>
+            props.onChangeDraft({ showBboxClassNamesInDetail: v })
+          }
+          groupVisible={props.draft.groupVisible}
+          onChangeGroupVisible={(v) => props.onChangeDraft({ groupVisible: v })}
+        />
+      </SettingsSection>
+      <SettingsSection title="Members">
+        <ProjectMemberInvite
+          query={props.memberSearchQuery}
+          onChangeQuery={props.onChangeMemberSearchQuery}
+          candidates={props.candidates}
+          onAdd={props.onAddMember}
+        />
+        <SubsectionTitle>Current members</SubsectionTitle>
+        <ProjectMembersList
+          members={props.members}
+          roleOptions={props.roleOptions}
+          canManagePermissions={props.canManagePermissions}
+          onChangeRole={props.onChangeRole}
+          onRemove={props.onRemoveMember}
+        />
+      </SettingsSection>
       {props.canManagePermissions ? (
-        <>
+        <SettingsSection title="Permissions">
           <PermissionsHeader>
-            <SubsectionTitle style={{ margin: 0 }}>Permissions</SubsectionTitle>
+            <SubsectionTitle style={{ margin: 0 }}>Role matrix</SubsectionTitle>
             <ExpandToggle type="button" onClick={props.onTogglePermissionsExpand}>
               {props.permissionsExpandAll ? 'Collapse All' : 'Expand All'}
             </ExpandToggle>
@@ -85,7 +90,7 @@ export function ProjectTab(props: ProjectTabProps) {
             onChangeRolePermission={props.onChangeRolePermission}
             onChangeRolePermissions={props.onChangeRolePermissions}
           />
-        </>
+        </SettingsSection>
       ) : null}
       {props.canDeleteProject && props.projectsCount >= 2 ? (
         <DeleteProjectSection

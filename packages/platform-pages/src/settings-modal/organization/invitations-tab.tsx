@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Stack, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { SettingsSection } from '@ingradient/ui/patterns'
 import {
   InvitationsSection,
   type InvitationsSectionProps,
@@ -30,9 +31,13 @@ export function InvitationsTab({
   if (loading) return <Empty>{loadingText}</Empty>
   if (error) return <Empty>{error}</Empty>
   return (
-    <Stack gap="var(--ig-space-13)">
-      <InvitationsSection {...invitations} />
-      <JoinCodesSection {...joinCodes} />
+    <Stack gap="var(--ig-space-4)">
+      <SettingsSection title={invitations.title ?? 'Invitations'}>
+        <InvitationsSection {...invitations} title="" />
+      </SettingsSection>
+      <SettingsSection title={joinCodes.title ?? 'Join Codes'}>
+        <JoinCodesSection {...joinCodes} title="" />
+      </SettingsSection>
     </Stack>
   )
 }

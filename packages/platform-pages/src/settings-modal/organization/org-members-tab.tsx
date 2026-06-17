@@ -66,8 +66,8 @@ export function OrgMembersTab({
   ]
 
   return (
-    <Stack gap="var(--ig-space-7)">
-      <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
+    <Stack gap="var(--ig-space-4)">
+      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text> : null}
       {members.length === 0 ? (
         <Empty>{emptyText}</Empty>
       ) : (

@@ -17,18 +17,18 @@ export interface LicenseInfo {
 }
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
-  if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>라이선스 정보를 불러오는 중…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight={600} style={EXPIRED_STYLE}>만료됨</Text>
+  if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>Loading license information…</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight={600} style={EXPIRED_STYLE}>Expired</Text>
   if (license.type === 'organization') {
     return (
       <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
-        {`조직 라이선스 (${license.organizationName ?? ''}) | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
+        {`Organization license (${license.organizationName ?? ''}) | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
       </Text>
     )
   }
   return (
     <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
-      {`개인 라이선스 | 만료: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0}일)`}
+      {`Personal license | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
     </Text>
   )
 }
@@ -69,11 +69,12 @@ export function SettingsAccountTab({
 }: SettingsAccountTabProps) {
   const sameAsCurrent = accountName.trim() === (user?.name ?? '')
   const saveDisabled = !!accountSaving || !accountName.trim() || sameAsCurrent
+  const deleteDisabled = !deleteAccountEmailMatches || !!deleteAccountPreviewLoading
 
   return (
-    <Stack gap="var(--ig-space-5)">
+    <Stack gap="var(--ig-space-4)">
       <SettingsSection title="Profile">
-        <Inline gap="var(--ig-space-5)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
           <TextField
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
@@ -81,7 +82,7 @@ export function SettingsAccountTab({
             aria-label="Display name"
             style={FIELD_STYLE}
           />
-          <Button type="button" variant="accent" disabled={saveDisabled} onClick={onSaveName}>
+          <Button type="button" variant="solid" disabled={saveDisabled} onClick={onSaveName}>
             {accountSaving ? 'Saving…' : 'Save'}
           </Button>
         </Inline>
@@ -96,18 +97,18 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Access">
-        <Inline gap="var(--ig-space-5)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
           <Button type="button" variant="secondary" onClick={onOpenPassword}>Change password</Button>
           <Button type="button" variant="secondary" onClick={onLogout}>Log out</Button>
         </Inline>
       </SettingsSection>
 
-      <SettingsSection title="Delete account">
+      <SettingsSection title="Delete account" tone="danger">
         <SettingsHint>
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
         </SettingsHint>
-        <Inline gap="var(--ig-space-5)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
           <TextField
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}
@@ -117,9 +118,9 @@ export function SettingsAccountTab({
           />
           <Button
             type="button"
-            variant="secondary"
+            variant={deleteDisabled ? 'secondary' : 'solid'}
             tone="danger"
-            disabled={!deleteAccountEmailMatches || !!deleteAccountPreviewLoading}
+            disabled={deleteDisabled}
             onClick={onOpenDeleteAccountPreview}
           >
             {deleteAccountPreviewLoading ? 'Preparing…' : 'Delete Account'}

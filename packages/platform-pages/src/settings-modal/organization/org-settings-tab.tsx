@@ -3,7 +3,7 @@ import { Inline, Stack, Text, stateCenteredLayout, stateTitleText } from '@ingra
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 
-const WRAP_STYLE = { maxWidth: 480 }
+const WRAP_STYLE = { width: '100%' }
 
 const Placeholder = styled.p`
   ${stateTitleText}
@@ -39,8 +39,8 @@ export function OrgSettingsTab({
   if (!organization) return <Placeholder>{loadingText}</Placeholder>
 
   return (
-    <Stack gap="var(--ig-space-9)" style={WRAP_STYLE}>
-      <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text>
+    <Stack gap="var(--ig-space-4)" style={WRAP_STYLE}>
+      {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text> : null}
 
       <Stack gap="var(--ig-space-2)">
         <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Code</Text>
@@ -68,12 +68,12 @@ export function OrgSettingsTab({
       </Stack>
 
       {isAdmin && (
-        <Inline gap="var(--ig-space-5)">
+        <Inline justify="flex-end" gap="var(--ig-space-4)">
+          {message && <Text size="var(--ig-font-size-sm)" tone="success">{message}</Text>}
+          {error && <Text size="var(--ig-font-size-sm)" tone="danger">{error}</Text>}
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>
             {saving ? 'Saving…' : 'Save'}
           </Button>
-          {message && <Text size="var(--ig-font-size-sm)" tone="success">{message}</Text>}
-          {error && <Text size="var(--ig-font-size-sm)" tone="danger">{error}</Text>}
         </Inline>
       )}
     </Stack>

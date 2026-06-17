@@ -90,7 +90,7 @@ export function InvitationsSection({
 
   return (
     <Stack as="section" gap="var(--ig-space-5)">
-      <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text>
+      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text> : null}
       <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
 
       {isAdmin && (
