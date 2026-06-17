@@ -221,6 +221,8 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-white-40': isLight ? 'rgba(15, 18, 25, 0.32)' : 'rgba(255, 255, 255, 0.4)',
     '--ig-color-white-70': isLight ? 'rgba(15, 18, 25, 0.62)' : 'rgba(255, 255, 255, 0.7)',
     '--ig-color-white-90': isLight ? 'rgba(15, 18, 25, 0.82)' : 'rgba(255, 255, 255, 0.9)',
+    '--ig-color-white-96': isLight ? 'rgba(15, 18, 25, 0.88)' : 'rgba(255, 255, 255, 0.96)',
+    '--ig-color-inset-highlight': isLight ? 'rgba(15, 18, 25, 0.05)' : 'rgba(255, 255, 255, 0.05)',
     '--ig-color-slate-tint-18': palette.borderStrong,
     '--ig-color-blue-tint-06': isLight ? 'rgba(58, 115, 230, 0.06)' : 'rgba(77, 136, 255, 0.06)',
     '--ig-color-blue-tint-08': isLight ? 'rgba(58, 115, 230, 0.08)' : 'rgba(77, 136, 255, 0.08)',

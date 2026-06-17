@@ -124,6 +124,7 @@ function ClassManageScene({ scenario: key }: Args) {
         },
         lightbox: {
           image: s.lightboxImage,
+          siblings: scenario.lightboxSiblings ?? [],
           selectedClassId: s.selectedClassId,
           classIdToColor,
           onClose: () => s.setLightboxImage(null),

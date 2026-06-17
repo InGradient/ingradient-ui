@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ChipTabs, type ChipTabsItem } from '@ingradient/ui/components'
 import { GalleryDetailModal } from '../catalog/gallery/gallery-detail-modal'
 import { ImageInspectorCanvas } from '@ingradient/ui/patterns'
 
@@ -15,7 +17,7 @@ export interface ClassLightboxPoint {
   y: number
 }
 
-export interface ClassLightboxItem {
+export interface ClassLightboxItem extends ChipTabsItem {
   id: string
   name?: string | null
   bboxes?: ClassLightboxBbox[] | null
@@ -28,6 +30,7 @@ export interface ClassLightboxProps {
   open: boolean
   item: ClassLightboxItem | null
   imageUrl: string | null
+  siblings?: ClassLightboxItem[]
   selectedClassId?: string | null
   classIdToColor?: Record<string, string>
   defaultAnnotationColor?: string
@@ -43,16 +46,21 @@ export function ClassLightbox({
   open,
   item,
   imageUrl,
+  siblings = [],
   selectedClassId,
   classIdToColor = {},
   defaultAnnotationColor = 'var(--ig-color-accent)',
   onClose,
 }: ClassLightboxProps) {
+  const [selectedSibling, setSelectedSibling] = useState<ClassLightboxItem | null>(null)
   if (!item || !imageUrl) return null
+
+  const activeItem =
+    selectedSibling && siblings.some((s) => s.id === selectedSibling.id) ? selectedSibling : item
 
   const colorFor = (classId?: string) =>
     (classId && classIdToColor[classId]) || defaultAnnotationColor
-  const boxes = filterByClass(item.bboxes, selectedClassId).map((box, index) => ({
+  const boxes = filterByClass(activeItem.bboxes, selectedClassId).map((box, index) => ({
     id: `bbox-${index}`,
     color: colorFor(box.classId),
     x: box.x,
@@ -60,7 +68,7 @@ export function ClassLightbox({
     width: box.w,
     height: box.h,
   }))
-  const points = filterByClass(item.points, selectedClassId).map((point, index) => ({
+  const points = filterByClass(activeItem.points, selectedClassId).map((point, index) => ({
     id: `point-${index}`,
     color: colorFor(point.classId),
     x: point.x,
@@ -70,23 +78,30 @@ export function ClassLightbox({
   return (
     <GalleryDetailModal
       image={{
-        id: item.id,
-        name: item.name ?? 'Image',
+        id: activeItem.id,
+        name: activeItem.name ?? 'Image',
         thumb_url: imageUrl,
-        width: item.width ?? undefined,
-        height: item.height ?? undefined,
+        width: activeItem.width ?? undefined,
+        height: activeItem.height ?? undefined,
       }}
       open={open}
       onClose={onClose}
       main={
-        <ImageInspectorCanvas
-          imageUrl={imageUrl}
-          imageAlt={item.name ?? 'Image'}
-          boxes={boxes}
-          points={points}
-          showLabels={false}
-          showZoomControls={false}
-        />
+        <>
+          <ChipTabs
+            items={siblings}
+            currentId={activeItem.id}
+            onSelect={(s) => setSelectedSibling(s as ClassLightboxItem)}
+          />
+          <ImageInspectorCanvas
+            imageUrl={imageUrl}
+            imageAlt={activeItem.name ?? 'Image'}
+            boxes={boxes}
+            points={points}
+            showLabels={false}
+            showZoomControls={false}
+          />
+        </>
       }
       sidebar={null}
     />

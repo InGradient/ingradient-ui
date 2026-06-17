@@ -109,6 +109,7 @@ export interface ClassManageOverlaysProps {
   }
   lightbox: {
     image: ClassImage | null
+    siblings: ClassImage[]
     selectedClassId: string | null
     classIdToColor: Record<string, string>
     onClose: () => void
