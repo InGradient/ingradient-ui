@@ -1,41 +1,25 @@
 import type { ReactNode } from 'react'
-import { Stack } from '@ingradient/ui/primitives'
-import { TextField, TextareaField } from '@ingradient/ui/components'
-import { InfoSection } from '@ingradient/ui/components'
+import styled from 'styled-components'
+import { SidePanelLayout, TextField, TextareaField, type SidePanelLayoutSection } from '@ingradient/ui/components'
 import { ColorInputRow } from '@ingradient/ui/patterns'
 
-const SIDEBAR_BASE_STYLE = {
-  flexShrink: 0,
-  height: '100%',
-  minHeight: 0,
-  overflow: 'hidden' as const,
-}
+const Sidebar = styled(SidePanelLayout)<{ $flush: boolean }>`
+  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-md-narrow)')};
+  flex-shrink: 0;
+  background: ${(p) => (p.$flush ? 'transparent' : 'var(--ig-color-surface-panel)')};
+  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
+  border: ${(p) => (p.$flush ? 'none' : 'var(--ig-border-1px) solid var(--ig-color-border-subtle)')};
+  min-height: 0;
+`
 
-const SIDEBAR_PANEL_STYLE = {
-  ...SIDEBAR_BASE_STYLE,
-  width: 'var(--ig-popup-md-narrow)',
-  background: 'var(--ig-color-surface-panel)',
-  borderRadius: 'var(--ig-radius-xl)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
-
-const SIDEBAR_FLUSH_STYLE = {
-  ...SIDEBAR_BASE_STYLE,
-  width: '100%',
-  background: 'transparent',
-  borderRadius: 0,
-  border: 'none',
-}
-
-const PANEL_STYLE = {
-  flex: 1,
-  minHeight: 0,
-  overflowY: 'auto' as const,
-  padding: 'var(--ig-space-7)',
-}
+const PropertyStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-4);
+`
 
 const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-popup-sm)', borderRadius: 'var(--ig-radius-2xs)' }
-const DESCRIPTION_STYLE = { minHeight: 72, maxWidth: '100%', fontSize: 'var(--ig-font-size-sm)', resize: 'vertical' as const }
+const DESCRIPTION_STYLE = { minHeight: 'calc(var(--ig-space-13) * 2 + var(--ig-space-3))', maxWidth: '100%', fontSize: 'var(--ig-font-size-sm)', resize: 'vertical' as const }
 
 export interface ClassInfoSidebarClass {
   id: string
@@ -67,10 +51,11 @@ export function ClassInfoSidebar({
   flush = false,
   descriptionPlaceholder = 'Class description (optional)',
 }: ClassInfoSidebarProps) {
-  return (
-    <Stack as="aside" gap={0} style={flush ? SIDEBAR_FLUSH_STYLE : SIDEBAR_PANEL_STYLE}>
-      <Stack gap="var(--ig-space-7)" style={PANEL_STYLE}>
-        <InfoSection title="Name">
+  const sections: SidePanelLayoutSection[] = [
+    {
+      title: 'Name',
+      body: (
+        <PropertyStack>
           <TextField
             size="sm"
             value={selectedClass.name}
@@ -78,30 +63,29 @@ export function ClassInfoSidebar({
             aria-label="Class name"
             style={NAME_INPUT_STYLE}
           />
-        </InfoSection>
-
-        <InfoSection title="Color">
           <ColorInputRow
             value={selectedClass.color}
             onChange={onChangeColor}
             onRandomize={onRandomizeColor}
             ariaLabel="Class color"
           />
-        </InfoSection>
-
-        <InfoSection title="Description">
-          <TextareaField
-            value={selectedClass.description ?? ''}
-            onChange={(e) => onChangeDescription?.(e.target.value || undefined)}
-            placeholder={descriptionPlaceholder}
-            rows={3}
-            style={DESCRIPTION_STYLE}
-          />
-        </InfoSection>
-
-        {referenceImageSlot}
-        {mappingSlot}
-      </Stack>
-    </Stack>
-  )
+        </PropertyStack>
+      ),
+    },
+    {
+      title: 'Description',
+      body: (
+        <TextareaField
+          value={selectedClass.description ?? ''}
+          onChange={(e) => onChangeDescription?.(e.target.value || undefined)}
+          placeholder={descriptionPlaceholder}
+          rows={3}
+          style={DESCRIPTION_STYLE}
+        />
+      ),
+    },
+    ...(referenceImageSlot ? [{ title: 'Reference Image', body: referenceImageSlot }] : []),
+    ...(mappingSlot ? [{ title: 'Model Mapping', body: mappingSlot }] : []),
+  ]
+  return <Sidebar $flush={flush} sections={sections} />
 }
