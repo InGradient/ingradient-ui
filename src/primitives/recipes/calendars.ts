@@ -67,7 +67,7 @@ export const calendarDayStates = css`
     padding-block: var(--ig-space-2);
     color: var(--ig-color-text-muted);
     font-size: var(--ig-font-size-xs);
-    font-weight: 500;
+    font-weight: var(--ig-font-weight-medium);
   }
 
   .rdp-day_button {
@@ -111,7 +111,7 @@ export const calendarDayStates = css`
     border-color: var(--ig-color-accent-strong);
     background: var(--ig-color-accent);
     color: var(--ig-color-on-accent);
-    font-weight: 600;
+    font-weight: var(--ig-font-weight-semibold);
   }
 
   .rdp-range_start,
@@ -126,6 +126,6 @@ export const calendarDayStates = css`
 
   .rdp-today:not(.rdp-selected) .rdp-day_button {
     color: var(--ig-color-accent-soft);
-    font-weight: 700;
+    font-weight: var(--ig-font-weight-bold);
   }
 `

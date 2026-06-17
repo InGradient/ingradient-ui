@@ -3,10 +3,11 @@ import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DropdownSelect } from '@ingradient/ui/components'
 import { SearchField } from '@ingradient/ui/components'
+import { popupSizeNumbers } from '@ingradient/ui/tokens'
 import { DeviceStatusBadge } from './device-status-badge'
 
-const SEARCH_FIELD_STYLE = { width: 200 }
-const TH_ACTIONS_STYLE = { width: 120 }
+const SEARCH_FIELD_STYLE = { width: popupSizeNumbers.listMin }
+const TH_ACTIONS_STYLE = { width: popupSizeNumbers['2xsNarrow'] }
 
 const Table = styled.table`
   width: 100%;

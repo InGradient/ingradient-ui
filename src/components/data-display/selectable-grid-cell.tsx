@@ -26,18 +26,31 @@ const Cell = styled.div<{ $selected: boolean }>`
 export interface SelectableGridCellProps extends React.HTMLAttributes<HTMLDivElement> {
   selected: boolean
   draggable?: boolean
+  /** Accessible label for the cell action (e.g. "Select image 'foo.jpg'"). Caller 가 항상 지정 권장. */
+  ariaLabel?: string
   children: React.ReactNode
 }
 
 export const SelectableGridCell = React.forwardRef<HTMLDivElement, SelectableGridCellProps>(
-  function SelectableGridCell({ selected, draggable, children, ...rest }, ref) {
+  function SelectableGridCell({ selected, draggable, ariaLabel = 'Grid item', children, onClick, onKeyDown, ...rest }, ref) {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if ((event.key === 'Enter' || event.key === ' ') && onClick) {
+        event.preventDefault()
+        onClick(event as unknown as React.MouseEvent<HTMLDivElement>)
+      }
+      onKeyDown?.(event)
+    }
     return (
       <Cell
         ref={ref}
         $selected={selected}
         role="button"
         tabIndex={0}
+        aria-label={ariaLabel}
+        aria-pressed={selected}
         draggable={draggable}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
         {...rest}
       >
         {children}
