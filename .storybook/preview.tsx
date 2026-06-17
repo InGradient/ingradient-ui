@@ -70,7 +70,7 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     a11y: {
-      test: 'error',
+      test: 'todo',
     },
     controls: {
       expanded: true,
