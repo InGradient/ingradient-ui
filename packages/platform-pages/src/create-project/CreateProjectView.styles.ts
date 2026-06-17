@@ -85,22 +85,10 @@ export const SectionBody = styled.div`
 
 export const FieldsBody = styled(SectionBody)`
   gap: 0;
-
-  > * {
-    padding: var(--ig-space-5) 0;
-  }
-
-  > *:first-child {
-    padding-top: 0;
-  }
-
-  > *:last-child {
-    padding-bottom: 0;
-  }
-
-  > * + * {
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  }
+  > * { padding: var(--ig-space-5) 0; }
+  > *:first-child { padding-top: 0; }
+  > *:last-child { padding-bottom: 0; }
+  > * + * { border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
 `
 
 export const Actions = styled.div`

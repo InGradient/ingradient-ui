@@ -10,7 +10,7 @@ const Item = styled(SelectableListItem)<{ $menuOpen: boolean }>`
     css`
       && {
         background: var(--ig-color-blue-tint-12);
-        box-shadow: inset -2px 0 0 var(--ig-color-accent);
+        box-shadow: inset calc(-1 * var(--ig-border-2px)) 0 0 var(--ig-color-accent);
       }
     `}
 `

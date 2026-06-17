@@ -11,7 +11,7 @@ const Plane = styled.div<{ $hue: number }>`
   background:
     linear-gradient(180deg, var(--ig-color-white-90), transparent 50%, var(--ig-color-bg-canvas)),
     linear-gradient(90deg, hsl(${(p) => p.$hue} 0% 50%), hsl(${(p) => p.$hue} 100% 50%));
-  box-shadow: inset 0 1px 0 var(--ig-color-white-12);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-white-12);
   cursor: crosshair;
   overflow: hidden;
   touch-action: none;

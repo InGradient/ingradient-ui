@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Button } from '@ingradient/ui/components'
 import { ClosePanelIcon } from '@ingradient/ui/components'
 import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
@@ -117,7 +118,7 @@ export function ClassListSidebar({
           </Button>
           {onCollapse ? (
             <CollapseButton type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
-              <ClosePanelIcon size={16} />
+              <ClosePanelIcon size={iconSizeNumbers.md} />
             </CollapseButton>
           ) : null}
         </HeaderActions>
