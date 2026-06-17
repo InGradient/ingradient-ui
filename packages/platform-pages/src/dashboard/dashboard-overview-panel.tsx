@@ -16,7 +16,7 @@ const Body = styled.div`
   flex: 1;
   min-height: 0;
   padding: var(--ig-space-7);
-  overflow: visible;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 `
