@@ -158,7 +158,7 @@ export function SettingsModalContent(props: {
   return (
     <CameraSettingsDialogView
       activeTab={activeTab}
-      currentUserRole="admin"
+      currentUserRole="manager"
       labels={SETTINGS_DIALOG_LABELS}
       connectionContent={props.connectionContent}
       serverContent={serverContent}
