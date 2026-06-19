@@ -15,7 +15,7 @@ const handoff = defineHandoff({
   fixturesPath: 'stories/fixtures/platform/0.0.1/class-{classes,datasets,images,scenarios}.ts',
   requiredScenarios: [
     'default', 'empty', 'loading', 'permission-denied',
-    'class-with-images', 'no-class-selected', 'stress-test',
+    'no-class-selected', 'stress-test',
   ],
   interactions: [
     'class row 클릭 → selectedClassId 변경 + 가운데/우측 reflow',
@@ -161,7 +161,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 export const NoClassSelected: Story = { args: { scenario: 'no-class-selected' } }
-export const ClassWithImages: Story = { args: { scenario: 'class-with-images' } }
 export const ClassWithGroupedImages: Story = { args: { scenario: 'class-with-grouped-images' } }
 export const Empty: Story = { args: { scenario: 'empty' } }
 export const Loading: Story = { args: { scenario: 'loading' } }

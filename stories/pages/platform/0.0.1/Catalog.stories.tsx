@@ -85,7 +85,6 @@ export const StatsView: Story = { args: { scenario: 'stats-view' } }
 export const StatsEmpty: Story = { args: { scenario: 'stats-empty' } }
 export const RightLoading: Story = { args: { scenario: 'right-loading' } }
 export const RightManyClasses: Story = { args: { scenario: 'right-many-classes' } }
-export const FilterActive: Story = { args: { scenario: 'filter-active' } }
 export const ModalAddDataset: Story = { args: { scenario: 'modal-add-dataset' } }
 export const ModalDuplicate: Story = { args: { scenario: 'modal-duplicate' } }
 export const ModalDragDrop: Story = { args: { scenario: 'modal-drag-drop' } }

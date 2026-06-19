@@ -72,7 +72,6 @@ export type CatalogScenarioKey =
   | 'drag-over' | 'uploading' | 'sidebar-collapsed'
   | 'table-view' | 'stats-view' | 'stats-empty'
   | 'right-loading' | 'right-many-classes'
-  | 'filter-active'
   | 'modal-add-dataset' | 'modal-duplicate' | 'modal-drag-drop'
   | 'modal-igp-export' | 'modal-upload-quality'
   | 'modal-confirm-delete' | 'modal-bulk-delete'
@@ -132,7 +131,6 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'stats-empty': { ...base, viewMode: 'stats', images: [] },
   'right-loading': { ...base, classesLoading: true, membersLoading: true, classes: [], members: [] },
   'right-many-classes': { ...base, connectedClassIds: mockClasses.map((c) => c.id) },
-  'filter-active': { ...base, filterOpen: 'status' },
   'modal-add-dataset': { ...base, addDatasetOpen: true },
   'modal-duplicate': { ...base, duplicateDatasetId: 'd1' },
   'modal-drag-drop': { ...base, dragDropOpen: true },

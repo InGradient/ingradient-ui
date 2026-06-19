@@ -8,7 +8,6 @@ import {
 export type ClassScenarioKey =
   | 'default'
   | 'no-class-selected'
-  | 'class-with-images'
   | 'class-with-grouped-images'
   | 'empty'
   | 'loading'
@@ -73,7 +72,6 @@ const longClasses: MockClass[] = mockClasses.map((c, i) =>
 export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'default': base,
   'no-class-selected': { ...base, selectedClassId: null, datasets: [], images: [] },
-  'class-with-images': base,
   'class-with-grouped-images': { ...base, images: manyImagesForCl1 },
   'empty': { ...base, classes: [], selectedClassId: null, datasets: [], images: [] },
   'loading': { ...base, classes: [], classesLoading: true, selectedClassId: null, datasets: [], images: [] },

@@ -105,7 +105,6 @@ const base: SettingsScene = {
 
 export type SettingsScenarioKey =
   | 'default'
-  | 'general'
   | 'account-default'
   | 'account-license-personal'
   | 'account-license-expired'
@@ -144,7 +143,6 @@ export type SettingsScenarioKey =
 
 export const settingsScenarios: Record<SettingsScenarioKey, SettingsScene> = {
   'default': base,
-  'general': { ...base, initialTab: 'general' },
   'account-default': { ...base, initialTab: 'account' },
   'account-license-personal': { ...base, initialTab: 'account', license: personalLicense },
   'account-license-expired': { ...base, initialTab: 'account', license: expiredLicense },

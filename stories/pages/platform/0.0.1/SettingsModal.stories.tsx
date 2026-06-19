@@ -48,7 +48,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-export const General: Story = { args: { scenario: 'general' } }
 export const AccountDefault: Story = { args: { scenario: 'account-default' } }
 export const AccountLicensePersonal: Story = { args: { scenario: 'account-license-personal' } }
 export const AccountLicenseExpired: Story = { args: { scenario: 'account-license-expired' } }
