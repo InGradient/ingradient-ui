@@ -12,13 +12,12 @@ const handoff = defineHandoff({
   requiredScenarios: [
     'capture', 'images', 'statics', 'setup', 'labeling', 'labeling-with-failure',
     'capturing', 'images-modal-edit', 'images-modal-readonly',
-    'settings-open', 'connection-open', 'log-filter-open', 'system-monitor', 'offline',
+    'settings-open', 'connection-open', 'log-filter-open', 'offline',
   ],
   interactions: [
     'Tab 전환 (capture/images/statics/setup)',
     'labeling 분기 진입 + sequence failure dialog',
     'Settings 다이얼로그 탭 전환 (connection/server/about/data/camera/logs/fieldtest)',
-    'SystemMonitor 모달 monitor/cleanup 탭',
     'Activity(Log) 패널 필터 popover',
   ],
   platformIntegration: [
@@ -58,7 +57,6 @@ export const ImagesModalReadOnly: Story = { args: { activeTab: 'images', imagesM
 export const SettingsOpen: Story = { args: { activeTab: 'capture', settingsTab: 'server' } }
 export const ConnectionOpen: Story = { args: { activeTab: 'capture', settingsTab: 'connection' } }
 export const LogFilterOpen: Story = { args: { activeTab: 'capture', logFilterOpen: true } }
-export const SystemMonitorOpen: Story = { args: { activeTab: 'capture', showSystemMonitor: true } }
 
 // ── 연결 상태 ────────────────────────────────────────────────────────────────
 export const Offline: Story = { args: { activeTab: 'capture', connectionStatus: 'disconnected' } }

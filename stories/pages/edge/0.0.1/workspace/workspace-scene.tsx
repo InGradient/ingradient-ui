@@ -1,6 +1,6 @@
 // Workspace 전체 화면 합성. 실제 앱의
 // EdgeAppShellView > MainLayoutView(topBar/leftPanel/center=WorkspaceView/rightPanel)
-// 구조를 재현하고, Settings/Connection/SystemMonitor 모달과 탭/패널을 시나리오별로 채운다.
+// 구조를 재현하고, Settings/Connection 모달과 탭/패널을 시나리오별로 채운다.
 import { useState } from 'react'
 import {
   MainLayoutView,
@@ -25,7 +25,6 @@ import { BBoxCanvasScene } from './build-bbox-canvas'
 import { RightPanel, LogPanel } from './build-panels'
 import { SettingsModalContent } from './build-settings-modal'
 import { ConnectionTabContent } from './build-connection-content'
-import { SystemMonitorContent } from './build-system-modal'
 
 const WORKSPACE_LABELS: WorkspaceLabels = {
   saving: 'Saving…', sequenceFailed: 'Sequence failed', errorCode: 'Error:',
@@ -39,7 +38,6 @@ export interface WorkspaceSceneArgs {
   sequenceFailure?: boolean
   imagesModalMode?: ImagesModalMode
   settingsTab?: SettingsTab | null
-  showSystemMonitor?: boolean
   logFilterOpen?: boolean
   connectionStatus?: ConnectionStatus
 }
@@ -96,7 +94,6 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
     <EdgeAppFrame
       content={content}
       showFooter
-      systemMonitorModal={args.showSystemMonitor ? <SystemMonitorContent /> : undefined}
     />
   )
 }
