@@ -1,6 +1,7 @@
 // Capture 탭 content — 실시간 스트림 + 캡처 컨트롤.
 import { useState } from 'react'
 import { CaptureView, type CaptureLabels } from '@ingradient/edge-pages'
+import liveSampleSrc from '../../../../assets/20230907.jpg'
 
 const CAPTURE_LABELS: CaptureLabels = {
   ready: 'Ready', controls: 'Controls', grid: 'Grid', capture: 'Capture',
@@ -28,7 +29,7 @@ export function CaptureContent({
       isSetupMode={isSetupMode}
       isSetupBusy={false}
       isSavingSequence={false}
-      liveFrameSrc={null}
+      liveFrameSrc={liveSampleSrc}
       previewSrc={null}
       frozenFrameSrc={null}
       hasReceivedSnapshot

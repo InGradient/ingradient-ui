@@ -1,6 +1,21 @@
 import type { ImageItem, BBox, ClassInfo } from '@ingradient/edge-pages'
 
-/** 작은 회색 grid 패턴 — 라벨링 시연용 placeholder */
+import img0808 from '../../../assets/20230808.jpg'
+import img0816 from '../../../assets/20230816.jpg'
+import img0823 from '../../../assets/20230823.jpg'
+import img0824 from '../../../assets/20230824.jpg'
+import img0830 from '../../../assets/20230830.jpg'
+import img0906 from '../../../assets/20230906.jpg'
+import img0907 from '../../../assets/20230907.jpg'
+import img0913 from '../../../assets/20230913.jpg'
+import img0927 from '../../../assets/20230927.jpg'
+
+const SAMPLE_IMAGE_URLS = [
+  img0808, img0816, img0823, img0824, img0830,
+  img0906, img0907, img0913, img0927,
+]
+
+/** 작은 회색 grid 패턴 — placeholder (modal canvas 등 일부 viewer 용) */
 export const SAMPLE_IMAGE_DATA_URL = `data:image/svg+xml;utf8,${encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <defs>
@@ -35,11 +50,11 @@ export const SAMPLE_BBOXES: BBox[] = [
   { classId: 'c4', x: 0.78, y: 0.22, w: 0.10, h: 0.13 },
 ]
 
-/** ImagesView 의 grid 용 ImageItem[]. 4 sequence × 일부 sync 상태. */
+/** ImagesView 의 grid 용 ImageItem[]. 9 sample 이미지 cycling + 일부 sync 상태. */
 export const SAMPLE_IMAGE_ITEMS: ImageItem[] = Array.from({ length: 12 }).map((_, i) => ({
   id: `img-${i}`,
-  src: SAMPLE_IMAGE_DATA_URL,
-  fullSrc: SAMPLE_IMAGE_DATA_URL,
+  src: SAMPLE_IMAGE_URLS[i % SAMPLE_IMAGE_URLS.length],
+  fullSrc: SAMPLE_IMAGE_URLS[i % SAMPLE_IMAGE_URLS.length],
   label: `2026-05-${(20 - Math.floor(i / 4)).toString().padStart(2, '0')}_capture_${(i % 4) + 1}.png`,
   capturedAt: new Date(2026, 4, 20 - Math.floor(i / 4), 12, 30 + i).toISOString(),
   syncState: i % 4 === 0 ? 'synced'
