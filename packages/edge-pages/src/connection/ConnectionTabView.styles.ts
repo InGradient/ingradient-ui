@@ -6,6 +6,15 @@ import { surfacePanel, surfaceRaised } from '@ingradient/ui';
 // Section / SectionTitle / FormGroup / FieldLabel: @ingradient/ui patterns 로 이동 (PR-0.1, 2026-05-09)
 export const ActionRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-5);flex-wrap:wrap;`;
 
+// Flat vertical container — Settings 다이얼로그 안에서 Panel surface 없이 섹션을 묶기 위한 컨테이너.
+// 다른 Settings 탭(Server/Data/About 등)이 FieldGroup 만 쓰는 것과 동일한 평면 레이아웃.
+export const FlatSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-5);
+  margin-bottom: var(--ig-space-7);
+`;
+
 // ── Guided Connection ──
 export const GuideCard = styled.div`
   ${surfacePanel}
