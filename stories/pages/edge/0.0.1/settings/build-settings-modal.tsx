@@ -147,7 +147,13 @@ export function SettingsModalContent(props: {
       frontendLogsContent={
         <FrontendLogsContentView
           logs={SAMPLE_FRONTEND_LOGS}
+          refreshing={false}
+          searchQuery=""
+          levelFilter="all"
           labels={FRONTEND_LOGS_LABELS}
+          onSearchChange={noop}
+          onLevelFilterChange={noop}
+          onRefresh={noop}
           onClear={noop}
           onExport={noop}
         />

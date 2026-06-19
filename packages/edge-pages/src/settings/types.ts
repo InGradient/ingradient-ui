@@ -236,6 +236,13 @@ export interface BackendLogsContentViewProps {
 }
 
 export interface FrontendLogsLabels {
+  search: string
+  level: string
+  all: string
+  info: string
+  warn: string
+  error: string
+  refresh: string
   clear: string
   export: string
   empty: string
@@ -243,7 +250,13 @@ export interface FrontendLogsLabels {
 
 export interface FrontendLogsContentViewProps {
   logs: LogEntry[]
+  refreshing: boolean
+  searchQuery: string
+  levelFilter: string
   labels: FrontendLogsLabels
+  onSearchChange: (q: string) => void
+  onLevelFilterChange: (level: string) => void
+  onRefresh: () => void
   onClear: () => void
   onExport: () => void
 }

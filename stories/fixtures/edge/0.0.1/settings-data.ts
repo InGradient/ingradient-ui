@@ -115,6 +115,13 @@ export const BACKEND_LOGS_LABELS: BackendLogsLabels = {
 }
 
 export const FRONTEND_LOGS_LABELS: FrontendLogsLabels = {
+  search: 'Search logs',
+  level: 'Level',
+  all: 'All',
+  info: 'Info',
+  warn: 'Warn',
+  error: 'Error',
+  refresh: 'Refresh',
   clear: 'Clear',
   export: 'Export',
   empty: 'No frontend logs.',
