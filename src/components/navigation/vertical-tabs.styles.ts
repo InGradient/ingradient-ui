@@ -16,9 +16,7 @@ export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
   gap: var(--ig-space-1);
   width: 100%;
   padding: var(--ig-space-2);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].root};
-  background: var(--ig-color-surface-panel);
 `
 
 export const Highlight = styled.div<{ $top: number; $height: number; $visible: boolean; $radius: VerticalTabsRadius }>`
