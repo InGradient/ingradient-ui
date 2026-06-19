@@ -86,7 +86,6 @@ export interface AdvancedSectionViewProps {
 export interface ConnectionGuidePanelViewProps {
   state: GuideState
   labels: ConnectionLabels
-  onDismiss?: () => void
 }
 
 export interface ForceIpDialogViewProps {
@@ -111,7 +110,7 @@ export interface ConnectionTabViewProps {
   nicControl: Omit<NicControlSectionViewProps, 'labels'>
   profile: Omit<ProfileStatusSectionViewProps, 'labels'>
   advanced: Omit<AdvancedSectionViewProps, 'labels'>
-  guide: { visible: boolean; state: GuideState; onDismiss: () => void }
+  guide: { visible: boolean; state: GuideState }
   labels: ConnectionLabels
   forceIpDialog?: ReactNode
 }

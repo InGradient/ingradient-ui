@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, CheckCircle, Search, SlidersHorizontal, Wifi, X } from 'lucide-react'
+import { Activity, AlertTriangle, CheckCircle, Search, SlidersHorizontal, Wifi } from 'lucide-react'
 import styled from 'styled-components'
 import { Badge, Button, iconSizeNumbers, surfacePanel, surfaceRaised } from '@ingradient/ui'
 import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
@@ -13,7 +13,6 @@ const GuideCard = styled.div`
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   margin-bottom: var(--ig-space-7);
-  position: relative;
 `
 
 const Header = styled.div`
@@ -89,16 +88,6 @@ const Warning = styled.div`
   line-height: var(--ig-line-height-snug);
 `
 
-const CloseBtn = styled.button`
-  position: absolute;
-  top: var(--ig-space-3);
-  right: var(--ig-space-3);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--ig-color-text-muted);
-`
-
 function toneColor(tone: GuideTone): string {
   switch (tone) {
     case 'success': return 'var(--ig-color-success)'
@@ -125,17 +114,11 @@ function valueOrDash(value: string | null | undefined): string {
 }
 
 export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): JSX.Element {
-  const { state, labels, onDismiss } = props
+  const { state, labels } = props
   const { tone, statusLabel, title, summary, primaryAction, secondaryActions, network, warnings } = state
 
   return (
     <GuideCard>
-      {onDismiss && (
-        <CloseBtn type="button" onClick={onDismiss}>
-          <X size={iconSizeNumbers.sm} />
-        </CloseBtn>
-      )}
-
       <div>
         <Header>
           <StatusIcon tone={tone} />

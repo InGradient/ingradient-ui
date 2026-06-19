@@ -20,7 +20,6 @@ export function ConnectionTabContent(): JSX.Element {
     SAMPLE_NIC_CANDIDATES[0] ?? null,
   )
   const [advancedExpanded, setAdvancedExpanded] = useState(false)
-  const [guideVisible, setGuideVisible] = useState(true)
 
   return (
     <ConnectionTabView
@@ -77,9 +76,8 @@ export function ConnectionTabContent(): JSX.Element {
         onToggleExpanded: () => setAdvancedExpanded((v) => !v),
       }}
       guide={{
-        visible: guideVisible,
+        visible: true,
         state: SAMPLE_GUIDE_STATE,
-        onDismiss: () => setGuideVisible(false),
       }}
     />
   )
