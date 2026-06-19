@@ -1,4 +1,5 @@
 import React, { useId } from 'react'
+import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { H4 } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
@@ -68,7 +69,8 @@ export function TwoColumnDialog({
   sidebarWidth = 'var(--ig-popup-xs-narrow)',
 }: TwoColumnDialogProps) {
   const titleId = useId()
-  return (
+  if (typeof document === 'undefined') return null
+  return createPortal(
     <ModalBackdrop onClick={() => onClose()}>
       <Shell
         $width={width}
@@ -87,6 +89,7 @@ export function TwoColumnDialog({
           <MainPanel>{children}</MainPanel>
         </Body>
       </Shell>
-    </ModalBackdrop>
+    </ModalBackdrop>,
+    document.body,
   )
 }
