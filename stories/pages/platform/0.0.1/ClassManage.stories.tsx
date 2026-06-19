@@ -15,7 +15,7 @@ const handoff = defineHandoff({
   fixturesPath: 'stories/fixtures/platform/0.0.1/class-{classes,datasets,images,scenarios}.ts',
   requiredScenarios: [
     'default', 'empty', 'loading', 'permission-denied',
-    'class-with-images', 'no-class-selected', 'long-text', 'many-items',
+    'class-with-images', 'no-class-selected', 'stress-test',
   ],
   interactions: [
     'class row 클릭 → selectedClassId 변경 + 가운데/우측 reflow',
@@ -168,21 +168,17 @@ export const Loading: Story = { args: { scenario: 'loading' } }
 export const Error: Story = { args: { scenario: 'error' } }
 export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
 export const NoProject: Story = { args: { scenario: 'no-project' } }
-export const LongText: Story = { args: { scenario: 'long-text' } }
-export const ManyItems: Story = { args: { scenario: 'many-items' } }
+export const StressTest: Story = { args: { scenario: 'stress-test' } }
 export const NoLinkedDatasets: Story = { args: { scenario: 'no-linked-datasets' } }
 export const ImagesLoading: Story = { args: { scenario: 'images-loading' } }
 export const ImagesEmpty: Story = { args: { scenario: 'images-empty' } }
 export const DragOverReference: Story = { args: { scenario: 'drag-over-reference' } }
-export const ReferenceImageSet: Story = { args: { scenario: 'reference-image-set' } }
 export const ReferenceImagePending: Story = { args: { scenario: 'reference-image-pending' } }
 export const BboxNavMulti: Story = { args: { scenario: 'bbox-nav-multi' } }
-export const LightboxOpen: Story = { args: { scenario: 'lightbox-open' } }
-export const LightboxWithPatternTabs: Story = { args: { scenario: 'lightbox-with-pattern-tabs' } }
+export const Lightbox: Story = { args: { scenario: 'lightbox' } }
 export const ContextMenuOpen: Story = { args: { scenario: 'context-menu-open' } }
 export const AddClassModalOpen: Story = { args: { scenario: 'add-class-modal-open' } }
 export const DeleteConfirmOpen: Story = { args: { scenario: 'delete-confirm-open' } }
 export const MappingCocoActive: Story = { args: { scenario: 'mapping-coco-active' } }
-export const MappingDisabled: Story = { args: { scenario: 'mapping-disabled' } }
 export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
 export const ClassMenuOpen: Story = { args: { scenario: 'class-menu-open' } }

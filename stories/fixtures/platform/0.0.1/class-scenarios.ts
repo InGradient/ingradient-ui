@@ -15,22 +15,18 @@ export type ClassScenarioKey =
   | 'error'
   | 'permission-denied'
   | 'no-project'
-  | 'long-text'
-  | 'many-items'
+  | 'stress-test'
   | 'no-linked-datasets'
   | 'images-loading'
   | 'images-empty'
   | 'drag-over-reference'
-  | 'reference-image-set'
   | 'reference-image-pending'
   | 'bbox-nav-multi'
-  | 'lightbox-open'
-  | 'lightbox-with-pattern-tabs'
+  | 'lightbox'
   | 'context-menu-open'
   | 'add-class-modal-open'
   | 'delete-confirm-open'
   | 'mapping-coco-active'
-  | 'mapping-disabled'
   | 'sidebar-collapsed'
   | 'class-menu-open'
 
@@ -84,28 +80,22 @@ export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'error': { ...base, classes: [], error: 'Failed to load classes. Try again.', selectedClassId: null, datasets: [], images: [] },
   'permission-denied': { ...base, classes: [], permissionDenied: true, selectedClassId: null, datasets: [], images: [] },
   'no-project': { ...base, classes: [], noProject: true, selectedClassId: null, datasets: [], images: [] },
-  'long-text': { ...base, classes: longClasses, selectedClassId: 'cl-1' },
-  'many-items': {
+  'stress-test': {
     ...base,
-    classes: makeManyClasses(),
-    selectedClassId: 'cl-many-3',
-    datasets: classIdToDatasets['cl-1'],
-    images: imagesForCl1.slice(0, 4),
+    classes: longClasses.concat(makeManyClasses()),
+    selectedClassId: 'cl-1',
   },
   'no-linked-datasets': { ...base, selectedClassId: 'cl-7', datasets: [], images: [] },
   'images-loading': { ...base, imagesLoading: true, images: [] },
   'images-empty': { ...base, images: [] },
   'drag-over-reference': { ...base, isReferenceDragOver: true },
-  'reference-image-set': base,
   'reference-image-pending': { ...base, referencePending: true },
   'bbox-nav-multi': { ...base, referenceBboxCandidates: referenceBboxCandidatesForCl1 },
-  'lightbox-open': { ...base, lightboxImage: imagesForCl1[0] },
-  'lightbox-with-pattern-tabs': { ...base, images: sequenceImagesForCl1, lightboxImage: sequenceImagesForCl1[1], lightboxSiblings: sequenceImagesForCl1 },
+  'lightbox': { ...base, images: sequenceImagesForCl1, lightboxImage: sequenceImagesForCl1[1], lightboxSiblings: sequenceImagesForCl1 },
   'context-menu-open': { ...base, contextMenuOpen: { imageId: 'img-cl1-1', top: 240, left: 460 } },
   'add-class-modal-open': { ...base, isAddClassOpen: true, addClassName: 'New defect' },
   'delete-confirm-open': { ...base, deleteConfirmOpen: true },
   'mapping-coco-active': { ...base, showCocoMapping: true, currentMapping: 'person' },
-  'mapping-disabled': { ...base, showCocoMapping: false },
   'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'class-menu-open': { ...base, openMenuClassId: 'cl-1' },
 }
