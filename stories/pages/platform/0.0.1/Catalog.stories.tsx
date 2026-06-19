@@ -14,7 +14,7 @@ const handoff = defineHandoff({
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/catalog-{datasets,images,scenarios}.ts',
   requiredScenarios: [
-    'default', 'empty-images', 'loading-images', 'permission-denied',
+    'default', 'empty', 'loading', 'permission-denied',
     'archived', 'multi-selection', 'table-view', 'stats-view',
   ],
   interactions: [
@@ -59,10 +59,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-export const EmptyDatasets: Story = { args: { scenario: 'empty-datasets' } }
-export const EmptyImages: Story = { args: { scenario: 'empty-images' } }
-export const LoadingDatasets: Story = { args: { scenario: 'loading-datasets' } }
-export const LoadingImages: Story = { args: { scenario: 'loading-images' } }
+export const Empty: Story = { args: { scenario: 'empty' } }
+export const Loading: Story = { args: { scenario: 'loading' } }
 export const Error: Story = { args: { scenario: 'error' } }
 export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
 export const NoProject: Story = { args: { scenario: 'no-project' } }
@@ -82,7 +80,6 @@ export const Uploading: Story = { args: { scenario: 'uploading' } }
 export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
 export const TableView: Story = { args: { scenario: 'table-view' } }
 export const StatsView: Story = { args: { scenario: 'stats-view' } }
-export const StatsEmpty: Story = { args: { scenario: 'stats-empty' } }
 export const RightLoading: Story = { args: { scenario: 'right-loading' } }
 export const RightManyClasses: Story = { args: { scenario: 'right-many-classes' } }
 export const ModalAddDataset: Story = { args: { scenario: 'modal-add-dataset' } }
@@ -94,9 +91,6 @@ export const ModalConfirmDelete: Story = { args: { scenario: 'modal-confirm-dele
 export const ModalBulkDelete: Story = { args: { scenario: 'modal-bulk-delete' } }
 export const ModalExport: Story = { args: { scenario: 'modal-export' } }
 export const ModalTransfer: Story = { args: { scenario: 'modal-transfer' } }
-export const DetailWithAnnotations: Story = { args: { scenario: 'detail-with-annotations' } }
-export const DetailWithComments: Story = { args: { scenario: 'detail-with-comments' } }
-export const DetailMultiClass: Story = { args: { scenario: 'detail-multi-class' } }
+export const DetailRich: Story = { args: { scenario: 'detail-rich' } }
 export const MobileDefault: Story = { args: { scenario: 'mobile-default' } }
-export const MobileDatasetDropdownOpen: Story = { args: { scenario: 'mobile-dataset-dropdown-open' } }
 export const MobileBottomFilter: Story = { args: { scenario: 'mobile-bottom-filter' } }

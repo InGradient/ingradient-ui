@@ -63,21 +63,20 @@ export interface CatalogScene {
 
 export type CatalogScenarioKey =
   | 'default'
-  | 'empty-datasets' | 'empty-images'
-  | 'loading-datasets' | 'loading-images'
+  | 'empty' | 'loading'
   | 'error' | 'permission-denied' | 'no-project'
   | 'stress-test'
   | 'multi-selection' | 'archived' | 'processing' | 'group-mode'
   | 'hover-preview' | 'detail-open' | 'filter-open' | 'sort-open' | 'image-menu' | 'dataset-menu-open'
   | 'drag-over' | 'uploading' | 'sidebar-collapsed'
-  | 'table-view' | 'stats-view' | 'stats-empty'
+  | 'table-view' | 'stats-view'
   | 'right-loading' | 'right-many-classes'
   | 'modal-add-dataset' | 'modal-duplicate' | 'modal-drag-drop'
   | 'modal-igp-export' | 'modal-upload-quality'
   | 'modal-confirm-delete' | 'modal-bulk-delete'
   | 'modal-export' | 'modal-transfer'
-  | 'detail-with-annotations' | 'detail-with-comments' | 'detail-multi-class'
-  | 'mobile-default' | 'mobile-dataset-dropdown-open' | 'mobile-bottom-filter'
+  | 'detail-rich'
+  | 'mobile-default' | 'mobile-bottom-filter'
 
 const datasetD1Images = mockImages.filter((img) => img.dataset_id === 'd1')
 const datasetD2Images = mockImages.filter((img) => img.dataset_id === 'd2')
@@ -105,10 +104,8 @@ function stressImages(): MockGalleryImage[] {
 
 export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'default': base,
-  'empty-datasets': { ...base, datasets: [], currentDatasetId: undefined, images: [] },
-  'empty-images': { ...base, images: [] },
-  'loading-datasets': { ...base, datasets: [], datasetsLoading: true, currentDatasetId: undefined, images: [] },
-  'loading-images': { ...base, imagesLoading: true, images: [] },
+  'empty': { ...base, datasets: [], currentDatasetId: undefined, images: [] },
+  'loading': { ...base, datasets: [], datasetsLoading: true, currentDatasetId: undefined, images: [] },
   'error': { ...base, error: 'Failed to load images. Try again.', images: [] },
   'permission-denied': { ...base, permissionDenied: true, images: [] },
   'no-project': { ...base, noProject: true, datasets: [], images: [], currentDatasetId: undefined },
@@ -128,7 +125,6 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'table-view': { ...base, viewMode: 'table' },
   'stats-view': { ...base, viewMode: 'stats' },
-  'stats-empty': { ...base, viewMode: 'stats', images: [] },
   'right-loading': { ...base, classesLoading: true, membersLoading: true, classes: [], members: [] },
   'right-many-classes': { ...base, connectedClassIds: mockClasses.map((c) => c.id) },
   'modal-add-dataset': { ...base, addDatasetOpen: true },
@@ -140,11 +136,8 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'modal-bulk-delete': { ...base, selectedImageIds: ['img-1', 'img-2', 'img-3'], bulkDeleteOpen: true },
   'modal-export': { ...base, selectedImageIds: ['img-1', 'img-2', 'img-3'], exportConfigOpen: true },
   'modal-transfer': { ...base, selectedImageIds: ['img-1', 'img-2'], datasetTransferAction: 'copy' },
-  'detail-with-annotations': { ...base, detailImageId: 'img-1', detailVariant: 'with-annotations' },
-  'detail-with-comments': { ...base, detailImageId: 'img-1', detailVariant: 'with-comments' },
-  'detail-multi-class': { ...base, detailImageId: 'img-1', detailVariant: 'multi-class' },
+  'detail-rich': { ...base, detailImageId: 'img-1', detailVariant: 'with-annotations' },
   'mobile-default': { ...base, isMobile: true },
-  'mobile-dataset-dropdown-open': { ...base, isMobile: true, mobileDatasetDropdownOpen: true },
   'mobile-bottom-filter': { ...base, isMobile: true, mobileBottomSheet: 'filter' },
 }
 
