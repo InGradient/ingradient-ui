@@ -1,6 +1,7 @@
 // Workspace 전체 화면 합성. 실제 앱의
 // EdgeAppShellView > MainLayoutView(topBar/leftPanel/center=WorkspaceView/rightPanel)
-// 구조를 재현하고, Settings/Connection 모달과 탭/패널을 시나리오별로 채운다.
+// 구조를 재현하고, 탭/패널을 시나리오별로 채운다.
+// Settings 다이얼로그는 별도 Settings.stories.tsx 로 분리됨.
 import { useState } from 'react'
 import {
   MainLayoutView,
@@ -9,7 +10,6 @@ import {
   type WorkspaceMode,
   type WorkspaceLabels,
   type ConnectionStatus,
-  type SettingsTab,
 } from '@ingradient/edge-pages'
 import { SAMPLE_TAB_ITEMS } from '../../../../fixtures/edge/0.0.1/workspace-tabs'
 import {
@@ -23,8 +23,6 @@ import { ImagesContent, type ImagesModalMode } from './build-images-content'
 import { StaticsContent } from './build-statics-content'
 import { BBoxCanvasScene } from './build-bbox-canvas'
 import { RightPanel, LogPanel } from './build-panels'
-import { SettingsModalContent } from './build-settings-modal'
-import { ConnectionTabContent } from './build-connection-content'
 
 const WORKSPACE_LABELS: WorkspaceLabels = {
   saving: 'Saving…', sequenceFailed: 'Sequence failed', errorCode: 'Error:',
@@ -37,7 +35,6 @@ export interface WorkspaceSceneArgs {
   isCapturing?: boolean
   sequenceFailure?: boolean
   imagesModalMode?: ImagesModalMode
-  settingsTab?: SettingsTab | null
   logFilterOpen?: boolean
   connectionStatus?: ConnectionStatus
 }
@@ -46,10 +43,6 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
   const [activeTab, setActiveTab] = useState<WorkspaceTab>(args.activeTab ?? 'capture')
   const mode = args.mode ?? 'main'
   const isLabeling = mode === 'labeling'
-
-  const settingsDialog = args.settingsTab
-    ? <SettingsModalContent activeTab={args.settingsTab} connectionContent={<ConnectionTabContent />} />
-    : null
 
   const center = (
     <WorkspaceView
@@ -85,7 +78,7 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
         project: SAMPLE_PROJECT_NAME,
         dataset: SAMPLE_DATASET_NAME,
         connectionStatus: args.connectionStatus,
-        settingsDialog,
+        settingsDialog: null,
       })}
       leftPanel={<LogPanel filterOpen={args.logFilterOpen} />}
       centerContent={center}
