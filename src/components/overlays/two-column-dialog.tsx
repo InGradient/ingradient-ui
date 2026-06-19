@@ -5,10 +5,10 @@ import { H4 } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
 import { DialogCloseButton } from './dialog-close-button'
 
-const Shell = styled.div<{ $width: string; $maxHeight: string }>`
+const Shell = styled.div<{ $width: string; $height: string | null; $maxHeight: string }>`
   width: ${(p) => p.$width};
   max-width: calc(100vw - var(--ig-space-13));
-  max-height: ${(p) => p.$maxHeight};
+  ${(p) => (p.$height ? `height: ${p.$height};` : `max-height: ${p.$maxHeight};`)}
   background-color: var(--ig-color-surface-muted);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-lg);
@@ -55,6 +55,8 @@ export interface TwoColumnDialogProps {
   children: React.ReactNode
   onClose: () => void
   width?: string
+  /** 고정 높이. 지정 시 dialog 가 항상 같은 높이 (content 와 무관). 미지정 시 max-height fallback. */
+  height?: string
   maxHeight?: string
   sidebarWidth?: string
 }
@@ -65,6 +67,7 @@ export function TwoColumnDialog({
   children,
   onClose,
   width = 'var(--ig-popup-3xl-wide)',
+  height,
   maxHeight = 'calc(100dvh - var(--ig-space-13))',
   sidebarWidth = 'var(--ig-popup-xs-narrow)',
 }: TwoColumnDialogProps) {
@@ -74,6 +77,7 @@ export function TwoColumnDialog({
     <ModalBackdrop onClick={() => onClose()}>
       <Shell
         $width={width}
+        $height={height ?? null}
         $maxHeight={maxHeight}
         onClick={(e) => e.stopPropagation()}
         role="dialog"

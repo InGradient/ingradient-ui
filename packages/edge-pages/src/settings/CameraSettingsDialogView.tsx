@@ -46,6 +46,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
       title={labels.title}
       onClose={onClose}
       width="min(var(--ig-popup-4xl-narrow), 92vw)"
+      height="calc(100dvh - var(--ig-space-13))"
       sidebarWidth="var(--ig-popup-2xs-plus)"
       sidebar={
         <VerticalTabs
