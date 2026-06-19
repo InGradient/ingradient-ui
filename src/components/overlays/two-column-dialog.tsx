@@ -36,8 +36,6 @@ const Body = styled.div`
 
 const Sidebar = styled.div<{ $width: string }>`
   width: ${(p) => p.$width};
-  background-color: var(--ig-color-surface-panel);
-  border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   padding: var(--ig-space-5) 0;
   flex-shrink: 0;
   overflow-y: auto;
