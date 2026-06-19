@@ -1,15 +1,18 @@
 import styled from 'styled-components'
 
-const Stack = styled.div`
+export type RadioCardGroupOrientation = 'vertical' | 'horizontal'
+
+const Stack = styled.div<{ $orientation: RadioCardGroupOrientation }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(p) => (p.$orientation === 'horizontal' ? 'row' : 'column')};
   gap: var(--ig-space-2);
 `
 
-const OptionBtn = styled.button<{ $active: boolean }>`
-  width: 100%;
+const OptionBtn = styled.button<{ $active: boolean; $orientation: RadioCardGroupOrientation }>`
+  width: ${(p) => (p.$orientation === 'horizontal' ? 'auto' : '100%')};
+  ${(p) => (p.$orientation === 'horizontal' ? 'flex: 1;' : '')}
   padding: var(--ig-space-3) var(--ig-space-5);
-  text-align: left;
+  text-align: ${(p) => (p.$orientation === 'horizontal' ? 'center' : 'left')};
   border-radius: var(--ig-radius-md);
   border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
@@ -45,12 +48,14 @@ export interface RadioCardGroupProps {
   options: RadioCardGroupOption[]
   value: string
   onChange: (value: string) => void
+  /** 옵션 정렬 방향 (default vertical) */
+  orientation?: RadioCardGroupOrientation
   className?: string
 }
 
-export function RadioCardGroup({ options, value, onChange, className }: RadioCardGroupProps) {
+export function RadioCardGroup({ options, value, onChange, orientation = 'vertical', className }: RadioCardGroupProps) {
   return (
-    <Stack className={className} role="radiogroup">
+    <Stack className={className} role="radiogroup" $orientation={orientation}>
       {options.map((opt) => (
         <OptionBtn
           key={opt.value}
@@ -58,6 +63,7 @@ export function RadioCardGroup({ options, value, onChange, className }: RadioCar
           role="radio"
           aria-checked={opt.value === value}
           $active={opt.value === value}
+          $orientation={orientation}
           disabled={opt.disabled}
           onClick={() => !opt.disabled && onChange(opt.value)}
         >

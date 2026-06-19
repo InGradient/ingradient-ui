@@ -39,6 +39,7 @@ export function ServerTabView(props: ServerTabViewProps): JSX.Element {
         <RadioCardGroup
           value={runtimeMode}
           onChange={(v) => onRuntimeModeChange(v as ServerRuntimeMode)}
+          orientation="horizontal"
           options={[
             { value: 'auto',    label: labels.modeAuto },
             { value: 'online',  label: labels.modeOnline },
