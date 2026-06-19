@@ -57,6 +57,10 @@ export const CONNECTION_LABELS: ConnectionLabels = {
     diagnose: 'Run diagnostics to find the problem.',
     done: 'Setup complete.',
   },
+  guideNetworkCameraIp: 'Camera IP',
+  guideNetworkNicIp: 'NIC IP',
+  guideNetworkJumbo: 'Jumbo',
+  guideNetworkReceive: 'Receive',
   nicBadgeRecommended: 'Recommended',
   nicBadgePossible: 'Possible',
   nicBadgeUnsuitable: 'Unsuitable',
@@ -122,7 +126,22 @@ export const SAMPLE_NIC_STATUS: NicStatus = {
 }
 
 export const SAMPLE_GUIDE_STATE: GuideState = {
-  step: 'select_camera',
-  message: 'Select a camera to connect.',
-  recoveryHint: 'Make sure the camera is powered on and connected.',
+  tone: 'accent',
+  statusLabel: 'Ready to connect',
+  title: 'Connect the camera',
+  summary: 'Camera and network adapter are selected. Click Connect to start streaming.',
+  primaryAction: {
+    label: 'Connect',
+    onClick: () => undefined,
+  },
+  secondaryActions: [
+    { label: 'Run Diagnostic', onClick: () => undefined },
+  ],
+  network: {
+    cameraIp: '192.168.1.10',
+    nicIp: '192.168.1.1',
+    jumbo: '9014',
+    receive: 'Receive Buffers: 4096',
+  },
+  warnings: [],
 }
