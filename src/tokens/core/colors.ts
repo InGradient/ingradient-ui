@@ -162,4 +162,4 @@ export const foundationColorsLight = {
 } as const
 
 // Both palettes share the exact same key shape — type guard.
-const _shapeCheck: Record<keyof typeof foundationColors, string> = foundationColorsLight
+foundationColorsLight satisfies Record<keyof typeof foundationColors, string>

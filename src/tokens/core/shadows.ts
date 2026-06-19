@@ -26,4 +26,4 @@ export const shadowScaleLight = {
   controlElevated: '0 10px 24px rgba(15, 23, 42, 0.08)',
 } as const
 
-const _shadowShapeCheck: Record<keyof typeof shadowScale, string> = shadowScaleLight
+shadowScaleLight satisfies Record<keyof typeof shadowScale, string>
