@@ -2,10 +2,10 @@
 import { useState } from 'react'
 import { BBoxCanvasView, type BBox } from '@ingradient/edge-pages'
 import {
-  SAMPLE_IMAGE_DATA_URL,
   SAMPLE_CLASSES_FULL,
   SAMPLE_BBOXES,
 } from '../../../../fixtures/edge/0.0.1/sample-images'
+import labelingSampleSrc from '../../../../assets/20230913.jpg'
 
 const BBOX_LABELS = {
   save: 'Save', skip: 'Skip', retry: 'Retry', reset: 'Reset',
@@ -23,7 +23,7 @@ const BBOX_LABELS = {
 export function BBoxCanvasScene({
   initialBboxes = SAMPLE_BBOXES,
   readOnly = false,
-  imageSrc = SAMPLE_IMAGE_DATA_URL,
+  imageSrc = labelingSampleSrc,
   inModal = false,
   editMode: editModeProp,
   annotationsVisible,

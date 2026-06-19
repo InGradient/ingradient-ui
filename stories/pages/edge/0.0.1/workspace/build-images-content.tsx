@@ -84,7 +84,7 @@ export function ImagesContent({ modalMode = 'closed' }: { modalMode?: ImagesModa
       selectedImageIds={selectedIds} selectionMode={false}
       modalOpen={isOpen}
       modalActiveImage={isOpen ? activeImage ?? null : null}
-      modalImageSrc={isOpen ? SAMPLE_IMAGE_DATA_URL : null}
+      modalImageSrc={isOpen ? (activeImage?.fullSrc ?? SAMPLE_IMAGE_DATA_URL) : null}
       modalEditMode={modalEditMode}
       modalCanvasContent={canvasContent}
       modalHintText={hintText}
