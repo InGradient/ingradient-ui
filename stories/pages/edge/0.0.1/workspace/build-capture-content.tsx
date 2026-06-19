@@ -14,7 +14,10 @@ const CAPTURE_LABELS: CaptureLabels = {
   overPct: 'Over %', underPct: 'Under %', captureStepText: 'Capturing',
 }
 
-export function CaptureContent({ isCapturing = false }: { isCapturing?: boolean }): JSX.Element {
+export function CaptureContent({
+  isCapturing = false,
+  isSetupMode = false,
+}: { isCapturing?: boolean; isSetupMode?: boolean }): JSX.Element {
   const [showGrid, setShowGrid] = useState(false)
   const [showControls, setShowControls] = useState(false)
   return (
@@ -22,7 +25,7 @@ export function CaptureContent({ isCapturing = false }: { isCapturing?: boolean 
       isConnected
       isConnecting={false}
       isCapturing={isCapturing}
-      isSetupMode={false}
+      isSetupMode={isSetupMode}
       isSetupBusy={false}
       isSavingSequence={false}
       liveFrameSrc={null}

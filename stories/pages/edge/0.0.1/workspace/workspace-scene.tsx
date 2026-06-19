@@ -66,8 +66,12 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
       onTabChange={setActiveTab}
       isSetupMode={activeTab === 'setup'}
       setupPanelTarget={null}
-      setupPanelContent={activeTab === 'setup' ? <SetupContent /> : null}
-      captureContent={activeTab === 'capture' ? <CaptureContent isCapturing={args.isCapturing} /> : null}
+      setupPanelContent={null}
+      captureContent={
+        activeTab === 'capture' || activeTab === 'setup'
+          ? <CaptureContent isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} />
+          : null
+      }
       imagesContent={activeTab === 'images' ? <ImagesContent modalMode={args.imagesModalMode} /> : null}
       staticsContent={activeTab === 'statics' ? <StaticsContent /> : null}
       isSavingLabel={false}
@@ -85,7 +89,7 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
       })}
       leftPanel={<LogPanel filterOpen={args.logFilterOpen} />}
       centerContent={center}
-      rightPanel={<RightPanel />}
+      rightPanel={activeTab === 'setup' ? <SetupContent /> : <RightPanel />}
       isCapturing={args.isCapturing ?? false}
     />
   )
