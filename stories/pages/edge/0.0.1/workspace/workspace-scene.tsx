@@ -82,7 +82,11 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
       })}
       leftPanel={<LogPanel filterOpen={args.logFilterOpen} />}
       centerContent={center}
-      rightPanel={activeTab === 'setup' ? <SetupContent /> : <RightPanel />}
+      rightPanel={
+        activeTab === 'setup'
+          ? <SetupContent />
+          : <RightPanel workspaceTab={activeTab} isLabeling={isLabeling} />
+      }
       isCapturing={args.isCapturing ?? false}
     />
   )

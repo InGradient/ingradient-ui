@@ -22,16 +22,20 @@ const LOG_PANEL_LABELS = {
   openSavedImage: 'Open saved image',
 }
 
-export function RightPanel(): JSX.Element {
+export function RightPanel({
+  workspaceTab = 'capture',
+  isLabeling = false,
+}: { workspaceTab?: 'capture' | 'images' | 'statics' | 'setup'; isLabeling?: boolean } = {}): JSX.Element {
   const [classSearch, setClassSearch] = useState('')
   const [selectedClassId, setSelectedClassId] = useState('c1')
   return (
     <RightPanelView
-      workspaceTab="capture"
+      workspaceTab={workspaceTab}
       classes={SAMPLE_CLASSES_FULL}
       selectedClassId={selectedClassId}
       showPatternPreview={false} patternLabels={[]} previewPatternLabel={null}
-      showRoiButton isDerivedViewActive={false} samActive={false} samViewerActive={false}
+      showRoiButton={isLabeling}
+      isDerivedViewActive={false} samActive={false} samViewerActive={false}
       classSearch={classSearch} commentSection={null}
       labels={RIGHT_PANEL_LABELS}
       onSetClassSearch={setClassSearch}
