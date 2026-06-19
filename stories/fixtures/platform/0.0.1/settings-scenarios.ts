@@ -106,14 +106,10 @@ const base: SettingsScene = {
 export type SettingsScenarioKey =
   | 'default'
   | 'account-default'
-  | 'account-license-personal'
-  | 'account-license-expired'
-  | 'account-license-loading'
+  | 'account-license'
   | 'account-saved'
   | 'account-password-dialog'
-  | 'account-password-mismatch'
   | 'account-delete-dialog'
-  | 'account-delete-with-solo'
   | 'project-default'
   | 'project-deflectometry'
   | 'project-readonly'
@@ -126,35 +122,24 @@ export type SettingsScenarioKey =
   | 'edge-work-default'
   | 'edge-work-deflectometry'
   | 'edge-export-with-packages'
-  | 'edge-import-idle'
-  | 'edge-import-uploading'
-  | 'edge-import-completed'
+  | 'edge-import'
   | 'admin-organization'
-  | 'admin-org-saved'
   | 'admin-members'
   | 'admin-invitations-search'
   | 'admin-devices'
-  | 'admin-devices-loading'
-  | 'admin-devices-token-issued'
   | 'admin-storage'
-  | 'admin-storage-loading'
-  | 'admin-storage-error'
   | 'non-admin'
 
 export const settingsScenarios: Record<SettingsScenarioKey, SettingsScene> = {
   'default': base,
   'account-default': { ...base, initialTab: 'account' },
-  'account-license-personal': { ...base, initialTab: 'account', license: personalLicense },
-  'account-license-expired': { ...base, initialTab: 'account', license: expiredLicense },
-  'account-license-loading': { ...base, initialTab: 'account', license: null },
+  'account-license': { ...base, initialTab: 'account', license: expiredLicense },
   'account-saved': { ...base, initialTab: 'account', accountMessage: 'Saved.' },
-  'account-password-dialog': { ...base, initialTab: 'account', passwordDialogOpen: true },
-  'account-password-mismatch': {
+  'account-password-dialog': {
     ...base, initialTab: 'account', passwordDialogOpen: true,
     passwordCurrent: 'old', passwordNew: 'newpassword', passwordConfirm: 'different',
   },
-  'account-delete-dialog': { ...base, initialTab: 'account', deleteAccountDialogOpen: true, deleteAccountPreview: { solo_projects: [], requires_resolution: defaultPreview.requires_resolution } },
-  'account-delete-with-solo': { ...base, initialTab: 'account', deleteAccountDialogOpen: true, deleteAccountPreview: defaultPreview },
+  'account-delete-dialog': { ...base, initialTab: 'account', deleteAccountDialogOpen: true, deleteAccountPreview: defaultPreview },
   'project-default': { ...base, initialTab: 'project' },
   'project-deflectometry': { ...base, initialTab: 'project', currentProject: mockDeflectometryProject },
   'project-readonly': { ...base, initialTab: 'project', canEditProject: false, isProjectOwner: false },
@@ -173,21 +158,14 @@ export const settingsScenarios: Record<SettingsScenarioKey, SettingsScene> = {
   'edge-work-default': { ...base, initialTab: 'edge', edgeSubTab: 'work' },
   'edge-work-deflectometry': { ...base, initialTab: 'edge', edgeSubTab: 'work', currentProject: mockDeflectometryProject },
   'edge-export-with-packages': { ...base, initialTab: 'edge', edgeSubTab: 'export' },
-  'edge-import-idle': { ...base, initialTab: 'edge', edgeSubTab: 'import', edgeImportMode: 'idle' },
-  'edge-import-uploading': { ...base, initialTab: 'edge', edgeSubTab: 'import', edgeImportMode: 'uploading' },
-  'edge-import-completed': { ...base, initialTab: 'edge', edgeSubTab: 'import', edgeImportMode: 'completed' },
+  'edge-import': { ...base, initialTab: 'edge', edgeSubTab: 'import', edgeImportMode: 'uploading' },
   'admin-organization': { ...base, initialTab: 'admin', initialAdminSubTab: 'organization' },
-  'admin-org-saved': { ...base, initialTab: 'admin', initialAdminSubTab: 'organization', orgSavingMessage: 'Saved' },
   'admin-members': { ...base, initialTab: 'admin', initialAdminSubTab: 'members-invitations' },
   'admin-invitations-search': {
     ...base, initialTab: 'admin', initialAdminSubTab: 'members-invitations',
     memberSearchQuery: 'sangha',
   },
-  'admin-devices': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices' },
-  'admin-devices-loading': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices', deviceLoading: true },
-  'admin-devices-token-issued': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices', hasIssuedToken: true },
-  'admin-storage': { ...base, initialTab: 'admin', initialAdminSubTab: 'storage' },
-  'admin-storage-loading': { ...base, initialTab: 'admin', initialAdminSubTab: 'storage', storageLoading: true },
-  'admin-storage-error': { ...base, initialTab: 'admin', initialAdminSubTab: 'storage', storageError: 'Failed to load storage analytics.' },
+  'admin-devices': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices', hasIssuedToken: true },
+  'admin-storage': { ...base, initialTab: 'admin', initialAdminSubTab: 'storage', storageError: 'Failed to load storage analytics.' },
   'non-admin': { ...base, isAdmin: false },
 }
