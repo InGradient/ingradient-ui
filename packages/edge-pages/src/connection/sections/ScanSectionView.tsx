@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { Camera, RefreshCw, CheckCircle, ChevronRight, Usb, Wifi, AlertCircle, Wrench } from 'lucide-react'
-import { Badge, Button, Spinner, FormSection, SectionTitle, iconSizeNumbers } from '@ingradient/ui'
+import { Badge, Button, Spinner, SectionTitle, iconSizeNumbers } from '@ingradient/ui'
 import { EmptyState } from '@ingradient/ui/components'
 import {
+  FlatSection,
   DiscoverBar, DiscoverHint, DeviceList, DeviceCard,
   DeviceInfo, DeviceName, DeviceMeta,
 } from '../ConnectionTabView.styles'
@@ -36,7 +37,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
   const isLoading = isScanning || isLoadingCandidates
 
   return (
-    <FormSection>
+    <FlatSection>
       <SectionTitle>{labels.scanTitle}</SectionTitle>
       <DiscoverBar>
         <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
@@ -117,6 +118,6 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
           </DeviceList>
         </>
       )}
-    </FormSection>
+    </FlatSection>
   )
 }

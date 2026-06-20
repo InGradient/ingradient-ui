@@ -1,10 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ToolbarShell, type ToolbarShellAction } from '../../src/components/inputs/toolbar-shell'
-import {
-  CanvasCoordReadout,
-  LabelingCanvas,
-} from '../../src/patterns'
+import { LabelingCanvas } from '../../src/patterns'
+
+const CoordReadout = styled.div`
+  font-size: var(--ig-font-size-xs);
+  font-family: var(--ig-font-mono);
+  color: var(--ig-color-text-muted);
+  padding: var(--ig-space-2) var(--ig-space-4);
+  background: var(--ig-color-overlay-dim);
+`
 import {
   useCanvasMouse,
   useDrawingCanvas,
@@ -215,7 +221,7 @@ function InteractiveDemo() {
             onWheel={zp.handleWheel}
           />
         </div>
-        <CanvasCoordReadout>{coordText}</CanvasCoordReadout>
+        <CoordReadout role="status">{coordText}</CoordReadout>
         <ToolbarShell placement="bottom" actions={toolbarActions} ariaLabel="Labeling demo" />
       </div>
     </div>

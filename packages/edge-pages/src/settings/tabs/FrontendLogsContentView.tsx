@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Button } from '@ingradient/ui'
+import { Button, SearchField, DropdownSelect } from '@ingradient/ui'
 import type { FrontendLogsContentViewProps } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-4); height: 100%;`
-const ToolbarRow = styled.div`display: flex; gap: var(--ig-space-3); align-items: center; justify-content: flex-end;`
+const ToolbarRow = styled.div`display: flex; gap: var(--ig-space-3); align-items: center;`
 const LogList = styled.div`
   flex: 1;
   min-height: 0;
@@ -25,10 +25,30 @@ const LogRow = styled.div<{ $level: string }>`
 const EmptyText = styled.div`text-align: center; padding: var(--ig-space-9) 0; color: var(--ig-color-text-muted);`
 
 export function FrontendLogsContentView(props: FrontendLogsContentViewProps): JSX.Element {
-  const { logs, labels, onClear, onExport } = props
+  const {
+    logs, refreshing, searchQuery, levelFilter, labels,
+    onSearchChange, onLevelFilterChange, onRefresh, onClear, onExport,
+  } = props
   return (
     <Wrap>
       <ToolbarRow>
+        <SearchField
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
+          placeholder={labels.search}
+          style={{ flex: 1 }}
+        />
+        <DropdownSelect
+          value={levelFilter}
+          onChange={onLevelFilterChange}
+          options={[
+            { value: 'all',  label: labels.all },
+            { value: 'info', label: labels.info },
+            { value: 'warn', label: labels.warn },
+            { value: 'error', label: labels.error },
+          ]}
+        />
+        <Button size="sm" variant="secondary" onClick={onRefresh} disabled={refreshing}>{labels.refresh}</Button>
         <Button size="sm" variant="secondary" onClick={onClear}>{labels.clear}</Button>
         <Button size="sm" variant="secondary" onClick={onExport}>{labels.export}</Button>
       </ToolbarRow>

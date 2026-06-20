@@ -1,9 +1,17 @@
+import styled from 'styled-components'
 import { Box, Stack } from '@ingradient/ui/primitives'
 import { Checkbox } from '@ingradient/ui/components'
 import { DropdownSelect, type DropdownOption } from '@ingradient/ui/components'
-import { SettingsHint, SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
+import { SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
 
 const SELECT_WRAP_STYLE = { minWidth: 160 }
+
+const Hint = styled.p`
+  margin: 0;
+  color: var(--ig-color-text-muted);
+  font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-line-height-relaxed);
+`
 
 export interface SettingsGeneralTabProps {
   locale: string
@@ -64,7 +72,7 @@ export function SettingsGeneralTab({
         />
       </SettingsSection>
 
-      <SettingsHint>{hint}</SettingsHint>
+      <Hint>{hint}</Hint>
     </Stack>
   )
 }

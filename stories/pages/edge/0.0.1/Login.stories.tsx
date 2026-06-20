@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { LoginView, type LoginLabels, type LoginAccountEntry } from '@ingradient/edge-pages'
 import { defineHandoff } from '../../../support/handoff'
+import { EdgeAppFrame } from './shared/build-shell-slots'
 
 const handoff = defineHandoff({
   service: 'edge',
@@ -75,35 +76,40 @@ function LoginScene(args: {
   const [keepSignedIn, setKeepSignedIn] = useState(args.keepSignedInDefault ?? true)
 
   return (
-    <LoginView
-      mode={args.mode ?? 'online'}
-      email={email}
-      password={password}
-      savePassword={savePassword}
-      keepSignedIn={keepSignedIn}
-      loggingIn={args.loggingIn ?? false}
-      loadingPackage={args.loadingPackage ?? false}
-      error={args.error ?? null}
-      packageInfo={args.packageInfo ?? null}
-      savedSession={args.savedSession ?? null}
-      otherAccounts={args.otherAccounts ?? []}
-      hasAccountList={args.hasAccountList ?? false}
-      showLoginForm={args.showLoginForm ?? true}
-      externalUrl={args.externalUrl ?? 'https://app.ingradient.ai'}
-      labels={DEFAULT_LABELS}
-      langSelector={LANG_SLOT}
-      settingsDialog={null}
-      onEmailChange={setEmail}
-      onPasswordChange={setPassword}
-      onSavePasswordChange={setSavePassword}
-      onKeepSignedInChange={setKeepSignedIn}
-      onSubmit={(e) => e.preventDefault()}
-      onContinueSession={() => undefined}
-      onSelectAccount={() => undefined}
-      onChangeAccount={() => undefined}
-      onLoadPackage={() => undefined}
-      onOpenSignup={() => undefined}
-      onOpenSettings={() => undefined}
+    <EdgeAppFrame
+      showFooter={false}
+      content={
+        <LoginView
+          mode={args.mode ?? 'online'}
+          email={email}
+          password={password}
+          savePassword={savePassword}
+          keepSignedIn={keepSignedIn}
+          loggingIn={args.loggingIn ?? false}
+          loadingPackage={args.loadingPackage ?? false}
+          error={args.error ?? null}
+          packageInfo={args.packageInfo ?? null}
+          savedSession={args.savedSession ?? null}
+          otherAccounts={args.otherAccounts ?? []}
+          hasAccountList={args.hasAccountList ?? false}
+          showLoginForm={args.showLoginForm ?? true}
+          externalUrl={args.externalUrl ?? 'https://app.ingradient.ai'}
+          labels={DEFAULT_LABELS}
+          langSelector={LANG_SLOT}
+          settingsDialog={null}
+          onEmailChange={setEmail}
+          onPasswordChange={setPassword}
+          onSavePasswordChange={setSavePassword}
+          onKeepSignedInChange={setKeepSignedIn}
+          onSubmit={(e) => e.preventDefault()}
+          onContinueSession={() => undefined}
+          onSelectAccount={() => undefined}
+          onChangeAccount={() => undefined}
+          onLoadPackage={() => undefined}
+          onOpenSignup={() => undefined}
+          onOpenSettings={() => undefined}
+        />
+      }
     />
   )
 }

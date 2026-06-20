@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { LicenseView, type LicenseLabels, type LicenseMode } from '@ingradient/edge-pages'
 import { defineHandoff } from '../../../support/handoff'
+import { EdgeAppFrame } from './shared/build-shell-slots'
 
 const handoff = defineHandoff({
   service: 'edge',
@@ -56,21 +57,26 @@ function LicenseScene(args: {
   const [licenseKey, setLicenseKey] = useState(args.licenseKeyDefault ?? '')
 
   return (
-    <LicenseView
-      mode={args.mode ?? 'key'}
-      fingerprint={args.fingerprint ?? 'A1B2-C3D4-E5F6-7890'}
-      licenseKey={licenseKey}
-      submitting={args.submitting ?? false}
-      copied={args.copied ?? false}
-      error={args.error ?? null}
-      labels={DEFAULT_LABELS}
-      langSelector={LANG_SLOT}
-      settingsDialog={null}
-      onLicenseKeyChange={setLicenseKey}
-      onSubmit={(e) => e.preventDefault()}
-      onBind={() => undefined}
-      onCopyFingerprint={() => undefined}
-      onOpenSettings={() => undefined}
+    <EdgeAppFrame
+      showFooter={false}
+      content={
+        <LicenseView
+          mode={args.mode ?? 'key'}
+          fingerprint={args.fingerprint ?? 'A1B2-C3D4-E5F6-7890'}
+          licenseKey={licenseKey}
+          submitting={args.submitting ?? false}
+          copied={args.copied ?? false}
+          error={args.error ?? null}
+          labels={DEFAULT_LABELS}
+          langSelector={LANG_SLOT}
+          settingsDialog={null}
+          onLicenseKeyChange={setLicenseKey}
+          onSubmit={(e) => e.preventDefault()}
+          onBind={() => undefined}
+          onCopyFingerprint={() => undefined}
+          onOpenSettings={() => undefined}
+        />
+      }
     />
   )
 }

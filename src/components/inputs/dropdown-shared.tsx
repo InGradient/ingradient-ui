@@ -26,7 +26,6 @@ export interface SelectOptionData {
 
 export const DropdownRoot = styled.div`
   position: relative;
-  min-width: 0;
 `
 
 export const DropdownTrigger = styled.button<{ $open: boolean }>`
@@ -50,7 +49,6 @@ export const DropdownTrigger = styled.button<{ $open: boolean }>`
 `
 
 export const DropdownValue = styled.span`
-  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Check, ChevronDown, Save } from 'lucide-react'
+import { Check, ChevronDown } from 'lucide-react'
 import { Button, Switch, iconSizeNumbers } from '@ingradient/ui'
 import { FieldGroup, FieldHint, SectionTitle } from '@ingradient/ui/patterns'
 import { NumberField } from '@ingradient/ui/components'
@@ -53,10 +53,6 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
           <SetupHeaderActions>
             <Button variant="secondary" size="sm" type="button" onClick={onReset} disabled={isSetupBusy}>
               {labels.reset}
-            </Button>
-            <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}
-              title={isSetupSaved ? labels.saved : labels.save}>
-              {isSetupSaved ? <Check size={iconSizeNumbers.xs} color={SAVE_SUCCESS_ICON_COLOR} /> : <Save size={iconSizeNumbers.xs} />}
             </Button>
             {canSave && (
               <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}>

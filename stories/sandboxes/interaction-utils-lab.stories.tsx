@@ -1,7 +1,8 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button, CopyButton, FieldRow, FilterBarLayout, ModeSwitcher, SearchField } from '@ingradient/ui/components'
-import { ChipGroup, FormGroup } from '@ingradient/ui/patterns'
+import { ChipGroup } from '@ingradient/ui/patterns'
+import { Stack, Text } from '@ingradient/ui/primitives'
 import { ResizablePanel } from '../../src/components/data-display'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
@@ -75,7 +76,9 @@ export const Overview: Story = {
                     size="sm"
                   />
                 </FilterBarLayout>
-                <FormGroup title="Workspace settings" description="Keep small form sections structured and repeatable.">
+                <Stack gap={4}>
+                  <Text size="var(--ig-font-size-sm)" weight="bold">Workspace settings</Text>
+                  <Text size="var(--ig-font-size-xs)" tone="muted">Keep small form sections structured and repeatable.</Text>
                   <FieldRow label="Name" hint="Visible in consumer-facing workspace lists.">
                     <input
                       aria-label="Workspace name"
@@ -90,7 +93,7 @@ export const Overview: Story = {
                       }}
                     />
                   </FieldRow>
-                </FormGroup>
+                </Stack>
               </StorybookStack>
             </StorybookCard>
           </StorybookGrid>

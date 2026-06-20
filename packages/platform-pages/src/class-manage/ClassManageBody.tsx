@@ -1,14 +1,10 @@
 import type { CSSProperties } from 'react'
 import {
-  Alert,
-  EmptyState,
-  FilterChipRow,
-  ResizableColumnsLayout,
-  type ResizableColumn,
+  Alert, EmptyState, FilterChipRow, IconButton, MenuIcon,
+  ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
-import { ExpandSidebarBtn } from '@ingradient/ui/patterns'
 import { Inline } from '@ingradient/ui/primitives'
-import { popupSizeNumbers } from '@ingradient/ui/tokens'
+import { iconSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
@@ -110,7 +106,7 @@ export function ClassManageBody({
     ? list.sidebarCollapsed && list.onExpand
       ? (
         <Inline gap={3} align="center" style={HEADER_INLINE_STYLE}>
-          <ExpandSidebarBtn onClick={list.onExpand} ariaLabel="Expand class sidebar" />
+          <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><MenuIcon size={iconSizeNumbers.lg} /></IconButton>
           {chipRow}
         </Inline>
       )

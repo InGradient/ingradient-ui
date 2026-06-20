@@ -1,102 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
-import {
-  WorkspaceView,
-  type WorkspaceLabels,
-  type WorkspaceMode,
-  type WorkspaceTab,
-  type SequenceFailureInfo,
-} from '@ingradient/edge-pages'
-import { SAMPLE_TAB_ITEMS } from '../../../fixtures/edge/0.0.1/workspace-tabs'
 import { defineHandoff } from '../../../support/handoff'
+import { WorkspaceScene, type WorkspaceSceneArgs } from './workspace/workspace-scene'
 
 const handoff = defineHandoff({
   service: 'edge',
   version: '0.0.1',
   page: 'Workspace',
-  referenceStory: 'Pages / Edge / 0.0.1 / Workspace / MainCapture',
+  referenceStory: 'Pages / Edge / 0.0.1 / Workspace / Capture',
   preset: 'edge-0.0.1',
-  fixturesPath: 'stories/fixtures/edge/0.0.1/workspace-tabs.ts',
-  requiredScenarios: ['main-capture', 'main-images', 'main-setup', 'labeling', 'labeling-with-failure', 'main-capturing'],
+  fixturesPath: 'stories/fixtures/edge/0.0.1/*',
+  requiredScenarios: [
+    'capture', 'images', 'statics', 'setup', 'labeling', 'labeling-with-failure',
+    'capturing', 'images-modal-edit', 'images-modal-readonly',
+    'log-filter-open', 'offline',
+  ],
   interactions: [
     'Tab 전환 (capture/images/statics/setup)',
-    'labeling 분기 진입 (pendingCapture 존재)',
-    'sequence failure dialog cancel / retry',
-    'capturing 시 fixed pill 표시',
+    'labeling 분기 진입 + sequence failure dialog',
+    'Activity(Log) 패널 필터 popover',
   ],
   platformIntegration: [
-    'captureContent/imagesContent/staticsContent slot — Phase 6~8 의 sub-view 가 채움',
-    'setupPanelContent — ReactDOM.createPortal(target) 으로 마운트',
-    'labelingContent — BBoxCanvas 또는 CaptureReviewWithFullscreen',
-    '17 useEffect / 12 useCallback 은 container 잔류',
+    '전체 화면 = EdgeAppShellView + MainLayoutView 합성 (App.tsx + MainLayout.tsx)',
+    'tab/panel/modal content 는 edge-pages View 를 mock props 로 렌더',
+    '실제 앱에서는 store/hook 결과가 동일 View 에 주입됨',
   ],
 })
-
-const LABELS: WorkspaceLabels = {
-  saving: 'Saving label…',
-  sequenceFailed: 'Sequence failed',
-  errorCode: 'Error code:',
-  cancel: 'Cancel',
-  retry: 'Retry',
-}
-
-const SAMPLE_FAILURE: SequenceFailureInfo = {
-  message: 'Pattern projection out of range. Re-align the projector and retry.',
-  errorCode: 'SEQ-0421',
-}
-
-function Placeholder({ label, color }: { label: string; color: string }) {
-  return (
-    <div style={{
-      flex: 1, minHeight: 280,
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: color, color: 'var(--ig-color-text-primary)',
-      fontSize: 14, fontWeight: 'var(--ig-font-weight-semibold)', letterSpacing: '0.04em',
-    }}>
-      {label}
-    </div>
-  )
-}
-
-type SceneArgs = Parameters<typeof WorkspaceScene>[0]
-
-function WorkspaceScene(args: {
-  mode?: WorkspaceMode
-  activeTabDefault?: WorkspaceTab
-  selectedDatasetId?: string | null
-  isCapturing?: boolean
-  capturingStatusText?: string
-  sequenceFailure?: SequenceFailureInfo | null
-  isSavingLabel?: boolean
-}) {
-  const [activeTab, setActiveTab] = useState<WorkspaceTab>(args.activeTabDefault ?? 'capture')
-  const isSetupMode = activeTab === 'setup'
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <WorkspaceView
-        mode={args.mode ?? 'main'}
-        isCapturing={args.isCapturing ?? false}
-        capturingStatusText={args.capturingStatusText ?? 'Capturing…'}
-        sequenceFailure={args.sequenceFailure ?? null}
-        labels={LABELS}
-        onSequenceFailureCancel={() => undefined}
-        onSequenceFailureRetry={() => undefined}
-        selectedDatasetId={args.selectedDatasetId !== undefined ? args.selectedDatasetId : 'ds-1'}
-        activeTab={activeTab}
-        tabItems={SAMPLE_TAB_ITEMS}
-        onTabChange={setActiveTab}
-        isSetupMode={isSetupMode}
-        setupPanelTarget={null}
-        setupPanelContent={null}
-        captureContent={<Placeholder label="Capture content placeholder" color="rgba(77, 136, 255, 0.08)" />}
-        imagesContent={<Placeholder label="Images grid placeholder" color="rgba(110, 200, 122, 0.08)" />}
-        staticsContent={<Placeholder label="Statics charts placeholder" color="rgba(180, 120, 230, 0.08)" />}
-        isSavingLabel={args.isSavingLabel ?? false}
-        labelingContent={<Placeholder label="BBox canvas placeholder" color="rgba(0, 0, 0, 0.4)" />}
-      />
-    </div>
-  )
-}
 
 const meta = {
   title: 'Pages/Edge/0.0.1/Workspace',
@@ -107,20 +35,25 @@ const meta = {
 
 export default meta
 
-type Story = StoryObj<SceneArgs>
+type Story = StoryObj<WorkspaceSceneArgs>
 
-export const MainCapture: Story = { args: { mode: 'main', activeTabDefault: 'capture' } }
+// ── 탭 ──────────────────────────────────────────────────────────────────────
+export const Capture: Story = { args: { activeTab: 'capture' } }
+export const Images: Story = { args: { activeTab: 'images' } }
+export const Statics: Story = { args: { activeTab: 'statics' } }
+export const Setup: Story = { args: { activeTab: 'setup' } }
 
-export const MainImages: Story = { args: { mode: 'main', activeTabDefault: 'images' } }
-
-export const MainSetup: Story = { args: { mode: 'main', activeTabDefault: 'setup' } }
-
+// ── 캡처/라벨링 상태 ─────────────────────────────────────────────────────────
+export const Capturing: Story = { args: { activeTab: 'capture', isCapturing: true } }
 export const Labeling: Story = { args: { mode: 'labeling' } }
+export const LabelingWithFailure: Story = { args: { mode: 'labeling', sequenceFailure: true } }
 
-export const LabelingWithFailure: Story = {
-  args: { mode: 'labeling', sequenceFailure: SAMPLE_FAILURE },
-}
+// ── Images 모달 ──────────────────────────────────────────────────────────────
+export const ImagesModalEdit: Story = { args: { activeTab: 'images', imagesModalMode: 'edit' } }
+export const ImagesModalReadOnly: Story = { args: { activeTab: 'images', imagesModalMode: 'readonly' } }
 
-export const MainCapturing: Story = {
-  args: { mode: 'main', isCapturing: true, capturingStatusText: 'Capturing 3/14' },
-}
+// ── 모달/패널 ────────────────────────────────────────────────────────────────
+export const LogFilterOpen: Story = { args: { activeTab: 'capture', logFilterOpen: true } }
+
+// ── 연결 상태 ────────────────────────────────────────────────────────────────
+export const Offline: Story = { args: { activeTab: 'capture', connectionStatus: 'disconnected' } }

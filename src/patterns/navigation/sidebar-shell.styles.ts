@@ -27,35 +27,73 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   box-sizing: border-box;
 `
 
-export const SidebarBrandRow = styled.div`
+export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
+  position: relative;
   min-height: var(--ig-layout-sidebar-header);
   padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(p) => (p.$expanded ? 'space-between' : 'center')};
   flex-shrink: 0;
   background: var(--ig-color-surface-header);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   box-sizing: border-box;
+  /* button reset (when rendered as <button> in collapsed-clickable mode) */
+  border-width: 0 0 var(--ig-border-1px) 0;
+  border-style: solid;
+  border-color: var(--ig-color-border-subtle);
+  color: inherit;
+  width: 100%;
+  text-align: inherit;
+  font: inherit;
+  cursor: ${(p) => (p.$expanded ? 'default' : 'pointer')};
   &:hover { background: var(--ig-color-surface-interactive); }
 `
 
-export const SidebarCloseButton = styled.button`
+/** Brand slot — 접힘 시 hover 되면 숨겨지면서 expand 아이콘으로 swap. */
+export const SidebarBrandSlot = styled.span<{ $expanded: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  transition: opacity var(--ig-motion-fast);
+  ${(p) => !p.$expanded && `
+    ${SidebarBrandRow}:hover & { opacity: 0; }
+  `}
+`
+
+/** Hover 시 brand 자리에 등장하는 expand chevron. 접힘 상태에서만 노출. */
+export const SidebarHoverExpandOverlay = styled.span`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ig-color-text-muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ig-motion-fast);
+  ${SidebarBrandRow}:hover & {
+    opacity: 1;
+    color: var(--ig-color-text-primary);
+  }
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
+`
+
+export const SidebarToggleButton = styled.button`
   background: none;
   border: none;
   color: var(--ig-color-text-muted);
   cursor: pointer;
   padding: var(--ig-space-1);
-  margin-left: var(--ig-space-3);
   display: flex;
   align-items: center;
   justify-content: center;
   &:hover { color: var(--ig-color-text-primary); }
-  svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); }
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
 `
 
 export const SidebarTopActionWrap = styled.div`
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
 `
 
 export const SidebarNavList = styled.nav`
@@ -69,7 +107,7 @@ export const SidebarNavList = styled.nav`
 
 const rowMixin = `
   display: grid;
-  grid-template-columns: var(--ig-icon-xl) minmax(0, 1fr);
+  grid-template-columns: var(--ig-icon-lg) minmax(0, 1fr) auto;
   align-items: center;
   height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
@@ -88,10 +126,10 @@ const rowMixin = `
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-06);
   }
-  & svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
+  & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
-    grid-template-columns: var(--ig-icon-xl);
+  @container sidebar-shell (max-width: 100px) {
+    display: flex;
     justify-content: center;
     padding: 0;
   }
@@ -104,6 +142,26 @@ export const SidebarItemRow = styled.a`
   &[aria-current='page'] {
     color: var(--ig-color-accent-soft);
     background: var(--ig-color-focus-bg-soft);
+  }
+`
+
+/** Expandable item 의 우측 chevron. 펼침 sidebar 에서만 노출. */
+export const SidebarChevronSlot = styled.span`
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ig-color-text-muted);
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
+`
+
+/** Expandable item 펼침 시 children 컨테이너 — 좌측 padding 으로 들여쓰기. */
+export const SidebarSubList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--ig-space-7);
+  gap: var(--ig-space-1);
+  @container sidebar-shell (max-width: 100px) {
+    padding-left: 0;
   }
 `
 

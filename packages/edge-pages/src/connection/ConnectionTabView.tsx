@@ -14,14 +14,14 @@ export function ConnectionTabView(props: ConnectionTabViewProps): JSX.Element {
   return (
     <>
       {guide.visible && (
-        <ConnectionGuidePanelView state={guide.state} labels={labels} onDismiss={guide.onDismiss} />
+        <ConnectionGuidePanelView state={guide.state} labels={labels} />
       )}
       <ScanSectionView {...scan} labels={labels} />
-      <ConnectSectionView {...connect} labels={labels} />
       <AutoSetupSectionView {...autoSetup} labels={labels} />
+      <ConnectSectionView {...connect} labels={labels} />
+      <ProfileStatusSectionView {...profile} labels={labels} />
       <DiagnosticsSectionView {...diagnostics} labels={labels} />
       <NicControlSectionView {...nicControl} labels={labels} />
-      <ProfileStatusSectionView {...profile} labels={labels} />
       <AdvancedSectionView {...advanced} labels={labels} />
       {forceIpDialog}
     </>

@@ -1,5 +1,5 @@
 import { Camera, FileText, Info, Server, Database, FlaskConical, SlidersHorizontal } from 'lucide-react'
-import { SettingsDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
+import { TwoColumnDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
 import type { CameraSettingsDialogViewProps, SettingsTab } from './types'
 
 interface TabDef {
@@ -42,16 +42,21 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   }
 
   return (
-    <SettingsDialog title={labels.title} onClose={onClose} width="min(var(--ig-popup-4xl-narrow), 92vw)">
-      <VerticalTabs
-        items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon }))}
-        value={activeTab}
-        onChange={(v) => onSetActiveTab(v as SettingsTab)}
-        style={{ width: 'var(--ig-popup-2xs-plus)', flexShrink: 0 }}
-      />
-      <div style={{ flex: 1, minWidth: 0, padding: 'var(--ig-space-7)', overflow: 'auto' }}>
-        {content[activeTab]}
-      </div>
-    </SettingsDialog>
+    <TwoColumnDialog
+      title={labels.title}
+      onClose={onClose}
+      width="min(var(--ig-popup-4xl-narrow), 92vw)"
+      height="calc(100dvh - var(--ig-space-13))"
+      sidebarWidth="var(--ig-popup-2xs-plus)"
+      sidebar={
+        <VerticalTabs
+          items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon }))}
+          value={activeTab}
+          onChange={(v) => onSetActiveTab(v as SettingsTab)}
+        />
+      }
+    >
+      {content[activeTab]}
+    </TwoColumnDialog>
   )
 }

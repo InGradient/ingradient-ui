@@ -16,9 +16,7 @@ export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
   gap: var(--ig-space-1);
   width: 100%;
   padding: var(--ig-space-2);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].root};
-  background: var(--ig-color-surface-panel);
 `
 
 export const Highlight = styled.div<{ $top: number; $height: number; $visible: boolean; $radius: VerticalTabsRadius }>`
@@ -28,7 +26,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   top: ${(p) => `${p.$top}px`};
   height: ${(p) => `${p.$height}px`};
   border-left: var(--ig-border-3px) solid var(--ig-color-accent-soft);
-  border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].item};
+  border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-tab-highlight);
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   pointer-events: none;

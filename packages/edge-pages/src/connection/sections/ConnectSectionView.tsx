@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import { Button, FormSection, SectionTitle, Spinner, iconSizeNumbers } from '@ingradient/ui'
+import { Button, SectionTitle, Spinner, iconSizeNumbers } from '@ingradient/ui'
 import { CheckCircle, AlertCircle } from 'lucide-react'
+import { FlatSection } from '../ConnectionTabView.styles'
 import type { ConnectSectionViewProps } from '../types'
 
 const ErrorMsg = styled.div`
@@ -23,7 +24,7 @@ const ConnectedMsg = styled.div`
 export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element {
   const { isConnecting, isConnected, connectionError, canConnect, labels, onConnect, onDisconnect } = props
   return (
-    <FormSection>
+    <FlatSection>
       <SectionTitle>{labels.connectTitle}</SectionTitle>
       <div style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
         {isConnected ? (
@@ -37,6 +38,6 @@ export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element 
         {isConnected && <ConnectedMsg><CheckCircle size={iconSizeNumbers.sm} />Connected</ConnectedMsg>}
       </div>
       {connectionError && <ErrorMsg><AlertCircle size={iconSizeNumbers.sm} />{connectionError}</ErrorMsg>}
-    </FormSection>
+    </FlatSection>
   )
 }
