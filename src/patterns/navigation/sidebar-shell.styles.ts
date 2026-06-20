@@ -28,6 +28,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
 `
 
 export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
+  position: relative;
   min-height: var(--ig-layout-sidebar-header);
   padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
   display: flex;
@@ -37,7 +38,44 @@ export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
   background: var(--ig-color-surface-header);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   box-sizing: border-box;
+  /* button reset (when rendered as <button> in collapsed-clickable mode) */
+  border-width: 0 0 var(--ig-border-1px) 0;
+  border-style: solid;
+  border-color: var(--ig-color-border-subtle);
+  color: inherit;
+  width: 100%;
+  text-align: inherit;
+  font: inherit;
+  cursor: ${(p) => (p.$expanded ? 'default' : 'pointer')};
   &:hover { background: var(--ig-color-surface-interactive); }
+`
+
+/** Brand slot — 접힘 시 hover 되면 숨겨지면서 expand 아이콘으로 swap. */
+export const SidebarBrandSlot = styled.span<{ $expanded: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  transition: opacity var(--ig-motion-fast);
+  ${(p) => !p.$expanded && `
+    ${SidebarBrandRow}:hover & { opacity: 0; }
+  `}
+`
+
+/** Hover 시 brand 자리에 등장하는 expand chevron. 접힘 상태에서만 노출. */
+export const SidebarHoverExpandOverlay = styled.span`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ig-color-text-muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ig-motion-fast);
+  ${SidebarBrandRow}:hover & {
+    opacity: 1;
+    color: var(--ig-color-text-primary);
+  }
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
 `
 
 export const SidebarToggleButton = styled.button`

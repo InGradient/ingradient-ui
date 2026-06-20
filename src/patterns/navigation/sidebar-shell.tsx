@@ -3,6 +3,8 @@ import {
   SidebarActionButton,
   SidebarBottom,
   SidebarBrandRow,
+  SidebarBrandSlot,
+  SidebarHoverExpandOverlay,
   SidebarIconHolder,
   SidebarItemRow,
   SidebarNavList,
@@ -90,16 +92,27 @@ export function SidebarShell({
       data-expanded={expanded ? 'true' : 'false'}
     >
       {(brand !== undefined || onToggleExpanded) ? (
-        <SidebarBrandRow $expanded={expanded}>
-          {expanded ? brand : null}
-          {onToggleExpanded ? (
+        <SidebarBrandRow
+          $expanded={expanded}
+          as={!expanded && onToggleExpanded ? 'button' : 'div'}
+          type={!expanded && onToggleExpanded ? 'button' : undefined}
+          onClick={!expanded && onToggleExpanded ? onToggleExpanded : undefined}
+          aria-label={!expanded && onToggleExpanded ? 'Expand sidebar' : undefined}
+        >
+          {brand !== undefined ? <SidebarBrandSlot $expanded={expanded}>{brand}</SidebarBrandSlot> : null}
+          {!expanded && onToggleExpanded ? (
+            <SidebarHoverExpandOverlay aria-hidden>
+              <ExpandIcon />
+            </SidebarHoverExpandOverlay>
+          ) : null}
+          {expanded && onToggleExpanded ? (
             <SidebarToggleButton
               type="button"
               onClick={onToggleExpanded}
-              aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
-              title={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
+              aria-label="Collapse sidebar"
+              title="Collapse sidebar"
             >
-              {expanded ? <CollapseIcon /> : <ExpandIcon />}
+              <CollapseIcon />
             </SidebarToggleButton>
           ) : null}
         </SidebarBrandRow>
