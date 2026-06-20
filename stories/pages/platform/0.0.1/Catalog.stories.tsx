@@ -59,11 +59,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-export const Empty: Story = { args: { scenario: 'empty' } }
-export const Loading: Story = { args: { scenario: 'loading' } }
-export const Error: Story = { args: { scenario: 'error' } }
-export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
-export const NoProject: Story = { args: { scenario: 'no-project' } }
+/** 5 state 변형 (Empty / Loading / Error / PermissionDenied / NoProject) — Controls 의 scenario 로 전환. */
+export const StateShowcase: Story = { args: { scenario: 'empty' } }
 export const StressTest: Story = { args: { scenario: 'stress-test' } }
 export const MultiSelection: Story = { args: { scenario: 'multi-selection' } }
 export const Archived: Story = { args: { scenario: 'archived' } }
@@ -76,12 +73,12 @@ export const InteractionShowcase: Story = { args: { scenario: 'filter-open' } }
 export const DragOver: Story = { args: { scenario: 'drag-over' } }
 export const Uploading: Story = { args: { scenario: 'uploading' } }
 export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
-export const TableView: Story = { args: { scenario: 'table-view' } }
-export const StatsView: Story = { args: { scenario: 'stats-view' } }
-export const RightLoading: Story = { args: { scenario: 'right-loading' } }
-export const RightManyClasses: Story = { args: { scenario: 'right-many-classes' } }
+/** 2 view mode (Table / Stats) — Controls 의 scenario 로 전환. */
+export const ViewModeShowcase: Story = { args: { scenario: 'table-view' } }
+/** 2 right panel state (Loading / ManyClasses) — Controls 의 scenario 로 전환. */
+export const RightPanelShowcase: Story = { args: { scenario: 'right-loading' } }
 /** 9 modal 변형 (AddDataset / Duplicate / DragDrop / IgpExport / UploadQuality / ConfirmDelete / BulkDelete / Export / Transfer) — Controls 의 scenario 로 전환. */
 export const ModalShowcase: Story = { args: { scenario: 'modal-add-dataset' } }
 export const DetailRich: Story = { args: { scenario: 'detail-rich' } }
-export const MobileDefault: Story = { args: { scenario: 'mobile-default' } }
-export const MobileBottomFilter: Story = { args: { scenario: 'mobile-bottom-filter' } }
+/** 2 mobile 변형 (Default / BottomFilter) — Controls 의 scenario 로 전환. */
+export const MobileShowcase: Story = { args: { scenario: 'mobile-default' } }

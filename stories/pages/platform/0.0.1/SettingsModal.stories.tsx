@@ -49,10 +49,8 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 export const AccountDefault: Story = { args: { scenario: 'account-default' } }
-export const AccountLicense: Story = { args: { scenario: 'account-license' } }
-export const AccountSaved: Story = { args: { scenario: 'account-saved' } }
-export const AccountPasswordDialog: Story = { args: { scenario: 'account-password-dialog' } }
-export const AccountDeleteDialog: Story = { args: { scenario: 'account-delete-dialog' } }
+/** 4 account substate (License / Saved / PasswordDialog / DeleteDialog) — Controls 의 scenario 로 전환. */
+export const AccountShowcase: Story = { args: { scenario: 'account-license' } }
 /** 8 project 변형 (Default / Deflectometry / ReadOnly / GroupingEnabled / Saving / NameInvalid / NoProject / PermissionsExpandAll) — Controls 의 scenario 로 전환. */
 export const ProjectShowcase: Story = { args: { scenario: 'project-default' } }
 export const EdgeNoProject: Story = { args: { scenario: 'edge-no-project' } }

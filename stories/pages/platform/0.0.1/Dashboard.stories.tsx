@@ -142,12 +142,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-export const NoProject: Story = { args: { scenario: 'no-project' } }
-export const Loading: Story = { args: { scenario: 'loading' } }
-export const Error: Story = { args: { scenario: 'error' } }
-export const NoData: Story = { args: { scenario: 'no-data' } }
-export const CustomizeOpen: Story = { args: { scenario: 'customize-open' } }
-export const DateRangeOpen: Story = { args: { scenario: 'date-range-open' } }
+/** 4 state 변형 (NoProject / Loading / Error / NoData) — Controls 의 scenario 로 전환. */
+export const StateShowcase: Story = { args: { scenario: 'no-project' } }
+/** 2 popover (Customize / DateRange) — Controls 의 scenario 로 전환. */
+export const PopoverShowcase: Story = { args: { scenario: 'customize-open' } }
 export const SubsetWidgets: Story = { args: { scenario: 'subset-widgets' } }
 export const LayoutCustom: Story = { args: { scenario: 'layout-custom' } }
 export const SaveMessage: Story = { args: { scenario: 'save-message' } }

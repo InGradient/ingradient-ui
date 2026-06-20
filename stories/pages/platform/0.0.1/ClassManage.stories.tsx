@@ -162,22 +162,14 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 export const NoClassSelected: Story = { args: { scenario: 'no-class-selected' } }
 export const ClassWithGroupedImages: Story = { args: { scenario: 'class-with-grouped-images' } }
-export const Empty: Story = { args: { scenario: 'empty' } }
-export const Loading: Story = { args: { scenario: 'loading' } }
-export const Error: Story = { args: { scenario: 'error' } }
-export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
-export const NoProject: Story = { args: { scenario: 'no-project' } }
+/** 5 state 변형 (Empty / Loading / Error / PermissionDenied / NoProject) — Controls 의 scenario 로 전환. */
+export const StateShowcase: Story = { args: { scenario: 'empty' } }
 export const StressTest: Story = { args: { scenario: 'stress-test' } }
-export const NoLinkedDatasets: Story = { args: { scenario: 'no-linked-datasets' } }
-export const ImagesLoading: Story = { args: { scenario: 'images-loading' } }
-export const ImagesEmpty: Story = { args: { scenario: 'images-empty' } }
-export const DragOverReference: Story = { args: { scenario: 'drag-over-reference' } }
-export const ReferenceImagePending: Story = { args: { scenario: 'reference-image-pending' } }
-export const BboxNavMulti: Story = { args: { scenario: 'bbox-nav-multi' } }
+/** 3 content sub-state (NoLinkedDatasets / ImagesLoading / ImagesEmpty) — Controls 의 scenario 로 전환. */
+export const ContentStateShowcase: Story = { args: { scenario: 'no-linked-datasets' } }
+/** 3 reference flow 변형 (DragOverReference / ReferenceImagePending / BboxNavMulti) — Controls 의 scenario 로 전환. */
+export const ReferenceFlowShowcase: Story = { args: { scenario: 'drag-over-reference' } }
 export const Lightbox: Story = { args: { scenario: 'lightbox' } }
-export const ContextMenuOpen: Story = { args: { scenario: 'context-menu-open' } }
-export const AddClassModalOpen: Story = { args: { scenario: 'add-class-modal-open' } }
-export const DeleteConfirmOpen: Story = { args: { scenario: 'delete-confirm-open' } }
-export const MappingCocoActive: Story = { args: { scenario: 'mapping-coco-active' } }
+/** 5 interaction 변형 (ContextMenuOpen / AddClassModalOpen / DeleteConfirmOpen / MappingCocoActive / ClassMenuOpen) — Controls 의 scenario 로 전환. */
+export const InteractionShowcase: Story = { args: { scenario: 'context-menu-open' } }
 export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
-export const ClassMenuOpen: Story = { args: { scenario: 'class-menu-open' } }
