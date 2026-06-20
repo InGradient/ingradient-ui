@@ -1,5 +1,17 @@
 # ingradient-ui 설계 시 주의사항
 
+## 0. 작업 위치 우선순위
+
+새 기능을 추가하거나 기존 기능을 수정할 때는 다음 우선순위로 위치를 결정한다.
+
+1. **Primitive 나 Components 를 최우선 순위로 수정**
+2. **Primitive 나 Components 에 없으면 새롭게 추가하는 것도 고려**
+3. **그래도 없고, 정말 독립적이라면 Patterns 나 Pages 에 생성**
+
+낮은 계층 (primitive, components) 일수록 재사용성이 높고 영향 범위가 넓으므로, 가능한 한 그 계층에서 해결한다. 상위 계층 (patterns, pages) 에 새 컴포넌트를 만들기 전에 하위 계층에서 처리할 수 있는지 먼저 검토한다.
+
+---
+
 ## 1. 계층별 책임을 명확히 나눌 것
 
 현재 구조가 `primitive / components / patterns / pages`라면 각 계층의 역할을 섞지 않아야 한다.
