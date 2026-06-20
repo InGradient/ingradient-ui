@@ -53,22 +53,11 @@ export const AccountLicense: Story = { args: { scenario: 'account-license' } }
 export const AccountSaved: Story = { args: { scenario: 'account-saved' } }
 export const AccountPasswordDialog: Story = { args: { scenario: 'account-password-dialog' } }
 export const AccountDeleteDialog: Story = { args: { scenario: 'account-delete-dialog' } }
-export const ProjectDefault: Story = { args: { scenario: 'project-default' } }
-export const ProjectDeflectometry: Story = { args: { scenario: 'project-deflectometry' } }
-export const ProjectReadOnly: Story = { args: { scenario: 'project-readonly' } }
-export const ProjectGroupingEnabled: Story = { args: { scenario: 'project-grouping-enabled' } }
-export const ProjectSaving: Story = { args: { scenario: 'project-saving' } }
-export const ProjectNameInvalid: Story = { args: { scenario: 'project-name-invalid' } }
-export const ProjectNoProject: Story = { args: { scenario: 'project-no-project' } }
-export const ProjectPermissionsExpandAll: Story = { args: { scenario: 'project-permissions-expand-all' } }
+/** 8 project 변형 (Default / Deflectometry / ReadOnly / GroupingEnabled / Saving / NameInvalid / NoProject / PermissionsExpandAll) — Controls 의 scenario 로 전환. */
+export const ProjectShowcase: Story = { args: { scenario: 'project-default' } }
 export const EdgeNoProject: Story = { args: { scenario: 'edge-no-project' } }
-export const EdgeWorkDefault: Story = { args: { scenario: 'edge-work-default' } }
-export const EdgeWorkDeflectometry: Story = { args: { scenario: 'edge-work-deflectometry' } }
-export const EdgeExportWithPackages: Story = { args: { scenario: 'edge-export-with-packages' } }
-export const EdgeImport: Story = { args: { scenario: 'edge-import' } }
-export const AdminOrganization: Story = { args: { scenario: 'admin-organization' } }
-export const AdminMembers: Story = { args: { scenario: 'admin-members' } }
-export const AdminInvitationsSearch: Story = { args: { scenario: 'admin-invitations-search' } }
-export const AdminDevices: Story = { args: { scenario: 'admin-devices' } }
-export const AdminStorage: Story = { args: { scenario: 'admin-storage' } }
+/** 4 edge 변형 (WorkDefault / WorkDeflectometry / ExportWithPackages / Import) — Controls 의 scenario 로 전환. */
+export const EdgeShowcase: Story = { args: { scenario: 'edge-work-default' } }
+/** 5 admin 변형 (Organization / Members / InvitationsSearch / Devices / Storage) — Controls 의 scenario 로 전환. */
+export const AdminShowcase: Story = { args: { scenario: 'admin-organization' } }
 export const NonAdmin: Story = { args: { scenario: 'non-admin' } }
