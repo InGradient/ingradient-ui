@@ -3,11 +3,11 @@ import {
   SidebarActionButton,
   SidebarBottom,
   SidebarBrandRow,
-  SidebarCloseButton,
   SidebarIconHolder,
   SidebarItemRow,
   SidebarNavList,
   SidebarShellWrap,
+  SidebarToggleButton,
   SidebarTopActionWrap,
 } from './sidebar-shell.styles'
 import { svgStrokeWidths } from '../../tokens/core'
@@ -52,10 +52,18 @@ export interface SidebarShellProps {
 const DEFAULT_WIDTH_EXPANDED = 180
 const DEFAULT_WIDTH_COLLAPSED = 72
 
-function CloseIcon() {
+function CollapseIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <polyline points="15 18 9 12 15 6" />
+    </svg>
+  )
+}
+
+function ExpandIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polyline points="9 18 15 12 9 6" />
     </svg>
   )
 }
@@ -81,13 +89,18 @@ export function SidebarShell({
       className={className}
       data-expanded={expanded ? 'true' : 'false'}
     >
-      {brand !== undefined ? (
-        <SidebarBrandRow>
-          {brand}
-          {expanded && onToggleExpanded ? (
-            <SidebarCloseButton type="button" onClick={onToggleExpanded} aria-label="Collapse sidebar" title="Collapse sidebar">
-              <CloseIcon />
-            </SidebarCloseButton>
+      {(brand !== undefined || onToggleExpanded) ? (
+        <SidebarBrandRow $expanded={expanded}>
+          {expanded ? brand : null}
+          {onToggleExpanded ? (
+            <SidebarToggleButton
+              type="button"
+              onClick={onToggleExpanded}
+              aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
+              title={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
+            >
+              {expanded ? <CollapseIcon /> : <ExpandIcon />}
+            </SidebarToggleButton>
           ) : null}
         </SidebarBrandRow>
       ) : null}

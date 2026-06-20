@@ -27,12 +27,12 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   box-sizing: border-box;
 `
 
-export const SidebarBrandRow = styled.div`
+export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
   min-height: var(--ig-layout-sidebar-header);
   padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(p) => (p.$expanded ? 'space-between' : 'center')};
   flex-shrink: 0;
   background: var(--ig-color-surface-header);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
@@ -40,22 +40,22 @@ export const SidebarBrandRow = styled.div`
   &:hover { background: var(--ig-color-surface-interactive); }
 `
 
-export const SidebarCloseButton = styled.button`
+export const SidebarToggleButton = styled.button`
   background: none;
   border: none;
   color: var(--ig-color-text-muted);
   cursor: pointer;
   padding: var(--ig-space-1);
-  margin-left: var(--ig-space-3);
   display: flex;
   align-items: center;
   justify-content: center;
   &:hover { color: var(--ig-color-text-primary); }
-  svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); }
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
 `
 
 export const SidebarTopActionWrap = styled.div`
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
 `
 
 export const SidebarNavList = styled.nav`
@@ -69,7 +69,7 @@ export const SidebarNavList = styled.nav`
 
 const rowMixin = `
   display: grid;
-  grid-template-columns: var(--ig-icon-xl) minmax(0, 1fr);
+  grid-template-columns: var(--ig-icon-lg) minmax(0, 1fr);
   align-items: center;
   height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
@@ -88,10 +88,10 @@ const rowMixin = `
     color: var(--ig-color-text-primary);
     background: var(--ig-color-white-06);
   }
-  & svg { width: var(--ig-icon-xl); height: var(--ig-icon-xl); flex-shrink: 0; }
+  & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
-    grid-template-columns: var(--ig-icon-xl);
+    grid-template-columns: var(--ig-icon-lg);
     justify-content: center;
     padding: 0;
   }

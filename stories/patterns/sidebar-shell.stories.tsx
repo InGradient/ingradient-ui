@@ -50,6 +50,7 @@ export const Review: Story = {
               <div style={{ display: 'flex', height: 480 }}>
                 <SidebarShell
                   expanded={false}
+                  onToggleExpanded={() => undefined}
                   brand={<BrandMark />}
                   topAction={<ProjectButton expanded={false} />}
                   items={baseItems}
