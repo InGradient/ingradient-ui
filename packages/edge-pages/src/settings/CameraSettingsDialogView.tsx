@@ -1,5 +1,5 @@
 import { Camera, FileText, Info, Server, Database, FlaskConical, SlidersHorizontal } from 'lucide-react'
-import { SettingsDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
+import { TwoColumnDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
 import type { CameraSettingsDialogViewProps, SettingsTab } from './types'
 
 interface TabDef {
@@ -42,7 +42,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   }
 
   return (
-    <SettingsDialog
+    <TwoColumnDialog
       title={labels.title}
       onClose={onClose}
       width="min(var(--ig-popup-4xl-narrow), 92vw)"
@@ -57,6 +57,6 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
       }
     >
       {content[activeTab]}
-    </SettingsDialog>
+    </TwoColumnDialog>
   )
 }

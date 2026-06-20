@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SettingsDialog, Tabs } from '@ingradient/ui'
+import { TwoColumnDialog, Tabs } from '@ingradient/ui'
 import type { SystemMonitorModalViewProps, SystemMonitorTab } from './types'
 
 const Body = styled.div`
@@ -14,7 +14,7 @@ const Body = styled.div`
 export function SystemMonitorModalView(props: SystemMonitorModalViewProps): JSX.Element {
   const { activeTab, labels, monitorContent, cleanupContent, onClose, onSetActiveTab } = props
   return (
-    <SettingsDialog title={labels.title} onClose={onClose} width="min(var(--ig-popup-3xl-mid), 92vw)">
+    <TwoColumnDialog title={labels.title} onClose={onClose} width="min(var(--ig-popup-3xl-mid), 92vw)">
       <Body>
         <Tabs
           items={[
@@ -28,6 +28,6 @@ export function SystemMonitorModalView(props: SystemMonitorModalViewProps): JSX.
           {activeTab === 'monitor' ? monitorContent : cleanupContent}
         </div>
       </Body>
-    </SettingsDialog>
+    </TwoColumnDialog>
   )
 }

@@ -1,12 +1,20 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Alert } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
-import { SettingsHint, SettingsSection } from '@ingradient/ui/patterns'
+import { SettingsSection } from '@ingradient/ui/patterns'
 
 const FIELD_STYLE = { minWidth: 240 }
 const HINT_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }
 const EXPIRED_STYLE = { margin: 0 }
+
+const Hint = styled.p`
+  margin: 0;
+  color: var(--ig-color-text-muted);
+  font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-line-height-relaxed);
+`
 
 export interface LicenseInfo {
   type: 'organization' | 'personal'
@@ -86,7 +94,7 @@ export function SettingsAccountTab({
             {accountSaving ? 'Saving…' : 'Save'}
           </Button>
         </Inline>
-        <SettingsHint>{user?.email ? `Signed in as ${user.email}` : 'Signed in user account.'}</SettingsHint>
+        <Hint>{user?.email ? `Signed in as ${user.email}` : 'Signed in user account.'}</Hint>
         {accountMessage ? (
           <Alert $tone={accountMessage === 'Saved.' ? 'success' : 'info'}>{accountMessage}</Alert>
         ) : null}
@@ -104,10 +112,10 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Delete account" tone="danger">
-        <SettingsHint>
+        <Hint>
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
-        </SettingsHint>
+        </Hint>
         <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
           <TextField
             value={deleteAccountConfirmInput}
