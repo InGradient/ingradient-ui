@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassManageView } from '@ingradient/platform-pages'
 import { classScenarios, type ClassScenarioKey } from '../../../fixtures/platform/0.0.1/class-scenarios'
@@ -34,10 +35,14 @@ const handoff = defineHandoff({
   ],
 })
 
-type Args = { scenario: ClassScenarioKey }
+type Args = { scenario: ClassScenarioKey; sidebarCollapsed: boolean }
 
-function ClassManageScene({ scenario: key }: Args) {
-  const scenario = classScenarios[key]
+function ClassManageScene({ scenario: key, sidebarCollapsed }: Args) {
+  const baseScenario = classScenarios[key]
+  const scenario = React.useMemo(
+    () => (sidebarCollapsed ? { ...baseScenario, sidebarCollapsed: true } : baseScenario),
+    [baseScenario, sidebarCollapsed],
+  )
   const s = useClassManageScene(scenario)
   const classIdToColor = classIdToColorMap(s.classes)
   const selectedClass = s.classes.find((c) => c.id === s.selectedClassId) ?? null
@@ -151,8 +156,9 @@ const meta = {
   parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: { control: 'select', options: SCENARIO_KEYS, table: { category: 'Page' } },
+    sidebarCollapsed: { control: 'boolean', table: { category: 'Layout' } },
   },
-  args: { scenario: 'default' as ClassScenarioKey },
+  args: { scenario: 'default' as ClassScenarioKey, sidebarCollapsed: false },
 } satisfies Meta<typeof ClassManageScene>
 
 export default meta
@@ -172,4 +178,3 @@ export const ReferenceFlowShowcase: Story = { args: { scenario: 'drag-over-refer
 export const Lightbox: Story = { args: { scenario: 'lightbox' } }
 /** 5 interaction 변형 (ContextMenuOpen / AddClassModalOpen / DeleteConfirmOpen / MappingCocoActive / ClassMenuOpen) — Controls 의 scenario 로 전환. */
 export const InteractionShowcase: Story = { args: { scenario: 'context-menu-open' } }
-export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }

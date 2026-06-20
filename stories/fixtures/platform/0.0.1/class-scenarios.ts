@@ -26,7 +26,6 @@ export type ClassScenarioKey =
   | 'add-class-modal-open'
   | 'delete-confirm-open'
   | 'mapping-coco-active'
-  | 'sidebar-collapsed'
   | 'class-menu-open'
 
 export interface ClassScene {
@@ -94,7 +93,6 @@ export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'add-class-modal-open': { ...base, isAddClassOpen: true, addClassName: 'New defect' },
   'delete-confirm-open': { ...base, deleteConfirmOpen: true },
   'mapping-coco-active': { ...base, showCocoMapping: true, currentMapping: 'person' },
-  'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'class-menu-open': { ...base, openMenuClassId: 'cl-1' },
 }
 
