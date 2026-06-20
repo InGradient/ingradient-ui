@@ -32,10 +32,14 @@ const handoff = defineHandoff({
   ],
 })
 
-type Args = { scenario: CatalogScenarioKey }
+type Args = { scenario: CatalogScenarioKey; sidebarCollapsed: boolean }
 
-function CatalogScene({ scenario: key }: Args) {
-  const scenario = catalogScenarios[key]
+function CatalogScene({ scenario: key, sidebarCollapsed }: Args) {
+  const baseScenario = catalogScenarios[key]
+  const scenario = React.useMemo(
+    () => (sidebarCollapsed ? { ...baseScenario, sidebarCollapsed: true } : baseScenario),
+    [baseScenario, sidebarCollapsed],
+  )
   const s = useCatalogScene(scenario)
   const datasetNameById = React.useMemo(
     () => Object.fromEntries(scenario.datasets.map((d) => [d.id, d.name])),
@@ -50,8 +54,11 @@ const meta = {
   title: 'Pages/Platform/0.0.1/Catalog',
   component: CatalogScene,
   parameters: { layout: 'fullscreen', ...handoff },
-  argTypes: { scenario: { control: 'select', options: SCENARIO_KEYS, table: { category: 'Page' } } },
-  args: { scenario: 'default' as CatalogScenarioKey },
+  argTypes: {
+    scenario: { control: 'select', options: SCENARIO_KEYS, table: { category: 'Page' } },
+    sidebarCollapsed: { control: 'boolean', table: { category: 'Layout' } },
+  },
+  args: { scenario: 'default' as CatalogScenarioKey, sidebarCollapsed: false },
 } satisfies Meta<typeof CatalogScene>
 
 export default meta
@@ -61,18 +68,14 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 /** 5 state 변형 (Empty / Loading / Error / PermissionDenied / NoProject) — Controls 의 scenario 로 전환. */
 export const StateShowcase: Story = { args: { scenario: 'empty' } }
-export const StressTest: Story = { args: { scenario: 'stress-test' } }
+/** 5 data 변형 (StressTest / Archived / Processing / GroupMode / HoverPreview) — Controls 의 scenario 로 전환. */
+export const DataVariantsShowcase: Story = { args: { scenario: 'stress-test' } }
 export const MultiSelection: Story = { args: { scenario: 'multi-selection' } }
-export const Archived: Story = { args: { scenario: 'archived' } }
-export const Processing: Story = { args: { scenario: 'processing' } }
-export const GroupMode: Story = { args: { scenario: 'group-mode' } }
-export const HoverPreviewState: Story = { args: { scenario: 'hover-preview' } }
 export const DetailOpen: Story = { args: { scenario: 'detail-open' } }
 /** Filter/Sort 팝오버 + Image/Dataset 메뉴 — Controls 의 scenario 로 전환. */
 export const InteractionShowcase: Story = { args: { scenario: 'filter-open' } }
 export const DragOver: Story = { args: { scenario: 'drag-over' } }
 export const Uploading: Story = { args: { scenario: 'uploading' } }
-export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
 /** 2 view mode (Table / Stats) — Controls 의 scenario 로 전환. */
 export const ViewModeShowcase: Story = { args: { scenario: 'table-view' } }
 /** 2 right panel state (Loading / ManyClasses) — Controls 의 scenario 로 전환. */

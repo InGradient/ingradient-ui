@@ -68,7 +68,7 @@ export type CatalogScenarioKey =
   | 'stress-test'
   | 'multi-selection' | 'archived' | 'processing' | 'group-mode'
   | 'hover-preview' | 'detail-open' | 'filter-open' | 'sort-open' | 'image-menu' | 'dataset-menu-open'
-  | 'drag-over' | 'uploading' | 'sidebar-collapsed'
+  | 'drag-over' | 'uploading'
   | 'table-view' | 'stats-view'
   | 'right-loading' | 'right-many-classes'
   | 'modal-add-dataset' | 'modal-duplicate' | 'modal-drag-drop'
@@ -122,7 +122,6 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'dataset-menu-open': { ...base, datasetMenuOpenId: 'd2' },
   'drag-over': { ...base, dragOverGrid: true },
   'uploading': { ...base, uploadProgress: 67 },
-  'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'table-view': { ...base, viewMode: 'table' },
   'stats-view': { ...base, viewMode: 'stats' },
   'right-loading': { ...base, classesLoading: true, membersLoading: true, classes: [], members: [] },
