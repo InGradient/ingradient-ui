@@ -1,8 +1,16 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import styled from 'styled-components'
 import { ToolbarShell, type ToolbarShellAction } from '../../src/components/inputs/toolbar-shell'
-import { CanvasCoordReadout } from '../../src/patterns'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
+
+const CoordReadout = styled.div`
+  font-size: var(--ig-font-size-xs);
+  font-family: var(--ig-font-mono);
+  color: var(--ig-color-text-muted);
+  padding: var(--ig-space-2) var(--ig-space-4);
+  background: var(--ig-color-overlay-dim);
+`
 import {
   BboxIcon,
   ClassificationIcon,
@@ -80,9 +88,9 @@ function ToolbarDemo({ placement, full }: { placement: 'bottom' | 'top' | 'left'
   )
 
   const coordReadout = (
-    <CanvasCoordReadout>
+    <CoordReadout role="status">
       bbox x=0.18 y=0.22 w=0.22 h=0.18 · items={items}
-    </CanvasCoordReadout>
+    </CoordReadout>
   )
 
   // toolbar 가 좌/우 일 때: 가로 row(toolbar + canvas) → 아래에 CoordReadout
@@ -115,7 +123,7 @@ export const Review: Story = {
   render: () => (
     <StorybookPage
       title="ToolbarShell"
-      description="Sibling-based toolbar — canvas 와 inline flex 안에 배치되어 겹치지 않음. 4 placements (bottom/top/left/right). CoordReadout 은 별도 컴포넌트 <CanvasCoordReadout> 로 항상 canvas 아래에 배치."
+      description="Sibling-based toolbar — canvas 와 inline flex 안에 배치되어 겹치지 않음. 4 placements (bottom/top/left/right). CoordReadout 은 monospace 라벨로 항상 canvas 아래에 배치."
     >
       <StorybookSection title="Placement: bottom" description="기본값 — 가로 toolbar, canvas 아래.">
         <StorybookGrid columns="1fr">
