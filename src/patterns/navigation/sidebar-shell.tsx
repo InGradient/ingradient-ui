@@ -4,11 +4,13 @@ import {
   SidebarBottom,
   SidebarBrandRow,
   SidebarBrandSlot,
+  SidebarChevronSlot,
   SidebarHoverExpandOverlay,
   SidebarIconHolder,
   SidebarItemRow,
   SidebarNavList,
   SidebarShellWrap,
+  SidebarSubList,
   SidebarToggleButton,
   SidebarTopActionWrap,
 } from './sidebar-shell.styles'
@@ -26,6 +28,8 @@ export interface SidebarShellItem {
   linkComponent?: React.ElementType
   /** Optional badge (e.g. NotificationBadge). Wraps the icon. */
   badge?: React.ReactNode
+  /** Sub-items 가 있으면 row 는 expandable button 으로 렌더 (link 대신). 펼침 시 children 노출. */
+  children?: SidebarShellItem[]
 }
 
 export interface SidebarShellAction {
@@ -67,6 +71,63 @@ function ExpandIcon() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <polyline points="9 18 15 12 9 6" />
     </svg>
+  )
+}
+
+function ChevronDownIcon({ rotated }: { rotated?: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round"
+      style={{ transform: rotated ? 'rotate(0)' : 'rotate(-90deg)', transition: 'transform var(--ig-motion-fast)' }}
+      aria-hidden
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  )
+}
+
+function SidebarItemNode({ item, sidebarExpanded }: { item: SidebarShellItem; sidebarExpanded: boolean }) {
+  const [open, setOpen] = React.useState(false)
+  const hasChildren = !!item.children && item.children.length > 0
+
+  if (hasChildren) {
+    // 접힘 sidebar 에선 sub-item 안 보이게 (실제 앱과 동일) — row 만 노출, 클릭 시 펼치기는 caller 책임.
+    return (
+      <>
+        <SidebarItemRow
+          as="button"
+          type="button"
+          title={item.title}
+          aria-expanded={open}
+          onClick={() => setOpen((p) => !p)}
+        >
+          <SidebarIconHolder>{item.badge ?? item.icon}</SidebarIconHolder>
+          {sidebarExpanded ? <span>{item.label}</span> : null}
+          {sidebarExpanded ? (
+            <SidebarChevronSlot aria-hidden>
+              <ChevronDownIcon rotated={open} />
+            </SidebarChevronSlot>
+          ) : null}
+        </SidebarItemRow>
+        {open && sidebarExpanded ? (
+          <SidebarSubList>
+            {item.children!.map((child) => (
+              <SidebarItemNode key={child.key} item={child} sidebarExpanded={sidebarExpanded} />
+            ))}
+          </SidebarSubList>
+        ) : null}
+      </>
+    )
+  }
+
+  const LinkComp = item.linkComponent
+  const extraProps = LinkComp ? { to: item.to } : { href: item.to ?? '#' }
+  return (
+    <SidebarItemRow as={LinkComp ?? 'a'} title={item.title} {...extraProps}>
+      <SidebarIconHolder>{item.badge ?? item.icon}</SidebarIconHolder>
+      {sidebarExpanded ? <span>{item.label}</span> : null}
+    </SidebarItemRow>
   )
 }
 
@@ -120,16 +181,9 @@ export function SidebarShell({
       {topAction !== undefined ? <SidebarTopActionWrap>{topAction}</SidebarTopActionWrap> : null}
       {items && items.length > 0 ? (
         <SidebarNavList aria-label={navLabel}>
-          {items.map((item) => {
-            const LinkComp = item.linkComponent
-            const extraProps = LinkComp ? { to: item.to } : { href: item.to ?? '#' }
-            return (
-              <SidebarItemRow key={item.key} as={LinkComp ?? 'a'} title={item.title} {...extraProps}>
-                <SidebarIconHolder>{item.badge ?? item.icon}</SidebarIconHolder>
-                {expanded ? <span>{item.label}</span> : null}
-              </SidebarItemRow>
-            )
-          })}
+          {items.map((item) => (
+            <SidebarItemNode key={item.key} item={item} sidebarExpanded={expanded} />
+          ))}
         </SidebarNavList>
       ) : null}
       {actions && actions.length > 0 ? (

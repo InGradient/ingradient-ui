@@ -107,7 +107,7 @@ export const SidebarNavList = styled.nav`
 
 const rowMixin = `
   display: grid;
-  grid-template-columns: var(--ig-icon-lg) minmax(0, 1fr);
+  grid-template-columns: var(--ig-icon-lg) minmax(0, 1fr) auto;
   align-items: center;
   height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
@@ -129,7 +129,7 @@ const rowMixin = `
   & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
-    grid-template-columns: var(--ig-icon-lg);
+    display: flex;
     justify-content: center;
     padding: 0;
   }
@@ -142,6 +142,26 @@ export const SidebarItemRow = styled.a`
   &[aria-current='page'] {
     color: var(--ig-color-accent-soft);
     background: var(--ig-color-focus-bg-soft);
+  }
+`
+
+/** Expandable item 의 우측 chevron. 펼침 sidebar 에서만 노출. */
+export const SidebarChevronSlot = styled.span`
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ig-color-text-muted);
+  svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
+`
+
+/** Expandable item 펼침 시 children 컨테이너 — 좌측 padding 으로 들여쓰기. */
+export const SidebarSubList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--ig-space-7);
+  gap: var(--ig-space-1);
+  @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
+    padding-left: 0;
   }
 `
 

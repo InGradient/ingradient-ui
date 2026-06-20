@@ -5,7 +5,7 @@ import { NotificationBadge } from '../../src/components'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 import {
   BrandMark, NoticeIcon, ProjectButton,
-  baseActions, baseItems,
+  baseActions, baseItems, expandableItems,
 } from './sidebar-shell.stories.helpers'
 
 const meta = {
@@ -23,6 +23,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const FRAME_STYLE: React.CSSProperties = { display: 'flex', height: 540 }
+const CONTENT_STYLE: React.CSSProperties = { flex: 1, padding: 'var(--ig-space-7)', color: 'var(--ig-color-text-muted)' }
 
 export const Review: Story = {
   args: { expanded: true },
@@ -32,16 +33,16 @@ export const Review: Story = {
     return (
       <StorybookPage
         title="SidebarShell"
-        description="App-wide desktop sidebar pattern. Slot-based — caller provides brand, top action, items, actions. Shell owns layout, collapse animation, container-query nav row reflow, hover-active styling, and brand-area hover swap."
+        description="App-wide desktop sidebar pattern. Slot-based — caller provides brand, top action, items, actions. Shell owns layout, collapse animation, brand-area hover swap, expandable items, container-query reflow, active-row styling."
       >
         <StorybookSection
           title="Interactive demo"
-          description="펼침/접힘 토글. 펼침: brand + collapse chevron (우측). 접힘: brand 만 (중앙) — 마우스 호버 시 brand 자리에 expand chevron swap, 클릭 시 펼침."
+          description="펼침/접힘 토글. 펼침: brand + collapse chevron (우측). 접힘: brand 만 (중앙) — hover 시 brand 자리에 expand chevron swap, 클릭 시 펼침. 활성 row 는 NavLink 가 자동 강조."
         >
           <StorybookGrid columns="1fr">
             <StorybookCard
               title={expanded ? 'Expanded (180px)' : 'Collapsed (72px)'}
-              subtitle="브랜드 영역 hover 해보세요"
+              subtitle="brand 영역 hover · row 클릭 시 active 강조"
             >
               <div style={FRAME_STYLE}>
                 <SidebarShell
@@ -53,8 +54,8 @@ export const Review: Story = {
                   actions={baseActions}
                   navLabel="Demo"
                 />
-                <div style={{ flex: 1, padding: 'var(--ig-space-7)', color: 'var(--ig-color-text-muted)' }}>
-                  Main content area — 우측 컨텐츠는 sidebar 폭에 맞춰 자동 reflow.
+                <div style={CONTENT_STYLE}>
+                  Main content area — sidebar 폭에 맞춰 자동 reflow.
                 </div>
               </div>
             </StorybookCard>
@@ -62,11 +63,33 @@ export const Review: Story = {
         </StorybookSection>
 
         <StorybookSection
-          title="Active row + badge"
-          description="`linkComponent` 로 NavLink 를 넘기면 활성 row 가 자동 강조. action 의 badge prop 으로 NotificationBadge 합성."
+          title="Expandable items"
+          description="`item.children` 가 있으면 row 가 expand button 으로 렌더 — 클릭 시 토글, 우측 chevron 회전. ingradient-os 의 projects/conversations 패턴."
         >
           <StorybookGrid columns="1fr">
-            <StorybookCard title="/catalog active + notice 3" subtitle="caller wires NavLink + Badge">
+            <StorybookCard title="Projects 그룹 펼침" subtitle="children 3개 (datasets)">
+              <div style={FRAME_STYLE}>
+                <SidebarShell
+                  expanded
+                  brand={<BrandMark expanded />}
+                  items={expandableItems}
+                  actions={baseActions}
+                  navLabel="Expandable demo"
+                />
+                <div style={CONTENT_STYLE}>
+                  Projects 행 클릭 시 sub-items 펼침/접힘. 사이드바 접힘 상태에선 children 숨김.
+                </div>
+              </div>
+            </StorybookCard>
+          </StorybookGrid>
+        </StorybookSection>
+
+        <StorybookSection
+          title="With notice badge"
+          description="action 의 badge prop 으로 NotificationBadge 합성. 접힘 상태에서도 badge 가 아이콘 위에 노출."
+        >
+          <StorybookGrid columns="1fr">
+            <StorybookCard title="Notice 3" subtitle="caller wires NotificationBadge">
               <div style={FRAME_STYLE}>
                 <SidebarShell
                   expanded
@@ -87,7 +110,7 @@ export const Review: Story = {
                     },
                     baseActions[1],
                   ]}
-                  navLabel="Active demo"
+                  navLabel="Notice demo"
                 />
               </div>
             </StorybookCard>
@@ -99,12 +122,11 @@ export const Review: Story = {
           description="`width` prop 으로 폭 오버라이드. 기본 expanded/collapsed = 180/72."
         >
           <StorybookGrid columns="1fr">
-            <StorybookCard title="width={{ expanded: 240, collapsed: 64 }}" subtitle="wider expanded, slimmer collapsed">
+            <StorybookCard title="width={{ expanded: 240, collapsed: 64 }}">
               <div style={FRAME_STYLE}>
                 <SidebarShell
                   expanded
                   brand={<BrandMark expanded />}
-                  topAction={<ProjectButton expanded />}
                   items={baseItems}
                   actions={baseActions}
                   width={{ expanded: 240, collapsed: 64 }}

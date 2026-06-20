@@ -1,6 +1,14 @@
 import React from 'react'
 import type { SidebarShellAction, SidebarShellItem } from '../../src/patterns'
 
+export function ProjectIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    </svg>
+  )
+}
+
 export function DashboardIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -59,9 +67,9 @@ export function BrandMark({ expanded = true }: { expanded?: boolean }) {
 }
 
 export function FakeNavLink({ to, className, children, ...rest }: { to?: string; className?: string; children?: React.ReactNode; [k: string]: unknown }) {
-  const isActive = to === '/catalog'
+  const isActive = to === '/dashboard'
   return (
-    <a href={to ?? '#'} className={isActive ? 'active' : className} aria-current={isActive ? 'page' : undefined} {...rest}>
+    <a href={to ?? '#'} className={isActive ? `${className ?? ''} active` : className} aria-current={isActive ? 'page' : undefined} {...rest}>
       {children}
     </a>
   )
@@ -88,8 +96,21 @@ export function ProjectButton({ expanded }: { expanded: boolean }) {
 }
 
 export const baseItems: SidebarShellItem[] = [
+  { key: 'dashboard', to: '/dashboard', title: 'Dashboard', label: 'Dashboard', icon: <DashboardIcon />, linkComponent: FakeNavLink as React.ElementType },
+  { key: 'classes', to: '/classes', title: 'Classes', label: 'Classes', icon: <ClassesIcon /> },
+]
+
+/** Expandable demo — Projects 그룹에 children 으로 datasets 노출. */
+export const expandableItems: SidebarShellItem[] = [
   { key: 'dashboard', to: '/dashboard', title: 'Dashboard', label: 'Dashboard', icon: <DashboardIcon /> },
-  { key: 'catalog', to: '/catalog', title: 'Catalog', label: 'Catalog', icon: <CatalogIcon />, linkComponent: FakeNavLink as React.ElementType },
+  {
+    key: 'projects', title: 'Projects', label: 'Projects', icon: <ProjectIcon />,
+    children: [
+      { key: 'project-a', to: '/projects/a', title: 'Project A', label: 'Defect Inspection A', icon: <FolderIcon /> },
+      { key: 'project-b', to: '/projects/b', title: 'Project B', label: 'Wafer QA', icon: <FolderIcon /> },
+      { key: 'project-c', to: '/projects/c', title: 'Project C', label: 'Sequence Review', icon: <FolderIcon /> },
+    ],
+  },
   { key: 'classes', to: '/classes', title: 'Classes', label: 'Classes', icon: <ClassesIcon /> },
 ]
 
