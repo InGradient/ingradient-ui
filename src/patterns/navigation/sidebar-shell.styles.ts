@@ -128,7 +128,7 @@ const rowMixin = `
   }
   & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
   & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
+  @container sidebar-shell (max-width: 100px) {
     display: flex;
     justify-content: center;
     padding: 0;
@@ -160,7 +160,7 @@ export const SidebarSubList = styled.div`
   flex-direction: column;
   padding-left: var(--ig-space-7);
   gap: var(--ig-space-1);
-  @container sidebar-shell (max-width: var(--ig-layout-sidebar-collapse)) {
+  @container sidebar-shell (max-width: 100px) {
     padding-left: 0;
   }
 `
