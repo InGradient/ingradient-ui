@@ -1,19 +1,18 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import {
+  Button,
   FilterIcon,
   FilterPopoverTrigger,
   GridIcon,
+  IconButton,
+  MenuIcon,
   ModeSwitcher,
   SearchField,
   SortIcon,
   StatsIcon,
   TableIcon,
-  Button,
 } from '@ingradient/ui/components'
-import {
-  ExpandSidebarBtn,
-  SortPopoverTrigger,
-} from '@ingradient/ui/patterns'
+import { SortPopoverTrigger } from '@ingradient/ui/patterns'
 import { GalleryFilterPanel, GalleryToolbar } from './gallery'
 import { DangerDimButton } from './CatalogView.styles'
 import type { CatalogToolbarPaneProps, CatalogViewMode } from './types'
@@ -60,7 +59,11 @@ export function CatalogToolbarRow({
 }: Props) {
   return (
     <GalleryToolbar
-      leftStart={sidebarCollapsed ? <ExpandSidebarBtn onClick={onExpandSidebar} /> : undefined}
+      leftStart={sidebarCollapsed ? (
+        <IconButton variant="secondary" size="sm" aria-label="Expand sidebar" onClick={onExpandSidebar}>
+          <MenuIcon size={iconSizeNumbers.lg} />
+        </IconButton>
+      ) : undefined}
       search={
         <SearchField
           placeholder="Search file name"
