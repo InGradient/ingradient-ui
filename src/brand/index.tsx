@@ -3,11 +3,13 @@ import styled from 'styled-components'
 
 const faviconIcoUrl = new URL('./assets/favicon.ico', import.meta.url).href
 const faviconPngUrl = new URL('./assets/favicon.png', import.meta.url).href
+const brandMarkUrl = new URL('./assets/brand-mark.png', import.meta.url).href
 const logoWordmarkUrl = new URL('./assets/ingradient_logo_l_white.png', import.meta.url).href
 
 export const brandAssets = {
   faviconIco: faviconIcoUrl,
   faviconPng: faviconPngUrl,
+  brandMark: brandMarkUrl,
   logoWordmark: logoWordmarkUrl,
 } as const
 
@@ -20,7 +22,7 @@ const BrandImage = styled.img`
 export function BrandMark({
   size = 40,
   alt = 'Ingradient',
-  src = brandAssets.faviconPng,
+  src = brandAssets.brandMark,
   ...props
 }: Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> & {
   size?: number
