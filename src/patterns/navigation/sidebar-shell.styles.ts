@@ -9,11 +9,10 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   min-width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   max-width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   flex: 0 0 ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
-  /* viewport 에 고정 — 본문이 스크롤돼도 sidebar 는 길어지지 않음. */
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  height: 100dvh;
+  /* parent grid/flex cell 에 맞춰 stretch — caller 가 Shell height: 100vh + main content overflow:auto
+   * 패턴 쓰면 sidebar 는 viewport 와 정확히 일치, sub-pixel sticky slip 발생 자체가 안 함.
+   * (caller 가 document scroll 사용하면 sticky 가 필요할 수 있어 max-height 로 cap 만 유지) */
+  height: 100%;
   max-height: 100dvh;
   background:
     linear-gradient(180deg, var(--ig-color-sidebar-bg-top) 0%, var(--ig-color-sidebar-bg-bottom) 100%),
@@ -55,12 +54,14 @@ export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
   &:hover { background: var(--ig-color-surface-interactive); }
 `
 
-/** Brand slot — 접힘 시 hover 되면 숨겨지면서 expand 아이콘으로 swap. */
+/** Brand slot — 접힘 시 hover 되면 숨겨지면서 expand 아이콘으로 swap.
+ *  transition 도 collapsed 일 때만 적용 — expanded 일 땐 변화 없으므로 transition 선언 자체가
+ *  brand element 의 compositing layer 분리 trigger 가 되지 않게 함. */
 export const SidebarBrandSlot = styled.span<{ $expanded: boolean }>`
   display: inline-flex;
   align-items: center;
-  transition: opacity var(--ig-motion-fast);
   ${(p) => !p.$expanded && `
+    transition: opacity var(--ig-motion-fast);
     ${SidebarBrandRow}:hover & { opacity: 0; }
   `}
 `
@@ -111,8 +112,7 @@ export const SidebarNavList = styled.nav`
 `
 
 const rowMixin = `
-  display: grid;
-  grid-template-columns: var(--ig-icon-lg) minmax(0, 1fr) auto;
+  display: flex;
   align-items: center;
   height: var(--ig-control-height-lg);
   padding: 0 ${SIDEBAR_INSET}px;
@@ -120,7 +120,9 @@ const rowMixin = `
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);
   text-decoration: none;
-  transition: color var(--ig-motion-fast), background var(--ig-motion-fast);
+  /* transition 제거 — color/background 변화는 즉시 적용.
+   * 이전: transition 이 button 의 paint sequence 를 GPU layer 로 격리 → 빠른 스크롤 시 button 안
+   *       icon (raster/SVG) 이 한 프레임 lag 으로 jitter 처럼 보이는 현상의 원인 추정. */
   cursor: pointer;
   border: none;
   background: none;
@@ -132,9 +134,8 @@ const rowMixin = `
     background: var(--ig-color-white-06);
   }
   & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
-  & span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  & span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @container sidebar-shell (max-width: 100px) {
-    display: flex;
     justify-content: center;
     padding: 0;
   }
@@ -183,9 +184,8 @@ export const SidebarBottom = styled.div`
   flex-shrink: 0;
 `
 
+/** Icon wrapper — display: contents 로 box model 에서 제거되어 layout/compositing 영향 0.
+ *  badge 모드일 땐 NotificationBadge 가 자체 Root 로 inline-flex 처리하므로 wrapper 불필요. */
 export const SidebarIconHolder = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  display: contents;
 `

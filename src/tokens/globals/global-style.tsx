@@ -17,7 +17,8 @@ export const IngradientGlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    height: 100%;
+    /* min-height 로 변경 — content 가 viewport 보다 길어도 body 가 따라 늘어남 (배경 잘림 방지). */
+    min-height: 100%;
     margin: 0;
     background:
       radial-gradient(circle at top left, var(--ig-color-bg-radial-a), transparent 32%),
