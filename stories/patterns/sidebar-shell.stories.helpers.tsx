@@ -48,11 +48,12 @@ export function SettingsIcon() {
   )
 }
 
-export function BrandMark() {
+/** Story brand — expanded 시 icon + name, collapsed 시 icon 만 (실제 앱 BrandMark 패턴). */
+export function BrandMark({ expanded = true }: { expanded?: boolean }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--ig-color-text-primary)', fontWeight: 700, fontSize: 14 }}>
-      <span style={{ width: 'var(--ig-control-height-xs)', height: 'var(--ig-control-height-xs)', borderRadius: 'var(--ig-radius-md)', background: 'linear-gradient(135deg, var(--ig-color-accent), var(--ig-color-success))' }} />
-      <span>Ingradient</span>
+      <span style={{ width: 'var(--ig-control-height-xs)', height: 'var(--ig-control-height-xs)', borderRadius: 'var(--ig-radius-md)', background: 'linear-gradient(135deg, var(--ig-color-accent), var(--ig-color-success))', flexShrink: 0 }} />
+      {expanded ? <span>Ingradient</span> : null}
     </div>
   )
 }

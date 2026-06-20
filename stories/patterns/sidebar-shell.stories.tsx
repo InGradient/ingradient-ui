@@ -22,53 +22,55 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const FRAME_STYLE: React.CSSProperties = { display: 'flex', height: 540 }
+
 export const Review: Story = {
   args: { expanded: true },
   render: () => {
     const [expanded, setExpanded] = React.useState(true)
+
     return (
       <StorybookPage
         title="SidebarShell"
-        description="App-wide desktop sidebar pattern. Slot-based — caller provides brand, top action, items (with optional linkComponent for routing), and actions. Shell owns collapse layout, container-query nav, hover/active styling."
+        description="App-wide desktop sidebar pattern. Slot-based — caller provides brand, top action, items, actions. Shell owns layout, collapse animation, container-query nav row reflow, hover-active styling, and brand-area hover swap."
       >
-        <StorybookSection title="Expanded vs collapsed" description="Toggle with the close button (expanded only). Container query reformats nav rows when collapsed.">
-          <StorybookGrid columns="auto auto">
-            <StorybookCard title="Expanded" subtitle="default width 180">
-              <div style={{ display: 'flex', height: 480 }}>
+        <StorybookSection
+          title="Interactive demo"
+          description="펼침/접힘 토글. 펼침: brand + collapse chevron (우측). 접힘: brand 만 (중앙) — 마우스 호버 시 brand 자리에 expand chevron swap, 클릭 시 펼침."
+        >
+          <StorybookGrid columns="1fr">
+            <StorybookCard
+              title={expanded ? 'Expanded (180px)' : 'Collapsed (72px)'}
+              subtitle="브랜드 영역 hover 해보세요"
+            >
+              <div style={FRAME_STYLE}>
                 <SidebarShell
                   expanded={expanded}
                   onToggleExpanded={() => setExpanded((p) => !p)}
-                  brand={<BrandMark />}
+                  brand={<BrandMark expanded={expanded} />}
                   topAction={<ProjectButton expanded={expanded} />}
                   items={baseItems}
                   actions={baseActions}
-                  navLabel="Expanded demo"
+                  navLabel="Demo"
                 />
-              </div>
-            </StorybookCard>
-            <StorybookCard title="Collapsed" subtitle="width 72, centered icons">
-              <div style={{ display: 'flex', height: 480 }}>
-                <SidebarShell
-                  expanded={false}
-                  onToggleExpanded={() => undefined}
-                  brand={<BrandMark />}
-                  topAction={<ProjectButton expanded={false} />}
-                  items={baseItems}
-                  actions={baseActions}
-                  navLabel="Collapsed demo"
-                />
+                <div style={{ flex: 1, padding: 'var(--ig-space-7)', color: 'var(--ig-color-text-muted)' }}>
+                  Main content area — 우측 컨텐츠는 sidebar 폭에 맞춰 자동 reflow.
+                </div>
               </div>
             </StorybookCard>
           </StorybookGrid>
         </StorybookSection>
 
-        <StorybookSection title="Active row + badge" description="2nd item uses a FakeNavLink that sets `active` class for /catalog. Notice action carries a NotificationBadge.">
-          <StorybookGrid columns="auto">
-            <StorybookCard title="Active /catalog + notice badge" subtitle="caller wires NavLink + Badge">
-              <div style={{ display: 'flex', height: 460 }}>
+        <StorybookSection
+          title="Active row + badge"
+          description="`linkComponent` 로 NavLink 를 넘기면 활성 row 가 자동 강조. action 의 badge prop 으로 NotificationBadge 합성."
+        >
+          <StorybookGrid columns="1fr">
+            <StorybookCard title="/catalog active + notice 3" subtitle="caller wires NavLink + Badge">
+              <div style={FRAME_STYLE}>
                 <SidebarShell
                   expanded
-                  brand={<BrandMark />}
+                  brand={<BrandMark expanded />}
                   topAction={<ProjectButton expanded />}
                   items={baseItems}
                   actions={[
@@ -92,13 +94,16 @@ export const Review: Story = {
           </StorybookGrid>
         </StorybookSection>
 
-        <StorybookSection title="Custom width" description="width prop overrides default 180/72.">
-          <StorybookGrid columns="auto">
+        <StorybookSection
+          title="Custom width"
+          description="`width` prop 으로 폭 오버라이드. 기본 expanded/collapsed = 180/72."
+        >
+          <StorybookGrid columns="1fr">
             <StorybookCard title="width={{ expanded: 240, collapsed: 64 }}" subtitle="wider expanded, slimmer collapsed">
-              <div style={{ display: 'flex', height: 420 }}>
+              <div style={FRAME_STYLE}>
                 <SidebarShell
                   expanded
-                  brand={<BrandMark />}
+                  brand={<BrandMark expanded />}
                   topAction={<ProjectButton expanded />}
                   items={baseItems}
                   actions={baseActions}
