@@ -22,8 +22,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const FRAME_STYLE: React.CSSProperties = { display: 'flex', height: 540 }
+/** 실제 앱 처럼 viewport 높이 + 본문 가로 스크롤 영역. sidebar sticky 동작 시각화. */
+const FRAME_STYLE: React.CSSProperties = { display: 'flex', minHeight: '100vh' }
 const CONTENT_STYLE: React.CSSProperties = { flex: 1, padding: 'var(--ig-space-7)', color: 'var(--ig-color-text-muted)' }
+const LONG_CONTENT_STYLE: React.CSSProperties = { ...CONTENT_STYLE, minHeight: '200vh' }
 
 export const Review: Story = {
   args: { expanded: true },
@@ -54,8 +56,8 @@ export const Review: Story = {
                   actions={baseActions}
                   navLabel="Demo"
                 />
-                <div style={CONTENT_STYLE}>
-                  Main content area — sidebar 폭에 맞춰 자동 reflow.
+                <div style={LONG_CONTENT_STYLE}>
+                  Main content area — sidebar 폭에 맞춰 자동 reflow. 본문이 길어 스크롤이 생기면 sidebar 는 sticky 로 viewport 상단에 고정.
                 </div>
               </div>
             </StorybookCard>

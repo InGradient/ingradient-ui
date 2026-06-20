@@ -49,6 +49,9 @@ export interface SidebarShellProps {
   topAction?: React.ReactNode
   items?: SidebarShellItem[]
   actions?: SidebarShellAction[]
+  /** items 외 자유 body 컨텐츠. rich 한 nav (Projects / Conversations / Jobs 등) 를 가진 caller 가
+   *  items 모델 (icon + label) 대신 임의 React 노드를 body 에 삽입할 때 사용. */
+  children?: React.ReactNode
   /** `aria-label` on the inner `<nav>` — must be unique when multiple sidebars
    *  share a page (a11y landmark-unique). Default `"Sidebar"`. */
   navLabel?: string
@@ -139,6 +142,7 @@ export function SidebarShell({
   topAction,
   items,
   actions,
+  children,
   navLabel = 'Sidebar',
   className,
 }: SidebarShellProps) {
@@ -186,6 +190,7 @@ export function SidebarShell({
           ))}
         </SidebarNavList>
       ) : null}
+      {children}
       {actions && actions.length > 0 ? (
         <SidebarBottom>
           {actions.map((action) => (

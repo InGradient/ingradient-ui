@@ -9,7 +9,12 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
   min-width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   max-width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   flex: 0 0 ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
-  height: 100%;
+  /* viewport 에 고정 — 본문이 스크롤돼도 sidebar 는 길어지지 않음. */
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100dvh;
+  max-height: 100dvh;
   background:
     linear-gradient(180deg, var(--ig-color-sidebar-bg-top) 0%, var(--ig-color-sidebar-bg-bottom) 100%),
     var(--ig-color-bg-canvas);
