@@ -3,7 +3,7 @@ import { useElementSize } from '../../hooks/useElementSize'
 
 export function ChartResponsive({
   height,
-  minWidth = 240,
+  minWidth = 0,
   children,
 }: {
   height: number
@@ -19,7 +19,7 @@ export function ChartResponsive({
       style={{
         width: '100%',
         height: '100%',
-        minWidth,
+        minWidth: 0,
         minHeight: height,
       }}
     >

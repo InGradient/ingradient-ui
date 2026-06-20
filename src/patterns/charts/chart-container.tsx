@@ -10,12 +10,13 @@ const ChartCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-6);
+  min-width: 0;
 `
 
 const ChartFrame = styled.div<{ $height: number }>`
   width: 100%;
   height: ${(p) => `${p.$height}px`};
-  min-width: var(--ig-popup-sm);
+  min-width: 0;
   min-height: ${(p) => `${p.$height}px`};
 `
 
@@ -46,13 +47,13 @@ export function ChartContainer({
   return (
     <ChartCard>
       {(title || description || headerExtra || legend) ? (
-        <Inline justify="space-between" align="flex-start" gap="var(--ig-space-5)" wrap="wrap" data-ig-chart-head>
+        <Inline align="flex-start" gap="var(--ig-space-5)" wrap="wrap" data-ig-chart-head>
           <Stack gap="var(--ig-space-1)">
             {title ? <Text as="h3" size="var(--ig-font-size-md)" weight="bold">{title}</Text> : null}
             {description ? <Text as="p" size="var(--ig-font-size-xs)" tone="muted" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{description}</Text> : null}
           </Stack>
           {(headerExtra || legend) ? (
-            <Inline gap="var(--ig-space-4)" wrap="wrap">
+            <Inline gap="var(--ig-space-4)" wrap="wrap" style={{ marginLeft: 'auto' }}>
               {headerExtra}
               {legend}
             </Inline>
