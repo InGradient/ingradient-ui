@@ -31,6 +31,11 @@ const TYPE_OPTIONS: Array<{ value: ProjectType; title: string; description: stri
     title: 'Deflectometry Project',
     description: 'Enables Edge Setup mode and deflectometry sequence workflow.',
   },
+  {
+    value: 'photometric_stereo',
+    title: 'Photometric Stereo Project',
+    description: 'Enables Edge Setup mode and photometric stereo light-sequence workflow.',
+  },
 ]
 
 const onlyImages = (list: FileList | null) =>

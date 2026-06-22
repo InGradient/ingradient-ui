@@ -280,6 +280,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-amber-tint-warning-soft': isLight ? 'rgba(217, 119, 6, 0.08)' : 'rgba(250, 204, 21, 0.06)',
     '--ig-color-project-tag-general': isLight ? 'rgba(71, 85, 105, 0.92)' : 'rgba(100, 116, 139, 0.92)',
     '--ig-color-project-tag-deflectometry': isLight ? 'rgba(2, 132, 199, 0.92)' : 'rgba(14, 165, 233, 0.92)',
+    '--ig-color-project-tag-photometric-stereo': isLight ? 'rgba(124, 58, 237, 0.92)' : 'rgba(167, 139, 250, 0.92)',
   } as const
 }
 

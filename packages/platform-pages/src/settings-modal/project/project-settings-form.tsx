@@ -3,16 +3,18 @@ import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Badge, Checkbox, TextField, Textarea } from '@ingradient/ui/components'
 import { AutoSaveStatus, type AutoSaveState } from '@ingradient/ui/patterns'
 
-export type ProjectTypeTone = 'general' | 'deflectometry'
+export type ProjectTypeTone = 'general' | 'deflectometry' | 'photometric_stereo'
 
 const PROJECT_TYPE_TONE_BG: Record<ProjectTypeTone, string> = {
   general: 'var(--ig-color-project-tag-general)',
   deflectometry: 'var(--ig-color-project-tag-deflectometry)',
+  photometric_stereo: 'var(--ig-color-project-tag-photometric-stereo)',
 }
 
 const PROJECT_TYPE_LABELS: Record<ProjectTypeTone, string> = {
   general: 'General Project',
   deflectometry: 'Deflectometry Project',
+  photometric_stereo: 'Photometric Stereo Project',
 }
 
 const PROJECT_TYPE_TAG_STYLE = {

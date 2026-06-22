@@ -1,4 +1,4 @@
-export type ProjectType = 'general' | 'deflectometry'
+export type ProjectType = 'general' | 'deflectometry' | 'photometric_stereo'
 
 export interface CreateProjectViewProps {
   name: string
