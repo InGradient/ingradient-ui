@@ -48,29 +48,3 @@ export const CaptureReviewActions = styled.div`
   gap: var(--ig-space-4);
   flex-shrink: 0;
 `
-
-export const CaptureReviewSkipBtn = styled.button`
-  height: var(--ig-control-height-mid-plus);
-  padding: 0 var(--ig-space-8);
-  border: var(--ig-border-1px) solid var(--ig-color-white-18);
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  color: var(--ig-color-white-70);
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  &:hover { background: var(--ig-color-white-07); }
-`
-
-export const CaptureReviewSaveBtn = styled.button`
-  height: var(--ig-control-height-mid-plus);
-  padding: 0 var(--ig-space-10);
-  border: none;
-  border-radius: var(--ig-radius-xs);
-  background: var(--ig-color-blue-tint-85);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  &:hover { background: var(--ig-color-blue-accent-solid); }
-`

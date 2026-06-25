@@ -59,13 +59,6 @@ export const Item = styled.button<{ $active: boolean }>`
   }
 `;
 
-export const Empty = styled.div`
-  padding: var(--ig-space-6) var(--ig-space-4);
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
-`;
-
 /** 파생 리스트 내 sub-group 구분선 (Analysis | Geometry). */
 export const SubSectionLabel = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4) var(--ig-space-2);

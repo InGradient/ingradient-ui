@@ -1,8 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
+import { Button, IconButton, TextField } from '@ingradient/ui/components'
 import { Settings } from 'lucide-react'
 import {
-  Wrap, LangCorner, SettingsIconBtn, Card, Title, Subtitle, Field, FieldLabel,
-  FingerprintBox, FingerprintText, CopyBtn, Input, LicenseForm, SubmitBtn,
+  Wrap, LangCorner, Card, Title, Subtitle, Field, FieldLabel,
+  FingerprintBox, FingerprintText, CopyBtn, LicenseForm,
   ErrorMsg, HintBox,
 } from './LicenseView.styles'
 import type { LicenseViewProps } from './types'
@@ -21,9 +22,9 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
     <Wrap>
       <LangCorner>
         {langSelector}
-        <SettingsIconBtn type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
+        <IconButton variant="secondary" size="sm" type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
           <Settings size={iconSizeNumbers.md} />
-        </SettingsIconBtn>
+        </IconButton>
       </LangCorner>
 
       {settingsDialog}
@@ -45,9 +46,9 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
         {isBind ? (
           <>
             <HintBox>{labels.bindHint}</HintBox>
-            <SubmitBtn type="button" onClick={onBind} disabled={submitting}>
+            <Button variant="accent" type="button" onClick={onBind} disabled={submitting}>
               {submitting ? labels.binding : labels.bindButton}
-            </SubmitBtn>
+            </Button>
           </>
         ) : (
           <>
@@ -55,7 +56,7 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
             <LicenseForm onSubmit={onSubmit}>
               <Field>
                 <FieldLabel htmlFor="license-key">{labels.keyLabel}</FieldLabel>
-                <Input
+                <TextField
                   id="license-key" type="text"
                   placeholder={KEY_PLACEHOLDER}
                   value={licenseKey}
@@ -65,9 +66,9 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
                   disabled={submitting}
                 />
               </Field>
-              <SubmitBtn type="submit" disabled={submitting || !licenseKey.trim()}>
+              <Button variant="accent" type="submit" disabled={submitting || !licenseKey.trim()}>
                 {submitting ? labels.activating : labels.activate}
-              </SubmitBtn>
+              </Button>
             </LicenseForm>
           </>
         )}

@@ -1,7 +1,8 @@
 import { useEffect, useMemo } from 'react'
+import { EmptyState } from '@ingradient/ui'
 import { isDerivedPattern, patternLabelToUI, sortOriginalPatterns, sortDerivedPatterns, patternLabelToHintKey } from './pattern-helpers'
 import {
-  Container, Segment, SegmentBtn, List, Item, Empty,
+  Container, Segment, SegmentBtn, List, Item,
 } from './SequencePatternPanelView.styles'
 import type { SequencePatternPanelViewProps } from './types'
 
@@ -43,9 +44,9 @@ export function SequencePatternPanelView(props: SequencePatternPanelViewProps): 
       </Segment>
       <List>
         {filtered.length === 0 ? (
-          <Empty>
+          <EmptyState>
             {viewMode === 'derived' ? labels.noDerived : labels.noOriginals}
-          </Empty>
+          </EmptyState>
         ) : (
           filtered.map((img) => {
             const hintKey = patternLabelToHintKey(img.patternLabel)

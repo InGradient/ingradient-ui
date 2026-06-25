@@ -1,9 +1,9 @@
-import { iconSizeNumbers } from '@ingradient/ui'
+import { Button, iconSizeNumbers } from '@ingradient/ui'
 import { Maximize2, Minimize2 } from 'lucide-react'
 import { useFullscreen } from './use-fullscreen'
 import {
   CaptureReview, CaptureReviewFullscreenBtn, CapturePreviewImg,
-  CaptureReviewActions, CaptureReviewSkipBtn, CaptureReviewSaveBtn,
+  CaptureReviewActions,
 } from './CaptureReviewFullscreen.styles'
 import type { CaptureReviewFullscreenProps } from './types'
 
@@ -24,9 +24,9 @@ export function CaptureReviewFullscreen(props: CaptureReviewFullscreenProps): JS
       <CapturePreviewImg src={src} alt="Captured" />
       <CaptureReviewActions>
         {showSkip && (
-          <CaptureReviewSkipBtn type="button" onClick={onSkip}>{labels.skip}</CaptureReviewSkipBtn>
+          <Button variant="secondary" type="button" onClick={onSkip}>{labels.skip}</Button>
         )}
-        <CaptureReviewSaveBtn type="button" onClick={onSave}>{labels.save}</CaptureReviewSaveBtn>
+        <Button variant="accent" type="button" onClick={onSave}>{labels.save}</Button>
       </CaptureReviewActions>
     </CaptureReview>
   )

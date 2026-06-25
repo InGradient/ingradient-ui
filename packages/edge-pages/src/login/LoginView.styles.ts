@@ -21,18 +21,6 @@ export const LangCorner = styled.div`
   align-items: center;
 `
 
-export const SettingsIconBtn = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--ig-color-text-muted);
-  padding: var(--ig-space-1);
-  display: flex;
-  align-items: center;
-  border-radius: var(--ig-radius-2xs);
-  &:hover { color: var(--ig-color-text-primary); }
-`
-
 export const Card = styled.div`
   width: 100%;
   max-width: var(--ig-popup-2xl-narrow);
@@ -98,29 +86,6 @@ export const CheckOptions = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-3);
-`
-
-export const Btn = styled.button<{ $variant?: 'primary' | 'secondary' | 'ghost' }>`
-  height: var(--ig-control-height-mid-plus);
-  border-radius: var(--ig-radius-xs);
-  border: none;
-  cursor: pointer;
-  font-size: var(--ig-font-size-md);
-  font-weight: var(--ig-font-weight-semibold);
-  transition: opacity var(--ig-motion-swift);
-  &:hover {
-    opacity: var(--ig-opacity-loud);
-  }
-  &:disabled {
-    opacity: var(--ig-opacity-faded);
-    cursor: not-allowed;
-  }
-  ${(p) =>
-    p.$variant === 'primary'
-      ? `background: var(--ig-color-accent); color: var(--ig-color-text-primary);`
-      : p.$variant === 'ghost'
-        ? `background: transparent; color: var(--ig-color-accent-soft); padding: 0; height: auto; font-size: var(--ig-font-size-sm);`
-        : `background: var(--ig-color-white-08); color: var(--ig-color-text-primary);`}
 `
 
 export const ErrorMsg = styled.div`

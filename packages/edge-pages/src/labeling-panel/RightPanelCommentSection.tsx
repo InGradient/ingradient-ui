@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Send } from 'lucide-react'
-import { Button, TextareaField, iconSizeNumbers } from '@ingradient/ui'
+import { Button, EmptyState, TextareaField, iconSizeNumbers } from '@ingradient/ui'
 import { Section, Label } from './RightPanelView.styles'
 import type { RightPanelCommentSectionProps } from './types'
 
@@ -27,13 +27,6 @@ const CommentMeta = styled.div`
   margin-bottom: var(--ig-space-2px);
 `
 
-const Empty = styled.div`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  text-align: center;
-  padding: var(--ig-space-4) 0;
-`
-
 const InputRow = styled.div`display: flex; gap: var(--ig-space-2); align-items: flex-end;`
 
 export function RightPanelCommentSection(props: RightPanelCommentSectionProps): JSX.Element {
@@ -42,7 +35,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
     <Section>
       <Label>{labels.title}</Label>
       {comments.length === 0
-        ? <Empty>{labels.empty}</Empty>
+        ? <EmptyState>{labels.empty}</EmptyState>
         : (
           <CommentList>
             {comments.map((c) => (

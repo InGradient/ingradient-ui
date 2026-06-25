@@ -158,21 +158,6 @@ export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
   &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
 `;
 
-export const ModalCloseBtn = styled.button`
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ig-control-height-mid-plus);
-  height: var(--ig-control-height-mid-plus);
-  border: var(--ig-border-1px) solid var(--ig-color-white-20);
-  border-radius: var(--ig-radius-xs);
-  background: var(--ig-color-overlay-mid);
-  color: var(--ig-color-on-accent);
-  cursor: pointer;
-  &:hover { background: var(--ig-color-white-12); }
-`;
-
 export const ModalFilename = styled.div`
   color: var(--ig-color-white-55);
   font-size: var(--ig-font-size-xs);
@@ -232,13 +217,6 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   z-index: var(--ig-z-dropdown);
   border-radius: inherit;
-`;
-
-export const SelectAllCheckbox = styled.input`
-  width: var(--ig-icon-sm-plus);
-  height: var(--ig-icon-sm-plus);
-  accent-color: var(--ig-color-accent);
-  cursor: pointer;
 `;
 
 export const SelectionToolbar = styled.div`

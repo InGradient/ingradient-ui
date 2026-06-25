@@ -23,18 +23,6 @@ export const LangCorner = styled.div`
   align-items: center;
 `
 
-export const SettingsIconBtn = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--ig-color-text-muted);
-  padding: var(--ig-space-1);
-  display: flex;
-  align-items: center;
-  border-radius: var(--ig-radius-2xs);
-  &:hover { color: var(--ig-color-text-primary); }
-`
-
 export const Card = styled.div`
   width: 100%;
   max-width: var(--ig-popup-lg-plus);
@@ -112,52 +100,10 @@ export const CopyBtn = styled.button`
   }
 `
 
-export const Input = styled.input`
-  width: 100%;
-  height: var(--ig-control-height-mid-plus);
-  padding: 0 var(--ig-space-5);
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid var(--ig-color-white-12);
-  background: var(--ig-color-white-06);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-md);
-  font-family: var(--ig-font-mono);
-  letter-spacing: var(--ig-letter-spacing-wide);
-  box-sizing: border-box;
-  outline: none;
-  &:focus {
-    border-color: var(--ig-color-blue-tint-60);
-  }
-  &::placeholder {
-    color: var(--ig-color-white-20);
-    font-family: inherit;
-    letter-spacing: 0;
-  }
-`
-
 export const LicenseForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-5);
-`
-
-export const SubmitBtn = styled.button`
-  height: var(--ig-control-height-mid-plus);
-  border-radius: var(--ig-radius-xs);
-  border: none;
-  cursor: pointer;
-  font-size: var(--ig-font-size-md);
-  font-weight: var(--ig-font-weight-semibold);
-  background: var(--ig-color-accent);
-  color: var(--ig-color-text-primary);
-  transition: opacity var(--ig-motion-swift);
-  &:hover {
-    opacity: var(--ig-opacity-loud);
-  }
-  &:disabled {
-    opacity: var(--ig-opacity-faded);
-    cursor: not-allowed;
-  }
 `
 
 export const ErrorMsg = styled.div`

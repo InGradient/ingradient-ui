@@ -1,8 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
+import { Button, Checkbox, SelectField, Spinner } from '@ingradient/ui'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import {
-  Wrap, CollapsibleHeader, Row, Label, LabelName, LabelValue, Slider, CheckRow, SliderInline,
-  Btn, BtnRow, MetricRow, Warning, Spinner, Select,
+  Wrap, CollapsibleHeader, Row, Label, LabelName, LabelValue, Slider, SliderInline,
+  BtnRow, MetricRow, Warning,
   QualityCard, QualityHeader, QualityLabel, QualityStatus, QualityDivider,
   IndicatorRight, IndicatorValue,
 } from './DeflectometryTuningControlsView.styles'
@@ -46,16 +47,13 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
                   disabled={disabled || !modulationOverlayEnabled}
                   onChange={(e) => onModulationThresholdChange(Number(e.target.value))}
                 />
-                <CheckRow>
-                  <input
-                    type="checkbox"
-                    aria-label={labels.modulationOverlay}
-                    checked={modulationOverlayEnabled}
-                    disabled={disabled}
-                    onChange={(e) => onModulationOverlayChange(e.target.checked)}
-                  />
-                  <span>{labels.modulationOverlay}</span>
-                </CheckRow>
+                <Checkbox
+                  aria-label={labels.modulationOverlay}
+                  label={labels.modulationOverlay}
+                  checked={modulationOverlayEnabled}
+                  disabled={disabled}
+                  onChange={(e) => onModulationOverlayChange(e.target.checked)}
+                />
               </SliderInline>
             </Row>
           )}
@@ -65,7 +63,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
               <Label>
                 <LabelName>{labels.colormapSection}</LabelName>
               </Label>
-              <Select
+              <SelectField
                 value={colormaps[activeDerivedKind]}
                 disabled={disabled}
                 onChange={(e) => onColormapChange(activeDerivedKind, e.target.value as ColormapName)}
@@ -73,25 +71,26 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
                 {COLORMAP_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
                 ))}
-              </Select>
+              </SelectField>
             </Row>
           )}
         </>
       )}
 
-      <Btn
-        $primary
+      <Button
+        variant="accent"
+        size="sm"
         disabled={disabled || isRecomputing || isAutoTuning}
         onClick={onRecompute}
       >
-        {isRecomputing ? <><Spinner />{labels.analyzing}</> : labels.analyze}
-      </Btn>
+        {isRecomputing ? <><Spinner tone="white" size="sm" />{labels.analyzing}</> : labels.analyze}
+      </Button>
 
       <QualityCard>
         <QualityHeader>
           <QualityLabel>{labels.confidence}</QualityLabel>
           {isRecomputing && !metrics ? (
-            <QualityLabel><Spinner />{labels.computing}</QualityLabel>
+            <QualityLabel><Spinner tone="white" size="sm" />{labels.computing}</QualityLabel>
           ) : (
             <IndicatorRight>
               <IndicatorValue>{formatPct(metrics?.validRatio ?? null)}</IndicatorValue>
@@ -112,13 +111,13 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
       </QualityCard>
 
       <BtnRow>
-        <Btn disabled={disabled || isSavingDefault} onClick={onSaveDefault}>
-          {isSavingDefault && <Spinner />}
+        <Button variant="secondary" size="sm" disabled={disabled || isSavingDefault} onClick={onSaveDefault}>
+          {isSavingDefault && <Spinner tone="white" size="sm" />}
           {isSavingDefault ? labels.saveDefaultSaving : labels.saveDefault}
-        </Btn>
-        <Btn disabled={disabled || isRecomputing || isAutoTuning} onClick={onReset}>
+        </Button>
+        <Button variant="secondary" size="sm" disabled={disabled || isRecomputing || isAutoTuning} onClick={onReset}>
           {labels.reset}
-        </Btn>
+        </Button>
       </BtnRow>
     </Wrap>
   )

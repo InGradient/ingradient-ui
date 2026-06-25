@@ -1,9 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Settings } from 'lucide-react'
-import { Checkbox, TextField, PasswordField } from '@ingradient/ui/components'
+import { Checkbox, TextField, PasswordField, Button, IconButton, TextButton } from '@ingradient/ui/components'
 import {
-  Wrap, LangCorner, SettingsIconBtn, Card, Title, PackageSection, PackageInfo,
-  Divider, LoginForm, Field, FieldLabel, CheckOptions, Btn, ErrorMsg,
+  Wrap, LangCorner, Card, Title, PackageSection, PackageInfo,
+  Divider, LoginForm, Field, FieldLabel, CheckOptions, ErrorMsg,
   SessionBox, SessionGreeting, SessionMeta, ModeTag, FooterRow,
   AccountList, AccountItem, AccountItemName, AccountItemEmail,
 } from './LoginView.styles'
@@ -25,9 +25,9 @@ export function LoginView(props: LoginViewProps): JSX.Element {
     <Wrap>
       <LangCorner>
         {langSelector}
-        <SettingsIconBtn type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
+        <IconButton variant="secondary" size="sm" type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
           <Settings size={iconSizeNumbers.md} />
-        </SettingsIconBtn>
+        </IconButton>
       </LangCorner>
 
       {settingsDialog}
@@ -42,9 +42,9 @@ export function LoginView(props: LoginViewProps): JSX.Element {
 
         {mode === 'offline' && (
           <PackageSection>
-            <Btn $variant="secondary" onClick={onLoadPackage} disabled={loadingPackage}>
+            <Button variant="secondary" onClick={onLoadPackage} disabled={loadingPackage}>
               {loadingPackage ? labels.loading : labels.loadPackage}
-            </Btn>
+            </Button>
             {packageInfo && (
               <PackageInfo>
                 {packageInfo.project_name} · v{packageInfo.package_version}
@@ -68,9 +68,9 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                       {labels.greeting(savedSession.name || savedSession.email)}
                     </SessionGreeting>
                     <SessionMeta>{savedSession.email}</SessionMeta>
-                    <Btn $variant="primary" onClick={onContinueSession}>
+                    <Button variant="accent" onClick={onContinueSession}>
                       {labels.continueSession}
-                    </Btn>
+                    </Button>
                   </>
                 )}
                 {otherAccounts.length > 0 && (
@@ -83,9 +83,9 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                     ))}
                   </AccountList>
                 )}
-                <Btn $variant="ghost" type="button" onClick={onChangeAccount}>
+                <TextButton tone="accent" type="button" onClick={onChangeAccount}>
                   {labels.changeAccount}
-                </Btn>
+                </TextButton>
               </SessionBox>
             ) : (
               <LoginForm onSubmit={onSubmit}>
@@ -121,14 +121,14 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                     label={labels.keepSignedIn}
                   />
                 </CheckOptions>
-                <Btn $variant="primary" type="submit" disabled={loggingIn || !email || !password}>
+                <Button variant="accent" type="submit" disabled={loggingIn || !email || !password}>
                   {loggingIn ? labels.submitting : labels.submit}
-                </Btn>
+                </Button>
                 {externalUrl && (
                   <FooterRow>
-                    <Btn $variant="ghost" type="button" onClick={onOpenSignup}>
+                    <TextButton tone="accent" type="button" onClick={onOpenSignup}>
                       {labels.register}
-                    </Btn>
+                    </TextButton>
                   </FooterRow>
                 )}
               </LoginForm>

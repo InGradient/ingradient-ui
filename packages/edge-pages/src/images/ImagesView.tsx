@@ -1,18 +1,18 @@
 import { chartHeights } from '@ingradient/ui'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { useRef } from 'react'
-import { Eye, EyeOff, Filter, Maximize2, Minimize2, MousePointer2, Square, X } from 'lucide-react'
+import { Eye, EyeOff, Filter, Maximize2, Minimize2, MousePointer2, Square } from 'lucide-react'
 import {
-  Button, ConfirmDialog, EmptyState, FilterPopover, FilterPopoverSection,
+  Button, Checkbox, ConfirmDialog, DialogCloseButton, EmptyState, FilterPopover, FilterPopoverSection,
 } from '@ingradient/ui'
 import { DatePickerField, DropdownSelect } from '@ingradient/ui/components'
 import {
   ImagesFilterButton, ImagesFilterDateLabel, ImagesFilterDateRow,
   ImagesFilterWrap,
   ImagesWrapper,
-  SelectAllCheckbox, SelectionToolbar,
+  SelectionToolbar,
   ModalBBoxCanvasWrap, ModalBBoxToolbar, ModalBBoxToolbarBtn,
-  ModalCloseBtn, ModalFilename, ModalHeader, ModalHeaderCenter,
+  ModalFilename, ModalHeader, ModalHeaderCenter,
   ModalHeaderLeft, ModalHeaderIconBtn,
   ModalToolbarSpacer, ModalBboxCount,
   ModalHint, ModalInner, ModalOverlay,
@@ -59,8 +59,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
       )}
       <ImagesWrapper>
         <SelectionToolbar>
-          <SelectAllCheckbox
-            type="checkbox"
+          <Checkbox
             checked={isAllSelected}
             onChange={onSelectAll}
             title={labels.selectAll}
@@ -179,14 +178,11 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     </>
                   )}
                 </ModalHeaderLeft>
-                <ModalCloseBtn
-                  type="button"
+                <DialogCloseButton
                   onClick={(e) => { e.stopPropagation(); onCloseModal() }}
                   title={labels.modal.close}
                   aria-label={labels.modal.close}
-                >
-                  <X size={iconSizeNumbers.lg} />
-                </ModalCloseBtn>
+                />
               </ModalHeader>
               <ModalBBoxCanvasWrap>
                 {modalCanvasContent}

@@ -1,22 +1,4 @@
-import { rotations } from '@ingradient/ui'
-import styled, { keyframes } from 'styled-components';
-
-const spin = keyframes`
-  from { transform: rotate(${rotations.zero}); }
-  to { transform: rotate(${rotations.full}); }
-`;
-
-export const Spinner = styled.span`
-  display: inline-block;
-  width: var(--ig-space-6);
-  height: var(--ig-space-6);
-  border: var(--ig-border-2px) solid var(--ig-color-white-35);
-  border-top-color: var(--ig-color-text-primary);
-  border-radius: 50%;
-  animation: ${spin} var(--ig-motion-spinner) linear infinite;
-  vertical-align: var(--ig-space-neg-2px);
-  margin-right: var(--ig-space-3);
-`;
+import styled from 'styled-components';
 
 export const Wrap = styled.div`
   display: flex;
@@ -79,47 +61,6 @@ export const Slider = styled.input.attrs({ type: 'range' })`
   accent-color: var(--ig-color-blue-tint-90);
 `;
 
-export const Select = styled.select`
-  width: 100%;
-  height: var(--ig-control-height-xs);
-  padding: 0 var(--ig-space-3);
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-white-06);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  cursor: pointer;
-  &:disabled {
-    opacity: var(--ig-opacity-faded);
-    cursor: not-allowed;
-  }
-  option {
-    background: var(--ig-color-surface-panel);
-    color: var(--ig-color-text-primary);
-  }
-  optgroup {
-    background: var(--ig-color-surface-panel);
-    color: var(--ig-color-text-soft);
-    font-style: italic;
-    font-weight: var(--ig-font-weight-semibold);
-  }
-`;
-
-export const CheckRow = styled.label`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-1);
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-secondary);
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  input[type='checkbox'] {
-    accent-color: var(--ig-color-blue-tint-90);
-    margin: 0;
-  }
-`;
-
 /** 슬라이더 + 체크박스를 한 줄에 배치. 슬라이더가 남은 공간을 가져가고 체크박스는 우측. */
 export const SliderInline = styled.div`
   display: flex;
@@ -128,34 +69,6 @@ export const SliderInline = styled.div`
   input[type='range'] {
     flex: 1;
     min-width: 0;
-  }
-`;
-
-export const Btn = styled.button<{ $primary?: boolean; $active?: boolean; $danger?: boolean }>`
-  height: var(--ig-control-height-sm);
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid ${(p) =>
-    p.$danger ? 'var(--ig-color-danger-bg-strong)'
-    : p.$active ? 'var(--ig-color-blue-tint-80)'
-    : 'var(--ig-color-border-subtle)'};
-  background: ${(p) =>
-    p.$danger ? 'var(--ig-color-danger-bg)'
-    : p.$primary ? 'var(--ig-color-blue-tint-90)'
-    : p.$active ? 'var(--ig-color-accent-soft-surface-hover)'
-    : 'var(--ig-color-white-06)'};
-  color: ${(p) =>
-    p.$danger ? 'var(--ig-color-danger)'
-    : p.$primary ? 'var(--ig-color-text-primary)'
-    : 'var(--ig-color-text-primary)'};
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  &:hover {
-    opacity: var(--ig-opacity-near);
-  }
-  &:disabled {
-    opacity: var(--ig-opacity-faded);
-    cursor: not-allowed;
   }
 `;
 
