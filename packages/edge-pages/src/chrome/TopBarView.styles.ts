@@ -49,50 +49,10 @@ export const StatusDot = styled.button<{ $status: 'connected' | 'connecting' | '
   cursor: default;
 `
 
-export const IconBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  padding: 0;
-  border: var(--ig-border-1px) solid transparent;
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  transition: all var(--ig-motion-fast-ease);
-  &:hover {
-    color: var(--ig-color-text-primary);
-    background: var(--ig-color-surface-interactive);
-    border-color: var(--ig-color-border-subtle);
-  }
-`
-
 export const EdgeInfoSection = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-5);
-`
-
-export const BackBtn = styled.button`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2px);
-  height: var(--ig-control-height-xs);
-  padding: 0 var(--ig-space-3);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-  cursor: pointer;
-  transition: all var(--ig-motion-swift);
-  flex-shrink: 0;
-  &:hover {
-    background: var(--ig-color-surface-interactive);
-    color: var(--ig-color-text-primary);
-  }
 `
 
 export const BreadcrumbWrap = styled.div`

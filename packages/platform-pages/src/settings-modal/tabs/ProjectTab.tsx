@@ -1,3 +1,4 @@
+import { EmptyState } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 import {
   DeleteProjectSection,
@@ -8,7 +9,6 @@ import {
 } from '../project'
 import {
   ExpandToggle,
-  Placeholder,
   PermissionsHeader,
   PermissionsScopeNote,
   SubsectionTitle,
@@ -22,7 +22,7 @@ const NO_PROJECT_TEXT = 'No project selected. Select a project first.'
 
 export function ProjectTab(props: ProjectTabProps) {
   if (props.noProject || !props.draft.id) {
-    return <Placeholder>{NO_PROJECT_TEXT}</Placeholder>
+    return <EmptyState>{NO_PROJECT_TEXT}</EmptyState>
   }
   return (
     <>

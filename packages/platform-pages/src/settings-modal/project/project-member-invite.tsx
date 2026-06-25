@@ -1,12 +1,6 @@
-import styled from 'styled-components'
-import { Inline, Stack as PrimStack, Text, stateTitleText } from '@ingradient/ui/primitives'
-import { TextField } from '@ingradient/ui/components'
+import { Inline, Stack as PrimStack, Text } from '@ingradient/ui/primitives'
+import { EmptyState, TextField } from '@ingradient/ui/components'
 import { OptionRow } from '@ingradient/ui/components'
-
-const Placeholder = styled.p`
-  ${stateTitleText}
-  margin: 0;
-`
 
 const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
 const ROW_STYLE = {
@@ -76,16 +70,16 @@ export function ProjectMemberInvite({
                   onClick={() => onAdd(c.id)}
                 />
               ))}
-              {!isSearching && candidates.length === 0 ? <Placeholder>{noResultsHint}</Placeholder> : null}
+              {!isSearching && candidates.length === 0 ? <EmptyState>{noResultsHint}</EmptyState> : null}
             </PrimStack>
           ) : (
-            <Placeholder>{hintBelow}</Placeholder>
+            <EmptyState>{hintBelow}</EmptyState>
           )}
         </PrimStack>
       </Inline>
       {inviteMessage ? (
         <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
-          <Placeholder>{inviteMessage}</Placeholder>
+          <EmptyState>{inviteMessage}</EmptyState>
         </Inline>
       ) : null}
     </>

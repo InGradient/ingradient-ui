@@ -1,8 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
+import { IconButton } from '@ingradient/ui/components'
 import { RefreshCw, Settings, ChevronLeft } from 'lucide-react'
 import {
   ConnectingSpinner, Container, LeftSection, RightSection, StatusItem, StatusDot,
-  IconBtn, EdgeInfoSection, BackBtn, BreadcrumbWrap, BreadcrumbProject, BreadcrumbSep,
+  EdgeInfoSection, BreadcrumbWrap, BreadcrumbProject, BreadcrumbSep,
   BreadcrumbDataset,
 } from './TopBarView.styles'
 import type { TopBarViewProps } from './types'
@@ -21,9 +22,9 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
         <LeftSection>
           {selectedDatasetName && (
             <EdgeInfoSection>
-              <BackBtn onClick={onBackToDatasets}>
+              <IconButton variant="secondary" size="sm" onClick={onBackToDatasets}>
                 <ChevronLeft size={iconSizeNumbers.sm} />
-              </BackBtn>
+              </IconButton>
               <BreadcrumbWrap>
                 {selectedProjectName && <BreadcrumbProject>{selectedProjectName}</BreadcrumbProject>}
                 {selectedProjectName && <BreadcrumbSep>/</BreadcrumbSep>}
@@ -42,16 +43,18 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
             />
           </StatusItem>
           {langSelector}
-          <IconBtn title={labels.refresh} onClick={onRefresh}>
+          <IconButton variant="secondary" size="sm" title={labels.refresh} onClick={onRefresh}>
             {isRefreshing ? <ConnectingSpinner size="md" /> : <RefreshCw size={iconSizeNumbers.lg} />}
-          </IconBtn>
-          <IconBtn
+          </IconButton>
+          <IconButton
+            variant="secondary"
+            size="sm"
             title={canSetupCamera ? labels.settingsTitle : labels.settingsDisabledTitle}
             onClick={() => canSetupCamera && onOpenSettings()}
             disabled={!canSetupCamera}
           >
             <Settings size={iconSizeNumbers.lg} />
-          </IconBtn>
+          </IconButton>
           {accountMenu}
         </RightSection>
       </Container>

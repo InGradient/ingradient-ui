@@ -1,13 +1,7 @@
-import styled from 'styled-components'
-import { Box, Inline, Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
+import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button, EmptyState } from '@ingradient/ui/components'
 import { DatePickerField } from '@ingradient/ui/components'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
-
-const Placeholder = styled.p`
-  ${stateTitleText}
-  margin: 0;
-`
 
 const INFO_GRID_STYLE = {
   display: 'grid' as const,
@@ -82,7 +76,7 @@ export function DevicesLicenseSection({
         ) : null}
       </Inline>
 
-      {loading ? <Placeholder>Loading…</Placeholder> : null}
+      {loading ? <EmptyState>Loading…</EmptyState> : null}
       {!loading && error ? <Text tone="danger" size="var(--ig-font-size-xs)">{error}</Text> : null}
       {!loading && !error && license ? (
         <Box style={INFO_GRID_STYLE}>
@@ -101,7 +95,7 @@ export function DevicesLicenseSection({
           </Text>
         </Box>
       ) : null}
-      {!loading && !error && !license ? <Placeholder>No license found.</Placeholder> : null}
+      {!loading && !error && !license ? <EmptyState>No license found.</EmptyState> : null}
 
       {isAdmin && showRenew ? (
         <Stack gap="var(--ig-space-4)" style={FORM_BOX_STYLE}>

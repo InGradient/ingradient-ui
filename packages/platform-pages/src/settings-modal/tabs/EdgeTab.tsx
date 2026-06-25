@@ -1,5 +1,5 @@
-import { Placeholder } from '../SettingsModalView.styles'
+import { EmptyState } from '@ingradient/ui/components'
 
 export function EdgeTab() {
-  return <Placeholder>No project selected. Select a project first.</Placeholder>
+  return <EmptyState>No project selected. Select a project first.</EmptyState>
 }

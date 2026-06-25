@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { ModalCard, ModalHeader, ModalTitle, VerticalTabs } from '@ingradient/ui/components'
 import { SettingsShell } from '@ingradient/ui/patterns'
 
@@ -144,10 +143,4 @@ export const ExpandToggle = styled.button`
   &:hover {
     text-decoration: underline;
   }
-`
-
-export const Placeholder = styled.p`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  margin: 0;
 `

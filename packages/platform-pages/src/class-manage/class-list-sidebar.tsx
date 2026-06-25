@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Button } from '@ingradient/ui/components'
+import { Button, EmptyState, IconButton } from '@ingradient/ui/components'
 import { ClosePanelIcon } from '@ingradient/ui/components'
-import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { ClassListRow } from './class-list-row'
 
 const Sidebar = styled.aside<{ $flush: boolean }>`
@@ -44,23 +43,6 @@ const HeaderActions = styled.div`
   gap: var(--ig-space-2);
 `
 
-const CollapseButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ig-control-height-xs);
-  height: var(--ig-control-height-xs);
-  border: none;
-  background: transparent;
-  border-radius: var(--ig-radius-sm);
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  &:hover {
-    background: var(--ig-color-surface-interactive-hover);
-    color: var(--ig-color-text-primary);
-  }
-`
-
 const List = styled.ul`
   list-style: none;
   margin: 0;
@@ -71,12 +53,6 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-2px);
-`
-
-const Placeholder = styled.div`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  padding: var(--ig-space-9) var(--ig-space-6);
 `
 
 export interface ClassListSidebarClass {
@@ -117,16 +93,16 @@ export function ClassListSidebar({
             {addClassLabel}
           </Button>
           {onCollapse ? (
-            <CollapseButton type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
+            <IconButton variant="secondary" size="sm" type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
               <ClosePanelIcon size={iconSizeNumbers.md} />
-            </CollapseButton>
+            </IconButton>
           ) : null}
         </HeaderActions>
       </Header>
       {loading ? (
-        <Placeholder>Loading…</Placeholder>
+        <EmptyState>Loading…</EmptyState>
       ) : classes.length === 0 ? (
-        <Placeholder>{emptyText}</Placeholder>
+        <EmptyState>{emptyText}</EmptyState>
       ) : (
         <List role="listbox" aria-label="Classes">
           {classes.map((c) => (

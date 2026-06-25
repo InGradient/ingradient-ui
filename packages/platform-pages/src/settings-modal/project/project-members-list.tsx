@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import styled from 'styled-components'
-import { Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { Button, EmptyState } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import {
   ProjectMemberRow,
@@ -11,11 +10,6 @@ import {
 
 const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
 const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
-
-const Placeholder = styled.p`
-  ${stateTitleText}
-  margin: 0;
-`
 
 export interface ProjectMembersListProps {
   members: ProjectMemberRowMember[]
@@ -40,9 +34,9 @@ export function ProjectMembersList({
 }: ProjectMembersListProps) {
   const [pendingRemove, setPendingRemove] = useState<{ id: string; email: string } | null>(null)
 
-  if (loading) return <Placeholder>{loadingText}</Placeholder>
-  if (error) return <Placeholder>{error}</Placeholder>
-  if (members.length === 0) return <Placeholder>{emptyText}</Placeholder>
+  if (loading) return <EmptyState>{loadingText}</EmptyState>
+  if (error) return <EmptyState>{error}</EmptyState>
+  if (members.length === 0) return <EmptyState>{emptyText}</EmptyState>
 
   const ownerCount = members.filter((m) => m.role === 'owner').length
 
