@@ -295,6 +295,24 @@
 
 ---
 
+# 🔧 수정 진행 현황 (브랜치 refactor/ui-layer-violations)
+
+> 영역별 검증(타입체크) + 커밋. 사용자 WIP 6파일은 미접촉. lucide는 정식 의존성이라 보류.
+
+## ✅ 완료 (5 커밋, 모두 타입체크 통과)
+- **① 토큰 / ④ 죽은코드** (`da39f22`): ForceIpDialogView.styles.ts 삭제; mono 폰트 하드코딩→`var(--ig-font-mono)`(8파일); rgba(77,136,255,0.34)→blue-tint-34.
+- **② 깨끗한 부품 교체** (`35a7097`,`f775392`,`bbab043`): keyframes Spinner→`Spinner`; 로컬 Empty/Placeholder→`EmptyState`(~10파일); 일반 styled.button→`Button`; 아이콘버튼→`IconButton`; raw select→`SelectField`/raw checkbox→`Checkbox`; 모달닫기→`DialogCloseButton`; login ghost→`TextButton`. **license CopyBtn은 부모 콜백 onCopyFingerprint 보존 위해 유지**(CopyButton 내부 클립보드라 미교체).
+
+## ⏳ 남음 — 디자인/시각 검증 필요 (보류, Storybook 권장)
+- **styled.table→`Table`**(dashboard×4/devices/storage/statics/log, 구조 재작성)
+- **색 status 배지/칩→`Badge`/`StateChip`**(색 hue 변동 위험)
+- **Progress 재구현→`Progress`**(catalog×3/ExportModal/Connection)
+- **ContextMenu 재구현→`ContextMenu`**(AccountMenu/dot-menu)
+- **③ 신규 부품 승격**: heatmap/permission-matrix/로그리스트/코드박스/InfoRow/StatCard/RadioCard/CollapsibleSectionHeader/색칩
+- **색 hue rgba**(디자인 blue와 다른 base) / ExpandToggle→TextButton / 유니코드 글리프 / 잔여 raw px
+
+---
+
 # ✅ 검토자 직접 라인 재검토 — 최종 결론 (294/294 완료)
 
 사용자 요청으로 **10개 영역 294개 파일 전부를 검토자(메인)가 직접 한 줄씩 재검토**한 결과:
