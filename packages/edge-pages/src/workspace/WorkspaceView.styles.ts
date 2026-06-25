@@ -1,5 +1,4 @@
-import { rotations } from '@ingradient/ui'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 export const Container = styled.div<{ $row?: boolean }>`
   flex: 1;
@@ -56,8 +55,6 @@ export const FailureCode = styled.div`
   letter-spacing: var(--ig-letter-spacing-tight);
 `
 
-const spin = keyframes`from { transform: rotate(${rotations.zero}); } to { transform: rotate(${rotations.full}); }`
-
 export const SavingOverlay = styled.div`
   position: absolute;
   inset: 0;
@@ -73,11 +70,3 @@ export const SavingOverlay = styled.div`
   font-weight: var(--ig-font-weight-medium);
 `
 
-export const SavingSpinner = styled.div`
-  width: var(--ig-control-height-sm);
-  height: var(--ig-control-height-sm);
-  border: var(--ig-border-3px) solid var(--ig-color-white-20);
-  border-top-color: var(--ig-color-white-80);
-  border-radius: 50%;
-  animation: ${spin} var(--ig-motion-spinner-slow) linear infinite;
-`

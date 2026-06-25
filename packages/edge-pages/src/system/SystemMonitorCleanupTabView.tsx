@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, Checkbox, Spinner } from '@ingradient/ui'
+import { Button, Checkbox, EmptyState, Spinner } from '@ingradient/ui'
 import type { SystemMonitorCleanupTabViewProps } from './types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-5);`
@@ -27,7 +27,7 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
   const { stats, loading, running, result, selectedCategories, labels, onToggleCategory, onRun, onRefresh } = props
 
   if (loading && !stats) return <Wrap><Spinner /> {labels.loading}</Wrap>
-  if (!stats) return <Wrap><Label>{labels.empty}</Label></Wrap>
+  if (!stats) return <Wrap><EmptyState>{labels.empty}</EmptyState></Wrap>
 
   return (
     <Wrap>

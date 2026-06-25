@@ -1,4 +1,4 @@
-import { chartHeights } from '@ingradient/ui'
+import { chartHeights, EmptyState } from '@ingradient/ui'
 import styled from 'styled-components'
 import { LineChartCard } from '@ingradient/ui/patterns'
 import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from '../statics/chart-helpers'
@@ -33,16 +33,9 @@ const StatValue = styled.div`
   margin-top: var(--ig-space-2);
 `
 
-const Empty = styled.div`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-muted);
-  text-align: center;
-  padding: var(--ig-space-7) 0;
-`
-
 export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewProps): JSX.Element {
   const { latest, history, labels } = props
-  if (!latest) return <Empty>{labels.empty}</Empty>
+  if (!latest) return <EmptyState>{labels.empty}</EmptyState>
 
   return (
     <Wrap>

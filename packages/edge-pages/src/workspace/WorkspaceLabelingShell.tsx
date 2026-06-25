@@ -1,4 +1,5 @@
-import { Container, SavingOverlay, SavingSpinner } from './WorkspaceView.styles'
+import { Spinner } from '@ingradient/ui'
+import { Container, SavingOverlay } from './WorkspaceView.styles'
 import { SequenceFailureDialog } from './SequenceFailureDialog'
 import { CapturingPill } from './CapturingPill'
 import type { WorkspaceViewProps } from './types'
@@ -12,7 +13,7 @@ export function WorkspaceLabelingShell(props: WorkspaceViewProps): JSX.Element {
     <Container $row data-ig-component="WorkspaceLabelingShell" data-ig-layer="pages">
       {isSavingLabel && (
         <SavingOverlay>
-          <SavingSpinner />
+          <Spinner tone="white" />
           {labels.saving}
         </SavingOverlay>
       )}
