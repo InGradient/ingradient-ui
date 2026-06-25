@@ -11,7 +11,7 @@ const LogBox = styled.pre`
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-4);
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-xs);
   max-height: var(--ig-popup-md);
   overflow-y: auto;

@@ -17,7 +17,7 @@ const Hero = styled.div`
 `
 const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-2px);`
 const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
-const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: monospace;`
+const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
 
 const InfoRowWrap = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const InfoLabel = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig
 const InfoValue = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 
 const FingerprintBox = styled.div`
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-sm);
   padding: var(--ig-space-4);
   background: var(--ig-color-surface-raised);

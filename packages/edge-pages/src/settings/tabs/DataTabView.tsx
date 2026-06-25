@@ -13,7 +13,7 @@ const Row = styled.div`
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
 const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const PathBox = styled.div`
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-xs);
   padding: var(--ig-space-3);
   background: var(--ig-color-surface-raised);

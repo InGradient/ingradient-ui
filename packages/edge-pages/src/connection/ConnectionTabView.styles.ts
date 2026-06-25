@@ -79,7 +79,7 @@ export const LogArea = styled.div`
   overflow-y:auto;
   padding: var(--ig-space-4);
   border-radius: var(--ig-radius-xs);
-  font-family:'JetBrains Mono',monospace;
+  font-family:var(--ig-font-mono);
   font-size: var(--ig-font-size-2xs);
 `;
 export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) 6px;font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
@@ -131,7 +131,7 @@ export const DiagReportToolbar = styled.div`
   padding: var(--ig-space-3) 10px;
   border-bottom: var(--ig-space-1px) solid var(--ig-color-border-subtle);
 `;
-export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height: var(--ig-popup-md);min-height:0;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
+export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height: var(--ig-popup-md);min-height:0;overflow-y:auto;font-family:var(--ig-font-mono);font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
 export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'rgba(34,197,94,0.08)':'var(--ig-color-danger-bg-soft)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)

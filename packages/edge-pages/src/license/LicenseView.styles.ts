@@ -89,7 +89,7 @@ export const FingerprintBox = styled.div`
 
 export const FingerprintText = styled.span`
   flex: 1;
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-lg);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-widest);
@@ -121,7 +121,7 @@ export const Input = styled.input`
   background: var(--ig-color-white-06);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   letter-spacing: var(--ig-letter-spacing-wide);
   box-sizing: border-box;
   outline: none;

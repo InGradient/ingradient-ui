@@ -8,7 +8,7 @@ const LogList = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-xs);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);

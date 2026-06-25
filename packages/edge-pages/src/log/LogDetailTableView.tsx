@@ -3,7 +3,7 @@ import type { LogDetailTableViewProps } from './types'
 
 const Table = styled.table`
   width: 100%;
-  font-family: 'Courier New', monospace;
+  font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-xs);
   border-collapse: collapse;
 `
