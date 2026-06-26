@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { PermissionMatrix } from './permission-matrix'
-import { Checkbox } from '@ingradient/ui/components'
+import { Checkbox } from '../inputs'
 
 const meta: Meta<typeof PermissionMatrix> = {
   title: 'Platform Pages/Settings Modal/Project/PermissionMatrix',

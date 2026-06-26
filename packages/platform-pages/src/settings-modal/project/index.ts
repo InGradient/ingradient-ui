@@ -1,4 +1,10 @@
-export * from './permission-matrix'
+export {
+  PermissionMatrix,
+  type PermissionMatrixColumn,
+  type PermissionMatrixColumnGroup,
+  type PermissionMatrixRow,
+  type PermissionMatrixProps,
+} from '@ingradient/ui'
 export * from './project-permission-matrix'
 export * from './delete-project-section'
 export * from './project-member-invite'

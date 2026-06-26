@@ -4,7 +4,7 @@ import {
   PermissionMatrix,
   type PermissionMatrixColumnGroup,
   type PermissionMatrixRow,
-} from './permission-matrix'
+} from '@ingradient/ui/components'
 
 export interface PermissionMatrixRole {
   value: string
