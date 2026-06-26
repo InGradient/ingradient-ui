@@ -8,7 +8,7 @@ const FailureLine = styled.div`
   margin-top: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-danger);
-  font-family: monospace;
+  font-family: var(--ig-font-mono);
 `
 
 const RecoveryHint = styled.div`

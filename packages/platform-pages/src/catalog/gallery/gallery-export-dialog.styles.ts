@@ -59,7 +59,7 @@ export const ExportRegexInput = styled.input`
   background: var(--ig-color-white-04);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--ig-font-mono);
   &:focus {
     outline: none;
     border-color: var(--ig-color-accent);
