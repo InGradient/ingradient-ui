@@ -1,8 +1,7 @@
-import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, Checkbox, SelectField, Spinner } from '@ingradient/ui'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { CollapsibleSectionHeader } from '@ingradient/ui/components'
 import {
-  Wrap, CollapsibleHeader, Row, Label, LabelName, LabelValue, Slider, SliderInline,
+  Wrap, Row, Label, LabelName, LabelValue, Slider, SliderInline,
   BtnRow, MetricRow, Warning,
   QualityCard, QualityHeader, QualityLabel, QualityStatus, QualityDivider,
   IndicatorRight, IndicatorValue,
@@ -28,10 +27,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
 
   return (
     <Wrap>
-      <CollapsibleHeader type="button" onClick={onToggleExpanded} aria-expanded={expanded}>
-        <span>{labels.title}</span>
-        {expanded ? <ChevronDown size={iconSizeNumbers.sm} /> : <ChevronRight size={iconSizeNumbers.sm} />}
-      </CollapsibleHeader>
+      <CollapsibleSectionHeader title={labels.title} open={expanded} onClick={onToggleExpanded} />
 
       {expanded && (
         <>

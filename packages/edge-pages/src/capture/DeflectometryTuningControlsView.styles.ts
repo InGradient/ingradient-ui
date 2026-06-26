@@ -16,23 +16,6 @@ export const SectionTitle = styled.div`
   color: var(--ig-color-text-muted);
 `;
 
-export const CollapsibleHeader = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  color: var(--ig-color-text-muted);
-  &:hover { color: var(--ig-color-text-primary); }
-  svg { transition: transform var(--ig-motion-swift) ease; }
-`;
 
 export const Row = styled.div`
   display: flex;
