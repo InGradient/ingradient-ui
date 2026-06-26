@@ -313,8 +313,18 @@
 - **#6 글리프**: ExportHistory `✎`→lucide Pencil. **`▾/▸`는 카탈로그 CollapsibleSectionHeader 자체가 쓰는 표준이라 위반 아님(유지)**. storage-recommendations `⚠/ⓘ`는 ::before 임베드 + Alert 재구조화 필요 → 보류.
 - **#9 코드박스 판정**: PathBox/FingerprintBox는 대응 카탈로그 부품이 **없음**(폰트는 이미 토큰화 완료) → 신규 부품화(③) 영역이라 swap 불가, 현 상태 유지.
 
-## ⏳ 남음 — 구조 변경/라이브러리 추가 필요 / WIP 블록 (Storybook 시각검증 권장)
-- **#1 ContextMenu 재구현**(AccountMenu, dot-menu): 고수준 대체 부품 `ContextMenuWithSubmenus`가 **사용자 WIP 파일(context-menu-with-submenus.tsx, 미커밋)** 이라 충돌 위험 + portal/anchor 위치 변동 → **WIP 정리 후 Storybook 보며 진행 권장**.
+- **③ 로그뷰 중복 제거**: Backend/Frontend LogsContentView 복붙 → 공유 `LogsContentShell` 추출(renderEntry 콜백). 로컬 dedup(라이브러리 영향 없음).
+
+## ⛔ 남음 — 각각 "지금 자동으로 못 하는" 하드 블록 (grep으로 확인됨)
+| 항목 | 파일수 | 하드 블록 |
+|---|---|---|
+| ContextMenu 재구현 | 4 | 대체부품 `ContextMenuWithSubmenus`가 **사용자 WIP 미커밋 파일** → 빌드 충돌 위험 + portal 위치 변동. WIP 커밋돼야 진행 가능 |
+| styled.table 잔여 | 3 | permission-matrix(2단헤더+sticky)/distribution-heatmap(색강도셀)/LogDetailTable(colSpan병합) = **카탈로그 Table로 표현 불가한 generic** → 유지가 정답 |
+| raw rgba | 14종 | 디자인 blue와 다른 base 색 → 토큰화 시 **색 변동**, Storybook 시각검증 필요 |
+| 코드박스 | 2 | 대응 카탈로그 부품 **없음**(폰트는 토큰화 완료) → 신규 부품 추가해야 하고 2개뿐이라 과한 추상화 |
+| 색점/색칩(StatusDot/SyncChip)·InfoRow·진행바(toolbar/ExportModal) | 다수 | StateChip/InfoRow/Progress는 **모양·레이아웃이 달라짐** → 시각검증 필요 |
+
+→ **타입체크로 안전 보장되는 교체는 100% 완료.** 위 잔여는 ① 사용자 WIP가 커밋되거나, ② 라이브러리에 새 부품을 추가하거나, ③ Storybook으로 시각 확인해야 진행 가능하며, 그 전엔 화면을 깨뜨릴 위험이 있어 의도적으로 멈춤.
 - **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).
 - **③ 라이브러리 신규 부품화**: distribution-heatmap, permission-matrix(둘은 generic이라 유지 중), Backend/Frontend 로그 중복 → 공유 컴포넌트, 코드박스(FingerprintBox/PathBox), StatCard(컴팩트 타일), RadioCard 재구현(catalog export OptionCard — create-project는 WIP), CollapsibleSectionHeader 재구현(capture/statics/connection/settings), InfoRow(로컬 Row/Label/Value는 space-between이라 카탈로그 InfoRow의 left-align과 레이아웃 불일치 — 디자인 판단 필요), ClassChip→LegendItem(색점+라벨).
 - **색 hue rgba**(59,130,246 / 96,165,250 / 255,180,60 / 196,43,28 / 0,0,0,* — 디자인 blue와 다른 base라 토큰화 시 색 변동), **bg없는 색텍스트칩**(SyncChip/StatChip), **색점**(StatusDot/SyncDot).
