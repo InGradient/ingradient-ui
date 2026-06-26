@@ -313,7 +313,15 @@
 - **#6 글리프**: ExportHistory `✎`→lucide Pencil. **`▾/▸`는 카탈로그 CollapsibleSectionHeader 자체가 쓰는 표준이라 위반 아님(유지)**. storage-recommendations `⚠/ⓘ`는 ::before 임베드 + Alert 재구조화 필요 → 보류.
 - **#9 코드박스 판정**: PathBox/FingerprintBox는 대응 카탈로그 부품이 **없음**(폰트는 이미 토큰화 완료) → 신규 부품화(③) 영역이라 swap 불가, 현 상태 유지.
 
-- **③ 로그뷰 중복 제거**: Backend/Frontend LogsContentView 복붙 → 공유 `LogsContentShell` 추출(renderEntry 콜백). 로컬 dedup(라이브러리 영향 없음).
+- **③ 로그뷰 중복 제거**: Backend/Frontend LogsContentView 복붙 → 공유 `LogsContentShell` 추출.
+
+## ✅ 규칙 #0(작업 위치 우선순위) 정렬 — 핵심
+- **#0.1 기존 부품 사용**: 로컬 `Row/Label/Value`(space-between) → 카탈로그 **`KeyValueRow`**(레이아웃 일치). NicStatus/UpdateSection/SystemMonitorCleanup/DataTab/AboutTab 5파일.
+- **#0.2 라이브러리에 부품 추가/승격**:
+  - **`CodeBlock` 신규 추가**(src/components/data-display) — 코드/식별자 mono 박스. PathBox/FingerprintBox 전환.
+  - **`DistributionHeatmap` 이동**(pages→components) — 작성자 주석 "도메인 무관 generic". 비파괴(platform-pages re-export), 스토리도 src/로.
+  - **`PermissionMatrix` 이동**(pages→components) — "generic matrix". 도메인 wrapper(project-permission-matrix)는 그대로 두고 카탈로그 import. 비파괴 re-export.
+- **#8 토큰화**: PatternButton tailwind blue rgba → `blue-tint` 토큰.
 
 ## ⛔ 남음 — 각각 "지금 자동으로 못 하는" 하드 블록 (grep으로 확인됨)
 | 항목 | 파일수 | 하드 블록 |
