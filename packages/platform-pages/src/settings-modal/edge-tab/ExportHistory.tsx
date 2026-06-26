@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Pencil } from 'lucide-react'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, EmptyState, Table as UiTable, TextField } from '@ingradient/ui/components'
 import { InlineActions, ProgressNote, Section, SectionTitle, StatusPill } from './edge.styles'
 import { getEdgeStatusTone } from './edge-status-tone'
@@ -65,8 +67,8 @@ export function ExportHistory({
                     autoFocus
                   />
                 ) : (
-                  <span onClick={() => startEditing(pkg)} style={{ cursor: 'pointer' }}>
-                    {pkg.device_name || '—'} ✎
+                  <span onClick={() => startEditing(pkg)} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-space-2)' }}>
+                    {pkg.device_name || '—'} <Pencil size={iconSizeNumbers.xs} />
                   </span>
                 ),
             },
