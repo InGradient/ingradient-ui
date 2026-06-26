@@ -1,8 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { IconButton } from '@ingradient/ui/components'
+import { IconButton, StatusDot } from '@ingradient/ui/components'
 import { RefreshCw, Settings, ChevronLeft } from 'lucide-react'
 import {
-  ConnectingSpinner, Container, LeftSection, RightSection, StatusItem, StatusDot,
+  ConnectingSpinner, Container, LeftSection, RightSection, StatusItem,
   EdgeInfoSection, BreadcrumbWrap, BreadcrumbProject, BreadcrumbSep,
   BreadcrumbDataset,
 } from './TopBarView.styles'
@@ -37,7 +37,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
           <StatusItem title={connectionTitle}>
             <StatusDot
               type="button"
-              $status={connectionStatus}
+              $tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}
               aria-label={connectionTitle}
               title={connectionTitle}
             />

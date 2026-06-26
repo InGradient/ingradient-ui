@@ -33,21 +33,6 @@ export const StatusItem = styled.div`
   &.error  { color: var(--ig-color-danger); }
 `
 
-export const StatusDot = styled.button<{ $status: 'connected' | 'connecting' | 'disconnected' }>`
-  width: var(--ig-space-5);
-  height: var(--ig-space-5);
-  border-radius: var(--ig-radius-pill);
-  border: none;
-  padding: 0;
-  background: ${({ $status }) =>
-    $status === 'connected'
-      ? 'var(--ig-color-success)'
-      : $status === 'connecting'
-        ? 'var(--ig-color-warning)'
-        : 'var(--ig-color-danger)'};
-  box-shadow: 0 0 0 2px var(--ig-color-border-subtle);
-  cursor: default;
-`
 
 export const EdgeInfoSection = styled.div`
   display: flex;

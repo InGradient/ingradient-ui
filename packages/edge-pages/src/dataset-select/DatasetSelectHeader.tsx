@@ -1,10 +1,10 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import { RefreshCw, Settings } from 'lucide-react'
-import { Badge } from '@ingradient/ui/components'
+import { Badge, StatusDot } from '@ingradient/ui/components'
 import {
   Header, HeaderLeft, Title, HeaderRight,
-  RefreshBtn, IconBtn, StatusItem, StatusDot,
+  RefreshBtn, IconBtn, StatusItem,
 } from './styles/header.styles'
 import type { ConnectionStatus } from './types'
 
@@ -52,7 +52,7 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
         <StatusItem title={connectionTitle}>
           <StatusDot
             type="button"
-            $status={connectionStatus}
+            $tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}
             aria-label={connectionTitle}
             title={connectionTitle}
           />
