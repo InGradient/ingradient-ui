@@ -26,7 +26,7 @@ function TrendTooltip({ active, label, payload }: { active?: boolean; label?: st
       borderRadius: 'var(--ig-radius-sm)',
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: iconSizeNumbers.xs,
+      fontSize: 'var(--ig-font-size-xs)',
       boxShadow: '0 var(--ig-space-3) var(--ig-space-11) var(--ig-color-shadow-medium)',
     }}>
       <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-2)' }}>{label}</div>
@@ -50,7 +50,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
       borderRadius: 'var(--ig-radius-sm)',
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: iconSizeNumbers.xs,
+      fontSize: 'var(--ig-font-size-xs)',
     }}>
       <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-2)' }}>{label}</div>
       {payload.map((item) => {

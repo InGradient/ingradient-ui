@@ -25,7 +25,7 @@ const CELL_STYLE = {
 }
 
 const ROLE_SELECT_STYLE = { minWidth: 100 }
-const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: iconSizeNumbers.xs }
+const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 'var(--ig-font-size-xs)' }
 
 export interface ProjectMemberRowMember {
   id: string

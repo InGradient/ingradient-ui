@@ -26,7 +26,7 @@ export function AnalysisTimelineWidget({ granularity, chartData }: AnalysisTimel
       height={chartHeights['2xl']}
       emptyMessage="No time-series data in the current range."
       headerExtra={
-        <span style={{ fontSize: iconSizeNumbers.xs, color: 'var(--ig-color-text-muted)' }}>
+        <span style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
           Granularity:{' '}
           <strong style={{ color: 'var(--ig-color-text-primary)' }}>
             {granularity === 'hour' ? 'Hourly' : 'Daily'}

@@ -31,7 +31,7 @@ function MsTooltip({ active, label, payload }: { active?: boolean; label?: strin
       borderRadius: 'var(--ig-radius-sm)',
       padding: 'var(--ig-space-3) var(--ig-space-4)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: iconSizeNumbers.xs,
+      fontSize: 'var(--ig-font-size-xs)',
     }}>
       <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-1)' }}>{label}</div>
       <div>{formatMs(value)}</div>

@@ -30,7 +30,7 @@ const Placeholder = styled.p`
 const DATE_BTN_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-5)',
   minHeight: 'var(--ig-control-height-md)',
-  fontSize: iconSizeNumbers.xs,
+  fontSize: 'var(--ig-font-size-xs)',
   fontWeight: 'var(--ig-font-weight-semibold)',
 }
 

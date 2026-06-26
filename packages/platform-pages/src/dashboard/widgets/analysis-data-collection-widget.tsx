@@ -24,7 +24,7 @@ export function AnalysisDataCollectionWidget({
       height={chartHeights.lg}
       emptyMessage="No datasets yet."
       headerExtra={
-        <span style={{ fontSize: iconSizeNumbers.xs, color: 'var(--ig-color-text-muted)' }}>
+        <span style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
           Total:{' '}
           <strong style={{ color: 'var(--ig-color-text-primary)' }}>
             {totalImages.toLocaleString()}
