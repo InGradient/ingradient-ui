@@ -1,13 +1,11 @@
+import { useRef } from 'react'
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Badge, Tag } from '@ingradient/ui/components'
-import { MoreHorizontal, Download } from 'lucide-react'
+import { Badge, Tag, IconButton, ContextMenuWithSubmenus } from '@ingradient/ui/components'
+import { MoreHorizontal } from 'lucide-react'
 import {
   DatasetCard, DatasetNameRow, DatasetName, Spacer,
   CardBottom, ImageCount, ClassChips, EDGE_TASK_TAG, edgeTaskTagStyle,
 } from './dataset-card.styles'
-import {
-  DotsBtnWrap, DotsBtn, DotMenuOverlay, DotMenuWrap, DotMenuItem,
-} from './dot-menu.styles'
 import { renderClassChips } from './class-chips'
 import type { EdgeDataset } from './types'
 
@@ -32,6 +30,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
     onSelect, onToggleDotMenu, onExportClick,
   } = props
 
+  const dotsBtnRef = useRef<HTMLButtonElement>(null)
   const taskStyle = dataset.task_type ? edgeTaskTagStyle(dataset.task_type) : null
 
   return (
@@ -45,34 +44,35 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
             {EDGE_TASK_TAG[dataset.task_type] ?? 'OD'}
           </Tag>
         )}
-        <DotsBtnWrap>
-          <DotsBtn
-            onClick={(e) => {
-              e.stopPropagation()
-              onToggleDotMenu(isDotMenuOpen ? null : dataset.dataset_id)
-            }}
-            title={moreLabel}
-          >
-            <MoreHorizontal size={iconSizeNumbers.sm} />
-          </DotsBtn>
-          {isDotMenuOpen && (
-            <>
-              <DotMenuOverlay onClick={(e) => { e.stopPropagation(); onToggleDotMenu(null) }} />
-              <DotMenuWrap onClick={(e) => e.stopPropagation()}>
-                <DotMenuItem
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onToggleDotMenu(null)
-                    onExportClick(dataset)
-                  }}
-                >
-                  <Download size={iconSizeNumbers.xsPlus} />
-                  {exportLabel}
-                </DotMenuItem>
-              </DotMenuWrap>
-            </>
-          )}
-        </DotsBtnWrap>
+        <IconButton
+          ref={dotsBtnRef}
+          variant="ghost"
+          size="sm"
+          title={moreLabel}
+          aria-label={moreLabel}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleDotMenu(isDotMenuOpen ? null : dataset.dataset_id)
+          }}
+        >
+          <MoreHorizontal size={iconSizeNumbers.sm} />
+        </IconButton>
+        {isDotMenuOpen && (
+          <ContextMenuWithSubmenus
+            anchorEl={dotsBtnRef.current}
+            onClose={() => onToggleDotMenu(null)}
+            actions={[
+              {
+                key: 'export',
+                label: exportLabel,
+                onClick: () => {
+                  onToggleDotMenu(null)
+                  onExportClick(dataset)
+                },
+              },
+            ]}
+          />
+        )}
       </DatasetNameRow>
       <CardBottom>
         <ImageCount>{imagesLabel(dataset.image_count ?? 0)}</ImageCount>

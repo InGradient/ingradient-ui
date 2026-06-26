@@ -1,12 +1,11 @@
 import { useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { DialogShell, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
+import { DialogShell, iconSizeNumbers } from '@ingradient/ui'
+import { Button, ContextMenuWithSubmenus, EmptyState } from '@ingradient/ui/components'
 import { UserCircle } from 'lucide-react'
 import {
-  AccountBtn, AccountBtnName, AccountMenuWrap, AccountDropdown,
-  AccountMenuEmail, AccountMenuItem, AccountMenuDanger,
+  AccountBtn, AccountBtnName, AccountMenuWrap,
   HistoryList, HistoryEntry, HistoryName, HistoryEmail,
-  ModalEmptyText, ModalCancelBtn,
 } from './AccountMenuView.styles'
 import type { AccountMenuViewProps } from './types'
 
@@ -16,20 +15,15 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
     onToggleDropdown, onCloseDropdown, onOpenChangeAccount, onCloseChangeAccount,
     onLogout, onSelectAccount,
   } = props
-  const accountMenuRef = useRef<HTMLDivElement>(null)
-
-  useClickOutside({
-    refs: accountMenuRef,
-    onClickOutside: onCloseDropdown,
-    enabled: dropdownOpen,
-  })
+  const accountBtnRef = useRef<HTMLButtonElement>(null)
 
   if (!currentUser) return null
 
   return (
     <>
-      <AccountMenuWrap ref={accountMenuRef}>
+      <AccountMenuWrap>
         <AccountBtn
+          ref={accountBtnRef}
           title={labels.account}
           onClick={(e) => { e.stopPropagation(); onToggleDropdown() }}
         >
@@ -37,15 +31,16 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           <AccountBtnName>{currentUser.name || currentUser.email}</AccountBtnName>
         </AccountBtn>
         {dropdownOpen && (
-          <AccountDropdown>
-            <AccountMenuEmail>{currentUser.email}</AccountMenuEmail>
-            <AccountMenuItem onClick={onOpenChangeAccount}>
-              {labels.changeAccount}
-            </AccountMenuItem>
-            <AccountMenuDanger onClick={onLogout}>
-              {labels.logout}
-            </AccountMenuDanger>
-          </AccountDropdown>
+          <ContextMenuWithSubmenus
+            anchorEl={accountBtnRef.current}
+            onClose={onCloseDropdown}
+            actions={[
+              { key: 'email', label: currentUser.email, disabled: true },
+              { key: 'sep', label: '', separator: true },
+              { key: 'change', label: labels.changeAccount, onClick: onOpenChangeAccount },
+              { key: 'logout', label: labels.logout, tone: 'danger', onClick: onLogout },
+            ]}
+          />
         )}
       </AccountMenuWrap>
 
@@ -54,10 +49,10 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           title={labels.accountHistory}
           onClose={onCloseChangeAccount}
           width="min(var(--ig-popup-xl), 100%)"
-          actions={<ModalCancelBtn onClick={onCloseChangeAccount}>{labels.cancel}</ModalCancelBtn>}
+          actions={<Button variant="secondary" onClick={onCloseChangeAccount}>{labels.cancel}</Button>}
         >
           {accountHistory.length === 0 ? (
-            <ModalEmptyText>{labels.noAccountHistory}</ModalEmptyText>
+            <EmptyState>{labels.noAccountHistory}</EmptyState>
           ) : (
             <HistoryList>
               {accountHistory.map((entry) => (
