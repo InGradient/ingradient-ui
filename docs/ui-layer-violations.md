@@ -330,9 +330,11 @@
 | **그림자 rgba** | `--ig-color-shadow-soft/medium/strong` **신규 토큰 추가**(dark/light 동일=시각변화 0) + CaptureView/ImagesView/LabelingCharts box-shadow 토큰화 |
 | **연결상태 dot** | `StatusDot` 부품 추가(#0.2) + TopBar/header dedup |
 | **generic table** | permission-matrix·heatmap **components로 이동 완료** |
+| **창 컨트롤 아이콘** | lucide `Minus/Maximize2/Minimize2/X` → catalog-icons에 `Window{Minimize,Maximize,Restore,Close}Icon` registry 등록 + TitleBarView 교체 |
+| **닫기버튼 빨강** | raw rgba(196,43,28) hover/active → `--ig-color-danger-bg-strong` (테마 인지 danger 빨강) |
 
 ## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
-- white 셔터링 rgba(255,255,255,*) = 카메라 촬영버튼 장식, close 버튼 rgba(196,43,28) = Electron 창 컨트롤 → 정말 독립적이라 pages에 유지.
+- white 셔터링 rgba(255,255,255,*) = 카메라 촬영버튼 장식 → 정말 독립적이라 pages에 유지. (close 버튼 빨강은 위 표대로 danger 토큰화 완료)
 - SyncChip/SyncDot/LogDetailTable → 모양·구조 달라 낮은 우선순위.
 
 → **규칙 #0 정렬 + 사용자 지시 항목 전부 완료.**
