@@ -334,8 +334,10 @@
 | **닫기버튼 빨강** | raw rgba(196,43,28) hover/active → `--ig-color-danger-bg-strong` (테마 인지 danger 빨강) |
 
 ## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
-- white 셔터링 rgba(255,255,255,*) = 카메라 촬영버튼 장식 → 정말 독립적이라 pages에 유지. (close 버튼 빨강은 위 표대로 danger 토큰화 완료)
-- SyncChip/SyncDot/LogDetailTable → 모양·구조 달라 낮은 우선순위.
+- white 셔터링 rgba(255,255,255,0.25/0.5) = 파란 accent 셔터버튼 위 on-accent 흰 스피너/링. 테마 인지 흰 토큰(white-24 등)은 light 모드에서 어두운 틴트로 뒤집혀 파란 버튼 위 역전됨 → 항상-흰 alpha 토큰을 신설하지 않는 한 raw 유지가 맞음(#0.3). (close 버튼 빨강은 위 표대로 danger 토큰화 완료)
+- **SyncDot → 죽은코드라 제거**(정의·export됐으나 참조 0건, rule #4).
+- **SyncChip/StatChip → 유지**: bg 없는 색 텍스트+아이콘 status 라벨, 이미 완전 토큰화. Badge/Tag는 bg가 있어 시각 불일치 → 대응 부품 없음.
+- **LogDetailTable → 유지**: mono key-value 디테일 렌더러(텍스트 parse + 2열, 헤더없는 줄 colSpan fallback). 카탈로그 `Table`은 컬럼 기반 데이터그리드라 부적합. 완전 토큰화된 page 전용.
 
 → **규칙 #0 정렬 + 사용자 지시 항목 전부 완료.**
 - **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).

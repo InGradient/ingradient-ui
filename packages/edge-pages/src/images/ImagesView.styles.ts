@@ -229,15 +229,6 @@ export const SelectionToolbar = styled.div`
   flex-shrink: 0;
 `;
 
-export const SyncDot = styled.span<{ $color: string }>`
-  width: var(--ig-space-2);
-  height: var(--ig-space-2);
-  border-radius: 50%;
-  background: ${(p) => p.$color};
-  display: inline-block;
-  flex-shrink: 0;
-`;
-
 export const SyncStateIcon = styled.div<{ $state: string }>`
   position: absolute;
   bottom: var(--ig-space-12);
