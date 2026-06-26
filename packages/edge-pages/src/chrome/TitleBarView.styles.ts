@@ -62,11 +62,11 @@ export const Btn = styled.button<{ $variant?: 'close' }>`
 
   &:hover {
     background: ${({ $variant }) =>
-      $variant === 'close' ? 'rgba(196, 43, 28, 0.9)' : 'var(--ig-color-surface-interactive)'};
+      $variant === 'close' ? 'var(--ig-color-danger-bg-strong)' : 'var(--ig-color-surface-interactive)'};
     color: var(--ig-color-text-primary);
   }
   &:active {
     background: ${({ $variant }) =>
-      $variant === 'close' ? 'rgba(196, 43, 28, 1)' : 'var(--ig-color-border-subtle)'};
+      $variant === 'close' ? 'var(--ig-color-danger-bg-strong)' : 'var(--ig-color-border-subtle)'};
   }
 `
