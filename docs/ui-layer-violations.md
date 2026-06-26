@@ -299,17 +299,20 @@
 
 > 영역별 검증(타입체크) + 커밋. 사용자 WIP 6파일은 미접촉. lucide는 정식 의존성이라 보류.
 
-## ✅ 완료 (5 커밋, 모두 타입체크 통과)
-- **① 토큰 / ④ 죽은코드** (`da39f22`): ForceIpDialogView.styles.ts 삭제; mono 폰트 하드코딩→`var(--ig-font-mono)`(8파일); rgba(77,136,255,0.34)→blue-tint-34.
-- **② 깨끗한 부품 교체** (`35a7097`,`f775392`,`bbab043`): keyframes Spinner→`Spinner`; 로컬 Empty/Placeholder→`EmptyState`(~10파일); 일반 styled.button→`Button`; 아이콘버튼→`IconButton`; raw select→`SelectField`/raw checkbox→`Checkbox`; 모달닫기→`DialogCloseButton`; login ghost→`TextButton`. **license CopyBtn은 부모 콜백 onCopyFingerprint 보존 위해 유지**(CopyButton 내부 클립보드라 미교체).
+## ✅ 완료 (10 커밋, 모두 양 패키지 타입체크 통과, WIP 6파일 미접촉)
+- **① 토큰 / ④ 죽은코드**: ForceIpDialogView.styles.ts 삭제; mono 폰트→`var(--ig-font-mono)`(8); rgba(77,136,255,0.34)→blue-tint-34.
+- **② 부품 교체**:
+  - keyframes Spinner→`Spinner`; 로컬 Empty/Placeholder→`EmptyState`(~13); styled.button→`Button`; 아이콘버튼→`IconButton`; raw select→`SelectField`/checkbox→`Checkbox`; 모달닫기→`DialogCloseButton`; ghost/ExpandToggle→`TextButton`.
+  - **styled.table→`Table`** (dashboard×4/devices/storage/statics worker — 셀 Badge/Button/Chip render 보존, 빈상태 EmptyState).
+  - **Progress 바 재구현→`ProgressBar`** (catalog export-progress 2건).
+  - **색 status 배지→`Badge $tone`/`Tag $bg/$color`** (edge dataset-select/login: ModeTag/RoleBadge/RecentBadge/MoreChip/EdgeDatasetTaskTag).
+  - **license CopyBtn은 부모 콜백 onCopyFingerprint 보존 위해 유지**(CopyButton 내부 클립보드라 동작 변경 회피).
 
-## ⏳ 남음 — 디자인/시각 검증 필요 (보류, Storybook 권장)
-- **styled.table→`Table`**(dashboard×4/devices/storage/statics/log, 구조 재작성)
-- **색 status 배지/칩→`Badge`/`StateChip`**(색 hue 변동 위험)
-- **Progress 재구현→`Progress`**(catalog×3/ExportModal/Connection)
-- **ContextMenu 재구현→`ContextMenu`**(AccountMenu/dot-menu)
-- **③ 신규 부품 승격**: heatmap/permission-matrix/로그리스트/코드박스/InfoRow/StatCard/RadioCard/CollapsibleSectionHeader/색칩
-- **색 hue rgba**(디자인 blue와 다른 base) / ExpandToggle→TextButton / 유니코드 글리프 / 잔여 raw px
+## ⏳ 남음 — 구조 변경/라이브러리 추가 필요 (Storybook 시각검증 권장)
+- **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).
+- **③ 라이브러리 신규 부품화**: distribution-heatmap, permission-matrix(둘은 generic이라 유지 중), Backend/Frontend 로그 중복 → 공유 컴포넌트, 코드박스(FingerprintBox/PathBox), StatCard(컴팩트 타일), RadioCard 재구현(catalog export OptionCard — create-project는 WIP), CollapsibleSectionHeader 재구현(capture/statics/connection/settings), InfoRow(로컬 Row/Label/Value는 space-between이라 카탈로그 InfoRow의 left-align과 레이아웃 불일치 — 디자인 판단 필요), ClassChip→LegendItem(색점+라벨).
+- **색 hue rgba**(59,130,246 / 96,165,250 / 255,180,60 / 196,43,28 / 0,0,0,* — 디자인 blue와 다른 base라 토큰화 시 색 변동), **bg없는 색텍스트칩**(SyncChip/StatChip), **색점**(StatusDot/SyncDot).
+- **소소**: 유니코드 글리프(▾▸✎⚠ⓘ) / 잔여 raw px / 진행바 gallery-toolbar(얇은라인)·ExportModal(indeterminate).
 
 ---
 
