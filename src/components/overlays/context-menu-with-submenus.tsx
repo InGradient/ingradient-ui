@@ -83,7 +83,7 @@ export function ContextMenuWithSubmenus({
   if (!anchorEl) return null
   const rect = anchorEl.getBoundingClientRect()
   const top = rect.bottom + offset
-  const left = alignRight ? Math.max(8, rect.right - 200) : Math.max(8, rect.left)
+  const left = alignRight ? Math.max(8, rect.right - popupSizeNumbers.xs) : Math.max(8, rect.left)
 
   const subActions = actions.find((a) => a.key === submenuKey)?.subActions
 

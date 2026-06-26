@@ -4,19 +4,18 @@ import { Grid, Stack, surfaceRaised } from '@ingradient/ui/primitives'
 import { media } from '@ingradient/ui/tokens'
 
 export const Page = styled.div`
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   padding: var(--ig-space-10) var(--ig-space-5);
   background: var(--ig-color-bg-canvas);
-  @supports (min-height: 100dvh) {
-    min-height: 100dvh;
-  }
 `
 
 export const Content = styled(Stack)`
   width: min(var(--ig-popup-3xl-mid), calc(100vw - var(--ig-space-7) * 2));
   gap: var(--ig-space-6);
+  margin: auto;
 `
 
 export const LogoWrap = styled.div`

@@ -16,6 +16,7 @@ export interface DropdownOption {
   value: string
   label: string
   description?: string
+  disabled?: boolean
 }
 
 export interface SelectOptionData {
@@ -95,9 +96,14 @@ export const DropdownOptionButton = styled.button<{ $active: boolean }>`
   text-align: left;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: var(--ig-color-dropdown-option-hover);
     color: var(--ig-color-text-primary);
+  }
+
+  &:disabled {
+    opacity: var(--ig-opacity-disabled);
+    cursor: not-allowed;
   }
 `
 

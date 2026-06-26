@@ -38,6 +38,8 @@ const LIST_STYLE = {
   overflowY: 'auto' as const,
   padding: 'var(--ig-space-2)',
   gap: 'var(--ig-space-2px)',
+  margin: 0,
+  listStyle: 'none' as const,
 }
 
 const PLACEHOLDER_STYLE = {
@@ -77,6 +79,7 @@ export function DatasetListPanel({
 }: DatasetListPanelProps) {
   const allSelected = datasets.length > 0 && datasets.every((d) => selectedIds.has(d.id))
   const someSelected = datasets.some((d) => selectedIds.has(d.id))
+  const showItems = !noProject && !loading && datasets.length > 0
 
   return (
     <Stack as="aside" gap={0} data-ig-component="DatasetListPanel" data-ig-layer="patterns" style={PANEL_STYLE}>
@@ -121,7 +124,7 @@ export function DatasetListPanel({
           ) : null}
         </Inline>
       ) : null}
-      <Stack gap={0} style={LIST_STYLE}>
+      <Stack as={showItems ? 'ul' : undefined} gap={0} style={LIST_STYLE}>
         {noProject ? (
           <Placeholder>No project selected</Placeholder>
         ) : loading ? (

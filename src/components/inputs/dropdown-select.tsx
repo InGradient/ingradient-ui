@@ -49,8 +49,12 @@ export function DropdownSelect({
         <DropdownOptionButton
           key={option.value}
           type="button"
+          disabled={option.disabled}
           $active={option.value === value}
           onClick={() => {
+            if (option.disabled) {
+              return
+            }
             onChange(option.value)
             setOpen(false)
           }}

@@ -68,6 +68,7 @@ export function DatasetListItem({
   const menuBtnRef = React.useRef<HTMLButtonElement>(null)
   return (
     <Item
+      forwardedAs="li"
       variant="flat"
       selected={current}
       dragOver={dragOver}
