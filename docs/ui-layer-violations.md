@@ -328,7 +328,7 @@
 |---|---|---|
 | **ContextMenu** (AccountMenu/dot-menu) | 4파일 | 대체부품 `ContextMenuWithSubmenus`가 **사용자 WIP 미커밋 파일** → 그게 커밋돼야 진행 |
 | **rgba 8종** (white 셔터링/close red/black 그림자) | 8 | **신규 토큰을 디자인 의도와 함께 추가**해야 함(#8) 또는 page 전용 장식 — 디자인 결정 필요 |
-| **색점/bg없는 색칩** (StatusDot/SyncDot/SyncChip) | 다수 | `#0.2`로 라이브러리에 작은 status-dot 부품 추가 가능(디자인 결정) |
+| ~~연결상태 dot~~ | ✅ 완료 | `StatusDot` 부품 추가(#0.2) + TopBar/header dedup. SyncDot(span)·SyncChip(bg없는 색텍스트)은 모양이 달라 별도 |
 | **LogDetailTable** | 1 | headerless colSpan key-value 표 — generic이면 이동 후보, 아니면 유지 |
 | **generic table 유지** (permission-matrix·heatmap는 **이동 완료**) | — | 이제 둘 다 components 계층. LogDetail만 판단 남음 |
 
