@@ -1,6 +1,5 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Settings } from 'lucide-react'
-import { Badge, Checkbox, TextField, PasswordField, Button, IconButton, TextButton } from '@ingradient/ui/components'
+import { Badge, Checkbox, TextField, PasswordField, Button, IconButton, TextButton, SettingsIcon } from '@ingradient/ui/components'
 import {
   Wrap, LangCorner, Card, Title, PackageSection, PackageInfo,
   Divider, LoginForm, Field, FieldLabel, CheckOptions, ErrorMsg,
@@ -26,7 +25,7 @@ export function LoginView(props: LoginViewProps): JSX.Element {
       <LangCorner>
         {langSelector}
         <IconButton variant="secondary" size="sm" type="button" onClick={onOpenSettings} title={labels.settingsTitle}>
-          <Settings size={iconSizeNumbers.md} />
+          <SettingsIcon size={iconSizeNumbers.md} />
         </IconButton>
       </LangCorner>
 

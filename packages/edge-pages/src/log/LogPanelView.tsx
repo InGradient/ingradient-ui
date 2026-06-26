@@ -1,8 +1,7 @@
 import { useCallback, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
-import { DatePickerField, DropdownSelect } from '@ingradient/ui/components'
-import { AlertCircle, CheckCircle, Filter, ImageIcon, Info } from 'lucide-react'
+import { DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon } from '@ingradient/ui/components'
 import {
   Container, Header, FilterButtonWrap, FilterActionButton, FilterPopover,
   FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel,
@@ -55,7 +54,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
         <span>{labels.title}</span>
         <FilterButtonWrap>
           <FilterActionButton ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
-            <Filter size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
+            <FilterIcon size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
           </FilterActionButton>
           {showFilterPopover && (
             <FilterPopover ref={filterPopoverRef}>
@@ -115,9 +114,9 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
             data-active={hoveredLogIndex === i || undefined}
           >
             <LogTime>{getTimeFromMsg(log.msg ?? '') || '—'}</LogTime>
-            {log.type === 'error'   && <AlertCircle size={iconSizeNumbers.sm} color="var(--ig-color-danger)" />}
-            {log.type === 'success' && <CheckCircle size={iconSizeNumbers.sm} color="var(--ig-color-success)" />}
-            {log.type === 'info'    && <Info        size={iconSizeNumbers.sm} color="var(--ig-color-accent-soft)" />}
+            {log.type === 'error'   && <AlertCircleIcon size={iconSizeNumbers.sm} color="var(--ig-color-danger)" />}
+            {log.type === 'success' && <CheckCircleIcon size={iconSizeNumbers.sm} color="var(--ig-color-success)" />}
+            {log.type === 'info'    && <InfoIcon        size={iconSizeNumbers.sm} color="var(--ig-color-accent-soft)" />}
             <LogMessage title={log.msg ?? ''}>
               {(log.msg ?? '').replace(/^\[\d{1,2}:\d{2}:\d{2}\]\s*/, '')}
             </LogMessage>

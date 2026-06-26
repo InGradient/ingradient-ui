@@ -332,6 +332,7 @@
 | **generic table** | permission-matrix·heatmap **components로 이동 완료** |
 | **창 컨트롤 아이콘** | lucide `Minus/Maximize2/Minimize2/X` → catalog-icons에 `Window{Minimize,Maximize,Restore,Close}Icon` registry 등록 + TitleBarView 교체 |
 | **닫기버튼 빨강** | raw rgba(196,43,28) hover/active → `--ig-color-danger-bg-strong` (테마 인지 danger 빨강) |
+| **lucide 직접 import (systemic #1)** | pages 28파일이 `lucide-react`에서 직접 import → catalog-icons에 48개 아이콘 **시맨틱 별칭 등록**(SettingsIcon/RefreshIcon/ExpandIcon 등) 후 전부 `@ingradient/ui/components` 경유로 교체. registry 우회 0건. 문자열 리터럴 오치환 3건(`'Camera'`/`'Download widget image'`/`'Archive comment'`) 검토 중 발견·복구. |
 
 ## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
 - white 셔터링 rgba(255,255,255,0.25/0.5) = 파란 accent 셔터버튼 위 on-accent 흰 스피너/링. 테마 인지 흰 토큰(white-24 등)은 light 모드에서 어두운 틴트로 뒤집혀 파란 버튼 위 역전됨 → 항상-흰 alpha 토큰을 신설하지 않는 한 raw 유지가 맞음(#0.3). (close 버튼 빨강은 위 표대로 danger 토큰화 완료)

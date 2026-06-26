@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { FlatSection } from '../ConnectionTabView.styles'
 import type { AdvancedSectionViewProps } from '../types'
@@ -23,7 +23,7 @@ export function AdvancedSectionView(props: AdvancedSectionViewProps): JSX.Elemen
   return (
     <FlatSection>
       <Header type="button" onClick={onToggleExpanded}>
-        {expanded ? <ChevronDown size={iconSizeNumbers.sm} /> : <ChevronRight size={iconSizeNumbers.sm} />}
+        {expanded ? <ChevronDownIcon size={iconSizeNumbers.sm} /> : <ChevronRightIcon size={iconSizeNumbers.sm} />}
         {labels.advancedTitle}
       </Header>
       {expanded && <div>{children}</div>}

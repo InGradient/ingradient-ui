@@ -1,6 +1,5 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { IconButton, StatusDot } from '@ingradient/ui/components'
-import { RefreshCw, Settings, ChevronLeft } from 'lucide-react'
+import { IconButton, StatusDot, RefreshIcon, SettingsIcon, ChevronLeftIcon } from '@ingradient/ui/components'
 import {
   ConnectingSpinner, Container, LeftSection, RightSection, StatusItem,
   EdgeInfoSection, BreadcrumbWrap, BreadcrumbProject, BreadcrumbSep,
@@ -23,7 +22,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
           {selectedDatasetName && (
             <EdgeInfoSection>
               <IconButton variant="secondary" size="sm" onClick={onBackToDatasets}>
-                <ChevronLeft size={iconSizeNumbers.sm} />
+                <ChevronLeftIcon size={iconSizeNumbers.sm} />
               </IconButton>
               <BreadcrumbWrap>
                 {selectedProjectName && <BreadcrumbProject>{selectedProjectName}</BreadcrumbProject>}
@@ -44,7 +43,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
           </StatusItem>
           {langSelector}
           <IconButton variant="secondary" size="sm" title={labels.refresh} onClick={onRefresh}>
-            {isRefreshing ? <ConnectingSpinner size="md" /> : <RefreshCw size={iconSizeNumbers.lg} />}
+            {isRefreshing ? <ConnectingSpinner size="md" /> : <RefreshIcon size={iconSizeNumbers.lg} />}
           </IconButton>
           <IconButton
             variant="secondary"
@@ -53,7 +52,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
             onClick={() => canSetupCamera && onOpenSettings()}
             disabled={!canSetupCamera}
           >
-            <Settings size={iconSizeNumbers.lg} />
+            <SettingsIcon size={iconSizeNumbers.lg} />
           </IconButton>
           {accountMenu}
         </RightSection>

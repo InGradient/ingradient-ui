@@ -1,6 +1,5 @@
-import { Scissors } from 'lucide-react'
 import { SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
-import { ColorSwatch, EmptyState, SearchField } from '@ingradient/ui/components'
+import { ColorSwatch, EmptyState, SearchField, ScissorsIcon } from '@ingradient/ui/components'
 import {
   Container, Section, GrowSection, Label, ClassList,
   SetupSlot, PatternGrid, PatternButton, RoiPrimaryButton,
@@ -59,7 +58,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
             onClick={onToggleSamRoi}
             title={roiButtonHint}
           >
-            <Scissors size={iconSizeNumbers.sm} />
+            <ScissorsIcon size={iconSizeNumbers.sm} />
             {roiButtonLabel}
           </RoiPrimaryButton>
         </Section>

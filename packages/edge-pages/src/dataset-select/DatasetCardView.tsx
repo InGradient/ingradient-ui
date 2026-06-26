@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Badge, Tag, IconButton, ContextMenuWithSubmenus } from '@ingradient/ui/components'
-import { MoreHorizontal } from 'lucide-react'
+import { Badge, Tag, IconButton, ContextMenuWithSubmenus, MoreIcon } from '@ingradient/ui/components'
 import {
   DatasetCard, DatasetNameRow, DatasetName, Spacer,
   CardBottom, ImageCount, ClassChips, EDGE_TASK_TAG, edgeTaskTagStyle,
@@ -55,7 +54,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
             onToggleDotMenu(isDotMenuOpen ? null : dataset.dataset_id)
           }}
         >
-          <MoreHorizontal size={iconSizeNumbers.sm} />
+          <MoreIcon size={iconSizeNumbers.sm} />
         </IconButton>
         {isDotMenuOpen && (
           <ContextMenuWithSubmenus

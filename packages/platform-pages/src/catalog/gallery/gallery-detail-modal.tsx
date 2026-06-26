@@ -1,8 +1,7 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
-import { X } from 'lucide-react'
 import { Stack, Text } from '@ingradient/ui/primitives'
-import { IconButton } from '@ingradient/ui/components'
+import { IconButton, ClosePanelIcon } from '@ingradient/ui/components'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 import { MediaDialogShell } from '@ingradient/ui/patterns'
@@ -142,7 +141,7 @@ export function GalleryDetailModal({
             onClose()
           }}
         >
-          <X size={iconSizeNumbers.lg} />
+          <ClosePanelIcon size={iconSizeNumbers.lg} />
         </IconButton>
       )}
     </>

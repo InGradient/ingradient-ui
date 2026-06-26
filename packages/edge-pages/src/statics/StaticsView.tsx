@@ -1,6 +1,5 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { ChevronDown, ChevronRight } from 'lucide-react'
-import { EmptyState } from '@ingradient/ui/components'
+import { EmptyState, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import {
   Container, Header, TitleBlock, Title, Subtitle,
   SummaryGrid, SummaryCard, SummaryLabel, SummaryValue,
@@ -52,7 +51,7 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
 
   const renderSection = (key: SectionKey, label: string) => {
     const isOpen = !collapsedSections[key]
-    const Icon = isOpen ? ChevronDown : ChevronRight
+    const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
     return (
       <SectionHeader onClick={() => onToggleSection(key)}>
         <Icon size={iconSizeNumbers.lg} />{label}

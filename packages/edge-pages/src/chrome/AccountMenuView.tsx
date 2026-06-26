@@ -1,8 +1,7 @@
 import { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { DialogShell, iconSizeNumbers } from '@ingradient/ui'
-import { Button, ContextMenuWithSubmenus, EmptyState } from '@ingradient/ui/components'
-import { UserCircle } from 'lucide-react'
+import { Button, ContextMenuWithSubmenus, EmptyState, UserCircleIcon } from '@ingradient/ui/components'
 import {
   AccountBtn, AccountBtnName, AccountMenuWrap,
   HistoryList, HistoryEntry, HistoryName, HistoryEmail,
@@ -27,7 +26,7 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           title={labels.account}
           onClick={(e) => { e.stopPropagation(); onToggleDropdown() }}
         >
-          <UserCircle size={iconSizeNumbers.lg} />
+          <UserCircleIcon size={iconSizeNumbers.lg} />
           <AccountBtnName>{currentUser.name || currentUser.email}</AccountBtnName>
         </AccountBtn>
         {dropdownOpen && (

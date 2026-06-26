@@ -1,4 +1,4 @@
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangleIcon } from '@ingradient/ui/components'
 import { DialogShell, iconSizeNumbers } from '@ingradient/ui'
 import { ConfirmButton, FailureCode } from './WorkspaceView.styles'
 import type { SequenceFailureInfo, WorkspaceLabels } from './types'
@@ -16,7 +16,7 @@ export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.El
     <DialogShell
       title={
         <>
-          <AlertTriangle size={iconSizeNumbers.lg} color="var(--ig-color-danger)" style={{ marginRight: 'var(--ig-space-2)' }} />
+          <AlertTriangleIcon size={iconSizeNumbers.lg} color="var(--ig-color-danger)" style={{ marginRight: 'var(--ig-space-2)' }} />
           {labels.sequenceFailed}
         </>
       }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button, SectionTitle, Spinner, iconSizeNumbers } from '@ingradient/ui'
-import { CheckCircle, AlertCircle } from 'lucide-react'
+import { CheckCircleIcon, AlertCircleIcon } from '@ingradient/ui/components'
 import { FlatSection } from '../ConnectionTabView.styles'
 import type { ConnectSectionViewProps } from '../types'
 
@@ -35,9 +35,9 @@ export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element 
             {isConnecting ? labels.connecting : labels.connect}
           </Button>
         )}
-        {isConnected && <ConnectedMsg><CheckCircle size={iconSizeNumbers.sm} />Connected</ConnectedMsg>}
+        {isConnected && <ConnectedMsg><CheckCircleIcon size={iconSizeNumbers.sm} />Connected</ConnectedMsg>}
       </div>
-      {connectionError && <ErrorMsg><AlertCircle size={iconSizeNumbers.sm} />{connectionError}</ErrorMsg>}
+      {connectionError && <ErrorMsg><AlertCircleIcon size={iconSizeNumbers.sm} />{connectionError}</ErrorMsg>}
     </FlatSection>
   )
 }

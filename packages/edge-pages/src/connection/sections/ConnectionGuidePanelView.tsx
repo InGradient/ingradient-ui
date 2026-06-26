@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, CheckCircle, Search, SlidersHorizontal, Wifi } from 'lucide-react'
+import { ActivityIcon, AlertTriangleIcon, CheckCircleIcon, SearchIcon, SlidersIcon, WifiIcon } from '@ingradient/ui/components'
 import styled from 'styled-components'
 import { Badge, Button, iconSizeNumbers, surfacePanel, surfaceRaised } from '@ingradient/ui'
 import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
@@ -101,11 +101,11 @@ function toneColor(tone: GuideTone): string {
 function StatusIcon({ tone }: { tone: GuideTone }): JSX.Element {
   const color = toneColor(tone)
   const size = iconSizeNumbers.md
-  if (tone === 'success') return <CheckCircle size={size} color={color} />
-  if (tone === 'danger')  return <AlertTriangle size={size} color={color} />
-  if (tone === 'warning') return <SlidersHorizontal size={size} color={color} />
-  if (tone === 'accent')  return <Activity size={size} color={color} />
-  return <Wifi size={size} color={color} />
+  if (tone === 'success') return <CheckCircleIcon size={size} color={color} />
+  if (tone === 'danger')  return <AlertTriangleIcon size={size} color={color} />
+  if (tone === 'warning') return <SlidersIcon size={size} color={color} />
+  if (tone === 'accent')  return <ActivityIcon size={size} color={color} />
+  return <WifiIcon size={size} color={color} />
 }
 
 function valueOrDash(value: string | null | undefined): string {
@@ -136,8 +136,8 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
         ))}
         <Button size="sm" type="button" onClick={primaryAction.onClick}>
           {primaryAction.label === labels.scan
-            ? <Search size={iconSizeNumbers.xs} />
-            : <Activity size={iconSizeNumbers.xs} />}
+            ? <SearchIcon size={iconSizeNumbers.xs} />
+            : <ActivityIcon size={iconSizeNumbers.xs} />}
           {primaryAction.label}
         </Button>
       </Actions>

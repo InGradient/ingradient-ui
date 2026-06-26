@@ -1,6 +1,6 @@
 import { controlSizeNumbers } from '@ingradient/ui'
 import { useEffect, useRef, useState } from 'react'
-import { Grid, Maximize2, Minimize2, SlidersHorizontal } from 'lucide-react'
+import { GridLinesIcon, ExpandIcon, CollapseIcon, SlidersIcon } from '@ingradient/ui/components'
 import { Switch, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import {
   ConnectingSpinner, PreviewArea, CaptureZoomWrap, SetupMetrics, MetricCard, MetricLabel, MetricValue,
@@ -130,17 +130,17 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             onClick={toggleFullscreen}
             title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
           >
-            {isFullscreen ? <Minimize2 size={iconSizeNumbers.lg} /> : <Maximize2 size={iconSizeNumbers.lg} />}
+            {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
           </CapturePreviewFullscreenBtn>
         )}
         <OverlayControls>
           <OverlayHeader onClick={onToggleControls} title={labels.controls}>
-            <SlidersHorizontal size={iconSizeNumbers.lg} />
+            <SlidersIcon size={iconSizeNumbers.lg} />
           </OverlayHeader>
           {showControls && (
             <OverlayPopover>
               <ControlRow>
-                <ControlLabel><Grid size={iconSizeNumbers.sm} /> {labels.grid}</ControlLabel>
+                <ControlLabel><GridLinesIcon size={iconSizeNumbers.sm} /> {labels.grid}</ControlLabel>
                 <Switch checked={showGrid} onChange={(e) => { void e; onToggleGrid() }} />
               </ControlRow>
             </OverlayPopover>

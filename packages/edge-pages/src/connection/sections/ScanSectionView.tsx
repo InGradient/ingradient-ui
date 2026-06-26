@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { Camera, RefreshCw, CheckCircle, ChevronRight, Usb, Wifi, AlertCircle, Wrench } from 'lucide-react'
 import { Badge, Button, Spinner, SectionTitle, iconSizeNumbers } from '@ingradient/ui'
-import { EmptyState } from '@ingradient/ui/components'
+import { EmptyState, CameraIcon, RefreshIcon, CheckCircleIcon, ChevronRightIcon, UsbIcon, WifiIcon, AlertCircleIcon, WrenchIcon } from '@ingradient/ui/components'
 import {
   FlatSection,
   DiscoverBar, DiscoverHint, DeviceList, DeviceCard,
@@ -41,7 +40,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
       <SectionTitle>{labels.scanTitle}</SectionTitle>
       <DiscoverBar>
         <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
-          {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshCw size={iconSizeNumbers.sm} />}
+          {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshIcon size={iconSizeNumbers.sm} />}
           {isLoading ? labels.scanning : labels.scan}
         </Button>
         <DiscoverHint>{labels.scanHint}</DiscoverHint>
@@ -61,8 +60,8 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
               return (
                 <DeviceCard key={key} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectCamera(device) }}>
                   {isUSB
-                    ? <Usb size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
-                    : <Camera size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />}
+                    ? <UsbIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
+                    : <CameraIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />}
                   <DeviceInfo>
                     <DeviceName>
                       {isUSB ? (device as USBDevice).name : `${gige?.manufacturer || 'Unknown'} ${gige?.model || 'Camera'}`}
@@ -74,7 +73,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                     </DeviceMeta>
                   </DeviceInfo>
                   {gige && gige.reachable === false && (
-                    <Badge $tone="danger"><AlertCircle size={iconSizeNumbers["2xs"]} style={{ marginRight: 3 }} />{labels.notReachable}</Badge>
+                    <Badge $tone="danger"><AlertCircleIcon size={iconSizeNumbers["2xs"]} style={{ marginRight: 3 }} />{labels.notReachable}</Badge>
                   )}
                   {gige && gige.reachable === true && (
                     <Badge $tone="success">{labels.reachable}</Badge>
@@ -82,12 +81,12 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                   {gige && gige.reachable === false && !isBlocked && onRequestForceIp && (
                     <Button size="sm" variant="secondary" type="button"
                       onClick={(e) => { e.stopPropagation(); onRequestForceIp(gige) }}>
-                      <Wrench size={iconSizeNumbers["2xs"]} />{labels.forceIp}
+                      <WrenchIcon size={iconSizeNumbers["2xs"]} />{labels.forceIp}
                     </Button>
                   )}
                   <Badge $tone={isUSB ? 'accent' : 'neutral'}>{isUSB ? 'USB' : 'GigE'}</Badge>
-                  {isSelected ? <CheckCircle size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
-                    : <ChevronRight size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
+                  {isSelected ? <CheckCircleIcon size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
+                    : <ChevronRightIcon size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
                 </DeviceCard>
               )
             })}
@@ -104,14 +103,14 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
               const isSelected = selectedNic?.name === nic.name
               return (
                 <DeviceCard key={nic.name} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectNic(nic) }}>
-                  <Wifi size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
+                  <WifiIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
                   <DeviceInfo>
                     <DeviceName>{nic.name}</DeviceName>
                     <DeviceMeta>{nic.description} · {nic.ipv4 || '—'} · {nic.status}</DeviceMeta>
                   </DeviceInfo>
                   <Badge $tone={nicBadgeTone(nic.badge)}>{nicBadgeLabel(nic.badge, labels)}</Badge>
-                  {isSelected ? <CheckCircle size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
-                    : <ChevronRight size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
+                  {isSelected ? <CheckCircleIcon size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
+                    : <ChevronRightIcon size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
                 </DeviceCard>
               )
             })}

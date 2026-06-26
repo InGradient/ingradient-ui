@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Send } from 'lucide-react'
+import { SendIcon } from '@ingradient/ui/components'
 import { Button, EmptyState, TextareaField, iconSizeNumbers } from '@ingradient/ui'
 import { Section, Label } from './RightPanelView.styles'
 import type { RightPanelCommentSectionProps } from './types'
@@ -55,7 +55,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
           style={{ flex: 1 }}
         />
         <Button size="sm" variant="accent" onClick={onSend} disabled={isSending || !pendingComment.trim()}>
-          <Send size={iconSizeNumbers.xs} />
+          <SendIcon size={iconSizeNumbers.xs} />
           {isSending ? labels.sending : labels.send}
         </Button>
       </InputRow>

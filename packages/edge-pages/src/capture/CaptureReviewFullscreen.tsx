@@ -1,5 +1,5 @@
 import { Button, iconSizeNumbers } from '@ingradient/ui'
-import { Maximize2, Minimize2 } from 'lucide-react'
+import { ExpandIcon, CollapseIcon } from '@ingradient/ui/components'
 import { useFullscreen } from './use-fullscreen'
 import {
   CaptureReview, CaptureReviewFullscreenBtn, CapturePreviewImg,
@@ -19,7 +19,7 @@ export function CaptureReviewFullscreen(props: CaptureReviewFullscreenProps): JS
         title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
         aria-label={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
       >
-        {isFullscreen ? <Minimize2 size={iconSizeNumbers.lg} /> : <Maximize2 size={iconSizeNumbers.lg} />}
+        {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
       </CaptureReviewFullscreenBtn>
       <CapturePreviewImg src={src} alt="Captured" />
       <CaptureReviewActions>

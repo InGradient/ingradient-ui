@@ -1,11 +1,10 @@
 import { chartHeights } from '@ingradient/ui'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { useRef } from 'react'
-import { Eye, EyeOff, Filter, Maximize2, Minimize2, MousePointer2, Square } from 'lucide-react'
 import {
   Button, Checkbox, ConfirmDialog, DialogCloseButton, EmptyState, FilterPopover, FilterPopoverSection,
 } from '@ingradient/ui'
-import { DatePickerField, DropdownSelect } from '@ingradient/ui/components'
+import { DatePickerField, DropdownSelect, EyeIcon, EyeOffIcon, FilterIcon, ExpandIcon, CollapseIcon, PointerIcon, SquareIcon } from '@ingradient/ui/components'
 import {
   ImagesFilterButton, ImagesFilterDateLabel, ImagesFilterDateRow,
   ImagesFilterWrap,
@@ -72,7 +71,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
               title={labels.filterTitle}
               onClick={onToggleFilter}
             >
-              <Filter size={iconSizeNumbers.md} />
+              <FilterIcon size={iconSizeNumbers.md} />
             </ImagesFilterButton>
             {filterOpen && (
               <FilterPopover
@@ -165,7 +164,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                         title={modalAnnotationsVisible ? labels.modal.hideAnnotations : labels.modal.showAnnotations}
                         aria-label={modalAnnotationsVisible ? labels.modal.hideAnnotations : labels.modal.showAnnotations}
                       >
-                        {modalAnnotationsVisible ? <Eye size={iconSizeNumbers.md} /> : <EyeOff size={iconSizeNumbers.md} />}
+                        {modalAnnotationsVisible ? <EyeIcon size={iconSizeNumbers.md} /> : <EyeOffIcon size={iconSizeNumbers.md} />}
                       </ModalHeaderIconBtn>
                       <ModalHeaderIconBtn
                         type="button"
@@ -173,7 +172,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                         title={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                         aria-label={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                       >
-                        {modalIsFullscreen ? <Minimize2 size={iconSizeNumbers.md} /> : <Maximize2 size={iconSizeNumbers.md} />}
+                        {modalIsFullscreen ? <CollapseIcon size={iconSizeNumbers.md} /> : <ExpandIcon size={iconSizeNumbers.md} />}
                       </ModalHeaderIconBtn>
                     </>
                   )}
@@ -196,7 +195,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     onClick={() => onSetModalEditMode('cursor')}
                     title={labels.modal.cursorMode}
                   >
-                    <MousePointer2 size={iconSizeNumbers.md} />
+                    <PointerIcon size={iconSizeNumbers.md} />
                   </ModalBBoxToolbarBtn>
                   <ModalBBoxToolbarBtn
                     type="button"
@@ -204,7 +203,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     onClick={() => onSetModalEditMode('bbox')}
                     title={labels.modal.bboxMode}
                   >
-                    <Square size={iconSizeNumbers.md} />
+                    <SquareIcon size={iconSizeNumbers.md} />
                   </ModalBBoxToolbarBtn>
                   <ModalToolbarSpacer />
                   <ModalBboxCount>· {labels.modal.bboxCount(modalBboxCount)}</ModalBboxCount>

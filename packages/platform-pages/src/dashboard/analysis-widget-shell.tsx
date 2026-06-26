@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Download } from 'lucide-react'
-import { IconButton } from '@ingradient/ui/components'
+import { IconButton, DownloadIcon } from '@ingradient/ui/components'
 
 const Shell = styled.div<{ $hasActions: boolean }>`
   position: relative;
@@ -66,7 +65,7 @@ export function AnalysisWidgetShell({
         <Actions data-report-hide>
           {onDownload ? (
             <ActionButton type="button" onClick={onDownload} title={downloadLabel} aria-label={downloadLabel}>
-              <Download />
+              <DownloadIcon />
             </ActionButton>
           ) : null}
           {extraActions}
