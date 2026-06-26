@@ -339,10 +339,11 @@
 - **#2 fontSize에 iconSizeNumbers 오용** → `'var(--ig-font-size-xs)'`로 교체(차트 툴팁/버튼 inline 7곳).
 - **#3 mono 폰트 하드코딩** → `var(--ig-font-mono)` 완료(0건 잔존).
 
-## 🟡 남음 — 판단 필요 (#4 inline card surface)
-- `CARD_STYLE`/`FORM_BOX_STYLE`/`SOLO_CARD_STYLE`(storage·project·devices·account 5파일): surface-raised+border+radius 카드 표면이 inline style로 반복. **이미 완전 토큰화됨**(토큰 위반 아님).
-- 기존 `Card`(elevation="raised")는 **floating box-shadow를 강제**하고 border-subtle 고정 → 이들은 의도적으로 **flat(그림자 없음)**, 3/4는 border-strong, `SOLO_CARD`는 danger-alert(대응 tone 없음). 그대로 swap 시 그림자 추가·테두리 변경 발생.
-- 선택지: (a) flat이라 page 유지(#0.3), (b) `Card`에 flat/tone prop 추가 후 swap(#0.2), (c) 시각 변화 감수하고 현 `Card`로 swap. → 사용자 결정 대기.
+## ✅ #4 inline card surface — Card 부품 확장 후 swap (사용자 선택: option a)
+- **`Card`에 prop 추가(#0.2)**: `flat`(box-shadow 제거), `border='strong'`(border-strong), `tone='danger'`(alert-danger bg/border). surface mixin 위에 override로 얹어 기존 elevation/radius/padding과 조합.
+- **7파일 inline 카드 → `<Card>`**: storage-stats-table, storage-overview(Box 직접 교체), project-resolution-card·devices-license-section·devices-forms(×2)·delete-account-dialog(`<Stack gap>` 컨테이너는 Card 내부에 Stack 유지로 gap 보존), analysis-labeling-by-person-widget(elevation='panel'). danger 카드는 `tone='danger'`.
+- **남긴 것(card 아님, #0.3)**: dataset-list-panel/selectable-grid-panel(방향성 border·flex·overflow 레이아웃 패널), class-info-sidebar(input), source-breakdown CHIP, TOKEN_BOX(accent border 강조 1회성). 전부 이미 토큰화됨.
+- 검증: 양 패키지 per-package tsc 통과. (root tsc의 Table 제네릭 에러는 미접촉 파일에도 발생하는 기존 source-resolution 아티팩트로 무관.)
 
 ## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
 - white 셔터링 rgba(255,255,255,0.25/0.5) = 파란 accent 셔터버튼 위 on-accent 흰 스피너/링. 테마 인지 흰 토큰(white-24 등)은 light 모드에서 어두운 틴트로 뒤집혀 파란 버튼 위 역전됨 → 항상-흰 alpha 토큰을 신설하지 않는 한 raw 유지가 맞음(#0.3). (close 버튼 빨강은 위 표대로 danger 토큰화 완료)

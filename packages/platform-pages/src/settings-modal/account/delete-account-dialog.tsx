@@ -1,6 +1,7 @@
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { Alert } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
+import { Card } from '@ingradient/ui/components'
 import { PasswordField, TextField } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import {
@@ -10,13 +11,6 @@ import {
 } from '../project'
 
 export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
-
-const SOLO_CARD_STYLE = {
-  padding: 'var(--ig-space-5) var(--ig-space-6)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-alert-danger-border)',
-  borderRadius: 'var(--ig-radius-xs)',
-  background: 'var(--ig-color-alert-danger-bg)',
-}
 
 const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 260 }
 const FULL_CONFIRM_STYLE = { width: '100%' }
@@ -96,10 +90,12 @@ export function DeleteAccountDialog({
               You are the only member of the following project{preview.solo_projects.length === 1 ? '' : 's'}. They will be permanently deleted along with your account.
             </Alert>
             {preview.solo_projects.map((p) => (
-              <Stack key={p.project_id} gap="var(--ig-space-2)" style={SOLO_CARD_STYLE}>
-                <Text size="var(--ig-font-size-md)" weight={600}>{p.project_name}</Text>
-                <Text tone="muted" size="var(--ig-font-size-xs)">role: {p.role} · members: {p.member_count}</Text>
-              </Stack>
+              <Card key={p.project_id} elevation="raised" flat tone="danger" radius="var(--ig-radius-xs)" padding="var(--ig-space-5) var(--ig-space-6)">
+                <Stack gap="var(--ig-space-2)">
+                  <Text size="var(--ig-font-size-md)" weight={600}>{p.project_name}</Text>
+                  <Text tone="muted" size="var(--ig-font-size-xs)">role: {p.role} · members: {p.member_count}</Text>
+                </Stack>
+              </Card>
             ))}
           </>
         )}

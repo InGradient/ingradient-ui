@@ -1,17 +1,11 @@
 import { forwardRef, type Ref } from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
+import { Card } from '@ingradient/ui/components'
 import { CopyButton } from '@ingradient/ui/components'
 import { DropdownSelect } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { Textarea } from '@ingradient/ui/components'
-
-const FORM_BOX_STYLE = {
-  background: 'var(--ig-color-surface-raised)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  borderRadius: 'var(--ig-radius-xxs)',
-  padding: 'var(--ig-space-5)',
-}
 
 const TOKEN_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
@@ -97,7 +91,8 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   return (
     <div ref={ref}>
       {showRegister ? (
-        <Stack gap="var(--ig-space-4)" style={FORM_BOX_STYLE}>
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
+          <Stack gap="var(--ig-space-4)">
           <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <TextField
@@ -121,11 +116,13 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             <Button type="button" variant="secondary" onClick={onCancelRegister}>Cancel</Button>
           </Inline>
           {registerError ? <Text size="var(--ig-font-size-xs)" tone="danger">{registerError}</Text> : null}
-        </Stack>
+          </Stack>
+        </Card>
       ) : null}
 
       {showIssue && offlineEnabled ? (
-        <Stack gap="var(--ig-space-4)" style={FORM_BOX_STYLE}>
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
+          <Stack gap="var(--ig-space-4)">
           <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Select a registered device to issue an offline license token.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DropdownSelect
@@ -148,7 +145,8 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelIssue}>Cancel</Button>
           </Inline>
-        </Stack>
+          </Stack>
+        </Card>
       ) : null}
 
       {issuedToken ? (

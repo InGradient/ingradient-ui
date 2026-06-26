@@ -1,5 +1,5 @@
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { Button, EmptyState } from '@ingradient/ui/components'
+import { Button, Card, EmptyState } from '@ingradient/ui/components'
 import { DatePickerField } from '@ingradient/ui/components'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
@@ -13,13 +13,6 @@ const INFO_GRID_STYLE = {
 
 const INFO_LABEL_STYLE = { fontWeight: 'var(--ig-font-weight-medium)' }
 const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-space-3)', color: 'var(--ig-color-text-muted)' }
-
-const FORM_BOX_STYLE = {
-  background: 'var(--ig-color-surface-raised)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  borderRadius: 'var(--ig-radius-xxs)',
-  padding: 'var(--ig-space-5)',
-}
 
 export interface DeviceLicense {
   planCode: string
@@ -98,7 +91,8 @@ export function DevicesLicenseSection({
       {!loading && !error && !license ? <EmptyState>No license found.</EmptyState> : null}
 
       {isAdmin && showRenew ? (
-        <Stack gap="var(--ig-space-4)" style={FORM_BOX_STYLE}>
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
+          <Stack gap="var(--ig-space-4)">
           <Text size="var(--ig-font-size-xs)" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
@@ -108,7 +102,8 @@ export function DevicesLicenseSection({
             <Button type="button" variant="secondary" onClick={onCancelRenew}>Cancel</Button>
           </Inline>
           {renewError ? <Text tone="danger" size="var(--ig-font-size-xs)">{renewError}</Text> : null}
-        </Stack>
+          </Stack>
+        </Card>
       ) : null}
     </Stack>
   )

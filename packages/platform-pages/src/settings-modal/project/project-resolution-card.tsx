@@ -1,12 +1,5 @@
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { SelectField } from '@ingradient/ui/components'
-
-const CARD_STYLE = {
-  padding: 'var(--ig-space-6)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-  borderRadius: 'var(--ig-radius-xs)',
-  background: 'var(--ig-color-surface-raised)',
-}
+import { Card, SelectField } from '@ingradient/ui/components'
 
 const SELECT_STYLE = { minWidth: 180 }
 
@@ -38,7 +31,8 @@ export interface ProjectResolutionCardProps {
 
 export function ProjectResolutionCard({ project, resolution, onChange }: ProjectResolutionCardProps) {
   return (
-    <Stack gap="var(--ig-space-4)" style={CARD_STYLE}>
+    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xs)" padding="var(--ig-space-6)">
+      <Stack gap="var(--ig-space-4)">
       <Box>
         <Text size="var(--ig-font-size-md)" weight={600}>{project.project_name}</Text>
         <Text tone="muted" size="var(--ig-font-size-xs)">
@@ -72,6 +66,7 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
           </SelectField>
         ) : null}
       </Inline>
-    </Stack>
+      </Stack>
+    </Card>
   )
 }

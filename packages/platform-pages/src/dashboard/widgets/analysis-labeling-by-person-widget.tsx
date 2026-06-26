@@ -1,15 +1,8 @@
 import { chartHeights } from '@ingradient/ui'
 import { Stack } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
-import { Table, type TableColumn } from '@ingradient/ui/components'
+import { Card, Table, type TableColumn } from '@ingradient/ui/components'
 import { chartColors } from '@ingradient/ui'
-
-const TABLE_CARD_STYLE = {
-  padding: 'var(--ig-space-5) var(--ig-space-7)',
-  background: 'var(--ig-color-surface-panel)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  borderRadius: 'var(--ig-radius-lg)',
-}
 
 type PersonRow = { uploader: string; image_count: number; labeled_count: number }
 
@@ -46,9 +39,9 @@ export function AnalysisLabelingByPersonWidget({
         emptyMessage="No uploader activity yet."
       />
       {byPerson.length > 0 ? (
-        <div style={TABLE_CARD_STYLE}>
+        <Card elevation="panel" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-5) var(--ig-space-7)">
           <Table columns={PERSON_COLUMNS} rows={byPerson} ariaLabel="Uploader activity" />
-        </div>
+        </Card>
       ) : null}
     </Stack>
   )

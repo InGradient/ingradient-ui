@@ -1,13 +1,5 @@
 import type { ReactNode } from 'react'
-import { Box } from '@ingradient/ui/primitives'
-import { Skeleton, Table, type TableColumn } from '@ingradient/ui/components'
-
-const CARD_STYLE = {
-  background: 'var(--ig-color-surface-raised)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-  borderRadius: 'var(--ig-radius-xxs)',
-  padding: 'var(--ig-space-7)',
-}
+import { Card, Skeleton, Table, type TableColumn } from '@ingradient/ui/components'
 
 export interface StorageStatsTableColumn<T> {
   key: string
@@ -32,13 +24,13 @@ export function StorageStatsTable<T>({
   if (loading) return <Skeleton $height={loadingHeight} />
   type Row = T & { id?: string | number }
   return (
-    <Box style={CARD_STYLE}>
+    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xxs)" padding="var(--ig-space-7)">
       <Table<Row>
         columns={columns as TableColumn<Row>[]}
         rows={rows as Row[]}
         footer={footer}
         ariaLabel="Storage statistics"
       />
-    </Box>
+    </Card>
   )
 }
