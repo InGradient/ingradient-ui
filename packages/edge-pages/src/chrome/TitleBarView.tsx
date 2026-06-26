@@ -1,5 +1,7 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Minus, Minimize2, X, Maximize2 } from 'lucide-react'
+import {
+  WindowMinimizeIcon, WindowRestoreIcon, WindowCloseIcon, WindowMaximizeIcon,
+} from '@ingradient/ui/components'
 import { BrandMark } from '@ingradient/ui/brand'
 import {
   Bar, LogoArea, LogoImg, LogoText, DragRegion, Controls, Btn,
@@ -23,15 +25,15 @@ export function TitleBarView(props: TitleBarViewProps): JSX.Element {
       <DragRegion />
       <Controls>
         <Btn onClick={onMinimize} title={labels.minimize}>
-          <Minus size={iconSizeNumbers.xs} strokeWidth={2} />
+          <WindowMinimizeIcon size={iconSizeNumbers.xs} strokeWidth={2} />
         </Btn>
         <Btn onClick={onMaximize} title={isMaximized ? labels.restore : labels.maximize}>
           {isMaximized
-            ? <Minimize2 size={iconSizeNumbers["2xs"]} strokeWidth={2} />
-            : <Maximize2 size={iconSizeNumbers["2xs"]} strokeWidth={2} />}
+            ? <WindowRestoreIcon size={iconSizeNumbers["2xs"]} strokeWidth={2} />
+            : <WindowMaximizeIcon size={iconSizeNumbers["2xs"]} strokeWidth={2} />}
         </Btn>
         <Btn $variant="close" onClick={onClose} title={labels.close}>
-          <X size={iconSizeNumbers.xsPlus} strokeWidth={2} />
+          <WindowCloseIcon size={iconSizeNumbers.xsPlus} strokeWidth={2} />
         </Btn>
       </Controls>
     </Bar>

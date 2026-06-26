@@ -18,4 +18,9 @@ export {
   Download as DownloadIcon,
   ExternalLink as ExportIcon,
   Search as SearchIcon,
+  // Electron window controls
+  Minus as WindowMinimizeIcon,
+  Maximize2 as WindowMaximizeIcon,
+  Minimize2 as WindowRestoreIcon,
+  X as WindowCloseIcon,
 } from 'lucide-react'
