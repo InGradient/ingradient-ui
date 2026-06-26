@@ -133,14 +133,3 @@ export const PermissionsScopeNote = styled.p`
   line-height: var(--ig-line-height-relaxed);
 `
 
-export const ExpandToggle = styled.button`
-  background: none;
-  border: none;
-  color: var(--ig-color-accent);
-  font-size: var(--ig-font-size-sm);
-  cursor: pointer;
-  padding: var(--ig-space-2) var(--ig-space-3);
-  &:hover {
-    text-decoration: underline;
-  }
-`

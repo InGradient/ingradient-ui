@@ -1,4 +1,4 @@
-import { EmptyState } from '@ingradient/ui/components'
+import { EmptyState, TextButton } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 import {
   DeleteProjectSection,
@@ -8,7 +8,6 @@ import {
   ProjectSettingsForm,
 } from '../project'
 import {
-  ExpandToggle,
   PermissionsHeader,
   PermissionsScopeNote,
   SubsectionTitle,
@@ -76,9 +75,9 @@ export function ProjectTab(props: ProjectTabProps) {
         <SettingsSection title="Permissions">
           <PermissionsHeader>
             <SubsectionTitle style={{ margin: 0 }}>Role matrix</SubsectionTitle>
-            <ExpandToggle type="button" onClick={props.onTogglePermissionsExpand}>
+            <TextButton tone="accent" size="sm" type="button" onClick={props.onTogglePermissionsExpand}>
               {props.permissionsExpandAll ? 'Collapse All' : 'Expand All'}
-            </ExpandToggle>
+            </TextButton>
           </PermissionsHeader>
           <PermissionsScopeNote>{PERMISSIONS_SCOPE_NOTE}</PermissionsScopeNote>
           <ProjectPermissionMatrix
