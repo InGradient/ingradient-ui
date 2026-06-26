@@ -324,15 +324,15 @@
 - **#8 토큰화**: PatternButton tailwind blue rgba → `blue-tint` 토큰.
 
 ## ⛔ 남음 — 각각 "지금 자동으로 못 하는" 하드 블록 (grep으로 확인됨)
-| 항목 | 파일수 | 하드 블록 |
+| 항목 | 남음 | 상태 |
 |---|---|---|
-| ContextMenu 재구현 | 4 | 대체부품 `ContextMenuWithSubmenus`가 **사용자 WIP 미커밋 파일** → 빌드 충돌 위험 + portal 위치 변동. WIP 커밋돼야 진행 가능 |
-| styled.table 잔여 | 3 | permission-matrix(2단헤더+sticky)/distribution-heatmap(색강도셀)/LogDetailTable(colSpan병합) = **카탈로그 Table로 표현 불가한 generic** → 유지가 정답 |
-| raw rgba | 14종 | 디자인 blue와 다른 base 색 → 토큰화 시 **색 변동**, Storybook 시각검증 필요 |
-| 코드박스 | 2 | 대응 카탈로그 부품 **없음**(폰트는 토큰화 완료) → 신규 부품 추가해야 하고 2개뿐이라 과한 추상화 |
-| 색점/색칩(StatusDot/SyncChip)·InfoRow·진행바(toolbar/ExportModal) | 다수 | StateChip/InfoRow/Progress는 **모양·레이아웃이 달라짐** → 시각검증 필요 |
+| **ContextMenu** (AccountMenu/dot-menu) | 4파일 | 대체부품 `ContextMenuWithSubmenus`가 **사용자 WIP 미커밋 파일** → 그게 커밋돼야 진행 |
+| **rgba 8종** (white 셔터링/close red/black 그림자) | 8 | **신규 토큰을 디자인 의도와 함께 추가**해야 함(#8) 또는 page 전용 장식 — 디자인 결정 필요 |
+| **색점/bg없는 색칩** (StatusDot/SyncDot/SyncChip) | 다수 | `#0.2`로 라이브러리에 작은 status-dot 부품 추가 가능(디자인 결정) |
+| **LogDetailTable** | 1 | headerless colSpan key-value 표 — generic이면 이동 후보, 아니면 유지 |
+| **generic table 유지** (permission-matrix·heatmap는 **이동 완료**) | — | 이제 둘 다 components 계층. LogDetail만 판단 남음 |
 
-→ **타입체크로 안전 보장되는 교체는 100% 완료.** 위 잔여는 ① 사용자 WIP가 커밋되거나, ② 라이브러리에 새 부품을 추가하거나, ③ Storybook으로 시각 확인해야 진행 가능하며, 그 전엔 화면을 깨뜨릴 위험이 있어 의도적으로 멈춤.
+→ **규칙 #0 정렬 + 타입검증 가능한 교체는 사실상 완료.** 남은 건 ① 사용자 WIP 커밋(ContextMenu), ② 신규 토큰/부품의 **디자인 결정**(rgba 8종, status-dot)뿐.
 - **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).
 - **③ 라이브러리 신규 부품화**: distribution-heatmap, permission-matrix(둘은 generic이라 유지 중), Backend/Frontend 로그 중복 → 공유 컴포넌트, 코드박스(FingerprintBox/PathBox), StatCard(컴팩트 타일), RadioCard 재구현(catalog export OptionCard — create-project는 WIP), CollapsibleSectionHeader 재구현(capture/statics/connection/settings), InfoRow(로컬 Row/Label/Value는 space-between이라 카탈로그 InfoRow의 left-align과 레이아웃 불일치 — 디자인 판단 필요), ClassChip→LegendItem(색점+라벨).
 - **색 hue rgba**(59,130,246 / 96,165,250 / 255,180,60 / 196,43,28 / 0,0,0,* — 디자인 blue와 다른 base라 토큰화 시 색 변동), **bg없는 색텍스트칩**(SyncChip/StatChip), **색점**(StatusDot/SyncDot).
