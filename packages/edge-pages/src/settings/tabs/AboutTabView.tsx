@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button, DialogShell } from '@ingradient/ui'
-import { KeyValueRow } from '@ingradient/ui/components'
+import { CodeBlock, KeyValueRow } from '@ingradient/ui/components'
 import type { AboutTabViewProps } from '../types'
 
 const Section = styled.div`margin-bottom: var(--ig-space-9);`
@@ -20,15 +20,9 @@ const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--
 const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
 
-const FingerprintBox = styled.div`
-  font-family: var(--ig-font-mono);
+const FingerprintBox = styled(CodeBlock)`
   font-size: var(--ig-font-size-sm);
-  padding: var(--ig-space-4);
-  background: var(--ig-color-surface-raised);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
   margin-top: var(--ig-space-3);
-  user-select: all;
 `
 
 const ErrorText = styled.div`

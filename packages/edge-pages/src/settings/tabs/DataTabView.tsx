@@ -1,18 +1,10 @@
 import styled from 'styled-components'
 import { Button } from '@ingradient/ui'
-import { KeyValueRow } from '@ingradient/ui/components'
+import { CodeBlock, KeyValueRow } from '@ingradient/ui/components'
 import type { DataTabViewProps } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-7);`
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const PathBox = styled.div`
-  font-family: var(--ig-font-mono);
-  font-size: var(--ig-font-size-xs);
-  padding: var(--ig-space-3);
-  background: var(--ig-color-surface-raised);
-  border-radius: var(--ig-radius-xs);
-  user-select: all;
-`
 
 const Success = styled.div`
   color: var(--ig-color-success);
@@ -36,7 +28,7 @@ export function DataTabView(props: DataTabViewProps): JSX.Element {
     <Wrap>
       <div>
         <Label style={{ display: 'block', marginBottom: 'var(--ig-space-2)' }}>{labels.dataDirLabel}</Label>
-        <PathBox>{dataDirPath}</PathBox>
+        <CodeBlock>{dataDirPath}</CodeBlock>
         <div style={{ marginTop: 'var(--ig-space-3)' }}>
           <Button size="sm" variant="secondary" onClick={onOpenDataDir}>{labels.openDataDir}</Button>
         </div>
