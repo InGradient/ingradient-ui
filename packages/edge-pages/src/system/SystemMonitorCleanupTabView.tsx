@@ -1,16 +1,9 @@
 import styled from 'styled-components'
 import { Button, Checkbox, EmptyState, Spinner } from '@ingradient/ui'
+import { KeyValueRow } from '@ingradient/ui/components'
 import type { SystemMonitorCleanupTabViewProps } from './types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-5);`
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: var(--ig-space-3) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-`
-const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const Title = styled.div`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-font-size-sm);`
 
@@ -31,15 +24,9 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
 
   return (
     <Wrap>
-      <Row>
-        <Label>{labels.totalSize}</Label>
-        <Value>{formatBytes(stats.totalSize)}</Value>
-      </Row>
+      <KeyValueRow label={labels.totalSize} value={formatBytes(stats.totalSize)} />
       {stats.oldestEntry && (
-        <Row>
-          <Label>{labels.oldestEntry}</Label>
-          <Value>{stats.oldestEntry}</Value>
-        </Row>
+        <KeyValueRow label={labels.oldestEntry} value={stats.oldestEntry} />
       )}
       <div>
         <Title>{labels.categories}</Title>

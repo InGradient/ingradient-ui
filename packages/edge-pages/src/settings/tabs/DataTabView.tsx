@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 import { Button } from '@ingradient/ui'
+import { KeyValueRow } from '@ingradient/ui/components'
 import type { DataTabViewProps } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-7);`
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--ig-space-4) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-`
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const PathBox = styled.div`
   font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-xs);
@@ -48,18 +41,9 @@ export function DataTabView(props: DataTabViewProps): JSX.Element {
           <Button size="sm" variant="secondary" onClick={onOpenDataDir}>{labels.openDataDir}</Button>
         </div>
       </div>
-      <Row>
-        <Label>{labels.totalSpace}</Label>
-        <Value>{formatBytes(totalBytes)}</Value>
-      </Row>
-      <Row>
-        <Label>{labels.freeSpace}</Label>
-        <Value>{formatBytes(freeBytes)}</Value>
-      </Row>
-      <Row>
-        <Label>{labels.cacheLabel}</Label>
-        <Value>{formatBytes(cacheSize)}</Value>
-      </Row>
+      <KeyValueRow label={labels.totalSpace} value={formatBytes(totalBytes)} />
+      <KeyValueRow label={labels.freeSpace} value={formatBytes(freeBytes)} />
+      <KeyValueRow label={labels.cacheLabel} value={formatBytes(cacheSize)} />
       <div>
         <Button variant="secondary" size="sm" onClick={onCleanCache} disabled={isCleaningCache}>
           {isCleaningCache ? labels.cleaning : labels.cleanCache}

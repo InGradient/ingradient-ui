@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '@ingradient/ui'
-import { ProgressBar } from '@ingradient/ui/components'
+import { KeyValueRow, ProgressBar } from '@ingradient/ui/components'
 import type { UpdateSectionViewProps } from './types'
 
 const Wrap = styled.div`
@@ -12,9 +12,7 @@ const Wrap = styled.div`
   border-radius: var(--ig-radius-md);
 `
 const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
-const Row = styled.div`display: flex; justify-content: space-between; align-items: center;`
 const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const Value = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-font-size-sm);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
@@ -26,10 +24,7 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
   return (
     <Wrap>
       <Title>{labels.title}</Title>
-      <Row>
-        <Label>{labels.currentVersion}</Label>
-        <Value>{currentVersion}</Value>
-      </Row>
+      <KeyValueRow label={labels.currentVersion} value={currentVersion} />
       {status === 'idle' && (
         <Button size="sm" variant="secondary" onClick={onCheckForUpdates}>{labels.checkForUpdates}</Button>
       )}

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button, DialogShell } from '@ingradient/ui'
+import { KeyValueRow } from '@ingradient/ui/components'
 import type { AboutTabViewProps } from '../types'
 
 const Section = styled.div`margin-bottom: var(--ig-space-9);`
@@ -18,16 +19,6 @@ const Hero = styled.div`
 const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-2px);`
 const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
-
-const InfoRowWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: var(--ig-space-3) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  &:last-child { border-bottom: none; }
-`
-const InfoLabel = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const InfoValue = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
 
 const FingerprintBox = styled.div`
   font-family: var(--ig-font-mono);
@@ -70,21 +61,13 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
 
       <Section>
         <SectionTitle>{labels.licenseTitle}</SectionTitle>
-        <InfoRowWrap>
-          <InfoLabel>{labels.licenseStatus}</InfoLabel>
-          <InfoValue>{licenseLabel}</InfoValue>
-        </InfoRowWrap>
+        <KeyValueRow label={labels.licenseStatus} value={licenseLabel} />
         {licenseExpiresAt && (
-          <InfoRowWrap>
-            <InfoLabel>{labels.expiresAt}</InfoLabel>
-            <InfoValue>{licenseExpiresAt}</InfoValue>
-          </InfoRowWrap>
+          <KeyValueRow label={labels.expiresAt} value={licenseExpiresAt} />
         )}
         {fingerprint && (
           <>
-            <InfoRowWrap>
-              <InfoLabel>{labels.fingerprint}</InfoLabel>
-            </InfoRowWrap>
+            <KeyValueRow label={labels.fingerprint} value={null} />
             <FingerprintBox>{fingerprint}</FingerprintBox>
           </>
         )}

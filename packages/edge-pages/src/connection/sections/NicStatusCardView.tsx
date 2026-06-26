@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Badge } from '@ingradient/ui'
+import { KeyValueRow } from '@ingradient/ui/components'
 import type { NicStatusCardViewProps } from '../types'
 
 const Card = styled.div`
@@ -12,16 +13,6 @@ const Card = styled.div`
   background: var(--ig-color-surface-raised);
 `
 
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--ig-font-size-sm);
-`
-
-const Label = styled.span`color: var(--ig-color-text-muted);`
-const Value = styled.span`color: var(--ig-color-text-primary); font-weight: var(--ig-font-weight-semibold);`
-
 const ErrorList = styled.ul`
   margin: var(--ig-space-2) 0 0;
   padding-left: var(--ig-space-5);
@@ -33,24 +24,17 @@ export function NicStatusCardView({ status, labels }: NicStatusCardViewProps): J
   void labels
   return (
     <Card>
-      <Row>
-        <Label>NIC</Label>
-        <Value>{status.nicId}</Value>
-      </Row>
-      <Row>
-        <Label>Speed</Label>
-        <Value>{status.speed}</Value>
-      </Row>
-      <Row>
-        <Label>Duplex</Label>
-        <Value>{status.duplexMode}</Value>
-      </Row>
-      <Row>
-        <Label>Status</Label>
-        <Badge $tone={status.isAdminUp && status.isLinkUp ? 'success' : 'danger'}>
-          {status.isLinkUp ? 'Up' : 'Down'}
-        </Badge>
-      </Row>
+      <KeyValueRow label="NIC" value={status.nicId} />
+      <KeyValueRow label="Speed" value={status.speed} />
+      <KeyValueRow label="Duplex" value={status.duplexMode} />
+      <KeyValueRow
+        label="Status"
+        value={
+          <Badge $tone={status.isAdminUp && status.isLinkUp ? 'success' : 'danger'}>
+            {status.isLinkUp ? 'Up' : 'Down'}
+          </Badge>
+        }
+      />
       {status.configErrors.length > 0 && (
         <ErrorList>
           {status.configErrors.map((err, i) => (<li key={i}>{err}</li>))}
