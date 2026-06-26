@@ -1,5 +1,5 @@
-import { Button, Checkbox, SelectField, Spinner } from '@ingradient/ui'
-import { CollapsibleSectionHeader } from '@ingradient/ui/components'
+import { Button, Checkbox, SelectField, Spinner, iconSizeNumbers } from '@ingradient/ui'
+import { CollapsibleSectionHeader, AlertTriangleIcon } from '@ingradient/ui/components'
 import {
   Wrap, Row, Label, LabelName, LabelValue, Slider, SliderInline,
   BtnRow, MetricRow, Warning,
@@ -102,7 +102,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
           <span>{formatPct(metrics?.validRatio ?? null)}</span>
         </MetricRow>
         {metrics?.warnings?.includes('low_confidence') && (
-          <Warning $kind="warn">⚠ {labels.warnLowConfidence}</Warning>
+          <Warning $kind="warn"><AlertTriangleIcon size={iconSizeNumbers.xs} />{labels.warnLowConfidence}</Warning>
         )}
       </QualityCard>
 

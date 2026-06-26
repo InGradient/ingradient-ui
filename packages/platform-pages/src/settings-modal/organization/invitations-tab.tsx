@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Stack, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { Stack } from '@ingradient/ui/primitives'
+import { EmptyText as Empty } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 import {
   InvitationsSection,
@@ -9,12 +9,6 @@ import {
   JoinCodesSection,
   type JoinCodesSectionProps,
 } from './join-codes-section'
-
-const Empty = styled.p`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  margin: 0;
-`
 
 export interface InvitationsTabProps {
   loading?: boolean

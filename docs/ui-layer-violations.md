@@ -338,6 +338,9 @@
 - **#1 lucide 직접 import** → 위 표대로 28파일 registry 경유 완료.
 - **#2 fontSize에 iconSizeNumbers 오용** → `'var(--ig-font-size-xs)'`로 교체(차트 툴팁/버튼 inline 7곳).
 - **#3 mono 폰트 하드코딩** → `var(--ig-font-mono)` 완료(0건 잔존).
+- **#5 Placeholder/Empty styled.p** → 가벼운 빈-상태 텍스트 `EmptyText` 신규 부품(#0.2, stateTitleText+중앙정렬). 동일 패턴 4파일(org-members/invitations-tab/org-settings/dashboard-overview) 승격. (join-codes·invitations-section은 top-margin, analysis-section은 margin0 변형이라 page 유지 — 이미 stateTitleText recipe 재사용 중). 무거운 블록형 `EmptyState`는 시각 과대라 부적합.
+- **#6 유니코드 글리프** → `▾/▸`(image-detail)→Chevron{Down,Right}Icon, `⚠`(Deflectometry warning)→AlertTriangleIcon(컨테이너 flex화), storage-recommendations `⚠/ⓘ` CSS ::before→JSX AlertTriangle/InfoIcon. 0건 잔존.
+- **#7 MenuButton styled(IconButton) 중복 3파일** → `MenuIconButton` 신규 부품(#0.2) 승격. gallery-images-table·dataset-list-item·class-list-row 공유(class-list-row는 빠져있던 hover state 획득).
 
 ## ✅ #4 inline card surface — Card 부품 확장 후 swap (사용자 선택: option a)
 - **`Card`에 prop 추가(#0.2)**: `flat`(box-shadow 제거), `border='strong'`(border-strong), `tone='danger'`(alert-danger bg/border). surface mixin 위에 override로 얹어 기존 elevation/radius/padding과 조합.

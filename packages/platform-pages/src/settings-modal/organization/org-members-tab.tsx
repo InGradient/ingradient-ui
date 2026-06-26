@@ -1,17 +1,11 @@
 import { useState } from 'react'
-import styled from 'styled-components'
-import { Stack, Text, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
+import { EmptyText as Empty } from '@ingradient/ui/components'
 
 const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
-
-const Empty = styled.p`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  margin: 0;
-`
 
 export interface OrgMember {
   id: string

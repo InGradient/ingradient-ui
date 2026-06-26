@@ -1,6 +1,7 @@
 export * from './status'
 export * from './badge'
 export * from './chip'
+export * from './empty-text'
 export * from './avatar'
 export * from './notification-badge'
 export * from './progress'

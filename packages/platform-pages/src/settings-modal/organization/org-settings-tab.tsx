@@ -1,15 +1,9 @@
-import styled from 'styled-components'
-import { Inline, Stack, Text, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
+import { EmptyText as Placeholder } from '@ingradient/ui/components'
 
 const WRAP_STYLE = { width: '100%' }
-
-const Placeholder = styled.p`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  margin: 0;
-`
 
 export interface OrgSettingsTabProps {
   /** 조직 정보 (null/undefined → 로딩 placeholder) */

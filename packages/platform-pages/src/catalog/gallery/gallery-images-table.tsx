@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Text } from '@ingradient/ui/primitives'
 import { Table, type TableColumn } from '@ingradient/ui/components'
-import { Checkbox, IconButton } from '@ingradient/ui/components'
+import { Checkbox, MenuIconButton as MenuButton } from '@ingradient/ui/components'
 import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '@ingradient/ui/components'
 
@@ -21,24 +21,6 @@ const TableText = styled.div`
 
   table {
     min-width: var(--ig-popup-4xl);
-  }
-`
-
-const MenuButton = styled(IconButton).attrs({
-  variant: 'secondary' as const,
-  size: 'sm' as const,
-})<{ $active: boolean }>`
-  && {
-    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
-    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
-    color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
-  }
-
-  &&:hover:not(:disabled) {
-    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
-    background: ${(p) =>
-      p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
-    color: var(--ig-color-text-primary);
   }
 `
 

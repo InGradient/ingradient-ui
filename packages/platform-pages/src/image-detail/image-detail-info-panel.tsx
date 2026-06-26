@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
+import { iconSizeNumbers } from '@ingradient/ui'
 import { Stack, Text } from '@ingradient/ui/primitives'
-import { TextButton } from '@ingradient/ui/components'
+import { TextButton, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
 const SECTION_STYLE = {
@@ -91,7 +92,9 @@ export function ImageDetailInfoPanel({
       <TextButton
         tone="accent"
         size="sm"
-        iconLeading={<span>{detailsOpen ? '▾' : '▸'}</span>}
+        iconLeading={detailsOpen
+          ? <ChevronDownIcon size={iconSizeNumbers.sm} />
+          : <ChevronRightIcon size={iconSizeNumbers.sm} />}
         onClick={onToggleDetails}
         style={DETAILS_TOGGLE_STYLE}
       >

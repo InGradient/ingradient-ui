@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { ColorSwatch, IconButton, KebabIcon, SelectableListItem } from '@ingradient/ui/components'
+import { ColorSwatch, MenuIconButton as MenuButton, KebabIcon, SelectableListItem } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui'
 
 const Item = styled(SelectableListItem)<{ $menuOpen: boolean }>`
@@ -35,17 +35,6 @@ const Count = styled.span`
   flex-shrink: 0;
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-soft);
-`
-
-const MenuButton = styled(IconButton).attrs({
-  variant: 'secondary' as const,
-  size: 'sm' as const,
-})<{ $active: boolean }>`
-  && {
-    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
-    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
-    color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
-  }
 `
 
 export interface ClassListRowProps {

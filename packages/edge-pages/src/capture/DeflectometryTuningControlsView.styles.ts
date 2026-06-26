@@ -69,6 +69,9 @@ export const MetricRow = styled.div`
 `;
 
 export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-2);
   padding: var(--ig-space-2) 8px;
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-xs);

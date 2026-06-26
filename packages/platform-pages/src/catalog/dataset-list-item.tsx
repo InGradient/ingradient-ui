@@ -2,7 +2,7 @@ import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Grid, Inline, Text } from '@ingradient/ui/primitives'
-import { Checkbox, IconButton } from '@ingradient/ui/components'
+import { Checkbox, MenuIconButton as MenuButton } from '@ingradient/ui/components'
 import { SelectableListItem } from '@ingradient/ui/components'
 import { DatasetTaskTag, type DatasetTaskType } from './dataset-task-tag'
 import { KebabIcon } from '@ingradient/ui/components'
@@ -28,24 +28,6 @@ const Item = styled(SelectableListItem)<{ $menuOpen: boolean }>`
         background: var(--ig-color-blue-tint-14);
       }
     `}
-`
-
-const MenuButton = styled(IconButton).attrs({
-  variant: 'secondary' as const,
-  size: 'sm' as const,
-})<{ $active: boolean }>`
-  && {
-    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'transparent')};
-    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-18)' : 'transparent')};
-    color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
-  }
-
-  &&:hover:not(:disabled) {
-    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
-    background: ${(p) =>
-      p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
-    color: var(--ig-color-text-primary);
-  }
 `
 
 export interface DatasetListItemProps {

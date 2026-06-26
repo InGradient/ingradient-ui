@@ -1,8 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Inline, Stack, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
-import { Button, Spinner } from '@ingradient/ui/components'
+import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Button, Spinner, EmptyText as Placeholder } from '@ingradient/ui/components'
 import { Panel, PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
 const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
@@ -19,12 +19,6 @@ const Body = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
-`
-
-const Placeholder = styled.p`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  margin: 0;
 `
 
 const DATE_BTN_STYLE = {
