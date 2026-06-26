@@ -335,7 +335,7 @@ export const CapturingBadge = styled.div`
   padding: var(--ig-space-2) var(--ig-space-7);
   border-radius: var(--ig-radius-sm);
   pointer-events: none;
-  box-shadow: 0 var(--ig-space-1) var(--ig-space-7) rgba(0, 0, 0, 0.4);
+  box-shadow: 0 var(--ig-space-1) var(--ig-space-7) var(--ig-color-shadow-strong);
 `;
 
 export const CapturePreviewFullscreenBtn = styled.button`

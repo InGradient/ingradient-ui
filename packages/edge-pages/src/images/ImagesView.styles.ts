@@ -40,7 +40,7 @@ export const GroupDeleteBtn = styled.button`
   opacity: 1;
   transform: translateX(0);
   transition: transform var(--ig-motion-fast-ease), background var(--ig-motion-fast-ease), border-color var(--ig-motion-fast-ease);
-  box-shadow: 0 var(--ig-space-1) var(--ig-space-5) rgba(0, 0, 0, 0.28);
+  box-shadow: 0 var(--ig-space-1) var(--ig-space-5) var(--ig-color-shadow-soft);
   pointer-events: auto;
   position: relative;
   z-index: var(--ig-z-capture);
