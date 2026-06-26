@@ -308,7 +308,13 @@
   - **색 status 배지→`Badge $tone`/`Tag $bg/$color`** (edge dataset-select/login: ModeTag/RoleBadge/RecentBadge/MoreChip/EdgeDatasetTaskTag).
   - **license CopyBtn은 부모 콜백 onCopyFingerprint 보존 위해 유지**(CopyButton 내부 클립보드라 동작 변경 회피).
 
-## ⏳ 남음 — 구조 변경/라이브러리 추가 필요 (Storybook 시각검증 권장)
+## ✅ 추가 완료 (저위험 순서 진행)
+- **#5 CollapsibleSectionHeader**: capture DeflectometryTuning → 카탈로그 `CollapsibleSectionHeader`. (statics SectionHeader는 큰 섹션제목이라 카탈로그 작은라벨로 바꾸면 시각후퇴 → 유지)
+- **#6 글리프**: ExportHistory `✎`→lucide Pencil. **`▾/▸`는 카탈로그 CollapsibleSectionHeader 자체가 쓰는 표준이라 위반 아님(유지)**. storage-recommendations `⚠/ⓘ`는 ::before 임베드 + Alert 재구조화 필요 → 보류.
+- **#9 코드박스 판정**: PathBox/FingerprintBox는 대응 카탈로그 부품이 **없음**(폰트는 이미 토큰화 완료) → 신규 부품화(③) 영역이라 swap 불가, 현 상태 유지.
+
+## ⏳ 남음 — 구조 변경/라이브러리 추가 필요 / WIP 블록 (Storybook 시각검증 권장)
+- **#1 ContextMenu 재구현**(AccountMenu, dot-menu): 고수준 대체 부품 `ContextMenuWithSubmenus`가 **사용자 WIP 파일(context-menu-with-submenus.tsx, 미커밋)** 이라 충돌 위험 + portal/anchor 위치 변동 → **WIP 정리 후 Storybook 보며 진행 권장**.
 - **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).
 - **③ 라이브러리 신규 부품화**: distribution-heatmap, permission-matrix(둘은 generic이라 유지 중), Backend/Frontend 로그 중복 → 공유 컴포넌트, 코드박스(FingerprintBox/PathBox), StatCard(컴팩트 타일), RadioCard 재구현(catalog export OptionCard — create-project는 WIP), CollapsibleSectionHeader 재구현(capture/statics/connection/settings), InfoRow(로컬 Row/Label/Value는 space-between이라 카탈로그 InfoRow의 left-align과 레이아웃 불일치 — 디자인 판단 필요), ClassChip→LegendItem(색점+라벨).
 - **색 hue rgba**(59,130,246 / 96,165,250 / 255,180,60 / 196,43,28 / 0,0,0,* — 디자인 blue와 다른 base라 토큰화 시 색 변동), **bg없는 색텍스트칩**(SyncChip/StatChip), **색점**(StatusDot/SyncDot).
