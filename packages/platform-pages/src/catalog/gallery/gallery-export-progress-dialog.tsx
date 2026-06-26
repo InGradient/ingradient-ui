@@ -1,11 +1,10 @@
 import { DialogShell } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
+import { ProgressBar } from '@ingradient/ui/components'
 import {
   ExportErrorText,
   ExportOptionHint,
-  ExportProgressFill,
   ExportProgressMeta,
-  ExportProgressTrack,
   ExportStatusText,
   exportStageLabel,
 } from './gallery-export-dialog.styles'
@@ -73,9 +72,7 @@ export function GalleryExportProgressDialog({
       }
     >
       <ExportStatusText>{exportStageLabel(job?.stage ?? 'queued')}</ExportStatusText>
-      <ExportProgressTrack>
-        <ExportProgressFill $progress={job?.progress ?? 0} />
-      </ExportProgressTrack>
+      <ProgressBar value={job?.progress ?? 0} />
       <ExportProgressMeta>
         <span>{Math.max(0, Math.min(100, job?.progress ?? 0))}%</span>
         <span>

@@ -1,23 +1,8 @@
-import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { DialogShell } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
+import { ProgressBar } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
-
-const PROGRESS_TRACK_STYLE = {
-  width: '100%',
-  height: 'var(--ig-space-3)',
-  borderRadius: 'var(--ig-radius-pill)',
-  background: 'var(--ig-color-progress-track)',
-  overflow: 'hidden' as const,
-}
-
-const ProgressFill = styled.div<{ $pct: number }>`
-  height: 100%;
-  width: ${(p) => Math.min(100, Math.max(0, p.$pct))}%;
-  background: var(--ig-color-accent);
-  transition: width var(--ig-motion-normal);
-`
 
 const LINK_STYLE = { textDecoration: 'none' }
 
@@ -77,11 +62,7 @@ export function ExportProgressModal({
             {phase === 'error' && errorMessage ? errorMessage : labelMap[phase]}
           </Text>
         </Inline>
-        {busy ? (
-          <div style={PROGRESS_TRACK_STYLE}>
-            <ProgressFill $pct={progress} />
-          </div>
-        ) : null}
+        {busy ? <ProgressBar value={progress} /> : null}
         {phase === 'ready' && downloadUrl ? (
           <Text as="a" tone="accent" size="var(--ig-font-size-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
         ) : null}

@@ -66,21 +66,6 @@ export const ExportRegexInput = styled.input`
   }
 `
 
-export const ExportProgressTrack = styled.div`
-  width: 100%;
-  height: var(--ig-space-5);
-  margin: var(--ig-space-5) 0 var(--ig-space-3);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-white-08);
-  overflow: hidden;
-`
-
-export const ExportProgressFill = styled.div<{ $progress: number }>`
-  width: ${(p) => `${Math.max(0, Math.min(100, p.$progress))}%`};
-  height: 100%;
-  background: linear-gradient(90deg, var(--ig-color-accent) 0%, #78d6ff 100%);
-  transition: width var(--ig-motion-normal);
-`
 
 export const ExportProgressMeta = styled.div`
   display: flex;
