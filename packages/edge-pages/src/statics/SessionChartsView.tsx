@@ -1,10 +1,10 @@
 import { chartHeights } from '@ingradient/ui'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
+import { Table, type TableColumn, EmptyState } from '@ingradient/ui/components'
 import { PanelGrid, Panel, PanelTitle } from './StaticsView.styles'
 import {
   DurationGrid, DurationCard, DurationLabel, DurationValue,
-  Table, Th, Td,
 } from './SessionChartsView.styles'
 import { CHART_BLUE, CHART_GREEN, CHART_WARNING, CHART_DANGER } from './chart-helpers'
 import type { SessionChartsViewProps } from './types'
@@ -47,6 +47,14 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
     value: r.count,
     color: outcomeColors[r.label],
   }))
+
+  const workerColumns: TableColumn<typeof workerStats[number]>[] = [
+    { key: 'worker_name', header: labels.worker, render: (r) => r.worker_name },
+    { key: 'captures', header: labels.captures, numeric: true, render: (r) => r.capture_count },
+    { key: 'labels', header: labels.labels, numeric: true, render: (r) => r.labeling_count },
+    { key: 'retakes', header: labels.retakes, numeric: true, render: (r) => r.retake_count },
+    { key: 'retakeRate', header: labels.retakeRate, numeric: true, render: (r) => `${(r.retake_rate * 100).toFixed(1)}%` },
+  ]
 
   return (
     <PanelGrid>
@@ -100,32 +108,9 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         <Panel>
           <PanelTitle>{labels.workerStats}</PanelTitle>
           {workerStats.length > 0 ? (
-            <Table>
-              <thead>
-                <tr>
-                  <Th>{labels.worker}</Th>
-                  <Th>{labels.captures}</Th>
-                  <Th>{labels.labels}</Th>
-                  <Th>{labels.retakes}</Th>
-                  <Th>{labels.retakeRate}</Th>
-                </tr>
-              </thead>
-              <tbody>
-                {workerStats.map((r) => (
-                  <tr key={r.worker_id ?? r.worker_name}>
-                    <Td>{r.worker_name}</Td>
-                    <Td>{r.capture_count}</Td>
-                    <Td>{r.labeling_count}</Td>
-                    <Td>{r.retake_count}</Td>
-                    <Td>{(r.retake_rate * 100).toFixed(1)}%</Td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />
           ) : (
-            <div style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-sm)', padding: '24px 0', textAlign: 'center' }}>
-              {labels.noWorkerStats}
-            </div>
+            <EmptyState>{labels.noWorkerStats}</EmptyState>
           )}
         </Panel>
       </div>

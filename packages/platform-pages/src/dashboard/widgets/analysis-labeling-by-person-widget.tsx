@@ -1,7 +1,7 @@
 import { chartHeights } from '@ingradient/ui'
-import styled from 'styled-components'
 import { Stack } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
+import { Table, type TableColumn } from '@ingradient/ui/components'
 import { chartColors } from '@ingradient/ui'
 
 const TABLE_CARD_STYLE = {
@@ -11,29 +11,16 @@ const TABLE_CARD_STYLE = {
   borderRadius: 'var(--ig-radius-lg)',
 }
 
-const PersonTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--ig-font-size-sm);
-  th, td {
-    padding: var(--ig-space-3) var(--ig-space-5);
-    text-align: left;
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  }
-  th {
-    font-weight: var(--ig-font-weight-semibold);
-    color: var(--ig-color-text-soft);
-  }
-  td {
-    color: var(--ig-color-text-primary);
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-`
+type PersonRow = { uploader: string; image_count: number; labeled_count: number }
+
+const PERSON_COLUMNS: TableColumn<PersonRow>[] = [
+  { key: 'uploader', header: 'Uploader', render: (person) => person.uploader },
+  { key: 'images', header: 'Images', numeric: true, render: (person) => person.image_count.toLocaleString() },
+  { key: 'labeled', header: 'Labeled', numeric: true, render: (person) => person.labeled_count.toLocaleString() },
+]
 
 export interface AnalysisLabelingByPersonWidgetProps {
-  byPerson: Array<{ uploader: string; image_count: number; labeled_count: number }>
+  byPerson: PersonRow[]
   chartData: Array<{ name: string; fullName: string; images: number; labeled: number }>
 }
 
@@ -60,24 +47,7 @@ export function AnalysisLabelingByPersonWidget({
       />
       {byPerson.length > 0 ? (
         <div style={TABLE_CARD_STYLE}>
-          <PersonTable>
-            <thead>
-              <tr>
-                <th>Uploader</th>
-                <th>Images</th>
-                <th>Labeled</th>
-              </tr>
-            </thead>
-            <tbody>
-              {byPerson.map((person) => (
-                <tr key={person.uploader}>
-                  <td>{person.uploader}</td>
-                  <td>{person.image_count.toLocaleString()}</td>
-                  <td>{person.labeled_count.toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </PersonTable>
+          <Table columns={PERSON_COLUMNS} rows={byPerson} ariaLabel="Uploader activity" />
         </div>
       ) : null}
     </Stack>

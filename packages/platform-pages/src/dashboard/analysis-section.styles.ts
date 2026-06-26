@@ -69,22 +69,3 @@ export const Empty = styled.p`
   ${stateTitleText}
   margin: 0;
 `
-
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--ig-font-size-md);
-  th,
-  td {
-    padding: var(--ig-space-3) var(--ig-space-5);
-    text-align: left;
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  }
-  th {
-    color: var(--ig-color-text-muted);
-    font-weight: var(--ig-font-weight-medium);
-  }
-  td {
-    color: var(--ig-color-text-primary);
-  }
-`

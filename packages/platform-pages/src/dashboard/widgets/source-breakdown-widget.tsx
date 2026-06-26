@@ -3,7 +3,7 @@ import { chartColors } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
-import { SectionPanel } from '@ingradient/ui/components'
+import { SectionPanel, Table, type TableColumn } from '@ingradient/ui/components'
 
 const Card = styled(SectionPanel)`
   background: var(--ig-color-surface-raised);
@@ -16,19 +16,6 @@ const Card = styled(SectionPanel)`
 const Block = styled.div`
   margin-bottom: var(--ig-space-7);
   &:last-child { margin-bottom: 0; }
-`
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--ig-font-size-md);
-  th, td {
-    padding: var(--ig-space-3) var(--ig-space-5);
-    text-align: left;
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  }
-  th { color: var(--ig-color-text-muted); font-weight: var(--ig-font-weight-medium); }
-  td { color: var(--ig-color-text-primary); }
 `
 
 const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
@@ -50,6 +37,11 @@ export interface DefectCount {
   name: string
   count: number
 }
+
+const DEFECT_COLUMNS: TableColumn<DefectCount>[] = [
+  { key: 'name', header: 'Class', render: (item) => item.name },
+  { key: 'count', header: 'Count', numeric: true, render: (item) => item.count.toLocaleString() },
+]
 
 export interface SourceBreakdownSource {
   source: string
@@ -87,17 +79,7 @@ export function SourceBreakdownWidget({
               <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
               <Box style={TABLE_WRAP_STYLE}>
-                <Table>
-                  <thead><tr><th>Class</th><th>Count</th></tr></thead>
-                  <tbody>
-                    {source.defect_counts.map((item) => (
-                      <tr key={item.class_id}>
-                        <td>{item.name}</td>
-                        <td>{item.count.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
+                <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${source.source} defect counts`} />
                 <div style={CHART_STYLE}>
                   <BarChartCard
                     data={source.defect_counts.map((d, i) => ({ name: d.name, count: d.count, color: SOURCE_COLORS[i % SOURCE_COLORS.length] }))}

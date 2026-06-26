@@ -2,6 +2,7 @@ import { chartHeights } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { chartColors } from '@ingradient/ui'
 import { formatDurationMs } from '@ingradient/ui/utils'
+import { Table, type TableColumn } from '@ingradient/ui/components'
 import {
   CHART_COLORS,
   Card,
@@ -12,9 +13,15 @@ import {
   StatLabel,
   StatRow,
   StatValue,
-  Table,
 } from './analysis-section.styles'
-import type { EdgeAnalyticsView } from './edge-analytics-types'
+import type { EdgeAnalyticsView, EdgeWorkerStat } from './edge-analytics-types'
+
+const WORKER_COLUMNS: TableColumn<EdgeWorkerStat>[] = [
+  { key: 'worker', header: 'Worker', render: (row) => row.worker_name },
+  { key: 'captures', header: 'Captures', numeric: true, render: (row) => row.capture_count.toLocaleString() },
+  { key: 'labels', header: 'Labels', numeric: true, render: (row) => row.labeling_count.toLocaleString() },
+  { key: 'retries', header: 'Retries', numeric: true, render: (row) => row.retry_count.toLocaleString() },
+]
 
 export interface EdgeAnalyticsSectionProps {
   edgeAnalytics: EdgeAnalyticsView
@@ -80,26 +87,7 @@ export function EdgeAnalyticsSection({ edgeAnalytics }: EdgeAnalyticsSectionProp
         {edgeAnalytics.worker_stats.length === 0 ? (
           <Empty>No Edge worker stats yet.</Empty>
         ) : (
-          <Table>
-            <thead>
-              <tr>
-                <th>Worker</th>
-                <th>Captures</th>
-                <th>Labels</th>
-                <th>Retries</th>
-              </tr>
-            </thead>
-            <tbody>
-              {edgeAnalytics.worker_stats.map((row) => (
-                <tr key={`${row.worker_id ?? row.worker_name}`}>
-                  <td>{row.worker_name}</td>
-                  <td>{row.capture_count.toLocaleString()}</td>
-                  <td>{row.labeling_count.toLocaleString()}</td>
-                  <td>{row.retry_count.toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <Table columns={WORKER_COLUMNS} rows={edgeAnalytics.worker_stats} ariaLabel="Edge worker activity" />
         )}
       </Card>
 

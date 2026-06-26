@@ -1,40 +1,13 @@
-import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DropdownSelect } from '@ingradient/ui/components'
+import { EmptyState } from '@ingradient/ui/components'
 import { SearchField } from '@ingradient/ui/components'
+import { Table, type TableColumn } from '@ingradient/ui/components'
 import { popupSizeNumbers } from '@ingradient/ui/tokens'
 import { DeviceStatusBadge } from './device-status-badge'
 
 const SEARCH_FIELD_STYLE = { width: popupSizeNumbers.listMin }
-const TH_ACTIONS_STYLE = { width: popupSizeNumbers['2xsNarrow'] }
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--ig-font-size-sm);
-  & th {
-    text-align: left;
-    padding: var(--ig-space-2) var(--ig-space-3);
-    font-weight: var(--ig-font-weight-medium);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-    white-space: nowrap;
-  }
-  & td {
-    padding: var(--ig-space-3);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-white-04);
-    vertical-align: middle;
-  }
-  & td.mono { font-family: monospace; font-size: var(--ig-font-size-xs); }
-  & td.muted { color: var(--ig-color-text-muted); }
-  & td.actions { white-space: nowrap; }
-  & td.empty {
-    padding: var(--ig-space-7) var(--ig-space-3);
-    text-align: center;
-    color: var(--ig-color-text-muted);
-    border-bottom: none;
-  }
-`
 
 export type DeviceFilterStatus = 'all' | 'active' | 'revoked'
 
@@ -75,6 +48,31 @@ export function DevicesTable({
   const formatStatus = (status: string) => status.charAt(0) + status.slice(1).toLowerCase()
   const statusTone = (status: string) => status === 'ACTIVE' ? 'active' : status === 'REVOKED' ? 'revoked' : 'pending'
 
+  const columns: TableColumn<DeviceRow>[] = [
+    { key: 'deviceUid', header: 'Device UID', mono: true, render: (d) => d.deviceUid },
+    { key: 'name', header: 'Name', render: (d) => d.name ?? '—' },
+    {
+      key: 'status', header: 'Status',
+      render: (d) => <DeviceStatusBadge tone={statusTone(d.status)}>{formatStatus(d.status)}</DeviceStatusBadge>,
+    },
+    { key: 'registered', header: 'Registered', muted: true, render: (d) => new Date(d.registeredAt).toLocaleDateString() },
+    { key: 'lastSeen', header: 'Last seen', muted: true, render: (d) => d.lastSeenAt ? new Date(d.lastSeenAt).toLocaleString() : '—' },
+  ]
+  if (isAdmin) {
+    columns.push({
+      key: 'actions', header: '', width: popupSizeNumbers['2xsNarrow'],
+      render: (d) => (
+        <Inline gap="var(--ig-space-3)">
+          <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(d)}>Details</Button>
+          {d.status !== 'REVOKED' ? (
+            <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke?.(d.id)}>Revoke</Button>
+          ) : null}
+          <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onDelete?.(d.id)}>Delete</Button>
+        </Inline>
+      ),
+    })
+  }
+
   return (
     <Stack as="section" gap="var(--ig-space-4)">
       <Inline justify="space-between" gap="var(--ig-space-3)" wrap="wrap">
@@ -108,48 +106,13 @@ export function DevicesTable({
         />
       </Inline>
 
-      <Table>
-        <thead>
-          <tr>
-            <th>Device UID</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Registered</th>
-            <th>Last seen</th>
-            {isAdmin ? <th style={TH_ACTIONS_STYLE} /> : null}
-          </tr>
-        </thead>
-        <tbody>
-          {loading ? (
-            <tr><td className="empty" colSpan={6}>Loading…</td></tr>
-          ) : filteredDevices.length === 0 ? (
-            <tr><td className="empty" colSpan={6}>{devices.length === 0 ? 'No devices registered' : 'No devices match the filter'}</td></tr>
-          ) : (
-            filteredDevices.map((device) => (
-              <tr key={device.id}>
-                <td className="mono">{device.deviceUid}</td>
-                <td>{device.name ?? '—'}</td>
-                <td>
-                  <DeviceStatusBadge tone={statusTone(device.status)}>{formatStatus(device.status)}</DeviceStatusBadge>
-                </td>
-                <td className="muted">{new Date(device.registeredAt).toLocaleDateString()}</td>
-                <td className="muted">{device.lastSeenAt ? new Date(device.lastSeenAt).toLocaleString() : '—'}</td>
-                {isAdmin ? (
-                  <td className="actions">
-                    <Inline gap="var(--ig-space-3)">
-                      <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(device)}>Details</Button>
-                      {device.status !== 'REVOKED' ? (
-                        <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke?.(device.id)}>Revoke</Button>
-                      ) : null}
-                      <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onDelete?.(device.id)}>Delete</Button>
-                    </Inline>
-                  </td>
-                ) : null}
-              </tr>
-            ))
-          )}
-        </tbody>
-      </Table>
+      {loading ? (
+        <EmptyState>Loading…</EmptyState>
+      ) : filteredDevices.length === 0 ? (
+        <EmptyState>{devices.length === 0 ? 'No devices registered' : 'No devices match the filter'}</EmptyState>
+      ) : (
+        <Table columns={columns} rows={filteredDevices} ariaLabel="Devices" />
+      )}
     </Stack>
   )
 }
