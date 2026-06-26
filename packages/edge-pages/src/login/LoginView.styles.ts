@@ -146,18 +146,6 @@ export const AccountItemEmail = styled.span`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-muted);
 `
-export const ModeTag = styled.span<{ $online: boolean }>`
-  display: inline-block;
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  padding: var(--ig-space-2px) 7px;
-  border-radius: var(--ig-radius-xs);
-  margin-left: var(--ig-space-2);
-  background: ${(p) => (p.$online ? 'var(--ig-color-success-bg)' : 'var(--ig-color-warning-bg)')};
-  color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
-  vertical-align: middle;
-`
-
 export const FooterRow = styled.div`
   display: flex;
   justify-content: center;

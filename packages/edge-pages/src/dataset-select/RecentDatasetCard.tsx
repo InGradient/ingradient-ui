@@ -1,6 +1,7 @@
+import { Badge } from '@ingradient/ui/components'
 import {
   RecentCard, DatasetNameRow, DatasetName, Spacer, DatasetProjectLabel,
-  CardBottom, ImageCount, ClassChips, RecentBadge,
+  CardBottom, ImageCount, ClassChips,
 } from './dataset-card.styles'
 import { renderClassChips } from './class-chips'
 import type { EdgeDataset } from './types'
@@ -20,7 +21,7 @@ export function RecentDatasetCard(props: RecentDatasetCardProps): JSX.Element {
     <RecentCard $isLatest={isLatest} onClick={() => onSelect(dataset)}>
       <DatasetNameRow>
         <DatasetName title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
-        {isLatest && <><Spacer /><RecentBadge>{recentBadgeLabel}</RecentBadge></>}
+        {isLatest && <><Spacer /><Badge $tone="accent">{recentBadgeLabel}</Badge></>}
       </DatasetNameRow>
       <DatasetProjectLabel>{dataset.project_name}</DatasetProjectLabel>
       <CardBottom>

@@ -30,42 +30,6 @@ export const HeaderRight = styled.div`
   gap: var(--ig-space-4);
 `
 
-export const ModeTag = styled.span<{ $online: boolean }>`
-  display: inline-block;
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  padding: var(--ig-space-2px) 7px;
-  border-radius: var(--ig-radius-xs);
-  margin-left: var(--ig-space-3);
-  background: ${(p) => (p.$online ? 'var(--ig-color-success-bg)' : 'var(--ig-color-warning-bg)')};
-  color: ${(p) => (p.$online ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
-  vertical-align: middle;
-`
-
-export const RoleBadge = styled.span<{ $role: string }>`
-  display: inline-block;
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  padding: var(--ig-space-2px) var(--ig-space-3);
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => {
-    switch (p.$role) {
-      case 'owner':   return 'var(--ig-color-warning-bg)'
-      case 'manager': return 'var(--ig-color-blue-tint-15)'
-      case 'labeler': return 'var(--ig-color-success-bg)'
-      default:        return 'var(--ig-color-white-08)'
-    }
-  }};
-  color: ${(p) => {
-    switch (p.$role) {
-      case 'owner':   return 'var(--ig-color-warning)'
-      case 'manager': return 'var(--ig-color-accent)'
-      case 'labeler': return 'var(--ig-color-success)'
-      default:        return 'var(--ig-color-text-muted)'
-    }
-  }};
-`
-
 const spinAnim = keyframes`to { transform: rotate(${rotations.full}); }`
 
 export const RefreshBtn = styled.button<{ $spinning?: boolean }>`

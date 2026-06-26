@@ -1,8 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import { RefreshCw, Settings } from 'lucide-react'
+import { Badge } from '@ingradient/ui/components'
 import {
-  Header, HeaderLeft, Title, HeaderRight, ModeTag,
+  Header, HeaderLeft, Title, HeaderRight,
   RefreshBtn, IconBtn, StatusItem, StatusDot,
 } from './styles/header.styles'
 import type { ConnectionStatus } from './types'
@@ -42,9 +43,9 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
       <HeaderLeft>
         <Title>
           {title}
-          <ModeTag $online={mode === 'online'}>
+          <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? onlineLabel : offlineLabel}
-          </ModeTag>
+          </Badge>
         </Title>
       </HeaderLeft>
       <HeaderRight>

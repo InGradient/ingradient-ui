@@ -71,23 +71,11 @@ export const DatasetName = styled.div`
   overflow-wrap: anywhere;
 `
 
-export const EdgeDatasetTaskTag = styled.span<{ $type: string }>`
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-1px) var(--ig-space-2);
-  border-radius: var(--ig-radius-2xs);
-  letter-spacing: var(--ig-letter-spacing-tight);
-  flex-shrink: 0;
-  white-space: nowrap;
-  background: ${(p) =>
-    p.$type === 'classification' ? 'var(--ig-color-tag-classification-bg)' :
-    p.$type === 'segmentation'   ? 'var(--ig-color-tag-segmentation-bg)' :
-                                   'var(--ig-color-blue-tint-15)'};
-  color: ${(p) =>
-    p.$type === 'classification' ? chartColors.tagClassification :
-    p.$type === 'segmentation'   ? chartColors.tagSegmentation :
-                                   'var(--ig-color-accent)'};
-`
+export function edgeTaskTagStyle($type: string): { bg: string; color: string } {
+  if ($type === 'classification') return { bg: 'var(--ig-color-tag-classification-bg)', color: chartColors.tagClassification }
+  if ($type === 'segmentation')   return { bg: 'var(--ig-color-tag-segmentation-bg)', color: chartColors.tagSegmentation }
+  return { bg: 'var(--ig-color-blue-tint-15)', color: 'var(--ig-color-accent)' }
+}
 
 export const EDGE_TASK_TAG: Record<string, string> = {
   classification: 'CLS',
@@ -150,28 +138,7 @@ export const ClassChipDot = styled.span<{ $color: string }>`
   flex-shrink: 0;
 `
 
-export const MoreChip = styled.span`
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) var(--ig-space-2-plus);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-white-06);
-  color: var(--ig-color-text-muted);
-  border: var(--ig-border-1px) solid var(--ig-color-white-12);
-`
-
 export const DatasetProjectLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-muted);
-`
-
-export const RecentBadge = styled.div`
-  flex-shrink: 0;
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  padding: var(--ig-space-2px) var(--ig-space-2);
-  border-radius: var(--ig-radius-2xs);
-  background: var(--ig-color-blue-tint-20);
-  color: var(--ig-color-accent);
-  white-space: nowrap;
 `

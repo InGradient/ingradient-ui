@@ -1,10 +1,10 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Settings } from 'lucide-react'
-import { Checkbox, TextField, PasswordField, Button, IconButton, TextButton } from '@ingradient/ui/components'
+import { Badge, Checkbox, TextField, PasswordField, Button, IconButton, TextButton } from '@ingradient/ui/components'
 import {
   Wrap, LangCorner, Card, Title, PackageSection, PackageInfo,
   Divider, LoginForm, Field, FieldLabel, CheckOptions, ErrorMsg,
-  SessionBox, SessionGreeting, SessionMeta, ModeTag, FooterRow,
+  SessionBox, SessionGreeting, SessionMeta, FooterRow,
   AccountList, AccountItem, AccountItemName, AccountItemEmail,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
@@ -35,9 +35,9 @@ export function LoginView(props: LoginViewProps): JSX.Element {
       <Card>
         <Title>
           {labels.title}
-          <ModeTag $online={mode === 'online'}>
+          <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? labels.online : labels.offline}
-          </ModeTag>
+          </Badge>
         </Title>
 
         {mode === 'offline' && (
@@ -49,7 +49,7 @@ export function LoginView(props: LoginViewProps): JSX.Element {
               <PackageInfo>
                 {packageInfo.project_name} · v{packageInfo.package_version}
                 {packageInfo.platform_url && (
-                  <ModeTag $online>{labels.onlineSupport}</ModeTag>
+                  <Badge $tone="success">{labels.onlineSupport}</Badge>
                 )}
               </PackageInfo>
             )}

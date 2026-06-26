@@ -1,8 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
+import { Badge, Tag } from '@ingradient/ui/components'
 import { MoreHorizontal, Download } from 'lucide-react'
 import {
-  DatasetCard, DatasetNameRow, DatasetName, Spacer, RecentBadge,
-  EdgeDatasetTaskTag, CardBottom, ImageCount, ClassChips, EDGE_TASK_TAG,
+  DatasetCard, DatasetNameRow, DatasetName, Spacer,
+  CardBottom, ImageCount, ClassChips, EDGE_TASK_TAG, edgeTaskTagStyle,
 } from './dataset-card.styles'
 import {
   DotsBtnWrap, DotsBtn, DotMenuOverlay, DotMenuWrap, DotMenuItem,
@@ -31,16 +32,18 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
     onSelect, onToggleDotMenu, onExportClick,
   } = props
 
+  const taskStyle = dataset.task_type ? edgeTaskTagStyle(dataset.task_type) : null
+
   return (
     <DatasetCard $isRecent={isRecent} onClick={() => onSelect(dataset)}>
       <DatasetNameRow>
         <DatasetName title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
         <Spacer />
-        {isRecent && <RecentBadge>{recentBadgeLabel}</RecentBadge>}
-        {dataset.task_type && (
-          <EdgeDatasetTaskTag $type={dataset.task_type}>
+        {isRecent && <Badge $tone="accent">{recentBadgeLabel}</Badge>}
+        {dataset.task_type && taskStyle && (
+          <Tag $bg={taskStyle.bg} $color={taskStyle.color}>
             {EDGE_TASK_TAG[dataset.task_type] ?? 'OD'}
-          </EdgeDatasetTaskTag>
+          </Tag>
         )}
         <DotsBtnWrap>
           <DotsBtn

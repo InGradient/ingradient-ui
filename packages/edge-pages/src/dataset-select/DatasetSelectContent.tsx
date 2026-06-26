@@ -1,7 +1,7 @@
 import { Plus } from 'lucide-react'
 import { EmptyState, iconSizeNumbers } from '@ingradient/ui'
+import { Badge } from '@ingradient/ui/components'
 import { Content, SectionLabel, ErrorMsg, Spinner } from './styles/page.styles'
-import { RoleBadge } from './styles/header.styles'
 import {
   RecentSection, RecentScroll, ProjectSection, ProjectHeader,
   ProjectName, ProjectTypeTag, AddDatasetBtn, DatasetGrid,
@@ -10,6 +10,16 @@ import { RecentDatasetCard } from './RecentDatasetCard'
 import { DatasetCardView } from './DatasetCardView'
 import { CreateProjectFormView } from '../dataset-modals/CreateProjectFormView'
 import type { DatasetSelectViewProps } from './types'
+
+const ROLE_TONE = {
+  owner: 'warning',
+  manager: 'accent',
+  labeler: 'success',
+} as const
+
+function roleTone(role: string) {
+  return ROLE_TONE[role as keyof typeof ROLE_TONE] ?? 'neutral'
+}
 
 interface DatasetSelectContentProps {
   loading: boolean
@@ -73,7 +83,7 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
           <ProjectHeader>
             <ProjectName>{group.project_name}</ProjectName>
             {group.deflectometry_enabled && <ProjectTypeTag>Deflectometry</ProjectTypeTag>}
-            <RoleBadge $role={group.role}>{labels.roleLabel(group.role)}</RoleBadge>
+            <Badge $tone={roleTone(group.role)}>{labels.roleLabel(group.role)}</Badge>
             <AddDatasetBtn onClick={(e) => { e.stopPropagation(); onAddDatasetClick(group.project_id) }}>
               <Plus size={iconSizeNumbers["2xs"]} />
               {labels.addDataset}
