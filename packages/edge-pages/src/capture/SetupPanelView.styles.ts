@@ -55,8 +55,8 @@ export const PatternGrid = styled.div`
 `;
 
 export const PatternButton = styled.button<{ $active: boolean }>`
-  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
-  background: ${({ $active }) => ($active ? 'rgba(59, 130, 246, 0.18)' : 'var(--ig-color-white-04)')};
+  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
+  background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
   color: var(--ig-color-text-primary);
   border-radius: var(--ig-radius-sm);
   padding: var(--ig-space-4);

@@ -56,8 +56,8 @@ export const PatternButton = styled.button<{ $active: boolean }>`
   font-weight: var(--ig-font-weight-semibold);
   border-radius: var(--ig-radius-xs);
   cursor: pointer;
-  background: ${({ $active }) => ($active ? 'rgba(59, 130, 246, 0.18)' : 'var(--ig-color-white-04)')};
-  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'rgba(96, 165, 250, 0.85)' : 'var(--ig-color-white-12)')};
+  background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
+  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
   color: var(--ig-color-text-primary);
 `
 
