@@ -323,16 +323,19 @@
   - **`PermissionMatrix` 이동**(pages→components) — "generic matrix". 도메인 wrapper(project-permission-matrix)는 그대로 두고 카탈로그 import. 비파괴 re-export.
 - **#8 토큰화**: PatternButton tailwind blue rgba → `blue-tint` 토큰.
 
-## ⛔ 남음 — 각각 "지금 자동으로 못 하는" 하드 블록 (grep으로 확인됨)
-| 항목 | 남음 | 상태 |
-|---|---|---|
-| **ContextMenu** (AccountMenu/dot-menu) | 4파일 | 대체부품 `ContextMenuWithSubmenus`가 **사용자 WIP 미커밋 파일** → 그게 커밋돼야 진행 |
-| **rgba 8종** (white 셔터링/close red/black 그림자) | 8 | **신규 토큰을 디자인 의도와 함께 추가**해야 함(#8) 또는 page 전용 장식 — 디자인 결정 필요 |
-| ~~연결상태 dot~~ | ✅ 완료 | `StatusDot` 부품 추가(#0.2) + TopBar/header dedup. SyncDot(span)·SyncChip(bg없는 색텍스트)은 모양이 달라 별도 |
-| **LogDetailTable** | 1 | headerless colSpan key-value 표 — generic이면 이동 후보, 아니면 유지 |
-| **generic table 유지** (permission-matrix·heatmap는 **이동 완료**) | — | 이제 둘 다 components 계층. LogDetail만 판단 남음 |
+## ✅ 사용자 지시로 마무리한 항목
+| 항목 | 처리 |
+|---|---|
+| **ContextMenu** (AccountMenu/dot-menu) | 사용자 WIP(ContextMenuWithSubmenus 토큰화) 커밋 후 → **둘 다 `ContextMenuWithSubmenus`로 교체**. dot-menu.styles.ts 삭제. **ContextMenu 재구현 0건** |
+| **그림자 rgba** | `--ig-color-shadow-soft/medium/strong` **신규 토큰 추가**(dark/light 동일=시각변화 0) + CaptureView/ImagesView/LabelingCharts box-shadow 토큰화 |
+| **연결상태 dot** | `StatusDot` 부품 추가(#0.2) + TopBar/header dedup |
+| **generic table** | permission-matrix·heatmap **components로 이동 완료** |
 
-→ **규칙 #0 정렬 + 타입검증 가능한 교체는 사실상 완료.** 남은 건 ① 사용자 WIP 커밋(ContextMenu), ② 신규 토큰/부품의 **디자인 결정**(rgba 8종, status-dot)뿐.
+## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
+- white 셔터링 rgba(255,255,255,*) = 카메라 촬영버튼 장식, close 버튼 rgba(196,43,28) = Electron 창 컨트롤 → 정말 독립적이라 pages에 유지.
+- SyncChip/SyncDot/LogDetailTable → 모양·구조 달라 낮은 우선순위.
+
+→ **규칙 #0 정렬 + 사용자 지시 항목 전부 완료.**
 - **ContextMenu 재구현→`ContextMenu`/`MenuItem`**: chrome AccountMenu, dataset-select dot-menu (anchor/portal 위치 재구성 — 구조 변경).
 - **③ 라이브러리 신규 부품화**: distribution-heatmap, permission-matrix(둘은 generic이라 유지 중), Backend/Frontend 로그 중복 → 공유 컴포넌트, 코드박스(FingerprintBox/PathBox), StatCard(컴팩트 타일), RadioCard 재구현(catalog export OptionCard — create-project는 WIP), CollapsibleSectionHeader 재구현(capture/statics/connection/settings), InfoRow(로컬 Row/Label/Value는 space-between이라 카탈로그 InfoRow의 left-align과 레이아웃 불일치 — 디자인 판단 필요), ClassChip→LegendItem(색점+라벨).
 - **색 hue rgba**(59,130,246 / 96,165,250 / 255,180,60 / 196,43,28 / 0,0,0,* — 디자인 blue와 다른 base라 토큰화 시 색 변동), **bg없는 색텍스트칩**(SyncChip/StatChip), **색점**(StatusDot/SyncDot).
