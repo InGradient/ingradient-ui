@@ -334,6 +334,16 @@
 | **닫기버튼 빨강** | raw rgba(196,43,28) hover/active → `--ig-color-danger-bg-strong` (테마 인지 danger 빨강) |
 | **lucide 직접 import (systemic #1)** | pages 28파일이 `lucide-react`에서 직접 import → catalog-icons에 48개 아이콘 **시맨틱 별칭 등록**(SettingsIcon/RefreshIcon/ExpandIcon 등) 후 전부 `@ingradient/ui/components` 경유로 교체. registry 우회 0건. 문자열 리터럴 오치환 3건(`'Camera'`/`'Download widget image'`/`'Archive comment'`) 검토 중 발견·복구. |
 
+## ✅ reviewer systemic 항목 후속 처리
+- **#1 lucide 직접 import** → 위 표대로 28파일 registry 경유 완료.
+- **#2 fontSize에 iconSizeNumbers 오용** → `'var(--ig-font-size-xs)'`로 교체(차트 툴팁/버튼 inline 7곳).
+- **#3 mono 폰트 하드코딩** → `var(--ig-font-mono)` 완료(0건 잔존).
+
+## 🟡 남음 — 판단 필요 (#4 inline card surface)
+- `CARD_STYLE`/`FORM_BOX_STYLE`/`SOLO_CARD_STYLE`(storage·project·devices·account 5파일): surface-raised+border+radius 카드 표면이 inline style로 반복. **이미 완전 토큰화됨**(토큰 위반 아님).
+- 기존 `Card`(elevation="raised")는 **floating box-shadow를 강제**하고 border-subtle 고정 → 이들은 의도적으로 **flat(그림자 없음)**, 3/4는 border-strong, `SOLO_CARD`는 danger-alert(대응 tone 없음). 그대로 swap 시 그림자 추가·테두리 변경 발생.
+- 선택지: (a) flat이라 page 유지(#0.3), (b) `Card`에 flat/tone prop 추가 후 swap(#0.2), (c) 시각 변화 감수하고 현 `Card`로 swap. → 사용자 결정 대기.
+
 ## 🟢 남음 — "둬도 됨"으로 합의된 page 전용 장식 (규칙 #0.3)
 - white 셔터링 rgba(255,255,255,0.25/0.5) = 파란 accent 셔터버튼 위 on-accent 흰 스피너/링. 테마 인지 흰 토큰(white-24 등)은 light 모드에서 어두운 틴트로 뒤집혀 파란 버튼 위 역전됨 → 항상-흰 alpha 토큰을 신설하지 않는 한 raw 유지가 맞음(#0.3). (close 버튼 빨강은 위 표대로 danger 토큰화 완료)
 - **SyncDot → 죽은코드라 제거**(정의·export됐으나 참조 0건, rule #4).
