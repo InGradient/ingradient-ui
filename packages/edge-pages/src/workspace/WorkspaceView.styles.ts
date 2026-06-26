@@ -34,7 +34,7 @@ export const ConfirmButton = styled.button<{ $danger?: boolean }>`
   height: var(--ig-control-height-md);
   padding: 0 var(--ig-space-6);
   border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'rgba(239, 68, 68, 0.35)' : 'var(--ig-color-border-subtle)')};
+  border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'var(--ig-color-alert-danger-border)' : 'var(--ig-color-border-subtle)')};
   background: ${({ $danger }) => ($danger ? 'var(--ig-color-danger-bg)' : 'transparent')};
   color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);

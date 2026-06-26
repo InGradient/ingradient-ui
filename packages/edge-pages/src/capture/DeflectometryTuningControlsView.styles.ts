@@ -73,9 +73,9 @@ export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
   border-radius: var(--ig-radius-xs);
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-semibold);
-  background: ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.14)' : 'var(--ig-color-selection-bg)')};
+  background: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-alert-warning-bg)' : 'var(--ig-color-selection-bg)')};
   color: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-warning)' : 'var(--ig-color-accent-soft)')};
-  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'rgba(255, 180, 60, 0.35)' : 'var(--ig-color-blue-tint-35)')};
+  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-alert-warning-border)' : 'var(--ig-color-blue-tint-35)')};
 `;
 
 // ── Setup Quality Indicator ─────────────────────────────────────────────────
