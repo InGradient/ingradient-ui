@@ -1,8 +1,7 @@
 import { useRef, useState, type ChangeEvent, type DragEvent } from 'react'
-import { TextField, TextareaField } from '@ingradient/ui/components'
+import { DropZone, TextField, TextareaField } from '@ingradient/ui/components'
 import { FieldGroup, FieldHint, FieldLabel } from '@ingradient/ui/patterns'
 import {
-  Dropzone,
   FieldsBody,
   FileInput,
   FileItem,
@@ -167,17 +166,26 @@ export function ImagesSection(props: {
         <SectionDescription>Add images now, or start with an empty project and upload them later.</SectionDescription>
       </SectionHeader>
       <SectionBody>
-        <Dropzone
-          type="button"
-          $active={dragOver}
+        <DropZone
+          variant="outlined"
+          active={dragOver}
+          disabled={props.disabled}
+          role="button"
+          tabIndex={props.disabled ? -1 : 0}
+          style={{
+            width: '100%',
+            padding: 'var(--ig-space-7)',
+            textAlign: 'center',
+            fontSize: 'var(--ig-font-size-sm)',
+            cursor: props.disabled ? 'not-allowed' : 'pointer',
+          }}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={() => setDragOver(false)}
-          onClick={() => fileInputRef.current?.click()}
-          disabled={props.disabled}
+          onClick={() => !props.disabled && fileInputRef.current?.click()}
         >
           Drag images here or click to select
-        </Dropzone>
+        </DropZone>
         <FileInput
           ref={fileInputRef}
           type="file"

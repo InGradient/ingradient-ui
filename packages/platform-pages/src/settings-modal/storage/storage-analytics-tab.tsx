@@ -1,14 +1,8 @@
 import type { ReactNode } from 'react'
 import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { Button } from '@ingradient/ui/components'
+import { Alert, Button } from '@ingradient/ui/components'
 
 const CONTAINER_STYLE = {}
-const ERROR_WRAP_STYLE = {
-  padding: 'var(--ig-space-7)',
-  background: 'var(--ig-color-alert-danger-bg)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-alert-danger-border)',
-  borderRadius: 'var(--ig-radius-xxs)',
-}
 const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
 const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
 
@@ -54,10 +48,12 @@ export function StorageAnalyticsTab({
   if (error) {
     return (
       <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
-        <Stack gap="var(--ig-space-3)" style={ERROR_WRAP_STYLE}>
-          <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
-          {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
-        </Stack>
+        <Alert $tone="danger">
+          <Stack gap="var(--ig-space-3)">
+            <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
+            {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
+          </Stack>
+        </Alert>
       </Stack>
     )
   }

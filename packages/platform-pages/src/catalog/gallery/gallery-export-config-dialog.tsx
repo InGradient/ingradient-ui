@@ -1,16 +1,7 @@
 import { DialogShell } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
-import {
-  ExportErrorText,
-  ExportOption,
-  ExportOptionBody,
-  ExportOptionHint,
-  ExportOptionRadio,
-  ExportOptionTitle,
-  ExportRegexInput,
-  ExportSection,
-  ExportSectionLabel,
-} from './gallery-export-dialog.styles'
+import { RadioCardGroup, type RadioCardGroupOption, TextField } from '@ingradient/ui/components'
+import { ExportErrorText, ExportSection, ExportSectionLabel } from './gallery-export-dialog.styles'
 
 const EXPORT_DIALOG_WIDTH = 'min(440px, calc(100vw - var(--ig-space-13)))'
 
@@ -84,124 +75,83 @@ export function GalleryExportConfigDialog({
     >
       <ExportSection>
         <ExportSectionLabel>Range</ExportSectionLabel>
-        <ExportOption $active={range === 'selected'} $disabled={selectedCount === 0}>
-          <ExportOptionRadio
-            name="export-range"
-            checked={range === 'selected'}
-            onChange={() => setRange('selected')}
-            disabled={selectedCount === 0}
-          />
-          <ExportOptionBody>
-            <ExportOptionTitle>Selected {selectedCount} items</ExportOptionTitle>
-            <ExportOptionHint>Exports only the images currently selected in the gallery.</ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
-        <ExportOption $active={range === 'all'}>
-          <ExportOptionRadio name="export-range" checked={range === 'all'} onChange={() => setRange('all')} />
-          <ExportOptionBody>
-            <ExportOptionTitle>{allRangeTitle}</ExportOptionTitle>
-            <ExportOptionHint>{allRangeHint}</ExportOptionHint>
-            <ExportOptionHint>Respects the current gallery filters (archive, labeled, pattern, etc.).</ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
+        <RadioCardGroup
+          value={range}
+          onChange={(value) => setRange(value as GalleryExportRange)}
+          options={[
+            {
+              value: 'selected',
+              label: `Selected ${selectedCount} items — Exports only the images currently selected in the gallery.`,
+              disabled: selectedCount === 0,
+            },
+            {
+              value: 'all',
+              label: `${allRangeTitle} — ${allRangeHint} Respects the current gallery filters (archive, labeled, pattern, etc.).`,
+            },
+          ]}
+        />
       </ExportSection>
       <ExportSection>
         <ExportSectionLabel>Export Type</ExportSectionLabel>
-        <ExportOption $active={exportType === 'images_and_labels'}>
-          <ExportOptionRadio
-            name="export-type"
-            checked={exportType === 'images_and_labels'}
-            onChange={() => setExportType('images_and_labels')}
-          />
-          <ExportOptionBody>
-            <ExportOptionTitle>Images + Labels</ExportOptionTitle>
-            <ExportOptionHint>Packages original files with annotations.json.</ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
-        <ExportOption $active={exportType === 'labels_only'}>
-          <ExportOptionRadio
-            name="export-type"
-            checked={exportType === 'labels_only'}
-            onChange={() => setExportType('labels_only')}
-          />
-          <ExportOptionBody>
-            <ExportOptionTitle>Labels Only</ExportOptionTitle>
-            <ExportOptionHint>Keeps annotation paths but excludes image binaries from the ZIP.</ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
+        <RadioCardGroup
+          value={exportType}
+          onChange={(value) => setExportType(value as GalleryExportType)}
+          options={EXPORT_TYPE_OPTIONS}
+        />
       </ExportSection>
       <ExportSection>
         <ExportSectionLabel>Image Format</ExportSectionLabel>
-        {IMAGE_FORMAT_OPTIONS.map((opt) => (
-          <ExportOption
-            key={opt.value}
-            $active={imageFormat === opt.value}
-            onClick={() => setImageFormat(opt.value)}
-          >
-            <ExportOptionRadio
-              name="export-image-format"
-              checked={imageFormat === opt.value}
-              onChange={() => setImageFormat(opt.value)}
-            />
-            <ExportOptionBody>
-              <ExportOptionTitle>{opt.title}</ExportOptionTitle>
-              <ExportOptionHint>{opt.hint}</ExportOptionHint>
-            </ExportOptionBody>
-          </ExportOption>
-        ))}
+        <RadioCardGroup
+          value={imageFormat}
+          onChange={(value) => setImageFormat(value as GalleryExportImageFormat)}
+          options={IMAGE_FORMAT_OPTIONS}
+        />
       </ExportSection>
       <ExportSection>
         <ExportSectionLabel>Folder Grouping</ExportSectionLabel>
-        <ExportOption $active={groupBy === 'none'}>
-          <ExportOptionRadio name="export-group-by" checked={groupBy === 'none'} onChange={() => setGroupBy('none')} />
-          <ExportOptionBody>
-            <ExportOptionTitle>None (Flat)</ExportOptionTitle>
-            <ExportOptionHint>모든 이미지를 images/ 아래에 한 번에 담습니다.</ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
-        <ExportOption $active={groupBy === 'sequence'}>
-          <ExportOptionRadio
-            name="export-group-by"
-            checked={groupBy === 'sequence'}
-            onChange={() => setGroupBy('sequence')}
+        <RadioCardGroup
+          value={groupBy}
+          onChange={(value) => setGroupBy(value as GalleryExportGroupBy)}
+          options={GROUP_BY_OPTIONS}
+        />
+        {groupBy === 'regex' ? (
+          <TextField
+            style={{ marginTop: 'var(--ig-space-3)' }}
+            value={groupKeyRegex}
+            onChange={(event) => setGroupKeyRegex(event.target.value)}
+            placeholder="예: ^([A-Za-z]+_\\d+)_"
           />
-          <ExportOptionBody>
-            <ExportOptionTitle>Sequence</ExportOptionTitle>
-            <ExportOptionHint>
-              sequence_id 별로 하위 폴더 분리 (Deflectometry 시퀀스 등). sequence가 없는 이미지는 폴더 없이 저장됩니다.
-            </ExportOptionHint>
-          </ExportOptionBody>
-        </ExportOption>
-        <ExportOption $active={groupBy === 'regex'}>
-          <ExportOptionRadio
-            name="export-group-by"
-            checked={groupBy === 'regex'}
-            onChange={() => setGroupBy('regex')}
-          />
-          <ExportOptionBody>
-            <ExportOptionTitle>Regex (파일명 패턴)</ExportOptionTitle>
-            <ExportOptionHint>
-              이미지 이름에서 첫 capture group 을 폴더명으로 사용. sequence_id가 있으면 그걸 우선.
-            </ExportOptionHint>
-            {groupBy === 'regex' ? (
-              <ExportRegexInput
-                value={groupKeyRegex}
-                onChange={(event) => setGroupKeyRegex(event.target.value)}
-                placeholder="예: ^([A-Za-z]+_\\d+)_"
-                onClick={(event) => event.stopPropagation()}
-              />
-            ) : null}
-          </ExportOptionBody>
-        </ExportOption>
+        ) : null}
       </ExportSection>
       {error ? <ExportErrorText>{error}</ExportErrorText> : null}
     </DialogShell>
   )
 }
 
-const IMAGE_FORMAT_OPTIONS: { value: GalleryExportImageFormat; title: string; hint: string }[] = [
-  { value: 'original', title: 'Original Format', hint: 'Restores the original file extension (PNG, JPEG, etc.).' },
-  { value: 'png', title: 'PNG', hint: 'Lossless PNG. Widely compatible, larger file size.' },
-  { value: 'jpg', title: 'JPEG', hint: 'Compact file size. Best for sharing and general use.' },
-  { value: 'webp', title: 'WebP (Fastest)', hint: 'No conversion needed. Fastest export, smallest file size.' },
+const EXPORT_TYPE_OPTIONS: RadioCardGroupOption[] = [
+  { value: 'images_and_labels', label: 'Images + Labels — Packages original files with annotations.json.' },
+  {
+    value: 'labels_only',
+    label: 'Labels Only — Keeps annotation paths but excludes image binaries from the ZIP.',
+  },
+]
+
+const IMAGE_FORMAT_OPTIONS: RadioCardGroupOption[] = [
+  { value: 'original', label: 'Original Format — Restores the original file extension (PNG, JPEG, etc.).' },
+  { value: 'png', label: 'PNG — Lossless PNG. Widely compatible, larger file size.' },
+  { value: 'jpg', label: 'JPEG — Compact file size. Best for sharing and general use.' },
+  { value: 'webp', label: 'WebP (Fastest) — No conversion needed. Fastest export, smallest file size.' },
+]
+
+const GROUP_BY_OPTIONS: RadioCardGroupOption[] = [
+  { value: 'none', label: 'None (Flat) — 모든 이미지를 images/ 아래에 한 번에 담습니다.' },
+  {
+    value: 'sequence',
+    label:
+      'Sequence — sequence_id 별로 하위 폴더 분리 (Deflectometry 시퀀스 등). sequence가 없는 이미지는 폴더 없이 저장됩니다.',
+  },
+  {
+    value: 'regex',
+    label: 'Regex (파일명 패턴) — 이미지 이름에서 첫 capture group 을 폴더명으로 사용. sequence_id가 있으면 그걸 우선.',
+  },
 ]

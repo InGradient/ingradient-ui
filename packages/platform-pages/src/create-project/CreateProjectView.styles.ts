@@ -104,31 +104,6 @@ export const OptionalLabel = styled.span`
   margin-left: var(--ig-space-2);
 `
 
-export const Dropzone = styled.button<{ $active?: boolean }>`
-  display: block;
-  width: 100%;
-  border: var(--ig-border-2px) dashed
-    ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
-  border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-7);
-  text-align: center;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
-  cursor: pointer;
-  background: ${(p) =>
-    p.$active ? 'var(--ig-color-surface-focus)' : 'var(--ig-color-surface-muted)'};
-
-  &:hover {
-    border-color: var(--ig-color-accent);
-    color: var(--ig-color-text-secondary);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: var(--ig-opacity-muted);
-  }
-`
-
 export const FileInput = styled.input`
   display: none;
 `

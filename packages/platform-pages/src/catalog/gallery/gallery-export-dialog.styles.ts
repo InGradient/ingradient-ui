@@ -13,59 +13,10 @@ export const ExportSectionLabel = styled.div`
   color: var(--ig-color-text-soft);
 `
 
-export const ExportOption = styled.label<{ $active?: boolean; $disabled?: boolean }>`
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-5);
-  margin-bottom: var(--ig-space-3);
-  border-radius: var(--ig-radius-lg);
-  border: var(--ig-border-1px) solid
-    ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'var(--ig-color-white-04)')};
-  color: ${(p) => (p.$disabled ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-primary)')};
-  opacity: ${(p) => (p.$disabled ? 0.55 : 1)};
-  cursor: ${(p) => (p.$disabled ? 'not-allowed' : 'pointer')};
-`
-
-export const ExportOptionRadio = styled.input.attrs({ type: 'radio' })`
-  margin-top: var(--ig-space-2px);
-  accent-color: var(--ig-color-accent);
-`
-
-export const ExportOptionBody = styled.span`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-  min-width: 0;
-`
-
-export const ExportOptionTitle = styled.span`
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-`
-
 export const ExportOptionHint = styled.span`
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-soft);
 `
-
-export const ExportRegexInput = styled.input`
-  width: 100%;
-  margin-top: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border-radius: var(--ig-radius-md);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-white-04);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
-  font-family: var(--ig-font-mono);
-  &:focus {
-    outline: none;
-    border-color: var(--ig-color-accent);
-  }
-`
-
 
 export const ExportProgressMeta = styled.div`
   display: flex;
