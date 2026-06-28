@@ -135,9 +135,7 @@ export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max
 export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'var(--ig-color-alert-success-bg)':'var(--ig-color-danger-bg-soft)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)
-export const ProgressWrap = styled.div`margin-top: var(--ig-space-5);height:6px;border-radius: var(--ig-space-3px);background:var(--ig-color-border-subtle);overflow:hidden;position:relative;`;
-export const ProgressBar = styled.div`height:100%;border-radius: var(--ig-space-3px);background:var(--ig-color-accent);transition:width 0.3s ease;`;
-export const ProgressLabel = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-align:right;margin-top: var(--ig-space-1);`;
+// ProgressWrap/ProgressBar/ProgressLabel: 미사용 죽은코드 제거 (2026-06-28 재검토). 진행률 필요 시 ui ProgressBar 사용.
 
 // ── DLL Path ──
 export const DllPathRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-2);`;

@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react'
-import { Button, DialogShell } from '@ingradient/ui'
-import { ProgressBarTrack, ProgressBarFill } from './ExportModalView.styles'
+import { Button, DialogShell, ProgressBar } from '@ingradient/ui'
 import type { ExportModalViewProps } from './types'
 
 const DATASET_NAME_STYLE: CSSProperties = {
@@ -52,13 +51,11 @@ export function ExportModalView(props: ExportModalViewProps): JSX.Element {
         <span style={IMAGE_COUNT_STYLE}>{labels.images(imageCount)}</span>
       </div>
       <div style={LOCAL_COUNT_STYLE}>{labels.localImages(localImageCount)}</div>
-      <ProgressBarTrack>
-        <ProgressBarFill
-          $done={phase === 'done'}
-          $error={phase === 'error'}
-          style={{ display: phase === 'idle' ? 'none' : undefined }}
-        />
-      </ProgressBarTrack>
+      <ProgressBar
+        indeterminate={phase === 'running'}
+        value={phase === 'done' || phase === 'error' ? 100 : 0}
+        tone={phase === 'error' ? 'danger' : 'accent'}
+      />
       <div
         style={{
           ...STATUS_MSG_STYLE,

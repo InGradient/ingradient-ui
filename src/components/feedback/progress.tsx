@@ -35,6 +35,20 @@ const activeOverlay = css`
   }
 `
 
+// 진행률 불명(작업 중) 일 때 좌→우로 흐르는 marquee.
+const marquee = keyframes`
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+`
+
+const TONE_FILL = {
+  accent: 'linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%)',
+  danger: 'var(--ig-color-danger)',
+  success: 'var(--ig-color-success)',
+} as const
+
+export type ProgressTone = keyof typeof TONE_FILL
+
 export const ProgressTrack = styled.div`
   width: 100%;
   height: var(--ig-space-3);
@@ -43,22 +57,39 @@ export const ProgressTrack = styled.div`
   overflow: hidden;
 `
 
-export const ProgressFill = styled.div<{ $value: number; $active: boolean }>`
+export const ProgressFill = styled.div<{ $value: number; $active: boolean; $indeterminate: boolean; $tone: ProgressTone }>`
   position: relative;
-  width: ${(p) => `${Math.max(0, Math.min(100, p.$value))}%`};
+  width: ${(p) => (p.$indeterminate ? '30%' : `${Math.max(0, Math.min(100, p.$value))}%`)};
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
+  background: ${(p) => TONE_FILL[p.$tone]};
   transition: width var(--ig-motion-normal);
   overflow: hidden;
-  ${(p) => p.$active && activeOverlay}
+  ${(p) =>
+    p.$indeterminate
+      ? css`animation: ${marquee} var(--ig-motion-progress-bar) linear infinite;`
+      : p.$active && activeOverlay}
 `
 
-export function ProgressBar({ value }: { value: number }) {
-  const active = value > 0 && value < 100
+export interface ProgressBarProps {
+  /** 0–100 진행률. indeterminate 면 무시. */
+  value?: number
+  /** 진행률 불명 — marquee 애니메이션. */
+  indeterminate?: boolean
+  /** fill 색 — 기본 accent, 실패 danger, 완료 success. */
+  tone?: ProgressTone
+}
+
+export function ProgressBar({ value = 0, indeterminate = false, tone = 'accent' }: ProgressBarProps) {
+  const active = !indeterminate && value > 0 && value < 100
   return (
-    <ProgressTrack>
-      <ProgressFill $value={value} $active={active} />
+    <ProgressTrack
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={indeterminate ? undefined : Math.round(Math.max(0, Math.min(100, value)))}
+    >
+      <ProgressFill $value={value} $active={active} $indeterminate={indeterminate} $tone={tone} />
     </ProgressTrack>
   )
 }
