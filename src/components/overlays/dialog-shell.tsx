@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useId, useRef } from 'react'
 import styled from 'styled-components'
+
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 import { B3 } from '../../primitives'
 import { Button } from '../inputs/button'
 import { DialogCloseButton } from './dialog-close-button'
@@ -35,12 +37,42 @@ export function DialogShell({
   width?: string | number
   height?: string | number
 }) {
+  const titleId = useId()
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  // 열릴 때 다이얼로그로 포커스 이동, 닫힐 때 원래 위치로 복원.
   useEffect(() => {
-    if (!onClose) return
+    const prevFocus = document.activeElement as HTMLElement | null
+    cardRef.current?.focus()
+    return () => prevFocus?.focus?.()
+  }, [])
+
+  // Escape 닫기 + Tab 포커스 트랩(다이얼로그 밖으로 못 나가게).
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && onClose) {
         e.stopPropagation()
         onClose()
+        return
+      }
+      if (e.key === 'Tab') {
+        const card = cardRef.current
+        if (!card) return
+        const f = Array.from(card.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((el) => el.offsetParent !== null)
+        if (f.length === 0) {
+          e.preventDefault()
+          card.focus()
+          return
+        }
+        const first = f[0]
+        const last = f[f.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
       }
     }
     window.addEventListener('keydown', onKey)
@@ -49,13 +81,16 @@ export function DialogShell({
   return (
     <ModalBackdrop onClick={() => onClose?.()}>
       <ModalCard
+        ref={cardRef}
         role="dialog"
         aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
         style={{ width, ...(height ? { height } : {}) }}
       >
         <ModalHeader>
-          <ModalTitle>{title}</ModalTitle>
+          <ModalTitle id={titleId}>{title}</ModalTitle>
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}
         </ModalHeader>
         <DialogContent>

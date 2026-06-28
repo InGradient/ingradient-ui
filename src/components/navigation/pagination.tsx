@@ -11,12 +11,19 @@ export function Pagination({
 }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
   return (
-    <div style={{ display: 'flex', gap: 'var(--ig-space-2)', flexWrap: 'wrap' }}>
+    <nav aria-label="Pagination" style={{ display: 'flex', gap: 'var(--ig-space-2)', flexWrap: 'wrap' }}>
       {pages.map((item) => (
-        <Button key={item} type="button" variant={item === page ? 'solid' : 'secondary'} size="sm" onClick={() => onChange(item)}>
+        <Button
+          key={item}
+          type="button"
+          variant={item === page ? 'solid' : 'secondary'}
+          size="sm"
+          aria-current={item === page ? 'page' : undefined}
+          onClick={() => onChange(item)}
+        >
           {item}
         </Button>
       ))}
-    </div>
+    </nav>
   )
 }

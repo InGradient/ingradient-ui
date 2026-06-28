@@ -43,6 +43,10 @@ export const ContextMenuButton = styled.button<{ $danger?: boolean }>`
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
   }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
 `
 
 /** cursor 위치에 fixed 배치되는 서브메뉴 컨테이너 */
@@ -74,5 +78,9 @@ export const ContextMenuSubItem = styled.button<{ $color?: string }>`
   cursor: pointer;
   &:hover {
     background: var(--ig-color-surface-interactive-hover);
+  }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
   }
 `

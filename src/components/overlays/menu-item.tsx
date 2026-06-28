@@ -38,6 +38,10 @@ const Btn = styled.button<{ $tone: MenuItemTone; $size: MenuItemSize; $active: b
   &[data-active='true']:not(:disabled) {
     background: var(--ig-color-surface-interactive-hover);
   }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
   &:disabled {
     opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
