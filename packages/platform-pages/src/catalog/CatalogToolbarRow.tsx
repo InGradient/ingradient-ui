@@ -14,7 +14,6 @@ import {
 } from '@ingradient/ui/components'
 import { SortPopoverTrigger } from '@ingradient/ui/patterns'
 import { GalleryFilterPanel, GalleryToolbar } from './gallery'
-import { DangerDimButton } from './CatalogView.styles'
 import type { CatalogToolbarPaneProps, CatalogViewMode } from './types'
 
 interface Props extends CatalogToolbarPaneProps {
@@ -149,13 +148,16 @@ export function CatalogToolbarRow({
       allSelected={allSelected}
       uploadProgress={uploadProgress}
       selectionActions={
-        <DangerDimButton
+        <Button
+          variant="secondary"
+          tone="danger"
+          size="sm"
           type="button"
           onClick={onDelete}
           data-ig-component="CatalogToolbarRow.DeleteButton"
         >
           Delete
-        </DangerDimButton>
+        </Button>
       }
       onToggleSelectAll={onToggleSelectAll}
     />

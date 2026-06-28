@@ -52,24 +52,6 @@ export const DragOverGrid = styled.div`
   font-weight: var(--ig-font-weight-semibold);
 `
 
-export const DangerDimButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  height: var(--ig-control-height-sm);
-  padding: 0 var(--ig-space-4);
-  border-radius: var(--ig-radius-md);
-  background: var(--ig-color-danger-dim-bg);
-  border: var(--ig-border-1px) solid var(--ig-color-danger-dim-border);
-  color: var(--ig-color-danger);
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-medium);
-  cursor: pointer;
-  &:hover:not(:disabled) {
-    background: var(--ig-color-alert-danger-bg);
-  }
-`
-
 export const MobileBottomSheet = styled.div`
   position: fixed;
   left: 0;

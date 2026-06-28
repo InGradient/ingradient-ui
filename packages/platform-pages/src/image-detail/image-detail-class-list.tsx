@@ -1,33 +1,6 @@
 import styled from 'styled-components'
 import { Stack, Text } from '@ingradient/ui/primitives'
-import { ColorSwatch } from '@ingradient/ui/components'
-
-const Row = styled.button<{ $selected?: boolean; $classified?: boolean }>`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border-radius: var(--ig-radius-md);
-  border: var(--ig-border-1px) solid
-    ${(p) =>
-      p.$selected || p.$classified
-        ? 'var(--ig-color-blue-tint-38)'
-        : 'var(--ig-color-slate-gray-tint-16)'};
-  background: ${(p) =>
-    p.$selected || p.$classified
-      ? 'var(--ig-color-accent-soft-surface-hover)'
-      : 'var(--ig-color-slate-gray-tint-12)'};
-  cursor: pointer;
-  text-align: left;
-  &:hover {
-    background: ${(p) =>
-      p.$selected || p.$classified
-        ? 'var(--ig-color-active-bg)'
-        : 'var(--ig-color-slate-gray-tint-18)'};
-  }
-`
+import { ColorSwatch, SelectableListItem } from '@ingradient/ui/components'
 
 const NameText = styled.span<{ $active?: boolean }>`
   flex: 1;
@@ -88,11 +61,10 @@ export function ImageDetailClassList({
         const isClassified = classifiedSet.has(cls.id)
         const isActive = isSelected || isClassified
         return (
-          <Row
+          <SelectableListItem
             key={cls.id}
-            type="button"
-            $selected={isSelected}
-            $classified={isClassified}
+            selected={isActive}
+            aria-selected={isActive}
             onMouseEnter={(event) => onHoverClass?.(cls, event.currentTarget)}
             onMouseLeave={() => onHoverLeave?.(cls)}
             onFocus={(event) => onHoverClass?.(cls, event.currentTarget)}
@@ -103,7 +75,7 @@ export function ImageDetailClassList({
             <NameText $active={isActive} title={cls.name}>
               {cls.name}
             </NameText>
-          </Row>
+          </SelectableListItem>
         )
       })}
     </Stack>
