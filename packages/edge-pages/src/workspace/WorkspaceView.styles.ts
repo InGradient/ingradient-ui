@@ -30,23 +30,6 @@ export const CapturingStatusPill = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 
-export const ConfirmButton = styled.button<{ $danger?: boolean }>`
-  height: var(--ig-control-height-md);
-  padding: 0 var(--ig-space-6);
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid ${({ $danger }) => ($danger ? 'var(--ig-color-alert-danger-border)' : 'var(--ig-color-border-subtle)')};
-  background: ${({ $danger }) => ($danger ? 'var(--ig-color-danger-bg)' : 'transparent')};
-  color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-secondary)')};
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  transition: all var(--ig-motion-fast-ease);
-  &:hover {
-    background: ${({ $danger }) => ($danger ? 'var(--ig-color-danger-bg-hover)' : 'var(--ig-color-surface-interactive)')};
-    color: ${({ $danger }) => ($danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};
-  }
-`
-
 export const FailureCode = styled.div`
   margin-top: var(--ig-space-3);
   color: var(--ig-color-danger);

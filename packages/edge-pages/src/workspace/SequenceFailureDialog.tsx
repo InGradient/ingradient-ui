@@ -1,6 +1,6 @@
 import { AlertTriangleIcon } from '@ingradient/ui/components'
-import { DialogShell, iconSizeNumbers } from '@ingradient/ui'
-import { ConfirmButton, FailureCode } from './WorkspaceView.styles'
+import { Button, DialogShell, iconSizeNumbers } from '@ingradient/ui'
+import { FailureCode } from './WorkspaceView.styles'
 import type { SequenceFailureInfo, WorkspaceLabels } from './types'
 
 interface SequenceFailureDialogProps {
@@ -30,8 +30,8 @@ export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.El
       width="min(var(--ig-popup-xl), 100%)"
       actions={
         <>
-          <ConfirmButton type="button" onClick={onCancel}>{labels.cancel}</ConfirmButton>
-          <ConfirmButton type="button" $danger onClick={onRetry}>{labels.retry}</ConfirmButton>
+          <Button type="button" variant="secondary" onClick={onCancel}>{labels.cancel}</Button>
+          <Button type="button" variant="secondary" tone="danger" onClick={onRetry}>{labels.retry}</Button>
         </>
       }
     />

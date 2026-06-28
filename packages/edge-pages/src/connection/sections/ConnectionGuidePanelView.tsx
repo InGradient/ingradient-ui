@@ -1,17 +1,14 @@
 import { ActivityIcon, AlertTriangleIcon, CheckCircleIcon, SearchIcon, SlidersIcon, WifiIcon } from '@ingradient/ui/components'
 import styled from 'styled-components'
-import { Badge, Button, iconSizeNumbers, surfacePanel, surfaceRaised } from '@ingradient/ui'
+import { Badge, Button, Card, iconSizeNumbers } from '@ingradient/ui'
 import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
 
-const GuideCard = styled.div`
-  ${surfacePanel}
+// 라이브러리 Card(panel) 표면 위에 2열 grid 레이아웃만 얹는 thin styled(Card).
+const GuideCard = styled(Card)`
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--ig-space-5);
   align-items: start;
-  padding: var(--ig-space-5);
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   margin-bottom: var(--ig-space-7);
 `
 
@@ -48,13 +45,6 @@ const SummaryGrid = styled.div`
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--ig-space-3);
   margin-top: var(--ig-space-3);
-`
-
-const SummaryItem = styled.div`
-  ${surfaceRaised}
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border-radius: var(--ig-radius-xs);
-  min-width: 0;
 `
 
 const SummaryLabel = styled.div`
@@ -118,7 +108,7 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
   const { tone, statusLabel, title, summary, primaryAction, secondaryActions, network, warnings } = state
 
   return (
-    <GuideCard>
+    <GuideCard radius="var(--ig-radius-xs)" padding="var(--ig-space-5)">
       <div>
         <Header>
           <StatusIcon tone={tone} />
@@ -143,22 +133,22 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
       </Actions>
 
       <SummaryGrid>
-        <SummaryItem>
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
           <SummaryLabel>{labels.guideNetworkCameraIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.cameraIp)}</SummaryValue>
-        </SummaryItem>
-        <SummaryItem>
+        </Card>
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
           <SummaryLabel>{labels.guideNetworkNicIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.nicIp)}</SummaryValue>
-        </SummaryItem>
-        <SummaryItem>
+        </Card>
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
           <SummaryLabel>{labels.guideNetworkJumbo}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.jumbo)}</SummaryValue>
-        </SummaryItem>
-        <SummaryItem>
+        </Card>
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
           <SummaryLabel>{labels.guideNetworkReceive}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.receive)}</SummaryValue>
-        </SummaryItem>
+        </Card>
       </SummaryGrid>
 
       {warnings && warnings.length > 0 && (

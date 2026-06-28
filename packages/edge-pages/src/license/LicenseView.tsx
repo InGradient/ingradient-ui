@@ -1,7 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Button, IconButton, TextField, SettingsIcon } from '@ingradient/ui/components'
+import { Button, Card, IconButton, TextField, SettingsIcon } from '@ingradient/ui/components'
+import { Stack } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, Card, Title, Subtitle, Field, FieldLabel,
+  Wrap, LangCorner, Title, Subtitle, Field, FieldLabel,
   FingerprintBox, FingerprintText, CopyBtn, LicenseForm,
   ErrorMsg, HintBox,
 } from './LicenseView.styles'
@@ -28,7 +29,13 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
 
       {settingsDialog}
 
-      <Card>
+      <Card
+        elevation="raised"
+        flat
+        padding="var(--ig-space-13)"
+        style={{ width: '100%', maxWidth: 'var(--ig-popup-lg-plus)' }}
+      >
+        <Stack gap="var(--ig-space-9)">
         <Title>{labels.title}</Title>
         <Subtitle>{isBind ? labels.bindHint : labels.subtitle}</Subtitle>
 
@@ -73,6 +80,7 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
         )}
 
         {error && <ErrorMsg>{error}</ErrorMsg>}
+        </Stack>
       </Card>
     </Wrap>
   )

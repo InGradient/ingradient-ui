@@ -21,18 +21,6 @@ export const LangCorner = styled.div`
   align-items: center;
 `
 
-export const Card = styled.div`
-  width: 100%;
-  max-width: var(--ig-popup-2xl-narrow);
-  background: var(--ig-color-white-04);
-  border: var(--ig-border-1px) solid var(--ig-color-white-12);
-  border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-13);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-9);
-`
-
 export const Title = styled.h1`
   font-size: var(--ig-font-size-3xl);
   font-weight: var(--ig-font-weight-bold);
@@ -117,24 +105,6 @@ export const AccountList = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-2);
-`
-
-export const AccountItem = styled.button`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ig-space-2px);
-  padding: var(--ig-space-4) var(--ig-space-5);
-  background: var(--ig-color-white-04);
-  border: var(--ig-border-1px) solid var(--ig-color-white-08);
-  border-radius: var(--ig-radius-xs);
-  cursor: pointer;
-  text-align: left;
-  transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
-  &:hover {
-    background: var(--ig-color-white-07);
-    border-color: var(--ig-color-blue-tint-40);
-  }
 `
 
 export const AccountItemName = styled.span`

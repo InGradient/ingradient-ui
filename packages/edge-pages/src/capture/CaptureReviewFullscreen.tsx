@@ -1,8 +1,8 @@
-import { Button, iconSizeNumbers } from '@ingradient/ui'
-import { ExpandIcon, CollapseIcon } from '@ingradient/ui/components'
+import { iconSizeNumbers } from '@ingradient/ui'
+import { Button, IconButton, ExpandIcon, CollapseIcon } from '@ingradient/ui/components'
 import { useFullscreen } from './use-fullscreen'
 import {
-  CaptureReview, CaptureReviewFullscreenBtn, CapturePreviewImg,
+  CaptureReview, CapturePreviewImg,
   CaptureReviewActions,
 } from './CaptureReviewFullscreen.styles'
 import type { CaptureReviewFullscreenProps } from './types'
@@ -13,14 +13,16 @@ export function CaptureReviewFullscreen(props: CaptureReviewFullscreenProps): JS
 
   return (
     <CaptureReview ref={ref}>
-      <CaptureReviewFullscreenBtn
-        type="button"
+      <IconButton
+        variant="secondary"
+        size="sm"
         onClick={toggle}
         title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
         aria-label={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
+        style={{ position: 'absolute', top: 'var(--ig-space-4)', right: 'var(--ig-space-4)', zIndex: 'var(--ig-z-capture-super)' }}
       >
         {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
-      </CaptureReviewFullscreenBtn>
+      </IconButton>
       <CapturePreviewImg src={src} alt="Captured" />
       <CaptureReviewActions>
         {showSkip && (

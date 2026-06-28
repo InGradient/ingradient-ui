@@ -48,24 +48,7 @@ export const NetworkSummaryValue = styled.div`font-size:var(--ig-font-size-xs);f
 export const DiscoverBar = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom: var(--ig-space-5);`;
 export const DiscoverHint = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);`;
 export const DeviceList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-2);max-height: 200px;min-height:0;overflow-y:auto;padding-right:4px;`;
-export const DeviceCard = styled.button<{$selected?:boolean}>`
-  ${surfaceRaised}
-  display:flex;
-  align-items:center;
-  gap: var(--ig-space-5);
-  padding: var(--ig-space-4) 14px;
-  border-radius: var(--ig-radius-xs);
-  border:var(--ig-border-1px) solid ${p=>p.$selected?'var(--ig-color-accent-border-strong)':'var(--ig-color-border-subtle)'};
-  background:${p=>p.$selected?'var(--ig-color-accent-soft-surface)':'var(--ig-color-surface-interactive)'};
-  color:var(--ig-color-text-primary);
-  cursor:pointer;
-  text-align:left;
-  transition: all var(--ig-motion-swift);
-  &:hover{
-    border-color:var(--ig-color-accent-border-strong);
-    background:var(--ig-color-surface-interactive-hover);
-  }
-`;
+// DeviceCard: 선택 가능한 list-row → ui SelectableListItem(variant="card") 로 이동 (2026-06-28)
 export const DeviceInfo = styled.div`flex:1;min-width:0;`;
 export const DeviceName = styled.div`font-size: var(--ig-font-size-sm);font-weight: var(--ig-font-weight-semibold);display:flex;align-items:center;gap: var(--ig-space-3);`;
 export const DeviceMeta = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);margin-top: var(--ig-space-2px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`;

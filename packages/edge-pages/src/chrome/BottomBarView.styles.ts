@@ -15,23 +15,6 @@ export const LeftSection = styled.div`
   gap: var(--ig-space-3);
 `
 
-export const RightSection = styled.button`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  background: none;
-  border: none;
-  padding: 0 var(--ig-space-2);
-  cursor: pointer;
-  border-radius: var(--ig-radius-sm);
-  height: var(--ig-icon-2xl);
-  color: var(--ig-color-text-muted);
-
-  &:hover {
-    background: var(--ig-color-surface-raised);
-  }
-`
-
 export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
   display: flex;
   align-items: center;

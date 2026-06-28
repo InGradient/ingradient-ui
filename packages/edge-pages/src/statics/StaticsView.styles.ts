@@ -40,13 +40,6 @@ export const SummaryGrid = styled.div`
   margin-bottom: var(--ig-space-7);
 `;
 
-export const SummaryCard = styled.div`
-  background: var(--ig-color-surface-panel);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-md);
-  padding: var(--ig-space-6) 16px;
-`;
-
 export const SummaryLabel = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);
@@ -63,14 +56,6 @@ export const PanelGrid = styled.div`
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: var(--ig-space-6);
-`;
-
-export const Panel = styled.div`
-  background: var(--ig-color-surface-panel);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-6) 16px 16px;
-  min-height: var(--ig-layout-panel-min-height);
 `;
 
 export const PanelTitle = styled.div`

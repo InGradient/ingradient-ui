@@ -1,16 +1,15 @@
 import { controlSizeNumbers } from '@ingradient/ui'
 import { useEffect, useRef, useState } from 'react'
-import { GridLinesIcon, ExpandIcon, CollapseIcon, SlidersIcon } from '@ingradient/ui/components'
+import { GridLinesIcon, ExpandIcon, CollapseIcon, SlidersIcon, Button, IconButton, Card } from '@ingradient/ui/components'
 import { Switch, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import {
-  ConnectingSpinner, PreviewArea, CaptureZoomWrap, SetupMetrics, MetricCard, MetricLabel, MetricValue,
-  SetupBlockingOverlay, SetupBlockingCard, PlaceholderText, OverlayControls, OverlayHeader,
+  ConnectingSpinner, PreviewArea, CaptureZoomWrap, SetupMetrics, MetricLabel, MetricValue,
+  SetupBlockingOverlay, SetupBlockingCard, PlaceholderText, OverlayControls,
   OverlayPopover, ControlRow, ControlLabel,
   CaptureBar, CaptureButtonWrap, CaptureButton, StatusText,
   GridOverlay, CenterCrosshair, ConnectingBox, ConnectingSpinnerBox, StreamImg,
   FocusPeakingOverlay, HistogramOverlay, HistogramImage,
   AbsolutePlaceholder, CapturingBadge,
-  CapturePreviewFullscreenBtn,
 } from './CaptureView.styles'
 import { useFullscreen } from './use-fullscreen'
 import { patternLabelToUI } from './pattern-helpers'
@@ -62,11 +61,11 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
         {showGrid && <CenterCrosshair />}
         {isSetupMode && (
           <SetupMetrics>
-            <MetricCard><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></MetricCard>
-            <MetricCard><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></MetricCard>
-            <MetricCard><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></MetricCard>
-            <MetricCard><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></MetricCard>
-            <MetricCard><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></MetricCard>
+            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
           </SetupMetrics>
         )}
 
@@ -83,9 +82,9 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
                   <>
                     <PlaceholderText>{snapshotError}</PlaceholderText>
                     {onReconnect && (
-                      <button type="button" onClick={onReconnect} style={{ marginTop: 'var(--ig-space-3)' }}>
+                      <Button type="button" variant="secondary" size="sm" onClick={onReconnect} style={{ marginTop: 'var(--ig-space-3)' }}>
                         {labels.reconnectStream}
-                      </button>
+                      </Button>
                     )}
                   </>
                 ) : (
@@ -125,18 +124,21 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
           </SetupBlockingOverlay>
         )}
         {!isSetupMode && (
-          <CapturePreviewFullscreenBtn
-            type="button"
+          <IconButton
+            variant="secondary"
+            size="sm"
             onClick={toggleFullscreen}
             title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
+            aria-label={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
+            style={{ position: 'absolute', top: 'var(--ig-space-4)', right: 'var(--ig-control-height-3xl)', zIndex: 'var(--ig-z-capture-high)' }}
           >
             {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
-          </CapturePreviewFullscreenBtn>
+          </IconButton>
         )}
         <OverlayControls>
-          <OverlayHeader onClick={onToggleControls} title={labels.controls}>
+          <IconButton variant="secondary" size="sm" onClick={onToggleControls} title={labels.controls} aria-label={labels.controls}>
             <SlidersIcon size={iconSizeNumbers.lg} />
-          </OverlayHeader>
+          </IconButton>
           {showControls && (
             <OverlayPopover>
               <ControlRow>

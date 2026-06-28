@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { DialogShell, iconSizeNumbers } from '@ingradient/ui'
+import { DialogShell, iconSizeNumbers, SelectableListItem, Stack } from '@ingradient/ui'
 import { Button, ContextMenuWithSubmenus, EmptyState, UserCircleIcon } from '@ingradient/ui/components'
 import {
-  AccountBtn, AccountBtnName, AccountMenuWrap,
-  HistoryList, HistoryEntry, HistoryName, HistoryEmail,
+  AccountBtnName, AccountMenuWrap,
+  HistoryList, HistoryName, HistoryEmail,
 } from './AccountMenuView.styles'
 import type { AccountMenuViewProps } from './types'
 
@@ -21,14 +21,16 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
   return (
     <>
       <AccountMenuWrap>
-        <AccountBtn
+        <Button
           ref={accountBtnRef}
+          variant="secondary"
+          size="sm"
           title={labels.account}
           onClick={(e) => { e.stopPropagation(); onToggleDropdown() }}
         >
           <UserCircleIcon size={iconSizeNumbers.lg} />
           <AccountBtnName>{currentUser.name || currentUser.email}</AccountBtnName>
-        </AccountBtn>
+        </Button>
         {dropdownOpen && (
           <ContextMenuWithSubmenus
             anchorEl={accountBtnRef.current}
@@ -55,10 +57,12 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           ) : (
             <HistoryList>
               {accountHistory.map((entry) => (
-                <HistoryEntry key={entry.email} onClick={() => onSelectAccount(entry)}>
-                  <HistoryName>{entry.name}</HistoryName>
-                  <HistoryEmail>{entry.email}</HistoryEmail>
-                </HistoryEntry>
+                <SelectableListItem key={entry.email} variant="card" onClick={() => onSelectAccount(entry)}>
+                  <Stack gap="var(--ig-space-2px)">
+                    <HistoryName>{entry.name}</HistoryName>
+                    <HistoryEmail>{entry.email}</HistoryEmail>
+                  </Stack>
+                </SelectableListItem>
               ))}
             </HistoryList>
           )}

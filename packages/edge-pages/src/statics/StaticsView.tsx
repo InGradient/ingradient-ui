@@ -1,8 +1,8 @@
-import { iconSizeNumbers } from '@ingradient/ui'
+import { iconSizeNumbers, Card } from '@ingradient/ui'
 import { EmptyState, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import {
   Container, Header, TitleBlock, Title, Subtitle,
-  SummaryGrid, SummaryCard, SummaryLabel, SummaryValue,
+  SummaryGrid, SummaryLabel, SummaryValue,
   SectionHeader, SectionContent,
 } from './StaticsView.styles'
 import { SessionChartsView } from './SessionChartsView'
@@ -75,15 +75,15 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
       <SummaryGrid>
         {hasSession && session && (
           <>
-            <SummaryCard><SummaryLabel>{labels.dailyCaptures}</SummaryLabel><SummaryValue>{session.summary.daily_count}</SummaryValue></SummaryCard>
-            <SummaryCard><SummaryLabel>{labels.weeklyCaptures}</SummaryLabel><SummaryValue>{session.summary.weekly_count}</SummaryValue></SummaryCard>
-            <SummaryCard><SummaryLabel>{labels.monthlyCaptures}</SummaryLabel><SummaryValue>{session.summary.monthly_count}</SummaryValue></SummaryCard>
+            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) 16px"><SummaryLabel>{labels.dailyCaptures}</SummaryLabel><SummaryValue>{session.summary.daily_count}</SummaryValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) 16px"><SummaryLabel>{labels.weeklyCaptures}</SummaryLabel><SummaryValue>{session.summary.weekly_count}</SummaryValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) 16px"><SummaryLabel>{labels.monthlyCaptures}</SummaryLabel><SummaryValue>{session.summary.monthly_count}</SummaryValue></Card>
           </>
         )}
         {hasImage && enhancedImage && (
           <>
-            <SummaryCard><SummaryLabel>{labels.totalImages}</SummaryLabel><SummaryValue>{enhancedImage.total_images}</SummaryValue></SummaryCard>
-            <SummaryCard><SummaryLabel>{labels.labeledRatio}</SummaryLabel><SummaryValue>{(enhancedImage.labeled_ratio * 100).toFixed(0)}%</SummaryValue></SummaryCard>
+            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) 16px"><SummaryLabel>{labels.totalImages}</SummaryLabel><SummaryValue>{enhancedImage.total_images}</SummaryValue></Card>
+            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) 16px"><SummaryLabel>{labels.labeledRatio}</SummaryLabel><SummaryValue>{(enhancedImage.labeled_ratio * 100).toFixed(0)}%</SummaryValue></Card>
           </>
         )}
       </SummaryGrid>

@@ -1,10 +1,11 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Badge, Checkbox, TextField, PasswordField, Button, IconButton, TextButton, SettingsIcon } from '@ingradient/ui/components'
+import { Badge, Card, Checkbox, TextField, PasswordField, Button, IconButton, SelectableListItem, TextButton, SettingsIcon } from '@ingradient/ui/components'
+import { Stack } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, Card, Title, PackageSection, PackageInfo,
+  Wrap, LangCorner, Title, PackageSection, PackageInfo,
   Divider, LoginForm, Field, FieldLabel, CheckOptions, ErrorMsg,
   SessionBox, SessionGreeting, SessionMeta, FooterRow,
-  AccountList, AccountItem, AccountItemName, AccountItemEmail,
+  AccountList, AccountItemName, AccountItemEmail,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
 
@@ -31,7 +32,13 @@ export function LoginView(props: LoginViewProps): JSX.Element {
 
       {settingsDialog}
 
-      <Card>
+      <Card
+        elevation="raised"
+        flat
+        padding="var(--ig-space-13)"
+        style={{ width: '100%', maxWidth: 'var(--ig-popup-2xl-narrow)' }}
+      >
+        <Stack gap="var(--ig-space-9)">
         <Title>
           {labels.title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
@@ -75,10 +82,12 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                 {otherAccounts.length > 0 && (
                   <AccountList>
                     {otherAccounts.map((entry) => (
-                      <AccountItem key={entry.email} type="button" onClick={() => onSelectAccount(entry)}>
-                        <AccountItemName>{entry.name || entry.email}</AccountItemName>
-                        <AccountItemEmail>{entry.email}</AccountItemEmail>
-                      </AccountItem>
+                      <SelectableListItem key={entry.email} type="button" onClick={() => onSelectAccount(entry)}>
+                        <Stack gap="var(--ig-space-2px)">
+                          <AccountItemName>{entry.name || entry.email}</AccountItemName>
+                          <AccountItemEmail>{entry.email}</AccountItemEmail>
+                        </Stack>
+                      </SelectableListItem>
                     ))}
                   </AccountList>
                 )}
@@ -136,6 +145,7 @@ export function LoginView(props: LoginViewProps): JSX.Element {
         )}
 
         {error && <ErrorMsg>{error}</ErrorMsg>}
+        </Stack>
       </Card>
     </Wrap>
   )

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Badge, Button, Spinner, SectionTitle, iconSizeNumbers } from '@ingradient/ui'
+import { Badge, Button, Spinner, SectionTitle, SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
 import { EmptyState, CameraIcon, RefreshIcon, CheckCircleIcon, ChevronRightIcon, UsbIcon, WifiIcon, AlertCircleIcon, WrenchIcon } from '@ingradient/ui/components'
 import {
   FlatSection,
-  DiscoverBar, DiscoverHint, DeviceList, DeviceCard,
+  DiscoverBar, DiscoverHint, DeviceList,
   DeviceInfo, DeviceName, DeviceMeta,
 } from '../ConnectionTabView.styles'
 import type { ScanSectionViewProps, GigEDevice, USBDevice, NicBadge } from '../types'
@@ -58,7 +58,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                 || (isUSB && selectedCamera?.type === 'usb' && (selectedCamera as USBDevice).index === (device as USBDevice).index)
                 || (!isUSB && selectedCamera?.type === 'gige' && (selectedCamera as GigEDevice).ip === (device as GigEDevice).ip)
               return (
-                <DeviceCard key={key} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectCamera(device) }}>
+                <SelectableListItem key={key} variant="card" selected={isSelected} onClick={() => { if (!isBlocked) onSelectCamera(device) }}>
                   {isUSB
                     ? <UsbIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
                     : <CameraIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />}
@@ -87,7 +87,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                   <Badge $tone={isUSB ? 'accent' : 'neutral'}>{isUSB ? 'USB' : 'GigE'}</Badge>
                   {isSelected ? <CheckCircleIcon size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
                     : <ChevronRightIcon size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
-                </DeviceCard>
+                </SelectableListItem>
               )
             })}
           </DeviceList>
@@ -102,7 +102,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
             {nicCandidates.map((nic) => {
               const isSelected = selectedNic?.name === nic.name
               return (
-                <DeviceCard key={nic.name} $selected={isSelected} onClick={() => { if (!isBlocked) onSelectNic(nic) }}>
+                <SelectableListItem key={nic.name} variant="card" selected={isSelected} onClick={() => { if (!isBlocked) onSelectNic(nic) }}>
                   <WifiIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
                   <DeviceInfo>
                     <DeviceName>{nic.name}</DeviceName>
@@ -111,7 +111,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                   <Badge $tone={nicBadgeTone(nic.badge)}>{nicBadgeLabel(nic.badge, labels)}</Badge>
                   {isSelected ? <CheckCircleIcon size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />
                     : <ChevronRightIcon size={iconSizeNumbers.sm} style={{ flexShrink: 0 }} />}
-                </DeviceCard>
+                </SelectableListItem>
               )
             })}
           </DeviceList>

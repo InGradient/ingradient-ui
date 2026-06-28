@@ -6,13 +6,6 @@ export const DurationGrid = styled.div`
   gap: var(--ig-space-4);
 `;
 
-export const DurationCard = styled.div`
-  background: var(--ig-color-white-04);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-5);
-`;
-
 export const DurationLabel = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-font-size-xs);

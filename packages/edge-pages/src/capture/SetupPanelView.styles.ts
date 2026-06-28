@@ -1,4 +1,5 @@
 import { rotations } from '@ingradient/ui'
+import { Button } from '@ingradient/ui/components'
 import styled from 'styled-components';
 
 export const SetupPanel = styled.div`
@@ -54,15 +55,15 @@ export const PatternGrid = styled.div`
   gap: var(--ig-space-3);
 `;
 
-export const PatternButton = styled.button<{ $active: boolean }>`
-  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
-  background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
-  color: var(--ig-color-text-primary);
-  border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-4);
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
+export const PatternButton = styled(Button).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    border-color: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
+    background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
+    color: var(--ig-color-text-primary);
+  }
 `;
 
 export const SetupMetaText = styled.div`

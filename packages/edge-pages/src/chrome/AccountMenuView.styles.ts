@@ -1,27 +1,5 @@
 import styled from 'styled-components'
 
-export const AccountBtn = styled.button`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  height: var(--ig-control-height-md);
-  padding: 0 var(--ig-space-4);
-  border: var(--ig-border-1px) solid transparent;
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-medium);
-  white-space: nowrap;
-  transition: all var(--ig-motion-fast-ease);
-  &:hover {
-    color: var(--ig-color-text-primary);
-    background: var(--ig-color-surface-interactive);
-    border-color: var(--ig-color-border-subtle);
-  }
-`
-
 export const AccountBtnName = styled.span`
   max-width: var(--ig-popup-3xs);
   overflow: hidden;
@@ -40,21 +18,6 @@ export const HistoryList = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-2);
-`
-
-export const HistoryEntry = styled.button`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  padding: var(--ig-space-4) var(--ig-space-6);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  cursor: pointer;
-  transition: all var(--ig-motion-swift);
-  text-align: left;
-  &:hover { background: var(--ig-color-surface-interactive); border-color: var(--ig-color-border-strong); }
 `
 
 export const HistoryName = styled.span`

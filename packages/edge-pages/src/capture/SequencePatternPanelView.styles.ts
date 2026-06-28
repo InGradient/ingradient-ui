@@ -1,3 +1,4 @@
+import { Button } from '@ingradient/ui/components'
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -17,19 +18,18 @@ export const Segment = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
-export const SegmentBtn = styled.button<{ $active: boolean }>`
-  flex: 1;
-  height: var(--ig-control-height-xs-plus);
-  border: none;
-  border-radius: var(--ig-radius-xs);
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  transition: background var(--ig-motion-swift), color var(--ig-motion-swift);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-90)' : 'transparent')};
-  color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
-  &:hover {
-    color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-primary)')};
+export const SegmentBtn = styled(Button).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    flex: 1;
+    border-color: transparent;
+    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-90)' : 'transparent')};
+    color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
+  }
+  &&:hover:not(:disabled) {
+    color: var(--ig-color-text-primary);
   }
 `;
 
@@ -41,20 +41,18 @@ export const List = styled.div`
   gap: var(--ig-space-2px);
 `;
 
-export const Item = styled.button<{ $active: boolean }>`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-4);
-  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-70)' : 'transparent')};
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
-  color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
-  font-size: var(--ig-font-size-sm);
-  text-align: left;
-  cursor: pointer;
-  transition: background var(--ig-motion-fastest);
-  &:hover {
+export const Item = styled(Button).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    justify-content: flex-start;
+    text-align: left;
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-70)' : 'transparent')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
+    color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
+  }
+  &&:hover:not(:disabled) {
     background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-20)' : 'var(--ig-color-white-06)')};
   }
 `;

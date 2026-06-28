@@ -68,35 +68,12 @@ export const MetricRow = styled.div`
   font-variant-numeric: tabular-nums;
 `;
 
-export const Warning = styled.div<{ $kind: 'info' | 'warn' }>`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) 8px;
-  border-radius: var(--ig-radius-xs);
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
-  background: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-alert-warning-bg)' : 'var(--ig-color-selection-bg)')};
-  color: ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-warning)' : 'var(--ig-color-accent-soft)')};
-  border: var(--ig-border-1px) solid ${(p) => (p.$kind === 'warn' ? 'var(--ig-color-alert-warning-border)' : 'var(--ig-color-blue-tint-35)')};
-`;
-
 // ── Setup Quality Indicator ─────────────────────────────────────────────────
 
 export type QualityStatusValue =
   | 'good' | 'fair' | 'poor'
   | 'high' | 'medium' | 'low'
   | null;
-
-export const QualityCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-3);
-  background: var(--ig-color-white-04);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
-`;
 
 export const QualityHeader = styled.div`
   display: flex;

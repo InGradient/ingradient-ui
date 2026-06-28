@@ -1,9 +1,10 @@
 import { Button, Checkbox, SelectField, Spinner, iconSizeNumbers } from '@ingradient/ui'
-import { CollapsibleSectionHeader, AlertTriangleIcon } from '@ingradient/ui/components'
+import { Stack } from '@ingradient/ui/primitives'
+import { CollapsibleSectionHeader, AlertTriangleIcon, Alert, Card } from '@ingradient/ui/components'
 import {
   Wrap, Row, Label, LabelName, LabelValue, Slider, SliderInline,
-  BtnRow, MetricRow, Warning,
-  QualityCard, QualityHeader, QualityLabel, QualityStatus, QualityDivider,
+  BtnRow, MetricRow,
+  QualityHeader, QualityLabel, QualityStatus, QualityDivider,
   IndicatorRight, IndicatorValue,
 } from './DeflectometryTuningControlsView.styles'
 import { COLORMAP_OPTIONS, type ColormapName } from './colormap-helpers'
@@ -82,29 +83,31 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         {isRecomputing ? <><Spinner tone="white" size="sm" />{labels.analyzing}</> : labels.analyze}
       </Button>
 
-      <QualityCard>
-        <QualityHeader>
-          <QualityLabel>{labels.confidence}</QualityLabel>
-          {isRecomputing && !metrics ? (
-            <QualityLabel><Spinner tone="white" size="sm" />{labels.computing}</QualityLabel>
-          ) : (
-            <IndicatorRight>
-              <IndicatorValue>{formatPct(metrics?.validRatio ?? null)}</IndicatorValue>
-              <QualityStatus $status={metrics?.confidenceStatus ?? null}>
-                {metrics?.confidenceStatus ?? '—'}
-              </QualityStatus>
-            </IndicatorRight>
+      <Card elevation="raised" flat radius="var(--ig-radius-xs)" padding="var(--ig-space-3)">
+        <Stack gap="var(--ig-space-2)">
+          <QualityHeader>
+            <QualityLabel>{labels.confidence}</QualityLabel>
+            {isRecomputing && !metrics ? (
+              <QualityLabel><Spinner tone="white" size="sm" />{labels.computing}</QualityLabel>
+            ) : (
+              <IndicatorRight>
+                <IndicatorValue>{formatPct(metrics?.validRatio ?? null)}</IndicatorValue>
+                <QualityStatus $status={metrics?.confidenceStatus ?? null}>
+                  {metrics?.confidenceStatus ?? '—'}
+                </QualityStatus>
+              </IndicatorRight>
+            )}
+          </QualityHeader>
+          <QualityDivider />
+          <MetricRow>
+            <span>{labels.validRatio}</span>
+            <span>{formatPct(metrics?.validRatio ?? null)}</span>
+          </MetricRow>
+          {metrics?.warnings?.includes('low_confidence') && (
+            <Alert $tone="warning"><AlertTriangleIcon size={iconSizeNumbers.xs} />{labels.warnLowConfidence}</Alert>
           )}
-        </QualityHeader>
-        <QualityDivider />
-        <MetricRow>
-          <span>{labels.validRatio}</span>
-          <span>{formatPct(metrics?.validRatio ?? null)}</span>
-        </MetricRow>
-        {metrics?.warnings?.includes('low_confidence') && (
-          <Warning $kind="warn"><AlertTriangleIcon size={iconSizeNumbers.xs} />{labels.warnLowConfidence}</Warning>
-        )}
-      </QualityCard>
+        </Stack>
+      </Card>
 
       <BtnRow>
         <Button variant="secondary" size="sm" disabled={disabled || isSavingDefault} onClick={onSaveDefault}>

@@ -41,13 +41,6 @@ export const SetupMetrics = styled.div`
   width: var(--ig-popup-sm);
 `;
 
-export const MetricCard = styled.div`
-  background: var(--ig-color-capture-surface);
-  border: var(--ig-border-1px) solid var(--ig-color-white-12);
-  border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-3) var(--ig-space-4);
-`;
-
 export const MetricLabel = styled.div`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-white-62);
@@ -100,21 +93,6 @@ export const OverlayControls = styled.div`
   align-items: flex-end;
   gap: var(--ig-space-2);
   z-index: var(--ig-z-capture-high);
-`;
-
-export const OverlayHeader = styled.button`
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ig-color-overlay-dim);
-  border: none;
-  border-radius: var(--ig-radius-xs);
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  transition: background var(--ig-motion-swift);
-  &:hover { background: var(--ig-color-modal-backdrop); }
 `;
 
 export const OverlayPopover = styled.div`
@@ -336,23 +314,4 @@ export const CapturingBadge = styled.div`
   border-radius: var(--ig-radius-sm);
   pointer-events: none;
   box-shadow: 0 var(--ig-space-1) var(--ig-space-7) var(--ig-color-shadow-strong);
-`;
-
-export const CapturePreviewFullscreenBtn = styled.button`
-  position: absolute;
-  top: var(--ig-space-4);
-  right: var(--ig-control-height-3xl);
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ig-color-overlay-dim);
-  border: none;
-  border-radius: var(--ig-radius-xs);
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  z-index: var(--ig-z-capture-high);
-  transition: background var(--ig-motion-swift);
-  &:hover { background: var(--ig-color-modal-backdrop); }
 `;

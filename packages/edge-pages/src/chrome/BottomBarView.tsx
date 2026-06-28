@@ -1,7 +1,7 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Spinner, HardDriveIcon, CpuIcon, ActivityIcon, WifiIcon, WifiOffIcon, CheckIcon, AlertCircleIcon } from '@ingradient/ui/components'
+import { Button, Spinner, HardDriveIcon, CpuIcon, ActivityIcon, WifiIcon, WifiOffIcon, CheckIcon, AlertCircleIcon } from '@ingradient/ui/components'
 import {
-  Row, LeftSection, RightSection, SyncChip, StatChip, NetIcon,
+  Row, LeftSection, SyncChip, StatChip, NetIcon,
 } from './BottomBarView.styles'
 import { fmtPct } from './bottom-bar-helpers'
 import type { BottomBarViewProps } from './types'
@@ -41,7 +41,9 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
         )}
       </LeftSection>
 
-      <RightSection
+      <Button
+        variant="ghost"
+        size="sm"
         onClick={onOpenMonitor}
         title={labels.openMonitor}
         type="button"
@@ -61,7 +63,7 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
           <ActivityIcon size={iconSizeNumbers.xsPlus} />
           {fmtPct(stats?.memory)}
         </StatChip>
-      </RightSection>
+      </Button>
     </Row>
   )
 }

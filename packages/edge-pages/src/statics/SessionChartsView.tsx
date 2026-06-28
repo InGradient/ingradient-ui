@@ -1,10 +1,10 @@
-import { chartHeights } from '@ingradient/ui'
+import { chartHeights, Card } from '@ingradient/ui'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { Table, type TableColumn, EmptyState } from '@ingradient/ui/components'
-import { PanelGrid, Panel, PanelTitle } from './StaticsView.styles'
+import { PanelGrid, PanelTitle } from './StaticsView.styles'
 import {
-  DurationGrid, DurationCard, DurationLabel, DurationValue,
+  DurationGrid, DurationLabel, DurationValue,
 } from './SessionChartsView.styles'
 import { CHART_BLUE, CHART_GREEN, CHART_WARNING, CHART_DANGER } from './chart-helpers'
 import type { SessionChartsViewProps } from './types'
@@ -74,27 +74,27 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         height={chartHeights.md}
         emptyMessage={labels.noOutcomeStats}
       />
-      <Panel>
+      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) 16px 16px" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
         <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.captureWorkTime}</DurationLabel>
         <DurationGrid style={{ marginBottom: 'var(--ig-space-6)' }}>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <DurationCard key={k}>
+            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-5)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(durationSummary[`${k}_ms`])}</DurationValue>
-            </DurationCard>
+            </Card>
           ))}
         </DurationGrid>
         <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.labelingTime}</DurationLabel>
         <DurationGrid>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <DurationCard key={k}>
+            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-5)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(labelingDurationSummary[`${k}_ms`])}</DurationValue>
-            </DurationCard>
+            </Card>
           ))}
         </DurationGrid>
-      </Panel>
+      </Card>
       <BarChartCard
         title={labels.deflectometrySteps}
         data={stepBreakdown}
@@ -105,14 +105,14 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         emptyMessage={labels.noDeflectometryData}
       />
       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
-        <Panel>
+        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) 16px 16px" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
           <PanelTitle>{labels.workerStats}</PanelTitle>
           {workerStats.length > 0 ? (
             <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />
           ) : (
             <EmptyState>{labels.noWorkerStats}</EmptyState>
           )}
-        </Panel>
+        </Card>
       </div>
     </PanelGrid>
   )

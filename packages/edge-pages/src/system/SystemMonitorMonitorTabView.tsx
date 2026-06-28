@@ -1,4 +1,4 @@
-import { chartHeights, EmptyState } from '@ingradient/ui'
+import { chartHeights, EmptyState, Card } from '@ingradient/ui'
 import styled from 'styled-components'
 import { LineChartCard } from '@ingradient/ui/patterns'
 import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from '../statics/chart-helpers'
@@ -10,13 +10,6 @@ const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--ig-space-4);
-`
-
-const StatCard = styled.div`
-  padding: var(--ig-space-4);
-  background: var(--ig-color-surface-raised);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-sm);
 `
 
 const StatLabel = styled.div`
@@ -40,9 +33,9 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
   return (
     <Wrap>
       <StatsGrid>
-        <StatCard><StatLabel>{labels.cpu}</StatLabel><StatValue>{latest.cpu}%</StatValue></StatCard>
-        <StatCard><StatLabel>{labels.memory}</StatLabel><StatValue>{latest.memory}%</StatValue></StatCard>
-        <StatCard><StatLabel>{labels.disk}</StatLabel><StatValue>{latest.disk}%</StatValue></StatCard>
+        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-4)"><StatLabel>{labels.cpu}</StatLabel><StatValue>{latest.cpu}%</StatValue></Card>
+        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-4)"><StatLabel>{labels.memory}</StatLabel><StatValue>{latest.memory}%</StatValue></Card>
+        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-4)"><StatLabel>{labels.disk}</StatLabel><StatValue>{latest.disk}%</StatValue></Card>
       </StatsGrid>
       <LineChartCard
         title=""
