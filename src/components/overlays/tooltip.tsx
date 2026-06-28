@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useId, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { surfaceRaised } from '../../primitives'
@@ -48,6 +48,7 @@ export interface TooltipProps {
 export const Tooltip: React.FC<TooltipProps> = ({ content, children, gap = 6 }) => {
   const wrapRef = useRef<HTMLSpanElement>(null)
   const bubbleRef = useRef<HTMLDivElement>(null)
+  const tooltipId = useId()
   const [open, setOpen] = useState(false)
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null)
 
@@ -73,11 +74,18 @@ export const Tooltip: React.FC<TooltipProps> = ({ content, children, gap = 6 }) 
     setPos({ top, left })
   }, [open, gap])
 
+  // 단일 element child면 aria-describedby 를 주입해 SR 이 트리거-버블 관계를 인식하게 함.
+  const describedChild = React.isValidElement(children)
+    ? React.cloneElement(children as React.ReactElement<{ 'aria-describedby'?: string }>, {
+        'aria-describedby': open ? tooltipId : undefined,
+      })
+    : children
+
   return (
-    <Wrap ref={wrapRef} onMouseEnter={show} onMouseLeave={hide}>
-      {children}
+    <Wrap ref={wrapRef} onMouseEnter={show} onMouseLeave={hide} onFocus={show} onBlur={hide}>
+      {describedChild}
       {open && createPortal(
-        <Bubble ref={bubbleRef} role="tooltip" style={pos ? { top: pos.top, left: pos.left } : { opacity: 0 }}>
+        <Bubble ref={bubbleRef} id={tooltipId} role="tooltip" style={pos ? { top: pos.top, left: pos.left } : { opacity: 0 }}>
           {content}
         </Bubble>,
         document.body,

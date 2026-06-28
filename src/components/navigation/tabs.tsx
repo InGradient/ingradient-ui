@@ -59,6 +59,12 @@ const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underlin
   cursor: pointer;
   font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)') : 'var(--ig-font-weight-semibold)')};
   transition: color var(--ig-motion-fast);
+
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+    box-shadow: var(--ig-shadow-focus-ring);
+  }
 `
 
 export function Tabs({
@@ -100,19 +106,44 @@ export function Tabs({
     }
   }, [items, value])
 
+  const moveFocus = (nextValue: string) => {
+    onChange(nextValue)
+    requestAnimationFrame(() => buttonRefs.current[nextValue]?.focus())
+  }
+
   return (
-    <TabsRoot ref={rootRef} $variant={variant} className={className} style={style}>
+    <TabsRoot ref={rootRef} role="tablist" aria-orientation="horizontal" $variant={variant} className={className} style={style}>
       <TabsHighlight $left={highlight.left} $width={highlight.width} $visible={highlight.visible} $variant={variant} />
-      {items.map((item) => (
+      {items.map((item, index) => (
         <TabButton
           key={item.value}
           ref={(node) => {
             buttonRefs.current[item.value] = node
           }}
           type="button"
+          role="tab"
+          aria-selected={item.value === value}
           $active={item.value === value}
           $variant={variant}
           onClick={() => onChange(item.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowRight') {
+              event.preventDefault()
+              moveFocus(items[(index + 1) % items.length].value)
+            }
+            if (event.key === 'ArrowLeft') {
+              event.preventDefault()
+              moveFocus(items[(index - 1 + items.length) % items.length].value)
+            }
+            if (event.key === 'Home') {
+              event.preventDefault()
+              moveFocus(items[0].value)
+            }
+            if (event.key === 'End') {
+              event.preventDefault()
+              moveFocus(items[items.length - 1].value)
+            }
+          }}
         >
           {item.label}
         </TabButton>
