@@ -44,5 +44,5 @@ export function AutoSaveStatus({
     if (state === 'error') return errorMessage ?? fallbackErrorMessage
     return idleMessage
   })()
-  return <Text as="p" size="var(--ig-font-size-sm)" tone={isError ? 'danger' : 'muted'} className={className} style={STATUS_STYLE}>{message}</Text>
+  return <Text as="p" role="status" aria-live="polite" size="var(--ig-font-size-sm)" tone={isError ? 'danger' : 'muted'} className={className} style={STATUS_STYLE}>{message}</Text>
 }

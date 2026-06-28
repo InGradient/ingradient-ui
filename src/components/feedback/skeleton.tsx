@@ -19,7 +19,7 @@ const shimmer = css`
   }
 `
 
-export const Skeleton = styled.div<{ $height?: string }>`
+export const Skeleton = styled.div.attrs({ 'aria-hidden': true })<{ $height?: string }>`
   ${shimmer}
   width: 100%;
   height: ${(p) => p.$height ?? 'var(--ig-icon-md)'};

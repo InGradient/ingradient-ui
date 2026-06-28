@@ -40,10 +40,11 @@ export interface SegmentedProgressBarProps {
 export function SegmentedProgressBar({
   segments, total, showLegend = true, className,
 }: SegmentedProgressBarProps) {
-  const sum = total ?? segments.reduce((acc, s) => acc + s.value, 0)
+  const filled = segments.reduce((acc, s) => acc + s.value, 0)
+  const sum = total ?? filled
   return (
     <Stack gap={3} className={className}>
-      <div role="progressbar" aria-valuemin={0} aria-valuemax={sum} aria-valuenow={segments[0]?.value ?? 0} style={BAR_STYLE}>
+      <div role="progressbar" aria-valuemin={0} aria-valuemax={sum} aria-valuenow={Math.round(filled)} style={BAR_STYLE}>
         {segments.map((s, i) => (
           <Segment key={i} $width={sum > 0 ? (s.value / sum) * 100 : 0} $color={s.color} title={`${s.label}: ${s.value}`} />
         ))}
