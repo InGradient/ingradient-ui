@@ -1,4 +1,4 @@
-import { iconSizeNumbers, chartColors, chartHeights } from '@ingradient/ui'
+import { chartColors, chartHeights } from '@ingradient/ui'
 import { LineChartCard } from '@ingradient/ui/patterns'
 
 export type AnalysisTimelineGranularity = 'hour' | 'daily' | string

@@ -1,4 +1,3 @@
-import { iconSizeNumbers } from '@ingradient/ui'
 import styled from 'styled-components'
 import { Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'

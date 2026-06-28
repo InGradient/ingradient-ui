@@ -61,7 +61,7 @@ export const DropdownChevron = styled.span<{ $open: boolean }>`
   align-items: center;
   justify-content: center;
   color: var(--ig-color-text-soft);
-  transform: ${(p) => (p.$open ? 'rotate(${rotations.half})' : 'rotate(${rotations.zero})')};
+  transform: ${(p) => (p.$open ? `rotate(${rotations.half})` : `rotate(${rotations.zero})`)};
   transition: transform var(--ig-motion-fast), color var(--ig-motion-fast);
 `
 

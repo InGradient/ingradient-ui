@@ -1,5 +1,4 @@
 import { chartHeights } from '@ingradient/ui'
-import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard } from '@ingradient/ui/patterns'
 
 export interface AnalysisDataCollectionWidgetProps {

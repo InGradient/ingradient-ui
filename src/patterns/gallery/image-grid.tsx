@@ -7,6 +7,8 @@ import { GridContainer } from '../../components/data-display/grid-container'
 const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 'var(--ig-space-1px)' }
 const LOAD_MORE_STYLE = { gridColumn: '1 / -1', textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
 const PADDED_STYLE = { boxSizing: 'border-box' as const, minHeight: '100%', padding: 'var(--ig-space-7)' }
+// IntersectionObserver rootMargin is a JS-API string — CSS var() is invalid here (throws), so preload margin is a named px constant.
+const SENTINEL_ROOT_MARGIN = '200px'
 
 export interface ImageGridLayout {
   minWidth?: number
@@ -79,7 +81,7 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
       (entries) => {
         if (entries[0]?.isIntersecting) onLoadMore()
       },
-      { rootMargin: 'var(--ig-popup-list-min)' },
+      { rootMargin: SENTINEL_ROOT_MARGIN },
     )
     observer.observe(node)
     return () => observer.disconnect()
