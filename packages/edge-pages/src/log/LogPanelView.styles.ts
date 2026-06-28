@@ -23,26 +23,6 @@ export const FilterButtonWrap = styled.div`
   position: relative;
 `;
 
-export const FilterActionButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  height: var(--ig-control-height-sm);
-  padding: 0 var(--ig-space-4);
-  border: var(--ig-border-1px) solid transparent;
-  border-radius: var(--ig-radius-xs);
-  background: transparent;
-  color: var(--ig-color-text-muted);
-  cursor: pointer;
-  transition: all var(--ig-motion-fast-ease);
-
-  &:hover {
-    color: var(--ig-color-text-primary);
-    background: var(--ig-color-surface-interactive);
-    border-color: var(--ig-color-border-subtle);
-  }
-`;
-
 export const FilterPopover = styled.div`
   position: absolute;
   top: 100%;
@@ -189,22 +169,6 @@ export const DetailPlaceholder = styled.div`
   font-size: var(--ig-font-size-xs);
   text-align: center;
   padding: var(--ig-space-7) var(--ig-space-3);
-`;
-
-export const OpenImageButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  margin-bottom: var(--ig-space-4);
-  padding: var(--ig-space-2) var(--ig-space-4);
-  font-size: var(--ig-font-size-2xs);
-  color: var(--ig-color-accent-soft);
-  background: var(--ig-color-blue-tint-10);
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  border-radius: var(--ig-radius-xs);
-  cursor: pointer;
-  transition: background var(--ig-motion-fast-ease);
-  &:hover { background: var(--ig-color-blue-tint-20); }
 `;
 
 export const LogPlaceholder = styled.div`

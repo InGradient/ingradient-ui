@@ -35,26 +35,6 @@ export const RightActions = styled.div`
   gap: var(--ig-space-4);
 `;
 
-export const IconBtn = styled.button<{ $variant?: 'primary' | 'danger' | 'secondary' }>`
-  width: var(--ig-control-height-mid-plus);
-  height: var(--ig-control-height-mid-plus);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ig-radius-pill);
-  border: var(--ig-border-1px) solid transparent;
-  cursor: pointer;
-  transition: opacity var(--ig-motion-swift);
-  &:hover { opacity: var(--ig-opacity-emphatic); }
-  &:disabled { opacity: var(--ig-opacity-ghost); cursor: not-allowed; }
-  ${(p) =>
-    p.$variant === 'primary'
-      ? `background: var(--ig-color-accent); color: var(--ig-color-text-primary);`
-      : p.$variant === 'danger'
-        ? `background: var(--ig-color-danger-button-bg); color: var(--ig-color-danger); border-color: var(--ig-color-danger-button-border);`
-        : `background: var(--ig-color-white-08); color: var(--ig-color-text-primary); border-color: var(--ig-color-white-12);`}
-`;
-
 export const BBoxCount = styled.div`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
@@ -117,33 +97,6 @@ export const BlockMsg = styled.div`
   z-index: var(--ig-z-capture);
 `;
 
-export const FullscreenBtn = styled.button`
-  position: absolute;
-  top: var(--ig-space-4);
-  right: var(--ig-space-4);
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ig-color-overlay-dim);
-  border: none;
-  border-radius: var(--ig-radius-xs);
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  z-index: var(--ig-z-capture-super);
-  transition: background var(--ig-motion-swift);
-  &:hover { background: var(--ig-color-modal-backdrop); }
-`;
-
-export const AnnotationToggleBtn = styled(FullscreenBtn)<{ $active?: boolean }>`
-  right: var(--ig-control-height-2xl);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-62)' : 'var(--ig-color-overlay-dim)')};
-  &:hover {
-    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-78)' : 'var(--ig-color-modal-backdrop)')};
-  }
-`;
-
 // ── Modal-style chrome (Header / Hint / Toolbar) ─────────────────────────────
 
 export const Header = styled.div`
@@ -165,21 +118,6 @@ export const HeaderSpacer = styled.div`
   flex: 1;
 `;
 
-export const HeaderIconBtn = styled.button<{ $active?: boolean }>`
-  flex-shrink: 0;
-  width: var(--ig-control-height-mid-plus);
-  height: var(--ig-control-height-mid-plus);
-  border: var(--ig-border-1px) solid var(--ig-color-white-12);
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-04)')};
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover { background: var(--ig-color-white-12); }
-`;
-
 export const HintBar = styled.div`
   flex-shrink: 0;
   text-align: center;
@@ -198,17 +136,3 @@ export const ModeToggleGroup = styled.div`
   margin-right: var(--ig-space-3);
 `;
 
-export const ModeToggleBtn = styled.button<{ $active?: boolean }>`
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'transparent')};
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--ig-motion-fast-ease);
-  &:hover { background: var(--ig-color-white-08); }
-`;

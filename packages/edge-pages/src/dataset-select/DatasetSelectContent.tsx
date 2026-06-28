@@ -1,9 +1,9 @@
 import { EmptyState, iconSizeNumbers } from '@ingradient/ui'
-import { Badge, PlusIcon } from '@ingradient/ui/components'
+import { Badge, Button, PlusIcon } from '@ingradient/ui/components'
 import { Content, SectionLabel, ErrorMsg, Spinner } from './styles/page.styles'
 import {
   RecentSection, RecentScroll, ProjectSection, ProjectHeader,
-  ProjectName, ProjectTypeTag, AddDatasetBtn, DatasetGrid,
+  ProjectName, DatasetGrid,
 } from './dataset-grid.styles'
 import { RecentDatasetCard } from './RecentDatasetCard'
 import { DatasetCardView } from './DatasetCardView'
@@ -81,12 +81,17 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
         <ProjectSection key={group.project_id}>
           <ProjectHeader>
             <ProjectName>{group.project_name}</ProjectName>
-            {group.deflectometry_enabled && <ProjectTypeTag>Deflectometry</ProjectTypeTag>}
+            {group.deflectometry_enabled && <Badge $tone="accent">Deflectometry</Badge>}
             <Badge $tone={roleTone(group.role)}>{labels.roleLabel(group.role)}</Badge>
-            <AddDatasetBtn onClick={(e) => { e.stopPropagation(); onAddDatasetClick(group.project_id) }}>
+            <Button
+              variant="secondary"
+              size="sm"
+              style={{ marginLeft: 'auto' }}
+              onClick={(e) => { e.stopPropagation(); onAddDatasetClick(group.project_id) }}
+            >
               <PlusIcon size={iconSizeNumbers["2xs"]} />
               {labels.addDataset}
-            </AddDatasetBtn>
+            </Button>
           </ProjectHeader>
           <DatasetGrid>
             {group.datasets.map((d) => (

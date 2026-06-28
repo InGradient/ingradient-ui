@@ -1,12 +1,12 @@
 import { useCallback, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
-import { DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon } from '@ingradient/ui/components'
+import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon } from '@ingradient/ui/components'
 import {
-  Container, Header, FilterButtonWrap, FilterActionButton, FilterPopover,
+  Container, Header, FilterButtonWrap, FilterPopover,
   FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel,
   LogList, LogItem, LogTime, LogMessage, DetailPanel, DetailImageClickable,
-  ImageModalOverlay, ImageModalImg, DetailContent, DetailPlaceholder, OpenImageButton,
+  ImageModalOverlay, ImageModalImg, DetailContent, DetailPlaceholder,
   LogPlaceholder,
 } from './LogPanelView.styles'
 import { getTimeFromMsg, type DatePreset } from './log-filters'
@@ -53,9 +53,9 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
       <Header>
         <span>{labels.title}</span>
         <FilterButtonWrap>
-          <FilterActionButton ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
+          <Button variant="secondary" size="sm" ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
             <FilterIcon size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
-          </FilterActionButton>
+          </Button>
           {showFilterPopover && (
             <FilterPopover ref={filterPopoverRef}>
               <FilterSection>
@@ -140,9 +140,15 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
                 />
               )}
               {hoveredLog.imagePath && !displayImageUrl && (
-                <OpenImageButton type="button" onClick={() => onOpenSavedImage(hoveredLog.imagePath!)}>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  type="button"
+                  style={{ marginBottom: 'var(--ig-space-4)' }}
+                  onClick={() => onOpenSavedImage(hoveredLog.imagePath!)}
+                >
                   <ImageIcon size={iconSizeNumbers.sm} /> {labels.openSavedImage}
-                </OpenImageButton>
+                </Button>
               )}
               <LogDetailTableView text={hoveredLog.detail ?? hoveredLog.msg} />
             </>

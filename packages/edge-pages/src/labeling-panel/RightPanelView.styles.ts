@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@ingradient/ui/components'
 
 export const Container = styled.aside`
   width: var(--ig-popup-sm);
@@ -50,28 +51,21 @@ export const PatternGrid = styled.div`
   gap: var(--ig-space-2);
 `
 
-export const PatternButton = styled.button<{ $active: boolean }>`
-  padding: var(--ig-space-3);
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
-  border-radius: var(--ig-radius-xs);
-  cursor: pointer;
-  background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
-  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
-  color: var(--ig-color-text-primary);
+export const PatternButton = styled(Button).attrs({
+  variant: 'secondary' as const,
+  size: 'sm' as const,
+})<{ $active: boolean }>`
+  && {
+    background: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-18)' : 'var(--ig-color-white-04)')};
+    border-color: ${({ $active }) => ($active ? 'var(--ig-color-blue-tint-85)' : 'var(--ig-color-white-12)')};
+  }
 `
 
-export const RoiPrimaryButton = styled.button<{ $active: boolean }>`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
-  justify-content: center;
-  padding: var(--ig-space-3);
-  font-size: var(--ig-font-size-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  border-radius: var(--ig-radius-xs);
-  cursor: pointer;
-  background: ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-04)')};
-  border: var(--ig-border-1px) solid ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-12)')};
-  color: var(--ig-color-text-primary);
+export const RoiPrimaryButton = styled(Button).attrs({
+  variant: 'accent' as const,
+})<{ $active: boolean }>`
+  && {
+    background: ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-04)')};
+    border-color: ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-white-12)')};
+  }
 `

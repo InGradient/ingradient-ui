@@ -4,15 +4,15 @@ import { useRef } from 'react'
 import {
   Button, Checkbox, ConfirmDialog, DialogCloseButton, EmptyState, FilterPopover, FilterPopoverSection,
 } from '@ingradient/ui'
-import { DatePickerField, DropdownSelect, EyeIcon, EyeOffIcon, FilterIcon, ExpandIcon, CollapseIcon, PointerIcon, SquareIcon } from '@ingradient/ui/components'
+import { DatePickerField, DropdownSelect, EyeIcon, EyeOffIcon, FilterIcon, ExpandIcon, CollapseIcon, PointerIcon, SquareIcon, MenuIconButton } from '@ingradient/ui/components'
 import {
-  ImagesFilterButton, ImagesFilterDateLabel, ImagesFilterDateRow,
+  ImagesFilterDateLabel, ImagesFilterDateRow,
   ImagesFilterWrap,
   ImagesWrapper,
   SelectionToolbar,
-  ModalBBoxCanvasWrap, ModalBBoxToolbar, ModalBBoxToolbarBtn,
+  ModalBBoxCanvasWrap, ModalBBoxToolbar,
   ModalFilename, ModalHeader, ModalHeaderCenter,
-  ModalHeaderLeft, ModalHeaderIconBtn,
+  ModalHeaderLeft,
   ModalToolbarSpacer, ModalBboxCount,
   ModalHint, ModalInner, ModalOverlay,
 } from './ImagesView.styles'
@@ -65,14 +65,15 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
           />
           <div style={{ flex: 1 }} />
           <ImagesFilterWrap>
-            <ImagesFilterButton
+            <MenuIconButton
               type="button"
               $active={datePreset !== 'all'}
               title={labels.filterTitle}
+              aria-label={labels.filterTitle}
               onClick={onToggleFilter}
             >
               <FilterIcon size={iconSizeNumbers.md} />
-            </ImagesFilterButton>
+            </MenuIconButton>
             {filterOpen && (
               <FilterPopover
                 width={chartHeights.lg}
@@ -157,7 +158,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                 <ModalHeaderLeft>
                   {showModalOverlayControls && (
                     <>
-                      <ModalHeaderIconBtn
+                      <MenuIconButton
                         type="button"
                         $active={modalAnnotationsVisible}
                         onClick={(e) => { e.stopPropagation(); onSetModalAnnotationsVisible(!modalAnnotationsVisible) }}
@@ -165,15 +166,16 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                         aria-label={modalAnnotationsVisible ? labels.modal.hideAnnotations : labels.modal.showAnnotations}
                       >
                         {modalAnnotationsVisible ? <EyeIcon size={iconSizeNumbers.md} /> : <EyeOffIcon size={iconSizeNumbers.md} />}
-                      </ModalHeaderIconBtn>
-                      <ModalHeaderIconBtn
+                      </MenuIconButton>
+                      <MenuIconButton
                         type="button"
+                        $active={modalIsFullscreen}
                         onClick={(e) => { e.stopPropagation(); onToggleModalFullscreen() }}
                         title={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                         aria-label={modalIsFullscreen ? labels.modal.exitFullscreen : labels.modal.enterFullscreen}
                       >
                         {modalIsFullscreen ? <CollapseIcon size={iconSizeNumbers.md} /> : <ExpandIcon size={iconSizeNumbers.md} />}
-                      </ModalHeaderIconBtn>
+                      </MenuIconButton>
                     </>
                   )}
                 </ModalHeaderLeft>
@@ -189,22 +191,24 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
               {modalHintText && <ModalHint>{modalHintText}</ModalHint>}
               {showModalToolbar && (
                 <ModalBBoxToolbar>
-                  <ModalBBoxToolbarBtn
+                  <MenuIconButton
                     type="button"
                     $active={modalEditMode === 'cursor'}
                     onClick={() => onSetModalEditMode('cursor')}
                     title={labels.modal.cursorMode}
+                    aria-label={labels.modal.cursorMode}
                   >
                     <PointerIcon size={iconSizeNumbers.md} />
-                  </ModalBBoxToolbarBtn>
-                  <ModalBBoxToolbarBtn
+                  </MenuIconButton>
+                  <MenuIconButton
                     type="button"
                     $active={modalEditMode === 'bbox'}
                     onClick={() => onSetModalEditMode('bbox')}
                     title={labels.modal.bboxMode}
+                    aria-label={labels.modal.bboxMode}
                   >
                     <SquareIcon size={iconSizeNumbers.md} />
-                  </ModalBBoxToolbarBtn>
+                  </MenuIconButton>
                   <ModalToolbarSpacer />
                   <ModalBboxCount>· {labels.modal.bboxCount(modalBboxCount)}</ModalBboxCount>
                 </ModalBBoxToolbar>

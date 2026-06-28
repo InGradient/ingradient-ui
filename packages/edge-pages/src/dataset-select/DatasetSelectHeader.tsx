@@ -1,9 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
-import { Badge, StatusDot, RefreshIcon, SettingsIcon } from '@ingradient/ui/components'
+import { Badge, IconButton, StatusDot, RefreshIcon, SettingsIcon } from '@ingradient/ui/components'
 import {
   Header, HeaderLeft, Title, HeaderRight,
-  RefreshBtn, IconBtn, StatusItem,
+  RefreshBtn, StatusItem,
 } from './styles/header.styles'
 import type { ConnectionStatus } from './types'
 
@@ -60,6 +60,7 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
         {langSelector}
 
         <RefreshBtn
+          aria-label={refreshLabel}
           onClick={onRefresh}
           disabled={loading}
           $spinning={loading}
@@ -68,13 +69,16 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
           <RefreshIcon size={iconSizeNumbers.lg} />
         </RefreshBtn>
 
-        <IconBtn
+        <IconButton
+          variant="secondary"
+          size="sm"
+          aria-label={canSetupCamera ? settingsTitle : settingsDisabledTitle}
           title={canSetupCamera ? settingsTitle : settingsDisabledTitle}
           onClick={() => canSetupCamera && onOpenSettings()}
           disabled={!canSetupCamera}
         >
           <SettingsIcon size={iconSizeNumbers.lg} />
-        </IconBtn>
+        </IconButton>
 
         {accountMenu}
       </HeaderRight>

@@ -7,15 +7,6 @@ export const DeletingLabel = styled.span`
   gap: var(--ig-space-2);
 `;
 
-export const GroupBadge = styled.div`
-  background: var(--ig-color-overlay-strong);
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) var(--ig-space-2);
-  border-radius: var(--ig-radius-xs);
-`;
-
 export const GroupBadgeWrap = styled.div`
   position: absolute;
   top: var(--ig-space-2);
@@ -26,59 +17,8 @@ export const GroupBadgeWrap = styled.div`
   z-index: var(--ig-z-capture-high);
 `;
 
-export const GroupDeleteBtn = styled.button`
-  width: var(--ig-control-height-xs);
-  height: var(--ig-control-height-xs);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--ig-border-1px) solid var(--ig-color-white-20);
-  border-radius: var(--ig-radius-pill);
-  background: var(--ig-color-danger-overlay);
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  opacity: 1;
-  transform: translateX(0);
-  transition: transform var(--ig-motion-fast-ease), background var(--ig-motion-fast-ease), border-color var(--ig-motion-fast-ease);
-  box-shadow: 0 var(--ig-space-1) var(--ig-space-5) var(--ig-color-shadow-soft);
-  pointer-events: auto;
-  position: relative;
-  z-index: var(--ig-z-capture);
-  flex-shrink: 0;
-  &:disabled {
-    opacity: var(--ig-opacity-subtle);
-    background: var(--ig-color-slate-tint-86);
-    cursor: not-allowed;
-  }
-  &:hover:not(:disabled) {
-    background: var(--ig-color-danger-overlay-hover);
-    border-color: var(--ig-color-white-32);
-    transform: scale(var(--ig-scale-hover-lift));
-  }
-`;
-
 // ImageCell / ImageCellCheckbox / ImageLabel / ImageThumbWrap:
 // @ingradient/ui ImageGrid + EdgeImagesGrid 로 이동 (PR-1.5, 2026-05-09)
-
-export const ImagesFilterButton = styled.button<{ $active?: boolean }>`
-  width: var(--ig-control-height-sm);
-  height: var(--ig-control-height-sm);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ig-radius-xs);
-  border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'transparent')};
-  background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
-  color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
-  cursor: pointer;
-  transition: all var(--ig-motion-fast-ease);
-
-  &:hover {
-    color: var(--ig-color-text-primary);
-    background: var(--ig-color-surface-interactive);
-    border-color: var(--ig-color-border-subtle);
-  }
-`;
 
 export const ImagesFilterDateLabel = styled.span`
   width: var(--ig-control-height-sm-plus);
@@ -140,22 +80,6 @@ export const ModalBBoxToolbar = styled.div`
   background: var(--ig-color-overlay-strong);
   border-radius: 0 0 var(--ig-radius-lg) var(--ig-radius-lg);
   flex-shrink: 0;
-`;
-
-export const ModalBBoxToolbarBtn = styled.button<{ $active?: boolean }>`
-  width: var(--ig-control-height-md);
-  height: var(--ig-control-height-md);
-  border: none;
-  border-radius: var(--ig-radius-md);
-  background: ${(p) => (p.$active ? 'var(--ig-color-surface-active)' : 'transparent')};
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--ig-motion-fast-ease);
-  &:hover { background: var(--ig-color-surface-interactive); }
-  &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
 `;
 
 export const ModalFilename = styled.div`
@@ -262,21 +186,6 @@ export const ModalHeaderLeft = styled.div`
   display: flex;
   gap: var(--ig-space-3);
   flex-shrink: 0;
-`;
-
-export const ModalHeaderIconBtn = styled.button<{ $active?: boolean }>`
-  flex-shrink: 0;
-  width: var(--ig-control-height-mid-plus);
-  height: var(--ig-control-height-mid-plus);
-  border: var(--ig-border-1px) solid var(--ig-color-white-20);
-  border-radius: var(--ig-radius-xs);
-  background: ${(p) => (p.$active ? 'var(--ig-color-white-18)' : 'var(--ig-color-overlay-mid)')};
-  color: var(--ig-color-on-accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover { background: var(--ig-color-white-12); }
 `;
 
 // ── Modal toolbar right slot (bbox count) ────────────────────────────────────

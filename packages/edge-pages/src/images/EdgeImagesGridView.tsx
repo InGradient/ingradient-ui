@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { LoaderIcon, AlertTriangleIcon, CloudOffIcon, TrashIcon } from '@ingradient/ui/components'
+import { LoaderIcon, AlertTriangleIcon, CloudOffIcon, TrashIcon, Badge, IconButton } from '@ingradient/ui/components'
 import { AnnotationOverlay, VirtualizedImageGrid, iconSizeNumbers } from '@ingradient/ui'
 import {
-  GroupBadge, GroupBadgeWrap, GroupDeleteBtn, ImagesContainer, SyncStateIcon,
+  GroupBadgeWrap, ImagesContainer, SyncStateIcon,
 } from './ImagesView.styles'
 import { getGroupKey, type ImageItem } from './image-helpers'
 import type { EdgeImagesGridViewProps } from './types'
@@ -97,7 +97,9 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
               )}
               {showBadge && (
                 <GroupBadgeWrap>
-                  <GroupDeleteBtn
+                  <IconButton
+                    variant="secondary"
+                    size="sm"
                     type="button"
                     title={labels.deleteGroup}
                     aria-label={labels.deleteGroup}
@@ -108,8 +110,8 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
                     }}
                   >
                     <TrashIcon size={iconSizeNumbers.sm} />
-                  </GroupDeleteBtn>
-                  <GroupBadge>{badgeCount}</GroupBadge>
+                  </IconButton>
+                  <Badge>{badgeCount}</Badge>
                 </GroupBadgeWrap>
               )}
             </>
