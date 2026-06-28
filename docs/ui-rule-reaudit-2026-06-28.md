@@ -55,5 +55,21 @@ license/login Card, statics SummaryCard/Panel/DurationCard, system StatCard, lab
 - **#4/#7 라이브러리**: resizable-columns-layout/resizable-panel가 localStorage 직접 접근.
 - **token hygiene(#9)**: core/colors·layout에 도메인 토큰 누수, fastEase/bgCanvasAlt/icon xsPlus dead 토큰, z-index 충돌.
 
+## ✅ 수정 진행 현황 (브랜치 refactor/ui-rule-reaudit-fixes)
+- **P0**: image-grid IntersectionObserver var() 런타임버그, dropdown-shared chevron 회전 버그, dead iconSizeNumbers import 4건.
+- **라이브러리 a11y 강**: Tabs role/키보드/focus-visible, Tooltip 포커스/aria-describedby.
+- **ProgressBar #0.2 확장**(indeterminate/tone/progressbar-role) → ExportModal 전환 + dead 제거.
+- **platform 재구현**: SelectableListItem(image-detail-class-list), Button danger(CatalogView Delete), RadioCardGroup(gallery-export 4그룹), DropZone(create-project), TextField, Alert(storage ×2).
+- **edge 재구현 대량**: styled.button→IconButton/MenuIconButton/Button(images/labeling/dataset-select/log/capture/chrome 등), inline 카드→Card(statics/system/license/login/labeling-panel/connection/capture), Warning→Alert, DeviceCard/HistoryEntry/AccountItem→SelectableListItem. styled.button 잔존 3개는 keeper(셔터·disclosure 헤더 2).
+- 검증: lib 빌드 클린, 양 패키지 per-package tsc 통과.
+
+## 🟡 남은 P2 (systemic — 규칙 문서 §"검토 방법"대로 lint 권장)
+- **#8 raw-px**: padding shorthand 안 raw px(`var(--ig-space-x) 16px`)·inline `minWidth:N`·`letterSpacing:'0.04em'` 다수, 라이브러리 default-param raw px(chart/dropdown-layout/resizable). → stylelint `declaration-property-value-allowed-list`.
+- **#10 a11y 추가**: dialog-shell focus-trap/aria-labelledby, context-menu/select/dropdown/chip-tabs 키보드 nav, navigation/menu-item focus-visible·aria-current. → jsx-a11y + 수동 a11y 패스.
+- **token hygiene #9**: core/colors·layout 도메인 토큰 누수, fastEase/bgCanvasAlt/icon xsPlus dead 토큰, z-index 충돌.
+- **#3 도메인 누수**: utils/format-pattern-tab, generic 컴포넌트의 image-card-* 토큰, patterns/add-dataset-modal 하드코딩.
+- **#4/#7**: resizable-columns/panel localStorage 직접 접근.
+- **dead code**: ConnectionTabView.styles 미사용 GuideCard/GigeDiagCard/DiagReportWrap/DiagDivider, dataset-select RecentCard/DatasetCard(선택카드 — SelectableListItem 후보), create-project OptionCard(RadioCard label string-only 제약으로 유지).
+
 ## 의도적 keeper (over-flag 주의 — 고치지 말 것)
 camera 셔터 흰링 rgba, SyncChip/StatChip(bg 없는 status 텍스트), LogDetailTable(mono key-value), TOKEN_BOX accent box, chartColors 숫자 색상, recharts innerRadius/outerRadius 숫자 props, var(--ig-font-mono, fallback), TitleBar 창 컨트롤 버튼(full-height/danger), CaptureButton 셔터(특수 대형 라운드), join-codes/invitations Empty 변형(top-margin spacing).
