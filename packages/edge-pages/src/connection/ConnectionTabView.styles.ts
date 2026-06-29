@@ -65,7 +65,7 @@ export const LogArea = styled.div`
   font-family:var(--ig-font-mono);
   font-size: var(--ig-font-size-2xs);
 `;
-export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) 6px;font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
+export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) var(--ig-space-2);font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
 
 // ── Recovery / NIC Status ──
 export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap: var(--ig-space-1Plus);font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;

@@ -57,7 +57,7 @@ export function JoinCodesSection({
   description = DEFAULT_DESC,
 }: JoinCodesSectionProps) {
   const columns: TableColumn<JoinCodeRow>[] = [
-    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-font-size-xs)" letterSpacing="1px">{r.code}</Text> },
+    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-font-size-xs)" letterSpacing="var(--ig-letter-spacing-wide)">{r.code}</Text> },
     { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
     { key: 'uses', header: 'Uses', render: (r) => <Text tone="muted">{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Text> },
     { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },

@@ -69,32 +69,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{projectTitle}</Text>
       {projectChart}
 
       <Grid gap="var(--ig-space-9)" columns="1fr 1fr">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.5px">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}
