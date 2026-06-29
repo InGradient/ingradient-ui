@@ -85,14 +85,19 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
   overflow-y: auto;
 `
 
-export const DropdownOptionButton = styled.button<{ $active: boolean }>`
+export const DropdownOptionButton = styled.button<{ $active: boolean; $highlighted?: boolean }>`
   width: 100%;
   padding: var(--ig-space-3) var(--ig-space-4);
   border: none;
   border-radius: var(--ig-radius-sm);
   white-space: nowrap;
-  background: ${(p) => (p.$active ? 'var(--ig-color-surface-active)' : 'transparent')};
-  color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
+  background: ${(p) =>
+    p.$highlighted
+      ? 'var(--ig-color-dropdown-option-hover)'
+      : p.$active
+        ? 'var(--ig-color-surface-active)'
+        : 'transparent'};
+  color: ${(p) => (p.$active || p.$highlighted ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
   text-align: left;
   cursor: pointer;
 
