@@ -38,7 +38,7 @@ const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, s
   transition: box-shadow var(--ig-motion-fast-ease), color var(--ig-motion-fast-ease);
   &:hover {
     color: var(--ig-color-text-primary);
-    box-shadow: 0 0 0 1px var(--ig-color-active-bg);
+    box-shadow: 0 0 0 var(--ig-border-1px) var(--ig-color-active-bg);
   }
   svg { width: var(--ig-icon-md); height: var(--ig-icon-md); }
 `

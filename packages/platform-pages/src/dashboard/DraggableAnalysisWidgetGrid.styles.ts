@@ -117,7 +117,7 @@ export const DragOverlayCard = styled.div`
   border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-active-bg);
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
-  box-shadow: 0 24px 56px var(--ig-color-blue-tint-34);
+  box-shadow: var(--ig-shadow-popover);
 `
 
 export const DragOverlayTitle = styled.div`

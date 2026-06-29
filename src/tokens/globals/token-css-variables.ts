@@ -72,6 +72,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-shadow-drawer-lift': shadows.drawerLift,
     '--ig-shadow-danger-hover-lift': shadows.dangerHoverLift,
     '--ig-shadow-control-elevated': shadows.controlElevated,
+    '--ig-shadow-toast': shadows.toast,
     '--ig-scrollbar-thumb': isLight ? 'rgba(15, 23, 42, 0.18)' : 'rgba(148, 163, 184, 0.22)',
     '--ig-scrollbar-thumb-hover': isLight ? 'rgba(15, 23, 42, 0.28)' : 'rgba(148, 163, 184, 0.34)',
     '--ig-scrollbar-thumb-active': isLight ? 'rgba(15, 23, 42, 0.36)' : 'rgba(148, 163, 184, 0.42)',

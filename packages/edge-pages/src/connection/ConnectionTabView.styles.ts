@@ -34,7 +34,7 @@ export const GuideSummary = styled.div`font-size:var(--ig-font-size-xs);color:va
 export const GuideActions = styled.div`display:flex;align-items:center;justify-content:flex-end;gap: var(--ig-space-3);flex-wrap:wrap;`;
 export const GuideWarningList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-1);margin-top: var(--ig-space-4);`;
 export const GuideWarning = styled.div`font-size:var(--ig-font-size-2xs);color:var(--ig-color-warning);line-height: var(--ig-line-height-snug);`;
-export const NetworkSummaryGrid = styled.div`display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap: var(--ig-space-3);margin:var(--ig-space-4) 0 0;@media (max-width: 860px){grid-template-columns:repeat(2,minmax(0,1fr));}`;
+export const NetworkSummaryGrid = styled.div`display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap: var(--ig-space-3);margin:var(--ig-space-4) 0 0;${media.mdWide}{grid-template-columns:repeat(2,minmax(0,1fr));}`;
 export const NetworkSummaryItem = styled.div`
   ${surfaceRaised}
   padding: var(--ig-space-3) var(--ig-space-4);

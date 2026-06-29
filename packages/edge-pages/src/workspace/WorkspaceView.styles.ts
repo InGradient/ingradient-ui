@@ -24,9 +24,9 @@ export const CapturingStatusPill = styled.div`
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
   padding: var(--ig-space-3) var(--ig-space-8);
-  border-radius: var(--ig-radius-md, 8px);
+  border-radius: var(--ig-radius-md);
   pointer-events: none;
-  box-shadow: 0 6px 20px var(--ig-color-overlay-dim);
+  box-shadow: var(--ig-shadow-toast);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 

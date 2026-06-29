@@ -9,6 +9,8 @@ export const shadowScale = {
   drawerLift: '0 16px 48px rgba(4, 8, 14, 0.72)',
   dangerHoverLift: '0 10px 28px rgba(127, 29, 29, 0.32)',
   controlElevated: 'inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 24px rgba(0, 0, 0, 0.12)',
+  // 떠있는 작은 pill/toast 용 — 큰 floating/popover 보다 얕은 elevation
+  toast: '0 6px 20px var(--ig-color-overlay-dim)',
 } as const
 
 // Light mode shadows — much softer drop shadow (alpha cut by ~50%) so cards
@@ -24,6 +26,7 @@ export const shadowScaleLight = {
   drawerLift: '0 16px 48px rgba(15, 23, 42, 0.32)',
   dangerHoverLift: '0 10px 28px rgba(185, 28, 28, 0.20)',
   controlElevated: '0 10px 24px rgba(15, 23, 42, 0.08)',
+  toast: '0 6px 20px rgba(15, 23, 42, 0.12)',
 } as const
 
 shadowScaleLight satisfies Record<keyof typeof shadowScale, string>
