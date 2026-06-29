@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Button, SearchField, DropdownSelect } from '@ingradient/ui'
+import { EmptyText } from '@ingradient/ui/components'
 import type { LogEntry } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-4); height: 100%;`
@@ -16,7 +17,6 @@ const LogList = styled.div`
   border-radius: var(--ig-radius-xs);
   padding: var(--ig-space-3);
 `
-const EmptyText = styled.div`text-align: center; padding: var(--ig-space-9) 0; color: var(--ig-color-text-muted);`
 
 /** 로그 한 줄 (level별 색). Backend/Frontend 의 renderEntry 에서 재사용. */
 export const LogRow = styled.div<{ $level: string }>`

@@ -48,7 +48,7 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   width: var(--ig-icon-lg);
   height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-2xs);
-  border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   flex-shrink: 0;
@@ -72,7 +72,7 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   width: var(--ig-icon-lg);
   height: var(--ig-icon-lg);
   border-radius: var(--ig-radius-pill);
-  border: 1.5px solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: transparent;
   transition: border-color var(--ig-motion-fast);
   flex-shrink: 0;

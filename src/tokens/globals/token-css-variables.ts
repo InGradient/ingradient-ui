@@ -428,6 +428,7 @@ const staticVars = {
   '--ig-space-12': spacingScale[12],
   '--ig-space-13': spacingScale[13],
   '--ig-border-1px': borderWidthScale['1px'],
+  '--ig-border-1_5px': borderWidthScale['1_5px'],
   '--ig-border-2px': borderWidthScale['2px'],
   '--ig-border-3px': borderWidthScale['3px'],
   '--ig-z-hidden': String(zIndexScale.hidden),

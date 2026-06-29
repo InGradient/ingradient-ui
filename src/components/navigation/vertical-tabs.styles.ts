@@ -31,9 +31,9 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   pointer-events: none;
   transition:
-    top 0.22s ease,
-    height 0.22s ease,
-    opacity 0.16s ease;
+    top var(--ig-motion-normal),
+    height var(--ig-motion-normal),
+    opacity var(--ig-motion-fast);
 `
 
 export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTabsRadius }>`

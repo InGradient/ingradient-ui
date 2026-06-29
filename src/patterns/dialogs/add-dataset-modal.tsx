@@ -30,7 +30,10 @@ const ClassRow = styled.label`
   }
 `
 
-const TASK_OPTIONS: { value: DatasetTaskType; label: string; disabled?: boolean }[] = [
+export interface DatasetTaskOption { value: DatasetTaskType; label: string; disabled?: boolean }
+
+// 기본 task 옵션 — 소비자가 taskOptions prop 으로 라벨/구성 override 가능(도메인 하드코딩 회피, 규칙 #3/#5).
+const DEFAULT_TASK_OPTIONS: DatasetTaskOption[] = [
   { value: 'classification', label: 'Classification' },
   { value: 'object_detection', label: 'Object Detection' },
   { value: 'segmentation', label: 'Segmentation — Coming soon', disabled: true },
@@ -48,6 +51,8 @@ export interface AddDatasetModalProps {
   onClose: () => void
   onSubmit: (payload: { name: string; taskType: DatasetTaskType; classIds: string[] }) => void
   classes: AddDatasetClassOption[]
+  /** task 타입 옵션 — 미지정 시 기본(classification/object_detection/segmentation/point). */
+  taskOptions?: DatasetTaskOption[]
   initialName?: string
   initialTaskType?: DatasetTaskType
   initialClassIds?: string[]
@@ -56,6 +61,7 @@ export interface AddDatasetModalProps {
 
 export function AddDatasetModal({
   open, onClose, onSubmit, classes,
+  taskOptions = DEFAULT_TASK_OPTIONS,
   initialName = '', initialTaskType = 'object_detection', initialClassIds = [],
   submitting,
 }: AddDatasetModalProps) {
@@ -97,7 +103,7 @@ export function AddDatasetModal({
       </FormField>
       <FormField label="Task type">
         <RadioCardGroup
-          options={TASK_OPTIONS}
+          options={taskOptions}
           value={taskType}
           onChange={(value) => setTaskType(value as DatasetTaskType)}
         />
