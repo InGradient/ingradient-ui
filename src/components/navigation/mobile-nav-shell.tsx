@@ -1,4 +1,4 @@
-import { type MouseEvent, type ReactNode } from 'react'
+import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react'
 import styled from 'styled-components'
 import { Menu, X } from 'lucide-react'
 import { media } from '../../tokens'
@@ -204,6 +204,23 @@ export function MobileNavShell({
   navLabel = 'Main navigation',
   className,
 }: MobileNavShellProps) {
+  const drawerRef = useRef<HTMLElement>(null)
+
+  // 드로어가 열릴 때 포커스를 패널로 이동, Escape로 닫기, 닫힐 때 원위치 복원.
+  useEffect(() => {
+    if (!open) return
+    const prevFocus = document.activeElement as HTMLElement | null
+    drawerRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { e.preventDefault(); onClose() }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      prevFocus?.focus?.()
+    }
+  }, [open, onClose])
+
   return (
     <>
       <AppHeader>
@@ -218,10 +235,12 @@ export function MobileNavShell({
 
       <Backdrop $visible={open} onClick={onClose} />
       <DrawerPanel
+        ref={drawerRef}
         $open={open}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        tabIndex={-1}
         className={className}
       >
         <Inline justify="space-between" style={DRAWER_HEADER_STYLE}>
