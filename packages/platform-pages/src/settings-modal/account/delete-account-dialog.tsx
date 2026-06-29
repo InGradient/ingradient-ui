@@ -12,7 +12,7 @@ import {
 
 export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 
-const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 260 }
+const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 'var(--ig-popup-sm-narrow)' }
 const FULL_CONFIRM_STYLE = { width: '100%' }
 const COPY_STYLE = { lineHeight: 'var(--ig-line-height-relaxed-plus)' }
 

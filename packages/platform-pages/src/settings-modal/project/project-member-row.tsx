@@ -23,7 +23,7 @@ const CELL_STYLE = {
   whiteSpace: 'nowrap' as const,
 }
 
-const ROLE_SELECT_STYLE = { minWidth: 100 }
+const ROLE_SELECT_STYLE = { minWidth: 'var(--ig-popup-3xs-wide)' }
 const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 'var(--ig-font-size-xs)' }
 
 export interface ProjectMemberRowMember {

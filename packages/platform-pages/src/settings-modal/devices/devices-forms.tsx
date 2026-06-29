@@ -15,8 +15,8 @@ const TOKEN_BOX_STYLE = {
 }
 
 const FLEX_1_STYLE = { flex: 1 }
-const WIDTH_160_STYLE = { width: 160 }
-const WIDTH_200_STYLE = { width: 200 }
+const WIDTH_160_STYLE = { width: 'var(--ig-popup-2xs-plus)' }
+const WIDTH_200_STYLE = { width: 'var(--ig-popup-list-min)' }
 
 
 export interface IssuedToken {

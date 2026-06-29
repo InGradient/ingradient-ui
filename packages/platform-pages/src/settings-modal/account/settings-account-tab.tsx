@@ -5,7 +5,7 @@ import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 
-const FIELD_STYLE = { minWidth: 240 }
+const FIELD_STYLE = { minWidth: 'var(--ig-popup-xs-plus)' }
 const HINT_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }
 const EXPIRED_STYLE = { margin: 0 }
 

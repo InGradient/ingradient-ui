@@ -1,7 +1,7 @@
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Card, SelectField } from '@ingradient/ui/components'
 
-const SELECT_STYLE = { minWidth: 180 }
+const SELECT_STYLE = { minWidth: 'var(--ig-popup-xs-narrow)' }
 
 export interface ProjectResolutionCandidate {
   user_id: string

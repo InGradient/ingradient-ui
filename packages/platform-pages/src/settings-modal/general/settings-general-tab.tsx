@@ -4,7 +4,7 @@ import { Checkbox } from '@ingradient/ui/components'
 import { DropdownSelect, type DropdownOption } from '@ingradient/ui/components'
 import { SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
 
-const SELECT_WRAP_STYLE = { minWidth: 160 }
+const SELECT_WRAP_STYLE = { minWidth: 'var(--ig-popup-2xs-plus)' }
 
 const Hint = styled.p`
   margin: 0;

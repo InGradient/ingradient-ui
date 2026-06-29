@@ -108,7 +108,7 @@ export function LabelingChartsView(props: LabelingChartsViewProps): JSX.Element 
         height={chartHeights.xl}
         tooltipContent={<TrendTooltip />}
         headerExtra={
-          <div style={{ width: 180 }}>
+          <div style={{ width: 'var(--ig-popup-xs-narrow)' }}>
             <DropdownSelect value={trendMode} options={trendOptions} onChange={(value) => onTrendModeChange(value as TrendMode)} />
           </div>
         }

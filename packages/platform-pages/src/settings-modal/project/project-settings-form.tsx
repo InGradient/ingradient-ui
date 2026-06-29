@@ -37,7 +37,7 @@ const ROW_STYLE = {
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
 }
 const LABEL_STYLE = { cursor: 'pointer' as const }
-const INPUT_STYLE = { minWidth: 200 }
+const INPUT_STYLE = { minWidth: 'var(--ig-popup-list-min)' }
 const INPUT_FLEX_STYLE = { minWidth: 0 }
 const NESTED_FIELD_STYLE = { flex: 1, minWidth: 0 }
 
