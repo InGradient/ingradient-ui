@@ -99,19 +99,19 @@ export function ProjectSettingsForm({
       />
 
       <Inline gap="var(--ig-space-3)" wrap="wrap">
-        <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={FIRST_TITLE_STYLE}>Project name</Text>
+        <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={FIRST_TITLE_STYLE}>Project name</Text>
         <ProjectTypeTag tone={projectType} />
       </Inline>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
         <TextField value={name} onChange={(e) => onChangeName(e.target.value)} placeholder="Project name" aria-label="Project name" disabled={!canEdit} style={INPUT_STYLE} />
       </Inline>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Description</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Description</Text>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
         <Textarea minHeight={80} value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
       </Inline>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Data grouping</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Data grouping</Text>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="multi-image-group" size="var(--ig-font-size-md)" style={LABEL_STYLE}>Group multiple images as one item (for labeling)</Text>
         <Checkbox id="multi-image-group" checked={groupEnabled} onChange={(e) => onChangeGroupEnabled(e.target.checked)} disabled={!canEdit} />
@@ -135,13 +135,13 @@ export function ProjectSettingsForm({
         </>
       )}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Upload</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Upload</Text>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="allow-duplicate-filenames" size="var(--ig-font-size-md)" style={LABEL_STYLE}>Allow duplicate file names</Text>
         <Checkbox id="allow-duplicate-filenames" checked={allowDup} onChange={(e) => onChangeAllowDup(e.target.checked)} disabled={!canEdit} />
       </Inline>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Display</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Display</Text>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="show-filename-in-gallery" size="var(--ig-font-size-md)" style={LABEL_STYLE}>Show file name below each thumbnail in Catalog</Text>
         <Checkbox id="show-filename-in-gallery" checked={showFilenameInGallery} onChange={(e) => onChangeShowFilenameInGallery(e.target.checked)} disabled={!canEdit} />
@@ -153,7 +153,7 @@ export function ProjectSettingsForm({
 
       {isOwner && (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="0.04em" style={SECTION_TITLE_STYLE}>Group visibility (owner only)</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Group visibility (owner only)</Text>
           <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
             <Text as="label" htmlFor="group-visible-owner-only" size="var(--ig-font-size-md)" style={LABEL_STYLE}>Only owner can see all images in group</Text>
             <Checkbox

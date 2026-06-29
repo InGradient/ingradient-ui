@@ -36,7 +36,7 @@ function MemberPoolList({ members, onRemove }: { members: MemberItem[]; onRemove
           <Avatar src={m.avatarUrl} initials={m.initials ?? m.name.charAt(0).toUpperCase()} size={controlSizeNumbers.xs} />
           <Stack gap={0} style={MEMBER_TEXT_BLOCK_STYLE}>
             <Text size="var(--ig-font-size-sm)" title={m.name} style={MEMBER_NAME_STYLE}>{m.name}</Text>
-            {m.role ? <Text size="var(--ig-font-size-2xs)" tone="muted" uppercase letterSpacing="0.05em">{m.role}</Text> : null}
+            {m.role ? <Text size="var(--ig-font-size-2xs)" tone="muted" uppercase letterSpacing="var(--ig-letter-spacing-wide)">{m.role}</Text> : null}
           </Stack>
           {onRemove ? (
             <IconButton variant="ghost" size="sm" tone="danger" type="button" aria-label={`Remove member ${m.name}`} onClick={() => onRemove(m.id)}>

@@ -70,7 +70,7 @@ export function ImageDetailInfoPanel({
 }: ImageDetailInfoPanelProps) {
   return (
     <Stack gap="var(--ig-space-3)" style={SECTION_STYLE}>
-      <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="0.04em">{title}</Text>
+      <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="var(--ig-letter-spacing-normal)">{title}</Text>
       {positionLabel ? (
         <InfoRow>
           <InfoRowLabel>Position</InfoRowLabel>
