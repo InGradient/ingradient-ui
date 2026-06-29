@@ -34,7 +34,7 @@ export function DeviceDetailDialog({ device, onClose, title = 'Device Details' }
       width="min(var(--ig-popup-2xl-wide), 100%)"
       actions={<Button type="button" variant="secondary" onClick={onClose}>Close</Button>}
     >
-      <Grid gap="10px 16px" columns="var(--ig-form-label-col) 1fr">
+      <Grid gap="var(--ig-space-4) var(--ig-space-7)" columns="var(--ig-form-label-col) 1fr">
         <Text tone="muted" size="var(--ig-font-size-sm)">Device UID</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.deviceUid}</Text>
         <Text tone="muted" size="var(--ig-font-size-sm)">Name</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.name ?? '—'}</Text>
         <Text tone="muted" size="var(--ig-font-size-sm)">Status</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.status}</Text>
