@@ -1,0 +1,11 @@
+{
+  "customSyntax": "postcss-styled-syntax",
+  "rules": {
+    "declaration-property-value-allowed-list": {
+      "/^(padding|padding-top|padding-right|padding-bottom|padding-left|margin|margin-top|margin-right|margin-bottom|margin-left|gap|row-gap|column-gap|font-size|letter-spacing)$/": [
+        "/^(var\\(--ig-[^)]+\\)|calc\\([^;]+\\)|0|auto|inherit|normal|-?[0-9.]+%)( +(var\\(--ig-[^)]+\\)|calc\\([^;]+\\)|0|auto|-?[0-9.]+%))*$/"
+      ]
+    },
+    "color-no-hex": [true, { "ignore": ["named"] }]
+  }
+}

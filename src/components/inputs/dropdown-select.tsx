@@ -38,7 +38,7 @@ export function DropdownSelect({
     if (!open) { setActiveIndex(-1); return }
     const selIdx = options.findIndex((o) => o.value === value)
     setActiveIndex(selIdx >= 0 ? selIdx : options.findIndex((o) => !o.disabled))
-  }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [open])
 
   const moveActive = (dir: 1 | -1) => {
     setActiveIndex((prev) => {
