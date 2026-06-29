@@ -68,6 +68,8 @@ license/login Card, statics SummaryCard/Panel/DurationCard, system StatCard, lab
 - **#3 도메인 토큰 누수**: generic media image-card-gradient → 중립 media-placeholder, selectable-grid-cell → accent/blue-tint. dead selected-* 토큰 제거.
 - **#8 raw 디자인 값 production 0건**: space 스케일 비표준 매핑 발견(space-7=16px, popup-md=320px, popup-lg-plus=440px 등) → padding/gap/margin·letterSpacing(em·px)·minWidth/width·Card padding prop·styled CSS letter-spacing·gridline calc 1px·잔여 2px 전부 토큰화. "토큰 없음"이라던 값 재검증 → 대부분 기존 토큰 존재(놓침), 진짜 없던 건 **신설**(`--ig-shadow-toast`, `breakpoints.mdWide=860`). box-shadow custom→shadow 토큰(popover/toast), media 860px→media.mdWide, radius fallback 제거, inset -2px/1px→border 토큰.
 - 검증: lib 빌드 클린, tokens.css 재생성, 양 패키지 tsc 통과. **production raw px/em = 0**(주석·토큰명·0px·100% 제외), raw 색 = 셔터링 keeper만.
+- **#11 상태 스토리**: 신설/변경 컴포넌트 Storybook 상태 스토리 추가 — Card(elevation/flat/border/tone/radius·padding), MenuIconButton($active/disabled), EmptyText(default/short/long), ProgressBar(indeterminate/tone). storybook 빌드·인덱스 등록 확인.
+- **재발방지 lint (규칙 문서 §검토방법)**: eslint.config.js에 #2 의존성방향·#7 store/API·#9 prop명(eslint built-in no-restricted-imports/syntax; stories/tests #2 예외), `.stylelintrc.json`+`lint:style`로 packages #8 raw px/hex 차단. #10 a11y는 Storybook addon-a11y(runtime axe)로 커버. (eslint-plugin-import/jsx-a11y는 eslint10 peer 미지원이라 built-in/Storybook으로 대체)
 
 ## 🟢 의도적 keeper — 깨는 변경/구조/테마 위험으로 유지 (규칙 위반 아님으로 판단)
 - **#4/#7 resizable localStorage**: 규칙 #7 대상은 app store/API/DB/SDK. resizable은 UI 레이아웃 선호(컬럼 너비) 영속화 — 표준 브라우저 Web API, storageKey 미지정 시 graceful degrade. breaking API 변경(소비자 재구현 부담) 대비 유지.
