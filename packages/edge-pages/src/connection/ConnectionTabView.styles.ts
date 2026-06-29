@@ -47,7 +47,7 @@ export const NetworkSummaryValue = styled.div`font-size:var(--ig-font-size-xs);f
 // ── Camera Discovery ──
 export const DiscoverBar = styled.div`display:flex;align-items:center;gap: var(--ig-space-4);margin-bottom: var(--ig-space-5);`;
 export const DiscoverHint = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);`;
-export const DeviceList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-2);max-height: 200px;min-height:0;overflow-y:auto;padding-right:4px;`;
+export const DeviceList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-2);max-height: var(--ig-popup-list-min);min-height:0;overflow-y:auto;padding-right: var(--ig-space-1);`;
 // DeviceCard: 선택 가능한 list-row → ui SelectableListItem(variant="card") 로 이동 (2026-06-28)
 export const DeviceInfo = styled.div`flex:1;min-width:0;`;
 export const DeviceName = styled.div`font-size: var(--ig-font-size-sm);font-weight: var(--ig-font-weight-semibold);display:flex;align-items:center;gap: var(--ig-space-3);`;
