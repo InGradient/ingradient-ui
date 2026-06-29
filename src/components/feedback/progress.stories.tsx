@@ -48,6 +48,23 @@ export const Review: Story = {
           ))}
         </StorybookGrid>
       </StorybookSection>
+
+      <StorybookSection
+        title="Indeterminate & tone"
+        description="진행률 불명(작업 중)일 때 marquee 애니메이션, tone 으로 accent/danger/success 색."
+      >
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
+          <StorybookCard title="Indeterminate" subtitle="작업 중 (marquee)">
+            <StorybookStack gap={10}><ProgressBar indeterminate /></StorybookStack>
+          </StorybookCard>
+          <StorybookCard title="Danger" subtitle="실패 (tone=danger)">
+            <StorybookStack gap={10}><ProgressBar value={100} tone="danger" /></StorybookStack>
+          </StorybookCard>
+          <StorybookCard title="Success" subtitle="완료 (tone=success)">
+            <StorybookStack gap={10}><ProgressBar value={100} tone="success" /></StorybookStack>
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
     </StorybookPage>
   ),
 }
