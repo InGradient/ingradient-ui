@@ -141,10 +141,9 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-skeleton-start': palette.white06,
     '--ig-color-skeleton-mid': palette.white12,
     '--ig-color-image-card-hover-border': palette.blueTint28,
-    '--ig-color-image-card-selected-border': palette.blueTint42,
-    '--ig-color-image-card-selected-ring': palette.blueTint18,
-    '--ig-color-image-card-gradient-a': palette.blueTint14,
-    '--ig-color-image-card-gradient-b': palette.greenTint12,
+    // generic media(aspect-ratio-image/video-player) placeholder gradient — 도메인 무관 중립 명명 (규칙 #3)
+    '--ig-color-media-placeholder-a': palette.blueTint14,
+    '--ig-color-media-placeholder-b': palette.greenTint12,
     '--ig-color-avatar-bg': palette.blueTint18,
     // Semantic state-interaction aliases — blue tint family 의미 layer
     // (accent-soft-surface = blueTint12, accent-soft-surface-hover = blueTint18 가 이미 존재)

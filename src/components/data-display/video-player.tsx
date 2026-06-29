@@ -10,8 +10,8 @@ const Frame = styled.div<{ $ratio?: VideoAspectRatio }>`
   background:
     linear-gradient(
       ${gradientAngles.diagonal},
-      var(--ig-color-image-card-gradient-a) 0%,
-      var(--ig-color-image-card-gradient-b) 100%
+      var(--ig-color-media-placeholder-a) 0%,
+      var(--ig-color-media-placeholder-b) 100%
     ),
     var(--ig-color-surface-interactive);
   border-radius: var(--ig-radius-md);

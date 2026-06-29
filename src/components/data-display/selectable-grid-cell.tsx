@@ -9,17 +9,17 @@ const Cell = styled.div<{ $selected: boolean }>`
   overflow: hidden;
   cursor: pointer;
   border: var(--ig-border-1px) solid
-    ${(p) => (p.$selected ? 'var(--ig-color-image-card-selected-border)' : 'var(--ig-color-border-subtle)')};
+    ${(p) => (p.$selected ? 'var(--ig-color-accent-border-strong)' : 'var(--ig-color-border-subtle)')};
   box-shadow: ${(p) =>
     p.$selected
-      ? '0 0 0 2px var(--ig-color-image-card-selected-ring), var(--ig-shadow-panel)'
+      ? '0 0 0 var(--ig-space-2px) var(--ig-color-blue-tint-18), var(--ig-shadow-panel)'
       : 'var(--ig-shadow-panel)'};
   transition: transform var(--ig-motion-fast), border-color var(--ig-motion-fast),
     box-shadow var(--ig-motion-fast), background-color var(--ig-motion-fast);
 
   &:hover {
     transform: translateY(var(--ig-transform-hover-lift-y));
-    border-color: var(--ig-color-image-card-hover-border);
+    border-color: var(--ig-color-blue-tint-28);
   }
 `
 

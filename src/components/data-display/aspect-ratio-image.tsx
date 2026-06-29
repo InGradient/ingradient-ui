@@ -9,8 +9,8 @@ const Frame = styled.div<{ $ratio: AspectRatio }>`
   aspect-ratio: ${(p) => p.$ratio};
   background: linear-gradient(
       ${gradientAngles.diagonal},
-      var(--ig-color-image-card-gradient-a) 0%,
-      var(--ig-color-image-card-gradient-b) 100%
+      var(--ig-color-media-placeholder-a) 0%,
+      var(--ig-color-media-placeholder-b) 100%
     ),
     var(--ig-color-surface-interactive);
 
