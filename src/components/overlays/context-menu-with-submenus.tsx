@@ -53,6 +53,8 @@ export function ContextMenuWithSubmenus({
   anchorEl, onClose, actions, offset = 4, defaultOpenSubmenuKey, alignRight = true,
 }: ContextMenuWithSubmenusProps) {
   const menuRef = useRef<HTMLDivElement>(null)
+  const mainRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const subRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [submenuKey, setSubmenuKey] = useState<string | null>(defaultOpenSubmenuKey ?? null)
   const [submenuPos, setSubmenuPos] = useState<{ top: number; left: number } | null>(null)
 
@@ -64,6 +66,16 @@ export function ContextMenuWithSubmenus({
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
   }, [anchorEl, onClose])
+
+  // 열릴 때 첫 메뉴 항목으로 포커스 이동(키보드 진입).
+  useEffect(() => {
+    if (!anchorEl) return
+    const id = window.requestAnimationFrame(() => {
+      const first = actions.find((a) => !a.separator && !a.disabled)
+      if (first) mainRefs.current[first.key]?.focus()
+    })
+    return () => window.cancelAnimationFrame(id)
+  }, [anchorEl, actions])
 
   useEffect(() => {
     setSubmenuKey(defaultOpenSubmenuKey ?? null)
@@ -87,6 +99,28 @@ export function ContextMenuWithSubmenus({
 
   const subActions = actions.find((a) => a.key === submenuKey)?.subActions
 
+  // ── 키보드 nav (WAI-ARIA menu + submenu) ──
+  const enabledMain = actions.filter((a) => !a.separator && !a.disabled)
+  const focusMainAt = (i: number) => {
+    if (!enabledMain.length) return
+    mainRefs.current[enabledMain[(i + enabledMain.length) % enabledMain.length].key]?.focus()
+  }
+  const openSub = (a: ContextMenuWithSubmenusAction, el: HTMLElement) => {
+    if (!a.subActions?.length) return
+    const r = el.getBoundingClientRect()
+    setSubmenuPos({ top: r.top, left: r.right + 4 })
+    setSubmenuKey(a.key)
+    window.requestAnimationFrame(() => {
+      const first = a.subActions?.find((s) => !s.disabled)
+      if (first) subRefs.current[first.key]?.focus()
+    })
+  }
+  const enabledSub = subActions?.filter((s) => !s.disabled) ?? []
+  const focusSubAt = (i: number) => {
+    if (!enabledSub.length) return
+    subRefs.current[enabledSub[(i + enabledSub.length) % enabledSub.length].key]?.focus()
+  }
+
   return (
     <>
       <div onClick={onClose} style={BACKDROP_STYLE} />
@@ -97,6 +131,7 @@ export function ContextMenuWithSubmenus({
           return (
             <MenuItem
               key={a.key}
+              ref={(n) => { mainRefs.current[a.key] = n }}
               role="menuitem"
               tone={a.tone}
               disabled={a.disabled}
@@ -116,6 +151,19 @@ export function ContextMenuWithSubmenus({
                 a.onClick?.()
                 onClose()
               }}
+              onKeyDown={(e) => {
+                const idx = enabledMain.findIndex((m) => m.key === a.key)
+                if (e.key === 'ArrowDown') { e.preventDefault(); focusMainAt(idx + 1) }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); focusMainAt(idx - 1) }
+                else if (e.key === 'Home') { e.preventDefault(); focusMainAt(0) }
+                else if (e.key === 'End') { e.preventDefault(); focusMainAt(enabledMain.length - 1) }
+                else if (e.key === 'ArrowRight') { if (hasSub) { e.preventDefault(); openSub(a, e.currentTarget) } }
+                else if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  if (hasSub) openSub(a, e.currentTarget)
+                  else { a.onClick?.(); onClose() }
+                }
+              }}
               iconTrailing={hasSub ? <span style={CHEVRON_STYLE}>›</span> : undefined}
             >
               <span style={ITEM_LABEL_STYLE}>{a.label}</span>
@@ -128,10 +176,25 @@ export function ContextMenuWithSubmenus({
           {subActions.map((sa) => (
             <MenuItem
               key={sa.key}
+              ref={(n) => { subRefs.current[sa.key] = n }}
               role="menuitem"
               tone={sa.tone}
               disabled={sa.disabled}
               onClick={() => { sa.onClick?.(); onClose() }}
+              onKeyDown={(e) => {
+                const idx = enabledSub.findIndex((s) => s.key === sa.key)
+                if (e.key === 'ArrowDown') { e.preventDefault(); focusSubAt(idx + 1) }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); focusSubAt(idx - 1) }
+                else if (e.key === 'Home') { e.preventDefault(); focusSubAt(0) }
+                else if (e.key === 'End') { e.preventDefault(); focusSubAt(enabledSub.length - 1) }
+                else if (e.key === 'ArrowLeft') {
+                  e.preventDefault()
+                  const parent = submenuKey
+                  setSubmenuKey(null)
+                  if (parent) mainRefs.current[parent]?.focus()
+                }
+                else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sa.onClick?.(); onClose() }
+              }}
             >
               {sa.label}
             </MenuItem>
