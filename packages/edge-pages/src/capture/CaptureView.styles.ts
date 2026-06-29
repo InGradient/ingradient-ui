@@ -209,8 +209,8 @@ export const GridOverlay = styled.div`
   pointer-events: none;
   z-index: var(--ig-z-raised);
   background-image:
-    linear-gradient(to right, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px)),
-    linear-gradient(to bottom, transparent calc(var(--ig-layout-capture-grid) / 2 - 1px), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + 1px));
+    linear-gradient(to right, transparent calc(var(--ig-layout-capture-grid) / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + var(--ig-space-1px))),
+    linear-gradient(to bottom, transparent calc(var(--ig-layout-capture-grid) / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + var(--ig-space-1px)));
   background-size: var(--ig-layout-capture-grid) var(--ig-layout-capture-grid);
   background-position: center center;
 `;
