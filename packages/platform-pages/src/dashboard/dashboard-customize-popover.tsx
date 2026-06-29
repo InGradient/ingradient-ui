@@ -8,7 +8,7 @@ const Wrap = styled(MenuPopover)`
   top: calc(100% + var(--ig-space-3));
   right: 0;
   z-index: var(--ig-z-sticky-plus);
-  width: min(320px, calc(100vw - var(--ig-space-13)));
+  width: min(var(--ig-popup-md), calc(100vw - var(--ig-space-13)));
   padding: var(--ig-space-6);
   border-radius: var(--ig-radius-lg);
 `

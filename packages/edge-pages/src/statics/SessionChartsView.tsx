@@ -74,7 +74,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         height={chartHeights.md}
         emptyMessage={labels.noOutcomeStats}
       />
-      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) 16px 16px" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
         <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.captureWorkTime}</DurationLabel>
         <DurationGrid style={{ marginBottom: 'var(--ig-space-6)' }}>
@@ -105,7 +105,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         emptyMessage={labels.noDeflectometryData}
       />
       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
-        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) 16px 16px" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
           <PanelTitle>{labels.workerStats}</PanelTitle>
           {workerStats.length > 0 ? (
             <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />

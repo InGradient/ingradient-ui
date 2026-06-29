@@ -3,7 +3,7 @@ import { Button } from '@ingradient/ui/components'
 import { RadioCardGroup, type RadioCardGroupOption, TextField } from '@ingradient/ui/components'
 import { ExportErrorText, ExportSection, ExportSectionLabel } from './gallery-export-dialog.styles'
 
-const EXPORT_DIALOG_WIDTH = 'min(440px, calc(100vw - var(--ig-space-13)))'
+const EXPORT_DIALOG_WIDTH = 'min(var(--ig-popup-lg-plus), calc(100vw - var(--ig-space-13)))'
 
 export type GalleryExportRange = 'selected' | 'all'
 export type GalleryExportType = 'images_and_labels' | 'labels_only'
