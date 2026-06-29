@@ -41,7 +41,7 @@ export const NetworkSummaryItem = styled.div`
   border-radius:var(--ig-radius-xs);
   min-width:0;
 `;
-export const NetworkSummaryLabel = styled.div`font-size:var(--ig-font-size-2xs);text-transform:uppercase;letter-spacing:.04em;color:var(--ig-color-text-muted);margin-bottom: var(--ig-space-2px);`;
+export const NetworkSummaryLabel = styled.div`font-size:var(--ig-font-size-2xs);text-transform:uppercase;letter-spacing: var(--ig-letter-spacing-normal);color:var(--ig-color-text-muted);margin-bottom: var(--ig-space-2px);`;
 export const NetworkSummaryValue = styled.div`font-size:var(--ig-font-size-xs);font-weight: var(--ig-font-weight-semibold);color:var(--ig-color-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`;
 
 // ── Camera Discovery ──
@@ -97,7 +97,7 @@ export const GigeDiagCard = styled.div`
 `;
 // DiagRow / DiagLabel / DiagValue: @ingradient/ui InfoRow 로 이동 (PR-0.2, 2026-05-09)
 export const DiagDivider = styled.div`height: var(--ig-space-1px);background:var(--ig-color-border-subtle);`;
-export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing:.04em;padding: var(--ig-space-2) var(--ig-space-5) 2px;`;
+export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing: var(--ig-letter-spacing-normal);padding: var(--ig-space-2) var(--ig-space-5) var(--ig-space-2px);`;
 export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: var(--ig-space-1Plus) var(--ig-space-5);font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
 
 // ── Diagnostic Report ──

@@ -21,7 +21,7 @@ const Block = styled.div`
 const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
 const CHIP_STYLE = {
   display: 'inline-block' as const,
-  padding: '2px var(--ig-space-3)',
+  padding: 'var(--ig-space-2px) var(--ig-space-3)',
   background: 'var(--ig-color-surface-raised)',
   borderRadius: 'var(--ig-radius-2xs)',
 }
