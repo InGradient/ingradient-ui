@@ -10,7 +10,7 @@ export const SetupPanel = styled.div`
 `;
 
 export const SetupPanelHeader = styled.div`
-  padding: var(--ig-space-7) 16px 14px;
+  padding: var(--ig-space-7) var(--ig-space-7) var(--ig-space-6);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@ export const SetupHeaderActions = styled.div`
 `;
 
 export const SetupPanelBody = styled.div`
-  padding: var(--ig-space-6) 16px 16px;
+  padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-7);
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;

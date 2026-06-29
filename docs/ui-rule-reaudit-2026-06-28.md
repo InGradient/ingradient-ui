@@ -71,5 +71,16 @@ license/login Card, statics SummaryCard/Panel/DurationCard, system StatCard, lab
 - **#4/#7**: resizable-columns/panel localStorage 직접 접근.
 - **dead code**: ConnectionTabView.styles 미사용 GuideCard/GigeDiagCard/DiagReportWrap/DiagDivider, dataset-select RecentCard/DatasetCard(선택카드 — SelectableListItem 후보), create-project OptionCard(RadioCard label string-only 제약으로 유지).
 
+## ✅ P2 후속 (브랜치 refactor/ui-rule-p2-fixes)
+- **#10 키보드 nav 전면**: SelectField/DropdownSelect(aria-activedescendant), ChipTabs, MobileNav drawer(Esc/포커스), Dialog focus-trap, menu/context-menu focus-visible, pagination/stepper aria-current, auto-save aria-live 등. main 머지 완료(b7b73c7).
+- **#3 도메인 토큰 누수**: generic media 컴포넌트의 image-card-gradient → 중립 media-placeholder, selectable-grid-cell → 중립 accent/blue-tint. dead selected-* 토큰 제거.
+- **#8 raw-px**: space 스케일이 비표준(space-7=16px, space-6=14px, space-4=10px…)이라 audit가 "토큰 없음"이라 한 값들이 실제 매핑 가능 → padding/gap/margin raw-px 토큰화. text resolveWeight 기본값 토큰화, date-range 셀 → control-height-sm.
+
+## 🟢 의도적 keeper — 깨는 변경/저가치라 rationale과 함께 유지 (규칙 위반 아님으로 판단)
+- **#4/#7 resizable localStorage**: 규칙 #7이 겨냥하는 건 app store/API/DB/SDK. resizable의 localStorage는 **UI 레이아웃 선호(컬럼 너비) 영속화 — 표준 브라우저 Web API**이고 storageKey 미지정 시 graceful degrade. breaking API 변경으로 2개 소비자에 재구현 부담 주는 것보다 유지가 합리적.
+- **#3 format-pattern-tab**: chip-tabs(라이브러리의 pattern-tab UI 기능)의 colocated helper. 라이브러리가 의도적으로 제공하는 도메인-bound 부품이라 utils 유지. 분리 시 chip-tabs API breaking.
+- **context-menu-with-submenus 풀 화살표 nav**: hover 기반 submenu 구조라 풀 WAI-ARIA menu nav는 고위험 재작성. menu-item focus-visible + Esc + Tab으로 베이스라인 키보드 접근은 확보됨.
+- **core의 sync-chip-*/tag-* 도메인 토큰**: edge BottomBar 등이 사용 중. 토큰 rename은 CSS var라 silent 깨짐 위험 + 저가치 → 유지.
+
 ## 의도적 keeper (over-flag 주의 — 고치지 말 것)
 camera 셔터 흰링 rgba, SyncChip/StatChip(bg 없는 status 텍스트), LogDetailTable(mono key-value), TOKEN_BOX accent box, chartColors 숫자 색상, recharts innerRadius/outerRadius 숫자 props, var(--ig-font-mono, fallback), TitleBar 창 컨트롤 버튼(full-height/danger), CaptureButton 셔터(특수 대형 라운드), join-codes/invitations Empty 변형(top-margin spacing).

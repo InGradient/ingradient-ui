@@ -76,7 +76,7 @@ export const ModalBBoxToolbar = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
-  padding: var(--ig-space-3) 12px;
+  padding: var(--ig-space-3) var(--ig-space-5);
   background: var(--ig-color-overlay-strong);
   border-radius: 0 0 var(--ig-radius-lg) var(--ig-radius-lg);
   flex-shrink: 0;
@@ -128,7 +128,7 @@ export const ModalInner = styled.div`
   gap: var(--ig-space-3);
   width: 100%;
   height: 100%;
-  padding: var(--ig-space-4) 12px 14px;
+  padding: var(--ig-space-4) var(--ig-space-5) var(--ig-space-6);
   min-height: 0;
 `;
 
@@ -147,7 +147,7 @@ export const SelectionToolbar = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);
-  padding: var(--ig-space-2) 16px;
+  padding: var(--ig-space-2) var(--ig-space-7);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-panel);
   flex-shrink: 0;

@@ -113,7 +113,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
 export const DragOverlayCard = styled.div`
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);
-  padding: var(--ig-space-6) 16px;
+  padding: var(--ig-space-6) var(--ig-space-7);
   border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-active-bg);
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);

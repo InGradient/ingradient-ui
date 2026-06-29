@@ -56,7 +56,7 @@ function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: 
       {payload.map((item) => {
         const display = item.dataKey === 'avg_w' ? 'Width' : 'Height'
         return (
-          <div key={String(item.dataKey)} style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
+          <div key={String(item.dataKey)} style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)' }}>
             <span>{display}</span>
             <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{Number(item.value).toFixed(1)}px</span>
           </div>

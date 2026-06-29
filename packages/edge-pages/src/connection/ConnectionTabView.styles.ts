@@ -34,10 +34,10 @@ export const GuideSummary = styled.div`font-size:var(--ig-font-size-xs);color:va
 export const GuideActions = styled.div`display:flex;align-items:center;justify-content:flex-end;gap: var(--ig-space-3);flex-wrap:wrap;`;
 export const GuideWarningList = styled.div`display:flex;flex-direction:column;gap: var(--ig-space-1);margin-top: var(--ig-space-4);`;
 export const GuideWarning = styled.div`font-size:var(--ig-font-size-2xs);color:var(--ig-color-warning);line-height: var(--ig-line-height-snug);`;
-export const NetworkSummaryGrid = styled.div`display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap: var(--ig-space-3);margin:10px 0 0;@media (max-width: 860px){grid-template-columns:repeat(2,minmax(0,1fr));}`;
+export const NetworkSummaryGrid = styled.div`display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap: var(--ig-space-3);margin:var(--ig-space-4) 0 0;@media (max-width: 860px){grid-template-columns:repeat(2,minmax(0,1fr));}`;
 export const NetworkSummaryItem = styled.div`
   ${surfaceRaised}
-  padding: var(--ig-space-3) 10px;
+  padding: var(--ig-space-3) var(--ig-space-4);
   border-radius:var(--ig-radius-xs);
   min-width:0;
 `;
@@ -68,7 +68,7 @@ export const LogArea = styled.div`
 export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) 6px;font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
 
 // ── Recovery / NIC Status ──
-export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap: 5px;font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
+export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap: var(--ig-space-1Plus);font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
 export const NicDetailText = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-success,var(--ig-color-success));margin-left: var(--ig-space-1);`;
 
 // ── GigE Advanced ──
@@ -80,7 +80,7 @@ export const GevscpdReadout = styled.div`
   ${surfacePanel}
   font-size: var(--ig-font-size-xs);
   color:var(--ig-color-text-secondary);
-  padding: var(--ig-space-2) 10px;
+  padding: var(--ig-space-2) var(--ig-space-4);
   border-radius: var(--ig-radius-xs);
 `;
 export const GevscpdPresetRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-3);flex-wrap:wrap;margin-bottom: var(--ig-space-3);`;
@@ -97,8 +97,8 @@ export const GigeDiagCard = styled.div`
 `;
 // DiagRow / DiagLabel / DiagValue: @ingradient/ui InfoRow 로 이동 (PR-0.2, 2026-05-09)
 export const DiagDivider = styled.div`height:1px;background:var(--ig-color-border-subtle);`;
-export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing:.04em;padding: var(--ig-space-2) 12px 2px;`;
-export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: 5px 12px;font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
+export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing:.04em;padding: var(--ig-space-2) var(--ig-space-5) 2px;`;
+export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: var(--ig-space-1Plus) var(--ig-space-5);font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
 
 // ── Diagnostic Report ──
 export const DiagReportWrap = styled.div`
@@ -111,11 +111,11 @@ export const DiagReportToolbar = styled.div`
   ${surfacePanel}
   display:flex;
   gap: var(--ig-space-2);
-  padding: var(--ig-space-3) 10px;
+  padding: var(--ig-space-3) var(--ig-space-4);
   border-bottom: var(--ig-space-1px) solid var(--ig-color-border-subtle);
 `;
 export const DiagReportText = styled.pre`margin:0;padding: var(--ig-space-5);max-height: var(--ig-popup-md);min-height:0;overflow-y:auto;font-family:var(--ig-font-mono);font-size: var(--ig-font-size-2xs);line-height: var(--ig-line-height-relaxed);color:var(--ig-color-text-secondary);background:var(--ig-color-surface-muted);white-space:pre-wrap;word-break:break-all;`;
-export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) 10px;border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'var(--ig-color-alert-success-bg)':'var(--ig-color-danger-bg-soft)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
+export const DiagResultMsg = styled.div<{$ok:boolean}>`margin-top: var(--ig-space-3);font-size: var(--ig-font-size-xs);padding: var(--ig-space-3) var(--ig-space-4);border-radius: var(--ig-radius-xs);background:${p=>p.$ok?'var(--ig-color-alert-success-bg)':'var(--ig-color-danger-bg-soft)'};color:${p=>p.$ok?'var(--ig-color-success)':'var(--ig-color-danger)'};word-break:break-all;`;
 
 // DiagStepList / DiagStepRow / DiagStepIcon / DiagStepLabel: ui StepIndicator 로 이동 (PR-B2, 2026-05-09)
 // ProgressWrap/ProgressBar/ProgressLabel: 미사용 죽은코드 제거 (2026-06-28 재검토). 진행률 필요 시 ui ProgressBar 사용.

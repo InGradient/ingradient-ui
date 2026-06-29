@@ -29,7 +29,7 @@ export const PanelsRow = styled.div`
   min-height: 0;
   display: flex;
   gap: var(--ig-space-4);
-  padding: var(--ig-space-4) 14px 10px;
+  padding: var(--ig-space-4) var(--ig-space-6) var(--ig-space-4);
   overflow: hidden;
 `
 

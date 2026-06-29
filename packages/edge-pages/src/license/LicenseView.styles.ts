@@ -57,7 +57,7 @@ export const FingerprintBox = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
-  padding: var(--ig-space-4) 12px;
+  padding: var(--ig-space-4) var(--ig-space-5);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   background: var(--ig-color-white-04);

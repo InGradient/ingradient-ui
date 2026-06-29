@@ -14,7 +14,7 @@ export const BadgeRow = styled.div`
 `
 
 export const Badge = styled.button<{ $active: boolean }>`
-  padding: var(--ig-space-1) 10px;
+  padding: var(--ig-space-1) var(--ig-space-4);
   border-radius: var(--ig-radius-pill);
   border: var(--ig-border-1px) solid
     ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};

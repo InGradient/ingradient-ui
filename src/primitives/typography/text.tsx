@@ -41,7 +41,7 @@ type Align = 'left' | 'center' | 'right'
 
 function resolveWeight(w?: number | FontWeightAlias): string | number {
   if (typeof w === 'string') return fontWeightVar[w]
-  return w ?? 400
+  return w ?? 'var(--ig-font-weight-regular)'
 }
 
 function resolveLetterSpacing(ls?: string | LetterSpacingAlias): string | undefined {

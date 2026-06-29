@@ -41,7 +41,7 @@ const Calendar = styled.div`
     font-weight: var(--ig-font-weight-bold);
     color: var(--ig-color-text-primary);
   }
-  .rdp-day { width: 38px; height: 38px; border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
+  .rdp-day { width: var(--ig-control-height-sm); height: var(--ig-control-height-sm); border-radius: var(--ig-radius-sm); font-size: var(--ig-font-size-sm); color: var(--ig-color-text-secondary); }
   .rdp-day_button { width: 100%; height: 100%; border-radius: var(--ig-radius-sm); }
 
   ${calendarDayStates}
