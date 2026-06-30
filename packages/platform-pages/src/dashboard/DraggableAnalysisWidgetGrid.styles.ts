@@ -48,9 +48,9 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
   opacity: ${(p) => (p.$dragging ? 0.5 : 1)};
   transform: ${(p) => (p.$dragging ? 'scale(var(--ig-scale-drag))' : 'none')};
   transition:
-    opacity 0.16s ease,
-    transform 0.16s ease,
-    filter 0.16s ease;
+    opacity var(--ig-motion-fast-ease),
+    transform var(--ig-motion-fast-ease),
+    filter var(--ig-motion-fast-ease);
   filter: ${(p) =>
     p.$dropTarget ? 'drop-shadow(0 0 0.85rem var(--ig-color-accent-soft-surface-hover))' : 'none'};
   &::after {

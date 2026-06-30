@@ -4,7 +4,7 @@ import { InfoSection } from '@ingradient/ui/components'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import { IndexedNavigation } from '@ingradient/ui/components'
 
-const HINT_STYLE = { marginTop: -2 }
+const HINT_STYLE = { marginTop: 'var(--ig-space-neg-2px)' }
 const STACK_STYLE = { width: '100%' }
 const PREVIEW_STYLE = {
   width: '100%',
@@ -53,7 +53,7 @@ export function ReferenceImageSection({
   }
   const content = (
     <>
-      <Text tone="muted" size="var(--ig-font-size-xs)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 1.5 }}>{hint}</Text>
+      <Text tone="muted" size="var(--ig-font-size-xs)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
@@ -65,7 +65,7 @@ export function ReferenceImageSection({
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
             <Stack gap="var(--ig-space-3)" align="flex-start">
-              <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 1.5 }}>{emptyText}</Text>
+              <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
             </Stack>
           )}
           {candidates.length > 1 ? (

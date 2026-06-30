@@ -1,18 +1,13 @@
-import styled from 'styled-components'
-import { Inline, Stack, Text, stateTitleText } from '@ingradient/ui/primitives'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { SelectField } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
+import { EmptyText } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 import { popupSizeNumbers } from '@ingradient/ui/tokens'
 
 const MAX_USES_STYLE = { width: popupSizeNumbers['2xsPlus'] }
-
-const Empty = styled.p`
-  ${stateTitleText}
-  margin: var(--ig-space-7) 0 0;
-  text-align: center;
-`
+const EMPTY_STYLE = { marginTop: 'var(--ig-space-7)' }
 
 export interface JoinCodesRoleOption {
   value: string
@@ -106,7 +101,7 @@ export function JoinCodesSection({
       )}
 
       {joinCodes.length === 0 ? (
-        <Empty>No join codes</Empty>
+        <EmptyText style={EMPTY_STYLE}>No join codes</EmptyText>
       ) : (
         <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
       )}

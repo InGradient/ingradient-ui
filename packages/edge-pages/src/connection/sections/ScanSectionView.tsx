@@ -73,7 +73,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                     </DeviceMeta>
                   </DeviceInfo>
                   {gige && gige.reachable === false && (
-                    <Badge $tone="danger"><AlertCircleIcon size={iconSizeNumbers["2xs"]} style={{ marginRight: 3 }} />{labels.notReachable}</Badge>
+                    <Badge $tone="danger"><AlertCircleIcon size={iconSizeNumbers["2xs"]} style={{ marginRight: 'var(--ig-space-3px)' }} />{labels.notReachable}</Badge>
                   )}
                   {gige && gige.reachable === true && (
                     <Badge $tone="success">{labels.reachable}</Badge>

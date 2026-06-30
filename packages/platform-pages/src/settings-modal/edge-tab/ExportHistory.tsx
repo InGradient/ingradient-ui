@@ -66,7 +66,13 @@ export function ExportHistory({
                     autoFocus
                   />
                 ) : (
-                  <span onClick={() => startEditing(pkg)} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-space-2)' }}>
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => startEditing(pkg)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startEditing(pkg) } }}
+                    style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-space-2)' }}
+                  >
                     {pkg.device_name || '—'} <PencilIcon size={iconSizeNumbers.xs} />
                   </span>
                 ),

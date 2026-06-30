@@ -28,7 +28,7 @@ const ProgressFill = styled.div<{ $pct: number }>`
   transition: width var(--ig-motion-normal);
 `
 
-const ROW_STYLE = { minHeight: 72, padding: 'var(--ig-space-7)' }
+const ROW_STYLE = { minHeight: 'var(--ig-layout-sidebar-header)', padding: 'var(--ig-space-7)' }
 
 const SELECTION_ROW_STYLE = {
   padding: 'var(--ig-space-3) var(--ig-space-7)',
