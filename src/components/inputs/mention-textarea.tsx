@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react'
+import React, { useState, useCallback, useRef, useMemo, useEffect, useId } from 'react'
 import { Menu, Option, Primary, Secondary, Textarea, Wrap } from './mention-textarea.styles'
 import { detectMention, extractMentionIds, type MentionRange } from './mention-textarea.utils'
 
@@ -30,6 +30,7 @@ export function MentionTextarea({
   const [mentionRange, setMentionRange] = useState<MentionRange | null>(null)
   const [menuIndex, setMenuIndex] = useState(0)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const listboxId = useId()
 
   const filtered = useMemo(() => {
     if (!mentionRange) return []
@@ -98,13 +99,16 @@ export function MentionTextarea({
     [mentionRange, filtered, menuIndex, insertMention, onSubmit, value, candidates, triggerChar],
   )
 
+  const menuOpen = mentionRange != null && filtered.length > 0
+
   return (
     <Wrap className={className}>
-      {mentionRange && filtered.length > 0 && (
-        <Menu role="listbox">
+      {menuOpen && (
+        <Menu role="listbox" id={listboxId}>
           {filtered.map((c, i) => (
             <Option
               key={c.id}
+              id={`${listboxId}-opt-${i}`}
               type="button"
               role="option"
               aria-selected={i === menuIndex}
@@ -128,6 +132,11 @@ export function MentionTextarea({
         maxLength={maxLength}
         disabled={disabled}
         aria-label={ariaLabel ?? placeholder ?? 'Mention textarea'}
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={menuOpen}
+        aria-controls={menuOpen ? listboxId : undefined}
+        aria-activedescendant={menuOpen ? `${listboxId}-opt-${menuIndex}` : undefined}
       />
     </Wrap>
   )

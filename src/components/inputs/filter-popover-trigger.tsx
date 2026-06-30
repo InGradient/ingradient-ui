@@ -90,6 +90,7 @@ export function FilterPopoverTrigger({
         $active={active || open}
         $iconOnly={iconOnly}
         onClick={() => setOpen((v) => !v)}
+        aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={iconOnly && typeof label === 'string' ? label : undefined}
       >

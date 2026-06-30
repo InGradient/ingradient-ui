@@ -72,6 +72,7 @@ export function VerticalTabs({
             type="button"
             role="tab"
             aria-selected={item.value === value}
+            tabIndex={item.value === value ? 0 : -1}
             aria-disabled={item.disabled || undefined}
             disabled={item.disabled}
             $active={item.value === value}

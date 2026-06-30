@@ -1,5 +1,6 @@
 import { forwardRef, type TextareaHTMLAttributes } from 'react'
 import styled, { css } from 'styled-components'
+import { controlSizeNumbers } from '../../tokens/core'
 
 export type TextareaVariant = 'default' | 'monospace'
 
@@ -44,7 +45,7 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
  * `minHeight` (px) controls the initial vertical room — user can still drag-resize.
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  { variant = 'default', minHeight = 60, ...rest },
+  { variant = 'default', minHeight = controlSizeNumbers.midPlusTall, ...rest },
   ref,
 ) {
   return <Field ref={ref} $variant={variant} $minHeight={minHeight} {...rest} />

@@ -89,13 +89,13 @@ export const calendarDayStates = css`
 
   .rdp-outside:not(.rdp-selected) .rdp-day_button {
     color: var(--ig-color-text-soft);
-    opacity: 0.38;
+    opacity: var(--ig-opacity-dim-soft);
   }
 
   .rdp-disabled .rdp-day_button {
     color: var(--ig-color-text-soft);
     cursor: default;
-    opacity: 0.3;
+    opacity: var(--ig-opacity-dim);
   }
 
   .rdp-range_middle {

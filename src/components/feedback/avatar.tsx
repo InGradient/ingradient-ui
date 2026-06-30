@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { controlSizeNumbers } from '../../tokens/core'
 
 const AvatarRoot = styled.div<{ $size: number }>`
   width: ${(p) => `${p.$size}px`};
@@ -24,7 +25,7 @@ export function Avatar({
   src,
   alt,
   initials,
-  size = 36,
+  size = controlSizeNumbers.md,
 }: {
   src?: string
   alt?: string

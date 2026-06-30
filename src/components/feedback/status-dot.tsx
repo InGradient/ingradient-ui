@@ -20,6 +20,6 @@ export const StatusDot = styled.button<{ $tone: StatusDotTone }>`
   border: none;
   padding: 0;
   background: ${(p) => TONE_COLOR[p.$tone]};
-  box-shadow: 0 0 0 2px var(--ig-color-border-subtle);
+  box-shadow: 0 0 0 var(--ig-space-2px) var(--ig-color-border-subtle);
   cursor: default;
 `

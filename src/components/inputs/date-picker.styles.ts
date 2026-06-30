@@ -24,7 +24,7 @@ export const Popover = styled.div`
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   box-shadow: var(--ig-shadow-popover);
-  backdrop-filter: var(--ig-blur-md);
+  backdrop-filter: var(--ig-blur-xl);
   padding: var(--ig-space-4);
 
   .rdp-root {

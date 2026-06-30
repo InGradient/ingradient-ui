@@ -7,8 +7,8 @@ import { TextButton } from '@ingradient/ui/components'
 const BAR_STYLE = {
   borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
   background: 'var(--ig-color-surface-header)',
-  backdropFilter: 'var(--ig-blur-xl)',
-  WebkitBackdropFilter: 'var(--ig-blur-xl)',
+  backdropFilter: 'var(--ig-blur-md)',
+  WebkitBackdropFilter: 'var(--ig-blur-md)',
   position: 'relative' as const,
 }
 

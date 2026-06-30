@@ -20,6 +20,11 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   position: relative;
   transition: background-color var(--ig-motion-fast);
 
+  input:focus-visible + & {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -54,6 +59,11 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   flex-shrink: 0;
   opacity: ${(p) => (p.$disabled ? 'var(--ig-opacity-disabled)' : 1)};
 
+  input:focus-visible + & {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+  }
+
   svg {
     width: var(--ig-icon-xs);
     height: var(--ig-icon-xs);
@@ -77,6 +87,11 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   transition: border-color var(--ig-motion-fast);
   flex-shrink: 0;
   opacity: ${(p) => (p.$disabled ? 'var(--ig-opacity-disabled)' : 1)};
+
+  input:focus-visible + & {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+  }
 
   &::after {
     content: '';

@@ -4,6 +4,8 @@ export const opacityScale = {
   svgFillSubtle: 0.13,
   svgFillSoft: 0.15,
   svgFillMedium: 0.22,
+  dim: 0.3,
+  dimSoft: 0.38,
   ghost: 0.35,
   faded: 0.4,
   disabled: 0.5,

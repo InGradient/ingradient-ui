@@ -123,6 +123,7 @@ export function Tabs({
           type="button"
           role="tab"
           aria-selected={item.value === value}
+          tabIndex={item.value === value ? 0 : -1}
           $active={item.value === value}
           $variant={variant}
           onClick={() => onChange(item.value)}

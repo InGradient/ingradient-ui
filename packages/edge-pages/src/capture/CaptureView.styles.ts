@@ -99,7 +99,7 @@ export const OverlayPopover = styled.div`
   background: var(--ig-color-surface-header);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
-  backdrop-filter: var(--ig-blur-lg);
+  backdrop-filter: var(--ig-blur-sm);
   box-shadow: var(--ig-shadow-panel);
   padding: var(--ig-space-4) var(--ig-space-5);
   min-width: var(--ig-popup-2xs-plus);

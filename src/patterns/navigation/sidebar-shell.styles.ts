@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 import { media } from '../../tokens/core/breakpoints'
 
-// = spacingScale[8] (18px) — used as numeric for template literal interpolation
-const SIDEBAR_INSET = 18
-
 export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpanded: number; $widthCollapsed: number }>`
   width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
   min-width: ${(p) => (p.$expanded ? p.$widthExpanded : p.$widthCollapsed)}px;
@@ -34,7 +31,7 @@ export const SidebarShellWrap = styled.aside<{ $expanded: boolean; $widthExpande
 export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
   position: relative;
   min-height: var(--ig-layout-sidebar-header);
-  padding: var(--ig-space-7) ${SIDEBAR_INSET}px;
+  padding: var(--ig-space-7) var(--ig-space-8);
   display: flex;
   align-items: center;
   justify-content: ${(p) => (p.$expanded ? 'space-between' : 'center')};
@@ -115,7 +112,7 @@ const rowMixin = `
   display: flex;
   align-items: center;
   height: var(--ig-control-height-lg);
-  padding: 0 ${SIDEBAR_INSET}px;
+  padding: 0 var(--ig-space-8);
   gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);

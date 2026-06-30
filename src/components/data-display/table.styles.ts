@@ -28,7 +28,7 @@ export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: bool
   color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
-  ${(p) => p.$mono && 'font-family: monospace; font-size: var(--ig-font-size-xs);'}
+  ${(p) => p.$mono && 'font-family: var(--ig-font-mono); font-size: var(--ig-font-size-xs);'}
 `
 
 export const Tfoot = styled.tfoot`
@@ -40,8 +40,8 @@ export const Tfoot = styled.tfoot`
   }
 `
 
-export const DragTh = styled(Th)`width: 36px; padding: var(--ig-space-4) var(--ig-space-2);`
-export const DragTd = styled(Td)`width: 36px; padding: var(--ig-space-3) var(--ig-space-2);`
+export const DragTh = styled(Th)`width: var(--ig-control-height-md); padding: var(--ig-space-4) var(--ig-space-2);`
+export const DragTd = styled(Td)`width: var(--ig-control-height-md); padding: var(--ig-space-3) var(--ig-space-2);`
 
 export const VisuallyHidden = styled.span`
   position: absolute;

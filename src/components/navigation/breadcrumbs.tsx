@@ -21,7 +21,7 @@ export function Breadcrumbs({
                 {item.label}
               </B3>
             ) : (
-              <B3>{item.label}</B3>
+              <B3 aria-current="page">{item.label}</B3>
             )}
           </React.Fragment>
         ))}

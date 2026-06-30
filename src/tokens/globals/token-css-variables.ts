@@ -344,6 +344,8 @@ const staticVars = {
   '--ig-opacity-svg-fill-subtle': String(opacityScale.svgFillSubtle),
   '--ig-opacity-svg-fill-soft': String(opacityScale.svgFillSoft),
   '--ig-opacity-svg-fill-medium': String(opacityScale.svgFillMedium),
+  '--ig-opacity-dim': String(opacityScale.dim),
+  '--ig-opacity-dim-soft': String(opacityScale.dimSoft),
   '--ig-opacity-ghost': String(opacityScale.ghost),
   '--ig-opacity-faded': String(opacityScale.faded),
   '--ig-opacity-disabled': String(opacityScale.disabled),

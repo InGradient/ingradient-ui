@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { chartHeights } from '../../tokens/core'
 import { Skeleton } from '../../components/feedback'
 import { Inline, Stack, surfaceCard, Text } from '../../primitives'
 
@@ -26,7 +27,7 @@ const LOADING_STYLE = { display: 'grid' as const, gap: 'var(--ig-space-4)' }
 export function ChartContainer({
   title,
   description,
-  height = 260,
+  height = chartHeights.lg,
   loading = false,
   empty = false,
   emptyMessage = 'No chart data available.',

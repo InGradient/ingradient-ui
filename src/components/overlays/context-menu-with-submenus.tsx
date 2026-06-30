@@ -20,7 +20,7 @@ const MENU_STYLE = {
 const SEPARATOR_STYLE = {
   margin: 'var(--ig-space-1) 0',
   border: 'none',
-  borderTop: '1px solid var(--ig-color-border-subtle)',
+  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 const ITEM_LABEL_STYLE = { flex: 1, textAlign: 'left' as const }

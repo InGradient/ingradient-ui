@@ -21,7 +21,7 @@ const AppHeader = styled.header`
     padding: 0 var(--ig-space-4);
     background: var(--ig-color-surface-header);
     border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-    backdrop-filter: var(--ig-blur-sm);
+    backdrop-filter: var(--ig-blur-lg);
   }
 `
 
@@ -212,7 +212,18 @@ export function MobileNavShell({
     const prevFocus = document.activeElement as HTMLElement | null
     drawerRef.current?.focus()
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { e.preventDefault(); onClose() }
+      if (e.key === 'Escape') { e.preventDefault(); onClose(); return }
+      if (e.key !== 'Tab') return
+      // aria-modal 패널이므로 Tab 포커스를 드로어 안에 가둔다 (dialog-shell 과 동일 패턴).
+      const focusables = drawerRef.current?.querySelectorAll<HTMLElement>(
+        'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      )
+      if (!focusables || focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const activeEl = document.activeElement as HTMLElement | null
+      if (e.shiftKey && activeEl === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && activeEl === last) { e.preventDefault(); first.focus() }
     }
     window.addEventListener('keydown', onKey)
     return () => {
@@ -256,7 +267,7 @@ export function MobileNavShell({
 
         <Stack as="nav" gap={0} aria-label={navLabel} style={SECTION_STYLE}>
           {mainItems.map((it) => (
-            <Item key={it.key} type="button" $active={it.active} onClick={it.onClick}>
+            <Item key={it.key} type="button" $active={it.active} aria-current={it.active ? 'page' : undefined} onClick={it.onClick}>
               {it.icon}
               <span>{it.label}</span>
               {it.badge != null && it.badge > 0 ? <span style={BADGE_STYLE}>{it.badge}</span> : null}
@@ -268,7 +279,7 @@ export function MobileNavShell({
 
         <Stack gap={0} style={SECTION_STYLE}>
           {bottomItems.map((it) => (
-            <Item key={it.key} type="button" $active={it.active} onClick={it.onClick}>
+            <Item key={it.key} type="button" $active={it.active} aria-current={it.active ? 'page' : undefined} onClick={it.onClick}>
               {it.icon}
               <span>{it.label}</span>
               {it.badge != null && it.badge > 0 ? <span style={BADGE_STYLE}>{it.badge}</span> : null}

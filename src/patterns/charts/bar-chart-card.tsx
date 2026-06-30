@@ -1,4 +1,5 @@
 import React from 'react'
+import { chartHeights } from '../../tokens/core'
 import { Bar, BarChart as RechartsBarChart, CartesianGrid, Cell, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 import { ChartContainer } from './chart-container'
 import { ChartLegend } from '../../components/charts/chart-legend'
@@ -12,7 +13,7 @@ export function BarChartCard<T extends Record<string, string | number>>({
   data,
   series,
   xKey,
-  height = 260,
+  height = chartHeights.lg,
   loading = false,
   emptyMessage,
   layout = 'horizontal',

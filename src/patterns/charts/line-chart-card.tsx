@@ -1,5 +1,5 @@
 import React from 'react'
-import { svgStrokeWidths } from '../../tokens/core'
+import { chartHeights, svgStrokeWidths } from '../../tokens/core'
 import { CartesianGrid, Legend, Line, LineChart as RechartsLineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { ChartContainer } from './chart-container'
 import { ChartLegend } from '../../components/charts/chart-legend'
@@ -13,7 +13,7 @@ export function LineChartCard<T extends Record<string, string | number>>({
   data,
   series,
   xKey,
-  height = 260,
+  height = chartHeights.lg,
   loading = false,
   emptyMessage,
   onPointClick,

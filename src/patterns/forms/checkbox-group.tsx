@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Inline } from '../../primitives'
+import { popupSizeNumbers } from '../../tokens/core'
 import { Checkbox } from '../../components/inputs/toggles'
 import { TextButton } from '../../components/inputs/text-button'
 import { ColorSwatch } from '../../components/data-display/color-swatch'
@@ -41,7 +42,7 @@ export function CheckboxGroup({
   items,
   selectedIds,
   onChange,
-  maxHeight = 160,
+  maxHeight = popupSizeNumbers['2xsPlus'],
   showSelectAll = true,
 }: CheckboxGroupProps) {
   const handleToggle = (id: string) => {

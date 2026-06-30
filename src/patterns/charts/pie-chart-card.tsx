@@ -1,4 +1,5 @@
 import React from 'react'
+import { chartHeights } from '../../tokens/core'
 import { Cell, Legend, Pie, PieChart as RechartsPieChart, Tooltip } from 'recharts'
 import { ChartContainer } from './chart-container'
 import { ChartLegend } from '../../components/charts/chart-legend'
@@ -10,7 +11,7 @@ export function PieChartCard({
   title,
   description,
   data,
-  height = 260,
+  height = chartHeights.lg,
   loading = false,
   emptyMessage,
   innerRadius = 60,

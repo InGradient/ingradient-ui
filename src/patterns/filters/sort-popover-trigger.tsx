@@ -1,6 +1,7 @@
 import React from 'react'
 import { MenuItem } from '../../components/overlays/menu-item'
 import { FilterPopoverTrigger } from '../../components/inputs/filter-popover-trigger'
+import { popupSizeNumbers } from '../../tokens/core'
 
 const OPTION_LIST_STYLE = {
   listStyle: 'none' as const,
@@ -38,7 +39,7 @@ export function SortPopoverTrigger({
       iconOnly={iconOnly}
       label={label ?? (iconOnly ? 'Sort' : `Sort: ${current?.label ?? '—'}`)}
       defaultOpen={defaultOpen}
-      panelMinWidth={200}
+      panelMinWidth={popupSizeNumbers.listMin}
       panel={
         <ul role="listbox" aria-label="Sort options" style={OPTION_LIST_STYLE}>
           {options.map((opt) => (
