@@ -83,4 +83,23 @@ license/login Card, statics SummaryCard/Panel/DurationCard, system StatCard, lab
 - **카메라 셔터 on-accent 흰 링**(rgba 255 — 테마 토큰화 시 light 역전), **dataset-select RecentCard/DatasetCard**(선택 카드, 구조 상이), **create-project OptionCard**(RadioCard label string-only 제약), **disclosure 헤더 2(statics/advanced)**: 시각/구조/테마 사유로 유지.
 
 ## 의도적 keeper (over-flag 주의 — 고치지 말 것)
-camera 셔터 흰링 rgba, SyncChip/StatChip(bg 없는 status 텍스트), LogDetailTable(mono key-value), TOKEN_BOX accent box, chartColors 숫자 색상, recharts innerRadius/outerRadius 숫자 props, var(--ig-font-mono, fallback), TitleBar 창 컨트롤 버튼(full-height/danger), CaptureButton 셔터(특수 대형 라운드), join-codes/invitations Empty 변형(top-margin spacing).
+camera 셔터 흰링 rgba, SyncChip/StatChip(bg 없는 status 텍스트), LogDetailTable(mono key-value), TOKEN_BOX accent box, chartColors 숫자 색상, recharts innerRadius/outerRadius 숫자 props, var(--ig-font-mono, fallback), TitleBar 창 컨트롤 버튼(full-height/danger), CaptureButton 셔터(특수 대형 라운드).
+  - ~~join-codes/invitations Empty 변형~~ → 3차 pass에서 라이브러리 `EmptyText`로 마이그레이션(top-margin은 inline style로 보존). 더이상 keeper 아님.
+
+## 3차 pass — 전 코드베이스 line-by-line 재감사 (2026-06-30)
+규칙문서 §"검토 방법"대로 라이브러리 src/ 6영역 + packages 전 디렉토리를 Read 전수(grep 아님). 강 0건. 발견·수정 항목:
+
+**라이브러리 src/ (commit 69f5042)**
+- #8 raw→토큰(var() 유효 자리): table 36px→control-height-md·monospace→font-mono, status-dot box-shadow 2px→space-2px, context-menu separator 1px→border-1px, calendars opacity 0.38/0.3→**신규 opacity-dim-soft/dim 토큰**, sidebar-shell 18px→space-8, navigation 320px→popup-md, chart-card/container 260→**dead token chartHeights.lg 연결**, prop default(avatar/textarea/checkbox-group/sort-popover)→토큰 number
+- #9: effectsScale blur 비단조(lg=10<md=16) → 1/8/10/12/14/16 **단조 재정렬**, 전 소비처 px 보존 재매핑(src 6 + packages 2)
+- #10 a11y: toggles(Checkbox/Radio/Switch) focus-visible 링, breadcrumbs aria-current, tabs/vertical-tabs roving tabindex, mobile-nav Tab focus-trap+aria-current, filter-popover aria-haspopup=dialog, mention-textarea combobox semantics
+
+**packages (commit 4d45069, 7335ba5)**
+- #8: gallery-toolbar minHeight 72→layout-sidebar-header, ScanSection marginRight 3→space-3px, CatalogRightSidebar/dashboard-widget gap 2→space-2px, DraggableAnalysisWidgetGrid 0.16s ease→motion-fast-ease(×3), reference-image/project-settings lineHeight 1.5→relaxed·marginTop -2→space-neg-2px, RightPanelComment opacity 0.6→opacity-muted
+- #8 기능결함: ConnectionTabView `var(--ig-space-1Plus)`(존재X, gap/padding 무효화) → `1-plus`, raw .15s→motion-swift·font-weight 600/400→토큰
+- #10: ExportHistory 인라인편집 span에 role=button/tabIndex/onKeyDown
+- #0: invitations/join-codes 로컬 Empty styled.p → 라이브러리 EmptyText
+
+**오탐 정정**: icon-sizes `xsPlus`는 dead token 아님(packages/edge-pages TitleBar/BottomBar 소비 중) → 유지.
+**keeper 재확인**: mobile-dropdown 55vh(vh 토큰 없음), CaptureView rgba(255 0.25/0.5)(정확 토큰 없음), svg-shape-label sans-serif·controls 화살표 hex(constrained), canvas/gesture 숫자(JS-API).
+**게이트**: eslint 0 errors, stylelint(packages) exit 0, tsup ESM 양 패키지 success(잔존 DTS 에러 2건은 본 작업 외 기존 TableColumn 제네릭 이슈).
