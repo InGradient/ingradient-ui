@@ -103,3 +103,20 @@ camera 셔터 흰링 rgba, SyncChip/StatChip(bg 없는 status 텍스트), LogDet
 **오탐 정정**: icon-sizes `xsPlus`는 dead token 아님(packages/edge-pages TitleBar/BottomBar 소비 중) → 유지.
 **keeper 재확인**: mobile-dropdown 55vh(vh 토큰 없음), CaptureView rgba(255 0.25/0.5)(정확 토큰 없음), svg-shape-label sans-serif·controls 화살표 hex(constrained), canvas/gesture 숫자(JS-API).
 **게이트**: eslint 0 errors, stylelint(packages) exit 0, tsup ESM 양 패키지 success(잔존 DTS 에러 2건은 본 작업 외 기존 TableColumn 제네릭 이슈).
+
+## 4차 — 결정론적 전수 스캔 + 11규칙 기계검증 (2026-06-30)
+eyeball/agent 정독이 매 pass 일부를 놓치는 한계를 인정하고, **기계적 판정 가능 규칙은 결정론적 추출**로 전환.
+
+**#8 결정론적 스캔 (commit 71fa03a)** — 39,237 라인 전체에서 raw px/hex/rgba/em/rem/duration/style객체 맨숫자/단위없는(line-height·opacity·font-weight) 값을 전수 추출(var()·주석·토큰정의 제외). agent가 놓쳤던 6건 발견·수정: DeflectometryPreview transition 0.15s×3→motion-swift, LabelingChartsView 범례 dot(width 8→space-3·borderRadius 999→radius-pill·lineHeight 1.6→line-height-loose), LogPanelView minHeight 32→control-height-sm. 교차검증(hsl·vh/vw·var폴백·${x}px default)까지 별도 grep → 추가 위반 0. **#8 다중 교차검증으로 완전 마감.**
+
+**11규칙 기계검증 (독립 grep, lint config 불신)**:
+| 규칙 | 방법 | 결과 |
+|---|---|---|
+| #2 의존성 방향 | 역방향 import grep | 위반 0 |
+| #3/#7 store·API·SDK·fetch | import/호출 grep | 위반 0 (resizable localStorage=keeper) |
+| #8 디자인 토큰 | 결정론적 스캔 | 위반 0 |
+| #9 prop 이름 | 금지명 grep | 위반 0 |
+| #0/#1/#5/#10 | 판단(정독 pass) | 발견분 수정 완료, 완전성은 #8 수준 미보장 |
+| #11 Storybook | 파일 전수 | **20개 공개 컴포넌트 전용 story 신규 작성 (commit f4c4502)** |
+
+**#11 마감 (commit f4c4502)**: story 없던 공개 컴포넌트 20개에 상태 story 추가 — StatusDot/StateChip/TooltipCard/ErrorBoundary/TwoColumnDialog/SearchableList/LegendItem/ActionChip/SelectableGridCell/TagListItem/KeyValueRow/GridContainer/CodeBlock/ToolbarShell/ColorEditorPlane/ColorEditorPopover/SidebarShell/MediaDialogShell/Navigation/LabelingCanvas. eslint 0 + tsc 0. 잔여 11개는 상태 story 대상 아님(hook use-confirm, 내부 빌딩블록 button-root/dropdown-shared/input-adornment/floating-panel-field/popover-trigger-field, 아이콘 레지스트리 catalog-icons, render-prop chart-responsive, 이미 데모됨 comment-thread, 구조 레이아웃 layouts/page-shell).
