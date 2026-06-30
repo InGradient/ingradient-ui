@@ -36,7 +36,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
                 flat
                 radius="var(--ig-radius-xs)"
                 padding="var(--ig-space-3)"
-                style={{ fontSize: 'var(--ig-font-size-sm)', opacity: c.synced === false ? 0.6 : 1 }}
+                style={{ fontSize: 'var(--ig-font-size-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
               >
                 <CommentMeta>{c.author} · {c.timestamp}</CommentMeta>
                 {c.text}

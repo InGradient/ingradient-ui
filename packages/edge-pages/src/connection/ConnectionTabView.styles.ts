@@ -68,14 +68,14 @@ export const LogArea = styled.div`
 export const LogEntryLine = styled.div<{$type:'info'|'error'|'success'}>`padding: var(--ig-space-3px) var(--ig-space-2);font-size: var(--ig-font-size-2xs);color:${p=>p.$type==='error'?'var(--ig-color-danger)':p.$type==='success'?'var(--ig-color-success)':'var(--ig-color-text-secondary)'};`;
 
 // ── Recovery / NIC Status ──
-export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap: var(--ig-space-1Plus);font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
+export const NicStatusText = styled.span<{$ok:boolean}>`display:inline-flex;align-items:center;gap: var(--ig-space-1-plus);font-size: var(--ig-font-size-xs);color:${p=>p.$ok?'var(--ig-color-success,var(--ig-color-success))':'var(--ig-color-danger,var(--ig-color-danger))'};`;
 export const NicDetailText = styled.span`font-size: var(--ig-font-size-2xs);color:var(--ig-color-success,var(--ig-color-success));margin-left: var(--ig-space-1);`;
 
 // ── GigE Advanced ──
 export const GigeHint = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-soft);line-height: var(--ig-line-height-relaxed);`;
 export const GevscpdLabelRow = styled.div`display:flex;align-items:center;justify-content:space-between;gap: var(--ig-space-3);margin-bottom: var(--ig-space-1);`;
 export const GevscpdModeRow = styled.div`display:flex;align-items:center;gap: var(--ig-space-2);`;
-export const GevscpdModeLabel = styled.span<{$active:boolean}>`font-size: var(--ig-font-size-2xs);font-weight:${p=>p.$active?600:400};color:${p=>p.$active?'var(--ig-color-text-primary)':'var(--ig-color-text-soft)'};transition:color .15s;`;
+export const GevscpdModeLabel = styled.span<{$active:boolean}>`font-size: var(--ig-font-size-2xs);font-weight:${p=>p.$active?'var(--ig-font-weight-semibold)':'var(--ig-font-weight-regular)'};color:${p=>p.$active?'var(--ig-color-text-primary)':'var(--ig-color-text-soft)'};transition:color var(--ig-motion-swift);`;
 export const GevscpdReadout = styled.div`
   ${surfacePanel}
   font-size: var(--ig-font-size-xs);
@@ -98,7 +98,7 @@ export const GigeDiagCard = styled.div`
 // DiagRow / DiagLabel / DiagValue: @ingradient/ui InfoRow 로 이동 (PR-0.2, 2026-05-09)
 export const DiagDivider = styled.div`height: var(--ig-space-1px);background:var(--ig-color-border-subtle);`;
 export const DiagRecommendTitle = styled.div`font-size: var(--ig-font-size-2xs);color:var(--ig-color-text-muted);text-transform:uppercase;letter-spacing: var(--ig-letter-spacing-normal);padding: var(--ig-space-2) var(--ig-space-5) var(--ig-space-2px);`;
-export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: var(--ig-space-1Plus) var(--ig-space-5);font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
+export const DiagRecRow = styled.div<{$severity:'warn'|'info'}>`display:flex;align-items:flex-start;gap: var(--ig-space-2);padding: var(--ig-space-1-plus) var(--ig-space-5);font-size: var(--ig-font-size-xs);color:${p=>p.$severity==='warn'?'var(--ig-color-warning)':p.$severity==='info'?'var(--ig-color-accent)':'var(--ig-color-success)'};line-height: var(--ig-line-height-relaxed);svg{flex-shrink:0;margin-top: var(--ig-space-2px);}`;
 
 // ── Diagnostic Report ──
 export const DiagReportWrap = styled.div`

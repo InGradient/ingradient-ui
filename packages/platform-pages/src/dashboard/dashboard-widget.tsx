@@ -13,7 +13,7 @@ const Root = styled.div<{ $span: number }>`
   min-width: 0;
 `
 
-const TITLE_BLOCK_STYLE = { gap: 2 }
+const TITLE_BLOCK_STYLE = { gap: 'var(--ig-space-2px)' }
 const BODY_STYLE = { flex: 1, minHeight: 0 }
 
 export interface DashboardWidgetProps {
