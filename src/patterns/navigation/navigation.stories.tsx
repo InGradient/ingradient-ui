@@ -22,11 +22,11 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const linkStyle = { fontSize: 14, color: 'var(--ig-color-text-muted)' }
+const linkStyle = { fontSize: 'var(--ig-font-size-md)', color: 'var(--ig-color-text-muted)' }
 const labelStyle = {
-  fontSize: 11,
-  fontWeight: 700,
-  letterSpacing: '0.06em',
+  fontSize: 'var(--ig-font-size-2xs)',
+  fontWeight: 'var(--ig-font-weight-bold)',
+  letterSpacing: 'var(--ig-letter-spacing-wider)',
   textTransform: 'uppercase' as const,
   color: 'var(--ig-color-text-soft)',
 }
@@ -78,7 +78,7 @@ export const Review: Story = {
         <StorybookGrid columns="1fr">
           <StorybookCard title="top bar">
             <TopBar>
-              <strong style={{ fontSize: 15 }}>Ingradient</strong>
+              <strong style={{ fontSize: 'var(--ig-font-size-lg)' }}>Ingradient</strong>
               <a href="#" style={linkStyle}>Account</a>
             </TopBar>
           </StorybookCard>

@@ -19,7 +19,7 @@ const SidebarItem = ({ label, active }: { label: string; active?: boolean }) => 
   <div
     style={{
       padding: 'var(--ig-space-3) var(--ig-space-5)',
-      fontSize: 14,
+      fontSize: 'var(--ig-font-size-md)',
       color: active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)',
       background: active ? 'var(--ig-color-surface-raised)' : 'transparent',
     }}
@@ -53,7 +53,7 @@ export const Review: Story = {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-4)' }}>
             <h3 style={{ margin: 0 }}>General</h3>
-            <p style={{ margin: 0, color: 'var(--ig-color-text-muted)', lineHeight: 1.6 }}>
+            <p style={{ margin: 0, color: 'var(--ig-color-text-muted)', lineHeight: 'var(--ig-line-height-loose)' }}>
               워크스페이스 이름, 기본 언어, 표시 설정을 관리합니다. 좌측에서 카테고리를 선택하면 이 영역의
               내용이 전환됩니다.
             </p>
