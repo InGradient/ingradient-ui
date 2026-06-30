@@ -122,7 +122,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
             </LogMessage>
           </LogItem>
         ))}
-        {hasMore && <LogPlaceholder style={{ minHeight: 32 }}>...</LogPlaceholder>}
+        {hasMore && <LogPlaceholder style={{ minHeight: 'var(--ig-control-height-sm)' }}>...</LogPlaceholder>}
       </LogList>
       <DetailPanel
         $visible={panelVisible}

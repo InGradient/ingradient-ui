@@ -24,9 +24,9 @@ export const Badge = styled.button<{ $active: boolean }>`
   font-weight: var(--ig-font-weight-medium);
   cursor: pointer;
   transition:
-    background 0.15s,
-    border-color 0.15s,
-    color 0.15s;
+    background var(--ig-motion-swift),
+    border-color var(--ig-motion-swift),
+    color var(--ig-motion-swift);
   &:hover {
     border-color: var(--ig-color-accent);
     color: var(--ig-color-text-primary);
