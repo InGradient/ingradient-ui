@@ -31,7 +31,7 @@ export type TableColumn<T> = {
   render: (row: T) => React.ReactNode
 }
 
-export type TableProps<T extends { id?: string | number }> = {
+export type TableProps<T> = {
   columns: TableColumn<T>[]
   rows: T[]
   /** Row click handler */
@@ -48,7 +48,7 @@ export type TableProps<T extends { id?: string | number }> = {
   footer?: React.ReactNode[]
 }
 
-export function Table<T extends { id?: string | number }>({
+export function Table<T>({
   columns,
   rows,
   onRowClick,
@@ -96,7 +96,7 @@ export function Table<T extends { id?: string | number }>({
           <tbody>
             {rows.map((row, i) => (
               <PlainTr
-                key={row.id ?? i}
+                key={(row as { id?: string | number }).id ?? i}
                 $clickable={!!onRowClick}
                 onClick={() => onRowClick?.(row, i)}
               >
@@ -136,7 +136,7 @@ export function Table<T extends { id?: string | number }>({
         <tbody>
           {rows.map((row, i) => (
             <StyledTr
-              key={row.id ?? i}
+              key={(row as { id?: string | number }).id ?? i}
               $clickable={!!onRowClick}
               $yOffset={getOffset(i)}
               $isDragging={fromIdx === i}
