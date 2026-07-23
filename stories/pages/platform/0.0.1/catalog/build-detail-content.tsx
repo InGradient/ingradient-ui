@@ -1,15 +1,19 @@
 import { useState, type ReactNode } from 'react'
 import {
-  CircleDot,
-  MousePointer2,
-  Redo2,
-  RotateCcw,
-  Square,
-  Tag,
-  Trash2,
-  Undo2,
-} from 'lucide-react'
-import { DetailPanelSidebar, ToolbarShell, type ToolbarShellAction, UserPoolList } from '@ingradient/ui/components'
+  CircleDotIcon,
+  DetailPanelSidebar,
+  PointerIcon,
+  RedoIcon,
+  ResetIcon,
+  SquareIcon,
+  TagIcon,
+  ToolbarShell,
+  TrashIcon,
+  type ToolbarShellAction,
+  UndoIcon,
+  UserPoolList,
+} from '@ingradient/ui/components'
+import { iconSizeNumbers } from '@ingradient/ui/tokens'
 import { ImageInspectorCanvas } from '@ingradient/ui/patterns'
 import {
   CommentsPanel,
@@ -32,37 +36,37 @@ const MAIN_WRAP_STYLE: React.CSSProperties = {
   flexDirection: 'column',
   height: '100%',
   minHeight: 0,
-  gap: 12,
-  padding: 12,
 }
 const CANVAS_WRAP_STYLE: React.CSSProperties = { flex: 1, minHeight: 0, position: 'relative' }
 const TOOLBAR_WRAP_STYLE: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   flexShrink: 0,
+  minHeight: 64,
+  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  background: 'var(--ig-color-surface-raised)',
 }
 
 function DetailMainMount({
   image,
   variant,
-  onClose,
 }: {
   image: CatalogScene['images'][number]
   variant: CatalogScene['detailVariant']
-  onClose: () => void
 }) {
   const [mode, setMode] = useState<DetailMode>('cursor')
   const noop = () => undefined
   const actions: Array<ToolbarShellAction | 'separator'> = [
-    { key: 'cursor', title: 'Cursor (select)', icon: <MousePointer2 size={18} />, active: mode === 'cursor', onClick: () => setMode('cursor') },
-    { key: 'bbox', title: 'Draw bbox', icon: <Square size={18} />, active: mode === 'bbox', onClick: () => setMode('bbox') },
-    { key: 'point', title: 'Add point', icon: <CircleDot size={18} />, active: mode === 'point', onClick: () => setMode('point') },
-    { key: 'classification', title: 'Classification', icon: <Tag size={18} />, active: mode === 'classification', onClick: () => setMode('classification') },
+    { key: 'cursor', title: 'Cursor (select)', icon: <PointerIcon size={iconSizeNumbers.lg} />, active: mode === 'cursor', onClick: () => setMode('cursor') },
+    { key: 'bbox', title: 'Draw bbox', icon: <SquareIcon size={iconSizeNumbers.lg} />, active: mode === 'bbox', onClick: () => setMode('bbox') },
+    { key: 'point', title: 'Add point', icon: <CircleDotIcon size={iconSizeNumbers.lg} />, active: mode === 'point', onClick: () => setMode('point') },
+    { key: 'classification', title: 'Classification', icon: <TagIcon size={iconSizeNumbers.lg} />, active: mode === 'classification', onClick: () => setMode('classification') },
     'separator',
-    { key: 'undo', title: 'Undo', icon: <Undo2 size={18} />, disabled: true, onClick: noop },
-    { key: 'redo', title: 'Redo', icon: <Redo2 size={18} />, disabled: true, onClick: noop },
-    { key: 'reset', title: 'Reset', icon: <RotateCcw size={18} />, disabled: true, onClick: noop },
-    { key: 'delete', title: 'Delete image', icon: <Trash2 size={18} />, danger: true, onClick: noop },
+    { key: 'undo', title: 'Undo', icon: <UndoIcon size={iconSizeNumbers.lg} />, disabled: true, onClick: noop },
+    { key: 'redo', title: 'Redo', icon: <RedoIcon size={iconSizeNumbers.lg} />, disabled: true, onClick: noop },
+    { key: 'reset', title: 'Reset', icon: <ResetIcon size={iconSizeNumbers.lg} />, disabled: true, onClick: noop },
+    { key: 'delete', title: 'Delete image', icon: <TrashIcon size={iconSizeNumbers.lg} />, danger: true, onClick: noop },
   ]
   return (
     <div style={MAIN_WRAP_STYLE}>
@@ -71,7 +75,6 @@ function DetailMainMount({
           imageUrl={image.thumb_url}
           imageAlt={image.name}
           boxes={variant === 'minimal' ? [] : sampleAnnotations}
-          onClose={onClose}
         />
       </div>
       <div style={TOOLBAR_WRAP_STYLE}>
@@ -140,6 +143,7 @@ function DetailSidebarMount({
           key="comments"
           comments={variant === 'with-comments' ? sampleComments : []}
           onReply={() => undefined}
+          listMaxHeight="var(--ig-popup-xs-narrow)"
         />,
         <UserPoolList
           key="labelers"
@@ -163,11 +167,10 @@ export function buildDetailContent(
   image: CatalogScene['images'][number] | undefined,
   datasetNameById: Record<string, string>,
   variant: CatalogScene['detailVariant'],
-  onClose: () => void,
 ): { main: ReactNode; sidebar: ReactNode } | undefined {
   if (!image) return undefined
   return {
-    main: <DetailMainMount image={image} variant={variant} onClose={onClose} />,
+    main: <DetailMainMount image={image} variant={variant} />,
     sidebar: (
       <DetailSidebarMount image={image} datasetNameById={datasetNameById} variant={variant} />
     ),

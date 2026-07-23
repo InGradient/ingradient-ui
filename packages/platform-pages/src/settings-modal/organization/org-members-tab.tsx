@@ -65,7 +65,12 @@ export function OrgMembersTab({
       {members.length === 0 ? (
         <Empty>{emptyText}</Empty>
       ) : (
-        <Table<OrgMember> columns={columns} rows={members} ariaLabel="Members table" />
+        <Table<OrgMember>
+          columns={columns}
+          rows={members}
+          ariaLabel="Members table"
+          minWidth="var(--ig-popup-3xl-narrow)"
+        />
       )}
       {pendingRemove && (
         <DialogShell

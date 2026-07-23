@@ -2,6 +2,7 @@ import React from 'react'
 import { Stack } from '../../primitives'
 import { SelectableGridCell } from '../../components/data-display/selectable-grid-cell'
 import { AspectRatioImage } from '../../components/data-display/aspect-ratio-image'
+import type { AspectRatio } from '../../components/data-display/aspect-ratio-image'
 import { OverlayLayer } from '../../components/data-display/overlay-layer'
 import { classifySelectionAction, type GridSelectionAction } from '../../components/data-display/use-grid-selection'
 
@@ -23,6 +24,7 @@ export interface ImageGridCellProps<T extends { id: string }> {
   index: number
   selected: boolean
   thumbnailUrl: string
+  aspectRatio?: AspectRatio
   onItemClick?: (item: T, index: number, event: React.MouseEvent) => void
   onItemDoubleClick?: (item: T, index: number, event: React.MouseEvent) => void
   onSelectionChange?: (action: GridSelectionAction, id: string, index: number) => void
@@ -41,6 +43,7 @@ export function ImageGridCell<T extends { id: string }>(props: ImageGridCellProp
     index,
     selected,
     thumbnailUrl,
+    aspectRatio,
     onItemClick,
     onItemDoubleClick,
     onSelectionChange,
@@ -76,7 +79,7 @@ export function ImageGridCell<T extends { id: string }>(props: ImageGridCellProp
       onMouseEnter={onCellMouseEnter ? (event) => onCellMouseEnter(item, index, event) : undefined}
       onMouseLeave={onCellMouseLeave ? () => onCellMouseLeave(item, index) : undefined}
     >
-      <AspectRatioImage src={thumbnailUrl}>
+      <AspectRatioImage src={thumbnailUrl} ratio={aspectRatio}>
         {overlay ? <OverlayLayer>{overlay}</OverlayLayer> : null}
         {topRight ? <div style={TOP_RIGHT_STYLE}>{topRight}</div> : null}
       </AspectRatioImage>

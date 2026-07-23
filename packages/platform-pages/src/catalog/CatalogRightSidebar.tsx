@@ -1,7 +1,9 @@
-import { controlSizeNumbers } from '@ingradient/ui'
-import { SidePanelLayout, SwatchItemList, TagListSearch } from '@ingradient/ui/components'
-import { Avatar, IconButton } from '@ingradient/ui/components'
-import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import {
+  IdentityItemList,
+  SidePanelLayout,
+  SwatchItemList,
+  TagListSearch,
+} from '@ingradient/ui/components'
 import { RightSideLoadingText } from './CatalogView.styles'
 import type { CatalogRightSidebarPaneProps } from './types'
 
@@ -9,45 +11,6 @@ const EMPTY_TEXT_CLASSES = 'No classes available.'
 const NO_CLASS_CONNECTED_TEXT = 'No classes connected.'
 const EMPTY_TEXT_MEMBERS = 'No members.'
 const LOADING_TEXT = 'Loading…'
-
-const MEMBER_LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
-const MEMBER_ROW_STYLE = {
-  padding: 'var(--ig-space-2) var(--ig-space-4)',
-  borderRadius: 'var(--ig-radius-2xs)',
-  background: 'var(--ig-color-surface-interactive)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
-const MEMBER_NAME_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
-const MEMBER_TEXT_BLOCK_STYLE = { flex: 1, minWidth: 0, gap: 'var(--ig-space-2px)' }
-
-interface MemberItem {
-  id: string
-  name: string
-  role?: string
-  avatarUrl?: string
-  initials?: string
-}
-
-function MemberPoolList({ members, onRemove }: { members: MemberItem[]; onRemove?: (id: string) => void }) {
-  return (
-    <Stack as="ul" gap="var(--ig-space-2)" style={MEMBER_LIST_STYLE}>
-      {members.map((m) => (
-        <Inline as="li" key={m.id} gap="var(--ig-space-3)" style={MEMBER_ROW_STYLE}>
-          <Avatar src={m.avatarUrl} initials={m.initials ?? m.name.charAt(0).toUpperCase()} size={controlSizeNumbers.xs} />
-          <Stack gap={0} style={MEMBER_TEXT_BLOCK_STYLE}>
-            <Text size="var(--ig-font-size-sm)" title={m.name} style={MEMBER_NAME_STYLE}>{m.name}</Text>
-            {m.role ? <Text size="var(--ig-font-size-2xs)" tone="muted" uppercase letterSpacing="var(--ig-letter-spacing-wide)">{m.role}</Text> : null}
-          </Stack>
-          {onRemove ? (
-            <IconButton variant="ghost" size="sm" tone="danger" type="button" aria-label={`Remove member ${m.name}`} onClick={() => onRemove(m.id)}>
-              ×
-            </IconButton>
-          ) : null}
-        </Inline>
-      ))}
-    </Stack>
-  )
-}
 
 export function CatalogRightSidebar({
   classesLoading,
@@ -87,7 +50,16 @@ export function CatalogRightSidebar({
   ) : members.length === 0 ? (
     <RightSideLoadingText>{EMPTY_TEXT_MEMBERS}</RightSideLoadingText>
   ) : (
-    <MemberPoolList members={members} onRemove={onRemoveMember} />
+    <IdentityItemList
+      items={members.map((member) => ({
+        id: member.id,
+        label: member.name,
+        meta: member.role,
+        avatarUrl: member.avatarUrl,
+        initials: member.initials,
+      }))}
+      onRemove={onRemoveMember}
+    />
   )
 
   return (

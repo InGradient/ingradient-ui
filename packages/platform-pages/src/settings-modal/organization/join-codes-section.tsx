@@ -103,7 +103,12 @@ export function JoinCodesSection({
       {joinCodes.length === 0 ? (
         <EmptyText style={EMPTY_STYLE}>No join codes</EmptyText>
       ) : (
-        <Table<JoinCodeRow> columns={columns} rows={joinCodes} ariaLabel="Join codes table" />
+        <Table<JoinCodeRow>
+          columns={columns}
+          rows={joinCodes}
+          ariaLabel="Join codes table"
+          minWidth="var(--ig-popup-3xl-narrow)"
+        />
       )}
     </Stack>
   )

@@ -17,7 +17,7 @@ const handoff = defineHandoff({
   referenceStory: 'Pages / Platform / 0.0.1 / Auth / Login / Default',
   preset: 'platform-0.0.1',
   fixturesPath: 'stories/fixtures/platform/0.0.1/scenarios.ts',
-  requiredScenarios: ['default', 'validation-error', 'submitting', 'error'],
+  requiredScenarios: ['default', 'validation-error', 'submitting', 'permission-denied', 'long-text'],
   interactions: [
     'Enter email + password → submit',
     '`Keep me signed in` / `Remember password` checkbox 토글',
@@ -107,4 +107,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = { args: { scenario: 'default' } }
 export const ValidationError: Story = { args: { scenario: 'validation-error' } }
 export const Submitting: Story = { args: { scenario: 'submitting' } }
+export const Empty: Story = { args: { scenario: 'empty' } }
 export const Error: Story = { args: { scenario: 'error' } }
+export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
+export const LongText: Story = { args: { scenario: 'long-text' } }

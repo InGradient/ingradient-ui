@@ -40,6 +40,7 @@ export const MediaDialogContent = styled.div<{ $width?: string; $height?: string
   overflow: hidden;
   isolation: isolate;
   ${media.md} {
+    flex-direction: column;
     width: 100vw;
     max-width: 100vw;
     height: 100dvh;
@@ -56,6 +57,11 @@ export const MediaDialogMain = styled.div`
   display: flex;
   flex-direction: column;
   background: var(--ig-color-bg-canvas);
+
+  ${media.md} {
+    width: 100%;
+    min-height: 0;
+  }
 `
 
 export const MediaDialogTopRight = styled.div`
@@ -74,15 +80,26 @@ export const MediaDialogResizer = styled.div`
   cursor: col-resize;
   background: transparent;
   &:hover { background: var(--ig-color-white-08); }
+
+  ${media.md} {
+    display: none;
+  }
 `
 
-export const MediaDialogSidebar = styled.aside.attrs<{ $width: number }>((p) => ({
-  style: { width: `${p.$width}px` },
-}))`
+export const MediaDialogSidebar = styled.aside<{ $width: number }>`
+  width: ${(p) => `${p.$width}px`};
   flex-shrink: 0;
   border-left: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-raised);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  ${media.md} {
+    width: 100%;
+    height: min(40dvh, var(--ig-popup-md));
+    flex: 0 0 min(40dvh, var(--ig-popup-md));
+    border-left: 0;
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  }
 `

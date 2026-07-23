@@ -134,7 +134,12 @@ export function InvitationsSection({
       {invitations.length === 0 ? (
         <EmptyText style={EMPTY_STYLE}>No invitations</EmptyText>
       ) : (
-        <Table<InvitationRow> columns={columns} rows={invitations} ariaLabel="Invitations table" />
+        <Table<InvitationRow>
+          columns={columns}
+          rows={invitations}
+          ariaLabel="Invitations table"
+          minWidth="var(--ig-popup-3xl-narrow)"
+        />
       )}
     </Stack>
   )

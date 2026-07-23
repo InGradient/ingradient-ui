@@ -73,7 +73,7 @@ export function DashboardOverviewPanel({
       </PanelHeader>
       <Body>
         {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
-          : state === 'loading' ? <Placeholder><Stack gap={3} align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
+          : state === 'loading' ? <Placeholder as="div"><Stack gap={3} align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
           : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
           : children ? children
           : <Placeholder>{noDataText}</Placeholder>}

@@ -73,7 +73,7 @@ function defaultMain(image: GalleryDetailModalImage) {
 function defaultSidebar(image: GalleryDetailModalImage) {
   return (
     <Stack gap="var(--ig-space-3)" style={DEFAULT_SIDEBAR_STYLE}>
-      <Text size="var(--ig-font-size-sm)" weight={600} tone="muted" uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={META_TITLE_STYLE}>Image info</Text>
+      <Text size="var(--ig-font-size-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal" style={META_TITLE_STYLE}>Image info</Text>
       {image.sync_state ? (
         <InfoRow>
           <InfoRowLabel>Sync</InfoRowLabel>

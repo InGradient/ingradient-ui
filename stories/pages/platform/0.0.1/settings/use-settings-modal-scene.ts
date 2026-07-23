@@ -124,7 +124,7 @@ export function useSettingsModalScene(scenario: SettingsScene): SettingsModalSce
 
   const [orgNameDraft, setOrgNameDraft] = useState('Ingradient')
   const [inviteRoleId, setInviteRoleId] = useState('member')
-  const [inviteSearchQuery, setInviteSearchQuery] = useState('')
+  const [inviteSearchQuery, setInviteSearchQuery] = useState(scenario.inviteSearchQuery ?? '')
   const [codeRoleId, setCodeRoleId] = useState('member')
   const [codeMaxUses, setCodeMaxUses] = useState('')
 
@@ -158,6 +158,7 @@ export function useSettingsModalScene(scenario: SettingsScene): SettingsModalSce
     setDeleteAccountFinalConfirm('')
     setProjectDraft(scenario.currentProject ?? projectDraft)
     setMemberSearchQuery(scenario.memberSearchQuery ?? '')
+    setInviteSearchQuery(scenario.inviteSearchQuery ?? '')
     setDeleteProjectConfirm('')
     setPermissionsExpandAll(!!scenario.showPermissionsExpandAll)
     setDraftRoles(defaultRoleMatrix)
@@ -167,7 +168,7 @@ export function useSettingsModalScene(scenario: SettingsScene): SettingsModalSce
     setIssueDeviceId(''); setIssueValidDays('')
     setDeviceFilterSearch(''); setDeviceFilterStatus('all')
     setShowRenew(false); setRenewDate('')
-  }, [scenario]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [scenario])
 
   const updateProject = (patch: Partial<SettingsProject>) =>
     setProjectDraft((prev) => ({ ...prev, ...patch }))

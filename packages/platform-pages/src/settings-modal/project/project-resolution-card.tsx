@@ -34,8 +34,8 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
     <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xs)" padding="var(--ig-space-6)">
       <Stack gap="var(--ig-space-4)">
       <Box>
-        <Text size="var(--ig-font-size-md)" weight={600}>{project.project_name}</Text>
-        <Text tone="muted" size="var(--ig-font-size-xs)">
+        <Text as="div" size="var(--ig-font-size-md)" weight={600}>{project.project_name}</Text>
+        <Text as="div" tone="muted" size="var(--ig-font-size-xs)">
           role: {project.role} · members: {project.member_count}
           {project.owner_count !== undefined ? ` · owners: ${project.owner_count}` : ''}
         </Text>

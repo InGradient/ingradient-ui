@@ -75,7 +75,7 @@ export function ClassManageBody({
 
   const columns: ResizableColumn[] = [
     {
-      width: popupSizeNumbers.sm,
+      width: popupSizeNumbers.md,
       resizable: true,
       minWidth: popupSizeNumbers.xs,
       maxWidth: popupSizeNumbers.xl,
@@ -83,7 +83,7 @@ export function ClassManageBody({
     },
     { width: 'auto' },
     {
-      width: popupSizeNumbers.mdNarrow,
+      width: popupSizeNumbers.md,
       resizable: true,
       minWidth: popupSizeNumbers.xs,
       maxWidth: popupSizeNumbers.xl,

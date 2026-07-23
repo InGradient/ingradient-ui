@@ -8,12 +8,14 @@ import { chromium } from 'playwright'
 const PORT = process.env.PORT ?? '6191'
 const BASE = `http://localhost:${PORT}`
 const ID_PREFIX = 'pages-platform-0-0-1-catalog'
+const DEFAULT_VIEWPORT = { width: 1280, height: 800 }
 
 const cases = [
   {
     story: 'default',
     check: async (page) => {
-      const datasetRows = await page.locator('[aria-label^="Select dataset"]').count()
+      await page.locator('[data-dataset-id]').first().waitFor({ state: 'visible', timeout: 10000 })
+      const datasetRows = await page.locator('[data-dataset-id]').count()
       assert(datasetRows > 0, `default: expected dataset rows, got ${datasetRows}`)
     },
   },
@@ -55,7 +57,11 @@ const cases = [
   {
     story: 'table-view',
     check: async (page) => {
-      const rows = await page.locator('[aria-label^="Select image"]').count()
+      await page
+        .locator('table:has(th:text-is("Dataset")) tbody tr')
+        .first()
+        .waitFor({ state: 'visible', timeout: 10000 })
+      const rows = await page.locator('table:has(th:text-is("Dataset")) tbody tr').count()
       assert(rows > 0, `table-view: expected image rows, got ${rows}`)
     },
   },
@@ -81,10 +87,33 @@ const cases = [
     },
   },
   {
+    story: 'detail-with-comments',
+    name: 'detail-with-comments-mobile-responsive',
+    viewport: { width: 375, height: 800 },
+    waitUntil: 'domcontentloaded',
+    check: async (page) => {
+      const image = page.locator('[role="dialog"] img').first()
+      await image.waitFor({ state: 'visible', timeout: 10000 })
+      const imageBox = await image.boundingBox()
+      assert(imageBox && imageBox.width >= 300, `detail-with-comments-mobile-responsive: expected usable image width, got ${imageBox?.width ?? 0}px`)
+      await page.getByText('Daniel Kim', { exact: true }).last().waitFor({ state: 'visible', timeout: 10000 })
+    },
+  },
+  {
     story: 'mobile-default',
     check: async (page) => {
       const trigger = page.locator('[aria-haspopup="listbox"]').first()
       await trigger.waitFor({ state: 'visible', timeout: 5000 })
+    },
+  },
+  {
+    story: 'default',
+    name: 'default-tablet-responsive',
+    viewport: { width: 768, height: 1024 },
+    check: async (page) => {
+      await page.getByRole('button', { name: 'View' }).waitFor({ state: 'visible', timeout: 10000 })
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
+      assert(overflow <= 1, `default-tablet-responsive: expected no page overflow, got ${overflow}px`)
     },
   },
   {
@@ -128,10 +157,6 @@ function assert(cond, msg) {
   if (!cond) throw new Error(msg)
 }
 
-async function expectVisible(page, selector) {
-  await page.locator(selector).first().waitFor({ state: 'visible', timeout: 5000 })
-}
-
 async function startServer() {
   const proc = spawn('python3', ['-m', 'http.server', PORT], {
     cwd: 'storybook-static',
@@ -153,15 +178,16 @@ async function main() {
   const server = await startServer()
   const browser = await chromium.launch()
   const ctx = await browser.newContext()
-  const page = await ctx.newPage()
-  const consoleErrors = []
-  page.on('console', (m) => {
-    if (m.type() === 'error') consoleErrors.push(m.text())
-  })
 
   let failed = 0
-  for (const { story, check, waitUntil = 'domcontentloaded' } of cases) {
+  for (const { story, name = story, viewport = DEFAULT_VIEWPORT, check, waitUntil = 'domcontentloaded' } of cases) {
+    const page = await ctx.newPage()
+    const consoleErrors = []
+    page.on('console', (m) => {
+      if (m.type() === 'error') consoleErrors.push(m.text())
+    })
     consoleErrors.length = 0
+    await page.setViewportSize(viewport)
     const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
     try {
       await page.goto(url, { waitUntil, timeout: 30000 })
@@ -171,10 +197,12 @@ async function main() {
         (e) => !/Failed to load resource/i.test(e) && !/X-Frame-Options/i.test(e),
       )
       if (errs.length > 0) throw new Error(`console errors:\n${errs.join('\n')}`)
-      console.log(`[OK]   ${story}`)
+      console.log(`[OK]   ${name}`)
     } catch (err) {
       failed++
-      console.error(`[FAIL] ${story} — ${err.message}`)
+      console.error(`[FAIL] ${name} — ${err.message}`)
+    } finally {
+      await page.close()
     }
   }
 

@@ -71,7 +71,7 @@ export function GalleryFilterPanel({
 
   return (
     <Stack gap={0} style={PANEL_STYLE}>
-      <Inline justify="space-between" gap={3} style={HEADER_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-space-3)" style={HEADER_STYLE}>
         <Text as="strong" size="var(--ig-font-size-sm)">Filter images</Text>
         {onReset ? <TextButton tone="accent" size="xs" onClick={onReset}>Reset</TextButton> : null}
       </Inline>

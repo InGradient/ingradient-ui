@@ -1,4 +1,4 @@
-import { opacityScale } from '@ingradient/ui'
+import { opacityScale, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { Badge } from '@ingradient/ui/components'
 import { AnnotationOverlay, ImageGrid } from '@ingradient/ui/patterns'
 import type { ClassImage, ClassImagesPaneProps } from './types'
@@ -8,8 +8,12 @@ type Props = Pick<
   'images' | 'selectedClassId' | 'classIdToColor' | 'onOpenImage' | 'onOpenContextMenu'
 >
 
-// gap: 5 → var(--ig-space-5) = 12px (simon GalleryImageGrid DEFAULT_GAP=12 대응).
-const GRID_LAYOUT = { minWidth: 'var(--ig-popup-2xs-narrow)' as unknown as number, gap: 5 }
+const GRID_LAYOUT = {
+  minWidth: popupSizeNumbers['2xs'],
+  gap: 5,
+  fixedWidth: true,
+  aspectRatio: '4/3' as const,
+}
 
 export function ClassManageImageGrid({
   images,

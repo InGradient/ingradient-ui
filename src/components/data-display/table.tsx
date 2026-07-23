@@ -44,6 +44,7 @@ export type TableProps<T extends { id?: string | number }> = {
   rowHeight?: number
   /** Accessible label for the table's scrollable region. Required when multiple tables on a page. */
   ariaLabel?: string
+  minWidth?: string | number
   /** Footer row (tfoot). Length should match columns.length. 각 column 의 numeric/mono prop 이 그대로 적용됨. */
   footer?: React.ReactNode[]
 }
@@ -56,6 +57,7 @@ export function Table<T extends { id?: string | number }>({
   onReorder,
   rowHeight = 48,
   ariaLabel = 'Data table',
+  minWidth,
   footer,
 }: TableProps<T>) {
   const { dragState, fromIdx, getOffset, onDragStart } = useTableDrag<T>({ rows, rowHeight, onReorder })
@@ -85,7 +87,7 @@ export function Table<T extends { id?: string | number }>({
   if (!draggable) {
     return (
       <TableWrap aria-label={ariaLabel}>
-        <StyledTable>
+        <StyledTable style={{ minWidth }}>
           <thead>
             <tr>
               {columns.map((col) => (
@@ -122,7 +124,7 @@ export function Table<T extends { id?: string | number }>({
 
   return (
     <TableWrap aria-label={ariaLabel} style={{ userSelect: dragState ? 'none' : undefined }}>
-      <StyledTable>
+      <StyledTable style={{ minWidth }}>
         <thead>
           <tr>
             <DragTh scope="col">

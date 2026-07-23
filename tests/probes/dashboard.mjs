@@ -16,6 +16,7 @@ const cases = [
   {
     story: 'default',
     check: async (page) => {
+      await page.locator('[data-widget-key]').first().waitFor({ state: 'visible', timeout: 10000 })
       const widgets = await page.locator('[data-widget-key]').count()
       assert(widgets >= 6, `default: expected 6+ widgets, got ${widgets}`)
     },
@@ -23,6 +24,7 @@ const cases = [
   {
     story: 'no-project',
     check: async (page) => {
+      await page.locator('text=/Select a project to load dashboard stats/i').first().waitFor({ state: 'visible', timeout: 10000 })
       const widgets = await page.locator('[data-widget-key]').count()
       assert(widgets === 0, `no-project: expected 0 widgets, got ${widgets}`)
     },
@@ -30,6 +32,7 @@ const cases = [
   {
     story: 'loading',
     check: async (page) => {
+      await page.getByRole('status', { name: 'Loading' }).waitFor({ state: 'visible', timeout: 10000 })
       const widgets = await page.locator('[data-widget-key]').count()
       assert(widgets === 0, `loading: expected 0 widgets, got ${widgets}`)
     },
@@ -43,6 +46,7 @@ const cases = [
   {
     story: 'customize-open',
     check: async (page) => {
+      await page.locator('input[type="checkbox"]').first().waitFor({ state: 'attached', timeout: 10000 })
       const checkboxes = await page.locator('input[type="checkbox"]').count()
       assert(checkboxes >= 4, `customize-open: expected 4+ checkboxes, got ${checkboxes}`)
     },
@@ -89,14 +93,14 @@ async function main() {
   const server = await startServer()
   const browser = await chromium.launch()
   const ctx = await browser.newContext()
-  const page = await ctx.newPage()
-  const consoleErrors = []
-  page.on('console', (m) => {
-    if (m.type() === 'error') consoleErrors.push(m.text())
-  })
 
   let failed = 0
   for (const { story, check } of cases) {
+    const page = await ctx.newPage()
+    const consoleErrors = []
+    page.on('console', (m) => {
+      if (m.type() === 'error') consoleErrors.push(m.text())
+    })
     consoleErrors.length = 0
     const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
     try {
@@ -112,6 +116,8 @@ async function main() {
       failed++
       const msg = err.message.split('\n')[0]
       console.error(`[FAIL] ${story} — ${msg}`)
+    } finally {
+      await page.close()
     }
   }
 

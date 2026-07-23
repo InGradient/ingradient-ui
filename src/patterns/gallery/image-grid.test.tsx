@@ -75,7 +75,7 @@ describe('ImageGrid', () => {
   })
 
   it('scrollIntoView on the highlighted cell when highlightedId changes', () => {
-    const spy = Element.prototype.scrollIntoView as unknown as ReturnType<typeof vi.fn>
+    const spy = vi.mocked(Element.prototype.scrollIntoView)
     spy.mockClear()
     render(<ImageGrid items={items} getThumbnailUrl={getThumb} highlightedId="b" />)
     expect(spy).toHaveBeenCalled()
@@ -115,5 +115,21 @@ describe('ImageGrid', () => {
     fireEvent.mouseLeave(cell)
     expect(onCellMouseEnter).toHaveBeenCalled()
     expect(onCellMouseLeave).toHaveBeenCalled()
+  })
+
+  it('supports fixed-width 4:3 cells for migrated galleries', () => {
+    const { container } = render(
+      <ImageGrid
+        items={items}
+        getThumbnailUrl={getThumb}
+        layout={{ minWidth: 140, fixedWidth: true, aspectRatio: '4/3' }}
+      />,
+    )
+    const cell = container.querySelector('[data-grid-id="a"]') as HTMLElement
+    const imageFrame = cell.querySelector('img')?.parentElement as HTMLElement
+    const grid = cell.parentElement as HTMLElement
+
+    expect(getComputedStyle(grid).gridTemplateColumns).toBe('repeat(auto-fill, 140px)')
+    expect(getComputedStyle(imageFrame).aspectRatio).toBe('4/3')
   })
 })

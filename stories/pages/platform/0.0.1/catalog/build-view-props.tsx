@@ -23,6 +23,7 @@ export function buildCatalogViewProps(
   scenario: CatalogScene,
   s: ReturnType<typeof useCatalogScene>,
   datasetNameById: Record<string, string>,
+  isMobile = !!scenario.isMobile,
 ): CatalogViewProps {
   const classes = scenario.classes ?? []
   const members = scenario.members ?? []
@@ -36,7 +37,7 @@ export function buildCatalogViewProps(
   )
 
   return {
-    isMobile: !!scenario.isMobile,
+    isMobile,
     page: {
       title: 'Catalog',
       subtitle: 'Organize datasets, manage dataset-class links, browse labeled images.',
@@ -97,12 +98,13 @@ export function buildCatalogViewProps(
       selectedImageIds: s.selectedImageIds,
       loading: scenario.imagesLoading,
       hoverImageId: s.hoverImageId,
+      openMenuId: s.imageMenuAnchor?.id,
       datasetNameById,
       onToggleSelect: s.toggleImageSelection,
       onOpenDetail: (id) => s.setDetailImageId(id),
       onOpenMenu: s.openImageMenu,
     },
-    rightSidebar: scenario.isMobile
+    rightSidebar: isMobile
       ? null
       : {
           classesLoading: scenario.classesLoading,
@@ -114,7 +116,7 @@ export function buildCatalogViewProps(
           onRemoveClass: (id) => s.setPendingClassRemovalId(id),
           onRemoveMember: (id) => s.setPendingMemberRemovalId(id),
         },
-    mobile: scenario.isMobile
+    mobile: isMobile
       ? {
           datasetSelectorOpen: s.mobileDatasetDropdownOpen,
           onSetDatasetSelectorOpen: s.setMobileDatasetDropdownOpen,
@@ -123,9 +125,7 @@ export function buildCatalogViewProps(
         }
       : undefined,
     statsContent: s.viewMode === 'stats' ? buildStatsContent() : undefined,
-    detailContent: buildDetailContent(currentImage, datasetNameById, scenario.detailVariant, () =>
-      s.setDetailImageId(undefined),
-    ),
+    detailContent: buildDetailContent(currentImage, datasetNameById, scenario.detailVariant),
     overlays: buildCatalogOverlays(scenario, s),
   }
 }

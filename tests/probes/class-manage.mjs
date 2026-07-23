@@ -61,7 +61,7 @@ const cases = [
     waitUntil: 'domcontentloaded',
     check: async (page) => {
       // Class lightbox renders a dialog. Look for the close action or large image.
-      const closeBtn = page.locator('button[aria-label="Close enlarged view"]').first()
+      const closeBtn = page.locator('button[aria-label="Close"]').first()
       await closeBtn.waitFor({ state: 'visible', timeout: 10000 })
     },
   },

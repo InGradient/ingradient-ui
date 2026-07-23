@@ -75,7 +75,7 @@ export function StorageAnalyticsTab({
       <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{projectTitle}</Text>
       {projectChart}
 
-      <Grid gap="var(--ig-space-9)" columns="1fr 1fr">
+      <Grid gap="var(--ig-space-9)" minItemWidth="var(--ig-popup-xs)">
         <div>
           <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}

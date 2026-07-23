@@ -1,8 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { DashboardView } from '@ingradient/platform-pages'
+import styled from 'styled-components'
+import {
+  AnalysisWidgetShell,
+  DashboardOverviewPanel,
+  DashboardView,
+  DraggableAnalysisWidgetGrid,
+} from '@ingradient/platform-pages'
+import { stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
 import { downloadCaptureAsPng } from '@ingradient/ui/utils'
 import {
   customizeToggleItems,
+  defaultLayout,
   type DashboardWidgetKey,
 } from '../../../fixtures/platform/0.0.1/dashboard-analysis'
 import {
@@ -42,13 +50,91 @@ const handoff = defineHandoff({
 
 type Args = { scenario: DashboardScenarioKey }
 
-const EMPTY_STATE_STYLE: React.CSSProperties = {
-  padding: 24,
-  textAlign: 'center',
-  color: 'var(--ig-color-text-muted)',
-}
+const EmptyState = styled.div`
+  ${stateTitleText}
+  ${stateCenteredLayout}
+  padding: var(--ig-space-7);
+`
 
 const noop = () => undefined
+
+const ComparisonCanvas = styled.div`
+  min-height: 100vh;
+  padding: var(--ig-space-7) var(--ig-space-9);
+  background: var(--ig-color-surface-canvas);
+`
+
+const ComparisonGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ig-space-7);
+  align-items: start;
+
+  @media (max-width: 1280px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const Masonry = styled.div`
+  column-count: 3;
+  column-gap: var(--ig-space-5);
+
+  @media (max-width: 1680px) {
+    column-count: 2;
+  }
+
+  @media (max-width: 1024px) {
+    column-count: 1;
+  }
+`
+
+const MasonryItem = styled.div`
+  break-inside: avoid;
+  margin-bottom: var(--ig-space-5);
+`
+
+const SectionedStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-7);
+`
+
+const SectionBlock = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-space-5);
+`
+
+const SectionLabel = styled.h3`
+  margin: 0;
+  font-size: var(--ig-font-size-sm);
+  font-weight: 700;
+  color: var(--ig-color-text-secondary);
+`
+
+const summaryLayout: DashboardWidgetKey[][] = [
+  ['data_collection', 'timeline'],
+  ['labeling_status', 'class_ratio', 'pending_processed'],
+]
+
+const summaryWidgetKeys: readonly DashboardWidgetKey[] = [
+  'data_collection',
+  'timeline',
+  'labeling_status',
+  'class_ratio',
+  'pending_processed',
+]
+
+const detailLayout: DashboardWidgetKey[][] = [
+  ['labeling_by_person', 'defects_by_source'],
+  ['dataset_distribution'],
+]
+
+const detailWidgetKeys: readonly DashboardWidgetKey[] = [
+  'labeling_by_person',
+  'defects_by_source',
+  'dataset_distribution',
+]
 
 function DashboardScene({ scenario: key }: Args) {
   const scenario = dashboardScenarios[key]
@@ -118,10 +204,105 @@ function DashboardScene({ scenario: key }: Args) {
           dataset_distribution: s.preferences.show_dataset_distribution,
         },
         emptyState: (
-          <div style={EMPTY_STATE_STYLE}>All widgets hidden. Enable some via Customize.</div>
+          <EmptyState>All widgets hidden. Enable some via Customize.</EmptyState>
         ),
       }}
     />
+  )
+}
+
+function LayoutComparisonScene() {
+  const widgets = buildDashboardWidgets()
+  const orderedKeys = defaultLayout.flat()
+
+  return (
+    <ComparisonCanvas>
+      <ComparisonGrid>
+        <DashboardOverviewPanel
+          title="Default Grid"
+          hint="Current project stats · All time"
+          dateLabel="All time"
+        >
+          <DraggableAnalysisWidgetGrid<DashboardWidgetKey>
+            layout={defaultLayout}
+            widgets={widgets}
+            widgetTitles={dashboardWidgetTitles}
+            widgetKeys={dashboardWidgetKeys}
+            onDownloadWidget={noop}
+          />
+        </DashboardOverviewPanel>
+
+        <DashboardOverviewPanel
+          title="Compact Masonry"
+          hint="Current project stats · All time"
+          dateLabel="All time"
+        >
+          <Masonry>
+            {orderedKeys.map((key) => (
+              <MasonryItem key={key} data-widget-key={key}>
+                <AnalysisWidgetShell onDownload={noop}>
+                  {widgets[key]}
+                </AnalysisWidgetShell>
+              </MasonryItem>
+            ))}
+          </Masonry>
+        </DashboardOverviewPanel>
+      </ComparisonGrid>
+    </ComparisonCanvas>
+  )
+}
+
+function SectionedGridComparisonScene() {
+  const widgets = buildDashboardWidgets()
+
+  return (
+    <ComparisonCanvas>
+      <ComparisonGrid>
+        <DashboardOverviewPanel
+          title="Default Grid"
+          hint="Current project stats · All time"
+          dateLabel="All time"
+        >
+          <DraggableAnalysisWidgetGrid<DashboardWidgetKey>
+            layout={defaultLayout}
+            widgets={widgets}
+            widgetTitles={dashboardWidgetTitles}
+            widgetKeys={dashboardWidgetKeys}
+            onDownloadWidget={noop}
+          />
+        </DashboardOverviewPanel>
+
+        <DashboardOverviewPanel
+          title="Sectioned Grid"
+          hint="Summary first, breakdown second"
+          dateLabel="All time"
+        >
+          <SectionedStack>
+            <SectionBlock>
+              <SectionLabel>Summary</SectionLabel>
+              <DraggableAnalysisWidgetGrid<DashboardWidgetKey>
+                layout={summaryLayout}
+                widgets={widgets}
+                widgetTitles={dashboardWidgetTitles}
+                widgetKeys={summaryWidgetKeys}
+                onDownloadWidget={noop}
+              />
+            </SectionBlock>
+
+            <SectionBlock>
+              <SectionLabel>Breakdown</SectionLabel>
+              <DraggableAnalysisWidgetGrid<DashboardWidgetKey>
+                layout={detailLayout}
+                widgets={widgets}
+                widgetTitles={dashboardWidgetTitles}
+                widgetKeys={detailWidgetKeys}
+                onDownloadWidget={noop}
+              />
+            </SectionBlock>
+          </SectionedStack>
+        </DashboardOverviewPanel>
+      </ComparisonGrid>
+    </ComparisonCanvas>
   )
 }
 
@@ -142,13 +323,25 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-/** 4 state 변형 (NoProject / Loading / Error / NoData) — Controls 의 scenario 로 전환. */
-export const StateShowcase: Story = { args: { scenario: 'no-project' } }
-/** 2 popover (Customize / DateRange) — Controls 의 scenario 로 전환. */
-export const PopoverShowcase: Story = { args: { scenario: 'customize-open' } }
+export const NoProject: Story = { args: { scenario: 'no-project' } }
+export const Loading: Story = { args: { scenario: 'loading' } }
+export const Error: Story = { args: { scenario: 'error' } }
+export const NoData: Story = { args: { scenario: 'no-data' } }
+export const CustomizeOpen: Story = { args: { scenario: 'customize-open' } }
+export const DateRangeOpen: Story = { args: { scenario: 'date-range-open' } }
 export const SubsetWidgets: Story = { args: { scenario: 'subset-widgets' } }
-export const LayoutCustom: Story = { args: { scenario: 'layout-custom' } }
+export const Layout2Rows: Story = { args: { scenario: 'layout-2-rows' } }
+export const Layout3PerRow: Story = { args: { scenario: 'layout-3-per-row' } }
+export const Layout1PerRow: Story = { args: { scenario: 'layout-1-per-row' } }
 export const SaveMessage: Story = { args: { scenario: 'save-message' } }
 export const DateApplied: Story = { args: { scenario: 'date-applied' } }
+export const NoProjectName: Story = { args: { scenario: 'no-project-name' } }
+export const AllWidgetsHidden: Story = { args: { scenario: 'all-widgets-hidden' } }
 export const WithEdgeAnalytics: Story = { args: { scenario: 'with-edge-analytics' } }
 export const WithDeflectometry: Story = { args: { scenario: 'with-deflectometry' } }
+export const LayoutComparison: Story = {
+  render: () => <LayoutComparisonScene />,
+}
+export const SectionedGridComparison: Story = {
+  render: () => <SectionedGridComparisonScene />,
+}

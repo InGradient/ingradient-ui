@@ -5,15 +5,12 @@ import {
 } from '@ingradient/platform-pages'
 import { BarChartCard, LineChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { SegmentedProgressBar } from '@ingradient/ui/components'
-import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { chartHeights } from '@ingradient/ui/tokens'
 import {
   classRatioData, dashboardStats, dataCollectionData, datasetDistribution, defectsBySourceData,
   labelingByPersonData, labelingProgress, labelingStatusData, timelineData,
 } from './mock-dashboard'
-
-const NAME_STYLE: React.CSSProperties = { color: 'var(--ig-color-text-secondary)', fontSize: 'var(--ig-font-size-sm)' }
-const VALUE_STYLE: React.CSSProperties = { color: 'var(--ig-color-text-primary)', fontVariantNumeric: 'tabular-nums', fontSize: 'var(--ig-font-size-sm)' }
-const PCT_STYLE: React.CSSProperties = { color: 'var(--ig-color-text-muted)' }
 
 export function buildStatsContent() {
   return (
@@ -29,7 +26,7 @@ export function buildStatsContent() {
                 data={dataCollectionData}
                 series={[{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]}
                 xKey="dataset"
-                height={200}
+                height={chartHeights.sm}
               />
             </DashboardWidget>
           ),
@@ -42,7 +39,7 @@ export function buildStatsContent() {
                 data={timelineData}
                 series={[{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]}
                 xKey="period"
-                height={200}
+                height={chartHeights.sm}
               />
             </DashboardWidget>
           ),
@@ -51,7 +48,7 @@ export function buildStatsContent() {
           id: 'labeling-status',
           content: (
             <DashboardWidget title="Labeled vs unlabeled">
-              <PieChartCard data={labelingStatusData} height={200} />
+              <PieChartCard data={labelingStatusData} height={chartHeights.sm} />
             </DashboardWidget>
           ),
         },
@@ -59,7 +56,7 @@ export function buildStatsContent() {
           id: 'class-ratio',
           content: (
             <DashboardWidget title="Class distribution">
-              <PieChartCard data={classRatioData} height={200} />
+              <PieChartCard data={classRatioData} height={chartHeights.sm} />
             </DashboardWidget>
           ),
         },
@@ -67,13 +64,14 @@ export function buildStatsContent() {
           id: 'labeling-by-person',
           content: (
             <DashboardWidget title="Uploader activity" subtitle="Top contributors">
-              <Stack gap={2}>
+              <Stack gap="var(--ig-space-2)">
                 {labelingByPersonData.map((p) => (
                   <Inline key={p.uploader} justify="space-between" align="center">
-                    <span style={NAME_STYLE}>{p.uploader}</span>
-                    <span style={VALUE_STYLE}>
-                      {p.count.toLocaleString()} <span style={PCT_STYLE}>({p.percentage}%)</span>
-                    </span>
+                    <Text as="span" size="var(--ig-font-size-sm)" tone="secondary">{p.uploader}</Text>
+                    <Text as="span" size="var(--ig-font-size-sm)" tabularNums>
+                      {p.count.toLocaleString()}{' '}
+                      <Text as="span" size="var(--ig-font-size-sm)" tone="muted">({p.percentage}%)</Text>
+                    </Text>
                   </Inline>
                 ))}
               </Stack>
@@ -88,7 +86,7 @@ export function buildStatsContent() {
                 data={defectsBySourceData}
                 series={[{ key: 'count', label: 'Defects', color: 'var(--ig-color-warning)' }]}
                 xKey="source"
-                height={200}
+                height={chartHeights.sm}
                 layout="vertical"
               />
             </DashboardWidget>

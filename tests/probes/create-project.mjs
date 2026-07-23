@@ -101,7 +101,7 @@ async function main() {
     consoleErrors.length = 0
     const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
     try {
-      await page.goto(url, { waitUntil: 'networkidle', timeout: 20000 })
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 })
       await check(page)
       const errs = consoleErrors.filter(
         (e) => !/Failed to load resource/i.test(e) && !/X-Frame-Options/i.test(e),

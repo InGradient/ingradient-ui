@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { ModalCard, ModalHeader, ModalTitle, VerticalTabs } from '@ingradient/ui/components'
 import { SettingsShell } from '@ingradient/ui/patterns'
+import { media } from '@ingradient/ui/tokens'
 
 export const Modal = styled(ModalCard)`
   width: min(var(--ig-popup-4xl-mid), calc(100vw - var(--ig-space-7) * 2));
@@ -30,6 +31,12 @@ export const Main = styled(SettingsShell)`
   grid-template-columns: var(--ig-popup-xs) minmax(0, 1fr);
   background: var(--ig-color-bg-canvas);
   --ig-catalog-divider-color: var(--ig-color-border-strong);
+
+  ${media.lg} {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
+  }
 `
 
 export const Body = styled.div`
@@ -79,6 +86,11 @@ export const TabsList = styled(VerticalTabs)`
   & > [role='tab'][aria-selected='true']:hover:not(:disabled) {
     background: var(--ig-color-accent-soft-surface-hover);
   }
+
+  ${media.lg} {
+    border-right: 0;
+    border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color);
+  }
 `
 
 export const AdminBody = styled.div`
@@ -107,6 +119,10 @@ export const AdminContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-4);
+
+  & > * {
+    flex-shrink: 0;
+  }
 `
 
 export const SubsectionTitle = styled.h4`
@@ -132,4 +148,3 @@ export const PermissionsScopeNote = styled.p`
   color: var(--ig-color-text-soft);
   line-height: var(--ig-line-height-relaxed);
 `
-

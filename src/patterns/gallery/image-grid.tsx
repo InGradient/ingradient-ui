@@ -3,6 +3,7 @@ import { Text } from '../../primitives'
 import { ImageGridCell } from './image-grid-cell'
 import type { GridSelectionAction } from '../../components/data-display/use-grid-selection'
 import { GridContainer } from '../../components/data-display/grid-container'
+import type { AspectRatio } from '../../components/data-display/aspect-ratio-image'
 
 const SENTINEL_STYLE = { gridColumn: '1 / -1', height: 'var(--ig-space-1px)' }
 const LOAD_MORE_STYLE = { gridColumn: '1 / -1', textAlign: 'center' as const, padding: 'var(--ig-space-5)' }
@@ -14,6 +15,8 @@ export interface ImageGridLayout {
   minWidth?: number
   columns?: number
   gap?: number
+  fixedWidth?: boolean
+  aspectRatio?: AspectRatio
 }
 
 export interface ImageGridProps<T extends { id: string }> {
@@ -93,6 +96,7 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
       minWidth={layout?.minWidth ?? 180}
       columns={layout?.columns}
       gap={layout?.gap ?? 5}
+      fixedWidth={layout?.fixedWidth}
     >
       {items.map((item, index) => (
         <ImageGridCell
@@ -101,6 +105,7 @@ export function ImageGrid<T extends { id: string }>(props: ImageGridProps<T>) {
           index={index}
           selected={selectedIds.has(item.id)}
           thumbnailUrl={getThumbnailUrl(item)}
+          aspectRatio={layout?.aspectRatio}
           onItemClick={onItemClick}
           onItemDoubleClick={onItemDoubleClick}
           onSelectionChange={onSelectionChange}

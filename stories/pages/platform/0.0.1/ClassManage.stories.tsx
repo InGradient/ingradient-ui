@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassManageView } from '@ingradient/platform-pages'
 import { classScenarios, type ClassScenarioKey } from '../../../fixtures/platform/0.0.1/class-scenarios'
@@ -16,16 +15,17 @@ const handoff = defineHandoff({
   fixturesPath: 'stories/fixtures/platform/0.0.1/class-{classes,datasets,images,scenarios}.ts',
   requiredScenarios: [
     'default', 'empty', 'loading', 'permission-denied',
-    'no-class-selected', 'stress-test',
+    'class-with-images', 'no-class-selected', 'long-text', 'many-items',
   ],
   interactions: [
     'class row 클릭 → selectedClassId 변경 + 가운데/우측 reflow',
+    'class sidebar 닫기/열기 → 가운데 영역 reflow',
     'dataset chip 클릭 → 토글',
     'image 클릭 → lightbox open',
     'image right-click → context menu',
     'image drag-drop → reference image set',
     '+Add class → modal open',
-    'Delete class → confirm dialog',
+    'class kebab → Duplicate / Delete',
   ],
   platformIntegration: [
     'ClassManageView 를 그대로 import — props 에 hook 결과 연결',
@@ -35,14 +35,10 @@ const handoff = defineHandoff({
   ],
 })
 
-type Args = { scenario: ClassScenarioKey; sidebarCollapsed: boolean }
+type Args = { scenario: ClassScenarioKey }
 
-function ClassManageScene({ scenario: key, sidebarCollapsed }: Args) {
-  const baseScenario = classScenarios[key]
-  const scenario = React.useMemo(
-    () => (sidebarCollapsed ? { ...baseScenario, sidebarCollapsed: true } : baseScenario),
-    [baseScenario, sidebarCollapsed],
-  )
+function ClassManageScene({ scenario: key }: Args) {
+  const scenario = classScenarios[key]
   const s = useClassManageScene(scenario)
   const classIdToColor = classIdToColorMap(s.classes)
   const selectedClass = s.classes.find((c) => c.id === s.selectedClassId) ?? null
@@ -58,12 +54,15 @@ function ClassManageScene({ scenario: key, sidebarCollapsed }: Args) {
         selectedClassId: s.selectedClassId,
         loading: scenario.classesLoading,
         sidebarCollapsed: s.sidebarCollapsed,
-        openMenuId: s.classMenu?.classId,
+        openMenuId: s.classMenuOpen?.id,
         onSelectClass: s.setSelectedClassId,
         onAddClass: () => s.setAddClassOpen(true),
-        onCollapse: s.collapseSidebar,
-        onExpand: s.expandSidebar,
-        onOpenClassMenu: s.openClassMenu,
+        onCollapse: () => s.setSidebarCollapsed(true),
+        onExpand: () => s.setSidebarCollapsed(false),
+        onOpenClassMenu: (id, anchor) => {
+          s.setSelectedClassId(id)
+          s.setClassMenuOpen({ id, anchor })
+        },
       }}
       images={{
         selectedClassId: s.selectedClassId,
@@ -110,17 +109,12 @@ function ClassManageScene({ scenario: key, sidebarCollapsed }: Args) {
           onClose: () => s.setAddClassOpen(false),
           onConfirm: () => s.setAddClassOpen(false),
         },
-        classMenu: s.classMenu
-          ? {
-              anchorEl: s.classMenu.anchorEl,
-              onClose: s.closeClassMenu,
-              onDuplicate: s.duplicateMenuClass,
-              onDelete: () => {
-                s.closeClassMenu()
-                s.setDeleteConfirmOpen(true)
-              },
-            }
-          : undefined,
+        classMenu: {
+          anchorEl: s.classMenuOpen?.anchor ?? null,
+          onClose: () => s.setClassMenuOpen(null),
+          onDuplicate: s.duplicateSelectedClass,
+          onDelete: () => s.setDeleteConfirmOpen(true),
+        },
         contextMenu: {
           position: s.contextMenuOpen
             ? { top: s.contextMenuOpen.top, left: s.contextMenuOpen.left }
@@ -156,9 +150,8 @@ const meta = {
   parameters: { layout: 'fullscreen', ...handoff },
   argTypes: {
     scenario: { control: 'select', options: SCENARIO_KEYS, table: { category: 'Page' } },
-    sidebarCollapsed: { control: 'boolean', table: { category: 'Layout' } },
   },
-  args: { scenario: 'default' as ClassScenarioKey, sidebarCollapsed: false },
+  args: { scenario: 'default' as ClassScenarioKey },
 } satisfies Meta<typeof ClassManageScene>
 
 export default meta
@@ -166,15 +159,29 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+export const SidebarCollapsed: Story = { args: { scenario: 'sidebar-collapsed' } }
 export const NoClassSelected: Story = { args: { scenario: 'no-class-selected' } }
+export const ClassWithImages: Story = { args: { scenario: 'class-with-images' } }
 export const ClassWithGroupedImages: Story = { args: { scenario: 'class-with-grouped-images' } }
-/** 5 state 변형 (Empty / Loading / Error / PermissionDenied / NoProject) — Controls 의 scenario 로 전환. */
-export const StateShowcase: Story = { args: { scenario: 'empty' } }
-export const StressTest: Story = { args: { scenario: 'stress-test' } }
-/** 3 content sub-state (NoLinkedDatasets / ImagesLoading / ImagesEmpty) — Controls 의 scenario 로 전환. */
-export const ContentStateShowcase: Story = { args: { scenario: 'no-linked-datasets' } }
-/** 3 reference flow 변형 (DragOverReference / ReferenceImagePending / BboxNavMulti) — Controls 의 scenario 로 전환. */
-export const ReferenceFlowShowcase: Story = { args: { scenario: 'drag-over-reference' } }
-export const Lightbox: Story = { args: { scenario: 'lightbox' } }
-/** 5 interaction 변형 (ContextMenuOpen / AddClassModalOpen / DeleteConfirmOpen / MappingCocoActive / ClassMenuOpen) — Controls 의 scenario 로 전환. */
-export const InteractionShowcase: Story = { args: { scenario: 'context-menu-open' } }
+export const Empty: Story = { args: { scenario: 'empty' } }
+export const Loading: Story = { args: { scenario: 'loading' } }
+export const Error: Story = { args: { scenario: 'error' } }
+export const PermissionDenied: Story = { args: { scenario: 'permission-denied' } }
+export const NoProject: Story = { args: { scenario: 'no-project' } }
+export const LongText: Story = { args: { scenario: 'long-text' } }
+export const ManyItems: Story = { args: { scenario: 'many-items' } }
+export const NoLinkedDatasets: Story = { args: { scenario: 'no-linked-datasets' } }
+export const ImagesLoading: Story = { args: { scenario: 'images-loading' } }
+export const ImagesEmpty: Story = { args: { scenario: 'images-empty' } }
+export const DragOverReference: Story = { args: { scenario: 'drag-over-reference' } }
+export const ReferenceImageSet: Story = { args: { scenario: 'reference-image-set' } }
+export const ReferenceImagePending: Story = { args: { scenario: 'reference-image-pending' } }
+export const BboxNavMulti: Story = { args: { scenario: 'bbox-nav-multi' } }
+export const LightboxOpen: Story = { args: { scenario: 'lightbox-open' } }
+export const LightboxWithPatternTabs: Story = { args: { scenario: 'lightbox-with-pattern-tabs' } }
+export const ContextMenuOpen: Story = { args: { scenario: 'context-menu-open' } }
+export const ClassMenuOpen: Story = { args: { scenario: 'class-menu-open' } }
+export const AddClassModalOpen: Story = { args: { scenario: 'add-class-modal-open' } }
+export const DeleteConfirmOpen: Story = { args: { scenario: 'delete-confirm-open' } }
+export const MappingCocoActive: Story = { args: { scenario: 'mapping-coco-active' } }
+export const MappingDisabled: Story = { args: { scenario: 'mapping-disabled' } }

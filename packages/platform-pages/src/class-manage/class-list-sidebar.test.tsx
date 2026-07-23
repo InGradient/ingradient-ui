@@ -31,4 +31,18 @@ describe('ClassListSidebar', () => {
 
     expect(onOpenClassMenu).toHaveBeenCalledWith('c-1', expect.any(HTMLElement))
   })
+
+  it('keeps the shared selected-row styling contract for semantic list items', () => {
+    render(
+      <ClassListSidebar
+        classes={[{ id: 'c-1', name: 'Crack', color: '#ef4444' }]}
+        selectedClassId="c-1"
+      />,
+    )
+
+    const row = screen.getByRole('option', { name: 'Crack' })
+    expect(row).toHaveAttribute('data-ig-component', 'SelectableListItem')
+    expect(row).not.toHaveAttribute('variant')
+    expect(row).toHaveAttribute('aria-selected', 'true')
+  })
 })

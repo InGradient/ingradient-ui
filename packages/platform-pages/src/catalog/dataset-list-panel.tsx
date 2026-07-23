@@ -1,18 +1,11 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
-import styled from 'styled-components'
-import { Inline, Stack, Text, stateCenteredLayout, stateTitleText } from '@ingradient/ui/primitives'
-import { Button, Checkbox, IconButton } from '@ingradient/ui/components'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Button, Checkbox, EmptyText, IconButton } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
 import { ClosePanelIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
 import type { DatasetTaskType } from './dataset-task-tag'
-
-const Placeholder = styled.div`
-  ${stateTitleText}
-  ${stateCenteredLayout}
-  padding: var(--ig-space-7);
-`
 
 const PANEL_STYLE = {
   height: '100%',
@@ -47,7 +40,6 @@ const PLACEHOLDER_STYLE = {
 }
 
 const TITLE_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
-const SELECTED_COUNT_STYLE = { color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }
 
 export interface DatasetListPanelDataset {
   id: string
@@ -84,7 +76,7 @@ export function DatasetListPanel({
   return (
     <Stack as="aside" gap={0} data-ig-component="DatasetListPanel" data-ig-layer="patterns" style={PANEL_STYLE}>
       <Inline justify="space-between" gap="var(--ig-space-4)" style={HEADER_STYLE}>
-        <Text as="h2" size="var(--ig-font-size-lg)" weight={600} style={TITLE_STYLE}>{title}</Text>
+        <Text as="h2" size="var(--ig-font-size-lg)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
         <Inline gap="var(--ig-space-2)">
           <Button
             variant="solid"
@@ -118,19 +110,19 @@ export function DatasetListPanel({
             label={allSelected ? 'Deselect all' : 'Select all'}
           />
           {selectedIds.size > 0 ? (
-            <span style={SELECTED_COUNT_STYLE}>
+            <Text as="span" tone="muted" size="var(--ig-font-size-xs)">
               {selectedIds.size} selected
-            </span>
+            </Text>
           ) : null}
         </Inline>
       ) : null}
       <Stack as={showItems ? 'ul' : undefined} gap={0} style={LIST_STYLE}>
         {noProject ? (
-          <Placeholder>No project selected</Placeholder>
+          <EmptyText style={PLACEHOLDER_STYLE}>No project selected</EmptyText>
         ) : loading ? (
           <Inline justify="center" style={PLACEHOLDER_STYLE}><Spinner size="md" /></Inline>
         ) : datasets.length === 0 ? (
-          <Placeholder>No datasets</Placeholder>
+          <EmptyText style={PLACEHOLDER_STYLE}>No datasets</EmptyText>
         ) : (
           datasets.map((d) => (
             <DatasetListItem

@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { Checkbox } from '@ingradient/ui/components'
+import { Checkbox, ProgressBar } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
 
 const BAR_STYLE = {
@@ -12,21 +11,12 @@ const BAR_STYLE = {
   position: 'relative' as const,
 }
 
-const PROGRESS_TRACK_STYLE = {
+const UPLOAD_PROGRESS_STYLE = {
   position: 'absolute' as const,
   top: 0,
   left: 0,
   right: 0,
-  height: 'var(--ig-space-3px)',
-  background: 'transparent',
 }
-
-const ProgressFill = styled.div<{ $pct: number }>`
-  height: 100%;
-  width: ${(p) => Math.min(100, Math.max(0, p.$pct))}%;
-  background: var(--ig-color-accent);
-  transition: width var(--ig-motion-normal);
-`
 
 const ROW_STYLE = { minHeight: 'var(--ig-layout-sidebar-header)', padding: 'var(--ig-space-7)' }
 
@@ -97,9 +87,12 @@ export function GalleryToolbar({
   return (
     <Stack gap={0} data-ig-component="GalleryToolbar" data-ig-layer="patterns" style={BAR_STYLE}>
       {typeof uploadProgress === 'number' && uploadProgress > 0 && uploadProgress < 100 ? (
-        <div style={PROGRESS_TRACK_STYLE}>
-          <ProgressFill $pct={uploadProgress} aria-label={`Upload progress ${uploadProgress}%`} />
-        </div>
+        <ProgressBar
+          value={uploadProgress}
+          size="sm"
+          ariaLabel={`Upload progress ${uploadProgress}%`}
+          style={UPLOAD_PROGRESS_STYLE}
+        />
       ) : null}
       <Inline gap="var(--ig-space-3)" wrap="nowrap" style={ROW_STYLE}>
         {leftStart}

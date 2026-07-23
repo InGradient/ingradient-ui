@@ -63,7 +63,7 @@ export function CatalogBody({
   if (imagesPane.loading) {
     return (
       <EmptyStateWrap>
-        <Stack gap={3} align="center">
+        <Stack gap="var(--ig-space-3)" align="center">
           <Spinner size="lg" />
           <LoadingText>{LOADING_TEXT}</LoadingText>
         </Stack>

@@ -19,7 +19,7 @@ export function ClassManageOverlays({
         onChange={addClass.onNameChange}
         onClose={addClass.onClose}
         onConfirm={addClass.onConfirm}
-        title="Class name"
+        title="Add Class"
         placeholder="Enter class name"
       />
       {classMenu ? (

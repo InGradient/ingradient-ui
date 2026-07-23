@@ -11,7 +11,7 @@ import { CommentThread } from '@ingradient/ui/patterns'
 import { MentionTextarea, type MentionCandidate } from '@ingradient/ui/components'
 
 const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
-const LIST_WRAP_STYLE = { maxHeight: 'var(--ig-popup-3xs)', overflowY: 'auto' as const }
+const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-popup-3xs)'
 const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
 
 const ERROR_BOX_STYLE = {
@@ -80,6 +80,7 @@ export interface CommentsPanelProps {
   emptyTextGroup?: string
   defaultOpen?: boolean
   title?: string
+  listMaxHeight?: string
   className?: string
 }
 
@@ -111,6 +112,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
     emptyTextGroup = 'No comments yet for this group.',
     defaultOpen = true,
     title = 'Comments',
+    listMaxHeight = DEFAULT_LIST_MAX_HEIGHT,
     className,
   } = props
   const isControlled = controlledDraft != null && onChangeDraft != null
@@ -184,7 +186,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
           {count === 0 ? (
             <Text tone="muted" size="var(--ig-font-size-xs)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
-            <Box style={LIST_WRAP_STYLE}>
+            <Box style={{ maxHeight: listMaxHeight, overflowY: 'auto' }}>
               <CommentThread>
                 {comments.map((c) => (
                   <CommentItem

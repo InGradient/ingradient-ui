@@ -40,7 +40,7 @@ export const Review: Story = {
             <StorybookCard key={label} title={String(label)} subtitle={`${value}%`}>
               <StorybookStack gap={10}>
                 <ProgressBar value={Number(value)} />
-                <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
+                <div style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-text-soft)' }}>
                   {label} state in a standard panel context.
                 </div>
               </StorybookStack>
@@ -62,6 +62,20 @@ export const Review: Story = {
           </StorybookCard>
           <StorybookCard title="Success" subtitle="완료 (tone=success)">
             <StorybookStack gap={10}><ProgressBar value={100} tone="success" /></StorybookStack>
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+
+      <StorybookSection
+        title="Density"
+        description="Use sm for toolbar or top-edge progress where the indicator should not change row height."
+      >
+        <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
+          <StorybookCard title="Default" subtitle="size=md">
+            <StorybookStack gap={10}><ProgressBar value={52} /></StorybookStack>
+          </StorybookCard>
+          <StorybookCard title="Compact" subtitle="size=sm">
+            <StorybookStack gap={10}><ProgressBar value={52} size="sm" /></StorybookStack>
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>

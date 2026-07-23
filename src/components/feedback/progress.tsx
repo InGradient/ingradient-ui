@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 
 const STRIPE_PERIOD_PX = 20
@@ -48,10 +49,16 @@ const TONE_FILL = {
 } as const
 
 export type ProgressTone = keyof typeof TONE_FILL
+export type ProgressSize = 'sm' | 'md'
 
-export const ProgressTrack = styled.div`
+const TRACK_HEIGHT: Record<ProgressSize, string> = {
+  sm: 'var(--ig-space-3px)',
+  md: 'var(--ig-space-3)',
+}
+
+export const ProgressTrack = styled.div<{ $size: ProgressSize }>`
   width: 100%;
-  height: var(--ig-space-3);
+  height: ${(p) => TRACK_HEIGHT[p.$size]};
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-progress-track);
   overflow: hidden;
@@ -78,13 +85,30 @@ export interface ProgressBarProps {
   indeterminate?: boolean
   /** fill 색 — 기본 accent, 실패 danger, 완료 success. */
   tone?: ProgressTone
+  /** 밀도. md 는 표준 패널용, sm 은 toolbar/top-edge indicator 용. */
+  size?: ProgressSize
+  ariaLabel?: string
+  className?: string
+  style?: CSSProperties
 }
 
-export function ProgressBar({ value = 0, indeterminate = false, tone = 'accent' }: ProgressBarProps) {
+export function ProgressBar({
+  value = 0,
+  indeterminate = false,
+  tone = 'accent',
+  size = 'md',
+  ariaLabel = 'Progress',
+  className,
+  style,
+}: ProgressBarProps) {
   const active = !indeterminate && value > 0 && value < 100
   return (
     <ProgressTrack
+      className={className}
+      style={style}
+      $size={size}
       role="progressbar"
+      aria-label={ariaLabel}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={indeterminate ? undefined : Math.round(Math.max(0, Math.min(100, value)))}

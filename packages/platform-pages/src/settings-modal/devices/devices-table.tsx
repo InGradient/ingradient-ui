@@ -111,7 +111,12 @@ export function DevicesTable({
       ) : filteredDevices.length === 0 ? (
         <EmptyState>{devices.length === 0 ? 'No devices registered' : 'No devices match the filter'}</EmptyState>
       ) : (
-        <Table columns={columns} rows={filteredDevices} ariaLabel="Devices" />
+        <Table
+          columns={columns}
+          rows={filteredDevices}
+          ariaLabel="Devices"
+          minWidth="var(--ig-popup-3xl-narrow)"
+        />
       )}
     </Stack>
   )

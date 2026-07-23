@@ -1,19 +1,14 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ColorSwatch, MenuIconButton as MenuButton, KebabIcon, SelectableListItem } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui'
 
-const Item = styled(SelectableListItem)<{ $menuOpen: boolean }>`
-  min-height: calc((var(--ig-space-3) * 2) + var(--ig-space-12));
-  ${(p) =>
-    p.$menuOpen &&
-    css`
-      && {
-        background: var(--ig-color-blue-tint-12);
-        box-shadow: inset calc(-1 * var(--ig-border-2px)) 0 0 var(--ig-color-accent);
-      }
-    `}
-`
+const ITEM_STYLE = { minHeight: 'calc((var(--ig-space-3) * 2) + var(--ig-space-12))' }
+const MENU_OPEN_STYLE = {
+  ...ITEM_STYLE,
+  background: 'var(--ig-color-blue-tint-12)',
+  boxShadow: 'inset calc(-1 * var(--ig-border-2px)) 0 0 var(--ig-color-accent)',
+}
 
 const Wrap = styled.div`
   width: 100%;
@@ -53,12 +48,12 @@ export function ClassListRow({
 }: ClassListRowProps) {
   const menuButtonRef = React.useRef<HTMLButtonElement>(null)
   return (
-    <Item
+    <SelectableListItem
       as="li"
       variant="flat"
       data-class-id={id}
       selected={selected}
-      $menuOpen={menuOpen}
+      style={menuOpen ? MENU_OPEN_STYLE : ITEM_STYLE}
       onClick={() => onClick?.(id)}
       role="option"
       aria-selected={selected}
@@ -83,6 +78,6 @@ export function ClassListRow({
           </MenuButton>
         ) : null}
       </Wrap>
-    </Item>
+    </SelectableListItem>
   )
 }

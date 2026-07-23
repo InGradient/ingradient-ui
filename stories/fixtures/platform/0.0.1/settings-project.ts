@@ -1,12 +1,11 @@
 import type {
   ExpandedPermissionGroup,
-  GroupVisible,
   ProjectMemberRowMember,
   ProjectMemberRowRoleOption,
   RoleMatrix,
   SummaryPermissionGroup,
 } from '@ingradient/platform-pages'
-import type { ProjectTypeTone } from '@ingradient/platform-pages'
+import type { GroupVisible, ProjectTypeTone } from '@ingradient/platform-pages'
 
 export interface SettingsProject {
   id: string
