@@ -69,6 +69,7 @@ export function CatalogToolbarRow({
           size="sm"
           value={searchValue}
           onChange={(e) => onSearchChange(e.target.value)}
+          onClear={() => onSearchChange('')}
           style={{ maxWidth: 'var(--ig-popup-xs)' }}
         />
       }

@@ -4,9 +4,6 @@ import { FilterPopoverTrigger } from '../../components/inputs/filter-popover-tri
 import { popupSizeNumbers } from '../../tokens/core'
 
 const OPTION_LIST_STYLE = {
-  listStyle: 'none' as const,
-  margin: 0,
-  padding: 0,
   display: 'flex' as const,
   flexDirection: 'column' as const,
   gap: 'var(--ig-space-2px)',
@@ -15,6 +12,36 @@ const OPTION_LIST_STYLE = {
 export interface SortOption {
   value: string
   label: string
+}
+
+export interface SortOptionListProps {
+  options: SortOption[]
+  value: string
+  onChange: (value: string) => void
+  ariaLabel?: string
+}
+
+export function SortOptionList({
+  options,
+  value,
+  onChange,
+  ariaLabel = 'Sort options',
+}: SortOptionListProps) {
+  return (
+    <div role="listbox" aria-label={ariaLabel} style={OPTION_LIST_STYLE}>
+      {options.map((opt) => (
+        <MenuItem
+          key={opt.value}
+          role="option"
+          aria-selected={opt.value === value}
+          active={opt.value === value}
+          onClick={() => onChange(opt.value)}
+        >
+          {opt.label}
+        </MenuItem>
+      ))}
+    </div>
+  )
 }
 
 export interface SortPopoverTriggerProps {
@@ -40,22 +67,7 @@ export function SortPopoverTrigger({
       label={label ?? (iconOnly ? 'Sort' : `Sort: ${current?.label ?? '—'}`)}
       defaultOpen={defaultOpen}
       panelMinWidth={popupSizeNumbers.listMin}
-      panel={
-        <ul role="listbox" aria-label="Sort options" style={OPTION_LIST_STYLE}>
-          {options.map((opt) => (
-            <li key={opt.value}>
-              <MenuItem
-                role="option"
-                aria-selected={opt.value === value}
-                active={opt.value === value}
-                onClick={() => onChange(opt.value)}
-              >
-                {opt.label}
-              </MenuItem>
-            </li>
-          ))}
-        </ul>
-      }
+      panel={<SortOptionList options={options} value={value} onChange={onChange} />}
     />
   )
 }

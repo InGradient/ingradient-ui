@@ -64,7 +64,6 @@ export interface GalleryImagesTableProps {
   datasetNameById?: Record<string, string>
   openMenuId?: string
   onToggleSelect?: (id: string, checked: boolean) => void
-  onSelectAll?: (checked: boolean) => void
   onOpenMenu?: (id: string, anchor: HTMLElement) => void
   onRowClick?: (id: string) => void
 }
@@ -77,11 +76,8 @@ function renderTextCell(value: string) {
 
 export function GalleryImagesTable({
   images, selectedIds, datasetNameById, openMenuId,
-  onToggleSelect, onSelectAll, onOpenMenu, onRowClick,
+  onToggleSelect, onOpenMenu, onRowClick,
 }: GalleryImagesTableProps) {
-  const allSelected = images.length > 0 && images.every((i) => selectedIds.has(i.id))
-  const someSelected = images.some((i) => selectedIds.has(i.id))
-
   const columns: TableColumn<Row>[] = [
     {
       key: 'select',
@@ -135,8 +131,6 @@ export function GalleryImagesTable({
       ),
     },
   ]
-
-  void allSelected; void someSelected; void onSelectAll
 
   return (
     <TableText>

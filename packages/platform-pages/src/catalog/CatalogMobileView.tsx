@@ -10,6 +10,8 @@ import {
   TableIcon,
   UploadIcon,
 } from '@ingradient/ui/components'
+import { Stack, Text } from '@ingradient/ui/primitives'
+import { SortOptionList } from '@ingradient/ui/patterns'
 import { CatalogBody } from './CatalogBody'
 import { MobileBottomSheet } from './CatalogView.styles'
 import type {
@@ -37,6 +39,8 @@ export function CatalogMobileView({
   mobile,
   statsContent,
 }: Props) {
+  const defaultSortValue = toolbar.sortOptions[0]?.value
+
   return (
     <>
       <MobileShell
@@ -83,6 +87,9 @@ export function CatalogMobileView({
                 key: 'sort',
                 label: 'Sort',
                 icon: <SortIcon />,
+                active:
+                  mobile.bottomSheet === 'sort' ||
+                  (!!defaultSortValue && toolbar.sortValue !== defaultSortValue),
                 onClick: () =>
                   mobile.onSetBottomSheet(mobile.bottomSheet === 'sort' ? null : 'sort'),
               },
@@ -104,14 +111,46 @@ export function CatalogMobileView({
         }
       />
       {mobile.bottomSheet === 'filter' ? (
-        <MobileBottomSheet>
+        <MobileBottomSheet as="section" aria-label="Filter images" data-ig-slot="CatalogMobile.FilterSheet">
           <GalleryFilterPanel
             state={toolbar.filterState}
             onChange={toolbar.onFilterChange}
             classItems={toolbar.classes.map((c) => ({ id: c.id, label: c.name, color: c.color }))}
             memberItems={toolbar.members.map((m) => ({ id: m.id, label: m.name }))}
+            patternItems={toolbar.patternItems ?? []}
+            showPatterns={!!toolbar.patternItems?.length}
             onReset={toolbar.onFilterReset}
+            onSelectAllPatterns={() =>
+              toolbar.onFilterChange({
+                ...toolbar.filterState,
+                selectedPatternIds: new Set((toolbar.patternItems ?? []).map((item) => item.id)),
+              })
+            }
+            onResetPatterns={() =>
+              toolbar.onFilterChange({
+                ...toolbar.filterState,
+                selectedPatternIds: new Set(),
+              })
+            }
           />
+        </MobileBottomSheet>
+      ) : null}
+      {mobile.bottomSheet === 'sort' ? (
+        <MobileBottomSheet as="section" aria-label="Sort images" data-ig-slot="CatalogMobile.SortSheet">
+          <Stack gap="var(--ig-space-4)">
+            <Text as="h2" size="var(--ig-font-size-lg)" weight="semibold">
+              Sort images
+            </Text>
+            <SortOptionList
+              ariaLabel="Sort images"
+              options={toolbar.sortOptions}
+              value={toolbar.sortValue}
+              onChange={(value) => {
+                toolbar.onSortChange(value)
+                mobile.onSetBottomSheet(null)
+              }}
+            />
+          </Stack>
         </MobileBottomSheet>
       ) : null}
     </>

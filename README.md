@@ -11,10 +11,13 @@ npm run storybook
 ```
 
 - Storybook: `http://localhost:6006`
+- Storybook MCP: `http://localhost:6006/mcp`
 - smoke consumer: `npm run dev:smoke-consumer` 후 `http://localhost:3010`
 - package build + docs build: `npm run build`
 - package only: `npm run build:package`
 - Storybook validation: `npm run validate:storybook`
+- unit tests: `npm test`
+- Storybook browser tests: `npm run test-storybook`
 - consumer smoke validation: `npm run validate:consumer-smoke`
 - style literal check: `npm run check:style-literals`
 - doc coverage check: `npm run check:doc-coverage`

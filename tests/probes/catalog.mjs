@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Probe: Pages/Platform/0.0.1/Catalog — 12 core scenarios.
+// Probe: Pages/Platform/0.0.1/Catalog — 21 core scenarios.
 // Usage: node tests/probes/catalog.mjs
 
 import { spawn } from 'node:child_process'
@@ -55,6 +55,21 @@ const cases = [
     },
   },
   {
+    story: 'search-results',
+    check: async (page) => {
+      await page.getByRole('searchbox', { name: 'Search file name' }).waitFor({ state: 'visible' })
+      const cards = await page.locator('[data-image-id]').count()
+      assert(cards === 2, `search-results: expected 2 matching images, got ${cards}`)
+    },
+  },
+  {
+    story: 'filter-active',
+    check: async (page) => {
+      const cards = await page.locator('[data-image-id]').count()
+      assert(cards === 2, `filter-active: expected 2 matching images, got ${cards}`)
+    },
+  },
+  {
     story: 'table-view',
     check: async (page) => {
       await page
@@ -104,6 +119,15 @@ const cases = [
     check: async (page) => {
       const trigger = page.locator('[aria-haspopup="listbox"]').first()
       await trigger.waitFor({ state: 'visible', timeout: 5000 })
+    },
+  },
+  {
+    story: 'mobile-bottom-sort',
+    viewport: { width: 375, height: 812 },
+    check: async (page) => {
+      await page.getByRole('option', { name: 'Name (Z-A)' }).click()
+      const firstName = await page.locator('[data-image-id] img').first().getAttribute('alt')
+      assert(firstName?.startsWith('very-long-image'), `mobile-bottom-sort: unexpected first image ${firstName}`)
     },
   },
   {

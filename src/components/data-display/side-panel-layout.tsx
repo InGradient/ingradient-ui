@@ -35,12 +35,13 @@ export interface SidePanelLayoutSection {
 
 export interface SidePanelLayoutProps {
   sections: SidePanelLayoutSection[]
+  ariaLabel?: string
   className?: string
 }
 
-export function SidePanelLayout({ sections, className }: SidePanelLayoutProps) {
+export function SidePanelLayout({ sections, ariaLabel, className }: SidePanelLayoutProps) {
   return (
-    <Stack as="aside" gap={0} className={className} style={PANEL_STYLE}>
+    <Stack as="aside" aria-label={ariaLabel} gap={0} className={className} style={PANEL_STYLE}>
       {sections.map((s, i) => (
         <Section key={i}>
           <Inline justify="space-between" gap={3} style={HEADER_ROW_STYLE}>

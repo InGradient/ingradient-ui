@@ -125,6 +125,7 @@ function buildColorVars(theme: IngradientTheme, palette: Palette, shadows: Shado
     '--ig-color-tag-segmentation-bg': palette.tagSegmentationBg,
     '--ig-color-tag-segmentation-text': palette.tagSegmentationText,
     '--ig-color-tag-object-detection-bg': palette.tagObjectDetectionBg,
+    '--ig-color-tag-object-detection-text': palette.tagObjectDetectionText,
     // Sync state chip — opaque variants (image overlay 위에 올라가는 chip)
     '--ig-color-sync-chip-synced-bg': palette.syncChipSyncedBg,
     '--ig-color-sync-chip-uploading-bg': palette.syncChipUploadingBg,

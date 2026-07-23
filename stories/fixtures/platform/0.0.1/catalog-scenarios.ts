@@ -20,6 +20,9 @@ export interface CatalogScene {
   noProject?: boolean
   sidebarCollapsed?: boolean
   viewMode?: CatalogViewMode
+  searchValue?: string
+  sortValue?: string
+  filterActive?: boolean
   hoverImageId?: string
   detailImageId?: string
   filterOpen?: FilterKey
@@ -68,6 +71,7 @@ export type CatalogScenarioKey =
   | 'error' | 'permission-denied' | 'no-project'
   | 'many-images' | 'long-text'
   | 'multi-selection' | 'mixed-sync' | 'archived' | 'processing' | 'group-mode'
+  | 'search-results' | 'sort-name-desc'
   | 'hover-preview' | 'detail-open' | 'filter-open' | 'sort-open' | 'image-menu-open' | 'dataset-menu-open'
   | 'drag-over-sidebar' | 'drag-over-grid' | 'upload-pending' | 'sidebar-collapsed'
   | 'table-view' | 'stats-view'
@@ -81,10 +85,9 @@ export type CatalogScenarioKey =
   | 'upload-in-progress' | 'drag-over-full'
   | 'detail-with-annotations' | 'detail-with-comments' | 'detail-multi-class'
   | 'image-menu-submenu' | 'image-menu-archived' | 'image-menu-clipboard-ready'
-  | 'mobile-default' | 'mobile-dataset-dropdown-open' | 'mobile-bottom-filter'
+  | 'mobile-default' | 'mobile-dataset-dropdown-open' | 'mobile-bottom-filter' | 'mobile-bottom-sort'
 
 const datasetD1Images = mockImages.filter((img) => img.dataset_id === 'd1')
-const datasetD2Images = mockImages.filter((img) => img.dataset_id === 'd2')
 
 const base: CatalogScene = {
   datasets: mockDatasets,
@@ -125,6 +128,8 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'archived': { ...base, images: datasetD1Images.map((img, i) => i % 3 === 0 ? { ...img, archived: true } : img) },
   'processing': { ...base, images: datasetD1Images.map((img, i) => i < 3 ? { ...img, processing: true, sync_state: 'uploading' } : img), uploadProgress: 42 },
   'group-mode': { ...base, images: datasetD1Images.map((img, i) => i % 2 === 0 ? { ...img, group_count: 3 + i } : img) },
+  'search-results': { ...base, searchValue: '20230808' },
+  'sort-name-desc': { ...base, sortValue: 'name-desc' },
   'hover-preview': { ...base, hoverImageId: 'img-1' },
   'detail-open': { ...base, detailImageId: 'img-1' },
   'filter-open': { ...base, filterOpen: 'status' },
@@ -141,7 +146,7 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'right-loading': { ...base, classesLoading: true, membersLoading: true, classes: [], members: [] },
   'right-many-classes': { ...base, connectedClassIds: mockClasses.map((c) => c.id) },
   'member-overflow': { ...base, members: mockMembers },
-  'filter-active': { ...base, filterOpen: 'status' },
+  'filter-active': { ...base, filterActive: true },
   'stats-rich': { ...base, viewMode: 'stats' },
   'stats-empty': { ...base, viewMode: 'stats', images: [] },
   'modal-add-dataset': { ...base, addDatasetOpen: true },
@@ -169,6 +174,7 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'mobile-default': { ...base, isMobile: true },
   'mobile-dataset-dropdown-open': { ...base, isMobile: true, mobileDatasetDropdownOpen: true },
   'mobile-bottom-filter': { ...base, isMobile: true, mobileBottomSheet: 'filter' },
+  'mobile-bottom-sort': { ...base, isMobile: true, mobileBottomSheet: 'sort' },
 }
 
 // 호환성 — 향후 fixture-registry 등에서 type 재사용

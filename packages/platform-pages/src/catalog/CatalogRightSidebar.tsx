@@ -64,6 +64,7 @@ export function CatalogRightSidebar({
 
   return (
     <SidePanelLayout
+      ariaLabel="Catalog details"
       sections={[
         { title: 'Class', body: classBody },
         { title: 'Members', body: memberBody },

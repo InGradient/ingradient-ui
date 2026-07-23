@@ -5,7 +5,7 @@ export type { DatasetTaskType }
 
 const taskTypeStyles: Record<DatasetTaskType, { bg: string; color: string; short: string; full: string }> = {
   object_detection: {
-    bg: 'var(--ig-color-tag-object-detection-bg)', color: 'var(--ig-color-accent)',
+    bg: 'var(--ig-color-tag-object-detection-bg)', color: 'var(--ig-color-tag-object-detection-text)',
     short: 'OD', full: 'Object Detection',
   },
   classification: {
@@ -17,7 +17,7 @@ const taskTypeStyles: Record<DatasetTaskType, { bg: string; color: string; short
     short: 'Seg', full: 'Segmentation',
   },
   point: {
-    bg: 'var(--ig-color-tag-object-detection-bg)', color: 'var(--ig-color-accent)',
+    bg: 'var(--ig-color-tag-object-detection-bg)', color: 'var(--ig-color-tag-object-detection-text)',
     short: 'PT', full: 'Point',
   },
 }

@@ -74,7 +74,14 @@ export function DatasetListPanel({
   const showItems = !noProject && !loading && datasets.length > 0
 
   return (
-    <Stack as="aside" gap={0} data-ig-component="DatasetListPanel" data-ig-layer="patterns" style={PANEL_STYLE}>
+    <Stack
+      as="aside"
+      aria-label={title}
+      gap={0}
+      data-ig-component="DatasetListPanel"
+      data-ig-layer="patterns"
+      style={PANEL_STYLE}
+    >
       <Inline justify="space-between" gap="var(--ig-space-4)" style={HEADER_STYLE}>
         <Text as="h2" size="var(--ig-font-size-lg)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
         <Inline gap="var(--ig-space-2)">

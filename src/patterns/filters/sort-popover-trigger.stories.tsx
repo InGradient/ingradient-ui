@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { SortPopoverTrigger } from './sort-popover-trigger'
+import { expect, userEvent, within } from 'storybook/test'
+import { SortOptionList, SortPopoverTrigger } from './sort-popover-trigger'
 
 const meta: Meta<typeof SortPopoverTrigger> = {
   title: 'Patterns/Filters/SortPopoverTrigger',
@@ -24,10 +25,25 @@ function Demo() {
   return <SortPopoverTrigger options={OPTIONS} value={value} onChange={setValue} />
 }
 
+function OptionListDemo() {
+  const [value, setValue] = useState('recent')
+  return <SortOptionList options={OPTIONS} value={value} onChange={setValue} />
+}
+
 export const Default: Story = { render: () => <Demo /> }
 export const OpenByDefault: Story = {
   render: () => {
     const [value, setValue] = useState('recent')
     return <SortPopoverTrigger options={OPTIONS} value={value} onChange={setValue} defaultOpen />
+  },
+}
+
+export const OptionList: Story = {
+  render: () => <OptionListDemo />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const option = canvas.getByRole('option', { name: 'Name (A-Z)' })
+    await userEvent.click(option)
+    await expect(option).toHaveAttribute('aria-selected', 'true')
   },
 }

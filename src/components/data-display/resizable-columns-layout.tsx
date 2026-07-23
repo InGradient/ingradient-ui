@@ -32,7 +32,7 @@ export interface ResizableColumnsLayoutProps {
 
 const ROOT_STYLE = { width: '100%', height: '100%', minHeight: 0 }
 
-const Column = styled.aside<{ $width: number | 'auto'; $collapsed: boolean; $bg?: string }>`
+const Column = styled.div<{ $width: number | 'auto'; $collapsed: boolean; $bg?: string }>`
   flex: ${(p) => {
     if (p.$width === 'auto') return '1'
     if (p.$collapsed) return '0 0 0'

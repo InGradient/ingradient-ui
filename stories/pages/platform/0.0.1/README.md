@@ -24,6 +24,7 @@ The same view is imported by `ingradient-platform` (Phase 7 of the extraction ro
 ├─ SettingsModal.stories.tsx      # imports SettingsModalView
 ├─ catalog/                       # Catalog story helpers
 │  ├─ use-catalog-scene.ts        # scene state hook
+│  ├─ catalog-scene-selectors.ts   # local search / filter / sort result adapter
 │  ├─ build-view-props.tsx        # props converter
 │  ├─ build-overlays.ts           # overlays sub-builder
 │  ├─ build-stats-content.tsx     # stats slot JSX
@@ -46,6 +47,7 @@ The same view is imported by `ingradient-platform` (Phase 7 of the extraction ro
 - **Story file must stay < 200 lines.** Helper logic goes into the helper folder.
 - **No direct UI pattern composition in stories.** Stories must only render the view from `@ingradient/platform-pages` — verified by Phase 6 grep (see [phase-6 spec](../../../../docs/plan/platform-pages-phase-6-spec.md)).
 - **Fixture imports are story-only.** Views in `@ingradient/platform-pages` never import from `stories/fixtures/`.
+- **Catalog controls are executable contracts.** Search, filter, sort, visible-image selection, delete, and mobile sheets must update scene state and have focused Storybook interaction coverage.
 
 ## Probes
 
@@ -54,7 +56,7 @@ Playwright smoke probes for each page live in [`tests/probes/`](../../../../test
 ```bash
 node tests/probes/create-project.mjs   # 5 scenarios
 node tests/probes/class-manage.mjs     # 7 scenarios
-node tests/probes/catalog.mjs          # 18 scenarios
+node tests/probes/catalog.mjs          # 21 scenarios
 node tests/probes/settings-modal.mjs   # 18 scenarios
 node tests/probes/dashboard.mjs        # 8 scenarios
 ```

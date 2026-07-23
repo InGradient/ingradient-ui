@@ -14,6 +14,10 @@ export function buildCatalogOverlays(
   const pendingDatasetName = scenario.datasets.find((d) => d.id === s.pendingDatasetDeletionId)?.name
   const duplicateDatasetName =
     scenario.datasets.find((d) => d.id === s.duplicateDatasetId)?.name ?? 'Dataset'
+  const selectedVisibleImageIds = s.visibleImages
+    .filter((image) => s.selectedImageIds.has(image.id))
+    .map((image) => image.id)
+  const selectedVisibleCount = selectedVisibleImageIds.length
 
   return {
     imageMenu: {
@@ -76,7 +80,10 @@ export function buildCatalogOverlays(
     pendingClassRemoval: {
       className: pendingClassName,
       onCancel: () => s.setPendingClassRemovalId(undefined),
-      onConfirm: () => s.setPendingClassRemovalId(undefined),
+      onConfirm: () => {
+        if (s.pendingClassRemovalId) s.removeConnectedClass(s.pendingClassRemovalId)
+        s.setPendingClassRemovalId(undefined)
+      },
     },
     pendingMemberRemoval: {
       open: !!s.pendingMemberRemovalId,
@@ -90,14 +97,17 @@ export function buildCatalogOverlays(
     },
     bulkDelete: {
       open: s.extra.bulkDeleteOpen,
-      title: s.selectedImageIds.size > 1 ? `Delete ${s.selectedImageIds.size} images` : 'Delete image',
+      title: selectedVisibleCount > 1 ? `Delete ${selectedVisibleCount} images` : 'Delete image',
       description:
-        s.selectedImageIds.size > 1
-          ? `Permanently delete the ${s.selectedImageIds.size} selected images? This cannot be undone.`
+        selectedVisibleCount > 1
+          ? `Permanently delete the ${selectedVisibleCount} selected images? This cannot be undone.`
           : 'Permanently delete this image? This cannot be undone.',
-      confirmLabel: s.selectedImageIds.size > 1 ? `Delete ${s.selectedImageIds.size} images` : 'Delete',
+      confirmLabel: selectedVisibleCount > 1 ? `Delete ${selectedVisibleCount} images` : 'Delete',
       onClose: () => s.extra.setBulkDeleteOpen(false),
-      onConfirm: () => s.extra.setBulkDeleteOpen(false),
+      onConfirm: () => {
+        s.deleteImages(selectedVisibleImageIds)
+        s.extra.setBulkDeleteOpen(false)
+      },
     },
     exportConfig: {
       open: s.extra.exportConfigOpen,
@@ -107,7 +117,7 @@ export function buildCatalogOverlays(
       groupBy: s.extra.exportGroupBy,
       groupKeyRegex: s.extra.exportGroupKeyRegex,
       selectedCount: s.selectedImageIds.size,
-      allRangeTitle: `All filtered images (${scenario.images.length.toLocaleString()})`,
+      allRangeTitle: `All filtered images (${s.visibleImages.length.toLocaleString()})`,
       allRangeHint: 'Includes every image returned by current filters.',
       onRangeChange: s.extra.setExportRange,
       onExportTypeChange: s.extra.setExportType,

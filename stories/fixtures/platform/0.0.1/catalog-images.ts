@@ -26,10 +26,12 @@ export type MockGalleryImage = {
   classification_class_ids?: string[]
   labeled_at?: string
   labeled_by?: string
+  has_comments?: boolean
   width?: number
   height?: number
   size_bytes?: number
   created_at: string
+  modified_at?: string
   uploader?: string
 }
 
@@ -42,6 +44,11 @@ function img(i: number, partial: Partial<MockGalleryImage>): MockGalleryImage {
     sync_state: 'synced',
     dataset_id: 'd1',
     created_at: `2024-12-${String((i % 28) + 1).padStart(2, '0')}`,
+    modified_at: `2024-12-${String(((i + 5) % 28) + 1).padStart(2, '0')}`,
+    classification_class_ids: [`cl-${(i % 4) + 1}`],
+    labeled_at: i % 2 === 0 ? `2024-12-${String(((i + 2) % 28) + 1).padStart(2, '0')}` : undefined,
+    labeled_by: i % 2 === 0 ? `mb-${(i % 4) + 1}` : undefined,
+    has_comments: i % 3 === 0,
     width: 4096,
     height: 3072,
     size_bytes: 2_500_000 + (i * 35_000),
