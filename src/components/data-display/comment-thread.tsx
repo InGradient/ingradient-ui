@@ -51,7 +51,9 @@ const Textarea = styled.textarea`
 
 const SendRow = styled.div`
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: var(--ig-space-2);
 `
 
 const SendBtn = styled.button`
@@ -95,11 +97,13 @@ export interface CommentInputProps {
   submitLabel?: string
   disabled?: boolean
   maxLength?: number
+  /** 전송 버튼 바로 왼쪽 슬롯 — 첨부 버튼 등 보조 액션 배치용 */
+  accessory?: React.ReactNode
 }
 
 export function CommentInput({
   value, onChange, onSubmit, placeholder = 'Add a comment...',
-  submitLabel = 'Send', disabled, maxLength,
+  submitLabel = 'Send', disabled, maxLength, accessory,
 }: CommentInputProps) {
   return (
     <InputWrap>
@@ -118,6 +122,7 @@ export function CommentInput({
       />
       {onSubmit && (
         <SendRow>
+          {accessory}
           <SendBtn type="button" disabled={disabled || !value.trim()} onClick={onSubmit}>
             {submitLabel}
           </SendBtn>

@@ -52,6 +52,7 @@ export {
   Minimize2 as CollapseIcon,
   MoreHorizontal as MoreIcon,
   MousePointer2 as PointerIcon,
+  Paperclip as PaperclipIcon,
   Pencil as PencilIcon,
   RefreshCw as RefreshIcon,
   Redo2 as RedoIcon,
