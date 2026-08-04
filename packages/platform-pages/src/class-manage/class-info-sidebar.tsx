@@ -87,5 +87,5 @@ export function ClassInfoSidebar({
     ...(referenceImageSlot ? [{ title: 'Reference Image', body: referenceImageSlot }] : []),
     ...(mappingSlot ? [{ title: 'Model Mapping', body: mappingSlot }] : []),
   ]
-  return <Sidebar $flush={flush} sections={sections} />
+  return <Sidebar $flush={flush} sections={sections} ariaLabel="Class details" headingLevel={2} />
 }

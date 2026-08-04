@@ -29,6 +29,7 @@ export interface SegmentedProgressBarProps {
   segments: ProgressSegment[]
   total?: number
   showLegend?: boolean
+  ariaLabel?: string
   className?: string
 }
 
@@ -38,13 +39,13 @@ export interface SegmentedProgressBarProps {
  * Labeling progress / 분석 단계별 진척 / 분포 시각화 등에 generic.
  */
 export function SegmentedProgressBar({
-  segments, total, showLegend = true, className,
+  segments, total, showLegend = true, ariaLabel = 'Progress breakdown', className,
 }: SegmentedProgressBarProps) {
   const filled = segments.reduce((acc, s) => acc + s.value, 0)
   const sum = total ?? filled
   return (
     <Stack gap={3} className={className}>
-      <div role="progressbar" aria-valuemin={0} aria-valuemax={sum} aria-valuenow={Math.round(filled)} style={BAR_STYLE}>
+      <div role="progressbar" aria-label={ariaLabel} aria-valuemin={0} aria-valuemax={sum} aria-valuenow={Math.round(filled)} style={BAR_STYLE}>
         {segments.map((s, i) => (
           <Segment key={i} $width={sum > 0 ? (s.value / sum) * 100 : 0} $color={s.color} title={`${s.label}: ${s.value}`} />
         ))}

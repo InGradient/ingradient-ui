@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     title: 'Images by dataset',
+    titleAs: 'h2',
     subtitle: 'Last 30 days',
     children: <div style={{ height: 160, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ig-color-text-muted)' }}>(chart)</div>,
   },

@@ -8,13 +8,31 @@ import { DraggableAnalysisWidgetGrid } from './DraggableAnalysisWidgetGrid'
 import { DeflectometryDashboardSection } from './DeflectometryDashboardSection'
 import { EdgeAnalyticsSection } from './EdgeAnalyticsSection'
 import { Content, Page } from './DashboardView.styles'
-import type { DashboardViewProps } from './types'
+import type { DashboardViewProps, DateRangePreset } from './types'
 
-const DATE_PRESETS = [
-  { id: 'today', label: 'Today', resolve: (): DateRange => { const d = new Date(); return { from: d, to: d } } },
-  { id: 'last7', label: 'Last 7 days', resolve: (): DateRange => { const to = new Date(); const from = new Date(to); from.setDate(from.getDate() - 6); return { from, to } } },
-  { id: 'thisMonth', label: 'This month', resolve: (): DateRange => { const now = new Date(); return { from: new Date(now.getFullYear(), now.getMonth(), 1), to: now } } },
+const DATE_PRESET_OPTIONS: Array<{ id: DateRangePreset; label: string }> = [
+  { id: 'today', label: 'Today' },
+  { id: 'last7', label: 'Last 7 days' },
+  { id: 'thisMonth', label: 'This month' },
 ]
+
+function startOfDay(value: Date) {
+  return new Date(value.getFullYear(), value.getMonth(), value.getDate())
+}
+
+export function resolveDashboardDatePreset(
+  preset: DateRangePreset,
+  referenceDate = new Date(),
+): DateRange {
+  const to = startOfDay(referenceDate)
+  if (preset === 'today') return { from: new Date(to), to: new Date(to) }
+  if (preset === 'last7') {
+    const from = new Date(to)
+    from.setDate(from.getDate() - 6)
+    return { from, to }
+  }
+  return { from: new Date(to.getFullYear(), to.getMonth(), 1), to }
+}
 
 export function DashboardView<K extends string = string>({
   projectName,
@@ -31,6 +49,15 @@ export function DashboardView<K extends string = string>({
   edgeAnalytics,
   deflectometryEnabled,
 }: DashboardViewProps<K>) {
+  const datePresets = DATE_PRESET_OPTIONS.map(({ id, label }) => ({
+    id,
+    label,
+    resolve: () => {
+      dateRange.onSelectPreset(id)
+      return resolveDashboardDatePreset(id, dateRange.referenceDate)
+    },
+  }))
+
   return (
     <Page>
       <DashboardHeader
@@ -68,7 +95,7 @@ export function DashboardView<K extends string = string>({
                 mode="range"
                 value={dateRange.draft}
                 onChange={(next: DateRangePickerValue) => dateRange.onChangeDraft(next as DateRange | undefined)}
-                presets={DATE_PRESETS}
+                presets={datePresets}
                 onReset={dateRange.onReset}
                 onApply={dateRange.onApply}
                 summaryLabel={dateRange.summaryLabel}

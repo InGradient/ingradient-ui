@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { DialogCloseButton, ModalBackdrop } from '@ingradient/ui/components'
 import {
   Body,
@@ -36,13 +37,14 @@ export function SettingsModalView({
   edge,
   admin,
 }: SettingsModalViewProps) {
+  const titleId = useId()
   if (!open) return null
   const tabs = isAdmin ? [...BASE_TABS, ADMIN_TAB] : BASE_TABS
   return (
     <ModalBackdrop>
-      <Modal>
+      <Modal role="dialog" aria-modal="true" aria-labelledby={titleId}>
         <Header>
-          <Title>Settings</Title>
+          <Title id={titleId}>Settings</Title>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Main>

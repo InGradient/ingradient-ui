@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Probe: Pages/Platform/0.0.1/Catalog — 21 core scenarios.
+// Probe: Pages/Platform/0.0.1/Dataset Catalog — 22 consolidated integration cases.
 // Usage: node tests/probes/catalog.mjs
 
 import { spawn } from 'node:child_process'
@@ -7,193 +7,183 @@ import { chromium } from 'playwright'
 
 const PORT = process.env.PORT ?? '6191'
 const BASE = `http://localhost:${PORT}`
-const ID_PREFIX = 'pages-platform-0-0-1-catalog'
 const DEFAULT_VIEWPORT = { width: 1280, height: 800 }
+
+const STORY = {
+  overview: 'pages-platform-0-0-1-dataset-catalog-workspace--overview',
+  noImages: 'pages-platform-0-0-1-dataset-catalog-system-states--no-images',
+  imagesLoading: 'pages-platform-0-0-1-dataset-catalog-system-states--images-loading',
+  accessDenied: 'pages-platform-0-0-1-dataset-catalog-system-states--access-denied',
+  noProject: 'pages-platform-0-0-1-dataset-catalog-system-states--no-project-selected',
+  imagesSelected: 'pages-platform-0-0-1-dataset-catalog-workspace--images-selected',
+  activeFilters: 'pages-platform-0-0-1-dataset-catalog-interactions--active-filtered-results',
+  imageTable: 'pages-platform-0-0-1-dataset-catalog-workspace--image-table',
+  analytics: 'pages-platform-0-0-1-dataset-catalog-analytics--overview',
+  imageActions: 'pages-platform-0-0-1-dataset-catalog-interactions--image-actions-menu',
+  inspector: 'pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments',
+  mobileOverview: 'pages-platform-0-0-1-dataset-catalog-responsive--overview',
+  mobileSort: 'pages-platform-0-0-1-dataset-catalog-responsive--sort-sheet-open',
+  mobileAnalytics: 'pages-platform-0-0-1-dataset-catalog-responsive--analytics-fallback',
+  addDataset: 'pages-platform-0-0-1-dataset-catalog-workflows--add-dataset-dialog',
+  deleteImages: 'pages-platform-0-0-1-dataset-catalog-workflows--delete-images-dialog',
+  galleryExport: 'pages-platform-0-0-1-dataset-catalog-workflows--gallery-export-dialog',
+  datasetExport: 'pages-platform-0-0-1-dataset-catalog-workflows--dataset-igp-export-dialog',
+  transferImages: 'pages-platform-0-0-1-dataset-catalog-workflows--transfer-images-dialog',
+  uploadQuality: 'pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog',
+}
 
 const cases = [
   {
-    story: 'default',
+    id: STORY.overview,
+    name: 'workspace-overview',
     check: async (page) => {
       await page.locator('[data-dataset-id]').first().waitFor({ state: 'visible', timeout: 10000 })
       const datasetRows = await page.locator('[data-dataset-id]').count()
-      assert(datasetRows > 0, `default: expected dataset rows, got ${datasetRows}`)
+      const imageCards = await page.locator('[data-image-id]').count()
+      assert(datasetRows > 0, `workspace-overview: expected dataset rows, got ${datasetRows}`)
+      assert(imageCards > 0, `workspace-overview: expected mixed-state image cards, got ${imageCards}`)
     },
   },
   {
-    story: 'empty-images',
-    check: async (page) => {
-      await page.locator('text=No images').first().waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.noImages,
+    name: 'no-images',
+    check: async (page) => page.getByText('No images', { exact: false }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'loading-images',
-    check: async (page) => {
-      await page.locator('text=Loading images').first().waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.imagesLoading,
+    name: 'images-loading',
+    check: async (page) => page.getByText('Loading images', { exact: false }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'permission-denied',
-    check: async (page) => {
-      await page
-        .locator('text=/don.+t have permission/')
-        .first()
-        .waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.accessDenied,
+    name: 'access-denied',
+    check: async (page) => page.locator('text=/don.+t have permission/').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'mixed-sync',
-    check: async (page) => {
-      const cards = await page.locator('img[alt]').count()
-      assert(cards > 0, `mixed-sync: expected image cards, got ${cards}`)
-    },
+    id: STORY.noProject,
+    name: 'no-project-selected',
+    check: async (page) => page.getByText('No project selected', { exact: true }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'multi-selection',
-    check: async (page) => {
-      const banner = page.locator('text=/\\d+ image.*selected/i').first()
-      await banner.waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.imagesSelected,
+    name: 'images-selected',
+    check: async (page) => page.locator('text=/\d+ image.*selected/i').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'search-results',
-    check: async (page) => {
-      await page.getByRole('searchbox', { name: 'Search file name' }).waitFor({ state: 'visible' })
-      const cards = await page.locator('[data-image-id]').count()
-      assert(cards === 2, `search-results: expected 2 matching images, got ${cards}`)
-    },
-  },
-  {
-    story: 'filter-active',
+    id: STORY.activeFilters,
+    name: 'active-filtered-results',
     check: async (page) => {
       const cards = await page.locator('[data-image-id]').count()
-      assert(cards === 2, `filter-active: expected 2 matching images, got ${cards}`)
+      assert(cards === 2, `active-filtered-results: expected 2 matching images, got ${cards}`)
     },
   },
   {
-    story: 'table-view',
+    id: STORY.imageTable,
+    name: 'image-table',
     check: async (page) => {
-      await page
-        .locator('table:has(th:text-is("Dataset")) tbody tr')
-        .first()
-        .waitFor({ state: 'visible', timeout: 10000 })
+      await page.locator('table:has(th:text-is("Dataset")) tbody tr').first().waitFor({ state: 'visible' })
       const rows = await page.locator('table:has(th:text-is("Dataset")) tbody tr').count()
-      assert(rows > 0, `table-view: expected image rows, got ${rows}`)
+      assert(rows > 0, `image-table: expected image rows, got ${rows}`)
     },
   },
   {
-    story: 'stats-view',
+    id: STORY.analytics,
+    name: 'analytics-overview',
     waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=Images by dataset').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
+    check: async (page) => page.getByText('Images by dataset', { exact: true }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'image-menu-open',
-    check: async (page) => {
-      await page.locator('text=/Open in Labeling|Copy to|Move to|Delete/').first().waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.imageActions,
+    name: 'image-actions-menu',
+    check: async (page) => page.locator('text=/Open in Labeling|Copy to|Move to|Delete/').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'detail-open',
+    id: STORY.inspector,
+    name: 'image-inspector',
     waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      const closeBtn = page.locator('[role="dialog"], [aria-modal="true"]').first()
-      await closeBtn.waitFor({ state: 'visible', timeout: 10000 })
-    },
+    check: async (page) => page.getByRole('dialog').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'detail-with-comments',
-    name: 'detail-with-comments-mobile-responsive',
+    id: STORY.inspector,
+    name: 'image-inspector-mobile-responsive',
     viewport: { width: 375, height: 800 },
     waitUntil: 'domcontentloaded',
     check: async (page) => {
       const image = page.locator('[role="dialog"] img').first()
-      await image.waitFor({ state: 'visible', timeout: 10000 })
+      await image.waitFor({ state: 'visible' })
       const imageBox = await image.boundingBox()
-      assert(imageBox && imageBox.width >= 300, `detail-with-comments-mobile-responsive: expected usable image width, got ${imageBox?.width ?? 0}px`)
-      await page.getByText('Daniel Kim', { exact: true }).last().waitFor({ state: 'visible', timeout: 10000 })
+      assert(imageBox && imageBox.width >= 300, `image-inspector-mobile-responsive: expected usable image width, got ${imageBox?.width ?? 0}px`)
+      await page.getByText('Daniel Kim', { exact: true }).last().waitFor({ state: 'visible' })
     },
   },
   {
-    story: 'mobile-default',
-    check: async (page) => {
-      const trigger = page.locator('[aria-haspopup="listbox"]').first()
-      await trigger.waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.mobileOverview,
+    name: 'mobile-overview',
+    viewport: { width: 375, height: 812 },
+    check: async (page) => page.locator('[aria-haspopup="listbox"]').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'mobile-bottom-sort',
+    id: STORY.mobileSort,
+    name: 'mobile-sort-sheet',
     viewport: { width: 375, height: 812 },
     check: async (page) => {
-      await page.getByRole('option', { name: 'Name (Z-A)' }).click()
-      const firstName = await page.locator('[data-image-id] img').first().getAttribute('alt')
-      assert(firstName?.startsWith('very-long-image'), `mobile-bottom-sort: unexpected first image ${firstName}`)
+      await page.waitForFunction(() => document.querySelector('[data-image-id] img')?.getAttribute('alt')?.startsWith('very-long-image'))
     },
   },
   {
-    story: 'default',
-    name: 'default-tablet-responsive',
+    id: STORY.mobileAnalytics,
+    name: 'mobile-analytics-fallback',
+    viewport: { width: 375, height: 812 },
+    check: async (page) => {
+      await page.getByRole('button', { name: 'View' }).waitFor({ state: 'visible' })
+      const analyticsHeading = await page.getByRole('heading', { name: 'Images by dataset' }).count()
+      assert(analyticsHeading === 0, 'mobile-analytics-fallback: desktop analytics remained visible')
+    },
+  },
+  {
+    id: STORY.overview,
+    name: 'workspace-tablet-responsive',
     viewport: { width: 768, height: 1024 },
     check: async (page) => {
-      await page.getByRole('button', { name: 'View' }).waitFor({ state: 'visible', timeout: 10000 })
+      await page.getByRole('button', { name: 'View' }).waitFor({ state: 'visible' })
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
-      assert(overflow <= 1, `default-tablet-responsive: expected no page overflow, got ${overflow}px`)
+      assert(overflow <= 1, `workspace-tablet-responsive: expected no page overflow, got ${overflow}px`)
     },
   },
-  {
-    story: 'modal-add-dataset',
-    waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=/Add (new )?dataset/i').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
-  },
-  {
-    story: 'modal-bulk-delete',
-    waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=/Delete \\d+ images/i').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
-  },
-  {
-    story: 'modal-export-config',
-    waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=/Export Data/i').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
-  },
-  {
-    story: 'modal-export-progress',
-    waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=/Exporting Data/i').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
-  },
-  {
-    story: 'modal-transfer-move',
-    waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      await page.locator('text=/Move to dataset/i').first().waitFor({ state: 'visible', timeout: 10000 })
-    },
-  },
+  dialogCase(STORY.addDataset, 'add-dataset-dialog', 'Add dataset'),
+  dialogCase(STORY.deleteImages, 'delete-images-dialog', /Delete \d+ images/),
+  dialogCase(STORY.galleryExport, 'gallery-export-dialog', 'Export Data'),
+  dialogCase(STORY.datasetExport, 'dataset-igp-export-dialog', 'Export (.igp)'),
+  dialogCase(STORY.transferImages, 'transfer-images-dialog', 'Move to dataset'),
+  dialogCase(STORY.uploadQuality, 'upload-quality-dialog', 'Upload quality'),
 ]
 
-function assert(cond, msg) {
-  if (!cond) throw new Error(msg)
+function dialogCase(id, name, heading) {
+  return {
+    id,
+    name,
+    waitUntil: 'domcontentloaded',
+    check: async (page) => page.getByRole('heading', { name: heading }).waitFor({ state: 'visible' }),
+  }
+}
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message)
 }
 
 async function startServer() {
-  const proc = spawn('python3', ['-m', 'http.server', PORT], {
+  const process = spawn('python3', ['-m', 'http.server', PORT], {
     cwd: 'storybook-static',
-    stdio: ['ignore', 'pipe', 'pipe'],
+    stdio: 'ignore',
   })
-  for (let i = 0; i < 50; i++) {
+  for (let attempt = 0; attempt < 50; attempt++) {
     try {
-      const r = await fetch(BASE)
-      if (r.ok || r.status === 200) return proc
+      const response = await fetch(BASE)
+      if (response.ok) return process
     } catch {
       /* keep waiting */
     }
-    await new Promise((r) => setTimeout(r, 100))
+    await new Promise((resolve) => setTimeout(resolve, 100))
   }
   throw new Error('Server never started')
 }
@@ -201,30 +191,28 @@ async function startServer() {
 async function main() {
   const server = await startServer()
   const browser = await chromium.launch()
-  const ctx = await browser.newContext()
-
+  const context = await browser.newContext()
   let failed = 0
-  for (const { story, name = story, viewport = DEFAULT_VIEWPORT, check, waitUntil = 'domcontentloaded' } of cases) {
-    const page = await ctx.newPage()
+
+  for (const { id, name, viewport = DEFAULT_VIEWPORT, check, waitUntil = 'domcontentloaded' } of cases) {
+    const page = await context.newPage()
     const consoleErrors = []
-    page.on('console', (m) => {
-      if (m.type() === 'error') consoleErrors.push(m.text())
+    page.on('console', (message) => {
+      if (message.type() === 'error') consoleErrors.push(message.text())
     })
-    consoleErrors.length = 0
     await page.setViewportSize(viewport)
-    const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
     try {
-      await page.goto(url, { waitUntil, timeout: 30000 })
+      await page.goto(`${BASE}/iframe.html?viewMode=story&id=${id}`, { waitUntil, timeout: 30000 })
       await page.waitForTimeout(500)
       await check(page)
-      const errs = consoleErrors.filter(
-        (e) => !/Failed to load resource/i.test(e) && !/X-Frame-Options/i.test(e),
+      const productErrors = consoleErrors.filter(
+        (message) => !/Failed to load resource/i.test(message) && !/X-Frame-Options/i.test(message),
       )
-      if (errs.length > 0) throw new Error(`console errors:\n${errs.join('\n')}`)
+      if (productErrors.length > 0) throw new Error(`console errors:\n${productErrors.join('\n')}`)
       console.log(`[OK]   ${name}`)
-    } catch (err) {
+    } catch (error) {
       failed++
-      console.error(`[FAIL] ${name} — ${err.message}`)
+      console.error(`[FAIL] ${name} — ${error.message}`)
     } finally {
       await page.close()
     }
@@ -233,13 +221,13 @@ async function main() {
   await browser.close()
   server.kill()
   if (failed > 0) {
-    console.error(`\n${failed}/${cases.length} scenarios failed.`)
+    console.error(`\n${failed}/${cases.length} cases failed.`)
     process.exit(1)
   }
-  console.log(`\n${cases.length}/${cases.length} scenarios passed.`)
+  console.log(`\n${cases.length}/${cases.length} cases passed.`)
 }
 
-main().catch((e) => {
-  console.error(e)
+main().catch((error) => {
+  console.error(error)
   process.exit(1)
 })

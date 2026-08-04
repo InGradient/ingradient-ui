@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+    rowHeaderLabel: 'Class',
     rowLabels: ['Class A', 'Class B', 'Class C', 'Class D'],
     columnLabels: ['Dataset 1', 'Dataset 2', 'Dataset 3'],
     matrix: [

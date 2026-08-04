@@ -6,6 +6,12 @@ import type {
 import { defaultRoleMatrix } from '../../../../fixtures/platform/0.0.1/settings-project'
 import type { SettingsProject } from '../../../../fixtures/platform/0.0.1/settings-project'
 
+const EMPTY_PROJECT: SettingsProject = {
+  id: '', name: '', description: '', projectType: 'general',
+  groupEnabled: false, groupRegex: '', groupRepRegex: '', allowDup: false,
+  groupVisible: 'all', showFilenameInGallery: true, showBboxClassNamesInDetail: true,
+}
+
 export interface SettingsModalSceneState {
   // Tab
   tab: SettingsTab
@@ -112,11 +118,7 @@ export function useSettingsModalScene(scenario: SettingsScene): SettingsModalSce
   const [deleteAccountPassword, setDeleteAccountPassword] = useState('')
   const [deleteAccountFinalConfirm, setDeleteAccountFinalConfirm] = useState('')
 
-  const [projectDraft, setProjectDraft] = useState<SettingsProject>(scenario.currentProject ?? {
-    id: '', name: '', description: '', projectType: 'general',
-    groupEnabled: false, groupRegex: '', groupRepRegex: '', allowDup: false,
-    groupVisible: 'all', showFilenameInGallery: true, showBboxClassNamesInDetail: true,
-  })
+  const [projectDraft, setProjectDraft] = useState<SettingsProject>(scenario.currentProject ?? EMPTY_PROJECT)
   const [memberSearchQuery, setMemberSearchQuery] = useState(scenario.memberSearchQuery ?? '')
   const [deleteProjectConfirm, setDeleteProjectConfirm] = useState('')
   const [permissionsExpandAll, setPermissionsExpandAll] = useState(!!scenario.showPermissionsExpandAll)
@@ -156,9 +158,13 @@ export function useSettingsModalScene(scenario: SettingsScene): SettingsModalSce
     setDeleteAccountResolutions({})
     setDeleteAccountPassword('')
     setDeleteAccountFinalConfirm('')
-    setProjectDraft(scenario.currentProject ?? projectDraft)
+    setProjectDraft(scenario.currentProject ?? EMPTY_PROJECT)
     setMemberSearchQuery(scenario.memberSearchQuery ?? '')
+    setOrgNameDraft('Ingradient')
+    setInviteRoleId('member')
     setInviteSearchQuery(scenario.inviteSearchQuery ?? '')
+    setCodeRoleId('member')
+    setCodeMaxUses('')
     setDeleteProjectConfirm('')
     setPermissionsExpandAll(!!scenario.showPermissionsExpandAll)
     setDraftRoles(defaultRoleMatrix)

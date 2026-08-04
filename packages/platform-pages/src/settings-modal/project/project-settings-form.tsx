@@ -7,7 +7,7 @@ export type ProjectTypeTone = 'general' | 'deflectometry' | 'photometric_stereo'
 
 const PROJECT_TYPE_TONE_BG: Record<ProjectTypeTone, string> = {
   general: 'var(--ig-color-project-tag-general)',
-  deflectometry: 'var(--ig-color-project-tag-deflectometry)',
+  deflectometry: 'var(--ig-color-accent-strong)',
   photometric_stereo: 'var(--ig-color-project-tag-photometric-stereo)',
 }
 
@@ -23,8 +23,9 @@ const PROJECT_TYPE_TAG_STYLE = {
 }
 
 function ProjectTypeTag({ tone, children }: { tone: ProjectTypeTone; children?: ReactNode }) {
+  const color = tone === 'deflectometry' ? 'var(--ig-color-on-accent)' : undefined
   return (
-    <Badge $tone="neutral" style={{ ...PROJECT_TYPE_TAG_STYLE, background: PROJECT_TYPE_TONE_BG[tone] }}>
+    <Badge $tone="neutral" style={{ ...PROJECT_TYPE_TAG_STYLE, background: PROJECT_TYPE_TONE_BG[tone], color }}>
       {children ?? PROJECT_TYPE_LABELS[tone]}
     </Badge>
   )
@@ -108,7 +109,7 @@ export function ProjectSettingsForm({
 
       <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Description</Text>
       <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
-        <Textarea minHeight={80} value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" rows={3} disabled={!canEdit} />
+        <Textarea minHeight={80} value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" aria-label="Project description" rows={3} disabled={!canEdit} />
       </Inline>
 
       <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SECTION_TITLE_STYLE}>Data grouping</Text>

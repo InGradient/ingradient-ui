@@ -24,6 +24,8 @@ export interface ClassLightboxItem extends ChipTabsItem {
   points?: ClassLightboxPoint[] | null
   width?: number | null
   height?: number | null
+  original_url?: string | null
+  thumb_url?: string | null
 }
 
 export interface ClassLightboxProps {
@@ -55,8 +57,11 @@ export function ClassLightbox({
   const [selectedSibling, setSelectedSibling] = useState<ClassLightboxItem | null>(null)
   if (!item || !imageUrl) return null
 
-  const activeItem =
-    selectedSibling && siblings.some((s) => s.id === selectedSibling.id) ? selectedSibling : item
+  const activeSibling = selectedSibling
+    ? siblings.find((sibling) => sibling.id === selectedSibling.id) ?? null
+    : null
+  const activeItem = activeSibling ?? item
+  const activeImageUrl = activeSibling?.original_url ?? activeSibling?.thumb_url ?? imageUrl
 
   const colorFor = (classId?: string) =>
     (classId && classIdToColor[classId]) || defaultAnnotationColor
@@ -80,7 +85,7 @@ export function ClassLightbox({
       image={{
         id: activeItem.id,
         name: activeItem.name ?? 'Image',
-        thumb_url: imageUrl,
+        thumb_url: activeImageUrl,
         width: activeItem.width ?? undefined,
         height: activeItem.height ?? undefined,
       }}
@@ -94,7 +99,7 @@ export function ClassLightbox({
             onSelect={(s) => setSelectedSibling(s as ClassLightboxItem)}
           />
           <ImageInspectorCanvas
-            imageUrl={imageUrl}
+            imageUrl={activeImageUrl}
             imageAlt={activeItem.name ?? 'Image'}
             boxes={boxes}
             points={points}

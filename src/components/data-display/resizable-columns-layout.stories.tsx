@@ -19,13 +19,13 @@ export const ThreeColumn: Story = {
     columns: [
       { width: 280, resizable: true, minWidth: 200, maxWidth: 480 },
       { width: 'auto' },
-      { width: 320, resizable: true, minWidth: 240, maxWidth: 480, background: 'var(--ig-color-surface-panel)' },
+      { width: 320, resizable: true, minWidth: 240, maxWidth: 480, background: 'var(--ig-color-surface-panel)', dividerBefore: 'strong' },
     ],
     children: (
       <>
-        <aside style={SECTION_STYLE}>Left sidebar</aside>
+        <aside aria-label="Left sidebar" style={SECTION_STYLE}>Left sidebar</aside>
         <main style={SECTION_STYLE}>Body — drag handles 좌우로 resize</main>
-        <aside style={SECTION_STYLE}>Right inspector</aside>
+        <aside aria-label="Right inspector" style={SECTION_STYLE}>Right inspector</aside>
       </>
     ),
   },

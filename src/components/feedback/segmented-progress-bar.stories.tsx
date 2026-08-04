@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const PendingVsProcessed: Story = {
   args: {
+    ariaLabel: 'Labeling progress',
     segments: [
       { label: 'Processed', value: 892, color: 'var(--ig-color-success)' },
       { label: 'Pending', value: 321, color: 'var(--ig-color-warning)' },

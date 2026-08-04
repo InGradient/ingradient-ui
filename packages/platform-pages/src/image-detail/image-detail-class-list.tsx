@@ -64,7 +64,7 @@ export function ImageDetailClassList({
           <SelectableListItem
             key={cls.id}
             selected={isActive}
-            aria-selected={isActive}
+            aria-pressed={isActive}
             onMouseEnter={(event) => onHoverClass?.(cls, event.currentTarget)}
             onMouseLeave={() => onHoverLeave?.(cls)}
             onFocus={(event) => onHoverClass?.(cls, event.currentTarget)}

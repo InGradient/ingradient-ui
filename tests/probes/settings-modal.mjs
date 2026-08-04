@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Probe: Pages/Platform/0.0.1/SettingsModal — 8 core scenarios.
+// Probe: Pages/Platform/0.0.1/Settings Modal — 18 grouped story checks.
 // Usage: node tests/probes/settings-modal.mjs
 
 import { spawn } from 'node:child_process'
@@ -7,7 +7,6 @@ import { chromium } from 'playwright'
 
 const PORT = process.env.PORT ?? '6194'
 const BASE = `http://localhost:${PORT}`
-const ID_PREFIX = 'pages-platform-0-0-1-settingsmodal'
 const DEFAULT_VIEWPORT = { width: 1280, height: 800 }
 
 function assert(cond, msg) {
@@ -16,65 +15,65 @@ function assert(cond, msg) {
 
 const cases = [
   {
-    story: 'default',
+    id: 'pages-platform-0-0-1-settings-modal-general--preferences',
     check: async (page) => {
       await page.locator('h2:has-text("Settings")').first().waitFor({ state: 'visible', timeout: 5000 })
       const tabs = await page.locator('[role="tab"]').count()
-      assert(tabs >= 4, `default: expected 4+ tabs, got ${tabs}`)
+      assert(tabs >= 4, `preferences: expected 4+ tabs, got ${tabs}`)
     },
   },
   {
-    story: 'account-default',
+    id: 'pages-platform-0-0-1-settings-modal-account--organization-license',
     check: async (page) => {
       await page.locator('text=/Account|Email|Password/').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'account-default',
-    name: 'account-default-mobile-responsive',
+    id: 'pages-platform-0-0-1-settings-modal-account--organization-license',
+    name: 'account-organization-license-mobile-responsive',
     viewport: { width: 375, height: 812 },
     check: async (page) => {
       const tabList = page.getByRole('tablist').first()
       await tabList.waitFor({ state: 'visible', timeout: 10000 })
       const tabListBox = await tabList.boundingBox()
-      assert(tabListBox && tabListBox.width >= 275, `account-default-mobile-responsive: expected full-width tabs, got ${tabListBox?.width ?? 0}px`)
+      assert(tabListBox && tabListBox.width >= 275, `account-organization-license-mobile-responsive: expected full-width tabs, got ${tabListBox?.width ?? 0}px`)
     },
   },
   {
-    story: 'account-password-dialog',
+    id: 'pages-platform-0-0-1-settings-modal-account--password-change-workflow',
     check: async (page) => {
       await page.locator('text=/Change password/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'account-delete-dialog',
+    id: 'pages-platform-0-0-1-settings-modal-account--delete-shared-projects',
     check: async (page) => {
       await page.locator('text=/Delete account/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'project-default',
+    id: 'pages-platform-0-0-1-settings-modal-project--configuration-workflow',
     check: async (page) => {
       const input = page.locator('input[type="text"]').first()
       await input.waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'admin-organization',
+    id: 'pages-platform-0-0-1-settings-modal-organization--overview',
     check: async (page) => {
       await page.locator('text=/Organization name|organization/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'admin-invitations-search',
+    id: 'pages-platform-0-0-1-settings-modal-organization--members-and-invitations-workflow',
     check: async (page) => {
       const search = page.getByPlaceholder('Search users by name or email')
       await search.waitFor({ state: 'visible', timeout: 10000 })
-      assert(await search.inputValue() === 'sangha', 'admin-invitations-search: expected seeded search query')
+      assert(await search.inputValue() === 'sangha', 'members-and-invitations-workflow: expected interaction search query')
     },
   },
   {
-    story: 'admin-members',
+    id: 'pages-platform-0-0-1-settings-modal-organization--members-and-invitations-workflow',
     name: 'admin-members-visible',
     check: async (page) => {
       const membersTable = page.getByRole('region', { name: 'Members table' })
@@ -84,7 +83,7 @@ const cases = [
     },
   },
   {
-    story: 'admin-members',
+    id: 'pages-platform-0-0-1-settings-modal-organization--members-and-invitations-workflow',
     name: 'admin-members-mobile-scrollable',
     viewport: { width: 375, height: 812 },
     check: async (page) => {
@@ -98,20 +97,20 @@ const cases = [
     },
   },
   {
-    story: 'admin-devices',
+    id: 'pages-platform-0-0-1-settings-modal-devices--management-workflow',
     check: async (page) => {
       const tabActive = await page.locator('[role="tab"][aria-selected="true"]').first().innerText()
       assert(/admin/i.test(tabActive), `admin-devices: Admin tab should be active, got "${tabActive}"`)
     },
   },
   {
-    story: 'admin-storage',
+    id: 'pages-platform-0-0-1-settings-modal-storage--analytics',
     check: async (page) => {
       await page.locator('text=/Storage|Total|Tier/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'admin-storage',
+    id: 'pages-platform-0-0-1-settings-modal-storage--analytics',
     name: 'admin-storage-mobile-responsive',
     viewport: { width: 375, height: 812 },
     check: async (page) => {
@@ -122,31 +121,31 @@ const cases = [
     },
   },
   {
-    story: 'edge-work-default',
+    id: 'pages-platform-0-0-1-settings-modal-edge--work-options',
     check: async (page) => {
       await page.locator('text=/Locked on Edge/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'edge-work-deflectometry',
+    id: 'pages-platform-0-0-1-settings-modal-edge--deflectometry-work-options',
     check: async (page) => {
       await page.locator('text=/Deflectometry/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'edge-export-with-packages',
+    id: 'pages-platform-0-0-1-settings-modal-edge--export-selection-workflow',
     check: async (page) => {
       await page.locator('text=/Project File History/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'edge-import-uploading',
+    id: 'pages-platform-0-0-1-settings-modal-edge--import-uploading',
     check: async (page) => {
       await page.locator('text=/Cancelling…|Cancel/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
   },
   {
-    story: 'edge-import-completed',
+    id: 'pages-platform-0-0-1-settings-modal-edge--import-completed-with-failures',
     check: async (page) => {
       await page.locator('text=/Import Result/i').first().waitFor({ state: 'visible', timeout: 5000 })
     },
@@ -176,7 +175,7 @@ async function main() {
   const ctx = await browser.newContext()
 
   let failed = 0
-  for (const { story, name = story, viewport = DEFAULT_VIEWPORT, check } of cases) {
+  for (const { id, name = id, viewport = DEFAULT_VIEWPORT, check } of cases) {
     const page = await ctx.newPage()
     const consoleErrors = []
     page.on('console', (m) => {
@@ -184,7 +183,7 @@ async function main() {
     })
     consoleErrors.length = 0
     await page.setViewportSize(viewport)
-    const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
+    const url = `${BASE}/iframe.html?viewMode=story&id=${id}`
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
       await page.waitForTimeout(500)

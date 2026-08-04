@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Probe: Pages/Platform/0.0.1/ClassManage — core scenarios.
+/* global process, fetch, setTimeout, console */
+// Probe: Pages/Platform/0.0.1/Class Management — 16 consolidated integration cases.
 // Usage: node tests/probes/class-manage.mjs
 
 import { spawn } from 'node:child_process'
@@ -7,63 +8,121 @@ import { chromium } from 'playwright'
 
 const PORT = process.env.PORT ?? '6178'
 const BASE = `http://localhost:${PORT}`
-const ID_PREFIX = 'pages-platform-0-0-1-classmanage'
+const DEFAULT_VIEWPORT = { width: 1280, height: 800 }
+
+const STORY = {
+  overview: 'pages-platform-0-0-1-class-management-workspace--overview',
+  sidebarCollapsed: 'pages-platform-0-0-1-class-management-workspace--sidebar-collapsed',
+  classListOverflow: 'pages-platform-0-0-1-class-management-workspace--class-list-overflow',
+  noProject: 'pages-platform-0-0-1-class-management-system-states--no-project-selected',
+  accessDenied: 'pages-platform-0-0-1-class-management-system-states--access-denied',
+  loadError: 'pages-platform-0-0-1-class-management-system-states--load-error',
+  classesLoading: 'pages-platform-0-0-1-class-management-system-states--classes-loading',
+  noClasses: 'pages-platform-0-0-1-class-management-system-states--no-classes',
+  noLinkedDatasets: 'pages-platform-0-0-1-class-management-system-states--no-linked-datasets',
+  linkedDatasetsLoading: 'pages-platform-0-0-1-class-management-system-states--linked-datasets-loading',
+  imagesLoading: 'pages-platform-0-0-1-class-management-system-states--images-loading',
+  noImages: 'pages-platform-0-0-1-class-management-system-states--no-images',
+  referenceError: 'pages-platform-0-0-1-class-management-reference-image--update-error',
+  addClass: 'pages-platform-0-0-1-class-management-workflows--add-class',
+  patternSequence: 'pages-platform-0-0-1-class-management-image-inspector--pattern-sequence',
+  cocoMapping: 'pages-platform-0-0-1-class-management-model-mapping--coco-mapping-workflow',
+}
 
 const cases = [
   {
-    story: 'default',
+    id: STORY.overview,
+    name: 'workspace-overview',
     check: async (page) => {
-      const rows = await page.locator('[role="option"]:has-text("Crack")').count()
-      assert(rows > 0, `default: should render at least one Crack row, got ${rows}`)
-      const selected = await page.locator('[role="option"][aria-selected="true"]').count()
-      assert(selected === 1, `default: exactly one row selected, got ${selected}`)
+      await page.locator('[data-class-id]').first().waitFor({ state: 'visible', timeout: 10000 })
+      const selected = await page.locator('[data-class-id][aria-current="true"]').count()
+      const images = await page.locator('[data-grid-id]').count()
+      assert(selected === 1, `workspace-overview: expected one selected class, got ${selected}`)
+      assert(images === 9, `workspace-overview: expected 9 images, got ${images}`)
     },
   },
   {
-    story: 'no-class-selected',
+    id: STORY.sidebarCollapsed,
+    name: 'sidebar-collapsed',
+    viewport: { width: 1024, height: 768 },
+    check: async (page) => page.getByRole('button', { name: 'Expand class sidebar' }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.classListOverflow,
+    name: 'class-list-overflow',
     check: async (page) => {
-      const rows = await page.locator('[role="option"]').count()
-      assert(rows >= 10, `no-class-selected: should still list classes, got ${rows}`)
-      const selected = await page.locator('[role="option"][aria-selected="true"]').count()
-      assert(selected === 0, `no-class-selected: no row selected, got ${selected}`)
+      await page.locator('[data-class-id]').first().waitFor({ state: 'visible' })
+      const rows = await page.locator('[data-class-id]').count()
+      assert(rows >= 30, `class-list-overflow: expected at least 30 rows, got ${rows}`)
+      await page.locator(`[title^="A-very-long-class-name"]`).first().waitFor({ state: 'visible' })
     },
   },
   {
-    story: 'permission-denied',
-    check: async (page) => {
-      const alert = page.locator('div', { hasText: /don.+t have permission/ }).first()
-      await alert.waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.noProject,
+    name: 'no-project-narrow',
+    viewport: { width: 375, height: 812 },
+    check: async (page) => page.getByText('No project selected', { exact: true }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'empty',
-    check: async (page) => {
-      const rows = await page.locator('[role="option"]').count()
-      assert(rows === 0, `empty: no class rows expected, got ${rows}`)
-    },
+    id: STORY.accessDenied,
+    name: 'access-denied',
+    check: async (page) => page.locator('text=/don.+t have permission/').first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'many-items',
-    check: async (page) => {
-      const rows = await page.locator('[role="option"]:has-text("#")').count()
-      assert(rows >= 20, `many-items: expected 20+ rows, got ${rows}`)
-    },
+    id: STORY.loadError,
+    name: 'load-error',
+    check: async (page) => page.getByText('Failed to load classes. Try again.', { exact: true }).waitFor({ state: 'visible' }),
   },
   {
-    story: 'add-class-modal-open',
-    check: async (page) => {
-      const dialog = page.locator('text=Add Class').first()
-      await dialog.waitFor({ state: 'visible', timeout: 5000 })
-    },
+    id: STORY.classesLoading,
+    name: 'classes-loading',
+    check: async (page) => page.getByText('Loading…', { exact: true }).first().waitFor({ state: 'visible' }),
   },
   {
-    story: 'lightbox-open',
+    id: STORY.noClasses,
+    name: 'no-classes',
+    check: async (page) => page.getByText('No classes yet.', { exact: true }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.noLinkedDatasets,
+    name: 'no-linked-datasets',
+    check: async (page) => page.getByText('No images with this class in the selected datasets.', { exact: true }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.linkedDatasetsLoading,
+    name: 'linked-datasets-loading',
+    check: async (page) => page.getByText('Loading…', { exact: true }).first().waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.imagesLoading,
+    name: 'images-loading',
+    check: async (page) => page.getByText('Loading images…', { exact: true }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.noImages,
+    name: 'no-images',
+    check: async (page) => page.getByText('No images with this class in the selected datasets.', { exact: true }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.referenceError,
+    name: 'reference-update-error',
+    check: async (page) => page.getByText('Failed to update reference image. Try again.', { exact: true }).waitFor({ state: 'visible' }),
+  },
+  {
+    id: STORY.addClass,
+    name: 'add-class-workflow',
+    check: async (page) => page.getByRole('button', { name: /^Story defect/ }).waitFor({ state: 'visible', timeout: 10000 }),
+  },
+  {
+    id: STORY.patternSequence,
+    name: 'pattern-sequence',
     waitUntil: 'domcontentloaded',
-    check: async (page) => {
-      // Class lightbox renders a dialog. Look for the close action or large image.
-      const closeBtn = page.locator('button[aria-label="Close"]').first()
-      await closeBtn.waitFor({ state: 'visible', timeout: 10000 })
-    },
+    check: async (page) => page.getByRole('dialog', { name: 'seq-x-0.jpg' }).waitFor({ state: 'visible', timeout: 10000 }),
+  },
+  {
+    id: STORY.cocoMapping,
+    name: 'coco-mapping-workflow',
+    check: async (page) => page.getByRole('button', { name: 'person' }).waitFor({ state: 'visible', timeout: 10000 }),
   },
 ]
 
@@ -74,16 +133,16 @@ function assert(cond, msg) {
 async function startServer() {
   const proc = spawn('python3', ['-m', 'http.server', PORT], {
     cwd: 'storybook-static',
-    stdio: ['ignore', 'pipe', 'pipe'],
+    stdio: 'ignore',
   })
   for (let i = 0; i < 50; i++) {
     try {
-      const r = await fetch(BASE)
-      if (r.ok || r.status === 200) return proc
+      const response = await fetch(BASE)
+      if (response.ok) return proc
     } catch {
       /* keep waiting */
     }
-    await new Promise((r) => setTimeout(r, 100))
+    await new Promise((resolve) => setTimeout(resolve, 100))
   }
   throw new Error('Server never started')
 }
@@ -91,28 +150,29 @@ async function startServer() {
 async function main() {
   const server = await startServer()
   const browser = await chromium.launch()
-  const ctx = await browser.newContext()
-  const page = await ctx.newPage()
+  const context = await browser.newContext({ viewport: DEFAULT_VIEWPORT })
+  const page = await context.newPage()
   const consoleErrors = []
-  page.on('console', (m) => {
-    if (m.type() === 'error') consoleErrors.push(m.text())
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text())
   })
 
   let failed = 0
-  for (const { story, check, waitUntil = 'networkidle' } of cases) {
+  for (const { id, name, check, viewport = DEFAULT_VIEWPORT, waitUntil = 'domcontentloaded' } of cases) {
     consoleErrors.length = 0
-    const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
+    await page.setViewportSize(viewport)
+    const url = `${BASE}/iframe.html?viewMode=story&id=${id}`
     try {
       await page.goto(url, { waitUntil, timeout: 20000 })
       await check(page)
-      const errs = consoleErrors.filter(
-        (e) => !/Failed to load resource/i.test(e) && !/X-Frame-Options/i.test(e),
+      const errors = consoleErrors.filter(
+        (error) => !/Failed to load resource/i.test(error) && !/X-Frame-Options/i.test(error),
       )
-      if (errs.length > 0) throw new Error(`console errors:\n${errs.join('\n')}`)
-      console.log(`[OK]   ${story}`)
-    } catch (err) {
+      if (errors.length > 0) throw new Error(`console errors:\n${errors.join('\n')}`)
+      console.log(`[OK]   ${name}`)
+    } catch (error) {
       failed++
-      console.error(`[FAIL] ${story} — ${err.message}`)
+      console.error(`[FAIL] ${name} — ${error.message}`)
     }
   }
 
@@ -125,7 +185,7 @@ async function main() {
   console.log(`\n${cases.length}/${cases.length} scenarios passed.`)
 }
 
-main().catch((e) => {
-  console.error(e)
+main().catch((error) => {
+  console.error(error)
   process.exit(1)
 })

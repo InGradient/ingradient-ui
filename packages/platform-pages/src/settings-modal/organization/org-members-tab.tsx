@@ -50,6 +50,7 @@ export function OrgMembersTab({
       ? [{
           key: 'actions',
           header: '',
+          headerAriaLabel: 'Actions',
           render: (r: OrgMember) => r.userId !== myUserId ? (
             <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => setPendingRemove(r)}>
               Remove

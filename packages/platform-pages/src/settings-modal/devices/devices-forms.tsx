@@ -74,7 +74,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
           <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
-          <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
+          <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>
@@ -154,7 +154,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
           <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
-          <Textarea variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
+          <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>

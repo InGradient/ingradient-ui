@@ -1,5 +1,6 @@
 export type WidgetDropPosition = 'before' | 'after' | 'below'
 export type WidgetEdgeDropPosition = 'before' | 'after'
+export type WidgetKeyboardDirection = 'left' | 'right' | 'up' | 'down'
 
 const MAX_WIDGETS_PER_ROW = 3
 
@@ -82,6 +83,37 @@ export function moveWidget<K extends string>(
     }
   }
   return normalizeLayout(next, knownKeys)
+}
+
+export function moveWidgetByKeyboard<K extends string>(
+  current: K[][],
+  sourceKey: K,
+  direction: WidgetKeyboardDirection,
+  knownKeys: readonly K[],
+): K[][] | null {
+  const normalized = normalizeLayout(current, knownKeys)
+  const rowIndex = normalized.findIndex((row) => row.includes(sourceKey))
+  if (rowIndex < 0) return null
+  const itemIndex = normalized[rowIndex].indexOf(sourceKey)
+  const row = normalized[rowIndex]
+
+  if (direction === 'left') {
+    const previousRow = normalized[rowIndex - 1]
+    const target = row[itemIndex - 1] ?? previousRow?.[previousRow.length - 1]
+    return target ? moveWidget(normalized, sourceKey, target, 'before', knownKeys) : null
+  }
+  if (direction === 'right') {
+    const target = row[itemIndex + 1] ?? normalized[rowIndex + 1]?.[0]
+    return target ? moveWidget(normalized, sourceKey, target, 'after', knownKeys) : null
+  }
+  if (direction === 'up') {
+    const previousRow = normalized[rowIndex - 1]
+    const target = previousRow?.[previousRow.length - 1]
+    return target ? moveWidget(normalized, sourceKey, target, 'after', knownKeys) : null
+  }
+  const nextRow = normalized[rowIndex + 1]
+  const target = nextRow?.[nextRow.length - 1]
+  return target ? moveWidget(normalized, sourceKey, target, 'after', knownKeys) : null
 }
 
 export function widgetDragId<K extends string>(key: K): string {

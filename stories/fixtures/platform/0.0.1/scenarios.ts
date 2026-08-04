@@ -1,40 +1,62 @@
 import type { MockUser } from './users'
 import { mockUsers } from './users'
 
-/**
- * platform 0.0.1 auth scenarios — Login / Signup 페이지 상태 시뮬레이션 (§ 16).
- */
-export type PlatformAuthScenario =
+/** Platform 0.0.1 Login states used by the purpose-grouped Auth stories. */
+export type PlatformLoginScenario =
   | 'default'
-  | 'empty'
-  | 'loading'
-  | 'error'
+  | 'server-error'
   | 'permission-denied'
   | 'long-text'
-  | 'many-items'
   | 'submitting'
   | 'validation-error'
 
-export interface PlatformAuthScene {
+export interface PlatformLoginScene {
   user?: Pick<MockUser, 'email' | 'name'>
   password?: string
-  rememberMe?: boolean
+  keepSignedIn?: boolean
+  rememberPassword?: boolean
   error?: string
   warning?: string
   loading?: boolean
 }
 
-export const platformAuthScenarios: Record<PlatformAuthScenario, PlatformAuthScene> = {
+export const platformLoginScenarios: Record<PlatformLoginScenario, PlatformLoginScene> = {
   default: {},
-  empty: {},
-  loading: { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••••••', loading: true },
-  error: { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••', error: 'Server error — try again later.' },
+  'server-error': { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••', error: 'Server error — try again later.' },
   'permission-denied': { user: { email: mockUsers[0].email, name: mockUsers[0].name }, error: 'Account suspended. Contact administrator.' },
   'long-text': {
     user: { email: 'a-very-long-email-address-for-overflow-testing@incredibly-long-domain.example.com', name: 'Long Name For Overflow Testing' },
     password: '••••••••••••••••',
   },
-  'many-items': { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••••••', rememberMe: true },
-  submitting: { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••••••', rememberMe: true, loading: true },
+  submitting: { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••••••', keepSignedIn: true, loading: true },
   'validation-error': { user: { email: mockUsers[0].email, name: mockUsers[0].name }, password: '••••', error: 'Invalid email or password.' },
+}
+
+export type PlatformSignupScenario = 'default' | 'password-requirements' | 'submitting'
+
+export interface PlatformSignupScene {
+  email: string
+  name: string
+  organization: string
+  password: string
+  error?: string
+  loading?: boolean
+}
+
+export const platformSignupScenarios: Record<PlatformSignupScenario, PlatformSignupScene> = {
+  default: { email: '', name: '', organization: '', password: '' },
+  'password-requirements': {
+    email: 'newuser@acme.io',
+    name: mockUsers[1].name,
+    organization: mockUsers[1].organization,
+    password: '••••••',
+    error: 'Password does not meet requirements (min 8 chars).',
+  },
+  submitting: {
+    email: 'newuser@acme.io',
+    name: mockUsers[1].name,
+    organization: mockUsers[1].organization,
+    password: '••••••••',
+    loading: true,
+  },
 }

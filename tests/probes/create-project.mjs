@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Probe: Pages/Platform/0.0.1/CreateProject — 5 scenarios.
+// Probe: Pages/Platform/0.0.1/Create Project — 5 grouped stories.
 // Usage: node tests/probes/create-project.mjs
 // Requires: storybook-static built, http server reachable.
 
@@ -8,11 +8,18 @@ import { chromium } from 'playwright'
 
 const PORT = process.env.PORT ?? '6177'
 const BASE = `http://localhost:${PORT}`
-const ID_PREFIX = 'pages-platform-0-0-1-createproject'
+const STORY_IDS = {
+  overview: 'pages-platform-0-0-1-create-project-workspace--overview',
+  submitting: 'pages-platform-0-0-1-create-project-system-states--submitting',
+  serverError: 'pages-platform-0-0-1-create-project-system-states--server-error',
+  projectCreation: 'pages-platform-0-0-1-create-project-workflows--project-creation',
+  cancel: 'pages-platform-0-0-1-create-project-workflows--cancel',
+}
 
 const cases = [
   {
-    story: 'default',
+    story: 'overview',
+    id: STORY_IDS.overview,
     check: async (page) => {
       await expectVisible(page, 'label[for="project-name"]', 'Project name label')
       await expectVisible(page, 'button:has-text("Create Project")', 'Create Project button')
@@ -23,26 +30,32 @@ const cases = [
     },
   },
   {
-    story: 'filled',
+    story: 'project-creation-workflow',
+    id: STORY_IDS.projectCreation,
     check: async (page) => {
+      await page.waitForFunction(() => {
+        const input = document.querySelector('#project-name')
+        return input instanceof HTMLInputElement && input.value === 'Inspection line C'
+      })
       const value = await page.locator('#project-name').inputValue()
       assert(
-        value === 'Wafer line A Q2 2026',
-        `filled: name should be "Wafer line A Q2 2026", got "${value}"`,
+        value === 'Inspection line C',
+        `project creation: expected corrected name, got "${value}"`,
       )
-      const fileCount = await page.locator('li:has-text("KB)")').count()
-      assert(fileCount === 12, `filled: file list should have 12 rows, got ${fileCount}`)
+      await expectVisible(page, 'li:has-text("inspection-001.jpg")', 'uploaded image')
     },
   },
   {
-    story: 'validation-error',
+    story: 'cancel-workflow',
+    id: STORY_IDS.cancel,
     check: async (page) => {
-      const warn = page.locator('[role="alert"], div').filter({ hasText: /required/i }).first()
-      await warn.waitFor({ state: 'visible', timeout: 5000 })
+      const value = await page.locator('#project-name').inputValue()
+      assert(value === 'Wafer line A Q2 2026', `cancel: expected prepared form, got "${value}"`)
     },
   },
   {
     story: 'submitting',
+    id: STORY_IDS.submitting,
     check: async (page) => {
       const btn = page.locator('button:has-text("Creating")')
       await btn.waitFor({ state: 'visible', timeout: 5000 })
@@ -52,6 +65,7 @@ const cases = [
   },
   {
     story: 'server-error',
+    id: STORY_IDS.serverError,
     check: async (page) => {
       const danger = page.locator('div').filter({ hasText: /Failed to create project/i }).first()
       await danger.waitFor({ state: 'visible', timeout: 5000 })
@@ -71,7 +85,7 @@ async function expectVisible(page, selector, label) {
 async function startServer() {
   const proc = spawn('python3', ['-m', 'http.server', PORT], {
     cwd: 'storybook-static',
-    stdio: ['ignore', 'pipe', 'pipe'],
+    stdio: 'ignore',
   })
   // wait until reachable
   for (let i = 0; i < 50; i++) {
@@ -97,9 +111,9 @@ async function main() {
   })
 
   let failed = 0
-  for (const { story, check } of cases) {
+  for (const { story, id, check } of cases) {
     consoleErrors.length = 0
-    const url = `${BASE}/iframe.html?viewMode=story&id=${ID_PREFIX}--${story}`
+    const url = `${BASE}/iframe.html?viewMode=story&id=${id}`
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 })
       await check(page)

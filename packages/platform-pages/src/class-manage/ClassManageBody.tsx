@@ -88,6 +88,7 @@ export function ClassManageBody({
       minWidth: popupSizeNumbers.xs,
       maxWidth: popupSizeNumbers.xl,
       background: 'var(--ig-color-surface-panel)',
+      dividerBefore: 'strong',
       hidden: !info,
     },
   ]

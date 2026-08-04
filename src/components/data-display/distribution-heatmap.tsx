@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Box } from '../../primitives'
+import { VisuallyHidden } from './table.styles'
 
 const WRAP_STYLE = { overflowX: 'auto' as const }
 
@@ -48,6 +49,8 @@ export interface DistributionHeatmapProps {
   matrix: number[][]
   /** Cell 값 표시 포맷팅 — 기본 toString(). */
   formatValue?: (value: number) => React.ReactNode
+  /** 좌측 row header 열의 접근 가능한 이름. */
+  rowHeaderLabel?: string
   className?: string
 }
 
@@ -58,7 +61,7 @@ export interface DistributionHeatmapProps {
  * 도메인 무관: dataset distribution / class confusion matrix / time-of-day activity 등 활용 가능.
  */
 export function DistributionHeatmap({
-  rowLabels, columnLabels, matrix, formatValue, className,
+  rowLabels, columnLabels, matrix, formatValue, rowHeaderLabel = 'Row', className,
 }: DistributionHeatmapProps) {
   const max = matrix.reduce((acc, row) => Math.max(acc, ...row), 0) || 1
   const format = formatValue ?? ((v: number) => v)
@@ -67,7 +70,7 @@ export function DistributionHeatmap({
       <Table>
         <thead>
           <tr>
-            <th />
+            <th scope="col"><VisuallyHidden>{rowHeaderLabel}</VisuallyHidden></th>
             {columnLabels.map((c) => (<th key={c}>{c}</th>))}
           </tr>
         </thead>

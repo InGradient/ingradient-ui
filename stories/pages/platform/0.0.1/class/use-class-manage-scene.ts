@@ -30,12 +30,12 @@ export interface ClassManageSceneState {
   setCurrentMapping: (m: string) => void
   updateClass: (id: string, patch: Partial<MockClass>) => void
   randomizeColor: () => void
+  addClass: (name: string) => string | null
   removeSelectedClass: () => void
   duplicateSelectedClass: () => void
 }
 
-const randHex = () =>
-  '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')
+const STORY_CLASS_COLORS = ['#8b5cf6', '#06b6d4', '#f59e0b', '#10b981'] as const
 
 export function useClassManageScene(scenario: ClassScene): ClassManageSceneState {
   const [classes, setClasses] = useState<MockClass[]>(scenario.classes)
@@ -67,20 +67,11 @@ export function useClassManageScene(scenario: ClassScene): ClassManageSceneState
     setCurrentMapping(scenario.currentMapping ?? '')
   }, [scenario])
 
-  useEffect(() => {
-    if (!scenario.classMenuOpenId) return
-    const timeout = window.setTimeout(() => {
-      const row = document.querySelector(`[data-class-id="${scenario.classMenuOpenId}"]`)
-      const button = row?.querySelector<HTMLButtonElement>('button[aria-label^="Open menu"]')
-      if (button) setClassMenuOpen({ id: scenario.classMenuOpenId!, anchor: button })
-    }, 0)
-    return () => window.clearTimeout(timeout)
-  }, [scenario])
-
   const toggleDataset = (id: string) => setActiveDatasetIds((prev) => {
-    const next = new Set(prev)
+    const allIds = scenario.datasets.map((dataset) => dataset.id)
+    const next = prev.size === 0 ? new Set(allIds) : new Set(prev)
     if (next.has(id)) next.delete(id); else next.add(id)
-    return next
+    return next.size === allIds.length ? new Set() : next
   })
 
   const updateClass = (id: string, patch: Partial<MockClass>) => {
@@ -88,7 +79,28 @@ export function useClassManageScene(scenario: ClassScene): ClassManageSceneState
   }
 
   const randomizeColor = () => {
-    if (selectedClassId) updateClass(selectedClassId, { color: randHex() })
+    if (!selectedClassId) return
+    const current = classes.find((entry) => entry.id === selectedClassId)?.color
+    const currentIndex = STORY_CLASS_COLORS.findIndex((color) => color === current)
+    updateClass(selectedClassId, {
+      color: STORY_CLASS_COLORS[(currentIndex + 1) % STORY_CLASS_COLORS.length],
+    })
+  }
+
+  const addClass = (name: string) => {
+    const trimmedName = name.trim()
+    if (!trimmedName) return null
+    const id = `cl-story-${classes.length + 1}`
+    const nextClass: MockClass = {
+      id,
+      name: trimmedName,
+      color: STORY_CLASS_COLORS[0],
+      description: null,
+      image_count: 0,
+    }
+    setClasses((prev) => [...prev, nextClass])
+    setSelectedClassId(id)
+    return id
   }
 
   const removeSelectedClass = () => {
@@ -115,6 +127,6 @@ export function useClassManageScene(scenario: ClassScene): ClassManageSceneState
     setSelectedClassId, setSidebarCollapsed, toggleDataset, setReferenceDragOver,
     setAddClassOpen, setAddClassName, setContextMenu, setClassMenuOpen, setLightboxImage,
     setDeleteConfirmOpen, setCurrentMapping,
-    updateClass, randomizeColor, removeSelectedClass, duplicateSelectedClass,
+    updateClass, randomizeColor, addClass, removeSelectedClass, duplicateSelectedClass,
   }
 }

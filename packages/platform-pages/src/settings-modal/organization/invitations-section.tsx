@@ -76,6 +76,7 @@ export function InvitationsSection({
       ? [{
           key: 'actions',
           header: '',
+          headerAriaLabel: 'Actions',
           render: (r: InvitationRow) => r.status === 'pending' ? (
             <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke(r.id)}>Revoke</Button>
           ) : null,
@@ -96,6 +97,7 @@ export function InvitationsSection({
               value={searchQuery}
               onChange={(e) => onChangeSearchQuery(e.target.value)}
               style={SEARCH_FIELD_STYLE}
+              aria-label="Search users"
               title="Search users"
             />
             <SelectField

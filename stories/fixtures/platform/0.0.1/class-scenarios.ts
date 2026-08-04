@@ -8,31 +8,25 @@ import {
 export type ClassScenarioKey =
   | 'default'
   | 'sidebar-collapsed'
+  | 'large-image-set'
+  | 'class-list-overflow'
   | 'no-class-selected'
-  | 'class-with-images'
-  | 'class-with-grouped-images'
-  | 'empty'
-  | 'loading'
+  | 'no-classes'
+  | 'classes-loading'
   | 'error'
   | 'permission-denied'
   | 'no-project'
-  | 'long-text'
-  | 'many-items'
   | 'no-linked-datasets'
+  | 'linked-datasets-loading'
   | 'images-loading'
-  | 'images-empty'
+  | 'no-images'
   | 'drag-over-reference'
-  | 'reference-image-set'
   | 'reference-image-pending'
+  | 'reference-image-error'
   | 'bbox-nav-multi'
-  | 'lightbox-open'
-  | 'lightbox-with-pattern-tabs'
-  | 'context-menu-open'
-  | 'class-menu-open'
-  | 'add-class-modal-open'
-  | 'delete-confirm-open'
-  | 'mapping-coco-active'
-  | 'mapping-disabled'
+  | 'pattern-sequence'
+  | 'add-class-dialog'
+  | 'mapping-enabled'
 
 export interface ClassScene {
   classes: MockClass[]
@@ -54,7 +48,6 @@ export interface ClassScene {
   isAddClassOpen?: boolean
   addClassName?: string
   contextMenuOpen?: { imageId: string; top: number; left: number } | null
-  classMenuOpenId?: string
   lightboxImage?: MockClassImage | null
   lightboxSiblings?: MockClassImage[]
   deleteConfirmOpen?: boolean
@@ -74,40 +67,30 @@ const base: ClassScene = {
 const longClasses: MockClass[] = mockClasses.map((c, i) =>
   i === 0 ? { ...c, name: longClassName, description: `${longClassName} - ${longClassName}` } : c)
 
+const overflowClasses = [...longClasses, ...makeManyClasses()]
+
 export const classScenarios: Record<ClassScenarioKey, ClassScene> = {
   'default': base,
   'sidebar-collapsed': { ...base, sidebarCollapsed: true },
+  'large-image-set': { ...base, images: manyImagesForCl1 },
+  'class-list-overflow': { ...base, classes: overflowClasses },
   'no-class-selected': { ...base, selectedClassId: null, datasets: [], images: [] },
-  'class-with-images': base,
-  'class-with-grouped-images': { ...base, images: manyImagesForCl1 },
-  'empty': { ...base, classes: [], selectedClassId: null, datasets: [], images: [] },
-  'loading': { ...base, classes: [], classesLoading: true, selectedClassId: null, datasets: [], images: [] },
+  'no-classes': { ...base, classes: [], selectedClassId: null, datasets: [], images: [] },
+  'classes-loading': { ...base, classes: [], classesLoading: true, selectedClassId: null, datasets: [], images: [] },
   'error': { ...base, classes: [], error: 'Failed to load classes. Try again.', selectedClassId: null, datasets: [], images: [] },
   'permission-denied': { ...base, classes: [], permissionDenied: true, selectedClassId: null, datasets: [], images: [] },
   'no-project': { ...base, classes: [], noProject: true, selectedClassId: null, datasets: [], images: [] },
-  'long-text': { ...base, classes: longClasses, selectedClassId: 'cl-1' },
-  'many-items': {
-    ...base,
-    classes: makeManyClasses(),
-    selectedClassId: 'cl-many-3',
-    datasets: classIdToDatasets['cl-1'],
-    images: imagesForCl1.slice(0, 4),
-  },
   'no-linked-datasets': { ...base, selectedClassId: 'cl-7', datasets: [], images: [] },
+  'linked-datasets-loading': { ...base, detailLoading: true },
   'images-loading': { ...base, imagesLoading: true, images: [] },
-  'images-empty': { ...base, images: [] },
+  'no-images': { ...base, images: [] },
   'drag-over-reference': { ...base, isReferenceDragOver: true },
-  'reference-image-set': base,
   'reference-image-pending': { ...base, referencePending: true },
+  'reference-image-error': { ...base, referenceError: 'Failed to update reference image. Try again.' },
   'bbox-nav-multi': { ...base, referenceBboxCandidates: referenceBboxCandidatesForCl1 },
-  'lightbox-open': { ...base, lightboxImage: imagesForCl1[0] },
-  'lightbox-with-pattern-tabs': { ...base, images: sequenceImagesForCl1, lightboxImage: sequenceImagesForCl1[1], lightboxSiblings: sequenceImagesForCl1 },
-  'context-menu-open': { ...base, contextMenuOpen: { imageId: 'img-cl1-1', top: 240, left: 460 } },
-  'class-menu-open': { ...base, classMenuOpenId: 'cl-1' },
-  'add-class-modal-open': { ...base, isAddClassOpen: true, addClassName: 'New defect' },
-  'delete-confirm-open': { ...base, deleteConfirmOpen: true },
-  'mapping-coco-active': { ...base, showCocoMapping: true, currentMapping: 'person' },
-  'mapping-disabled': { ...base, showCocoMapping: false },
+  'pattern-sequence': { ...base, images: sequenceImagesForCl1, lightboxImage: sequenceImagesForCl1[1], lightboxSiblings: sequenceImagesForCl1 },
+  'add-class-dialog': { ...base, isAddClassOpen: true, addClassName: '' },
+  'mapping-enabled': { ...base, showCocoMapping: true, currentMapping: '' },
 }
 
 export { mockClasses } from './class-classes'

@@ -37,15 +37,25 @@ export interface SidePanelLayoutProps {
   sections: SidePanelLayoutSection[]
   ariaLabel?: string
   className?: string
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6
 }
 
-export function SidePanelLayout({ sections, ariaLabel, className }: SidePanelLayoutProps) {
+const HEADING_TAGS = {
+  1: 'h1',
+  2: 'h2',
+  3: 'h3',
+  4: 'h4',
+  5: 'h5',
+  6: 'h6',
+} as const
+
+export function SidePanelLayout({ sections, ariaLabel, className, headingLevel = 3 }: SidePanelLayoutProps) {
   return (
     <Stack as="aside" aria-label={ariaLabel} gap={0} className={className} style={PANEL_STYLE}>
       {sections.map((s, i) => (
         <Section key={i}>
           <Inline justify="space-between" gap={3} style={HEADER_ROW_STYLE}>
-            <Text as="h3" size="var(--ig-font-size-md)" weight="semibold">{s.title}</Text>
+            <Text as={HEADING_TAGS[headingLevel]} size="var(--ig-font-size-md)" weight="semibold">{s.title}</Text>
             {s.headerActions}
           </Inline>
           <Stack gap={3} style={SECTION_BODY_STYLE}>{s.body}</Stack>

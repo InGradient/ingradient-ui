@@ -90,6 +90,7 @@ export const WithFooter: Story = {
         <Table<StorageRow>
           columns={storageColumns}
           rows={storageRows}
+          getRowKey={(row) => row.id}
           footer={[
             'Total',
             totalFiles.toLocaleString(),

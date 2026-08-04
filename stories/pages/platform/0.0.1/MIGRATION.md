@@ -1,15 +1,20 @@
 # Platform 0.0.1 Story Migration
 
-## Result
+## Current result
 
-The migration is feasible and the checked-out target now retains the complete original Platform `0.0.1` page-story surface without blindly overwriting the current component architecture.
+The original migration first retained the complete Platform `0.0.1` page-story surface without blindly overwriting the current component architecture. Auth, Dataset Catalog, Class Management, Create Project, Settings Modal, and Dashboard documentation were subsequently consolidated into purpose-grouped, executable contracts instead of flat sets of overlapping page states.
 
 - Source: `/Users/homebodify/Projects/ingradient-ui-old/stories/pages/platform/0.0.1`
 - Target: `/Users/homebodify/Projects/ingradient-ui/stories/pages/platform/0.0.1`
 - Source files reviewed: 25 project files plus `.DS_Store`
 - Target files present: all 25 project files
-- Renamed or deleted source files: none
-- Story coverage: 157 of 157 source story IDs retained, with no extra or missing IDs
+- Catalog story organization: split into Workspace, System States, Interactions, Analytics, Image Inspector, Dataset Details, Workflows, and Responsive
+- Class Management story organization: split into Workspace, System States, Interactions, Reference Image, Workflows, Image Inspector, and Model Mapping
+- Create Project story organization: split into Workspace, System States, and Workflows
+- Settings Modal story organization: split into General, Account, Project, Edge, Organization, Devices, and Storage
+- Dashboard story organization: split into Workspace, System States, Interactions, Layouts, Layout Studies, and Integrations
+- Auth story organization: Login and Signup each split into Workspace, System States, and Workflows
+- Story coverage: all 157 source stories were audited; 19 redundant Catalog exports and 5 redundant/split Class Management exports were consolidated after their behavior moved into representative stories, while 2 previously undocumented Class Management states were added. Settings absorbed 5 duplicate/reproducible static exports into its canonical stories and 3 executable workflows while adding 1 explicit password workflow, for a net reduction of 4. Create Project retained 5 distinct contracts while replacing static Filled/Validation exports with executable workflows. Dashboard consolidated 19 flat exports to 16 grouped contracts by removing the exact default-layout duplicate and absorbing reproducible Customize/subset/all-hidden and date-open/applied states into named workflows; the two alternative layouts remain isolated studies. Auth retains 10 total contracts: duplicate Login Default/Empty became one canonical workspace while Signup gained an executable account-creation workflow.
 - `.DS_Store`: intentionally not migrated
 - Blind copy/overwrite: not used
 
@@ -17,18 +22,18 @@ The comparison used source file content, the target Git `HEAD`, and the checked-
 
 ## Coverage
 
-| Story group | Source | Target | Result |
+| Story group | Legacy source | Current | Result |
 |---|---:|---:|---|
-| Catalog | 59 | 59 | Complete |
-| ClassManage | 27 | 27 | Complete |
-| CreateProject | 5 | 5 | Complete |
-| Dashboard | 19 | 19 | Complete |
-| SettingsModal | 37 | 37 | Complete |
-| Auth / Login | 7 | 7 | Complete |
-| Auth / Signup | 3 | 3 | Complete |
-| **Total** | **157** | **157** | **Exact story-ID match** |
+| Dataset Catalog | 59 | 40 | Consolidated, behavior retained by grouped page and component contracts |
+| Class Management | 27 | 24 | Consolidated into seven purpose groups with executable workflows |
+| Create Project | 5 | 5 | Consolidated into three purpose groups with two executable workflows |
+| Dashboard | 19 | 16 | Consolidated into six purpose groups with four executable workflows |
+| Settings Modal | 37 | 33 | Consolidated into seven purpose groups with eight executable workflows |
+| Auth / Login | 7 | 6 | Consolidated into three purpose groups with an executable sign-in workflow |
+| Auth / Signup | 3 | 4 | Split into three purpose groups with an executable account-creation workflow |
+| **Total** | **157** | **128** | **Intentional page-story consolidation** |
 
-This ID-level comparison matters because several cleaned target stories had previously grouped multiple states behind Storybook controls. Retaining every original export makes empty, loading, error, permission, menu, modal, mobile, stress, and layout states directly discoverable again.
+The original ID-level comparison established that no state was missed during migration. The current consolidation keeps empty, loading, error, permission, menu, workflow, mobile, stress, and layout behavior discoverable while removing duplicate fixtures and implementation-oriented names. Controls, Actions, Interactions, accessibility checks, static probes, and visual references now follow the surviving story IDs.
 
 ## File Decisions
 
@@ -36,15 +41,8 @@ The source and target were compared by content rather than filename. The exact a
 
 ### Original code retained directly
 
-- `ClassManage.stories.tsx`
-- `CreateProject.stories.tsx`
-- `SettingsModal.stories.tsx`
 - `catalog/mock-dashboard.ts`
 - `class/use-class-manage-scene.ts`
-- `dashboard/use-dashboard-scene.ts`
-- `settings/build-admin-props.tsx`
-- `settings/build-edge-slots.tsx`
-- `settings/build-view-props.tsx`
 - `settings/use-edge-tab-state.ts`
 
 `README.md` also initially matched the source and was then updated to point to this report and to reflect the current probe counts.
@@ -53,9 +51,13 @@ The source and target were compared by content rather than filename. The exact a
 
 | File | Original dependency/shape | Current equivalent and decision |
 |---|---|---|
-| `Catalog.stories.tsx` | Desktop/mobile states selected only by a fixture flag | Retains the named mobile fixtures and selects the current mobile shell automatically at the 768px breakpoint so desktop scenarios do not collapse their primary pane at tablet widths |
-| `Dashboard.stories.tsx` | Dashboard patterns from the UI package | Uses `@ingradient/platform-pages` page patterns and current primitives; all original layout-comparison stories remain exported |
-| `auth/Login.stories.tsx`, `auth/Signup.stories.tsx` | Original literal dimensions/weight | Keeps the complete original story exports while preserving the target's cleaned popup, spacing, and font-weight tokens |
+| `Catalog*.stories.tsx` | One flat Catalog story file with overlapping implementation-state names | Uses eight purpose-based Dataset Catalog groups, shared Addon Panel instrumentation, and the current mobile shell at the 768px breakpoint |
+| `ClassManage*.stories.tsx` | One flat ClassManage story file with duplicate fixtures and descriptive-only interactions | Uses seven purpose-based Class Management groups, deterministic controlled state, Action spies, named Interaction steps, and blocking accessibility checks |
+| `CreateProject*.stories.tsx` | One implementation-named flat CreateProject file with static Filled/Validation exports and no-op callbacks | Uses Workspace, System States, and Workflows under the visible `Create Project` name; 7 Action spies and 2 named workflows preserve all 5 distinct contracts with blocking accessibility |
+| `SettingsModal*.stories.tsx` | One flat SettingsModal story file with 37 implementation-state exports | Uses seven purpose-based Settings Modal groups and 33 stories; Default/General, password dialog/mismatch, project default/grouping, and members/search overlap are represented by canonical or executable workflow stories |
+| `Dashboard*.stories.tsx` | One 347-line flat file with 19 static/overlapping exports, no Action spies, and side-by-side layout experiments | Uses six purpose groups, 10 Action spies, 4 named workflows, and blocking accessibility. Compact Masonry and Sectioned Grid are preserved as single-layout studies rather than duplicated side-by-side dashboards |
+| `auth/{Login,Signup}*.stories.tsx` | Inline page composition, read-only controls, duplicate Login Default/Empty, and no Action contract | Uses package-owned `LoginView`/`SignupView`, six purpose groups, 12 Action callbacks, two named workflows, scoped Controls, handoff metadata, and blocking accessibility while retaining 10 total contracts |
+| `auth/auth-story-{runtime,config,actions,plays}.*` | No shared Auth Addon Panel or controlled interaction contract | Supplies deterministic form state, explicit submit/navigation payloads, validation recovery, preference toggles, and account creation |
 | `catalog/build-detail-content.tsx` | Direct Lucide icons, annotation toolbar, and old detail sidebar composition | Uses exported Ingradient icons, `ToolbarShell`, `DetailPanelSidebar`, `UserPoolList`, and the current `ImageInspectorCanvas`; preserves the original edge-to-edge canvas, 64px framed toolbar, and single modal close control |
 | `catalog/build-overlays.ts` | Upload phase `compressing` | Maps the same state to the current `processing` phase |
 | `catalog/build-stats-content.tsx` | Dashboard/layout components in UI and old progress primitive | Uses platform-page dashboard components, chart patterns, `SegmentedProgressBar`, primitives, and numeric tokens |
@@ -64,8 +66,12 @@ The source and target were compared by content rather than filename. The exact a
 | `catalog/use-catalog-extra-dialogs.ts` | Dialog state types from the former UI location | Imports current platform-page types |
 | `catalog/use-catalog-scene.ts` | Filter types from the former UI location and `compressing` phase | Uses platform-page types and the current `processing` phase |
 | `dashboard/build-widgets.tsx` | Dashboard widgets from the former UI pattern layer | Imports the extracted widgets from `@ingradient/platform-pages` |
-| `settings/build-storage-slots.tsx` | Storage UI in the former component layer | Uses platform-page storage components/types and current chart patterns |
-| `settings/use-settings-modal-scene.ts` | `RoleMatrix` in the former UI package and a shared member-search fixture field | Uses the extracted platform-page implementation and seeds the distinct invitation-search state used by its named story |
+| `create-project/create-project-story-{runtime,actions,plays}.*` | Inline form state and no executable Addon Panel contract | Supplies controlled form state, scoped Controls, 7 Action callbacks, 2 named workflows, handoff metadata, and blocking accessibility |
+| `dashboard/dashboard-story-{runtime,config,actions,plays}.*` | Inline Dashboard scene/comparison code, no-op callbacks, and non-deterministic descriptive states | Supplies controlled preferences/date/save state, scoped Controls, 10 Action callbacks, 4 named workflows, handoff metadata, and blocking accessibility |
+| `dashboard/dashboard-layout-studies.tsx` | Two side-by-side comparisons that duplicated the canonical grid and its landmarks | Preserves Compact Masonry and Sectioned Grid independently under the user-approved non-production `Layout Studies` group |
+| `settings/build-{view,admin,edge,storage}-*.tsx` | Static local state and no-op persistence callbacks | Preserves deterministic controlled state while reporting explicit General, Account, Project, Organization, Device, Storage, Edge, dialog, and navigation Action payloads |
+| `settings/use-settings-modal-scene.ts` | `RoleMatrix` in the former UI package and incomplete scenario resets | Uses the extracted platform-page implementation and resets every scenario-owned organization, invitation, join-code, project, dialog, and device field deterministically |
+| `settings/settings-modal-story-{runtime,actions,plays}.*` | No shared Settings Addon Panel or interaction contract | Supplies scoped Controls, 12 explicit Action callbacks, 8 named play workflows, handoff metadata, and blocking accessibility checks |
 
 No substitute component had to be invented and no visual area had to be replaced with one-off hardcoded markup. Existing product copy and story fixture values remain literal where they are the content being demonstrated.
 
@@ -82,9 +88,21 @@ The file move and visual comparison exposed several component migration defects 
 - Settings restores its inherited one-column narrow layout, preventing its navigation rail from compressing mobile content to an unusable strip.
 - Settings admin content no longer flex-shrinks the Members section; all five member rows remain visible before Invitations, while dense tables use a readable tokenized minimum width with horizontal scrolling on mobile.
 - Storage overview and paired charts use auto-fit minimums, keeping metric cards and chart content readable instead of compressing values character by character.
+- Settings is exposed as a named modal dialog; General checkboxes, Admin action columns, invitation/join-code fields, issued tokens, project description, Edge device name, and Deflectometry preview now have explicit accessible names.
+- Storage statistics tables expose distinct landmark names instead of repeated generic regions.
+- The Deflectometry project badge uses the existing strong-accent/on-accent token pair, raising its rendered contrast from the measured 2.83:1 baseline to 5.46:1 without changing layout.
 - ClassManage rows use the shared `SelectableListItem` directly, preserving the source blue selected-class affordance and semantic list item output.
+- Class Management sequence badges derive their value from the actual sibling count instead of a hard-coded `4`.
+- Class lightbox pattern tabs now update the displayed image URL together with the selected sibling metadata and annotations.
+- Class details use level-two section headings, preserving a valid heading hierarchy when the class sidebar is collapsed without changing appearance.
 - Storage metrics and project-resolution metadata use block text elements so labels, values, titles, and metadata do not visually concatenate.
 - Dashboard loading content now renders a valid `div` container instead of nesting a layout `div` inside a paragraph.
+- Dashboard drag attributes now belong to the existing `DragHandle` button instead of a button-role wrapper containing both drag and download controls.
+- Dashboard Customize uses a labelled checkbox group rather than a menu role with non-menu children, and source tables include camera IPs in their landmark names.
+- `DraggableAnalysisWidgetGrid` keeps its hook order stable when Customize transitions from visible widgets to the all-hidden state; a focused rerender regression protects this path.
+- Dashboard no-analysis data now has distinct copy from the user-configured all-widgets-hidden state.
+- Platform Auth page composition now belongs to `@ingradient/platform-pages`; operational stories are thin fixture/runtime adapters like the other Platform pages.
+- Login and Signup fields have explicit accessible names and controlled callbacks. The user-approved underline distinguishes inline navigation links from surrounding copy without changing their color or layout.
 
 Focused regression tests cover the grid/dialog boundaries and the Catalog detail, Settings text layout, and Dashboard loading regressions.
 
@@ -97,19 +115,38 @@ Focused regression tests cover the grid/dialog boundaries and the Catalog detail
 
 ## Verification Contract
 
-The migration is complete only when all of the following remain true:
+The current migration and consolidation are complete only when all of the following remain true:
 
-1. Old and target Storybook indexes expose the same 157 Platform `0.0.1` story IDs.
+1. The target Storybook index exposes 10 Auth, 40 Dataset Catalog, 24 Class Management, 5 Create Project, 33 Settings Modal, and 16 Dashboard stories under their purpose groups, with no retired flat page IDs.
 2. Unit tests pass for the adapted page components.
 3. Storybook builds successfully.
-4. Page probes render Catalog, ClassManage, CreateProject, Dashboard, and SettingsModal states without product console errors.
+4. Page probes render Auth, Dataset Catalog, Class Management, Create Project, Dashboard, and Settings Modal states without product console errors.
 5. Visual captures at 375px, 768px, and 1280px show usable primary content for responsive pages. The source has no ClassManage mobile shell; its three-pane workspace stories are therefore reference-checked at tablet/laptop, while its status and collapsed variants remain the available narrow states.
 
 The project-wide visual and browser evidence for the completed run is recorded below.
 
-## Final Verification Evidence
+## Current consolidation verification evidence
 
-The final comparison was repeated after all fidelity repairs and after waiting for every image element to finish loading.
+| Check | Current result |
+|---|---|
+| Live and static Storybook indexes | Auth 10 / 6 groups, Dataset Catalog 40 / 8 groups, Class Management 24 / 7 groups, Create Project 5 / 3 groups, Settings Modal 33 / 7 groups, Dashboard 16 / 6 groups; 0 retired flat IDs for all six product areas |
+| TypeScript and lint | `tsc --noEmit`, source ESLint, page-package Stylelint, all changed Auth/story/package focused ESLint, Auth Node probe syntax, and `git diff --check` passed. Source ESLint retained 4 existing warnings and no errors. |
+| Unit tests | 57 files, 220 tests passed, including controlled Login/Signup callbacks, unique simultaneous Auth message IDs, deterministic Dashboard date presets, arrow-key widget reordering, visible→all-hidden hook order, and sibling-control regressions |
+| Focused Storybook MCP | Auth 10/10, Create Project 5/5, and Dashboard 16/16 passed their named workflows plus blocking accessibility. Auth's former 10 serious inline-link violations were resolved by the user-approved underline; sign-in and account-creation workflows passed again after static-effect settling. |
+| Full Storybook MCP checkpoint | The clean 8GB server-side suite immediately before the final simultaneous-message ID hardening completed with 213 files / 493 tests passed in 287.93s. The addon again closed the MCP HTTP connection while serializing the complete result after success; the directly observed server summary is the source of truth. On the exact final source, Auth passed focused MCP 10/10, unit 57/220, package/static builds, and the 12-case production probe twice consecutively. |
+| Package build | UI, platform-pages, and edge-pages JavaScript/DTS builds passed |
+| Storybook production build | Passed; 4,548 modules transformed |
+| Static browser probes | 89/89 passed with no product console errors: Auth 12, Catalog 22, Class Management 16, Create Project 5, Settings Modal 18, Dashboard 16 |
+| Responsive browser review | Auth Login/Signup and Create Project at 1280×900 and 375×812, plus Dashboard at 1280×900, 768×1024, and 375×812, each measured 0px document overflow. Auth form width/height matched the pre-extraction baseline and only the approved link underline changed. Dashboard exposed 8 sibling drag controls, 8 sibling download controls, 0 nested buttons, direct arrow-key reordering with polite feedback, and unique table landmark names. |
+| Canonical visual targets | Auth uses `pages-platform-0-0-1-auth-login-workspace--overview` and `pages-platform-0-0-1-auth-signup-workspace--overview`; Create Project and Dashboard retain their grouped canonical IDs. Auth's Linux baselines need an intentional underline update; no Darwin capture may replace them. |
+
+The renamed Dataset Catalog, Class Management, and Create Project Linux baselines were preserved rather than silently regenerated. Auth Login/Signup need intentional Linux baseline updates for the approved underline, while Settings Modal and Dashboard still need their first approved Linux baselines on a Linux runner; do not substitute discarded Darwin captures.
+
+Repository-wide `check:style-literals` and `check:doc-coverage` remain blocked by existing files outside the six Platform product areas: the former reports raw literals in component/pattern stories/tests and `number-field.tsx`; the latter reports 14 already-missing Storybook seed files. No Auth, Create Project, or Dashboard path appears in either failure list. `validate:consumer-smoke` rebuilds all three packages successfully but the consumer's stricter `noUnusedLocals` check stops on five existing React/useRef imports in shared source; none belongs to these migrated pages.
+
+## Historical migration verification evidence
+
+The table below records the pre-consolidation migration run. Current consolidation evidence is reported above by focused/full Storybook MCP tests, the 89-case six-product-area probe set, and the surviving canonical visual references.
 
 | Check | Result |
 |---|---|
@@ -125,4 +162,4 @@ The final comparison was repeated after all fidelity repairs and after waiting f
 
 The 20 narrow-width overflow observations are exactly the 20 ClassManage three-pane workspace states described in the accepted-debt note; Catalog and Settings have no remaining page-level horizontal overflow. The original source supplies no alternative ClassManage mobile workspace design to transfer.
 
-Project-wide `tsc --noEmit` remains blocked by ten pre-existing generic `Table` assignment errors outside this migration's changed behavior: `packages/edge-pages/src/statics/SessionChartsView.tsx`, `packages/platform-pages/src/dashboard/EdgeAnalyticsSection.tsx`, and the dashboard labeling/person, dataset-distribution, and source-breakdown widgets. The broader Storybook interaction run likewise retains 13 unrelated component/Edge failures; all Platform page stories passed the add-on accessibility run. These unrelated failures were not changed or hidden by this migration.
+At the time of the historical run, project-wide `tsc --noEmit` was blocked by ten generic `Table` assignment errors and the broader Storybook run retained 13 unrelated component/Edge failures. The current consolidation evidence above supersedes those historical limitations: TypeScript and the consolidated 493-test Storybook run now pass.

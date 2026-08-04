@@ -60,6 +60,7 @@ export function JoinCodesSection({
       ? [{
           key: 'actions',
           header: '',
+          headerAriaLabel: 'Actions',
           render: (r: JoinCodeRow) => (
             <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onDelete(r.id)}>Delete</Button>
           ),
@@ -87,6 +88,7 @@ export function JoinCodesSection({
             value={codeMaxUses}
             onChange={(e) => onChangeCodeMaxUses(e.target.value.replace(/\D/g, ''))}
             style={MAX_USES_STYLE}
+            aria-label="Max uses"
             title="Max uses"
           />
           <Button

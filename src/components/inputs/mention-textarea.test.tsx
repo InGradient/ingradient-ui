@@ -21,19 +21,19 @@ describe('MentionTextarea', () => {
   it('calls onChange on typing', () => {
     const onChange = vi.fn()
     render(<MentionTextarea value="" onChange={onChange} candidates={candidates} />)
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'hi' } })
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'hi' } })
     expect(onChange).toHaveBeenCalledWith('hi')
   })
 
   it('calls onSubmit with Ctrl+Enter', () => {
     const onSubmit = vi.fn()
     render(<MentionTextarea value="hello @Alice" onChange={() => {}} candidates={candidates} onSubmit={onSubmit} />)
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter', ctrlKey: true })
+    fireEvent.keyDown(screen.getByRole('combobox'), { key: 'Enter', ctrlKey: true })
     expect(onSubmit).toHaveBeenCalledWith('hello @Alice', ['1'])
   })
 
   it('respects maxLength', () => {
     render(<MentionTextarea value="" onChange={() => {}} candidates={candidates} maxLength={10} />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('maxlength', '10')
+    expect(screen.getByRole('combobox')).toHaveAttribute('maxlength', '10')
   })
 })

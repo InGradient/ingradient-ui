@@ -62,7 +62,13 @@ export function DeflectometryPreview({
         ))}
       </BadgeRow>
       <CanvasFrame>
-        <canvas ref={canvasRef} width={PREVIEW_WIDTH} height={PREVIEW_HEIGHT} />
+        <canvas
+          ref={canvasRef}
+          width={PREVIEW_WIDTH}
+          height={PREVIEW_HEIGHT}
+          role="img"
+          aria-label={`Deflectometry pattern preview: ${formatBadgeLabel ? formatBadgeLabel(selected) : selected}`}
+        />
       </CanvasFrame>
       <PreviewHint>
         Pattern: <strong>{selected}</strong> · period {config.fringe_period_default}px

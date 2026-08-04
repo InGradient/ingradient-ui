@@ -20,6 +20,8 @@ function GripIcon() {
 export type TableColumn<T> = {
   key: string
   header: string
+  /** Accessible name for intentionally icon-only or visually empty headers. */
+  headerAriaLabel?: string
   /** 고정 컬럼 너비 (px 또는 CSS 길이). */
   width?: string | number
   /** Right-align cell + header, tabular-nums (숫자 정렬). */
@@ -31,9 +33,11 @@ export type TableColumn<T> = {
   render: (row: T) => React.ReactNode
 }
 
-export type TableProps<T extends { id?: string | number }> = {
+export type TableProps<T> = {
   columns: TableColumn<T>[]
   rows: T[]
+  /** Stable row identity. Falls back to a string/number `id`, then the row index. */
+  getRowKey?: (row: T, index: number) => React.Key
   /** Row click handler */
   onRowClick?: (row: T, index: number) => void
   /** Enable drag-to-reorder rows. Default: false */
@@ -49,9 +53,10 @@ export type TableProps<T extends { id?: string | number }> = {
   footer?: React.ReactNode[]
 }
 
-export function Table<T extends { id?: string | number }>({
+export function Table<T>({
   columns,
   rows,
+  getRowKey,
   onRowClick,
   draggable = false,
   onReorder,
@@ -91,14 +96,20 @@ export function Table<T extends { id?: string | number }>({
           <thead>
             <tr>
               {columns.map((col) => (
-                <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
+                <Th
+                  key={col.key}
+                  style={{ width: col.width }}
+                  $numeric={col.numeric}
+                >
+                  {col.header || (col.headerAriaLabel ? <VisuallyHidden>{col.headerAriaLabel}</VisuallyHidden> : null)}
+                </Th>
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((row, i) => (
               <PlainTr
-                key={row.id ?? i}
+                key={resolveRowKey(row, i, getRowKey)}
                 $clickable={!!onRowClick}
                 onClick={() => onRowClick?.(row, i)}
               >
@@ -131,14 +142,20 @@ export function Table<T extends { id?: string | number }>({
               <VisuallyHidden>Reorder</VisuallyHidden>
             </DragTh>
             {columns.map((col) => (
-              <Th key={col.key} style={{ width: col.width }} $numeric={col.numeric}>{col.header}</Th>
+              <Th
+                key={col.key}
+                style={{ width: col.width }}
+                $numeric={col.numeric}
+              >
+                {col.header || (col.headerAriaLabel ? <VisuallyHidden>{col.headerAriaLabel}</VisuallyHidden> : null)}
+              </Th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <StyledTr
-              key={row.id ?? i}
+              key={resolveRowKey(row, i, getRowKey)}
               $clickable={!!onRowClick}
               $yOffset={getOffset(i)}
               $isDragging={fromIdx === i}
@@ -168,6 +185,19 @@ export function Table<T extends { id?: string | number }>({
       </StyledTable>
     </TableWrap>
   )
+}
+
+function resolveRowKey<T>(
+  row: T,
+  index: number,
+  getRowKey: TableProps<T>['getRowKey'],
+): React.Key {
+  if (getRowKey) return getRowKey(row, index)
+  if (typeof row === 'object' && row !== null && 'id' in row) {
+    const id = (row as { id?: unknown }).id
+    if (typeof id === 'string' || typeof id === 'number') return id
+  }
+  return index
 }
 
 export const DataGrid = Table

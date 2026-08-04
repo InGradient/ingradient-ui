@@ -82,6 +82,7 @@ export function GalleryImagesTable({
     {
       key: 'select',
       header: '',
+      headerAriaLabel: 'Select images',
       width: 'var(--ig-catalog-gallery-table-col-select)',
       render: (row) => (
         <Checkbox
@@ -92,7 +93,7 @@ export function GalleryImagesTable({
         />
       ),
     },
-    { key: 'thumb', header: '', width: 'var(--ig-catalog-gallery-table-col-thumb)', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
+    { key: 'thumb', header: '', headerAriaLabel: 'Image preview', width: 'var(--ig-catalog-gallery-table-col-thumb)', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
     { key: 'name', header: 'Name', width: 'var(--ig-catalog-gallery-table-col-name)', render: (row) => renderTextCell(row.name) },
     {
       key: 'dataset', header: 'Dataset',
@@ -120,6 +121,7 @@ export function GalleryImagesTable({
     { key: 'labeled', header: 'Labeled', width: 'var(--ig-catalog-gallery-table-col-labeled)', render: (row) => row.labeled_at ? 'Yes' : 'No' },
     {
       key: 'menu', header: '',
+      headerAriaLabel: 'Image actions',
       width: 'var(--ig-catalog-gallery-table-col-menu)',
       render: (row) => (
         <RowMenuButton

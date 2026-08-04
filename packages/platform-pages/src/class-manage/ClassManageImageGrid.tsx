@@ -22,6 +22,13 @@ export function ClassManageImageGrid({
   onOpenImage,
   onOpenContextMenu,
 }: Props) {
+  const sequenceCounts = images.reduce<Map<string, number>>((counts, image) => {
+    if (image.sequence_id) {
+      counts.set(image.sequence_id, (counts.get(image.sequence_id) ?? 0) + 1)
+    }
+    return counts
+  }, new Map())
+
   return (
     <ImageGrid
       items={images}
@@ -50,7 +57,7 @@ export function ClassManageImageGrid({
         />
       )}
       renderCellTopRight={(img: ClassImage) =>
-        img.sequence_id ? <Badge $tone="neutral">4</Badge> : null
+        img.sequence_id ? <Badge $tone="neutral">{sequenceCounts.get(img.sequence_id)}</Badge> : null
       }
     />
   )

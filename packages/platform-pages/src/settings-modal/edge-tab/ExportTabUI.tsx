@@ -123,6 +123,7 @@ export function ExportTabUI({
         <FieldRow>
           <TextField
             id="device-name"
+            aria-label="Device name"
             type="text"
             value={deviceName}
             onChange={(e) => onDeviceNameChange(e.target.value)}

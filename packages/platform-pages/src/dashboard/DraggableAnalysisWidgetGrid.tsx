@@ -1,17 +1,26 @@
-import { useCallback, type ReactNode } from 'react'
-import { DndContext, DragOverlay, pointerWithin, useDraggable, useDroppable } from '@dnd-kit/core'
+import { useCallback, useState, type KeyboardEvent, type ReactNode } from 'react'
+import {
+  DndContext,
+  DragOverlay,
+  pointerWithin,
+  useDraggable,
+  useDroppable,
+} from '@dnd-kit/core'
 import { DragHandle } from '@ingradient/ui'
 import { AnalysisWidgetShell } from './analysis-widget-shell'
 import { useWidgetDragLayout } from './use-widget-drag-layout'
 import {
   rowBelowDropId,
+  moveWidgetByKeyboard,
   widgetDragId,
   widgetDropId,
   type WidgetEdgeDropPosition,
+  type WidgetKeyboardDirection,
 } from './widget-layout'
 import {
   DragOverlayCard,
   DragOverlayTitle,
+  KeyboardStatus,
   Row,
   RowDropIndicator,
   RowDropZone,
@@ -32,6 +41,11 @@ export interface DraggableAnalysisWidgetGridProps<K extends string> {
   className?: string
 }
 
+const SCREEN_READER_INSTRUCTIONS = {
+  draggable:
+    'Use the arrow keys on the drag handle to move this widget, or drag it with a pointer.',
+}
+
 export function DraggableAnalysisWidgetGrid<K extends string>({
   layout,
   widgets,
@@ -44,15 +58,12 @@ export function DraggableAnalysisWidgetGrid<K extends string>({
   className,
 }: DraggableAnalysisWidgetGridProps<K>) {
   const drag = useWidgetDragLayout<K>(layout, widgetKeys, onLayoutChange)
+  const [keyboardAnnouncement, setKeyboardAnnouncement] = useState('')
 
   const isVisible = (key: K) => visibility?.[key] !== false && !!widgets[key]
   const visibleRows = drag.normalizedLayout
     .map((row) => row.filter(isVisible))
     .filter((row) => row.length > 0)
-
-  if (visibleRows.length === 0 && emptyState) {
-    return <>{emptyState}</>
-  }
 
   const handleDownload = useCallback(
     (key: K) => {
@@ -61,10 +72,25 @@ export function DraggableAnalysisWidgetGrid<K extends string>({
     [onDownloadWidget, drag.widgetRefs],
   )
 
+  const handleKeyboardMove = useCallback(
+    (key: K, direction: WidgetKeyboardDirection) => {
+      const next = moveWidgetByKeyboard(drag.normalizedLayout, key, direction, widgetKeys)
+      if (!next) return
+      onLayoutChange?.(next)
+      setKeyboardAnnouncement(`Moved ${widgetTitles[key]} ${direction}.`)
+    },
+    [drag.normalizedLayout, onLayoutChange, widgetKeys, widgetTitles],
+  )
+
+  if (visibleRows.length === 0 && emptyState) {
+    return <>{emptyState}</>
+  }
+
   return (
     <DndContext
       sensors={drag.sensors}
       collisionDetection={pointerWithin}
+      accessibility={{ screenReaderInstructions: SCREEN_READER_INSTRUCTIONS }}
       onDragStart={drag.handleDragStart}
       onDragOver={drag.handleDragOver}
       onDragEnd={drag.handleDragEnd}
@@ -90,11 +116,15 @@ export function DraggableAnalysisWidgetGrid<K extends string>({
                 showDropZone={(pos) =>
                   drag.dropPreview?.targetKey === key && drag.dropPreview.position === pos
                 }
+                onKeyboardMove={(direction) => handleKeyboardMove(key, direction)}
               />
             ))}
           </Row>
         ))}
       </Rows>
+      <KeyboardStatus role="status" aria-live="polite">
+        {keyboardAnnouncement}
+      </KeyboardStatus>
       <DragOverlay>
         {drag.draggingKey ? (
           <DragOverlayCard>
@@ -134,6 +164,7 @@ interface SlotProps<K extends string> {
   onDownload: () => void
   shellRef: (node: HTMLDivElement | null) => void
   showDropZone: (pos: 'before' | 'after') => boolean
+  onKeyboardMove: (direction: WidgetKeyboardDirection) => void
 }
 
 function WidgetSlot<K extends string>({
@@ -145,8 +176,15 @@ function WidgetSlot<K extends string>({
   onDownload,
   shellRef,
   showDropZone,
+  onKeyboardMove,
 }: SlotProps<K>) {
   const draggable = useDraggable({ id: widgetDragId(widgetKey) })
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const direction = event.key.replace('Arrow', '').toLowerCase()
+    if (!['left', 'right', 'up', 'down'].includes(direction)) return
+    event.preventDefault()
+    onKeyboardMove(direction as WidgetKeyboardDirection)
+  }
   return (
     <WidgetShell ref={shellRef} $dragging={dragging} $dropTarget={dropTarget} data-widget-key={widgetKey}>
       <EdgeDropZone widgetKey={widgetKey} position="before" active={showDropZone('before')} />
@@ -154,13 +192,17 @@ function WidgetSlot<K extends string>({
       <AnalysisWidgetShell
         onDownload={onDownload}
         extraActions={
-          <div
-            ref={draggable.setNodeRef}
-            {...draggable.attributes}
-            {...draggable.listeners}
-            aria-label={`Drag ${title}`}
-          >
-            <DragHandle ariaLabel={`Drag ${title}`} title="Drag to reorder" />
+          <div ref={draggable.setNodeRef}>
+            <DragHandle
+              ariaLabel={`Drag ${title}`}
+              title="Drag to reorder; use arrow keys for keyboard reordering"
+              buttonProps={{
+                ...draggable.attributes,
+                ...draggable.listeners,
+                'aria-keyshortcuts': 'ArrowLeft ArrowRight ArrowUp ArrowDown',
+                onKeyDown: handleKeyDown,
+              }}
+            />
           </div>
         }
       >

@@ -106,21 +106,17 @@ const base: SettingsScene = {
 }
 
 export type SettingsScenarioKey =
-  | 'default'
   | 'general'
   | 'account-default'
   | 'account-license-personal'
   | 'account-license-expired'
   | 'account-license-loading'
   | 'account-saved'
-  | 'account-password-dialog'
-  | 'account-password-mismatch'
   | 'account-delete-dialog'
   | 'account-delete-with-solo'
   | 'project-default'
   | 'project-deflectometry'
   | 'project-readonly'
-  | 'project-grouping-enabled'
   | 'project-saving'
   | 'project-name-invalid'
   | 'project-no-project'
@@ -135,7 +131,6 @@ export type SettingsScenarioKey =
   | 'admin-organization'
   | 'admin-org-saved'
   | 'admin-members'
-  | 'admin-invitations-search'
   | 'admin-devices'
   | 'admin-devices-loading'
   | 'admin-devices-token-issued'
@@ -145,27 +140,17 @@ export type SettingsScenarioKey =
   | 'non-admin'
 
 export const settingsScenarios: Record<SettingsScenarioKey, SettingsScene> = {
-  'default': base,
   'general': { ...base, initialTab: 'general' },
   'account-default': { ...base, initialTab: 'account' },
   'account-license-personal': { ...base, initialTab: 'account', license: personalLicense },
   'account-license-expired': { ...base, initialTab: 'account', license: expiredLicense },
   'account-license-loading': { ...base, initialTab: 'account', license: null },
   'account-saved': { ...base, initialTab: 'account', accountMessage: 'Saved.' },
-  'account-password-dialog': { ...base, initialTab: 'account', passwordDialogOpen: true },
-  'account-password-mismatch': {
-    ...base, initialTab: 'account', passwordDialogOpen: true,
-    passwordCurrent: 'old', passwordNew: 'newpassword', passwordConfirm: 'different',
-  },
   'account-delete-dialog': { ...base, initialTab: 'account', deleteAccountDialogOpen: true, deleteAccountPreview: { solo_projects: [], requires_resolution: defaultPreview.requires_resolution } },
   'account-delete-with-solo': { ...base, initialTab: 'account', deleteAccountDialogOpen: true, deleteAccountPreview: defaultPreview },
   'project-default': { ...base, initialTab: 'project' },
   'project-deflectometry': { ...base, initialTab: 'project', currentProject: mockDeflectometryProject },
   'project-readonly': { ...base, initialTab: 'project', canEditProject: false, isProjectOwner: false },
-  'project-grouping-enabled': {
-    ...base, initialTab: 'project',
-    currentProject: { ...mockProject, groupEnabled: true, groupRegex: '^([^_]+_[^_]+)_', groupRepRegex: '_x_orig\\.png$' },
-  },
   'project-saving': { ...base, initialTab: 'project', saveState: 'saving' },
   'project-name-invalid': {
     ...base, initialTab: 'project', nameInvalid: true,
@@ -183,10 +168,6 @@ export const settingsScenarios: Record<SettingsScenarioKey, SettingsScene> = {
   'admin-organization': { ...base, initialTab: 'admin', initialAdminSubTab: 'organization' },
   'admin-org-saved': { ...base, initialTab: 'admin', initialAdminSubTab: 'organization', orgSavingMessage: 'Saved' },
   'admin-members': { ...base, initialTab: 'admin', initialAdminSubTab: 'members-invitations' },
-  'admin-invitations-search': {
-    ...base, initialTab: 'admin', initialAdminSubTab: 'members-invitations',
-    inviteSearchQuery: 'sangha',
-  },
   'admin-devices': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices' },
   'admin-devices-loading': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices', deviceLoading: true },
   'admin-devices-token-issued': { ...base, initialTab: 'admin', initialAdminSubTab: 'devices', hasIssuedToken: true },

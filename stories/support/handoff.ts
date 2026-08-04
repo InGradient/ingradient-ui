@@ -12,7 +12,7 @@ export interface Handoff {
   service: 'platform' | 'edge' | 'medical'
   version: string
   page: string
-  /** Storybook navigation 의 reference story 경로. 예: "Pages / Platform / 0.0.1 / Catalog / Default" */
+  /** Storybook navigation 의 reference story 경로. 예: "Pages / Platform / 0.0.1 / Dataset Catalog / Workspace / Overview" */
   referenceStory: string
   /** 사용 preset id. 예: "platform-0.0.1" */
   preset: string

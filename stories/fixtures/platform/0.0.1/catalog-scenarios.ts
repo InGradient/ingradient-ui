@@ -70,21 +70,16 @@ export type CatalogScenarioKey =
   | 'loading-datasets' | 'loading-images'
   | 'error' | 'permission-denied' | 'no-project'
   | 'many-images' | 'long-text'
-  | 'multi-selection' | 'mixed-sync' | 'archived' | 'processing' | 'group-mode'
-  | 'search-results' | 'sort-name-desc'
-  | 'hover-preview' | 'detail-open' | 'filter-open' | 'sort-open' | 'image-menu-open' | 'dataset-menu-open'
-  | 'drag-over-sidebar' | 'drag-over-grid' | 'upload-pending' | 'sidebar-collapsed'
+  | 'multi-selection' | 'filter-active'
+  | 'filter-open' | 'sort-open' | 'image-menu-open' | 'dataset-menu-open'
+  | 'drag-over-sidebar' | 'drag-over-grid' | 'drag-over-full' | 'sidebar-collapsed'
   | 'table-view' | 'stats-view'
-  | 'right-empty-classes' | 'right-loading' | 'right-many-classes' | 'member-overflow'
-  | 'filter-active'
-  | 'stats-rich' | 'stats-empty'
-  | 'modal-add-dataset' | 'modal-duplicate' | 'modal-drag-drop' | 'modal-igp-export-progress' | 'modal-igp-export-ready'
-  | 'modal-upload-quality' | 'modal-confirm-class-removal' | 'modal-confirm-dataset-deletion'
-  | 'modal-bulk-delete' | 'modal-export-config' | 'modal-export-progress' | 'modal-export-complete'
-  | 'modal-transfer-copy' | 'modal-transfer-move'
-  | 'upload-in-progress' | 'drag-over-full'
-  | 'detail-with-annotations' | 'detail-with-comments' | 'detail-multi-class'
-  | 'image-menu-submenu' | 'image-menu-archived' | 'image-menu-clipboard-ready'
+  | 'stats-empty'
+  | 'right-empty-classes' | 'right-loading' | 'dataset-details-overflow'
+  | 'modal-add-dataset' | 'modal-igp-export-progress' | 'modal-upload-quality'
+  | 'modal-bulk-delete' | 'modal-export-config' | 'modal-transfer-move'
+  | 'upload-in-progress'
+  | 'detail-with-comments'
   | 'mobile-default' | 'mobile-dataset-dropdown-open' | 'mobile-bottom-filter' | 'mobile-bottom-sort'
 
 const datasetD1Images = mockImages.filter((img) => img.dataset_id === 'd1')
@@ -124,53 +119,33 @@ export const catalogScenarios: Record<CatalogScenarioKey, CatalogScene> = {
   'many-images': { ...base, images: manyImages() },
   'long-text': { ...base, images: longName(8) },
   'multi-selection': { ...base, selectedImageIds: ['img-1', 'img-2', 'img-3'] },
-  'mixed-sync': { ...base, images: datasetD1Images.slice(0, 9) },
-  'archived': { ...base, images: datasetD1Images.map((img, i) => i % 3 === 0 ? { ...img, archived: true } : img) },
-  'processing': { ...base, images: datasetD1Images.map((img, i) => i < 3 ? { ...img, processing: true, sync_state: 'uploading' } : img), uploadProgress: 42 },
-  'group-mode': { ...base, images: datasetD1Images.map((img, i) => i % 2 === 0 ? { ...img, group_count: 3 + i } : img) },
-  'search-results': { ...base, searchValue: '20230808' },
-  'sort-name-desc': { ...base, sortValue: 'name-desc' },
-  'hover-preview': { ...base, hoverImageId: 'img-1' },
-  'detail-open': { ...base, detailImageId: 'img-1' },
+  'filter-active': { ...base, filterActive: true },
   'filter-open': { ...base, filterOpen: 'status' },
   'sort-open': { ...base, filterOpen: 'sort' },
   'image-menu-open': { ...base, imageMenuOpenId: 'img-2' },
   'dataset-menu-open': { ...base, datasetMenuOpenId: 'd2' },
   'drag-over-sidebar': { ...base, dragOverDatasetId: 'd3' },
   'drag-over-grid': { ...base, dragOverGrid: true },
-  'upload-pending': { ...base, uploadProgress: 67 },
+  'drag-over-full': { ...base, dragOverFull: true },
   'sidebar-collapsed': { ...base, sidebarCollapsed: true },
   'table-view': { ...base, viewMode: 'table' },
   'stats-view': { ...base, viewMode: 'stats' },
+  'stats-empty': { ...base, viewMode: 'stats', images: [] },
   'right-empty-classes': { ...base, connectedClassIds: [] },
   'right-loading': { ...base, classesLoading: true, membersLoading: true, classes: [], members: [] },
-  'right-many-classes': { ...base, connectedClassIds: mockClasses.map((c) => c.id) },
-  'member-overflow': { ...base, members: mockMembers },
-  'filter-active': { ...base, filterActive: true },
-  'stats-rich': { ...base, viewMode: 'stats' },
-  'stats-empty': { ...base, viewMode: 'stats', images: [] },
+  'dataset-details-overflow': {
+    ...base,
+    connectedClassIds: mockClasses.map((c) => c.id),
+    members: mockMembers,
+  },
   'modal-add-dataset': { ...base, addDatasetOpen: true },
-  'modal-duplicate': { ...base, duplicateDatasetId: 'd1' },
-  'modal-drag-drop': { ...base, dragDropOpen: true },
   'modal-igp-export-progress': { ...base, igpExportOpen: true, igpExportPhase: 'processing' },
-  'modal-igp-export-ready': { ...base, igpExportOpen: true, igpExportPhase: 'ready' },
   'modal-upload-quality': { ...base, uploadQualityOpen: true },
-  'modal-confirm-class-removal': { ...base, pendingClassRemovalId: 'cl-1' },
-  'modal-confirm-dataset-deletion': { ...base, pendingDatasetDeletionId: 'd1' },
   'modal-bulk-delete': { ...base, selectedImageIds: ['img-1', 'img-2', 'img-3'], bulkDeleteOpen: true },
   'modal-export-config': { ...base, selectedImageIds: ['img-1', 'img-2', 'img-3'], exportConfigOpen: true },
-  'modal-export-progress': { ...base, exportProgressOpen: true, exportProgressStage: 'running' },
-  'modal-export-complete': { ...base, exportProgressOpen: true, exportProgressStage: 'completed' },
-  'modal-transfer-copy': { ...base, selectedImageIds: ['img-1', 'img-2'], datasetTransferAction: 'copy' },
   'modal-transfer-move': { ...base, selectedImageIds: ['img-1', 'img-2'], datasetTransferAction: 'move' },
   'upload-in-progress': { ...base, uploadProgress: 32 },
-  'drag-over-full': { ...base, dragOverFull: true },
-  'detail-with-annotations': { ...base, detailImageId: 'img-1', detailVariant: 'with-annotations' },
   'detail-with-comments': { ...base, detailImageId: 'img-1', detailVariant: 'with-comments' },
-  'detail-multi-class': { ...base, detailImageId: 'img-1', detailVariant: 'multi-class' },
-  'image-menu-submenu': { ...base, imageMenuOpenId: 'img-2', imageMenuSubmenu: 'copy-to' },
-  'image-menu-archived': { ...base, imageMenuOpenId: 'img-2', imageIsArchived: true },
-  'image-menu-clipboard-ready': { ...base, imageMenuOpenId: 'img-2', clipboardHasImages: true },
   'mobile-default': { ...base, isMobile: true },
   'mobile-dataset-dropdown-open': { ...base, isMobile: true, mobileDatasetDropdownOpen: true },
   'mobile-bottom-filter': { ...base, isMobile: true, mobileBottomSheet: 'filter' },

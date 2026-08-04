@@ -32,7 +32,7 @@ describe('ClassListSidebar', () => {
     expect(onOpenClassMenu).toHaveBeenCalledWith('c-1', expect.any(HTMLElement))
   })
 
-  it('keeps the shared selected-row styling contract for semantic list items', () => {
+  it('keeps the shared selected-row styling contract for list buttons', () => {
     render(
       <ClassListSidebar
         classes={[{ id: 'c-1', name: 'Crack', color: '#ef4444' }]}
@@ -40,9 +40,9 @@ describe('ClassListSidebar', () => {
       />,
     )
 
-    const row = screen.getByRole('option', { name: 'Crack' })
+    const row = screen.getByRole('button', { name: 'Crack' })
     expect(row).toHaveAttribute('data-ig-component', 'SelectableListItem')
     expect(row).not.toHaveAttribute('variant')
-    expect(row).toHaveAttribute('aria-selected', 'true')
+    expect(row).toHaveAttribute('aria-current', 'true')
   })
 })

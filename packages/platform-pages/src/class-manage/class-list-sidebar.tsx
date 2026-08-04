@@ -85,7 +85,7 @@ export function ClassListSidebar({
   onSelectClass, onAddClass, onCollapse, onOpenClassMenu,
 }: ClassListSidebarProps) {
   return (
-    <Sidebar $flush={flush}>
+    <Sidebar $flush={flush} aria-label={title}>
       <Header>
         <Title>{title}</Title>
         <HeaderActions>
@@ -104,7 +104,7 @@ export function ClassListSidebar({
       ) : classes.length === 0 ? (
         <EmptyState>{emptyText}</EmptyState>
       ) : (
-        <List role="listbox" aria-label="Classes">
+        <List aria-label="Classes">
           {classes.map((c) => (
             <ClassListRow
               key={c.id}

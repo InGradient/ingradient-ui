@@ -65,6 +65,7 @@ export function CatalogToolbarRow({
       ) : undefined}
       search={
         <SearchField
+          aria-label="Search file name"
           placeholder="Search file name"
           size="sm"
           value={searchValue}
@@ -81,6 +82,7 @@ export function CatalogToolbarRow({
             icon={<FilterIcon size={iconSizeNumbers.lg} />}
             active={hasActiveFilter}
             defaultOpen={filterDefaultOpen}
+            panelAriaLabel="Filter images"
             panel={
               <GalleryFilterPanel
                 state={filterState}

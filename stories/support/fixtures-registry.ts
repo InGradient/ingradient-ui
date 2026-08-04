@@ -12,7 +12,8 @@ import {
   classScenarios,
   createProjectScenarios,
   mockUsers,
-  platformAuthScenarios,
+  platformLoginScenarios,
+  platformSignupScenarios,
   platformV001Preset,
 } from '../fixtures/platform/0.0.1'
 import { edgeV001Preset, mockDatasets, mockDevices, mockLicense } from '../fixtures/edge/0.0.1'
@@ -20,7 +21,10 @@ import { medicalV001Preset, mockCases, mockClasses } from '../fixtures/medical/0
 
 export interface PlatformFixtures {
   users: typeof mockUsers
-  auth: typeof platformAuthScenarios
+  auth: {
+    login: typeof platformLoginScenarios
+    signup: typeof platformSignupScenarios
+  }
   catalog: typeof catalogScenarios
   classes: typeof classScenarios
   createProject: typeof createProjectScenarios
@@ -50,7 +54,10 @@ export const fixturesRegistry: FixturesRegistry = {
   platform: {
     '0.0.1': {
       users: mockUsers,
-      auth: platformAuthScenarios,
+      auth: {
+        login: platformLoginScenarios,
+        signup: platformSignupScenarios,
+      },
       catalog: catalogScenarios,
       classes: classScenarios,
       createProject: createProjectScenarios,

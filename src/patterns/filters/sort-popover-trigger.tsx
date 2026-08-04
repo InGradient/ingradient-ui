@@ -67,6 +67,7 @@ export function SortPopoverTrigger({
       label={label ?? (iconOnly ? 'Sort' : `Sort: ${current?.label ?? '—'}`)}
       defaultOpen={defaultOpen}
       panelMinWidth={popupSizeNumbers.listMin}
+      panelAriaLabel="Sort options"
       panel={<SortOptionList options={options} value={value} onChange={onChange} />}
     />
   )

@@ -18,7 +18,7 @@ const CLASS_LIST_STYLE = {
   paddingRight: 'var(--ig-space-1)',
 }
 
-const ClassRow = styled.label`
+const ClassRow = styled.div`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
@@ -114,6 +114,7 @@ export function AddDatasetModal({
             {classes.map((c) => (
               <ClassRow key={c.id}>
                 <Checkbox
+                  aria-label={`Connect class ${c.name}`}
                   checked={classIds.has(c.id)}
                   onChange={(e) => {
                     const next = new Set(classIds)

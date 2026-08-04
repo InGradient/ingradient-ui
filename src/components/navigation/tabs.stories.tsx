@@ -38,8 +38,8 @@ export const Playground: Story = {
     return <Tabs {...args} value={value} onChange={setValue} />
   },
   play: async ({ canvas, userEvent }) => {
-    await userEvent.click(canvas.getByRole('button', { name: 'Activity' }))
-    await expect(canvas.getByRole('button', { name: 'Activity' })).toBeInTheDocument()
+    await userEvent.click(canvas.getByRole('tab', { name: 'Activity' }))
+    await expect(canvas.getByRole('tab', { name: 'Activity' })).toBeInTheDocument()
   },
 }
 

@@ -19,16 +19,16 @@ import type {
   CatalogImagesPaneProps,
   CatalogMobilePaneProps,
   CatalogPagePaneProps,
+  CatalogMobileViewMode,
   CatalogToolbarPaneProps,
 } from './types'
 
 interface Props {
   page: CatalogPagePaneProps
   datasets: CatalogDatasetsPaneProps
-  toolbar: CatalogToolbarPaneProps
+  toolbar: CatalogToolbarPaneProps<CatalogMobileViewMode>
   images: CatalogImagesPaneProps
   mobile: CatalogMobilePaneProps
-  statsContent?: import('react').ReactNode
 }
 
 export function CatalogMobileView({
@@ -37,7 +37,6 @@ export function CatalogMobileView({
   toolbar,
   images,
   mobile,
-  statsContent,
 }: Props) {
   const defaultSortValue = toolbar.sortOptions[0]?.value
 
@@ -49,6 +48,7 @@ export function CatalogMobileView({
             options={datasets.datasets.map((d) => ({ id: d.id, name: d.name }))}
             currentId={datasets.currentId}
             loading={datasets.loading}
+            listboxAriaLabel="Datasets"
             open={mobile.datasetSelectorOpen}
             onToggle={mobile.onSetDatasetSelectorOpen}
             onSelect={(id) => datasets.onSelectCurrent(id)}
@@ -61,7 +61,6 @@ export function CatalogMobileView({
             viewMode={toolbar.viewMode}
             imagesPane={images}
             dragOverGrid={page.dragOverGrid}
-            statsContent={statsContent}
           />
         }
         bottomBar={

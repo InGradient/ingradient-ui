@@ -52,12 +52,13 @@ export interface FilterPopoverTriggerProps {
   defaultOpen?: boolean
   panelWidth?: number
   panelMinWidth?: number
+  panelAriaLabel?: string
   className?: string
 }
 
 export function FilterPopoverTrigger({
   label, icon, active = false, iconOnly = false, panel, defaultOpen = false,
-  panelWidth, panelMinWidth, className,
+  panelWidth, panelMinWidth, panelAriaLabel, className,
 }: FilterPopoverTriggerProps) {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const [open, setOpen] = useState(defaultOpen)
@@ -106,6 +107,7 @@ export function FilterPopoverTrigger({
               top={pos.top}
               left={pos.left}
               role="dialog"
+              aria-label={panelAriaLabel ?? (typeof label === 'string' ? `${label} options` : 'Options')}
               style={{
                 ...PANEL_BASE_STYLE,
                 ...(panelWidth ? { width: panelWidth } : {}),

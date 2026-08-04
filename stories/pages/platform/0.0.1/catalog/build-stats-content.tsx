@@ -21,7 +21,7 @@ export function buildStatsContent() {
         {
           id: 'data-collection',
           content: (
-            <DashboardWidget title="Images by dataset" subtitle="Last 30 days">
+            <DashboardWidget title="Images by dataset" titleAs="h2" subtitle="Last 30 days">
               <BarChartCard
                 data={dataCollectionData}
                 series={[{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]}
@@ -34,7 +34,7 @@ export function buildStatsContent() {
         {
           id: 'timeline',
           content: (
-            <DashboardWidget title="Images over time" subtitle="Weekly uploads">
+            <DashboardWidget title="Images over time" titleAs="h2" subtitle="Weekly uploads">
               <LineChartCard
                 data={timelineData}
                 series={[{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]}
@@ -47,7 +47,7 @@ export function buildStatsContent() {
         {
           id: 'labeling-status',
           content: (
-            <DashboardWidget title="Labeled vs unlabeled">
+            <DashboardWidget title="Labeled vs unlabeled" titleAs="h2">
               <PieChartCard data={labelingStatusData} height={chartHeights.sm} />
             </DashboardWidget>
           ),
@@ -55,7 +55,7 @@ export function buildStatsContent() {
         {
           id: 'class-ratio',
           content: (
-            <DashboardWidget title="Class distribution">
+            <DashboardWidget title="Class distribution" titleAs="h2">
               <PieChartCard data={classRatioData} height={chartHeights.sm} />
             </DashboardWidget>
           ),
@@ -63,7 +63,7 @@ export function buildStatsContent() {
         {
           id: 'labeling-by-person',
           content: (
-            <DashboardWidget title="Uploader activity" subtitle="Top contributors">
+            <DashboardWidget title="Uploader activity" titleAs="h2" subtitle="Top contributors">
               <Stack gap="var(--ig-space-2)">
                 {labelingByPersonData.map((p) => (
                   <Inline key={p.uploader} justify="space-between" align="center">
@@ -81,7 +81,7 @@ export function buildStatsContent() {
         {
           id: 'defects-by-source',
           content: (
-            <DashboardWidget title="Source breakdown" subtitle="Capture device">
+            <DashboardWidget title="Source breakdown" titleAs="h2" subtitle="Capture device">
               <BarChartCard
                 data={defectsBySourceData}
                 series={[{ key: 'count', label: 'Defects', color: 'var(--ig-color-warning)' }]}
@@ -98,9 +98,11 @@ export function buildStatsContent() {
           content: (
             <DashboardWidget
               title="Labeling progress"
+              titleAs="h2"
               subtitle={`${labelingProgress.processed.toLocaleString()} of ${(labelingProgress.processed + labelingProgress.pending).toLocaleString()}`}
             >
               <SegmentedProgressBar
+                ariaLabel="Labeling progress"
                 segments={[
                   { label: 'Processed', value: labelingProgress.processed, color: 'var(--ig-color-success)' },
                   { label: 'Pending', value: labelingProgress.pending, color: 'var(--ig-color-warning)' },
@@ -113,8 +115,8 @@ export function buildStatsContent() {
           id: 'dataset-distribution',
           span: 2,
           content: (
-            <DashboardWidget title="Per-dataset class counts" span={2}>
-              <DistributionHeatmap {...datasetDistribution} />
+            <DashboardWidget title="Per-dataset class counts" titleAs="h2" span={2}>
+              <DistributionHeatmap {...datasetDistribution} rowHeaderLabel="Class" />
             </DashboardWidget>
           ),
         },

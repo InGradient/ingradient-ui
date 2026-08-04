@@ -12,10 +12,10 @@ describe('ClassInfoSidebar', () => {
       />,
     )
 
-    expect(screen.getByRole('heading', { name: 'Name' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Description' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Reference Image' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Model Mapping' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Name', level: 2 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Description', level: 2 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Reference Image', level: 2 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Model Mapping', level: 2 })).toBeInTheDocument()
     expect(screen.queryByText('Danger zone')).not.toBeInTheDocument()
   })
 })

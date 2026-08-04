@@ -17,6 +17,8 @@ export interface ResizableColumn {
   hidden?: boolean
   /** Column 표면 배경색 (optional). */
   background?: string
+  /** Column 앞쪽 세로 divider. page shell 경계에만 opt-in. */
+  dividerBefore?: 'subtle' | 'strong'
 }
 
 export interface ResizableColumnsLayoutProps {
@@ -32,7 +34,12 @@ export interface ResizableColumnsLayoutProps {
 
 const ROOT_STYLE = { width: '100%', height: '100%', minHeight: 0 }
 
-const Column = styled.div<{ $width: number | 'auto'; $collapsed: boolean; $bg?: string }>`
+const Column = styled.div<{
+  $width: number | 'auto'
+  $collapsed: boolean
+  $bg?: string
+  $dividerBefore?: 'subtle' | 'strong'
+}>`
   flex: ${(p) => {
     if (p.$width === 'auto') return '1'
     if (p.$collapsed) return '0 0 0'
@@ -42,9 +49,11 @@ const Column = styled.div<{ $width: number | 'auto'; $collapsed: boolean; $bg?: 
     if (p.$width === 'auto') return 'auto'
     return p.$collapsed ? '0' : `${p.$width}px`
   }};
+  box-sizing: border-box;
   min-width: 0;
   overflow: hidden;
   ${(p) => p.$bg && `background: ${p.$bg};`}
+  ${(p) => p.$dividerBefore && `border-left: var(--ig-border-1px) solid var(--ig-color-border-${p.$dividerBefore});`}
   ${(p) => p.$collapsed && 'transition: flex-basis var(--ig-motion-fast), width var(--ig-motion-fast);'}
 `
 
@@ -115,7 +124,12 @@ export function ResizableColumnsLayout({
         return (
           <React.Fragment key={i}>
             {i > autoIdx ? handle : null}
-            <Column $width={width} $collapsed={collapsed} $bg={c.background}>
+            <Column
+              $width={width}
+              $collapsed={collapsed}
+              $bg={c.background}
+              $dividerBefore={c.dividerBefore}
+            >
               {kids[i]}
             </Column>
             {i < autoIdx ? handle : null}

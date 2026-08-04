@@ -6,6 +6,7 @@ import {
   type AdminStorageProps,
 } from '@ingradient/platform-pages'
 import type { SettingsScene } from '../../../../fixtures/platform/0.0.1/settings-scenarios'
+import type { SettingsModalStoryActions } from './settings-modal-story-actions'
 import {
   storageCostTableColumns,
   storageCostTableFooter,
@@ -20,16 +21,18 @@ import {
   storageTierTableRows,
 } from '../../../../fixtures/platform/0.0.1/settings-storage'
 
-const noop = () => undefined
 const ACCENT_SERIES_GB = [{ key: 'gb', label: 'GB', color: 'var(--ig-color-accent)' }]
 const ACCENT_SERIES_COUNT = [{ key: 'count', label: 'Images', color: 'var(--ig-color-accent)' }]
 
-export function buildStorageProps(scenario: SettingsScene): AdminStorageProps {
+export function buildStorageProps(
+  scenario: SettingsScene,
+  actions: SettingsModalStoryActions,
+): AdminStorageProps {
   const loading = scenario.storageLoading
   return {
     loading,
     error: scenario.storageError,
-    onCopyReport: noop,
+    onCopyReport: () => actions.onStorageAction('copy-report'),
     overviewSlot: <StorageOverview items={storageOverviewItems} loading={loading} />,
     tierChartSlot: (
       <BarChartCard
@@ -75,6 +78,7 @@ export function buildStorageProps(scenario: SettingsScene): AdminStorageProps {
         columns={storageTierTableColumns}
         rows={storageTierTableRows}
         loading={loading}
+        ariaLabel="Storage by tier"
       />
     ),
     costTableSlot: (
@@ -83,6 +87,7 @@ export function buildStorageProps(scenario: SettingsScene): AdminStorageProps {
         rows={storageCostTableRows}
         footer={storageCostTableFooter}
         loading={loading}
+        ariaLabel="Storage cost estimates"
       />
     ),
     recommendationsSlot: (

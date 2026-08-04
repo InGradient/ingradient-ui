@@ -10,6 +10,11 @@ const MENU_OPEN_STYLE = {
   boxShadow: 'inset calc(-1 * var(--ig-border-2px)) 0 0 var(--ig-color-accent)',
 }
 
+const Row = styled.li`
+  position: relative;
+  min-width: 0;
+`
+
 const Wrap = styled.div`
   width: 100%;
   display: grid;
@@ -32,6 +37,19 @@ const Count = styled.span`
   color: var(--ig-color-text-soft);
 `
 
+const MenuSlot = styled.span`
+  width: var(--ig-control-height-sm);
+  height: var(--ig-control-height-sm);
+`
+
+const RowMenuButton = styled(MenuButton)`
+  position: absolute;
+  right: var(--ig-space-7);
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+`
+
 export interface ClassListRowProps {
   id: string
   name: string
@@ -48,36 +66,36 @@ export function ClassListRow({
 }: ClassListRowProps) {
   const menuButtonRef = React.useRef<HTMLButtonElement>(null)
   return (
-    <SelectableListItem
-      as="li"
-      variant="flat"
-      data-class-id={id}
-      selected={selected}
-      style={menuOpen ? MENU_OPEN_STYLE : ITEM_STYLE}
-      onClick={() => onClick?.(id)}
-      role="option"
-      aria-selected={selected}
-    >
-      <Wrap>
-        <ColorSwatch $color={color} $size="md" $shape="circle" />
-        <Name title={name}>{name}</Name>
-        {typeof count === 'number' ? <Count>{count.toLocaleString()}</Count> : null}
-        {onOpenMenu ? (
-          <MenuButton
-            ref={menuButtonRef}
-            aria-label={`Open menu for ${name}`}
-            aria-haspopup="menu"
-            aria-expanded={menuOpen}
-            $active={menuOpen}
-            onClick={(event) => {
-              event.stopPropagation()
-              if (menuButtonRef.current) onOpenMenu(id, menuButtonRef.current)
-            }}
-          >
-            <KebabIcon size={iconSizeNumbers.lg} />
-          </MenuButton>
-        ) : null}
-      </Wrap>
-    </SelectableListItem>
+    <Row>
+      <SelectableListItem
+        variant="flat"
+        data-class-id={id}
+        selected={selected}
+        style={menuOpen ? MENU_OPEN_STYLE : ITEM_STYLE}
+        onClick={() => onClick?.(id)}
+        aria-current={selected ? 'true' : undefined}
+      >
+        <Wrap>
+          <ColorSwatch $color={color} $size="md" $shape="circle" />
+          <Name title={name}>{name}</Name>
+          {typeof count === 'number' ? <Count>{count.toLocaleString()}</Count> : null}
+          {onOpenMenu ? <MenuSlot aria-hidden="true" /> : null}
+        </Wrap>
+      </SelectableListItem>
+      {onOpenMenu ? (
+        <RowMenuButton
+          ref={menuButtonRef}
+          aria-label={`Open menu for ${name}`}
+          aria-haspopup="menu"
+          aria-expanded={menuOpen}
+          $active={menuOpen}
+          onClick={() => {
+            if (menuButtonRef.current) onOpenMenu(id, menuButtonRef.current)
+          }}
+        >
+          <KebabIcon size={iconSizeNumbers.lg} />
+        </RowMenuButton>
+      ) : null}
+    </Row>
   )
 }

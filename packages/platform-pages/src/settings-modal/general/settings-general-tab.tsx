@@ -60,15 +60,15 @@ export function SettingsGeneralTab({
       <SettingsSection title="Workspace">
         <SettingsRow
           label="Enable hover preview in data grids"
-          control={<Checkbox checked={enableHoverPreview} onChange={(e) => onChangeEnableHoverPreview(e.target.checked)} />}
+          control={<Checkbox aria-label="Enable hover preview in data grids" checked={enableHoverPreview} onChange={(e) => onChangeEnableHoverPreview(e.target.checked)} />}
         />
         <SettingsRow
           label="Use single click to open edit flow"
-          control={<Checkbox checked={singleClickToEdit} onChange={(e) => onChangeSingleClickToEdit(e.target.checked)} />}
+          control={<Checkbox aria-label="Use single click to open edit flow" checked={singleClickToEdit} onChange={(e) => onChangeSingleClickToEdit(e.target.checked)} />}
         />
         <SettingsRow
           label="Show label badges on thumbnails"
-          control={<Checkbox checked={showLabelsOnThumbnails} onChange={(e) => onChangeShowLabelsOnThumbnails(e.target.checked)} />}
+          control={<Checkbox aria-label="Show label badges on thumbnails" checked={showLabelsOnThumbnails} onChange={(e) => onChangeShowLabelsOnThumbnails(e.target.checked)} />}
         />
       </SettingsSection>
 

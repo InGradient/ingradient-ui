@@ -36,7 +36,7 @@ export const Playground: Story = {
   play: async ({ canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'In review' }))
     const body = within(document.body)
-    await userEvent.click(body.getByRole('button', { name: 'Published' }))
+    await userEvent.click(body.getByRole('option', { name: 'Published' }))
     await expect(canvas.getByRole('button', { name: 'Published' })).toBeInTheDocument()
   },
 }

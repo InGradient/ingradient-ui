@@ -62,6 +62,7 @@ export interface MobileDropdownProps {
   onToggle: (open: boolean) => void
   onSelect: (id: string) => void
   placeholder?: string
+  listboxAriaLabel?: string
 }
 
 /**
@@ -70,7 +71,7 @@ export interface MobileDropdownProps {
  */
 export function MobileDropdown({
   options, currentId, loading, open, onToggle, onSelect,
-  placeholder = 'Select an option',
+  placeholder = 'Select an option', listboxAriaLabel = `${placeholder} options`,
 }: MobileDropdownProps) {
   const current = options.find((d) => d.id === currentId)
   const label = current?.name ?? (loading ? 'Loading…' : placeholder)
@@ -87,7 +88,7 @@ export function MobileDropdown({
         <ChevronDown size={iconSizeNumbers.md} />
       </Trigger>
       {open && options.length > 0 ? (
-        <Dropdown role="listbox">
+        <Dropdown role="listbox" aria-label={listboxAriaLabel}>
           {options.map((d) => (
             <MenuItem
               key={d.id}

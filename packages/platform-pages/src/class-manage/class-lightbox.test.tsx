@@ -31,4 +31,53 @@ describe('ClassLightbox', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Close' }))
     expect(onClose).toHaveBeenCalledOnce()
   })
+
+  it('displays the selected sibling image URL instead of the initially opened image', () => {
+    render(
+      <ClassLightbox
+        open
+        item={{
+          id: 'image-1',
+          name: 'First image',
+          thumb_url: '/first-thumb.jpg',
+          pattern_label: 'x_phase_0_of_2',
+        }}
+        imageUrl="/first-original.jpg"
+        siblings={[
+          {
+            id: 'image-1',
+            name: 'First image',
+            thumb_url: '/first-thumb.jpg',
+            pattern_label: 'x_phase_0_of_2',
+          },
+          {
+            id: 'image-2',
+            name: 'Second image',
+            original_url: '/second-original.jpg',
+            thumb_url: '/second-thumb.jpg',
+            pattern_label: 'x_phase_1_of_2',
+          },
+          {
+            id: 'image-3',
+            name: 'Third image',
+            thumb_url: '/third-thumb.jpg',
+            pattern_label: 'solid',
+          },
+        ]}
+        onClose={vi.fn()}
+      />,
+    )
+
+    expect(screen.getByAltText('First image')).toHaveAttribute('src', '/first-original.jpg')
+
+    fireEvent.click(screen.getByRole('tab', { name: 'X 2/2' }))
+
+    expect(screen.getByRole('dialog', { name: 'Second image' })).toBeInTheDocument()
+    expect(screen.getByAltText('Second image')).toHaveAttribute('src', '/second-original.jpg')
+
+    fireEvent.click(screen.getByRole('tab', { name: 'Solid' }))
+
+    expect(screen.getByRole('dialog', { name: 'Third image' })).toBeInTheDocument()
+    expect(screen.getByAltText('Third image')).toHaveAttribute('src', '/third-thumb.jpg')
+  })
 })

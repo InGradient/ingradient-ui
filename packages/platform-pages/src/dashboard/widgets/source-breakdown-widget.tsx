@@ -72,14 +72,18 @@ export function SourceBreakdownWidget({
       {bySource.length === 0 ? (
         <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
-        bySource.map((source) => (
+        bySource.map((source) => {
+          const sourceLabel = source.source === 'camera' && source.camera_ip
+            ? `Camera ${source.camera_ip}`
+            : source.source
+          return (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Text size="var(--ig-font-size-xs)" tone="muted" style={CHIP_STYLE}>{source.source === 'camera' && source.camera_ip ? `Camera ${source.camera_ip}` : source.source}</Text>
+            <Text size="var(--ig-font-size-xs)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
             {source.defect_counts.length === 0 ? (
               <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
               <Box style={TABLE_WRAP_STYLE}>
-                <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${source.source} defect counts`} />
+                <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${sourceLabel} defect counts`} />
                 <div style={CHART_STYLE}>
                   <BarChartCard
                     data={source.defect_counts.map((d, i) => ({ name: d.name, count: d.count, color: SOURCE_COLORS[i % SOURCE_COLORS.length] }))}
@@ -92,7 +96,8 @@ export function SourceBreakdownWidget({
               </Box>
             )}
           </Block>
-        ))
+          )
+        })
       )}
     </Card>
   )

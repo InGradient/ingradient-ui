@@ -34,7 +34,7 @@ export function DashboardCustomizePopover<K extends string = string>({
   className,
 }: DashboardCustomizePopoverProps<K>) {
   return (
-    <Wrap className={className} role="menu">
+    <Wrap className={className} role="group" aria-label={title}>
       <Text size="var(--ig-font-size-xs)" weight={700} tone="soft" uppercase letterSpacing="var(--ig-letter-spacing-wide)" style={TITLE_STYLE}>{title}</Text>
       <Stack gap="var(--ig-space-3)">
         {items.map((item) => (

@@ -55,6 +55,7 @@ export function CatalogDesktopView({
       minWidth: popupSizeNumbers.xs,
       maxWidth: popupSizeNumbers.xl,
       background: 'var(--ig-color-surface-panel)',
+      dividerBefore: 'strong',
       hidden: !rightSidebar,
     },
   ]

@@ -11,63 +11,122 @@ import type { useSettingsModalScene } from './use-settings-modal-scene'
 import type { useEdgeTabState } from './use-edge-tab-state'
 import { buildAdminProps } from './build-admin-props'
 import { buildEdgeSlots } from './build-edge-slots'
-
-const noop = () => undefined
+import type { SettingsModalStoryActions } from './settings-modal-story-actions'
 
 export function buildSettingsViewProps(
   scenario: SettingsScene,
   s: ReturnType<typeof useSettingsModalScene>,
   edge: ReturnType<typeof useEdgeTabState>,
+  actions: SettingsModalStoryActions,
 ): SettingsModalViewProps {
   return {
     open: true,
-    onClose: noop,
+    onClose: () => actions.onModalAction('close'),
     tab: s.tab,
-    onTabChange: s.setTab,
+    onTabChange: (tab) => {
+      actions.onTabChange(tab)
+      s.setTab(tab)
+    },
     isAdmin: !!scenario.isAdmin,
     general: {
       locale: s.locale,
       enableHoverPreview: s.enableHoverPreview,
       singleClickToEdit: s.singleClickToEdit,
       showLabelsOnThumbnails: s.showLabelsOnThumbnails,
-      onChangeLocale: s.setLocale,
-      onChangeEnableHoverPreview: s.setEnableHoverPreview,
-      onChangeSingleClickToEdit: s.setSingleClickToEdit,
-      onChangeShowLabelsOnThumbnails: s.setShowLabelsOnThumbnails,
+      onChangeLocale: (value) => {
+        actions.onGeneralPreferenceChange('locale', value)
+        s.setLocale(value)
+      },
+      onChangeEnableHoverPreview: (value) => {
+        actions.onGeneralPreferenceChange('enableHoverPreview', value)
+        s.setEnableHoverPreview(value)
+      },
+      onChangeSingleClickToEdit: (value) => {
+        actions.onGeneralPreferenceChange('singleClickToEdit', value)
+        s.setSingleClickToEdit(value)
+      },
+      onChangeShowLabelsOnThumbnails: (value) => {
+        actions.onGeneralPreferenceChange('showLabelsOnThumbnails', value)
+        s.setShowLabelsOnThumbnails(value)
+      },
     },
     account: {
       user: scenario.user ?? null,
       license: scenario.license ?? null,
       name: s.accountName,
-      onChangeName: s.setAccountName,
+      onChangeName: (value) => {
+        actions.onAccountAction('change-name', value)
+        s.setAccountName(value)
+      },
       accountMessage: scenario.accountMessage,
-      onSaveName: noop,
-      onLogout: noop,
+      onSaveName: () => actions.onAccountAction('save-name', s.accountName),
+      onLogout: () => actions.onAccountAction('logout'),
       passwordDialogOpen: s.passwordDialogOpen,
       passwordMessage: scenario.passwordMessage,
       currentPassword: s.currentPassword,
       newPassword: s.newPassword,
       newPasswordConfirm: s.newPasswordConfirm,
-      onChangeCurrentPassword: s.setCurrentPassword,
-      onChangeNewPassword: s.setNewPassword,
-      onChangeNewPasswordConfirm: s.setNewPasswordConfirm,
-      onOpenPasswordDialog: () => s.setPasswordDialogOpen(true),
-      onClosePasswordDialog: () => s.setPasswordDialogOpen(false),
-      onSubmitPassword: () => s.setPasswordDialogOpen(false),
+      onChangeCurrentPassword: (value) => {
+        actions.onAccountAction('change-current-password')
+        s.setCurrentPassword(value)
+      },
+      onChangeNewPassword: (value) => {
+        actions.onAccountAction('change-new-password')
+        s.setNewPassword(value)
+      },
+      onChangeNewPasswordConfirm: (value) => {
+        actions.onAccountAction('change-password-confirmation')
+        s.setNewPasswordConfirm(value)
+      },
+      onOpenPasswordDialog: () => {
+        actions.onDialogAction('change-password', 'open')
+        s.setPasswordDialogOpen(true)
+      },
+      onClosePasswordDialog: () => {
+        actions.onDialogAction('change-password', 'close')
+        s.setPasswordDialogOpen(false)
+      },
+      onSubmitPassword: () => {
+        actions.onAccountAction('submit-password')
+        actions.onDialogAction('change-password', 'submit')
+        s.setPasswordDialogOpen(false)
+      },
       deleteAccountDialogOpen: s.deleteAccountDialogOpen,
       deleteAccountConfirmInput: s.deleteAccountConfirmInput,
-      onChangeDeleteAccountConfirmInput: s.setDeleteAccountConfirmInput,
+      onChangeDeleteAccountConfirmInput: (value) => {
+        actions.onAccountAction('change-delete-confirmation', value)
+        s.setDeleteAccountConfirmInput(value)
+      },
       deleteAccountPreview: scenario.deleteAccountPreview ?? null,
       deleteAccountResolutions: s.deleteAccountResolutions,
-      onChangeDeleteAccountResolutions: s.setDeleteAccountResolutions,
+      onChangeDeleteAccountResolutions: (value) => {
+        actions.onAccountAction('change-delete-resolution', JSON.stringify(value))
+        s.setDeleteAccountResolutions(value)
+      },
       deleteAccountPassword: s.deleteAccountPassword,
-      onChangeDeleteAccountPassword: s.setDeleteAccountPassword,
+      onChangeDeleteAccountPassword: (value) => {
+        actions.onAccountAction('change-delete-password')
+        s.setDeleteAccountPassword(value)
+      },
       deleteAccountFinalConfirm: s.deleteAccountFinalConfirm,
-      onChangeDeleteAccountFinalConfirm: s.setDeleteAccountFinalConfirm,
+      onChangeDeleteAccountFinalConfirm: (value) => {
+        actions.onAccountAction('change-final-confirmation', value)
+        s.setDeleteAccountFinalConfirm(value)
+      },
       deleteAccountMessage: scenario.deleteAccountMessage,
-      onOpenDeleteAccountDialog: () => s.setDeleteAccountDialogOpen(true),
-      onCloseDeleteAccountDialog: () => s.setDeleteAccountDialogOpen(false),
-      onSubmitDeleteAccount: () => s.setDeleteAccountDialogOpen(false),
+      onOpenDeleteAccountDialog: () => {
+        actions.onDialogAction('delete-account', 'open')
+        s.setDeleteAccountDialogOpen(true)
+      },
+      onCloseDeleteAccountDialog: () => {
+        actions.onDialogAction('delete-account', 'close')
+        s.setDeleteAccountDialogOpen(false)
+      },
+      onSubmitDeleteAccount: () => {
+        actions.onAccountAction('submit-delete')
+        actions.onDialogAction('delete-account', 'submit')
+        s.setDeleteAccountDialogOpen(false)
+      },
     },
     project: {
       noProject: scenario.noProject,
@@ -77,36 +136,56 @@ export function buildSettingsViewProps(
       canDeleteProject: !!scenario.canDeleteProject,
       projectsCount: scenario.projectsCount ?? 0,
       draft: s.projectDraft,
-      onChangeDraft: s.updateProject,
+      onChangeDraft: (patch) => {
+        Object.entries(patch).forEach(([field, value]) => {
+          actions.onProjectAction(
+            `change-${field}`,
+            typeof value === 'boolean' ? value : String(value),
+          )
+        })
+        s.updateProject(patch)
+      },
       saveState: scenario.saveState ?? 'idle',
       saveErrorMessage: scenario.saveErrorMessage,
       nameInvalid: scenario.nameInvalid,
       memberSearchQuery: s.memberSearchQuery,
-      onChangeMemberSearchQuery: s.setMemberSearchQuery,
+      onChangeMemberSearchQuery: (value) => {
+        actions.onProjectAction('search-members', value)
+        s.setMemberSearchQuery(value)
+      },
       candidates: candidateUsers,
-      onAddMember: noop,
+      onAddMember: (id) => actions.onProjectAction('add-member', id),
       members: mockProjectMembers,
       roleOptions: projectRoleOptions,
       permissionRoleOptions: projectRoleOptions,
-      onChangeRole: noop,
-      onRemoveMember: noop,
+      onChangeRole: (id, role) => actions.onProjectAction(`change-role:${id}`, role),
+      onRemoveMember: (id) => actions.onProjectAction('remove-member', id),
       permissionsExpandAll: s.permissionsExpandAll,
-      onTogglePermissionsExpand: () => s.setPermissionsExpandAll(!s.permissionsExpandAll),
+      onTogglePermissionsExpand: () => {
+        actions.onProjectAction('toggle-permissions', !s.permissionsExpandAll)
+        s.setPermissionsExpandAll(!s.permissionsExpandAll)
+      },
       expandedPermissionGroups,
       summaryPermissionGroups,
       draftRoles: s.draftRoles,
-      onChangeRolePermission: (role, key, checked) =>
-        s.setDraftRoles({ ...s.draftRoles, [role]: { ...s.draftRoles[role], [key]: checked } }),
+      onChangeRolePermission: (role, key, checked) => {
+        actions.onProjectAction(`permission:${role}:${key}`, checked)
+        s.setDraftRoles({ ...s.draftRoles, [role]: { ...s.draftRoles[role], [key]: checked } })
+      },
       onChangeRolePermissions: (role, keys, checked) => {
+        actions.onProjectAction(`permissions:${role}:${keys.join(',')}`, checked)
         const next = { ...s.draftRoles[role] }
         for (const k of keys) next[k] = checked
         s.setDraftRoles({ ...s.draftRoles, [role]: next })
       },
       deleteConfirmInput: s.deleteProjectConfirm,
-      onChangeDeleteConfirmInput: s.setDeleteProjectConfirm,
-      onDelete: noop,
+      onChangeDeleteConfirmInput: (value) => {
+        actions.onProjectAction('change-delete-confirmation', value)
+        s.setDeleteProjectConfirm(value)
+      },
+      onDelete: () => actions.onProjectAction('delete', s.projectDraft.id),
     },
-    admin: scenario.isAdmin ? buildAdminProps(scenario, s) : undefined,
+    admin: scenario.isAdmin ? buildAdminProps(scenario, s, actions) : undefined,
     edge: scenario.noProject
       ? undefined
       : buildEdgeSlots(
@@ -114,6 +193,7 @@ export function buildSettingsViewProps(
           edge,
           scenario.currentProject?.id ?? null,
           scenario.currentProject?.projectType === 'deflectometry',
+          actions,
         ),
   }
 }

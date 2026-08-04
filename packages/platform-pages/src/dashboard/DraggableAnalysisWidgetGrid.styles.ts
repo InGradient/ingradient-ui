@@ -7,6 +7,18 @@ export const Rows = styled.div`
   gap: var(--ig-space-9);
 `
 
+export const KeyboardStatus = styled.span`
+  position: absolute;
+  width: var(--ig-space-1px);
+  height: var(--ig-space-1px);
+  padding: 0;
+  margin: var(--ig-space-neg-1px);
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`
+
 export const Row = styled.div<{ $count: number }>`
   position: relative;
   display: grid;

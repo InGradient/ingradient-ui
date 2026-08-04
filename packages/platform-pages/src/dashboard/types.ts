@@ -24,6 +24,8 @@ export interface DashboardDateRangePaneProps {
   draft: DateRange | undefined
   onChangeDraft: (next: DateRange | undefined) => void
   onSelectPreset: (preset: DateRangePreset) => void
+  /** Story/test 등에서 preset 기준일을 고정할 때 사용. 생략하면 현재 날짜. */
+  referenceDate?: Date
   onReset: () => void
   onApply: () => void
   summaryLabel: string

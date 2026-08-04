@@ -3,7 +3,7 @@ import type { DatasetTaskType } from './dataset-task-tag'
 import type { GalleryFilterPanelState, SyncState } from './gallery'
 
 export type CatalogViewMode = 'grid' | 'table' | 'stats'
-export type FilterKey = 'status' | 'dataset' | 'sort' | null
+export type CatalogMobileViewMode = Exclude<CatalogViewMode, 'stats'>
 
 export interface CatalogDataset {
   id: string
@@ -80,9 +80,9 @@ export interface CatalogSortOption {
   label: string
 }
 
-export interface CatalogToolbarPaneProps {
-  viewMode: CatalogViewMode
-  onChangeViewMode: (mode: CatalogViewMode) => void
+export interface CatalogToolbarPaneProps<TViewMode extends CatalogViewMode = CatalogViewMode> {
+  viewMode: TViewMode
+  onChangeViewMode: (mode: TViewMode) => void
   searchValue: string
   onSearchChange: (value: string) => void
   filterState: GalleryFilterPanelState
@@ -141,15 +141,28 @@ export interface CatalogMobilePaneProps {
 export type { CatalogOverlaysProps } from './overlay-types'
 import type { CatalogOverlaysProps } from './overlay-types'
 
-export interface CatalogViewProps {
-  isMobile?: boolean
+interface CatalogViewBaseProps {
   page: CatalogPagePaneProps
   datasets: CatalogDatasetsPaneProps
-  toolbar: CatalogToolbarPaneProps
   images: CatalogImagesPaneProps
-  rightSidebar: CatalogRightSidebarPaneProps | null
-  mobile?: CatalogMobilePaneProps
-  statsContent?: ReactNode
   detailContent?: { main?: ReactNode; sidebar?: ReactNode }
   overlays: CatalogOverlaysProps
 }
+
+export interface CatalogDesktopViewProps extends CatalogViewBaseProps {
+  isMobile?: false
+  toolbar: CatalogToolbarPaneProps
+  rightSidebar: CatalogRightSidebarPaneProps | null
+  mobile?: never
+  statsContent?: ReactNode
+}
+
+export interface CatalogMobileViewProps extends CatalogViewBaseProps {
+  isMobile: true
+  toolbar: CatalogToolbarPaneProps<CatalogMobileViewMode>
+  rightSidebar?: never
+  mobile: CatalogMobilePaneProps
+  statsContent?: never
+}
+
+export type CatalogViewProps = CatalogDesktopViewProps | CatalogMobileViewProps

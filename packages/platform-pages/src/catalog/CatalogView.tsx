@@ -4,40 +4,28 @@ import { CatalogOverlays } from './CatalogOverlays'
 import { Page } from './CatalogView.styles'
 import type { CatalogViewProps } from './types'
 
-export function CatalogView({
-  isMobile = false,
-  page,
-  datasets,
-  toolbar,
-  images,
-  rightSidebar,
-  mobile,
-  statsContent,
-  detailContent,
-  overlays,
-}: CatalogViewProps) {
+export function CatalogView(props: CatalogViewProps) {
   return (
     <Page data-ig-component="CatalogView" data-ig-layer="pages">
-      {isMobile && mobile ? (
+      {props.isMobile ? (
         <CatalogMobileView
-          page={page}
-          datasets={datasets}
-          toolbar={toolbar}
-          images={images}
-          mobile={mobile}
-          statsContent={statsContent}
+          page={props.page}
+          datasets={props.datasets}
+          toolbar={props.toolbar}
+          images={props.images}
+          mobile={props.mobile}
         />
       ) : (
         <CatalogDesktopView
-          page={page}
-          datasets={datasets}
-          toolbar={toolbar}
-          images={images}
-          rightSidebar={rightSidebar}
-          statsContent={statsContent}
+          page={props.page}
+          datasets={props.datasets}
+          toolbar={props.toolbar}
+          images={props.images}
+          rightSidebar={props.rightSidebar}
+          statsContent={props.statsContent}
         />
       )}
-      <CatalogOverlays {...overlays} detailContent={detailContent} />
+      <CatalogOverlays {...props.overlays} detailContent={props.detailContent} />
     </Page>
   )
 }

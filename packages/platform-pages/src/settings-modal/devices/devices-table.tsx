@@ -60,7 +60,7 @@ export function DevicesTable({
   ]
   if (isAdmin) {
     columns.push({
-      key: 'actions', header: '', width: popupSizeNumbers['2xsNarrow'],
+      key: 'actions', header: '', headerAriaLabel: 'Actions', width: popupSizeNumbers['2xsNarrow'],
       render: (d) => (
         <Inline gap="var(--ig-space-3)">
           <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(d)}>Details</Button>

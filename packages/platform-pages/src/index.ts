@@ -1,3 +1,4 @@
+export * from './auth'
 export * from './catalog'
 export * from './class-manage'
 export * from './create-project'
