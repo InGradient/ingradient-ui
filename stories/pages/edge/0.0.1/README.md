@@ -69,4 +69,6 @@ images·statics·labeling·labeling-panel·log → 탭/패널 content, settings�
 `sample-images` · `system-stats` · `devices` (기존) + `statics-data` · `log-entries` ·
 `settings-data` · `connection-data` · `system-monitor` (Workspace 탭/모달용 신규).
 
-상위 문서: [pages/edge/README.md](../README.md)
+상위 index: [Storybook Pages](../../README.md)
+
+Historical context: [Storybook architecture](../../../../docs-legacy/storybook_architecture_restructure.md)

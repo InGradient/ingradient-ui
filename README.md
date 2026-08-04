@@ -1,11 +1,11 @@
 # Ingradient UI
 
-Ingradient UI는 범용 디자인 시스템 본진이다. 이 저장소는 루트 패키지 자체가 `@ingradient/ui`이며, 제품 앱은 이 패키지를 소비만 한다.
+Ingradient UI는 범용 디자인 시스템과 제품 view contract의 본진이다. 루트 패키지는 `@ingradient/ui`이고, sibling workspace인 `@ingradient/platform-pages`와 `@ingradient/edge-pages`가 controlled product composition을 제공한다. 제품 앱은 이 package들을 소비하면서 router, services, store, permission을 소유한다.
 
 ## Quick Start
 
 ```bash
-cd /home/june/workspace/projects/ingradient-ui
+cd ingradient-ui
 npm install
 npm run storybook
 ```
@@ -28,14 +28,21 @@ npm run storybook
 ```text
 ingradient-ui/
 ├─ src/
+├─ packages/
+│  ├─ platform-pages/
+│  └─ edge-pages/
 ├─ .storybook/
 ├─ stories/
+├─ apps/
+├─ tests/probes/
 ├─ docs/
 ├─ docs-legacy/
 └─ lib/  # generated only
 ```
 
 - `src`: `@ingradient/ui` source of truth
+- `packages/platform-pages`: API/store와 분리된 Platform 제품 view와 controlled prop contract
+- `packages/edge-pages`: Edge 제품 view와 controlled prop contract
 - `.storybook`, `stories`: Storybook configuration and executable docs
 - `apps/storybook-smoke-consumer`: package 소비 smoke 검증 앱
 - `docs`: 새 문서 체계
@@ -61,26 +68,47 @@ ingradient-ui/
 
 ## What This Repo Owns
 
-- foundations, semantic tokens, recipes, variants
-- primitives
-- components
-- patterns
-- brand assets
-- 신규 프로젝트에서도 제품 의미 없이 바로 재사용 가능한 UI
+- `@ingradient/ui`: foundations, semantic tokens, primitives, components, patterns, brand assets
+- `@ingradient/platform-pages`: Platform 제품 의미를 가진 controlled view composition
+- `@ingradient/edge-pages`: Edge 제품 의미를 가진 controlled view composition
+- Storybook scenario/runtime, Actions, named workflows, accessibility, production probe, visual target로 구성된 executable documentation
 
 ## What This Repo Does Not Own
 
-- dataset, annotation, export workflow
-- camera, device, capture workflow
-- project, member, class, training, model business flow
-- router, API, query, mutation, permission
+- router와 URL 정책
+- API/query/mutation 구현
+- global store와 server cache
+- 인증 세션 및 permission 판정
+- 실제 제품 데이터 fetching/persistence
 
-이런 것은 `ingradient-platform` 또는 `ingradient-edge`에 남긴다.
+제품 page package는 받은 값과 callback만으로 화면을 구성한다. 실제 앱인 `ingradient-platform`과 `ingradient-edge`가 router, API, store, permission을 소유하고 package view에 controlled props를 공급한다.
+
+## Platform Storybook Contract
+
+Platform `0.0.1`은 6개 제품 영역을 purpose group과 실행 가능한 interaction contract로 문서화한다.
+
+| Product area | Stories | Purpose groups | Canonical review ID |
+|---|---:|---:|---|
+| Auth | 10 | 6 | `pages-platform-0-0-1-auth-login-workspace--overview` / `pages-platform-0-0-1-auth-signup-workspace--overview` |
+| Dataset Catalog | 40 | 8 | `pages-platform-0-0-1-dataset-catalog-workspace--overview` |
+| Class Management | 24 | 7 | `pages-platform-0-0-1-class-management-workspace--overview` |
+| Create Project | 5 | 3 | `pages-platform-0-0-1-create-project-workspace--overview` |
+| Settings Modal | 33 | 7 | `pages-platform-0-0-1-settings-modal-general--preferences` |
+| Dashboard | 16 | 6 | `pages-platform-0-0-1-dashboard-workspace--overview` |
+
+- [Platform Pages Package](./packages/platform-pages/README.md)
+- [Platform Story Contract](./stories/pages/platform/0.0.1/README.md)
+- [Platform Migration and Verification Evidence](./stories/pages/platform/0.0.1/MIGRATION.md)
+
+Visual snapshots are platform-specific. Checked-in baselines use `chromium-linux`; macOS/Darwin captures may verify rendering locally but must not replace Linux baselines.
 
 ## Docs
 
 - user-facing Storybook: `npm run storybook` 후 `http://localhost:6006`
 - [Docs Index](./docs/README.md)
+- [Design Contract](./DESIGN.md)
+- [Platform Pages Package](./packages/platform-pages/README.md)
+- [Platform Story Contract](./stories/pages/platform/0.0.1/README.md)
 - [Components Vs Patterns](./docs/reference/components-vs-patterns.md)
 - [Reference Docs](./docs/reference/README.md)
 - [Legacy Docs Index](./docs-legacy/README.md)

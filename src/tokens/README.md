@@ -1,6 +1,6 @@
 # Tokens Layer
 
-이 폴더는 디자인 값의 source of truth 를 가진다. 상위 문서 § 3 의 7-카테고리 구조를 따른다.
+이 폴더는 디자인 값의 source of truth를 가진다. 현재 시각 계약은 [`DESIGN.md`](../../DESIGN.md)를 따른다.
 
 ## Layers
 
@@ -39,16 +39,22 @@
 - `brands/`
   - 고객사별 accent override — `default` / `finemtech` (orange) / `samsung` (deep blue)
   - 의도된 좁은 scope: accent / accent-strong / accent-soft / accent-ring 4개만 변경
+  - brand override는 base theme 전체를 복제하지 않고 `src/tokens/brands/index.ts`의 registry를 통해 조합한다.
 
 - `density/`
   - 정보 밀도 — `comfortable` (medical 기본) / `compact` (platform/edge 기본) / `ultra-dense` (대시보드)
   - control-height-sm/md/lg 3 tier override (특수 tier 는 component-specific dimension 유지)
+  - `src/tokens/density/types.ts`의 typed contract와 registry를 사용한다.
+
+- `themes/`
+  - 제품 분위기 preset — `industrial-dark` / `medical-dark`
+  - light/dark semantic mode 자체는 `modes/`가 소유하고, `themes/`는 mode 위에 제품별 token 조합을 제공한다.
 
 - `presets/`
   - Theme + Brand + Density 조합 snapshot — `compose.ts` + `edge` / `medical` / `platform` 별 default
 
 - `globals/`
-  - 런타임 메커니즘 — CSS 변수 생성 (`token-css-variables.ts` — 444 정의), Theme Provider, Global Style
+  - 런타임 메커니즘 — CSS 변수 생성 (`token-css-variables.ts`), Theme Provider, Global Style
 
 - `recipes.ts` *(backward-compat alias)*
   - `../primitives/recipes` re-export. 새 코드는 `@ingradient/ui/primitives` 에서 직접 import 권장.
@@ -69,12 +75,12 @@
 
 ## Storybook
 
-- `src/tokens/tokens.stories.tsx` — 711줄, 카테고리별 tile visualization
-- `stories/foundations/token-overview.stories.tsx` — 366줄, Object.entries 자동 iterate (16 카테고리)
+- `src/tokens/tokens.stories.tsx` — 카테고리별 tile visualization
+- `stories/foundations/token-overview.stories.tsx` — registry 기반 token overview
 
 ## Important
 
 - 직접 수정하는 곳은 `src/tokens/**`
 - `lib/tokens.css` 는 generated output 이다 (`scripts/generate-tokens-css.mjs`)
 - public API `@ingradient/ui/tokens` 의 surface 는 유지 — 내부 폴더 rename 은 외부에 영향 없음
-- raw 색/픽셀 직접 사용 금지: `var(--ig-...)` 또는 TS const 만 — Phase 60→88 sweep 완료 (코드 안 raw px 0, raw rgba 0)
+- raw 색/픽셀 직접 사용 금지: `var(--ig-...)` 또는 TS const를 사용하고 `check:style-literals` 결과를 확인한다.

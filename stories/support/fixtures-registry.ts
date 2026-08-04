@@ -1,7 +1,7 @@
 /**
  * Fixtures registry — § 14.2 / § 14.3 / § 25.2 의 "Fixture 자동 연결".
  *
- * 각 page story 가 explicit import 대신 service + version 으로 fixture 접근.
+ * page story 가 필요할 때 explicit import 대신 service + version 으로 fixture 에 접근할 수 있는 점진적 registry.
  * 타입 추론 자동: getFixtures('platform', '0.0.1') 의 결과는 PlatformFixtures.
  *
  * 기존 explicit import 도 그대로 동작 — 점진적 마이그레이션 가능.

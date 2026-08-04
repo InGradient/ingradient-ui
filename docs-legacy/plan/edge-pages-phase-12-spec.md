@@ -8,8 +8,10 @@ related:
   - ./edge-pages-extraction-roadmap.md
   - ./edge-pages-package-plan.md
   - ./edge-pages-phase-11-spec.md
-  - ./platform-pages-phase-6-spec.md
+  - ./platform-pages-package-plan.md
 ---
+
+> **Archive only.** 이 draft는 Edge extraction 정리 단계의 판단을 보존한다. 현재 executable surface는 [Edge 0.0.1 README](../../stories/pages/edge/0.0.1/README.md), 현재 visual/layer 계약은 [`DESIGN.md`](../../DESIGN.md)를 따른다.
 
 # Phase 12 — Story 정리 + 문서 동기화
 

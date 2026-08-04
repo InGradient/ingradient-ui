@@ -1,10 +1,12 @@
 # Ingradient UI Docs
 
-이 폴더는 `ingradient-ui` 운영 기준 문서 저장소다. 루트 `README.md`보다 깊은 구조, 경계, 규칙, 워크플로우는 여기서 관리한다.
+> **Archive only.** 이 폴더는 완료된 계획, 과거 API snapshot, dated audit, release history를 보존한다. 현재 구조와 구현 authority는 루트 [`README.md`](../README.md), [`DESIGN.md`](../DESIGN.md), active [`docs/`](../docs/README.md), Storybook contract다. `docs-legacy/reference/**` 일부는 현재 CI documentation coverage가 직접 요구하므로 별도 migration 전에는 삭제하지 않는다.
 
-사용자-facing 실행 문서는 Storybook이 담당한다. 이 폴더는 기여자와 유지보수자를 위한 기준 문서와 shareable Markdown companion을 관리한다.
+이 폴더는 과거 `ingradient-ui` 운영 기준과 실행 기록을 보존하는 archive다. 현재 변경의 기준으로 직접 사용하지 않는다.
 
-## Reading Order
+현재 사용자-facing 실행 문서는 Storybook이 담당한다. 아래 문서는 당시 결정 근거, API snapshot, release history를 찾아야 할 때만 사용한다.
+
+## Historical Reading Order
 
 1. [concepts/PHILOSOPHY.md](./concepts/PHILOSOPHY.md)
 2. [concepts/BOUNDARIES.md](./concepts/BOUNDARIES.md)
@@ -27,8 +29,12 @@
   - 수정 절차, 문서 전략, 작성 규칙, 운영 가이드
 - `rules/`
   - 강하게 지켜야 하는 규칙
+- `plan/`
+  - 완료된 구현 계획, extraction roadmap, 과거 phase spec
+- `reports/`
+  - 날짜가 고정된 audit와 실행 결과
 - `reference/`
-  - 공유 가능한 Markdown API reference
+  - 과거 Markdown API snapshot; 일부 파일은 현재 `check:doc-coverage`가 요구하므로 migration 전 삭제 금지
 - `reference/recipes/`
   - 실제 화면 조립 예제
 - `releases/`

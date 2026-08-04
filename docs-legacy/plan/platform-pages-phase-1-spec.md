@@ -6,8 +6,10 @@ date: 2026-05-15
 status: draft
 related:
   - ./platform-pages-extraction-roadmap.md
-  - ./platform-pages-phase-0-spec.md
+  - ./platform-pages-package-plan.md
 ---
+
+> **Archive only.** 이 draft는 Create Project extraction 당시의 source arbitration을 보존한다. 현재 package 계약은 [`packages/platform-pages/README.md`](../../packages/platform-pages/README.md), 현재 story 계약은 [Platform 0.0.1 README](../../stories/pages/platform/0.0.1/README.md)를 따른다.
 
 # Phase 1 — CreateProject 추출
 

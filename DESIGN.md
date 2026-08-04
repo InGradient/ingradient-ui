@@ -104,8 +104,30 @@ The implemented spacing scale is compact and tokenized: 4, 5, 6, 7, 8, 10, 12, 1
 - **Structure**: widget shell, heading/actions, chart or metric content.
 - **Variants**: loading, error, empty, populated, draggable/customizable.
 - **Spacing**: shared widget shell and grid tokens; no page-specific raw colors.
-- **Accessibility**: widget labels remain visible independently of chart color, and controls retain focus states.
+- **Accessibility**: widget labels remain visible independently of chart color; controls retain focus states; the existing drag handle supports direct arrow-key reorder with `aria-keyshortcuts` and polite status feedback.
 - **Layout**: responsive grid; widget keys provide stable ordering and test hooks.
+
+### Platform Page Contracts
+
+`@ingradient/platform-pages` owns controlled product views; `stories/pages/platform/0.0.1` supplies deterministic fixtures/runtime and executable documentation. Page views do not import story fixtures and do not own router, API, global store, permission, or persistence.
+
+| Product area | Stories | Purpose groups | Canonical visual/review entry |
+|---|---:|---:|---|
+| Auth | 10 | 6 | Login `pages-platform-0-0-1-auth-login-workspace--overview`; Signup `pages-platform-0-0-1-auth-signup-workspace--overview` |
+| Dataset Catalog | 40 | 8 | `pages-platform-0-0-1-dataset-catalog-workspace--overview` |
+| Class Management | 24 | 7 | `pages-platform-0-0-1-class-management-workspace--overview` |
+| Create Project | 5 | 3 | `pages-platform-0-0-1-create-project-workspace--overview` |
+| Settings Modal | 33 | 7 | `pages-platform-0-0-1-settings-modal-general--preferences` |
+| Dashboard | 16 | 6 | `pages-platform-0-0-1-dashboard-workspace--overview` |
+
+The 128 stories across 37 groups use scoped Controls, explicit Actions, named workflows where behavior matters, and blocking accessibility for all Platform page stories. Canonical IDs are downstream contracts shared by probes, visual targets, handoff metadata, and documentation.
+
+- Auth Login/Signup, Create Project, and Dashboard use package-owned controlled views and shared story runtimes.
+- Catalog mobile props form a discriminated contract: mobile requires mobile state and excludes desktop-only sidebar/stats slots.
+- Class Management remains a three-pane desktop workspace. Narrow status/collapsed states are valid, but a full 375px workflow is not claimed until a product mobile shell exists.
+- Responsive behavior is reviewed through production probes/manual widths; canonical Playwright snapshots run against platform-specific baselines.
+
+See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) and the [Platform Story Contract](./stories/pages/platform/0.0.1/README.md).
 
 ## 6. Motion & Interaction
 
@@ -146,3 +168,5 @@ The strategy is **mixed, restrained elevation**: tonal shifts and subtle borders
 | High-contrast mode is currently a Storybook placeholder | `.storybook/preview.tsx` | Existing product state; this migration does not introduce it | Implement a real high-contrast token preset before claiming high-contrast support |
 | Locale toolbar does not yet provide full i18n | `.storybook/preview.tsx` | Existing product state; migrated stories currently use English product copy | Add translated content and CJK layout verification with the i18n phase |
 | ClassManage has no source mobile workspace shell | `packages/platform-pages/src/class-manage` | The migrated reference defines a resizable three-pane desktop workspace but no mobile navigation/detail pattern | Add a dedicated narrow shell or drawers before claiming the full ClassManage workflow at 375px |
+| Auth canonical Linux snapshots predate the approved inline-link underline | `tests/visual/storybook-visual.spec.ts-snapshots` | The accessibility fix is intentional, but Linux is the repository baseline platform | Approve both Auth snapshots on a Linux runner; never substitute Darwin captures |
+| Settings Modal and Dashboard lack first approved Linux baselines | `tests/visual/storybook-visual.spec.ts` | Canonical targets are registered and rendering was reviewed, but no Linux snapshot is checked in yet | Capture and approve the canonical targets on a Linux runner |

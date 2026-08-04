@@ -1,6 +1,6 @@
 # Components Vs Patterns
 
-이 문서는 `@ingradient/ui`에서 `components/`와 `patterns/`를 어디서 나누는지 새 기준으로 설명한다.
+이 문서는 `@ingradient/ui`에서 `components/`와 `patterns/`를 어디서 나누는지, 그리고 제품 의미가 생긴 composition을 page package로 언제 넘기는지 설명한다.
 
 핵심은 하나다.
 
@@ -10,15 +10,12 @@
 
 ## Current Policy
 
-1회 audit 이 끝났다. 결과는 [Components Pattern Audit](./components-pattern-audit.md) 에 고정돼 있다.
+[Components Pattern Audit](../../docs-legacy/reports/components-pattern-audit-2026-05.md)은 분류 작업 당시의 판단 기록이다. 이후 domain extraction으로 일부 항목이 page package로 이동했으므로, 현재 위치를 판단할 때는 이 문서와 package public surface를 우선한다.
 
-이제 다음 단계로 넘어간다.
-
-- 명백한 항목은 `src/components/` → `src/patterns/` 로 이동한다
-- 옮기는 김에 generic 부분이 있으면 base component 로 따로 뽑는다
-- 보류 항목은 새 사용처가 등장할 때 다시 본다
-
-판단 기준 자체는 아래와 동일하다. 정책 본문은 기준 정의로만 둔다.
+- generic unit이면 `components`
+- generic composition/rhythm이면 `patterns`
+- 제품 의미를 가진 controlled composition이면 해당 page package
+- router/service/persistence를 알면 소비 앱
 
 ## Quick Rule
 
@@ -29,6 +26,19 @@
 - `pattern`
   - 여러 component를 묶어 화면 구조나 UX rhythm을 재사용한다
   - 개별 control보다 composition이 핵심이다
+- `platform-pages` / `edge-pages`
+  - 제품 용어, 도메인 row/dialog, page state shape를 아는 controlled composition
+  - API/store/router는 모르고 값과 callback만 받는다
+
+## Current Layer Flow
+
+```text
+tokens → primitives → components → patterns
+  → platform-pages / edge-pages domain UI
+  → consumer application router, services, and state
+```
+
+`stories/pages/**`는 page package의 fixture/runtime adapter와 검증 surface다. production page JSX를 story에 다시 구현하지 않는다.
 
 ## Decision Test
 
@@ -36,9 +46,11 @@
 
 1. 이 단위는 다른 구조 안에 들어가는 generic unit인가?
 2. 아니면 다른 component들을 담아 화면 구조를 재사용하는가?
+3. 제품 용어, domain entity, 제품별 state shape를 알아야 하는가?
 
 - 1이면 보통 `component`
-- 2이면 보통 `pattern`
+- 2이고 제품 의미가 없으면 보통 `pattern`
+- 3이면 해당 `platform-pages` / `edge-pages` package
 
 ## Component 기준
 
@@ -47,7 +59,7 @@
 - 도메인 의미가 약하다
 - props contract가 핵심이다
 - size, tone, state, variant가 주된 public surface다
-- 여러 pattern/page 안에 반복 삽입된다
+- 여러 pattern/page view 안에 반복 삽입된다
 
 예:
 
@@ -55,8 +67,9 @@
 - `IconButton`
 - `Checkbox`
 - `EmptyState`
-- `DatasetTaskTag`
 - `SelectableListItem`
+- `GridContainer`
+- `ToolbarShell`
 - `ChartLegend` — `{ items: { label, color }[] }` generic contract
 - `ChartTooltipContent` — recharts `Tooltip content` slot 용 generic adapter
 - `DialogShell` — `{ title, description, children, actions, onClose }` generic dialog
@@ -74,15 +87,14 @@
 예:
 
 - `PagePrimaryHeader`
-- `GalleryToolbar`
-- `CatalogShell`
-- `DatasetListItem`
-- `DatasetListPanel`
+- `PageShell`
+- `SidebarShell`
 - `BarChartCard` / `LineChartCard` / `PieChartCard` — chart card composition
 - `ChartContainer` — title + description + legend + frame card shell
 - `ImageGrid` / `ImageGridCell` — gallery composition
 - `DrawingLayer` / `AnnotationOverlay` — annotation 도메인 composition
-- `SettingsDialog` — Sidebar + MainPanel 고정 구조
+
+제품 의미를 가진 `DatasetTaskTag`, `DatasetListItem`, `DatasetListPanel`, `GalleryToolbar`는 현재 `@ingradient/platform-pages`의 Catalog composition이다. generic layer의 분류 예시로 사용하지 않는다.
 
 ## Important Clarification
 
@@ -101,23 +113,23 @@
   - 이유: contract 가 `{ items: { label, color }[] }` 로 도메인 의존 없음
 - `DatasetListItem`
   - checkbox + name + tag + menu button을 조합한다
-  - `pattern`
-  - 이유: dataset browsing 맥락의 row composition
+  - `@ingradient/platform-pages` Catalog composition
+  - 이유: dataset browsing 제품 맥락과 도메인 row contract를 안다
 
 ## Recommended Split
 
 애매할 때는 generic base와 domain wrapper를 나눈다.
 
 - base reusable unit -> `component`
-- screen/domain wrapper -> `pattern`
+- generic screen shell -> `pattern`
+- product/domain wrapper -> page package
 
 예:
 
 - `IconButton` -> component
-- `DatasetTaskTag` -> component
 - `SelectableListItem` -> component
-- `DatasetListItem` -> pattern
-- `DatasetListPanel` -> pattern
+- `PageShell` -> pattern
+- `DatasetListItem` -> `@ingradient/platform-pages` domain composition
 
 ## Classification Workflow
 
@@ -152,7 +164,8 @@
 
 이 질문으로 최종 판단한다.
 
-`이 단위의 가치가 부품인가, 조립 구조인가?`
+`이 단위의 가치가 generic 부품인가, generic 조립 구조인가, 제품 전용 composition인가?`
 
 - 부품이면 `component`
 - 조립 구조면 `pattern`
+- 제품 용어와 domain state shape를 알면 해당 page package

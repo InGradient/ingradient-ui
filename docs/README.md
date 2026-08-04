@@ -1,23 +1,32 @@
 # Docs
 
-이 폴더는 새 문서 체계의 시작점이다.
+이 폴더는 현재 코드와 운영 계약을 설명하는 활성 문서의 시작점이다.
 
 기존에 누적돼 있던 문서는 보존을 위해 [`docs-legacy/`](../docs-legacy/README.md)로 이동했다.
 새 `docs/`는 기준을 다시 정리하면서 필요한 문서부터 순서대로 다시 쓴다.
 
 ## Current Scope
 
-지금 활성 문서는 아래 두 층위부터 다시 시작한다.
+활성 문서는 다음 계약을 다룬다.
 
-1. 레이어 경계
-2. 재사용 기준
-
-첫 문서는 [`reference/components-vs-patterns.md`](./reference/components-vs-patterns.md)다.
+1. `@ingradient/ui`의 token → primitive → component → pattern 경계
+2. `@ingradient/platform-pages`와 `@ingradient/edge-pages`의 controlled product view 경계
+3. Storybook의 executable documentation 계약
+4. package build, unit, accessibility, probe, visual validation
+5. `docs-legacy/`에 보존된 audit/plan의 역사적 판단 기록으로 가는 index
 
 ## Reading Order
 
-1. [Reference Index](./reference/README.md)
-2. [Components Vs Patterns](./reference/components-vs-patterns.md)
+1. [Root Architecture](../README.md)
+2. [Design Contract](../DESIGN.md)
+3. [Reference Index](./reference/README.md)
+4. [Components Vs Patterns](./reference/components-vs-patterns.md)
+5. [UI Refactoring Rules](../ui-refactoring-rule.md)
+6. [UI Workflow Guide](./guides/ui-workflow.md)
+7. [UI Audit Guide](./guides/ui-audit.md)
+8. [Platform Pages Package](../packages/platform-pages/README.md)
+9. [Platform Story Contract](../stories/pages/platform/0.0.1/README.md)
+10. [Platform Migration and Verification](../stories/pages/platform/0.0.1/MIGRATION.md)
 
 ## Legacy Docs
 
@@ -38,10 +47,7 @@
 
 ## Current Documentation Strategy
 
-지금은 코드를 먼저 재배치하지 않는다.
-
-- 먼저 문서로 기준을 고정한다
-- 그 기준으로 현재 코드를 읽고 분류한다
-- 구조 변경은 그 다음 단계로 미룬다
-
-첫 적용 대상은 `components vs patterns` 경계다.
+- 코드, public exports, Storybook IDs, probes, visual targets, 문서를 하나의 contract migration으로 취급한다.
+- package-owned view가 바뀌면 소비 story와 검증 경로를 같은 변경에서 갱신한다.
+- 완료된 audit/plan은 `docs-legacy/`에 보존하고, 현재 authority 문서로 오해되지 않도록 status banner와 최신 문서 링크를 둔다.
+- 새 운영 기준은 active docs에 기록하고, 더 이상 현재 구조를 설명하지 않는 문서는 `docs-legacy/`에 보존한다.

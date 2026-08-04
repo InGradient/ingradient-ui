@@ -10,6 +10,8 @@ related:
   - ../../../ingradient-platform/docs/plans/frontend_layer_refactor.md
 ---
 
+> **Archive only.** 이 문서는 package 분리 당시의 draft와 실행 기록을 보존한다. 현재 ownership/public API는 [`packages/platform-pages/README.md`](../../packages/platform-pages/README.md), 실행 가능한 story 계약은 [Platform 0.0.1 README](../../stories/pages/platform/0.0.1/README.md)를 따른다.
+
 # Platform Pages Package Plan
 
 ## 1. 배경
@@ -385,7 +387,7 @@ export const Default = () => (
 
 ### Phase 0 — Sub-export scaffold ✅ (완료)
 
-`packages/platform-pages/` 빈 골격 + tsup/exports/tsconfig/storybook alias 배선. spec: [platform-pages-phase-0-spec.md](./platform-pages-phase-0-spec.md).
+`packages/platform-pages/` 빈 골격 + tsup/exports/tsconfig/storybook alias 배선. 최종 workspace 계약은 현재 [`packages/platform-pages/README.md`](../../packages/platform-pages/README.md)에 기록한다.
 
 ### Phase 1 — CreateProject 추출 ✅ (완료)
 
@@ -413,7 +415,7 @@ export const Default = () => (
 
 ### Phase 6 — Story 정리 + 문서 동기화 ✅ (완료)
 
-5 story 모두 `@ingradient/platform-pages` import only. 직접 pattern 조립 0. lint pass. plan 문서 §11/§15 갱신. 사용 가이드 [platform-pages-usage.md](./platform-pages-usage.md) 작성. spec: [platform-pages-phase-6-spec.md](./platform-pages-phase-6-spec.md).
+5 story 모두 `@ingradient/platform-pages` import only. 직접 pattern 조립 0. lint pass. plan 문서 §11/§15 갱신. 사용 가이드 [platform-pages-usage.md](./platform-pages-usage.md) 작성. 현재 Storybook 결과와 검증 근거는 [Platform 0.0.1 migration](../../stories/pages/platform/0.0.1/MIGRATION.md)에 기록한다.
 
 ### Phase 7 — ingradient-platform 마이그레이션 ⏳ (대기)
 

@@ -18,6 +18,13 @@ The original migration first retained the complete Platform `0.0.1` page-story s
 - `.DS_Store`: intentionally not migrated
 - Blind copy/overwrite: not used
 
+## Delivery
+
+- Feature commit: [`3b1b01e`](https://github.com/InGradient/ingradient-ui/commit/3b1b01e9bd01db993db9d18fdcdbf693cf32446f)
+- Latest `main` was merged without rewriting history.
+- Main integration commit: [`d1b32c2`](https://github.com/InGradient/ingradient-ui/commit/d1b32c2c46b02ef08f750fbc1a8e41803a7fb216)
+- GitHub `main` was verified at `d1b32c2c46b02ef08f750fbc1a8e41803a7fb216` after push.
+
 The comparison used source file content, the target Git `HEAD`, and the checked-out target worktree. This distinguished original story coverage from cleaned/consolidated target code and from API adapters already required by the current design-system packages.
 
 ## Coverage
@@ -121,7 +128,7 @@ The current migration and consolidation are complete only when all of the follow
 2. Unit tests pass for the adapted page components.
 3. Storybook builds successfully.
 4. Page probes render Auth, Dataset Catalog, Class Management, Create Project, Dashboard, and Settings Modal states without product console errors.
-5. Visual captures at 375px, 768px, and 1280px show usable primary content for responsive pages. The source has no ClassManage mobile shell; its three-pane workspace stories are therefore reference-checked at tablet/laptop, while its status and collapsed variants remain the available narrow states.
+5. Canonical Playwright snapshots run at 1440×1200. Responsive behavior at 375px, 768px, and 1280px is covered by page probes and recorded manual browser review. The source has no ClassManage mobile shell; its three-pane workspace stories are therefore reference-checked at tablet/laptop, while its status and collapsed variants remain the available narrow states.
 
 The project-wide visual and browser evidence for the completed run is recorded below.
 
@@ -133,16 +140,19 @@ The project-wide visual and browser evidence for the completed run is recorded b
 | TypeScript and lint | `tsc --noEmit`, source ESLint, page-package Stylelint, all changed Auth/story/package focused ESLint, Auth Node probe syntax, and `git diff --check` passed. Source ESLint retained 4 existing warnings and no errors. |
 | Unit tests | 57 files, 220 tests passed, including controlled Login/Signup callbacks, unique simultaneous Auth message IDs, deterministic Dashboard date presets, arrow-key widget reordering, visible→all-hidden hook order, and sibling-control regressions |
 | Focused Storybook MCP | Auth 10/10, Create Project 5/5, and Dashboard 16/16 passed their named workflows plus blocking accessibility. Auth's former 10 serious inline-link violations were resolved by the user-approved underline; sign-in and account-creation workflows passed again after static-effect settling. |
-| Full Storybook MCP checkpoint | The clean 8GB server-side suite immediately before the final simultaneous-message ID hardening completed with 213 files / 493 tests passed in 287.93s. The addon again closed the MCP HTTP connection while serializing the complete result after success; the directly observed server summary is the source of truth. On the exact final source, Auth passed focused MCP 10/10, unit 57/220, package/static builds, and the 12-case production probe twice consecutively. |
-| Package build | UI, platform-pages, and edge-pages JavaScript/DTS builds passed |
-| Storybook production build | Passed; 4,548 modules transformed |
+| Historical full Storybook MCP delivery checkpoint | The clean 8GB server-side suite immediately before the final simultaneous-message ID hardening completed with 213 files / 493 tests passed in 287.93s. The addon again closed the MCP HTTP connection while serializing the complete result after success; the directly observed server summary is the source of truth. On the exact delivered Auth source, focused MCP 10/10, unit 57/220, package/static builds, and the 12-case production probe twice consecutively passed. |
+| Current repository-wide Storybook rerun | 202/213 files and 482/493 tests passed. The 11 failures are accessibility checks in component, primitive, pattern, and Edge stories outside `stories/pages/platform/0.0.1`; the Platform page story files passed. Do not describe the current complete repository suite as green until those unrelated failures are resolved. |
+| Current merged-head package build | UI, platform-pages, and edge-pages JavaScript/DTS builds passed after integrating `d1b32c2` |
+| Current merged-head Storybook production build | Passed after integrating `d1b32c2`; 4,548 modules transformed |
 | Static browser probes | 89/89 passed with no product console errors: Auth 12, Catalog 22, Class Management 16, Create Project 5, Settings Modal 18, Dashboard 16 |
 | Responsive browser review | Auth Login/Signup and Create Project at 1280×900 and 375×812, plus Dashboard at 1280×900, 768×1024, and 375×812, each measured 0px document overflow. Auth form width/height matched the pre-extraction baseline and only the approved link underline changed. Dashboard exposed 8 sibling drag controls, 8 sibling download controls, 0 nested buttons, direct arrow-key reordering with polite feedback, and unique table landmark names. |
-| Canonical visual targets | Auth uses `pages-platform-0-0-1-auth-login-workspace--overview` and `pages-platform-0-0-1-auth-signup-workspace--overview`; Create Project and Dashboard retain their grouped canonical IDs. Auth's Linux baselines need an intentional underline update; no Darwin capture may replace them. |
+| Canonical visual targets | Auth Login `pages-platform-0-0-1-auth-login-workspace--overview`; Auth Signup `pages-platform-0-0-1-auth-signup-workspace--overview`; Dataset Catalog `pages-platform-0-0-1-dataset-catalog-workspace--overview`; Class Management `pages-platform-0-0-1-class-management-workspace--overview`; Settings Modal `pages-platform-0-0-1-settings-modal-general--preferences`; Create Project `pages-platform-0-0-1-create-project-workspace--overview`; Dashboard `pages-platform-0-0-1-dashboard-workspace--overview`. Auth's Linux baselines need an intentional underline update; no Darwin capture may replace them. |
 
 The renamed Dataset Catalog, Class Management, and Create Project Linux baselines were preserved rather than silently regenerated. Auth Login/Signup need intentional Linux baseline updates for the approved underline, while Settings Modal and Dashboard still need their first approved Linux baselines on a Linux runner; do not substitute discarded Darwin captures.
 
 Repository-wide `check:style-literals` and `check:doc-coverage` remain blocked by existing files outside the six Platform product areas: the former reports raw literals in component/pattern stories/tests and `number-field.tsx`; the latter reports 14 already-missing Storybook seed files. No Auth, Create Project, or Dashboard path appears in either failure list. `validate:consumer-smoke` rebuilds all three packages successfully but the consumer's stricter `noUnusedLocals` check stops on five existing React/useRef imports in shared source; none belongs to these migrated pages.
+
+The repository visual target list also retains four stale target IDs (two missing generic stories and two renamed Edge stories) plus four missing or outdated Linux baselines across Platform/Edge. Fix those targets separately rather than weakening the seven canonical Platform contracts.
 
 ## Historical migration verification evidence
 
@@ -162,4 +172,4 @@ The table below records the pre-consolidation migration run. Current consolidati
 
 The 20 narrow-width overflow observations are exactly the 20 ClassManage three-pane workspace states described in the accepted-debt note; Catalog and Settings have no remaining page-level horizontal overflow. The original source supplies no alternative ClassManage mobile workspace design to transfer.
 
-At the time of the historical run, project-wide `tsc --noEmit` was blocked by ten generic `Table` assignment errors and the broader Storybook run retained 13 unrelated component/Edge failures. The current consolidation evidence above supersedes those historical limitations: TypeScript and the consolidated 493-test Storybook run now pass.
+At the time of the historical run, project-wide `tsc --noEmit` was blocked by ten generic `Table` assignment errors and the broader Storybook run retained 13 unrelated component/Edge failures. The delivered consolidation checkpoint later passed all 493 Storybook tests. The current repository rerun has 11 unrelated accessibility failures outside Platform `0.0.1`; Platform page stories and the delivery evidence above remain valid, but the current complete repository suite is not fully green.

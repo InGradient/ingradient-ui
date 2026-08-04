@@ -1,6 +1,8 @@
 # Catalog boundary
 
-`CatalogView` is the package-root entry point. Its controlled prop types and the small state types needed to construct those props are public; dataset rows, gallery controls, dialogs, sidebars, and overlay implementations remain internal to `@ingradient/platform-pages`.
+`CatalogView` is the package-root entry point. Its controlled prop types, public data rows (`CatalogDataset`, `CatalogImage`, `CatalogClass`), and the small state types needed to construct those props are public. Dataset/gallery/dialog/sidebar implementation components remain internal to `@ingradient/platform-pages`.
+
+See the [package contract](../../README.md) for the repository/application ownership boundary.
 
 ## Responsive contract
 

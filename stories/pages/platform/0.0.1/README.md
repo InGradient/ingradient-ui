@@ -2,6 +2,16 @@
 
 Storybook stories for 6 Platform product areas — **Auth / Create Project / Class Management / Dataset Catalog / Settings Modal / Dashboard**. Auth contains separate Login and Signup views.
 
+| Product area | Stories | Purpose groups |
+|---|---:|---:|
+| Auth | 10 | 6 |
+| Dataset Catalog | 40 | 8 |
+| Class Management | 24 | 7 |
+| Create Project | 5 | 3 |
+| Settings Modal | 33 | 7 |
+| Dashboard | 16 | 6 |
+| **Total** | **128** | **37** |
+
 ## Architecture
 
 Page-level JSX has been extracted to `@ingradient/platform-pages` (workspace package at [`packages/platform-pages/`](../../../../packages/platform-pages/)). Stories here are **thin orchestrators**:
@@ -10,7 +20,7 @@ Page-level JSX has been extracted to `@ingradient/platform-pages` (workspace pac
 - Mock state hooks (`use-*-scene.ts`) live alongside each story for scenario state.
 - Prop builders (`build-*-view-props.tsx`) convert scene state + fixtures into view props.
 
-The same view is imported by `ingradient-platform` (Phase 7 of the extraction roadmap) with real hook results — see [`docs/plan/platform-pages-usage.md`](../../../../docs/plan/platform-pages-usage.md).
+The intended consumer contract is that `ingradient-platform` supplies real hook/service results to the same package views. This repository verifies that boundary through controlled Storybook adapters; it does not claim the external application integration is present here. See the [`@ingradient/platform-pages` package contract](../../../../packages/platform-pages/README.md).
 
 ## File layout
 
@@ -64,8 +74,10 @@ The same view is imported by `ingradient-platform` (Phase 7 of the extraction ro
 │  ├─ catalog-story-plays.ts       # focused interaction contracts
 │  ├─ catalog-story-runtime.tsx    # shared Controls, Actions, handoff, responsive adapter
 │  ├─ build-view-props.tsx        # props converter
+│  ├─ build-detail-content.tsx    # detail modal/inspector slot composition
 │  ├─ build-overlays.ts           # overlays sub-builder
 │  ├─ build-stats-content.tsx     # stats slot JSX
+│  ├─ use-catalog-extra-dialogs.ts # additional controlled dialog state
 │  ├─ mock-dashboard.ts           # chart mock data
 │  └─ mock-detail.ts              # detail modal mock data
 ├─ class/                         # Class Management story helpers
@@ -114,7 +126,7 @@ The same view is imported by `ingradient-platform` (Phase 7 of the extraction ro
 - **Dashboard stories are purpose-grouped.** Its 16 stories cover Workspace, System States, Interactions, Layouts, Layout Studies, and Integrations. The exact default-layout duplicate and reproducible open/subset/applied states are absorbed into canonical stories or executable workflows.
 - **Dashboard controls are executable contracts.** Widget visibility, deterministic date range, PDF/widget export, layout reset, pointer drag, and direct arrow-key reorder callbacks preserve controlled state and report 10 explicit Action payloads. Compact Masonry and Sectioned Grid remain discoverable as isolated studies, not production defaults.
 - **Addon panels are part of the contract.** Controls expose only scenarios relevant to the selected group; callback args are explicit Action spies; representative flows use named Interaction steps; all six Platform product areas opt into blocking a11y checks.
-- **Canonical review IDs are stable downstream contracts.** Auth uses `pages-platform-0-0-1-auth-login-workspace--overview` and `pages-platform-0-0-1-auth-signup-workspace--overview`; Create Project uses `pages-platform-0-0-1-create-project-workspace--overview`; Dashboard uses `pages-platform-0-0-1-dashboard-workspace--overview`. Probes, visual targets, handoff metadata, and external reports must migrate with these IDs.
+- **Canonical review IDs are stable downstream contracts.** Auth uses `pages-platform-0-0-1-auth-login-workspace--overview` and `pages-platform-0-0-1-auth-signup-workspace--overview`; Dataset Catalog uses `pages-platform-0-0-1-dataset-catalog-workspace--overview`; Class Management uses `pages-platform-0-0-1-class-management-workspace--overview`; Create Project uses `pages-platform-0-0-1-create-project-workspace--overview`; Settings Modal uses `pages-platform-0-0-1-settings-modal-general--preferences`; Dashboard uses `pages-platform-0-0-1-dashboard-workspace--overview`. Probes, visual targets, handoff metadata, and external reports must migrate with these IDs.
 - **Catalog responsive props are discriminated.** Mobile builders must provide mobile state, omit desktop-only sidebar/stats props, and normalize `stats` to a supported `grid | table` mode.
 - **Class Management does not claim a mobile workspace.** The source contract defines a three-column desktop workspace; use the collapsed layout at constrained laptop/tablet widths and narrow status stories until a mobile shell is designed.
 
@@ -136,6 +148,8 @@ The six probes cover 89 cases in total.
 ## Related docs
 
 - [MIGRATION.md](./MIGRATION.md) — source/target code comparison, API adapters, coverage, and verification contract
-- [platform-pages-package-plan.md](../../../../docs/plan/platform-pages-package-plan.md) — high-level architecture
-- [platform-pages-extraction-roadmap.md](../../../../docs/plan/platform-pages-extraction-roadmap.md) — phase-by-phase execution plan
-- [platform-pages-usage.md](../../../../docs/plan/platform-pages-usage.md) — consumer guide (ingradient-platform side)
+- [@ingradient/platform-pages](../../../../packages/platform-pages/README.md) — current package ownership and public-boundary contract
+- [DESIGN.md](../../../../DESIGN.md) — current visual, responsive, interaction, and accessibility contract
+- [platform-pages-package-plan.md](../../../../docs-legacy/plan/platform-pages-package-plan.md) — historical package plan
+- [platform-pages-extraction-roadmap.md](../../../../docs-legacy/plan/platform-pages-extraction-roadmap.md) — historical phase roadmap
+- [platform-pages-usage.md](../../../../docs-legacy/plan/platform-pages-usage.md) — historical consumer guide

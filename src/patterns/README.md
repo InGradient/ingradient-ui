@@ -22,4 +22,5 @@
 ## Rule Of Thumb
 
 - 화면 골격과 layout rhythm을 재사용하면 `patterns`
-- business rule이나 product semantics가 들어가면 앱에 남긴다
+- product semantics가 들어가지만 API/store와 분리된 controlled composition이면 `@ingradient/platform-pages` 또는 `@ingradient/edge-pages`를 검토한다
+- business rule, persistence, permission 판정이 들어가면 소비 앱에 남긴다

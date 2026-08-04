@@ -19,10 +19,11 @@
 - app-wide navigation structure
 - product-specific workflow
 
-그런 것은 `patterns` 또는 소비 앱에 둔다.
+그런 것은 `patterns`, `@ingradient/platform-pages`, `@ingradient/edge-pages`, 또는 소비 앱에 둔다.
 
 ## Rule Of Thumb
 
 - 독립적으로 import해서 바로 쓸 수 있으면 `components`
 - 여러 components/primitives를 조립한 화면 골격이면 `patterns`
-- 제품 의미를 알아야 하면 앱에 남긴다
+- 제품 의미를 알아야 하지만 API/store와 분리된 controlled view라면 해당 page package에 둔다
+- router, API, permission, persistence를 알아야 하면 소비 앱에 남긴다
