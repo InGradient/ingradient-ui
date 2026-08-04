@@ -21,7 +21,7 @@
 - Static Platform probes: 89/89
 - Package/DTS and static Storybook builds passed
 
-Delivery: [`3b1b01e`](https://github.com/InGradient/ingradient-ui/commit/3b1b01e9bd01db993db9d18fdcdbf693cf32446f), merged to `main` by [`d1b32c2`](https://github.com/InGradient/ingradient-ui/commit/d1b32c2c46b02ef08f750fbc1a8e41803a7fb216).
+Delivery: [`c197991`](https://github.com/InGradient/ingradient-ui/commit/c197991c54916af6d1ad91f31a9d0029f4485b3d), merged to `main` by [`81786cf`](https://github.com/InGradient/ingradient-ui/commit/81786cffe141c29769ef0a1f5cdd1160ba336bd6).
 
 ## Versions
 

@@ -20,10 +20,10 @@ The original migration first retained the complete Platform `0.0.1` page-story s
 
 ## Delivery
 
-- Feature commit: [`3b1b01e`](https://github.com/InGradient/ingradient-ui/commit/3b1b01e9bd01db993db9d18fdcdbf693cf32446f)
+- Feature commit: [`c197991`](https://github.com/InGradient/ingradient-ui/commit/c197991c54916af6d1ad91f31a9d0029f4485b3d)
 - Latest `main` was merged without rewriting history.
-- Main integration commit: [`d1b32c2`](https://github.com/InGradient/ingradient-ui/commit/d1b32c2c46b02ef08f750fbc1a8e41803a7fb216)
-- GitHub `main` was verified at `d1b32c2c46b02ef08f750fbc1a8e41803a7fb216` after push.
+- Main integration commit: [`81786cf`](https://github.com/InGradient/ingradient-ui/commit/81786cffe141c29769ef0a1f5cdd1160ba336bd6)
+- GitHub `main` was verified at `81786cffe141c29769ef0a1f5cdd1160ba336bd6` after push.
 
 The comparison used source file content, the target Git `HEAD`, and the checked-out target worktree. This distinguished original story coverage from cleaned/consolidated target code and from API adapters already required by the current design-system packages.
 
@@ -142,8 +142,8 @@ The project-wide visual and browser evidence for the completed run is recorded b
 | Focused Storybook MCP | Auth 10/10, Create Project 5/5, and Dashboard 16/16 passed their named workflows plus blocking accessibility. Auth's former 10 serious inline-link violations were resolved by the user-approved underline; sign-in and account-creation workflows passed again after static-effect settling. |
 | Historical full Storybook MCP delivery checkpoint | The clean 8GB server-side suite immediately before the final simultaneous-message ID hardening completed with 213 files / 493 tests passed in 287.93s. The addon again closed the MCP HTTP connection while serializing the complete result after success; the directly observed server summary is the source of truth. On the exact delivered Auth source, focused MCP 10/10, unit 57/220, package/static builds, and the 12-case production probe twice consecutively passed. |
 | Current repository-wide Storybook rerun | 202/213 files and 482/493 tests passed. The 11 failures are accessibility checks in component, primitive, pattern, and Edge stories outside `stories/pages/platform/0.0.1`; the Platform page story files passed. Do not describe the current complete repository suite as green until those unrelated failures are resolved. |
-| Current merged-head package build | UI, platform-pages, and edge-pages JavaScript/DTS builds passed after integrating `d1b32c2` |
-| Current merged-head Storybook production build | Passed after integrating `d1b32c2`; 4,548 modules transformed |
+| Current merged-head package build | UI, platform-pages, and edge-pages JavaScript/DTS builds passed after integrating `81786cf` |
+| Current merged-head Storybook production build | Passed after integrating `81786cf`; 4,548 modules transformed |
 | Static browser probes | 89/89 passed with no product console errors: Auth 12, Catalog 22, Class Management 16, Create Project 5, Settings Modal 18, Dashboard 16 |
 | Responsive browser review | Auth Login/Signup and Create Project at 1280×900 and 375×812, plus Dashboard at 1280×900, 768×1024, and 375×812, each measured 0px document overflow. Auth form width/height matched the pre-extraction baseline and only the approved link underline changed. Dashboard exposed 8 sibling drag controls, 8 sibling download controls, 0 nested buttons, direct arrow-key reordering with polite feedback, and unique table landmark names. |
 | Canonical visual targets | Auth Login `pages-platform-0-0-1-auth-login-workspace--overview`; Auth Signup `pages-platform-0-0-1-auth-signup-workspace--overview`; Dataset Catalog `pages-platform-0-0-1-dataset-catalog-workspace--overview`; Class Management `pages-platform-0-0-1-class-management-workspace--overview`; Settings Modal `pages-platform-0-0-1-settings-modal-general--preferences`; Create Project `pages-platform-0-0-1-create-project-workspace--overview`; Dashboard `pages-platform-0-0-1-dashboard-workspace--overview`. Auth's Linux baselines need an intentional underline update; no Darwin capture may replace them. |
