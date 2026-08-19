@@ -1,4 +1,6 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect } from 'storybook/test'
 import { BarChartCard } from './bar-chart-card'
 import { LineChartCard } from './line-chart-card'
 import { PieChartCard } from './pie-chart-card'
@@ -32,6 +34,35 @@ const meta = {
 export default meta
 
 type Story = StoryObj<ChartsStoryArgs>
+
+const keyboardPointData = [
+  { period: 'Mon', reviewed: 24, approved: 18 },
+  { period: 'Tue', reviewed: 31, approved: 21 },
+  { period: 'Wed', reviewed: 28, approved: 25 },
+]
+
+function KeyboardDataAccessDemo() {
+  const [selectedPoint, setSelectedPoint] = React.useState<string | null>(null)
+
+  return (
+    <StorybookStack gap={12}>
+      <LineChartCard
+        title="Weekly review throughput"
+        description="Keyboard users can access the same data through a screen-reader table and select a point with Enter or Space."
+        data={keyboardPointData}
+        xKey="period"
+        series={[
+          { key: 'reviewed', label: 'Reviewed' },
+          { key: 'approved', label: 'Approved' },
+        ]}
+        onPointClick={(entry) => setSelectedPoint(`${entry.period}: ${entry.reviewed} reviewed, ${entry.approved} approved`)}
+      />
+      <p aria-live="polite">
+        {selectedPoint ? `Selected: ${selectedPoint}` : 'No data point selected.'}
+      </p>
+    </StorybookStack>
+  )
+}
 
 export const Review: Story = {
   render: (args, context) => {
@@ -139,5 +170,32 @@ export const States: Story = {
         </StorybookSection>
       </StorybookPage>
     )
+  },
+}
+
+export const KeyboardDataAccess: Story = {
+  render: () => (
+    <StorybookPage
+      title="Chart keyboard data access"
+      description="Interactive line charts expose an equivalent, visually-hidden data table. Screen-reader and keyboard users can focus a row and press Enter or Space to trigger the same point-selection callback as a pointer click."
+    >
+      <StorybookSection
+        title="Interactive point selection"
+        description="Tab to a data row with assistive technology, then press Enter or Space. The status message confirms the selected point."
+      >
+        <StorybookGrid columns="1fr">
+          <StorybookCard title="LineChartCard" subtitle="onPointClick + accessible data table">
+            <KeyboardDataAccessDemo />
+          </StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+    </StorybookPage>
+  ),
+  play: async ({ canvas, userEvent }) => {
+    const rows = canvas.getAllByRole('row')
+    const firstDataRow = rows[1]
+    firstDataRow.focus()
+    await userEvent.keyboard('{Enter}')
+    await expect(canvas.getByText('Selected: Mon: 24 reviewed, 18 approved')).toBeInTheDocument()
   },
 }

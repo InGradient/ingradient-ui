@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect, fn } from 'storybook/test'
 import { ImageCard } from './image-card'
 import { Grid } from '../../primitives'
 import sample1 from '../../../stories/assets/20230808.jpg'
@@ -9,6 +10,11 @@ const meta: Meta<typeof ImageCard> = {
   title: 'Components/Data Display/ImageCard',
   component: ImageCard,
   tags: ['autodocs'],
+  parameters: {
+    a11y: {
+      test: 'error',
+    },
+  },
 }
 export default meta
 
@@ -35,6 +41,27 @@ export const Processing: Story = { args: { image: { ...baseImage, processing: tr
 export const GroupOf5: Story = { args: { image: { ...baseImage, group_count: 5 }, topRightSlot: <DemoChip label="Synced" /> } }
 export const LongName: Story = {
   args: { image: { ...baseImage, name: 'very-long-image-filename-2024-q4-batch-3-wafer-line-a-001-cropped.jpg' } },
+}
+
+export const KeyboardActivation: Story = {
+  args: {
+    image: baseImage,
+    showKebab: false,
+    onOpen: fn(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'When `onOpen` or `onSelect` is provided, the card is keyboard-focusable. Press Enter or Space to run its primary action; its accessible name identifies the image and action.',
+      },
+    },
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    const card = canvas.getByRole('button', { name: `Open image ${baseImage.name}` })
+    card.focus()
+    await userEvent.keyboard('{Enter}')
+    await expect(args.onOpen).toHaveBeenCalledWith(baseImage.id)
+  },
 }
 
 export const Grid3x3: Story = {

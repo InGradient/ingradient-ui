@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect } from 'storybook/test'
 import { UploadDropzone } from './upload-dropzone'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
@@ -33,7 +34,7 @@ export const Review: Story = {
       >
         <StorybookSection
           title="Dropzone review"
-          description="Use the native file picker from the drop area to verify callback shape and status rendering."
+          description="Use the native file picker from the drop area to verify callback shape and status rendering. The enabled dropzone is a keyboard button: Tab to it, then press Enter or Space to open the picker."
         >
           <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-md-narrow), 1fr))">
             <StorybookCard title="Interactive uploader" subtitle="callback state">
@@ -69,5 +70,11 @@ export const Review: Story = {
         </StorybookSection>
       </StorybookPage>
     )
+  },
+  play: async ({ canvas }) => {
+    const dropzone = canvas.getByRole('button', { name: 'Upload files' })
+    await expect(dropzone).toHaveAttribute('tabindex', '0')
+    dropzone.focus()
+    await expect(dropzone).toHaveFocus()
   },
 }
