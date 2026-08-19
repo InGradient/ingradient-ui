@@ -93,9 +93,24 @@ const cases = [
     story: 'login-workflow',
     id: STORY_IDS.loginWorkflow,
     check: async (page) => {
+      // Storybook's play runs after scenario-reset effects; wait for its final state, not just its first typed field.
       await page.waitForFunction(() => {
-        const input = document.querySelector('input[aria-label="Email"]')
-        return input instanceof HTMLInputElement && input.value === 'operator@ingradient.ai'
+        const email = document.querySelector('input[aria-label="Email"]')
+        const password = document.querySelector('input[aria-label="Password"]')
+        const checkboxWithLabel = (label) =>
+          [...document.querySelectorAll('input[type="checkbox"]')].find(
+            (input) => input.closest('label')?.textContent?.includes(label),
+          )
+        const keepSignedIn = checkboxWithLabel('Keep me signed in')
+        const rememberPassword = checkboxWithLabel('Remember password')
+        return email instanceof HTMLInputElement
+          && email.value === 'operator@ingradient.ai'
+          && password instanceof HTMLInputElement
+          && password.value === 'secure-passphrase'
+          && keepSignedIn instanceof HTMLInputElement
+          && keepSignedIn.checked
+          && rememberPassword instanceof HTMLInputElement
+          && rememberPassword.checked
       })
       assert(
         await page.getByRole('checkbox', { name: 'Keep me signed in' }).isChecked(),
@@ -155,11 +170,17 @@ const cases = [
     check: async (page) => {
       await page.waitForFunction(() => {
         const email = document.querySelector('input[aria-label="Email"]')
+        const name = document.querySelector('input[aria-label="Name"]')
         const organization = document.querySelector('input[aria-label="Organization"]')
+        const password = document.querySelector('input[aria-label="Password"]')
         return email instanceof HTMLInputElement
           && email.value === 'new.operator@ingradient.ai'
+          && name instanceof HTMLInputElement
+          && name.value === 'New Operator'
           && organization instanceof HTMLInputElement
           && organization.value === 'Ingradient'
+          && password instanceof HTMLInputElement
+          && password.value === 'secure-passphrase'
       })
       assert(
         await page.getByLabel('Organization').inputValue() === 'Ingradient',

@@ -38,8 +38,10 @@ export type TableProps<T> = {
   rows: T[]
   /** Stable row identity. Falls back to a string/number `id`, then the row index. */
   getRowKey?: (row: T, index: number) => React.Key
-  /** Row click handler */
+  /** Row click handler. When supplied, rows support Enter and Space activation. */
   onRowClick?: (row: T, index: number) => void
+  /** Accessible action label for a clickable row (for example, "Open image wafer-001.jpg"). */
+  getRowAriaLabel?: (row: T, index: number) => string
   /** Enable drag-to-reorder rows. Default: false */
   draggable?: boolean
   /** Called when rows are reordered via drag. Only fires when draggable=true */
@@ -58,6 +60,7 @@ export function Table<T>({
   rows,
   getRowKey,
   onRowClick,
+  getRowAriaLabel,
   draggable = false,
   onReorder,
   rowHeight = 48,
@@ -66,6 +69,15 @@ export function Table<T>({
   footer,
 }: TableProps<T>) {
   const { dragState, fromIdx, getOffset, onDragStart } = useTableDrag<T>({ rows, rowHeight, onReorder })
+
+  const handleRowKeyDown = (event: React.KeyboardEvent<HTMLTableRowElement>, row: T, index: number) => {
+    // A checkbox or menu button inside a row owns its own keyboard interaction.
+    if (!onRowClick || event.currentTarget !== event.target) return
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      onRowClick(row, index)
+    }
+  }
 
   const renderFooter = () =>
     footer ? (
@@ -112,6 +124,9 @@ export function Table<T>({
                 key={resolveRowKey(row, i, getRowKey)}
                 $clickable={!!onRowClick}
                 onClick={() => onRowClick?.(row, i)}
+                onKeyDown={(event) => handleRowKeyDown(event, row, i)}
+                tabIndex={onRowClick ? 0 : undefined}
+                aria-label={onRowClick ? getRowAriaLabel?.(row, i) : undefined}
               >
                 {columns.map((col) => (
                   <Td
@@ -161,6 +176,9 @@ export function Table<T>({
               $isDragging={fromIdx === i}
               $isAnimating={dragState !== null && fromIdx !== i}
               onClick={() => onRowClick?.(row, i)}
+              onKeyDown={(event) => handleRowKeyDown(event, row, i)}
+              tabIndex={onRowClick ? 0 : undefined}
+              aria-label={onRowClick ? getRowAriaLabel?.(row, i) : undefined}
             >
               <DragTd>
                 <HandleBtn onMouseDown={(e) => onDragStart(e, i)}>

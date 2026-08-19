@@ -58,9 +58,16 @@ export const Playground: Story = {
 
     return (
       <StorybookStack gap={12}>
-        <StoryTable columns={columns} rows={args.emptyState ? [] : rows} draggable={args.draggable} onReorder={setRows} onRowClick={setSelected} />
+        <StoryTable
+          columns={columns}
+          rows={args.emptyState ? [] : rows}
+          draggable={args.draggable}
+          onReorder={setRows}
+          onRowClick={setSelected}
+          getRowAriaLabel={(row) => `Open workspace ${row.name}`}
+        />
         <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
-          Selected row: <strong>{selected?.name ?? 'none'}</strong>
+          Selected row: <strong>{selected?.name ?? 'none'}</strong>. Click a row, or focus it and press Enter or Space.
         </div>
       </StorybookStack>
     )

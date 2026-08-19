@@ -85,6 +85,15 @@ const animatingRow = css`
   transition: transform var(--ig-motion-normal);
 `
 
+const clickableRowFocus = css`
+  &:focus-visible {
+    position: relative;
+    z-index: var(--ig-z-base);
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
+`
+
 export const StyledTr = styled.tr<{
   $clickable?: boolean
   $yOffset: number
@@ -95,6 +104,7 @@ export const StyledTr = styled.tr<{
   transform: translateY(${(p) => p.$yOffset}px);
   ${(p) => p.$isDragging && draggingRow}
   ${(p) => p.$isAnimating && animatingRow}
+  ${(p) => p.$clickable && clickableRowFocus}
   &:hover {
     background: var(--ig-color-white-04);
   }
@@ -102,6 +112,7 @@ export const StyledTr = styled.tr<{
 
 export const PlainTr = styled.tr<{ $clickable?: boolean }>`
   cursor: ${(p) => (p.$clickable ? 'pointer' : 'default')};
+  ${(p) => p.$clickable && clickableRowFocus}
   &:hover {
     background: var(--ig-color-white-04);
   }

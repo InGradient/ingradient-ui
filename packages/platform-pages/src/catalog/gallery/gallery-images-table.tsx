@@ -140,6 +140,7 @@ export function GalleryImagesTable({
         columns={columns}
         rows={images}
         onRowClick={(row) => onRowClick?.(row.id)}
+        getRowAriaLabel={(row) => `Open image ${row.name}`}
         ariaLabel="Gallery images table"
       />
     </TableText>
