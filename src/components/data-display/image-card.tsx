@@ -47,6 +47,10 @@ const Card = styled.div<{ $selected: boolean }>`
     pointer-events: none;
     z-index: var(--ig-z-capture-high);
   }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
 `
 
 const THUMB_STYLE = {
@@ -117,7 +121,17 @@ export function ImageCard({
   return (
     <Card
       $selected={selected}
+      role={onOpen || onSelect ? 'button' : undefined}
+      tabIndex={onOpen || onSelect ? 0 : -1}
+      aria-label={onOpen ? `Open image ${image.name}` : onSelect ? `Select image ${image.name}` : undefined}
       onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          if (onOpen) onOpen(image.id)
+          else if (onSelect) onSelect(image.id, e as unknown as React.MouseEvent)
+        }
+      }}
       data-image-id={image.id}
       data-state-chip-hover-scope="true"
     >

@@ -47,6 +47,10 @@ const Root = styled.div<{ $variant: DropZoneVariant; $active: boolean; $disabled
         var(--ig-color-bg-canvas) var(--ig-space-4) var(--ig-space-9)
       );
     `}
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
 `
 
 export interface DropZoneProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {

@@ -71,7 +71,16 @@ export function UploadDropzone({
       disabled={disabled}
       className={className}
       style={disabled ? ZONE_STYLE : ZONE_CLICKABLE_STYLE}
+      role={!disabled ? 'button' : undefined}
+      tabIndex={!disabled ? 0 : -1}
+      aria-label="Upload files"
       onClick={() => !disabled && inputRef.current?.click()}
+      onKeyDown={(e) => {
+        if (!disabled && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault()
+          inputRef.current?.click()
+        }
+      }}
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}

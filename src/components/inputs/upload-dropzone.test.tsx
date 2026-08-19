@@ -30,4 +30,44 @@ describe('UploadDropzone', () => {
     fireEvent.drop(area, { dataTransfer: { files: [file] } })
     expect(onFiles).not.toHaveBeenCalled()
   })
+
+  it('has role=button and is keyboard-focusable when enabled', () => {
+    render(<UploadDropzone onFiles={() => {}} />)
+    const zone = screen.getByRole('button', { name: /upload files/i })
+    expect(zone).toHaveAttribute('tabindex', '0')
+  })
+
+  it('is not keyboard-focusable when disabled', () => {
+    render(<UploadDropzone onFiles={() => {}} disabled />)
+    const zone = screen.getByText('Drop files here or click to browse')
+    expect(zone).not.toHaveAttribute('role', 'button')
+    expect(zone).toHaveAttribute('tabindex', '-1')
+  })
+
+  it('triggers file input click on Enter', () => {
+    render(<UploadDropzone onFiles={() => {}} />)
+    const zone = screen.getByRole('button', { name: /upload files/i })
+    const input = zone.querySelector('input[type="file"]') as HTMLInputElement
+    const clickSpy = vi.spyOn(input, 'click')
+    fireEvent.keyDown(zone, { key: 'Enter' })
+    expect(clickSpy).toHaveBeenCalled()
+  })
+
+  it('triggers file input click on Space', () => {
+    render(<UploadDropzone onFiles={() => {}} />)
+    const zone = screen.getByRole('button', { name: /upload files/i })
+    const input = zone.querySelector('input[type="file"]') as HTMLInputElement
+    const clickSpy = vi.spyOn(input, 'click')
+    fireEvent.keyDown(zone, { key: ' ' })
+    expect(clickSpy).toHaveBeenCalled()
+  })
+
+  it('does not trigger file input click on Enter when disabled', () => {
+    render(<UploadDropzone onFiles={() => {}} disabled />)
+    const zone = screen.getByText('Drop files here or click to browse')
+    const input = zone.querySelector('input[type="file"]') as HTMLInputElement
+    const clickSpy = vi.spyOn(input, 'click')
+    fireEvent.keyDown(zone, { key: 'Enter' })
+    expect(clickSpy).not.toHaveBeenCalled()
+  })
 })
