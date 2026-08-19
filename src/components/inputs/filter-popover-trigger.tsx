@@ -101,7 +101,7 @@ export function FilterPopoverTrigger({
       {open && pos && typeof document !== 'undefined'
         ? createPortal(
           <>
-            <div onClick={() => setOpen(false)} style={BACKDROP_STYLE} />
+            <div onClick={() => setOpen(false)} aria-hidden="true" style={BACKDROP_STYLE} />
             <FloatingOverlay
               variant="menu"
               top={pos.top}

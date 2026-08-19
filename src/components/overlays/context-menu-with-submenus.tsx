@@ -123,7 +123,7 @@ export function ContextMenuWithSubmenus({
 
   return (
     <>
-      <div onClick={onClose} style={BACKDROP_STYLE} />
+      <div onClick={onClose} aria-hidden="true" style={BACKDROP_STYLE} />
       <FloatingOverlay ref={menuRef} variant="menu" top={top} left={left} style={MENU_STYLE} role="menu">
         {actions.map((a, i) => {
           if (a.separator) return <hr key={`sep-${i}`} style={SEPARATOR_STYLE} />

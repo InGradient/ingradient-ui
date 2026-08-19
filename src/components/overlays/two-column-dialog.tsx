@@ -1,4 +1,4 @@
-import React, { useId } from 'react'
+import React, { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { H4 } from '../../primitives'
@@ -72,10 +72,30 @@ export function TwoColumnDialog({
   sidebarWidth = 'var(--ig-popup-xs-narrow)',
 }: TwoColumnDialogProps) {
   const titleId = useId()
+  const shellRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const prevFocus = document.activeElement as HTMLElement | null
+    shellRef.current?.focus()
+    return () => prevFocus?.focus?.()
+  }, [])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
   if (typeof document === 'undefined') return null
   return createPortal(
     <ModalBackdrop onClick={() => onClose()}>
       <Shell
+        ref={shellRef}
         $width={width}
         $height={height ?? null}
         $maxHeight={maxHeight}
@@ -83,6 +103,7 @@ export function TwoColumnDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        tabIndex={-1}
       >
         <Header>
           <H4 id={titleId}>{title}</H4>
