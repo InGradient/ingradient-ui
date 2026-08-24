@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
-import { useDrawingCanvas, IconButton, MenuIconButton, EraserIcon, EyeIcon, EyeOffIcon, ExpandIcon, CollapseIcon, PointerIcon, SaveIcon, SkipForwardIcon, SquareIcon } from '@ingradient/ui/components'
-import { useZoomPan, iconSizeNumbers } from '@ingradient/ui'
+import { IconButton, MenuIconButton, EraserIcon, EyeIcon, EyeOffIcon, ExpandIcon, CollapseIcon, PointerIcon, SaveIcon, SkipForwardIcon, SquareIcon } from '@ingradient/ui/components'
+import { useDrawingCanvas, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import { LabelingCanvas } from '@ingradient/ui/patterns'
 import { useFullscreen } from '../capture/use-fullscreen'
 import {

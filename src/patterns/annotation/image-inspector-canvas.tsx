@@ -7,7 +7,7 @@ import {
   useDrawingCanvas,
   useZoomPan,
   type DrawingObject,
-} from '../../components'
+} from '../../hooks'
 import { IconButton } from '../../components/inputs/icon-button'
 import { LabelingCanvas } from './labeling-canvas'
 

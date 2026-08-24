@@ -18,6 +18,10 @@
       "types": "./lib/brand.d.ts",
       "import": "./lib/brand.js"
     },
+    "./hooks": {
+      "types": "./lib/hooks.d.ts",
+      "import": "./lib/hooks.js"
+    },
     "./tokens.css": "./lib/tokens.css",
     "./tokens": {
       "types": "./lib/tokens.d.ts",

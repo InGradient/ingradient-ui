@@ -28,6 +28,19 @@ import {
 
 Domain-owned implementation rows, dialogs, toolbars, sidebars, and gallery internals are not automatically public. Export only the view and the controlled data/state types a consumer needs to construct its props.
 
+## Domain patterns
+
+This package contains both page views and platform-owned domain patterns. Domain patterns are reusable compositions that know Platform product semantics but do not depend on router, API, or store. They are not generic enough for `@ingradient/ui/patterns` (they know dataset, class, or project terminology), but they are reused across multiple page views within this package.
+
+Current domain patterns (declared with `data-ig-layer="patterns"`):
+
+- `catalog/dataset-task-tag.tsx` — dataset task/type tag with product color mapping
+- `catalog/dataset-list-item.tsx` — dataset row composition
+- `catalog/dataset-list-panel.tsx` — dataset list panel composition
+- `catalog/gallery/gallery-toolbar.tsx` — gallery toolbar composition
+
+These files live inside `packages/platform-pages/src/` because they are Platform-specific. They are not page views themselves, but they are part of the Platform product surface. If a domain pattern becomes generic enough to be shared with Edge or external consumers, promote it to `@ingradient/ui/patterns`.
+
 ## Ownership boundary
 
 This package owns:

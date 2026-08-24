@@ -1,17 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { brandAssets } from './assets'
 
-const faviconIcoUrl = new URL('./assets/favicon.ico', import.meta.url).href
-const faviconPngUrl = new URL('./assets/favicon.png', import.meta.url).href
-const brandMarkUrl = new URL('./assets/brand-mark.png', import.meta.url).href
-const logoWordmarkUrl = new URL('./assets/ingradient_logo_l_white.png', import.meta.url).href
-
-export const brandAssets = {
-  faviconIco: faviconIcoUrl,
-  faviconPng: faviconPngUrl,
-  brandMark: brandMarkUrl,
-  logoWordmark: logoWordmarkUrl,
-} as const
+// Re-export asset registry for convenience
+export { brandAssets } from './assets'
 
 const BrandImage = styled.img`
   display: block;
