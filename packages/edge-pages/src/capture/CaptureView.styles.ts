@@ -79,11 +79,6 @@ export const SetupBlockingCard = styled.div`
   font-weight: var(--ig-font-weight-semibold);
 `;
 
-export const PlaceholderText = styled.div`
-  color: var(--ig-color-text-soft);
-  font-size: var(--ig-font-size-4xl);
-`;
-
 export const OverlayControls = styled.div`
   position: absolute;
   top: var(--ig-space-4);
@@ -114,12 +109,6 @@ export const ControlRow = styled.div`
   align-items: center;
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-sm);
-`;
-
-export const ControlLabel = styled.span`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-2);
 `;
 
 export const CaptureBar = styled.div`
@@ -251,13 +240,6 @@ export const ConnectingBox = styled.div`
   gap: var(--ig-space-3);
 `;
 
-export const ConnectingSpinnerBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--ig-space-5);
-`;
-
 export const StreamImg = styled.img`
   width: 100%;
   height: 100%;
@@ -292,11 +274,6 @@ export const HistogramImage = styled.img`
   width: var(--ig-layout-histogram-width);
   height: var(--ig-layout-histogram-height);
   border-radius: var(--ig-radius-xs);
-`;
-
-export const AbsolutePlaceholder = styled(PlaceholderText)`
-  position: absolute;
-  z-index: var(--ig-z-base);
 `;
 
 export const CapturingBadge = styled.div`

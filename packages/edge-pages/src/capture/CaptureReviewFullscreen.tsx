@@ -1,9 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, IconButton, ExpandIcon, CollapseIcon } from '@ingradient/ui/components'
+import { Inline } from '@ingradient/ui/primitives'
 import { useFullscreen } from './use-fullscreen'
 import {
   CaptureReview, CapturePreviewImg,
-  CaptureReviewActions,
 } from './CaptureReviewFullscreen.styles'
 import type { CaptureReviewFullscreenProps } from './types'
 
@@ -24,12 +24,12 @@ export function CaptureReviewFullscreen(props: CaptureReviewFullscreenProps): JS
         {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
       </IconButton>
       <CapturePreviewImg src={src} alt="Captured" />
-      <CaptureReviewActions>
+      <Inline align="center" gap="var(--ig-space-4)" wrap="nowrap" style={{ flexShrink: 0 }}>
         {showSkip && (
           <Button variant="secondary" type="button" onClick={onSkip}>{labels.skip}</Button>
         )}
         <Button variant="accent" type="button" onClick={onSave}>{labels.save}</Button>
-      </CaptureReviewActions>
+      </Inline>
     </CaptureReview>
   )
 }

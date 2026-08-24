@@ -1,11 +1,9 @@
 import { Button, Checkbox, SelectField, Spinner, iconSizeNumbers } from '@ingradient/ui'
-import { Stack } from '@ingradient/ui/primitives'
+import { Divider, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { CollapsibleSectionHeader, AlertTriangleIcon, Alert, Card } from '@ingradient/ui/components'
 import {
-  Wrap, Row, Label, LabelName, LabelValue, Slider, SliderInline,
-  BtnRow, MetricRow,
-  QualityHeader, QualityLabel, QualityStatus, QualityDivider,
-  IndicatorRight, IndicatorValue,
+  Wrap, Label, Slider, SliderInline, MetricRow,
+  QualityHeader, QualityStatus, IndicatorRight,
 } from './DeflectometryTuningControlsView.styles'
 import { COLORMAP_OPTIONS, type ColormapName } from './colormap-helpers'
 import type { DeflectometryTuningControlsViewProps } from './types'
@@ -33,10 +31,10 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
       {expanded && (
         <>
           {isGradient && (
-            <Row>
+            <Stack gap="var(--ig-space-1)">
               <Label>
-                <LabelName>modulation threshold</LabelName>
-                <LabelValue>{modulationThreshold.toFixed(2)}</LabelValue>
+                <Text tone="muted">modulation threshold</Text>
+                <Text tabularNums>{modulationThreshold.toFixed(2)}</Text>
               </Label>
               <SliderInline>
                 <Slider
@@ -52,13 +50,13 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
                   onChange={(e) => onModulationOverlayChange(e.target.checked)}
                 />
               </SliderInline>
-            </Row>
+            </Stack>
           )}
 
           {activeDerivedKind && (
-            <Row>
+            <Stack gap="var(--ig-space-1)">
               <Label>
-                <LabelName>{labels.colormapSection}</LabelName>
+                <Text tone="muted">{labels.colormapSection}</Text>
               </Label>
               <SelectField
                 value={colormaps[activeDerivedKind]}
@@ -69,7 +67,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
                 ))}
               </SelectField>
-            </Row>
+            </Stack>
           )}
         </>
       )}
@@ -86,19 +84,19 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
       <Card elevation="raised" flat radius="var(--ig-radius-xs)" padding="var(--ig-space-3)">
         <Stack gap="var(--ig-space-2)">
           <QualityHeader>
-            <QualityLabel>{labels.confidence}</QualityLabel>
+            <Text tone="muted">{labels.confidence}</Text>
             {isRecomputing && !metrics ? (
-              <QualityLabel><Spinner tone="white" size="sm" />{labels.computing}</QualityLabel>
+              <Text tone="muted"><Spinner tone="white" size="sm" />{labels.computing}</Text>
             ) : (
               <IndicatorRight>
-                <IndicatorValue>{formatPct(metrics?.validRatio ?? null)}</IndicatorValue>
+                <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{formatPct(metrics?.validRatio ?? null)}</Text>
                 <QualityStatus $status={metrics?.confidenceStatus ?? null}>
                   {metrics?.confidenceStatus ?? '—'}
                 </QualityStatus>
               </IndicatorRight>
             )}
           </QualityHeader>
-          <QualityDivider />
+          <Divider as="div" style={{ margin: 'var(--ig-space-2px) 0' }} />
           <MetricRow>
             <span>{labels.validRatio}</span>
             <span>{formatPct(metrics?.validRatio ?? null)}</span>
@@ -109,7 +107,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         </Stack>
       </Card>
 
-      <BtnRow>
+      <Inline gap="var(--ig-space-2)" wrap="nowrap">
         <Button variant="secondary" size="sm" disabled={disabled || isSavingDefault} onClick={onSaveDefault}>
           {isSavingDefault && <Spinner tone="white" size="sm" />}
           {isSavingDefault ? labels.saveDefaultSaving : labels.saveDefault}
@@ -117,7 +115,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         <Button variant="secondary" size="sm" disabled={disabled || isRecomputing || isAutoTuning} onClick={onReset}>
           {labels.reset}
         </Button>
-      </BtnRow>
+      </Inline>
     </Wrap>
   )
 }

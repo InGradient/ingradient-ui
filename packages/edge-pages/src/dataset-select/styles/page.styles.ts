@@ -17,14 +17,6 @@ export const Content = styled.div`
   gap: var(--ig-space-12);
 `
 
-export const SectionLabel = styled.div`
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-widest);
-`
-
 export const ErrorMsg = styled.div`
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-danger);

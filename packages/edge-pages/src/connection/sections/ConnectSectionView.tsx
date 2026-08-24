@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Button, SectionTitle, Spinner, iconSizeNumbers } from '@ingradient/ui'
 import { CheckCircleIcon, AlertCircleIcon } from '@ingradient/ui/components'
-import { FlatSection } from '../ConnectionTabView.styles'
+import { Inline, Stack } from '@ingradient/ui/primitives'
 import type { ConnectSectionViewProps } from '../types'
 
 const ErrorMsg = styled.div`
@@ -24,9 +24,9 @@ const ConnectedMsg = styled.div`
 export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element {
   const { isConnecting, isConnected, connectionError, canConnect, labels, onConnect, onDisconnect } = props
   return (
-    <FlatSection>
+    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
       <SectionTitle>{labels.connectTitle}</SectionTitle>
-      <div style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
+      <Inline gap="var(--ig-space-3)" align="center" wrap="nowrap">
         {isConnected ? (
           <Button size="sm" variant="secondary" onClick={onDisconnect}>{labels.disconnect}</Button>
         ) : (
@@ -36,8 +36,8 @@ export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element 
           </Button>
         )}
         {isConnected && <ConnectedMsg><CheckCircleIcon size={iconSizeNumbers.sm} />Connected</ConnectedMsg>}
-      </div>
+      </Inline>
       {connectionError && <ErrorMsg><AlertCircleIcon size={iconSizeNumbers.sm} />{connectionError}</ErrorMsg>}
-    </FlatSection>
+    </Stack>
   )
 }

@@ -18,19 +18,7 @@ export const SetupPanelHeader = styled.div`
   gap: var(--ig-space-5);
 `;
 
-export const SetupPanelTitle = styled.div`
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-md);
-  font-weight: var(--ig-font-weight-bold);
-`;
-
 // SetupResetButton / SetupSaveButton: ui Button (variant secondary/accent, size sm) (PR-B1, 2026-05-09)
-
-export const SetupHeaderActions = styled.div`
-  display: flex;
-  gap: var(--ig-space-2);
-  align-items: center;
-`;
 
 export const SetupPanelBody = styled.div`
   padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-7);
@@ -49,12 +37,6 @@ export const SetupPanelBody = styled.div`
 
 // SetupSection / SetupSectionTitle / SetupField / SetupInput: ui FieldGroup / SectionTitle / FieldLabel / TextField (PR-B1, 2026-05-09)
 
-export const PatternGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-3);
-`;
-
 export const PatternButton = styled(Button).attrs({
   variant: 'secondary' as const,
   size: 'sm' as const,
@@ -72,19 +54,7 @@ export const SetupMetaText = styled.div`
   line-height: var(--ig-line-height-relaxed);
 `;
 
-export const SetupInlineRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-`;
-
 // SetupInlineHint: ui FieldHint (PR-B1, 2026-05-09)
-
-export const SetupFieldLabelRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-1-plus);
-`;
 
 export const SetupAccordionSummaryRow = styled.div`
   display: flex;
