@@ -61,7 +61,7 @@ export function DevicesLicenseSection({
   return (
     <Stack as="section" gap="var(--ig-space-4)">
       <Inline justify="space-between" gap="var(--ig-space-3)">
-        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text> : null}
+        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}
@@ -93,7 +93,7 @@ export function DevicesLicenseSection({
       {isAdmin && showRenew ? (
         <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
           <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" tone="muted" weight={500}>Set a new expiry date for this organization's license.</Text>
+          <Text size="var(--ig-font-size-xs)" tone="muted" weight="medium">Set a new expiry date for this organization's license.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>

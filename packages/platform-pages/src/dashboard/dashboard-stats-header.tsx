@@ -18,7 +18,7 @@ export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderP
       {items.map((item) => (
         <Inline as="span" key={item.label} justify="space-between">
           <Text as="span" size="var(--ig-font-size-xs)" tone="muted">{item.label}</Text>
-          <Text as="strong" size="var(--ig-font-size-xs)" weight={700} style={VALUE_STYLE}>{item.value}</Text>
+          <Text as="strong" size="var(--ig-font-size-xs)" weight="bold" style={VALUE_STYLE}>{item.value}</Text>
         </Inline>
       ))}
     </Stack>

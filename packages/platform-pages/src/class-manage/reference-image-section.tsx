@@ -71,8 +71,8 @@ export function ReferenceImageSection({
           {candidates.length > 1 ? (
             <IndexedNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} prevLabel="Previous bbox" nextLabel="Next bbox" />
           ) : null}
-          {pending ? <Text tone="accent" size="var(--ig-font-size-xs)" weight={600}>Updating reference image…</Text> : null}
-          {errorMessage ? <Text tone="accent" size="var(--ig-font-size-xs)" weight={600}>{errorMessage}</Text> : null}
+          {pending ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">Updating reference image…</Text> : null}
+          {errorMessage ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
     </>

@@ -92,7 +92,7 @@ export function DeleteAccountDialog({
             {preview.solo_projects.map((p) => (
               <Card key={p.project_id} elevation="raised" flat tone="danger" radius="var(--ig-radius-xs)" padding="var(--ig-space-5) var(--ig-space-6)">
                 <Stack gap="var(--ig-space-2)">
-                  <Text size="var(--ig-font-size-md)" weight={600}>{p.project_name}</Text>
+                  <Text size="var(--ig-font-size-md)" weight="semibold">{p.project_name}</Text>
                   <Text tone="muted" size="var(--ig-font-size-xs)">role: {p.role} · members: {p.member_count}</Text>
                 </Stack>
               </Card>
@@ -111,7 +111,7 @@ export function DeleteAccountDialog({
           <Alert $tone="danger">Select a transfer target or choose delete for every shared project before continuing.</Alert>
         )}
         <Stack as="label" gap="var(--ig-space-2)">
-          <Text size="var(--ig-font-size-sm)" weight={600}>Enter your password to confirm</Text>
+          <Text size="var(--ig-font-size-sm)" weight="semibold">Enter your password to confirm</Text>
           <PasswordField
             value={password}
             onChange={(e) => onChangePassword(e.target.value)}
@@ -123,7 +123,7 @@ export function DeleteAccountDialog({
           />
         </Stack>
         <Stack as="label" gap="var(--ig-space-2)">
-          <Text size="var(--ig-font-size-sm)" weight={600}>Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
+          <Text size="var(--ig-font-size-sm)" weight="semibold">Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
           <TextField
             value={finalConfirmText}
             onChange={(e) => onChangeFinalConfirmText(e.target.value)}

@@ -67,7 +67,7 @@ export function SourceBreakdownWidget({
   return (
     <Card className={className}>
       <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
-        <Text size="var(--ig-font-size-sm)" weight={600} tone="secondary">{title}</Text>
+        <Text size="var(--ig-font-size-sm)" weight="semibold" tone="secondary">{title}</Text>
       </Inline>
       {bySource.length === 0 ? (
         <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>

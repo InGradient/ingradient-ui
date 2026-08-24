@@ -37,7 +37,7 @@ export function DashboardHeader({
             <PageTitle>{title}</PageTitle>
             {subtitle ? <PageSubtitle style={SUBTITLE_STYLE}>{subtitle}</PageSubtitle> : null}
           </div>
-          {projectName ? <Text size="var(--ig-font-size-2xl)" weight={700} tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
+          {projectName ? <Text size="var(--ig-font-size-2xl)" weight="bold" tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
         </Inline>
       </PageHeader>
       {(actions || saveMessage) ? (

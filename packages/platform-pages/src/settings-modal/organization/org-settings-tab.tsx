@@ -34,15 +34,15 @@ export function OrgSettingsTab({
 
   return (
     <Stack gap="var(--ig-space-4)" style={WRAP_STYLE}>
-      {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text> : null}
+      {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight="semibold">{title}</Text> : null}
 
       <Stack gap="var(--ig-space-2)">
-        <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Code</Text>
+        <Text as="label" size="var(--ig-font-size-sm)" weight="medium">Code</Text>
         <Text size="var(--ig-font-size-md)" tone="muted">{organization.code}</Text>
       </Stack>
 
       <Stack gap="var(--ig-space-2)">
-        <Text as="label" htmlFor="org-name-input" size="var(--ig-font-size-sm)" weight={500}>Name</Text>
+        <Text as="label" htmlFor="org-name-input" size="var(--ig-font-size-sm)" weight="medium">Name</Text>
         {isAdmin ? (
           <TextField
             id="org-name-input"
@@ -57,7 +57,7 @@ export function OrgSettingsTab({
       </Stack>
 
       <Stack gap="var(--ig-space-2)">
-        <Text as="label" size="var(--ig-font-size-sm)" weight={500}>Status</Text>
+        <Text as="label" size="var(--ig-font-size-sm)" weight="medium">Status</Text>
         <Text size="var(--ig-font-size-md)" tone="muted">{organization.status}</Text>
       </Stack>
 

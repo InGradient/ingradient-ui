@@ -61,7 +61,7 @@ export function StorageAnalyticsTab({
   return (
     <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
       <Inline justify="space-between">
-        {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight={600}>{title}</Text> : null}
+        {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight="semibold">{title}</Text> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>
@@ -69,32 +69,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{projectTitle}</Text>
       {projectChart}
 
       <Grid gap="var(--ig-space-9)" minItemWidth="var(--ig-popup-xs)">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight={600} uppercase letterSpacing="var(--ig-letter-spacing-normal)">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}
