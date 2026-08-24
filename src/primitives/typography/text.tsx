@@ -39,12 +39,12 @@ type FontWeightAlias = keyof typeof fontWeightVar
 type LetterSpacingAlias = keyof typeof letterSpacingVar
 type Align = 'left' | 'center' | 'right'
 
-function resolveWeight(w?: number | FontWeightAlias): string | number {
+export function resolveWeight(w?: number | FontWeightAlias): string | number | undefined {
   if (typeof w === 'string') return fontWeightVar[w]
-  return w ?? 'var(--ig-font-weight-regular)'
+  return w
 }
 
-function resolveLetterSpacing(ls?: string | LetterSpacingAlias): string | undefined {
+export function resolveLetterSpacing(ls?: string | LetterSpacingAlias): string | undefined {
   if (!ls) return undefined
   if (ls in letterSpacingVar) return letterSpacingVar[ls as LetterSpacingAlias]
   return ls
