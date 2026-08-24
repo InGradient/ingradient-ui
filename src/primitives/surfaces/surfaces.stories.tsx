@@ -1,115 +1,49 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Camera, Info } from 'lucide-react'
-import styled from 'styled-components'
+import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 import { Inline, Stack } from '../layout/flex'
 import { Divider, Icon, ScrollArea } from './misc'
 import { Surface } from './surface'
 
 const meta = {
   title: 'Primitives/Surfaces',
-  parameters: {
-    layout: 'fullscreen',
-    a11y: { test: 'error' },
-  },
-} satisfies Meta
+  tags: ['autodocs'],
+  component: Surface,
+  parameters: { layout: 'fullscreen', a11y: { test: 'error' } },
+} satisfies Meta<typeof Surface>
 
 export default meta
-
 type Story = StoryObj<typeof meta>
 
-const Page = styled.div`
-  padding: var(--ig-space-8);
-  background: var(--ig-color-bg-canvas);
-`
+function SurfaceExample({ elevation, title, description }: { elevation: 'panel' | 'raised' | 'card'; title: string; description: string }) {
+  return <Surface elevation={elevation} radius="var(--ig-radius-xl)" style={{ padding: 'var(--ig-space-6)', minHeight: 'var(--ig-layout-sidebar-header)' }}><Stack gap="var(--ig-space-3)"><strong>{title}</strong><span style={{ color: 'var(--ig-color-text-secondary)', fontSize: 'var(--ig-font-size-sm)' }}>{description}</span></Stack></Surface>
+}
 
-const Label = styled.div`
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-`
-
-const Item = styled.div`
-  padding: var(--ig-space-3) 0;
-  color: var(--ig-color-text-secondary);
-  font-size: var(--ig-font-size-sm);
-`
-
-export const Review: Story = {
+export const Elevations: Story = {
   render: () => (
-    <Page>
-      <Stack gap={24}>
-        <Inline gap={16} align="stretch">
-          <Surface elevation="panel" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
-            <Stack gap={12}>
-              <Label>Panel</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Default shell background</div>
-              <div style={{ color: 'var(--ig-color-text-secondary)' }}>
-                Use for sidebars, settings sections, and neutral content containers.
-              </div>
-            </Stack>
-          </Surface>
+    <StorybookPage title="Surface primitives" description="Surface owns a generic elevation and radius treatment. Keep product-specific borders, shadows, and interaction states outside this primitive.">
+      <StorybookSection title="Elevation comparison" description="Choose the lowest elevation that preserves hierarchy in the surrounding composition.">
+        <StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
+          <StorybookCard title="Panel" subtitle="Page sections and sidebars"><SurfaceExample elevation="panel" title="Neutral shell" description="Baseline container for grouped content." /></StorybookCard>
+          <StorybookCard title="Raised" subtitle="Emphasized cards and control groups"><SurfaceExample elevation="raised" title="Higher emphasis" description="Use when the content should lift above the panel." /></StorybookCard>
+          <StorybookCard title="Card" subtitle="Dense, bordered content"><SurfaceExample elevation="card" title="Bounded card" description="Use for compact bundles of related information." /></StorybookCard>
+        </StorybookGrid>
+      </StorybookSection>
+    </StorybookPage>
+  ),
+}
 
-          <Surface elevation="raised" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
-            <Stack gap={12}>
-              <Label>Raised</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Higher emphasis surface</div>
-              <div style={{ color: 'var(--ig-color-text-secondary)' }}>
-                Good for cards, hover states, and elevated control groupings.
-              </div>
-            </Stack>
-          </Surface>
-
-          <Surface elevation="card" radius="var(--ig-radius-xl)" style={{ flex: 1, padding: 'var(--ig-space-6)' }}>
-            <Stack gap={12}>
-              <Label>Card</Label>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Dense card treatment</div>
-              <div style={{ color: 'var(--ig-color-text-secondary)' }}>
-                Tight visual bundle with border and surface treatment already applied.
-              </div>
-            </Stack>
-          </Surface>
-        </Inline>
-
-        <Surface elevation="panel" radius="var(--ig-radius-xl)" style={{ padding: 'var(--ig-space-6)' }}>
-          <Stack gap={16}>
-            <Label>Misc primitives</Label>
-            <Inline gap={12} align="center">
-              <Icon size={18}>
-                <Camera />
-              </Icon>
-              <div style={{ color: 'var(--ig-color-text-primary)', fontWeight: 'var(--ig-font-weight-semibold)' }}>Icon wrapper keeps SVG sizing consistent.</div>
-            </Inline>
-            <Divider />
-            <ScrollArea
-              style={{
-                maxHeight: 180,
-                paddingRight: 'var(--ig-space-2)',
-              }}
-            >
-              <Stack gap={0}>
-                {[
-                  'Dataset summary and review notes',
-                  'Annotation sync status',
-                  'Upload queue details',
-                  'Quality checks and validation hints',
-                  'Secondary metadata fields',
-                  'Long overflow content for scroll behavior',
-                ].map((item) => (
-                  <Item key={item}>
-                    <Inline gap={10} align="center">
-                      <Icon size={16}>
-                        <Info />
-                      </Icon>
-                      <span>{item}</span>
-                    </Inline>
-                  </Item>
-                ))}
-              </Stack>
-            </ScrollArea>
-          </Stack>
-        </Surface>
-      </Stack>
-    </Page>
+export const MiscPrimitives: Story = {
+  render: () => (
+    <StorybookPage title="Surface helpers" description="Divider, Icon, and ScrollArea are small composition helpers with independent contracts.">
+      <StorybookSection title="Icon and divider" description="Icon standardizes icon-box sizing; Divider separates adjacent content without creating a new visual surface.">
+        <Stack gap="var(--ig-space-4)"><Inline gap="var(--ig-space-3)" align="center"><Icon size={18}><Camera /></Icon><strong>Camera stream configuration</strong></Inline><Divider /><span style={{ color: 'var(--ig-color-text-secondary)' }}>Use a divider only when adjacent blocks need explicit separation.</span></Stack>
+      </StorybookSection>
+      <StorybookSection title="ScrollArea overflow" description="The content deliberately exceeds the viewport so scrolling can be reviewed independently.">
+        <ScrollArea style={{ maxHeight: 180, paddingRight: 'var(--ig-space-2)' }}>
+          <Stack gap={0}>{['Dataset summary and review notes', 'Annotation sync status', 'Upload queue details', 'Quality checks and validation hints', 'Secondary metadata fields', 'Long overflow content for scroll behavior'].map((item) => <div key={item} style={{ padding: 'var(--ig-space-3) 0', borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' }}><Inline gap="var(--ig-space-3)" align="center"><Icon size={16}><Info /></Icon><span>{item}</span></Inline></div>)}</Stack>
+        </ScrollArea>
+      </StorybookSection>
+    </StorybookPage>
   ),
 }
