@@ -1,10 +1,8 @@
 import { EmptyState, iconSizeNumbers } from '@ingradient/ui'
 import { Badge, Button, PlusIcon } from '@ingradient/ui/components'
-import { Content, SectionLabel, ErrorMsg, Spinner } from './styles/page.styles'
-import {
-  RecentSection, RecentScroll, ProjectSection, ProjectHeader,
-  ProjectName, DatasetGrid,
-} from './dataset-grid.styles'
+import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
+import { Content, ErrorMsg, Spinner } from './styles/page.styles'
+import { RecentScroll } from './dataset-grid.styles'
 import { RecentDatasetCard } from './RecentDatasetCard'
 import { DatasetCardView } from './DatasetCardView'
 import { CreateProjectFormView } from '../dataset-modals/CreateProjectFormView'
@@ -51,8 +49,8 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
       {!loading && fetchError && <ErrorMsg>{fetchError}</ErrorMsg>}
 
       {!loading && !fetchError && recentDatasets.length > 0 && (
-        <RecentSection>
-          <SectionLabel>{labels.recentLabel}</SectionLabel>
+        <Stack gap="var(--ig-space-4)">
+          <Text size="var(--ig-font-size-2xs)" weight="bold" tone="muted" uppercase letterSpacing="widest">{labels.recentLabel}</Text>
           <RecentScroll>
             {recentDatasets.map(({ dataset, isLatest }) => (
               <RecentDatasetCard
@@ -66,7 +64,7 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
               />
             ))}
           </RecentScroll>
-        </RecentSection>
+        </Stack>
       )}
 
       {!loading && !fetchError && totalDatasets === 0 && !isOnline && (
@@ -78,9 +76,9 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
       )}
 
       {!loading && !fetchError && groups.map((group) => (
-        <ProjectSection key={group.project_id}>
-          <ProjectHeader>
-            <ProjectName>{group.project_name}</ProjectName>
+        <Stack key={group.project_id} gap="var(--ig-space-5)">
+          <Inline gap="var(--ig-space-4)" wrap="nowrap">
+            <Text size="var(--ig-font-size-sm)" weight="bold" tone="muted" uppercase letterSpacing="wider">{group.project_name}</Text>
             {group.deflectometry_enabled && <Badge $tone="accent">Deflectometry</Badge>}
             <Badge $tone={roleTone(group.role)}>{labels.roleLabel(group.role)}</Badge>
             <Button
@@ -92,8 +90,8 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
               <PlusIcon size={iconSizeNumbers["2xs"]} />
               {labels.addDataset}
             </Button>
-          </ProjectHeader>
-          <DatasetGrid>
+          </Inline>
+          <Grid columns="repeat(auto-fill, minmax(var(--ig-popup-sm), 1fr))" gap="var(--ig-space-4)">
             {group.datasets.map((d) => (
               <DatasetCardView
                 key={d.dataset_id}
@@ -110,8 +108,8 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
                 onExportClick={onExportClick}
               />
             ))}
-          </DatasetGrid>
-        </ProjectSection>
+          </Grid>
+        </Stack>
       ))}
     </Content>
   )

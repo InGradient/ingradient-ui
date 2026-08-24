@@ -8,35 +8,11 @@ export const Wrap = styled.div`
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
-export const SectionTitle = styled.div`
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  color: var(--ig-color-text-muted);
-`;
-
-
-export const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-1);
-`;
-
 export const Label = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: var(--ig-font-size-xs);
   color: var(--ig-color-text-secondary);
-`;
-
-export const LabelName = styled.span`
-  color: var(--ig-color-text-muted);
-`;
-
-export const LabelValue = styled.span`
-  color: var(--ig-color-text-primary);
-  font-variant-numeric: tabular-nums;
 `;
 
 export const Slider = styled.input.attrs({ type: 'range' })`
@@ -53,11 +29,6 @@ export const SliderInline = styled.div`
     flex: 1;
     min-width: 0;
   }
-`;
-
-export const BtnRow = styled.div`
-  display: flex;
-  gap: var(--ig-space-2);
 `;
 
 export const MetricRow = styled.div`
@@ -82,17 +53,6 @@ export const QualityHeader = styled.div`
   font-size: var(--ig-font-size-sm);
 `;
 
-export const IndicatorRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: var(--ig-font-size-sm);
-`;
-
-export const QualityLabel = styled.span`
-  color: var(--ig-color-text-muted);
-`;
-
 export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
   display: inline-flex;
   align-items: center;
@@ -113,34 +73,8 @@ export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
   }
 `;
 
-export const BestAxisValue = styled.span`
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-primary);
-`;
-
 export const IndicatorRight = styled.div`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-3);
-`;
-
-export const IndicatorValue = styled.span`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-  font-variant-numeric: tabular-nums;
-`;
-
-export const QualityDivider = styled.div`
-  height: var(--ig-space-1px);
-  background: var(--ig-color-border-subtle);
-  margin: var(--ig-space-2px) 0;
-`;
-
-export const RoiSectionLabel = styled.div`
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  color: var(--ig-color-text-muted);
-  margin-top: var(--ig-space-2px);
 `;

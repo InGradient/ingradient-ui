@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { Badge, Button, Spinner, SectionTitle, SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
 import { EmptyState, CameraIcon, RefreshIcon, CheckCircleIcon, ChevronRightIcon, UsbIcon, WifiIcon, AlertCircleIcon, WrenchIcon } from '@ingradient/ui/components'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import {
-  FlatSection,
-  DiscoverBar, DiscoverHint, DeviceList,
+  DeviceList,
   DeviceInfo, DeviceName, DeviceMeta,
 } from '../ConnectionTabView.styles'
 import type { ScanSectionViewProps, GigEDevice, USBDevice, NicBadge } from '../types'
@@ -36,15 +36,15 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
   const isLoading = isScanning || isLoadingCandidates
 
   return (
-    <FlatSection>
+    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
       <SectionTitle>{labels.scanTitle}</SectionTitle>
-      <DiscoverBar>
+      <Inline align="center" gap="var(--ig-space-4)" wrap="nowrap" style={{ marginBottom: 'var(--ig-space-5)' }}>
         <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
           {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshIcon size={iconSizeNumbers.sm} />}
           {isLoading ? labels.scanning : labels.scan}
         </Button>
-        <DiscoverHint>{labels.scanHint}</DiscoverHint>
-      </DiscoverBar>
+        <Text size="var(--ig-font-size-2xs)" tone="soft">{labels.scanHint}</Text>
+      </Inline>
 
       {!isScanning && discoveredDevices.length > 0 && (
         <>
@@ -117,6 +117,6 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
           </DeviceList>
         </>
       )}
-    </FlatSection>
+    </Stack>
   )
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Button, Switch, iconSizeNumbers } from '@ingradient/ui'
 import { FieldGroup, FieldHint, SectionTitle } from '@ingradient/ui/patterns'
 import { NumberField, CheckIcon, ChevronDownIcon } from '@ingradient/ui/components'
-import { surfacePanel } from '@ingradient/ui/primitives'
+import { Inline, Text, surfacePanel } from '@ingradient/ui/primitives'
 
 const Accordion = styled.details`
   ${surfacePanel}
@@ -21,11 +21,9 @@ const Accordion = styled.details`
   }
 `
 import {
-  SetupPanel as SetupPanelWrap, SetupPanelHeader, SetupPanelTitle,
-  SetupHeaderActions, SetupPanelBody,
+  SetupPanel as SetupPanelWrap, SetupPanelHeader, SetupPanelBody,
   PatternButton, SetupMetaText,
-  SetupInlineRow,
-  SetupFieldLabelRow, SetupAccordionSummaryRow,
+  SetupAccordionSummaryRow,
 } from './SetupPanelView.styles'
 import { DERIVED_ORDER } from './pattern-helpers'
 import { patternLabelToUI } from './pattern-helpers'
@@ -47,9 +45,9 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
   return (
     <SetupPanelWrap>
       <SetupPanelHeader>
-        <SetupPanelTitle>{labels.title}</SetupPanelTitle>
+        <Text size="var(--ig-font-size-md)" weight="bold">{labels.title}</Text>
         {canEditSetup && (
-          <SetupHeaderActions>
+          <Inline gap="var(--ig-space-2)" align="center" wrap="nowrap">
             <Button variant="secondary" size="sm" type="button" onClick={onReset} disabled={isSetupBusy}>
               {labels.reset}
             </Button>
@@ -59,20 +57,20 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
                 {isSetupSaved ? labels.saved : labels.save}
               </Button>
             )}
-          </SetupHeaderActions>
+          </Inline>
         )}
       </SetupPanelHeader>
       <SetupPanelBody>
         <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
           <FieldGroup>
-            <SetupInlineRow>
-              <SetupFieldLabelRow>{labels.autoAnalyze}</SetupFieldLabelRow>
+            <Inline gap="var(--ig-space-4)" align="center" wrap="nowrap">
+              <Inline gap="var(--ig-space-1-plus)" align="center" wrap="nowrap">{labels.autoAnalyze}</Inline>
               <Switch
                 checked={autoAnalyze}
                 onChange={(e) => onAutoAnalyzeChange(e.target.checked)}
                 disabled={disabled}
               />
-            </SetupInlineRow>
+            </Inline>
           </FieldGroup>
 
           {autoAnalyze && (
@@ -86,14 +84,14 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
               <div>
                 <SectionTitle>{labels.analysis}</SectionTitle>
                 {DERIVED_ORDER.map((label) => (
-                  <SetupInlineRow key={label}>
+                  <Inline key={label} gap="var(--ig-space-4)" align="center" wrap="nowrap">
                     <FieldHint>{patternLabelToUI(label)}</FieldHint>
                     <Switch
                       checked={enabledFeatures[label] ?? true}
                       onChange={(e) => onEnabledFeaturesChange({ ...enabledFeatures, [label]: e.target.checked })}
                       disabled={disabled}
                     />
-                  </SetupInlineRow>
+                  </Inline>
                 ))}
               </div>
             </Accordion>
@@ -104,7 +102,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
           <SectionTitle>{labels.cameraTuning}</SectionTitle>
           <SetupMetaText>{isConnected ? labels.livePreviewAvailable : labels.noCamera}</SetupMetaText>
 
-          <SetupInlineRow>
+          <Inline gap="var(--ig-space-4)" align="center" wrap="nowrap">
             <PatternButton
               type="button"
               $active={previewPatternLabel === FOCUS_PEAKING_PATTERN}
@@ -113,11 +111,11 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
             >
               {labels.focusPeaking}
             </PatternButton>
-          </SetupInlineRow>
+          </Inline>
 
           <FieldGroup>
-            <SetupFieldLabelRow>{labels.exposure}</SetupFieldLabelRow>
-            <SetupInlineRow>
+            <Inline gap="var(--ig-space-1-plus)" align="center" wrap="nowrap">{labels.exposure}</Inline>
+            <Inline gap="var(--ig-space-4)" align="center" wrap="nowrap">
               <NumberField
                 value={+(cameraParams.exposure / 1_000_000).toFixed(4)}
                 min={0.0001} max={5} step={0.1}
@@ -130,20 +128,20 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
                 }}
               />
               <FieldHint>s</FieldHint>
-            </SetupInlineRow>
-            <SetupInlineRow>
+            </Inline>
+            <Inline gap="var(--ig-space-4)" align="center" wrap="nowrap">
               <FieldHint>{labels.auto}</FieldHint>
               <Switch
                 checked={cameraParams.exposureAuto}
                 onChange={(e) => onUpdateCameraParams((p) => ({ ...p, exposureAuto: e.target.checked }))}
                 disabled={disabled}
               />
-            </SetupInlineRow>
+            </Inline>
           </FieldGroup>
 
           <FieldGroup>
-            <SetupFieldLabelRow>{labels.gain}</SetupFieldLabelRow>
-            <SetupInlineRow>
+            <Inline gap="var(--ig-space-1-plus)" align="center" wrap="nowrap">{labels.gain}</Inline>
+            <Inline gap="var(--ig-space-4)" align="center" wrap="nowrap">
               <NumberField
                 value={cameraParams.gain}
                 min={0} max={1000} step={10}
@@ -152,11 +150,11 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
                 parse={parseFloat}
                 onChange={(v) => onUpdateCameraParams((p) => ({ ...p, gain: v }))}
               />
-            </SetupInlineRow>
+            </Inline>
           </FieldGroup>
 
           <FieldGroup>
-            <SetupFieldLabelRow>{labels.whiteBalance}</SetupFieldLabelRow>
+            <Inline gap="var(--ig-space-1-plus)" align="center" wrap="nowrap">{labels.whiteBalance}</Inline>
             <PatternButton type="button" $active={false} disabled={disabled} onClick={onWhiteBalanceCalibrate}>
               {labels.autoCalibrate}
             </PatternButton>

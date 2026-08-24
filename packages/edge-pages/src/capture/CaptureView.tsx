@@ -2,14 +2,15 @@ import { controlSizeNumbers } from '@ingradient/ui'
 import { useEffect, useRef, useState } from 'react'
 import { GridLinesIcon, ExpandIcon, CollapseIcon, SlidersIcon, Button, IconButton, Card } from '@ingradient/ui/components'
 import { Switch, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import {
   ConnectingSpinner, PreviewArea, CaptureZoomWrap, SetupMetrics, MetricLabel, MetricValue,
-  SetupBlockingOverlay, SetupBlockingCard, PlaceholderText, OverlayControls,
-  OverlayPopover, ControlRow, ControlLabel,
+  SetupBlockingOverlay, SetupBlockingCard, OverlayControls,
+  OverlayPopover, ControlRow,
   CaptureBar, CaptureButtonWrap, CaptureButton, StatusText,
-  GridOverlay, CenterCrosshair, ConnectingBox, ConnectingSpinnerBox, StreamImg,
+  GridOverlay, CenterCrosshair, ConnectingBox, StreamImg,
   FocusPeakingOverlay, HistogramOverlay, HistogramImage,
-  AbsolutePlaceholder, CapturingBadge,
+  CapturingBadge,
 } from './CaptureView.styles'
 import { useFullscreen } from './use-fullscreen'
 import { patternLabelToUI } from './pattern-helpers'
@@ -76,11 +77,11 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
                 {isAutoReconnecting ? (
                   <>
                     <ConnectingSpinner size={controlSizeNumbers.sm} />
-                    <PlaceholderText>{labels.cameraReconnecting}</PlaceholderText>
+                    <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.cameraReconnecting}</Text>
                   </>
                 ) : snapshotError ? (
                   <>
-                    <PlaceholderText>{snapshotError}</PlaceholderText>
+                    <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{snapshotError}</Text>
                     {onReconnect && (
                       <Button type="button" variant="secondary" size="sm" onClick={onReconnect} style={{ marginTop: 'var(--ig-space-3)' }}>
                         {labels.reconnectStream}
@@ -88,7 +89,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
                     )}
                   </>
                 ) : (
-                  <PlaceholderText>{labels.waitingFrames}</PlaceholderText>
+                  <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.waitingFrames}</Text>
                 )}
               </ConnectingBox>
             )}
@@ -107,12 +108,12 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             )}
           </>
         ) : isConnecting ? (
-          <ConnectingSpinnerBox>
+          <Stack align="center" gap="var(--ig-space-5)">
             <ConnectingSpinner size={controlSizeNumbers.sm} />
-            <PlaceholderText>{labels.connecting}</PlaceholderText>
-          </ConnectingSpinnerBox>
+            <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.connecting}</Text>
+          </Stack>
         ) : (
-          <PlaceholderText>{labels.noCamera}</PlaceholderText>
+          <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.noCamera}</Text>
         )}
 
         {isSetupMode && setupMetrics?.histogram_data_url && (
@@ -142,7 +143,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
           {showControls && (
             <OverlayPopover>
               <ControlRow>
-                <ControlLabel><GridLinesIcon size={iconSizeNumbers.sm} /> {labels.grid}</ControlLabel>
+                <Inline as="span" align="center" gap="var(--ig-space-2)" wrap="nowrap"><GridLinesIcon size={iconSizeNumbers.sm} /> {labels.grid}</Inline>
                 <Switch checked={showGrid} onChange={(e) => { void e; onToggleGrid() }} />
               </ControlRow>
             </OverlayPopover>

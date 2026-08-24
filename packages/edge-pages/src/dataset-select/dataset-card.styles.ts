@@ -48,14 +48,6 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   }
 `
 
-export const DatasetNameRow = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ig-space-2);
-  width: 100%;
-  min-width: 0;
-`
-
 export const DatasetName = styled.div`
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
@@ -101,13 +93,6 @@ export const ImageCount = styled.div`
   flex-shrink: 0;
 `
 
-export const ClassChips = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-space-1);
-  justify-content: flex-end;
-`
-
 export const ClassChip = styled.span<{ $color: string }>`
   display: inline-flex;
   align-items: center;
@@ -136,9 +121,4 @@ export const ClassChipDot = styled.span<{ $color: string }>`
   border-radius: 50%;
   background: ${(p) => p.$color};
   flex-shrink: 0;
-`
-
-export const DatasetProjectLabel = styled.div`
-  font-size: var(--ig-font-size-2xs);
-  color: var(--ig-color-text-muted);
 `

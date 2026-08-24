@@ -22,10 +22,3 @@ export const CapturePreviewImg = styled.img`
   user-select: none;
   -webkit-user-drag: none;
 `
-
-export const CaptureReviewActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-space-4);
-  flex-shrink: 0;
-`

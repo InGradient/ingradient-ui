@@ -1,9 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import type { ReactNode } from 'react'
 import { Badge, IconButton, StatusDot, RefreshIcon, SettingsIcon } from '@ingradient/ui/components'
+import { Inline, Text } from '@ingradient/ui/primitives'
 import {
-  Header, HeaderLeft, Title, HeaderRight,
-  RefreshBtn, StatusItem,
+  Header, RefreshBtn,
 } from './styles/header.styles'
 import type { ConnectionStatus } from './types'
 
@@ -39,23 +39,23 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
 
   return (
     <Header>
-      <HeaderLeft>
-        <Title>
+      <Inline align="center" wrap="nowrap" style={{ minHeight: 0 }}>
+        <Text as="h1" size="var(--ig-font-size-2xl)" weight="bold">
           {title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? onlineLabel : offlineLabel}
           </Badge>
-        </Title>
-      </HeaderLeft>
-      <HeaderRight>
-        <StatusItem title={connectionTitle}>
+        </Text>
+      </Inline>
+      <Inline align="center" gap="var(--ig-space-4)" wrap="nowrap">
+        <Inline align="center" wrap="nowrap" style={{ marginRight: 'var(--ig-space-1)' }} title={connectionTitle}>
           <StatusDot
             type="button"
             $tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}
             aria-label={connectionTitle}
             title={connectionTitle}
           />
-        </StatusItem>
+        </Inline>
 
         {langSelector}
 
@@ -81,7 +81,7 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
         </IconButton>
 
         {accountMenu}
-      </HeaderRight>
+      </Inline>
     </Header>
   )
 }

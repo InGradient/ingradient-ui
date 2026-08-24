@@ -1,13 +1,13 @@
 import { Button, SectionTitle, Spinner } from '@ingradient/ui'
-import { FlatSection } from '../ConnectionTabView.styles'
+import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import type { ProfileStatusSectionViewProps } from '../types'
 
 export function ProfileStatusSectionView(props: ProfileStatusSectionViewProps): JSX.Element {
   const { profileName, isLoading, isSaving, labels, onLoad, onSave } = props
   return (
-    <FlatSection>
+    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
       <SectionTitle>{labels.profileTitle}</SectionTitle>
-      <div style={{ display: 'flex', gap: 'var(--ig-space-3)', alignItems: 'center' }}>
+      <Inline gap="var(--ig-space-3)" align="center" wrap="nowrap">
         <Button size="sm" variant="secondary" onClick={onLoad} disabled={isLoading}>
           {isLoading && <Spinner size="sm" tone="muted" />}
           {labels.loadProfile}
@@ -17,11 +17,11 @@ export function ProfileStatusSectionView(props: ProfileStatusSectionViewProps): 
           {labels.saveProfile}
         </Button>
         {profileName && (
-          <span style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-text-muted)' }}>
+          <Text size="var(--ig-font-size-sm)" tone="muted">
             {profileName}
-          </span>
+          </Text>
         )}
-      </div>
-    </FlatSection>
+      </Inline>
+    </Stack>
   )
 }
