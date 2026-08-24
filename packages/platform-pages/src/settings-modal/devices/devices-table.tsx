@@ -76,7 +76,7 @@ export function DevicesTable({
   return (
     <Stack as="section" gap="var(--ig-space-4)">
       <Inline justify="space-between" gap="var(--ig-space-3)" wrap="wrap">
-        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight={600}>{title}</Text> : null}
+        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
         {isAdmin ? (
           <Inline gap="var(--ig-space-3)">
             {offlineEnabled ? (

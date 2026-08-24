@@ -1,11 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Badge, Card, Checkbox, TextField, PasswordField, Button, IconButton, SelectableListItem, TextButton, SettingsIcon } from '@ingradient/ui/components'
-import { Stack } from '@ingradient/ui/primitives'
+import { Stack, Inline, H1, Text } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, Title, PackageSection, PackageInfo,
-  Divider, LoginForm, Field, FieldLabel, CheckOptions, ErrorMsg,
-  SessionBox, SessionGreeting, SessionMeta, FooterRow,
-  AccountList, AccountItemName, AccountItemEmail,
+  Wrap, LangCorner, PackageInfo, Divider,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
 
@@ -39,15 +36,15 @@ export function LoginView(props: LoginViewProps): JSX.Element {
         style={{ width: '100%', maxWidth: 'var(--ig-popup-2xl-narrow)' }}
       >
         <Stack gap="var(--ig-space-9)">
-        <Title>
+        <H1>
           {labels.title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? labels.online : labels.offline}
           </Badge>
-        </Title>
+        </H1>
 
         {mode === 'offline' && (
-          <PackageSection>
+          <Stack gap="var(--ig-space-3)">
             <Button variant="secondary" onClick={onLoadPackage} disabled={loadingPackage}>
               {loadingPackage ? labels.loading : labels.loadPackage}
             </Button>
@@ -59,7 +56,7 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                 )}
               </PackageInfo>
             )}
-          </PackageSection>
+          </Stack>
         )}
 
         {showLoginForm && (
@@ -67,38 +64,42 @@ export function LoginView(props: LoginViewProps): JSX.Element {
             {mode === 'offline' && <Divider />}
 
             {hasAccountList ? (
-              <SessionBox>
+              <Stack gap="var(--ig-space-5)">
                 {savedSession && (
                   <>
-                    <SessionGreeting>
+                    <Text size="var(--ig-font-size-lg)" weight="semibold" align="center">
                       {labels.greeting(savedSession.name || savedSession.email)}
-                    </SessionGreeting>
-                    <SessionMeta>{savedSession.email}</SessionMeta>
+                    </Text>
+                    <Text size="var(--ig-font-size-xs)" tone="muted" align="center">
+                      {savedSession.email}
+                    </Text>
                     <Button variant="accent" onClick={onContinueSession}>
                       {labels.continueSession}
                     </Button>
                   </>
                 )}
                 {otherAccounts.length > 0 && (
-                  <AccountList>
+                  <Stack gap="var(--ig-space-2)">
                     {otherAccounts.map((entry) => (
                       <SelectableListItem key={entry.email} type="button" onClick={() => onSelectAccount(entry)}>
                         <Stack gap="var(--ig-space-2px)">
-                          <AccountItemName>{entry.name || entry.email}</AccountItemName>
-                          <AccountItemEmail>{entry.email}</AccountItemEmail>
+                          <Text size="var(--ig-font-size-md)">{entry.name || entry.email}</Text>
+                          <Text size="var(--ig-font-size-xs)" tone="muted">{entry.email}</Text>
                         </Stack>
                       </SelectableListItem>
                     ))}
-                  </AccountList>
+                  </Stack>
                 )}
                 <TextButton tone="accent" type="button" onClick={onChangeAccount}>
                   {labels.changeAccount}
                 </TextButton>
-              </SessionBox>
+              </Stack>
             ) : (
-              <LoginForm onSubmit={onSubmit}>
-                <Field>
-                  <FieldLabel htmlFor="login-email">{labels.emailLabel}</FieldLabel>
+              <Stack as="form" gap="var(--ig-space-7)" onSubmit={onSubmit}>
+                <Stack gap="var(--ig-space-2)">
+                  <Text as="label" htmlFor="login-email" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+                    {labels.emailLabel}
+                  </Text>
                   <TextField
                     id="login-email" type="email"
                     placeholder={labels.emailPlaceholder}
@@ -106,9 +107,11 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                     autoComplete="username"
                     disabled={loggingIn}
                   />
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="login-password">{labels.passwordLabel}</FieldLabel>
+                </Stack>
+                <Stack gap="var(--ig-space-2)">
+                  <Text as="label" htmlFor="login-password" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+                    {labels.passwordLabel}
+                  </Text>
                   <PasswordField
                     id="login-password"
                     placeholder={labels.passwordPlaceholder}
@@ -116,8 +119,8 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                     autoComplete="current-password"
                     disabled={loggingIn}
                   />
-                </Field>
-                <CheckOptions>
+                </Stack>
+                <Stack gap="var(--ig-space-3)">
                   <Checkbox
                     checked={savePassword}
                     onChange={(e) => onSavePasswordChange(e.target.checked)}
@@ -128,23 +131,27 @@ export function LoginView(props: LoginViewProps): JSX.Element {
                     onChange={(e) => onKeepSignedInChange(e.target.checked)}
                     label={labels.keepSignedIn}
                   />
-                </CheckOptions>
+                </Stack>
                 <Button variant="accent" type="submit" disabled={loggingIn || !email || !password}>
                   {loggingIn ? labels.submitting : labels.submit}
                 </Button>
                 {externalUrl && (
-                  <FooterRow>
+                  <Inline justify="center" gap="var(--ig-space-7)">
                     <TextButton tone="accent" type="button" onClick={onOpenSignup}>
                       {labels.register}
                     </TextButton>
-                  </FooterRow>
+                  </Inline>
                 )}
-              </LoginForm>
+              </Stack>
             )}
           </>
         )}
 
-        {error && <ErrorMsg>{error}</ErrorMsg>}
+        {error && (
+          <Text size="var(--ig-font-size-sm)" tone="danger" align="center">
+            {error}
+          </Text>
+        )}
         </Stack>
       </Card>
     </Wrap>

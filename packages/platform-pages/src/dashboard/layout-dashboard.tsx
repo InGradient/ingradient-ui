@@ -47,7 +47,7 @@ export function LayoutDashboard({
       ) : null}
       {widgets && widgets.length > 0 ? (
         <Stack as="section" gap={0}>
-          {widgetsTitle ? <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{widgetsTitle}</Text> : null}
+          {widgetsTitle ? <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{widgetsTitle}</Text> : null}
           <Grid gap="var(--ig-space-5)" columns={`repeat(${widgetColumns}, minmax(0, 1fr))`}>
             {widgets.map((w) => (
               <Fragment key={w.id}>{w.content}</Fragment>
@@ -57,13 +57,13 @@ export function LayoutDashboard({
       ) : null}
       {charts ? (
         <Stack as="section" gap={0}>
-          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{chartsTitle}</Text>
+          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{chartsTitle}</Text>
           {charts}
         </Stack>
       ) : null}
       {tableSlot ? (
         <Stack as="section" gap={0}>
-          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight={600} style={SECTION_TITLE_STYLE}>{tableTitle}</Text>
+          <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{tableTitle}</Text>
           {tableSlot}
         </Stack>
       ) : null}

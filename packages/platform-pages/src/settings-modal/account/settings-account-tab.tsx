@@ -26,7 +26,7 @@ export interface LicenseInfo {
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
   if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>Loading license information…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight={600} style={EXPIRED_STYLE}>Expired</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
   if (license.type === 'organization') {
     return (
       <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>

@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+/**
+ * Edge license screen domain-specific styles.
+ * Layout (Stack) and typography (H1/Text) use primitives directly.
+ */
+
 export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,36 +26,6 @@ export const LangCorner = styled.div`
   display: flex;
   gap: var(--ig-space-3);
   align-items: center;
-`
-
-export const Title = styled.h1`
-  font-size: var(--ig-font-size-3xl);
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-primary);
-  margin: 0;
-  text-align: center;
-`
-
-export const Subtitle = styled.p`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-text-muted);
-  margin: 0;
-  text-align: center;
-  line-height: var(--ig-line-height-loose);
-`
-
-export const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
-
-export const FieldLabel = styled.label`
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 export const FingerprintBox = styled.div`
@@ -86,18 +61,6 @@ export const CopyBtn = styled.button`
   &:hover {
     background: var(--ig-color-blue-tint-25);
   }
-`
-
-export const LicenseForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-5);
-`
-
-export const ErrorMsg = styled.div`
-  font-size: var(--ig-font-size-sm);
-  color: var(--ig-color-danger);
-  text-align: center;
 `
 
 export const HintBox = styled.div`

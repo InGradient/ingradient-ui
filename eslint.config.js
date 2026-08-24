@@ -15,7 +15,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
 
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'packages/*/src/**/*.{ts,tsx}'],
     languageOptions: {
       globals: { ...globals.browser },
     },
@@ -30,7 +30,7 @@ export default tseslint.config(
 
   // 규칙 #9: 비표준 props 이름 차단 (typeStyle/inputSize/btnType 등)
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'packages/*/src/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-syntax': ['error', {
         selector: 'TSPropertySignature[key.name=/^(typeStyle|inputSize|btnType|btnSize|btnVariant)$/]',
@@ -72,9 +72,19 @@ export default tseslint.config(
     },
   },
 
+  // 규칙 #7: package pages 도 store/API 금지
+  {
+    files: ['packages/*/src/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': ['error', { patterns: [
+        NO_STORE_API,
+      ] }],
+    },
+  },
+
   // stories/tests 는 데모·검수용(규칙 #6/#11)이라 계층 교차 import 허용 — #2 제한 해제
   {
-    files: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}'],
+    files: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'packages/*/src/**/*.stories.{ts,tsx}', 'packages/*/src/**/*.test.{ts,tsx}'],
     rules: { 'no-restricted-imports': 'off' },
   },
 )

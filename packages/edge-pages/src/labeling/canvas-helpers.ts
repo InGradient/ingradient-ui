@@ -1,5 +1,5 @@
 import { chartColors } from '@ingradient/ui'
-import type { DrawingObject } from '@ingradient/ui/components'
+import type { DrawingObject } from '@ingradient/ui'
 
 export interface BBox {
   classId: string

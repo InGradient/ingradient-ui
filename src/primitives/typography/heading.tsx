@@ -13,6 +13,6 @@ export function Heading({
   level = 2,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & { level?: 1 | 2 | 3 | 4 }) {
-  const as = `h${Math.min(level + 1, 6)}` as React.ElementType
+  const as = `h${level}` as React.ElementType
   return <HeadingRoot as={as} $level={level} {...props} />
 }

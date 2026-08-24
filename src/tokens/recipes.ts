@@ -1,7 +1,10 @@
 /**
- * Backward-compat alias. recipes 는 primitives/ 로 이동했지만
- * `@ingradient/ui/tokens` 에서 re-export 유지 (1~2 minor 후 제거 검토).
+ * @deprecated Import from `@ingradient/ui/primitives` instead.
+ * This compatibility alias re-exports `../primitives/recipes` through
+ * the tokens subpath. No package consumer uses it; it remains only
+ * for external backward compatibility.
  *
- * 새 코드는 `@ingradient/ui/primitives` 에서 직접 import 권장.
+ * Removal target: 0.1.0
+ * Tracked: Layer Chain Audit F-10, Phase 4 cleanup.
  */
 export * from '../primitives/recipes'

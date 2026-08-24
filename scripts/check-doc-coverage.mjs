@@ -5,6 +5,22 @@ import { fileURLToPath } from 'url'
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(scriptDir, '..')
 
+/**
+ * Storybook seed files — the structural entry points that define the
+ * documentation tree. Individual component/pattern stories are discovered
+ * by Storybook itself; this list only verifies the foundational seeds.
+ *
+ * Updated 2026-08-24 to reflect story consolidation:
+ * - Former flat pattern stories (form-sections, dashboard-grid, shell-and-layouts,
+ *   overlay-blocks, workspace-blocks) were consolidated into their respective
+ *   component/pattern directories or platform page story groups.
+ * - Former generic page stories (table-page, settings-workspace-page,
+ *   workspace-api-page) were consolidated into stories/pages/platform/0.0.1/.
+ * - surfaces.stories.tsx moved to src/primitives/surfaces/.
+ * - drawing-layer, image-grid, comment-thread, charts moved from
+ *   src/components/ to src/patterns/.
+ * - settings-dialog.stories.tsx was consolidated into SettingsModal platform stories.
+ */
 const requiredStoryFiles = [
   '.storybook/main.ts',
   '.storybook/preview.tsx',
@@ -14,14 +30,22 @@ const requiredStoryFiles = [
   'stories/sandboxes/state-matrix.stories.tsx',
   'stories/sandboxes/theme-lab.stories.tsx',
   'stories/sandboxes/hooks-lab.stories.tsx',
-  'stories/patterns/form-sections.stories.tsx',
-  'stories/patterns/dashboard-grid.stories.tsx',
-  'stories/patterns/shell-and-layouts.stories.tsx',
-  'stories/patterns/overlay-blocks.stories.tsx',
-  'stories/patterns/workspace-blocks.stories.tsx',
-  'stories/pages/table-page.stories.tsx',
-  'stories/pages/settings-workspace-page.stories.tsx',
-  'stories/pages/workspace-api-page.stories.tsx',
+  // Pattern-level seeds (consolidated from former flat pattern stories)
+  'src/patterns/forms/checkbox-group.stories.tsx',
+  'src/patterns/layouts/layouts.stories.tsx',
+  'src/patterns/charts/charts.stories.tsx',
+  'src/patterns/gallery/image-grid.stories.tsx',
+  'src/patterns/annotation/drawing-layer.stories.tsx',
+  'src/patterns/comment/comment-thread.stories.tsx',
+  'stories/patterns/sidebar-shell.stories.tsx',
+  // Platform page seeds (consolidated from former generic page stories)
+  'stories/pages/platform/0.0.1/Catalog.stories.tsx',
+  'stories/pages/platform/0.0.1/SettingsModal.stories.tsx',
+  'stories/pages/platform/0.0.1/Dashboard.stories.tsx',
+  'stories/pages/platform/0.0.1/ClassManage.stories.tsx',
+  'stories/pages/platform/0.0.1/CreateProject.stories.tsx',
+  'stories/pages/platform/0.0.1/auth/Login.stories.tsx',
+  // Component seeds
   'src/components/inputs/button.stories.tsx',
   'src/components/inputs/file-input.stories.tsx',
   'src/components/inputs/text-fields.stories.tsx',
@@ -44,18 +68,13 @@ const requiredStoryFiles = [
   'src/components/navigation/tabs.stories.tsx',
   'src/components/navigation/vertical-tabs.stories.tsx',
   'src/components/overlays/dialog-shell.stories.tsx',
-  'src/components/overlays/settings-dialog.stories.tsx',
   'src/components/overlays/drawer.stories.tsx',
   'src/components/overlays/tooltip.stories.tsx',
   'src/components/overlays/context-menu.stories.tsx',
-  'src/components/surfaces.stories.tsx',
+  'src/primitives/surfaces/surfaces.stories.tsx',
   'src/components/data-display/table.stories.tsx',
   'src/components/data-display/tag-list.stories.tsx',
-  'src/components/data-display/drawing-layer.stories.tsx',
-  'src/components/data-display/image-grid.stories.tsx',
   'src/components/data-display/image-viewer.stories.tsx',
-  'src/components/data-display/comment-thread.stories.tsx',
-  'src/components/charts/charts.stories.tsx',
   'src/components/icons/icon-gallery.stories.tsx',
 ]
 

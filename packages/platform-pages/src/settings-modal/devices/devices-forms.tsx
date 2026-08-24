@@ -71,7 +71,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
     return issuedToken ? (
       <div ref={ref}>
         <Stack gap="var(--ig-space-3)" style={TOKEN_BOX_STYLE}>
-          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
+          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
@@ -93,7 +93,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
       {showRegister ? (
         <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
           <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
+          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <TextField
               ref={uidInputRef}
@@ -123,7 +123,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
       {showIssue && offlineEnabled ? (
         <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
           <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">Select a registered device to issue an offline license token.</Text>
+          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">Select a registered device to issue an offline license token.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DropdownSelect
               value={issueDeviceId}
@@ -151,7 +151,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
 
       {issuedToken ? (
         <Stack gap="var(--ig-space-3)" style={TOKEN_BOX_STYLE}>
-          <Text size="var(--ig-font-size-xs)" weight={500} tone="muted">
+          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />

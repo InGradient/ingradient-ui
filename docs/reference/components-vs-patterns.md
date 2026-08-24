@@ -160,6 +160,30 @@ tokens → primitives → components → patterns
 
 이 과정을 몇 번 반복한 뒤에도 같은 종류의 애매함이 계속 쌓이면, 그때 중간 개념이나 구조 확장을 검토한다.
 
+## Shell/Layout Boundary Exceptions
+
+Layer Chain Audit F-08 (2026-06-21) identified four components currently in `src/components/` that have shell/layout characteristics typically associated with `patterns/`:
+
+| Component | Current location | Provisional classification | Policy |
+|---|---|---|---|
+| `ResizableColumnsLayout` | `components/data-display` | Component (exception) | **Keep in components.** Generic behavioral layout component — the resize handle logic is a reusable atomic behavior, not a screen-level composition. Documented exception. |
+| `SidePanelLayout` | `components/data-display` | Pattern candidate | **Keep in components with exception.** While it provides shell-level split composition, its contract is a generic two-pane layout with no product semantics. If `SidebarShell` and `SidePanelLayout` diverge further, split: keep the atomic pane behavior in components and move the shell composition to patterns. |
+| `MobileShell` | `components/navigation` | Pattern candidate | **Keep in components with exception.** Provides viewport-aware rendering switching, which is a generic behavioral concern. If app-level shell composition accumulates, extract a `MobileAppShell` pattern. |
+| `MobileNavShell` | `components/navigation` | Pattern candidate | **Keep in components with exception.** Self-describes as `SidebarShell`'s mobile counterpart. If the two share enough composition to warrant co-location, move both to patterns together. |
+
+### Decision rationale
+
+1. **File moves are deferred.** The audit recommends deciding policy before moving files. These four are classified as "generic behavioral layout components" — exceptions to the general rule that shell/navigation composition belongs in patterns.
+2. **`ResizableColumnsLayout` is the clearest exception.** Its value is the resize handle behavior, not screen composition. It belongs in components.
+3. **The other three are borderline.** They stay in components as long as their contracts remain generic (no product semantics, no app-level navigation structure). If they grow product-specific composition, they should move to patterns.
+4. **`FilterBarLayout` (components) vs `FilterBar` (patterns)** is an example of the correct split: the layout container is a component, the filter composition is a pattern. If `SidePanelLayout` and `SidebarShell` follow the same pattern, the split is already correct.
+
+### When to revisit
+
+- If any of these four components gain product-specific props or composition, move them to patterns.
+- If `MobileNavShell` and `SidebarShell` share enough structure to warrant co-location, move both to patterns together.
+- If new shell/layout components are added, classify them using the Decision Test above. Default to patterns for shell composition; only keep in components if the contract is a generic behavioral layout.
+
 ## Rule Of Thumb
 
 이 질문으로 최종 판단한다.

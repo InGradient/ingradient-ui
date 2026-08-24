@@ -1,10 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, Card, IconButton, TextField, SettingsIcon } from '@ingradient/ui/components'
-import { Stack } from '@ingradient/ui/primitives'
+import { Stack, H1, Text } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, Title, Subtitle, Field, FieldLabel,
-  FingerprintBox, FingerprintText, CopyBtn, LicenseForm,
-  ErrorMsg, HintBox,
+  Wrap, LangCorner,
+  FingerprintBox, FingerprintText, CopyBtn, HintBox,
 } from './LicenseView.styles'
 import type { LicenseViewProps } from './types'
 
@@ -36,18 +35,22 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
         style={{ width: '100%', maxWidth: 'var(--ig-popup-lg-plus)' }}
       >
         <Stack gap="var(--ig-space-9)">
-        <Title>{labels.title}</Title>
-        <Subtitle>{isBind ? labels.bindHint : labels.subtitle}</Subtitle>
+        <H1>{labels.title}</H1>
+        <Text size="var(--ig-font-size-sm)" tone="muted" align="center" style={{ lineHeight: 'var(--ig-line-height-loose)' }}>
+          {isBind ? labels.bindHint : labels.subtitle}
+        </Text>
 
-        <Field>
-          <FieldLabel>{labels.fingerprintLabel}</FieldLabel>
+        <Stack gap="var(--ig-space-2)">
+          <Text as="label" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+            {labels.fingerprintLabel}
+          </Text>
           <FingerprintBox>
             <FingerprintText>{fingerprint}</FingerprintText>
             <CopyBtn type="button" onClick={onCopyFingerprint} title={labels.copy}>
               {copied ? labels.copied : labels.copy}
             </CopyBtn>
           </FingerprintBox>
-        </Field>
+        </Stack>
 
         {isBind ? (
           <>
@@ -59,9 +62,11 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
         ) : (
           <>
             <HintBox>{labels.hint}</HintBox>
-            <LicenseForm onSubmit={onSubmit}>
-              <Field>
-                <FieldLabel htmlFor="license-key">{labels.keyLabel}</FieldLabel>
+            <Stack as="form" gap="var(--ig-space-5)" onSubmit={onSubmit}>
+              <Stack gap="var(--ig-space-2)">
+                <Text as="label" htmlFor="license-key" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+                  {labels.keyLabel}
+                </Text>
                 <TextField
                   id="license-key" type="text"
                   placeholder={KEY_PLACEHOLDER}
@@ -71,15 +76,19 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
                   spellCheck={false}
                   disabled={submitting}
                 />
-              </Field>
+              </Stack>
               <Button variant="accent" type="submit" disabled={submitting || !licenseKey.trim()}>
                 {submitting ? labels.activating : labels.activate}
               </Button>
-            </LicenseForm>
+            </Stack>
           </>
         )}
 
-        {error && <ErrorMsg>{error}</ErrorMsg>}
+        {error && (
+          <Text size="var(--ig-font-size-sm)" tone="danger" align="center">
+            {error}
+          </Text>
+        )}
         </Stack>
       </Card>
     </Wrap>
