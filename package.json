@@ -59,7 +59,7 @@
     "build:docs": "npm run build:storybook",
     "check:style-literals": "node scripts/check-style-literals.mjs",
     "check:doc-coverage": "node scripts/check-doc-coverage.mjs",
-    "lint": "eslint src/",
+    "lint": "eslint src/ packages/*/src/",
     "lint:style": "stylelint \"packages/*/src/**/*.{ts,tsx}\" --ignore-pattern \"**/*.stories.tsx\" --ignore-pattern \"**/*.test.tsx\"",
     "test:unit": "vitest run --project unit",
     "test-storybook": "vitest run --project \"storybook:*\"",
