@@ -4,7 +4,7 @@
 
 ## Layers
 
-- `core/` (19 카테고리)
+- `core/` (17 카테고리)
   - raw 절대값:
     - **Color**: `colors.ts` (foundationColors 다크/라이트), `chart-colors.ts` (Recharts palette)
     - **Spacing**: `spacing.ts` (1px/2px/3px/-1px/-2px/-4 + 1Plus(5)/2Plus(7) + 1~13 scale + hoverLiftY)
@@ -75,8 +75,9 @@
 
 ## Storybook
 
-- `src/tokens/tokens.stories.tsx` — 카테고리별 tile visualization
-- `stories/foundations/token-overview.stories.tsx` — registry 기반 token overview
+- **Canonical:** `stories/foundations/token-overview.stories.tsx` — source token과 현재 theme에서 resolve된 CSS variable을 함께 검토하는 정본. `Foundations/Token Overview`에서 light/dark 및 density를 확인한다.
+- `src/tokens/tokens.stories.tsx` — 과거 수동 tile gallery의 migration 안내. token 값을 이 페이지에서 검토하지 않는다.
+- Canonical Overview는 raw source (`TS`)와 runtime CSS variable (`CSS`) 소비 경로를 구분하고, global layout / Edge feature geometry / pattern geometry를 별도 표시한다.
 
 ## Important
 

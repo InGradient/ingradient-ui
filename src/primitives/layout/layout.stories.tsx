@@ -1,136 +1,51 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import styled from 'styled-components'
+import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 import { Box } from './box'
 import { Container, Grid, Inline, Stack } from './flex'
 
 const meta = {
   title: 'Primitives/Layout',
-  parameters: {
-    layout: 'fullscreen',
-    a11y: { test: 'error' },
-  },
+  tags: ['autodocs'],
+  parameters: { layout: 'fullscreen', a11y: { test: 'error' } },
 } satisfies Meta
 
 export default meta
-
 type Story = StoryObj<typeof meta>
 
-const Page = styled.div`
-  padding: var(--ig-space-8);
-  background: var(--ig-color-bg-canvas);
-`
-
 const DemoBlock = styled.div`
-  min-height: var(--ig-control-height-2xl-wide);
+  display: grid;
+  min-height: var(--ig-control-height-2xl);
+  place-items: center;
+  padding: var(--ig-space-4);
+  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
-  border: 1px solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-raised);
   color: var(--ig-color-text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: var(--ig-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--ig-font-weight-semibold);
 `
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-4);
-`
-
-const Title = styled.h3`
-  margin: 0;
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-lg);
-`
-
-const Description = styled.p`
-  margin: 0;
-  color: var(--ig-color-text-secondary);
-  font-size: var(--ig-font-size-sm);
-`
-
-export const Review: Story = {
+export const Overview: Story = {
   render: () => (
-    <Page>
-      <Stack gap={32}>
-        <Section>
-          <Stack gap={8}>
-            <Title>Box</Title>
-            <Description>Single primitive for padding, width, height, and flex-like alignment props.</Description>
-          </Stack>
-          <Box
-            display="flex"
-            gap={12}
-            padding={16}
-            align="center"
-            justify="space-between"
-            style={{
-              borderRadius: 'var(--ig-radius-xl)',
-              border: '1px solid var(--ig-color-border-subtle)',
-              background: 'var(--ig-color-surface-panel)',
-            }}
-          >
-            <DemoBlock>Leading</DemoBlock>
-            <DemoBlock>Center</DemoBlock>
-            <DemoBlock>Trailing</DemoBlock>
-          </Box>
-        </Section>
+    <StorybookPage title="Layout primitives" description="Use these primitives for generic composition: Box for a bounded layout need, Stack for vertical rhythm, Inline for horizontal flow, Grid for responsive collections, and Container for a page-width boundary.">
+      <StorybookGrid columns="repeat(auto-fit, minmax(240px, 1fr))">
+        <StorybookCard title="Box" subtitle="One-off display, padding, and dimension contract"><Box display="flex" gap="var(--ig-space-3)" padding="var(--ig-space-4)" justify="space-between" style={{ borderRadius: 'var(--ig-radius-lg)', background: 'var(--ig-color-surface-panel)' }}><DemoBlock>Leading</DemoBlock><DemoBlock>Trailing</DemoBlock></Box></StorybookCard>
+        <StorybookCard title="Stack" subtitle="Vertical rhythm"><Stack gap="var(--ig-space-3)"><DemoBlock>First</DemoBlock><DemoBlock>Second</DemoBlock><DemoBlock>Third</DemoBlock></Stack></StorybookCard>
+        <StorybookCard title="Inline" subtitle="Horizontal flow with deliberate wrapping"><Inline gap="var(--ig-space-3)"><DemoBlock>Filter</DemoBlock><DemoBlock>Sort</DemoBlock><DemoBlock>Share</DemoBlock></Inline></StorybookCard>
+        <StorybookCard title="Grid" subtitle="Responsive equal-width collection"><Grid minItemWidth={160} gap="var(--ig-space-3)"><DemoBlock>A</DemoBlock><DemoBlock>B</DemoBlock><DemoBlock>C</DemoBlock><DemoBlock>D</DemoBlock></Grid></StorybookCard>
+      </StorybookGrid>
+    </StorybookPage>
+  ),
+}
 
-        <Section>
-          <Stack gap={8}>
-            <Title>Stack and Inline</Title>
-            <Description>Vertical and horizontal flow helpers for most composition work.</Description>
-          </Stack>
-          <Grid minItemWidth={320} gap={16}>
-            <Box
-              padding={16}
-              style={{
-                borderRadius: 'var(--ig-radius-xl)',
-                border: '1px solid var(--ig-color-border-subtle)',
-                background: 'var(--ig-color-surface-panel)',
-              }}
-            >
-              <Stack gap={12}>
-                <DemoBlock>First row</DemoBlock>
-                <DemoBlock>Second row</DemoBlock>
-                <DemoBlock>Third row</DemoBlock>
-              </Stack>
-            </Box>
-            <Box
-              padding={16}
-              style={{
-                borderRadius: 'var(--ig-radius-xl)',
-                border: '1px solid var(--ig-color-border-subtle)',
-                background: 'var(--ig-color-surface-panel)',
-              }}
-            >
-              <Inline gap={12}>
-                <DemoBlock>Filter</DemoBlock>
-                <DemoBlock>Sort</DemoBlock>
-                <DemoBlock>Share</DemoBlock>
-                <DemoBlock>Export</DemoBlock>
-              </Inline>
-            </Box>
-          </Grid>
-        </Section>
-
-        <Section>
-          <Stack gap={8}>
-            <Title>Grid and Container</Title>
-            <Description>Responsive structure primitives for shell and dashboard-level composition.</Description>
-          </Stack>
-          <Container maxWidth={960} padding={0}>
-            <Grid minItemWidth={180} gap={12}>
-              <DemoBlock>Panel A</DemoBlock>
-              <DemoBlock>Panel B</DemoBlock>
-              <DemoBlock>Panel C</DemoBlock>
-              <DemoBlock>Panel D</DemoBlock>
-            </Grid>
-          </Container>
-        </Section>
-      </Stack>
-    </Page>
+export const WrappingAndBounds: Story = {
+  name: 'Wrapping and bounds',
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+  render: () => (
+    <StorybookPage title="Wrapping and bounds" description="Review this story at narrow widths. Inline wraps by default; use the nowrap setting only when the composition can safely remain on one line.">
+      <StorybookSection title="Inline wrapping" description="Long labels remain visible instead of forcing horizontal overflow."><Inline gap="var(--ig-space-3)"><DemoBlock>Dataset filter</DemoBlock><DemoBlock>Longer sort control</DemoBlock><DemoBlock>Export selection</DemoBlock></Inline></StorybookSection>
+      <StorybookSection title="Container and Grid" description="Container owns the outer width while Grid owns responsive item placement."><Container maxWidth={720} padding="var(--ig-space-4)"><Grid minItemWidth={140} gap="var(--ig-space-3)"><DemoBlock>Panel A</DemoBlock><DemoBlock>Panel B</DemoBlock><DemoBlock>Panel C</DemoBlock></Grid></Container></StorybookSection>
+    </StorybookPage>
   ),
 }

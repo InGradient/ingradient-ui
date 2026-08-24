@@ -6,9 +6,10 @@
 
 1. [Design Contract](../../DESIGN.md)
 2. [Components Vs Patterns](./components-vs-patterns.md)
-3. [Platform Pages Package](../../packages/platform-pages/README.md)
-4. [Platform Story Contract](../../stories/pages/platform/0.0.1/README.md)
-5. [Platform Migration and Verification](../../stories/pages/platform/0.0.1/MIGRATION.md)
+3. [Primitives Reference](./primitives/README.md)
+4. [Platform Pages Package](../../packages/platform-pages/README.md)
+5. [Platform Story Contract](../../stories/pages/platform/0.0.1/README.md)
+6. [Platform Migration and Verification](../../stories/pages/platform/0.0.1/MIGRATION.md)
 
 현재 계층 흐름은 다음과 같다.
 
@@ -34,6 +35,7 @@ Layer-specific indexes:
 
 - [Components Reference](./components/README.md)
 - [Patterns Reference](./patterns/README.md)
+- [Primitives Reference](./primitives/README.md)
 
 ## Legacy Reference
 

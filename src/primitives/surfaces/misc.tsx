@@ -10,7 +10,8 @@ export const Divider = styled.hr`
   background: var(--ig-color-border-subtle);
 `
 
-export const ScrollArea = styled.div`
+/** Keyboard-focusable overflow region; callers provide an aria-label when the region needs a distinct name. */
+export const ScrollArea = styled.div.attrs({ tabIndex: 0 })`
   min-width: 0;
   min-height: 0;
   overflow: auto;
