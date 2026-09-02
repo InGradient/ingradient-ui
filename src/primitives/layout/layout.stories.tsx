@@ -49,3 +49,29 @@ export const WrappingAndBounds: Story = {
     </StorybookPage>
   ),
 }
+
+export const LongContentAndEmpty: Story = {
+  name: 'Long content and empty state',
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+  render: () => (
+    <StorybookPage title="Long content and empty state" description="Use a bounded Container and responsive Grid for real content. An empty state stays centered without requiring a page-specific layout primitive.">
+      <StorybookSection title="Long content in a responsive collection" description="Titles and supporting copy wrap within their own cards instead of widening the page.">
+        <Container maxWidth={720} padding="var(--ig-space-4)">
+          <Grid minItemWidth={160} gap="var(--ig-space-3)">
+            {[
+              ['Deflectometry calibration results', '검사 기준과 함께 다음 작업자에게 전달할 상세 측정 결과입니다.'],
+              ['Production quality review queue', 'Long English metadata remains inside the card at a narrow viewport.'],
+              ['128 images awaiting annotation', '이미지 수, 시간, 장비 이름처럼 길이가 다른 정보도 읽기 쉽게 유지합니다.'],
+            ].map(([title, description]) => <Box key={title} padding="var(--ig-space-4)" style={{ border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-lg)', background: 'var(--ig-color-surface-raised)' }}><Stack gap="var(--ig-space-3)"><strong>{title}</strong><span style={{ color: 'var(--ig-color-text-secondary)', fontSize: 'var(--ig-font-size-sm)' }}>{description}</span></Stack></Box>)}
+          </Grid>
+        </Container>
+      </StorybookSection>
+      <StorybookSection title="Empty composition" description="The same generic primitives can center a calm empty state without embedding product behavior into Layout.">
+        <Box display="flex" direction="column" align="center" justify="center" gap="var(--ig-space-3)" padding="var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-sidebar-header)', border: 'var(--ig-border-1px) dashed var(--ig-color-border-subtle)', borderRadius: 'var(--ig-radius-xl)', textAlign: 'center' }}>
+          <strong>No datasets to review</strong>
+          <span style={{ color: 'var(--ig-color-text-secondary)', fontSize: 'var(--ig-font-size-sm)' }}>Try changing the active project or upload a new dataset.</span>
+        </Box>
+      </StorybookSection>
+    </StorybookPage>
+  ),
+}
