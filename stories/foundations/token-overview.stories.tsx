@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect } from 'storybook/test'
 import { aspectRatios, borderWidthScale, chartColors, chartHeights, controlSizes, effectsScale, foundationColors, iconSizes, layoutScale, motionScale, opacityScale, popupSizes, radiusScale, spacingScale, transformScale, typographyScale, zIndexScale } from '../../src/tokens'
 import { StorybookCard, StorybookGrid, StorybookMetaBar, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
-import { ColorTokenCard, TokenTable, type TokenEntry } from './token-overview/token-showcase'
+import { ColorTokenCard, TokenExplorer, TokenTable, type TokenEntry, type TokenSearchEntry } from './token-overview/token-showcase'
 
 const meta = {
   title: 'Foundations/Token Overview',
@@ -69,6 +70,27 @@ const effectEntries: TokenEntry[] = [
   ...Object.entries(zIndexScale).map(([name, value]) => ({ name: `z.${name}`, value, kind: 'ts' as const, usage: 'Layer order' })),
 ]
 
+const visualizationEntries: TokenEntry[] = [
+  ...Object.entries(chartHeights).map(([name, value]) => ({ name: `chartHeight.${name}`, value, kind: 'ts' as const, usage: 'Chart component height' })),
+  ...Object.entries(aspectRatios).map(([name, value]) => ({ name: `aspect.${name}`, value, kind: 'ts' as const, usage: 'Image/video aspect ratio' })),
+  ...Object.entries(transformScale).map(([name, value]) => ({ name: `transform.${name}`, value, kind: 'ts' as const, usage: 'Press, drag, and hover scale' })),
+]
+
+const tokenSearchEntries: TokenSearchEntry[] = [
+  ...semanticColors.map((entry) => ({ ...entry, category: 'Semantic color' })),
+  ...typographyEntries.map((entry) => ({ ...entry, category: 'Typography' })),
+  ...spacingEntries.map((entry) => ({ ...entry, category: 'Spacing' })),
+  ...shapeEntries.map((entry) => ({ ...entry, category: 'Shape' })),
+  ...scaleEntries.map((entry) => ({ ...entry, category: 'Component scales' })),
+  ...globalLayoutEntries.map((entry) => ({ ...entry, category: 'Global layout' })),
+  ...edgeGeometryEntries.map((entry) => ({ ...entry, category: 'Edge feature geometry' })),
+  ...patternGeometryEntries.map((entry) => ({ ...entry, category: 'Pattern geometry' })),
+  ...effectEntries.map((entry) => ({ ...entry, category: 'Effects and layers' })),
+  ...visualizationEntries.map((entry) => ({ ...entry, category: 'Visualization' })),
+  ...Object.entries(chartColors).map(([name, value]) => ({ name: `chart.${name}`, value, kind: 'ts' as const, usage: 'Chart SVG and Recharts palette', category: 'Chart palette' })),
+  ...Object.entries(foundationColors).map(([name, value]) => ({ name: `foundation.${name}`, value, kind: 'ts' as const, usage: 'Raw foundation source', category: 'Raw foundation palette' })),
+]
+
 function SemanticPair({ label, background, border, text }: { label: string; background: string; border: string; text: string }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)', padding: 'var(--ig-space-5)', border: `var(--ig-border-1px) solid var(${border})`, borderRadius: 'var(--ig-radius-md)', background: `var(${background})`, color: `var(${text})` }}>
@@ -96,9 +118,13 @@ function TokenOverview({ globals }: { globals: Record<string, unknown> }) {
         </StorybookGrid>
       </StorybookSection>
 
+      <StorybookSection title="Find a token" description="Search the full token registry by name, CSS variable, current value, or intended usage. Select a category to browse a focused list.">
+        <TokenExplorer entries={tokenSearchEntries} />
+      </StorybookSection>
+
       <StorybookSection title="Resolved semantic color" description="These are the application-facing color contracts. The swatch and value react to the active Storybook mode.">
         <StorybookGrid columns="repeat(auto-fit, minmax(180px, 1fr))">
-          {semanticColors.map((entry) => <StorybookCard key={entry.name} title={entry.name}><ColorTokenCard entry={entry} /></StorybookCard>)}
+          {semanticColors.map((entry) => <StorybookCard key={entry.name} title={entry.name}><ColorTokenCard entry={entry} includeName={false} /></StorybookCard>)}
         </StorybookGrid>
         <div style={{ marginTop: 'var(--ig-space-7)' }}><StorybookGrid columns="repeat(auto-fit, minmax(220px, 1fr))">
           <SemanticPair label="Success status" background="--ig-color-status-running-bg" border="--ig-color-alert-success-border" text="--ig-color-status-running-text" />
@@ -108,8 +134,8 @@ function TokenOverview({ globals }: { globals: Record<string, unknown> }) {
       </StorybookSection>
 
       <StorybookGrid columns="repeat(auto-fit, minmax(320px, 1fr))">
-        <StorybookSection title="Typography contract" description="Use semantic primitive aliases instead of copying individual CSS values into page styles."><TokenTable entries={typographyEntries} /></StorybookSection>
-        <StorybookSection title="Spacing scale" description="The numbered spacing scale is the default for layout rhythm."><TokenTable entries={spacingEntries} /></StorybookSection>
+        <div style={{ alignSelf: 'start' }}><StorybookSection title="Typography contract" description="Use semantic primitive aliases instead of copying individual CSS values into page styles."><TokenTable entries={typographyEntries} /></StorybookSection></div>
+        <div style={{ alignSelf: 'start' }}><StorybookSection title="Spacing scale" description="The numbered spacing scale is the default for layout rhythm."><TokenTable entries={spacingEntries} /></StorybookSection></div>
       </StorybookGrid>
 
       <StorybookSection title="Inventory map" description="Keep the overview short. Use the dedicated inventory stories for complete scale-by-scale listings.">
@@ -126,6 +152,22 @@ function TokenOverview({ globals }: { globals: Record<string, unknown> }) {
 
 export const Overview: Story = { render: (_, context) => <TokenOverview globals={context.globals as Record<string, unknown>} /> }
 export const Narrow: Story = { name: 'Narrow review', parameters: { viewport: { defaultViewport: 'mobile' } }, render: (_, context) => <TokenOverview globals={context.globals as Record<string, unknown>} /> }
+
+export const TokenDiscovery: Story = {
+  name: 'Token discovery',
+  render: () => <StorybookPage title="Find a token" description="Search and category filtering are available from the canonical overview as well as this focused interaction surface."><StorybookSection title="Token registry"><TokenExplorer entries={tokenSearchEntries} /></StorybookSection></StorybookPage>,
+  play: async ({ canvas, userEvent }) => {
+    const search = canvas.getByRole('searchbox', { name: 'Search token names, values, or usage' })
+    await userEvent.type(search, '--ig-color-accent')
+    await expect(canvas.getByText('--ig-color-accent')).toBeInTheDocument()
+    await expect(canvas.getByRole('button', { name: 'Copy Accent identifier' })).toBeEnabled()
+    await userEvent.click(canvas.getByRole('button', { name: 'Clear search' }))
+    await userEvent.click(canvas.getByRole('button', { name: 'Spacing' }))
+    await expect(canvas.getByText('space.0')).toBeInTheDocument()
+    await userEvent.click(canvas.getByRole('button', { name: 'All categories' }))
+    await expect(canvas.getByText('Search by name, CSS variable, value, or usage. Or select a category to browse its tokens.')).toBeInTheDocument()
+  },
+}
 
 export const LayoutInventory: Story = {
   name: 'Layout inventory',
@@ -149,9 +191,9 @@ export const ScaleInventory: Story = {
         <StorybookSection title="Component scales"><TokenTable entries={scaleEntries} /></StorybookSection>
         <StorybookSection title="Effects and layers"><TokenTable entries={effectEntries} /></StorybookSection>
         <StorybookSection title="JS-only visualization constants"><StorybookStack gap={16}>
-          <TokenTable entries={Object.entries(chartHeights).map(([name, value]) => ({ name: `chartHeight.${name}`, value, kind: 'ts' as const, usage: 'Chart component height' }))} />
-          <TokenTable entries={Object.entries(aspectRatios).map(([name, value]) => ({ name: `aspect.${name}`, value, kind: 'ts' as const, usage: 'Image/video aspect ratio' }))} />
-          <TokenTable entries={Object.entries(transformScale).map(([name, value]) => ({ name: `transform.${name}`, value, kind: 'ts' as const, usage: 'Press/drag/hover scale' }))} />
+          <TokenTable entries={visualizationEntries.filter((entry) => entry.name.startsWith('chartHeight.'))} />
+          <TokenTable entries={visualizationEntries.filter((entry) => entry.name.startsWith('aspect.'))} />
+          <TokenTable entries={visualizationEntries.filter((entry) => entry.name.startsWith('transform.'))} />
         </StorybookStack></StorybookSection>
       </StorybookGrid>
     </StorybookPage>

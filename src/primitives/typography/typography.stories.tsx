@@ -78,3 +78,21 @@ export const TextContract: Story = {
     </StorybookPage>
   ),
 }
+
+export const LongContent: Story = {
+  name: 'Long mixed-language content',
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+  render: () => (
+    <StorybookPage title="Long mixed-language content" description="Review the hierarchy with realistic Korean, English, numeric, and timestamp-heavy copy at a narrow viewport.">
+      <StorybookSection title="Project handoff" description="Headings and supporting copy should wrap naturally without losing semantic order.">
+        <Stack gap="var(--ig-space-5)">
+          <Heading level={1}>2026년 8월 Production Quality Review 결과와 다음 검사 단계 안내</Heading>
+          <Text as="p" tone="secondary">Deflectometry Line A에서 확인된 128개 이미지 중 12개는 추가 검토가 필요합니다. 다음 작업자는 calibration note와 baseline batch를 함께 확인해 주세요.</Text>
+          <Heading level={2}>Surface inspection handoff · Batch 24-08-02</Heading>
+          <Text as="p">현재 검사 대기열은 09:41 기준으로 업데이트되었습니다. 장비 이름, 작업자, 프로젝트 식별자처럼 길이가 다른 정보도 본문 흐름 안에서 읽기 쉬워야 합니다.</Text>
+          <Text fontFamily="mono" tabularNums tone="muted">updated 2026-08-24 09:41:03 · 128 images · run-24-08-02</Text>
+        </Stack>
+      </StorybookSection>
+    </StorybookPage>
+  ),
+}
