@@ -9,29 +9,17 @@ type StoryTarget = {
 }
 
 const stories: StoryTarget[] = [
-  // Foundations / Patterns / 기존
+  // Foundation and sandbox review surfaces
   {
     name: 'foundations-token-overview',
     id: 'foundations-token-overview--overview',
-    readyText: 'Foundation Tokens',
-    fullPage: true,
-  },
-  {
-    name: 'patterns-shell-and-layouts',
-    id: 'patterns-shell-and-layouts--overview',
-    readyText: 'Shell And Layout Patterns',
+    readyText: 'Token system',
     fullPage: true,
   },
   {
     name: 'sandboxes-theme-lab',
     id: 'sandboxes-theme-lab--overview',
     readyText: 'Theme Lab',
-    fullPage: true,
-  },
-  {
-    name: 'pages-table-page',
-    id: 'pages-table-page--default',
-    readyText: 'Workspace Directory',
     fullPage: true,
   },
 
@@ -45,9 +33,9 @@ const stories: StoryTarget[] = [
   { name: 'pages-platform-0-0-1-dashboard', id: 'pages-platform-0-0-1-dashboard-workspace--overview', readyText: 'Dashboard', fullPage: true },
 
   // Edge pages (Phase 6)
-  { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'Edge Sign in', fullPage: true },
+  { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'INGRADIENT Edge', fullPage: true },
   { name: 'pages-edge-0-0-1-license', id: 'pages-edge-0-0-1-license--valid', readyText: 'License', fullPage: true },
-  { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-datasets', readyText: 'Edge Workstation', fullPage: true },
+  { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-groups', readyText: 'Datasets', fullPage: true },
 
   // Medical pages (Phase 6)
   { name: 'pages-medical-0-0-1-auth', id: 'pages-medical-0-0-1-auth--login', readyText: 'medilabel', fullPage: true },

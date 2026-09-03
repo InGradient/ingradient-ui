@@ -31,6 +31,15 @@ jobs:
       - run: npm run check:doc-coverage
       - run: npm run build:storybook
       - run: npm run test:visual
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: visual-test-results-${{ github.run_number }}
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: warn
+          retention-days: 7
       - name: Summarize Storybook Preview
         if: success()
         run: |
