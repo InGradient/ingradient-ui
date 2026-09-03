@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Inline } from '../../primitives'
 import { popupSizeNumbers } from '../../tokens/core'
 import { Checkbox } from '../../components/inputs/toggles'

@@ -52,7 +52,7 @@ export const Review: Story = {
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-4)' }}>
-            <h3 style={{ margin: 0 }}>General</h3>
+            <h4 style={{ margin: 0 }}>General</h4>
             <p style={{ margin: 0, color: 'var(--ig-color-text-muted)', lineHeight: 'var(--ig-line-height-loose)' }}>
               워크스페이스 이름, 기본 언어, 표시 설정을 관리합니다. 좌측에서 카테고리를 선택하면 이 영역의
               내용이 전환됩니다.
