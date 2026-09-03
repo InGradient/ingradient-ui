@@ -4,7 +4,7 @@ type StoryTarget = {
   name: string
   id: string
   readyText: string
-  readyRole?: 'dialog'
+  readyRole?: 'dialog' | 'heading'
   fullPage?: boolean
 }
 
@@ -14,6 +14,7 @@ const stories: StoryTarget[] = [
     name: 'foundations-token-overview',
     id: 'foundations-token-overview--overview',
     readyText: 'Token system',
+    readyRole: 'heading',
     fullPage: true,
   },
   {
@@ -33,9 +34,9 @@ const stories: StoryTarget[] = [
   { name: 'pages-platform-0-0-1-dashboard', id: 'pages-platform-0-0-1-dashboard-workspace--overview', readyText: 'Dashboard', fullPage: true },
 
   // Edge pages (Phase 6)
-  { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'INGRADIENT Edge', fullPage: true },
-  { name: 'pages-edge-0-0-1-license', id: 'pages-edge-0-0-1-license--valid', readyText: 'License', fullPage: true },
-  { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-groups', readyText: 'Datasets', fullPage: true },
+  { name: 'pages-edge-0-0-1-login', id: 'pages-edge-0-0-1-login--online', readyText: 'INGRADIENT Edge', readyRole: 'heading', fullPage: true },
+  { name: 'pages-edge-0-0-1-license', id: 'pages-edge-0-0-1-license--key-empty', readyText: 'INGRADIENT Edge', readyRole: 'heading', fullPage: true },
+  { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-groups', readyText: 'Datasets', readyRole: 'heading', fullPage: true },
 
   // Medical pages (Phase 6)
   { name: 'pages-medical-0-0-1-auth', id: 'pages-medical-0-0-1-auth--login', readyText: 'medilabel', fullPage: true },
@@ -50,6 +51,7 @@ async function openStory(page: import('@playwright/test').Page, story: StoryTarg
     ? page.getByRole(story.readyRole, { name: story.readyText })
     : page.getByText(story.readyText, { exact: false }).first()
   await ready.waitFor({ state: 'visible' })
+  await expect(page.getByText("Couldn't find story matching", { exact: false })).toHaveCount(0)
   await page.addStyleTag({
     content: `
       *,
