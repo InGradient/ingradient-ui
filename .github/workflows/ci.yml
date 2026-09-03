@@ -31,6 +31,7 @@ jobs:
       - run: npm run check:doc-coverage
       - run: npm run build:storybook
       - run: npm run test:visual
+      # Linux captures are the canonical baseline review evidence on visual failures.
       - uses: actions/upload-artifact@v6
         if: failure()
         with:
