@@ -160,10 +160,12 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
         <CaptureButtonWrap>
           {!isSetupMode && (
             <CaptureButton
+              type="button"
               onClick={isCapturing || isConnecting || captureDisabledReason ? undefined : onCapture}
               $capturing={isCapturing}
               disabled={isCapturing || isConnecting || !!captureDisabledReason}
               data-capturing={isCapturing || undefined}
+              aria-label={labels.capture}
               title={captureDisabledReason ?? (isSavingSequence ? labels.savingPreviousCapture : undefined)}
             />
           )}

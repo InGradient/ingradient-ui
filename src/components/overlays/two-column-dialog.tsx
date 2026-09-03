@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { H4 } from '../../primitives'
+import { Heading } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
 import { DialogCloseButton } from './dialog-close-button'
 
@@ -106,7 +106,7 @@ export function TwoColumnDialog({
         tabIndex={-1}
       >
         <Header>
-          <H4 id={titleId}>{title}</H4>
+          <Heading id={titleId} level={3} style={{ fontSize: 'var(--ig-font-size-xl)' }}>{title}</Heading>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Body>
