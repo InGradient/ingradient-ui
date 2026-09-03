@@ -67,12 +67,12 @@ export function GalleryDatasetTransferDialog({
       {action === 'move' ? (
         <DialogRow>
           <label htmlFor="dataset-source">From dataset</label>
-          <DropdownSelect value={sourceId} options={options} onChange={setSourceId} />
+          <DropdownSelect id="dataset-source" aria-label="From dataset" value={sourceId} options={options} onChange={setSourceId} />
         </DialogRow>
       ) : null}
       <DialogRow>
         <label htmlFor="dataset-target">To dataset</label>
-        <DropdownSelect value={targetId} options={options} onChange={setTargetId} />
+        <DropdownSelect id="dataset-target" aria-label="To dataset" value={targetId} options={options} onChange={setTargetId} />
       </DialogRow>
     </DialogShell>
   )

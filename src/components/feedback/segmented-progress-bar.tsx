@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Inline, Stack, Text } from '../../primitives'
 import { iconSizeNumbers } from '../../tokens/core'

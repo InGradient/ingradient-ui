@@ -1,12 +1,13 @@
 import React, { type ReactNode } from 'react'
 import styled from 'styled-components'
-import { Inline, Text } from '../../primitives'
+import { Text } from '../../primitives'
 import { iconSizeNumbers } from '../../tokens/core'
 import { GroupCountBadge } from '../feedback/group-count-badge'
 import { MediaOverlay } from '../feedback/media-overlay'
 import { KebabIcon } from '../icons/catalog-icons'
 
 const OptionButton = styled.button`
+  pointer-events: auto;
   width: var(--ig-icon-lg);
   height: var(--ig-icon-lg);
   padding: 0;
@@ -24,7 +25,7 @@ const OptionButton = styled.button`
   }
 `
 
-const Card = styled.div<{ $selected: boolean }>`
+const Card = styled.div<{ $interactive: boolean; $selected: boolean }>`
   position: relative;
   width: 100%;
   aspect-ratio: var(--ig-aspect-landscape);
@@ -32,7 +33,7 @@ const Card = styled.div<{ $selected: boolean }>`
   border: var(--ig-border-2px) solid transparent;
   border-radius: var(--ig-radius-md);
   overflow: hidden;
-  cursor: pointer;
+  cursor: ${(p) => (p.$interactive ? 'pointer' : 'default')};
   transition: border-color var(--ig-motion-fast), box-shadow var(--ig-motion-fast);
   box-shadow: none;
   &:hover {
@@ -47,9 +48,36 @@ const Card = styled.div<{ $selected: boolean }>`
     pointer-events: none;
     z-index: var(--ig-z-capture-high);
   }
+`
+
+const PrimaryAction = styled.button`
+  position: absolute;
+  inset: 0;
+  z-index: var(--ig-z-base);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: var(--ig-space-neg-2px);
+  }
+`
+
+const TopRightControls = styled.div`
+  position: absolute;
+  top: var(--ig-space-2);
+  right: var(--ig-space-2);
+  z-index: var(--ig-z-raised);
+  display: inline-flex;
+  gap: var(--ig-space-1);
+  pointer-events: none;
+
+  & :is(button, a, input, select, textarea, [role='button'], [tabindex]) {
+    pointer-events: auto;
   }
 `
 
@@ -60,19 +88,13 @@ const THUMB_STYLE = {
   display: 'block' as const,
 }
 
-const TOP_RIGHT_STYLE = {
-  position: 'absolute' as const,
-  top: 'var(--ig-space-2)',
-  right: 'var(--ig-space-2)',
-  zIndex: 'var(--ig-z-raised)' as unknown as number,
-}
-
 const GROUP_SLOT_STYLE = {
   position: 'absolute' as const,
   top: 'var(--ig-space-2)',
   left: 'var(--ig-space-2)',
   display: 'flex' as const,
   alignItems: 'center' as const,
+  pointerEvents: 'none' as const,
   zIndex: 'var(--ig-z-raised)' as unknown as number,
 }
 
@@ -118,44 +140,54 @@ export function ImageCard({
 }: ImageCardProps) {
   const menuBtnRef = React.useRef<HTMLButtonElement>(null)
   const groupCount = image.group_count ?? 0
+  const interactive = Boolean(onOpen || onSelect)
+  const primaryActionLabel = onOpen ? `Open image ${image.name}` : `Select image ${image.name}`
+
+  const handlePrimaryAction = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey) {
+      onSelect?.(image.id, event)
+      return
+    }
+    if (onOpen) onOpen(image.id)
+    else onSelect?.(image.id, event)
+  }
+
   return (
     <Card
+      $interactive={interactive}
       $selected={selected}
-      role={onOpen || onSelect ? 'button' : undefined}
-      tabIndex={onOpen || onSelect ? 0 : -1}
-      aria-label={onOpen ? `Open image ${image.name}` : onSelect ? `Select image ${image.name}` : undefined}
-      onClick={(e) => (e.metaKey || e.ctrlKey || e.shiftKey ? onSelect?.(image.id, e) : onOpen?.(image.id))}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          if (onOpen) onOpen(image.id)
-          else if (onSelect) onSelect(image.id, e as unknown as React.MouseEvent)
-        }
-      }}
       data-image-id={image.id}
       data-state-chip-hover-scope="true"
     >
       <img
         src={image.thumb_url}
         alt={image.name}
+        aria-hidden={interactive || undefined}
         loading="lazy"
         style={{ ...THUMB_STYLE, filter: image.archived ? 'grayscale(1)' : undefined }}
       />
-      <Inline gap={1} style={TOP_RIGHT_STYLE}>
+      {interactive ? (
+        <PrimaryAction
+          type="button"
+          aria-label={primaryActionLabel}
+          aria-pressed={!onOpen && onSelect ? selected : undefined}
+          onClick={handlePrimaryAction}
+        />
+      ) : null}
+      <TopRightControls>
         {topRightSlot}
-        {showKebab ? (
+        {showKebab && onOpenMenu ? (
           <OptionButton
             ref={menuBtnRef}
             aria-label={`Open menu for ${image.name}`}
-            onClick={(e) => {
-              e.stopPropagation()
+            onClick={() => {
               if (menuBtnRef.current) onOpenMenu?.(image.id, menuBtnRef.current)
             }}
           >
             <KebabIcon size={iconSizeNumbers.sm} />
           </OptionButton>
         ) : null}
-      </Inline>
+      </TopRightControls>
       {groupCount > 1 ? <div style={GROUP_SLOT_STYLE}><GroupCountBadge count={groupCount} /></div> : null}
       {showName ? <Text as="div" size="var(--ig-font-size-xs)" title={image.name} style={FOOTER_STYLE}>{image.name}</Text> : null}
       {image.archived ? <MediaOverlay variant="archived" /> : null}
