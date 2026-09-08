@@ -48,7 +48,7 @@ export const Review: Story = {
         </StorybookGrid>
       </StorybookSection>
 
-      <StorybookSection title="Options" description="showDot=false / collapseUntilHover (hover·focus 시 라벨 노출).">
+      <StorybookSection title="Options" description="showDot=false / collapseUntilHover (hover 또는 상위 카드의 키보드 포커스 시 라벨 노출).">
         <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs), 1fr))">
           <StorybookCard title="showDot=false" subtitle="점 없이 라벨만">
             <StateChip state="running" label="Running" stateStyles={STATE_STYLES} showDot={false} />

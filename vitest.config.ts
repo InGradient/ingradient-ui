@@ -14,6 +14,7 @@ export default defineConfig({
       '@ingradient/ui/primitives': path.resolve(root, 'src/primitives/index.ts'),
       '@ingradient/ui/components': path.resolve(root, 'src/components/index.ts'),
       '@ingradient/ui/patterns': path.resolve(root, 'src/patterns/index.ts'),
+      '@ingradient/ui/hooks': path.resolve(root, 'src/hooks/index.ts'),
       '@ingradient/ui/utils': path.resolve(root, 'src/utils/index.ts'),
       '@ingradient/ui': path.resolve(root, 'src/index.ts'),
     },

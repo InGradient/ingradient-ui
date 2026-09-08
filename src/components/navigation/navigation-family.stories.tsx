@@ -63,7 +63,7 @@ function NavigationFamilyDemo() {
       <StorybookCard title="Tabs and Pagination" subtitle="section switch + paged list">
         <StorybookStack gap={14}>
           <Tabs items={tabItems} value={tabValue} onChange={setTabValue} variant="underline" />
-          <Pagination page={page} totalPages={5} onChange={setPage} />
+          <Pagination page={page} totalPages={5} onChange={setPage} ariaLabel="Tab content pagination" />
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
             Current state: tab <strong>{tabValue}</strong>, page <strong>{page}</strong>
           </div>
@@ -76,7 +76,7 @@ function NavigationFamilyDemo() {
             steps={['Import', 'Annotate', 'Review', 'Publish']}
             activeStep={activeStep}
           />
-          <Pagination page={activeStep + 1} totalPages={4} onChange={(value) => setActiveStep(value - 1)} />
+          <Pagination page={activeStep + 1} totalPages={4} onChange={(value) => setActiveStep(value - 1)} ariaLabel="Stepper pagination" />
           <div style={{ fontSize: 13, color: 'var(--ig-color-text-soft)' }}>
             Use stepper for ordered progress, not for arbitrary page navigation.
           </div>

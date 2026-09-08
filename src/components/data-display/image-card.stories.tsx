@@ -46,13 +46,13 @@ export const LongName: Story = {
 export const KeyboardActivation: Story = {
   args: {
     image: baseImage,
-    showKebab: false,
     onOpen: fn(),
+    onOpenMenu: fn(),
   },
   parameters: {
     docs: {
       description: {
-        story: 'When `onOpen` or `onSelect` is provided, the card is keyboard-focusable. Press Enter or Space to run its primary action; its accessible name identifies the image and action.',
+        story: 'The primary image action and the overlay menu are sibling native buttons. Press Enter or Space on the image action to open the image without nesting interactive controls.',
       },
     },
   },

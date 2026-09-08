@@ -25,6 +25,7 @@ function Demo() {
       open={open}
       onOpenChange={setOpen}
       menuRole="listbox"
+      menuAriaLabel="Sort order"
       trigger={<Button variant="secondary" onClick={() => setOpen((v) => !v)}>{value}</Button>}
     >
       {OPTIONS.map((o) => (

@@ -44,13 +44,13 @@ export const Review: Story = {
           </StorybookCard>
           <StorybookCard title="right (단위 텍스트)">
             <div style={HOST_STYLE}>
-              <input style={INPUT_STYLE} defaultValue="1024" readOnly />
+              <input aria-label="File size" style={INPUT_STYLE} defaultValue="1024" readOnly />
               <InputAdornment side="right"><span style={HINT_STYLE}>MB</span></InputAdornment>
             </div>
           </StorybookCard>
           <StorybookCard title="both (좌 아이콘 + 우 텍스트)">
             <div style={HOST_STYLE}>
-              <input style={INPUT_STYLE} defaultValue="0.0.0.0" readOnly />
+              <input aria-label="Server address" style={INPUT_STYLE} defaultValue="0.0.0.0" readOnly />
               <InputAdornment side="left"><Search size={iconSizeNumbers.sm} color="var(--ig-color-text-muted)" /></InputAdornment>
               <InputAdornment side="right"><span style={HINT_STYLE}>:8080</span></InputAdornment>
             </div>

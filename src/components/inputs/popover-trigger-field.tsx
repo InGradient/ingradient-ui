@@ -14,6 +14,8 @@ export interface PopoverTriggerFieldProps {
   children: React.ReactNode
   /** ARIA role for the menu container (e.g. 'listbox' / 'menu'). */
   menuRole?: string
+  /** Accessible name for the portalled menu container. */
+  menuAriaLabel?: string
   className?: string
   style?: React.CSSProperties
 }
@@ -30,6 +32,7 @@ export function PopoverTriggerField({
   trigger,
   children,
   menuRole,
+  menuAriaLabel,
   className,
   style,
 }: PopoverTriggerFieldProps) {
@@ -42,7 +45,7 @@ export function PopoverTriggerField({
     <DropdownRoot ref={rootRef} className={className} style={style}>
       {trigger}
       {open && layout && createPortal(
-        <DropdownMenu ref={menuRef} role={menuRole} $layout={layout}>
+        <DropdownMenu ref={menuRef} role={menuRole} aria-label={menuAriaLabel} $layout={layout}>
           {children}
         </DropdownMenu>,
         document.body,

@@ -1,4 +1,3 @@
-import React from 'react'
 import { coverCropRegion } from '../../utils/cover-crop'
 
 const LAYER_STYLE = {

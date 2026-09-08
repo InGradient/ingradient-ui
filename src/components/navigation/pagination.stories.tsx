@@ -31,16 +31,16 @@ export const Review: Story = {
         <StorybookSection title="Variants" description="Different total page counts.">
           <StorybookGrid columns="1fr">
             <StorybookCard title="3 pages" subtitle="small total — shows all pages">
-              <Pagination page={1} totalPages={3} onChange={() => undefined} />
+              <Pagination page={1} totalPages={3} onChange={() => undefined} ariaLabel="3-page pagination" />
             </StorybookCard>
             <StorybookCard title="5 pages (interactive)" subtitle={`current page: ${smallPage}`}>
-              <Pagination page={smallPage} totalPages={5} onChange={setSmallPage} />
+              <Pagination page={smallPage} totalPages={5} onChange={setSmallPage} ariaLabel="Interactive pagination" />
             </StorybookCard>
             <StorybookCard title="10 pages" subtitle={`current: ${mediumPage} — buttons wrap on narrow viewport`}>
-              <Pagination page={mediumPage} totalPages={10} onChange={setMediumPage} />
+              <Pagination page={mediumPage} totalPages={10} onChange={setMediumPage} ariaLabel="10-page pagination" />
             </StorybookCard>
             <StorybookCard title="single page" subtitle="totalPages=1 — only one button">
-              <Pagination page={1} totalPages={1} onChange={() => undefined} />
+              <Pagination page={1} totalPages={1} onChange={() => undefined} ariaLabel="Single-page pagination" />
             </StorybookCard>
           </StorybookGrid>
         </StorybookSection>

@@ -43,7 +43,6 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
           padding: 0;
 
           &:hover,
-          &:focus-visible,
           :where([data-state-chip-hover-scope='true']:hover) &,
           :where([data-state-chip-hover-scope='true']:focus-within) & {
             max-width: var(--ig-popup-2xs-narrow);
@@ -76,7 +75,6 @@ const Label = styled.span<{ $collapseUntilHover: boolean }>`
           opacity: 0;
 
           ${Chip}:hover &,
-          ${Chip}:focus-visible &,
           :where([data-state-chip-hover-scope='true']:hover) ${Chip} &,
           :where([data-state-chip-hover-scope='true']:focus-within) ${Chip} & {
             max-width: var(--ig-popup-3xs-plus);
@@ -105,7 +103,6 @@ export function StateChip<S extends string>({
       $collapseUntilHover={collapseUntilHover}
       className={className}
       aria-label={ariaLabel}
-      tabIndex={collapseUntilHover ? 0 : undefined}
     >
       {showDot ? <Dot /> : null}
       <Label $collapseUntilHover={collapseUntilHover}>{label}</Label>

@@ -24,7 +24,7 @@ export function FilterSection({ title, actions, children, className }: FilterSec
   return (
     <Section className={className}>
       <Inline justify="space-between" gap={3}>
-        <Text as="h4" tone="muted" size="var(--ig-font-size-xs)" weight="semibold" uppercase letterSpacing="normal">{title}</Text>
+        <Text as="h3" tone="muted" size="var(--ig-font-size-xs)" weight="semibold" uppercase letterSpacing="normal">{title}</Text>
         {actions ? <Inline gap={2}>{actions}</Inline> : null}
       </Inline>
       {children}

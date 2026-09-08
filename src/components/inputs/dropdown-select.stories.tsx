@@ -55,16 +55,16 @@ export const Review: Story = {
         <StorybookSection title="Variants" description="Common form use cases.">
           <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-sm-narrow), 1fr))">
             <StorybookCard title="Task type" subtitle="4 options">
-              <DropdownSelect value={task} options={taskOptions} onChange={setTask} />
+              <DropdownSelect aria-label="Task type" value={task} options={taskOptions} onChange={setTask} />
             </StorybookCard>
             <StorybookCard title="Date preset" subtitle="5 options including 'Custom range'">
-              <DropdownSelect value={date} options={datePresets} onChange={setDate} />
+              <DropdownSelect aria-label="Date preset" value={date} options={datePresets} onChange={setDate} />
             </StorybookCard>
             <StorybookCard title="Long labels" subtitle="text wraps within trigger">
-              <DropdownSelect value={long} options={longList} onChange={setLong} />
+              <DropdownSelect aria-label="Long-label option" value={long} options={longList} onChange={setLong} />
             </StorybookCard>
             <StorybookCard title="Disabled">
-              <DropdownSelect value={task} options={taskOptions} onChange={setTask} disabled />
+              <DropdownSelect aria-label="Disabled task type" value={task} options={taskOptions} onChange={setTask} disabled />
             </StorybookCard>
           </StorybookGrid>
         </StorybookSection>

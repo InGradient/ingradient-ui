@@ -21,6 +21,7 @@
       "@ingradient/ui/components": ["./src/components/index.ts"],
       "@ingradient/ui/patterns": ["./src/patterns/index.ts"],
       "@ingradient/ui/brand": ["./src/brand/index.tsx"],
+      "@ingradient/ui/hooks": ["./src/hooks/index.ts"],
       "@ingradient/ui/utils": ["./src/utils/index.ts"],
       "@ingradient/platform-pages": ["./packages/platform-pages/src/index.ts"],
       "@ingradient/edge-pages": ["./packages/edge-pages/src/index.ts"],

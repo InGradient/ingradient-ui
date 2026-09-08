@@ -13,15 +13,19 @@ import { PopoverTriggerField } from './popover-trigger-field'
 export type { DropdownOption } from './dropdown-shared'
 
 export function DropdownSelect({
+  id,
   value,
   options,
   onChange,
   disabled = false,
+  'aria-label': ariaLabel,
 }: {
+  id?: string
   value: string
   options: DropdownOption[]
   onChange: (value: string) => void
   disabled?: boolean
+  'aria-label'?: string
 }) {
   const [open, setOpen] = React.useState(false)
   const [activeIndex, setActiveIndex] = React.useState(-1)
@@ -77,13 +81,16 @@ export function DropdownSelect({
       open={open}
       onOpenChange={setOpen}
       menuRole="listbox"
+      menuAriaLabel={ariaLabel ? `${ariaLabel} options` : 'Options'}
       trigger={
         <DropdownTrigger
+          id={id}
           type="button"
           $open={open}
           disabled={disabled}
           aria-haspopup="listbox"
           aria-expanded={open}
+          aria-label={ariaLabel}
           aria-activedescendant={open && activeIndex >= 0 ? `${baseId}-opt-${activeIndex}` : undefined}
           onKeyDown={handleTriggerKeyDown}
           onClick={() => setOpen((prev) => !prev)}

@@ -4,14 +4,16 @@ export function Pagination({
   page,
   totalPages,
   onChange,
+  ariaLabel = 'Pagination',
 }: {
   page: number
   totalPages: number
   onChange: (page: number) => void
+  ariaLabel?: string
 }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
   return (
-    <nav aria-label="Pagination" style={{ display: 'flex', gap: 'var(--ig-space-2)', flexWrap: 'wrap' }}>
+    <nav aria-label={ariaLabel} style={{ display: 'flex', gap: 'var(--ig-space-2)', flexWrap: 'wrap' }}>
       {pages.map((item) => (
         <Button
           key={item}

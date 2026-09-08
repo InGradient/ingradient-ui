@@ -148,6 +148,7 @@ function ViewerReviewDemo({
             Last completion: <strong>{completedAction}</strong>
           </div>
           <div
+            tabIndex={0}
             style={{
               border: '1px solid var(--ig-color-border-subtle)',
               borderRadius: 16,

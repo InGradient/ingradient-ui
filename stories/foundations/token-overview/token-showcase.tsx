@@ -25,11 +25,15 @@ const Code = styled.code`
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) auto;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) minmax(0, 1fr);
   gap: var(--ig-space-4);
   align-items: center;
   padding: var(--ig-space-3) 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+
+  > * {
+    min-width: 0;
+  }
 
   &:last-child {
     border-bottom: 0;
@@ -38,7 +42,8 @@ const Row = styled.div`
   @media (max-width: 640px) {
     grid-template-columns: minmax(0, 1fr) auto;
 
-    > :nth-child(2) {
+    > :nth-child(2),
+    > :nth-child(3) {
       grid-column: 1 / -1;
     }
   }

@@ -104,7 +104,7 @@ export function MentionTextarea({
   return (
     <Wrap className={className}>
       {menuOpen && (
-        <Menu role="listbox" id={listboxId}>
+        <Menu role="listbox" id={listboxId} aria-label="Mention suggestions">
           {filtered.map((c, i) => (
             <Option
               key={c.id}
@@ -132,10 +132,7 @@ export function MentionTextarea({
         maxLength={maxLength}
         disabled={disabled}
         aria-label={ariaLabel ?? placeholder ?? 'Mention textarea'}
-        role="combobox"
         aria-autocomplete="list"
-        aria-expanded={menuOpen}
-        aria-controls={menuOpen ? listboxId : undefined}
         aria-activedescendant={menuOpen ? `${listboxId}-opt-${menuIndex}` : undefined}
       />
     </Wrap>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Inline, Text } from '../../primitives'
 import { DatePickerField } from '../../components/inputs/date-picker'
 

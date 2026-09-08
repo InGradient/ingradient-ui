@@ -122,8 +122,13 @@ Visual snapshots are platform-specific. Checked-in baselines use `chromium-linux
 - [Legacy Releases](./docs-legacy/releases/README.md)
 - [Changelog](./CHANGELOG.md)
 
+## Package Consumer Validation
+
+`npm run validate:packed-consumer`는 세 패키지를 새 tarball로 묶고 저장소 밖의 임시 앱에 설치해 공개 경로와 타입을 검사한다. 소스 alias는 사용하지 않는다. 결과를 브라우저에서 확인하려면 빌드 후 `node scripts/check-packed-consumer.mjs --keep`을 실행하고 출력된 앱 폴더에서 preview를 실행한다. `/platform`과 `/edge`는 로컬 콜백 확인용 화면이며 실제 인증/라이선스 서버에 연결하지 않는다.
+
+[2026-09-08 통합 검증 기록](docs/reports/2026-09-08-integration-readiness.md)
+
 ## Legacy Compatibility
 
 - 새 코드는 루트 `@ingradient/ui`에서 범용 API만 사용한다.
-- 구 `Portal*` alias가 꼭 필요하면 `@ingradient/ui/legacy`를 사용한다.
-- `legacy`는 호환성 목적이며, 새 public API 표면으로 확장하지 않는다.
+- `@ingradient/ui/legacy`는 공개하지 않는다. 구 `Portal*` alias와 이전 import 경로는 현재 root/subpath API로 마이그레이션한다.

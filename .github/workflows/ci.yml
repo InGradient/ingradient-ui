@@ -26,11 +26,24 @@ jobs:
       - run: npm test
       - run: npm run test-storybook
       - run: npm run build:package
+      - run: npm run check:exports
+      - run: node scripts/check-bundle-size.mjs
       - run: npm run build:smoke-consumer
+      - run: node scripts/check-packed-consumer.mjs
       - run: npm run check:style-literals
       - run: npm run check:doc-coverage
       - run: npm run build:storybook
       - run: npm run test:visual
+      # Linux captures are the canonical baseline review evidence on visual failures.
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: visual-test-results-${{ github.run_number }}
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: warn
+          retention-days: 7
       - name: Summarize Storybook Preview
         if: success()
         run: |

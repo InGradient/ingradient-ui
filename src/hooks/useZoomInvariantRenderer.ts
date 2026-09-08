@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useEffect, useState, type RefObject } from 'react'
 
 export interface ZoomInvariantRendererCtx {
   /** Container width in CSS pixels (resolved from prop or self-measured). */
