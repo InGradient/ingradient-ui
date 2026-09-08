@@ -25,10 +25,10 @@ export const Overview: Story = {
         description="지금 선택된 toolbar 값이 preview와 page story에 어떻게 전달되는지 확인한다."
       >
         <StorybookGrid columns="repeat(auto-fit, minmax(var(--ig-popup-xs-narrow), 1fr))">
-          <StorybookCard title="Theme">{String(context.globals.theme)}</StorybookCard>
+          <StorybookCard title="Mode">{String(context.globals.mode)}</StorybookCard>
           <StorybookCard title="Density">{String(context.globals.density)}</StorybookCard>
-          <StorybookCard title="Role">{String(context.globals.role)}</StorybookCard>
-          <StorybookCard title="Data scale">{String(context.globals.dataScale)}</StorybookCard>
+          <StorybookCard title="Locale">{String(context.globals.locale)}</StorybookCard>
+          <StorybookCard title="Inspector">{String(context.globals.inspectMode)}</StorybookCard>
         </StorybookGrid>
       </StorybookSection>
       <StorybookSection
