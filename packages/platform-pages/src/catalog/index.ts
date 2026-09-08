@@ -30,3 +30,9 @@ export type {
   CatalogViewProps,
 } from './types'
 export type { CatalogOverlaysProps } from './overlay-types'
+
+export { GalleryDatasetTransferDialog } from './gallery/gallery-dataset-transfer-dialog'
+export { GalleryDeleteDialog } from './gallery/gallery-delete-dialog'
+export { GalleryExportConfigDialog } from './gallery/gallery-export-config-dialog'
+export { GalleryExportProgressDialog } from './gallery/gallery-export-progress-dialog'
+export type { UploadQuality } from './upload-quality-modal'
