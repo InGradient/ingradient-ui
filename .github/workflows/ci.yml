@@ -26,7 +26,10 @@ jobs:
       - run: npm test
       - run: npm run test-storybook
       - run: npm run build:package
+      - run: npm run check:exports
+      - run: node scripts/check-bundle-size.mjs
       - run: npm run build:smoke-consumer
+      - run: node scripts/check-packed-consumer.mjs
       - run: npm run check:style-literals
       - run: npm run check:doc-coverage
       - run: npm run build:storybook

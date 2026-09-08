@@ -2,7 +2,9 @@
   "name": "@ingradient/ui",
   "version": "0.0.1",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "workspaces": [
     "packages/*",
     "apps/storybook-smoke-consumer"
@@ -71,10 +73,11 @@
     "test:visual:update": "playwright test -c playwright.storybook.config.ts --update-snapshots",
     "test": "vitest run --project unit",
     "test:watch": "vitest --project unit",
-    "dev:lib": "tsup --watch src --config tsup.config.ts"
+    "dev:lib": "tsup --watch src --config tsup.config.ts",
+    "check:exports": "node scripts/check-exports.mjs",
+    "validate:packed-consumer": "npm run build:package && npm run check:exports && node scripts/check-packed-consumer.mjs"
   },
   "dependencies": {
-    "@ingradient/ui": "file:ingradient-ui-0.0.1.tgz",
     "@tanstack/react-virtual": "^3.13.0",
     "date-fns": "^4.1.0",
     "html-to-image": "^1.11.13",
@@ -117,6 +120,7 @@
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.57.2",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.1.1"
+    "vitest": "^4.1.1",
+    "@ingradient/ui": "file:."
   }
 }

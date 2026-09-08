@@ -28,6 +28,10 @@
 9. [Platform Story Contract](../stories/pages/platform/0.0.1/README.md)
 10. [Platform Migration and Verification](../stories/pages/platform/0.0.1/MIGRATION.md)
 
+## Integration Validation
+
+- [2026-09-08 접근성·화면 기준·패키지 통합 검증](./reports/2026-09-08-integration-readiness.md)
+
 ## Legacy Docs
 
 기존 운영 문서, 계획 문서, 릴리즈 노트, 상세 reference는 당분간 `docs-legacy/`에 유지한다.

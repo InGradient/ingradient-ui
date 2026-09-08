@@ -48,6 +48,9 @@ jobs:
       - name: Consumer Smoke Build
         run: npm run build:smoke-consumer
 
+      - name: Packed Consumer Build
+        run: node scripts/check-packed-consumer.mjs
+
       - name: Validate Style Literals
         run: npm run check:style-literals
 

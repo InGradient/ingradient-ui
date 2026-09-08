@@ -12,7 +12,9 @@
     "@ingradient/ui": "file:../..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "@ingradient/platform-pages": "file:../../packages/platform-pages",
+    "@ingradient/edge-pages": "file:../../packages/edge-pages"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
