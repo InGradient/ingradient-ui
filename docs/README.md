@@ -32,6 +32,12 @@
 
 - [2026-09-08 접근성·화면 기준·패키지 통합 검증](./reports/2026-09-08-integration-readiness.md)
 
+## Work Reports
+
+날짜별 작업 리포트는 완료된 변경의 검증·전달 상태를 보존하는 historical snapshot이다. 현재 설계 authority는 코드와 위의 active docs를 따른다.
+
+- [2026-08-19 Platform 품질·접근성 개선](./reports/2026-08-19-platform-quality-accessibility.md)
+
 ## Legacy Docs
 
 기존 운영 문서, 계획 문서, 릴리즈 노트, 상세 reference는 당분간 `docs-legacy/`에 유지한다.
