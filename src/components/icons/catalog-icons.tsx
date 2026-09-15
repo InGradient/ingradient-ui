@@ -52,6 +52,8 @@ export {
   HelpCircle as HelpCircleIcon,
   Lightbulb as LightbulbIcon,
   MinusCircle as MinusCircleIcon,
+  PanelLeftOpen as PanelLeftOpenIcon,
+  PanelRightOpen as PanelRightOpenIcon,
   Play as PlayIcon,
   Volume2 as VolumeIcon,
   XCircle as XCircleIcon,
