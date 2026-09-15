@@ -49,6 +49,7 @@ export {
   ImageIcon,
   Info as InfoIcon,
   Lightbulb as LightbulbIcon,
+  Volume2 as VolumeIcon,
   Loader as LoaderIcon,
   Maximize2 as ExpandIcon,
   Minimize2 as CollapseIcon,

@@ -3,10 +3,11 @@ import { FlaskIcon, PlusIcon, TrashIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 import type { ExperimentsTabViewProps } from '../types'
+import { PeriodNote, PeriodRow, TotalBox } from './ExperimentsTabView.styles'
 import {
-  ActionRow, Hint, PeriodNote, PeriodRow, RowBody, RowPrimary, RowSecondary, RowText,
-  Rows, SectionLabel, TabTitle, TabWrap, TotalBox,
-} from './ExperimentsTabView.styles'
+  ActionRow, Hint, RowBody, RowPrimary, RowSecondary, RowText, Rows, SectionLabel,
+  TabTitle, TabWrap,
+} from './tab-rows.styles'
 
 /** 목록에서 같은 값이 앞에 또 있으면 중복이다 — 첫 번째만 원본으로 본다. */
 function isDuplicate(periods: number[], index: number): boolean {

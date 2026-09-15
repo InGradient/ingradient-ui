@@ -4,7 +4,7 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { CameraSettingsDialogView } from './CameraSettingsDialogView'
-import { ExperimentsTabView } from './tabs'
+import { ExperimentsTabView, GeneralTabView } from './tabs'
 import type { SettingsTab } from './types'
 
 const LABELS = {
@@ -21,6 +21,30 @@ const LABELS = {
   tabFieldTest: '현장 테스트',
   tabAbout: '정보',
 }
+
+const GENERAL_LABELS = {
+  title: '일반',
+  captureDoneSection: '촬영 완료 알림',
+  captureDoneDesc: '촬영이 끝나면 알려준다. 소리와 메시지는 따로 켠다.',
+  soundLabel: '소리',
+  soundDesc: '촬영이 끝나면 알림음을 낸다',
+  soundPreview: '미리듣기',
+  volumeLabel: '음량',
+  volumeDesc: '알림음 크기',
+  volumeSystemHint: 'Windows 기본 알림음은 시스템 설정에서 조절한다',
+  messageLabel: '메시지',
+  messageDesc: '바탕화면 알림을 띄운다',
+  messageTest: '테스트 발송',
+  messageTestFailed: '알림이 뜨지 않았다 — 집중 지원이 켜져 있는지 확인한다',
+  messageHint: '집중 지원이 켜져 있으면 알림이 조용히 무시될 수 있다.',
+}
+
+const SOUND_OPTIONS = [
+  { id: 'system', label: '시스템 기본음' },
+  { id: 'chime', label: '차임' },
+  { id: 'bell', label: '벨' },
+  { id: 'long', label: '긴 알림음' },
+]
 
 const EXPERIMENT_LABELS = {
   title: '실험',
@@ -60,6 +84,10 @@ function SettingsDialogHarness({ initialTab }: { initialTab: SettingsTab }): JSX
   const [periods, setPeriods] = useState<number[]>([12, 24, 48])
   const [compositeEnabled, setCompositeEnabled] = useState(false)
   const [compositeSteps, setCompositeSteps] = useState(8)
+  const [soundEnabled, setSoundEnabled] = useState(true)
+  const [soundId, setSoundId] = useState('chime')
+  const [volume, setVolume] = useState(70)
+  const [messageEnabled, setMessageEnabled] = useState(true)
 
   return (
     <CameraSettingsDialogView
@@ -68,7 +96,25 @@ function SettingsDialogHarness({ initialTab }: { initialTab: SettingsTab }): JSX
       labels={LABELS}
       onClose={() => undefined}
       onSetActiveTab={setActiveTab}
-      generalContent={<Placeholder name="General" />}
+      generalContent={
+        <GeneralTabView
+          soundEnabled={soundEnabled}
+          soundOptions={SOUND_OPTIONS}
+          selectedSoundId={soundId}
+          volumePercent={volume}
+          volumeLocked={soundId === 'system'}
+          messageEnabled={messageEnabled}
+          testResult={null}
+          labels={GENERAL_LABELS}
+          onToggleSound={setSoundEnabled}
+          onSelectSound={setSoundId}
+          onPreviewSound={() => undefined}
+          onChangeVolume={setVolume}
+          onPreviewVolume={() => undefined}
+          onToggleMessage={setMessageEnabled}
+          onTestMessage={() => undefined}
+        />
+      }
       connectionContent={<Placeholder name="Connection" />}
       cameraContent={<Placeholder name="Camera Params" />}
       lightingContent={<Placeholder name="Lighting" />}
