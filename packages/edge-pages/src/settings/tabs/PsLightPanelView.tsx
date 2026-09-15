@@ -1,7 +1,8 @@
-import { Badge, Button, InlineMessage, NumberField, SettingRow, Stack, Switch } from '@ingradient/ui'
+import { Badge, Button, InlineMessage, NumberField, Stack, Switch } from '@ingradient/ui'
 
 import type { PsLightPanelViewProps } from '../types'
 import { ActionRow, Hint, Rows, SectionLabel } from './tab-shell'
+import { SettingsRow } from '@ingradient/ui/patterns'
 
 export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
   const {
@@ -21,7 +22,8 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       <SectionLabel>{labels.statusSection}</SectionLabel>
       {connected ? (
         <Rows>
-          <SettingRow
+          <SettingsRow
+            divider={false}
             label={labels.portOpen}
             description={`${port} · ${baud} baud`}
             control={<Badge>{labels.connected}</Badge>}
@@ -46,7 +48,8 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       <Hint>{labels.channelDesc}</Hint>
       <Rows>
         {channels.map((channel) => (
-          <SettingRow
+          <SettingsRow
+            divider={false}
             key={channel}
             label={labels.channel(channel)}
             control={
@@ -87,7 +90,8 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       </ActionRow>
 
       <SectionLabel>{labels.idleSection}</SectionLabel>
-      <SettingRow
+      <SettingsRow
+        divider={false}
         label={labels.idleLights}
         description={labels.idleDesc}
         control={

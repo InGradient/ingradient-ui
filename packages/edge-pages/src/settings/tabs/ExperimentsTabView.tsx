@@ -1,9 +1,10 @@
-import { Button, Inline, InlineMessage, NumberField, SettingRow, Switch, Text } from '@ingradient/ui'
+import { Button, Inline, InlineMessage, NumberField, Switch, Text } from '@ingradient/ui'
 import { FlaskIcon, PlusIcon, TrashIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 import type { ExperimentsTabViewProps } from '../types'
 import { ActionRow, Hint, Rows, SectionLabel, TabTitle, TabWrap } from './tab-shell'
+import { SettingsRow } from '@ingradient/ui/patterns'
 
 /** 목록에서 같은 값이 앞에 또 있으면 중복이다 — 첫 번째만 원본으로 본다. */
 function isDuplicate(periods: number[], index: number): boolean {
@@ -25,7 +26,8 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
         {labels.title}
       </TabTitle>
 
-      <SettingRow
+      <SettingsRow
+        divider={false}
         label={labels.enabledLabel}
         description={labels.enabledDesc}
         control={<Switch checked={enabled} onChange={(e) => onToggleEnabled(e.target.checked)} />}
@@ -80,7 +82,8 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
             <Hint>{labels.periodsHint}</Hint>
           </ActionRow>
 
-          <SettingRow
+          <SettingsRow
+            divider={false}
             label={labels.compositeLabel}
             description={labels.compositeDesc}
             control={

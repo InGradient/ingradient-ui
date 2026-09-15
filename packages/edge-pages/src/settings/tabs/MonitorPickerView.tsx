@@ -1,7 +1,8 @@
-import { Badge, Button, InlineMessage, SelectableListItem, SettingRow, Spinner, Stack } from '@ingradient/ui'
+import { Badge, Button, InlineMessage, SelectableListItem, Spinner, Stack } from '@ingradient/ui'
 
 import type { MonitorPickerViewProps } from '../types'
 import { ActionRow, Hint, Rows, SectionLabel } from './tab-shell'
+import { SettingsRow } from '@ingradient/ui/patterns'
 
 export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
   const {
@@ -34,7 +35,7 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
       <Hint>{labels.desc}</Hint>
       <Rows>
         <SelectableListItem selected={isAutoSelected} disabled={disabled} onClick={onSelectAuto}>
-          <SettingRow label={labels.auto} />
+          <SettingsRow divider={false} label={labels.auto} />
         </SelectableListItem>
 
         {monitors.map((monitor) => (
@@ -44,7 +45,8 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
             disabled={disabled}
             onClick={() => onSelect(monitor.id)}
           >
-            <SettingRow
+            <SettingsRow
+              divider={false}
               label={monitor.label}
               description={monitor.width && monitor.height
                 ? `${monitor.width}×${monitor.height}`
@@ -57,7 +59,8 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
         {/* 저장된 모니터가 목록에 없다 = 분리됨. 값을 자동으로 고쳐 쓰지 않고 알린다. */}
         {!isSelectionKnown && (
           <SelectableListItem selected disabled={disabled} onClick={() => undefined}>
-            <SettingRow
+            <SettingsRow
+              divider={false}
               label={selectedId}
               description={labels.disconnectedHint}
               control={<Badge>{labels.disconnected}</Badge>}

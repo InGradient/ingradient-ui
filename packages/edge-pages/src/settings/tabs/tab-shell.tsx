@@ -1,6 +1,6 @@
 // 설정 탭 공통 조각. ui 에 있는 것은 ui 에서 쓰고, 여기엔 조합만 남긴다.
 //
-// Stack/Inline/Text/SettingRow/Alert/EmptyState/Slider 가 ui 에 있으므로
+// Stack/Inline/Text/SettingsRow/Alert/EmptyState/Slider 가 ui 에 있으므로
 // 예전에 여기서 만들던 행·라벨·박스는 전부 걷어냈다.
 import { Inline, Stack, Text } from '@ingradient/ui'
 import type { ReactNode } from 'react'

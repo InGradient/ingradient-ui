@@ -1,9 +1,10 @@
-import { Button, SelectableListItem, SettingRow, Slider, Switch } from '@ingradient/ui'
+import { Button, SelectableListItem, Slider, Switch } from '@ingradient/ui'
 import { SettingsIcon, VolumeIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 import type { GeneralTabViewProps } from '../types'
 import { ActionRow, Hint, Rows, SectionLabel, TabTitle, TabWrap } from './tab-shell'
+import { SettingsRow } from '@ingradient/ui/patterns'
 
 const VOLUME_STEP_PERCENT = 5
 
@@ -25,7 +26,8 @@ export function GeneralTabView(props: GeneralTabViewProps): JSX.Element {
       <SectionLabel>{labels.captureDoneSection}</SectionLabel>
       <Hint>{labels.captureDoneDesc}</Hint>
 
-      <SettingRow
+      <SettingsRow
+        divider={false}
         label={labels.soundLabel}
         description={labels.soundDesc}
         control={<Switch checked={soundEnabled} onChange={(e) => onToggleSound(e.target.checked)} />}
@@ -39,7 +41,8 @@ export function GeneralTabView(props: GeneralTabViewProps): JSX.Element {
             selected={selectedSoundId === option.id}
             onClick={() => onSelectSound(option.id)}
           >
-            <SettingRow
+            <SettingsRow
+              divider={false}
               label={option.label}
               control={
                 <Button
@@ -57,7 +60,8 @@ export function GeneralTabView(props: GeneralTabViewProps): JSX.Element {
         ))}
       </Rows>
 
-      <SettingRow
+      <SettingsRow
+        divider={false}
         label={labels.volumeLabel}
         description={volumeLocked ? labels.volumeSystemHint : labels.volumeDesc}
         control={
@@ -78,7 +82,8 @@ export function GeneralTabView(props: GeneralTabViewProps): JSX.Element {
         }
       />
 
-      <SettingRow
+      <SettingsRow
+        divider={false}
         label={labels.messageLabel}
         description={labels.messageDesc}
         control={
