@@ -1,9 +1,7 @@
-import { Badge, Button, NumberField, Switch } from '@ingradient/ui'
+import { Badge, Button, InlineMessage, NumberField, SettingRow, Stack, Switch } from '@ingradient/ui'
 
 import type { PsLightPanelViewProps } from '../types'
-import {
-  ActionRow, ErrorBox, Hint, RowBody, RowPrimary, RowSecondary, RowText, Rows, SectionLabel,
-} from './tab-rows.styles'
+import { ActionRow, Hint, Rows, SectionLabel } from './tab-shell'
 
 export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
   const {
@@ -23,19 +21,19 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       <SectionLabel>{labels.statusSection}</SectionLabel>
       {connected ? (
         <Rows>
-          <RowBody>
-            <RowText>
-              <RowPrimary>{labels.portOpen}</RowPrimary>
-              <RowSecondary>{port} · {baud} baud</RowSecondary>
-            </RowText>
-            <Badge>{labels.connected}</Badge>
-          </RowBody>
+          <SettingRow
+            label={labels.portOpen}
+            description={`${port} · ${baud} baud`}
+            control={<Badge>{labels.connected}</Badge>}
+          />
         </Rows>
       ) : (
-        <ErrorBox>
-          <span>{unreachable ? labels.unreachable : labels.openFailed}</span>
-          {statusError && <Hint>{statusError}</Hint>}
-        </ErrorBox>
+        <InlineMessage $tone="warning">
+          <Stack gap="var(--ig-space-3)">
+            <span>{unreachable ? labels.unreachable : labels.openFailed}</span>
+            {statusError && <Hint>{statusError}</Hint>}
+          </Stack>
+        </InlineMessage>
       )}
       <ActionRow>
         <Button size="sm" variant="secondary" disabled={locked} onClick={onReopen}>
@@ -48,14 +46,18 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       <Hint>{labels.channelDesc}</Hint>
       <Rows>
         {channels.map((channel) => (
-          <RowBody key={channel}>
-            <RowText><RowPrimary>{labels.channel(channel)}</RowPrimary></RowText>
-            <Switch
-              checked={channelOn[channel] ?? false}
-              disabled={!canControl}
-              onChange={(e) => onToggleChannel(channel, e.target.checked)}
-            />
-          </RowBody>
+          <SettingRow
+            key={channel}
+            label={labels.channel(channel)}
+            control={
+              <Switch
+                checked={channelOn[channel] ?? false}
+                disabled={!canControl}
+                aria-label={labels.channel(channel)}
+                onChange={(e) => onToggleChannel(channel, e.target.checked)}
+              />
+            }
+          />
         ))}
       </Rows>
       <ActionRow>
@@ -85,17 +87,18 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
       </ActionRow>
 
       <SectionLabel>{labels.idleSection}</SectionLabel>
-      <RowBody>
-        <RowText>
-          <RowPrimary>{labels.idleLights}</RowPrimary>
-          <RowSecondary>{labels.idleDesc}</RowSecondary>
-        </RowText>
-        <Switch
-          checked={idleEnabled}
-          disabled={locked}
-          onChange={(e) => onToggleIdle(e.target.checked)}
-        />
-      </RowBody>
+      <SettingRow
+        label={labels.idleLights}
+        description={labels.idleDesc}
+        control={
+          <Switch
+            checked={idleEnabled}
+            disabled={locked}
+            aria-label={labels.idleLights}
+            onChange={(e) => onToggleIdle(e.target.checked)}
+          />
+        }
+      />
 
       {sequenceRunning && <Hint>{labels.sequenceBusy}</Hint>}
       {actionError && <Hint>{actionError}</Hint>}

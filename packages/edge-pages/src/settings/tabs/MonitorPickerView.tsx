@@ -1,9 +1,7 @@
-import { Badge, Button, SelectableListItem, Spinner } from '@ingradient/ui'
+import { Badge, Button, InlineMessage, SelectableListItem, SettingRow, Spinner, Stack } from '@ingradient/ui'
 
 import type { MonitorPickerViewProps } from '../types'
-import {
-  ActionRow, ErrorBox, Hint, RowBody, RowPrimary, RowSecondary, RowText, Rows, SectionLabel,
-} from './tab-rows.styles'
+import { ActionRow, Hint, Rows, SectionLabel } from './tab-shell'
 
 export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
   const {
@@ -14,16 +12,19 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
 
   if (loading) return <Hint><Spinner size="sm" /></Hint>
 
+  // 조회 실패를 합성 목록으로 가리면 사용자가 잘못된 화면을 고르게 된다.
   if (loadFailed) {
     return (
-      <ErrorBox>
-        <span>{labels.unreachable}</span>
-        {/* 저장된 값은 그대로임을 보여줘 설정을 잃었다고 오해하지 않게 */}
-        <Hint>{labels.section}: {selectedId}</Hint>
-        <ActionRow>
-          <Button size="sm" variant="secondary" onClick={onReload}>{labels.retry}</Button>
-        </ActionRow>
-      </ErrorBox>
+      <InlineMessage $tone="warning">
+        <Stack gap="var(--ig-space-3)">
+          <span>{labels.unreachable}</span>
+          {/* 저장된 값은 그대로임을 보여줘 설정을 잃었다고 오해하지 않게 */}
+          <Hint>{labels.section}: {selectedId}</Hint>
+          <ActionRow>
+            <Button size="sm" variant="secondary" onClick={onReload}>{labels.retry}</Button>
+          </ActionRow>
+        </Stack>
+      </InlineMessage>
     )
   }
 
@@ -33,7 +34,7 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
       <Hint>{labels.desc}</Hint>
       <Rows>
         <SelectableListItem selected={isAutoSelected} disabled={disabled} onClick={onSelectAuto}>
-          <RowBody><RowText><RowPrimary>{labels.auto}</RowPrimary></RowText></RowBody>
+          <SettingRow label={labels.auto} />
         </SelectableListItem>
 
         {monitors.map((monitor) => (
@@ -43,28 +44,24 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
             disabled={disabled}
             onClick={() => onSelect(monitor.id)}
           >
-            <RowBody>
-              <RowText>
-                <RowPrimary>{monitor.label}</RowPrimary>
-                {monitor.width && monitor.height && (
-                  <RowSecondary>{monitor.width}×{monitor.height}</RowSecondary>
-                )}
-              </RowText>
-              {monitor.isPrimary && <Badge>{labels.primaryBadge}</Badge>}
-            </RowBody>
+            <SettingRow
+              label={monitor.label}
+              description={monitor.width && monitor.height
+                ? `${monitor.width}×${monitor.height}`
+                : undefined}
+              control={monitor.isPrimary ? <Badge>{labels.primaryBadge}</Badge> : undefined}
+            />
           </SelectableListItem>
         ))}
 
         {/* 저장된 모니터가 목록에 없다 = 분리됨. 값을 자동으로 고쳐 쓰지 않고 알린다. */}
         {!isSelectionKnown && (
           <SelectableListItem selected disabled={disabled} onClick={() => undefined}>
-            <RowBody>
-              <RowText>
-                <RowPrimary>{selectedId}</RowPrimary>
-                <RowSecondary>{labels.disconnectedHint}</RowSecondary>
-              </RowText>
-              <Badge>{labels.disconnected}</Badge>
-            </RowBody>
+            <SettingRow
+              label={selectedId}
+              description={labels.disconnectedHint}
+              control={<Badge>{labels.disconnected}</Badge>}
+            />
           </SelectableListItem>
         )}
       </Rows>

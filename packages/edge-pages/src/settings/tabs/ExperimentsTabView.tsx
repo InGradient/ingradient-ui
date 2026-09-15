@@ -1,13 +1,9 @@
-import { Button, NumberField, Switch } from '@ingradient/ui'
+import { Button, Inline, InlineMessage, NumberField, SettingRow, Switch, Text } from '@ingradient/ui'
 import { FlaskIcon, PlusIcon, TrashIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 import type { ExperimentsTabViewProps } from '../types'
-import { PeriodNote, PeriodRow, TotalBox } from './ExperimentsTabView.styles'
-import {
-  ActionRow, Hint, RowBody, RowPrimary, RowSecondary, RowText, Rows, SectionLabel,
-  TabTitle, TabWrap,
-} from './tab-rows.styles'
+import { ActionRow, Hint, Rows, SectionLabel, TabTitle, TabWrap } from './tab-shell'
 
 /** 목록에서 같은 값이 앞에 또 있으면 중복이다 — 첫 번째만 원본으로 본다. */
 function isDuplicate(periods: number[], index: number): boolean {
@@ -29,13 +25,11 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
         {labels.title}
       </TabTitle>
 
-      <RowBody>
-        <RowText>
-          <RowPrimary>{labels.enabledLabel}</RowPrimary>
-          <RowSecondary>{labels.enabledDesc}</RowSecondary>
-        </RowText>
-        <Switch checked={enabled} onChange={(e) => onToggleEnabled(e.target.checked)} />
-      </RowBody>
+      <SettingRow
+        label={labels.enabledLabel}
+        description={labels.enabledDesc}
+        control={<Switch checked={enabled} onChange={(e) => onToggleEnabled(e.target.checked)} />}
+      />
       {!enabled && <Hint>{labels.disabledHint}</Hint>}
 
       {enabled && (
@@ -44,7 +38,7 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
           <Rows>
             {fringePeriods.map((period, index) => (
               // 주기는 중복될 수 있어 값을 key 로 쓸 수 없다. 목록은 순서로만 편집한다.
-              <PeriodRow key={index}>
+              <Inline key={index} gap="var(--ig-space-3)" align="center">
                 <NumberField
                   value={period}
                   min={limits.minPeriod}
@@ -54,11 +48,12 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
                   aria-label={labels.periodAria(index + 1)}
                   onChange={(value: number) => onChangePeriod(index, value)}
                 />
-                <PeriodNote>
+                {/* 값이 없어도 자리를 차지해 행이 흔들리지 않는다. */}
+                <Text tone="muted" size="var(--ig-font-size-2xs)" style={{ flex: 1, minWidth: 0 }}>
                   {isDuplicate(fringePeriods, index)
                     ? labels.duplicate
                     : index === primaryIndex ? labels.primaryBadge : ''}
-                </PeriodNote>
+                </Text>
                 <Button
                   size="sm"
                   variant="ghost"
@@ -68,7 +63,7 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
                 >
                   <TrashIcon size={iconSizeNumbers.xs} />
                 </Button>
-              </PeriodRow>
+              </Inline>
             ))}
           </Rows>
 
@@ -85,16 +80,16 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
             <Hint>{labels.periodsHint}</Hint>
           </ActionRow>
 
-          <RowBody>
-            <RowText>
-              <RowPrimary>{labels.compositeLabel}</RowPrimary>
-              <RowSecondary>{labels.compositeDesc}</RowSecondary>
-            </RowText>
-            <Switch
-              checked={compositeEnabled}
-              onChange={(e) => onToggleComposite(e.target.checked)}
-            />
-          </RowBody>
+          <SettingRow
+            label={labels.compositeLabel}
+            description={labels.compositeDesc}
+            control={
+              <Switch
+                checked={compositeEnabled}
+                onChange={(e) => onToggleComposite(e.target.checked)}
+              />
+            }
+          />
           {compositeEnabled && (
             <ActionRow>
               <NumberField
@@ -113,7 +108,7 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
         </>
       )}
 
-      <TotalBox>{labels.total}</TotalBox>
+      <InlineMessage>{labels.total}</InlineMessage>
     </TabWrap>
   )
 }
