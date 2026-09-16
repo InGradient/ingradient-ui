@@ -1,35 +1,38 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Text } from '../../primitives'
 
-const Row = styled.label<{ $divider: boolean }>`
+/** 촘촘한 기본형. 설정 탭 안쪽처럼 행이 여럿 이어질 때 쓴다. */
+const rowBase = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--ig-space-4);
-  padding: ${(p) => (p.$divider ? 'var(--ig-space-4) 0' : '0')};
-  border-bottom: ${(p) => (p.$divider ? 'var(--ig-border-1px) solid var(--ig-color-border-strong)' : 'none')};
+  padding: 0;
   color: var(--ig-color-text-primary);
-  font-size: ${(p) => (p.$divider ? 'var(--ig-font-size-md)' : 'var(--ig-font-size-xs)')};
+  font-size: var(--ig-font-size-xs);
   &:last-child {
     border-bottom: 0;
   }
 `
 
+/** 구분선형. 항목 사이를 선으로 끊고 글자도 한 단계 키운다. */
+const rowDivider = css`
+  padding: var(--ig-space-4) 0;
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+  font-size: var(--ig-font-size-md);
+`
+
+const Row = styled.label<{ $divider: boolean }>`
+  ${rowBase}
+  ${(p) => p.$divider && rowDivider}
+`
+
 const PlainRow = styled.div<{ $divider: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-4);
-  padding: ${(p) => (p.$divider ? 'var(--ig-space-4) 0' : '0')};
-  border-bottom: ${(p) => (p.$divider ? 'var(--ig-border-1px) solid var(--ig-color-border-strong)' : 'none')};
-  color: var(--ig-color-text-primary);
-  font-size: ${(p) => (p.$divider ? 'var(--ig-font-size-md)' : 'var(--ig-font-size-xs)')};
+  ${rowBase}
   flex-wrap: wrap;
-  &:last-child {
-    border-bottom: 0;
-  }
+  ${(p) => p.$divider && rowDivider}
 `
 
 /** 이름 아래 한 줄 설명 — 왜 이 설정이 있는지 알려주는 자리. */

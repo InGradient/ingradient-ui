@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { buttonAccent, buttonDanger, buttonDangerSecondary, buttonGhost, buttonGhostDanger, buttonPrimary, buttonSecondary } from '../../primitives'
 import type { ButtonSize, ButtonTone, ButtonVariant } from './button-types'
 
@@ -10,15 +10,15 @@ const CONTROL_HEIGHT: Record<ButtonSize, string> = {
   lg: 'var(--ig-control-height-lg)',
 }
 
-const FONT_SIZE: Record<ButtonSize, string> = {
-  xs: 'var(--ig-font-size-xs)',
-  sm: 'var(--ig-font-size-sm)',
-  md: 'var(--ig-font-size-md)',
-  lg: 'var(--ig-font-size-lg)',
+/** 글자 크기는 값이 아니라 블록으로 둔다 — 토큰을 글자 그대로 써야 stylelint 가 읽는다. */
+const FONT_SIZE: Record<ButtonSize, ReturnType<typeof css>> = {
+  xs: css`font-size: var(--ig-font-size-xs);`,
+  sm: css`font-size: var(--ig-font-size-sm);`,
+  md: css`font-size: var(--ig-font-size-md);`,
+  lg: css`font-size: var(--ig-font-size-lg);`,
 }
 
 const controlHeight = (size: ButtonSize): string => CONTROL_HEIGHT[size]
-const fontSize = (size: ButtonSize): string => FONT_SIZE[size]
 import { buttonPadding } from './button-types'
 
 export const ButtonRoot = styled.button<{
@@ -35,7 +35,7 @@ export const ButtonRoot = styled.button<{
   white-space: nowrap;
   height: ${(p) => controlHeight(p.$size)};
   ${(p) => p.$iconOnly ? `width: ${controlHeight(p.$size)}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
-  font-size: ${(p) => fontSize(p.$size)};
+  ${(p) => FONT_SIZE[p.$size]}
   font-weight: var(--ig-font-weight-semibold);
   line-height: var(--ig-line-height-none);
   ${(p) => {
