@@ -12,7 +12,7 @@ const handoff = defineHandoff({
   fixturesPath: 'stories/fixtures/edge/0.0.5/*',
   requiredScenarios: [
     'capture', 'setup', 'capturing', 'sequence-failed', 'log-filter-open', 'offline',
-    'settings-connection', 'settings-general', 'settings-lighting', 'settings-experiments',
+    'settings',
   ],
   interactions: [
     '탭 전환 (Capture / Images / Statics / Setup)',
@@ -62,28 +62,11 @@ export const LogFilterOpen: Story = { args: { activeTab: 'capture', logFilterOpe
 /** 카메라가 끊긴 상태. */
 export const Offline: Story = { args: { activeTab: 'capture', connectionStatus: 'disconnected' } }
 
-// ── System Settings ─────────────────────────────────────────────────────────
-
-/** 설정 > 연결 — 6단계 진단이 모두 통과한 모습. */
-export const SettingsConnection: Story = {
+/**
+ * System Settings — 촬영 화면 위에 뜬다. 탭 10개가 앱과 같은 순서로 서고,
+ * 눌러 가며 앱에서와 같은 흐름으로 본다. `settingsTab` 으로 처음 열 탭을 바꿀 수 있다.
+ */
+export const Settings: Story = {
   ...DIALOG_ONLY,
   args: { settingsOpen: true, settingsTab: 'connection' },
-}
-
-/** 설정 > 일반 — 촬영 완료 알림. */
-export const SettingsGeneral: Story = {
-  ...DIALOG_ONLY,
-  args: { settingsOpen: true, settingsTab: 'general' },
-}
-
-/** 설정 > 조명 — Deflectometry 는 모니터가 곧 조명이다. */
-export const SettingsLighting: Story = {
-  ...DIALOG_ONLY,
-  args: { settingsOpen: true, settingsTab: 'lighting' },
-}
-
-/** 설정 > 실험 — 여러 주기로 한 번에 촬영. */
-export const SettingsExperiments: Story = {
-  ...DIALOG_ONLY,
-  args: { settingsOpen: true, settingsTab: 'experiments' },
 }

@@ -10,12 +10,14 @@ Pages/Edge/0.0.5/
 ├─ Login           로그인 — .ige 프로젝트 파일 + 저장된 계정
 ├─ DatasetSelect   Projects / Datasets — 최근 5개 + 프로젝트별 목록
 └─ Workspace       촬영 화면 (Logs · Capture · Pattern Preview/Class · 하단바)
-     Capture · Setup · Capturing · SequenceFailed · LogFilterOpen · Offline
-     SettingsConnection · SettingsGeneral · SettingsLighting · SettingsExperiments
+     Capture · Setup · Capturing · SequenceFailed · LogFilterOpen · Offline · Settings
 ```
 
-`Workspace` 의 `Settings*` 스토리가 **System Settings 다이얼로그**다 — 별도 화면이 아니라
-촬영 화면 위에 뜬다. 탭 10개는 앱과 같은 순서로 선다.
+`Workspace / Settings` 가 **System Settings 다이얼로그**다 — 별도 화면이 아니라 촬영 화면 위에
+뜬다. 탭 10개는 앱과 같은 순서로 서고, 탭마다 스토리를 나누지 않고 **하나에서 눌러 가며 본다**.
+
+다이얼로그 스토리(`Settings` · `SequenceFailed`)와 `DatasetSelect / SessionExpired` 는
+Docs 페이지에서 빠져 있다 — 화면에 고정돼 떠서 문서 전체를 덮는다. 사이드바에서는 그대로 열린다.
 
 ## 데이터
 
