@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ReferenceImageSection } from './reference-image-section'
-import sample1 from '../../../stories/assets/20230808.jpg'
+import sample1 from '../../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof ReferenceImageSection> = {
   title: 'Platform Pages/Class Manage/ReferenceImageSection',

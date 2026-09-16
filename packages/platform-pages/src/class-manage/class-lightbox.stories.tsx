@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ClassLightbox, type ClassLightboxItem } from './class-lightbox'
-import sample1 from '../../../stories/assets/20230808.jpg'
+import sample1 from '../../../../stories/assets/20230808.jpg'
 
 const baseItem: ClassLightboxItem = {
   id: 'img-1',

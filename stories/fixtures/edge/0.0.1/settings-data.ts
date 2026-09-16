@@ -16,7 +16,10 @@ import type {
 export const SETTINGS_DIALOG_LABELS: CameraSettingsDialogLabels = {
   title: 'Settings',
   close: 'Close',
+  tabGeneral: 'General',
   tabConnection: 'Connection',
+  tabLighting: 'Lighting',
+  tabExperiments: 'Experiments',
   tabCamera: 'Camera',
   tabServer: 'Server',
   tabData: 'Data',

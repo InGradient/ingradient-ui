@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ReferenceImageDropZone } from './reference-image-drop-zone'
-import sample1 from '../../../stories/assets/20230808.jpg'
+import sample1 from '../../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof ReferenceImageDropZone> = {
   title: 'Platform Pages/Class Manage/ReferenceImageDropZone',

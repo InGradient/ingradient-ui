@@ -1,4 +1,7 @@
-import { CameraIcon, FileTextIcon, InfoIcon, ServerIcon, DatabaseIcon, FlaskIcon, SlidersIcon } from '@ingradient/ui/components'
+import {
+  BeakerIcon, CameraIcon, DatabaseIcon, FileTextIcon, FlaskIcon, InfoIcon,
+  LightbulbIcon, ServerIcon, SettingsIcon, SlidersIcon,
+} from '@ingradient/ui/components'
 import { TwoColumnDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
 import type { CameraSettingsDialogViewProps, SettingsTab } from './types'
 
@@ -12,30 +15,37 @@ interface TabDef {
 export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): JSX.Element {
   const {
     activeTab, currentUserRole, labels,
-    connectionContent, cameraContent, serverContent, dataContent,
-    fieldTestContent, logsContent, aboutContent,
+    generalContent, connectionContent, cameraContent, lightingContent,
+    serverContent, dataContent, logsContent, experimentsContent,
+    fieldTestContent, aboutContent,
     onClose, onSetActiveTab,
   } = props
 
   const isPrivileged = currentUserRole === 'owner' || currentUserRole === 'manager'
 
   const tabs: TabDef[] = [
-    { value: 'connection', label: labels.tabConnection, icon: <CameraIcon size={iconSizeNumbers.sm} />, visible: true },
-    { value: 'camera',     label: labels.tabCamera,     icon: <SlidersIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
-    { value: 'server',     label: labels.tabServer,     icon: <ServerIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
-    { value: 'data',       label: labels.tabData,       icon: <DatabaseIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
-    { value: 'fieldtest',  label: labels.tabFieldTest,  icon: <FlaskIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
-    { value: 'logs',       label: labels.tabLogs,       icon: <FileTextIcon size={iconSizeNumbers.sm} />, visible: true },
-    { value: 'about',      label: labels.tabAbout,      icon: <InfoIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'general',     label: labels.tabGeneral,     icon: <SettingsIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'connection',  label: labels.tabConnection,  icon: <CameraIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'camera',      label: labels.tabCamera,      icon: <SlidersIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'lighting',    label: labels.tabLighting,    icon: <LightbulbIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'server',      label: labels.tabServer,      icon: <ServerIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'data',        label: labels.tabData,        icon: <DatabaseIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'logs',        label: labels.tabLogs,        icon: <FileTextIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'experiments', label: labels.tabExperiments, icon: <BeakerIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'fieldtest',   label: labels.tabFieldTest,   icon: <FlaskIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'about',       label: labels.tabAbout,       icon: <InfoIcon size={iconSizeNumbers.sm} />, visible: true },
   ]
 
   const visibleTabs = tabs.filter((t) => t.visible)
 
   const content: Record<SettingsTab, JSX.Element | null | undefined> = {
+    general: generalContent as JSX.Element | undefined ?? null,
     connection: connectionContent as JSX.Element | undefined ?? null,
     camera: cameraContent as JSX.Element | undefined ?? null,
+    lighting: lightingContent as JSX.Element | undefined ?? null,
     server: serverContent as JSX.Element | undefined ?? null,
     data: dataContent as JSX.Element | undefined ?? null,
+    experiments: experimentsContent as JSX.Element | undefined ?? null,
     fieldtest: fieldTestContent as JSX.Element | undefined ?? null,
     logs: logsContent as JSX.Element | undefined ?? null,
     about: aboutContent as JSX.Element | undefined ?? null,

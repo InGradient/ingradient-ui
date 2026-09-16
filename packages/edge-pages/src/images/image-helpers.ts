@@ -53,7 +53,7 @@ export function getDerivedLabelFromVirtualId(imageId: string | null | undefined)
 export function getGroupKey(fileName: string, regex: string | null | undefined): string | null {
   if (!regex?.trim()) return null
   try {
-    // eslint-disable-next-line security/detect-non-literal-regexp
+     
     const m = fileName.match(new RegExp(regex.trim()))
     if (!m || m.length < 2) return null
     return typeof m[1] === 'string' ? m[1] : null
