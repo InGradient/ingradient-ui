@@ -10,7 +10,8 @@ Pages/Edge/0.0.5/
 ├─ Login           로그인 — .ige 프로젝트 파일 + 저장된 계정
 ├─ DatasetSelect   Projects / Datasets — 최근 5개 + 프로젝트별 목록
 └─ Workspace       촬영 화면 (Logs · Capture · Pattern Preview/Class · 하단바)
-     Capture · Setup · Capturing · SequenceFailed · LogFilterOpen · Offline · Settings
+     Capture · Images* · Statics* · Setup · Capturing · SequenceFailed
+     LogFilterOpen · Offline · Settings          (* 임시 mock 데이터)
 ```
 
 `Workspace / Settings` 가 **System Settings 다이얼로그**다 — 별도 화면이 아니라 촬영 화면 위에
@@ -39,6 +40,8 @@ fixtures: [`stories/fixtures/edge/0.0.5/`](../../../fixtures/edge/0.0.5/)
 │  └─ workspace/
 │     ├─ workspace-scene.tsx       # EdgeAppShell + MainLayout 합성
 │     ├─ build-capture-content.tsx # Capture 탭
+│     ├─ build-images-content.tsx  # Images 탭 [임시 mock]
+│     ├─ build-statics-content.tsx # Statics 탭 [임시 mock]
 │     ├─ build-setup-content.tsx   # Setup 탭(우측 셋업 패널)
 │     └─ build-panels.tsx          # 좌 Logs / 우 Pattern Preview + Class
 └─ settings/
@@ -61,5 +64,8 @@ fixtures: [`stories/fixtures/edge/0.0.5/`](../../../fixtures/edge/0.0.5/)
 - 프로젝트 타입 태그가 `deflectometry_enabled` 로만 갈린다 — 앱의 `PHOTOMETRIC STEREO` 태그는 안 나온다
 - 로그인 화면 좌상단 언어 선택이 앱에서는 아이콘, 여기서는 `EN` 텍스트 슬롯이다
 - 라이브 프리뷰 이미지는 비워 뒀다(그리드와 십자선만) — 앱에서는 MJPEG 스트림이 들어온다
+- **Images · Statics 는 임시 mock 이다** — 화면이 비어 보이지 않게 채워 둔 placeholder 로,
+  사진도 숫자도 현장 데이터가 아니다. `fixtures/edge/0.0.5/temp-{images,statics}.ts` 를 갈아 끼우면 된다
+- Images 탭의 라벨링 모달(BBoxCanvas)은 아직 붙이지 않았다
 
 [`0.0.1`](../0.0.1/) 은 부품 단위 검수용 예전 세트다. 이 세트로 대체되면 지운다.

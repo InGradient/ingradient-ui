@@ -10,7 +10,9 @@ import {
 import { EdgeAppFrame, buildTopBar } from '../shared/build-shell'
 import { SettingsModal } from '../settings/build-settings-modal'
 import { CaptureContent } from './build-capture-content'
+import { ImagesContent } from './build-images-content'
 import { LogPanel, RightPanel } from './build-panels'
+import { StaticsContent } from './build-statics-content'
 import { SetupContent } from './build-setup-content'
 
 const noop = (): undefined => undefined
@@ -52,6 +54,8 @@ export function WorkspaceScene(args: WorkspaceSceneArgs): JSX.Element {
       captureContent={activeTab === 'capture' || activeTab === 'setup'
         ? <CaptureContent isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} />
         : null}
+      imagesContent={activeTab === 'images' ? <ImagesContent /> : null}
+      staticsContent={activeTab === 'statics' ? <StaticsContent /> : null}
       isSavingLabel={false}
     />
   )

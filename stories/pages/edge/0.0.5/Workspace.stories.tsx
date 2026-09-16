@@ -11,7 +11,7 @@ const handoff = defineHandoff({
   preset: 'edge-0.0.1',
   fixturesPath: 'stories/fixtures/edge/0.0.5/*',
   requiredScenarios: [
-    'capture', 'setup', 'capturing', 'sequence-failed', 'log-filter-open', 'offline',
+    'capture', 'images', 'statics', 'setup', 'capturing', 'sequence-failed', 'log-filter-open', 'offline',
     'settings',
   ],
   interactions: [
@@ -43,6 +43,12 @@ const DIALOG_ONLY = { tags: ['!autodocs'] }
 
 /** 촬영 대기 — 좌측 로그, 가운데 라이브 프리뷰, 우측 패턴/클래스. */
 export const Capture: Story = { args: { activeTab: 'capture' } }
+
+/** [임시] Images 탭 — 촬영 이미지 그리드. 지금 보이는 사진은 mock 이다. */
+export const Images: Story = { args: { activeTab: 'images' } }
+
+/** [임시] Statics 탭 — 촬영·라벨링 집계. 숫자는 전부 mock 이다. */
+export const Statics: Story = { args: { activeTab: 'statics' } }
 
 /** Setup 탭 — 우측이 셋업 패널로 바뀐다. */
 export const Setup: Story = { args: { activeTab: 'setup' } }
