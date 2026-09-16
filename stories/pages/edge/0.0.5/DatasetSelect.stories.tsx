@@ -107,5 +107,12 @@ export const FetchError: Story = {
   args: { mode: 'online', fetchError: 'Could not reach the platform.' },
 }
 
-/** 토큰이 만료돼 다시 로그인해야 하는 경우. */
-export const SessionExpired: Story = { args: { mode: 'online', sessionExpired: true } }
+/**
+ * 토큰이 만료돼 다시 로그인해야 하는 경우.
+ * 확인 모달이 화면에 고정돼 뜨므로 Docs 에서는 빼고 사이드바에서만 연다 —
+ * 아니면 문서 전체를 덮는다.
+ */
+export const SessionExpired: Story = {
+  tags: ['!autodocs'],
+  args: { mode: 'online', sessionExpired: true },
+}

@@ -37,6 +37,10 @@ const meta = {
 export default meta
 type Story = StoryObj<WorkspaceSceneArgs>
 
+// 화면에 고정(position: fixed)돼 뜨는 것들은 Docs 한 페이지에 여러 스토리를 세로로 쌓으면
+// 문서 전체를 덮어 버린다. 그래서 Docs 에서는 빼고 사이드바에서만 연다.
+const DIALOG_ONLY = { tags: ['!autodocs'] }
+
 /** 촬영 대기 — 좌측 로그, 가운데 라이브 프리뷰, 우측 패턴/클래스. */
 export const Capture: Story = { args: { activeTab: 'capture' } }
 
@@ -46,8 +50,11 @@ export const Setup: Story = { args: { activeTab: 'setup' } }
 /** 촬영 중 — 화면이 잠기고 진행 상태가 보인다. */
 export const Capturing: Story = { args: { activeTab: 'capture', isCapturing: true } }
 
-/** 시퀀스가 시작되지 못한 경우. */
-export const SequenceFailed: Story = { args: { activeTab: 'capture', sequenceFailure: true } }
+/** 시퀀스가 시작되지 못한 경우. 다이얼로그라 Docs 에서는 빼고 사이드바에서만 연다. */
+export const SequenceFailed: Story = {
+  ...DIALOG_ONLY,
+  args: { activeTab: 'capture', sequenceFailure: true },
+}
 
 /** 로그 필터 popover 를 연 상태. */
 export const LogFilterOpen: Story = { args: { activeTab: 'capture', logFilterOpen: true } }
@@ -59,14 +66,24 @@ export const Offline: Story = { args: { activeTab: 'capture', connectionStatus: 
 
 /** 설정 > 연결 — 6단계 진단이 모두 통과한 모습. */
 export const SettingsConnection: Story = {
+  ...DIALOG_ONLY,
   args: { settingsOpen: true, settingsTab: 'connection' },
 }
 
 /** 설정 > 일반 — 촬영 완료 알림. */
-export const SettingsGeneral: Story = { args: { settingsOpen: true, settingsTab: 'general' } }
+export const SettingsGeneral: Story = {
+  ...DIALOG_ONLY,
+  args: { settingsOpen: true, settingsTab: 'general' },
+}
 
 /** 설정 > 조명 — Deflectometry 는 모니터가 곧 조명이다. */
-export const SettingsLighting: Story = { args: { settingsOpen: true, settingsTab: 'lighting' } }
+export const SettingsLighting: Story = {
+  ...DIALOG_ONLY,
+  args: { settingsOpen: true, settingsTab: 'lighting' },
+}
 
 /** 설정 > 실험 — 여러 주기로 한 번에 촬영. */
-export const SettingsExperiments: Story = { args: { settingsOpen: true, settingsTab: 'experiments' } }
+export const SettingsExperiments: Story = {
+  ...DIALOG_ONLY,
+  args: { settingsOpen: true, settingsTab: 'experiments' },
+}
