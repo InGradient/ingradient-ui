@@ -1,32 +1,10 @@
-// CameraSettingsDialogView 스토리용 라벨 + mock 데이터.
+// 아직 화면을 옮기기 전(0.0.1 때 추출된) 설정 탭들의 라벨 + mock 로그.
+// 0.0.5 화면 스토리가 탭 10개를 모두 눌러 볼 수 있도록 함께 싣는다.
 import type {
-  AboutTabLabels,
-  BackendLogsLabels,
-  CameraParamsTabLabels,
-  CameraSettingsDialogLabels,
-  DataTabLabels,
-  FieldTestTabLabels,
-  FrontendLogsLabels,
-  LogEntry,
-  ServerTabLabels,
-  UnifiedLogsTabLabels,
-  UpdateSectionLabels,
+  AboutTabLabels, BackendLogsLabels, CameraParamsTabLabels, DataTabLabels,
+  FieldTestTabLabels, FrontendLogsLabels, LogEntry, ServerTabLabels,
+  UnifiedLogsTabLabels, UpdateSectionLabels,
 } from '@ingradient/edge-pages'
-
-export const SETTINGS_DIALOG_LABELS: CameraSettingsDialogLabels = {
-  title: 'Settings',
-  close: 'Close',
-  tabGeneral: 'General',
-  tabConnection: 'Connection',
-  tabLighting: 'Lighting',
-  tabExperiments: 'Experiments',
-  tabCamera: 'Camera',
-  tabServer: 'Server',
-  tabData: 'Data',
-  tabLogs: 'Logs',
-  tabFieldTest: 'Field Test',
-  tabAbout: 'About',
-}
 
 export const SERVER_TAB_LABELS: ServerTabLabels = {
   baseUrl: 'Base URL',
@@ -78,7 +56,7 @@ export const CAMERA_PARAMS_TAB_LABELS: CameraParamsTabLabels = {
   title: 'Camera Parameters',
   dllPath: 'cvsCam DLL Path',
   applyDllPath: 'Apply',
-  reload: 'Reload',
+  reload: 'Reset to Factory Defaults',
   saved: 'Saved',
   save: 'Save',
   exposure: 'Exposure',
@@ -104,31 +82,21 @@ export const UNIFIED_LOGS_TAB_LABELS: UnifiedLogsTabLabels = {
   frontend: 'Frontend',
 }
 
-export const BACKEND_LOGS_LABELS: BackendLogsLabels = {
-  search: 'Search logs',
-  level: 'Level',
+const LOGS_LABELS = {
+  search: 'Filter (message, module...)',
+  level: 'Minimum log level',
   all: 'All',
   info: 'Info',
   warn: 'Warn',
   error: 'Error',
   refresh: 'Refresh',
   clear: 'Clear',
-  export: 'Export',
-  empty: 'No backend logs.',
+  export: 'Copy all',
+  empty: 'No logs',
 }
 
-export const FRONTEND_LOGS_LABELS: FrontendLogsLabels = {
-  search: 'Search logs',
-  level: 'Level',
-  all: 'All',
-  info: 'Info',
-  warn: 'Warn',
-  error: 'Error',
-  refresh: 'Refresh',
-  clear: 'Clear',
-  export: 'Export',
-  empty: 'No frontend logs.',
-}
+export const BACKEND_LOGS_LABELS: BackendLogsLabels = { ...LOGS_LABELS }
+export const FRONTEND_LOGS_LABELS: FrontendLogsLabels = { ...LOGS_LABELS }
 
 export const UPDATE_SECTION_LABELS: UpdateSectionLabels = {
   title: 'Updates',
@@ -145,15 +113,15 @@ export const UPDATE_SECTION_LABELS: UpdateSectionLabels = {
 }
 
 export const SAMPLE_BACKEND_LOGS: LogEntry[] = [
-  { timestamp: '2026-06-19 09:12:03', level: 'info', message: 'Backend service started.', source: 'backend' },
-  { timestamp: '2026-06-19 09:12:05', level: 'info', message: 'Camera driver loaded.', source: 'backend' },
-  { timestamp: '2026-06-19 09:13:41', level: 'warn', message: 'Slow response from server (820ms).', source: 'backend' },
-  { timestamp: '2026-06-19 09:14:10', level: 'error', message: 'Capture timeout on device 2.', source: 'backend' },
-  { timestamp: '2026-06-19 09:14:12', level: 'success', message: 'Recovered after retry.', source: 'backend' },
+  { timestamp: '2026-09-02 09:22:30', level: 'info', message: 'capture-agent started (pid 18244).', source: 'backend' },
+  { timestamp: '2026-09-02 09:22:32', level: 'info', message: 'cvsCam device opened — MG-A121M-9.', source: 'backend' },
+  { timestamp: '2026-09-02 09:22:32', level: 'info', message: 'GevSCPD=10202 (calibrated), RXPacketPoolSize=2048.', source: 'backend' },
+  { timestamp: '2026-09-02 09:41:07', level: 'warn', message: 'frame interval 0.42s — exposure 100ms caps at 2.4fps.', source: 'backend' },
+  { timestamp: '2026-09-02 10:06:26', level: 'success', message: 'sequence 5c492e saved — 33 images.', source: 'backend' },
 ]
 
 export const SAMPLE_FRONTEND_LOGS: LogEntry[] = [
-  { timestamp: '2026-06-19 09:12:01', level: 'info', message: 'UI mounted.', source: 'frontend' },
-  { timestamp: '2026-06-19 09:12:30', level: 'info', message: 'Workspace tab opened.', source: 'frontend' },
-  { timestamp: '2026-06-19 09:15:22', level: 'warn', message: 'Image cache near limit.', source: 'frontend' },
+  { timestamp: '2026-09-02 09:22:28', level: 'info', message: 'UI mounted.', source: 'frontend' },
+  { timestamp: '2026-09-02 09:22:36', level: 'info', message: 'dataset 26.09.02 New Raw Material opened.', source: 'frontend' },
+  { timestamp: '2026-09-02 10:06:26', level: 'info', message: '[SEQ success id=5c492e] 총 46.3s', source: 'frontend' },
 ]

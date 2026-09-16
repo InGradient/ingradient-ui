@@ -14,6 +14,8 @@ export interface EdgeDataset {
   deflectometry_enabled?: boolean
   role?: string
   image_count?: number
+  /** 촬영 묶음(그룹) 수. 주면 카드에 "34 groups (3706 img)" 로 나온다. */
+  group_count?: number
   classes?: EdgeClass[]
   task_type?: string
 }
@@ -54,7 +56,8 @@ export interface DatasetSelectLabels {
   sessionExpiredDesc: string
   sessionExpiredConfirm: string
   cancel: string
-  images: (count: number) => string
+  /** 그룹 수를 같이 주면 앱처럼 묶음 단위로 쓸 수 있다 — 문장 조립은 consumer 몫. */
+  images: (count: number, groupCount?: number | null) => string
   roleLabel: (role: string) => string
 }
 
