@@ -59,6 +59,10 @@ export interface SetupConfigState {
   maxBrightness: number
   settleDelayMs: number
   monitorTarget: string
+  /** null = 프로젝트 기본값을 따른다. */
+  phaseSteps: number | null
+  /** 높낮이 방향은 기기 배치에 따라 뒤집힌다 — 현장에서 보정한다. */
+  topoInvert: boolean
 }
 
 export interface DeflectometryConfigState {
@@ -162,20 +166,57 @@ export interface SetupPanelLabels {
   save: string
   reset: string
   saved: string
-  autoAnalyze: string
-  autoAnalyzeHint: string
   featuresTitle: string
   analysis: string
+
   cameraTuning: string
   livePreviewAvailable: string
   noCamera: string
   focusPeaking: string
   focusPeakingDesc: string
   exposure: string
+  exposureDesc: string
   gain: string
+  gainDesc: string
   whiteBalance: string
+  whiteBalanceDesc: string
   autoCalibrate: string
   auto: string
+
+  /** 고급 — 평소엔 접혀 있다. */
+  advanced: string
+  advancedImage: string
+  advancedHardware: string
+  /** 하드웨어 절은 아직 동작하지 않는다는 안내. */
+  hardwareComingSoon: string
+  frameRate: string
+  frameRateDesc: string
+  frameRateEnable: string
+  gammaCamera: string
+  gammaCameraDesc: string
+  blackLevel: string
+  blackLevelDesc: string
+  sharpness: string
+  sharpnessDesc: string
+  pixelFormat: string
+  pixelFormatDesc: string
+  roi: string
+  roiDesc: string
+  hardwareTrigger: string
+  hardwareTriggerDesc: string
+
+  deflectometry: string
+  fringePeriod: string
+  phaseSteps: string
+  /** 프로젝트 기본값을 쓰겠다는 선택지 문구. */
+  phaseStepsProjectDefault: string
+  topoInvert: string
+  topoInvertHint: string
+  gamma: string
+  settleDelay: string
+  measure: string
+  measuring: string
+  patternPreview: string
 }
 
 export interface SetupPanelViewProps {
@@ -199,6 +240,18 @@ export interface SetupPanelViewProps {
 
   autoAnalyze: boolean
   enabledFeatures: Record<string, boolean>
+
+  /** 화면에 세울 패턴 버튼 목록. 무엇을 찍을지는 프로젝트 설정·실험이 정하므로 앱이 계산한다. */
+  previewPatternLabels: string[]
+  /** "8-step · X + Y · total 34 patterns" 처럼 앱이 만든 한 줄 요약. */
+  sequenceSummary: string
+  pixelFormatOptions: { value: string; label: string }[]
+  phaseStepOptions: number[]
+
+  /** 프린지 미리보기 — 표본 계산이 촬영 백엔드와 같아야 해서 앱이 만들어 넣는다. */
+  fringePreview?: React.ReactNode
+  /** 픽셀포맷 '선택값' 아래 '현재 카메라 값' 힌트 — 스토어를 읽어야 해서 앱이 만든다. */
+  pixelFormatHint?: React.ReactNode
 
   labels: SetupPanelLabels
 

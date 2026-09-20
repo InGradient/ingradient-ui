@@ -11,12 +11,27 @@ import {
 
 const SETUP_LABELS: SetupPanelLabels = {
   title: 'Camera setup', save: 'Save', reset: 'Reset', saved: 'Saved',
-  autoAnalyze: 'Auto analyze', autoAnalyzeHint: 'Run analysis after each capture',
   featuresTitle: 'Features', analysis: 'Analysis', cameraTuning: 'Camera tuning',
   livePreviewAvailable: 'Live preview available', noCamera: 'No camera connected',
   focusPeaking: 'Focus peaking', focusPeakingDesc: 'Highlight in-focus edges',
-  exposure: 'Exposure', gain: 'Gain', whiteBalance: 'White balance',
+  exposure: 'Exposure', exposureDesc: 'Sensor integration time',
+  gain: 'Gain', gainDesc: 'Signal amplification',
+  whiteBalance: 'White balance', whiteBalanceDesc: 'Neutralize color cast',
   autoCalibrate: 'Auto calibrate', auto: 'Auto',
+  advanced: 'Advanced', advancedImage: 'Image', advancedHardware: 'Hardware',
+  hardwareComingSoon: 'Requires external hardware integration.',
+  frameRate: 'Frame rate', frameRateDesc: 'Capture rate cap', frameRateEnable: 'Enable',
+  gammaCamera: 'Gamma', gammaCameraDesc: 'Sensor luminance curve',
+  blackLevel: 'Black level', blackLevelDesc: 'Baseline brightness offset',
+  sharpness: 'Sharpness', sharpnessDesc: 'Edge contrast',
+  pixelFormat: 'Pixel format', pixelFormatDesc: 'Raw sensor data format',
+  roi: 'ROI', roiDesc: 'Read part of the sensor',
+  hardwareTrigger: 'Hardware trigger', hardwareTriggerDesc: 'Capture from an external signal',
+  deflectometry: 'Deflectometry', fringePeriod: 'Fringe period',
+  phaseSteps: 'Phase steps', phaseStepsProjectDefault: 'Project default',
+  topoInvert: 'Topography invert', topoInvertHint: 'Flip high/low direction',
+  gamma: 'Gamma', settleDelay: 'Settle delay (ms)',
+  measure: 'Measure', measuring: 'Measuring...', patternPreview: 'Pattern preview',
 }
 
 const DEFLECTOMETRY_CONFIG: DeflectometryConfigState = {
@@ -33,7 +48,7 @@ const MONITORS: DeflectometryMonitor[] = [
 
 const INITIAL_SETUP_CONFIG: SetupConfigState = {
   fringePeriod: 24, gamma: 2.2, minBrightness: 12, maxBrightness: 235,
-  settleDelayMs: 80, monitorTarget: 'mon-1',
+  settleDelayMs: 80, monitorTarget: 'mon-1', phaseSteps: null, topoInvert: false,
 }
 
 const INITIAL_CAMERA_PARAMS: CameraParams = {
@@ -66,6 +81,10 @@ export function SetupContent(): JSX.Element {
       setupConfig={setupConfig}
       cameraParams={cameraParams}
       previewPatternLabel={null}
+      previewPatternLabels={['x_orig', 'x_shift', 'y_orig', 'y_shift', 'solid']}
+      sequenceSummary="4-step · X + Y · solid · total 9 patterns"
+      pixelFormatOptions={[{ value: 'Mono8', label: 'Mono8' }, { value: 'Mono12', label: 'Mono12' }]}
+      phaseStepOptions={[2, 4, 8, 16]}
       autoAnalyze={autoAnalyze}
       enabledFeatures={enabledFeatures}
       labels={SETUP_LABELS}

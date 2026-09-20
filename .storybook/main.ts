@@ -40,6 +40,8 @@ const config: StorybookConfig = {
   stories: [
     '../src/**/*.stories.@(ts|tsx)',
     '../stories/**/*.stories.@(ts|tsx)',
+    // packages 의 페이지 스토리도 띄운다 — 화면 단위를 봐야 디자인이 앉는 모습을 확인할 수 있다.
+    '../packages/*/src/**/*.stories.@(ts|tsx)',
   ],
   addons: [
     '@storybook/addon-docs',

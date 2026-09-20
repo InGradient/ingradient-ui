@@ -11,7 +11,7 @@ interface RecentDatasetCardProps {
   isLatest: boolean
   recentBadgeLabel: string
   noClassesLabel: string
-  imagesLabel: (count: number) => string
+  imagesLabel: (count: number, groupCount?: number | null) => string
   onSelect: (dataset: EdgeDataset) => void
 }
 
@@ -25,7 +25,7 @@ export function RecentDatasetCard(props: RecentDatasetCardProps): JSX.Element {
       </Inline>
       <Text size="var(--ig-font-size-2xs)" tone="muted">{dataset.project_name}</Text>
       <CardBottom>
-        <ImageCount>{imagesLabel(dataset.image_count ?? 0)}</ImageCount>
+        <ImageCount>{imagesLabel(dataset.image_count ?? 0, dataset.group_count)}</ImageCount>
         <Inline gap="var(--ig-space-1)" justify="flex-end">{renderClassChips(dataset.classes, noClassesLabel)}</Inline>
       </CardBottom>
     </RecentCard>

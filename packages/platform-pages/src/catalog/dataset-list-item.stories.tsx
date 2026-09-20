@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatasetListItem } from './dataset-list-item'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
+const LIST_RESET = { listStyle: 'none', padding: 0, margin: 0, width: 320 } as const
+
 const meta = {
   title: 'Platform Pages/Catalog/DatasetListItem',
   component: DatasetListItem,
@@ -21,7 +23,7 @@ function InteractiveRow(props: { id: string; name: string; taskType: 'object_det
   const [selected, setSelected] = useState(false)
   const [current, setCurrent] = useState(false)
   return (
-    <div style={{ width: 320 }}>
+    <ul style={LIST_RESET}>
       <DatasetListItem
         id={props.id}
         name={props.name}
@@ -32,7 +34,7 @@ function InteractiveRow(props: { id: string; name: string; taskType: 'object_det
         onSelectCurrent={() => setCurrent((v) => !v)}
         onOpenMenu={() => undefined}
       />
-    </div>
+    </ul>
   )
 }
 
@@ -63,19 +65,19 @@ export const Review: Story = {
       <StorybookSection title="States" description="selected / current / dragOver 상태.">
         <StorybookGrid columns="1fr">
           <StorybookCard title="Selected (checkbox on)">
-            <div style={{ width: 320 }}>
+            <ul style={LIST_RESET}>
               <DatasetListItem id="d1" name="Wafer line A" taskType="object_detection" selected />
-            </div>
+            </ul>
           </StorybookCard>
           <StorybookCard title="Current (active row)">
-            <div style={{ width: 320 }}>
+            <ul style={LIST_RESET}>
               <DatasetListItem id="d1" name="Wafer line A" taskType="object_detection" current />
-            </div>
+            </ul>
           </StorybookCard>
           <StorybookCard title="Drag over (drop target)">
-            <div style={{ width: 320 }}>
+            <ul style={LIST_RESET}>
               <DatasetListItem id="d1" name="Wafer line A" taskType="object_detection" dragOver />
-            </div>
+            </ul>
           </StorybookCard>
         </StorybookGrid>
       </StorybookSection>
