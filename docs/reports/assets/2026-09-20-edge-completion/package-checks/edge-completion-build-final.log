@@ -1,0 +1,101 @@
+
+> @ingradient/ui@0.0.1 build:package
+> rimraf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs && npm run build --workspace packages/platform-pages && npm run build --workspace packages/edge-pages
+
+CLI Building entry: {"index":"src/index.ts","tokens":"src/tokens/index.ts","primitives":"src/primitives/index.ts","components":"src/components/index.ts","patterns":"src/patterns/index.ts","brand":"src/brand/index.tsx","hooks":"src/hooks/index.ts","utils":"src/utils/index.ts"}
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/tsup.config.ts
+CLI Target: es2020
+ESM Build start
+ESM lib/primitives.js         1.38 KB
+ESM lib/tokens.js             3.18 KB
+ESM lib/patterns.js           2.18 KB
+ESM lib/chunk-SQIHHY7C.js     55.21 KB
+ESM lib/chunk-XA5LWMAN.js     205.37 KB
+ESM lib/chunk-4B3FIKBY.js     4.05 KB
+ESM lib/chunk-TS5AGNVQ.js     62.38 KB
+ESM lib/chunk-76VN3HX4.js     11.97 KB
+ESM lib/chunk-UZANASQQ.js     15.06 KB
+ESM lib/chunk-YLA66IQH.js     94.99 KB
+ESM lib/brand.js              164.00 B
+ESM lib/chunk-QZRKGU5R.js     1.17 KB
+ESM lib/hooks.js              454.00 B
+ESM lib/chunk-4S3TQ7X3.js     22.09 KB
+ESM lib/utils.js              476.00 B
+ESM lib/chunk-D7JLJHGF.js     2.86 KB
+ESM lib/chunk-77RS5ZBV.js     513.00 B
+ESM lib/chunk-7FDPUJ5T.js     437.00 B
+ESM lib/chunk-4EMUN7DD.js     687.00 B
+ESM lib/index.js              15.07 KB
+ESM lib/components.js         8.72 KB
+ESM lib/primitives.js.map     71.00 B
+ESM lib/patterns.js.map       71.00 B
+ESM lib/chunk-SQIHHY7C.js.map 90.82 KB
+ESM lib/tokens.js.map         71.00 B
+ESM lib/chunk-4B3FIKBY.js.map 6.84 KB
+ESM lib/chunk-76VN3HX4.js.map 27.10 KB
+ESM lib/chunk-XA5LWMAN.js.map 361.91 KB
+ESM lib/chunk-TS5AGNVQ.js.map 111.97 KB
+ESM lib/chunk-UZANASQQ.js.map 19.50 KB
+ESM lib/chunk-YLA66IQH.js.map 174.82 KB
+ESM lib/brand.js.map          71.00 B
+ESM lib/chunk-QZRKGU5R.js.map 2.45 KB
+ESM lib/hooks.js.map          71.00 B
+ESM lib/utils.js.map          71.00 B
+ESM lib/chunk-4S3TQ7X3.js.map 49.43 KB
+ESM lib/chunk-D7JLJHGF.js.map 6.68 KB
+ESM lib/chunk-77RS5ZBV.js.map 1.14 KB
+ESM lib/chunk-7FDPUJ5T.js.map 1.12 KB
+ESM lib/chunk-4EMUN7DD.js.map 1.02 KB
+ESM lib/index.js.map          71.00 B
+ESM lib/components.js.map     71.00 B
+ESM ⚡️ Build success in 165ms
+DTS Build start
+DTS ⚡️ Build success in 12465ms
+DTS lib/index.d.ts                       12.38 KB
+DTS lib/brand.d.ts                       1013.00 B
+DTS lib/tokens.d.ts                      75.12 KB
+DTS lib/primitives.d.ts                  11.72 KB
+DTS lib/components.d.ts                  89.33 KB
+DTS lib/patterns.d.ts                    33.53 KB
+DTS lib/hooks.d.ts                       8.20 KB
+DTS lib/utils.d.ts                       2.69 KB
+DTS lib/useZoomPan-4xhM07HC.d.ts         958.00 B
+DTS lib/useDrawingCanvas-BN4nQwIM.d.ts   1.72 KB
+DTS lib/format-pattern-tab-BNsFrTcn.d.ts 419.00 B
+DTS lib/charts-9G47m4fy.d.ts             2.67 KB
+DTS lib/types-uMiz_ROm.d.ts              1.50 KB
+DTS lib/states-KHk94m3R.d.ts             1.52 KB
+
+> @ingradient/platform-pages@0.0.1 build
+> rimraf lib && tsup --config tsup.config.ts
+
+CLI Building entry: {"index":"src/index.ts"}
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/platform-pages/tsup.config.ts
+CLI Target: es2020
+ESM Build start
+ESM lib/index.js     338.30 KB
+ESM lib/index.js.map 565.54 KB
+ESM ⚡️ Build success in 59ms
+DTS Build start
+DTS ⚡️ Build success in 4812ms
+DTS lib/index.d.ts 85.18 KB
+
+> @ingradient/edge-pages@0.0.1 build
+> rimraf lib && tsup --config tsup.config.ts
+
+CLI Building entry: {"index":"src/index.ts"}
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/edge-pages/tsup.config.ts
+CLI Target: es2020
+ESM Build start
+ESM lib/index.js     331.00 KB
+ESM lib/index.js.map 525.21 KB
+ESM ⚡️ Build success in 61ms
+DTS Build start
+DTS ⚡️ Build success in 5676ms
+DTS lib/index.d.ts 82.73 KB

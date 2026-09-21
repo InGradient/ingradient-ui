@@ -1,0 +1,6 @@
+{
+  "tool": "get-documentation",
+  "arguments": { "id": "edge-pages-app-shell-mainlayout" },
+  "status": "interrupted-no-response",
+  "note": "No documentation response was returned. The dev server later stopped answering index.json; the pending request was cancelled and the worktree-only 6016 server restarted. Do not count this as documentation retrieved. Official instructions and list-all-documentation responses are retained in final-mcp-after-repairs.json."
+}

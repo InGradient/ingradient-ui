@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "tab": "Connection",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": []
+    },
+    {
+      "tab": "General",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": [
+        {
+          "name": "Alert sound",
+          "checked": true
+        },
+        {
+          "name": "Notification message",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "tab": "Experiments",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": [
+        {
+          "name": "Multi-period experiment",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "trapForward": true,
+      "trapReverse": true,
+      "volumeBefore": "70",
+      "volumeAfter": "65",
+      "tabRoundTrip": true
+    }
+  ],
+  "errors": [
+    "Error: expect(locator).toHaveValue(expected) failed\n\nLocator: getByRole('dialog').getByRole('slider')\nExpected: \"65\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.have.value\" with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('slider')\n"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "base": "http://127.0.0.1:3012",
+  "checks": [
+    "public preset",
+    "controlled tab callback",
+    "settings slot",
+    "Escape",
+    "opener restoration"
+  ],
+  "errors": []
+}

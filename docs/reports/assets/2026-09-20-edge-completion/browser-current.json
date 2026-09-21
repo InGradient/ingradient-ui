@@ -1,0 +1,74 @@
+[
+  {
+    "name": "capture",
+    "id": "pages-edge-0-0-5-workspace--capture",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--capture&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "setup",
+    "id": "pages-edge-0-0-5-workspace--setup",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--setup&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "images",
+    "id": "pages-edge-0-0-5-workspace--images",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--images&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "statics",
+    "id": "pages-edge-0-0-5-workspace--statics",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--statics&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "settings-general",
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--settings&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "dataset-menu",
+    "id": "pages-edge-0-0-5-datasetselect--offline",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-datasetselect--offline&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "lighting-ps",
+    "id": "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-settingsworkflows--lighting-ps&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "system",
+    "id": "pages-edge-0-0-5-settingsworkflows--system-cleanup",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-settingsworkflows--system-cleanup&viewMode=story",
+    "consoleErrors": [],
+    "error": "TimeoutError: page.waitForFunction: Timeout 45000ms exceeded."
+  },
+  {
+    "name": "account",
+    "id": "pages-edge-0-0-5-settingsworkflows--account-language",
+    "width": 1440,
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-settingsworkflows--account-language&viewMode=story",
+    "consoleErrors": [],
+    "error": "Error: page.waitForFunction: Target page, context or browser has been closed"
+  }
+]

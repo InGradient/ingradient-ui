@@ -1,0 +1,76 @@
+{
+  "head": {
+    "command": "git rev-parse HEAD",
+    "exit": 0,
+    "stdout": "c2b2606706f9f24e996d2f187325838328bc9b6e\n",
+    "stderr": ""
+  },
+  "branch": {
+    "command": "git branch --show-current",
+    "exit": 0,
+    "stdout": "main\n",
+    "stderr": ""
+  },
+  "sourceUnchanged": {
+    "command": "git diff --exit-code HEAD -- src packages stories .storybook scripts tests apps .github package.json package-lock.json eslint.config.js .stylelintrc.json vitest.config.ts playwright.storybook.config.ts",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "diffCheck": {
+    "command": "git diff --check",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "trackedChanges": {
+    "command": "git diff --name-only",
+    "exit": 0,
+    "stdout": "docs/README.md\n",
+    "stderr": ""
+  },
+  "status": {
+    "command": "git status --short",
+    "exit": 0,
+    "stdout": " M docs/README.md\n?? .letta/\n?? .omo/\n?? .playwright-cli/\n?? docs/reports/2026-09-08-consolidated-progress-report.ko.md\n?? docs/reports/2026-09-08-daily-work-report.ko.md\n?? docs/reports/2026-09-20-edge-layer-audit-and-plan.ko.md\n?? docs/reports/assets/2026-09-08-consolidated/\n?? docs/reports/assets/2026-09-08-daily/\n?? docs/reports/assets/2026-09-20-edge-phase0/\n",
+    "stderr": ""
+  },
+  "links": {
+    "checked": 65,
+    "broken": []
+  },
+  "reportWhitespace": {
+    "trailingWhitespaceLines": []
+  },
+  "coverage": {
+    "storyIds": 19,
+    "routeRecords": 38,
+    "routeErrors": [
+      {
+        "id": "pages-edge-0-0-5-workspace--settings",
+        "width": 1280,
+        "error": "Error: page.evaluate: Error: Axe is already running. Use `await axe.run()` to wait for the previous run to finish before starting a new run.\n    at assert (http://127.0.0.1:6015/node_modules/axe-core/axe.js?v=ad1103d1:7235:15)\n    at Object.run4 [as run] (http://127.0.0.1:6015/node_modules/axe-core/axe.js?v=ad1103d1:29154:9)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:29)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      }
+    ],
+    "tabRecords": 20,
+    "tabErrors": [],
+    "axeScans": 29,
+    "axeViolatingScans": 22,
+    "axeZeroViolationScans": 7,
+    "rules": [
+      "color-contrast",
+      "scrollable-region-focusable",
+      "label",
+      "nested-interactive"
+    ],
+    "pageErrors": [],
+    "initialProbeErrors": [
+      "workspace-tabs-keyboard",
+      "images-select-all",
+      "server-frozen-input"
+    ],
+    "followupProbeErrors": [
+      "dataset-menu-keyboard"
+    ]
+  }
+}

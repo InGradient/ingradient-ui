@@ -1,5 +1,7 @@
 # Edge phase 1: preset and verification contract
 
+> Integration update (2026-09-21): implementation `4a85c21` is now in local `main` (fast-forward merge). No remote push. Uncommitted/worktree-only statements below are historical checkpoint notes.
+
 > Historical first-checkpoint evidence. The remaining implementation inventory is now handled in [Edge completion](edge-completion.md); use that document and the primary dated report §18 for the current integration result, not the incomplete list below.
 
 ## Integrated checkpoint (after the preset-only run below)

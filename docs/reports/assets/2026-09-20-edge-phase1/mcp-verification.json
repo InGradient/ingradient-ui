@@ -1,0 +1,216 @@
+{
+  "previews": {
+    "content": [
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-platform-0-0-1-auth-login-workspace--overview"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-medical-0-0-1-auth--login"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/sandboxes-theme-lab--overview"
+      }
+    ],
+    "structuredContent": {
+      "stories": [
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline No Package",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Online Form",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Online",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Loading",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Empty",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Fetch Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capture",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Images",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Statics",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Setup",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capturing",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Log Filter Open",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Settings",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+        },
+        {
+          "title": "Pages/Platform/0.0.1/Auth/Login/Workspace",
+          "name": "Overview",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-platform-0-0-1-auth-login-workspace--overview"
+        },
+        {
+          "title": "Pages/Medical/0.0.1/Auth",
+          "name": "Login",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-medical-0-0-1-auth--login"
+        },
+        {
+          "title": "Sandboxes/Theme Lab",
+          "name": "Overview",
+          "previewUrl": "http://localhost:6016/?path=/story/sandboxes-theme-lab--overview"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "## Passing Stories\n\n- pages-medical-0-0-1-auth--login\n- sandboxes-theme-lab--overview\n- pages-edge-0-0-5-datasetselect--offline\n- pages-edge-0-0-5-login--offline\n- pages-platform-0-0-1-auth-login-workspace--overview\n- pages-edge-0-0-5-workspace--settings\n\n## Accessibility Violations\n\n### pages-edge-0-0-5-datasetselect--offline - color-contrast\n\nEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 3.89 (foreground color: #3b82f6, background color: #1a2a47, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.1\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #ef4444, background color: #322230, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.2\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.3\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.4\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.5\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.6\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.7\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.8\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.9\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.10\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.11\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.12\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.13\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.14\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.15\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.16\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.17\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.18\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.19\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.20\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.21\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.22\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.23\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.24\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.25\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.26\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.27\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.28\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.29\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.30\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.31\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.32\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.33\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.34\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.35\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.36\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.02 (foreground color: #3b82f6, background color: #1d283b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.37\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #ef4444, background color: #352023, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.38\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #4d88ff, background color: #1d2b48, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.39\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4 (foreground color: #3b82f6, background color: #192843, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">정상: OK</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.40\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.06 (foreground color: #ef4444, background color: #31202b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-fvwjDT kTjZQN\">눌림: Lõm</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.41\n\n### pages-edge-0-0-5-workspace--settings - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div class=\"sc-iSrTKH jrsUbd\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1"
+      }
+    ]
+  }
+}

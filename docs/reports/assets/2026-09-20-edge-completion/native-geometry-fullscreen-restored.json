@@ -1,0 +1,622 @@
+[
+  {
+    "width": 1440,
+    "keyboard": [
+      {
+        "index": 0,
+        "name": "Filter",
+        "tag": "BUTTON",
+        "left": 193.203125,
+        "right": 281,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "Logs",
+        "tag": "DIV",
+        "left": 15,
+        "right": 293,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "12:00:00Capture saved. Synthetic sample",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "01:06:26[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "01:02:11[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:55:31[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:48:39[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:45:34[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:42:18[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:37:48[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:32:45[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:27:54[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:24:36[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:20:38[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:09:02[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:05:11[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:02:01[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:53:24[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:42:51[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:39:33[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:33:55[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:30:13[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:26:38[SEQ success id=c2be51] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:22:33[SEQ success id=838153] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:19:04[SEQ success id=67d0d4] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:15:44[SEQ success id=23bab7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:03:00[SEQ success id=205c6e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "Close log detail",
+        "tag": "BUTTON",
+        "left": 265,
+        "right": 391.078125,
+        "scrollLeft": 0
+      },
+      {
+        "index": 1,
+        "name": "Capture",
+        "tag": "BUTTON",
+        "left": 310,
+        "right": 398.453125,
+        "scrollLeft": 0
+      },
+      {
+        "index": 1,
+        "name": "Enter fullscreen",
+        "tag": "BUTTON",
+        "left": 1047,
+        "right": 1075,
+        "scrollLeft": 0
+      },
+      {
+        "index": 1,
+        "name": "Controls",
+        "tag": "BUTTON",
+        "left": 1093,
+        "right": 1121,
+        "scrollLeft": 0
+      },
+      {
+        "index": 1,
+        "name": "Capture",
+        "tag": "BUTTON",
+        "left": 688,
+        "right": 752,
+        "scrollLeft": 0
+      },
+      {
+        "index": 2,
+        "name": "X Phase 1/16",
+        "tag": "BUTTON",
+        "left": 1160,
+        "right": 1284.5,
+        "scrollLeft": 0
+      }
+    ],
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--capture&viewMode=story",
+    "console": [],
+    "initial": {
+      "scrollLeft": 0,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "center": {
+        "x": 304,
+        "y": 90,
+        "width": 832,
+        "height": 872,
+        "top": 90,
+        "right": 1136,
+        "bottom": 962,
+        "left": 304
+      }
+    },
+    "fullscreen": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 1000,
+      "top": 0,
+      "right": 1440,
+      "bottom": 1000,
+      "left": 0
+    },
+    "exit": {
+      "scrollLeft": 0,
+      "center": {
+        "x": 304,
+        "y": 90,
+        "width": 832,
+        "height": 872,
+        "top": 90,
+        "right": 1136,
+        "bottom": 962,
+        "left": 304
+      }
+    },
+    "status": "passed"
+  },
+  {
+    "width": 768,
+    "keyboard": [
+      {
+        "index": 0,
+        "name": "Filter",
+        "tag": "BUTTON",
+        "left": 193.203125,
+        "right": 281,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "Logs",
+        "tag": "DIV",
+        "left": 15,
+        "right": 293,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "12:00:00Capture saved. Synthetic sample",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "01:06:26[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "01:02:11[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:55:31[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:48:39[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:45:34[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:42:18[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:37:48[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:32:45[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:27:54[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:24:36[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:20:38[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:09:02[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:05:11[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "00:02:01[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:53:24[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:42:51[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:39:33[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:33:55[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:30:13[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:26:38[SEQ success id=c2be51] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:22:33[SEQ success id=838153] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:19:04[SEQ success id=67d0d4] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:15:44[SEQ success id=23bab7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "23:03:00[SEQ success id=205c6e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+        "tag": "DIV",
+        "left": 23,
+        "right": 285,
+        "scrollLeft": 0
+      },
+      {
+        "index": 0,
+        "name": "Close log detail",
+        "tag": "BUTTON",
+        "left": 265,
+        "right": 391.078125,
+        "scrollLeft": 0
+      },
+      {
+        "index": 1,
+        "name": "Capture",
+        "tag": "BUTTON",
+        "left": 20,
+        "right": 108.453125,
+        "scrollLeft": 290
+      },
+      {
+        "index": 1,
+        "name": "Enter fullscreen",
+        "tag": "BUTTON",
+        "left": 565,
+        "right": 593,
+        "scrollLeft": 290
+      },
+      {
+        "index": 1,
+        "name": "Controls",
+        "tag": "BUTTON",
+        "left": 611,
+        "right": 639,
+        "scrollLeft": 290
+      },
+      {
+        "index": 1,
+        "name": "Capture",
+        "tag": "BUTTON",
+        "left": 302,
+        "right": 366,
+        "scrollLeft": 290
+      },
+      {
+        "index": 2,
+        "name": "X Phase 1/16",
+        "tag": "BUTTON",
+        "left": 629,
+        "right": 753.5,
+        "scrollLeft": 339
+      }
+    ],
+    "url": "http://localhost:6016/iframe.html?id=pages-edge-0-0-5-workspace--capture&viewMode=story",
+    "console": [],
+    "initial": {
+      "scrollLeft": 290,
+      "width": 768,
+      "scrollWidth": 1248,
+      "center": {
+        "x": 14,
+        "y": 90,
+        "width": 640,
+        "height": 872,
+        "top": 90,
+        "right": 654,
+        "bottom": 962,
+        "left": 14
+      }
+    },
+    "fullscreen": {
+      "x": 0,
+      "y": 0,
+      "width": 768,
+      "height": 1000,
+      "top": 0,
+      "right": 768,
+      "bottom": 1000,
+      "left": 0
+    },
+    "exit": {
+      "scrollLeft": 290,
+      "center": {
+        "x": 14,
+        "y": 90,
+        "width": 640,
+        "height": 872,
+        "top": 90,
+        "right": 654,
+        "bottom": 962,
+        "left": 14
+      }
+    },
+    "status": "passed"
+  }
+]

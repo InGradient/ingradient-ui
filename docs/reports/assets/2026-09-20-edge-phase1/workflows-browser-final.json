@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "tab": "Connection",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": []
+    },
+    {
+      "tab": "General",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": [
+        {
+          "name": "Alert sound",
+          "checked": true
+        },
+        {
+          "name": "Notification message",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "tab": "Experiments",
+      "nestedButtons": 0,
+      "nestedLabels": 0,
+      "checkboxes": [
+        {
+          "name": "Multi-period experiment",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "experimentsEnabled": {
+        "nestedButtons": 0,
+        "nestedLabels": 0,
+        "names": [
+          "Multi-period experiment",
+          "Composite frames"
+        ]
+      }
+    },
+    {
+      "trapForward": true,
+      "trapReverse": true,
+      "volumeBefore": "70",
+      "volumeAfter": "65",
+      "tabRoundTrip": true
+    },
+    {
+      "closeReopenDraft": true,
+      "triggerRestore": true
+    },
+    {
+      "generalButtons": [
+        "",
+        "Chime",
+        "Preview",
+        "Ding",
+        "Preview",
+        "Arpeggio",
+        "Preview",
+        "Double beep",
+        "Preview",
+        "Long chime (repeats)",
+        "Preview",
+        "Two-tone alarm (most noticeable)",
+        "Preview",
+        "Rising repeat",
+        "Preview",
+        "Windows default sound",
+        "Preview",
+        "Send test notification"
+      ]
+    },
+    {
+      "splitSelectionFocus": {
+        "focused": true,
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(77, 136, 255)"
+      }
+    }
+  ],
+  "errors": []
+}

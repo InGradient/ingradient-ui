@@ -1,0 +1,42 @@
+[
+  {
+    "tab": "General",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nGeneral\nCAPTURE COMPLETE ALERT\nAlerts you once capture and image processing have both finished. Works for every project type.\nAlert sound\nPlay a sound when the capture finishes.\nChime\nPreview\nDing\nPreview\nArpeggio\nPreview\nDouble beep\nPreview\nLong chime (repeats)\nPreview\nTwo-tone alarm (most noticeable)\nPreview\nRising repeat\nPreview\nWindows default sound\nPreview\nAlert volume\nVolume of the synthesized alert sound\n70%\nNotification message\nShow a Windows notification when the capture finishes.\nSend test notification\nWindows Focus Assist or per-app notification settings can hide this notification."
+  },
+  {
+    "tab": "Connection",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nCamera Setup & Connection\nConnected\n6 / 6 done\nApp & Driver Readiness\nCamera Discovery\nNetwork Connection\nOpen Camera Device\nFrame Reception\nLive Preview\n카메라 프레임이 정상적으로 들어오고 있습니다. Settings를 닫고 캡처 화면을 사용할 수 있습니다.\nAll steps are complete.\nContinue setup\nRestart connection\n1\nApp & Driver Readiness\n백엔드가 준비되었습니다.\nOK\n2\nCamera Discovery\n연결된 카메라를 사용 중입니다.\nOK\n3\nNetwork Connection\n카메라와 통신 중 — 네트워크 동작이 확인되었습니다.\nOK\n4\nOpen Camera Device\n카메라 장치가 열렸고 스트림이 시작되었습니다.\n9:22:32 AM\nOK\n5\nFrame Reception\n카메라 프레임이 들어오고 있습니다.\n9:22:32 AM\nOK\n6\nLive Preview\n라이브 프리뷰가 준비되었습니다.\nOK\nScan\nScan\nScan for cameras and NIC adapters\nCAMERAS (1)\nCrevis Co., LTD MG-A121M-9\n169.254.102.157 · 00:14:f7:01:9c:3d\nNot Reachable\nForce IP\nGigE\nNIC CANDIDATES (3)\nEthernet\nRealtek USB 2.5GbE Family Controller · 169.254.171.176 · Up\nRecommended\nWi-Fi\nIntel(R) Wi-Fi 6E AX211 160MHz · 192.168.0.31 · Up\nPossible\nvEthernet (WSL)\nHyper-V Virtual Ethernet Adapter · 172.30.128.1 · Up\nUnsuitable\nConnect\nDisconnect\nConnected\nCamera profile\nLoad\nSave\ndefault\nDiagnostics\nRun Diagnostic\nCamera connected successfully.\nNIC control\nNIC\nEthernet\nSpeed\n2.5 Gbps\nDuplex\nFull\nStatus\nUp\nEnable\nDisable\nRestart NIC\nAdvanced"
+  },
+  {
+    "tab": "Camera",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nCamera Parameters\nCVSCAM DLL PATH\nApply\nReset to Factory Defaults\nSave"
+  },
+  {
+    "tab": "Lighting",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nLighting\nPATTERN MONITOR\nIn deflectometry the monitor is the light source. Pick the display that shows the fringe pattern.\nAuto (prefer secondary)\nDell U2720Q\n3840×2160\nPrimary\nLG 27UL500\n3840×2160\nIdentify\nBriefly shows a white screen on the selected monitor."
+  },
+  {
+    "tab": "Server",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nBase URL\nEnter the server endpoint the device should talk to.\nRuntime Mode\nAuto\nOnline\nOffline\nSave"
+  },
+  {
+    "tab": "Data",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nData Directory\nC:\\ProgramData\\Ingradient\\Edge\\data\nOpen Data Directory\nTotal Space\n1024.00 GB\nFree Space\n215.00 GB\nCache Size\n7.00 GB\nClean Cache"
+  },
+  {
+    "tab": "Logs",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nBackend\nFrontend\nAll\nRefresh\nClear\nCopy all\n2026-09-02 09:22:30INFOcapture-agent started (pid 18244).\n2026-09-02 09:22:32INFOcvsCam device opened — MG-A121M-9.\n2026-09-02 09:22:32INFOGevSCPD=10202 (calibrated), RXPacketPoolSize=2048.\n2026-09-02 09:41:07WARNframe interval 0.42s — exposure 100ms caps at 2.4fps.\n2026-09-02 10:06:26SUCCESSsequence 5c492e saved — 33 images."
+  },
+  {
+    "tab": "Experiments",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nExperiments\nMulti-period experiment\nCapture every fringe period in one run to build a comparison dataset.\nCaptures follow the Setup config (directions, solid, phase step count).\n42 frames per capture"
+  },
+  {
+    "tab": "Field Test",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nField Test\nRun a diagnostic capture sequence to validate device behavior.\nRun\nReset\nExport\nNo results yet."
+  },
+  {
+    "tab": "About",
+    "text": "System Settings\nGeneral\nConnection\nCamera\nLighting\nServer\nData\nLogs\nExperiments\nField Test\nAbout\nIngradient Edge\nVersion 0.0.5\nLicense\nStatus\nValid\nExpires At\n2027-01-01\nDevice Fingerprint\nA1B2-C3D4-E5F6-7890\nDeactivate License\nUpdates\nCurrent Version\n0.0.5\nCheck for Updates\nRelease\n© 2026 Ingradient. All rights reserved."
+  }
+]

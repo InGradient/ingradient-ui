@@ -1,0 +1,90 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+      }
+    ],
+    "structuredContent": {
+      "stories": [
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Online",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Escape Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Confirm Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Log Filter Open",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capture",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--capture\n- pages-edge-0-0-5-datasetselect--offline\n- pages-edge-0-0-5-workspace--sequence-failed\n- pages-edge-0-0-5-datasetselect--online\n- pages-edge-0-0-5-workspace--log-filter-open\n- pages-edge-0-0-5-datasetselect--session-expired-escape-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+      }
+    ]
+  }
+}

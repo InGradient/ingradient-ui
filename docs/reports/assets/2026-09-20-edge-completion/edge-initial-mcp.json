@@ -1,0 +1,580 @@
+{
+  "ids": [
+    "pages-edge-0-0-5-datasetselect--offline",
+    "pages-edge-0-0-5-datasetselect--online",
+    "pages-edge-0-0-5-datasetselect--loading",
+    "pages-edge-0-0-5-datasetselect--empty",
+    "pages-edge-0-0-5-datasetselect--fetch-error",
+    "pages-edge-0-0-5-datasetselect--session-expired",
+    "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--add-dataset-workflow",
+    "pages-edge-0-0-5-datasetselect--create-project-workflow",
+    "pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--export-retry-workflow",
+    "pages-edge-0-0-5-datasetselect--export-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+    "pages-edge-0-0-5-login--offline",
+    "pages-edge-0-0-5-login--offline-no-package",
+    "pages-edge-0-0-5-login--online-form",
+    "pages-edge-0-0-5-login--error",
+    "pages-edge-0-0-5-workspace--capture",
+    "pages-edge-0-0-5-workspace--images",
+    "pages-edge-0-0-5-workspace--statics",
+    "pages-edge-0-0-5-workspace--setup",
+    "pages-edge-0-0-5-workspace--capturing",
+    "pages-edge-0-0-5-workspace--sequence-failed",
+    "pages-edge-0-0-5-workspace--log-filter-open",
+    "pages-edge-0-0-5-workspace--offline",
+    "pages-edge-0-0-5-workspace--settings",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--mock-message-failed",
+    "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+    "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+    "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+    "pages-edge-0-0-5-capturebranches--review-save-workflow",
+    "pages-edge-0-0-5-capturebranches--derived-retry-workflow",
+    "pages-edge-0-0-5-capturebranches--derived-unavailable",
+    "pages-edge-0-0-5-capturebranches--labeling-reset-workflow",
+    "pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow",
+    "pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow",
+    "pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow",
+    "pages-edge-0-0-5-capturecontrols--setup-simulation-workflow",
+    "pages-edge-0-0-5-imagesworkflows--selection-delete-workflow",
+    "pages-edge-0-0-5-imagesworkflows--group-selection-workflow",
+    "pages-edge-0-0-5-imagesworkflows--filter-date-workflow",
+    "pages-edge-0-0-5-imagesworkflows--inspector-workflow",
+    "pages-edge-0-0-5-settingsworkflows--device-draft",
+    "pages-edge-0-0-5-settingsworkflows--force-ip",
+    "pages-edge-0-0-5-settingsworkflows--logs",
+    "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+    "pages-edge-0-0-5-settingsworkflows--cache-cleanup",
+    "pages-edge-0-0-5-settingsworkflows--field-test",
+    "pages-edge-0-0-5-settingsworkflows--about-update",
+    "pages-edge-0-0-5-settingsworkflows--account-language",
+    "pages-edge-0-0-5-settingsworkflows--system-cleanup"
+  ],
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--create-project-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-retry-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--review-save-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-retry-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-unavailable"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--selection-delete-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--filter-date-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--inspector-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--device-draft"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--force-ip"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--logs"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--cache-cleanup"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--field-test"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--about-update"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--account-language"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--system-cleanup"
+      }
+    ],
+    "structuredContent": {
+      "stories": [
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Online",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Loading",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Empty",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Fetch Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Escape Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Add Dataset Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Create Project Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--create-project-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Add Dataset Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Export Retry Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-retry-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Export Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Confirm Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline No Package",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Online Form",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capture",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Images",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Statics",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Setup",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capturing",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Log Filter Open",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Settings",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Settings Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Lighting Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Experiments Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Mock Message Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Escape Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Retry Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capturing Keyboard Lock",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Review Save Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--review-save-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Derived Retry Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-retry-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Derived Unavailable",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-unavailable"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Labeling Reset Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Canvas Edit Selection Zoom Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureBranches",
+          "name": "Collapsed Roi Comment Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureControls",
+          "name": "Log Filter Keyboard Image Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/CaptureControls",
+          "name": "Setup Simulation Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+          "name": "Selection Delete Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--selection-delete-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+          "name": "Group Selection Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+          "name": "Filter Date Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--filter-date-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+          "name": "Inspector Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--inspector-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Device Draft",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--device-draft"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Force Ip",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--force-ip"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Logs",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--logs"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Lighting Ps",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Cache Cleanup",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--cache-cleanup"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Field Test",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--field-test"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "About Update",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--about-update"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "Account Language",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--account-language"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+          "name": "System Cleanup",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--system-cleanup"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "## Passing Stories\n\n- pages-edge-0-0-5-capturebranches--review-save-workflow\n- pages-edge-0-0-5-datasetselect--offline\n- pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow\n- pages-edge-0-0-5-datasetselect--online\n- pages-edge-0-0-5-capturebranches--derived-unavailable\n- pages-edge-0-0-5-capturebranches--labeling-reset-workflow\n- pages-edge-0-0-5-datasetselect--loading\n- pages-edge-0-0-5-datasetselect--empty\n- pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow\n- pages-edge-0-0-5-datasetselect--fetch-error\n- pages-edge-0-0-5-datasetselect--session-expired\n- pages-edge-0-0-5-datasetselect--session-expired-escape-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow\n- pages-edge-0-0-5-datasetselect--add-dataset-workflow\n- pages-edge-0-0-5-datasetselect--create-project-workflow\n- pages-edge-0-0-5-login--offline\n- pages-edge-0-0-5-login--offline-no-package\n- pages-edge-0-0-5-login--online-form\n- pages-edge-0-0-5-login--error\n- pages-edge-0-0-5-imagesworkflows--selection-delete-workflow\n- pages-edge-0-0-5-datasetselect--export-retry-workflow\n- pages-edge-0-0-5-imagesworkflows--group-selection-workflow\n- pages-edge-0-0-5-datasetselect--export-cancel-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow\n- pages-edge-0-0-5-imagesworkflows--filter-date-workflow\n- pages-edge-0-0-5-imagesworkflows--inspector-workflow\n- pages-edge-0-0-5-settingsworkflows--device-draft\n- pages-edge-0-0-5-settingsworkflows--force-ip\n- pages-edge-0-0-5-workspace--capture\n- pages-edge-0-0-5-workspace--images\n- pages-edge-0-0-5-settingsworkflows--logs\n- pages-edge-0-0-5-settingsworkflows--lighting-ps\n- pages-edge-0-0-5-workspace--statics\n- pages-edge-0-0-5-workspace--setup\n- pages-edge-0-0-5-workspace--capturing\n- pages-edge-0-0-5-settingsworkflows--cache-cleanup\n- pages-edge-0-0-5-workspace--sequence-failed\n- pages-edge-0-0-5-workspace--log-filter-open\n- pages-edge-0-0-5-workspace--offline\n- pages-edge-0-0-5-settingsworkflows--field-test\n- pages-edge-0-0-5-workspace--settings\n- pages-edge-0-0-5-workspace--settings-draft-workflow\n- pages-edge-0-0-5-settingsworkflows--about-update\n- pages-edge-0-0-5-workspace--lighting-draft-workflow\n- pages-edge-0-0-5-settingsworkflows--account-language\n- pages-edge-0-0-5-workspace--experiments-draft-workflow\n- pages-edge-0-0-5-workspace--mock-message-failed\n- pages-edge-0-0-5-settingsworkflows--system-cleanup\n- pages-edge-0-0-5-workspace--sequence-cancel-workflow\n- pages-edge-0-0-5-workspace--sequence-escape-workflow\n- pages-edge-0-0-5-workspace--sequence-retry-workflow\n- pages-edge-0-0-5-workspace--capturing-keyboard-lock\n\n## Failing Stories\n\n### pages-edge-0-0-5-capturebranches--derived-retry-workflow\n\nTestingLibraryElementError: Unable to find an accessible element with the role \"button\" and name \"Calculating simulation\"\n\nHere are the accessible roles:\n\n  button:\n\n  Name \"Review capture\":\n  <button\n    class=\"sc-kpDqfp cuLCDk\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Derived views\":\n  <button\n    class=\"sc-kpDqfp cuLCDk\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Label capture\":\n  <button\n    class=\"sc-kpDqfp cuLCDk\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Complete simulated calculation\":\n  <button\n    class=\"sc-kpDqfp cuLCDk\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Fail simulated calculation\":\n  <button\n    class=\"sc-kpDqfp cuLCDk\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Originals\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-kpDqfp fngmgo sc-fHsjtB cZhTyc\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Derived\":\n  <button\n    aria-pressed=\"true\"\n    class=\"sc-kpDqfp fngmgo sc-fHsjtB jUXQEA\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Gradient X\":\n  <button\n    aria-pressed=\"true\"\n    class=\"sc-kpDqfp fngmgo sc-jztukb eppeHD\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"Loading Calculating simulation\":\n  <button\n    class=\"sc-kpDqfp jzJPVC\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n    disabled=\"\"\n  />\n\n  Name \"Collapse class panel\":\n  <button\n    class=\"sc-kpDqfp gOwewO\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n  />\n\n  Name \"ROI viewer\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-kpDqfp jzJPVC sc-hciKdn fJJHfr\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n    title=\"Simulation: toggle ROI viewer state; no inferred mask\"\n    type=\"button\"\n  />\n\n  Name \"정상: OK\":\n  <button\n    aria-pressed=\"true\"\n    class=\"sc-eBwKMo gwRqNe\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"정상: OK\"\n    type=\"button\"\n  />\n\n  Name \"눌림: Lõm\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"눌림: Lõm\"\n    type=\"button\"\n  />\n\n  Name \"돌출: Lỗi\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"돌출: Lỗi\"\n    type=\"button\"\n  />\n\n  Name \"결함 1: Lỗi 1\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 1: Lỗi 1\"\n    type=\"button\"\n  />\n\n  Name \"결함 2: Lỗi 2\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 2: Lỗi 2\"\n    type=\"button\"\n  />\n\n  Name \"결함 3: Lỗi 3\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 3: Lỗi 3\"\n    type=\"button\"\n  />\n\n  Name \"결함 4: Lỗi 4\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 4: Lỗi 4\"\n    type=\"button\"\n  />\n\n  Name \"결함 5: Lỗi 5\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 5: Lỗi 5\"\n    type=\"button\"\n  />\n\n  Name \"결함 6: Lỗi 6\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 6: Lỗi 6\"\n    type=\"button\"\n  />\n\n  Name \"결함 7: Lỗi 7\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 7: Lỗi 7\"\n    type=\"button\"\n  />\n\n  Name \"결함 8: Lỗi 8\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 8: Lỗi 8\"\n    type=\"button\"\n  />\n\n  Name \"결함 9: Lỗi 9\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 9: Lỗi 9\"\n    type=\"button\"\n  />\n\n  Name \"결함 10: Lỗi 10\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 10: Lỗi 10\"\n    type=\"button\"\n  />\n\n  Name \"결함 11: Lỗi 11\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 11: Lỗi 11\"\n    type=\"button\"\n  />\n\n  Name \"결함 12: Lỗi 12\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 12: Lỗi 12\"\n    type=\"button\"\n  />\n\n  Name \"결함 13: Lỗi 13\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 13: Lỗi 13\"\n    type=\"button\"\n  />\n\n  Name \"결함 14: Lỗi 14\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 14: Lỗi 14\"\n    type=\"button\"\n  />\n\n  Name \"결함 15: Lỗi 15\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 15: Lỗi 15\"\n    type=\"button\"\n  />\n\n  Name \"결함 16: Lỗi 16\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 16: Lỗi 16\"\n    type=\"button\"\n  />\n\n  Name \"결함 17: Lỗi 17\":\n  <button\n    aria-pressed=\"false\"\n    class=\"sc-eBwKMo jNQEGu\"\n    data-ig-component=\"SelectableListItem\"\n    data-ig-layer=\"components\"\n    title=\"결함 17: Lỗi 17\"\n    type=\"button\"\n  />\n\n  Name \"Send comment\":\n  <button\n    class=\"sc-kpDqfp eJyqyw\"\n    data-ig-component=\"Button\"\n    data-ig-layer=\"components\"\n    disabled=\"\"\n  />\n\n  --------------------------------------------------\n  status:\n\n  Name \"\":\n  <div\n    role=\"status\"\n  />\n\n  Name \"Loading\":\n  <span\n    aria-label=\"Loading\"\n    class=\"sc-dBmztB jhJNpA\"\n    role=\"status\"\n  />\n\n  --------------------------------------------------\n  img:\n\n  Name \"Synthetic derived capture\":\n  <img\n    alt=\"Synthetic derived capture\"\n    src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22640%22%20height%3D%22480%22%20viewBox%3D%220%200%20640%20480%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22fringe%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Crect%20width%3D%2216%22%20height%3D%2232%22%20fill%3D%22rgb(210%2C210%2C210)%22%2F%3E%3Crect%20x%3D%2216%22%20width%3D%2216%22%20height%3D%2232%22%20fill%3D%22rgb(60%2C60%2C60)%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22640%22%20height%3D%22480%22%20fill%3D%22url(%23fringe)%22%2F%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%22240%22%20r%3D%2280%22%20fill%3D%22rgb(140%2C140%2C140)%22%2F%3E%3C%2Fsvg%3E\"\n    style=\"width: 100%; height: 100%; object-fit: contain;\"\n  />\n\n  --------------------------------------------------\n  complementary:\n\n  Name \"\":\n  <aside\n    class=\"sc-eCzpMI fMnaGm\"\n  />\n\n  --------------------------------------------------\n  searchbox:\n\n  Name \"\":\n  <input\n    class=\"sc-feUZmx edgfDz\"\n    placeholder=\"Search classes\"\n    type=\"search\"\n    value=\"\"\n  />\n\n  --------------------------------------------------\n  textbox:\n\n  Name \"Comments\":\n  <textarea\n    aria-label=\"Comments\"\n    class=\"sc-dLMFT VIXjS\"\n    placeholder=\"Add a simulation comment\"\n    rows=\"2\"\n    style=\"flex: 1 1 0%;\"\n  />\n\n  --------------------------------------------------\n\nIgnored nodes: comments, script, style\n<div>\n  <div\n    data-ig-locale=\"ko\"\n    style=\"min-height: 100vh; background: var(--ig-color-bg-canvas); transition: background 160ms;\"\n  >\n    <div\n      class=\"sc-gEvEes jtllVl\"\n      style=\"height: 100vh; padding: var(--ig-space-4);\"\n    >\n      <div\n        class=\"sc-eqUAAB hUelvq\"\n      >\n        <button\n          class=\"sc-kpDqfp cuLCDk\"\n          data-ig-component=\"Button\"\n          data-ig-layer=\"components\"\n        >\n          Review capture\n        </button>\n        <button\n          class=\"sc-kpDqfp cuLCDk\"\n          data-ig-component=\"Button\"\n          data-ig-layer=\"components\"\n        >\n          Derived views\n        </button>\n        <button\n          class=\"sc-kpDqfp cuLCDk\"\n          data-ig-component=\"Button\"\n          data-ig-layer=\"components\"\n        >\n          Label capture\n        </button>\n      </div>\n      <div\n        role=\"status\"\n      >\n        Simulation: derived calculation running\n      </div>\n      <div\n        class=\"sc-eqUAAB hUelvq\"\n      >\n        <button\n          class=\"sc-kpDqfp cuLCDk\"\n          data-ig-component=\"Button\"\n          data-ig-layer=\"components\"\n        >\n          Complete simulated calculation\n        </button>\n        <button\n          class=\"sc-kpDqfp cuLCDk\"\n          data-ig-component=\"Button\"\n          data-ig-layer=\"components\"\n        >\n          Fail simulated calculation\n        </button>\n      </div>\n      <div\n        class=\"sc-eqUAAB bWHjCh\"\n        style=\"flex: 1 1 0%; min-height: 0px;\"\n      >\n        <div\n          class=\"sc-RYuTH gLBoeM\"\n        >\n          <div\n            class=\"sc-iBBJcU kuzkFC\"\n          >\n            <button\n              aria-pressed=\"false\"\n              class=\"sc-kpDqfp fngmgo sc-fHsjtB cZhTyc\"\n              data-ig-component=\"Button\"\n              data-ig-layer=\"components\"\n            >\n              Originals\n            </button>\n            <button\n              aria-pressed=\"true\"\n              class=\"sc-kpDqfp fngmgo sc-fHsjtB jUXQEA\"\n              data-ig-component=\"Button\"\n              data-ig-layer=\"components\"\n            >\n              Derived\n            </button>\n          </div>\n          <div\n            class=\"sc-behkuy crtplN\"\n          >\n            <button\n              aria-pressed=\"true\"\n              class=\"sc-kpDqfp fngmgo sc-jztukb eppeHD\"\n              data-ig-component=\"Button\"\n              data-ig-layer=\"components\"\n            >\n              Gradient X\n            </button>\n          </div>\n        </div>\n        <div\n          style=\"flex: 1 1 0%; min-width: 0px; position: relative;\"\n        >\n          <img\n            alt=\"Synthetic derived capture\"\n            src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22640%22%20height%3D%22480%22%20viewBox%3D%220%200%20640%20480%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22fringe%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Crect%20width%3D%2216%22%20height%3D%2232%22%20fill%3D%22rgb(210%2C210%2C210)%22%2F%3E%3Crect%20x%3D%2216%22%20width%3D%2216%22%20height%3D%2232%22%20fill%3D%22rgb(60%2C60%2C60)%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22640%22%20height%3D%22480%22%20fill%3D%22url(%23fringe)%22%2F%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%22240%22%20r%3D%2280%22%20fill%3D%22rgb(140%2C140%2C140)%22%2F%3E%3C%2Fsvg%3E\"\n            style=\"width: 100%; height: 100%; object-fit: contain;\"\n          />\n          <div\n            class=\"sc-hoLEz hEuAqm\"\n            data-ig-component=\"Scrim\"\n            data-ig-kind=\"scrim\"\n            data-ig-layer=\"components\"\n          >\n            <div\n              class=\"sc-gEvEes cpGnjG\"\n              style=\"max-width: 21rem; text-align: center;\"\n            >\n              <button\n                class=\"sc-kpDqfp jzJPVC\"\n                data-ig-component=\"Button\"\n                data-ig-layer=\"components\"\n                disabled=\"\"\n              >\n                <span\n                  aria-label=\"Loading\"\n                  class=\"sc-dBmztB jhJNpA\"\n                  role=\"status\"\n                />\n                Calculating simulation\n              </button>\n            </div>\n          </div>\n        </div>\n        <div\n          class=\"sc-gEvEes likEbW\"\n          style=\"width: var(--ig-popup-sm); min-width: var(--ig-popup-sm);\"\n        >\n          <button\n            class=\"sc-kpDqfp gOwewO\"\n            data-ig-component=\"Button\"\n            data-ig-layer=\"components\"\n          >\n            Collapse class panel\n          </button>\n          <aside\n            class=\"sc-eCzpMI fMnaGm\"\n          >\n            <div\n              class=\"sc-cjaebr cQGIPZ\"\n            >\n              <button\n                aria-pressed=\"false\"\n                class=\"sc-kpDqfp jzJPVC sc-hciKdn fJJHfr\"\n                data-ig-component=\"Button\"\n                data-ig-layer=\"components\"\n                title=\"Simulation: toggle ROI viewer state; no inferred mask\"\n                type=\"button\"\n              >\n                <svg\n                  aria-hidden=\"true\"\n                  class=\"lucide lucide-scissors\"\n                  fill=\"none\"\n                  height=\"14\"\n                  stroke=\"currentColor\"\n                  stroke-linecap=\"round\"\n                  stroke-linejoin=\"round\"\n                  stroke-width=\"2\"\n                  viewBox=\"0 0 24 24\"\n                  width=\"14\"\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                >\n                  <circle\n                    cx=\"6\"\n                    cy=\"6\"\n                    r=\"3\"\n                  />\n                  <path\n                    d=\"M8.12 8.12 12 12\"\n                  />\n                  <path\n                    d=\"M20 4 8.12 15.88\"\n                  />\n                  <circle\n                    cx=\"6\"\n                    cy=\"18\"\n                    r=\"3\"\n                  />\n                  <path\n                    d=\"M14.8 14.8 20 20\"\n                  />\n                </svg>\n                ROI viewer\n              </button>\n            </div>\n            <div\n              class=\"sc-cjaebr sc-dPSLzG cQGIPZ eILhGZ\"\n            >\n              <div\n                class=\"sc-hGWFOC dtWtDg\"\n              >\n                CLASS\n              </div>\n              <div\n                class=\"sc-dAbbOM TkNYx\"\n              >\n                <div\n                  class=\"sc-ikkxIz eQWjhQ\"\n                >\n                  <span\n                    class=\"sc-fUnMCe hhwbCq\"\n                  >\n                    <svg\n                      fill=\"none\"\n                      height=\"14\"\n                      stroke=\"currentColor\"\n                      stroke-linecap=\"round\"\n                      stroke-linejoin=\"round\"\n                      stroke-width=\"2\"\n                      viewBox=\"0 0 24 24\"\n                      width=\"14\"\n                    >\n                      <circle\n                        cx=\"11\"\n                        cy=\"11\"\n                        r=\"8\"\n         ...\n    at Object.getElementError (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16297:53)\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16724:38\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16701:13\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16736:16\n    at Instrumenter.invoke (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2355:20)\n    at Instrumenter.track (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2249:83)\n    at Object.getByRole (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2227:151)\n    at play (http://localhost:63315/Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/stories/pages/edge/0.0.5/CaptureBranches.stories.tsx?import&browserv=1789950790227:83:25)\n    at async runStory (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/csf-Dxuqt4EI.js?v=6413baa4:7127:6)\n    at async http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/@storybook_addon-vitest_internal_test-utils.js?v=6413baa4:84:184\n\n### pages-edge-0-0-5-capturecontrols--setup-simulation-workflow\n\nTestingLibraryElementError: Unable to find an element with the text: /Simulation · 256px window.*gamma 3/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n<div>\n  <div\n    data-ig-locale=\"ko\"\n    style=\"min-height: 100vh; background: var(--ig-color-bg-canvas); transition: background 160ms;\"\n  >\n    <div\n      class=\"sc-eqUAAB bWHjCh\"\n      style=\"height: 100vh; padding: var(--ig-space-4);\"\n    >\n      <div\n        class=\"sc-gEvEes likEbW\"\n        style=\"flex: 1 1 0%; overflow: auto;\"\n      >\n        <div\n          class=\"sc-eZuMGb ejSnEx\"\n        >\n          <div\n            class=\"sc-cdacaa cBlsMU\"\n          >\n            <span\n              class=\"sc-iGgWBk hvmanA\"\n            >\n              Setup\n            </span>\n            <div\n              class=\"sc-eqUAAB dIMQTG\"\n            >\n              <button\n                class=\"sc-kpDqfp fngmgo\"\n                data-ig-component=\"Button\"\n                data-ig-layer=\"components\"\n                type=\"button\"\n              >\n                Reset\n              </button>\n              <button\n                class=\"sc-kpDqfp eJyqyw\"\n                data-ig-component=\"Button\"\n                data-ig-layer=\"components\"\n                type=\"button\"\n              >\n                Save\n              </button>\n            </div>\n          </div>\n          <div\n            class=\"sc-idnGQN jUdOgG\"\n          >\n            <div\n              class=\"sc-kuVLHP dNUVWe\"\n              style=\"gap: var(--ig-space-4);\"\n            >\n              <details\n                class=\"sc-beZgAB icPBxa\"\n                open=\"\"\n              >\n                <summary>\n                  <div\n                    class=\"sc-dMhUDa PccGo\"\n                  >\n                    Features\n                    <svg\n                      aria-hidden=\"true\"\n                      class=\"lucide lucide-chevron-down\"\n                      fill=\"none\"\n                      height=\"16\"\n                      stroke=\"currentColor\"\n                      stroke-linecap=\"round\"\n                      stroke-linejoin=\"round\"\n                      stroke-width=\"2\"\n                      viewBox=\"0 0 24 24\"\n                      width=\"16\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <path\n                        d=\"m6 9 6 6 6-6\"\n                      />\n                    </svg>\n                  </div>\n                </summary>\n                <div>\n                  <h3\n                    class=\"sc-iZzKWH warFP\"\n                  >\n                    Analysis\n                  </h3>\n                  <div\n                    class=\"sc-eqUAAB kAnmOA\"\n                  >\n                    <span\n                      class=\"sc-gIEZMI fvqFFy\"\n                    >\n                      Gradient X\n                    </span>\n                    <label\n                      class=\"sc-tagGt gtdYDf\"\n                      data-ig-component=\"Switch\"\n                      data-ig-kind=\"switch\"\n                      data-ig-label=\"Gradient X\"\n                      data-ig-layer=\"components\"\n                    >\n                      <input\n                        aria-label=\"Gradient X\"\n                        checked=\"\"\n                        class=\"sc-fXSgen jvmmXm\"\n                        type=\"checkbox\"\n                      />\n                      <span\n                        class=\"sc-esYiGC cCIljy\"\n                      />\n                    </label>\n                  </div>\n                  <div\n                    class=\"sc-eqUAAB kAnmOA\"\n                  >\n                    <span\n                      class=\"sc-gIEZMI fvqFFy\"\n                    >\n                      Gradient Y\n                    </span>\n                    <label\n                      class=\"sc-tagGt gtdYDf\"\n                      data-ig-component=\"Switch\"\n                      data-ig-kind=\"switch\"\n                      data-ig-label=\"Gradient Y\"\n                      data-ig-layer=\"components\"\n                    >\n                      <input\n                        aria-label=\"Gradient Y\"\n                        checked=\"\"\n                        class=\"sc-fXSgen jvmmXm\"\n                        type=\"checkbox\"\n                      />\n                      <span\n                        class=\"sc-esYiGC cCIljy\"\n                      />\n                    </label>\n                  </div>\n                  <div\n                    class=\"sc-eqUAAB kAnmOA\"\n                  >\n                    <span\n                      class=\"sc-gIEZMI fvqFFy\"\n                    >\n                      Modulation\n                    </span>\n                    <label\n                      class=\"sc-tagGt gtdYDf\"\n                      data-ig-component=\"Switch\"\n                      data-ig-kind=\"switch\"\n                      data-ig-label=\"Modulation\"\n                      data-ig-layer=\"components\"\n                    >\n                      <input\n                        aria-label=\"Modulation\"\n                        checked=\"\"\n                        class=\"sc-fXSgen jvmmXm\"\n                        type=\"checkbox\"\n                      />\n                      <span\n                        class=\"sc-esYiGC cCIljy\"\n                      />\n                    </label>\n                  </div>\n                </div>\n              </details>\n            </div>\n            <div\n              class=\"sc-kuVLHP dNUVWe\"\n              style=\"gap: var(--ig-space-4);\"\n            >\n              <h3\n                class=\"sc-iZzKWH warFP\"\n              >\n                Camera Tuning\n              </h3>\n              <span\n                class=\"sc-iGgWBk jCbijU\"\n              >\n                Live preview is available.\n              </span>\n              <div\n                class=\"sc-eqUAAB fQeDGv\"\n              >\n                <button\n                  class=\"sc-kpDqfp fngmgo sc-kzkBiW lbKhbz\"\n                  data-ig-component=\"Button\"\n                  data-ig-layer=\"components\"\n                  type=\"button\"\n                >\n                  Focus Peaking\n                </button>\n                <span\n                  class=\"sc-hBtRBE gbJijk\"\n                >\n                  <span\n                    style=\"display: inline-flex; cursor: help; opacity: 0.5;\"\n                  >\n                    <svg\n                      aria-hidden=\"true\"\n                      class=\"lucide lucide-circle-question-mark\"\n                      fill=\"none\"\n                      height=\"12\"\n                      stroke=\"currentColor\"\n                      stroke-linecap=\"round\"\n                      stroke-linejoin=\"round\"\n                      stroke-width=\"2\"\n                      viewBox=\"0 0 24 24\"\n                      width=\"12\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <circle\n                        cx=\"12\"\n                        cy=\"12\"\n                        r=\"10\"\n                      />\n                      <path\n                        d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"\n                      />\n                ...\n    at Object.getElementError (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16297:53)\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16724:38\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16701:13\n    at http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:16736:16\n    at Instrumenter.invoke (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2355:20)\n    at Instrumenter.track (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2249:83)\n    at Object.getByText (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2227:151)\n    at play (http://localhost:63315/Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/stories/pages/edge/0.0.5/CaptureControls.stories.tsx?import&browserv=1789950790227:172:25)\n    at async runStory (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/csf-Dxuqt4EI.js?v=6413baa4:7127:6)\n    at async http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/@storybook_addon-vitest_internal_test-utils.js?v=6413baa4:84:184\n\n### pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow\n\nError: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  2 labels\nReceived:\n  1 labels\n    at Proxy.expectWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:15282:49)\n    at Proxy.<anonymous> (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:14835:101)\n    at Proxy.methodWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:10484:23)\n    at Instrumenter.invoke (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2355:20)\n    at Instrumenter.intercept (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2258:138)\n    at Instrumenter.track (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2249:83)\n    at Proxy.toHaveTextContent (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2227:151)\n    at play (http://localhost:63315/Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/stories/pages/edge/0.0.5/CaptureBranches.stories.tsx?import&browserv=1789950790227:169:56)\n    at async runStory (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/csf-Dxuqt4EI.js?v=6413baa4:7127:6)\n    at async http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/@storybook_addon-vitest_internal_test-utils.js?v=6413baa4:84:184\n\n### pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow\n\nError: expect(element).toHaveFocus()\n\nExpected element with focus:\n  <button\n  class=\"sc-kpDqfp fngmgo\"\n  data-ig-component=\"Button\"\n  data-ig-layer=\"components\"\n  style=\"margin-left: auto;\"\n>\n  <svg\n    aria-hidden=\"true\"\n    class=\"lucide lucide-plus\"\n    fill=\"none\"\n    height=\"11\"\n    stroke=\"currentColor\"\n    stroke-linecap=\"round\"\n    stroke-linejoin=\"round\"\n    stroke-width=\"2\"\n    viewBox=\"0 0 24 24\"\n    width=\"11\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <path\n      d=\"M5 12h14\"\n    />\n    <path\n      d=\"M12 5v14\"\n    />\n  </svg>\n  Dataset\n</button>\nReceived element with focus:\n  <body>\n  <div\n    class=\"sb-preparing-story sb-wrapper\"\n  >········\n    <div\n      class=\"sb-loader\"\n    />······\n  </div>·····\n  <div\n    class=\"sb-preparing-docs sb-wrapper\"\n  >········\n    <div\n      class=\"sb-previewBlock\"\n    >············\n      <div\n        class=\"sb-previewBlock_header\"\n      >················\n        <div\n          class=\"sb-previewBlock_icon\"\n        />················\n        <div\n          class=\"sb-previewBlock_icon\"\n        />················\n        <div\n          class=\"sb-previewBlock_icon\"\n        />················\n        <div\n          class=\"sb-previewBlock_icon\"\n        />··············\n      </div>············\n      <div\n        class=\"sb-previewBlock_body\"\n      >················\n        <div\n          class=\"sb-loader\"\n        />··············\n      </div>··········\n    </div>········\n    <table\n      aria-hidden=\"true\"\n      class=\"sb-argstableBlock\"\n    >············\n      <thead\n        class=\"sb-argstableBlock-head\"\n      >················\n        <tr>····················\n          <th … />····················\n          <th … />····················\n          <th … />····················\n          <th … />··················\n        </tr>··············\n      </thead>············\n      <tbody\n        class=\"sb-argstableBlock-body\"\n      >················\n        <tr>····················\n          <td … />····················\n          <td … />····················\n          <td … />····················\n          <td … />··················\n        </tr>················\n        <tr>····················\n          <td … />····················\n          <td … />····················\n          <td … />····················\n          <td … />··················\n        </tr>················\n        <tr>····················\n          <td … />····················\n          <td … />····················\n          <td … />····················\n          <td … />··················\n        </tr>··············\n      </tbody>··········\n    </table>······\n  </div>·····\n  <div\n    class=\"sb-nopreview sb-wrapper\"\n  >········\n    <div\n      class=\"sb-nopreview_main\"\n    >············\n      <h1\n        class=\"sb-nopreview_heading sb-heading\"\n      >\n        No Preview\n      </h1>············\n      <p>\n        Sorry, but you either have no stories or none are selected somehow.\n      </p>············\n      <ul>················\n        <li>\n          Please check the Storybook config.\n        </li>················\n        <li>\n          Try reloading the page.\n        </li>··············\n      </ul>············\n      <p>·········\n      If the problem persists, check the browser console, or the terminal you've run Storybook from.·····\n      </p>··········\n    </div>······\n  </div>·····\n  <div\n    class=\"sb-errordisplay sb-wrapper\"\n  >········\n    <div\n      class=\"sb-errordisplay_main\"\n    >············\n      <h1\n        id=\"error-message\"\n      />············\n      <p>·········\n      The component failed to render properly, likely due to a configuration issue in Storybook.\n      Here are some common causes and how you can address them:·····\n      </p>············\n      <ol>················\n        <li>····················\n          <strong … />\n          : You can use decorators to supply specific\n        contexts or providers, which are sometimes necessary for components to render correctly. For\n        detailed instructions on using decorators, please visit the·········\n          <a … />\n          .·······\n        </li>················\n        <li>····················\n          <strong … />\n          : Verify that Storybook picks up all necessary\n        settings for loaders, plugins, and other relevant parameters. You can find step-by-step\n        guides for configuring·········\n          <a … />\n           or·········\n          <a … />···········\n        with Storybook.·······\n        </li>················\n        <li>····················\n          <strong … />\n          : Your Storybook may require specific\n        environment variables to function as intended. You can set up custom environment variables\n        as outlined in the·········\n          <a … />\n          .·······\n        </li>··············\n      </ol>············\n      <pre\n        class=\"sb-errordisplay_code\"\n      >\n        <code\n          id=\"error-stack\"\n        />\n      </pre>··········\n    </div>······\n  </div>·········\n  <div>\n    <div\n      data-ig-locale=\"ko\"\n      style=\"min-height: 100vh; background: var(--ig-color-bg-canvas); transition: background 160ms;\"\n    >\n      <div\n        class=\"sc-lnrzcT bXytys\"\n      >\n        <div\n          style=\"display: contents;\"\n        >\n          <div … />\n        </div>\n        <div\n          class=\"sc-iqWOwS jRFsBe\"\n        >\n          <p … />\n          <div … />\n        </div>\n        <footer\n          class=\"sc-eVEvVl gHgoWy\"\n        >\n          <div … />\n        </footer>\n      </div>\n    </div>\n  </div>\n</body>\n    at Proxy.expectWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:15282:49)\n    at Proxy.<anonymous> (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:14835:101)\n    at Proxy.methodWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:10484:23)\n    at Instrumenter.invoke (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2355:20)\n    at Instrumenter.intercept (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2258:138)\n    at Instrumenter.track (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2249:83)\n    at Proxy.toHaveFocus (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2227:151)\n    at play (http://localhost:63315/Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/stories/pages/edge/0.0.5/DatasetSelect.stories.tsx?import&browserv=1789950790227:281:27)\n    at async runStory (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/csf-Dxuqt4EI.js?v=6413baa4:7127:6)\n    at async http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/@storybook_addon-vitest_internal_test-utils.js?v=6413baa4:84:184\n\n## Accessibility Violations\n\n### pages-edge-0-0-5-capturebranches--derived-unavailable - color-contrast\n\nEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 3.42 (foreground color: #edf2f7, background color: #487ee9, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <button aria-pressed=\"true\" class=\"sc-kpDqfp fngmgo sc-fHsjtB jUXQEA\" data-ig-component=\"Button\" data-ig-layer=\"components\">Originals</button>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-unavailable&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.1\n\n### pages-edge-0-0-5-imagesworkflows--selection-delete-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--selection-delete-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-imagesworkflows--group-selection-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--group-selection-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-imagesworkflows--filter-date-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--filter-date-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-imagesworkflows--inspector-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--inspector-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-settingsworkflows--device-draft - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":r8:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--device-draft&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-settingsworkflows--force-ip - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":re:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--force-ip&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--capture - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--images - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-settingsworkflows--logs - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":rl:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--logs&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-settingsworkflows--lighting-ps - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":rr:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--statics - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--capturing - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div role=\"region\" aria-label=\"Workspace panels\" tabindex=\"-1\" class=\"sc-lkulit ivHrpS\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1\n\n### pages-edge-0-0-5-settingsworkflows--cache-cleanup - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":r1c:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--cache-cleanup&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--sequence-failed - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--log-filter-open - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--offline - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-settingsworkflows--field-test - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":r1i:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--field-test&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--settings - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--settings-draft-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-settingsworkflows--about-update - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":r1n:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">System Settings</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--about-update&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--lighting-draft-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--experiments-draft-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--mock-message-failed - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-settingsworkflows--system-cleanup - heading-order\n\nEnsure the order of headings is semantically correct\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  Heading order invalid\n  **Element**: <h3 id=\":r1v:\" class=\"sc-gsFSXt frMKje\" style=\"font-size: var(--ig-font-size-xl);\">Mock System Monitor</h3>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--system-cleanup&addonPanel=storybook/a11y/panel&a11ySelection=violations.heading-order.1\n\n### pages-edge-0-0-5-workspace--sequence-cancel-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--sequence-escape-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--sequence-retry-workflow - landmark-complementary-is-top-level\n\nEnsure the complementary landmark or aside is at top level\n\n#### Affected Elements\n- **Impact**: moderate\n  **Message**: Fix any of the following:\n  The null landmark is contained in another landmark.\n  **Element**: <aside class=\"sc-eCzpMI fMnaGm\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.landmark-complementary-is-top-level.1\n\n### pages-edge-0-0-5-workspace--capturing-keyboard-lock - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div role=\"region\" aria-label=\"Workspace panels\" tabindex=\"-1\" class=\"sc-lkulit ivHrpS\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1"
+      }
+    ]
+  }
+}

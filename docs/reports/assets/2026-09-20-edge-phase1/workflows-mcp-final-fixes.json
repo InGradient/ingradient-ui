@@ -1,0 +1,50 @@
+{
+  "ids": [
+    "components-data-display-selectablelistitem--independent-action",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow"
+  ],
+  "previews": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Components/Data Display/SelectableListItem",
+            "name": "Independent Action",
+            "previewUrl": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+          }
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "ids": [
+        "components-data-display-selectablelistitem--independent-action",
+        "pages-edge-0-0-5-workspace--settings-draft-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- components-data-display-selectablelistitem--independent-action\n- pages-edge-0-0-5-workspace--settings-draft-workflow\n\n## Accessibility Violations\n\n### pages-edge-0-0-5-workspace--settings-draft-workflow - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div class=\"sc-iSrTKH jrsUbd\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "ids": [
+    "pages-edge-0-0-5-datasetselect--offline",
+    "pages-edge-0-0-5-datasetselect--online",
+    "pages-edge-0-0-5-datasetselect--loading",
+    "pages-edge-0-0-5-datasetselect--empty",
+    "pages-edge-0-0-5-datasetselect--fetch-error",
+    "pages-edge-0-0-5-datasetselect--session-expired",
+    "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+    "pages-edge-0-0-5-login--offline",
+    "pages-edge-0-0-5-login--offline-no-package",
+    "pages-edge-0-0-5-login--online-form",
+    "pages-edge-0-0-5-login--error",
+    "pages-edge-0-0-5-workspace--capture",
+    "pages-edge-0-0-5-workspace--images",
+    "pages-edge-0-0-5-workspace--statics",
+    "pages-edge-0-0-5-workspace--setup",
+    "pages-edge-0-0-5-workspace--capturing",
+    "pages-edge-0-0-5-workspace--sequence-failed",
+    "pages-edge-0-0-5-workspace--log-filter-open",
+    "pages-edge-0-0-5-workspace--offline",
+    "pages-edge-0-0-5-workspace--settings",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--mock-message-failed",
+    "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+    "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+    "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+  ],
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+      },
+      {
+        "type": "text",
+        "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+      }
+    ],
+    "structuredContent": {
+      "stories": [
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Online",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Loading",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Empty",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Fetch Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Escape Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/DatasetSelect",
+          "name": "Session Expired Confirm Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Offline No Package",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Online Form",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Login",
+          "name": "Error",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capture",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Images",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Statics",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Setup",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capturing",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Log Filter Open",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Offline",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Settings",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Settings Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Lighting Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Experiments Draft Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Mock Message Failed",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Cancel Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Escape Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Sequence Retry Workflow",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+        },
+        {
+          "title": "Pages/Edge/0.0.5/Workspace",
+          "name": "Capturing Keyboard Lock",
+          "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "## Passing Stories\n\n- pages-edge-0-0-5-login--offline\n- pages-edge-0-0-5-login--offline-no-package\n- pages-edge-0-0-5-login--online-form\n- pages-edge-0-0-5-login--error\n- pages-edge-0-0-5-datasetselect--offline\n- pages-edge-0-0-5-datasetselect--online\n- pages-edge-0-0-5-datasetselect--loading\n- pages-edge-0-0-5-datasetselect--empty\n- pages-edge-0-0-5-workspace--capture\n- pages-edge-0-0-5-workspace--images\n- pages-edge-0-0-5-datasetselect--fetch-error\n- pages-edge-0-0-5-datasetselect--session-expired\n- pages-edge-0-0-5-datasetselect--session-expired-escape-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow\n- pages-edge-0-0-5-workspace--statics\n- pages-edge-0-0-5-workspace--setup\n- pages-edge-0-0-5-workspace--capturing\n- pages-edge-0-0-5-workspace--sequence-failed\n- pages-edge-0-0-5-workspace--log-filter-open\n- pages-edge-0-0-5-workspace--offline\n- pages-edge-0-0-5-workspace--settings\n- pages-edge-0-0-5-workspace--settings-draft-workflow\n- pages-edge-0-0-5-workspace--lighting-draft-workflow\n- pages-edge-0-0-5-workspace--experiments-draft-workflow\n- pages-edge-0-0-5-workspace--mock-message-failed\n- pages-edge-0-0-5-workspace--sequence-cancel-workflow\n- pages-edge-0-0-5-workspace--sequence-escape-workflow\n- pages-edge-0-0-5-workspace--sequence-retry-workflow\n- pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+      }
+    ]
+  }
+}

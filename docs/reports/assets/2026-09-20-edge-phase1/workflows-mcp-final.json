@@ -1,0 +1,317 @@
+{
+  "ids": [
+    "components-data-display-selectablelistitem--independent-action",
+    "patterns-forms-settingsrow--named-switch",
+    "components-overlays-twocolumndialog--keyboard-containment",
+    "components-navigation-verticaltabs--linked-panels",
+    "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--mock-message-failed",
+    "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+    "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+    "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+    "pages-edge-0-0-5-workspace--settings",
+    "edge-pages-settings-camerasettingsdialog--first-tab",
+    "edge-pages-settings-camerasettingsdialog--experiments",
+    "platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+  ],
+  "previews": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/patterns-forms-settingsrow--named-switch"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--keyboard-containment"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--linked-panels"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Components/Data Display/SelectableListItem",
+            "name": "Independent Action",
+            "previewUrl": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+          },
+          {
+            "title": "Patterns/Forms/SettingsRow",
+            "name": "Named Switch",
+            "previewUrl": "http://localhost:6016/?path=/story/patterns-forms-settingsrow--named-switch"
+          },
+          {
+            "title": "Components/Overlays/TwoColumnDialog",
+            "name": "Keyboard Containment",
+            "previewUrl": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--keyboard-containment"
+          },
+          {
+            "title": "Components/Navigation/VerticalTabs",
+            "name": "Linked Panels",
+            "previewUrl": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--linked-panels"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Escape Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Confirm Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Lighting Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Experiments Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Mock Message Failed",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Escape Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Retry Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Capturing Keyboard Lock",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--first-tab"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--experiments"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Edge Pages/Settings/CameraSettingsDialog",
+            "name": "First Tab",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--first-tab"
+          },
+          {
+            "title": "Edge Pages/Settings/CameraSettingsDialog",
+            "name": "Experiments",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--experiments"
+          },
+          {
+            "title": "Platform Pages/Settings Modal/General/SettingsGeneralTab",
+            "name": "Interactive",
+            "previewUrl": "http://localhost:6016/?path=/story/platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+          }
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "ids": [
+        "components-data-display-selectablelistitem--independent-action",
+        "patterns-forms-settingsrow--named-switch",
+        "components-overlays-twocolumndialog--keyboard-containment",
+        "components-navigation-verticaltabs--linked-panels"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- components-overlays-twocolumndialog--keyboard-containment\n- components-navigation-verticaltabs--linked-panels\n- components-data-display-selectablelistitem--independent-action\n- patterns-forms-settingsrow--named-switch"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+        "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+        "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+        "pages-edge-0-0-5-workspace--settings-draft-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-datasetselect--session-expired-escape-workflow\n- pages-edge-0-0-5-workspace--settings-draft-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow\n\n## Accessibility Violations\n\n### pages-edge-0-0-5-datasetselect--session-expired-escape-workflow - color-contrast\n\nEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.1\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.2\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.3\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.4\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.5\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.6\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.7\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.8\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.9\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.10\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #4d88ff, background color: #1d2b48, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.11\n\n### pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow - color-contrast\n\nEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.1\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.2\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.3\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.4\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.5\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.6\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.7\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.8\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.9\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.10\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #4d88ff, background color: #1d2b48, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.11\n\n### pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow - color-contrast\n\nEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.1\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.2\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.3\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.4\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.5\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.6\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.7\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.8\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.9\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #4d88ff, background color: #202b40, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.10\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #4d88ff, background color: #1d2b48, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1\n  **Element**: <span class=\"sc-eONNyr hyVZqw\">OD</span>\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.color-contrast.11"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+        "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+        "pages-edge-0-0-5-workspace--mock-message-failed",
+        "pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--lighting-draft-workflow\n- pages-edge-0-0-5-workspace--experiments-draft-workflow\n- pages-edge-0-0-5-workspace--mock-message-failed\n- pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+        "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+        "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+        "pages-edge-0-0-5-workspace--settings"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--settings\n- pages-edge-0-0-5-workspace--sequence-escape-workflow\n- pages-edge-0-0-5-workspace--sequence-retry-workflow\n- pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "edge-pages-settings-camerasettingsdialog--first-tab",
+        "edge-pages-settings-camerasettingsdialog--experiments",
+        "platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- platform-pages-settings-modal-general-settingsgeneraltab--interactive\n- edge-pages-settings-camerasettingsdialog--experiments\n- edge-pages-settings-camerasettingsdialog--first-tab"
+          }
+        ]
+      }
+    }
+  ]
+}

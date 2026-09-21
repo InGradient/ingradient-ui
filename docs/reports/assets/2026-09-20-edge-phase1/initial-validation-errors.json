@@ -1,0 +1,21 @@
+{
+  "mcp": {
+    "previewStories": "22 URLs returned successfully",
+    "runStoryTests": "runner error, not accessibility result",
+    "serverError": "Failed to start test runner process; Aborting test runner process because it took longer than 30 seconds to start.",
+    "clientError": "TypeError: fetch failed; UND_ERR_SOCKET: other side closed",
+    "note": "This attempt terminated the worktree Storybook. It did not prove any story or accessibility test passed."
+  },
+  "browserAttempts": [
+    "route-audit.json: first run failed all 28 contracts during concurrent Story indexing errors and subsequent MCP server termination. Initial Login readiness text was also incorrect.",
+    "final/route-audit.json: second run passed 24/28 contracts. Dataset title selector was absent; SessionExpired and SequenceFailed use in-root dialogs, not body portals. Corrected selectors and limited body-portal assertion to Settings. These were probe errors, not product failures.",
+    "One subsequent run was stopped after discovering Storybook currentRender.phase stays afterEach, not completed. Final readiness checks matching render id, notYetRendered=false, no errored phase, visible content, and no visible Storybook error.",
+    "verified/route-audit.json: corrected probe execution, including strict a11y gate."
+  ],
+  "unitAndTypes": [
+    "Initial focused preset suite: 28 tests passed. TypeScript then reported missing draft/onMockAction props in concurrently edited Settings files; no phase-1 resolver/type errors.",
+    "Initial unrestricted full unit run: 65 files passed, 5 failed; 348 tests passed, 5 failed, with concurrent editing and high worker load.",
+    "Bounded-worker rerun: npm run test:unit -- --maxWorkers=2: 76 files, 363 tests passed; npx tsc --noEmit then exited 0."
+  ],
+  "scopeWarning": "Other agents concurrently changed shared accessibility and Edge runtime/story files in this same worktree. Final browser evidence includes their changes; it is NOT a preset-only isolated visual diff. The phase-1 agent edited only the preset/resolver/tests/probes/handoff files listed in its final report."
+}

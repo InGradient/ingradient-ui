@@ -1,0 +1,159 @@
+{
+  "recordedAt": "2026-09-20T23:47:23.104Z",
+  "storyCount": 19,
+  "newSharedWorkflows": 4,
+  "newEdgeWorkflows": 11,
+  "regressionConsumers": 4,
+  "passingInteractionStories": [
+    "components-overlays-twocolumndialog--keyboard-containment",
+    "components-navigation-verticaltabs--linked-panels",
+    "components-data-display-selectablelistitem--independent-action",
+    "patterns-forms-settingsrow--named-switch",
+    "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--mock-message-failed",
+    "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+    "pages-edge-0-0-5-workspace--settings",
+    "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+    "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+    "platform-pages-settings-modal-general-settingsgeneraltab--interactive",
+    "edge-pages-settings-camerasettingsdialog--experiments",
+    "edge-pages-settings-camerasettingsdialog--first-tab"
+  ],
+  "failingInteractionStories": [],
+  "accessibility": {
+    "requested": true,
+    "globalMode": "todo",
+    "overallPass": false,
+    "finalViolations": [
+      {
+        "storyId": "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+        "rule": "color-contrast"
+      },
+      {
+        "storyId": "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+        "rule": "color-contrast"
+      },
+      {
+        "storyId": "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+        "rule": "color-contrast"
+      }
+    ],
+    "note": "All interaction runs pass, not an all-a11y-green claim. Final DatasetSelect workflows retain OD badge contrast 4.21–4.24:1. Initial runs retain class-chip contrast and Workspace scrollable-region-focusable findings; other agents/parent concurrently changed class-chip and log-region sources before final run. This agent did not edit those files or disable any rule."
+  },
+  "previewUrls": [
+    {
+      "title": "Components/Data Display/SelectableListItem",
+      "name": "Independent Action",
+      "url": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+    },
+    {
+      "title": "Patterns/Forms/SettingsRow",
+      "name": "Named Switch",
+      "url": "http://localhost:6016/?path=/story/patterns-forms-settingsrow--named-switch"
+    },
+    {
+      "title": "Components/Overlays/TwoColumnDialog",
+      "name": "Keyboard Containment",
+      "url": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--keyboard-containment"
+    },
+    {
+      "title": "Components/Navigation/VerticalTabs",
+      "name": "Linked Panels",
+      "url": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--linked-panels"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/DatasetSelect",
+      "name": "Session Expired Escape Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/DatasetSelect",
+      "name": "Session Expired Cancel Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/DatasetSelect",
+      "name": "Session Expired Confirm Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Settings Draft Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Lighting Draft Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Experiments Draft Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Mock Message Failed",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Sequence Cancel Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Sequence Escape Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Sequence Retry Workflow",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Capturing Keyboard Lock",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+    },
+    {
+      "title": "Pages/Edge/0.0.5/Workspace",
+      "name": "Settings",
+      "url": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+    },
+    {
+      "title": "Edge Pages/Settings/CameraSettingsDialog",
+      "name": "First Tab",
+      "url": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--first-tab"
+    },
+    {
+      "title": "Edge Pages/Settings/CameraSettingsDialog",
+      "name": "Experiments",
+      "url": "http://localhost:6016/?path=/story/edge-pages-settings-camerasettingsdialog--experiments"
+    },
+    {
+      "title": "Platform Pages/Settings Modal/General/SettingsGeneralTab",
+      "name": "Interactive",
+      "url": "http://localhost:6016/?path=/story/platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+    }
+  ],
+  "browserEvidence": "workflows-browser-final.json",
+  "initialEvidence": [
+    "workflows-mcp.json",
+    "workflows-mcp-retry.json",
+    "workflows-mcp-final-fixes.json",
+    "workflows-browser.json"
+  ],
+  "fixes": [
+    "Settings gear explicit accessible name",
+    "Settings close assertion scoped to dialog close button, not window titlebar Close",
+    "Split selection token focus-visible outline and className/style on outer surface"
+  ],
+  "scopeNote": "SettingsRow native Switch/Checkbox forwarding reviewed; Platform interactive regression passed. Arbitrary composite wrappers must use asLabel=false and own naming per documented contract."
+}

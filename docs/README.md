@@ -36,6 +36,7 @@
 
 날짜별 작업 리포트는 완료된 변경의 검증·전달 상태를 보존하는 historical snapshot이다. 현재 설계 authority는 코드와 위의 active docs를 따른다.
 
+- [2026-09-20 Edge 0.0.5 레이어 감사·구현·검증](./reports/2026-09-20-edge-layer-audit-and-plan.ko.md)
 - [2026-08-19 Platform 품질·접근성 개선](./reports/2026-08-19-platform-quality-accessibility.md)
 
 ## Legacy Docs

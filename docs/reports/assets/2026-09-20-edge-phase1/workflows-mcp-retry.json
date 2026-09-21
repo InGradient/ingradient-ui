@@ -1,0 +1,103 @@
+{
+  "ids": [
+    "components-data-display-selectablelistitem--independent-action",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+  ],
+  "previews": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Components/Data Display/SelectableListItem",
+            "name": "Independent Action",
+            "previewUrl": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Lighting Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Experiments Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Capturing Keyboard Lock",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          }
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "ids": [
+        "components-data-display-selectablelistitem--independent-action",
+        "pages-edge-0-0-5-workspace--settings-draft-workflow",
+        "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+        "pages-edge-0-0-5-workspace--experiments-draft-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- components-data-display-selectablelistitem--independent-action\n- pages-edge-0-0-5-workspace--lighting-draft-workflow\n- pages-edge-0-0-5-workspace--experiments-draft-workflow\n\n## Failing Stories\n\n### pages-edge-0-0-5-workspace--settings-draft-workflow\n\nError: expect(element).not.toBeInTheDocument()\n\nexpected document not to contain element, found <div\n  aria-labelledby=\":r9:\"\n  aria-modal=\"true\"\n  class=\"sc-dQEtJA gxGugF\"\n  role=\"dialog\"\n  tabindex=\"-1\"\n>\n  <div\n    class=\"sc-imwsjZ hQTNNO\"\n  >\n    <h3\n      class=\"sc-gsFSXt frMKje\"\n      id=\":r9:\"\n      style=\"font-size: var(--ig-font-size-xl);\"\n    >\n      System Settings\n    </h3>\n    <button\n      aria-label=\"Close dialog\"\n      class=\"sc-kpDqfp fCIWwx sc-bkSUFJ dCDeLl\"\n      data-ig-component=\"IconButton\"\n      data-ig-layer=\"components\"\n      title=\"Close\"\n      type=\"button\"\n    >\n      <svg\n        aria-hidden=\"true\"\n        class=\"lucide lucide-x\"\n        fill=\"none\"\n        height=\"16\"\n        stroke=\"currentColor\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        stroke-width=\"2\"\n        viewBox=\"0 0 24 24\"\n        width=\"16\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M18 6 6 18\"\n        />\n        <path\n          d=\"m6 6 12 12\"\n        />\n      </svg>\n    </button>\n  </div>\n  <div\n    class=\"sc-kCMKrW jpMrsX\"\n  >\n    <div\n      class=\"sc-dJiZtz kGIEWe\"\n    >\n      <div\n        aria-orientation=\"vertical\"\n        class=\"sc-Srznz YIsJH\"\n        role=\"tablist\"\n      >\n        <div\n          class=\"sc-czkgLO NQDNm\"\n        />\n        <button\n          aria-controls=\":r8:-general-panel\"\n          aria-selected=\"true\"\n          class=\"sc-dycYrq fnIxmk\"\n          id=\":r8:-general\"\n          role=\"tab\"\n          tabindex=\"0\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-connection-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-connection\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-camera-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-camera\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-lighting-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-lighting\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-server-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-server\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-data-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-data\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-logs-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-logs\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-experiments-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-experiments\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-fieldtest-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-fieldtest\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n        <button\n          aria-controls=\":r8:-about-panel\"\n          aria-selected=\"false\"\n          class=\"sc-dycYrq cEHOMj\"\n          id=\":r8:-about\"\n          role=\"tab\"\n          tabindex=\"-1\"\n          type=\"button\"\n        >\n          <span … />\n        </button>\n      </div>\n    </div>\n    <div\n      class=\"sc-epALIQ fyGftw\"\n    >\n      <div\n        aria-labelledby=\":r8:-general\"\n        id=\":r8:-general-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      >\n        <div\n          class=\"sc-gEvEes jtllVl\"\n        >\n          <div … />\n          <span … />\n          <span … />\n          <div … />\n          <div … />\n          <div … />\n          <div … />\n          <div … />\n          <span … />\n        </div>\n        <p\n          role=\"status\"\n        >\n          Mock message test: success; no OS notification was sent.\n        </p>\n      </div>\n      <div\n        aria-labelledby=\":r8:-connection\"\n        hidden=\"\"\n        id=\":r8:-connection-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-camera\"\n        hidden=\"\"\n        id=\":r8:-camera-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-lighting\"\n        hidden=\"\"\n        id=\":r8:-lighting-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-server\"\n        hidden=\"\"\n        id=\":r8:-server-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-data\"\n        hidden=\"\"\n        id=\":r8:-data-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-logs\"\n        hidden=\"\"\n        id=\":r8:-logs-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-experiments\"\n        hidden=\"\"\n        id=\":r8:-experiments-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-fieldtest\"\n        hidden=\"\"\n        id=\":r8:-fieldtest-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n      <div\n        aria-labelledby=\":r8:-about\"\n        hidden=\"\"\n        id=\":r8:-about-panel\"\n        role=\"tabpanel\"\n        tabindex=\"0\"\n      />\n    </div>\n  </div>\n</div> instead\n    at Proxy.expectWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:15282:49)\n    at Proxy.<anonymous> (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:14835:101)\n    at Proxy.methodWrapper (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:10484:23)\n    at Instrumenter.invoke (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2355:20)\n    at Instrumenter.intercept (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2258:138)\n    at Instrumenter.track (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2249:83)\n    at Proxy.toBeInTheDocument (http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/test-B2Sth0tT.js?v=6413baa4:2227:151)\n    at http://localhost:63315/Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/stories/pages/edge/0.0.5/Workspace.stories.tsx?import&browserv=1789947825158:152:52\n    at async http://localhost:63315/node_modules/.cache/storybook/10.3.5/8a8333f5d7c787aaf66fcd6f81953f84dca0dc3d6f5f79a6d980893ed3ed6262/sb-vitest/deps/csf-Dxuqt4EI.js?v=6413baa4:6921:3\n    at async http://localhost:63315/node_modules/storybook/dist/_browser-chunks/chunk-SZQXB3JV.js?v=6413baa4:1068:5\n\n## Accessibility Violations\n\n### pages-edge-0-0-5-workspace--lighting-draft-workflow - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div class=\"sc-iSrTKH jrsUbd\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1\n\n### pages-edge-0-0-5-workspace--experiments-draft-workflow - scrollable-region-focusable\n\nEnsure elements that have scrollable content are accessible by keyboard\n\n#### Affected Elements\n- **Impact**: serious\n  **Message**: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable\n  **Element**: <div class=\"sc-iSrTKH jrsUbd\">\n  **Inspect**: http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow&addonPanel=storybook/a11y/panel&a11ySelection=violations.scrollable-region-focusable.1"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "scope": "Final frozen-source integration validation in edge-verification-contracts; package/packed-consumer remains parent-owned.",
+  "parentFollowUp": {
+    "status": "completed after validator handoff; supersedes the package-pending limitation below",
+    "packageBuild": "passed",
+    "exports": "passed",
+    "bundleKB": 509.3,
+    "bundleLimitKB": 550,
+    "smokeBuild": "passed",
+    "packedConsumerBuild": "passed against freshly rebuilt tarballs",
+    "packedConsumerRuntime": "passed: public preset, controlled tab callback, Settings slot, Escape, opener restoration",
+    "evidence": "packed-workspace.json",
+    "previewIndex": "preview-links.md",
+    "reportLocalLinksChecked": 100,
+    "brokenReportLinks": 0
+  },
+  "completedAt": "2026-09-21T01:44:31.539Z",
+  "results": {
+    "officialMcp": { "stories": 77, "edge005Stories": 57, "sharedAndConsumerRegressions": 20, "passing": 77, "reportedAccessibilityViolations": 0, "evidence": "final-mcp-after-repairs.json" },
+    "unit": { "files": 97, "tests": 458, "passed": 458, "command": "npm run test:unit -- --maxWorkers=2", "log": "/tmp/edge-accepted-unit.log" },
+    "storybook": { "files": 298, "tests": 889, "passed": 889, "command": "npm run test-storybook -- --config /tmp/edge-bounded-vitest.config.mjs --maxWorkers=2", "log": "/tmp/edge-accepted-storybook.log", "note": "Temporary wrapper retains every original project/test/rule and sets maxWorkers=2 per project. Vitest browser pooling did not honor the root-only CLI limit. Snapshot of wrapper: bounded-vitest.config.mjs." },
+    "freshStaticBuild": { "passed": true, "command": "npm run build:storybook", "log": "/tmp/edge-accepted-build-storybook.log" },
+    "staticContract": { "tests": 19, "passed": 19, "command": "npx playwright test -c playwright.storybook.config.ts tests/visual/edge-contract.spec.mjs --workers=2", "log": "/tmp/edge-accepted-static-contract.log", "note": "No-baseline render/preset/token checks, not pixel fidelity approval." },
+    "lint": { "errors": 0, "warnings": 4, "command": "npm run lint", "log": "/tmp/edge-accepted-lint.log" },
+    "types": { "passed": true, "command": "npx tsc --noEmit", "log": "/tmp/edge-accepted-types.log" },
+    "style": { "passed": true, "command": "npm run lint:style", "log": "/tmp/edge-accepted-style.log" },
+    "rawLiterals": { "passed": true, "scannerTests": 6, "command": "npm run check:style-literals", "log": "/tmp/edge-accepted-literals.log" },
+    "docs": { "passed": true, "command": "npm run check:doc-coverage", "log": "/tmp/edge-accepted-docs.log" },
+    "diff": { "passed": true, "command": "git diff --check", "log": "/tmp/edge-accepted-diff.log" },
+    "probeUnit": { "passed": 12, "command": "node --test tests/probes/edge-contract.test.mjs", "log": "/tmp/edge-final-probe-unit.log" }
+  },
+  "browserEvidence": {
+    "stateCaptures": 26,
+    "widths": [1440, 768],
+    "height": 1000,
+    "stateEvidence": "browser-static-final.json",
+    "pageErrors": 0,
+    "additionalFullscreenCaptures": 2,
+    "nativeEvidence": "native-geometry-fullscreen-final-static.json",
+    "narrowGeometry": { "viewportWidth": 768, "panelsScrollWidth": 1248, "initialScrollLeft": 290, "centerLeft": 14, "centerWidth": 640, "centerRight": 654, "fullscreenWidth": 768, "fullscreenHeight": 1000, "exitScrollLeft": 290 },
+    "asserted": "Native Tab reaches both log and pattern side panels with focused actions fully visible. Fullscreen entry/exit works at both widths; exit restores the whole center. This is desktop horizontal overflow, not a mobile reflow."
+  },
+  "strictDefaultAxe": {
+    "exitCode": 2,
+    "scenarios": 28,
+    "contractPassed": 28,
+    "runnerErrors": 0,
+    "violationScans": 28,
+    "wcagTaggedViolations": 0,
+    "rules": ["landmark-one-main", "region", "page-has-heading-one"],
+    "incompleteScans": 18,
+    "evidence": "default-axe-final/route-audit.json",
+    "command": "STORYBOOK_URL=http://127.0.0.1:6017 OUTPUT_DIR=/Users/homebodify/Projects/ingradient-ui/docs/reports/assets/2026-09-20-edge-completion/default-axe-final node tests/probes/edge.mjs --a11y-gate",
+    "note": "This broader default audit is NOT green. Findings and incomplete checks are retained; do not conflate it with the Storybook gate."
+  },
+  "filesModifiedByValidator": [
+    { "path": "packages/edge-pages/src/app-shell/MainLayoutView.tsx", "change": "Fully reveal keyboard-focused side actions; preserve pointer targets between down/up so narrow fullscreen clicks are not swallowed; restore central viewport after fullscreen exit." },
+    { "path": "packages/edge-pages/src/app-shell/MainLayoutView.test.tsx", "change": "Extend scroll focus assertions and add pointer activation/fullscreen restoration regression." },
+    { "path": "packages/edge-pages/src/dataset-modals/ExportModalView.tsx", "change": "Remove extra opacity from already-muted image-count text; legacy export contrast regression repaired." },
+    { "path": "stories/pages/edge/0.0.5/Workspace.stories.tsx", "change": "Images session workflow clicks the visible Select all label rather than pointer-disabled hidden input; checked/persistence assertions preserved." },
+    { "path": "src/components/overlays/two-column-dialog.stories.tsx", "change": "Review content uses correctly ordered h3 instead of h4, retaining explicit semantic font token." }
+  ],
+  "acceptanceChecklist": "acceptance-checklist.json",
+  "limitations": [
+    "Parent package build and packed-consumer logs predate package repairs: build log 21:50:55, packed log 21:51:27; last MainLayout change 22:32:21 local. Parent must rerun its owned package/export/smoke/packed checks against final source.",
+    "Official get-documentation requests for MainLayout and TwoColumnDialog returned no response within the bounded waits; interruption records are retained. Official instructions/documentation inventory/previews/tests did succeed.",
+    "No real camera, network, OS, files, authentication or backend persistence validated.",
+    "No Linux snapshots generated/updated; no pixel-fidelity, screen-reader, exhaustive mode/permission/gesture approval.",
+    "No commits, pushes, dependencies, tokens or baseline changes by validator."
+  ],
+  "runtimeCleanup": "Temporary static server on 6017 stopped. Worktree Storybook on 6016 remains responding for all official review URLs; primary 6015 was untouched."
+}

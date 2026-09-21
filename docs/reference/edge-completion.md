@@ -1,5 +1,7 @@
 # Edge 0.0.5 completion contract
 
+> Integration update (2026-09-21): implementation committed as `4a85c21` and fast-forwarded into local `main`. The worktree is retained; no remote push was performed. References to uncommitted work below describe the validation checkpoint before integration.
+
 This supersedes the unfinished inventory at the end of `edge-phase1-verification.md`. Work remains on `letta/edge-verification-contracts-d314f6bf`; no commit, push, dependency upgrade, real device call or snapshot approval is implied.
 
 ## Reachability and ownership

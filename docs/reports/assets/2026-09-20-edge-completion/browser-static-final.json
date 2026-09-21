@@ -1,0 +1,1146 @@
+[
+  {
+    "name": "capture",
+    "id": "pages-edge-0-0-5-workspace--capture",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--capture&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "capture-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "setup",
+    "id": "pages-edge-0-0-5-workspace--setup",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--setup&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "setup-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "images",
+    "id": "pages-edge-0-0-5-workspace--images",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--images&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "images-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "statics",
+    "id": "pages-edge-0-0-5-workspace--statics",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--statics&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "statics-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "settings-general",
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--settings&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 240,
+            "y": 16,
+            "width": 960,
+            "height": 968,
+            "top": 16,
+            "right": 1200,
+            "bottom": 984,
+            "left": 240
+          }
+        }
+      ]
+    },
+    "screenshot": "settings-general-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "dataset-menu",
+    "id": "pages-edge-0-0-5-datasetselect--offline",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-datasetselect--offline&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": []
+    },
+    "screenshot": "dataset-menu-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "lighting-ps",
+    "id": "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--lighting-ps&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 240,
+            "y": 16,
+            "width": 960,
+            "height": 968,
+            "top": 16,
+            "right": 1200,
+            "bottom": 984,
+            "left": 240
+          }
+        }
+      ]
+    },
+    "screenshot": "lighting-ps-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "system",
+    "id": "pages-edge-0-0-5-settingsworkflows--system-cleanup",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--system-cleanup&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Mock System Monitor",
+          "bounds": {
+            "x": 360,
+            "y": 243.046875,
+            "width": 720,
+            "height": 513.90625,
+            "top": 243.046875,
+            "right": 1080,
+            "bottom": 756.953125,
+            "left": 360
+          }
+        }
+      ]
+    },
+    "screenshot": "system-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "account",
+    "id": "pages-edge-0-0-5-settingsworkflows--account-language",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--account-language&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Past Accounts",
+          "bounds": {
+            "x": 480,
+            "y": 359.515625,
+            "width": 480,
+            "height": 280.96875,
+            "top": 359.515625,
+            "right": 960,
+            "bottom": 640.484375,
+            "left": 480
+          }
+        }
+      ]
+    },
+    "screenshot": "account-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "force-ip",
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--settings&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 240,
+            "y": 16,
+            "width": 960,
+            "height": 968,
+            "top": 16,
+            "right": 1200,
+            "bottom": 984,
+            "left": 240
+          }
+        },
+        {
+          "name": "Force IP",
+          "bounds": {
+            "x": 510,
+            "y": 349.609375,
+            "width": 420,
+            "height": 300.78125,
+            "top": 349.609375,
+            "right": 930,
+            "bottom": 650.390625,
+            "left": 510
+          }
+        }
+      ]
+    },
+    "screenshot": "force-ip-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "export",
+    "id": "pages-edge-0-0-5-datasetselect--export-retry-workflow",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-datasetselect--export-retry-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Export mock dataset",
+          "bounds": {
+            "x": 480,
+            "y": 373,
+            "width": 480,
+            "height": 253.984375,
+            "top": 373,
+            "right": 960,
+            "bottom": 626.984375,
+            "left": 480
+          }
+        }
+      ]
+    },
+    "screenshot": "export-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "inspector",
+    "id": "pages-edge-0-0-5-imagesworkflows--inspector-workflow",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-imagesworkflows--inspector-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [
+        {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollLeft": 0,
+          "children": [
+            {
+              "x": 14,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 294,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 304,
+              "y": 90,
+              "width": 832,
+              "height": 872,
+              "top": 90,
+              "right": 1136,
+              "bottom": 962,
+              "left": 304
+            },
+            {
+              "x": 1146,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 1426,
+              "bottom": 962,
+              "left": 1146
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "2026-05-20_capture_3.png",
+          "bounds": {
+            "x": 360,
+            "y": 75,
+            "width": 720,
+            "height": 850,
+            "top": 75,
+            "right": 1080,
+            "bottom": 925,
+            "left": 360
+          }
+        }
+      ]
+    },
+    "screenshot": "inspector-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "canvas",
+    "id": "pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow",
+    "width": 1440,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "panels": [],
+      "dialogs": []
+    },
+    "screenshot": "canvas-1440.png",
+    "status": "captured"
+  },
+  {
+    "name": "capture",
+    "id": "pages-edge-0-0-5-workspace--capture",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--capture&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "capture-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "setup",
+    "id": "pages-edge-0-0-5-workspace--setup",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--setup&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "setup-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "images",
+    "id": "pages-edge-0-0-5-workspace--images",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--images&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "images-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "statics",
+    "id": "pages-edge-0-0-5-workspace--statics",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--statics&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": []
+    },
+    "screenshot": "statics-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "settings-general",
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--settings&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 30.71875,
+            "y": 16,
+            "width": 706.546875,
+            "height": 968,
+            "top": 16,
+            "right": 737.265625,
+            "bottom": 984,
+            "left": 30.71875
+          }
+        }
+      ]
+    },
+    "screenshot": "settings-general-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "dataset-menu",
+    "id": "pages-edge-0-0-5-datasetselect--offline",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-datasetselect--offline&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": []
+    },
+    "screenshot": "dataset-menu-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "lighting-ps",
+    "id": "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--lighting-ps&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 30.71875,
+            "y": 16,
+            "width": 706.546875,
+            "height": 968,
+            "top": 16,
+            "right": 737.265625,
+            "bottom": 984,
+            "left": 30.71875
+          }
+        }
+      ]
+    },
+    "screenshot": "lighting-ps-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "system",
+    "id": "pages-edge-0-0-5-settingsworkflows--system-cleanup",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--system-cleanup&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Mock System Monitor",
+          "bounds": {
+            "x": 30.71875,
+            "y": 243.046875,
+            "width": 706.546875,
+            "height": 513.90625,
+            "top": 243.046875,
+            "right": 737.265625,
+            "bottom": 756.953125,
+            "left": 30.71875
+          }
+        }
+      ]
+    },
+    "screenshot": "system-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "account",
+    "id": "pages-edge-0-0-5-settingsworkflows--account-language",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-settingsworkflows--account-language&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Past Accounts",
+          "bounds": {
+            "x": 144,
+            "y": 359.515625,
+            "width": 480,
+            "height": 280.96875,
+            "top": 359.515625,
+            "right": 624,
+            "bottom": 640.484375,
+            "left": 144
+          }
+        }
+      ]
+    },
+    "screenshot": "account-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "force-ip",
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-workspace--settings&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "System Settings",
+          "bounds": {
+            "x": 30.71875,
+            "y": 16,
+            "width": 706.546875,
+            "height": 968,
+            "top": 16,
+            "right": 737.265625,
+            "bottom": 984,
+            "left": 30.71875
+          }
+        },
+        {
+          "name": "Force IP",
+          "bounds": {
+            "x": 174,
+            "y": 349.609375,
+            "width": 420,
+            "height": 300.78125,
+            "top": 349.609375,
+            "right": 594,
+            "bottom": 650.390625,
+            "left": 174
+          }
+        }
+      ]
+    },
+    "screenshot": "force-ip-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "export",
+    "id": "pages-edge-0-0-5-datasetselect--export-retry-workflow",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-datasetselect--export-retry-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": [
+        {
+          "name": "Export mock dataset",
+          "bounds": {
+            "x": 144,
+            "y": 373,
+            "width": 480,
+            "height": 253.984375,
+            "top": 373,
+            "right": 624,
+            "bottom": 626.984375,
+            "left": 144
+          }
+        }
+      ]
+    },
+    "screenshot": "export-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "inspector",
+    "id": "pages-edge-0-0-5-imagesworkflows--inspector-workflow",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-imagesworkflows--inspector-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [
+        {
+          "clientWidth": 768,
+          "scrollWidth": 1248,
+          "scrollLeft": 290,
+          "children": [
+            {
+              "x": -276,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 4,
+              "bottom": 962,
+              "left": -276
+            },
+            {
+              "x": 14,
+              "y": 90,
+              "width": 640,
+              "height": 872,
+              "top": 90,
+              "right": 654,
+              "bottom": 962,
+              "left": 14
+            },
+            {
+              "x": 664,
+              "y": 90,
+              "width": 280,
+              "height": 872,
+              "top": 90,
+              "right": 944,
+              "bottom": 962,
+              "left": 664
+            }
+          ]
+        }
+      ],
+      "dialogs": [
+        {
+          "name": "2026-05-20_capture_3.png",
+          "bounds": {
+            "x": 24,
+            "y": 75,
+            "width": 720,
+            "height": 850,
+            "top": 75,
+            "right": 744,
+            "bottom": 925,
+            "left": 24
+          }
+        }
+      ]
+    },
+    "screenshot": "inspector-768.png",
+    "status": "captured"
+  },
+  {
+    "name": "canvas",
+    "id": "pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow",
+    "width": 768,
+    "url": "http://127.0.0.1:6017/iframe.html?id=pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow&viewMode=story",
+    "consoleErrors": [],
+    "geometry": {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "panels": [],
+      "dialogs": []
+    },
+    "screenshot": "canvas-768.png",
+    "status": "captured"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "pages-edge-0-0-5-workspace--settings",
+    "label": "Connection",
+    "preset": null,
+    "density": null,
+    "controlHeightLg": "44px",
+    "height": 44,
+    "padding": "10px 10px 10px 12px",
+    "color": "rgb(140, 182, 255)",
+    "background": "rgba(0, 0, 0, 0)",
+    "radius": "14px",
+    "highlightVisible": true
+  },
+  {
+    "id": "pages-platform-0-0-1-settings-modal-general--preferences",
+    "label": "Account",
+    "preset": "platform-0.0.1",
+    "density": "compact",
+    "controlHeightLg": "40px",
+    "height": 48,
+    "padding": "8px 10px",
+    "color": "rgb(221, 231, 248)",
+    "background": "rgba(0, 0, 0, 0)",
+    "radius": "10px",
+    "highlightVisible": false
+  }
+]

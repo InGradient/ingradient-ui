@@ -1,0 +1,1271 @@
+{
+  "ids": [
+    "components-data-display-selectablelistitem--independent-action",
+    "components-navigation-verticaltabs--linked-panels",
+    "components-navigation-verticaltabs--settings-appearance",
+    "components-overlays-contextmenuwithsubmenus--dialog-focus-handoff",
+    "components-overlays-twocolumndialog--keyboard-containment",
+    "components-overlays-twocolumndialog--review",
+    "patterns-forms-settingsrow--named-switch",
+    "pages-edge-0-0-1-datasetselect--add-dataset-modal-open",
+    "pages-edge-0-0-1-datasetselect--export-modal-open",
+    "pages-edge-0-0-1-workspace--images",
+    "pages-edge-0-0-1-workspace--images-modal-edit",
+    "pages-edge-0-0-1-workspace--images-modal-read-only",
+    "pages-edge-0-0-5-capturebranches--review-save-workflow",
+    "pages-edge-0-0-5-capturebranches--derived-retry-workflow",
+    "pages-edge-0-0-5-capturebranches--derived-unavailable",
+    "pages-edge-0-0-5-capturebranches--labeling-reset-workflow",
+    "pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow",
+    "pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow",
+    "pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow",
+    "pages-edge-0-0-5-capturecontrols--setup-simulation-workflow",
+    "pages-edge-0-0-5-datasetselect--offline",
+    "pages-edge-0-0-5-datasetselect--online",
+    "pages-edge-0-0-5-datasetselect--loading",
+    "pages-edge-0-0-5-datasetselect--empty",
+    "pages-edge-0-0-5-datasetselect--fetch-error",
+    "pages-edge-0-0-5-datasetselect--session-expired",
+    "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--add-dataset-workflow",
+    "pages-edge-0-0-5-datasetselect--create-project-workflow",
+    "pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--export-retry-workflow",
+    "pages-edge-0-0-5-datasetselect--export-cancel-workflow",
+    "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+    "pages-edge-0-0-5-imagesworkflows--selection-delete-workflow",
+    "pages-edge-0-0-5-imagesworkflows--group-selection-workflow",
+    "pages-edge-0-0-5-imagesworkflows--filter-date-workflow",
+    "pages-edge-0-0-5-imagesworkflows--inspector-workflow",
+    "pages-edge-0-0-5-login--offline",
+    "pages-edge-0-0-5-login--offline-no-package",
+    "pages-edge-0-0-5-login--online-form",
+    "pages-edge-0-0-5-login--error",
+    "pages-edge-0-0-5-settingsworkflows--device-draft",
+    "pages-edge-0-0-5-settingsworkflows--force-ip",
+    "pages-edge-0-0-5-settingsworkflows--logs",
+    "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+    "pages-edge-0-0-5-settingsworkflows--cache-cleanup",
+    "pages-edge-0-0-5-settingsworkflows--field-test",
+    "pages-edge-0-0-5-settingsworkflows--about-update",
+    "pages-edge-0-0-5-settingsworkflows--account-language",
+    "pages-edge-0-0-5-settingsworkflows--system-cleanup",
+    "pages-edge-0-0-5-workspace--capture",
+    "pages-edge-0-0-5-workspace--images",
+    "pages-edge-0-0-5-workspace--images-session-workflow",
+    "pages-edge-0-0-5-workspace--statics",
+    "pages-edge-0-0-5-workspace--setup",
+    "pages-edge-0-0-5-workspace--capturing",
+    "pages-edge-0-0-5-workspace--sequence-failed",
+    "pages-edge-0-0-5-workspace--log-filter-open",
+    "pages-edge-0-0-5-workspace--offline",
+    "pages-edge-0-0-5-workspace--settings",
+    "pages-edge-0-0-5-workspace--settings-draft-workflow",
+    "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+    "pages-edge-0-0-5-workspace--experiments-draft-workflow",
+    "pages-edge-0-0-5-workspace--mock-message-failed",
+    "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+    "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+    "pages-edge-0-0-5-workspace--sequence-retry-workflow",
+    "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+    "pages-platform-0-0-1-settings-modal-general--preferences",
+    "pages-platform-0-0-1-settings-modal-general--non-admin-navigation",
+    "edge-pages-app-shell-mainlayout--constrained-desktop",
+    "edge-pages-dataset-select-datasetcard--keyboard-selection",
+    "edge-pages-statics-labelingcharttooltips--trend",
+    "edge-pages-statics-labelingcharttooltips--average-size",
+    "edge-pages-statics-labelingcharttooltips--empty",
+    "platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+  ],
+  "previews": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--linked-panels"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--settings-appearance"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-overlays-contextmenuwithsubmenus--dialog-focus-handoff"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Components/Data Display/SelectableListItem",
+            "name": "Independent Action",
+            "previewUrl": "http://localhost:6016/?path=/story/components-data-display-selectablelistitem--independent-action"
+          },
+          {
+            "title": "Components/Navigation/VerticalTabs",
+            "name": "Linked Panels",
+            "previewUrl": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--linked-panels"
+          },
+          {
+            "title": "Components/Navigation/VerticalTabs",
+            "name": "Settings Appearance",
+            "previewUrl": "http://localhost:6016/?path=/story/components-navigation-verticaltabs--settings-appearance"
+          },
+          {
+            "title": "Components/Overlays/ContextMenuWithSubmenus",
+            "name": "Dialog Focus Handoff",
+            "previewUrl": "http://localhost:6016/?path=/story/components-overlays-contextmenuwithsubmenus--dialog-focus-handoff"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--keyboard-containment"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--review"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/patterns-forms-settingsrow--named-switch"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-1-datasetselect--add-dataset-modal-open"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Components/Overlays/TwoColumnDialog",
+            "name": "Keyboard Containment",
+            "previewUrl": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--keyboard-containment"
+          },
+          {
+            "title": "Components/Overlays/TwoColumnDialog",
+            "name": "Review",
+            "previewUrl": "http://localhost:6016/?path=/story/components-overlays-twocolumndialog--review"
+          },
+          {
+            "title": "Patterns/Forms/SettingsRow",
+            "name": "Named Switch",
+            "previewUrl": "http://localhost:6016/?path=/story/patterns-forms-settingsrow--named-switch"
+          },
+          {
+            "title": "Pages/Edge/0.0.1/DatasetSelect",
+            "name": "Add Dataset Modal Open",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-1-datasetselect--add-dataset-modal-open"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-1-datasetselect--export-modal-open"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images-modal-edit"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images-modal-read-only"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.1/DatasetSelect",
+            "name": "Export Modal Open",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-1-datasetselect--export-modal-open"
+          },
+          {
+            "title": "Pages/Edge/0.0.1/Workspace",
+            "name": "Images",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images"
+          },
+          {
+            "title": "Pages/Edge/0.0.1/Workspace",
+            "name": "Images Modal Edit",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images-modal-edit"
+          },
+          {
+            "title": "Pages/Edge/0.0.1/Workspace",
+            "name": "Images Modal Read Only",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-1-workspace--images-modal-read-only"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--review-save-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-retry-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-unavailable"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Review Save Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--review-save-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Derived Retry Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-retry-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Derived Unavailable",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--derived-unavailable"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Labeling Reset Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Canvas Edit Selection Zoom Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureBranches",
+            "name": "Collapsed Roi Comment Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureControls",
+            "name": "Log Filter Keyboard Image Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/CaptureControls",
+            "name": "Setup Simulation Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Offline",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Online",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--online"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Loading",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--loading"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Empty",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--empty"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Fetch Error",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Escape Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-escape-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--create-project-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-retry-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Add Dataset Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Create Project Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--create-project-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Add Dataset Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Export Retry Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-retry-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-cancel-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--selection-delete-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Export Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--export-cancel-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/DatasetSelect",
+            "name": "Session Expired Confirm Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+            "name": "Selection Delete Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--selection-delete-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+            "name": "Group Selection Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--filter-date-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--inspector-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+            "name": "Filter Date Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--filter-date-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/ImagesWorkflows",
+            "name": "Inspector Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-imagesworkflows--inspector-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Login",
+            "name": "Offline",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Login",
+            "name": "Offline No Package",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--offline-no-package"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--device-draft"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--force-ip"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Login",
+            "name": "Online Form",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--online-form"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Login",
+            "name": "Error",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-login--error"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Device Draft",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--device-draft"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Force Ip",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--force-ip"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--logs"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--cache-cleanup"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--field-test"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Logs",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--logs"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Lighting Ps",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Cache Cleanup",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--cache-cleanup"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Field Test",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--field-test"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--about-update"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--account-language"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--system-cleanup"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "About Update",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--about-update"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "Account Language",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--account-language"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+            "name": "System Cleanup",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-settingsworkflows--system-cleanup"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Capture",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capture"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images-session-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Images",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Images Session Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--images-session-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Statics",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--statics"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Setup",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--setup"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Capturing",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Failed",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-failed"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Log Filter Open",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--log-filter-open"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Offline",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--offline"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Settings Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--settings-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Lighting Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--lighting-draft-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Experiments Draft Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--experiments-draft-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Mock Message Failed",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--mock-message-failed"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Cancel Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-cancel-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Escape Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-escape-workflow"
+          },
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Sequence Retry Workflow",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--sequence-retry-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-platform-0-0-1-settings-modal-general--preferences"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/pages-platform-0-0-1-settings-modal-general--non-admin-navigation"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-app-shell-mainlayout--constrained-desktop"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Pages/Edge/0.0.5/Workspace",
+            "name": "Capturing Keyboard Lock",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          },
+          {
+            "title": "Pages/Platform/0.0.1/Settings Modal/General",
+            "name": "Preferences",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-platform-0-0-1-settings-modal-general--preferences"
+          },
+          {
+            "title": "Pages/Platform/0.0.1/Settings Modal/General",
+            "name": "Non-admin navigation",
+            "previewUrl": "http://localhost:6016/?path=/story/pages-platform-0-0-1-settings-modal-general--non-admin-navigation"
+          },
+          {
+            "title": "Edge Pages/App Shell/MainLayout",
+            "name": "Constrained Desktop",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-app-shell-mainlayout--constrained-desktop"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-dataset-select-datasetcard--keyboard-selection"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--trend"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--average-size"
+        },
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--empty"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Edge Pages/Dataset Select/DatasetCard",
+            "name": "Keyboard Selection",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-dataset-select-datasetcard--keyboard-selection"
+          },
+          {
+            "title": "Edge Pages/Statics/LabelingChartTooltips",
+            "name": "Trend",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--trend"
+          },
+          {
+            "title": "Edge Pages/Statics/LabelingChartTooltips",
+            "name": "Average Size",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--average-size"
+          },
+          {
+            "title": "Edge Pages/Statics/LabelingChartTooltips",
+            "name": "Empty",
+            "previewUrl": "http://localhost:6016/?path=/story/edge-pages-statics-labelingcharttooltips--empty"
+          }
+        ]
+      }
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "http://localhost:6016/?path=/story/platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+        }
+      ],
+      "structuredContent": {
+        "stories": [
+          {
+            "title": "Platform Pages/Settings Modal/General/SettingsGeneralTab",
+            "name": "Interactive",
+            "previewUrl": "http://localhost:6016/?path=/story/platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+          }
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "ids": [
+        "components-data-display-selectablelistitem--independent-action",
+        "components-navigation-verticaltabs--linked-panels",
+        "components-navigation-verticaltabs--settings-appearance",
+        "components-overlays-contextmenuwithsubmenus--dialog-focus-handoff"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- components-navigation-verticaltabs--linked-panels\n- components-navigation-verticaltabs--settings-appearance\n- components-data-display-selectablelistitem--independent-action\n- components-overlays-contextmenuwithsubmenus--dialog-focus-handoff"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "components-overlays-twocolumndialog--keyboard-containment",
+        "components-overlays-twocolumndialog--review",
+        "patterns-forms-settingsrow--named-switch",
+        "pages-edge-0-0-1-datasetselect--add-dataset-modal-open"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- patterns-forms-settingsrow--named-switch\n- components-overlays-twocolumndialog--keyboard-containment\n- components-overlays-twocolumndialog--review\n- pages-edge-0-0-1-datasetselect--add-dataset-modal-open"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-1-datasetselect--export-modal-open",
+        "pages-edge-0-0-1-workspace--images",
+        "pages-edge-0-0-1-workspace--images-modal-edit",
+        "pages-edge-0-0-1-workspace--images-modal-read-only"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-1-datasetselect--export-modal-open\n- pages-edge-0-0-1-workspace--images\n- pages-edge-0-0-1-workspace--images-modal-edit\n- pages-edge-0-0-1-workspace--images-modal-read-only"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-capturebranches--review-save-workflow",
+        "pages-edge-0-0-5-capturebranches--derived-retry-workflow",
+        "pages-edge-0-0-5-capturebranches--derived-unavailable",
+        "pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-capturebranches--review-save-workflow\n- pages-edge-0-0-5-capturebranches--derived-retry-workflow\n- pages-edge-0-0-5-capturebranches--derived-unavailable\n- pages-edge-0-0-5-capturebranches--labeling-reset-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow",
+        "pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow",
+        "pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow",
+        "pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow\n- pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow\n- pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow\n- pages-edge-0-0-5-capturecontrols--setup-simulation-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-datasetselect--offline",
+        "pages-edge-0-0-5-datasetselect--online",
+        "pages-edge-0-0-5-datasetselect--loading",
+        "pages-edge-0-0-5-datasetselect--empty"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-datasetselect--offline\n- pages-edge-0-0-5-datasetselect--online\n- pages-edge-0-0-5-datasetselect--loading\n- pages-edge-0-0-5-datasetselect--empty"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-datasetselect--fetch-error",
+        "pages-edge-0-0-5-datasetselect--session-expired",
+        "pages-edge-0-0-5-datasetselect--session-expired-escape-workflow",
+        "pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-datasetselect--fetch-error\n- pages-edge-0-0-5-datasetselect--session-expired\n- pages-edge-0-0-5-datasetselect--session-expired-escape-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-datasetselect--add-dataset-workflow",
+        "pages-edge-0-0-5-datasetselect--create-project-workflow",
+        "pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow",
+        "pages-edge-0-0-5-datasetselect--export-retry-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-datasetselect--add-dataset-workflow\n- pages-edge-0-0-5-datasetselect--create-project-workflow\n- pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow\n- pages-edge-0-0-5-datasetselect--export-retry-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-datasetselect--export-cancel-workflow",
+        "pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow",
+        "pages-edge-0-0-5-imagesworkflows--selection-delete-workflow",
+        "pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-datasetselect--export-cancel-workflow\n- pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow\n- pages-edge-0-0-5-imagesworkflows--selection-delete-workflow\n- pages-edge-0-0-5-imagesworkflows--group-selection-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-imagesworkflows--filter-date-workflow",
+        "pages-edge-0-0-5-imagesworkflows--inspector-workflow",
+        "pages-edge-0-0-5-login--offline",
+        "pages-edge-0-0-5-login--offline-no-package"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-login--offline\n- pages-edge-0-0-5-login--offline-no-package\n- pages-edge-0-0-5-imagesworkflows--filter-date-workflow\n- pages-edge-0-0-5-imagesworkflows--inspector-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-login--online-form",
+        "pages-edge-0-0-5-login--error",
+        "pages-edge-0-0-5-settingsworkflows--device-draft",
+        "pages-edge-0-0-5-settingsworkflows--force-ip"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-login--online-form\n- pages-edge-0-0-5-login--error\n- pages-edge-0-0-5-settingsworkflows--device-draft\n- pages-edge-0-0-5-settingsworkflows--force-ip"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-settingsworkflows--logs",
+        "pages-edge-0-0-5-settingsworkflows--lighting-ps",
+        "pages-edge-0-0-5-settingsworkflows--cache-cleanup",
+        "pages-edge-0-0-5-settingsworkflows--field-test"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-settingsworkflows--logs\n- pages-edge-0-0-5-settingsworkflows--lighting-ps\n- pages-edge-0-0-5-settingsworkflows--cache-cleanup\n- pages-edge-0-0-5-settingsworkflows--field-test"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-settingsworkflows--about-update",
+        "pages-edge-0-0-5-settingsworkflows--account-language",
+        "pages-edge-0-0-5-settingsworkflows--system-cleanup",
+        "pages-edge-0-0-5-workspace--capture"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--capture\n- pages-edge-0-0-5-settingsworkflows--about-update\n- pages-edge-0-0-5-settingsworkflows--account-language\n- pages-edge-0-0-5-settingsworkflows--system-cleanup"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--images",
+        "pages-edge-0-0-5-workspace--images-session-workflow",
+        "pages-edge-0-0-5-workspace--statics",
+        "pages-edge-0-0-5-workspace--setup"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--images\n- pages-edge-0-0-5-workspace--images-session-workflow\n- pages-edge-0-0-5-workspace--statics\n- pages-edge-0-0-5-workspace--setup"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--capturing",
+        "pages-edge-0-0-5-workspace--sequence-failed",
+        "pages-edge-0-0-5-workspace--log-filter-open",
+        "pages-edge-0-0-5-workspace--offline"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--capturing\n- pages-edge-0-0-5-workspace--sequence-failed\n- pages-edge-0-0-5-workspace--log-filter-open\n- pages-edge-0-0-5-workspace--offline"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--settings",
+        "pages-edge-0-0-5-workspace--settings-draft-workflow",
+        "pages-edge-0-0-5-workspace--lighting-draft-workflow",
+        "pages-edge-0-0-5-workspace--experiments-draft-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--settings\n- pages-edge-0-0-5-workspace--settings-draft-workflow\n- pages-edge-0-0-5-workspace--lighting-draft-workflow\n- pages-edge-0-0-5-workspace--experiments-draft-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--mock-message-failed",
+        "pages-edge-0-0-5-workspace--sequence-cancel-workflow",
+        "pages-edge-0-0-5-workspace--sequence-escape-workflow",
+        "pages-edge-0-0-5-workspace--sequence-retry-workflow"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- pages-edge-0-0-5-workspace--mock-message-failed\n- pages-edge-0-0-5-workspace--sequence-cancel-workflow\n- pages-edge-0-0-5-workspace--sequence-escape-workflow\n- pages-edge-0-0-5-workspace--sequence-retry-workflow"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "pages-edge-0-0-5-workspace--capturing-keyboard-lock",
+        "pages-platform-0-0-1-settings-modal-general--preferences",
+        "pages-platform-0-0-1-settings-modal-general--non-admin-navigation",
+        "edge-pages-app-shell-mainlayout--constrained-desktop"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- edge-pages-app-shell-mainlayout--constrained-desktop\n- pages-platform-0-0-1-settings-modal-general--preferences\n- pages-platform-0-0-1-settings-modal-general--non-admin-navigation\n- pages-edge-0-0-5-workspace--capturing-keyboard-lock"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "edge-pages-dataset-select-datasetcard--keyboard-selection",
+        "edge-pages-statics-labelingcharttooltips--trend",
+        "edge-pages-statics-labelingcharttooltips--average-size",
+        "edge-pages-statics-labelingcharttooltips--empty"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- edge-pages-statics-labelingcharttooltips--trend\n- edge-pages-statics-labelingcharttooltips--average-size\n- edge-pages-statics-labelingcharttooltips--empty\n- edge-pages-dataset-select-datasetcard--keyboard-selection"
+          }
+        ]
+      }
+    },
+    {
+      "ids": [
+        "platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+      ],
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Passing Stories\n\n- platform-pages-settings-modal-general-settingsgeneraltab--interactive"
+          }
+        ]
+      }
+    }
+  ],
+  "instructions": {
+    "content": [
+      {
+        "type": "text",
+        "text": "# Writing User Interfaces\n\nWhen writing UI, prefer breaking larger components up into smaller parts.\n\nALWAYS write a Storybook story for any component written. If editing a component, ensure appropriate changes have been made to stories for that component.\n\n## Using library components\n\nThis Storybook exposes component documentation tools. Before creating or changing any UI, call **list-all-documentation** once to see what the design system already provides — build on existing components instead of hand-rolling duplicates — then call **get-documentation** with the `id` of each component you build on or get asked about, for its real props and usage examples. When multiple Storybook sources are configured, pass the `storybookId` from **list-all-documentation** on follow-up calls. Do this instead of reading the library's source or type definitions out of `node_modules` — stories show intended usage, raw types don't — and answer props/usage questions from these tools too. Never assume or invent props.\n\n## How to write good stories\n\nGoal: Cover every distinct piece of business logic and state the component can reach (happy paths, error/edge states, loading, permissions/roles, empty states, variations from props/context). Avoid redundant stories that show the same logic.\n\nInteractivity: If the component is interactive, add Interaction tests using play functions that drive the UI with storybook/test utilities (e.g., fn, userEvent, expect). Simulate key user flows: clicking buttons/links, typing, focus/blur, keyboard nav, form submit, async responses, toggle/selection changes, pagination/filters, etc. When passing `fn` functions as `args` for callback functions, make sure to add a play function which interacts with the component and assert whether the callback function was actually called.\n\nData/setup: Provide realistic props, state, and mocked data. Include meaningful labels/text to make behaviors observable. Stub network/services with deterministic fixtures; keep stories reliable.\n\nAssertions: In play functions, assert the visible outcome of the interaction (text, aria state, enabled/disabled, class/state changes, emitted events). Prefer role/label-based queries.\n\nVariants to consider (pick only those that change behavior): default vs. alternate themes; loading vs. loaded vs. empty vs. error; validated vs. invalid input; permissions/roles/capabilities; feature flags; size/density/layout variants that alter logic.\n\nAccessibility: Use semantic roles/labels; ensure focusable/keyboard interactions are test-covered where relevant.\n\nNaming/structure: Use clear story names that describe the scenario (“Error state after failed submit”). Group related variants logically; don’t duplicate.\n\nImports/format: Import Meta/StoryObj from the framework package; import test helpers from storybook/test (not @storybook/test). Keep stories minimal—only what's needed to demonstrate behavior.\n\n## Storybook 9 Essential Changes for Story Writing\n\n### Package Consolidation\n\n#### `Meta` and `StoryObj` imports\n\nUpdate story imports to use the framework package:\n\n```diff\n- import { Meta, StoryObj } from '@storybook/react';\n+ import { Meta, StoryObj } from '@storybook/react-vite';\n```\n\n#### Test utility imports\n\nUpdate test imports to use `storybook/test` instead of `@storybook/test`\n\n```diff\n- import { fn } from '@storybook/test';\n+ import { fn } from 'storybook/test';\n```\n\n### Global State Changes\n\nThe `globals` annotation has be renamed to `initialGlobals`:\n\n```diff\n// .storybook/preview.js\nexport default {\n- globals: { theme: 'light' }\n+ initialGlobals: { theme: 'light' }\n};\n```\n\n### Autodocs Configuration\n\nInstead of `parameters.docs.autodocs` in main.js, use tags:\n\n```js\n// .storybook/preview.js or in individual stories\nexport default {\n\ttags: ['autodocs'], // generates autodocs for all stories\n};\n```\n\n### Mocking imports in Storybook\n\nTo mock imports in Storybook, use Storybook's mocking features. ALWAYS mock external dependencies to ensure stories render consistently.\n\n1. **Register in the mock in Storybook's preview file**:\n   To mock dependendencies, you MUST register a module mock in `.storybook/preview.ts` (or equivalent):\n\n```js\nimport { sb } from 'storybook/test';\n\n// Prefer spy mocks (keeps functions, but allows to override them and spy on them)\nsb.mock(import('some-library'), { spy: true });\n```\n\n**Important: Use file extensions when referring to relative files!**\n\n```js\nsb.mock(import('./relative/module.ts'), { spy: true });\n```\n\n2. **Specify mock values in stories**:\n   You can override the behaviour of the mocks per-story using `beforeEach` and the `mocked()` type function:\n\n```js\nimport { expect, mocked, fn } from 'storybook/test';\nimport { library } from 'some-library';\n\nconst meta = {\n  component: AuthButton,\n  beforeEach: async () => {\n    mocked(library).mockResolvedValue({  user: 'data' });\n  },\n};\n\nexport const LoggedIn: Story = {\n  play: async ({ canvas }) => {\n    await expect(library).toHaveBeenCalled();\n  },\n};\n```\n\nBefore doing this ensure you have mocked the import in the preview file.\n\n### Play Function Parameters\n\n- The play function has a `canvas` parameter that can be used directly with testing-library-like query methods.\n- It also has a `canvasElement` which is the actual DOM element.\n- The `within`-function imported from `storybook/test` transforms a DOM element to an object with query methods, similar to `canvas`.\n\n**DO NOT** use `within(canvas)` - it is redundant because `canvas` already has the query methods, `canvas` is not a DOM element.\n\n```ts\n// ✅ Correct: Use canvas directly\nplay: async ({ canvas }) => {\n\tawait canvas.getByLabelText('Submit').click();\n};\n\n// ⚠️ Also acceptable: Use `canvasElement` with `within`\nimport { within } from 'storybook/test';\n\nplay: async ({ canvasElement }) => {\n\tconst canvas = within(canvasElement);\n\tawait canvas.getByLabelText('Submit').click();\n};\n\n// ❌ Wrong: Do NOT use within(canvas)\nplay: async ({ canvas }) => {\n\tconst screen = within(canvas); // Error!\n};\n```\n\n### Key Requirements\n\n- **Node.js 20+**, **TypeScript 4.9+**\n- React Native uses `.rnstorybook` directory\n\n## Story Linking Agent Behavior\n\n- ALWAYS provide story links after any changes to stories files, including changes to existing stories.\n- After changing UI, call `preview-stories` and share the most relevant links for the changes.\n- In your final user-facing response, include every returned preview URL so the user can verify the visual result, ordered consistently (changed-stories fallback first if relevant, then the specific preview URLs).\n- When you will share preview/story links (i.e. when you are not collapsing everything into a single review section), pass only the most relevant story IDs into **preview-stories** (generally no more than 5) so the returned URL list stays manageable. Include every URL returned by that call in your final response — do not drop links there.\n- When sharing preview/story links (not when ending with a review section) and you passed only a subset into `preview-stories`, mention that additional relevant stories may exist in Storybook.\n- After changing any UI components, ALWAYS search for related stories that might cover the changes you've made. If you find any, provide the story links to the user. THIS IS VERY IMPORTANT, as it allows the user to visually inspect the changes you've made. Even later in a session when changing UI components or stories that have already been linked to previously, YOU MUST PROVIDE THE LINKS AGAIN.\n\n\n## Story Testing Requirements\n\n**Run `run-story-tests` after EVERY component or story change.** This includes creating, modifying, or refactoring components, stories, or their dependencies. It is the only way to run story tests — never run package.json test scripts (like `npm run test:stories`) instead.\n\n### Workflow\n\n1. Make your change\n2. Run `run-story-tests` with related stories for focused feedback (faster while iterating)\n3. If tests fail: analyze, fix (see a11y guidelines below), re-run\n4. Repeat until all tests pass\n\nDo not skip tests, ignore failures, or move on with failing tests. If stuck after multiple attempts, report to user.\n\n### Focused vs. full-suite test runs\n\n- Prefer focused runs (`stories` input) during development to validate the parts you changed quickly.\n- Run all tests (omit `stories`) before final handoff, after broad/refactor changes, or when impact is unclear and you need project-wide verification.\n\n### Accessibility Violations\n\n**Fix automatically** (semantic/structural, no visual change):\n\n- ARIA attributes, roles, labels, alt text\n- Heading hierarchy, landmarks, table structure\n- Keyboard access (tabindex, focus, handlers)\n- Document-level: lang attr, frame titles, duplicate IDs\n\n**Confirm with user first** (visual/design changes):\n\n- Color contrast ratios\n- Font sizes, spacing, layout\n- Focus indicator styling\n\nDescribe the issue, ask how the user wants to proceed, and provide 2-3 concrete options.\nDo not auto-apply visual changes before user confirmation, and do not claim visual issues are fixed until they approve an option.\n"
+      }
+    ]
+  },
+  "documentation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "# Components\n\n- TokenOverviewMigration (guides-token-overview-migration)\n  - Canonical Overview (guides-token-overview-migration--canonical-overview)\n- GettingStarted (guides-getting-started)\n  - Overview (guides-getting-started--overview)\n- TokenOverview (foundations-token-overview)\n  - Overview (foundations-token-overview--overview)\n  - Narrow review (foundations-token-overview--narrow)\n  - Token discovery (foundations-token-overview--token-discovery)\n  - Layout inventory (foundations-token-overview--layout-inventory)\n  - Scale inventory (foundations-token-overview--scale-inventory)\n  - Raw foundation palette (foundations-token-overview--raw-foundation-palette)\n- Layout (primitives-layout)\n  - Overview (primitives-layout--overview)\n  - Wrapping and bounds (primitives-layout--wrapping-and-bounds)\n  - Long content and empty state (primitives-layout--long-content-and-empty)\n- Surface (primitives-surfaces)\n  - Elevations (primitives-surfaces--elevations)\n  - Misc Primitives (primitives-surfaces--misc-primitives)\n  - Long and empty states (primitives-surfaces--boundary-states)\n- SVG (primitives-svg)\n  - Overview (primitives-svg--overview)\n  - Shape variants (primitives-svg--shape-variants)\n- Text (primitives-typography)\n  - Type Scale (primitives-typography--type-scale)\n  - Text contract (primitives-typography--text-contract)\n  - Long mixed-language content (primitives-typography--long-content)\n- ChartLegend (components-charts-chartlegend)\n  - Review (components-charts-chartlegend--review)\n- ChartTooltipContent (components-charts-charttooltip)\n  - Review (components-charts-charttooltip--review)\n- PieSliceLabel (components-charts-pieslicelabel)\n  - Review (components-charts-pieslicelabel--review)\n- SafeResponsiveContainer (components-charts-saferesponsivecontainer): Recharts `ResponsiveContainer` 의 안정 대체. `useElementSize` 로 컨테이너 크기 변화를 감지하고 자식에게 `width` /...\n  - Review (components-charts-saferesponsivecontainer--review)\n- ActionChip (components-data-display-actionchip): Interactive pill chip with optional color swatch + label. Used in chip groups (`ChipGroup`...\n  - Review (components-data-display-actionchip--review)\n- AspectRatioImage (components-data-display-aspectratioimage): Fixed-ratio thumbnail frame. Renders an `<img>` with `object-fit: cover` over a subtle gra...\n  - Square (components-data-display-aspectratioimage--square)\n  - Four Three (components-data-display-aspectratioimage--four-three)\n  - Sixteen Nine (components-data-display-aspectratioimage--sixteen-nine)\n  - Sixteen Ten (components-data-display-aspectratioimage--sixteen-ten)\n  - Fallback Gradient (components-data-display-aspectratioimage--fallback-gradient)\n- Card (components-datadisplay-card)\n  - Review (components-datadisplay-card--review)\n- CodeBlock (components-data-display-codeblock)\n  - Review (components-data-display-codeblock--review)\n- CollapsibleSectionHeader (components-data-display-collapsiblesectionheader): Section header with chevron + uppercase label + optional trailing badge, rendered as a `<b...\n  - Closed (components-data-display-collapsiblesectionheader--closed)\n  - Open With Badge (components-data-display-collapsiblesectionheader--open-with-badge)\n  - Interactive (components-data-display-collapsiblesectionheader--interactive)\n- ColorSwatch (components-data-display-colorswatch)\n  - Review (components-data-display-colorswatch--review)\n- DetailPanelSidebar (components-data-display-detailpanelsidebar)\n  - Review (components-data-display-detailpanelsidebar--review)\n- GridContainer (components-data-display-gridcontainer)\n  - Review (components-data-display-gridcontainer--review)\n- IdentityItemList (components-data-display-identityitemlist): Avatar + label + optional meta + remove action list. Generic identity rows for member, ass...\n  - Default (components-data-display-identityitemlist--default)\n  - Removable (components-data-display-identityitemlist--removable)\n  - Without Meta (components-data-display-identityitemlist--without-meta)\n  - Empty (components-data-display-identityitemlist--empty)\n- ImageCard (components-data-display-imagecard)\n  - Default (components-data-display-imagecard--default)\n  - Selected (components-data-display-imagecard--selected)\n  - With Top Right Slot (components-data-display-imagecard--with-top-right-slot)\n  - Archived (components-data-display-imagecard--archived)\n  - Processing (components-data-display-imagecard--processing)\n  - Group Of 5 (components-data-display-imagecard--group-of-5)\n  - Long Name (components-data-display-imagecard--long-name)\n  - Keyboard Activation (components-data-display-imagecard--keyboard-activation)\n  - Grid 3 X 3 (components-data-display-imagecard--grid-3-x-3)\n- ImageViewer as unknown as React.ComponentType<ImageViewerStoryArgs> (components-data-display-imageviewer)\n  - Review (components-data-display-imageviewer--review)\n  - Real Images (components-data-display-imageviewer--real-images)\n- InfoRow (components-data-display-inforow)\n  - Review (components-data-display-inforow--review)\n- InfoSection (components-data-display-infosection): 작은 uppercase title + 자식 content 의 section. 사이드바 / 패널 안의 도메인 정보 묶음에 generic.\n  - Default (components-data-display-infosection--default)\n  - With Paragraph (components-data-display-infosection--with-paragraph)\n- KeyValueRow (components-data-display-keyvaluerow)\n  - Review (components-data-display-keyvaluerow--review)\n- KeyboardShortcutHint (components-data-display-keyboardshortcuthint)\n  - Review (components-data-display-keyboardshortcuthint--review)\n- LabeledSwatchRow (components-data-display-labeledswatchrow): Color swatch + label + optional count 의 selectable list item. Selected 상태에서 accent border-...\n  - Default (components-data-display-labeledswatchrow--default)\n  - Selected (components-data-display-labeledswatchrow--selected)\n  - No Count (components-data-display-labeledswatchrow--no-count)\n  - Long Name (components-data-display-labeledswatchrow--long-name)\n- LegendItem (components-data-display-legenditem)\n  - Review (components-data-display-legenditem--review)\n- MobileShell (components-data-display-mobileshell)\n  - Default (components-data-display-mobileshell--default)\n  - Dropdown Open (components-data-display-mobileshell--dropdown-open)\n- OptionRow (components-data-display-optionrow)\n  - Review (components-data-display-optionrow--review)\n- OverlayLayer (components-data-display-overlaylayer): Full-fill absolute layer for placing interactive elements on top of an image/canvas. The w...\n  - Over Image (components-data-display-overlaylayer--over-image)\n- ResizableColumnsLayout (components-data-display-resizablecolumnslayout): N-column 유연 layout. 각 컬럼은 고정 px 또는 'auto' (flex:1). resizable 컬럼은 옆에 ResizeHandle 표시 + dra...\n  - Three Column (components-data-display-resizablecolumnslayout--three-column)\n  - Two Column (components-data-display-resizablecolumnslayout--two-column)\n  - Collapsible Left (components-data-display-resizablecolumnslayout--collapsible-left)\n  - Hidden Right (components-data-display-resizablecolumnslayout--hidden-right)\n  - Persisted Width (components-data-display-resizablecolumnslayout--persisted-width)\n- ResizablePanel (components-data-display-resizablepanel)\n  - Review (components-data-display-resizablepanel--review)\n- SearchableList (components-data-display-searchablelist)\n  - Review (components-data-display-searchablelist--review)\n- SelectableGridCell (components-data-display-selectablegridcell)\n  - Review (components-data-display-selectablegridcell--review)\n- SelectableListItem (components-data-display-selectablelistitem)\n  - Independent Action (components-data-display-selectablelistitem--independent-action)\n  - Review (components-data-display-selectablelistitem--review)\n- SidePanelLayout (components-data-display-sidepanellayout)\n  - Default (components-data-display-sidepanellayout--default)\n  - Empty State (components-data-display-sidepanellayout--empty-state)\n- SwatchItemList (components-data-display-swatchitemlist): Color swatch + label + optional count + (옵셔널) remove 버튼 의 inline list. 각 row 는 hover backg...\n  - Default (components-data-display-swatchitemlist--default)\n  - Removable (components-data-display-swatchitemlist--removable)\n  - Empty (components-data-display-swatchitemlist--empty)\n- StoryTable as unknown as React.ComponentType<TableStoryArgs> (components-data-display-table)\n  - Playground (components-data-display-table--playground)\n  - With Footer (components-data-display-table--with-footer)\n  - Review (components-data-display-table--review)\n- TagListItem (components-data-display-taglistitem)\n  - Review (components-data-display-taglistitem--review)\n- TagListSearch (components-data-display-taglistsearch)\n  - Review (components-data-display-taglistsearch--review)\n- TagList as unknown as React.ComponentType<TagListStoryArgs> (components-data-display-taglist)\n  - Playground (components-data-display-taglist--playground)\n  - Review (components-data-display-taglist--review)\n- UserPoolList (components-data-display-userpoollist)\n  - Review (components-data-display-userpoollist--review)\n- VideoPlayer (components-data-display-videoplayer): 토큰 기반 HTML5 비디오 래퍼. 토글 가능한 `ratio` 로 frame 비율을 잡고 내부 `<video>` 는 cover 로 렌더링한다.\n  - Sixteen Nine (components-data-display-videoplayer--sixteen-nine)\n  - Square (components-data-display-videoplayer--square)\n  - Four Three (components-data-display-videoplayer--four-three)\n  - Portrait (components-data-display-videoplayer--portrait)\n  - No Controls (components-data-display-videoplayer--no-controls)\n  - Fallback Gradient (components-data-display-videoplayer--fallback-gradient)\n- Alert (components-feedback-alert)\n  - Playground (components-feedback-alert--playground)\n  - Review (components-feedback-alert--review)\n- Avatar (components-feedback-avatar-and-badge)\n  - Review (components-feedback-avatar-and-badge--review)\n- Badge (components-feedback-badge)\n  - Review (components-feedback-badge--review)\n- EmptyState (components-feedback-emptystate)\n  - Playground (components-feedback-emptystate--playground)\n  - Review (components-feedback-emptystate--review)\n- EmptyText (components-feedback-emptytext)\n  - Review (components-feedback-emptytext--review)\n- DefaultErrorFallback (components-feedback-errorboundary)\n  - Review (components-feedback-errorboundary--review)\n- GroupCountBadge (components-feedback-groupcountbadge)\n  - Sizes (components-feedback-groupcountbadge--sizes)\n  - Single (components-feedback-groupcountbadge--single)\n  - Large (components-feedback-groupcountbadge--large)\n  - No Badge When One (components-feedback-groupcountbadge--no-badge-when-one)\n- MediaOverlay (components-feedback-mediaoverlay)\n  - Archived (components-feedback-mediaoverlay--archived)\n  - Processing (components-feedback-mediaoverlay--processing)\n  - Custom Label (components-feedback-mediaoverlay--custom-label)\n  - Side By Side (components-feedback-mediaoverlay--side-by-side)\n- NotificationBadge (components-feedback-notificationbadge)\n  - Review (components-feedback-notificationbadge--review)\n- ProgressBar (components-feedback-progress)\n  - Review (components-feedback-progress--review)\n- SegmentedProgressBar (components-feedback-segmentedprogressbar): Multi-segment progress bar with optional legend. 각 세그먼트는 색 + 라벨 + 값. total 미지정 시 segments ...\n  - Pending Vs Processed (components-feedback-segmentedprogressbar--pending-vs-processed)\n  - Three Segments (components-feedback-segmentedprogressbar--three-segments)\n- SelectionActionBar (components-feedback-selectionactionbar)\n  - Playground (components-feedback-selectionactionbar--playground)\n  - Review (components-feedback-selectionactionbar--review)\n- Skeleton (components-feedback-skeleton)\n  - Review (components-feedback-skeleton--review)\n- Spinner (components-feedback-spinner)\n  - Review (components-feedback-spinner--review)\n- StateChip (components-feedback-statechip)\n  - Review (components-feedback-statechip--review)\n- StatusDot (components-feedback-statusdot)\n  - Review (components-feedback-statusdot--review)\n- StatusIcon (components-feedback-statusicon)\n  - Success (components-feedback-statusicon--success)\n  - All States (components-feedback-statusicon--all-states)\n- StatusPill (components-feedback-statuspill)\n  - Review (components-feedback-statuspill--review)\n- StepIndicator (components-feedback-stepindicator)\n  - Review (components-feedback-stepindicator--review)\n- ToastProvider (components-feedback-toast)\n  - Review (components-feedback-toast--review)\n- TooltipCard (components-feedback-tooltipcard)\n  - Review (components-feedback-tooltipcard--review)\n- IconGallery (components-icons-icon-gallery)\n  - Review (components-icons-icon-gallery--review)\n- Button (components-inputs-button)\n  - Playground (components-inputs-button--playground)\n  - Review (components-inputs-button--review)\n- ChipTabs (components-inputs-chiptabs)\n  - Full Set (components-inputs-chiptabs--full-set)\n  - Single Hidden (components-inputs-chiptabs--single-hidden)\n  - Plain Names (components-inputs-chiptabs--plain-names)\n  - Interactive (components-inputs-chiptabs--interactive)\n- ColorChip (components-inputs-colorchip)\n  - Review (components-inputs-colorchip--review)\n- ColorInput (components-inputs-colorinput): Square (40x40) native `<input type=\"color\">` with webkit chrome overrides. Standard input ...\n  - Default (components-inputs-colorinput--default)\n  - Disabled (components-inputs-colorinput--disabled)\n  - Controlled (components-inputs-colorinput--controlled)\n- CopyButton (components-inputs-copybutton)\n  - Review (components-inputs-copybutton--review)\n- DatePickerField (components-inputs-datepickerfield)\n  - Review (components-inputs-datepickerfield--review)\n- DateRangePicker (components-inputs-daterangepicker): Date / Date-range picker with preset buttons + Apply / Reset footer. MenuPopover surface 안...\n  - Range With Presets (components-inputs-daterangepicker--range-with-presets)\n  - Single Day (components-inputs-daterangepicker--single-day)\n  - No Presets (components-inputs-daterangepicker--no-presets)\n- DragHandle (components-inputs-draghandle)\n  - Default (components-inputs-draghandle--default)\n  - Custom Label (components-inputs-draghandle--custom-label)\n- DropZone (components-inputs-dropzone): Universal drop target surface. Caller wires the drag event handlers and decides what to do...\n  - Outlined (components-inputs-dropzone--outlined)\n  - Outlined Active (components-inputs-dropzone--outlined-active)\n  - Outlined Disabled (components-inputs-dropzone--outlined-disabled)\n  - Filled (components-inputs-dropzone--filled)\n  - Interactive (components-inputs-dropzone--interactive)\n- DropdownSelect (components-inputs-dropdownselect)\n  - Review (components-inputs-dropdownselect--review)\n- FileInput (components-inputs-fileinput)\n  - Review (components-inputs-fileinput--review)\n- FilterBarLayout (components-inputs-filterbarlayout)\n  - Review (components-inputs-filterbarlayout--review)\n- FilterChipRow (components-inputs-filterchiprow): Horizontal toggle chip row with label + per-item count badge. Empty activeIds set 은 \"전체 활성...\n  - All Active (components-inputs-filterchiprow--all-active)\n  - Some Active (components-inputs-filterchiprow--some-active)\n  - Loading (components-inputs-filterchiprow--loading)\n  - Empty (components-inputs-filterchiprow--empty)\n  - Interactive (components-inputs-filterchiprow--interactive)\n- FilterPopoverTrigger (components-inputs-filterpopovertrigger)\n  - Default (components-inputs-filterpopovertrigger--default)\n  - Active (components-inputs-filterpopovertrigger--active)\n  - Open By Default (components-inputs-filterpopovertrigger--open-by-default)\n- FloatingPanelField (components-inputs-floatingpanelfield): Trigger + portal panel with viewport-bounded positioning, **no width enforcement**. For dr...\n  - Review (components-inputs-floatingpanelfield--review)\n- FieldRow (components-inputs-fieldrow-formfield)\n  - Review (components-inputs-fieldrow-formfield--review)\n- IconButton (components-inputs-iconbutton)\n  - Review (components-inputs-iconbutton--review)\n- InputAdornment (components-inputs-inputadornment)\n  - Review (components-inputs-inputadornment--review)\n- MentionTextarea (components-inputs-mentiontextarea)\n  - Review (components-inputs-mentiontextarea--review)\n- MenuIconButton (components-inputs-menuiconbutton)\n  - Review (components-inputs-menuiconbutton--review)\n- MobileDropdown (components-inputs-mobiledropdown): Mobile-only full-width dropdown — sticky-blur glass dropdown surface. Desktop 환경에선 Dropdow...\n  - Closed (components-inputs-mobiledropdown--closed)\n  - Open (components-inputs-mobiledropdown--open)\n  - Loading (components-inputs-mobiledropdown--loading)\n- ModeSwitcher (components-inputs-modeswitcher)\n  - Review (components-inputs-modeswitcher--review)\n- NumberField (components-inputs-numberfield)\n  - Playground (components-inputs-numberfield--playground)\n  - Review (components-inputs-numberfield--review)\n- PopoverTriggerField (components-inputs-popovertriggerfield): Trigger + portal popover with viewport-bounded positioning. Uses `DropdownMenu` styled (wi...\n  - Review (components-inputs-popovertriggerfield--review)\n- RadioCardGroup (components-inputs-radiocardgroup)\n  - Review (components-inputs-radiocardgroup--review)\n- ResizeHandle (components-inputs-resizehandle): Drag-to-resize separator handle. The 8px target spans the parent's cross-axis; the narrow ...\n  - Vertical Split (components-inputs-resizehandle--vertical-split)\n  - Horizontal (components-inputs-resizehandle--horizontal)\n- SearchField (components-inputs-searchfield)\n  - Playground (components-inputs-searchfield--playground)\n  - Review (components-inputs-searchfield--review)\n- SelectField (components-inputs-selectfield)\n  - Playground (components-inputs-selectfield--playground)\n  - Review (components-inputs-selectfield--review)\n- Slider (components-inputs-slider)\n  - Default (components-inputs-slider--default)\n  - With Value Label (components-inputs-slider--with-value-label)\n  - Disabled (components-inputs-slider--disabled)\n- TextButton (components-inputs-textbutton): Borderless text button used for inline actions (link-like CTAs, toggle labels). Hover unde...\n  - Accent Sm (components-inputs-textbutton--accent-sm)\n  - Accent Xs (components-inputs-textbutton--accent-xs)\n  - Muted (components-inputs-textbutton--muted)\n  - With Leading Icon (components-inputs-textbutton--with-leading-icon)\n  - With Trailing Icon (components-inputs-textbutton--with-trailing-icon)\n  - Disabled (components-inputs-textbutton--disabled)\n- TextField as unknown as React.ComponentType<TextFieldStoryArgs> (components-inputs-text-fields)\n  - Playground (components-inputs-text-fields--playground)\n  - Review (components-inputs-text-fields--review)\n- Textarea (components-inputs-textarea): Multi-line text field. Use `variant=\"monospace\"` for token / code / IP-list inputs. `minHe...\n  - Default (components-inputs-textarea--default)\n  - Monospace (components-inputs-textarea--monospace)\n  - Larger Min Height (components-inputs-textarea--larger-min-height)\n  - Disabled (components-inputs-textarea--disabled)\n- Checkbox (components-inputs-checkbox-and-switch)\n  - Review (components-inputs-checkbox-and-switch--review)\n- UploadDropzone (components-inputs-uploaddropzone)\n  - Review (components-inputs-uploaddropzone--review)\n- Breadcrumbs (components-navigation-breadcrumbs)\n  - Review (components-navigation-breadcrumbs--review)\n- IndexedNavigation (components-navigation-indexednavigation): Prev/next 화살표 + \"현재/전체\" 카운터. 단일 항목일 때는 숨김 (total <= 1). Bbox / image / step / page 등 인덱스 기...\n  - First (components-navigation-indexednavigation--first)\n  - Middle (components-navigation-indexednavigation--middle)\n  - Last (components-navigation-indexednavigation--last)\n  - Single Hidden (components-navigation-indexednavigation--single-hidden)\n  - Interactive (components-navigation-indexednavigation--interactive)\n- MobileBottomToolbar (components-navigation-mobilebottomtoolbar)\n  - Default (components-navigation-mobilebottomtoolbar--default)\n  - Filter Active (components-navigation-mobilebottomtoolbar--filter-active)\n  - Export Disabled (components-navigation-mobilebottomtoolbar--export-disabled)\n  - Table View (components-navigation-mobilebottomtoolbar--table-view)\n- MobileNavShell (components-navigation-mobilenavshell): Mobile app shell: fixed top header with hamburger + drop-down drawer with main nav and bot...\n  - Default (components-navigation-mobilenavshell--default)\n  - Open (components-navigation-mobilenavshell--open)\n  - With Badge (components-navigation-mobilenavshell--with-badge)\n- Breadcrumbs (components-navigation-navigation-family)\n  - Review (components-navigation-navigation-family--review)\n- Pagination (components-navigation-pagination)\n  - Review (components-navigation-pagination--review)\n- Tabs (components-navigation-tabs)\n  - Playground (components-navigation-tabs--playground)\n  - Review (components-navigation-tabs--review)\n- VerticalTabs (components-navigation-verticaltabs)\n  - Linked Panels (components-navigation-verticaltabs--linked-panels)\n  - Playground (components-navigation-verticaltabs--playground)\n  - Settings Appearance (components-navigation-verticaltabs--settings-appearance)\n  - Review (components-navigation-verticaltabs--review)\n- ContextMenuWithSubmenus (components-overlays-contextmenuwithsubmenus)\n  - Flat (components-overlays-contextmenuwithsubmenus--flat)\n  - With Submenus (components-overlays-contextmenuwithsubmenus--with-submenus)\n  - Dialog Focus Handoff (components-overlays-contextmenuwithsubmenus--dialog-focus-handoff)\n- ContextMenu (components-overlays-contextmenu)\n  - Review (components-overlays-contextmenu--review)\n- DialogCloseButton (components-overlays-dialogclosebutton)\n  - Review (components-overlays-dialogclosebutton--review)\n- DialogShell as unknown as React.ComponentType<DialogStoryArgs> (components-overlays-dialogshell)\n  - Playground (components-overlays-dialogshell--playground)\n  - Review (components-overlays-dialogshell--review)\n- Drawer (components-overlays-drawer)\n  - Review (components-overlays-drawer--review)\n- DuplicateItemModal (components-overlays-duplicateitemmodal)\n  - Default (components-overlays-duplicateitemmodal--default)\n  - With Option (components-overlays-duplicateitemmodal--with-option)\n  - Submitting (components-overlays-duplicateitemmodal--submitting)\n- FilterPopover (components-overlays-filterpopover)\n  - Review (components-overlays-filterpopover--review)\n- FloatingOverlay (components-overlays-floatingoverlay): Fixed-position floating surface used by tooltips, hover cards, and menus. Caller controls ...\n  - Tooltip (components-overlays-floatingoverlay--tooltip)\n  - Menu (components-overlays-floatingoverlay--menu)\n- HelpTooltip (components-overlays-helptooltip): 작은 \"?\" 아이콘 + hover 시 표시되는 텍스트 tooltip. tooltip 은 `Tooltip`(createPortal + position: fixed)...\n  - Default (components-overlays-helptooltip--default)\n  - Long Description (components-overlays-helptooltip--long-description)\n- HoverPreview (components-overlays-hoverpreview)\n  - Basic (components-overlays-hoverpreview--basic)\n  - No Delay (components-overlays-hoverpreview--no-delay)\n  - Disabled (components-overlays-hoverpreview--disabled)\n- ImageContextMenu (components-overlays-imagecontextmenu)\n  - Single Item (components-overlays-imagecontextmenu--single-item)\n  - Pending (components-overlays-imagecontextmenu--pending)\n  - Multi Item (components-overlays-imagecontextmenu--multi-item)\n  - Closed (components-overlays-imagecontextmenu--closed)\n  - Interactive (components-overlays-imagecontextmenu--interactive)\n- MenuItem (components-overlays-menuitem): Menu / dropdown / option list row. Rendered as a `<button>` for keyboard semantics — calle...\n  - Default (components-overlays-menuitem--default)\n  - Active (components-overlays-menuitem--active)\n  - Danger (components-overlays-menuitem--danger)\n  - Size Md (components-overlays-menuitem--size-md)\n  - Disabled (components-overlays-menuitem--disabled)\n- Popovers (components-overlays-popovers)\n  - Review (components-overlays-popovers--review)\n- Scrim (components-overlays-scrim)\n  - Over Content (components-overlays-scrim--over-content)\n- TextInputDialog (components-overlays-textinputdialog): Single text input + Confirm/Cancel 의 dialog. Enter = Confirm, Escape = Close. Class / data...\n  - Empty (components-overlays-textinputdialog--empty)\n  - Filled (components-overlays-textinputdialog--filled)\n  - Closed (components-overlays-textinputdialog--closed)\n  - Interactive (components-overlays-textinputdialog--interactive)\n- Tooltip (components-overlays-tooltip): Hover-triggered tooltip rendered via `createPortal(document.body)` so its `position: fixed...\n  - Review (components-overlays-tooltip--review)\n- TwoColumnDialog (components-overlays-twocolumndialog)\n  - Keyboard Containment (components-overlays-twocolumndialog--keyboard-containment)\n  - Review (components-overlays-twocolumndialog--review)\n- ConfirmProvider (components-overlays-confirmprovider)\n  - Review (components-overlays-confirmprovider--review)\n- ToolbarShell (components-inputs-toolbarshell): Generic toolbar shell — actions array + optional trailing slot + 4-placement. Canvas / ima...\n  - Review (components-inputs-toolbarshell--review)\n- AnnotationOverlay (patterns-annotation-annotationoverlay)\n  - Review (patterns-annotation-annotationoverlay--review)\n- DrawingLayer (patterns-annotation-drawinglayer)\n  - Playground (patterns-annotation-drawinglayer--playground)\n  - Review (patterns-annotation-drawinglayer--review)\n- ImageInspectorCanvas (patterns-annotation-imageinspectorcanvas): Inspector-mode wrapper around `LabelingCanvas`. Provides zoom + pan + cursor-only mouse ha...\n  - Empty (patterns-annotation-imageinspectorcanvas--empty)\n  - With Boxes (patterns-annotation-imageinspectorcanvas--with-boxes)\n  - With Points (patterns-annotation-imageinspectorcanvas--with-points)\n  - Boxes And Points (patterns-annotation-imageinspectorcanvas--boxes-and-points)\n  - No Labels (patterns-annotation-imageinspectorcanvas--no-labels)\n  - High Zoom (patterns-annotation-imageinspectorcanvas--high-zoom)\n- StatCard (patterns-cards-statcard)\n  - Review (patterns-cards-statcard--review)\n- Variants (patterns-charts-variants)\n  - Review (patterns-charts-variants--review)\n- ChartContainer (patterns-charts-chartcontainer)\n  - Review (patterns-charts-chartcontainer--review)\n- Overview (patterns-charts-overview)\n  - Review (patterns-charts-overview--review)\n  - States (patterns-charts-overview--states)\n  - Keyboard Data Access (patterns-charts-overview--keyboard-data-access)\n- CommentThread (patterns-comment-commentthread)\n  - Review (patterns-comment-commentthread--review)\n- AddDatasetModal (patterns-dialogs-adddatasetmodal)\n  - Default (patterns-dialogs-adddatasetmodal--default)\n- FilterSearchableList (patterns-filters-filtersearchablelist)\n  - Review (patterns-filters-filtersearchablelist--review)\n- FilterSection (patterns-filters-filtersection)\n  - Review (patterns-filters-filtersection--review)\n- SortPopoverTrigger (patterns-filters-sortpopovertrigger)\n  - Default (patterns-filters-sortpopovertrigger--default)\n  - Open By Default (patterns-filters-sortpopovertrigger--open-by-default)\n  - Option List (patterns-filters-sortpopovertrigger--option-list)\n- CheckboxGroup (patterns-forms-checkboxgroup)\n  - Review (patterns-forms-checkboxgroup--review)\n- ChipGroup (patterns-forms-chipgroup)\n  - Review (patterns-forms-chipgroup--review)\n- ColorEditorPlane (patterns-forms-coloreditorplane)\n  - Review (patterns-forms-coloreditorplane--review)\n- ColorEditorPopover (patterns-forms-coloreditorpopover)\n  - Review (patterns-forms-coloreditorpopover--review)\n- ColorInputRow (patterns-forms-colorinputrow)\n  - Default (patterns-forms-colorinputrow--default)\n  - Disabled (patterns-forms-colorinputrow--disabled)\n  - Interactive (patterns-forms-colorinputrow--interactive)\n- DateRangeField (patterns-forms-daterangefield)\n  - Default (patterns-forms-daterangefield--default)\n  - With Value (patterns-forms-daterangefield--with-value)\n- SettingsRow (patterns-forms-settingsrow)\n  - Named Switch (patterns-forms-settingsrow--named-switch)\n  - Default (patterns-forms-settingsrow--default)\n  - Disabled (patterns-forms-settingsrow--disabled)\n  - As Div Row (patterns-forms-settingsrow--as-div-row)\n- SettingsSection (patterns-forms-settingssection)\n  - With Title (patterns-forms-settingssection--with-title)\n  - No Title (patterns-forms-settingssection--no-title)\n- ImageGridCell (patterns-gallery-imagegridcell)\n  - Review (patterns-gallery-imagegridcell--review)\n- ImageGrid (patterns-gallery-imagegrid)\n  - Review (patterns-gallery-imagegrid--review)\n- VirtualizedImageGrid (patterns-gallery-virtualizedimagegrid)\n  - Review (patterns-gallery-virtualizedimagegrid--review)\n- SplitLayout (patterns-layouts-layouts)\n  - Review (patterns-layouts-layouts--review)\n- AppSidebar (patterns-navigation-navigation)\n  - Review (patterns-navigation-navigation--review)\n- PagePrimaryHeader (patterns-page-pageprimaryheader): Platform 페이지 (Catalog / ClassManage 등) 의 hero-style top header. 좌측: PageTitleBlock (title ...\n  - Default (patterns-page-pageprimaryheader--default)\n  - With Project Name (patterns-page-pageprimaryheader--with-project-name)\n  - No Subtitle (patterns-page-pageprimaryheader--no-subtitle)\n  - Long Title (patterns-page-pageprimaryheader--long-title)\n- AppShell (patterns-page-pageshell)\n  - Review (patterns-page-pageshell--review)\n- AutoSaveStatus (patterns-status-autosavestatus)\n  - Idle (patterns-status-autosavestatus--idle)\n  - Pending (patterns-status-autosavestatus--pending)\n  - Saving (patterns-status-autosavestatus--saving)\n  - Saved (patterns-status-autosavestatus--saved)\n  - Error State (patterns-status-autosavestatus--error-state)\n  - Error Fallback (patterns-status-autosavestatus--error-fallback)\n  - Read Only (patterns-status-autosavestatus--read-only)\n  - Invalid (patterns-status-autosavestatus--invalid)\n- LabelingCanvas (patterns-annotation-labelingcanvas)\n  - Review (patterns-annotation-labelingcanvas--review)\n- MediaDialogShell (patterns-dialogs-mediadialogshell)\n  - Review (patterns-dialogs-mediadialogshell--review)\n- SidebarShell (patterns-navigation-sidebarshell)\n  - Review (patterns-navigation-sidebarshell--review)\n- BottomBarView (pages-edge-0-0-1-bottombar): Edge 하단 상태바 (`packages/edge-pages/src/chrome/BottomBarView`). Workspace 셸 안에서만 보이던 부품을 상태별...\n  - States (pages-edge-0-0-1-bottombar--states)\n- CaptureView (pages-edge-0-0-1-captureview)\n  - States (pages-edge-0-0-1-captureview--states)\n- DatasetSelectScene (pages-edge-0-0-1-datasetselect)\n  - Empty Offline (pages-edge-0-0-1-datasetselect--empty-offline)\n  - Empty Online (pages-edge-0-0-1-datasetselect--empty-online)\n  - With Groups (pages-edge-0-0-1-datasetselect--with-groups)\n  - With Recent (pages-edge-0-0-1-datasetselect--with-recent)\n  - Loading (pages-edge-0-0-1-datasetselect--loading)\n  - Fetch Error (pages-edge-0-0-1-datasetselect--fetch-error)\n  - Add Dataset Modal Open (pages-edge-0-0-1-datasetselect--add-dataset-modal-open)\n  - Export Modal Open (pages-edge-0-0-1-datasetselect--export-modal-open)\n- LicenseScene (pages-edge-0-0-1-license)\n  - Key Empty (pages-edge-0-0-1-license--key-empty)\n  - Key Filled (pages-edge-0-0-1-license--key-filled)\n  - Key Invalid (pages-edge-0-0-1-license--key-invalid)\n  - Key Submitting (pages-edge-0-0-1-license--key-submitting)\n  - Bind Mode (pages-edge-0-0-1-license--bind-mode)\n  - Bind Submitting (pages-edge-0-0-1-license--bind-submitting)\n- LogDetailTableView (pages-edge-0-0-1-logdetailtable): Edge 로그 디테일 테이블 (`packages/edge-pages/src/log/LogDetailTableView`). 로그 엔트리 펼침 detail — raw...\n  - States (pages-edge-0-0-1-logdetailtable--states)\n- LoginScene (pages-edge-0-0-1-login)\n  - Online (pages-edge-0-0-1-login--online)\n  - Offline (pages-edge-0-0-1-login--offline)\n  - Invalid Credentials (pages-edge-0-0-1-login--invalid-credentials)\n  - Submitting (pages-edge-0-0-1-login--submitting)\n  - Session Continue (pages-edge-0-0-1-login--session-continue)\n  - Offline Package Loaded (pages-edge-0-0-1-login--offline-package-loaded)\n- SettingsScene (pages-edge-0-0-1-settings)\n  - Server (pages-edge-0-0-1-settings--server)\n  - Connection (pages-edge-0-0-1-settings--connection)\n  - Camera (pages-edge-0-0-1-settings--camera)\n  - Logs (pages-edge-0-0-1-settings--logs)\n  - About (pages-edge-0-0-1-settings--about)\n  - Data (pages-edge-0-0-1-settings--data)\n  - Field Test (pages-edge-0-0-1-settings--field-test)\n- WorkspaceScene (pages-edge-0-0-1-workspace)\n  - Capture (pages-edge-0-0-1-workspace--capture)\n  - Images (pages-edge-0-0-1-workspace--images)\n  - Statics (pages-edge-0-0-1-workspace--statics)\n  - Setup (pages-edge-0-0-1-workspace--setup)\n  - Capturing (pages-edge-0-0-1-workspace--capturing)\n  - Labeling (pages-edge-0-0-1-workspace--labeling)\n  - Labeling With Failure (pages-edge-0-0-1-workspace--labeling-with-failure)\n  - Images Modal Edit (pages-edge-0-0-1-workspace--images-modal-edit)\n  - Images Modal Read Only (pages-edge-0-0-1-workspace--images-modal-read-only)\n  - Log Filter Open (pages-edge-0-0-1-workspace--log-filter-open)\n  - Offline (pages-edge-0-0-1-workspace--offline)\n- CaptureBranches (pages-edge-0-0-5-capturebranches): Dedicated U9 controller. Backend completion is explicit, deterministic, and synthetic.\n  - Review Save Workflow (pages-edge-0-0-5-capturebranches--review-save-workflow)\n  - Derived Retry Workflow (pages-edge-0-0-5-capturebranches--derived-retry-workflow)\n  - Derived Unavailable (pages-edge-0-0-5-capturebranches--derived-unavailable)\n  - Labeling Reset Workflow (pages-edge-0-0-5-capturebranches--labeling-reset-workflow)\n  - Canvas Edit Selection Zoom Workflow (pages-edge-0-0-5-capturebranches--canvas-edit-selection-zoom-workflow)\n  - Collapsed Roi Comment Workflow (pages-edge-0-0-5-capturebranches--collapsed-roi-comment-workflow)\n- Controls (pages-edge-0-0-5-capturecontrols)\n  - Log Filter Keyboard Image Workflow (pages-edge-0-0-5-capturecontrols--log-filter-keyboard-image-workflow)\n  - Setup Simulation Workflow (pages-edge-0-0-5-capturecontrols--setup-simulation-workflow)\n- DatasetSelectScene (pages-edge-0-0-5-datasetselect)\n  - Offline (pages-edge-0-0-5-datasetselect--offline)\n  - Online (pages-edge-0-0-5-datasetselect--online)\n  - Loading (pages-edge-0-0-5-datasetselect--loading)\n  - Empty (pages-edge-0-0-5-datasetselect--empty)\n  - Fetch Error (pages-edge-0-0-5-datasetselect--fetch-error)\n  - Session Expired (pages-edge-0-0-5-datasetselect--session-expired)\n  - Session Expired Escape Workflow (pages-edge-0-0-5-datasetselect--session-expired-escape-workflow)\n  - Session Expired Cancel Workflow (pages-edge-0-0-5-datasetselect--session-expired-cancel-workflow)\n  - Add Dataset Workflow (pages-edge-0-0-5-datasetselect--add-dataset-workflow)\n  - Create Project Workflow (pages-edge-0-0-5-datasetselect--create-project-workflow)\n  - Add Dataset Cancel Workflow (pages-edge-0-0-5-datasetselect--add-dataset-cancel-workflow)\n  - Export Retry Workflow (pages-edge-0-0-5-datasetselect--export-retry-workflow)\n  - Export Cancel Workflow (pages-edge-0-0-5-datasetselect--export-cancel-workflow)\n  - Session Expired Confirm Workflow (pages-edge-0-0-5-datasetselect--session-expired-confirm-workflow)\n- WorkspaceScene (pages-edge-0-0-5-imagesworkflows)\n  - Selection Delete Workflow (pages-edge-0-0-5-imagesworkflows--selection-delete-workflow)\n  - Group Selection Workflow (pages-edge-0-0-5-imagesworkflows--group-selection-workflow)\n  - Filter Date Workflow (pages-edge-0-0-5-imagesworkflows--filter-date-workflow)\n  - Inspector Workflow (pages-edge-0-0-5-imagesworkflows--inspector-workflow)\n- LoginScene (pages-edge-0-0-5-login)\n  - Offline (pages-edge-0-0-5-login--offline)\n  - Offline No Package (pages-edge-0-0-5-login--offline-no-package)\n  - Online Form (pages-edge-0-0-5-login--online-form)\n  - Error (pages-edge-0-0-5-login--error)\n- SettingsWorkflowScene (pages-edge-0-0-5-settingsworkflows)\n  - Device Draft (pages-edge-0-0-5-settingsworkflows--device-draft)\n  - Force Ip (pages-edge-0-0-5-settingsworkflows--force-ip)\n  - Logs (pages-edge-0-0-5-settingsworkflows--logs)\n  - Lighting Ps (pages-edge-0-0-5-settingsworkflows--lighting-ps)\n  - Cache Cleanup (pages-edge-0-0-5-settingsworkflows--cache-cleanup)\n  - Field Test (pages-edge-0-0-5-settingsworkflows--field-test)\n  - About Update (pages-edge-0-0-5-settingsworkflows--about-update)\n  - Account Language (pages-edge-0-0-5-settingsworkflows--account-language)\n  - System Cleanup (pages-edge-0-0-5-settingsworkflows--system-cleanup)\n- WorkspaceScene (pages-edge-0-0-5-workspace)\n  - Capture (pages-edge-0-0-5-workspace--capture)\n  - Images (pages-edge-0-0-5-workspace--images)\n  - Images Session Workflow (pages-edge-0-0-5-workspace--images-session-workflow)\n  - Statics (pages-edge-0-0-5-workspace--statics)\n  - Setup (pages-edge-0-0-5-workspace--setup)\n  - Capturing (pages-edge-0-0-5-workspace--capturing)\n  - Sequence Failed (pages-edge-0-0-5-workspace--sequence-failed)\n  - Log Filter Open (pages-edge-0-0-5-workspace--log-filter-open)\n  - Offline (pages-edge-0-0-5-workspace--offline)\n  - Settings (pages-edge-0-0-5-workspace--settings)\n  - Settings Draft Workflow (pages-edge-0-0-5-workspace--settings-draft-workflow)\n  - Lighting Draft Workflow (pages-edge-0-0-5-workspace--lighting-draft-workflow)\n  - Experiments Draft Workflow (pages-edge-0-0-5-workspace--experiments-draft-workflow)\n  - Mock Message Failed (pages-edge-0-0-5-workspace--mock-message-failed)\n  - Sequence Cancel Workflow (pages-edge-0-0-5-workspace--sequence-cancel-workflow)\n  - Sequence Escape Workflow (pages-edge-0-0-5-workspace--sequence-escape-workflow)\n  - Sequence Retry Workflow (pages-edge-0-0-5-workspace--sequence-retry-workflow)\n  - Capturing Keyboard Lock (pages-edge-0-0-5-workspace--capturing-keyboard-lock)\n- AuthScene (pages-medical-0-0-1-auth)\n  - Login (pages-medical-0-0-1-auth--login)\n  - Signup (pages-medical-0-0-1-auth--signup)\n  - Invalid Credentials (pages-medical-0-0-1-auth--invalid-credentials)\n  - Submitting (pages-medical-0-0-1-auth--submitting)\n- ClassWorkspaceScene (pages-medical-0-0-1-classworkspace)\n  - Default (pages-medical-0-0-1-classworkspace--default)\n  - Drafting (pages-medical-0-0-1-classworkspace--drafting)\n  - Empty (pages-medical-0-0-1-classworkspace--empty)\n- ProjectPickerScene (pages-medical-0-0-1-projectpicker)\n  - Default (pages-medical-0-0-1-projectpicker--default)\n  - Empty (pages-medical-0-0-1-projectpicker--empty)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-workspace)\n  - Overview (pages-platform-0-0-1-dataset-catalog-workspace--overview)\n  - Image table (pages-platform-0-0-1-dataset-catalog-workspace--image-table)\n  - Large image set (pages-platform-0-0-1-dataset-catalog-workspace--large-image-set)\n  - Long image names (pages-platform-0-0-1-dataset-catalog-workspace--long-image-names)\n  - Images selected (pages-platform-0-0-1-dataset-catalog-workspace--images-selected)\n  - Dataset sidebar collapsed (pages-platform-0-0-1-dataset-catalog-workspace--dataset-sidebar-collapsed)\n  - Drop on dataset (pages-platform-0-0-1-dataset-catalog-workspace--drop-on-dataset)\n  - Drop on image gallery (pages-platform-0-0-1-dataset-catalog-workspace--drop-on-gallery)\n  - Page dropzone (pages-platform-0-0-1-dataset-catalog-workspace--page-dropzone)\n  - Upload progress (pages-platform-0-0-1-dataset-catalog-workspace--upload-progress)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-analytics)\n  - Overview (pages-platform-0-0-1-dataset-catalog-analytics--overview)\n  - Empty state (pages-platform-0-0-1-dataset-catalog-analytics--empty-state)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-dataset-details)\n  - No connected classes (pages-platform-0-0-1-dataset-catalog-dataset-details--no-connected-classes)\n  - Loading (pages-platform-0-0-1-dataset-catalog-dataset-details--loading)\n  - Class and member overflow (pages-platform-0-0-1-dataset-catalog-dataset-details--overflow)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-image-inspector)\n  - With comments (pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-interactions)\n  - Toolbar workflow (pages-platform-0-0-1-dataset-catalog-interactions--toolbar-workflow)\n  - Active filtered results (pages-platform-0-0-1-dataset-catalog-interactions--active-filtered-results)\n  - Filter panel open (pages-platform-0-0-1-dataset-catalog-interactions--filter-panel-open)\n  - Sort menu open (pages-platform-0-0-1-dataset-catalog-interactions--sort-menu-open)\n  - Dataset actions menu (pages-platform-0-0-1-dataset-catalog-interactions--dataset-actions-menu)\n  - Image actions menu (pages-platform-0-0-1-dataset-catalog-interactions--image-actions-menu)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-responsive)\n  - Overview (pages-platform-0-0-1-dataset-catalog-responsive--overview)\n  - Dataset selector open (pages-platform-0-0-1-dataset-catalog-responsive--dataset-selector-open)\n  - Filter sheet open (pages-platform-0-0-1-dataset-catalog-responsive--filter-sheet-open)\n  - Sort sheet open (pages-platform-0-0-1-dataset-catalog-responsive--sort-sheet-open)\n  - Analytics falls back to image grid (pages-platform-0-0-1-dataset-catalog-responsive--analytics-fallback)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-system-states)\n  - No datasets (pages-platform-0-0-1-dataset-catalog-system-states--no-datasets)\n  - No images (pages-platform-0-0-1-dataset-catalog-system-states--no-images)\n  - Datasets loading (pages-platform-0-0-1-dataset-catalog-system-states--datasets-loading)\n  - Images loading (pages-platform-0-0-1-dataset-catalog-system-states--images-loading)\n  - Image load error (pages-platform-0-0-1-dataset-catalog-system-states--image-load-error)\n  - Access denied (pages-platform-0-0-1-dataset-catalog-system-states--access-denied)\n  - No project selected (pages-platform-0-0-1-dataset-catalog-system-states--no-project-selected)\n- DatasetCatalogScene (pages-platform-0-0-1-dataset-catalog-workflows)\n  - Add dataset dialog (pages-platform-0-0-1-dataset-catalog-workflows--add-dataset-dialog)\n  - Dataset IGP export dialog (pages-platform-0-0-1-dataset-catalog-workflows--dataset-igp-export-dialog)\n  - Upload quality dialog (pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog)\n  - Delete images dialog (pages-platform-0-0-1-dataset-catalog-workflows--delete-images-dialog)\n  - Gallery export dialog (pages-platform-0-0-1-dataset-catalog-workflows--gallery-export-dialog)\n  - Transfer images dialog (pages-platform-0-0-1-dataset-catalog-workflows--transfer-images-dialog)\n- ClassManagementScene (pages-platform-0-0-1-class-management-workspace)\n  - Overview (pages-platform-0-0-1-class-management-workspace--overview)\n  - Sidebar collapsed (pages-platform-0-0-1-class-management-workspace--sidebar-collapsed)\n  - Large image set (pages-platform-0-0-1-class-management-workspace--large-image-set)\n  - Class list overflow (pages-platform-0-0-1-class-management-workspace--class-list-overflow)\n- ClassManagementScene (pages-platform-0-0-1-class-management-image-inspector)\n  - Pattern sequence (pages-platform-0-0-1-class-management-image-inspector--pattern-sequence)\n- ClassManagementScene (pages-platform-0-0-1-class-management-interactions)\n  - Class selection workflow (pages-platform-0-0-1-class-management-interactions--class-selection-workflow)\n  - Dataset selection workflow (pages-platform-0-0-1-class-management-interactions--dataset-selection-workflow)\n  - Image review workflow (pages-platform-0-0-1-class-management-interactions--image-review-workflow)\n- ClassManagementScene (pages-platform-0-0-1-class-management-model-mapping)\n  - COCO mapping workflow (pages-platform-0-0-1-class-management-model-mapping--coco-mapping-workflow)\n- ClassManagementScene (pages-platform-0-0-1-class-management-reference-image)\n  - Drop target active (pages-platform-0-0-1-class-management-reference-image--drop-target-active)\n  - Update pending (pages-platform-0-0-1-class-management-reference-image--update-pending)\n  - Update error (pages-platform-0-0-1-class-management-reference-image--update-error)\n  - Multiple bounding boxes (pages-platform-0-0-1-class-management-reference-image--multiple-bounding-boxes)\n- ClassManagementScene (pages-platform-0-0-1-class-management-system-states)\n  - No project selected (pages-platform-0-0-1-class-management-system-states--no-project-selected)\n  - Access denied (pages-platform-0-0-1-class-management-system-states--access-denied)\n  - Load error (pages-platform-0-0-1-class-management-system-states--load-error)\n  - Classes loading (pages-platform-0-0-1-class-management-system-states--classes-loading)\n  - No classes (pages-platform-0-0-1-class-management-system-states--no-classes)\n  - No linked datasets (pages-platform-0-0-1-class-management-system-states--no-linked-datasets)\n  - Linked datasets loading (pages-platform-0-0-1-class-management-system-states--linked-datasets-loading)\n  - Images loading (pages-platform-0-0-1-class-management-system-states--images-loading)\n  - No images (pages-platform-0-0-1-class-management-system-states--no-images)\n- ClassManagementScene (pages-platform-0-0-1-class-management-workflows)\n  - Add class (pages-platform-0-0-1-class-management-workflows--add-class)\n  - Class actions (pages-platform-0-0-1-class-management-workflows--class-actions)\n- CreateProjectScene (pages-platform-0-0-1-create-project-workspace)\n  - Overview (pages-platform-0-0-1-create-project-workspace--overview)\n- CreateProjectScene (pages-platform-0-0-1-create-project-system-states)\n  - Submitting (pages-platform-0-0-1-create-project-system-states--submitting)\n  - Server error (pages-platform-0-0-1-create-project-system-states--server-error)\n- CreateProjectScene (pages-platform-0-0-1-create-project-workflows)\n  - Project creation workflow (pages-platform-0-0-1-create-project-workflows--project-creation)\n  - Cancel workflow (pages-platform-0-0-1-create-project-workflows--cancel)\n- DashboardScene (pages-platform-0-0-1-dashboard-workspace)\n  - Overview (pages-platform-0-0-1-dashboard-workspace--overview)\n- DashboardScene (pages-platform-0-0-1-dashboard-integrations)\n  - Edge analytics (pages-platform-0-0-1-dashboard-integrations--edge-analytics)\n  - Deflectometry (pages-platform-0-0-1-dashboard-integrations--deflectometry)\n- DashboardScene (pages-platform-0-0-1-dashboard-interactions)\n  - Customize widgets workflow (pages-platform-0-0-1-dashboard-interactions--customize-widgets-workflow)\n  - Date range workflow (pages-platform-0-0-1-dashboard-interactions--date-range-workflow)\n  - Export workflow (pages-platform-0-0-1-dashboard-interactions--export-workflow)\n  - Layout reset workflow (pages-platform-0-0-1-dashboard-interactions--layout-reset-workflow)\n- DashboardLayoutStudyScene (pages-platform-0-0-1-dashboard-layout-studies)\n  - Compact masonry (pages-platform-0-0-1-dashboard-layout-studies--compact-masonry)\n  - Sectioned grid (pages-platform-0-0-1-dashboard-layout-studies--sectioned-grid)\n- DashboardScene (pages-platform-0-0-1-dashboard-layouts)\n  - Three per row (pages-platform-0-0-1-dashboard-layouts--three-per-row)\n  - One per row (pages-platform-0-0-1-dashboard-layouts--one-per-row)\n- DashboardScene (pages-platform-0-0-1-dashboard-system-states)\n  - No project selected (pages-platform-0-0-1-dashboard-system-states--no-project-selected)\n  - Loading (pages-platform-0-0-1-dashboard-system-states--loading)\n  - Load error (pages-platform-0-0-1-dashboard-system-states--load-error)\n  - No analysis data (pages-platform-0-0-1-dashboard-system-states--no-analysis-data)\n  - Missing project name (pages-platform-0-0-1-dashboard-system-states--missing-project-name)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-general)\n  - Preferences (pages-platform-0-0-1-settings-modal-general--preferences)\n  - Non-admin navigation (pages-platform-0-0-1-settings-modal-general--non-admin-navigation)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-account)\n  - Organization license (pages-platform-0-0-1-settings-modal-account--organization-license)\n  - Personal license (pages-platform-0-0-1-settings-modal-account--personal-license)\n  - Expired license (pages-platform-0-0-1-settings-modal-account--expired-license)\n  - License loading (pages-platform-0-0-1-settings-modal-account--license-loading)\n  - Profile saved (pages-platform-0-0-1-settings-modal-account--profile-saved)\n  - Password change workflow (pages-platform-0-0-1-settings-modal-account--password-change-workflow)\n  - Delete shared projects (pages-platform-0-0-1-settings-modal-account--delete-shared-projects)\n  - Delete with solo project (pages-platform-0-0-1-settings-modal-account--delete-with-solo-project)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-devices)\n  - Management workflow (pages-platform-0-0-1-settings-modal-devices--management-workflow)\n  - Loading (pages-platform-0-0-1-settings-modal-devices--loading)\n  - Offline token issued (pages-platform-0-0-1-settings-modal-devices--offline-token-issued)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-edge)\n  - No project selected (pages-platform-0-0-1-settings-modal-edge--no-project-selected)\n  - Work options (pages-platform-0-0-1-settings-modal-edge--work-options)\n  - Deflectometry work options (pages-platform-0-0-1-settings-modal-edge--deflectometry-work-options)\n  - Export selection workflow (pages-platform-0-0-1-settings-modal-edge--export-selection-workflow)\n  - Import idle (pages-platform-0-0-1-settings-modal-edge--import-idle)\n  - Import uploading (pages-platform-0-0-1-settings-modal-edge--import-uploading)\n  - Import completed with failures (pages-platform-0-0-1-settings-modal-edge--import-completed-with-failures)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-organization)\n  - Overview (pages-platform-0-0-1-settings-modal-organization--overview)\n  - Saved (pages-platform-0-0-1-settings-modal-organization--saved)\n  - Members and invitations workflow (pages-platform-0-0-1-settings-modal-organization--members-and-invitations-workflow)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-project)\n  - Configuration workflow (pages-platform-0-0-1-settings-modal-project--configuration-workflow)\n  - Deflectometry project (pages-platform-0-0-1-settings-modal-project--deflectometry-project)\n  - Non-owner details (pages-platform-0-0-1-settings-modal-project--non-owner-details)\n  - Saving (pages-platform-0-0-1-settings-modal-project--saving)\n  - Invalid name (pages-platform-0-0-1-settings-modal-project--invalid-name)\n  - No project selected (pages-platform-0-0-1-settings-modal-project--no-project-selected)\n  - Permissions workflow (pages-platform-0-0-1-settings-modal-project--permissions-workflow)\n- SettingsModalScene (pages-platform-0-0-1-settings-modal-storage)\n  - Analytics (pages-platform-0-0-1-settings-modal-storage--analytics)\n  - Loading (pages-platform-0-0-1-settings-modal-storage--loading)\n  - Error (pages-platform-0-0-1-settings-modal-storage--error)\n- LoginStoryScene (pages-platform-0-0-1-auth-login-workspace)\n  - Overview (pages-platform-0-0-1-auth-login-workspace--overview)\n- LoginStoryScene (pages-platform-0-0-1-auth-login-system-states)\n  - Submitting (pages-platform-0-0-1-auth-login-system-states--submitting)\n  - Server Error (pages-platform-0-0-1-auth-login-system-states--server-error)\n  - Permission Denied (pages-platform-0-0-1-auth-login-system-states--permission-denied)\n  - Long Credentials (pages-platform-0-0-1-auth-login-system-states--long-credentials)\n- LoginStoryScene (pages-platform-0-0-1-auth-login-workflows)\n  - Sign In (pages-platform-0-0-1-auth-login-workflows--sign-in)\n- SignupStoryScene (pages-platform-0-0-1-auth-signup-workspace)\n  - Overview (pages-platform-0-0-1-auth-signup-workspace--overview)\n- SignupStoryScene (pages-platform-0-0-1-auth-signup-system-states)\n  - Password Requirements (pages-platform-0-0-1-auth-signup-system-states--password-requirements)\n  - Submitting (pages-platform-0-0-1-auth-signup-system-states--submitting)\n- SignupStoryScene (pages-platform-0-0-1-auth-signup-workflows)\n  - Account Creation (pages-platform-0-0-1-auth-signup-workflows--account-creation)\n- LayoutComposer (builders-layoutcomposer)\n  - Default (builders-layoutcomposer--default)\n  - Grid Three Columns (builders-layoutcomposer--grid-three-columns)\n  - Inline Centered (builders-layoutcomposer--inline-centered)\n- PageComposer (builders-pagecomposer)\n  - Default (builders-pagecomposer--default)\n  - Split With Inspector (builders-pagecomposer--split-with-inspector)\n  - Dashboard 6 Widgets (builders-pagecomposer--dashboard-6-widgets)\n  - Empty States (builders-pagecomposer--empty-states)\n- ThemeBuilder (builders-themebuilder)\n  - Default (builders-themebuilder--default)\n  - Finemtech Compact (builders-themebuilder--finemtech-compact)\n  - Samsung Comfortable (builders-themebuilder--samsung-comfortable)\n  - Medical Dark (builders-themebuilder--medical-dark)\n  - Ultra Dense (builders-themebuilder--ultra-dense)\n  - Light Mode (builders-themebuilder--light-mode)\n- HooksLab (sandboxes-hooks-lab)\n  - Overview (sandboxes-hooks-lab--overview)\n- InteractionUtilsLab (sandboxes-interaction-utils-lab)\n  - Overview (sandboxes-interaction-utils-lab--overview)\n- StateMatrix (sandboxes-state-matrix)\n  - Overview (sandboxes-state-matrix--overview)\n- ThemeLab (sandboxes-theme-lab)\n  - Overview (sandboxes-theme-lab--overview)\n- DistributionHeatmap (platform-pages-dashboard-distributionheatmap): row × column 교차 distribution 을 색 강도 (intensity) 로 표시하는 generic heatmap. 셀의 색 강도는 matrix 전체...\n  - Default (platform-pages-dashboard-distributionheatmap--default)\n  - Formatted Values (platform-pages-dashboard-distributionheatmap--formatted-values)\n  - Sparse (platform-pages-dashboard-distributionheatmap--sparse)\n- PermissionMatrix (platform-pages-settings-modal-project-permissionmatrix): 권한 / 옵션 / 기능 등을 row × column 교차 grid 로 표시하는 generic matrix. Sticky row-label column + 2-le...\n  - Default (platform-pages-settings-modal-project-permissionmatrix--default)\n  - No Search (platform-pages-settings-modal-project-permissionmatrix--no-search)\n- useClickOutside (hooks-useclickoutside)\n  - Review (hooks-useclickoutside--review)\n- MainLayoutView (edge-pages-app-shell-mainlayout)\n  - Constrained Desktop (edge-pages-app-shell-mainlayout--constrained-desktop)\n- OverlayOnImage (edge-pages-capture-overlays)\n  - Calculate Idle (edge-pages-capture-overlays--calculate-idle)\n  - Calculating (edge-pages-capture-overlays--calculating)\n  - Unavailable (edge-pages-capture-overlays--unavailable)\n  - Fringe Profile (edge-pages-capture-overlays--fringe-profile)\n- SetupPanelHarness (edge-pages-capture-setuppanel)\n  - Deflectometry (edge-pages-capture-setuppanel--deflectometry)\n  - Camera Only (edge-pages-capture-setuppanel--camera-only)\n- DatasetCardView (edge-pages-dataset-select-datasetcard)\n  - Keyboard Selection (edge-pages-dataset-select-datasetcard--keyboard-selection)\n- CollapsedRail (edge-pages-labeling-rightpanelcollapsed)\n  - Collapsed (edge-pages-labeling-rightpanelcollapsed--collapsed)\n- SettingsDialogHarness (edge-pages-settings-camerasettingsdialog)\n  - Experiments (edge-pages-settings-camerasettingsdialog--experiments)\n  - First Tab (edge-pages-settings-camerasettingsdialog--first-tab)\n  - Lighting Monitor (edge-pages-settings-camerasettingsdialog--lighting-monitor)\n  - Lighting Controller (edge-pages-settings-camerasettingsdialog--lighting-controller)\n- CameraSetupPanel (edge-pages-settings-camerasetuppanel)\n  - Problem Found (edge-pages-settings-camerasetuppanel--problem-found)\n  - Before Start (edge-pages-settings-camerasetuppanel--before-start)\n  - Running (edge-pages-settings-camerasetuppanel--running)\n- TrendTooltip (edge-pages-statics-labelingcharttooltips)\n  - Trend (edge-pages-statics-labelingcharttooltips--trend)\n  - Average Size (edge-pages-statics-labelingcharttooltips--average-size)\n  - Empty (edge-pages-statics-labelingcharttooltips--empty)\n- DatasetListItem (platform-pages-catalog-datasetlistitem)\n  - Review (platform-pages-catalog-datasetlistitem--review)\n- DatasetListPanel (platform-pages-catalog-datasetlistpanel)\n  - Interactive (platform-pages-catalog-datasetlistpanel--interactive)\n  - Empty (platform-pages-catalog-datasetlistpanel--empty)\n  - Loading (platform-pages-catalog-datasetlistpanel--loading)\n  - No Project (platform-pages-catalog-datasetlistpanel--no-project)\n  - Drag Over (platform-pages-catalog-datasetlistpanel--drag-over)\n- DatasetTaskTag (platform-pages-catalog-datasettasktag)\n  - All Types (platform-pages-catalog-datasettasktag--all-types)\n  - Object Detection (platform-pages-catalog-datasettasktag--object-detection)\n  - Classification (platform-pages-catalog-datasettasktag--classification)\n  - Segmentation (platform-pages-catalog-datasettasktag--segmentation)\n  - Point (platform-pages-catalog-datasettasktag--point)\n- DragDropDecideModal (platform-pages-catalog-dragdropdecidemodal)\n  - Default (platform-pages-catalog-dragdropdecidemodal--default)\n- ExportProgressModal (platform-pages-catalog-exportprogressmodal)\n  - Preparing (platform-pages-catalog-exportprogressmodal--preparing)\n  - Processing (platform-pages-catalog-exportprogressmodal--processing)\n  - Ready (platform-pages-catalog-exportprogressmodal--ready)\n  - Error (platform-pages-catalog-exportprogressmodal--error)\n  - Customized (platform-pages-catalog-exportprogressmodal--customized)\n- GalleryDatasetTransferDialog (platform-pages-catalog-gallery-gallerydatasettransferdialog): 갤러리 선택 이미지를 다른 dataset 으로 copy / move 하는 dialog. Platform 의 `GalleryDatasetTransferDialog`...\n  - Copy (platform-pages-catalog-gallery-gallerydatasettransferdialog--copy)\n  - Move (platform-pages-catalog-gallery-gallerydatasettransferdialog--move)\n- GalleryDeleteDialog (platform-pages-catalog-gallery-gallerydeletedialog): 갤러리 이미지 일괄 삭제 / 단일 삭제 확인 dialog. Platform 의 `GalleryDeleteDialog` 와 시각·구조 동일.\n  - Single (platform-pages-catalog-gallery-gallerydeletedialog--single)\n  - Bulk (platform-pages-catalog-gallery-gallerydeletedialog--bulk)\n  - Deleting (platform-pages-catalog-gallery-gallerydeletedialog--deleting)\n  - With Error (platform-pages-catalog-gallery-gallerydeletedialog--with-error)\n- GalleryDetailModal (platform-pages-catalog-gallery-gallerydetailmodal)\n  - Default (platform-pages-catalog-gallery-gallerydetailmodal--default)\n- GalleryExportConfigDialog (platform-pages-catalog-gallery-galleryexportconfigdialog): 갤러리 이미지 일괄 export 설정 dialog. Range / Type / Image format / Folder grouping 옵션. Platform 의 ...\n  - Default (platform-pages-catalog-gallery-galleryexportconfigdialog--default)\n  - No Selection (platform-pages-catalog-gallery-galleryexportconfigdialog--no-selection)\n  - Regex Grouping (platform-pages-catalog-gallery-galleryexportconfigdialog--regex-grouping)\n  - With Error (platform-pages-catalog-gallery-galleryexportconfigdialog--with-error)\n- GalleryExportProgressDialog (platform-pages-catalog-gallery-galleryexportprogressdialog): 갤러리 export 진행 상황 / 완료 후 재다운로드 dialog. Platform 의 `GalleryExportProgressDialog` 와 시각·구조 동일.\n  - Queued (platform-pages-catalog-gallery-galleryexportprogressdialog--queued)\n  - Collecting Samples (platform-pages-catalog-gallery-galleryexportprogressdialog--collecting-samples)\n  - Packaging Zip (platform-pages-catalog-gallery-galleryexportprogressdialog--packaging-zip)\n  - Completed (platform-pages-catalog-gallery-galleryexportprogressdialog--completed)\n  - Failed (platform-pages-catalog-gallery-galleryexportprogressdialog--failed)\n- GalleryFilterPanel (platform-pages-catalog-gallery-galleryfilterpanel)\n  - Empty (platform-pages-catalog-gallery-galleryfilterpanel--empty)\n  - Active (platform-pages-catalog-gallery-galleryfilterpanel--active)\n- GalleryImageMenu (platform-pages-catalog-gallery-galleryimagemenu)\n  - Review (platform-pages-catalog-gallery-galleryimagemenu--review)\n- GalleryImagesTable (platform-pages-catalog-gallery-galleryimagestable)\n  - Default (platform-pages-catalog-gallery-galleryimagestable--default)\n- GalleryToolbar (platform-pages-catalog-gallery-gallerytoolbar)\n  - No Selection (platform-pages-catalog-gallery-gallerytoolbar--no-selection)\n  - With Selection (platform-pages-catalog-gallery-gallerytoolbar--with-selection)\n- SyncStatusChip (platform-pages-catalog-gallery-syncstatuschip)\n  - All States (platform-pages-catalog-gallery-syncstatuschip--all-states)\n  - Synced (platform-pages-catalog-gallery-syncstatuschip--synced)\n  - Uploading (platform-pages-catalog-gallery-syncstatuschip--uploading)\n  - Upload Failed (platform-pages-catalog-gallery-syncstatuschip--upload-failed)\n  - Local Only (platform-pages-catalog-gallery-syncstatuschip--local-only)\n- UploadQualityModal (platform-pages-catalog-uploadqualitymodal)\n  - Default (platform-pages-catalog-uploadqualitymodal--default)\n- ClassInfoSidebar (platform-pages-class-manage-classinfosidebar)\n  - Default (platform-pages-class-manage-classinfosidebar--default)\n  - No Description (platform-pages-class-manage-classinfosidebar--no-description)\n  - With Slots (platform-pages-class-manage-classinfosidebar--with-slots)\n  - Interactive (platform-pages-class-manage-classinfosidebar--interactive)\n- ClassLightbox (platform-pages-class-manage-classlightbox)\n  - Single (platform-pages-class-manage-classlightbox--single)\n  - Closed (platform-pages-class-manage-classlightbox--closed)\n- ClassListSidebar (platform-pages-class-manage-classlistsidebar)\n  - Default (platform-pages-class-manage-classlistsidebar--default)\n  - Loading (platform-pages-class-manage-classlistsidebar--loading)\n  - Empty (platform-pages-class-manage-classlistsidebar--empty)\n  - Many Classes (platform-pages-class-manage-classlistsidebar--many-classes)\n  - Long Names (platform-pages-class-manage-classlistsidebar--long-names)\n  - No Counts (platform-pages-class-manage-classlistsidebar--no-counts)\n- ModelMappingSelect (platform-pages-class-manage-modelmappingselect)\n  - Not Mapped (platform-pages-class-manage-modelmappingselect--not-mapped)\n  - Mapped To Person (platform-pages-class-manage-modelmappingselect--mapped-to-person)\n  - Disabled (platform-pages-class-manage-modelmappingselect--disabled)\n  - Interactive (platform-pages-class-manage-modelmappingselect--interactive)\n- ReferenceImageDropZone (platform-pages-class-manage-referenceimagedropzone)\n  - Empty (platform-pages-class-manage-referenceimagedropzone--empty)\n  - Dragging (platform-pages-class-manage-referenceimagedropzone--dragging)\n  - With Image (platform-pages-class-manage-referenceimagedropzone--with-image)\n- ReferenceImageSection (platform-pages-class-manage-referenceimagesection)\n  - Empty (platform-pages-class-manage-referenceimagesection--empty)\n  - Dragging (platform-pages-class-manage-referenceimagesection--dragging)\n  - With Image (platform-pages-class-manage-referenceimagesection--with-image)\n  - Multi Bbox (platform-pages-class-manage-referenceimagesection--multi-bbox)\n  - Pending (platform-pages-class-manage-referenceimagesection--pending)\n  - Error (platform-pages-class-manage-referenceimagesection--error)\n  - Interactive (platform-pages-class-manage-referenceimagesection--interactive)\n- SelectableGridPanel (platform-pages-class-manage-selectablegridpanel): Header (filter chips 등) + grid + empty/loading 상태 처리 panel. 선택된 item 이 없으면 noSelectionText...\n  - No Selection (platform-pages-class-manage-selectablegridpanel--no-selection)\n  - With Grid (platform-pages-class-manage-selectablegridpanel--with-grid)\n  - Loading (platform-pages-class-manage-selectablegridpanel--loading)\n  - Empty Images (platform-pages-class-manage-selectablegridpanel--empty-images)\n- AnalysisWidgetShell (platform-pages-dashboard-analysiswidgetshell)\n  - No Actions (platform-pages-dashboard-analysiswidgetshell--no-actions)\n  - With Download (platform-pages-dashboard-analysiswidgetshell--with-download)\n- DashboardCustomizePopover (platform-pages-dashboard-dashboardcustomizepopover)\n  - All On (platform-pages-dashboard-dashboardcustomizepopover--all-on)\n  - All Off (platform-pages-dashboard-dashboardcustomizepopover--all-off)\n  - Mixed (platform-pages-dashboard-dashboardcustomizepopover--mixed)\n  - Interactive (platform-pages-dashboard-dashboardcustomizepopover--interactive)\n- DashboardHeader (platform-pages-dashboard-dashboardheader)\n  - Default (platform-pages-dashboard-dashboardheader--default)\n  - No Project (platform-pages-dashboard-dashboardheader--no-project)\n  - With Save Message (platform-pages-dashboard-dashboardheader--with-save-message)\n  - Title Only (platform-pages-dashboard-dashboardheader--title-only)\n  - Long Project Name (platform-pages-dashboard-dashboardheader--long-project-name)\n- DashboardOverviewPanel (platform-pages-dashboard-dashboardoverviewpanel)\n  - No Project (platform-pages-dashboard-dashboardoverviewpanel--no-project)\n  - Loading (platform-pages-dashboard-dashboardoverviewpanel--loading)\n  - Error State (platform-pages-dashboard-dashboardoverviewpanel--error-state)\n  - No Data (platform-pages-dashboard-dashboardoverviewpanel--no-data)\n  - With Body (platform-pages-dashboard-dashboardoverviewpanel--with-body)\n  - With Date Popover Open (platform-pages-dashboard-dashboardoverviewpanel--with-date-popover-open)\n- DashboardStatsHeader (platform-pages-dashboard-dashboardstatsheader)\n  - Labeling Status (platform-pages-dashboard-dashboardstatsheader--labeling-status)\n  - Pending Processed (platform-pages-dashboard-dashboardstatsheader--pending-processed)\n  - Single Stat (platform-pages-dashboard-dashboardstatsheader--single-stat)\n- DashboardWidget (platform-pages-dashboard-dashboardwidget)\n  - Default (platform-pages-dashboard-dashboardwidget--default)\n- LayoutDashboard (platform-pages-dashboard-layoutdashboard)\n  - Default (platform-pages-dashboard-layoutdashboard--default)\n  - Stats Only (platform-pages-dashboard-layoutdashboard--stats-only)\n- WidgetGrid (platform-pages-dashboard-widgetgrid)\n  - Full Layout (platform-pages-dashboard-widgetgrid--full-layout)\n  - Three Per Row (platform-pages-dashboard-widgetgrid--three-per-row)\n  - Two Per Row (platform-pages-dashboard-widgetgrid--two-per-row)\n  - One Per Row (platform-pages-dashboard-widgetgrid--one-per-row)\n  - Hidden Some (platform-pages-dashboard-widgetgrid--hidden-some)\n  - All Hidden (platform-pages-dashboard-widgetgrid--all-hidden)\n- AnalysisClassRatioWidget (platform-pages-dashboard-widgets-analysisclassratiowidget): Class 분포 vertical BarChart. row 별 색상은 chartData 가 정함. Platform 의 `ClassRatioWidget` 와 시각·구...\n  - Default (platform-pages-dashboard-widgets-analysisclassratiowidget--default)\n  - Empty (platform-pages-dashboard-widgets-analysisclassratiowidget--empty)\n- AnalysisDataCollectionWidget (platform-pages-dashboard-widgets-analysisdatacollectionwidget): Dataset 별 이미지 수 BarChart. Header 에 총합 표시. Platform 의 `DataCollectionWidget` 와 시각·구조 동일.\n  - Default (platform-pages-dashboard-widgets-analysisdatacollectionwidget--default)\n  - Empty (platform-pages-dashboard-widgets-analysisdatacollectionwidget--empty)\n- AnalysisLabelingByPersonWidget (platform-pages-dashboard-widgets-analysislabelingbypersonwidget): Uploader 별 Images / Labeled count BarChart + table. Platform 의 `LabelingByPersonWidget` 와 ...\n  - Default (platform-pages-dashboard-widgets-analysislabelingbypersonwidget--default)\n  - Empty (platform-pages-dashboard-widgets-analysislabelingbypersonwidget--empty)\n- AnalysisLabelingStatusWidget (platform-pages-dashboard-widgets-analysislabelingstatuswidget): Labeled vs Unlabeled PieChart. Header 에 통계 행 3개. Platform 의 `LabelingStatusWidget` 와 시각·구조...\n  - Default (platform-pages-dashboard-widgets-analysislabelingstatuswidget--default)\n  - Empty (platform-pages-dashboard-widgets-analysislabelingstatuswidget--empty)\n- AnalysisPendingProcessedWidget (platform-pages-dashboard-widgets-analysispendingprocessedwidget): Pending vs Processed doughnut. Header 에 두 줄 통계. Platform 의 `PendingProcessedWidget` 와 시각·구...\n  - Default (platform-pages-dashboard-widgets-analysispendingprocessedwidget--default)\n  - Empty (platform-pages-dashboard-widgets-analysispendingprocessedwidget--empty)\n- AnalysisTimelineWidget (platform-pages-dashboard-widgets-analysistimelinewidget): 시간별 누적 이미지 수 LineChart. Header 에 granularity 표시. Platform 의 `TimelineWidget` 와 시각·구조 동일.\n  - Daily (platform-pages-dashboard-widgets-analysistimelinewidget--daily)\n  - Hourly (platform-pages-dashboard-widgets-analysistimelinewidget--hourly)\n  - Empty (platform-pages-dashboard-widgets-analysistimelinewidget--empty)\n- PerDatasetDistributionWidget (platform-pages-dashboard-widgets-perdatasetdistributionwidget)\n  - Default (platform-pages-dashboard-widgets-perdatasetdistributionwidget--default)\n  - Single Dataset (platform-pages-dashboard-widgets-perdatasetdistributionwidget--single-dataset)\n  - Empty (platform-pages-dashboard-widgets-perdatasetdistributionwidget--empty)\n- SourceBreakdownWidget (platform-pages-dashboard-widgets-sourcebreakdownwidget)\n  - Default (platform-pages-dashboard-widgets-sourcebreakdownwidget--default)\n  - Single Source (platform-pages-dashboard-widgets-sourcebreakdownwidget--single-source)\n  - Source No Defects (platform-pages-dashboard-widgets-sourcebreakdownwidget--source-no-defects)\n  - Empty (platform-pages-dashboard-widgets-sourcebreakdownwidget--empty)\n- CommentsPanel (platform-pages-image-detail-commentspanel): Image detail sidebar 의 comments section.\n  - Interactive (platform-pages-image-detail-commentspanel--interactive)\n  - Empty (platform-pages-image-detail-commentspanel--empty)\n  - With Mentions (platform-pages-image-detail-commentspanel--with-mentions)\n  - Edit Mode (platform-pages-image-detail-commentspanel--edit-mode)\n  - With Error (platform-pages-image-detail-commentspanel--with-error)\n  - Submitting (platform-pages-image-detail-commentspanel--submitting)\n- Demo (platform-pages-image-detail-imagedetailclasslist)\n  - Default (platform-pages-image-detail-imagedetailclasslist--default)\n  - Selected (platform-pages-image-detail-imagedetailclasslist--selected)\n  - Classified (platform-pages-image-detail-imagedetailclasslist--classified)\n  - Empty (platform-pages-image-detail-imagedetailclasslist--empty)\n  - Long Name (platform-pages-image-detail-imagedetailclasslist--long-name)\n- Demo (platform-pages-image-detail-imagedetailinfopanel)\n  - Basic Only (platform-pages-image-detail-imagedetailinfopanel--basic-only)\n  - In Group (platform-pages-image-detail-imagedetailinfopanel--in-group)\n  - Detailed (platform-pages-image-detail-imagedetailinfopanel--detailed)\n  - Minimal (platform-pages-image-detail-imagedetailinfopanel--minimal)\n- DeleteAccountDialog (platform-pages-settings-modal-account-deleteaccountdialog)\n  - With Solo And Resolutions (platform-pages-settings-modal-account-deleteaccountdialog--with-solo-and-resolutions)\n  - Resolutions Only (platform-pages-settings-modal-account-deleteaccountdialog--resolutions-only)\n  - Unresolved Warning (platform-pages-settings-modal-account-deleteaccountdialog--unresolved-warning)\n  - Ready To Submit (platform-pages-settings-modal-account-deleteaccountdialog--ready-to-submit)\n  - Deleting (platform-pages-settings-modal-account-deleteaccountdialog--deleting)\n  - Error Message (platform-pages-settings-modal-account-deleteaccountdialog--error-message)\n  - Closed (platform-pages-settings-modal-account-deleteaccountdialog--closed)\n  - Interactive (platform-pages-settings-modal-account-deleteaccountdialog--interactive)\n- PasswordChangeDialog (platform-pages-settings-modal-account-passwordchangedialog)\n  - Empty (platform-pages-settings-modal-account-passwordchangedialog--empty)\n  - Filled (platform-pages-settings-modal-account-passwordchangedialog--filled)\n  - Mismatch (platform-pages-settings-modal-account-passwordchangedialog--mismatch)\n  - Saving (platform-pages-settings-modal-account-passwordchangedialog--saving)\n  - Success Message (platform-pages-settings-modal-account-passwordchangedialog--success-message)\n  - Error Message (platform-pages-settings-modal-account-passwordchangedialog--error-message)\n  - Closed (platform-pages-settings-modal-account-passwordchangedialog--closed)\n  - Interactive (platform-pages-settings-modal-account-passwordchangedialog--interactive)\n- SettingsAccountTab (platform-pages-settings-modal-account-settingsaccounttab)\n  - Default (platform-pages-settings-modal-account-settingsaccounttab--default)\n  - Personal License (platform-pages-settings-modal-account-settingsaccounttab--personal-license)\n  - Expired License (platform-pages-settings-modal-account-settingsaccounttab--expired-license)\n  - Loading License (platform-pages-settings-modal-account-settingsaccounttab--loading-license)\n  - Saved Message (platform-pages-settings-modal-account-settingsaccounttab--saved-message)\n  - Saving State (platform-pages-settings-modal-account-settingsaccounttab--saving-state)\n  - Email Matched Ready Delete (platform-pages-settings-modal-account-settingsaccounttab--email-matched-ready-delete)\n  - Delete Error Message (platform-pages-settings-modal-account-settingsaccounttab--delete-error-message)\n  - Interactive (platform-pages-settings-modal-account-settingsaccounttab--interactive)\n- DeviceDetailDialog (platform-pages-devices-devicedetaildialog)\n  - Active (platform-pages-devices-devicedetaildialog--active)\n  - Revoked (platform-pages-devices-devicedetaildialog--revoked)\n  - No Name (platform-pages-devices-devicedetaildialog--no-name)\n  - Closed (platform-pages-devices-devicedetaildialog--closed)\n- DeviceStatusBadge (platform-pages-devices-devicestatusbadge): Device status pill — maps 6 device-specific tones onto the generic Badge palette (success ...\n  - Active (platform-pages-devices-devicestatusbadge--active)\n  - Revoked (platform-pages-devices-devicestatusbadge--revoked)\n  - Pending (platform-pages-devices-devicestatusbadge--pending)\n  - Expired (platform-pages-devices-devicestatusbadge--expired)\n  - Expiring Soon (platform-pages-devices-devicestatusbadge--expiring-soon)\n  - Ok (platform-pages-devices-devicestatusbadge--ok)\n- DevicesForms (platform-pages-devices-devicesforms)\n  - Hidden (platform-pages-devices-devicesforms--hidden)\n  - Register Form Open (platform-pages-devices-devicesforms--register-form-open)\n  - Register Filled (platform-pages-devices-devicesforms--register-filled)\n  - Registering (platform-pages-devices-devicesforms--registering)\n  - Register Error (platform-pages-devices-devicesforms--register-error)\n  - Issue Form Open (platform-pages-devices-devicesforms--issue-form-open)\n  - Issuing (platform-pages-devices-devicesforms--issuing)\n  - Issue No Devices (platform-pages-devices-devicesforms--issue-no-devices)\n  - Token Issued (platform-pages-devices-devicesforms--token-issued)\n  - Non Admin With Token (platform-pages-devices-devicesforms--non-admin-with-token)\n- DevicesLicenseSection (platform-pages-devices-deviceslicensesection)\n  - Active (platform-pages-devices-deviceslicensesection--active)\n  - Expiring Soon (platform-pages-devices-deviceslicensesection--expiring-soon)\n  - Expired (platform-pages-devices-deviceslicensesection--expired)\n  - Show Renew Form (platform-pages-devices-deviceslicensesection--show-renew-form)\n  - Renewing (platform-pages-devices-deviceslicensesection--renewing)\n  - Renew Error (platform-pages-devices-deviceslicensesection--renew-error)\n  - Loading (platform-pages-devices-deviceslicensesection--loading)\n  - No License (platform-pages-devices-deviceslicensesection--no-license)\n  - Error State (platform-pages-devices-deviceslicensesection--error-state)\n  - Non Admin (platform-pages-devices-deviceslicensesection--non-admin)\n  - Interactive (platform-pages-devices-deviceslicensesection--interactive)\n- DevicesTab (platform-pages-devices-devicestab)\n  - Full Example (platform-pages-devices-devicestab--full-example)\n- DevicesTable (platform-pages-devices-devicestable)\n  - Default (platform-pages-devices-devicestable--default)\n  - Non Admin (platform-pages-devices-devicestable--non-admin)\n  - Loading (platform-pages-devices-devicestable--loading)\n  - Empty (platform-pages-devices-devicestable--empty)\n  - Filter No Match (platform-pages-devices-devicestable--filter-no-match)\n  - Only Active (platform-pages-devices-devicestable--only-active)\n  - Interactive (platform-pages-devices-devicestable--interactive)\n- SettingsGeneralTab (platform-pages-settings-modal-general-settingsgeneraltab)\n  - Default (platform-pages-settings-modal-general-settingsgeneraltab--default)\n  - Korean Locale (platform-pages-settings-modal-general-settingsgeneraltab--korean-locale)\n  - All Off (platform-pages-settings-modal-general-settingsgeneraltab--all-off)\n  - Interactive (platform-pages-settings-modal-general-settingsgeneraltab--interactive)\n- InvitationsSection (platform-pages-settings-modal-organization-invitationssection)\n  - Admin Default (platform-pages-settings-modal-organization-invitationssection--admin-default)\n  - Non Admin (platform-pages-settings-modal-organization-invitationssection--non-admin)\n  - Empty (platform-pages-settings-modal-organization-invitationssection--empty)\n  - With Search Results (platform-pages-settings-modal-organization-invitationssection--with-search-results)\n  - No Search Results (platform-pages-settings-modal-organization-invitationssection--no-search-results)\n  - Searching (platform-pages-settings-modal-organization-invitationssection--searching)\n  - Inviting (platform-pages-settings-modal-organization-invitationssection--inviting)\n  - With Invite Message (platform-pages-settings-modal-organization-invitationssection--with-invite-message)\n  - Interactive (platform-pages-settings-modal-organization-invitationssection--interactive)\n- InvitationsTab (platform-pages-settings-modal-organization-invitationstab)\n  - Default (platform-pages-settings-modal-organization-invitationstab--default)\n  - Loading (platform-pages-settings-modal-organization-invitationstab--loading)\n  - Error State (platform-pages-settings-modal-organization-invitationstab--error-state)\n- JoinCodesSection (platform-pages-settings-modal-organization-joincodessection)\n  - Admin Default (platform-pages-settings-modal-organization-joincodessection--admin-default)\n  - Non Admin (platform-pages-settings-modal-organization-joincodessection--non-admin)\n  - Empty (platform-pages-settings-modal-organization-joincodessection--empty)\n  - Create Disabled (platform-pages-settings-modal-organization-joincodessection--create-disabled)\n  - Interactive (platform-pages-settings-modal-organization-joincodessection--interactive)\n- OrgMembersTab (platform-pages-settings-modal-organization-orgmemberstab)\n  - Default (platform-pages-settings-modal-organization-orgmemberstab--default)\n  - Non Admin (platform-pages-settings-modal-organization-orgmemberstab--non-admin)\n  - Empty (platform-pages-settings-modal-organization-orgmemberstab--empty)\n  - Loading (platform-pages-settings-modal-organization-orgmemberstab--loading)\n  - Error State (platform-pages-settings-modal-organization-orgmemberstab--error-state)\n  - Removing (platform-pages-settings-modal-organization-orgmemberstab--removing)\n- OrgSettingsTab (platform-pages-settings-modal-organization-orgsettingstab)\n  - Admin Default (platform-pages-settings-modal-organization-orgsettingstab--admin-default)\n  - Saving (platform-pages-settings-modal-organization-orgsettingstab--saving)\n  - Saved (platform-pages-settings-modal-organization-orgsettingstab--saved)\n  - Error State (platform-pages-settings-modal-organization-orgsettingstab--error-state)\n  - Read Only Non Admin (platform-pages-settings-modal-organization-orgsettingstab--read-only-non-admin)\n  - Loading (platform-pages-settings-modal-organization-orgsettingstab--loading)\n  - No Organization (platform-pages-settings-modal-organization-orgsettingstab--no-organization)\n  - Interactive (platform-pages-settings-modal-organization-orgsettingstab--interactive)\n- DeleteProjectSection (platform-pages-settings-modal-project-deleteprojectsection)\n  - Empty (platform-pages-settings-modal-project-deleteprojectsection--empty)\n  - Partial Match (platform-pages-settings-modal-project-deleteprojectsection--partial-match)\n  - Exact Match (platform-pages-settings-modal-project-deleteprojectsection--exact-match)\n  - Deleting (platform-pages-settings-modal-project-deleteprojectsection--deleting)\n  - Interactive (platform-pages-settings-modal-project-deleteprojectsection--interactive)\n- ProjectMemberInvite (platform-pages-settings-modal-project-projectmemberinvite)\n  - Empty (platform-pages-settings-modal-project-projectmemberinvite--empty)\n  - Short Query (platform-pages-settings-modal-project-projectmemberinvite--short-query)\n  - With Results (platform-pages-settings-modal-project-projectmemberinvite--with-results)\n  - No Results (platform-pages-settings-modal-project-projectmemberinvite--no-results)\n  - Adding (platform-pages-settings-modal-project-projectmemberinvite--adding)\n  - With Invite Message (platform-pages-settings-modal-project-projectmemberinvite--with-invite-message)\n  - Interactive (platform-pages-settings-modal-project-projectmemberinvite--interactive)\n- ProjectMemberRow (platform-pages-settings-modal-project-projectmemberrow)\n  - Default (platform-pages-settings-modal-project-projectmemberrow--default)\n  - Owner (platform-pages-settings-modal-project-projectmemberrow--owner)\n  - Only Owner (platform-pages-settings-modal-project-projectmemberrow--only-owner)\n  - Read Only (platform-pages-settings-modal-project-projectmemberrow--read-only)\n  - Removing (platform-pages-settings-modal-project-projectmemberrow--removing)\n  - No Organization (platform-pages-settings-modal-project-projectmemberrow--no-organization)\n  - No Name (platform-pages-settings-modal-project-projectmemberrow--no-name)\n- ProjectMembersList (platform-pages-settings-modal-project-projectmemberslist)\n  - Default (platform-pages-settings-modal-project-projectmemberslist--default)\n  - Only One Owner (platform-pages-settings-modal-project-projectmemberslist--only-one-owner)\n  - Read Only (platform-pages-settings-modal-project-projectmemberslist--read-only)\n  - Loading (platform-pages-settings-modal-project-projectmemberslist--loading)\n  - Empty (platform-pages-settings-modal-project-projectmemberslist--empty)\n  - Error State (platform-pages-settings-modal-project-projectmemberslist--error-state)\n  - Removing Member (platform-pages-settings-modal-project-projectmemberslist--removing-member)\n- ProjectResolutionCard (platform-pages-settings-modal-project-projectresolutioncard)\n  - Transfer Action (platform-pages-settings-modal-project-projectresolutioncard--transfer-action)\n  - Transfer With Target (platform-pages-settings-modal-project-projectresolutioncard--transfer-with-target)\n  - Delete Action (platform-pages-settings-modal-project-projectresolutioncard--delete-action)\n  - Interactive (platform-pages-settings-modal-project-projectresolutioncard--interactive)\n- ProjectSettingsForm (platform-pages-settings-modal-project-projectsettingsform)\n  - Default (platform-pages-settings-modal-project-projectsettingsform--default)\n  - Deflectometry Type (platform-pages-settings-modal-project-projectsettingsform--deflectometry-type)\n  - Read Only (platform-pages-settings-modal-project-projectsettingsform--read-only)\n  - Not Owner (platform-pages-settings-modal-project-projectsettingsform--not-owner)\n  - Grouping Enabled (platform-pages-settings-modal-project-projectsettingsform--grouping-enabled)\n  - Owner Visibility Restricted (platform-pages-settings-modal-project-projectsettingsform--owner-visibility-restricted)\n  - Owner And Manager (platform-pages-settings-modal-project-projectsettingsform--owner-and-manager)\n  - Saving State (platform-pages-settings-modal-project-projectsettingsform--saving-state)\n  - Saved State (platform-pages-settings-modal-project-projectsettingsform--saved-state)\n  - Error State (platform-pages-settings-modal-project-projectsettingsform--error-state)\n  - Name Invalid (platform-pages-settings-modal-project-projectsettingsform--name-invalid)\n  - Interactive (platform-pages-settings-modal-project-projectsettingsform--interactive)\n- StorageAnalyticsTab (platform-pages-storage-storageanalyticstab)\n  - Full Example (platform-pages-storage-storageanalyticstab--full-example)\n  - No Recommendations (platform-pages-storage-storageanalyticstab--no-recommendations)\n  - Error State (platform-pages-storage-storageanalyticstab--error-state)\n  - Loading Charts (platform-pages-storage-storageanalyticstab--loading-charts)\n- StorageOverview (platform-pages-storage-storageoverview)\n  - Default (platform-pages-storage-storageoverview--default)\n  - Loading (platform-pages-storage-storageoverview--loading)\n  - Three Cards (platform-pages-storage-storageoverview--three-cards)\n- StorageRecommendationsList (platform-pages-storage-storagerecommendationslist)\n  - Mixed (platform-pages-storage-storagerecommendationslist--mixed)\n  - Only Info (platform-pages-storage-storagerecommendationslist--only-info)\n  - Only Warn (platform-pages-storage-storagerecommendationslist--only-warn)\n  - Empty (platform-pages-storage-storagerecommendationslist--empty)\n  - Loading (platform-pages-storage-storagerecommendationslist--loading)\n- StorageStatsTable (platform-pages-storage-storagestatstable)\n  - Cost Table (platform-pages-storage-storagestatstable--cost-table)\n  - No Footer (platform-pages-storage-storagestatstable--no-footer)\n  - Loading (platform-pages-storage-storagestatstable--loading)"
+      }
+    ]
+  }
+}

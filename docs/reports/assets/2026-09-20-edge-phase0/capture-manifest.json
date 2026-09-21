@@ -1,0 +1,154 @@
+{
+  "commit": "c2b2606",
+  "platform": "darwin",
+  "viewport": "1440x1000",
+  "kind": "current-state documentation, not Linux regression baselines",
+  "results": [
+    {
+      "name": "login-offline",
+      "id": "pages-edge-0-0-5-login--offline",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "INGRADIENT EdgeOffline"
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nEN\nINGRADIENT EdgeOffline\nLoad Project File (.ige)\nFINEMTECH (Metal) · v2\nWelcome, JOON HO LEE\njune@ingradient.ai\nContinue\nSign in with another account"
+    },
+    {
+      "name": "datasets-offline",
+      "id": "pages-edge-0-0-5-datasetselect--offline",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "Projects / DatasetsOffline"
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nProjects / DatasetsOffline\nEN\nJOON HO LEE\nRECENT\n26.09.02 New Raw Material\nRecent\nFINEMTECH\n34 groups (3706 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.27 Films 2\nFINEMTECH\n73 groups (7957 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.26 Other Films\nFINEMTECH\n45 groups (4905 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.25 Filmed\nFINEMTECH\n39 groups (4251 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.21 Raw Materials\nFINEMTECH\n42 groups (4578 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\nFINEMTECH\nDeflectometry\nOwner\nDataset\nMS 04.05\nOD\n0 groups (0 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\nMS Q7\nOD\n0 groups (0 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\nCNS 04.02\nOD\n0 groups (0 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n06.08 Combined\nOD\n2538 groups (2540 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n26.07.20 Total\nOD\n46 groups (989 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.11 Raw Materials\nOD\n13 groups (553 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.21 Raw Materials\nOD\n42 groups (4578 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.25 Filmed\nOD\n39 groups (4251 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.26 Other Films\nOD\n45 groups (4905 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n08.27 Films 2\nOD\n73 groups (7957 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\n26.09.02 New Raw Material\nRecent\nOD\n34 groups (3706 img)\n정상: OK\n눌림: Lõm\n돌출: Lỗi\n+17\nFINEMTECH (METAL)\nOwner\nDataset\ndefault\nOD\n0 groups (0 img)\nNo classes\n79%\n45%\n70%"
+    },
+    {
+      "name": "capture",
+      "id": "pages-edge-0-0-5-workspace--capture",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        ""
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "setup",
+      "id": "pages-edge-0-0-5-workspace--setup",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "Analysis",
+        "Camera Tuning",
+        "Image",
+        "Hardware",
+        "Deflectometry",
+        "Pattern Preview"
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "images-mock",
+      "id": "pages-edge-0-0-5-workspace--images",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        ""
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "statics-mock",
+      "id": "pages-edge-0-0-5-workspace--statics",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "Statistics",
+        "Captures by Hour",
+        "Session Outcomes",
+        "Deflectometry Steps",
+        "Daily Capture Trend",
+        "Sync Status",
+        "Class Labeling Trend",
+        "Class Bbox Count",
+        "Class Image Count",
+        "Bbox per Image Distribution",
+        "Class Avg Bbox Size",
+        "Exposure Distribution",
+        "Gain Distribution",
+        "Parameter Trend"
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "capturing",
+      "id": "pages-edge-0-0-5-workspace--capturing",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        ""
+      ],
+      "dialogs": 0,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "sequence-failed",
+      "id": "pages-edge-0-0-5-workspace--sequence-failed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "Sequence Failed"
+      ],
+      "dialogs": 1,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    },
+    {
+      "name": "settings",
+      "id": "pages-edge-0-0-5-workspace--settings",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": [
+        "No Preview",
+        "",
+        "System Settings",
+        "Scan",
+        "Connect",
+        "Camera profile",
+        "Diagnostics",
+        "NIC control"
+      ],
+      "dialogs": 1,
+      "errors": [],
+      "text": "Ingradient Edge\nFINEMTECH\n/\n26.09.02 New Raw Material\nEN\nJOON HO LEE\nLogs\nFilter\n01:06:26\n[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n01:02:11\n[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:55:31\n[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:48:39\n[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:45:34\n[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:42:18\n[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:37:48\n[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:32:45\n[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:27:54\n[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:24:36\n[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:20:38\n[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:09:02\n[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:05:11\n[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n00:02:01\n[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:53:24\n[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:42:51\n[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:39:33\n[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:33:55\n[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:30:13\n[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s\n23:26:38\n[SEQ success id=c2be51] 준비 3"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "get-documentation",
+  "arguments": { "id": "components-overlays-twocolumndialog" },
+  "status": "timeout",
+  "timeoutMs": 60000,
+  "note": "Tool returned no response before the terminal timeout. This is an MCP documentation retrieval limitation, not a successful API documentation read. Instructions, documentation inventory, previews and 77 passing focused tests are retained separately in final-mcp-after-repairs.json."
+}

@@ -1,0 +1,534 @@
+{
+  "probes": [
+    {
+      "name": "workspace-tabs-corrected",
+      "states": [
+        {
+          "name": "Images",
+          "selected": "Images"
+        },
+        {
+          "name": "Statics",
+          "selected": "Statics"
+        },
+        {
+          "name": "Setup",
+          "selected": "Setup"
+        },
+        {
+          "name": "Capture",
+          "selected": "Capture"
+        }
+      ],
+      "arrow": "Images"
+    },
+    {
+      "name": "images-select-all-corrected",
+      "before": false,
+      "after": false
+    },
+    {
+      "name": "server-frozen-corrected",
+      "before": "https://app.ingradient.ai",
+      "after": "https://app.ingradient.ai",
+      "labels": {
+        "labels": [],
+        "aria": null,
+        "placeholder": "https://app.ingradient.ai"
+      }
+    },
+    {
+      "name": "lighting-monitor-reset",
+      "before": [
+        {
+          "text": "Auto (prefer secondary)",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        },
+        {
+          "text": "Dell U2720Q3840×2160Primary",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        },
+        {
+          "text": "LG 27UL5003840×2160",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo gwRqNe"
+        }
+      ],
+      "changed": [
+        {
+          "text": "Auto (prefer secondary)",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo gwRqNe"
+        },
+        {
+          "text": "Dell U2720Q3840×2160Primary",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        },
+        {
+          "text": "LG 27UL5003840×2160",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        }
+      ],
+      "after": [
+        {
+          "text": "Auto (prefer secondary)",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        },
+        {
+          "text": "Dell U2720Q3840×2160Primary",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo jNQEGu"
+        },
+        {
+          "text": "LG 27UL5003840×2160",
+          "pressed": null,
+          "selected": null,
+          "class": "sc-eBwKMo gwRqNe"
+        }
+      ],
+      "photometricControlsVisible": 0
+    },
+    {
+      "name": "capture-blocker-natural-keyboard",
+      "sequence": [
+        {
+          "role": null,
+          "text": "",
+          "title": "Minimize"
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": "Maximize"
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": "Close"
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": null
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": "Online"
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": "Refresh"
+        },
+        {
+          "role": null,
+          "text": "",
+          "title": "Settings"
+        },
+        {
+          "role": null,
+          "text": "JOON HO LEE",
+          "title": "Account"
+        },
+        {
+          "role": null,
+          "text": "Filter",
+          "title": "Filter"
+        },
+        {
+          "role": null,
+          "text": "01:06:26[SEQ success id=5c492e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s01:02:11[SEQ success id=b34d7a] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:55:31[SEQ success id=1ba280] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:48:39[SEQ success id=c7a021] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:45:34[SEQ success id=008331] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:42:18[SEQ success id=a13215] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:37:48[SEQ success id=3b4904] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:32:45[SEQ success id=9f92a7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:27:54[SEQ success id=98e47c] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:24:36[SEQ success id=f98fae] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:20:38[SEQ success id=d634d1] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:09:02[SEQ success id=688180] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:05:11[SEQ success id=9df7c3] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s00:02:01[SEQ success id=692551] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:53:24[SEQ success id=825214] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:42:51[SEQ success id=d76c95] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:39:33[SEQ success id=bb05a2] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:33:55[SEQ success id=c270f8] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:30:13[SEQ success id=5d3de6] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:26:38[SEQ success id=c2be51] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:22:33[SEQ success id=838153] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:19:04[SEQ success id=67d0d4] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:15:44[SEQ success id=23bab7] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s23:03:00[SEQ success id=205c6e] 준비 3.2s · 촬영 33장 41.0s · 영상처리 2.1s · 총 46.3s",
+          "title": null
+        },
+        {
+          "role": "tab",
+          "text": "Capture",
+          "title": null
+        }
+      ],
+      "selected": "Images"
+    },
+    {
+      "name": "dataset-menu-keyboard",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'More', exact: true }).first()\u001b[22m\n"
+    },
+    {
+      "name": "settings-axe-retry",
+      "axe": {
+        "violations": [
+          {
+            "id": "nested-interactive",
+            "impact": "serious",
+            "nodes": [
+              {
+                "target": [
+                  ".sc-hUTmXs.iQGGys:nth-child(4) > .gwRqNe.sc-eBwKMo[data-ig-component=\"SelectableListItem\"]"
+                ],
+                "html": "<button type=\"button\" data-ig-component=\"SelectableListItem\" data-ig-layer=\"components\" class=\"sc-eBwKMo gwRqNe\">",
+                "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+              }
+            ]
+          },
+          {
+            "id": "scrollable-region-focusable",
+            "impact": "serious",
+            "nodes": [
+              {
+                "target": [
+                  ".sc-xfJVe"
+                ],
+                "html": "<div class=\"sc-xfJVe hPxVUh\">",
+                "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+              }
+            ]
+          }
+        ],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 122
+          }
+        ]
+      },
+      "nested": 1
+    },
+    {
+      "name": "layout-1280",
+      "geometry": [
+        {
+          "tag": "BUTTON",
+          "role": "tab",
+          "width": 88.453125,
+          "x": 310,
+          "client": 88,
+          "scroll": 88,
+          "overflow": "visible"
+        },
+        {
+          "tag": "DIV",
+          "role": "tablist",
+          "width": 670,
+          "x": 305,
+          "client": 668,
+          "scroll": 668,
+          "overflow": "visible"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 670,
+          "x": 305,
+          "client": 670,
+          "scroll": 670,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 672,
+          "x": 304,
+          "client": 670,
+          "scroll": 670,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 1280,
+          "x": 0,
+          "client": 1280,
+          "scroll": 1280,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 1280,
+          "x": 0,
+          "client": 1280,
+          "scroll": 1280,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 1280,
+          "x": 0,
+          "client": 1280,
+          "scroll": 1280,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 1280,
+          "x": 0,
+          "client": 1280,
+          "scroll": 1280,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 1280,
+          "x": 0,
+          "client": 1280,
+          "scroll": 1280,
+          "overflow": "visible"
+        }
+      ],
+      "pageWidth": 1280
+    },
+    {
+      "name": "layout-768",
+      "geometry": [
+        {
+          "tag": "BUTTON",
+          "role": "tab",
+          "width": 88.453125,
+          "x": 310,
+          "client": 88,
+          "scroll": 88,
+          "overflow": "visible"
+        },
+        {
+          "tag": "DIV",
+          "role": "tablist",
+          "width": 158,
+          "x": 305,
+          "client": 156,
+          "scroll": 341,
+          "overflow": "visible"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 158,
+          "x": 305,
+          "client": 158,
+          "scroll": 342,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 160,
+          "x": 304,
+          "client": 158,
+          "scroll": 158,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 768,
+          "x": 0,
+          "client": 768,
+          "scroll": 768,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 768,
+          "x": 0,
+          "client": 768,
+          "scroll": 768,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 768,
+          "x": 0,
+          "client": 768,
+          "scroll": 768,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 768,
+          "x": 0,
+          "client": 768,
+          "scroll": 768,
+          "overflow": "hidden"
+        },
+        {
+          "tag": "DIV",
+          "role": null,
+          "width": 768,
+          "x": 0,
+          "client": 768,
+          "scroll": 768,
+          "overflow": "visible"
+        }
+      ],
+      "pageWidth": 768
+    },
+    {
+      "name": "setup-advanced-and-pattern",
+      "names": [
+        {
+          "name": "Gradient X",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Gradient Y",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Modulation",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Exposure (s)",
+          "value": "0.1000",
+          "disabled": false
+        },
+        {
+          "name": "Auto",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Gain (dB)",
+          "value": "0",
+          "disabled": false
+        },
+        {
+          "name": "Frame Rate (fps)",
+          "value": "30",
+          "disabled": true
+        },
+        {
+          "name": "Enable",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Gamma",
+          "value": "1.0",
+          "disabled": false
+        },
+        {
+          "name": "Black Level",
+          "value": "0",
+          "disabled": false
+        },
+        {
+          "name": "Sharpness",
+          "value": "0",
+          "disabled": false
+        },
+        {
+          "name": "Pixel Format",
+          "value": "Mono12",
+          "disabled": false
+        },
+        {
+          "name": "roiX",
+          "value": "",
+          "disabled": true
+        },
+        {
+          "name": "roiY",
+          "value": "",
+          "disabled": true
+        },
+        {
+          "name": "roiWidth",
+          "value": "",
+          "disabled": true
+        },
+        {
+          "name": "roiHeight",
+          "value": "",
+          "disabled": true
+        },
+        {
+          "name": "Hardware Trigger",
+          "value": "Line1",
+          "disabled": true
+        },
+        {
+          "name": "Hardware Trigger",
+          "value": "on",
+          "disabled": true
+        },
+        {
+          "name": "Fringe Period",
+          "value": "24",
+          "disabled": false
+        },
+        {
+          "name": "Phase Steps",
+          "value": "16",
+          "disabled": false
+        },
+        {
+          "name": "Topography Invert",
+          "value": "on",
+          "disabled": false
+        },
+        {
+          "name": "Gamma",
+          "value": "2.2",
+          "disabled": false
+        },
+        {
+          "name": "Settle Delay (ms)",
+          "value": "120",
+          "disabled": false
+        }
+      ],
+      "state": {
+        "pressed": null,
+        "selected": null,
+        "background": "rgba(255, 255, 255, 0.04)"
+      },
+      "after": {
+        "pressed": null,
+        "background": "rgba(255, 255, 255, 0.04)"
+      }
+    },
+    {
+      "name": "general-switch-labels",
+      "switches": [
+        {
+          "labels": [
+            "Alert soundPlay a sound when the capture finishes.",
+            ""
+          ],
+          "parent": "<label data-ig-component=\"Switch\" data-ig-layer=\"components\" data-ig-kind=\"switch\" class=\"sc-tagGt gtdYDf\"><input type=\"checkbox\" class=\"sc-fXSgen jvmmXm\" checked=\"\"><span class=\"sc-esYiGC cCIljy\"></span></label>",
+          "outerParent": "<label class=\"sc-dgcZxm klVxdp\"><div class=\"sc-cnVHix iVOSHv\"><span>Alert sound</span><span class=\"sc-iGgWBk kFnXmW\">Play a sound when the capture finishes.</span></div><label data-ig-component=\"Switch\" data-ig-layer=\"components\" data-ig-kind=\"switch\" class=\"sc-tagGt gtdYDf\"><input type=\"checkbox\" class=\"sc-fXSgen jvmmXm\" checked=\"\"><span class=\"sc-esYiGC cCIljy\"></span></label></label>"
+        },
+        {
+          "labels": [
+            "Notification messageShow a Windows notification when the capture finishes.",
+            ""
+          ],
+          "parent": "<label data-ig-component=\"Switch\" data-ig-layer=\"components\" data-ig-kind=\"switch\" class=\"sc-tagGt gtdYDf\"><input type=\"checkbox\" class=\"sc-fXSgen jvmmXm\" checked=\"\"><span class=\"sc-esYiGC cCIljy\"></span></label>",
+          "outerParent": "<label class=\"sc-dgcZxm klVxdp\"><div class=\"sc-cnVHix iVOSHv\"><span>Notification message</span><span class=\"sc-iGgWBk kFnXmW\">Show a Windows notification when the capture finishes.</span></div><label data-ig-component=\"Switch\" data-ig-layer=\"components\" data-ig-kind=\"switch\" class=\"sc-tagGt gtdYDf\"><input type=\"checkbox\" class=\"sc-fXSgen jvmmXm\" checked=\"\"><span class=\"sc-esYiGC cCIljy\"></span></label></label>"
+        }
+      ]
+    }
+  ]
+}
