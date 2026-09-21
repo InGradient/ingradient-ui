@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import styled from 'styled-components'
 import { Button, TextField } from '@ingradient/ui'
 import type { CameraParamsTabViewProps } from '../types'
@@ -23,6 +24,7 @@ const Status = styled.div<{ $tone: 'success' | 'danger' }>`
 `
 
 export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Element {
+  const pathId = useId()
   const {
     isConnected, cvsCamDllPath, fetching, saving, saveResult, labels,
     onDllPathChange, onApplyDllPath, onSave, onReset,
@@ -32,8 +34,9 @@ export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Elemen
     <Wrap>
       <Section>
         <SectionTitle>{labels.title}</SectionTitle>
-        <Label>{labels.dllPath}</Label>
+        <Label htmlFor={pathId}>{labels.dllPath}</Label>
         <TextField
+          id={pathId}
           value={cvsCamDllPath}
           onChange={(e) => onDllPathChange(e.target.value)}
           placeholder="/path/to/cvsCam.dll"

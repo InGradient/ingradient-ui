@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-import { IconButton, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from '@ingradient/ui'
-import { WindowCloseIcon } from '@ingradient/ui/components'
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { DialogShell } from '@ingradient/ui'
 import { FieldHint } from '@ingradient/ui/patterns'
-import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 import { FringeProfileChartView } from './FringeProfileChartView'
 
@@ -35,13 +34,6 @@ export function FringeProfilePreviewView(props: FringeProfilePreviewViewProps): 
   const { values, windowPx, labels } = props
   const [zoomed, setZoomed] = useState(false)
 
-  useEffect(() => {
-    if (!zoomed) return undefined
-    const onKey = (e: KeyboardEvent): void => { if (e.key === 'Escape') setZoomed(false) }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [zoomed])
-
   return (
     <div>
       <div
@@ -51,7 +43,7 @@ export function FringeProfilePreviewView(props: FringeProfilePreviewViewProps): 
         title={labels.zoom}
         style={{ cursor: 'zoom-in' }}
         onClick={() => setZoomed(true)}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setZoomed(true) }}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setZoomed(true) } }}
       >
         <FringeProfileChartView
           values={values}
@@ -62,18 +54,8 @@ export function FringeProfilePreviewView(props: FringeProfilePreviewViewProps): 
       </div>
       <FieldHint>{labels.caption}</FieldHint>
 
-      {zoomed && (
-        <ModalBackdrop onClick={() => setZoomed(false)}>
-          <ModalCard
-            onClick={(e) => e.stopPropagation()}
-            style={{ width: 'min(760px, 92vw)', maxWidth: 'none' }}
-          >
-            <ModalHeader>
-              <ModalTitle>{labels.zoomTitle}</ModalTitle>
-              <IconButton aria-label={labels.close} onClick={() => setZoomed(false)}>
-                <WindowCloseIcon size={iconSizeNumbers.sm} />
-              </IconButton>
-            </ModalHeader>
+      {zoomed && createPortal(
+        <DialogShell title={labels.zoomTitle} onClose={() => setZoomed(false)}>
             <FringeProfileChartView
               values={values}
               windowPx={windowPx}
@@ -82,8 +64,7 @@ export function FringeProfilePreviewView(props: FringeProfilePreviewViewProps): 
               showAxis
             />
             <FieldHint>{labels.caption}</FieldHint>
-          </ModalCard>
-        </ModalBackdrop>
+        </DialogShell>, document.body,
       )}
     </div>
   )

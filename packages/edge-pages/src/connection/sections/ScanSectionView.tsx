@@ -58,7 +58,14 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                 || (isUSB && selectedCamera?.type === 'usb' && (selectedCamera as USBDevice).index === (device as USBDevice).index)
                 || (!isUSB && selectedCamera?.type === 'gige' && (selectedCamera as GigEDevice).ip === (device as GigEDevice).ip)
               return (
-                <SelectableListItem key={key} variant="card" selected={isSelected} onClick={() => { if (!isBlocked) onSelectCamera(device) }}>
+                <SelectableListItem key={key} variant="card" selected={isSelected} disabled={isBlocked}
+                  onClick={() => onSelectCamera(device)}
+                  action={gige && gige.reachable === false && !isBlocked && onRequestForceIp ? (
+                    <Button size="sm" variant="secondary" type="button"
+                      onClick={() => onRequestForceIp(gige)}>
+                      <WrenchIcon size={iconSizeNumbers["2xs"]} />{labels.forceIp}
+                    </Button>
+                  ) : undefined}>
                   {isUSB
                     ? <UsbIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />
                     : <CameraIcon size={iconSizeNumbers.lg} style={{ flexShrink: 0 }} />}
@@ -77,12 +84,6 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                   )}
                   {gige && gige.reachable === true && (
                     <Badge $tone="success">{labels.reachable}</Badge>
-                  )}
-                  {gige && gige.reachable === false && !isBlocked && onRequestForceIp && (
-                    <Button size="sm" variant="secondary" type="button"
-                      onClick={(e) => { e.stopPropagation(); onRequestForceIp(gige) }}>
-                      <WrenchIcon size={iconSizeNumbers["2xs"]} />{labels.forceIp}
-                    </Button>
                   )}
                   <Badge $tone={isUSB ? 'accent' : 'neutral'}>{isUSB ? 'USB' : 'GigE'}</Badge>
                   {isSelected ? <CheckCircleIcon size={iconSizeNumbers.md} style={{ flexShrink: 0 }} />

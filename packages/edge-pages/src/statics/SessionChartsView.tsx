@@ -1,5 +1,4 @@
 import { chartHeights, Card } from '@ingradient/ui'
-import { iconSizeNumbers } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { Table, type TableColumn, EmptyState } from '@ingradient/ui/components'
 import { PanelGrid, PanelTitle } from './StaticsView.styles'

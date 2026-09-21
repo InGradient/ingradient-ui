@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsRow } from './settings-row'
-import { Checkbox } from '../../components/inputs/toggles'
+import { Checkbox, Switch } from '../../components/inputs/toggles'
+import { useState } from 'react'
+import { expect } from 'storybook/test'
 
 const meta: Meta<typeof SettingsRow> = {
   title: 'Patterns/Forms/SettingsRow',
@@ -10,6 +12,24 @@ const meta: Meta<typeof SettingsRow> = {
 export default meta
 
 type Story = StoryObj<typeof meta>
+
+export const NamedSwitch: Story = {
+  parameters: { a11y: { test: 'error' } },
+  render: () => {
+    const [enabled, setEnabled] = useState(false)
+    return <SettingsRow label="Alert sound" description="Play after capture" control={<Switch checked={enabled} onChange={(event) => setEnabled(event.target.checked)} />} />
+  },
+  play: async ({ canvas, canvasElement, userEvent }) => {
+    await expect(canvasElement.querySelector('label label')).toBeNull()
+    const input = canvas.getByRole('checkbox', { name: 'Alert sound' })
+    await expect(input).toHaveAccessibleDescription('Play after capture')
+    await userEvent.click(canvas.getByText('Alert sound'))
+    await expect(input).toBeChecked()
+    input.focus()
+    await userEvent.keyboard(' ')
+    await expect(input).not.toBeChecked()
+  },
+}
 
 export const Default: Story = {
   args: {

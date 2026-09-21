@@ -35,10 +35,10 @@ export function SequencePatternPanelView(props: SequencePatternPanelViewProps): 
   return (
     <Container>
       <Segment>
-        <SegmentBtn $active={viewMode === 'originals'} onClick={() => onSetViewMode('originals')}>
+        <SegmentBtn aria-pressed={viewMode === 'originals'} $active={viewMode === 'originals'} onClick={() => onSetViewMode('originals')}>
           {labels.originals}
         </SegmentBtn>
-        <SegmentBtn $active={viewMode === 'derived'} onClick={() => onSetViewMode('derived')}>
+        <SegmentBtn aria-pressed={viewMode === 'derived'} $active={viewMode === 'derived'} onClick={() => onSetViewMode('derived')}>
           {labels.derived}
         </SegmentBtn>
       </Segment>
@@ -55,6 +55,7 @@ export function SequencePatternPanelView(props: SequencePatternPanelViewProps): 
               <Item
                 key={img.imageId}
                 $active={img.imageId === activeImageId}
+                aria-pressed={img.imageId === activeImageId}
                 onClick={() => onSelectImage(img.imageId)}
                 title={hint}
               >

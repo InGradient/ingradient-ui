@@ -1,34 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { popupSizeNumbers } from '../../tokens/core'
 import { FloatingOverlay } from './floating-overlay'
 import { MenuItem } from './menu-item'
-
-const BACKDROP_STYLE = {
-  position: 'fixed' as const,
-  inset: 0,
-  zIndex: 'calc(var(--ig-z-context-menu) - 1)' as unknown as number,
-}
-
-const MENU_STYLE = {
-  minWidth: popupSizeNumbers.xs,
-  padding: 'var(--ig-space-2)',
-  display: 'flex' as const,
-  flexDirection: 'column' as const,
-  gap: 'var(--ig-space-2px)',
-}
-
-const SEPARATOR_STYLE = {
-  margin: 'var(--ig-space-1) 0',
-  border: 'none',
-  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
-
-const ITEM_LABEL_STYLE = { flex: 1, textAlign: 'left' as const }
-const CHEVRON_STYLE = {
-  marginLeft: 'var(--ig-space-3)',
-  color: 'var(--ig-color-text-muted)',
-  fontSize: 'var(--ig-font-size-xs)',
-}
+import { focusAfterMenuTab } from './context-menu-focus'
+import { BACKDROP_STYLE, MENU_STYLE, SEPARATOR_STYLE, ITEM_LABEL_STYLE, CHEVRON_STYLE } from './context-menu-with-submenus.styles'
 
 export interface ContextMenuWithSubmenusAction {
   key: string
@@ -42,6 +17,7 @@ export interface ContextMenuWithSubmenusAction {
 
 export interface ContextMenuWithSubmenusProps {
   anchorEl: HTMLElement | null
+  /** Menu-owned dismissal restores the anchor before invoking onClose/action; dialogs opened by actions retain focus. */
   onClose: () => void
   actions: ContextMenuWithSubmenusAction[]
   offset?: number
@@ -58,14 +34,28 @@ export function ContextMenuWithSubmenus({
   const [submenuKey, setSubmenuKey] = useState<string | null>(defaultOpenSubmenuKey ?? null)
   const [submenuPos, setSubmenuPos] = useState<{ top: number; left: number } | null>(null)
 
-  useEffect(() => {
-    if (!anchorEl) return
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+  // Restore before the action: a newly opened dialog owns subsequent focus and
+  // captures the trigger (not a disappearing menu item) as its return target.
+  const close = (action?: () => void) => {
+    if (anchorEl?.isConnected) anchorEl.focus({ preventScroll: true })
+    onClose()
+    action?.()
+  }
+  const onMenuKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      event.stopPropagation()
+      if (submenuKey) {
+        mainRefs.current[submenuKey]?.focus()
+        setSubmenuKey(null)
+      } else close()
+    } else if (event.key === 'Tab') {
+      event.preventDefault()
+      event.stopPropagation()
+      close()
+      focusAfterMenuTab(anchorEl, event.shiftKey)
     }
-    window.addEventListener('keydown', handleKey)
-    return () => window.removeEventListener('keydown', handleKey)
-  }, [anchorEl, onClose])
+  }
 
   // 열릴 때 첫 메뉴 항목으로 포커스 이동(키보드 진입).
   useEffect(() => {
@@ -73,6 +63,7 @@ export function ContextMenuWithSubmenus({
     const id = window.requestAnimationFrame(() => {
       const first = actions.find((a) => !a.separator && !a.disabled)
       if (first) mainRefs.current[first.key]?.focus()
+      else menuRef.current?.focus()
     })
     return () => window.cancelAnimationFrame(id)
   }, [anchorEl, actions])
@@ -111,11 +102,11 @@ export function ContextMenuWithSubmenus({
     setSubmenuPos({ top: r.top, left: r.right + 4 })
     setSubmenuKey(a.key)
     window.requestAnimationFrame(() => {
-      const first = a.subActions?.find((s) => !s.disabled)
+      const first = a.subActions?.find((s) => !s.disabled && !s.separator)
       if (first) subRefs.current[first.key]?.focus()
     })
   }
-  const enabledSub = subActions?.filter((s) => !s.disabled) ?? []
+  const enabledSub = subActions?.filter((s) => !s.disabled && !s.separator) ?? []
   const focusSubAt = (i: number) => {
     if (!enabledSub.length) return
     subRefs.current[enabledSub[(i + enabledSub.length) % enabledSub.length].key]?.focus()
@@ -123,8 +114,8 @@ export function ContextMenuWithSubmenus({
 
   return (
     <>
-      <div onClick={onClose} aria-hidden="true" style={BACKDROP_STYLE} />
-      <FloatingOverlay ref={menuRef} variant="menu" top={top} left={left} style={MENU_STYLE} role="menu">
+      <div onClick={(event) => { event.stopPropagation(); close() }} aria-hidden="true" style={BACKDROP_STYLE} />
+      <FloatingOverlay ref={menuRef} variant="menu" top={top} left={left} style={MENU_STYLE} role="menu" tabIndex={-1} onKeyDown={onMenuKeyDown}>
         {actions.map((a, i) => {
           if (a.separator) return <hr key={`sep-${i}`} style={SEPARATOR_STYLE} />
           const hasSub = !!a.subActions && a.subActions.length > 0
@@ -133,6 +124,7 @@ export function ContextMenuWithSubmenus({
               key={a.key}
               ref={(n) => { mainRefs.current[a.key] = n }}
               role="menuitem"
+              tabIndex={-1}
               tone={a.tone}
               disabled={a.disabled}
               data-menu-key={a.key}
@@ -140,16 +132,16 @@ export function ContextMenuWithSubmenus({
               aria-haspopup={hasSub || undefined}
               aria-expanded={hasSub ? submenuKey === a.key : undefined}
               onMouseEnter={(e) => {
-                if (!hasSub) { setSubmenuKey(null); return }
+                if (!hasSub || a.disabled) { setSubmenuKey(null); return }
                 const target = e.currentTarget as HTMLElement
                 const r = target.getBoundingClientRect()
                 setSubmenuPos({ top: r.top, left: r.right + 4 })
                 setSubmenuKey(a.key)
               }}
-              onClick={() => {
-                if (hasSub) return
-                a.onClick?.()
-                onClose()
+              onClick={(event) => {
+                event.stopPropagation()
+                if (hasSub) openSub(a, event.currentTarget)
+                else close(a.onClick)
               }}
               onKeyDown={(e) => {
                 const idx = enabledMain.findIndex((m) => m.key === a.key)
@@ -161,10 +153,10 @@ export function ContextMenuWithSubmenus({
                 else if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault()
                   if (hasSub) openSub(a, e.currentTarget)
-                  else { a.onClick?.(); onClose() }
+                  else close(a.onClick)
                 }
               }}
-              iconTrailing={hasSub ? <span style={CHEVRON_STYLE}>›</span> : undefined}
+              iconTrailing={hasSub ? <span aria-hidden style={CHEVRON_STYLE}>›</span> : undefined}
             >
               <span style={ITEM_LABEL_STYLE}>{a.label}</span>
             </MenuItem>
@@ -172,15 +164,16 @@ export function ContextMenuWithSubmenus({
         })}
       </FloatingOverlay>
       {submenuKey && subActions && submenuPos ? (
-        <FloatingOverlay variant="menu" top={submenuPos.top} left={submenuPos.left} style={MENU_STYLE} role="menu">
-          {subActions.map((sa) => (
+        <FloatingOverlay variant="menu" top={submenuPos.top} left={submenuPos.left} style={MENU_STYLE} role="menu" onKeyDown={onMenuKeyDown}>
+          {subActions.map((sa) => sa.separator ? <hr key={sa.key} style={SEPARATOR_STYLE} /> : (
             <MenuItem
               key={sa.key}
               ref={(n) => { subRefs.current[sa.key] = n }}
               role="menuitem"
+              tabIndex={-1}
               tone={sa.tone}
               disabled={sa.disabled}
-              onClick={() => { sa.onClick?.(); onClose() }}
+              onClick={(event) => { event.stopPropagation(); close(sa.onClick) }}
               onKeyDown={(e) => {
                 const idx = enabledSub.findIndex((s) => s.key === sa.key)
                 if (e.key === 'ArrowDown') { e.preventDefault(); focusSubAt(idx + 1) }
@@ -193,7 +186,7 @@ export function ContextMenuWithSubmenus({
                   setSubmenuKey(null)
                   if (parent) mainRefs.current[parent]?.focus()
                 }
-                else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sa.onClick?.(); onClose() }
+                else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); close(sa.onClick) }
               }}
             >
               {sa.label}

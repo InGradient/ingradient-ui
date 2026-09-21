@@ -49,6 +49,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
             variant="secondary"
             size="sm"
             title={canSetupCamera ? labels.settingsTitle : labels.settingsDisabledTitle}
+            aria-label={labels.settingsTitle}
             onClick={() => canSetupCamera && onOpenSettings()}
             disabled={!canSetupCamera}
           >

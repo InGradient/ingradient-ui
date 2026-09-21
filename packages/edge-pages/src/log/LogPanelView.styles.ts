@@ -54,7 +54,7 @@ export const FilterSectionTitle = styled.div`
   letter-spacing: var(--ig-letter-spacing-wider);
 `;
 
-export const FilterRow = styled.label`
+export const FilterRow = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-3);
@@ -71,7 +71,7 @@ export const DateRow = styled.div`
 `;
 
 export const DateLabel = styled.span`
-  min-width: var(--ig-control-height-md);
+  min-width: max-content;
   color: var(--ig-color-text-muted);
 `;
 
@@ -100,6 +100,10 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
     type === 'success' ? 'var(--ig-color-success-bg-soft)' : 'transparent'};
 
   &:hover { background-color: var(--ig-color-surface-interactive); }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
 `;
 
 export const LogTime = styled.span`

@@ -30,7 +30,8 @@ export const CapturingStatusPill = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
 `
 
-export const FailureCode = styled.div`
+export const FailureCode = styled.span`
+  display: block;
   margin-top: var(--ig-space-3);
   color: var(--ig-color-danger);
   font-size: var(--ig-font-size-xs);

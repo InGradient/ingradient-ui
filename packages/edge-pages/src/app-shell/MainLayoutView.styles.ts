@@ -30,7 +30,15 @@ export const PanelsRow = styled.div`
   display: flex;
   gap: var(--ig-space-4);
   padding: var(--ig-space-4) var(--ig-space-6) var(--ig-space-4);
-  overflow: hidden;
+  /* Desktop overflow, not a mobile reflow: retain usable workspace geometry and
+     keep both side panels reachable by scrollbar, touchpad, and keyboard focus. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-padding-inline: var(--ig-space-6);
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-neg-2px);
+  }
 `
 
 const Panel = styled.div`
@@ -48,8 +56,8 @@ export const LeftPanel = styled(Panel)`
 `
 
 export const CenterPanel = styled(Panel)`
-  flex: 1;
-  min-width: 0;
+  flex: 1 0 var(--ig-popup-3xl-narrow);
+  min-width: var(--ig-popup-3xl-narrow);
 `
 
 export const RightPanelContainer = styled(Panel)`

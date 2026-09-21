@@ -35,9 +35,9 @@ export function FieldTestTabView(props: FieldTestTabViewProps): JSX.Element {
         <Button size="sm" variant="secondary" onClick={onReset} disabled={running}>{labels.reset}</Button>
         <Button size="sm" variant="secondary" onClick={onExport} disabled={!hasResults}>{labels.export}</Button>
       </div>
-      {running && <ProgressBar value={progress * 100} />}
+      {running && <ProgressBar value={progress * 100} aria-label={labels.running} />}
       {log.length > 0
-        ? <LogBox>{log.join('\n')}</LogBox>
+        ? <LogBox tabIndex={0} role="region" aria-label={labels.title}>{log.join('\n')}</LogBox>
         : <Desc>{labels.noResults}</Desc>}
     </Wrap>
   )

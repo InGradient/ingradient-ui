@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export type VerticalTabsRadius = 'xs' | 'sm' | 'md' | 'lg'
+export type VerticalTabsAppearance = 'default' | 'settings'
 
 export const verticalTabsRadiusStyles: Record<VerticalTabsRadius, { root: string; item: string }> = {
   xs: { root: 'var(--ig-radius-sm)', item: 'var(--ig-radius-xs)' },
@@ -9,7 +10,7 @@ export const verticalTabsRadiusStyles: Record<VerticalTabsRadius, { root: string
   lg: { root: 'var(--ig-radius-xl)', item: 'var(--ig-radius-lg)' },
 }
 
-export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
+export const Root = styled.div<{ $radius: VerticalTabsRadius; $appearance: VerticalTabsAppearance }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,11 @@ export const Root = styled.div<{ $radius: VerticalTabsRadius }>`
   width: 100%;
   padding: var(--ig-space-2);
   border-radius: ${(p) => verticalTabsRadiusStyles[p.$radius].root};
+  ${(p) => p.$appearance === 'settings' && css`
+    gap: var(--ig-space-2px);
+    border-radius: 0;
+    background: var(--ig-color-surface-panel);
+  `}
 `
 
 export const Highlight = styled.div<{ $top: number; $height: number; $visible: boolean; $radius: VerticalTabsRadius }>`
@@ -36,7 +42,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
     opacity var(--ig-motion-fast);
 `
 
-export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTabsRadius }>`
+export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTabsRadius; $appearance: VerticalTabsAppearance }>`
   position: relative;
   z-index: var(--ig-z-base);
   display: flex;
@@ -62,6 +68,18 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
     background: var(--ig-color-surface-interactive);
     color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-primary)')};
   }
+
+  ${(p) => p.$appearance === 'settings' && css`
+    min-height: var(--ig-control-height-xl);
+    padding: var(--ig-space-3) var(--ig-space-4);
+    border-radius: var(--ig-radius-sm);
+    background: ${p.$active ? 'var(--ig-color-selection-bg)' : 'transparent'};
+    color: ${p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-primary)'};
+    &:hover:not(:disabled) {
+      background: ${p.$active ? 'var(--ig-color-accent-soft-surface-hover)' : 'var(--ig-color-surface-interactive-hover)'};
+      color: var(--ig-color-text-primary);
+    }
+  `}
 
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);

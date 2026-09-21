@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { chartColors } from '@ingradient/ui'
+import { MenuIconButton } from '@ingradient/ui/components'
 
 export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   display: flex;
@@ -48,6 +49,31 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   }
 `
 
+// A stretched native selection button and a sibling kebab keep keyboard and
+// pointer activation independent without nesting interactive controls.
+export const DatasetSelectButton = styled.button`
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  &::after { content: ''; position: absolute; inset: 0; border-radius: var(--ig-radius-sm); }
+  &:focus-visible { outline: none; }
+  &:focus-visible::after {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+  }
+`
+
+export const DatasetMenuTrigger = styled(MenuIconButton)`
+  position: relative;
+  z-index: calc(var(--ig-z-base) + 1);
+`
+
 export const DatasetName = styled.div`
   font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
@@ -66,7 +92,7 @@ export const DatasetName = styled.div`
 export function edgeTaskTagStyle($type: string): { bg: string; color: string } {
   if ($type === 'classification') return { bg: 'var(--ig-color-tag-classification-bg)', color: chartColors.tagClassification }
   if ($type === 'segmentation')   return { bg: 'var(--ig-color-tag-segmentation-bg)', color: chartColors.tagSegmentation }
-  return { bg: 'var(--ig-color-blue-tint-15)', color: 'var(--ig-color-accent)' }
+  return { bg: 'var(--ig-color-blue-tint-15)', color: 'var(--ig-color-accent-soft)' }
 }
 
 export const EDGE_TASK_TAG: Record<string, string> = {
@@ -102,7 +128,7 @@ export const ClassChip = styled.span<{ $color: string }>`
   padding: var(--ig-space-2px) var(--ig-space-2-plus);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => `${p.$color}22`};
-  color: ${(p) => p.$color};
+  color: var(--ig-color-text-primary);
   border: var(--ig-border-1px) solid ${(p) => `${p.$color}44`};
   white-space: nowrap;
   max-width: var(--ig-text-clamp-mid);

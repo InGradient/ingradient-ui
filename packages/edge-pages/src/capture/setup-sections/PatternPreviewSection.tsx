@@ -33,6 +33,7 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
             key={pattern}
             type="button"
             $active={previewPatternLabel === pattern}
+            aria-pressed={previewPatternLabel === pattern}
             disabled={isSetupBusy}
             onClick={() => onPreviewPattern(
               previewPatternLabel === pattern ? null : (pattern as PreviewPatternLabel),
@@ -42,7 +43,7 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
           </PatternButton>
         ))}
       </PatternGrid>
-      {statusText && <Text tone="muted" size="var(--ig-font-size-xs)">{statusText}</Text>}
+      {statusText && <Text role="status" tone="muted" size="var(--ig-font-size-xs)">{statusText}</Text>}
     </FieldGroup>
   )
 }

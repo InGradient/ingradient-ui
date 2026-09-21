@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import styled from 'styled-components'
 import { ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui'
@@ -20,13 +21,14 @@ const Header = styled.button`
 
 export function AdvancedSectionView(props: AdvancedSectionViewProps): JSX.Element {
   const { expanded, children, labels, onToggleExpanded } = props
+  const panelId = useId()
   return (
     <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
-      <Header type="button" onClick={onToggleExpanded}>
+      <Header type="button" onClick={onToggleExpanded} aria-expanded={expanded} aria-controls={expanded ? panelId : undefined}>
         {expanded ? <ChevronDownIcon size={iconSizeNumbers.sm} /> : <ChevronRightIcon size={iconSizeNumbers.sm} />}
         {labels.advancedTitle}
       </Header>
-      {expanded && <div>{children}</div>}
+      {expanded && <div id={panelId}>{children}</div>}
     </Stack>
   )
 }

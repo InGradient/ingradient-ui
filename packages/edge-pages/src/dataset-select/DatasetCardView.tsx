@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 import { iconSizeNumbers } from '@ingradient/ui'
-import { Badge, Tag, IconButton, ContextMenuWithSubmenus, MoreIcon } from '@ingradient/ui/components'
+import { Badge, Tag, ContextMenuWithSubmenus, KebabIcon } from '@ingradient/ui/components'
 import { Inline } from '@ingradient/ui/primitives'
 import {
-  DatasetCard, DatasetName, Spacer, CardBottom, ImageCount,
+  DatasetCard, DatasetName, DatasetSelectButton, DatasetMenuTrigger, Spacer, CardBottom, ImageCount,
   EDGE_TASK_TAG, edgeTaskTagStyle,
 } from './dataset-card.styles'
 import { renderClassChips } from './class-chips'
@@ -34,9 +34,11 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
   const taskStyle = dataset.task_type ? edgeTaskTagStyle(dataset.task_type) : null
 
   return (
-    <DatasetCard $isRecent={isRecent} onClick={() => onSelect(dataset)}>
+    <DatasetCard $isRecent={isRecent}>
       <Inline align="flex-start" gap="var(--ig-space-2)" wrap="nowrap" style={{ width: '100%' }}>
-        <DatasetName title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
+        <DatasetSelectButton type="button" onClick={() => onSelect(dataset)}>
+          <DatasetName as="span" title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
+        </DatasetSelectButton>
         <Spacer />
         {isRecent && <Badge $tone="accent">{recentBadgeLabel}</Badge>}
         {dataset.task_type && taskStyle && (
@@ -44,19 +46,20 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
             {EDGE_TASK_TAG[dataset.task_type] ?? 'OD'}
           </Tag>
         )}
-        <IconButton
+        <DatasetMenuTrigger
           ref={dotsBtnRef}
-          variant="ghost"
-          size="sm"
+          $active={isDotMenuOpen}
           title={moreLabel}
           aria-label={moreLabel}
+          aria-haspopup="menu"
+          aria-expanded={isDotMenuOpen}
           onClick={(e) => {
             e.stopPropagation()
             onToggleDotMenu(isDotMenuOpen ? null : dataset.dataset_id)
           }}
         >
-          <MoreIcon size={iconSizeNumbers.sm} />
-        </IconButton>
+          <KebabIcon size={iconSizeNumbers.lg} />
+        </DatasetMenuTrigger>
         {isDotMenuOpen && (
           <ContextMenuWithSubmenus
             anchorEl={dotsBtnRef.current}

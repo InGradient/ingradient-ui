@@ -56,6 +56,26 @@ const Root = styled.button<{
   }
 `
 
+const SelectionButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-3);
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: inherit;
+  border-radius: var(--ig-radius-sm);
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent);
+    outline-offset: var(--ig-space-2px);
+  }
+`
+
 export interface SelectableListItemProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   variant?: SelectableListItemVariant
@@ -66,6 +86,8 @@ export interface SelectableListItemProps
   'data-ig-component'?: string
   'data-ig-slot'?: string
   children: React.ReactNode
+  /** Independent trailing action; rendered beside, never inside, the selection button. */
+  action?: React.ReactNode
 }
 
 export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProps>(
@@ -76,6 +98,9 @@ export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProp
     as = 'button',
     type,
     children,
+    action,
+    className,
+    style,
     'data-ig-component': componentHint,
     'data-ig-slot': slotHint,
     ...rest
@@ -83,11 +108,26 @@ export const SelectableListItem = forwardRef<HTMLElement, SelectableListItemProp
     const componentName = 'SelectableListItem'
     const slotName = slotHint ?? (componentHint && componentHint !== componentName ? componentHint : undefined)
 
+    if (action != null) {
+      return (
+        <Root as={as === 'li' ? 'li' : 'div'} className={className} style={style} $variant={variant} $selected={selected} $dragOver={dragOver}
+          data-ig-component={componentName} data-ig-layer="components" data-ig-slot={slotName}>
+          <SelectionButton ref={ref as React.Ref<HTMLButtonElement>} type={type ?? 'button'} aria-pressed={selected} {...rest}>
+            {children}
+          </SelectionButton>
+          {action}
+        </Root>
+      )
+    }
+
     return (
     <Root
       as={as}
+      className={className}
+      style={style}
       ref={ref as React.Ref<HTMLButtonElement>}
       type={as === 'button' ? type ?? 'button' : undefined}
+      aria-pressed={as === 'button' ? selected : undefined}
       $variant={variant}
       $selected={selected}
       $dragOver={dragOver}

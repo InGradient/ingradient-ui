@@ -1,4 +1,4 @@
-import type { Dispatch, ReactNode, SetStateAction } from 'react'
+import { useEffect, useState, type Dispatch, type ReactNode, type SetStateAction } from 'react'
 import { Button, SelectField, Switch, TextField } from '@ingradient/ui'
 import { FieldGroup, FieldHint, FieldLabelWithHelp, SectionTitle } from '@ingradient/ui/patterns'
 import { Inline, Text } from '@ingradient/ui/primitives'
@@ -19,7 +19,6 @@ export interface DeflectometrySectionProps {
 }
 
 const DEFAULT_FRINGE_PERIOD = 20
-const DEFAULT_GAMMA = 2.2
 const DEFAULT_SETTLE_DELAY_MS = 120
 
 export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Element {
@@ -27,6 +26,10 @@ export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Elem
     setupConfig, disabled, isMeasuringSettleDelay, sequenceSummary, phaseStepOptions,
     fringePreview, labels, onSetSetupConfig, onMeasureSettleDelay,
   } = props
+  // Keep an empty edit buffer while replacing a number. Publishing a fallback on
+  // every clear restored 2.2 before the next keystroke, turning an intended 3 into 2.23.
+  const [gammaDraft, setGammaDraft] = useState(String(setupConfig.gamma))
+  useEffect(() => { setGammaDraft(String(setupConfig.gamma)) }, [setupConfig.gamma])
 
   return (
     <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
@@ -88,12 +91,16 @@ export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Elem
           size="sm"
           type="number"
           step="0.1"
-          value={setupConfig.gamma}
+          value={gammaDraft}
           disabled={disabled}
           aria-label={labels.gamma}
-          onChange={(e) => onSetSetupConfig((prev) => ({
-            ...prev, gamma: Number(e.target.value) || DEFAULT_GAMMA,
-          }))}
+          onChange={(e) => {
+            const value = e.target.value
+            setGammaDraft(value)
+            const gamma = Number(value)
+            if (value !== '' && Number.isFinite(gamma) && gamma > 0) onSetSetupConfig((prev) => ({ ...prev, gamma }))
+          }}
+          onBlur={() => setGammaDraft(String(setupConfig.gamma))}
         />
       </FieldGroup>
 

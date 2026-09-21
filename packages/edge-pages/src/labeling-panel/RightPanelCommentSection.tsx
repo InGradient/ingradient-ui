@@ -28,7 +28,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
       {comments.length === 0
         ? <EmptyState>{labels.empty}</EmptyState>
         : (
-          <CommentList>
+          <CommentList role="region" aria-label={labels.title} tabIndex={0}>
             {comments.map((c) => (
               <Card
                 key={c.id}
@@ -46,6 +46,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
         )}
       <InputRow>
         <TextareaField
+          aria-label={labels.title}
           value={pendingComment}
           onChange={(e) => onPendingCommentChange(e.target.value)}
           placeholder={labels.placeholder}

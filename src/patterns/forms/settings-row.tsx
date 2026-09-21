@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { cloneElement, isValidElement, useId, type ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
 import { Text } from '../../primitives'
@@ -47,7 +47,12 @@ export interface SettingsRowProps {
   label?: ReactNode
   /** 이름 아래 한 줄 설명. 없으면 이름만 남는다. */
   description?: ReactNode
+  /** Single control forwarding id and aria-describedby to its native input.
+   * With asLabel=true, a sibling label targets htmlFor, its existing id, or a generated id.
+   * Composite/non-input controls should use asLabel=false and own their naming.
+   */
   control?: ReactNode
+  /** Legacy custom composition; caller owns valid label/control markup. */
   children?: ReactNode
   asLabel?: boolean
   /** 구분선과 세로 여백. 촘촘한 목록(설정 탭 안쪽)에서는 끈다. */
@@ -60,6 +65,25 @@ export function SettingsRow({
   label, description, control, children,
   asLabel = true, divider = true, htmlFor, className,
 }: SettingsRowProps) {
+  const generatedId = useId()
+  // The control slot must forward id/aria-describedby to its native input.
+  // Keep legacy children composition and explicit asLabel=false opt-out intact.
+  if (asLabel && children == null && isValidElement<{ id?: string; 'aria-describedby'?: string }>(control)) {
+    const controlId = htmlFor ?? control.props.id ?? `${generatedId}-control`
+    const descriptionId = `${generatedId}-description`
+    return (
+      <Row as="div" $divider={divider} className={className}>
+        <TextBlock>
+          <label htmlFor={controlId}>{label}</label>
+          {description != null && <Text id={descriptionId} as="span" tone="muted" size="var(--ig-font-size-2xs)">{description}</Text>}
+        </TextBlock>
+        {cloneElement(control, {
+          id: controlId,
+          'aria-describedby': [control.props['aria-describedby'], description != null ? descriptionId : undefined].filter(Boolean).join(' ') || undefined,
+        })}
+      </Row>
+    )
+  }
   const content = children ?? (
     <>
       {description != null ? (

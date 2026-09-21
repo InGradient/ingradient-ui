@@ -63,7 +63,7 @@
     "build:smoke-consumer": "npm run build --workspace apps/storybook-smoke-consumer",
     "build:package": "rimraf lib && tsup --config tsup.config.ts && node scripts/copy-assets.mjs && node scripts/generate-tokens-css.mjs && npm run build --workspace packages/platform-pages && npm run build --workspace packages/edge-pages",
     "build:docs": "npm run build:storybook",
-    "check:style-literals": "node scripts/check-style-literals.mjs",
+    "check:style-literals": "node --test scripts/style-literal-rules.test.mjs && node scripts/check-style-literals.mjs",
     "check:doc-coverage": "node scripts/check-doc-coverage.mjs",
     "lint": "eslint src/ packages/*/src/",
     "lint:style": "stylelint \"packages/*/src/**/*.{ts,tsx}\" --ignore-pattern \"**/*.stories.tsx\" --ignore-pattern \"**/*.test.tsx\"",

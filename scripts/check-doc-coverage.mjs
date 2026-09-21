@@ -45,6 +45,16 @@ const requiredStoryFiles = [
   'stories/pages/platform/0.0.1/ClassManage.stories.tsx',
   'stories/pages/platform/0.0.1/CreateProject.stories.tsx',
   'stories/pages/platform/0.0.1/auth/Login.stories.tsx',
+  // Edge full-window entry points and their executable route contract.
+  'stories/pages/edge/0.0.5/Login.stories.tsx',
+  'stories/pages/edge/0.0.5/DatasetSelect.stories.tsx',
+  'stories/pages/edge/0.0.5/Workspace.stories.tsx',
+  'stories/pages/edge/0.0.5/ImagesWorkflows.stories.tsx',
+  'stories/pages/edge/0.0.5/SettingsWorkflows.stories.tsx',
+  'stories/pages/edge/0.0.5/CaptureControls.stories.tsx',
+  'stories/pages/edge/0.0.5/CaptureBranches.stories.tsx',
+  'tests/probes/edge-routes.mjs',
+  'tests/probes/edge-contract.test.mjs',
   // Component seeds
   'src/components/inputs/button.stories.tsx',
   'src/components/inputs/file-input.stories.tsx',

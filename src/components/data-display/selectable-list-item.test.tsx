@@ -3,6 +3,25 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { SelectableListItem } from './selectable-list-item'
 
 describe('SelectableListItem', () => {
+  it('keeps className and style on the action row surface', () => {
+    const { container } = render(<SelectableListItem className="consumer-row" style={{ width: '80%' }} action={<button>Preview</button>}>Sound</SelectableListItem>)
+    expect(container.firstElementChild).toHaveClass('consumer-row')
+    expect(container.firstElementChild).toHaveStyle({ width: '80%' })
+    expect(screen.getByRole('button', { name: 'Sound' })).not.toHaveClass('consumer-row')
+  })
+  it('renders independent sibling selection and action buttons', () => {
+    const select = vi.fn()
+    const preview = vi.fn()
+    const { container } = render(<SelectableListItem selected onClick={select} action={<button onClick={preview}>Preview</button>}>Sound</SelectableListItem>)
+    expect(container.querySelector('button button')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Preview' }))
+    expect(preview).toHaveBeenCalledOnce()
+    expect(select).not.toHaveBeenCalled()
+    const selection = screen.getByRole('button', { name: 'Sound', pressed: true })
+    fireEvent.click(selection)
+    expect(select).toHaveBeenCalledOnce()
+    expect(preview).toHaveBeenCalledOnce()
+  })
   it('renders children as content', () => {
     render(<SelectableListItem>Train v3</SelectableListItem>)
     expect(screen.getByText('Train v3')).toBeInTheDocument()

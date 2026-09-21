@@ -3,12 +3,7 @@ import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
 import {
   IngradientGlobalStyle,
-  IngradientThemeProvider,
   PresetProvider,
-  platformV001,
-  edgeV001,
-  medicalV001,
-  type Preset,
   type ThemeMode,
   type DensityId,
 } from '../src/tokens'
@@ -16,19 +11,9 @@ import { ReviewWidget } from '../stories/support/ReviewWidget'
 import { CommentPanel } from '../stories/support/CommentPanel'
 import { ComponentInspector } from '../stories/support/ComponentInspector'
 
-type ServiceId = 'none' | 'platform' | 'edge' | 'medical'
-type VersionId = '0.0.1'
+import { resolvePreset, type PresetHandoff } from './resolve-preset'
+
 type InspectorLayer = 'foundations' | 'primitives' | 'components' | 'patterns' | 'pages' | 'unknown'
-
-const presetMatrix: Partial<Record<ServiceId, Partial<Record<VersionId, Preset>>>> = {
-  platform: { '0.0.1': platformV001 },
-  edge: { '0.0.1': edgeV001 },
-  medical: { '0.0.1': medicalV001 },
-}
-
-function resolvePreset(service: string, version: string): Preset | undefined {
-  return presetMatrix[service as ServiceId]?.[version as VersionId]
-}
 
 function normalizeBasePath(basePath: string | undefined) {
   if (!basePath || basePath === '/') return '/'
@@ -158,11 +143,8 @@ const preview: Preview = {
 
       // service / version 은 story parameters.handoff 에서 가져옴 (service 마다 진화 속도 다름).
       // sandbox 처럼 handoff.version 없으면 service 별 default ('0.0.1') 사용.
-      const handoff = context.parameters?.handoff as { service?: string; version?: string } | undefined
-      const service = handoff?.service ?? 'none'
-      const version = handoff?.version ?? '0.0.1'
-
-      const preset = resolvePreset(service, version)
+      const handoff = context.parameters?.handoff as PresetHandoff | undefined
+      const preset = resolvePreset(handoff)
       const modeOverride: ThemeMode | undefined =
         modeGlobal === 'inherit' || modeGlobal === 'high-contrast' ? undefined : (modeGlobal as ThemeMode)
       const densityOverride: DensityId | undefined =
@@ -210,16 +192,12 @@ const preview: Preview = {
         </>
       )
 
-      // preset 매칭 시 PresetProvider 가 mode + density + data-ig-* attr 관리
-      if (preset) {
-        return (
-          <PresetProvider preset={preset} modeOverride={modeOverride} densityOverride={densityOverride}>
-            {inner}
-          </PresetProvider>
-        )
-      }
-      // preset 없으면 IngradientThemeProvider 만 (mode 는 toolbar 선택 또는 dark default)
-      return <IngradientThemeProvider mode={modeOverride ?? 'dark'}>{inner}</IngradientThemeProvider>
+      // No preset remains dark/default and has no preset metadata; explicit toolbar density still applies.
+      return (
+        <PresetProvider preset={preset} modeOverride={modeOverride} densityOverride={densityOverride}>
+          {inner}
+        </PresetProvider>
+      )
     },
   ],
 }

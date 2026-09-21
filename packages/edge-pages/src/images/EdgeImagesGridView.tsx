@@ -57,7 +57,15 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
   }
 
   return (
-    <ImagesContainer ref={containerRef}>
+    <ImagesContainer ref={containerRef} tabIndex={0} role="region" aria-label="Image gallery">
+      {items.filter((image) => getBadgeCount(image) > 1).map((image) => (
+        <IconButton key={image.id} variant="secondary" size="sm" type="button"
+          title={`${labels.deleteGroup}: ${image.label}`}
+          aria-label={`${labels.deleteGroup}: ${image.label}`}
+          onClick={() => { void onDeleteGroupRequest(image, getDisplayedGroupMembers(image), getBadgeCount(image)) }}>
+          <TrashIcon size={iconSizeNumbers.sm} />
+        </IconButton>
+      ))}
       <VirtualizedImageGrid<ImageItem>
         items={items}
         getThumbnailUrl={(img) => img.src}
@@ -97,20 +105,6 @@ export function EdgeImagesGridView(props: EdgeImagesGridViewProps): JSX.Element 
               )}
               {showBadge && (
                 <GroupBadgeWrap>
-                  <IconButton
-                    variant="secondary"
-                    size="sm"
-                    type="button"
-                    title={labels.deleteGroup}
-                    aria-label={labels.deleteGroup}
-                    onClick={(event) => {
-                      event.stopPropagation()
-                      const members = getDisplayedGroupMembers(img)
-                      void onDeleteGroupRequest(img, members, badgeCount)
-                    }}
-                  >
-                    <TrashIcon size={iconSizeNumbers.sm} />
-                  </IconButton>
                   <Badge>{badgeCount}</Badge>
                 </GroupBadgeWrap>
               )}

@@ -77,19 +77,38 @@ export function TwoColumnDialog({
   useEffect(() => {
     const prevFocus = document.activeElement as HTMLElement | null
     shellRef.current?.focus()
-    return () => prevFocus?.focus?.()
+    return () => { if (prevFocus?.isConnected) prevFocus.focus() }
   }, [])
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.stopPropagation()
-        onClose()
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const shell = shellRef.current
+    const target = event.target as HTMLElement
+    // React portal events bubble through this shell too. Child overlays own their
+    // keys; do not steal focus or Escape from a dropdown or a nested dialog.
+    if (!shell || event.defaultPrevented || !shell.contains(target) || target.closest('[role="dialog"]') !== shell) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      event.stopPropagation()
+      onClose()
+    }
+    if (event.key === 'Tab') {
+      const focusable = Array.from(shell.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )).filter((element) => element.tabIndex >= 0 && !element.closest('[hidden], [inert]') && element.getClientRects().length > 0)
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (!first) {
+        event.preventDefault()
+        shell.focus()
+      } else if (event.shiftKey && (document.activeElement === first || document.activeElement === shell)) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === shell)) {
+        event.preventDefault()
+        first.focus()
       }
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
+  }
 
   if (typeof document === 'undefined') return null
   return createPortal(
@@ -100,13 +119,14 @@ export function TwoColumnDialog({
         $height={height ?? null}
         $maxHeight={maxHeight}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={onKeyDown}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
       >
         <Header>
-          <Heading id={titleId} level={3} style={{ fontSize: 'var(--ig-font-size-xl)' }}>{title}</Heading>
+          <Heading id={titleId} level={2} style={{ fontSize: 'var(--ig-font-size-xl)' }}>{title}</Heading>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Body>

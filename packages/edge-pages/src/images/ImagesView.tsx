@@ -1,20 +1,19 @@
-import { chartHeights } from '@ingradient/ui'
+import { popupSizeNumbers } from '@ingradient/ui'
 import { iconSizeNumbers } from '@ingradient/ui'
-import { useRef } from 'react'
+import { useEffect, useId, useRef } from 'react'
 import {
-  Button, Checkbox, ConfirmDialog, DialogCloseButton, EmptyState, FilterPopover, FilterPopoverSection,
+  Button, Checkbox, ConfirmDialog, DialogShell, EmptyState, FilterPopover, FilterPopoverSection,
 } from '@ingradient/ui'
-import { DatePickerField, DropdownSelect, EyeIcon, EyeOffIcon, FilterIcon, ExpandIcon, CollapseIcon, PointerIcon, SquareIcon, MenuIconButton } from '@ingradient/ui/components'
+import { TextField, DropdownSelect, EyeIcon, EyeOffIcon, FilterIcon, ExpandIcon, CollapseIcon, PointerIcon, SquareIcon, MenuIconButton } from '@ingradient/ui/components'
 import {
   ImagesFilterDateLabel, ImagesFilterDateRow,
   ImagesFilterWrap,
   ImagesWrapper,
   SelectionToolbar,
   ModalBBoxCanvasWrap, ModalBBoxToolbar,
-  ModalFilename, ModalHeader, ModalHeaderCenter,
-  ModalHeaderLeft,
+  ModalHeader, ModalHeaderLeft,
   ModalToolbarSpacer, ModalBboxCount,
-  ModalHint, ModalInner, ModalOverlay,
+  ModalHint, ModalInner,
 } from './ImagesView.styles'
 import { EdgeImagesGridView } from './EdgeImagesGridView'
 import type { ImagesViewProps } from './types'
@@ -41,8 +40,49 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
   } = props
   void onToggleImageSelection
 
-  const isAllSelected = groupedImages.length > 0 && selectedImageIds.size === groupedImages.length
+  const displayedIds = new Set(groupedImages.flatMap((image) => getDisplayedGroupMembers(image).map((member) => member.id)))
+  const isAllSelected = displayedIds.size > 0 && [...displayedIds].every((id) => selectedImageIds.has(id))
   const touchStartY = useRef<number | null>(null)
+  const modalContentRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!modalOpen || !onModalSwipeNavigate) return
+    const navigate = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || !(event.target instanceof HTMLElement)) return
+      const dialog = modalContentRef.current?.closest('[role="dialog"]')
+      if (!dialog?.contains(event.target) || event.target.closest('input, textarea, select, [contenteditable="true"]')) return
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault()
+        onModalSwipeNavigate(event.key === 'ArrowRight' ? 1 : -1)
+      }
+    }
+    window.addEventListener('keydown', navigate)
+    return () => window.removeEventListener('keydown', navigate)
+  }, [modalOpen, onModalSwipeNavigate])
+  const filterRef = useRef<HTMLDivElement>(null)
+  const filterButtonRef = useRef<HTMLButtonElement>(null)
+  const filterId = useId()
+  const fromId = useId()
+  const toId = useId()
+  const closeFilter = props.onCloseFilter ?? onToggleFilter
+  useEffect(() => {
+    if (!filterOpen) return
+    const childListbox = () => Array.from(document.querySelectorAll('[role="listbox"]')).find((element) => element.getAttribute('aria-label') === `${labels.dateFilter.title} options`)
+    const outside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !filterRef.current?.contains(event.target) && !childListbox()?.contains(event.target)) closeFilter()
+    }
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented || childListbox()) return
+      event.preventDefault()
+      closeFilter()
+      filterButtonRef.current?.focus()
+    }
+    document.addEventListener('pointerdown', outside)
+    window.addEventListener('keydown', escape)
+    return () => {
+      document.removeEventListener('pointerdown', outside)
+      window.removeEventListener('keydown', escape)
+    }
+  }, [filterOpen, closeFilter, labels.dateFilter.title])
 
   return (
     <>
@@ -61,26 +101,37 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
           <Checkbox
             checked={isAllSelected}
             onChange={onSelectAll}
-            title={labels.selectAll}
+            label={labels.selectAll}
           />
+          {props.onSetSelectionMode && <Checkbox
+            label={props.selectionModeLabel ?? labels.selectAll}
+            checked={props.selectionMode}
+            onChange={(event) => props.onSetSelectionMode?.(event.target.checked)}
+          />}
           <div style={{ flex: 1 }} />
-          <ImagesFilterWrap>
+          <ImagesFilterWrap ref={filterRef}>
             <MenuIconButton
               type="button"
               $active={datePreset !== 'all'}
               title={labels.filterTitle}
               aria-label={labels.filterTitle}
+              ref={filterButtonRef}
+              aria-expanded={filterOpen}
+              aria-controls={filterOpen ? filterId : undefined}
               onClick={onToggleFilter}
             >
               <FilterIcon size={iconSizeNumbers.md} />
             </MenuIconButton>
             {filterOpen && (
               <FilterPopover
-                width={chartHeights.lg}
+                id={filterId}
+                aria-label={labels.filterTitle}
+                width={popupSizeNumbers.smNarrow}
                 style={{ position: 'absolute', top: 'calc(100% + var(--ig-space-2))', right: 0 }}
               >
                 <FilterPopoverSection title={labels.dateFilter.title}>
                   <DropdownSelect
+                    aria-label={labels.dateFilter.title}
                     value={datePreset}
                     options={[
                       { value: 'all', label: labels.dateFilter.all },
@@ -94,12 +145,12 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                   {datePreset === 'custom' && (
                     <>
                       <ImagesFilterDateRow>
-                        <ImagesFilterDateLabel>{labels.dateFilter.from}</ImagesFilterDateLabel>
-                        <DatePickerField value={fromDate} onChange={onSetFromDate} />
+                        <ImagesFilterDateLabel as="label" htmlFor={fromId}>{labels.dateFilter.from}</ImagesFilterDateLabel>
+                        <TextField type="date" id={fromId} value={fromDate} onChange={(event) => onSetFromDate(event.target.value)} />
                       </ImagesFilterDateRow>
                       <ImagesFilterDateRow>
-                        <ImagesFilterDateLabel>{labels.dateFilter.to}</ImagesFilterDateLabel>
-                        <DatePickerField value={toDate} onChange={onSetToDate} />
+                        <ImagesFilterDateLabel as="label" htmlFor={toId}>{labels.dateFilter.to}</ImagesFilterDateLabel>
+                        <TextField type="date" id={toId} value={toDate} onChange={(event) => onSetToDate(event.target.value)} />
                       </ImagesFilterDateRow>
                     </>
                   )}
@@ -111,7 +162,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
             size="sm"
             variant="secondary"
             disabled={selectedImageIds.size === 0 || isDeleting}
-            onClick={onConfirmDelete}
+            onClick={props.onRequestDelete ?? onConfirmDelete}
           >
             {isDeleting ? labels.deleteSelected(selectedImageIds.size) : labels.deleteSelected(selectedImageIds.size)}
           </Button>
@@ -136,8 +187,10 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
           />
         )}
         {modalOpen && modalActiveImage && (
-          <ModalOverlay
-            onClick={onCloseModal}
+          <DialogShell title={modalActiveImage.label} onClose={onCloseModal}
+            width={modalIsFullscreen ? '100vw' : 'min(var(--ig-popup-3xl-mid), 95vw)'}
+            height={modalIsFullscreen ? '100dvh' : '85dvh'}>
+          <ModalInner ref={modalContentRef}
             onTouchStart={(e) => { touchStartY.current = e.touches[0]?.clientY ?? null }}
             onTouchEnd={(e) => {
               if (touchStartY.current === null) return
@@ -148,13 +201,11 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
               touchStartY.current = null
             }}
           >
-            <ModalInner onClick={(e) => e.stopPropagation()}>
               <ModalHeader>
-                <ModalHeaderCenter>
-                  <ModalFilename title={modalActiveImage.label}>
-                    {modalActiveImage.label}
-                  </ModalFilename>
-                </ModalHeaderCenter>
+                {onModalSwipeNavigate && <>
+                  <Button size="sm" variant="secondary" onClick={() => onModalSwipeNavigate(-1)}>{props.modalPreviousLabel ?? 'Previous image'}</Button>
+                  <Button size="sm" variant="secondary" onClick={() => onModalSwipeNavigate(1)}>{props.modalNextLabel ?? 'Next image'}</Button>
+                </>}
                 <ModalHeaderLeft>
                   {showModalOverlayControls && (
                     <>
@@ -179,14 +230,10 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                     </>
                   )}
                 </ModalHeaderLeft>
-                <DialogCloseButton
-                  onClick={(e) => { e.stopPropagation(); onCloseModal() }}
-                  title={labels.modal.close}
-                  aria-label={labels.modal.close}
-                />
+
               </ModalHeader>
               <ModalBBoxCanvasWrap>
-                {modalCanvasContent}
+                {modalCanvasContent ?? (props.modalImageSrc && <img src={props.modalImageSrc} alt={modalActiveImage.label} style={{ width: '100%', height: '100%', minHeight: 0, objectFit: 'contain' }} />)}
               </ModalBBoxCanvasWrap>
               {modalHintText && <ModalHint>{modalHintText}</ModalHint>}
               {showModalToolbar && (
@@ -214,7 +261,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                 </ModalBBoxToolbar>
               )}
             </ModalInner>
-          </ModalOverlay>
+          </DialogShell>
         )}
       </ImagesWrapper>
     </>

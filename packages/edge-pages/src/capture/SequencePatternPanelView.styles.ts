@@ -24,8 +24,8 @@ export const SegmentBtn = styled(Button).attrs({
 })<{ $active: boolean }>`
   && {
     flex: 1;
-    border-color: transparent;
-    background: ${(p) => (p.$active ? 'var(--ig-color-blue-tint-90)' : 'transparent')};
+    background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
+    border-color: ${(p) => (p.$active ? 'var(--ig-color-accent-ring)' : 'transparent')};
     color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   }
   &&:hover:not(:disabled) {

@@ -1,70 +1,12 @@
 import { chartHeights } from '@ingradient/ui'
-import { iconSizeNumbers } from '@ingradient/ui'
 import { useMemo } from 'react'
 import { DropdownSelect } from '@ingradient/ui/components'
 import { BarChartCard } from '@ingradient/ui/patterns'
 import { PanelGrid } from './StaticsView.styles'
-import { CHART_BLUE, CHART_GREEN, CHART_PURPLE, CHART_LEGEND_FALLBACK } from './chart-helpers'
+import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from './chart-helpers'
+import { TrendTooltip, AvgSizeTooltip } from './LabelingChartTooltips'
 import { buildClassTrend } from './trend-helpers'
 import type { LabelingChartsViewProps, TrendMode } from './types'
-
-interface TooltipPayload {
-  dataKey?: string | number
-  name?: string | number
-  value?: string | number
-  color?: string
-}
-
-function TrendTooltip({ active, label, payload }: { active?: boolean; label?: string | number; payload?: TooltipPayload[] }): JSX.Element | null {
-  if (!active) return null
-  const visible = (payload ?? []).filter((item) => Number(item.value ?? 0) > 0)
-  if (visible.length === 0) return null
-  return (
-    <div style={{
-      background: 'var(--ig-color-surface-raised)',
-      border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-      borderRadius: 'var(--ig-radius-sm)',
-      padding: 'var(--ig-space-3) var(--ig-space-4)',
-      color: 'var(--ig-color-text-primary)',
-      fontSize: 'var(--ig-font-size-xs)',
-      boxShadow: '0 var(--ig-space-3) var(--ig-space-11) var(--ig-color-shadow-medium)',
-    }}>
-      <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-2)' }}>{label}</div>
-      {visible.map((item) => (
-        <div key={String(item.dataKey ?? item.name)} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ig-space-3)', lineHeight: 'var(--ig-line-height-loose)' }}>
-          <span style={{ width: 'var(--ig-space-3)', height: 'var(--ig-space-3)', borderRadius: 'var(--ig-radius-pill)', background: item.color ?? CHART_LEGEND_FALLBACK }} />
-          <span>{item.name}</span>
-          <span style={{ marginLeft: 'var(--ig-space-3)', fontWeight: 'var(--ig-font-weight-bold)' }}>{Number(item.value)}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function AvgSizeTooltip({ active, label, payload }: { active?: boolean; label?: string | number; payload?: TooltipPayload[] }): JSX.Element | null {
-  if (!active || !payload?.length) return null
-  return (
-    <div style={{
-      background: 'var(--ig-color-surface-raised)',
-      border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-      borderRadius: 'var(--ig-radius-sm)',
-      padding: 'var(--ig-space-3) var(--ig-space-4)',
-      color: 'var(--ig-color-text-primary)',
-      fontSize: 'var(--ig-font-size-xs)',
-    }}>
-      <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-2)' }}>{label}</div>
-      {payload.map((item) => {
-        const display = item.dataKey === 'avg_w' ? 'Width' : 'Height'
-        return (
-          <div key={String(item.dataKey)} style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--ig-space-5)' }}>
-            <span>{display}</span>
-            <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{Number(item.value).toFixed(1)}px</span>
-          </div>
-        )
-      })}
-    </div>
-  )
-}
 
 export function LabelingChartsView(props: LabelingChartsViewProps): JSX.Element {
   const { data, images, classes, trendMode, labels, onTrendModeChange } = props

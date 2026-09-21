@@ -46,6 +46,8 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
         size="sm"
         onClick={onOpenMonitor}
         title={labels.openMonitor}
+        aria-label={labels.openMonitor}
+        aria-haspopup="dialog"
         type="button"
       >
         <NetIcon $connected={isConnected} title={isConnected ? labels.connected : labels.disconnected}>

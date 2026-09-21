@@ -12,12 +12,12 @@ export function WorkspaceLabelingShell(props: WorkspaceViewProps): JSX.Element {
   return (
     <Container $row data-ig-component="WorkspaceLabelingShell" data-ig-layer="pages">
       {isSavingLabel && (
-        <SavingOverlay>
-          <Spinner tone="white" />
+        <SavingOverlay role="status" aria-live="polite">
+          <span aria-hidden="true"><Spinner tone="white" /></span>
           {labels.saving}
         </SavingOverlay>
       )}
-      <Container style={{ flex: 1, minWidth: 0 }}>
+      <Container style={{ flex: 1, minWidth: 0 }} aria-busy={isSavingLabel || isCapturing} ref={(node) => node?.toggleAttribute('inert', isSavingLabel || isCapturing)}>
         {labelingContent}
       </Container>
       {sequenceFailure && (
@@ -28,7 +28,7 @@ export function WorkspaceLabelingShell(props: WorkspaceViewProps): JSX.Element {
           onRetry={onSequenceFailureRetry}
         />
       )}
-      {isCapturing && <CapturingPill>{capturingStatusText}</CapturingPill>}
+      {isCapturing && <div role="status"><CapturingPill>{capturingStatusText}</CapturingPill></div>}
     </Container>
   )
 }

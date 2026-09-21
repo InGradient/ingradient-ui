@@ -49,43 +49,10 @@ export const Body = styled.div`
   gap: var(--ig-space-6);
 `
 
-export const TabsList = styled(VerticalTabs)`
-  width: 100%;
+// Product shell owns the divider; item appearance is shared with Edge Settings.
+export const TabsList = styled(VerticalTabs).attrs({ appearance: 'settings' as const })`
   min-height: 0;
-  padding: var(--ig-space-2);
-  gap: var(--ig-space-2px);
-  border: 0;
   border-right: var(--ig-border-1px) solid var(--ig-catalog-divider-color);
-  border-radius: 0;
-  background: var(--ig-color-surface-panel);
-
-  & > div {
-    display: none;
-  }
-
-  & > [role='tab'] {
-    min-height: var(--ig-control-height-xl);
-    padding: var(--ig-space-3) var(--ig-space-4);
-    border-radius: var(--ig-radius-sm);
-    color: var(--ig-color-text-primary);
-    font-size: var(--ig-font-size-sm);
-    font-weight: var(--ig-font-weight-medium);
-  }
-
-  & > [role='tab'][aria-selected='true'] {
-    background: var(--ig-color-selection-bg);
-    color: var(--ig-color-accent);
-    font-weight: var(--ig-font-weight-semibold);
-  }
-
-  & > [role='tab']:hover:not(:disabled) {
-    background: var(--ig-color-surface-interactive-hover);
-    color: var(--ig-color-text-primary);
-  }
-
-  & > [role='tab'][aria-selected='true']:hover:not(:disabled) {
-    background: var(--ig-color-accent-soft-surface-hover);
-  }
 
   ${media.lg} {
     border-right: 0;

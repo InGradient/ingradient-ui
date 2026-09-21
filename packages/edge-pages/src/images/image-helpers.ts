@@ -134,25 +134,25 @@ export function imagePassesDateFilter(
   preset: ImagesDatePreset,
   fromDate: string,
   toDate: string,
+  now: Date = new Date(),
 ): boolean {
   if (preset === 'all') return true
   if (!img.capturedAt) return false
   const imageDate = new Date(img.capturedAt)
   const imageTime = imageDate.getTime()
   if (Number.isNaN(imageTime)) return false
-  const now = new Date()
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
   switch (preset) {
     case 'today':
       return new Date(imageDate.getFullYear(), imageDate.getMonth(), imageDate.getDate()).getTime() === todayStart
     case 'last7':
-      return imageTime >= now.getTime() - 7 * 86400000
+      return imageTime >= todayStart - 6 * 86400000 && imageTime <= now.getTime()
     case 'last30':
-      return imageTime >= now.getTime() - 30 * 86400000
+      return imageTime >= todayStart - 29 * 86400000 && imageTime <= now.getTime()
     case 'custom': {
       if (!fromDate && !toDate) return true
-      const from = fromDate ? new Date(fromDate).getTime() : 0
-      const to = toDate ? new Date(toDate).setHours(23, 59, 59, 999) : Infinity
+      const from = fromDate ? new Date(`${fromDate}T00:00:00`).getTime() : -Infinity
+      const to = toDate ? new Date(`${toDate}T23:59:59.999`).getTime() : Infinity
       return imageTime >= from && imageTime <= to
     }
     default:

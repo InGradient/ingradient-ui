@@ -14,7 +14,10 @@ const contracts = [
     './utils': ['logger'],
   } },
   { directory: 'packages/platform-pages', exports: { '.': ['CatalogView', 'DashboardView', 'LoginView'] } },
-  { directory: 'packages/edge-pages', exports: { '.': ['LoginView', 'LicenseView', 'DatasetSelectView'] } },
+  { directory: 'packages/edge-pages', exports: { '.': [
+    'LoginView', 'LicenseView', 'DatasetSelectView', 'WorkspaceView',
+    'CameraSettingsDialogView', 'ImagesView', 'LogPanelView', 'SetupPanelView',
+  ] } },
 ]
 
 function targets(value) {

@@ -91,7 +91,7 @@ const meta = {
   title: 'Pages/Edge/0.0.5/Login',
   component: LoginScene,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', ...handoff },
+  parameters: { layout: 'fullscreen', ...handoff, a11y: { test: 'error' } },
 } satisfies Meta<typeof LoginScene>
 
 export default meta

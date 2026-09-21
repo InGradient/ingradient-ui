@@ -1,7 +1,9 @@
+import { useId } from 'react'
 import { Button, DialogShell, TextField } from '@ingradient/ui'
 import type { ForceIpDialogViewProps } from './types'
 
 export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
+  const id = useId()
   const {
     cameraId, currentIp, newIp, newSubnet, applying, error, labels,
     onIpChange, onSubnetChange, onApply, onCancel,
@@ -25,18 +27,18 @@ export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
           {cameraId} · current {currentIp ?? '—'}
         </div>
         <div>
-          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
+          <label htmlFor={`${id}-ip`} style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
             {labels.forceIpStaticIp}
           </label>
-          <TextField value={newIp} onChange={(e) => onIpChange(e.target.value)} placeholder="192.168.1.10" />
+          <TextField id={`${id}-ip`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} value={newIp} onChange={(e) => onIpChange(e.target.value)} placeholder="192.168.1.10" />
         </div>
         <div>
-          <label style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
+          <label htmlFor={`${id}-subnet`} style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
             {labels.forceIpSubnet}
           </label>
-          <TextField value={newSubnet} onChange={(e) => onSubnetChange(e.target.value)} placeholder="255.255.255.0" />
+          <TextField id={`${id}-subnet`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} value={newSubnet} onChange={(e) => onSubnetChange(e.target.value)} placeholder="255.255.255.0" />
         </div>
-        {error && <div style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-danger)' }}>{error}</div>}
+        {error && <div id={`${id}-error`} role="alert" style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-danger)' }}>{error}</div>}
       </div>
     </DialogShell>
   )

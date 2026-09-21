@@ -39,11 +39,15 @@ export function toDrawingObjects(bboxes: BBox[], classMap: Record<string, ClassI
   }))
 }
 
-export function toBboxes(objects: DrawingObject[], prevBboxes: BBox[], selectedClassId: string | null): BBox[] {
+export function toBboxes(objects: DrawingObject[], prevBboxes: BBox[], selectedClassId: string | null, previousObjects?: DrawingObject[]): BBox[] {
   return objects
     .filter((o): o is DrawingObject & { w: number; h: number } => o.type === 'rect' && o.w != null && o.h != null)
-    .map((o, i) => ({
-      classId: prevBboxes[i]?.classId ?? selectedClassId ?? '',
+    .map((o) => ({
+      // Preserve class identity when an earlier rectangle is deleted; new drawing IDs
+      // are not bbox indices and receive the currently selected class.
+      classId: (previousObjects
+        ? prevBboxes[previousObjects.findIndex((previous) => previous.id === o.id)]?.classId
+        : /^bbox-\d+$/.test(o.id) ? prevBboxes[Number(o.id.slice(5))]?.classId : undefined) ?? selectedClassId ?? '',
       x: o.x,
       y: o.y,
       w: o.w,

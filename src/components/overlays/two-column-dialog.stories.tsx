@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react'
+import { expect, within } from 'storybook/test'
+import { Button } from '../inputs/button'
 import { TwoColumnDialog } from './two-column-dialog'
 import { StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
@@ -28,6 +31,28 @@ const SidebarItem = ({ label, active }: { label: string; active?: boolean }) => 
   </div>
 )
 
+export const KeyboardContainment: Story = {
+  args: { title: 'Settings', onClose: () => {}, children: null },
+  render: () => {
+    const [open, setOpen] = useState(false)
+    return <><Button onClick={() => setOpen(true)}>Open settings</Button>{open && <TwoColumnDialog title="Settings" onClose={() => setOpen(false)}><Button>Last action</Button></TwoColumnDialog>}</>
+  },
+  play: async ({ canvas, canvasElement, userEvent }) => {
+    const body = within(canvasElement.ownerDocument.body)
+    const trigger = canvas.getByRole('button', { name: 'Open settings' })
+    await userEvent.click(trigger)
+    await userEvent.tab({ shift: true })
+    await expect(body.getByRole('button', { name: 'Last action' })).toHaveFocus()
+    await userEvent.tab()
+    await expect(body.getByRole('button', { name: /close/i })).toHaveFocus()
+    await userEvent.tab({ shift: true })
+    await expect(body.getByRole('button', { name: 'Last action' })).toHaveFocus()
+    await userEvent.keyboard('{Escape}')
+    await expect(body.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(trigger).toHaveFocus()
+  },
+}
+
 export const Review: Story = {
   args: { title: 'Workspace settings', onClose: () => {}, children: null },
   render: () => (
@@ -52,7 +77,7 @@ export const Review: Story = {
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-4)' }}>
-            <h4 style={{ margin: 0 }}>General</h4>
+            <h3 style={{ margin: 0, fontSize: 'var(--ig-font-size-md)' }}>General</h3>
             <p style={{ margin: 0, color: 'var(--ig-color-text-muted)', lineHeight: 'var(--ig-line-height-loose)' }}>
               워크스페이스 이름, 기본 언어, 표시 설정을 관리합니다. 좌측에서 카테고리를 선택하면 이 영역의
               내용이 전환됩니다.

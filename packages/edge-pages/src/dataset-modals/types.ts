@@ -66,6 +66,8 @@ export interface ExportModalViewProps {
   labels: ExportModalLabels
   onClose: () => void
   onExport: () => void
+  /** Optional cancellation for cancellable exporters. Without it running remains non-dismissible. */
+  onCancel?: () => void
 }
 
 // ── CreateProjectForm ─────────────────────────────────────────────────────────
@@ -77,4 +79,19 @@ export interface CreateProjectFormLabels {
 
 export interface CreateProjectFormViewProps {
   labels: CreateProjectFormLabels
+  /** Optional controlled creation form. Existing informational consumers are unchanged. */
+  form?: {
+    open: boolean
+    name: string
+    busy: boolean
+    error: string | null
+    title: string
+    nameLabel: string
+    submitLabel: string
+    cancelLabel: string
+    onOpen: () => void
+    onClose: () => void
+    onNameChange: (name: string) => void
+    onSubmit: (event: FormEvent) => void
+  }
 }

@@ -22,12 +22,14 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
 
   return (
     <Container data-ig-component="WorkspaceShell" data-ig-layer="pages">
+      {/* Lock only navigation/content; failure-dialog cancel and Escape stay available. */}
+      <div style={{ display: 'contents' }} ref={(node) => node?.toggleAttribute('inert', isCapturing)}>
       {selectedDatasetId && (
         <>
           <Tabs
             items={tabItems}
             value={activeTab}
-            onChange={(v) => onTabChange(v as WorkspaceTab)}
+            onChange={(v) => { if (!isCapturing) onTabChange(v as WorkspaceTab) }}
             style={{ margin: '0 0 var(--ig-space-1)' }}
           />
           {isSetupMode && setupPanelTarget && setupPanelContent
@@ -35,6 +37,7 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
         </>
       )}
       {tabContent}
+      </div>
       {sequenceFailure && (
         <SequenceFailureDialog
           info={sequenceFailure}
@@ -43,7 +46,7 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
           onRetry={onSequenceFailureRetry}
         />
       )}
-      {isCapturing && <CapturingPill>{capturingStatusText}</CapturingPill>}
+      {isCapturing && <div role="status"><CapturingPill>{capturingStatusText}</CapturingPill></div>}
     </Container>
   )
 }

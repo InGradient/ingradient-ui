@@ -1,12 +1,14 @@
 // 화면 2 — 프로젝트/데이터셋 선택. 로그인 후 처음 보는 화면이다.
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
 import { DatasetSelectView } from '@ingradient/edge-pages'
 import {
-  DATASET_SELECT_LABELS, LATEST_DATASET_ID, SAMPLE_GROUPS, SAMPLE_RECENT, TOTAL_DATASETS,
+  DATASET_SELECT_LABELS, LATEST_DATASET_ID, SAMPLE_RECENT,
 } from '../../../fixtures/edge/0.0.5'
 import { defineHandoff } from '../../../support/handoff'
 import { AccountSlot, EdgeAppFrame, LangSlot } from './shared/build-shell'
+import { useDatasetRuntime } from './dataset-runtime'
 
 const noop = (): undefined => undefined
 
@@ -17,15 +19,29 @@ interface SceneArgs {
   /** 데이터셋이 하나도 없을 때. */
   empty?: boolean
   sessionExpired?: boolean
+  failFirstExport?: boolean
+  onMockAction?: (action: string) => void
 }
 
 function DatasetSelectScene(args: SceneArgs): JSX.Element {
+  return <DatasetSelectSession key={JSON.stringify({ ...args, onMockAction: undefined })} {...args} />
+}
+
+function DatasetSelectSession(args: SceneArgs): JSX.Element {
   const {
     mode = 'offline', loading = false, fetchError = null,
     empty = false, sessionExpired = false,
   } = args
+  const [expiredOpen, setExpiredOpen] = useState(sessionExpired)
+  const [mockStatus, setMockStatus] = useState('')
+  const closeExpired = (action: 'confirm' | 'cancel') => {
+    args.onMockAction?.(`session-expired-${action}`)
+    setExpiredOpen(false)
+    setMockStatus(action === 'confirm' ? 'Mock sign-in requested; no authentication was performed.' : 'Mock session dialog dismissed.')
+  }
   const [openDotMenuDatasetId, setOpenDotMenuDatasetId] = useState<string | null>(null)
-  const groups = empty ? [] : SAMPLE_GROUPS
+  const runtime = useDatasetRuntime(empty, args.failFirstExport ?? false, args.onMockAction)
+  const groups = runtime.groups
   const recent = empty ? [] : SAMPLE_RECENT
 
   return (
@@ -33,6 +49,10 @@ function DatasetSelectScene(args: SceneArgs): JSX.Element {
       showFooter
       isConnected={mode === 'online'}
       content={(
+        <>
+        {mockStatus && <p role="status">{mockStatus}</p>}
+        {runtime.status && <p role="status">{runtime.status}</p>}
+        {!loading && !fetchError && runtime.createProjectForm}
         <DatasetSelectView
           mode={mode}
           connectionStatus={mode === 'online' ? 'connected' : 'disconnected'}
@@ -42,22 +62,25 @@ function DatasetSelectScene(args: SceneArgs): JSX.Element {
           fetchError={fetchError}
           recentDatasets={recent}
           groups={groups}
-          totalDatasets={empty ? 0 : TOTAL_DATASETS}
+          totalDatasets={groups.reduce((total, group) => total + group.datasets.length, 0)}
+          addDatasetModal={runtime.addDatasetModal}
+          exportModal={runtime.exportModal}
           latestDatasetId={LATEST_DATASET_ID}
           openDotMenuDatasetId={openDotMenuDatasetId}
-          sessionExpired={sessionExpired}
+          sessionExpired={expiredOpen}
           labels={DATASET_SELECT_LABELS}
           langSelector={LangSlot}
           accountMenu={AccountSlot}
           onRefresh={noop}
           onOpenSettings={noop}
           onSelectDataset={noop}
-          onAddDatasetClick={noop}
-          onExportClick={noop}
+          onAddDatasetClick={runtime.openAdd}
+          onExportClick={(dataset) => { setOpenDotMenuDatasetId(null); runtime.openExport(dataset) }}
           onToggleDotMenu={setOpenDotMenuDatasetId}
-          onSessionExpiredConfirm={noop}
-          onSessionExpiredCancel={noop}
+          onSessionExpiredConfirm={() => closeExpired('confirm')}
+          onSessionExpiredCancel={() => closeExpired('cancel')}
         />
+        </>
       )}
     />
   )
@@ -85,8 +108,9 @@ const handoff = defineHandoff({
 const meta = {
   title: 'Pages/Edge/0.0.5/DatasetSelect',
   component: DatasetSelectScene,
+  args: { onMockAction: fn() },
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', ...handoff },
+  parameters: { layout: 'fullscreen', ...handoff, a11y: { test: 'error' } },
 } satisfies Meta<typeof DatasetSelectScene>
 
 export default meta
@@ -115,4 +139,120 @@ export const FetchError: Story = {
 export const SessionExpired: Story = {
   tags: ['!autodocs'],
   args: { mode: 'online', sessionExpired: true },
+}
+
+export const SessionExpiredEscapeWorkflow: Story = {
+  ...SessionExpired,
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await expect(page.getByRole('dialog')).toBeVisible()
+    await userEvent.keyboard('{Escape}')
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(args.onMockAction).toHaveBeenCalledWith('session-expired-cancel')
+  },
+}
+
+export const SessionExpiredCancelWorkflow: Story = {
+  ...SessionExpired,
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getByRole('button', { name: DATASET_SELECT_LABELS.cancel }))
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(args.onMockAction).toHaveBeenCalledWith('session-expired-cancel')
+  },
+}
+
+export const AddDatasetWorkflow: Story = {
+  args: {},
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getAllByRole('button', { name: DATASET_SELECT_LABELS.addDataset })[0])
+    const dialog = within(page.getByRole('dialog', { name: 'Add mock dataset' }))
+    await userEvent.click(dialog.getByRole('button', { name: 'Add dataset' }))
+    await expect(dialog.getByRole('alert')).toHaveTextContent('Enter a name.')
+    await userEvent.type(dialog.getByLabelText('Dataset name'), 'Synthetic inspection')
+    await userEvent.click(dialog.getByRole('button', { name: 'Add dataset' }))
+    await expect(dialog.getByRole('button', { name: 'Adding…' })).toBeDisabled()
+    await waitFor(() => expect(page.queryByRole('dialog')).not.toBeInTheDocument())
+    await expect(page.getByText(/Mock dataset “Synthetic inspection” created/)).toBeVisible()
+    await expect(args.onMockAction).toHaveBeenCalledWith('dataset-create-done')
+  },
+}
+
+export const CreateProjectWorkflow: Story = {
+  args: { empty: true, mode: 'online' },
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getByRole('button', { name: 'Create mock project' }))
+    await userEvent.click(page.getByRole('button', { name: 'Create project' }))
+    await expect(page.getByRole('alert')).toHaveTextContent('Enter a name.')
+    await userEvent.type(page.getByLabelText('Project name'), 'Synthetic project')
+    await userEvent.click(page.getByRole('button', { name: 'Create project' }))
+    await waitFor(() => expect(page.queryByRole('dialog')).not.toBeInTheDocument())
+    await expect(page.getByText('Synthetic project', { exact: true })).toBeVisible()
+    await expect(args.onMockAction).toHaveBeenCalledWith('project-create-done')
+    await userEvent.click(page.getByRole('button', { name: DATASET_SELECT_LABELS.addDataset }))
+    await expect(page.getByRole('dialog', { name: 'Add mock dataset' })).toBeVisible()
+    await userEvent.keyboard('{Escape}')
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+  },
+}
+
+export const AddDatasetCancelWorkflow: Story = {
+  args: {},
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    const trigger = page.getAllByRole('button', { name: DATASET_SELECT_LABELS.addDataset })[0]
+    await userEvent.click(trigger)
+    await userEvent.type(page.getByLabelText('Dataset name'), 'Cancelled fixture')
+    await userEvent.click(page.getByRole('button', { name: 'Add dataset' }))
+    await userEvent.click(page.getByRole('button', { name: 'Cancel' }))
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(trigger).toHaveFocus()
+    await expect(args.onMockAction).toHaveBeenCalledWith('create-cancel')
+  },
+}
+
+export const ExportRetryWorkflow: Story = {
+  args: { failFirstExport: true },
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getAllByRole('button', { name: DATASET_SELECT_LABELS.more })[0])
+    await userEvent.click(page.getByRole('menuitem', { name: DATASET_SELECT_LABELS.export }))
+    await expect(page.getByRole('dialog', { name: 'Export mock dataset' })).toBeVisible()
+    await userEvent.click(page.getByRole('button', { name: 'Export' }))
+    await expect(page.getByRole('progressbar', { name: 'Exporting synthetic images' })).toBeVisible()
+    await waitFor(() => expect(page.getByRole('alert')).toHaveTextContent('Synthetic export failed.'))
+    await userEvent.click(page.getByRole('button', { name: 'Retry export' }))
+    await waitFor(() => expect(page.getByText('Mock export complete. No archive or files were created.')).toBeVisible())
+    await expect(args.onMockAction).toHaveBeenCalledWith('export-error')
+    await expect(args.onMockAction).toHaveBeenCalledWith('export-done')
+    await userEvent.click(within(page.getByRole('dialog')).getByRole('button', { name: 'Close' }))
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+  },
+}
+
+export const ExportCancelWorkflow: Story = {
+  args: {},
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getAllByRole('button', { name: DATASET_SELECT_LABELS.more })[0])
+    await userEvent.click(page.getByRole('menuitem', { name: DATASET_SELECT_LABELS.export }))
+    await userEvent.click(page.getByRole('button', { name: 'Export' }))
+    await userEvent.keyboard('{Escape}')
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(page.getByText('Mock export cancelled. No files were written.')).toBeVisible()
+    await expect(args.onMockAction).toHaveBeenCalledWith('export-cancel')
+  },
+}
+
+export const SessionExpiredConfirmWorkflow: Story = {
+  ...SessionExpired,
+  play: async ({ canvasElement, args }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await userEvent.click(page.getByRole('button', { name: DATASET_SELECT_LABELS.sessionExpiredConfirm }))
+    await expect(page.queryByRole('dialog')).not.toBeInTheDocument()
+    await expect(page.getByText(/Mock sign-in requested/)).toBeVisible()
+    await expect(args.onMockAction).toHaveBeenCalledWith('session-expired-confirm')
+  },
 }

@@ -129,7 +129,16 @@ export interface ImagesViewProps {
   onModalSwipeNavigate?: (delta: number) => void
   onSetModalAnnotationsVisible: (visible: boolean) => void
   onToggleModalFullscreen: () => void
+  /** Request confirmation for the current selection. Legacy consumers fall back to onConfirmDelete. */
+  onRequestDelete?: () => void
+  /** Called by the confirmation action, not the toolbar when onRequestDelete is supplied. */
   onConfirmDelete: () => void
+  onCloseFilter?: () => void
+  /** Optional explicit selection control; omitted preserves the existing cell interaction contract. */
+  selectionModeLabel?: string
+  onSetSelectionMode?: (enabled: boolean) => void
+  modalPreviousLabel?: string
+  modalNextLabel?: string
   onCancelDelete: () => void
   onDeleteGroup: (img: ImageItem, members: ImageItem[], count: number) => void | Promise<void>
   onRetryReload: () => void

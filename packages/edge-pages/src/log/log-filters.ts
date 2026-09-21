@@ -49,12 +49,24 @@ export function logPassesDateFilter(log: LogPanelEntry, preset: DatePreset, from
     case 'last30': return logTime >= now.getTime() - 30 * 86400000
     case 'custom': {
       if (!fromDate && !toDate) return true
-      const from = fromDate ? new Date(fromDate).getTime() : 0
-      const to = toDate ? new Date(toDate).setHours(23, 59, 59, 999) : Infinity
+      const from = fromDate ? new Date(`${fromDate}T00:00:00`).getTime() : 0
+      const to = toDate ? new Date(`${toDate}T23:59:59.999`).getTime() : Infinity
       return logTime >= from && logTime <= to
     }
     default: return true
   }
+}
+
+export function filterLogEntries(logs: LogPanelEntry[], filters: {
+  datePreset: DatePreset; dateFrom: string; dateTo: string
+  showProgress: boolean; showConnections: boolean; showDebug: boolean
+}): { log: LogPanelEntry; index: number }[] {
+  return logs.map((log, index) => ({ log, index })).filter(({ log }) =>
+    logPassesDateFilter(log, filters.datePreset, filters.dateFrom, filters.dateTo)
+    && (filters.showDebug || !isDebugLog(log))
+    && (filters.showProgress || !isProgressLog(log))
+    && (filters.showConnections || !isConnectionsLog(log)),
+  )
 }
 
 export function getTimeFromMsg(msg: string): string {

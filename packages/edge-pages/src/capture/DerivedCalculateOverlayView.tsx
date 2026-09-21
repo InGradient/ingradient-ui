@@ -29,7 +29,7 @@ export function DerivedCalculateOverlayView(props: DerivedCalculateOverlayViewPr
           disabled={running || state === 'unavailable'}
           onClick={onCalculate}
         >
-          {running ? <><Spinner size="sm" />{labels.calculating}</> : labels.calculate}
+          {running ? <><span aria-hidden="true"><Spinner size="sm" /></span>{labels.calculating}</> : labels.calculate}
         </Button>
 
         {/* 버튼이 눌리지 않는 이유는 남긴다 — 없으면 왜 안 되는지 알 수 없다. */}

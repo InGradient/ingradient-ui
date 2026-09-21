@@ -15,6 +15,10 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
     onLogout, onSelectAccount,
   } = props
   const accountBtnRef = useRef<HTMLButtonElement>(null)
+  const closeChangeAccount = () => {
+    onCloseChangeAccount()
+    accountBtnRef.current?.focus()
+  }
 
   if (!currentUser) return null
 
@@ -26,6 +30,9 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           variant="secondary"
           size="sm"
           title={labels.account}
+          aria-label={`${labels.account}: ${currentUser.name || currentUser.email}`}
+          aria-haspopup="menu"
+          aria-expanded={dropdownOpen}
           onClick={(e) => { e.stopPropagation(); onToggleDropdown() }}
         >
           <UserCircleIcon size={iconSizeNumbers.lg} />
@@ -48,16 +55,16 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
       {changeAccountModalOpen && ReactDOM.createPortal(
         <DialogShell
           title={labels.accountHistory}
-          onClose={onCloseChangeAccount}
+          onClose={closeChangeAccount}
           width="min(var(--ig-popup-xl), 100%)"
-          actions={<Button variant="secondary" onClick={onCloseChangeAccount}>{labels.cancel}</Button>}
+          actions={<Button variant="secondary" onClick={closeChangeAccount}>{labels.cancel}</Button>}
         >
           {accountHistory.length === 0 ? (
             <EmptyState>{labels.noAccountHistory}</EmptyState>
           ) : (
             <HistoryList>
               {accountHistory.map((entry) => (
-                <SelectableListItem key={entry.email} variant="card" onClick={() => onSelectAccount(entry)}>
+                <SelectableListItem key={entry.email} variant="card" onClick={() => { onSelectAccount(entry); accountBtnRef.current?.focus() }}>
                   <Stack gap="var(--ig-space-2px)">
                     <HistoryName>{entry.name}</HistoryName>
                     <HistoryEmail>{entry.email}</HistoryEmail>

@@ -35,6 +35,7 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
             <Checkbox
               key={cat}
               checked={selectedCategories.has(cat)}
+              disabled={running}
               onChange={() => onToggleCategory(cat)}
               label={`${labels[cat]} (${stats.itemCounts[cat]})`}
             />
@@ -46,7 +47,7 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
           {running && <Spinner size="sm" tone="muted" />}
           {running ? labels.running : labels.run}
         </Button>
-        <Button size="sm" variant="secondary" onClick={onRefresh} disabled={loading}>{labels.refresh}</Button>
+        <Button size="sm" variant="secondary" onClick={onRefresh} disabled={loading || running}>{labels.refresh}</Button>
       </div>
       {result?.ok && <SuccessMsg>{labels.freed(formatBytes(result.freedBytes))}</SuccessMsg>}
     </Wrap>

@@ -39,7 +39,7 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       {status === 'downloading' && (
         <>
           <Label>{labels.downloading}</Label>
-          <ProgressBar value={progress * 100} />
+          <ProgressBar value={progress * 100} aria-label={labels.downloading} />
         </>
       )}
       {status === 'downloaded' && (

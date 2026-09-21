@@ -1,0 +1,22 @@
+// Frozen Edge 0.0.5 route population, not a claim that fixture callbacks work.
+export const edgeRoutes = Object.freeze([
+  ['login--offline', 'Continue'],
+  ['login--offline-no-package', 'Load Project File (.ige)'],
+  ['login--online-form', 'Email'],
+  ['login--error', 'Incorrect email or password.'],
+  ['datasetselect--offline', '26.09.02 New Raw Material'],
+  ['datasetselect--online', '26.09.02 New Raw Material'],
+  ['datasetselect--loading', 'Loading...'],
+  ['datasetselect--empty', 'No datasets available.'],
+  ['datasetselect--fetch-error', 'Could not reach the platform.'],
+  ['datasetselect--session-expired', 'Session Expired'],
+  ['workspace--capture', 'Capture'],
+  ['workspace--images', 'Images'],
+  ['workspace--statics', 'Statics'],
+  ['workspace--setup', 'Setup'],
+  ['workspace--capturing', 'Capture'],
+  ['workspace--sequence-failed', 'Capture'],
+  ['workspace--log-filter-open', 'Capture'],
+  ['workspace--offline', 'Capture'],
+  ['workspace--settings', 'System Settings'],
+].map(([route, readyText]) => Object.freeze({ id: `pages-edge-0-0-5-${route}`, readyText })))

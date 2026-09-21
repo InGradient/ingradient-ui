@@ -27,7 +27,7 @@ export default defineConfig({
           name: 'unit',
           environment: 'jsdom',
           globals: true,
-          include: ['src/**/*.test.{ts,tsx}', 'packages/**/src/**/*.test.{ts,tsx}'],
+          include: ['src/**/*.test.{ts,tsx}', 'packages/**/src/**/*.test.{ts,tsx}', '.storybook/resolve-preset.test.ts'],
           setupFiles: ['./vitest.setup.ts'],
           coverage: {
             provider: 'v8',

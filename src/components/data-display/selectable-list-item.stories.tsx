@@ -1,4 +1,6 @@
 import React from 'react'
+import { expect, fn } from 'storybook/test'
+import { Button } from '../inputs/button'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SelectableListItem } from './selectable-list-item'
 import { Badge } from '../feedback/badge'
@@ -17,6 +19,26 @@ const meta = {
 export default meta
 
 type Story = StoryObj<typeof meta>
+
+const previewAction = fn()
+export const IndependentAction: Story = {
+  args: { children: 'Chime', selected: true, onClick: fn(), action: <Button size="sm" variant="secondary" onClick={previewAction}>Preview Chime</Button> },
+  play: async ({ canvas, canvasElement, userEvent, args }) => {
+    previewAction.mockClear()
+    await expect(canvasElement.querySelector('button button')).toBeNull()
+    const selection = canvas.getByRole('button', { name: 'Chime', pressed: true })
+    selection.focus()
+    await userEvent.keyboard('{Enter}')
+    await expect(getComputedStyle(selection).outlineStyle).toBe('solid')
+    await expect(parseFloat(getComputedStyle(selection).outlineWidth)).toBeGreaterThan(0)
+    await expect(args.onClick).toHaveBeenCalledTimes(1)
+    await userEvent.tab()
+    await expect(canvas.getByRole('button', { name: 'Preview Chime' })).toHaveFocus()
+    await userEvent.keyboard(' ')
+    await expect(previewAction).toHaveBeenCalledTimes(1)
+    await expect(args.onClick).toHaveBeenCalledTimes(1)
+  },
+}
 
 const datasetRows = [
   { id: 'd1', name: 'Bottle defects', tag: 'OD' },

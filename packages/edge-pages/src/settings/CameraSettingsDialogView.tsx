@@ -1,3 +1,4 @@
+import { useEffect, useId } from 'react'
 import {
   BeakerIcon, CameraIcon, DatabaseIcon, FileTextIcon, FlaskIcon, InfoIcon,
   LightbulbIcon, ServerIcon, SettingsIcon, SlidersIcon,
@@ -37,6 +38,12 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   ]
 
   const visibleTabs = tabs.filter((t) => t.visible)
+  const tabId = useId()
+  // Presentation normalization only; application authorization remains external.
+  const visibleActiveTab = visibleTabs.some((tab) => tab.value === activeTab) ? activeTab : visibleTabs[0].value
+  useEffect(() => {
+    if (visibleActiveTab !== activeTab) onSetActiveTab(visibleActiveTab)
+  }, [activeTab, visibleActiveTab, onSetActiveTab])
 
   const content: Record<SettingsTab, JSX.Element | null | undefined> = {
     general: generalContent as JSX.Element | undefined ?? null,
@@ -60,13 +67,21 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
       sidebarWidth="var(--ig-popup-2xs-plus)"
       sidebar={
         <VerticalTabs
-          items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon }))}
-          value={activeTab}
+          appearance="settings"
+          items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon,
+            id: `${tabId}-${t.value}`, panelId: `${tabId}-${t.value}-panel`,
+          }))}
+          value={visibleActiveTab}
           onChange={(v) => onSetActiveTab(v as SettingsTab)}
         />
       }
     >
-      {content[activeTab]}
+      {visibleTabs.map((tab) => (
+        <div key={tab.value} role="tabpanel" id={`${tabId}-${tab.value}-panel`}
+          aria-labelledby={`${tabId}-${tab.value}`} hidden={tab.value !== visibleActiveTab} tabIndex={0}>
+          {tab.value === visibleActiveTab ? content[tab.value] : null}
+        </div>
+      ))}
     </TwoColumnDialog>
   )
 }

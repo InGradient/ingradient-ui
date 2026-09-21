@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { iconSizeNumbers, Card } from '@ingradient/ui'
 import { EmptyState, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import {
@@ -20,6 +21,7 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
     collapsedSections, trendMode, labels,
     onToggleSection, onTrendModeChange,
   } = props
+  const sectionId = useId()
   void classNameMap
 
   if (!hasDataset) {
@@ -53,7 +55,7 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
     const isOpen = !collapsedSections[key]
     const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
     return (
-      <SectionHeader onClick={() => onToggleSection(key)}>
+      <SectionHeader type="button" aria-expanded={isOpen} aria-controls={`${sectionId}-${key}`} onClick={() => onToggleSection(key)}>
         <Icon size={iconSizeNumbers.lg} />{label}
       </SectionHeader>
     )
@@ -72,6 +74,8 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
         </TitleBlock>
       </Header>
 
+      {/* Keep the compact raised Card composition: StatCard fixes dashboard
+          padding, XL radius and 3XL value typography and has no density variant. */}
       <SummaryGrid>
         {hasSession && session && (
           <>
@@ -91,7 +95,7 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
       {hasSession && session && (
         <>
           {renderSection('sessions', labels.sessions)}
-          <SectionContent $collapsed={!!collapsedSections.sessions}>
+          <SectionContent id={`${sectionId}-sessions`} hidden={!!collapsedSections.sessions} $collapsed={!!collapsedSections.sessions}>
             <SessionChartsView
               countsByHour={session.counts_by_hour}
               outcomeRatios={session.outcome_ratios}
@@ -108,11 +112,11 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
       {hasImage && enhancedImage && (
         <>
           {renderSection('images', labels.images)}
-          <SectionContent $collapsed={!!collapsedSections.images}>
+          <SectionContent id={`${sectionId}-images`} hidden={!!collapsedSections.images} $collapsed={!!collapsedSections.images}>
             <ImageChartsView data={enhancedImage} labels={labels.imageCharts} />
           </SectionContent>
           {renderSection('labeling', labels.labeling)}
-          <SectionContent $collapsed={!!collapsedSections.labeling}>
+          <SectionContent id={`${sectionId}-labeling`} hidden={!!collapsedSections.labeling} $collapsed={!!collapsedSections.labeling}>
             <LabelingChartsView
               data={enhancedImage}
               classNameMap={classNameMap}
@@ -124,7 +128,7 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
             />
           </SectionContent>
           {renderSection('camera', labels.camera)}
-          <SectionContent $collapsed={!!collapsedSections.camera}>
+          <SectionContent id={`${sectionId}-camera`} hidden={!!collapsedSections.camera} $collapsed={!!collapsedSections.camera}>
             <CameraChartsView data={enhancedImage} labels={labels.cameraCharts} />
           </SectionContent>
         </>

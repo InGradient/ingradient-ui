@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { IconButton, MenuIconButton, EraserIcon, EyeIcon, EyeOffIcon, ExpandIcon, CollapseIcon, PointerIcon, SaveIcon, SkipForwardIcon, SquareIcon } from '@ingradient/ui/components'
 import { useDrawingCanvas, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import { LabelingCanvas } from '@ingradient/ui/patterns'
@@ -16,7 +16,7 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
   const {
     imageDataUrl, displayImageUrl,
     classes, selectedClassId, editMode, initialBboxes = [],
-    options, hideActions, hideHint, hideOverlayControls,
+    options, hideActions, hideHint, hideOverlayControls, pendingClassChange,
     annotationsVisible: annotationsVisibleProp, onAnnotationsVisibleChange,
     labels,
     onSave, onSkip, onEditModeChange, onSelectionChange, onBboxesChange,
@@ -24,6 +24,15 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
 
   const classMap = useMemo(() => Object.fromEntries(classes.map((c) => [c.class_id, c])), [classes])
   const [bboxes, setBboxes] = useState<BBox[]>(initialBboxes)
+  const appliedClassChange = useRef<typeof pendingClassChange>(null)
+  useEffect(() => {
+    if (!pendingClassChange || appliedClassChange.current === pendingClassChange) return
+    appliedClassChange.current = pendingClassChange
+    if (!bboxes[pendingClassChange.bboxIdx] || !classMap[pendingClassChange.classId]) return
+    const next = bboxes.map((box, index) => index === pendingClassChange.bboxIdx ? { ...box, classId: pendingClassChange.classId } : box)
+    setBboxes(next)
+    onBboxesChange?.(next)
+  }, [pendingClassChange, bboxes, classMap, onBboxesChange])
   const wrapRef = useRef<HTMLDivElement>(null)
   const imageAreaRef = useRef<HTMLDivElement>(null)
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen<HTMLDivElement>(wrapRef)
@@ -37,7 +46,12 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
   const { zoom, pan, handleWheel } = useZoomPan({ minZoom: 1, maxZoom: 8 })
 
   const drawingMode: 'cursor' | 'rect' = editMode === 'cursor' ? 'cursor' : 'rect'
-  const drawingObjects = useMemo(() => toDrawingObjects(bboxes, classMap), [bboxes, classMap])
+  // Keep hook-generated IDs stable so a freshly drawn/selected rectangle remains
+  // selected after conversion to the public BBox representation.
+  const objectIds = useRef<string[]>(initialBboxes.map((_, index) => `bbox-${index}`))
+  const drawingObjects = useMemo(() => toDrawingObjects(bboxes, classMap).map((object, index) => ({ ...object, id: objectIds.current[index] ?? object.id })), [bboxes, classMap])
+  const latestObjects = useRef(drawingObjects)
+  latestObjects.current = drawingObjects
 
   const updateBboxes = (next: BBox[]) => {
     setBboxes(next)
@@ -47,10 +61,16 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
   const { selectedId, drawingPreview, cursor, bindings } = useDrawingCanvas({
     objects: drawingObjects,
     mode: drawingMode,
-    onObjectsChange: (objs) => updateBboxes(toBboxes(objs, bboxes, selectedClassId)),
+    onObjectsChange: (objs) => {
+      const next = toBboxes(objs, bboxes, selectedClassId, drawingObjects)
+      objectIds.current = objs.map((object) => object.id)
+      latestObjects.current = objs
+      updateBboxes(next)
+    },
     onSelectionChange: (id) => {
-      const idx = id ? drawingObjects.findIndex((o) => o.id === id) : null
-      onSelectionChange?.(idx, idx != null ? bboxes[idx]?.classId : undefined)
+      const found = id ? latestObjects.current.findIndex((object) => object.id === id) : -1
+      const index = found < 0 ? null : found
+      onSelectionChange?.(index, index !== null ? bboxes[index]?.classId ?? selectedClassId : undefined)
     },
   })
 
@@ -116,6 +136,7 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
             <ModeToggleGroup>
               <MenuIconButton
                 $active={editMode === 'cursor'}
+                aria-pressed={editMode === 'cursor'}
                 onClick={() => onEditModeChange?.('cursor')}
                 title={labels.cursorMode}
                 aria-label={labels.cursorMode}
@@ -124,6 +145,7 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
               </MenuIconButton>
               <MenuIconButton
                 $active={editMode === 'bbox'}
+                aria-pressed={editMode === 'bbox'}
                 onClick={() => onEditModeChange?.('bbox')}
                 title={labels.bboxMode}
                 aria-label={labels.bboxMode}

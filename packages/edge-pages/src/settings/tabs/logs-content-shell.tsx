@@ -31,6 +31,7 @@ export const LevelBadge = styled.span`text-transform: uppercase; font-weight: va
 
 export interface LogsContentShellLabels {
   search: string
+  level?: string
   all: string
   info: string
   warn: string
@@ -66,12 +67,14 @@ export function LogsContentShell({
     <Wrap>
       <ToolbarRow>
         <SearchField
+          aria-label={labels.search}
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder={labels.search}
           style={{ flex: 1 }}
         />
         <DropdownSelect
+          aria-label={labels.level ?? 'Log level'}
           value={levelFilter}
           onChange={onLevelFilterChange}
           options={[
@@ -85,7 +88,7 @@ export function LogsContentShell({
         <Button size="sm" variant="secondary" onClick={onClear}>{labels.clear}</Button>
         <Button size="sm" variant="secondary" onClick={onExport}>{labels.export}</Button>
       </ToolbarRow>
-      <LogList>
+      <LogList role="region" aria-label={labels.search} tabIndex={0}>
         {logs.length === 0
           ? <EmptyText>{labels.empty}</EmptyText>
           : logs.map(renderEntry)}

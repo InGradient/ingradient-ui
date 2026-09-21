@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import styled from 'styled-components'
 import { Button, FieldRow, RadioCardGroup, TextField } from '@ingradient/ui'
 import { FieldGroup } from '@ingradient/ui/patterns'
@@ -19,6 +20,7 @@ const Result = styled.div<{ $tone: 'success' | 'warn' | 'danger' }>`
 `
 
 export function ServerTabView(props: ServerTabViewProps): JSX.Element {
+  const urlId = useId()
   const {
     baseUrl, runtimeMode, saving, saveResult, saveMessage,
     connectivityResult, labels,
@@ -27,8 +29,9 @@ export function ServerTabView(props: ServerTabViewProps): JSX.Element {
 
   return (
     <FieldGroup style={{ gap: 'var(--ig-space-7)' }}>
-      <FieldRow label={labels.baseUrl}>
+      <FieldRow label={labels.baseUrl} htmlFor={urlId}>
         <TextField
+          id={urlId}
           value={baseUrl}
           onChange={(e) => onBaseUrlChange(e.target.value)}
           placeholder="https://app.ingradient.ai"

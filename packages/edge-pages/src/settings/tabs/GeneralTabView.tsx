@@ -40,22 +40,16 @@ export function GeneralTabView(props: GeneralTabViewProps): JSX.Element {
             key={option.id}
             selected={selectedSoundId === option.id}
             onClick={() => onSelectSound(option.id)}
+            action={
+              <Button size="sm" variant="secondary"
+                aria-label={`${labels.soundPreview}: ${option.label}`}
+                onClick={() => onPreviewSound(option.id)}>
+                <VolumeIcon size={iconSizeNumbers.xs} />
+                {labels.soundPreview}
+              </Button>
+            }
           >
-            <SettingsRow
-              divider={false}
-              label={option.label}
-              control={
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  // 행 클릭(=선택)까지 같이 발생하면 미리듣기만 하려던 사용자가 값을 바꾸게 된다.
-                  onClick={(e) => { e.stopPropagation(); onPreviewSound(option.id) }}
-                >
-                  <VolumeIcon size={iconSizeNumbers.xs} />
-                  {labels.soundPreview}
-                </Button>
-              }
-            />
+            {option.label}
           </SelectableListItem>
         ))}
       </Rows>

@@ -11,8 +11,6 @@ const DATASET_NAME_STYLE: CSSProperties = {
   gap: 'var(--ig-space-3)',
 }
 
-const IMAGE_COUNT_STYLE: CSSProperties = { opacity: 'var(--ig-opacity-muted)' }
-
 const LOCAL_COUNT_STYLE: CSSProperties = {
   fontSize: 'var(--ig-font-size-xs)',
   color: 'var(--ig-color-text-muted)',
@@ -27,7 +25,7 @@ const STATUS_MSG_STYLE: CSSProperties = {
 
 export function ExportModalView(props: ExportModalViewProps): JSX.Element {
   const { datasetName, imageCount, localImageCount, phase, error, labels, onClose, onExport } = props
-  const handleClose = () => { if (phase !== 'running') onClose() }
+  const handleClose = () => { if (phase === 'running') props.onCancel?.(); else onClose() }
   return (
     <DialogShell
       title={labels.title}
@@ -35,7 +33,7 @@ export function ExportModalView(props: ExportModalViewProps): JSX.Element {
       width="min(var(--ig-popup-xl), 90vw)"
       actions={
         <>
-          <Button variant="secondary" size="sm" type="button" onClick={handleClose} disabled={phase === 'running'}>
+          <Button variant="secondary" size="sm" type="button" onClick={handleClose} disabled={phase === 'running' && !props.onCancel}>
             {phase === 'done' ? labels.close : labels.cancel}
           </Button>
           {phase !== 'done' && (
@@ -48,15 +46,17 @@ export function ExportModalView(props: ExportModalViewProps): JSX.Element {
     >
       <div style={DATASET_NAME_STYLE}>
         {datasetName}
-        <span style={IMAGE_COUNT_STYLE}>{labels.images(imageCount)}</span>
+        <span>{labels.images(imageCount)}</span>
       </div>
       <div style={LOCAL_COUNT_STYLE}>{labels.localImages(localImageCount)}</div>
       <ProgressBar
+        ariaLabel={labels.exporting}
         indeterminate={phase === 'running'}
         value={phase === 'done' || phase === 'error' ? 100 : 0}
         tone={phase === 'error' ? 'danger' : 'accent'}
       />
       <div
+        role={phase === 'error' ? 'alert' : 'status'}
         style={{
           ...STATUS_MSG_STYLE,
           color: phase === 'done' ? 'var(--ig-color-success)' : 'var(--ig-color-danger)',

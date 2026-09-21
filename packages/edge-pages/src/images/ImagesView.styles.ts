@@ -21,7 +21,7 @@ export const GroupBadgeWrap = styled.div`
 // @ingradient/ui ImageGrid + EdgeImagesGrid 로 이동 (PR-1.5, 2026-05-09)
 
 export const ImagesFilterDateLabel = styled.span`
-  width: var(--ig-control-height-sm-plus);
+  min-width: max-content;
   flex-shrink: 0;
   color: var(--ig-color-text-muted);
 `;
@@ -116,7 +116,7 @@ export const ModalHeaderSpacer = styled.div`
 
 export const ModalHint = styled.div`
   flex-shrink: 0;
-  color: var(--ig-color-white-35);
+  color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-2xs);
   text-align: center;
 `;

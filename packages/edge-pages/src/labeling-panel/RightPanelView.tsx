@@ -41,6 +41,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
               <PatternButton
                 key={label}
                 $active={previewPatternLabel === label}
+                aria-pressed={previewPatternLabel === label}
                 onClick={() => onTogglePattern(label)}
               >
                 {patternLabelToUI(label)}
@@ -55,6 +56,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
           <RoiPrimaryButton
             type="button"
             $active={roiButtonActive}
+            aria-pressed={roiButtonActive}
             onClick={onToggleSamRoi}
             title={roiButtonHint}
           >

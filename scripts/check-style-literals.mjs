@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { rawColorLines } from './style-literal-rules.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
@@ -11,17 +12,12 @@ const rootDir = path.resolve(__dirname, '..')
  * Phase 1 guardrail (layer-chain-audit F-05/F-12):
  * - Scans src/components, src/patterns, and packages/{platform,edge}-pages/src.
  * - Excludes story/test/fixture files (those are documentation, not production).
- * - Skips lines with token references (var(--...), theme., tokens.).
+ * - Checks mixed token/literal lines; a token reference never exempts its neighbors.
  * - Skips HTML entities like &#9650; that were false-positived as hex colors.
  * - Skips files whose colors are domain data, not design tokens:
  *   color editor spectrum, and measured grayscale ramps (fringe profile).
  */
 const scanRoots = ['src/components', 'src/patterns', 'packages/platform-pages/src', 'packages/edge-pages/src']
-const allowPatterns = [
-  /var\(--/u,
-  /theme\./u,
-  /tokens\./u,
-]
 const skipFilePatterns = [
   /\.stories\.(ts|tsx)$/u,
   /\.test\.(ts|tsx)$/u,
@@ -53,22 +49,10 @@ function walk(dir) {
     if (skipFilePatterns.some((pattern) => pattern.test(entry.name) || pattern.test(fullPath))) continue
 
     const content = fs.readFileSync(fullPath, 'utf8')
-    const lines = content.split('\n')
     const isDomainColorFile = domainColorFilePatterns.some((pattern) => pattern.test(fullPath))
-
-    for (const [index, line] of lines.entries()) {
-      // Strip inline comments before checking (hex values in comments are not violations).
-      // trimEnd 가 필요하다 — CRLF 체크아웃에서는 줄 끝 캐리지리턴이 $ 매치를 막아
-      // 주석이 벗겨지지 않고, 주석 안의 hex 가 위반으로 잡힌다 (Windows 전용 오탐).
-      const codeOnly = line.trimEnd().replace(/\/\/.*$/u, '')
-      if (allowPatterns.some((pattern) => pattern.test(codeOnly))) continue
-      // Skip HTML entities like &#9650; that match hex color regex
-      if (/&#x?[0-9a-fA-F]+;/u.test(codeOnly)) continue
-      // Skip files whose colors are domain data (spectrum, measured luminance)
-      if (isDomainColorFile) continue
-      if (/#([0-9a-fA-F]{3,8})\b/u.test(codeOnly) || /rgba?\(/u.test(codeOnly)) {
-        violations.push(`${path.relative(rootDir, fullPath)}:${index + 1}: raw color literal`)
-      }
+    if (isDomainColorFile) continue
+    for (const line of rawColorLines(content)) {
+      violations.push(`${path.relative(rootDir, fullPath)}:${line}: raw color literal`)
     }
   }
 }

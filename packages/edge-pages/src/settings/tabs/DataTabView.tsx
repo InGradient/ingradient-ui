@@ -37,7 +37,7 @@ export function DataTabView(props: DataTabViewProps): JSX.Element {
       <KeyValueRow label={labels.freeSpace} value={formatBytes(freeBytes)} />
       <KeyValueRow label={labels.cacheLabel} value={formatBytes(cacheSize)} />
       <div>
-        <Button variant="secondary" size="sm" onClick={onCleanCache} disabled={isCleaningCache}>
+        <Button variant="secondary" size="sm" onClick={onCleanCache} disabled={isCleaningCache || cacheSize <= 0}>
           {isCleaningCache ? labels.cleaning : labels.cleanCache}
         </Button>
         {cleanupCompleted && <Success style={{ marginTop: 'var(--ig-space-3)' }}>{labels.cleanupComplete}</Success>}
