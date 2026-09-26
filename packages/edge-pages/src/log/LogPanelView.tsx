@@ -1,9 +1,9 @@
 import { useCallback, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
-import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon } from '@ingradient/ui/components'
+import { IconButton, Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
+import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon, PanelLeftCloseIcon } from '@ingradient/ui/components'
 import {
-  Container, Header, FilterButtonWrap, FilterPopover,
+  Container, Header, HeaderActions, FilterButtonWrap, FilterPopover,
   FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel,
   LogList, LogItem, LogTime, LogMessage, DetailPanel, DetailImageClickable,
   ImageModalOverlay, ImageModalImg, DetailContent, DetailPlaceholder,
@@ -24,7 +24,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
     onSetDatePreset, onSetDateFrom, onSetDateTo,
     onSetShowProgress, onSetShowConnections, onSetShowDebug,
     onSetHoveredLogIndex, onSetPanelHovered, onScrollNearBottom,
-    onOpenImageModal, onCloseImageModal, onOpenSavedImage,
+    onOpenImageModal, onCloseImageModal, onOpenSavedImage, onToggleCollapsed,
   } = props
 
   const filterPopoverRef = useRef<HTMLDivElement>(null)
@@ -52,6 +52,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
     <Container>
       <Header>
         <span>{labels.title}</span>
+        <HeaderActions>
         <FilterButtonWrap>
           <Button variant="secondary" size="sm" ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
             <FilterIcon size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
@@ -102,6 +103,18 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
             </FilterPopover>
           )}
         </FilterButtonWrap>
+        {onToggleCollapsed && (
+          <IconButton
+            size="xs"
+            variant="ghost"
+            title={labels.collapsePanel}
+            aria-label={labels.collapsePanel}
+            onClick={onToggleCollapsed}
+          >
+            <PanelLeftCloseIcon size={iconSizeNumbers.sm} />
+          </IconButton>
+        )}
+        </HeaderActions>
       </Header>
       <LogList ref={logListRef} onScroll={handleScroll}>
         {entries.length === 0 && <LogPlaceholder>{labels.noActivity}</LogPlaceholder>}
