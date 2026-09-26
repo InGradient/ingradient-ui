@@ -1,6 +1,7 @@
 // 설정 다이얼로그 fixture — 탭 라벨과 옮긴 탭(일반·조명·실험)의 문구.
 // 문구는 edge 의 en.json 값을 그대로 옮긴 것이다.
 import type {
+  CaptureTabLabels, CaptureTabOption,
   CameraSettingsDialogLabels, ExperimentsTabLabels, GeneralTabLabels,
   LightingTabLabels, MonitorPickerLabels, PsLightPanelLabels,
 } from '@ingradient/edge-pages'
@@ -11,6 +12,7 @@ export const SETTINGS_DIALOG_LABELS: CameraSettingsDialogLabels = {
   tabGeneral: 'General',
   tabConnection: 'Connection',
   tabCamera: 'Camera',
+  tabCapture: 'Capture',
   tabLighting: 'Lighting',
   tabServer: 'Server',
   tabData: 'Data',
@@ -114,3 +116,29 @@ export const EXPERIMENTS_TAB_LABELS: ExperimentsTabLabels = {
   compositeSteps: 'Steps',
   total: '42 frames per capture',
 }
+
+/** 문구는 edge 의 `settings.capture.*` / `setup.aiPattern*` / `setup.aiFallback*` 값 그대로. */
+export const CAPTURE_TAB_LABELS: CaptureTabLabels = {
+  title: 'Capture',
+  aiModeLabel: 'AI mode',
+  aiModeDesc: 'Captures one pattern and predicts phase with a model. Much faster and far fewer '
+    + 'images, but less precise than the multi-shot method.',
+  classicHint: 'Captures several fringe patterns and computes phase by phase shifting. '
+    + 'The way it has worked so far.',
+  aiSection: 'AI capture',
+  aiPattern: 'Pattern',
+  aiPatternHint: 'A 2D crossed grid with pitch 24, captured in one shot. Must match what the '
+    + 'model was trained on — a different pitch needs retraining.',
+  aiFallback: 'When the model is unavailable',
+  capturingHint: 'Cannot change while capturing.',
+}
+
+export const CAPTURE_PATTERN_OPTIONS: CaptureTabOption[] = [
+  { value: 'composite_p24', label: 'Grid · pitch 24' },
+]
+
+/** 자동 전환이 현장 기본값이다 — 모델이 안 떠도 촬영이 멈추지 않는 쪽. */
+export const CAPTURE_FALLBACK_OPTIONS: CaptureTabOption[] = [
+  { value: 'classic', label: 'Switch to phase shifting', hint: 'Captures the usual way and keeps going.' },
+  { value: 'block', label: 'Stop and notify', hint: 'Stops the sequence so the problem is not missed.' },
+]
