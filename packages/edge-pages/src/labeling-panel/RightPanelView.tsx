@@ -1,7 +1,9 @@
-import { SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
-import { ColorSwatch, EmptyState, SearchField, ScissorsIcon } from '@ingradient/ui/components'
+import { IconButton, SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
 import {
-  Container, Section, GrowSection, Label, ClassList,
+  ColorSwatch, EmptyState, SearchField, ScissorsIcon, PanelRightCloseIcon,
+} from '@ingradient/ui/components'
+import {
+  Container, Section, SectionHeader, GrowSection, Label, ClassList,
   SetupSlot, PatternGrid, PatternButton, RoiPrimaryButton,
 } from './RightPanelView.styles'
 import { patternLabelToUI } from '../capture/pattern-helpers'
@@ -13,7 +15,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
     showPatternPreview, patternLabels, previewPatternLabel,
     showRoiButton, isDerivedViewActive, samActive, samViewerActive,
     classSearch, setupSlotId, commentSection, labels,
-    onSetClassSearch, onSelectClass, onTogglePattern, onToggleSamRoi,
+    onSetClassSearch, onSelectClass, onTogglePattern, onToggleSamRoi, onToggleCollapsed,
   } = props
 
   if (workspaceTab === 'setup') {
@@ -35,7 +37,20 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
     <Container>
       {showPatternPreview && (
         <Section>
-          <Label>{labels.patternPreview}</Label>
+          <SectionHeader>
+            <Label>{labels.patternPreview}</Label>
+            {onToggleCollapsed && (
+              <IconButton
+                size="xs"
+                variant="ghost"
+                title={labels.collapsePanel}
+                aria-label={labels.collapsePanel}
+                onClick={onToggleCollapsed}
+              >
+                <PanelRightCloseIcon size={iconSizeNumbers.sm} />
+              </IconButton>
+            )}
+          </SectionHeader>
           <PatternGrid>
             {patternLabels.map((label) => (
               <PatternButton

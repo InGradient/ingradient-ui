@@ -1,10 +1,11 @@
-// 설정 다이얼로그 중 edge-pages 로 옮긴 탭 — 일반 · 조명 · 실험.
+// 설정 다이얼로그 중 edge-pages 로 옮긴 탭 — 일반 · 촬영 · 조명 · 실험.
 import { useState } from 'react'
 import {
-  ExperimentsTabView, GeneralTabView, LightingTabView, MonitorPickerView, PsLightPanelView,
-  type LightingMode,
+  CaptureTabView, ExperimentsTabView, GeneralTabView, LightingTabView, MonitorPickerView,
+  PsLightPanelView, type LightingMode,
 } from '@ingradient/edge-pages'
 import {
+  CAPTURE_FALLBACK_OPTIONS, CAPTURE_PATTERN_OPTIONS, CAPTURE_TAB_LABELS,
   EXPERIMENTS_TAB_LABELS, GENERAL_TAB_LABELS, LIGHTING_TAB_LABELS, MONITORS,
   MONITOR_PICKER_LABELS, PS_LIGHT_LABELS, SOUND_OPTIONS,
 } from '../../../../fixtures/edge/0.0.5'
@@ -34,6 +35,28 @@ export function GeneralTabContent(): JSX.Element {
       onPreviewVolume={noop}
       onToggleMessage={setMessageEnabled}
       onTestMessage={noop}
+    />
+  )
+}
+
+/** 촬영 — 위상을 위상천이로 얻을지, 모델 한 장으로 얻을지. */
+export function CaptureTabContent({ aiOn = true }: { aiOn?: boolean } = {}): JSX.Element {
+  const [aiEnabled, setAiEnabled] = useState(aiOn)
+  const [pattern, setPattern] = useState(CAPTURE_PATTERN_OPTIONS[0].value)
+  const [fallback, setFallback] = useState(CAPTURE_FALLBACK_OPTIONS[0].value)
+
+  return (
+    <CaptureTabView
+      aiEnabled={aiEnabled}
+      aiPattern={pattern}
+      patternOptions={CAPTURE_PATTERN_OPTIONS}
+      aiFallback={fallback}
+      fallbackOptions={CAPTURE_FALLBACK_OPTIONS}
+      isCapturing={false}
+      labels={CAPTURE_TAB_LABELS}
+      onToggleAi={setAiEnabled}
+      onChangePattern={setPattern}
+      onChangeFallback={setFallback}
     />
   )
 }

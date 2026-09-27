@@ -25,7 +25,7 @@ export interface WorkspaceSceneArgs {
   connectionStatus?: ConnectionStatus
   /** 설정 다이얼로그를 띄운 상태. */
   settingsOpen?: boolean
-  settingsTab?: 'general' | 'connection' | 'camera' | 'lighting' | 'server'
+  settingsTab?: 'general' | 'connection' | 'camera' | 'capture' | 'lighting' | 'server'
     | 'data' | 'logs' | 'experiments' | 'fieldtest' | 'about'
 }
 

@@ -19,6 +19,13 @@ export const Header = styled.div`
   flex-shrink: 0;
 `;
 
+/** 헤더 오른쪽 — 필터 버튼과 접기 버튼을 나란히 둔다. */
+export const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-space-2);
+`;
+
 export const FilterButtonWrap = styled.div`
   position: relative;
 `;

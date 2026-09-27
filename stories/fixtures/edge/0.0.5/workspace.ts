@@ -49,6 +49,7 @@ export const CAPTURE_LABELS: CaptureLabels = {
 export const LOG_PANEL_LABELS: LogPanelLabels = {
   title: 'Logs',
   filterButton: 'Filter',
+  collapsePanel: 'Collapse panel (status dots only)',
   filterByDate: 'Date',
   filterLogType: 'Log type',
   filterProgress: 'Progress',
@@ -72,6 +73,7 @@ export const RIGHT_PANEL_LABELS: RightPanelLabels = {
   noClassMatches: 'No matching classes',
   searchClasses: 'Search classes',
   patternPreview: 'Pattern Preview',
+  collapsePanel: 'Collapse panel (classes only)',
   samRoi: 'ROI',
   samRoiActive: 'ROI — drawing',
   samRoiViewer: 'ROI viewer',

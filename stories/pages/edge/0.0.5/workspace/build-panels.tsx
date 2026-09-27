@@ -1,6 +1,9 @@
 // 촬영 화면 좌우 패널 — 왼쪽 Logs, 오른쪽 Pattern Preview + Class.
 import { useState } from 'react'
-import { LogPanelView, RightPanelView, type WorkspaceTab } from '@ingradient/edge-pages'
+import {
+  LogPanelCollapsedView, LogPanelView, RightPanelCollapsedView, RightPanelView,
+  type WorkspaceTab,
+} from '@ingradient/edge-pages'
 import {
   LOG_PANEL_LABELS, PANEL_CLASSES, PATTERN_LABELS, RIGHT_PANEL_LABELS, SAMPLE_LOG_ENTRIES,
 } from '../../../../fixtures/edge/0.0.5'
@@ -14,6 +17,19 @@ export function RightPanel({
   const [classSearch, setClassSearch] = useState('')
   const [selectedClassId, setSelectedClassId] = useState<string | null>('c1')
   const [previewPatternLabel, setPreviewPatternLabel] = useState<string | null>(null)
+  const [collapsed, setCollapsed] = useState(false)
+
+  if (collapsed) {
+    return (
+      <RightPanelCollapsedView
+        classes={PANEL_CLASSES.map((c) => ({ id: c.class_id, name: c.class_name, color: c.color }))}
+        selectedClassId={selectedClassId}
+        labels={{ expand: 'Expand panel' }}
+        onClassClick={setSelectedClassId}
+        onExpand={() => setCollapsed(false)}
+      />
+    )
+  }
 
   return (
     <RightPanelView
@@ -33,6 +49,7 @@ export function RightPanel({
       onSelectClass={setSelectedClassId}
       onTogglePattern={(pattern) => setPreviewPatternLabel((p) => (p === pattern ? null : pattern))}
       onToggleSamRoi={noop}
+      onToggleCollapsed={() => setCollapsed(true)}
     />
   )
 }
@@ -47,9 +64,22 @@ export function LogPanel({ filterOpen = false }: { filterOpen?: boolean } = {}):
   const [showDebug, setShowDebug] = useState(false)
   const [hoveredLogIndex, setHoveredLogIndex] = useState<number | null>(null)
   const [modalImageUrl, setModalImageUrl] = useState<string | null>(null)
+  const [collapsed, setCollapsed] = useState(false)
 
   const entries = SAMPLE_LOG_ENTRIES.map((log, index) => ({ log, index }))
   const hoveredLog = hoveredLogIndex !== null ? SAMPLE_LOG_ENTRIES[hoveredLogIndex] ?? null : null
+
+  if (collapsed) {
+    return (
+      <LogPanelCollapsedView
+        entries={entries}
+        hoveredLogIndex={hoveredLogIndex}
+        labels={{ expandPanel: 'Expand panel' }}
+        onSetHoveredLogIndex={setHoveredLogIndex}
+        onExpand={() => setCollapsed(false)}
+      />
+    )
+  }
 
   return (
     <LogPanelView
@@ -82,6 +112,7 @@ export function LogPanel({ filterOpen = false }: { filterOpen?: boolean } = {}):
       onOpenImageModal={setModalImageUrl}
       onCloseImageModal={() => setModalImageUrl(null)}
       onOpenSavedImage={noop}
+      onToggleCollapsed={() => setCollapsed(true)}
     />
   )
 }
