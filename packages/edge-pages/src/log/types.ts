@@ -16,6 +16,8 @@ export interface LogPanelEntry {
 export interface LogPanelLabels {
   title: string
   filterButton: string
+  /** 패널을 접는 버튼의 툴팁. 접기 버튼을 쓰지 않으면 필요 없다. */
+  collapsePanel?: string
   filterByDate: string
   filterLogType: string
   filterProgress: string
@@ -74,6 +76,8 @@ export interface LogPanelViewProps {
   onOpenImageModal: (url: string) => void
   onCloseImageModal: () => void
   onOpenSavedImage: (path: string) => void
+  /** 접기 버튼. 넘기지 않으면 버튼이 나오지 않는다. */
+  onToggleCollapsed?: () => void
 }
 
 export interface LogDetailTableViewProps {

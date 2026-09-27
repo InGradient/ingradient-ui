@@ -33,6 +33,14 @@ export const Label = styled.div`
   color: var(--ig-color-text-muted);
 `
 
+/** 섹션 제목과 접기 버튼을 한 줄에 놓는다. 앱의 패널 헤더와 같은 배치다. */
+export const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ig-space-2);
+`
+
 export const ClassList = styled.div`
   display: flex;
   flex-direction: column;

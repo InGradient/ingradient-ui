@@ -27,7 +27,7 @@ export function RightPanelCollapsedView(props: RightPanelCollapsedViewProps): JS
   const { classes, selectedClassId, labels, onClassClick, onExpand } = props
 
   return (
-    <Stack gap="var(--ig-space-2)" align="center" style={{ padding: 'var(--ig-space-2)' }}>
+    <Stack data-ig-collapsed-panel="right" gap="var(--ig-space-2)" align="center" style={{ padding: 'var(--ig-space-2)' }}>
       <IconButton
         size="xs"
         variant="ghost"
@@ -54,7 +54,7 @@ export function RightPanelCollapsedView(props: RightPanelCollapsedViewProps): JS
             $shape="circle"
             // 선택된 클래스는 테두리로 드러난다 — 색 동그라미만 있는 화면이라 다른 표식이 없다.
             style={selectedClassId === cls.id
-              ? { outline: '2px solid var(--ig-color-accent)', outlineOffset: '1px' }
+              ? { outline: 'var(--ig-border-2px) solid var(--ig-color-accent)', outlineOffset: 'var(--ig-space-1px)' }
               : undefined}
           />
         </IconButton>

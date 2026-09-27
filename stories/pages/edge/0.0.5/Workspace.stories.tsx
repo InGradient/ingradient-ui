@@ -13,13 +13,14 @@ const handoff = defineHandoff({
   fixturesPath: 'stories/fixtures/edge/0.0.5/*',
   requiredScenarios: [
     'capture', 'images', 'statics', 'setup', 'capturing', 'sequence-failed', 'log-filter-open', 'offline',
-    'settings',
+    'settings', 'capture-settings', 'panel-collapse',
   ],
   interactions: [
     '탭 전환 (Capture / Images / Statics / Setup)',
     '우측 Pattern Preview 의 패턴 버튼 → mock 선택값만 변경 (실제 모니터 출력 없음)',
     '로그 항목 hover → 시퀀스 소요 시간 상세',
-    '상단 톱니 → System Settings (탭 10개)',
+    '상단 톱니 → System Settings (탭 11개, 촬영 AI 모드 포함)',
+    '좌우 패널 접기/펼치기 및 768px 중앙 최소폭 유지',
   ],
   platformIntegration: [
     '전체 화면 = EdgeAppShellView + MainLayoutView 합성 (App.tsx + MainLayout.tsx)',
@@ -98,6 +99,53 @@ export const Offline: Story = { args: { activeTab: 'capture', connectionStatus: 
 export const Settings: Story = {
   ...DIALOG_ONLY,
   args: { settingsOpen: true, settingsTab: 'connection' },
+}
+
+/** 촬영 설정은 다른 탭 이동·다이얼로그 닫기 뒤에도 같은 Workspace 세션에 남는다. */
+export const CaptureSettingsWorkflow: Story = {
+  ...DIALOG_ONLY,
+  args: { settingsOpen: true, settingsTab: 'capture' },
+  play: async ({ canvasElement, args, step }) => {
+    const page = within(canvasElement.ownerDocument.body)
+    await step('AI 모드 변경과 mock action 확인', async () => {
+      const dialog = page.getByRole('dialog')
+      await expect(within(dialog).getByRole('tab', { name: 'Capture' })).toHaveAttribute('aria-selected', 'true')
+      await userEvent.click(within(dialog).getByText('AI mode'))
+      await expect(within(dialog).getByText(/Captures several fringe patterns/)).toBeVisible()
+      await expect(args.onMockAction).toHaveBeenCalledWith('capture-ai-mode', { enabled: false })
+      await userEvent.click(within(dialog).getByRole('tab', { name: 'General' }))
+      await userEvent.click(within(dialog).getByRole('tab', { name: 'Capture' }))
+      await expect(within(dialog).getByRole('checkbox', { name: 'AI mode' })).not.toBeChecked()
+    })
+    await step('닫고 다시 열어도 선택 유지', async () => {
+      await userEvent.click(within(page.getByRole('dialog')).getByRole('button', { name: 'Close dialog' }))
+      await userEvent.click(page.getByRole('button', { name: 'Settings' }))
+      await userEvent.click(within(page.getByRole('dialog')).getByRole('tab', { name: 'Capture' }))
+      await expect(within(page.getByRole('dialog')).getByRole('checkbox', { name: 'AI mode' })).not.toBeChecked()
+    })
+  },
+}
+
+/** 접힌 패널의 펼치기 버튼은 계속 키보드로 접근 가능하다. */
+export const PanelCollapseWorkflow: Story = {
+  args: { activeTab: 'capture' },
+  play: async ({ canvasElement, step }) => {
+    const page = within(canvasElement)
+    await step('Logs와 Class 패널을 독립적으로 접기', async () => {
+      await userEvent.click(page.getByRole('button', { name: 'Collapse panel (status dots only)' }))
+      await expect(canvasElement.querySelector('[data-ig-collapsed-panel="left"]')).toBeInTheDocument()
+      await userEvent.click(page.getByRole('button', { name: 'Collapse panel (classes only)' }))
+      await expect(canvasElement.querySelector('[data-ig-collapsed-panel="right"]')).toBeInTheDocument()
+      await expect(page.getAllByRole('button', { name: 'Expand panel' })).toHaveLength(2)
+    })
+    await step('각 패널을 별도로 복원', async () => {
+      await userEvent.click(page.getAllByRole('button', { name: 'Expand panel' })[0])
+      await expect(canvasElement.querySelector('[data-ig-collapsed-panel="left"]')).not.toBeInTheDocument()
+      await expect(canvasElement.querySelector('[data-ig-collapsed-panel="right"]')).toBeInTheDocument()
+      await userEvent.click(page.getByRole('button', { name: 'Expand panel' }))
+      await expect(canvasElement.querySelector('[data-ig-collapsed-panel="right"]')).not.toBeInTheDocument()
+    })
+  },
 }
 
 /** Session-only draft; replay/reset starts from fixture defaults. */

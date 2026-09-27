@@ -53,6 +53,10 @@ const Panel = styled.div`
 export const LeftPanel = styled(Panel)`
   width: var(--ig-popup-sm);
   flex-shrink: 0;
+  &:has([data-ig-collapsed-panel="left"]) {
+    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
+    overflow-y: auto;
+  }
 `
 
 export const CenterPanel = styled(Panel)`
@@ -64,6 +68,9 @@ export const RightPanelContainer = styled(Panel)`
   width: var(--ig-popup-sm);
   flex-shrink: 0;
   overflow-y: auto;
+  &:has([data-ig-collapsed-panel="right"]) {
+    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
+  }
 `
 
 export const CapturingBlocker = styled.div`

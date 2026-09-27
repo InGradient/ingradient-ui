@@ -1,4 +1,4 @@
-// System Settings 다이얼로그 — 탭 10개를 edge 앱과 같은 순서로 세운다.
+// System Settings 다이얼로그 — 탭 11개를 edge 앱과 같은 순서로 세운다.
 import { useState } from 'react'
 import { CameraSettingsDialogView, type SettingsTab, type LightingMode } from '@ingradient/edge-pages'
 import { SETTINGS_DIALOG_LABELS } from '../../../../fixtures/edge/0.0.5'
@@ -7,7 +7,10 @@ import {
   AboutTabContent, CameraParamsTabContent, DataTabContent, FieldTestTabContent,
   LogsTabContent, ServerTabContent,
 } from './tabs-legacy'
-import { ExperimentsTabContent, GeneralTabContent, LightingTabContent, type SettingsDraft, type MockAction } from './tabs-moved'
+import {
+  CaptureTabContent, ExperimentsTabContent, GeneralTabContent, LightingTabContent,
+  type SettingsDraft, type MockAction,
+} from './tabs-moved'
 
 export function SettingsModal({ initialTab = 'connection', onClose, draft, onMockAction, mockMessageResult, lightingMode = 'deflectometry' }: {
   initialTab?: SettingsTab
@@ -27,6 +30,7 @@ export function SettingsModal({ initialTab = 'connection', onClose, draft, onMoc
       generalContent={<GeneralTabContent draft={draft} onMockAction={onMockAction} mockMessageResult={mockMessageResult} />}
       connectionContent={<ConnectionTabContent draft={draft} onMockAction={onMockAction} />}
       cameraContent={<CameraParamsTabContent draft={draft} onMockAction={onMockAction} />}
+      captureContent={<CaptureTabContent draft={draft} onMockAction={onMockAction} />}
       lightingContent={<LightingTabContent draft={draft} mode={lightingMode} onMockAction={onMockAction} />}
       serverContent={<ServerTabContent draft={draft} onMockAction={onMockAction} />}
       dataContent={<DataTabContent draft={draft} onMockAction={onMockAction} />}

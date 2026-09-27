@@ -1,9 +1,9 @@
 import { useCallback, useId, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { DialogShell, Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
-import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon } from '@ingradient/ui/components'
+import { DialogShell, IconButton, Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
+import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon, PanelLeftCloseIcon } from '@ingradient/ui/components'
 import {
-  Container, Header, FilterButtonWrap, FilterPopover,
+  Container, Header, HeaderActions, FilterButtonWrap, FilterPopover,
   FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel,
   LogList, LogItem, LogTime, LogMessage, DetailPanel, DetailImageClickable,
   ImageModalImg, DetailContent, DetailPlaceholder,
@@ -24,7 +24,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
     onSetDatePreset, onSetDateFrom, onSetDateTo,
     onSetShowProgress, onSetShowConnections, onSetShowDebug,
     onSetHoveredLogIndex, onSetPanelHovered, onScrollNearBottom,
-    onOpenImageModal, onCloseImageModal, onOpenSavedImage,
+    onOpenImageModal, onCloseImageModal, onOpenSavedImage, onToggleCollapsed,
   } = props
 
   const filterId = useId()
@@ -67,6 +67,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
     }}>
       <Header>
         <span>{labels.title}</span>
+        <HeaderActions>
         <FilterButtonWrap>
           <Button variant="secondary" size="sm" ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
             <FilterIcon size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
@@ -118,6 +119,18 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
             </FilterPopover>
           )}
         </FilterButtonWrap>
+        {onToggleCollapsed && (
+          <IconButton
+            size="xs"
+            variant="ghost"
+            title={labels.collapsePanel ?? 'Collapse panel'}
+            aria-label={labels.collapsePanel ?? 'Collapse panel'}
+            onClick={onToggleCollapsed}
+          >
+            <PanelLeftCloseIcon size={iconSizeNumbers.sm} />
+          </IconButton>
+        )}
+        </HeaderActions>
       </Header>
       <LogList ref={logListRef} role="region" aria-label={labels.title} tabIndex={0} onScroll={handleScroll}>
         {entries.length === 0 && <LogPlaceholder>{labels.noActivity}</LogPlaceholder>}

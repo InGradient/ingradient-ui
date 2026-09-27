@@ -1,6 +1,6 @@
 import { useEffect, useId } from 'react'
 import {
-  BeakerIcon, CameraIcon, DatabaseIcon, FileTextIcon, FlaskIcon, InfoIcon,
+  ApertureIcon, BeakerIcon, CameraIcon, DatabaseIcon, FileTextIcon, FlaskIcon, InfoIcon,
   LightbulbIcon, ServerIcon, SettingsIcon, SlidersIcon,
 } from '@ingradient/ui/components'
 import { TwoColumnDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
@@ -16,7 +16,7 @@ interface TabDef {
 export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): JSX.Element {
   const {
     activeTab, currentUserRole, labels,
-    generalContent, connectionContent, cameraContent, lightingContent,
+    generalContent, connectionContent, cameraContent, captureContent, lightingContent,
     serverContent, dataContent, logsContent, experimentsContent,
     fieldTestContent, aboutContent,
     onClose, onSetActiveTab,
@@ -28,6 +28,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
     { value: 'general',     label: labels.tabGeneral,     icon: <SettingsIcon size={iconSizeNumbers.sm} />, visible: true },
     { value: 'connection',  label: labels.tabConnection,  icon: <CameraIcon size={iconSizeNumbers.sm} />, visible: true },
     { value: 'camera',      label: labels.tabCamera,      icon: <SlidersIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
+    { value: 'capture',     label: labels.tabCapture ?? '', icon: <ApertureIcon size={iconSizeNumbers.sm} />, visible: !!labels.tabCapture },
     { value: 'lighting',    label: labels.tabLighting,    icon: <LightbulbIcon size={iconSizeNumbers.sm} />, visible: true },
     { value: 'server',      label: labels.tabServer,      icon: <ServerIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
     { value: 'data',        label: labels.tabData,        icon: <DatabaseIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
@@ -49,6 +50,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
     general: generalContent as JSX.Element | undefined ?? null,
     connection: connectionContent as JSX.Element | undefined ?? null,
     camera: cameraContent as JSX.Element | undefined ?? null,
+    capture: captureContent as JSX.Element | undefined ?? null,
     lighting: lightingContent as JSX.Element | undefined ?? null,
     server: serverContent as JSX.Element | undefined ?? null,
     data: dataContent as JSX.Element | undefined ?? null,

@@ -6,6 +6,17 @@ import { TabsList } from '../../../platform-pages/src/settings-modal/SettingsMod
 const labels = { title: 'Settings', close: 'Close', tabGeneral: 'General', tabConnection: 'Connection', tabCamera: 'Camera', tabLighting: 'Lighting', tabServer: 'Server', tabData: 'Data', tabLogs: 'Logs', tabExperiments: 'Experiments', tabFieldTest: 'Field Test', tabAbout: 'About' }
 
 describe('CameraSettingsDialogView visible tabs', () => {
+  it('adds Capture between Camera and Lighting only when its label is supplied', () => {
+    const setTab = vi.fn()
+    const { rerender } = render(<CameraSettingsDialogView labels={labels} activeTab="general" currentUserRole="owner"
+      onSetActiveTab={setTab} onClose={() => {}} generalContent={<p>General</p>} />)
+    expect(screen.queryByRole('tab', { name: 'Capture' })).not.toBeInTheDocument()
+    rerender(<CameraSettingsDialogView labels={{ ...labels, tabCapture: 'Capture' }} activeTab="capture" currentUserRole="owner"
+      onSetActiveTab={setTab} onClose={() => {}} captureContent={<p>Capture settings</p>} />)
+    expect(screen.getAllByRole('tab').map(tab => tab.textContent).slice(2, 5)).toEqual(['Camera', 'Capture', 'Lighting'])
+    expect(screen.getByRole('tab', { name: 'Capture' })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.getByText('Capture settings')).toBeVisible()
+  })
   it('uses the identical generic settings item appearance as Platform without hiding tab content', () => {
     render(<><TabsList items={[{ value: 'general', label: 'Platform General' }]} value="general" onChange={() => {}} />
       <CameraSettingsDialogView labels={labels} activeTab="general" currentUserRole="owner" onSetActiveTab={() => {}} onClose={() => {}} generalContent={<p>General controls</p>} /></>)

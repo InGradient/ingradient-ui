@@ -12,6 +12,8 @@ export interface RightPanelLabels {
   noClassMatches: string
   searchClasses: string
   patternPreview: string
+  /** 패널을 접는 버튼의 툴팁. 접기 버튼을 쓰지 않으면 필요 없다. */
+  collapsePanel?: string
   samRoi: string
   samRoiActive: string
   samRoiViewer: string
@@ -51,6 +53,8 @@ export interface RightPanelViewProps {
   onSelectClass: (classId: string) => void
   onTogglePattern: (pattern: string) => void
   onToggleSamRoi: () => void
+  /** 접기 버튼. 넘기지 않으면 버튼이 나오지 않는다. */
+  onToggleCollapsed?: () => void
 }
 
 // ── Comment section ──────────────────────────────────────────────────────────
