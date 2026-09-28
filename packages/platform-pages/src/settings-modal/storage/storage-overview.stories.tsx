@@ -9,7 +9,8 @@ const items = [
 ]
 
 const meta: Meta<typeof StorageOverview> = {
-  title: 'Platform Pages/Storage/StorageOverview',
+  id: 'platform-pages-storage-storageoverview',
+  title: 'Components/Platform/Storage/StorageOverview',
   component: StorageOverview,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1000, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

@@ -4,7 +4,8 @@ import { PermissionMatrix } from './permission-matrix'
 import { Checkbox } from '../inputs'
 
 const meta: Meta<typeof PermissionMatrix> = {
-  title: 'Platform Pages/Settings Modal/Project/PermissionMatrix',
+  id: 'platform-pages-settings-modal-project-permissionmatrix',
+  title: 'Components/Data Display/PermissionMatrix',
   component: PermissionMatrix,
   parameters: { layout: 'fullscreen' },
 }

@@ -12,7 +12,8 @@ const SAMPLE: DatasetListPanelDataset[] = [
 ]
 
 const meta: Meta<typeof DatasetListPanel> = {
-  title: 'Platform Pages/Catalog/DatasetListPanel',
+  id: 'platform-pages-catalog-datasetlistpanel',
+  title: 'Components/Platform/Catalog/DatasetListPanel',
   component: DatasetListPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [

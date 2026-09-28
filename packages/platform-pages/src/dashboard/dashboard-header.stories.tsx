@@ -3,7 +3,8 @@ import { DashboardHeader } from './dashboard-header'
 import { Button } from '@ingradient/ui/components'
 
 const meta: Meta<typeof DashboardHeader> = {
-  title: 'Platform Pages/Dashboard/DashboardHeader',
+  id: 'platform-pages-dashboard-dashboardheader',
+  title: 'Components/Platform/Dashboard/DashboardHeader',
   component: DashboardHeader,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

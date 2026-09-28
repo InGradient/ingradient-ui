@@ -210,7 +210,8 @@ function PageComposer({ onLoadDraftArgs = () => undefined, ...args }: PageCompos
 const slotOptions: SlotKind[] = ['panel', 'empty-state', 'spinner', 'placeholder']
 
 const meta = {
-  title: 'Builders/PageComposer',
+  id: 'builders-pagecomposer',
+  title: 'Guides/Builders/PageComposer',
   component: PageComposer,
   render: (args: ComposerArgs) => {
     const [, updateArgs] = useArgs<ComposerArgs>()

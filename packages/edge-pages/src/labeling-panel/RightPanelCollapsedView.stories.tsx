@@ -32,7 +32,8 @@ function CollapsedRail(): JSX.Element {
 }
 
 const meta: Meta<typeof CollapsedRail> = {
-  title: 'Edge Pages/Labeling/RightPanelCollapsed',
+  id: 'edge-pages-labeling-rightpanelcollapsed',
+  title: 'Components/Edge/Labeling/RightPanelCollapsed',
   component: CollapsedRail,
   parameters: { layout: 'fullscreen' },
 }

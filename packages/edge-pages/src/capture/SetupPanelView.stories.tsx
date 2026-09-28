@@ -116,7 +116,8 @@ function SetupPanelHarness({ deflectometryEnabled }: { deflectometryEnabled: boo
 }
 
 const meta: Meta<typeof SetupPanelHarness> = {
-  title: 'Edge Pages/Capture/SetupPanel',
+  id: 'edge-pages-capture-setuppanel',
+  title: 'Components/Edge/Capture/SetupPanel',
   component: SetupPanelHarness,
   parameters: { layout: 'fullscreen' },
 }

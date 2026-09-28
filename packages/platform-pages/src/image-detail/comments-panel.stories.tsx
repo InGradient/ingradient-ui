@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { CommentsPanel, type Comment } from './comments-panel'
 
 const meta: Meta<typeof CommentsPanel> = {
-  title: 'Platform Pages/Image Detail/CommentsPanel',
+  id: 'platform-pages-image-detail-commentspanel',
+  title: 'Components/Platform/Image Detail/CommentsPanel',
   component: CommentsPanel,
   parameters: { layout: 'padded' },
   decorators: [(Story) => <div style={{ width: 360 }}><Story /></div>],

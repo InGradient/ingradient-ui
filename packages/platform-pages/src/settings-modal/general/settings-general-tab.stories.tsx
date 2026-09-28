@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsGeneralTab } from './settings-general-tab'
 
 const meta: Meta<typeof SettingsGeneralTab> = {
-  title: 'Platform Pages/Settings Modal/General/SettingsGeneralTab',
+  id: 'platform-pages-settings-modal-general-settingsgeneraltab',
+  title: 'Components/Platform/Settings Modal/General/SettingsGeneralTab',
   component: SettingsGeneralTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 760, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

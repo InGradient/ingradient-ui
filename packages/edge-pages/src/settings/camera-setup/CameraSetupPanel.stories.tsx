@@ -134,7 +134,8 @@ function CameraSetupPanel({ guidedAction }: { guidedAction: GuidedAction }): JSX
 }
 
 const meta: Meta<typeof CameraSetupPanel> = {
-  title: 'Edge Pages/Settings/CameraSetupPanel',
+  id: 'edge-pages-settings-camerasetuppanel',
+  title: 'Components/Edge/Settings/CameraSetupPanel',
   component: CameraSetupPanel,
   parameters: { layout: 'fullscreen' },
 }

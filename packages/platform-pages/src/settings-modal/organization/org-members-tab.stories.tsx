@@ -10,7 +10,8 @@ const members: OrgMember[] = [
 ]
 
 const meta: Meta<typeof OrgMembersTab> = {
-  title: 'Platform Pages/Settings Modal/Organization/OrgMembersTab',
+  id: 'platform-pages-settings-modal-organization-orgmemberstab',
+  title: 'Components/Platform/Settings Modal/Organization/OrgMembersTab',
   component: OrgMembersTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 900, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

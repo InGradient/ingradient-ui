@@ -6,7 +6,8 @@ import { MenuPopover } from '../components/overlays/popovers'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Hooks/useClickOutside',
+  id: 'hooks-useclickoutside',
+  title: 'Guides/Hooks/useClickOutside',
   parameters: {
     layout: 'fullscreen',
     a11y: { test: 'error' },

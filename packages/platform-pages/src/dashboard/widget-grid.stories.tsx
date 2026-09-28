@@ -50,7 +50,8 @@ const defaultLayout: WidgetGridLayout<WidgetKey> = [
 ]
 
 const meta: Meta<typeof WidgetGrid<WidgetKey>> = {
-  title: 'Platform Pages/Dashboard/WidgetGrid',
+  id: 'platform-pages-dashboard-widgetgrid',
+  title: 'Components/Platform/Dashboard/WidgetGrid',
   component: WidgetGrid,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1100, padding: 20, background: 'var(--ig-color-bg-canvas)' }}><Story /></div>],

@@ -12,7 +12,8 @@ const device = {
 }
 
 const meta: Meta<typeof DeviceDetailDialog> = {
-  title: 'Platform Pages/Devices/DeviceDetailDialog',
+  id: 'platform-pages-devices-devicedetaildialog',
+  title: 'Components/Platform/Devices/DeviceDetailDialog',
   component: DeviceDetailDialog,
   parameters: { layout: 'fullscreen' },
 }

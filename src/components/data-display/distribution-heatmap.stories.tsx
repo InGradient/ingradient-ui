@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DistributionHeatmap } from './distribution-heatmap'
 
 const meta: Meta<typeof DistributionHeatmap> = {
-  title: 'Platform Pages/Dashboard/DistributionHeatmap',
+  id: 'platform-pages-dashboard-distributionheatmap',
+  title: 'Components/Data Display/DistributionHeatmap',
   component: DistributionHeatmap,
   decorators: [(Story) => <div style={{ padding: 24, width: 720 }}><Story /></div>],
 }

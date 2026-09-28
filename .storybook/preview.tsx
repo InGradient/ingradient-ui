@@ -69,7 +69,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Guides', 'Foundations', 'Primitives', 'Components', 'Patterns', 'Pages', 'Builders', 'Sandboxes'],
+        order: ['Guides', 'Foundations', 'Primitives', 'Components', 'Patterns', 'Pages'],
       },
     },
   },

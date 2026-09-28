@@ -7,7 +7,8 @@ import { ResizablePanel } from '../../src/components/data-display'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Sandboxes/Interaction Utils Lab',
+  id: 'sandboxes-interaction-utils-lab',
+  title: 'Guides/Examples/Interaction Utils',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

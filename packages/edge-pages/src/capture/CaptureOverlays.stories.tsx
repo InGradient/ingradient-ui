@@ -39,7 +39,8 @@ function OverlayOnImage({ state, reason }: { state: DerivedCalcState; reason?: s
 }
 
 const meta: Meta<typeof OverlayOnImage> = {
-  title: 'Edge Pages/Capture/Overlays',
+  id: 'edge-pages-capture-overlays',
+  title: 'Components/Edge/Capture/Overlays',
   component: OverlayOnImage,
   parameters: { layout: 'fullscreen' },
 }

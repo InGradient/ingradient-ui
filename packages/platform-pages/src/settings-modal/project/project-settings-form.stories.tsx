@@ -24,7 +24,8 @@ const baseArgs: ProjectSettingsFormProps = {
 }
 
 const meta: Meta<typeof ProjectSettingsForm> = {
-  title: 'Platform Pages/Settings Modal/Project/ProjectSettingsForm',
+  id: 'platform-pages-settings-modal-project-projectsettingsform',
+  title: 'Components/Platform/Settings Modal/Project/ProjectSettingsForm',
   component: ProjectSettingsForm,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 760, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

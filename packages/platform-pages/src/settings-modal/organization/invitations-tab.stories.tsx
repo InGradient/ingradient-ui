@@ -20,7 +20,8 @@ const codes: JoinCodeRow[] = [
 const noop = () => undefined
 
 const meta: Meta<typeof InvitationsTab> = {
-  title: 'Platform Pages/Settings Modal/Organization/InvitationsTab',
+  id: 'platform-pages-settings-modal-organization-invitationstab',
+  title: 'Components/Platform/Settings Modal/Organization/InvitationsTab',
   component: InvitationsTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 900, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

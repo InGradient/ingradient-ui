@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DashboardStatsHeader } from './dashboard-stats-header'
 
 const meta: Meta<typeof DashboardStatsHeader> = {
-  title: 'Platform Pages/Dashboard/DashboardStatsHeader',
+  id: 'platform-pages-dashboard-dashboardstatsheader',
+  title: 'Components/Platform/Dashboard/DashboardStatsHeader',
   component: DashboardStatsHeader,
   decorators: [(Story) => <div style={{ width: 280, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

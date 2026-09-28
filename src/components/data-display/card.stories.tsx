@@ -3,7 +3,8 @@ import { Card } from './card'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Components/DataDisplay/Card',
+  id: 'components-datadisplay-card',
+  title: 'Components/Data Display/Card',
   component: Card,
   tags: ['autodocs'],
   parameters: {

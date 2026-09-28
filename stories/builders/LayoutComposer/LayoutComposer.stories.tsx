@@ -155,7 +155,8 @@ function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutCo
 }
 
 const meta = {
-  title: 'Builders/LayoutComposer',
+  id: 'builders-layoutcomposer',
+  title: 'Guides/Builders/LayoutComposer',
   component: LayoutComposer,
   render: (args: ComposerArgs) => {
     const [, updateArgs] = useArgs<ComposerArgs>()

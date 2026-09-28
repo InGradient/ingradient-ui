@@ -24,7 +24,8 @@ const invitations: InvitationRow[] = [
 ]
 
 const meta: Meta<typeof InvitationsSection> = {
-  title: 'Platform Pages/Settings Modal/Organization/InvitationsSection',
+  id: 'platform-pages-settings-modal-organization-invitationssection',
+  title: 'Components/Platform/Settings Modal/Organization/InvitationsSection',
   component: InvitationsSection,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 900, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

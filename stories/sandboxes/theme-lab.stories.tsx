@@ -3,7 +3,8 @@ import { Alert, Button, EmptyState } from '@ingradient/ui/components'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Sandboxes/Theme Lab',
+  id: 'sandboxes-theme-lab',
+  title: 'Guides/Examples/Theme',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

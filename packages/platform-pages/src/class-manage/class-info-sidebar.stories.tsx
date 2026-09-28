@@ -7,7 +7,8 @@ import type { ClassInfoSidebarClass } from './class-info-sidebar'
 const baseClass: ClassInfoSidebarClass = { id: 'c-1', name: 'Crack', color: '#ef4444', description: 'Surface micro-crack defect' }
 
 const meta: Meta<typeof ClassInfoSidebar> = {
-  title: 'Platform Pages/Class Manage/ClassInfoSidebar',
+  id: 'platform-pages-class-manage-classinfosidebar',
+  title: 'Components/Platform/Class Manage/ClassInfoSidebar',
   component: ClassInfoSidebar,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 700, display: 'flex' }}><Story /></div>],

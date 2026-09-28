@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GalleryExportProgressDialog } from './gallery-export-progress-dialog'
 
 const meta: Meta<typeof GalleryExportProgressDialog> = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryExportProgressDialog',
+  id: 'platform-pages-catalog-gallery-galleryexportprogressdialog',
+  title: 'Components/Platform/Catalog/Gallery/GalleryExportProgressDialog',
   component: GalleryExportProgressDialog,
   parameters: { layout: 'fullscreen' },
 }

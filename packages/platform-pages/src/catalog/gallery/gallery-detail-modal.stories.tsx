@@ -5,7 +5,8 @@ import { Button } from '@ingradient/ui/components'
 import sample1 from '../../../../../stories/assets/20230808.jpg'
 
 const meta: Meta<typeof GalleryDetailModal> = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryDetailModal',
+  id: 'platform-pages-catalog-gallery-gallerydetailmodal',
+  title: 'Components/Platform/Catalog/Gallery/GalleryDetailModal',
   component: GalleryDetailModal,
   parameters: { layout: 'fullscreen' },
 }

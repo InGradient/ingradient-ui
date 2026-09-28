@@ -4,7 +4,8 @@ import { expect, fn, waitFor } from 'storybook/test'
 import { DatasetCardView } from './DatasetCardView'
 
 const meta = {
-  title: 'Edge Pages/Dataset Select/DatasetCard',
+  id: 'edge-pages-dataset-select-datasetcard',
+  title: 'Components/Edge/Dataset Select/DatasetCard',
   component: DatasetCardView,
   parameters: { a11y: { test: 'error' } },
   args: {

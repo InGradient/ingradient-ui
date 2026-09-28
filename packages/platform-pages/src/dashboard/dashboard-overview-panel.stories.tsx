@@ -5,7 +5,8 @@ import { DashboardOverviewPanel } from './dashboard-overview-panel'
 import { DateRangePicker, type DateRangePickerValue } from '@ingradient/ui/components'
 
 const meta: Meta<typeof DashboardOverviewPanel> = {
-  title: 'Platform Pages/Dashboard/DashboardOverviewPanel',
+  id: 'platform-pages-dashboard-dashboardoverviewpanel',
+  title: 'Components/Platform/Dashboard/DashboardOverviewPanel',
   component: DashboardOverviewPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ padding: 24, background: 'var(--ig-color-bg-canvas)', minHeight: 600 }}><Story /></div>],
@@ -15,43 +16,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const noop = () => undefined
-
-export const NoProject: Story = {
-  args: {
-    state: 'no-project',
-    hint: 'Select a project to load stats',
-    dateLabel: 'All time',
-    onToggleDate: noop, onResetLayout: noop,
-  },
-}
-
-export const Loading: Story = {
-  args: {
-    state: 'loading',
-    hint: 'Current project stats · 2026-05-01 → 2026-05-14',
-    dateLabel: '2026-05-01 → 2026-05-14',
-    onToggleDate: noop, onResetLayout: noop,
-  },
-}
-
-export const ErrorState: Story = {
-  args: {
-    state: 'error',
-    hint: 'Current project stats · All time',
-    dateLabel: 'All time',
-    errorMessage: 'Failed to load analysis. Try again.',
-    onToggleDate: noop, onResetLayout: noop,
-  },
-}
-
-export const NoData: Story = {
-  args: {
-    state: 'data',
-    hint: 'Current project stats · All time',
-    dateLabel: 'All time',
-    onToggleDate: noop, onResetLayout: noop,
-  },
-}
 
 export const WithBody: Story = {
   args: {

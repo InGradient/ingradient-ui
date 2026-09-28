@@ -6,7 +6,8 @@ import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, Storyboo
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
-  title: 'Sandboxes/State Matrix',
+  id: 'sandboxes-state-matrix',
+  title: 'Guides/Examples/State Matrix',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

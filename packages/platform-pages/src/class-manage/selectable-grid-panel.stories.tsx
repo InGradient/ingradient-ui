@@ -20,7 +20,8 @@ const images = [
 ]
 
 const meta: Meta<typeof SelectableGridPanel> = {
-  title: 'Platform Pages/Class Manage/SelectableGridPanel',
+  id: 'platform-pages-class-manage-selectablegridpanel',
+  title: 'Components/Platform/Class Manage/SelectableGridPanel',
   component: SelectableGridPanel,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 600, display: 'flex' }}><Story /></div>],

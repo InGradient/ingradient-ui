@@ -4,7 +4,8 @@ import { ModelMappingSelect } from './model-mapping-select'
 import { COCO_CLASS_NAMES } from '../../../../stories/fixtures/platform/0.0.1/coco-class-names'
 
 const meta: Meta<typeof ModelMappingSelect> = {
-  title: 'Platform Pages/Class Manage/ModelMappingSelect',
+  id: 'platform-pages-class-manage-modelmappingselect',
+  title: 'Components/Platform/Class Manage/ModelMappingSelect',
   component: ModelMappingSelect,
   decorators: [(Story) => <div style={{ width: 268, padding: 16, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

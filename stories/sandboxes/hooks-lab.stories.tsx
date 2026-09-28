@@ -5,7 +5,8 @@ import { useClipboard, useSelection, useUndoRedo, useZoomPan } from '../../src/h
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection, StorybookStack } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Sandboxes/Hooks Lab',
+  id: 'sandboxes-hooks-lab',
+  title: 'Guides/Hooks/Overview',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

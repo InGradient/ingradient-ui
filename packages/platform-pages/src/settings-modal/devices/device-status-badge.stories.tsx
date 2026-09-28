@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DeviceStatusBadge } from './device-status-badge'
 
 const meta: Meta<typeof DeviceStatusBadge> = {
-  title: 'Platform Pages/Devices/DeviceStatusBadge',
+  id: 'platform-pages-devices-devicestatusbadge',
+  title: 'Components/Platform/Devices/DeviceStatusBadge',
   component: DeviceStatusBadge,
   decorators: [(Story) => <div style={{ padding: 24, display: 'flex', gap: 'var(--ig-space-3)', flexWrap: 'wrap', background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

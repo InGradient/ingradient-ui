@@ -6,7 +6,8 @@ import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@
 const LIST_RESET = { listStyle: 'none', padding: 0, margin: 0, width: 320 } as const
 
 const meta = {
-  title: 'Platform Pages/Catalog/DatasetListItem',
+  id: 'platform-pages-catalog-datasetlistitem',
+  title: 'Components/Platform/Catalog/DatasetListItem',
   component: DatasetListItem,
   tags: ['autodocs'],
   parameters: {

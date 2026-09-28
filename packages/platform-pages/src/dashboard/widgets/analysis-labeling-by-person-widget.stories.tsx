@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisLabelingByPersonWidget } from './analysis-labeling-by-person-widget'
 
 const meta: Meta<typeof AnalysisLabelingByPersonWidget> = {
-  title: 'Platform Pages/Dashboard Widgets/AnalysisLabelingByPersonWidget',
+  id: 'platform-pages-dashboard-widgets-analysislabelingbypersonwidget',
+  title: 'Components/Platform/Dashboard Widgets/AnalysisLabelingByPersonWidget',
   component: AnalysisLabelingByPersonWidget,
 }
 export default meta

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisDataCollectionWidget } from './analysis-data-collection-widget'
 
 const meta: Meta<typeof AnalysisDataCollectionWidget> = {
-  title: 'Platform Pages/Dashboard Widgets/AnalysisDataCollectionWidget',
+  id: 'platform-pages-dashboard-widgets-analysisdatacollectionwidget',
+  title: 'Components/Platform/Dashboard Widgets/AnalysisDataCollectionWidget',
   component: AnalysisDataCollectionWidget,
 }
 export default meta

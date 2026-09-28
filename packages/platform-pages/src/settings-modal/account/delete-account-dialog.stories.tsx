@@ -24,7 +24,8 @@ const preview: DeleteAccountPreview = {
 const previewNoSolo: DeleteAccountPreview = { solo_projects: [], requires_resolution: preview.requires_resolution }
 
 const meta: Meta<typeof DeleteAccountDialog> = {
-  title: 'Platform Pages/Settings Modal/Account/DeleteAccountDialog',
+  id: 'platform-pages-settings-modal-account-deleteaccountdialog',
+  title: 'Components/Platform/Settings Modal/Account/DeleteAccountDialog',
   component: DeleteAccountDialog,
   parameters: { layout: 'fullscreen' },
 }

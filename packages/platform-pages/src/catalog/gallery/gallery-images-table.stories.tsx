@@ -6,7 +6,8 @@ import sample2 from '../../../../../stories/assets/20230816.jpg'
 import sample3 from '../../../../../stories/assets/20230823.jpg'
 
 const meta: Meta<typeof GalleryImagesTable> = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryImagesTable',
+  id: 'platform-pages-catalog-gallery-galleryimagestable',
+  title: 'Components/Platform/Catalog/Gallery/GalleryImagesTable',
   component: GalleryImagesTable,
   parameters: { layout: 'fullscreen' },
 }

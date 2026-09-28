@@ -73,7 +73,8 @@ const recommendations = [
 const noop = () => undefined
 
 const meta: Meta<typeof StorageAnalyticsTab> = {
-  title: 'Platform Pages/Storage/StorageAnalyticsTab',
+  id: 'platform-pages-storage-storageanalyticstab',
+  title: 'Components/Platform/Storage/StorageAnalyticsTab',
   component: StorageAnalyticsTab,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ width: 1100, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],

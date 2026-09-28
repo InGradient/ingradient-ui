@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DeleteProjectSection } from './delete-project-section'
 
 const meta: Meta<typeof DeleteProjectSection> = {
-  title: 'Platform Pages/Settings Modal/Project/DeleteProjectSection',
+  id: 'platform-pages-settings-modal-project-deleteprojectsection',
+  title: 'Components/Platform/Settings Modal/Project/DeleteProjectSection',
   component: DeleteProjectSection,
   decorators: [(Story) => <div style={{ width: 600, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

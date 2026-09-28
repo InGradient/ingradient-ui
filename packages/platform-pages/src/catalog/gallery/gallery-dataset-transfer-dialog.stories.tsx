@@ -7,7 +7,8 @@ import {
 } from './gallery-dataset-transfer-dialog'
 
 const meta: Meta<typeof GalleryDatasetTransferDialog> = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryDatasetTransferDialog',
+  id: 'platform-pages-catalog-gallery-gallerydatasettransferdialog',
+  title: 'Components/Platform/Catalog/Gallery/GalleryDatasetTransferDialog',
   component: GalleryDatasetTransferDialog,
   parameters: { layout: 'fullscreen' },
 }

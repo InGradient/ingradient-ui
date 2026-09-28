@@ -1,5 +1,7 @@
 # Storybook Builders
 
+Storybook 사이드바에서는 `Guides / Builders`에 있다. 이 도구는 페이지 패키지의 production export가 아니다. `Pages / Platform`, `Pages / Edge`는 화면 workflow, `Components / Platform`, `Components / Edge`는 단독 부품 계약, `Guides`의 Builder·예시는 실험·조합 도구다. 분류를 옮겨도 기존 `builders-*` story ID는 유지한다. [분류 기준](../../docs/reference/storybook-product-story-taxonomy.md)을 참고한다.
+
 Storybook 안에서 layout, page composition, theme preset을 조정하고 결과를 즉시 검토하는 실험 도구다. 각 builder는 native Storybook args를 사용하며 production package API로 export하지 않는다.
 
 ## Builders

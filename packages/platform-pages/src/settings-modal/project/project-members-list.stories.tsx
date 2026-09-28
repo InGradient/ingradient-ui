@@ -19,7 +19,8 @@ const members = [
 ]
 
 const meta: Meta<typeof ProjectMembersList> = {
-  title: 'Platform Pages/Settings Modal/Project/ProjectMembersList',
+  id: 'platform-pages-settings-modal-project-projectmemberslist',
+  title: 'Components/Platform/Settings Modal/Project/ProjectMembersList',
   component: ProjectMembersList,
   decorators: [(Story) => <div style={{ width: 760, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

@@ -8,7 +8,8 @@ function Demo(props: Omit<ImageDetailInfoPanelProps, 'detailsOpen' | 'onToggleDe
 }
 
 const meta = {
-  title: 'Platform Pages/Image Detail/ImageDetailInfoPanel',
+  id: 'platform-pages-image-detail-imagedetailinfopanel',
+  title: 'Components/Platform/Image Detail/ImageDetailInfoPanel',
   component: Demo,
   parameters: { layout: 'centered' },
   decorators: [

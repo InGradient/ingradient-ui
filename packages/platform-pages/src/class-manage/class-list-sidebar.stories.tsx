@@ -9,7 +9,8 @@ const baseClasses = [
 ]
 
 const meta: Meta<typeof ClassListSidebar> = {
-  title: 'Platform Pages/Class Manage/ClassListSidebar',
+  id: 'platform-pages-class-manage-classlistsidebar',
+  title: 'Components/Platform/Class Manage/ClassListSidebar',
   component: ClassListSidebar,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={{ height: 600, display: 'flex' }}><Story /></div>],

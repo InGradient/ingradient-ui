@@ -10,7 +10,8 @@ const baseItem: ClassLightboxItem = {
 }
 
 const meta: Meta<typeof ClassLightbox> = {
-  title: 'Platform Pages/Class Manage/ClassLightbox',
+  id: 'platform-pages-class-manage-classlightbox',
+  title: 'Components/Platform/Class Manage/ClassLightbox',
   component: ClassLightbox,
   parameters: { layout: 'fullscreen' },
 }

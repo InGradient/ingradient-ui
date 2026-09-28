@@ -3,7 +3,8 @@ import { LayoutDashboard } from './layout-dashboard'
 import { Card } from '@ingradient/ui/components'
 
 const meta: Meta<typeof LayoutDashboard> = {
-  title: 'Platform Pages/Dashboard/LayoutDashboard',
+  id: 'platform-pages-dashboard-layoutdashboard',
+  title: 'Components/Platform/Dashboard/LayoutDashboard',
   component: LayoutDashboard,
   parameters: { layout: 'fullscreen' },
 }

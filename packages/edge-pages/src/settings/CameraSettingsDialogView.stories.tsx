@@ -254,7 +254,8 @@ function SettingsDialogHarness({ initialTab, lightingMode = 'deflectometry' }: H
 }
 
 const meta: Meta<typeof SettingsDialogHarness> = {
-  title: 'Edge Pages/Settings/CameraSettingsDialog',
+  id: 'edge-pages-settings-camerasettingsdialog',
+  title: 'Components/Edge/Settings/CameraSettingsDialog',
   component: SettingsDialogHarness,
   parameters: { layout: 'fullscreen' },
 }

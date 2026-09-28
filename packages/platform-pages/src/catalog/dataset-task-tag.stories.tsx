@@ -3,7 +3,8 @@ import { DatasetTaskTag } from './dataset-task-tag'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 
 const meta: Meta<typeof DatasetTaskTag> = {
-  title: 'Platform Pages/Catalog/DatasetTaskTag',
+  id: 'platform-pages-catalog-datasettasktag',
+  title: 'Components/Platform/Catalog/DatasetTaskTag',
   component: DatasetTaskTag,
   tags: ['autodocs'],
 }

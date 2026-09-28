@@ -5,7 +5,8 @@ import { Button } from '@ingradient/ui/components'
 import { StorybookCard, StorybookGrid, StorybookPage, StorybookSection } from '@storybook-support/storybook-layout'
 
 const meta = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryImageMenu',
+  id: 'platform-pages-catalog-gallery-galleryimagemenu',
+  title: 'Components/Platform/Catalog/Gallery/GalleryImageMenu',
   component: GalleryImageMenu,
   tags: ['autodocs'],
   parameters: {

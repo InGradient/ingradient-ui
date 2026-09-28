@@ -168,7 +168,8 @@ function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuild
 }
 
 const meta = {
-  title: 'Builders/ThemeBuilder',
+  id: 'builders-themebuilder',
+  title: 'Guides/Builders/ThemeBuilder',
   component: ThemeBuilder,
   render: (args: BuilderArgs) => {
     const [, updateArgs] = useArgs<BuilderArgs>()

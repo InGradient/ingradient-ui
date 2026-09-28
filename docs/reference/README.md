@@ -10,6 +10,7 @@
 4. [Platform Pages Package](../../packages/platform-pages/README.md)
 5. [Platform Story Contract](../../stories/pages/platform/0.0.1/README.md)
 6. [Platform Migration and Verification](../../stories/pages/platform/0.0.1/MIGRATION.md)
+7. [Storybook 화면·부품·실험 분류](./storybook-product-story-taxonomy.md)
 
 현재 계층 흐름은 다음과 같다.
 

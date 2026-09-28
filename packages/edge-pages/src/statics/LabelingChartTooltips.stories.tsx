@@ -3,7 +3,8 @@ import { expect } from 'storybook/test'
 import { AvgSizeTooltip, TrendTooltip } from './LabelingChartTooltips'
 
 const meta = {
-  title: 'Edge Pages/Statics/LabelingChartTooltips', component: TrendTooltip,
+  id: 'edge-pages-statics-labelingcharttooltips',
+  title: 'Components/Edge/Statics/LabelingChartTooltips', component: TrendTooltip,
   parameters: { a11y: { test: 'error' }, docs: { description: { component: 'Domain tooltip adapters retain positive-only trend counts and one-decimal pixel formatting. Average size uses ChartTooltipContent. Trend uses its TooltipCard/KeyValueRow building blocks because ChartTooltipContent currently ignores payload colors; class swatches must remain visible.' } } },
 } satisfies Meta<typeof TrendTooltip>
 export default meta

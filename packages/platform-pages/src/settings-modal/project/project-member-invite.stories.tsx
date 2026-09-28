@@ -9,7 +9,8 @@ const candidates: SearchableUserCandidate[] = [
 ]
 
 const meta: Meta<typeof ProjectMemberInvite> = {
-  title: 'Platform Pages/Settings Modal/Project/ProjectMemberInvite',
+  id: 'platform-pages-settings-modal-project-projectmemberinvite',
+  title: 'Components/Platform/Settings Modal/Project/ProjectMemberInvite',
   component: ProjectMemberInvite,
   decorators: [(Story) => <div style={{ width: 700, padding: 20, background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }

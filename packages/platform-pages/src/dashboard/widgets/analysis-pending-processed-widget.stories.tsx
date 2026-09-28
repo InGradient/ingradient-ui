@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisPendingProcessedWidget } from './analysis-pending-processed-widget'
 
 const meta: Meta<typeof AnalysisPendingProcessedWidget> = {
-  title: 'Platform Pages/Dashboard Widgets/AnalysisPendingProcessedWidget',
+  id: 'platform-pages-dashboard-widgets-analysispendingprocessedwidget',
+  title: 'Components/Platform/Dashboard Widgets/AnalysisPendingProcessedWidget',
   component: AnalysisPendingProcessedWidget,
 }
 export default meta

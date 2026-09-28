@@ -40,7 +40,7 @@ const config: StorybookConfig = {
   stories: [
     '../src/**/*.stories.@(ts|tsx)',
     '../stories/**/*.stories.@(ts|tsx)',
-    // packages 의 페이지 스토리도 띄운다 — 화면 단위를 봐야 디자인이 앉는 모습을 확인할 수 있다.
+    // 패키지의 독립 부품 스토리도 포함한다. 화면 합성은 stories/pages/가 담당한다.
     '../packages/*/src/**/*.stories.@(ts|tsx)',
   ],
   addons: [

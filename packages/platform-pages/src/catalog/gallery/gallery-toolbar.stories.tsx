@@ -6,7 +6,8 @@ import { SearchField } from '@ingradient/ui/components'
 import { ModeSwitcher } from '@ingradient/ui/components'
 
 const meta: Meta<typeof GalleryToolbar> = {
-  title: 'Platform Pages/Catalog/Gallery/GalleryToolbar',
+  id: 'platform-pages-catalog-gallery-gallerytoolbar',
+  title: 'Components/Platform/Catalog/Gallery/GalleryToolbar',
   component: GalleryToolbar,
   parameters: { layout: 'fullscreen' },
 }

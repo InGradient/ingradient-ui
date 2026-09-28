@@ -22,7 +22,8 @@ function Demo(props: Omit<ImageDetailClassListProps, 'onSelectClass'>) {
 }
 
 const meta = {
-  title: 'Platform Pages/Image Detail/ImageDetailClassList',
+  id: 'platform-pages-image-detail-imagedetailclasslist',
+  title: 'Components/Platform/Image Detail/ImageDetailClassList',
   component: Demo,
   parameters: { layout: 'centered' },
   decorators: [

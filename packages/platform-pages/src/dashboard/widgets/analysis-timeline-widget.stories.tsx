@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { AnalysisTimelineWidget } from './analysis-timeline-widget'
 
 const meta: Meta<typeof AnalysisTimelineWidget> = {
-  title: 'Platform Pages/Dashboard Widgets/AnalysisTimelineWidget',
+  id: 'platform-pages-dashboard-widgets-analysistimelinewidget',
+  title: 'Components/Platform/Dashboard Widgets/AnalysisTimelineWidget',
   component: AnalysisTimelineWidget,
 }
 export default meta

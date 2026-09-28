@@ -3,7 +3,8 @@ import { SyncStatusChip } from './sync-status-chip'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 
 const meta: Meta<typeof SyncStatusChip> = {
-  title: 'Platform Pages/Catalog/Gallery/SyncStatusChip',
+  id: 'platform-pages-catalog-gallery-syncstatuschip',
+  title: 'Components/Platform/Catalog/Gallery/SyncStatusChip',
   component: SyncStatusChip,
   tags: ['autodocs'],
 }

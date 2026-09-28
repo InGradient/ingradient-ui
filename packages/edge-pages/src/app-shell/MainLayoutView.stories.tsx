@@ -6,7 +6,8 @@ import { breakpoints } from '@ingradient/ui/tokens'
 import { MainLayoutView } from './MainLayoutView'
 
 const meta = {
-  title: 'Edge Pages/App Shell/MainLayout', component: MainLayoutView,
+  id: 'edge-pages-app-shell-mainlayout',
+  title: 'Components/Edge/App Shell/MainLayout', component: MainLayoutView,
   parameters: { layout: 'fullscreen', a11y: { test: 'error' }, docs: { description: { component: 'Desktop constrained-width policy: the central workspace retains the existing 640px dimension token; the panels region scrolls horizontally rather than clipping tabs or inventing a mobile shell. Initial constrained layout reveals the center. Side panels remain available through scrolling and native keyboard focus.' } } },
 } satisfies Meta<typeof MainLayoutView>
 export default meta
