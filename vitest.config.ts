@@ -17,6 +17,10 @@ export default defineConfig({
       '@ingradient/ui/hooks': path.resolve(root, 'src/hooks/index.ts'),
       '@ingradient/ui/utils': path.resolve(root, 'src/utils/index.ts'),
       '@ingradient/ui': path.resolve(root, 'src/index.ts'),
+      // Match tsconfig paths and .storybook/main.ts: tests must read page-package source,
+      // never a stale or absent lib/ build (CI runs unit tests before build:package).
+      '@ingradient/platform-pages': path.resolve(root, 'packages/platform-pages/src/index.ts'),
+      '@ingradient/edge-pages': path.resolve(root, 'packages/edge-pages/src/index.ts'),
     },
   },
   test: {
