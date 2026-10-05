@@ -36,7 +36,12 @@
 
 날짜별 작업 리포트는 완료된 변경의 검증·전달 상태를 보존하는 historical snapshot이다. 현재 설계 authority는 코드와 위의 active docs를 따른다.
 
+- [2026-09-21 Edge AS-IS / TO-BE — 변경 영역 표시 이미지 비교](./reports/2026-09-21-edge-as-is-to-be.ko.md)
 - [2026-09-20 Edge 0.0.5 레이어 감사·구현·검증](./reports/2026-09-20-edge-layer-audit-and-plan.ko.md)
+- [2026-09-08 오늘 작업 상세 리포트 — 항목별 비교 이미지](./reports/2026-09-08-daily-work-report.ko.md)
+- [2026-09-08 UI·Platform 통합 진행 리포트 — 전체 성과와 남은 과제](./reports/2026-09-08-consolidated-progress-report.ko.md)
+- [2026-09-02 디자인 시스템 탐색·접근성 기준선 복구](./reports/2026-09-02-token-discovery-and-primitive-boundary-review.md)
+- [2026-08-24 디자인 시스템·Edge 화면 정리](./reports/2026-08-24-design-system-review-and-edge-pages.md)
 - [2026-08-19 Platform 품질·접근성 개선](./reports/2026-08-19-platform-quality-accessibility.md)
 
 ## Legacy Docs

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="330" viewBox="0 0 1100 330" role="img" aria-labelledby="title desc">
+  <title id="title">UI 패키지 JavaScript 용량 전후 비교</title>
+  <desc id="desc">수정 전 1074.1KB에서 수정 후 497.1KB로 53.7% 감소했다. 기존 제한은 500KB다.</desc>
+  <rect width="1100" height="330" rx="20" fill="#f3f6fa"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" fill="#172337">
+    <text x="40" y="48" font-size="24" font-weight="700">UI 패키지 용량 비교</text>
+    <text x="40" y="80" font-size="16" fill="#526176">실행 기록을 시각화한 도표 · 제품 화면 캡처 아님</text>
+    <text x="40" y="137" font-size="19">수정 전</text>
+    <rect x="160" y="109" width="680" height="40" rx="6" fill="#8995a7"/>
+    <text x="858" y="137" font-size="23" font-weight="700">1,074.1 KB</text>
+    <text x="40" y="207" font-size="19">수정 후</text>
+    <rect x="160" y="179" width="314.706" height="40" rx="6" fill="#2d63d9"/>
+    <text x="493" y="207" font-size="23" font-weight="700">497.1 KB</text>
+    <text x="40" y="274" font-size="23" font-weight="700">577.0 KB 감소 · 약 53.7% 축소 · 500 KB 제한 충족</text>
+    <text x="40" y="306" font-size="15" fill="#526176">측정 범위: 루트 UI 패키지 JavaScript 합계. Platform 앱 전체 용량 및 실행 속도와는 다름.</text>
+  </g>
+</svg>

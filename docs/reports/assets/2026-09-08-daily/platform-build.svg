@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="280" viewBox="0 0 1100 280" role="img" aria-labelledby="title desc">
+  <title id="title">Platform 빌드 결과 전후 비교</title>
+  <desc id="desc">초기 연결 전 TypeScript 오류 25개로 빌드 실패. 최종 main 통합 후 타입 검사와 빌드 통과. 기존 용량 경고는 남음.</desc>
+  <rect width="1100" height="280" rx="20" fill="#f3f6fa"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" fill="#172337">
+    <text x="35" y="44" font-size="23" font-weight="700">실제 Platform 빌드 결과</text>
+    <text x="35" y="74" font-size="15" fill="#526176">보존된 오류·빌드 로그를 정리한 도표 · 제품 화면 캡처 아님</text>
+    <rect x="35" y="98" width="460" height="133" rx="12" fill="#e6eaf0"/>
+    <rect x="605" y="98" width="460" height="133" rx="12" fill="#e4edff"/>
+    <text x="59" y="128" font-size="17">초기 연결 전</text>
+    <text x="59" y="169" font-size="28" font-weight="700">오류 25개 · 빌드 실패</text>
+    <text x="59" y="205" font-size="17">예전 UI 공개 경로·타입 연결 불일치</text>
+    <path d="M520 165h55m-15-12 15 12-15 12" stroke="#526176" stroke-width="3" fill="none"/>
+    <text x="629" y="128" font-size="17">최신 main 통합 후</text>
+    <text x="629" y="169" font-size="28" font-weight="700">타입 검사·빌드 통과</text>
+    <text x="629" y="205" font-size="17">현재 패키지 경로와 최신 앱 구조 사용</text>
+    <text x="35" y="261" font-size="15" fill="#526176">최종 빌드의 큰 파일 경고는 남아 있음. 빌드 성공이 운영 배포 완료를 뜻하지는 않음.</text>
+  </g>
+</svg>

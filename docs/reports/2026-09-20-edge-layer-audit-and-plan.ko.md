@@ -1,5 +1,7 @@
 # 2026-09-20 Edge 0.0.5 레이어 감사·구현·검증
 
+> **이미지 비교:** [이전 pull(c2b2606) → 최신 main(4c414bf) AS-IS / TO-BE 리포트](2026-09-21-edge-as-is-to-be.ko.md)에서 변경 영역을 번호·박스로 표시한 전후 화면을 볼 수 있다. 구현과 검증 자료는 이후 GitHub main에 push 완료했다. 아래의 ‘push하지 않음’은 각 기록 작성 당시 상태다.
+
 > **2026-09-21 통합 상태:** 구현 커밋 `4a85c21`을 로컬 `main`에 fast-forward 병합했다. 원격 push는 하지 않았고 worktree는 보존했다. 아래 ‘uncommitted/아직 병합하지 않음’ 문구는 검증 당시의 역사적 기록이다. 이번 보고서·증거는 구현과 분리한 문서 커밋으로 보존한다.
 
 > 최신 범위는 **§18 남은 항목 통합 구현**이다. §17의 ‘아직 남은 작업’ 목록은 당시 1차 묶음 기록이며, §18의 항목별 결과가 이를 대체한다. 실제 장치·서버 구현을 완료했다는 뜻은 아니다.
@@ -259,7 +261,7 @@ Settings는 실제 탭 버튼을 클릭해 10개 탭을 기록했다. [General](
 
 ### 12.1 환경·계약·증거 수준
 
-- primary checkout `/Users/homebodify/Projects/ingradient-ui`, `main`, HEAD `c2b2606706f9f24e996d2f187325838328bc9b6e`. 기존 Storybook listener PID 79855의 cwd가 이 checkout임을 `lsof`로 확인했다. 별도 서버·worktree를 만들지 않았다.
+- primary checkout `/home/homebodify/Projects/ingradient-ui`, `main`, HEAD `c2b2606706f9f24e996d2f187325838328bc9b6e`. 기존 Storybook listener PID 79855의 cwd가 이 checkout임을 `lsof`로 확인했다. 별도 서버·worktree를 만들지 않았다.
 - [README](../../README.md), [DESIGN](../../DESIGN.md), [리팩터링 규칙](../../ui-refactoring-rule.md), [레이어 계약](../reference/components-vs-patterns.md), [감사 절차](../guides/ui-audit.md), [작업 절차](../guides/ui-workflow.md), [0.0.5 Story 계약](../../stories/pages/edge/0.0.5/README.md), 기존 보고서 §11과 agent handoff를 읽었다. `packages/edge-pages/README.md`는 현재 존재하지 않는다.
 - browser-use/로컬 storybook-mcp-review 절차를 읽고, 공식 HTTP `/mcp`의 tool·documentation 목록을 다시 조회했다. TwoColumnDialog, DialogShell, ChartTooltipContent, FieldRow/FormField, DateRangeField, StatCard 6개 문서를 **순차** 조회했다. [MCP 원문](assets/2026-09-20-edge-phase0/supplemental-mcp.json), [재실행 스크립트](assets/2026-09-20-edge-phase0/supplemental-mcp.cjs). 일부 응답은 Story 예제만 있으므로 타입 전체 검증으로 해석하지 않는다.
 - macOS, 설치된 Playwright의 **격리된 headless Chromium**, 1280×800 / 768×800. 사용자 Chrome·열린 탭은 건드리지 않았다. 실제 장치·OS·API·파일 삭제는 실행하지 않았다.

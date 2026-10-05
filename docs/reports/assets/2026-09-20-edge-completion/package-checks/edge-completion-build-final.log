@@ -5,7 +5,7 @@
 CLI Building entry: {"index":"src/index.ts","tokens":"src/tokens/index.ts","primitives":"src/primitives/index.ts","components":"src/components/index.ts","patterns":"src/patterns/index.ts","brand":"src/brand/index.tsx","hooks":"src/hooks/index.ts","utils":"src/utils/index.ts"}
 CLI Using tsconfig: tsconfig.json
 CLI tsup v8.5.1
-CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/tsup.config.ts
+CLI Using tsup config: /home/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/tsup.config.ts
 CLI Target: es2020
 ESM Build start
 ESM lib/primitives.js         1.38 KB
@@ -74,7 +74,7 @@ DTS lib/states-KHk94m3R.d.ts             1.52 KB
 CLI Building entry: {"index":"src/index.ts"}
 CLI Using tsconfig: tsconfig.json
 CLI tsup v8.5.1
-CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/platform-pages/tsup.config.ts
+CLI Using tsup config: /home/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/platform-pages/tsup.config.ts
 CLI Target: es2020
 ESM Build start
 ESM lib/index.js     338.30 KB
@@ -90,7 +90,7 @@ DTS lib/index.d.ts 85.18 KB
 CLI Building entry: {"index":"src/index.ts"}
 CLI Using tsconfig: tsconfig.json
 CLI tsup v8.5.1
-CLI Using tsup config: /Users/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/edge-pages/tsup.config.ts
+CLI Using tsup config: /home/homebodify/Projects/ingradient-ui/.letta/worktrees/edge-verification-contracts/packages/edge-pages/tsup.config.ts
 CLI Target: es2020
 ESM Build start
 ESM lib/index.js     331.00 KB

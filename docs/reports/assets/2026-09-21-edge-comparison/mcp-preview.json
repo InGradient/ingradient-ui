@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Invalid arguments for tool preview-stories: [{\"kind\":\"schema\",\"type\":\"object\",\"expected\":\"\\\"stories\\\"\",\"received\":\"undefined\",\"message\":\"Invalid key: Expected \\\"stories\\\" but received undefined\",\"path\":[{\"type\":\"object\",\"origin\":\"key\",\"input\":{\"storyIds\":[\"pages-edge-0-0-5-workspace--capture\"]},\"key\":\"stories\"}]}]"
+    }
+  ],
+  "isError": true
+}

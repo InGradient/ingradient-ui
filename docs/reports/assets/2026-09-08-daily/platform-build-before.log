@@ -1,0 +1,29 @@
+
+> ingradient-data@0.1.0 build
+> tsc && vite build
+
+components/catalog/catalog.styles.ts(4,3): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/catalog/modals/AddDatasetModal.tsx(1,18): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'CheckboxGroup'.
+components/classes/classes.styles.ts(2,10): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/gallery/image-detail/image-detail-modal.tsx(5,3): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'useUndoRedo'.
+components/gallery/image-detail/image-detail-modal.tsx(6,3): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingLayer'.
+components/gallery/image-detail/image-detail-modal.tsx(7,3): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'useDrawingCanvas'.
+components/gallery/image-detail/image-detail-modal.tsx(8,8): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingObject'.
+components/gallery/image-detail/image-detail-modal.tsx(564,21): error TS7006: Parameter 'e' implicitly has an 'any' type.
+components/gallery/image-detail/image-detail-modal.tsx(564,24): error TS7006: Parameter '_nx' implicitly has an 'any' type.
+components/gallery/image-detail/image-detail-modal.tsx(564,29): error TS7006: Parameter '_ny' implicitly has an 'any' type.
+components/gallery/image-detail/ImageDetailCanvas.tsx(2,10): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingLayer'.
+components/gallery/image-detail/ImageDetailCanvas.tsx(2,38): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingObject'.
+components/gallery/image-detail/ImageDetailCanvas.tsx(2,58): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingPreview'.
+components/gallery/image-detail/ImageDetailComments.tsx(3,3): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'CommentThread'.
+components/settings/devices/DevicesLicenseSection.tsx(1,35): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'ErrorState'.
+components/settings/devices/DevicesLicenseSection.tsx(1,47): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/settings/tabs/InvitationsTab.tsx(16,29): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'ErrorState'.
+components/settings/tabs/InvitationsTab.tsx(16,41): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/settings/tabs/LicenseTab.tsx(2,22): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'ErrorState'.
+components/settings/tabs/LicenseTab.tsx(2,34): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/settings/tabs/OrgMembersTab.tsx(6,18): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'ErrorState'.
+components/settings/tabs/OrgMembersTab.tsx(6,30): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+components/settings/tabs/OrgTab.tsx(6,29): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'LoadingState'.
+features/gallery/image-detail/use-image-detail-history.ts(2,15): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'DrawingObject'.
+features/gallery/use-gallery-grouping.ts(2,10): error TS2305: Module '"@ingradient/ui/components"' has no exported member 'useSelection'.

@@ -1,0 +1,30 @@
+✔︎ Opened a new tab and set it active: tabs[0], page → INGRADIENT Platform (http://127.0.0.1:59907/login)
+PASS: Login renders
+PASS: Registration renders
+PASS: Registration persists
+PASS: Invalid password rejected
+PASS: Authenticated project list
+PASS: Project form renders
+PASS: Project and dataset persist
+PASS: Upload quality dialog
+PASS: Two images uploaded
+PASS: Table contains both images
+PASS: Search filters results
+PASS: Search clears
+PASS: Sort menu opens
+PASS: Descending filename order
+PASS: Selection hook selects both
+PASS: Selection clears
+PASS: Grid renders
+PASS: Image detail and comment input render
+PASS: Zoom hook responds
+PASS: Comment persists
+PASS: Dataset dialog renders
+PASS: Escape dismisses dialog
+PASS: Mobile catalog remains usable
+UI_INTEGRATION_PASS
+[system] last tab closed. `page` is now null. call openTab(url) to open a new one.
+[system] no current open tabs in this session.
+[2m[ok | 16972ms][0m
+Evidence: /var/folders/hj/1zf6s4n54db4j_qr1hqv9p2m0000gn/T/ingradient-ui-integration-qbvFQZ
+Local test artifacts retained: /var/folders/hj/1zf6s4n54db4j_qr1hqv9p2m0000gn/T/ingradient-ui-integration-qbvFQZ

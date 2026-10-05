@@ -50,7 +50,7 @@
     "rules": ["landmark-one-main", "region", "page-has-heading-one"],
     "incompleteScans": 18,
     "evidence": "default-axe-final/route-audit.json",
-    "command": "STORYBOOK_URL=http://127.0.0.1:6017 OUTPUT_DIR=/Users/homebodify/Projects/ingradient-ui/docs/reports/assets/2026-09-20-edge-completion/default-axe-final node tests/probes/edge.mjs --a11y-gate",
+    "command": "STORYBOOK_URL=http://127.0.0.1:6017 OUTPUT_DIR=/home/homebodify/Projects/ingradient-ui/docs/reports/assets/2026-09-20-edge-completion/default-axe-final node tests/probes/edge.mjs --a11y-gate",
     "note": "This broader default audit is NOT green. Findings and incomplete checks are retained; do not conflate it with the Storybook gate."
   },
   "filesModifiedByValidator": [

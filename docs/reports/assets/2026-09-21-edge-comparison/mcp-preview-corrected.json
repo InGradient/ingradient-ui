@@ -1,0 +1,62 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--settings"
+    },
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+    },
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--images"
+    },
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--capture"
+    },
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--setup"
+    },
+    {
+      "type": "text",
+      "text": "http://localhost:6015/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+    }
+  ],
+  "structuredContent": {
+    "stories": [
+      {
+        "title": "Pages/Edge/0.0.5/Workspace",
+        "name": "Settings",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--settings"
+      },
+      {
+        "title": "Pages/Edge/0.0.5/DatasetSelect",
+        "name": "Offline",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-datasetselect--offline"
+      },
+      {
+        "title": "Pages/Edge/0.0.5/Workspace",
+        "name": "Images",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--images"
+      },
+      {
+        "title": "Pages/Edge/0.0.5/Workspace",
+        "name": "Capture",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--capture"
+      },
+      {
+        "title": "Pages/Edge/0.0.5/Workspace",
+        "name": "Setup",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-workspace--setup"
+      },
+      {
+        "title": "Pages/Edge/0.0.5/SettingsWorkflows",
+        "name": "Lighting Ps",
+        "previewUrl": "http://localhost:6015/?path=/story/pages-edge-0-0-5-settingsworkflows--lighting-ps"
+      }
+    ]
+  }
+}

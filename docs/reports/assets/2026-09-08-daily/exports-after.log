@@ -1,0 +1,8 @@
+
+> @ingradient/ui@0.0.1 check:exports
+> node scripts/check-exports.mjs
+
+@ingradient/ui: checked 9 public paths
+@ingradient/platform-pages: checked 1 public paths
+@ingradient/edge-pages: checked 1 public paths
+All package targets and critical runtime exports verified.

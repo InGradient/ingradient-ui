@@ -1,0 +1,27 @@
+
+Bundle sizes:
+  brand.js                       0.2 KB
+  chunk-3RTXL5HX.js              93.0 KB
+  chunk-4B3FIKBY.js              4.1 KB
+  chunk-4EMUN7DD.js              0.7 KB
+  chunk-4S3TQ7X3.js              22.1 KB
+  chunk-76VN3HX4.js              12.0 KB
+  chunk-77RS5ZBV.js              0.5 KB
+  chunk-7FDPUJ5T.js              0.4 KB
+  chunk-BQY3EXIB.js              200.9 KB
+  chunk-D7JLJHGF.js              2.9 KB
+  chunk-QZRKGU5R.js              1.2 KB
+  chunk-UZANASQQ.js              15.1 KB
+  chunk-XRA7XKQK.js              58.1 KB
+  chunk-Y5YCTGIY.js              55.8 KB
+  components.js                  8.2 KB
+  hooks.js                       0.4 KB
+  index.js                       14.5 KB
+  patterns.js                    2.1 KB
+  primitives.js                  1.4 KB
+  tokens.js                      3.2 KB
+  utils.js                       0.5 KB
+
+  Total: 497.1 KB (limit: 500 KB)
+  OK
+

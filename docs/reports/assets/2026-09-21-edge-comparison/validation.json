@@ -1,0 +1,10 @@
+{
+  "reportLocalLinks": 65,
+  "missingLinks": [],
+  "imageHashesChecked": 55,
+  "hashMismatches": [],
+  "pairs": 10,
+  "freshOriginals": 17,
+  "additionalInteractionProofs": 7,
+  "inspection": "Read image tool: raw/contact screenshots, full-resolution comparison panels and functional-result annotations inspected; no automated visual-regression assertion"
+}

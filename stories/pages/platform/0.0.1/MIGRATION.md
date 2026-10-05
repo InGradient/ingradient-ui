@@ -4,8 +4,8 @@
 
 The original migration first retained the complete Platform `0.0.1` page-story surface without blindly overwriting the current component architecture. Auth, Dataset Catalog, Class Management, Create Project, Settings Modal, and Dashboard documentation were subsequently consolidated into purpose-grouped, executable contracts instead of flat sets of overlapping page states.
 
-- Source: `/Users/homebodify/Projects/ingradient-ui-old/stories/pages/platform/0.0.1`
-- Target: `/Users/homebodify/Projects/ingradient-ui/stories/pages/platform/0.0.1`
+- Source: `/home/homebodify/Projects/ingradient-ui-old/stories/pages/platform/0.0.1`
+- Target: `/home/homebodify/Projects/ingradient-ui/stories/pages/platform/0.0.1`
 - Source files reviewed: 25 project files plus `.DS_Store`
 - Target files present: all 25 project files
 - Catalog story organization: split into Workspace, System States, Interactions, Analytics, Image Inspector, Dataset Details, Workflows, and Responsive

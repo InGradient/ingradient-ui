@@ -1,0 +1,38 @@
+
+> ingradient-data@0.1.0 build
+> tsc && vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 6570 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       0.80 kB │ gzip:   0.42 kB
+dist/assets/favicon-B1dCeDrM.ico                      4.29 kB
+dist/assets/ingradient_logo_l_white-C7naFZIu.png      4.65 kB
+dist/assets/react-CQ3lxQYr.js                         0.03 kB │ gzip:   0.05 kB │ map:     0.10 kB
+dist/assets/daypicker-CQ3lxQYr.js                     0.03 kB │ gzip:   0.05 kB │ map:     0.10 kB
+dist/assets/groupKeyFromName-D22VlJqP.js              0.53 kB │ gzip:   0.31 kB │ map:     2.21 kB
+dist/assets/CreateProjectPage-BPNbxsvn.js             1.35 kB │ gzip:   0.75 kB │ map:     5.49 kB
+dist/assets/images.upload-D7A0KoLD.js                 1.55 kB │ gzip:   0.85 kB │ map:     8.46 kB
+dist/assets/SignupPage-CZk0DCpI.js                    2.87 kB │ gzip:   1.27 kB │ map:     8.16 kB
+dist/assets/LoginPage-C4_HwEb4.js                     4.17 kB │ gzip:   1.76 kB │ map:    13.19 kB
+dist/assets/ClassManagePage-CQlIaRRl.js              10.77 kB │ gzip:   4.10 kB │ map:    41.64 kB
+dist/assets/DashboardPage-LI8cSqic.js                10.96 kB │ gzip:   4.22 kB │ map:    37.06 kB
+dist/assets/htmlToImage-B_wielpZ.js                  13.00 kB │ gzip:   5.19 kB │ map:    57.32 kB
+dist/assets/use-analysis-widgets-DcNrlbFQ.js         18.57 kB │ gzip:   5.66 kB │ map:    57.48 kB
+dist/assets/dompurify-BgtpMKW3.js                    22.77 kB │ gzip:   8.75 kB │ map:    93.51 kB
+dist/assets/query-BpIJjKbH.js                        46.80 kB │ gzip:  14.11 kB │ map:   178.87 kB
+dist/assets/CatalogPage-C1379-dS.js                 148.37 kB │ gzip:  43.47 kB │ map:   570.96 kB
+dist/assets/index.es-CjTPXcHt.js                    150.50 kB │ gzip:  51.27 kB │ map:   637.04 kB
+dist/assets/router-C-cM_be2.js                      164.83 kB │ gzip:  53.77 kB │ map:   708.67 kB
+dist/assets/html2canvas-CBrSDip1.js                 201.42 kB │ gzip:  47.70 kB │ map:   602.27 kB
+dist/assets/charts-v_0rX0LQ.js                      340.55 kB │ gzip: 100.74 kB │ map: 1,776.95 kB
+dist/assets/jspdf-Dtqa69aU.js                       390.66 kB │ gzip: 127.39 kB │ map: 1,290.88 kB
+dist/assets/index-Dl_LiYeJ.js                     1,237.16 kB │ gzip: 345.51 kB │ map: 5,188.43 kB
+
+(!) Some chunks are larger than 1000 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.24s
