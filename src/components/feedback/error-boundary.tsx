@@ -13,6 +13,7 @@
  */
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 import styled from 'styled-components'
+import { Button } from '../inputs/button'
 
 const FallbackBox = styled.div`
   display: flex;
@@ -45,11 +46,6 @@ const FallbackDetail = styled.pre`
   margin: 0;
 `
 
-const FallbackButton = styled.button`
-  padding: var(--ig-space-3) var(--ig-space-6);
-  cursor: pointer;
-`
-
 export interface DefaultErrorFallbackProps {
   error: unknown
   resetErrorBoundary?: () => void
@@ -62,7 +58,7 @@ export function DefaultErrorFallback({ error, resetErrorBoundary }: DefaultError
       <FallbackTitle>Something went wrong</FallbackTitle>
       <FallbackDetail>{message}</FallbackDetail>
       {resetErrorBoundary ? (
-        <FallbackButton onClick={resetErrorBoundary}>Try again</FallbackButton>
+        <Button variant="secondary" size="sm" type="button" onClick={resetErrorBoundary}>Try again</Button>
       ) : null}
     </FallbackBox>
   )

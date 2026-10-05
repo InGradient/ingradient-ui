@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { stateCenteredLayout, stateDescriptionText, stateTitleText } from '../../primitives'
+import { Button } from '../inputs/button'
 
 const Wrap = styled.div`
   ${stateCenteredLayout}
@@ -28,17 +29,6 @@ const Description = styled.div`
   max-width: var(--ig-popup-md);
 `
 
-const ActionBtn = styled.button`
-  border: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-sm);
-  background: transparent;
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-xs);
-  padding: var(--ig-space-2) var(--ig-space-5);
-  cursor: pointer;
-  transition: background var(--ig-motion-fast);
-  &:hover { background: var(--ig-color-surface-interactive); }
-`
 
 export interface EmptyStateProps {
   icon?: React.ReactNode
@@ -89,7 +79,9 @@ export function EmptyState({
         </Description>
       ) : null}
       {action ? (
-        <ActionBtn
+        <Button
+          variant="secondary"
+          size="sm"
           type="button"
           onClick={action.onClick}
           data-ig-slot="EmptyState.Action"
@@ -97,7 +89,7 @@ export function EmptyState({
           data-ig-label={action.label}
         >
           {action.label}
-        </ActionBtn>
+        </Button>
       ) : null}
       {children}
     </Wrap>

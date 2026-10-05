@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { TextButton } from '../inputs/text-button'
 
 const Bar = styled.div`
   display: flex;
@@ -17,18 +18,6 @@ const Count = styled.span`
   font-weight: var(--ig-font-weight-semibold);
   white-space: nowrap;
 `
-
-const ClearBtn = styled.button`
-  border: none;
-  background: none;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-  cursor: pointer;
-  text-decoration: underline;
-  &:hover { color: var(--ig-color-text-primary); }
-`
-
-const SelectAllBtn = styled(ClearBtn)``
 
 const Spacer = styled.div`
   flex: 1;
@@ -61,9 +50,9 @@ export function SelectionActionBar({
       <Count>
         {selectedCount} selected{totalCount != null ? ` / ${totalCount}` : ''}
       </Count>
-      <ClearBtn type="button" onClick={onClearSelection}>Clear</ClearBtn>
+      <TextButton tone="muted" size="xs" underline="always" onClick={onClearSelection}>Clear</TextButton>
       {onSelectAll && (
-        <SelectAllBtn type="button" onClick={onSelectAll}>{selectAllLabel}</SelectAllBtn>
+        <TextButton tone="muted" size="xs" underline="always" onClick={onSelectAll}>{selectAllLabel}</TextButton>
       )}
       <Spacer />
       {actions && <Actions>{actions}</Actions>}
