@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test'
+// Single source for the current Edge screen inventory (also used by the route/a11y probes).
+import { edgeRoutes } from '../probes/edge-routes.mjs'
 
 type StoryTarget = {
   name: string
@@ -6,6 +8,8 @@ type StoryTarget = {
   readyText: string
   readyRole?: 'dialog' | 'heading'
   fullPage?: boolean
+  /** Wait for network idle, web fonts and decoded images before capturing (image-heavy full-app screens). */
+  settle?: boolean
 }
 
 const stories: StoryTarget[] = [
@@ -38,6 +42,15 @@ const stories: StoryTarget[] = [
   { name: 'pages-edge-0-0-1-license', id: 'pages-edge-0-0-1-license--key-empty', readyText: 'INGRADIENT Edge', readyRole: 'heading', fullPage: true },
   { name: 'pages-edge-0-0-1-datasetselect', id: 'pages-edge-0-0-1-datasetselect--with-groups', readyText: 'Datasets', readyRole: 'heading', fullPage: true },
 
+  // Edge 0.0.5 — current product screens (Login 4, DatasetSelect 6, Workspace 9).
+  ...edgeRoutes.map(({ id, readyText }) => ({
+    name: id.replace(/--/, '-'),
+    id,
+    readyText,
+    fullPage: true,
+    settle: true,
+  })),
+
   // Medical pages (Phase 6)
   { name: 'pages-medical-0-0-1-auth', id: 'pages-medical-0-0-1-auth--login', readyText: 'medilabel', fullPage: true },
   { name: 'pages-medical-0-0-1-projectpicker', id: 'pages-medical-0-0-1-projectpicker--default', readyText: 'Cases', fullPage: true },
@@ -52,6 +65,14 @@ async function openStory(page: import('@playwright/test').Page, story: StoryTarg
     : page.getByText(story.readyText, { exact: false }).first()
   await ready.waitFor({ state: 'visible' })
   await expect(page.getByText("Couldn't find story matching", { exact: false })).toHaveCount(0)
+  if (story.settle) {
+    await page.waitForLoadState('networkidle')
+    await page.evaluate(async () => {
+      await document.fonts.ready
+      await Promise.all([...document.images].map((img) => (img.complete ? null : img.decode().catch(() => null))))
+    })
+    await page.mouse.move(0, 0)
+  }
   await page.addStyleTag({
     content: `
       *,
