@@ -1,4 +1,5 @@
 import React from 'react'
+import sidebarBrandMark from '../assets/sidebar-brand-mark.png'
 import type { SidebarShellAction, SidebarShellItem } from '../../src/patterns'
 
 export function ProjectIcon() {
@@ -60,7 +61,14 @@ export function SettingsIcon() {
 export function BrandMark({ expanded = true }: { expanded?: boolean }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--ig-color-text-primary)', fontWeight: 700, fontSize: 14 }}>
-      <span style={{ width: 'var(--ig-control-height-xs)', height: 'var(--ig-control-height-xs)', borderRadius: 'var(--ig-radius-md)', background: 'linear-gradient(135deg, var(--ig-color-accent), var(--ig-color-success))', flexShrink: 0 }} />
+      <img
+        src={sidebarBrandMark}
+        alt={expanded ? '' : 'Ingradient'}
+        width={24}
+        height={24}
+        draggable={false}
+        style={{ width: 'var(--ig-control-height-xs)', height: 'var(--ig-control-height-xs)', flexShrink: 0 }}
+      />
       {expanded ? <span>Ingradient</span> : null}
     </div>
   )
