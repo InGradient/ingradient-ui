@@ -1,5 +1,6 @@
 import { rotations } from '@ingradient/ui'
 import styled, { css, keyframes } from 'styled-components';
+import { edgeGeometry } from '../geometry'
 
 const captureSpinAnim = keyframes`to { transform: rotate(${rotations.full}); }`;
 
@@ -112,7 +113,7 @@ export const ControlRow = styled.div`
 `;
 
 export const CaptureBar = styled.div`
-  height: var(--ig-layout-capture-bar);
+  height: ${edgeGeometry.captureBar};
   background-color: var(--ig-color-surface-panel);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   display: flex;
@@ -198,9 +199,9 @@ export const GridOverlay = styled.div`
   pointer-events: none;
   z-index: var(--ig-z-raised);
   background-image:
-    linear-gradient(to right, transparent calc(var(--ig-layout-capture-grid) / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + var(--ig-space-1px))),
-    linear-gradient(to bottom, transparent calc(var(--ig-layout-capture-grid) / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(var(--ig-layout-capture-grid) / 2), transparent calc(var(--ig-layout-capture-grid) / 2 + var(--ig-space-1px)));
-  background-size: var(--ig-layout-capture-grid) var(--ig-layout-capture-grid);
+    linear-gradient(to right, transparent calc(${edgeGeometry.captureGrid} / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(${edgeGeometry.captureGrid} / 2), transparent calc(${edgeGeometry.captureGrid} / 2 + var(--ig-space-1px))),
+    linear-gradient(to bottom, transparent calc(${edgeGeometry.captureGrid} / 2 - var(--ig-space-1px)), var(--ig-color-white-12) calc(${edgeGeometry.captureGrid} / 2), transparent calc(${edgeGeometry.captureGrid} / 2 + var(--ig-space-1px)));
+  background-size: ${edgeGeometry.captureGrid} ${edgeGeometry.captureGrid};
   background-position: center center;
 `;
 
@@ -271,8 +272,8 @@ export const HistogramOverlay = styled.div`
 
 export const HistogramImage = styled.img`
   display: block;
-  width: var(--ig-layout-histogram-width);
-  height: var(--ig-layout-histogram-height);
+  width: ${edgeGeometry.histogramWidth};
+  height: ${edgeGeometry.histogramHeight};
   border-radius: var(--ig-radius-xs);
 `;
 

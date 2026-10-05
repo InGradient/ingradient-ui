@@ -2,9 +2,15 @@ import type React from 'react'
 import styled from 'styled-components'
 import type { HslColor } from './color-input-row.utils'
 
+/** Pattern-owned geometry (F-07): replaces deprecated core `layoutScale.colorPlane*` entries. */
+const colorEditorGeometry = {
+  planeHeight: '120px',
+  thumbSize: '18px',
+} as const
+
 const Plane = styled.div<{ $hue: number }>`
   position: relative;
-  height: var(--ig-layout-color-plane-height);
+  height: ${colorEditorGeometry.planeHeight};
   margin-bottom: var(--ig-space-5);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
@@ -26,8 +32,8 @@ const Thumb = styled.span<{ $saturation: number; $lightness: number }>`
   position: absolute;
   left: ${(p) => p.$saturation}%;
   top: ${(p) => 100 - p.$lightness}%;
-  width: var(--ig-layout-color-thumb-size);
-  height: var(--ig-layout-color-thumb-size);
+  width: ${colorEditorGeometry.thumbSize};
+  height: ${colorEditorGeometry.thumbSize};
   border: var(--ig-border-2px) solid var(--ig-color-text-primary);
   border-radius: var(--ig-radius-pill);
   box-shadow: var(--ig-shadow-focus-ring);
