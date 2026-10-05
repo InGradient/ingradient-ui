@@ -8,7 +8,13 @@ export const AppRoot = styled.div`
   overflow: hidden;
 `
 
-export const AppContent = styled.div`
+/** Window chrome (title bar) landmark. Neutral box: the slotted bar owns its own geometry. */
+export const AppHeader = styled.header`
+  flex-shrink: 0;
+`
+
+/** Single page `main` landmark for every Edge screen composed by the shell. */
+export const AppContent = styled.main`
   flex: 1;
   min-height: 0;
   overflow: hidden;

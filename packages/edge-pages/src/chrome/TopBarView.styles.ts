@@ -40,7 +40,10 @@ export const EdgeInfoSection = styled.div`
   gap: var(--ig-space-5);
 `
 
-export const BreadcrumbWrap = styled.div`
+/** Page title of the workspace (project / dataset). Heading semantics only: children own typography. */
+export const BreadcrumbWrap = styled.h1`
+  margin: 0;
+  font: inherit;
   display: flex;
   align-items: center;
   gap: var(--ig-space-2);

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { Card as UiCard } from '@ingradient/ui/components'
 
-export const Page = styled.div`
+/** Full-page `main` landmark: the auth card is the page's only content region. */
+export const Page = styled.main`
   min-height: 100vh;
   display: grid;
   place-items: center;

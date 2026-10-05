@@ -1,7 +1,7 @@
 import { controlSizeNumbers } from '@ingradient/ui'
 import { Spinner } from '@ingradient/ui/components'
 import {
-  AppRoot, AppContent, AppFooterBar, ShutdownOverlay,
+  AppRoot, AppHeader, AppContent, AppFooterBar, ShutdownOverlay,
 } from './EdgeAppShellView.styles'
 import type { EdgeAppShellViewProps } from './types'
 
@@ -25,7 +25,7 @@ export function EdgeAppShellView(props: EdgeAppShellViewProps): JSX.Element {
         </ShutdownOverlay>
       )}
       <AppRoot>
-        {titleBar}
+        {titleBar && <AppHeader>{titleBar}</AppHeader>}
         <AppContent>
           {!isResolving && content}
         </AppContent>
