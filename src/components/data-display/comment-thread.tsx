@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from '../inputs/button'
 
 const Item = styled.div`
   padding: var(--ig-space-3) var(--ig-space-4);
@@ -56,19 +57,6 @@ const SendRow = styled.div`
   gap: var(--ig-space-2);
 `
 
-const SendBtn = styled.button`
-  padding: var(--ig-space-2) var(--ig-space-5);
-  border: none;
-  border-radius: var(--ig-radius-sm);
-  background: var(--ig-color-accent-strong);
-  color: var(--ig-color-on-accent);
-  font-size: var(--ig-font-size-xs);
-  font-weight: var(--ig-font-weight-semibold);
-  cursor: pointer;
-  &:disabled { opacity: var(--ig-opacity-faded); cursor: default; }
-  &:hover:not(:disabled) { opacity: var(--ig-opacity-loud); }
-`
-
 export interface CommentItemProps {
   author: React.ReactNode
   timestamp?: string
@@ -123,9 +111,9 @@ export function CommentInput({
       {onSubmit && (
         <SendRow>
           {accessory}
-          <SendBtn type="button" disabled={disabled || !value.trim()} onClick={onSubmit}>
+          <Button variant="solid" size="sm" type="button" disabled={disabled || !value.trim()} onClick={onSubmit}>
             {submitLabel}
-          </SendBtn>
+          </Button>
         </SendRow>
       )}
     </InputWrap>

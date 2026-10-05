@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { TextButton } from './text-button'
 
 const Bar = styled.div`
   display: flex;
@@ -8,15 +9,8 @@ const Bar = styled.div`
   flex-wrap: wrap;
 `
 
-const ClearBtn = styled.button`
-  border: none;
-  background: none;
-  color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-xs);
-  cursor: pointer;
-  text-decoration: underline;
+const ClearBtn = styled(TextButton)`
   white-space: nowrap;
-  &:hover { color: var(--ig-color-text-primary); }
 `
 
 export interface FilterBarLayoutProps {
@@ -30,7 +24,7 @@ export function FilterBarLayout({ onClear, clearLabel = 'Clear filters', childre
   return (
     <Bar className={className}>
       {children}
-      {onClear && <ClearBtn type="button" onClick={onClear}>{clearLabel}</ClearBtn>}
+      {onClear && <ClearBtn tone="muted" size="xs" onClick={onClear}>{clearLabel}</ClearBtn>}
     </Bar>
   )
 }

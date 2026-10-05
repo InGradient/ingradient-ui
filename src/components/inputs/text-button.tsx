@@ -30,6 +30,11 @@ const Btn = styled.button<{ $tone: TextButtonTone; $size: TextButtonSize }>`
   &:hover:not(:disabled) {
     text-decoration: underline;
   }
+  &:focus-visible {
+    outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
+    outline-offset: var(--ig-space-2px);
+    border-radius: var(--ig-radius-xs);
+  }
   &:disabled {
     opacity: var(--ig-opacity-disabled);
     cursor: not-allowed;
