@@ -34,7 +34,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
   return (
     <SetupPanelWrap>
       <SetupPanelHeader>
-        <Text size="var(--ig-font-size-md)" weight="bold">{labels.title}</Text>
+        <Text as="h2" size="var(--ig-font-size-md)" weight="bold">{labels.title}</Text>
         {canEditSetup && (
           <Inline gap="var(--ig-space-2)" align="center" wrap="nowrap">
             <Button variant="secondary" size="sm" type="button" onClick={onReset} disabled={isSetupBusy}>
