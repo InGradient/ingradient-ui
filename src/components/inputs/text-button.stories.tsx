@@ -24,6 +24,11 @@ export const Muted: Story = {
   args: { tone: 'muted', size: 'xs', children: 'Deselect all' },
 }
 
+/** Inline clear/select actions keep a persistent underline (SelectionActionBar, FilterBarLayout). */
+export const UnderlineAlways: Story = {
+  args: { tone: 'muted', size: 'xs', underline: 'always', children: 'Clear filters' },
+}
+
 export const WithLeadingIcon: Story = {
   args: {
     tone: 'accent',

@@ -50,9 +50,9 @@ export function SelectionActionBar({
       <Count>
         {selectedCount} selected{totalCount != null ? ` / ${totalCount}` : ''}
       </Count>
-      <TextButton tone="muted" size="xs" onClick={onClearSelection}>Clear</TextButton>
+      <TextButton tone="muted" size="xs" underline="always" onClick={onClearSelection}>Clear</TextButton>
       {onSelectAll && (
-        <TextButton tone="muted" size="xs" onClick={onSelectAll}>{selectAllLabel}</TextButton>
+        <TextButton tone="muted" size="xs" underline="always" onClick={onSelectAll}>{selectAllLabel}</TextButton>
       )}
       <Spacer />
       {actions && <Actions>{actions}</Actions>}

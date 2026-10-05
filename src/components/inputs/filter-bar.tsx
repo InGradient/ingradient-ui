@@ -24,7 +24,7 @@ export function FilterBarLayout({ onClear, clearLabel = 'Clear filters', childre
   return (
     <Bar className={className}>
       {children}
-      {onClear && <ClearBtn tone="muted" size="xs" onClick={onClear}>{clearLabel}</ClearBtn>}
+      {onClear && <ClearBtn tone="muted" size="xs" underline="always" onClick={onClear}>{clearLabel}</ClearBtn>}
     </Bar>
   )
 }
