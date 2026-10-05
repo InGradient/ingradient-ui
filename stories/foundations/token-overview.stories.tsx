@@ -52,10 +52,10 @@ const globalLayoutEntries: TokenEntry[] = [
 
 const edgeGeometryEntries: TokenEntry[] = [
   'captureBar', 'captureGrid', 'histogramWidth', 'histogramHeight', 'datasetCardMinHeight', 'datasetCardRecentMinHeight', 'logTimeMin', 'logDetailLeft', 'logDetailTop', 'logDetailWidth',
-].map((name) => ({ name, value: layoutScale[name as keyof typeof layoutScale], kind: 'ts' as const, usage: 'Edge feature geometry — migration planned' }))
+].map((name) => ({ name, value: layoutScale[name as keyof typeof layoutScale], kind: 'ts' as const, usage: 'Deprecated core alias — owner: edge-pages edgeGeometry' }))
 
 const patternGeometryEntries: TokenEntry[] = ['colorPlaneHeight', 'colorThumbSize']
-  .map((name) => ({ name, value: layoutScale[name as keyof typeof layoutScale], kind: 'ts' as const, usage: 'Shared pattern geometry — ownership under review' }))
+  .map((name) => ({ name, value: layoutScale[name as keyof typeof layoutScale], kind: 'ts' as const, usage: 'Deprecated core alias — owner: color-editor-plane pattern' }))
 
 const scaleEntries: TokenEntry[] = [
   ...Object.entries(controlSizes).map(([name, value]) => ({ name: `control.${name}`, value, kind: 'ts' as const, usage: 'Control height const' })),
@@ -175,8 +175,8 @@ export const LayoutInventory: Story = {
     <StorybookPage title="Layout ownership inventory" description="Complete layout token listing grouped by ownership. Product geometry remains visible but is explicitly not a generic foundation contract.">
       <StorybookGrid columns="repeat(auto-fit, minmax(300px, 1fr))">
         <StorybookSection title="Global layout" description="Shared shell and form geometry"><TokenTable entries={globalLayoutEntries} /></StorybookSection>
-        <StorybookSection title="Edge feature geometry" description="F-07 migration target"><TokenTable entries={edgeGeometryEntries} /></StorybookSection>
-        <StorybookSection title="Pattern geometry" description="Ownership under review"><TokenTable entries={patternGeometryEntries} /></StorybookSection>
+        <StorybookSection title="Edge feature geometry" description="Deprecated in core (F-07) — removal next breaking release"><TokenTable entries={edgeGeometryEntries} /></StorybookSection>
+        <StorybookSection title="Pattern geometry" description="Deprecated in core (F-07) — removal next breaking release"><TokenTable entries={patternGeometryEntries} /></StorybookSection>
       </StorybookGrid>
     </StorybookPage>
   ),

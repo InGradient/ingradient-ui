@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ModalBackdrop, surfacePanel } from '@ingradient/ui';
+import { edgeGeometry } from '../geometry'
 
 export const Container = styled.div`
   display: flex;
@@ -116,7 +117,7 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
 export const LogTime = styled.span`
   font-size: var(--ig-font-size-2xs);
   color: var(--ig-color-text-soft);
-  min-width: var(--ig-layout-log-time-min);
+  min-width: ${edgeGeometry.logTimeMin};
   margin-top: var(--ig-space-2px);
   flex-shrink: 0;
 `;
@@ -134,10 +135,10 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
   ${surfacePanel}
   background: var(--ig-color-surface-raised);
   position: fixed;
-  left: var(--ig-layout-log-detail-left);
-  top: var(--ig-layout-log-detail-top);
+  left: ${edgeGeometry.logDetailLeft};
+  top: ${edgeGeometry.logDetailTop};
   bottom: var(--ig-space-6);
-  width: var(--ig-layout-log-detail-width);
+  width: ${edgeGeometry.logDetailWidth};
   z-index: var(--ig-z-overlay-low);
   border-radius: var(--ig-radius-lg);
   display: ${({ $visible }) => ($visible ? 'flex' : 'none')};

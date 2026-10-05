@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { chartColors } from '@ingradient/ui'
 import { MenuIconButton } from '@ingradient/ui/components'
+import { edgeGeometry } from '../geometry'
 
 export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   display: flex;
@@ -16,7 +17,7 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   flex-shrink: 0;
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-sm);
-  min-height: var(--ig-layout-dataset-card-min-height);
+  min-height: ${edgeGeometry.datasetCardMinHeight};
   position: relative;
   transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
@@ -41,7 +42,7 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   cursor: pointer;
   text-align: left;
   position: relative;
-  min-height: var(--ig-layout-dataset-card-recent-min-height);
+  min-height: ${edgeGeometry.datasetCardRecentMinHeight};
   transition: background var(--ig-motion-swift), border-color var(--ig-motion-swift);
   &:hover {
     background: var(--ig-color-accent-soft-surface);
