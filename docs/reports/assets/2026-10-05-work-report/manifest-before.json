@@ -1,0 +1,123 @@
+[
+  {
+    "key": "edge-workspace-capture",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--capture",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "none"
+  },
+  {
+    "key": "storybook-sidebar",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/?path=/story/guides-getting-started--overview",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "none"
+  },
+  {
+    "key": "sidebarshell-logo",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=patterns-navigation-sidebarshell--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-emptystate",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=components-feedback-emptystate--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-selectionactionbar",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=components-feedback-selectionactionbar--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-filterbar",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=components-inputs-filterbarlayout--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-errorboundary",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=components-feedback-errorboundary--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-commentthread",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=patterns-comment-commentthread--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-theme-example",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=sandboxes-theme-lab--overview",
+    "viewport": [
+      1280,
+      720
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f07-token-overview",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=foundations-token-overview--overview",
+    "viewport": [
+      1280,
+      720
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f07-edge-log-hover",
+    "tag": "before",
+    "url": "http://127.0.0.1:6031/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--capture",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "scripted"
+  }
+]

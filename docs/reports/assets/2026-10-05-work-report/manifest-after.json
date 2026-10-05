@@ -1,0 +1,145 @@
+[
+  {
+    "key": "edge-workspace-capture",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--capture",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "none"
+  },
+  {
+    "key": "edge-workspace-collapsed",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--capture",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "scripted"
+  },
+  {
+    "key": "edge-settings-capture-tab",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--settings",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "scripted"
+  },
+  {
+    "key": "storybook-sidebar",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/?path=/story/guides-getting-started--overview",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "none"
+  },
+  {
+    "key": "sidebarshell-logo",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=patterns-navigation-sidebarshell--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-emptystate",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=components-feedback-emptystate--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-selectionactionbar",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=components-feedback-selectionactionbar--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-filterbar",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=components-inputs-filterbarlayout--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-errorboundary",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=components-feedback-errorboundary--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-commentthread",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=patterns-comment-commentthread--review",
+    "viewport": [
+      1280,
+      900
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f11-theme-example",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=sandboxes-theme-lab--overview",
+    "viewport": [
+      1280,
+      720
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f07-token-overview",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=foundations-token-overview--overview",
+    "viewport": [
+      1280,
+      720
+    ],
+    "fullPage": true,
+    "action": "none"
+  },
+  {
+    "key": "f07-edge-log-hover",
+    "tag": "after",
+    "url": "http://100.105.177.42:6017/iframe.html?viewMode=story&id=pages-edge-0-0-5-workspace--capture",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fullPage": false,
+    "action": "scripted"
+  }
+]
