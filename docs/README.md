@@ -36,6 +36,7 @@
 
 날짜별 작업 리포트는 완료된 변경의 검증·전달 상태를 보존하는 historical snapshot이다. 현재 설계 authority는 코드와 위의 active docs를 따른다.
 
+- [2026-10-05 작업 리포트 — CI 복구·Edge 접근성·공용 버튼·로고·F-07 (HTML, 전후 이미지 주석)](./reports/2026-10-05-work-report.ko.html)
 - [2026-09-21 Edge AS-IS / TO-BE — 변경 영역 표시 이미지 비교](./reports/2026-09-21-edge-as-is-to-be.ko.md)
 - [2026-09-20 Edge 0.0.5 레이어 감사·구현·검증](./reports/2026-09-20-edge-layer-audit-and-plan.ko.md)
 - [2026-09-08 오늘 작업 상세 리포트 — 항목별 비교 이미지](./reports/2026-09-08-daily-work-report.ko.md)

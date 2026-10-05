@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-10-05 작업 리포트 — CI 복구·Edge 접근성·공용 버튼·로고·F-07</title>
+<style>
+  :root { --bg:#0b0d12; --panel:#12151c; --line:#232834; --text:#e7eaf0; --muted:#9aa3b2; --as:#f28c28; --to:#14b8a6; --accent:#5b8cff; --ok:#22c55e; --warn:#eab308; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.65 "IBM Plex Sans", "Pretendard", system-ui, sans-serif }
+  main { max-width:1180px; margin:0 auto; padding:40px 24px 80px }
+  h1 { font-size:28px; margin:0 0 6px } h2 { font-size:21px; margin:48px 0 12px; padding-top:12px; border-top:1px solid var(--line) }
+  h3 { font-size:16px; margin:24px 0 8px; color:var(--muted) }
+  p, li { color:var(--text) } .muted { color:var(--muted) } code { font:13px "IBM Plex Mono", ui-monospace, monospace; background:#1a1e27; padding:1px 6px; border-radius:4px }
+  a { color:var(--accent) } nav.toc { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 20px; margin:20px 0 }
+  nav.toc ol { margin:0; padding-left:20px; columns:2 } table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top } th { color:var(--muted); font-weight:600 }
+  .tag { display:inline-block; white-space:nowrap; padding:1px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#0b0d12 }
+  .as { background:var(--as) } .to { background:var(--to) } .ok { background:var(--ok) } .none { background:#3a4150; color:var(--text) }
+  figure { margin:16px 0; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; overflow-x:auto }
+  figure img { display:block; max-width:100%; height:auto; border-radius:6px } figcaption { margin-top:8px; font-size:13px; color:var(--muted) }
+  ol.legend { margin:8px 0 0; padding:0; list-style:none } ol.legend li { margin:6px 0; padding-left:34px; position:relative }
+  ol.legend li b.n { position:absolute; left:0; top:1px; width:24px; height:24px; border-radius:50%; background:var(--to); color:#0b0d12; display:grid; place-items:center; font-size:13px }
+  .links { font-size:13px } .links a { margin-right:12px } .note { border-left:3px solid var(--warn); padding:6px 12px; background:#1a1810; border-radius:0 6px 6px 0; margin:12px 0 }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px } @media (max-width:900px){ .grid2{ grid-template-columns:1fr } nav.toc ol{ columns:1 } }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px } .grid3 figure { margin:0 } @media (max-width:900px){ .grid3{ grid-template-columns:1fr } }
+  .warn { background:var(--warn) }
+</style>
+</head>
+<body>
+<main>
+<h1>2026-10-05 작업 리포트</h1>
+<p class="muted">CI 복구 · Edge 접근성 · 공용 버튼(F-11) · SidebarShell 로고 · Edge 크기 값 이동(F-07) · Storybook 메뉴 정리 · Edge 촬영 설정/패널 접기 공개</p>
+
+<nav class="toc"><ol>
+  <li><a href="#basis">비교 기준과 검증 결과</a></li>
+  <li><a href="#summary">변경 목록</a></li>
+  <li><a href="#edge-panels">Edge 작업 화면 — 좌우 패널 접기</a></li>
+  <li><a href="#edge-capture">Edge 설정 — Capture 탭</a></li>
+  <li><a href="#sb-menu">Storybook 메뉴 정리</a></li>
+  <li><a href="#ds-baseline">Edge DatasetSelect 기준선 갱신</a></li>
+  <li><a href="#logo">SidebarShell 로고</a></li>
+  <li><a href="#f11">공용 버튼 통일 (F-11)</a></li>
+  <li><a href="#f07">Edge 크기 값 이동 (F-07)</a></li>
+  <li><a href="#a11y">접근성 구조 (화면 변화 없음)</a></li>
+  <li><a href="#ci">CI 복구와 작업 환경</a></li>
+  <li><a href="#next">남은 일</a></li>
+  <li><a href="#edge005">Edge 0.0.5 시각 기준선</a></li>
+</ol></nav>
+
+<h2 id="basis">1. 비교 기준과 검증 결과</h2>
+<table>
+  <tr><th>항목</th><th>기준</th></tr>
+  <tr><td><span class="tag as">AS-IS</span></td><td><code>4c414bf</code> — 오늘 작업 전 GitHub <code>main</code>. 이 커밋을 별도 폴더에서 다시 빌드해 캡처했다(과거 이미지 재사용 아님).</td></tr>
+  <tr><td><span class="tag to">TO-BE</span></td><td><code>2818cda</code> — 오늘 마지막 병합 후 <code>main</code>. 같은 방식으로 빌드·캡처.</td></tr>
+  <tr><td>조건</td><td>같은 Story·같은 조작·같은 viewport(Edge 1440×1000, 컴포넌트 1280×900 등), dark, 새 브라우저 context, 마우스 화면 밖. Omarchy(Linux) Chromium.</td></tr>
+  <tr><td>표시</td><td>주황 박스 = AS-IS, 청록 박스 = TO-BE. <b>번호가 같으면 같은 변경</b>이다. 박스 위치는 두 이미지의 픽셀 차이 영역을 자동 탐지한 뒤 사람이 확인해 정했다. 원본은 각 절의 링크에서 그대로 볼 수 있다.</td></tr>
+  <tr><td>범위</td><td>GitHub <code>main</code>이 오늘 바뀐 전체 범위. 9월 27일에 로컬 커밋된 Edge 촬영 설정·패널 접기 통합과 Storybook 메뉴 정리가 오늘 처음 공개돼 함께 포함했다. <a href="https://github.com/InGradient/ingradient-ui/compare/4c414bf...2818cda">전체 diff</a></td></tr>
+  <tr><td>검증</td><td><span class="tag ok">통과</span> <code>main</code> CI(<code>2818cda</code>): lint·타입·unit·Storybook 상호작용/접근성·패키지·시각 비교. 9월 21일부터 실패하던 CI가 오늘 복구됐다.</td></tr>
+</table>
+<p class="links">캡처 기록: <a href="assets/2026-10-05-work-report/manifest-before.json">AS-IS manifest</a> <a href="assets/2026-10-05-work-report/manifest-after.json">TO-BE manifest</a> <a href="assets/2026-10-05-work-report/annotation-spec.json">박스 좌표</a></p>
+
+<h2 id="summary">2. 변경 목록</h2>
+<table>
+  <tr><th>PR / 커밋</th><th>내용</th><th>화면 변화</th></tr>
+  <tr><td><code>c2f4a18</code> (9/27)</td><td>Edge 설정 Capture 탭, 좌우 패널 접기 (PR #18 통합)</td><td><span class="tag to">있음</span> §3·§4</td></tr>
+  <tr><td><code>2d697e6</code> (9/27)</td><td>Storybook 메뉴: 별도 최상위 그룹을 기존 Components·Guides 아래로</td><td><span class="tag to">있음</span> §5</td></tr>
+  <tr><td><a href="https://github.com/InGradient/ingradient-ui/pull/19">#19</a></td><td>CI 실패 원인 수정(테스트의 페이지 패키지 경로), Node 20 고정, DatasetSelect 기준선 승인</td><td><span class="tag to">기준선</span> §6·§11</td></tr>
+  <tr><td><a href="https://github.com/InGradient/ingradient-ui/pull/20">#20</a></td><td>Edge·Platform 로그인 화면에 header·main·h1 구조</td><td><span class="tag none">없음</span> §10</td></tr>
+  <tr><td><a href="https://github.com/InGradient/ingradient-ui/pull/21">#21</a></td><td>SidebarShell 로고 교체</td><td><span class="tag to">있음</span> §7</td></tr>
+  <tr><td><a href="https://github.com/InGradient/ingradient-ui/pull/22">#22</a></td><td>F-11: 직접 만든 버튼 5곳을 공용 Button·TextButton으로 통일</td><td><span class="tag to">있음</span> §8</td></tr>
+  <tr><td><a href="https://github.com/InGradient/ingradient-ui/pull/23">#23</a></td><td>F-07 1단계: Edge·패턴 전용 크기 값을 소유 패키지로 이동</td><td><span class="tag none">화면 동일</span> §9 (문서 문구만)</td></tr>
+</table>
+
+<h2 id="edge-panels">3. Edge 작업 화면 — 좌우 패널 접기</h2>
+<figure><a href="assets/2026-10-05-work-report/01-edge-workspace-panels-comparison.png"><img src="assets/2026-10-05-work-report/01-edge-workspace-panels-comparison.png" alt="Edge 작업 화면 AS-IS/TO-BE"></a></figure>
+<div class="grid2">
+  <figure><a href="assets/2026-10-05-work-report/01a-edge-logs-header-zoom-comparison.png"><img src="assets/2026-10-05-work-report/01a-edge-logs-header-zoom-comparison.png" alt="Logs 헤더 확대"></a><figcaption>① Logs 헤더 확대</figcaption></figure>
+  <figure><a href="assets/2026-10-05-work-report/01b-edge-panel-headers-zoom-comparison.png"><img src="assets/2026-10-05-work-report/01b-edge-panel-headers-zoom-comparison.png" alt="Pattern Preview 헤더 확대"></a><figcaption>② Pattern Preview 헤더 확대</figcaption></figure>
+</div>
+<ol class="legend">
+  <li><b class="n">1</b>Logs 헤더 오른쪽에 <b>접기 버튼</b> 추가. Filter 버튼은 그만큼 왼쪽으로 이동.</li>
+  <li><b class="n">2</b>우측 패널 헤더(Pattern Preview)에 <b>접기 버튼</b> 추가.</li>
+  <li><b class="n">3</b>헤더 줄이 생기면서 우측 패널 내용(패턴 버튼·Class 목록)이 약 13px 아래로 이동.</li>
+</ol>
+<figure><a href="assets/2026-10-05-work-report/02-edge-workspace-collapsed-comparison.png"><img src="assets/2026-10-05-work-report/02-edge-workspace-collapsed-comparison.png" alt="좌우 패널을 접은 신규 상태"></a><figcaption>신규 상태(이전에는 없던 화면): 두 접기 버튼을 누른 뒤</figcaption></figure>
+<ol class="legend">
+  <li><b class="n">1</b>왼쪽 Logs 패널이 280px → <b>58px</b>로 접히고 로그 상태 아이콘만 남는다(키보드로 각 항목 선택 가능).</li>
+  <li><b class="n">2</b>오른쪽 패널도 58px로 접히고 클래스 색 점만 남는다. 맨 위 버튼으로 다시 펼친다.</li>
+  <li><b class="n">3</b>가운데 촬영 화면이 넓어진다. 768px 창에서도 가운데 최소 폭 640px은 유지된다.</li>
+</ol>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--panel-collapse-workflow">현재 Story: 패널 접기 workflow</a><a href="assets/2026-10-05-work-report/01-edge-workspace-panels-as-is.png">AS-IS 원본</a><a href="assets/2026-10-05-work-report/01-edge-workspace-panels-to-be.png">TO-BE 원본</a></p>
+
+<h2 id="edge-capture">4. Edge 설정 — Capture 탭</h2>
+<figure><a href="assets/2026-10-05-work-report/03-edge-settings-tabs-comparison.png"><img src="assets/2026-10-05-work-report/03-edge-settings-tabs-comparison.png" alt="설정 탭 목록 AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>설정 탭이 10개 → 11개. Camera와 Lighting 사이에 <b>Capture</b> 탭이 추가됐다.</li></ol>
+<figure><a href="assets/2026-10-05-work-report/04-edge-settings-capture-comparison.png"><img src="assets/2026-10-05-work-report/04-edge-settings-capture-comparison.png" alt="Capture 탭 내용"></a><figcaption>신규 화면: Capture 탭</figcaption></figure>
+<ol class="legend">
+  <li><b class="n">1</b><b>AI mode</b> 스위치: 패턴 한 장과 모델로 위상을 예측(빠름) ↔ 여러 장 촬영(정확).</li>
+  <li><b class="n">2</b>AI 촬영에 쓸 <b>Pattern</b> 선택(모델이 학습한 pitch와 같아야 함).</li>
+  <li><b class="n">3</b>모델을 쓸 수 없을 때의 동작: 위상천이로 전환 / 중지 후 알림.</li>
+</ol>
+<p class="muted">선택 값은 다른 탭으로 이동하거나 설정 창을 닫았다 열어도 유지된다(자동 테스트로 확인).</p>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--capture-settings-workflow">현재 Story: Capture 설정 workflow</a></p>
+
+<h2 id="sb-menu">5. Storybook 메뉴 정리</h2>
+<figure><a href="assets/2026-10-05-work-report/05-storybook-sidebar-comparison.png"><img src="assets/2026-10-05-work-report/05-storybook-sidebar-comparison.png" alt="Storybook 사이드바 AS-IS/TO-BE" style="max-width:520px"></a></figure>
+<ol class="legend">
+  <li><b class="n">1</b>최상위 그룹 11개 → 6개. Builders·Sandboxes·Hooks는 <b>Guides</b> 아래(Builders·Examples·Hooks)로 이동.</li>
+  <li><b class="n">2</b>이름이 갈려 있던 <code>Data Display</code>·<code>DataDisplay</code>를 하나로 합침.</li>
+  <li><b class="n">3</b>Platform Pages·Edge Pages의 부품 스토리는 <b>Components → Platform / Edge</b> 아래로 이동.</li>
+</ol>
+<p class="muted">기존 Story 주소는 그대로 열린다. Pages 화면 스토리와 상태가 똑같이 겹치던 Dashboard 부품 스토리 4개만 정리했다(891 → 887개).</p>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/">현재 Storybook</a></p>
+
+<h2 id="ds-baseline">6. Edge DatasetSelect 기준선 갱신</h2>
+<figure><a href="assets/2026-10-05-work-report/06-edge-datasetselect-baseline-comparison.png"><img src="assets/2026-10-05-work-report/06-edge-datasetselect-baseline-comparison.png" alt="DatasetSelect 기준선 AS-IS/TO-BE"></a></figure>
+<ol class="legend">
+  <li><b class="n">1</b>카드 더보기 아이콘: 가로 점 <code>…</code> → 세로 점 <code>⋮</code>(공용 메뉴 버튼).</li>
+  <li><b class="n">2</b>클래스 칩 글자: 클래스 색 → 밝은 기본 글자(대비 개선). 앞의 색 점은 그대로.</li>
+</ol>
+<div class="note">화면 코드는 9월 21일 <code>4a85c21</code>에서 이미 바뀌었다. 그 뒤 CI가 고장 나 시각 비교가 돌지 않았고, 오늘 CI를 고친 뒤 차이가 드러나 <b>승인 후 기준 사진만 교체</b>했다. 그래서 이 절의 AS-IS/TO-BE는 예전·새 <b>기준 사진</b>(CI Ubuntu 캡처)이다.</div>
+<p class="links"><a href="https://github.com/InGradient/ingradient-ui/pull/19/files">PR #19 변경 파일</a></p>
+
+<h2 id="logo">7. SidebarShell 로고</h2>
+<figure><a href="assets/2026-10-05-work-report/07-sidebarshell-logo-comparison.png"><img src="assets/2026-10-05-work-report/07-sidebarshell-logo-comparison.png" alt="SidebarShell 로고 AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>그라데이션 원형 마크 → 제공해 주신 로고(<code>Frame 119.png</code>). 데모 4개 모두 적용. 접힌 상태에서는 로고에 "Ingradient" 대체 텍스트.</li></ol>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/patterns-navigation-sidebarshell--review">현재 Story</a><a href="https://github.com/InGradient/ingradient-ui/pull/21/files">PR #21 변경 파일</a></p>
+
+<h2 id="f11">8. 공용 버튼 통일 (F-11)</h2>
+<p>같은 계층의 공용 컴포넌트를 쓰지 않고 버튼을 직접 다시 만든 곳을 공용 <code>Button</code>·<code>TextButton</code>으로 바꿨다. 크기·포커스·비활성 상태가 다른 화면과 같아진다.</p>
+<h3>EmptyState</h3>
+<figure><a href="assets/2026-10-05-work-report/08-f11-emptystate-comparison.png"><img src="assets/2026-10-05-work-report/08-f11-emptystate-comparison.png" alt="EmptyState AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>작은 테두리 버튼 → 공용 버튼. 옆 카드의 "Reset filters"와 같은 모양.</li></ol>
+<h3>SelectionActionBar</h3>
+<figure><a href="assets/2026-10-05-work-report/09-f11-selectionactionbar-comparison.png"><img src="assets/2026-10-05-work-report/09-f11-selectionactionbar-comparison.png" alt="SelectionActionBar AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>"Clear"·"Select all" → 공용 TextButton. <b>밑줄은 결정하신 대로 항상 표시</b>. 브라우저 기본 여백이 사라져 조금 촘촘해지고, 오른쪽 버튼들도 그만큼 왼쪽으로 붙는다.</li></ol>
+<h3>FilterBarLayout</h3>
+<figure><a href="assets/2026-10-05-work-report/10-f11-filterbar-comparison.png"><img src="assets/2026-10-05-work-report/10-f11-filterbar-comparison.png" alt="FilterBarLayout AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>"Clear filters"·"Reset all" → 공용 TextButton(밑줄 항상). 왼쪽 기본 여백만 제거.</li></ol>
+<h3>ErrorBoundary</h3>
+<figure><a href="assets/2026-10-05-work-report/11-f11-errorboundary-comparison.png"><img src="assets/2026-10-05-work-report/11-f11-errorboundary-comparison.png" alt="ErrorBoundary AS-IS/TO-BE"></a></figure>
+<ol class="legend"><li><b class="n">1</b>"Try again": 브라우저 기본 회색 버튼 → 디자인 시스템 버튼.</li></ol>
+<div class="grid2">
+  <div><h3>CommentInput "Send"</h3>
+  <figure><a href="assets/2026-10-05-work-report/12-f11-commentthread-comparison.png"><img src="assets/2026-10-05-work-report/12-f11-commentthread-comparison.png" alt="Send 버튼 AS-IS/TO-BE" style="max-width:260px"></a></figure>
+  <ol class="legend"><li><b class="n">1</b>같은 파란 채움 버튼. 높이만 공용 규격으로 조금 커짐.</li></ol></div>
+  <div><h3>Theme 예시(시각 비교 대상)</h3>
+  <figure><a href="assets/2026-10-05-work-report/13-f11-theme-example-comparison.png"><img src="assets/2026-10-05-work-report/13-f11-theme-example-comparison.png" alt="Theme 예시 AS-IS/TO-BE"></a></figure>
+  <ol class="legend"><li><b class="n">1</b>EmptyState 버튼 변경이 반영돼 기준 사진을 승인 후 교체.</li></ol></div>
+</div>
+<p class="muted">함께 바뀐 것: TextButton에 <b>키보드 포커스 링</b> 추가(마우스 사용 시에는 보이지 않음). 댓글 입력창은 공용 입력창보다 포커스 표시가 뚜렷해 그대로 두었다.</p>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/components-feedback-selectionactionbar--review">현재 Story: SelectionActionBar</a><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/components-inputs-textbutton--underline-always">TextButton 밑줄 항상</a><a href="https://github.com/InGradient/ingradient-ui/pull/22/files">PR #22 변경 파일</a></p>
+
+<h2 id="f07">9. Edge 크기 값 이동 (F-07 1단계)</h2>
+<p>공용 토큰에 섞여 있던 Edge 전용 크기 10개(촬영 바·그리드·히스토그램·데이터셋 카드·로그 상세)는 <code>edge-pages</code>의 <code>edgeGeometry</code>로, 색 편집기 크기 2개는 해당 패턴으로 옮겼다. <b>값이 같아 실제 화면은 바뀌지 않는다.</b></p>
+<table>
+  <tr><th>화면</th><th>변경 전후 픽셀 비교</th></tr>
+  <tr><td>Edge 작업 화면(촬영)</td><td>0 byte 차이</td></tr>
+  <tr><td>Edge 작업 화면 — 로그 상세 팝업(hover)</td><td>0 byte 차이</td></tr>
+  <tr><td>Edge 로그 필터 열림</td><td>0 byte 차이</td></tr>
+  <tr><td>Edge 데이터셋 선택</td><td>0 byte 차이</td></tr>
+  <tr><td>색 편집기(ColorEditorPlane)</td><td>0 byte 차이</td></tr>
+</table>
+<p class="muted">비교 방법: PR #23 브랜치에서 변경 전/후를 각각 빌드해 같은 조건으로 캡처한 PNG의 바이트를 모두 비교했다. 보이는 변화는 Token Overview의 설명 문구뿐이다.</p>
+<figure><a href="assets/2026-10-05-work-report/14-f07-token-overview-comparison.png"><img src="assets/2026-10-05-work-report/14-f07-token-overview-comparison.png" alt="Token Overview 문구 AS-IS/TO-BE"></a></figure>
+<ol class="legend">
+  <li><b class="n">1</b>섹션 설명: "F-07 migration target / Ownership under review" → "Deprecated in core (F-07) — removal next breaking release".</li>
+  <li><b class="n">2</b>각 값의 용도: "migration planned" → "Deprecated core alias — owner: edge-pages edgeGeometry / color-editor-plane pattern".</li>
+</ol>
+<div class="note">옛 CSS 변수(<code>--ig-layout-capture-bar</code> 등)는 배포 패키지(<code>tokens.css</code>)를 쓰는 외부 프로젝트를 위해 <b>삭제하지 않고 "폐기 예정"으로 남겼다.</b> 다음 큰 버전에서 릴리스 노트와 함께 지운다(2단계).</div>
+<p class="links"><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/foundations-token-overview--layout-inventory">현재 Story: Token Overview 레이아웃</a><a href="https://github.com/InGradient/ingradient-ui/pull/23/files">PR #23 변경 파일</a></p>
+
+<h2 id="a11y">10. 접근성 구조 (화면 변화 없음)</h2>
+<p>보조기기가 화면 구조를 읽을 수 있도록 Edge 공용 셸의 제목줄을 <code>header</code>, 본문을 <code>main</code>으로 감쌌다. Workspace의 프로젝트/데이터셋 이름은 <code>h1</code>, Setup 패널 제목은 <code>h2</code>, Platform 로그인·가입 페이지는 <code>main</code>으로 지정했다. 여백과 글꼴을 초기화해서 모양은 그대로다.</p>
+<table>
+  <tr><th>대상(기본 axe 감사)</th><th>변경 전</th><th>변경 후</th></tr>
+  <tr><td>Edge 0.0.5 감사 시나리오 22개</td><td>22개 모두 위반 (main 영역 없음, 내용이 영역 밖, h1 없음)</td><td><b>0개</b></td></tr>
+  <tr><td>Platform 로그인</td><td>main 영역 없음 1건, 영역 밖 내용 6건</td><td><b>0건</b></td></tr>
+  <tr><td>범위 제외</td><td colspan="2">Medical 구버전 데모, Theme 예시(문서용 화면) — 제품 화면이 아님</td></tr>
+</table>
+<p class="links"><a href="assets/2026-10-05-work-report/a11y-audit-summary.json">시나리오별 결과 JSON</a><a href="https://github.com/InGradient/ingradient-ui/pull/20/files">PR #20 변경 파일</a></p>
+
+<h2 id="ci">11. CI 복구와 작업 환경</h2>
+<ul>
+  <li><b>원인:</b> unit 테스트가 <code>@ingradient/edge-pages</code>를 빌드 산출물(<code>lib/</code>)로 찾았다. CI는 빌드 전에 테스트를 돌려서 <code>lib/</code>가 없어 9월 21일부터 매번 실패했다. 로컬에서는 오래된 <code>lib/</code>가 남아 있어 실패가 가려져 있었다.</li>
+  <li><b>수정:</b> 테스트 설정이 TypeScript·Storybook과 같은 소스 경로를 쓰도록 맞추고, CI와 같은 Node 20을 <code>.nvmrc</code>로 고정했다.</li>
+  <li><b>작업 환경:</b> 모든 작업은 Omarchy(Linux)에서 진행한다. Node 20, Playwright, GitHub(simonkang76) 인증을 갖췄고 Mac은 확인용이다.</li>
+  <li><b>시각 비교 기준:</b> Omarchy와 CI(Ubuntu)는 한글·고정폭 글꼴 렌더링이 달라서, 기준 사진은 <b>CI 캡처로만</b> 갱신한다. 로컬 사진으로 갱신하지 않는다.</li>
+</ul>
+
+<h2 id="next">12. 남은 일</h2>
+<table>
+  <tr><th>항목</th><th>설명</th></tr>
+  <tr><td>Edge 0.0.5 시각 기준선</td><td>완료 — §13의 19장을 Simon 승인 후 등록(PR #24).</td></tr>
+  <tr><td>보안 취약점</td><td>의존성 31건. 배포 패키지에 들어가는 것은 3건(<code>nanoid</code>·<code>postcss</code> 높음, <code>styled-components</code> 보통).</td></tr>
+  <tr><td>접근성 검사 범위</td><td>Edge 59개 화면 중 19개 경로만 감사 중. 나머지 40개 흐름 확대와 CI 연결.</td></tr>
+  <tr><td>Storybook 10.6</td><td>업그레이드 가능. 브랜치에서 CI로 검증하는 방식이면 안전하다.</td></tr>
+  <tr><td>F-07 2단계</td><td>폐기 예정 CSS 변수 삭제. 다음 큰 버전 릴리스 때 진행.</td></tr>
+</table>
+
+<h2 id="edge005">13. Edge 0.0.5 시각 기준선 — <span class="tag ok">승인·등록</span></h2>
+<p>지금까지 시각 비교는 옛 Edge <b>0.0.1</b> 화면 3장만 지키고 있었다. 현재 작업 중인 <b>0.0.5</b> 화면 19개를 비교 대상에 추가했다(<a href="https://github.com/InGradient/ingradient-ui/pull/24">PR #24</a>). 아래는 <b>CI(Ubuntu)가 찍은 사진 그대로</b>이며, Simon 승인 후 기준 사진으로 등록했다. 이제 이 화면들이 의도치 않게 바뀌면 CI가 잡아낸다.</p>
+<table>
+  <tr><th>항목</th><th>내용</th></tr>
+  <tr><td>대상</td><td>route·접근성 probe와 같은 고정 목록 <code>tests/probes/edge-routes.mjs</code>(로그인 4, 데이터셋 선택 6, 작업 화면 9)</td></tr>
+  <tr><td>캡처 조건</td><td>1280×720, dark, 애니메이션·전환 정지, 네트워크·글꼴·이미지 로딩 완료 후. 시각 표시는 고정 테스트 데이터(<code>9:22:32 AM</code>)라 실행마다 같다.</td></tr>
+  <tr><td>안정성</td><td>Omarchy에서 2회 연속 캡처 19/19 동일. CI 첫 실행: 기존 34장 통과, 새 19장은 기준 없음으로 생성(예상대로 실패 처리).</td></tr>
+</table>
+<h3>로그인 (4)</h3><div class="grid3"><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-offline.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-offline.png" alt="오프라인 로그인" loading="lazy"></a><figcaption><b>오프라인 로그인</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-login--offline">Story 열기</a> · <code>login-offline</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-offline-no-package.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-offline-no-package.png" alt="오프라인 · 프로젝트 파일 없음" loading="lazy"></a><figcaption><b>오프라인 · 프로젝트 파일 없음</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-login--offline-no-package">Story 열기</a> · <code>login-offline-no-package</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-online-form.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-online-form.png" alt="온라인 로그인 입력" loading="lazy"></a><figcaption><b>온라인 로그인 입력</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-login--online-form">Story 열기</a> · <code>login-online-form</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-error.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-login-error.png" alt="로그인 실패 메시지" loading="lazy"></a><figcaption><b>로그인 실패 메시지</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-login--error">Story 열기</a> · <code>login-error</code></figcaption></figure></div><h3>데이터셋 선택 (6)</h3><div class="grid3"><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-offline.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-offline.png" alt="오프라인 목록" loading="lazy"></a><figcaption><b>오프라인 목록</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--offline">Story 열기</a> · <code>datasetselect-offline</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-online.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-online.png" alt="온라인 목록" loading="lazy"></a><figcaption><b>온라인 목록</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--online">Story 열기</a> · <code>datasetselect-online</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-loading.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-loading.png" alt="불러오는 중" loading="lazy"></a><figcaption><b>불러오는 중</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--loading">Story 열기</a> · <code>datasetselect-loading</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-empty.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-empty.png" alt="데이터셋 없음" loading="lazy"></a><figcaption><b>데이터셋 없음</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--empty">Story 열기</a> · <code>datasetselect-empty</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-fetch-error.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-fetch-error.png" alt="플랫폼 연결 실패" loading="lazy"></a><figcaption><b>플랫폼 연결 실패</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--fetch-error">Story 열기</a> · <code>datasetselect-fetch-error</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-session-expired.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-datasetselect-session-expired.png" alt="세션 만료 안내" loading="lazy"></a><figcaption><b>세션 만료 안내</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-datasetselect--session-expired">Story 열기</a> · <code>datasetselect-session-expired</code></figcaption></figure></div><h3>작업 화면 (9)</h3><div class="grid3"><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-capture.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-capture.png" alt="촬영 대기" loading="lazy"></a><figcaption><b>촬영 대기</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--capture">Story 열기</a> · <code>workspace-capture</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-images.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-images.png" alt="Images 탭" loading="lazy"></a><figcaption><b>Images 탭</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--images">Story 열기</a> · <code>workspace-images</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-statics.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-statics.png" alt="Statics 탭" loading="lazy"></a><figcaption><b>Statics 탭</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--statics">Story 열기</a> · <code>workspace-statics</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-setup.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-setup.png" alt="Setup 탭" loading="lazy"></a><figcaption><b>Setup 탭</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--setup">Story 열기</a> · <code>workspace-setup</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-capturing.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-capturing.png" alt="촬영 중(화면 잠금)" loading="lazy"></a><figcaption><b>촬영 중(화면 잠금)</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--capturing">Story 열기</a> · <code>workspace-capturing</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-sequence-failed.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-sequence-failed.png" alt="시퀀스 시작 실패" loading="lazy"></a><figcaption><b>시퀀스 시작 실패</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--sequence-failed">Story 열기</a> · <code>workspace-sequence-failed</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-log-filter-open.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-log-filter-open.png" alt="로그 필터 열림" loading="lazy"></a><figcaption><b>로그 필터 열림</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--log-filter-open">Story 열기</a> · <code>workspace-log-filter-open</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-offline.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-offline.png" alt="오프라인 작업 화면" loading="lazy"></a><figcaption><b>오프라인 작업 화면</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--offline">Story 열기</a> · <code>workspace-offline</code></figcaption></figure><figure><a href="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-settings.png"><img src="assets/2026-10-05-edge-005-baselines/pages-edge-0-0-5-workspace-settings.png" alt="System Settings" loading="lazy"></a><figcaption><b>System Settings</b><br><a href="http://omarchy.tail3e2097.ts.net:6017/?path=/story/pages-edge-0-0-5-workspace--settings">Story 열기</a> · <code>workspace-settings</code></figcaption></figure></div>
+
+<p class="muted">작성: 2026-10-05 · 기준 <code>4c414bf</code> → <code>2818cda</code> · Storybook 링크는 Omarchy의 Tailscale 주소다(같은 Tailscale 네트워크의 기기에서만 열린다).</p>
+</main>
+</body>
+</html>
