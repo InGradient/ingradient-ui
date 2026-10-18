@@ -67,11 +67,11 @@ function AuthScene(scene: Scene) {
   const { mode = 'login', email = '', password = '', name = '', error, loading = false } = scene
   return (
     <div style={pageStyle}>
-      <Stack gap={6} style={contentStyle}>
+      <Stack gap="var(--ig-space-2)" style={contentStyle}>
         <Card style={cardStyle}>
           <h1 style={titleStyle}>medilabel</h1>
           <p style={subtitleStyle}>의료 영상 라벨링 워크스페이스</p>
-          <Stack gap={4}>
+          <Stack gap="var(--ig-space-1)">
             <ModeSwitcher
               size="md"
               value={mode}

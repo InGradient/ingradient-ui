@@ -25,7 +25,7 @@ export const CustomLabel: Story = { args: { variant: 'processing', label: 'Uploa
 export const SideBySide: Story = {
   decorators: [],
   render: () => (
-    <Inline gap={4}>
+    <Inline gap="var(--ig-space-1)">
       <div style={{ position: 'relative', width: 220, height: 160, background: 'var(--ig-color-surface-panel)', borderRadius: 'var(--ig-radius-md)', overflow: 'hidden' }}>
         <MediaOverlay variant="archived" />
       </div>

@@ -77,7 +77,7 @@ export function DatasetListPanel({
     <Stack
       as="aside"
       aria-label={title}
-      gap={0}
+      gap="var(--ig-space-0)"
       data-ig-component="DatasetListPanel"
       data-ig-layer="patterns"
       style={PANEL_STYLE}
@@ -123,7 +123,7 @@ export function DatasetListPanel({
           ) : null}
         </Inline>
       ) : null}
-      <Stack as={showItems ? 'ul' : undefined} gap={0} style={LIST_STYLE}>
+      <Stack as={showItems ? 'ul' : undefined} gap="var(--ig-space-0)" style={LIST_STYLE}>
         {noProject ? (
           <EmptyText style={PLACEHOLDER_STYLE}>No project selected</EmptyText>
         ) : loading ? (

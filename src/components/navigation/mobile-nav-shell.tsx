@@ -238,7 +238,7 @@ export function MobileNavShell({
         <IconButton variant="secondary" type="button" aria-label="Open menu" onClick={onOpen}>
           {hamburgerIcon ?? <Menu size={iconSizeNumbers['2xl']} />}
         </IconButton>
-        <Inline gap={2} style={HEADER_TITLE_STYLE}>
+        <Inline gap="var(--ig-space-2px)" style={HEADER_TITLE_STYLE}>
           {appHeaderBrand}
           {appHeaderTitle}
         </Inline>
@@ -265,7 +265,7 @@ export function MobileNavShell({
           </IconButton>
         </Inline>
 
-        <Stack as="nav" gap={0} aria-label={navLabel} style={SECTION_STYLE}>
+        <Stack as="nav" gap="var(--ig-space-0)" aria-label={navLabel} style={SECTION_STYLE}>
           {mainItems.map((it) => (
             <Item key={it.key} type="button" $active={it.active} aria-current={it.active ? 'page' : undefined} onClick={it.onClick}>
               {it.icon}
@@ -277,7 +277,7 @@ export function MobileNavShell({
 
         <div style={DIVIDER_STYLE} />
 
-        <Stack gap={0} style={SECTION_STYLE}>
+        <Stack gap="var(--ig-space-0)" style={SECTION_STYLE}>
           {bottomItems.map((it) => (
             <Item key={it.key} type="button" $active={it.active} aria-current={it.active ? 'page' : undefined} onClick={it.onClick}>
               {it.icon}

@@ -32,7 +32,7 @@ export function CollapsibleSectionHeader({
 }: CollapsibleSectionHeaderProps) {
   return (
     <Btn type="button" onClick={onClick} className={className}>
-      <Inline as="span" gap={1}>
+      <Inline as="span" gap="var(--ig-space-1px)">
         <Text as="span">{open ? '▾' : '▸'}</Text>
         <Text as="span" size="var(--ig-font-size-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal">{title}</Text>
       </Inline>

@@ -74,7 +74,7 @@ type Scene = {
 function ProjectPickerScene({ empty = false }: Scene) {
   return (
     <div style={pageStyle}>
-      <Stack gap={7}>
+      <Stack gap="var(--ig-space-2-plus)">
         <Inline justify="space-between" align="center">
           <div>
             <h1 style={titleStyle}>Cases</h1>
@@ -90,7 +90,7 @@ function ProjectPickerScene({ empty = false }: Scene) {
               description="첫 의료 영상을 업로드하면 여기서 라벨링을 시작할 수 있습니다."
             />
           ) : (
-            <Grid gap={4} columns="repeat(3, minmax(0, 1fr))">
+            <Grid gap="var(--ig-space-1)" columns="repeat(3, minmax(0, 1fr))">
               {mockCases.map((c) => (
                 <Card key={c.id}>
                   <div style={caseCardBodyStyle}>

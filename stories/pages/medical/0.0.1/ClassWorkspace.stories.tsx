@@ -72,7 +72,7 @@ type Scene = {
 function ClassWorkspaceScene({ empty = false, drafting = false }: Scene) {
   return (
     <div style={pageStyle}>
-      <Stack gap={6}>
+      <Stack gap="var(--ig-space-2)">
         <Inline justify="space-between" align="center">
           <h1 style={titleStyle}>Label classes</h1>
         </Inline>
@@ -84,10 +84,10 @@ function ClassWorkspaceScene({ empty = false, drafting = false }: Scene) {
               description="첫 라벨 클래스를 만들어 라벨링을 시작하세요."
             />
           ) : (
-            <Stack gap={0}>
+            <Stack gap="var(--ig-space-0)">
               {mockClasses.map((cls) => (
                 <div key={cls.id} style={rowStyle}>
-                  <Inline gap={3} align="center">
+                  <Inline gap="var(--ig-space-3px)" align="center">
                     <ColorSwatch $color={cls.color} $size="md" $shape="circle" />
                     <span style={labelStyle}>{cls.label}</span>
                   </Inline>

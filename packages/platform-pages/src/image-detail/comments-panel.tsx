@@ -174,7 +174,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
   }))
 
   return (
-    <Stack gap={0} className={className}>
+    <Stack gap="var(--ig-space-0)" className={className}>
       <CollapsibleSectionHeader
         title={title}
         open={open}

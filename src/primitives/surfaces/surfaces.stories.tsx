@@ -41,7 +41,7 @@ export const MiscPrimitives: Story = {
       </StorybookSection>
       <StorybookSection title="ScrollArea overflow" description="The content deliberately exceeds the viewport so scrolling can be reviewed independently.">
         <ScrollArea style={{ maxHeight: 180, paddingRight: 'var(--ig-space-2)' }}>
-          <Stack gap={0}>{['Dataset summary and review notes', 'Annotation sync status', 'Upload queue details', 'Quality checks and validation hints', 'Secondary metadata fields', 'Long overflow content for scroll behavior'].map((item) => <div key={item} style={{ padding: 'var(--ig-space-3) 0', borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' }}><Inline gap="var(--ig-space-3)" align="center"><Icon size={16}><Info /></Icon><span>{item}</span></Inline></div>)}</Stack>
+          <Stack gap="var(--ig-space-0)">{['Dataset summary and review notes', 'Annotation sync status', 'Upload queue details', 'Quality checks and validation hints', 'Secondary metadata fields', 'Long overflow content for scroll behavior'].map((item) => <div key={item} style={{ padding: 'var(--ig-space-3) 0', borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)' }}><Inline gap="var(--ig-space-3)" align="center"><Icon size={16}><Info /></Icon><span>{item}</span></Inline></div>)}</Stack>
         </ScrollArea>
       </StorybookSection>
     </StorybookPage>
@@ -60,7 +60,7 @@ export const BoundaryStates: Story = {
       </StorybookSection>
       <StorybookSection title="Long scroll rows" description="The focusable ScrollArea keeps long metadata reachable by mouse, trackpad, and keyboard.">
         <ScrollArea role="region" aria-label="Long dataset notes" style={{ maxHeight: 180, paddingRight: 'var(--ig-space-2)' }}>
-          <Stack gap={0}>{[
+          <Stack gap="var(--ig-space-0)">{[
             'Calibration note: the 2026-08-24 production run requires a final sensor alignment review before export.',
             'Operator handoff: compare the remaining 128 images with the baseline set from the previous validated batch.',
             'Quality summary: threshold warnings are expected for the current material, but failed measurements require escalation.',

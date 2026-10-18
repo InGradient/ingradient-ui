@@ -8,6 +8,9 @@ import { deleteDraft, listDrafts, saveDraft, type Draft } from '../../support/dr
 
 const DRAFTS_SCOPE = 'layout-composer'
 
+// The sliders pick a spacing-token index (0–13), never raw px: primitives only accept token strings.
+const spaceToken = (index: number) => `var(--ig-space-${index})`
+
 type PrimitiveKind = 'Stack' | 'Inline' | 'Grid' | 'Box'
 
 type ComposerArgs = {
@@ -46,10 +49,10 @@ const codeStyle: React.CSSProperties = {
 function buildSnippet(args: ComposerArgs) {
   const { primitive, gap, align, justify, columns, childCount } = args
   const propsByKind: Record<PrimitiveKind, string> = {
-    Stack: `gap={${gap}} align="${align}" justify="${justify}"`,
-    Inline: `gap={${gap}} align="${align}" justify="${justify}"`,
-    Grid: `gap={${gap}} columns="repeat(${columns}, 1fr)"`,
-    Box: `padding={${args.padding}}`,
+    Stack: `gap="${spaceToken(gap)}" align="${align}" justify="${justify}"`,
+    Inline: `gap="${spaceToken(gap)}" align="${align}" justify="${justify}"`,
+    Grid: `gap="${spaceToken(gap)}" columns="repeat(${columns}, 1fr)"`,
+    Box: `padding="${spaceToken(args.padding)}"`,
   }
   const opener = `<${primitive} ${propsByKind[primitive]}>`
   const items = Array.from({ length: childCount }, (_, i) => `  <Item>${i + 1}</Item>`).join('\n')
@@ -67,13 +70,13 @@ function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutCo
 
   let preview: React.ReactNode
   if (args.primitive === 'Stack') {
-    preview = <Stack gap={args.gap} align={args.align} justify={args.justify}>{children}</Stack>
+    preview = <Stack gap={spaceToken(args.gap)} align={args.align} justify={args.justify}>{children}</Stack>
   } else if (args.primitive === 'Inline') {
-    preview = <Inline gap={args.gap} align={args.align} justify={args.justify}>{children}</Inline>
+    preview = <Inline gap={spaceToken(args.gap)} align={args.align} justify={args.justify}>{children}</Inline>
   } else if (args.primitive === 'Grid') {
-    preview = <Grid gap={args.gap} columns={`repeat(${args.columns}, 1fr)`}>{children}</Grid>
+    preview = <Grid gap={spaceToken(args.gap)} columns={`repeat(${args.columns}, 1fr)`}>{children}</Grid>
   } else {
-    preview = <Box padding={args.padding}>{children}</Box>
+    preview = <Box padding={spaceToken(args.padding)}>{children}</Box>
   }
 
   const snippet = buildSnippet(args)
@@ -117,31 +120,31 @@ function LayoutComposer({ onLoadDraftArgs = () => undefined, ...args }: LayoutCo
         {preview}
       </div>
       <pre style={codeStyle}>{snippet}</pre>
-      <Inline gap={3} style={{ marginTop: 'var(--ig-space-4)' }}>
+      <Inline gap="var(--ig-space-3px)" style={{ marginTop: 'var(--ig-space-4)' }}>
         <Button variant="accent" size="sm" onClick={handleDownload}>Download TSX</Button>
         <Button variant="secondary" size="sm" onClick={handleCopy}>Copy snippet</Button>
         {feedback ? <span style={{ ...codeStyle, marginTop: 0, padding: 'var(--ig-space-2) var(--ig-space-3)' }}>{feedback}</span> : null}
       </Inline>
 
-      <Stack gap={3} style={{ marginTop: 'var(--ig-space-6)' }}>
+      <Stack gap="var(--ig-space-3px)" style={{ marginTop: 'var(--ig-space-6)' }}>
         <h3 style={{ fontSize: 'var(--ig-font-size-md)', fontWeight: 'var(--ig-font-weight-semibold)', color: 'var(--ig-color-text-secondary)', margin: 0 }}>Drafts (localStorage)</h3>
-        <Inline gap={3} align="center">
+        <Inline gap="var(--ig-space-3px)" align="center">
           <TextField placeholder="Draft name (e.g. 3-col-cards)" value={draftName} onChange={(e) => setDraftName(e.target.value)} />
           <Button variant="accent" size="sm" onClick={handleSaveDraft}>Save as draft</Button>
         </Inline>
         {drafts.length === 0 ? (
           <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>(no drafts saved yet)</span>
         ) : (
-          <Stack gap={2}>
+          <Stack gap="var(--ig-space-2px)">
             {drafts.map((d) => (
-              <Inline key={d.name} gap={3} justify="space-between" align="center">
-                <Stack gap={0}>
+              <Inline key={d.name} gap="var(--ig-space-3px)" justify="space-between" align="center">
+                <Stack gap="var(--ig-space-0)">
                   <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{d.name}</span>
                   <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
                     {d.args.primitive} · {new Date(d.savedAt).toLocaleString()}
                   </span>
                 </Stack>
-                <Inline gap={2}>
+                <Inline gap="var(--ig-space-2px)">
                   <Button variant="secondary" size="sm" onClick={() => handleLoadDraft(d)}>Load</Button>
                   <Button variant="secondary" size="sm" tone="danger" onClick={() => handleDeleteDraft(d.name)}>Delete</Button>
                 </Inline>
@@ -165,8 +168,8 @@ const meta = {
   parameters: { layout: 'padded' },
   argTypes: {
     primitive: { control: 'select', options: ['Stack', 'Inline', 'Grid', 'Box'] satisfies PrimitiveKind[] },
-    gap: { control: { type: 'range', min: 0, max: 12, step: 1 } },
-    padding: { control: { type: 'range', min: 0, max: 12, step: 1 }, if: { arg: 'primitive', eq: 'Box' } },
+    gap: { control: { type: 'range', min: 0, max: 13, step: 1 }, description: 'Spacing token index → var(--ig-space-N)' },
+    padding: { control: { type: 'range', min: 0, max: 13, step: 1 }, if: { arg: 'primitive', eq: 'Box' } },
     align: { control: 'select', options: ['flex-start', 'center', 'flex-end', 'stretch'], if: { arg: 'primitive', neq: 'Box' } },
     justify: { control: 'select', options: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around'], if: { arg: 'primitive', neq: 'Box' } },
     columns: { control: { type: 'range', min: 1, max: 6, step: 1 }, if: { arg: 'primitive', eq: 'Grid' } },

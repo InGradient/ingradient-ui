@@ -15,7 +15,7 @@ export const Default: Story = {
   args: {
     label: 'Filter',
     panel: (
-      <Stack gap={3}>
+      <Stack gap="var(--ig-space-3px)">
         <strong style={{ fontSize: 'var(--ig-font-size-sm)' }}>Filter images</strong>
         <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }}>Date range / Class / Member / Pattern</span>
       </Stack>
@@ -29,7 +29,7 @@ export const OpenByDefault: Story = {
     label: 'Filter',
     defaultOpen: true,
     panel: (
-      <Stack gap={3}>
+      <Stack gap="var(--ig-space-3px)">
         <strong style={{ fontSize: 'var(--ig-font-size-sm)' }}>Filter images</strong>
         <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }}>Date range / Class / Member / Pattern</span>
       </Stack>

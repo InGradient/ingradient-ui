@@ -106,13 +106,13 @@ export function DateRangePicker({
   return (
     <Popover className={className} role="dialog" aria-label={typeof title === 'string' ? title : undefined}>
       {(title || subtitle) ? (
-        <Stack gap={2} style={HEADER_STYLE}>
+        <Stack gap="var(--ig-space-2px)" style={HEADER_STYLE}>
           {title ? <Text size="var(--ig-font-size-sm)" weight="bold">{title}</Text> : null}
           {subtitle ? <Text size="var(--ig-font-size-xs)" tone="soft">{subtitle}</Text> : null}
         </Stack>
       ) : null}
       {presets && presets.length > 0 ? (
-        <Inline gap={3} wrap="wrap" style={PRESET_ROW_STYLE}>
+        <Inline gap="var(--ig-space-3px)" wrap="wrap" style={PRESET_ROW_STYLE}>
           {presets.map((p) => (
             <Button
               key={p.id}
@@ -150,9 +150,9 @@ export function DateRangePicker({
       </Calendar>
       {summaryLabel ? <Text size="var(--ig-font-size-xs)" tone="soft" style={SUMMARY_STYLE}>{summaryLabel}</Text> : null}
       {(footerHint || onApply || onReset) ? (
-        <Inline justify="space-between" gap={4} style={FOOTER_STYLE}>
+        <Inline justify="space-between" gap="var(--ig-space-1)" style={FOOTER_STYLE}>
           {footerHint ? <SmallText>{footerHint}</SmallText> : <span />}
-          <Inline gap={3}>
+          <Inline gap="var(--ig-space-3px)">
             {onReset ? (
               <Button type="button" variant="secondary" size="sm" onClick={onReset} style={PRESET_BTN_STYLE}>
                 Reset

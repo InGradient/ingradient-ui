@@ -43,16 +43,16 @@ export function SegmentedProgressBar({
   const filled = segments.reduce((acc, s) => acc + s.value, 0)
   const sum = total ?? filled
   return (
-    <Stack gap={3} className={className}>
+    <Stack gap="var(--ig-space-3px)" className={className}>
       <div role="progressbar" aria-label={ariaLabel} aria-valuemin={0} aria-valuemax={sum} aria-valuenow={Math.round(filled)} style={BAR_STYLE}>
         {segments.map((s, i) => (
           <Segment key={i} $width={sum > 0 ? (s.value / sum) * 100 : 0} $color={s.color} title={`${s.label}: ${s.value}`} />
         ))}
       </div>
       {showLegend ? (
-        <Inline gap={5}>
+        <Inline gap="var(--ig-space-1-plus)">
           {segments.map((s, i) => (
-            <Inline as="span" key={i} gap={2}>
+            <Inline as="span" key={i} gap="var(--ig-space-2px)">
               <ColorSwatch $color={s.color} $size="xs" />
               <Text size="var(--ig-font-size-sm)" tone="secondary">{s.label}</Text>
               <Text as="strong" weight="bold" tabularNums>{s.value.toLocaleString()}</Text>

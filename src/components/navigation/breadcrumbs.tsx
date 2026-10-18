@@ -12,7 +12,7 @@ export function Breadcrumbs({
 }) {
   return (
     <nav aria-label={ariaLabel}>
-      <Inline gap={2} align="center">
+      <Inline gap="var(--ig-space-2px)" align="center">
         {items.map((item, index) => (
           <React.Fragment key={`${item.label}-${index}`}>
             {index > 0 ? <B3 tone="muted">/</B3> : null}

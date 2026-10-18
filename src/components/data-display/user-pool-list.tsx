@@ -55,7 +55,7 @@ export function UserPoolList({
   const [open, setOpen] = useState(defaultOpen)
   if (users.length === 0) return null
   return (
-    <Stack gap={0} className={className}>
+    <Stack gap="var(--ig-space-0)" className={className}>
       <CollapsibleSectionHeader
         title={title}
         open={open}
@@ -63,7 +63,7 @@ export function UserPoolList({
         badge={<Badge $tone="accent">{users.length}</Badge>}
       />
       {open ? (
-        <Stack as="ul" gap={1} style={LIST_STYLE}>
+        <Stack as="ul" gap="var(--ig-space-1px)" style={LIST_STYLE}>
           {users.map((user) => {
             const active = selectedIds.has(user.id)
             return (
@@ -77,7 +77,7 @@ export function UserPoolList({
                 onMouseLeave={() => onHover?.(null)}
                 style={active ? undefined : ROW_INACTIVE_STYLE}
               >
-                <Inline as="span" gap={3} style={ROW_CONTENT_STYLE}>
+                <Inline as="span" gap="var(--ig-space-3px)" style={ROW_CONTENT_STYLE}>
                   <User size={iconSizeNumbers.sm} />
                   <Text as="span" size="var(--ig-font-size-sm)" title={user.tooltip ?? user.label} style={ROW_TEXT_STYLE}>{user.label}</Text>
                 </Inline>

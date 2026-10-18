@@ -77,7 +77,7 @@ export const Overview: Story = {
                     size="sm"
                   />
                 </FilterBarLayout>
-                <Stack gap={4}>
+                <Stack gap="var(--ig-space-1)">
                   <Text size="var(--ig-font-size-sm)" weight="bold">Workspace settings</Text>
                   <Text size="var(--ig-font-size-xs)" tone="muted">Keep small form sections structured and repeatable.</Text>
                   <FieldRow label="Name" hint="Visible in consumer-facing workspace lists.">

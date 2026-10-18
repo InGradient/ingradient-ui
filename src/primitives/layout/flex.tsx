@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { numberOrString, space, type Space } from '../shared'
+import { numberOrString, space, type SpacingValue } from '../shared'
 
-const StackRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string }>`
+const StackRoot = styled.div<{ $gap?: SpacingValue; $align?: string; $justify?: string }>`
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -17,11 +17,11 @@ export function Stack({
   justify,
   as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; as?: React.ElementType }) {
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: SpacingValue; align?: string; justify?: string; as?: React.ElementType }) {
   return <StackRoot as={as} $gap={gap} $align={align} $justify={justify} {...props} />
 }
 
-const InlineRoot = styled.div<{ $gap?: Space; $align?: string; $justify?: string; $wrap?: string }>`
+const InlineRoot = styled.div<{ $gap?: SpacingValue; $align?: string; $justify?: string; $wrap?: string }>`
   display: flex;
   flex-wrap: ${(p) => p.$wrap ?? 'wrap'};
   min-width: 0;
@@ -37,11 +37,11 @@ export function Inline({
   wrap,
   as,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; align?: string; justify?: string; wrap?: string; as?: React.ElementType }) {
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: SpacingValue; align?: string; justify?: string; wrap?: string; as?: React.ElementType }) {
   return <InlineRoot as={as} $gap={gap} $align={align} $justify={justify} $wrap={wrap} {...props} />
 }
 
-const GridRoot = styled.div<{ $gap?: Space; $columns?: string; $minItemWidth?: string | number }>`
+const GridRoot = styled.div<{ $gap?: SpacingValue; $columns?: string; $minItemWidth?: string | number }>`
   display: grid;
   min-width: 0;
   gap: ${(p) => space(p.$gap) ?? 'var(--ig-space-7)'};
@@ -54,11 +54,11 @@ export function Grid({
   columns,
   minItemWidth,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { gap?: Space; columns?: string; minItemWidth?: string | number }) {
+}: React.HTMLAttributes<HTMLDivElement> & { gap?: SpacingValue; columns?: string; minItemWidth?: string | number }) {
   return <GridRoot $gap={gap} $columns={columns} $minItemWidth={minItemWidth} {...props} />
 }
 
-const ContainerRoot = styled.div<{ $maxWidth?: string | number; $padding?: Space }>`
+const ContainerRoot = styled.div<{ $maxWidth?: string | number; $padding?: SpacingValue }>`
   width: 100%;
   max-width: ${(p) => numberOrString(p.$maxWidth) ?? 'var(--ig-page-max-width)'};
   margin: 0 auto;
@@ -69,6 +69,6 @@ export function Container({
   maxWidth,
   padding,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { maxWidth?: string | number; padding?: Space }) {
+}: React.HTMLAttributes<HTMLDivElement> & { maxWidth?: string | number; padding?: SpacingValue }) {
   return <ContainerRoot $maxWidth={maxWidth} $padding={padding} {...props} />
 }

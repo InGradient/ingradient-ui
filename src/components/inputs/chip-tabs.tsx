@@ -43,7 +43,7 @@ export function ChipTabs({ items, currentId, onSelect, className }: ChipTabsProp
     requestAnimationFrame(() => buttonRefs.current[next.id]?.focus())
   }
   return (
-    <Inline gap={1} justify="center" wrap="wrap" className={className} role="tablist" style={ROW_STYLE}>
+    <Inline gap="var(--ig-space-1px)" justify="center" wrap="wrap" className={className} role="tablist" style={ROW_STYLE}>
       {items.map((item, i) => (
         <Tab
           key={item.id}

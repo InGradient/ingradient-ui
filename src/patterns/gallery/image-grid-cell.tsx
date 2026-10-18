@@ -83,7 +83,7 @@ export function ImageGridCell<T extends { id: string }>(props: ImageGridCellProp
         {overlay ? <OverlayLayer>{overlay}</OverlayLayer> : null}
         {topRight ? <div style={TOP_RIGHT_STYLE}>{topRight}</div> : null}
       </AspectRatioImage>
-      {footer ? <Stack gap={2} style={FOOTER_STYLE}>{footer}</Stack> : null}
+      {footer ? <Stack gap="var(--ig-space-2px)" style={FOOTER_STYLE}>{footer}</Stack> : null}
     </SelectableGridCell>
   )
 }

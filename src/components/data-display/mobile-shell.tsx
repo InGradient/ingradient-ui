@@ -35,9 +35,9 @@ export interface MobileShellProps {
 
 export function MobileShell({ topBar, body, bottomBar }: MobileShellProps) {
   return (
-    <Stack gap={0} style={ROOT_STYLE}>
+    <Stack gap="var(--ig-space-0)" style={ROOT_STYLE}>
       <Box style={TOP_BAR_STYLE}>{topBar}</Box>
-      <Stack gap={0} style={BODY_STYLE}>{body}</Stack>
+      <Stack gap="var(--ig-space-0)" style={BODY_STYLE}>{body}</Stack>
       {bottomBar ? <Box style={BOTTOM_BAR_STYLE}>{bottomBar}</Box> : null}
     </Stack>
   )

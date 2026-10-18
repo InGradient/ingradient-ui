@@ -73,13 +73,13 @@ export function SelectableGridPanel({
   const mainStyle = flush ? MAIN_FLUSH_STYLE : MAIN_PANEL_STYLE
   if (!selectedId) {
     return (
-      <Stack as="main" gap={0} style={mainStyle}>
+      <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
         <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noSelectionText}</Text>
       </Stack>
     )
   }
   return (
-    <Stack as="main" gap={0} style={mainStyle}>
+    <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
       {headerSlot}
       {loading ? (
         <Text tone="muted" size="var(--ig-font-size-md)" style={LOADING_STYLE}>{loadingText}</Text>

@@ -7,5 +7,5 @@ export interface CommentThreadProps {
 }
 
 export function CommentThread({ children, className }: CommentThreadProps) {
-  return <Stack gap={3} className={className}>{children}</Stack>
+  return <Stack gap="var(--ig-space-3px)" className={className}>{children}</Stack>
 }

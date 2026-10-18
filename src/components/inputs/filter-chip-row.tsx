@@ -57,7 +57,7 @@ export function FilterChipRow({
   onToggle,
 }: FilterChipRowProps) {
   return (
-    <Inline gap={3} wrap="wrap" style={ROW_STYLE}>
+    <Inline gap="var(--ig-space-3px)" wrap="wrap" style={ROW_STYLE}>
       <Text as="span" size="var(--ig-font-size-xs)" weight="semibold" tone="soft" uppercase letterSpacing="normal" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
       {loading ? (
         <Text as="span" tone="soft" size="var(--ig-font-size-sm)">{loadingText}</Text>

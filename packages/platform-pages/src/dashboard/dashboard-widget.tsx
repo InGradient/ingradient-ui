@@ -32,13 +32,13 @@ export function DashboardWidget({
   return (
     <Root $span={span} className={className}>
       <Inline justify="space-between" gap="var(--ig-space-3)">
-        <Stack gap={0} style={TITLE_BLOCK_STYLE}>
+        <Stack gap="var(--ig-space-0)" style={TITLE_BLOCK_STYLE}>
           <Text as={titleAs} size="var(--ig-font-size-md)" weight="semibold">{title}</Text>
           {subtitle ? <Text size="var(--ig-font-size-xs)" tone="muted">{subtitle}</Text> : null}
         </Stack>
         {actions ? <Inline gap="var(--ig-space-2)">{actions}</Inline> : null}
       </Inline>
-      <Stack gap={0} style={BODY_STYLE}>{children}</Stack>
+      <Stack gap="var(--ig-space-0)" style={BODY_STYLE}>{children}</Stack>
     </Root>
   )
 }

@@ -46,7 +46,7 @@ export function LayoutDashboard({
         </Grid>
       ) : null}
       {widgets && widgets.length > 0 ? (
-        <Stack as="section" gap={0}>
+        <Stack as="section" gap="var(--ig-space-0)">
           {widgetsTitle ? <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{widgetsTitle}</Text> : null}
           <Grid gap="var(--ig-space-5)" columns={`repeat(${widgetColumns}, minmax(0, 1fr))`}>
             {widgets.map((w) => (
@@ -56,13 +56,13 @@ export function LayoutDashboard({
         </Stack>
       ) : null}
       {charts ? (
-        <Stack as="section" gap={0}>
+        <Stack as="section" gap="var(--ig-space-0)">
           <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{chartsTitle}</Text>
           {charts}
         </Stack>
       ) : null}
       {tableSlot ? (
-        <Stack as="section" gap={0}>
+        <Stack as="section" gap="var(--ig-space-0)">
           <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{tableTitle}</Text>
           {tableSlot}
         </Stack>

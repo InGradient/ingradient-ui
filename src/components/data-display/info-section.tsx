@@ -13,7 +13,7 @@ export interface InfoSectionProps {
  */
 export function InfoSection({ title, children, className }: InfoSectionProps) {
   return (
-    <Stack as="section" gap={3} className={className}>
+    <Stack as="section" gap="var(--ig-space-3px)" className={className}>
       <Text as="h3" tone="muted" size="var(--ig-font-size-xs)" weight="semibold" uppercase letterSpacing="normal">{title}</Text>
       {children}
     </Stack>

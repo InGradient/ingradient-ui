@@ -42,7 +42,7 @@ export function ProjectMembersList({
 
   return (
     <>
-      <Stack as="ul" gap={0} style={LIST_STYLE}>
+      <Stack as="ul" gap="var(--ig-space-0)" style={LIST_STYLE}>
         {members.map((m) => {
           const isOnlyOwner = m.role === 'owner' && ownerCount <= 1
           return (

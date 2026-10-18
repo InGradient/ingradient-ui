@@ -23,9 +23,9 @@ export interface FilterSectionProps {
 export function FilterSection({ title, actions, children, className }: FilterSectionProps) {
   return (
     <Section className={className}>
-      <Inline justify="space-between" gap={3}>
+      <Inline justify="space-between" gap="var(--ig-space-3px)">
         <Text as="h3" tone="muted" size="var(--ig-font-size-xs)" weight="semibold" uppercase letterSpacing="normal">{title}</Text>
-        {actions ? <Inline gap={2}>{actions}</Inline> : null}
+        {actions ? <Inline gap="var(--ig-space-2px)">{actions}</Inline> : null}
       </Inline>
       {children}
     </Section>

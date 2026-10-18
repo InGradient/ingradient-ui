@@ -33,7 +33,7 @@ export function FilterSearchableList({
   }, [items, query])
 
   return (
-    <Stack gap={2} className={className}>
+    <Stack gap="var(--ig-space-2px)" className={className}>
       <SearchField
         size="sm"
         placeholder={placeholder}
@@ -43,7 +43,7 @@ export function FilterSearchableList({
       {filtered.length === 0 ? (
         <Text as="span" size="var(--ig-font-size-xs)" tone="muted" style={EMPTY_STYLE}>{emptyMessage}</Text>
       ) : (
-        <Stack gap={0} style={LIST_STYLE}>
+        <Stack gap="var(--ig-space-0)" style={LIST_STYLE}>
           {filtered.map((item) => (
             <ColorChip
               key={item.id}

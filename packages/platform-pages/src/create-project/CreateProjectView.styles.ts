@@ -122,7 +122,7 @@ export const FileItem = styled.li`
 
 export const OptionGrid = styled(Grid).attrs({
   columns: 'repeat(2, minmax(0, 1fr))',
-  gap: 3,
+  gap: 'var(--ig-space-3px)',
 })`
   ${media.sm} {
     grid-template-columns: 1fr;

@@ -88,7 +88,7 @@ export function CatalogDesktopView({
             onOpenDatasetMenu={datasets.onOpenDatasetMenu}
             onCollapse={datasets.onCollapse}
           />
-          <Stack gap={0} style={CENTER_STYLE}>
+          <Stack gap="var(--ig-space-0)" style={CENTER_STYLE}>
             <Box style={SLOT_STYLE}>
               <CatalogToolbarRow
                 {...toolbar}

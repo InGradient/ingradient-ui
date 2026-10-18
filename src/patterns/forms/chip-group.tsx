@@ -27,7 +27,7 @@ export function ChipGroup({ items, maxVisible, onItemClick, className }: ChipGro
   const overflow = maxVisible != null ? items.length - maxVisible : 0
 
   return (
-    <Inline gap={2} wrap="wrap" className={className}>
+    <Inline gap="var(--ig-space-2px)" wrap="wrap" className={className}>
       {visible.map((item) => (
         <ActionChip
           key={item.id}

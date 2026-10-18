@@ -106,7 +106,7 @@ export function ClassManageBody({
   const headerSlot = showChips
     ? list.sidebarCollapsed && list.onExpand
       ? (
-        <Inline gap={3} align="center" style={HEADER_INLINE_STYLE}>
+        <Inline gap="var(--ig-space-3px)" align="center" style={HEADER_INLINE_STYLE}>
           <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><MenuIcon size={iconSizeNumbers.lg} /></IconButton>
           {chipRow}
         </Inline>

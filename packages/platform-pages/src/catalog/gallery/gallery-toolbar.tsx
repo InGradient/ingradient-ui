@@ -85,7 +85,7 @@ export function GalleryToolbar({
   )
 
   return (
-    <Stack gap={0} data-ig-component="GalleryToolbar" data-ig-layer="patterns" style={BAR_STYLE}>
+    <Stack gap="var(--ig-space-0)" data-ig-component="GalleryToolbar" data-ig-layer="patterns" style={BAR_STYLE}>
       {typeof uploadProgress === 'number' && uploadProgress > 0 && uploadProgress < 100 ? (
         <ProgressBar
           value={uploadProgress}

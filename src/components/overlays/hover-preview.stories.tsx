@@ -27,7 +27,7 @@ const DEMO_WRAPPER_STYLE: React.CSSProperties = {
 export const Basic: Story = {
   render: () => (
     <div style={DEMO_WRAPPER_STYLE}>
-      <Inline gap={4}>
+      <Inline gap="var(--ig-space-1)">
         <HoverPreview preview={<div style={{ width: 200, height: 200, background: 'var(--ig-color-accent-soft-surface)', borderRadius: 'var(--ig-radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Preview content</div>}>
           <Card>
             <div style={{ padding: 'var(--ig-space-5)' }}>Hover me (right)</div>
@@ -58,7 +58,7 @@ export const NoDelay: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={DEMO_WRAPPER_STYLE}>
-      <Stack gap={3}>
+      <Stack gap="var(--ig-space-3px)">
         <span style={{ color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)' }}>disabled — no preview on hover</span>
         <HoverPreview disabled preview={<div>Should never appear</div>}>
           <Card>
