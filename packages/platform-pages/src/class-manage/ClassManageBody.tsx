@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import {
-  Alert, EmptyState, FilterChipRow, IconButton, MenuIcon,
+  Alert, EmptyState, FilterChipRow, IconButton, PanelLeftOpenIcon,
   ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
 import { Inline } from '@ingradient/ui/primitives'
@@ -107,7 +107,7 @@ export function ClassManageBody({
     ? list.sidebarCollapsed && list.onExpand
       ? (
         <Inline gap="var(--ig-space-3px)" align="center" style={HEADER_INLINE_STYLE}>
-          <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><MenuIcon size={iconSizeNumbers.lg} /></IconButton>
+          <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><PanelLeftOpenIcon size={iconSizeNumbers.md} /></IconButton>
           {chipRow}
         </Inline>
       )

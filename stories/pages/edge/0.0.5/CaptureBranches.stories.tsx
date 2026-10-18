@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { expect, fireEvent, fn, userEvent, waitFor, within } from 'storybook/test'
-import { PANEL_CLASSES } from '../../../fixtures/edge/0.0.5'
+import { PANEL_CLASSES, RIGHT_PANEL_LABELS } from '../../../fixtures/edge/0.0.5'
 import { defineHandoff } from '../../../support/handoff'
 import { CaptureBranches } from './workspace/capture-branches'
 
@@ -102,7 +102,7 @@ export const CollapsedRoiCommentWorkflow: Story = {
     await userEvent.click(canvas.getByRole('button', { name: 'Send comment' }))
     await expect(canvas.getByText('Synthetic review comment')).toBeVisible()
     await expect(canvas.getByRole('button', { name: 'Send comment' })).toBeDisabled()
-    await userEvent.click(canvas.getByRole('button', { name: 'Collapse class panel' }))
+    await userEvent.click(canvas.getByRole('button', { name: RIGHT_PANEL_LABELS.collapsePanel }))
     await expect(canvas.getByRole('button', { name: 'Expand class panel' })).toBeVisible()
   },
 }

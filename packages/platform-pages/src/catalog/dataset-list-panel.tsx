@@ -3,7 +3,7 @@ import React from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button, Checkbox, EmptyText, IconButton } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
-import { ClosePanelIcon } from '@ingradient/ui/components'
+import { PanelLeftCloseIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
 import type { DatasetTaskType } from './dataset-task-tag'
 
@@ -103,7 +103,7 @@ export function DatasetListPanel({
               onClick={onCollapse}
               data-ig-component="DatasetListPanel.CollapseButton"
             >
-              <ClosePanelIcon size={iconSizeNumbers.md} />
+              <PanelLeftCloseIcon size={iconSizeNumbers.md} />
             </IconButton>
           ) : null}
         </Inline>

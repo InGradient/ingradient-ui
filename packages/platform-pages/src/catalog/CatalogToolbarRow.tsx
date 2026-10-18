@@ -5,7 +5,7 @@ import {
   FilterPopoverTrigger,
   GridIcon,
   IconButton,
-  MenuIcon,
+  PanelLeftOpenIcon,
   ModeSwitcher,
   SearchField,
   SortIcon,
@@ -60,7 +60,7 @@ export function CatalogToolbarRow({
     <GalleryToolbar
       leftStart={sidebarCollapsed ? (
         <IconButton variant="secondary" size="sm" aria-label="Expand sidebar" onClick={onExpandSidebar}>
-          <MenuIcon size={iconSizeNumbers.lg} />
+          <PanelLeftOpenIcon size={iconSizeNumbers.md} />
         </IconButton>
       ) : undefined}
       search={

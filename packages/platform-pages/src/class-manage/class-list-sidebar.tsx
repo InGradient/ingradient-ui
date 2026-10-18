@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, EmptyState, IconButton } from '@ingradient/ui/components'
-import { ClosePanelIcon } from '@ingradient/ui/components'
+import { PanelLeftCloseIcon } from '@ingradient/ui/components'
 import { ClassListRow } from './class-list-row'
 
 const Sidebar = styled.aside<{ $flush: boolean }>`
@@ -94,7 +94,7 @@ export function ClassListSidebar({
           </Button>
           {onCollapse ? (
             <IconButton variant="secondary" size="sm" type="button" aria-label="Collapse sidebar" onClick={onCollapse}>
-              <ClosePanelIcon size={iconSizeNumbers.md} />
+              <PanelLeftCloseIcon size={iconSizeNumbers.md} />
             </IconButton>
           ) : null}
         </HeaderActions>
