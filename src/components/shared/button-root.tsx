@@ -34,7 +34,7 @@ export const ButtonRoot = styled.button<{
   min-width: 0;
   white-space: nowrap;
   height: ${(p) => controlHeight(p.$size)};
-  ${(p) => p.$iconOnly ? `width: ${controlHeight(p.$size)}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
+  ${(p) => p.$iconOnly ? `width: ${controlHeight(p.$size)}; padding: 0; flex-shrink: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
   ${(p) => FONT_SIZE[p.$size]}
   font-weight: var(--ig-font-weight-semibold);
   line-height: var(--ig-line-height-none);
