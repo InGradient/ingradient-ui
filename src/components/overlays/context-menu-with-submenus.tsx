@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
-import { popupSizeNumbers } from '../../tokens/core'
+import { iconSizeNumbers, popupSizeNumbers } from '../../tokens/core'
+import { ChevronRightIcon } from '../icons/catalog-icons'
 import { FloatingOverlay } from './floating-overlay'
 import { MenuItem } from './menu-item'
 import { focusAfterMenuTab } from './context-menu-focus'
@@ -156,7 +157,7 @@ export function ContextMenuWithSubmenus({
                   else close(a.onClick)
                 }
               }}
-              iconTrailing={hasSub ? <span aria-hidden style={CHEVRON_STYLE}>›</span> : undefined}
+              iconTrailing={hasSub ? <span aria-hidden style={CHEVRON_STYLE}><ChevronRightIcon size={iconSizeNumbers.xs} /></span> : undefined}
             >
               <span style={ITEM_LABEL_STYLE}>{a.label}</span>
             </MenuItem>
