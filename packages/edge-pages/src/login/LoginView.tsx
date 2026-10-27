@@ -5,8 +5,9 @@ import {
   Wrap, LangCorner, PackageInfo, Divider,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function LoginView(props: LoginViewProps): JSX.Element {
+function LoginViewContent(props: LoginViewProps): JSX.Element {
   const {
     mode, email, password, savePassword, keepSignedIn,
     loggingIn, loadingPackage, error,
@@ -155,5 +156,17 @@ export function LoginView(props: LoginViewProps): JSX.Element {
         </Stack>
       </Card>
     </Wrap>
+  )
+}
+
+/**
+ * Edge uses the same surface rules as Platform: a rounded surface inside another rounded
+ * surface is always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function LoginView(props: LoginViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <LoginViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

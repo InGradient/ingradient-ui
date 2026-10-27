@@ -1,15 +1,11 @@
 import styled from 'styled-components'
-import { surfacePanel } from '@ingradient/ui'
 
 export const AppShell = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  background:
-    radial-gradient(circle at top left, var(--ig-color-bg-radial-a), transparent 32%),
-    radial-gradient(circle at top right, var(--ig-color-bg-radial-b), transparent 28%),
-    var(--ig-color-bg-canvas);
+  background: var(--ig-color-bg-canvas);
   color: var(--ig-color-text-primary);
 `
 
@@ -28,13 +24,13 @@ export const PanelsRow = styled.div`
   flex: 1;
   min-height: 0;
   display: flex;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-4) var(--ig-space-6) var(--ig-space-4);
+  /* Platform structure: flush columns divided by 1px lines, no floating cards. */
+  gap: 0;
+  padding: 0;
   /* Desktop overflow, not a mobile reflow: retain usable workspace geometry and
      keep both side panels reachable by scrollbar, touchpad, and keyboard focus. */
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-padding-inline: var(--ig-space-6);
   &:focus-visible {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
     outline-offset: var(--ig-space-neg-2px);
@@ -42,8 +38,6 @@ export const PanelsRow = styled.div`
 `
 
 const Panel = styled.div`
-  ${surfacePanel}
-  border-radius: var(--ig-radius-2xl);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -51,6 +45,8 @@ const Panel = styled.div`
 `
 
 export const LeftPanel = styled(Panel)`
+  background: var(--ig-color-surface-panel);
+  border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   width: var(--ig-popup-sm);
   flex-shrink: 0;
   &:has([data-ig-collapsed-panel="left"]) {
@@ -65,6 +61,9 @@ export const CenterPanel = styled(Panel)`
 `
 
 export const RightPanelContainer = styled(Panel)`
+  /* Same as Platform's right inspector: a persistent strong divider before it. */
+  background: var(--ig-color-surface-panel);
+  border-left: var(--ig-border-1px) solid var(--ig-color-border-strong);
   width: var(--ig-popup-sm);
   flex-shrink: 0;
   overflow-y: auto;

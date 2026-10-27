@@ -27,6 +27,7 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
       {selectedDatasetId && (
         <>
           <Tabs
+            variant="underline"
             items={tabItems}
             value={activeTab}
             onChange={(v) => { if (!isCapturing) onTabChange(v as WorkspaceTab) }}

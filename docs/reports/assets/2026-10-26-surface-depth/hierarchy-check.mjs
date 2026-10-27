@@ -10,7 +10,7 @@ import fs from 'node:fs'
 const BASE = process.env.BASE
 const OUT = process.env.OUT
 const ids = Object.values((await (await fetch(BASE + '/index.json')).json()).entries)
-  .filter((e) => e.type === 'story' && e.id.startsWith('pages-platform-0-0-1-')).map((e) => e.id)
+  .filter((e) => e.type === 'story' && e.id.startsWith(process.env.PREFIX || 'pages-platform-0-0-1-')).map((e) => e.id)
 let b = await chromium.launch()
 const read = async (id) => {
   if (!b.isConnected()) b = await chromium.launch()
@@ -64,8 +64,8 @@ const P = ok.reduce((a, r) => ({ pairs: a.pairs + r.positional.pairs, ok: a.ok +
 console.log('stories', rows.length, '| failed', rows.length - ok.length)
 console.log('structural (DOM depth): pairs', S.pairs, '| outer rounder', S.ok, '| violations', S.pairs - S.ok)
 console.log('positional (old method): pairs', P.pairs, '| outer rounder', P.ok, '| equal', P.eq, '| inverted', P.inv)
-ok.filter((r) => r.structural.bad.length).slice(0, 12).forEach((r) => console.log('  structural violation', r.id.replace('pages-platform-0-0-1-', ''), r.structural.bad.join(' | ')))
+ok.filter((r) => r.structural.bad.length).slice(0, 12).forEach((r) => console.log('  structural violation', r.id.replace(process.env.PREFIX || 'pages-platform-0-0-1-', ''), r.structural.bad.join(' | ')))
 const posBad = ok.filter((r) => r.positional.eq + r.positional.inv > 0).sort((a, b) => (b.positional.eq + b.positional.inv) - (a.positional.eq + a.positional.inv))
 console.log('stories with positional equal/inverted:', posBad.length)
-posBad.slice(0, 10).forEach((r) => console.log('  ', r.id.replace('pages-platform-0-0-1-', ''), `eq ${r.positional.eq} inv ${r.positional.inv}`))
+posBad.slice(0, 10).forEach((r) => console.log('  ', r.id.replace(process.env.PREFIX || 'pages-platform-0-0-1-', ''), `eq ${r.positional.eq} inv ${r.positional.inv}`))
 await b.close()

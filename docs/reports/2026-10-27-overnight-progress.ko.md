@@ -37,8 +37,8 @@ Simon이 잠든 동안 진행한 작업의 실시간 기록이다. 최종 정리
 - [x] 4-5 폰트: IBM Plex Sans·Sans KR·Mono를 패키지에서 불러오기(@fontsource, 굵기 400~700). 01:07 Simon 승인
 - [x] 5-1 Platform 화면에 표면 깊이 켜기 + 화면별 덮어쓰기 정리(Settings 모달, Create 카드, 대시보드 위젯, Class 참조 이미지, MediaDialog)
 - [x] 5-2 Platform 위계 검사(DOM 기준) 위반 0, 화면별 전후 번호 박스 이미지
-- [ ] 6-1 Edge를 카드 방식에서 Platform과 같은 구성(선으로 나눈 영역)과 같은 컴포넌트로 바꾸기(01:05 Simon 결정) + 표면 깊이 켜기
-- [ ] 6-2 Edge 화면별 전후 이미지
+- [x] 6-1 Edge를 카드 방식에서 Platform과 같은 구성(선으로 나눈 영역)과 같은 컴포넌트로 바꾸기(01:05 Simon 결정) + 표면 깊이 켜기
+- [x] 6-2 Edge 화면별 전후 이미지
 - [ ] 7 `DESIGN.draft.md` → `DESIGN.md` 교체(코드에 들어간 값 기준), 리포트 최종 정리
 
 D13 폰트 로드는 01:07에 Simon이 추천대로 진행하라고 함. 01:05 Simon 결정: Edge는 Platform 구성으로, 줄 높이 px 진행.
@@ -73,3 +73,4 @@ D13 폰트 로드는 01:07에 Simon이 추천대로 진행하라고 함. 01:05 S
 - 02:21 예약된 깨우기(01:52)가 실행되지 않았다(이 환경에 예약을 받아 줄 서버가 없음). 밤사이 작업은 백그라운드 작업 완료 알림으로 이어 간다.
 - 02:51 4-3·4-4 기초 값 적용: 간격·아이콘·모서리·컴포넌트 크기·compact xs 24·테두리 1·2px·버튼 여백·글자 크기·px 줄 높이(Text·Heading). 단위 483, 린트·정적 검사·패키지·export·번들 통과. 전체 Storybook 888 통과는 5-1과 합친 상태에서 확인(값만 따로 돌린 실행은 5-1 변경이 섞여 중간에 멈춤). 11개 화면 전후 비교 이미지 작성.
 - 03:06 5-1·5-2 Platform 표면 깊이: 7개 화면을 SurfaceDepthProvider로 감싸고 덮어쓰기 정리(Settings 모달, Create·Auth 카드, 대시보드 위젯 8px), 위젯·Create 섹션·옵션 카드·page Panel·MediaDialog를 깊이 인식으로, Class 미리보기 4px, Catalog 드롭 영역 12px. 연구용 대시보드 스토리도 Provider. 떠 있는 표면에 data-ig-floating. 위계 검사: DOM 기준 292쌍 위반 0, 위치 기준 같음 81→12·역전 84→2, 깨진 스토리 38→8(6개는 팝오버·메뉴·확인창 겹침, 2개는 원인 미확인). 단위 483, Storybook 888 통과.
+- 03:21 6-1·6-2 Edge를 Platform 구성으로: 그라데이션 바탕 → 단색 캔버스, 세 영역 사이 간격·바깥 여백 0, 왼쪽 패널 오른쪽 얇은 선·오른쪽 패널 앞 강한 선(Platform 오른쪽 상세 패널 규칙), 가운데 탭 pill → underline(Platform Settings 탭과 같음), Edge 최상위 화면 6개에 SurfaceDepthProvider. Edge 0.0.5 59개 스토리 위치 기준 중첩 95→40쌍, 같음 37→1, 역전 5→0. 단위 483, Storybook 888 통과. Edge 6개 화면 전후 비교 이미지.

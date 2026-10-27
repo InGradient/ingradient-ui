@@ -4,8 +4,9 @@ import {
   AppRoot, AppHeader, AppContent, AppFooterBar, ShutdownOverlay,
 } from './EdgeAppShellView.styles'
 import type { EdgeAppShellViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function EdgeAppShellView(props: EdgeAppShellViewProps): JSX.Element {
+function EdgeAppShellViewContent(props: EdgeAppShellViewProps): JSX.Element {
   const {
     isResolving, isShuttingDown, showFooter,
     titleBar, content, bottomBar, systemMonitorModal,
@@ -36,5 +37,17 @@ export function EdgeAppShellView(props: EdgeAppShellViewProps): JSX.Element {
         )}
       </AppRoot>
     </>
+  )
+}
+
+/**
+ * Edge uses the same surface rules as Platform: a rounded surface inside another rounded
+ * surface is always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function EdgeAppShellView(props: EdgeAppShellViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <EdgeAppShellViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }
