@@ -5,7 +5,7 @@ import { DropdownSelect, type DropdownOption } from '@ingradient/ui/components'
 import { SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
 
 const SelectWrapBox = styled(Box)`
-  min-width: var(--ig-popup-2xs-plus);
+  min-width: var(--ig-layout-size-field-sm);
 `
 
 const Hint = styled.p`

@@ -15,7 +15,7 @@ export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 
 const FullPasswordBox = styled(PasswordField)`
   width: 100%;
-  min-width: var(--ig-popup-sm-narrow);
+  min-width: var(--ig-layout-size-field-xl);
 `
 const FullConfirmBox = styled(TextField)`
   width: 100%;

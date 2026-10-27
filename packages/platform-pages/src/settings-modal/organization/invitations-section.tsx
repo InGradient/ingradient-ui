@@ -144,7 +144,7 @@ export function InvitationsSection({
           columns={columns}
           rows={invitations}
           ariaLabel="Invitations table"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
     </Stack>

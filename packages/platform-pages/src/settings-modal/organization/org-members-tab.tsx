@@ -73,7 +73,7 @@ export function OrgMembersTab({
           columns={columns}
           rows={members}
           ariaLabel="Members table"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
       {pendingRemove && (

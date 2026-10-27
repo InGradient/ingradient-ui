@@ -19,10 +19,10 @@ const Flex1Box = styled(TextField)`
   flex: 1;
 `
 const Width160Box = styled(TextField)`
-  width: var(--ig-popup-2xs-plus);
+  width: var(--ig-layout-size-field-sm);
 `
 const Width200Box = styled(TextField)`
-  width: var(--ig-popup-list-min);
+  width: var(--ig-layout-size-field-md);
 `
 
 

@@ -48,7 +48,7 @@ const LabelBox = styled(Text)`
   cursor: pointer;
 `
 const InputBox = styled(TextField)`
-  min-width: var(--ig-popup-list-min);
+  min-width: var(--ig-layout-size-field-md);
 `
 const InputFlexBox = styled(TextField)`
   min-width: 0;

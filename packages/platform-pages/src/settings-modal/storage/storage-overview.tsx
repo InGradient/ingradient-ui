@@ -25,13 +25,13 @@ export interface StorageOverviewProps {
 export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOverviewProps) {
   if (loading) {
     return (
-      <Grid gap="var(--ig-spacing-12)" minItemWidth="var(--ig-popup-2xs)">
+      <Grid gap="var(--ig-spacing-12)" minItemWidth="var(--ig-layout-size-grid-cell-min)">
         {Array.from({ length: loadingCount }, (_, i) => <Skeleton key={i} $height="var(--ig-layout-sidebar-header)" />)}
       </Grid>
     )
   }
   return (
-    <Grid gap="var(--ig-spacing-12)" minItemWidth="var(--ig-popup-2xs)">
+    <Grid gap="var(--ig-spacing-12)" minItemWidth="var(--ig-layout-size-grid-cell-min)">
       {items.map((item, i) => (
         <Card key={i} elevation="raised" flat border="strong" radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-12)">
           <LabelBox forwardedAs="div" size="var(--ig-text-micro)" tone="muted">{item.label}</LabelBox>

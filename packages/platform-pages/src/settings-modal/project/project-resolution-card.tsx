@@ -3,7 +3,7 @@ import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Card, SelectField } from '@ingradient/ui/components'
 
 const SelectBox = styled(SelectField)`
-  min-width: var(--ig-popup-xs-narrow);
+  min-width: var(--ig-layout-size-field-sm-plus);
 `
 
 export interface ProjectResolutionCandidate {

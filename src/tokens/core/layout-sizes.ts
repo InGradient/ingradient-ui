@@ -30,6 +30,19 @@ export const layoutSizes = {
   tableColLabeled: '80px',
   mobileBottomSheetOffset: '60px',
   commentListMaxHeight: '80px',
+  /** Field widths inside panels and the Settings modal (minimums for inputs and selects). */
+  fieldXs: '104px',
+  fieldSm: '160px',
+  fieldSmPlus: '190px',
+  fieldMd: '200px',
+  fieldLg: '240px',
+  fieldXl: '260px',
+  /** Minimum width of tables inside the Settings modal before they scroll. */
+  tableMinCompact: '640px',
+  /** Minimum width of wider grid cells (stat cards, member columns). */
+  cellMinWide: '220px',
+  settingsNavWidth: '220px',
+  tableColActions: '120px',
 } as const
 
 /** Numeric variant for props that take numbers (e.g. ResizableColumn widths). */

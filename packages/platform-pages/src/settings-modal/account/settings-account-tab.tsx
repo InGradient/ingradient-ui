@@ -6,7 +6,7 @@ import { TextField } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 
 const FieldBox = styled(TextField)`
-  min-width: var(--ig-popup-xs-plus);
+  min-width: var(--ig-layout-size-field-lg);
 `
 const HintBox = styled(Text)`
   margin: 0;

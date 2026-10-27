@@ -27,7 +27,7 @@ export const Main = styled(SettingsShell)`
   flex: 1;
   min-height: 0;
   gap: 0;
-  grid-template-columns: var(--ig-popup-xs) minmax(0, 1fr);
+  grid-template-columns: var(--ig-layout-size-settings-nav-width) minmax(0, 1fr);
   background: var(--ig-color-bg-canvas);
   --ig-catalog-divider-color: var(--ig-color-border-strong);
 

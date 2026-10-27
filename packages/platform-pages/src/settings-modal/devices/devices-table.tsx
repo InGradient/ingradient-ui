@@ -4,10 +4,10 @@ import { DropdownSelect } from '@ingradient/ui/components'
 import { EmptyState } from '@ingradient/ui/components'
 import { SearchField } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
-import { popupSizeNumbers } from '@ingradient/ui/tokens'
+import { layoutSizeNumbers } from '@ingradient/ui/tokens'
 import { DeviceStatusBadge } from './device-status-badge'
 
-const SEARCH_FIELD_STYLE = { width: popupSizeNumbers.listMin }
+const SEARCH_FIELD_STYLE = { width: 'var(--ig-layout-size-field-md)' }
 
 export type DeviceFilterStatus = 'all' | 'active' | 'revoked'
 
@@ -60,7 +60,7 @@ export function DevicesTable({
   ]
   if (isAdmin) {
     columns.push({
-      key: 'actions', header: '', headerAriaLabel: 'Actions', width: popupSizeNumbers['2xsNarrow'],
+      key: 'actions', header: '', headerAriaLabel: 'Actions', width: layoutSizeNumbers.tableColActions,
       render: (d) => (
         <Inline gap="var(--ig-spacing-8)">
           <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(d)}>Details</Button>
@@ -115,7 +115,7 @@ export function DevicesTable({
           columns={columns}
           rows={filteredDevices}
           ariaLabel="Devices"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
     </Stack>

@@ -81,7 +81,7 @@ export function StorageAnalyticsTab({
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{projectTitle}</Text>
       {projectChart}
 
-      <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-popup-xs)">
+      <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-layout-size-cell-min-wide)">
         <div>
           <SubTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{resolutionTitle}</SubTitleBox>
           {resolutionChart}

@@ -19,7 +19,7 @@ const RowBox = styled(Inline)`
   margin-top: var(--ig-spacing-8);
 `
 const ConfirmInputBox = styled(TextField)`
-  min-width: var(--ig-popup-list-min);
+  min-width: var(--ig-layout-size-field-md);
   flex: 1;
 `
 

@@ -145,7 +145,7 @@ export const ActionsRow = styled.div`
 
 export const ProgressWrap = styled.div`
   width: 100%;
-  max-width: var(--ig-popup-2xl-narrow);
+  max-width: var(--ig-layout-size-form-narrow);
   margin: var(--ig-spacing-8) auto 0;
 `
 

@@ -5,7 +5,7 @@ import { SelectField } from '@ingradient/ui/components'
 
 const Row = styled.li`
   display: grid;
-  grid-template-columns: minmax(var(--ig-popup-2xs), 1.1fr) minmax(var(--ig-popup-2xs), 1fr) minmax(var(--ig-popup-xs), 1.3fr) auto auto;
+  grid-template-columns: minmax(var(--ig-layout-size-grid-cell-min), 1.1fr) minmax(var(--ig-layout-size-grid-cell-min), 1fr) minmax(var(--ig-layout-size-cell-min-wide), 1.3fr) auto auto;
   align-items: center;
   gap: var(--ig-spacing-12);
   padding: var(--ig-spacing-8) 0;
@@ -24,7 +24,7 @@ const CellBox = styled(Text)`
 `
 
 const RoleSelectBox = styled(SelectField)`
-  min-width: var(--ig-popup-3xs-wide);
+  min-width: var(--ig-layout-size-field-xs);
 `
 const DangerBtnBox = styled(Button)`
   padding: var(--ig-spacing-8) var(--ig-spacing-8);

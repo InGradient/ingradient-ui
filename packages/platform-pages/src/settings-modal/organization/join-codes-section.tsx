@@ -112,7 +112,7 @@ export function JoinCodesSection({
           columns={columns}
           rows={joinCodes}
           ariaLabel="Join codes table"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
     </Stack>
