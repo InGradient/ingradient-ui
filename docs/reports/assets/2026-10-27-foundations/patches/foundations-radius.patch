@@ -1,0 +1,62 @@
+diff --git i/.storybook/preview.tsx w/.storybook/preview.tsx
+index 7d313d3..b9e2581 100644
+--- i/.storybook/preview.tsx
++++ w/.storybook/preview.tsx
+@@ -1,3 +1,4 @@
++import { SurfaceDepthProvider } from '../src/primitives'
+ import React from 'react'
+ import type { Preview } from '@storybook/react-vite'
+ import { initialize, mswLoader } from 'msw-storybook-addon'
+@@ -195,7 +196,7 @@ const preview: Preview = {
+       // No preset remains dark/default and has no preset metadata; explicit toolbar density still applies.
+       return (
+         <PresetProvider preset={preset} modeOverride={modeOverride} densityOverride={densityOverride}>
+-          {inner}
++          <SurfaceDepthProvider>{inner}</SurfaceDepthProvider>
+         </PresetProvider>
+       )
+     },
+diff --git i/src/tokens/core/radius.ts w/src/tokens/core/radius.ts
+index 2448262..3f0da8a 100644
+--- i/src/tokens/core/radius.ts
++++ w/src/tokens/core/radius.ts
+@@ -1,13 +1,13 @@
+ export const radiusScale = {
+-  '2xs': '6px',
++  '2xs': '4px',
+   xxs: '8px',
+-  xs: '10px',
+-  sm: '12px',
+-  md: '14px',
+-  lg: '16px',
+-  xl: '18px',
+-  '2xl': '20px',
+-  '4xl': '24px',
++  xs: '8px',
++  sm: '8px',
++  md: '8px',
++  lg: '12px',
++  xl: '16px',
++  '2xl': '12px',
++  '4xl': '16px',
+   pill: '999px',
+ } as const
+ 
+diff --git i/src/tokens/modes/build-theme.ts w/src/tokens/modes/build-theme.ts
+index f64c1d6..0c2f65e 100644
+--- i/src/tokens/modes/build-theme.ts
++++ w/src/tokens/modes/build-theme.ts
+@@ -39,10 +39,10 @@ export function buildTheme(name: string, palette: Palette, shadows: Shadows): In
+       danger: palette.red300,
+     },
+     radius: {
+-      sm: radiusScale.xs,
++      sm: radiusScale.sm,
+       md: radiusScale.md,
+-      lg: radiusScale['2xl'],
+-      xl: radiusScale['4xl'],
++      lg: radiusScale.lg,
++      xl: radiusScale.xl,
+       pill: radiusScale.pill,
+     },
+     shadows: {
