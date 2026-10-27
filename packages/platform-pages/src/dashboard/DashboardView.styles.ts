@@ -9,9 +9,8 @@ export const Page = styled(AppShell)`
 export const Content = styled.div`
   flex: 1;
   min-height: 0;
-  padding: var(--ig-space-7) var(--ig-space-9);
+  /* Flush main region like Catalog: no inset card, regions divided by 1px lines. */
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-7);
 `

@@ -7,6 +7,7 @@ const PROJECT_NAME_STYLE = { textAlign: 'right' as const, flexShrink: 0, marginL
 const ACTIONS_STYLE = {
   position: 'relative' as const,
   padding: 'var(--ig-space-3) var(--ig-space-11)',
+  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
 export interface DashboardHeaderProps {

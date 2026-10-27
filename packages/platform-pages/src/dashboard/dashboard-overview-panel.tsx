@@ -1,14 +1,18 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Inline, Stack, SurfaceRegion } from '@ingradient/ui/primitives'
 import { Button, Spinner, EmptyText as Placeholder } from '@ingradient/ui/components'
-import { Panel, PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
+import { PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
 const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
 const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
 
-const OverviewPanel = styled(Panel)`
+/** Flush page region: no radius, inset, or shadow; the header line separates it from the widgets. */
+const OverviewPanel = styled.section`
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const Body = styled.div`
@@ -72,11 +76,13 @@ export function DashboardOverviewPanel({
         </Inline>
       </PanelHeader>
       <Body>
+        <SurfaceRegion>
         {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
           : state === 'loading' ? <Placeholder as="div"><Stack gap="var(--ig-space-3px)" align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
           : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
           : children ? children
           : <Placeholder>{noDataText}</Placeholder>}
+        </SurfaceRegion>
       </Body>
     </OverviewPanel>
   )

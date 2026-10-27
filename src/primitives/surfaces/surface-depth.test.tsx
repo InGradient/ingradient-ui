@@ -7,6 +7,7 @@ import {
   MAX_SURFACE_DEPTH,
   SurfaceDepthProvider,
   SurfaceDepthScope,
+  SurfaceRegion,
   computeSurfaceDepth,
   resolveSurfaceRadius,
   surfaceDepthAttributes,
@@ -101,6 +102,20 @@ describe('surface depth', () => {
       </SurfaceDepthProvider>,
     )
     expect(depthOf('portaled')).toBe('2')
+  })
+
+  it('counts a flush region as one level without drawing anything', () => {
+    render(
+      <SurfaceDepthProvider>
+        <SurfaceRegion>
+          <TestSurface name="card">
+            <TestSurface name="inner" />
+          </TestSurface>
+        </SurfaceRegion>
+      </SurfaceDepthProvider>,
+    )
+    expect(depthOf('card')).toBe('2')
+    expect(depthOf('inner')).toBe('3')
   })
 
   it('turns off for a subtree when the provider is disabled', () => {

@@ -97,6 +97,15 @@ export function surfaceDepthAttributes(state: SurfaceDepthState): { 'data-ig-dep
   return state.enabled ? { 'data-ig-depth': state.depth } : {}
 }
 
+/**
+ * A flush page region (main area, sidebar) that draws no surface of its own but still counts
+ * as one depth level, so cards placed in it are depth 2 like cards inside a rounded panel.
+ */
+export function SurfaceRegion({ children }: { children?: React.ReactNode }) {
+  const state = useSurfaceDepth()
+  return <SurfaceDepthScope state={state}>{children}</SurfaceDepthScope>
+}
+
 export interface WithSurfaceDepthOptions {
   /** Modal, dialog, drawer, popover, or menu: restarts at depth 1 wherever it opens. */
   floating?: boolean

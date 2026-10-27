@@ -111,6 +111,7 @@ Uniform rounding down or up was trialed and rejected.
 - Maximum content width: `1280px` (`--ig-page-max-width`; the earlier DESIGN.md named it `--ig-layout-page-max-width`, which does not exist).
 - Breakpoints: 640, 720, 768, 860, 1024, and 1280px. Storybook verification widths: 375, 768, 1280, 1440, and 1920px.
 - Full pages own the viewport and scrolling; panels own their internal scroll areas. Collapsed columns are `inert`.
+- Page background is the flat canvas (`--ig-color-bg-canvas`); no decorative gradients.
 
 ## 5. Shape
 
@@ -128,7 +129,7 @@ Rules:
 
 1. Surfaces read their depth from `SurfaceDepthProvider` (React context, so depth survives portals). Without a provider they keep their legacy radius.
 2. Floating surfaces restart at depth 1 wherever they open.
-3. Flush layout columns (radius 0, separated by a 1px line) are not surfaces and do not add depth.
+3. Page regions (header, sidebars, main area) are flush: radius 0, no inset, no shadow, separated by 1px lines. A region that holds cards wraps them in `SurfaceRegion`, which counts as depth 1 without drawing a surface, so the cards stay depth 2.
 4. Maximum depth is 3. A fourth nested decorative surface violates section 8's no-wrapping rule.
 5. An explicit radius (`Card radius`, `styled(Surface)` override) wins; each one needs a reason.
 
