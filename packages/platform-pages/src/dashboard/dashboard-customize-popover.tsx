@@ -10,7 +10,6 @@ const Wrap = styled(MenuPopover)`
   z-index: var(--ig-z-sticky-plus);
   width: min(var(--ig-popup-md), calc(100vw - var(--ig-spacing-32)));
   padding: var(--ig-spacing-12);
-  border-radius: var(--ig-radius-lg);
 `
 
 const TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }

@@ -39,7 +39,7 @@ export function AnalysisLabelingByPersonWidget({
         emptyMessage="No uploader activity yet."
       />
       {byPerson.length > 0 ? (
-        <Card elevation="panel" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16)">
+        <Card elevation="panel" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)">
           <Table columns={PERSON_COLUMNS} rows={byPerson} ariaLabel="Uploader activity" />
         </Card>
       ) : null}
