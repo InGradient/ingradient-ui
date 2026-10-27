@@ -45,7 +45,7 @@ export const DragOverGrid = styled.div`
   align-items: center;
   justify-content: center;
   border: var(--ig-border-2px) dashed var(--ig-color-white-40);
-  // Wraps the image cards (radius-md), so it must be rounder than they are.
+  /* Wraps the image cards (radius-md), so it must be rounder than they are. */
   border-radius: var(--ig-radius-lg);
   z-index: var(--ig-z-sticky);
   pointer-events: none;
