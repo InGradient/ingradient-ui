@@ -86,9 +86,9 @@ SECTION = f'''
 <ol>
 <li><s><b>push와 PR 나누기</b></s> 완료: 세 브랜치를 <code>main</code>에 머지하고 push했다(<code>4401508</code>). 첫 CI는 <code>lint:style</code>(CSS 안의 <code>//</code> 주석)로 실패해 고쳤고, 남은 정리 작업 뒤에 한 번에 다시 확인한다.</li>
 <li><b>CI 시각 기준선 승인</b>: 거의 모든 화면이 바뀌었다(아래 A-4). 로컬에서는 갱신하지 않았다.</li>
-<li><b>사이드바 메뉴 이름</b>: "Classes"와 페이지 제목 "Class" 중 하나로 맞추기.</li>
-<li><b>Settings 모달 안의 입력칸·표 폭(약 15곳)</b>: 아직 팝업 크기 토큰을 쓴다. 레이아웃 크기 토큰으로 옮길지.</li>
-<li><b>4px 밖의 표 열 폭</b>: 처음 3개(190·116·124px)라고 적었으나 116·124는 4의 배수라 실제로는 <b>190px 하나</b>다(Catalog 이미지 표의 데이터셋 열). 192px로 맞추는 것을 추천.</li>
+<li><s><b>사이드바 메뉴 이름</b></s> 페이지 제목을 "Classes"로 맞춤(A-6).</li>
+<li><s><b>Settings 모달 안의 입력칸·표 폭</b></s> 처리함(A-6).</li>
+<li><b>4px 밖의 표 열 폭</b>: 처음 3개(190·116·124px)라고 적었으나 116·124는 4의 배수라 실제로는 <b>190px 두 곳</b>이었고 192px로 맞춤(A-6).</li>
 <li><s><b>숫자 입력칸 값이 잘리는 문제</b></s> 고침(A-6, <code>03b1c0b</code>).</li>
 <li>Edge와 공용 컴포넌트의 옛 글자 크기·간격 이름 정리를 이어서 할지(이번 범위는 Platform).</li>
 </ol>
@@ -114,20 +114,29 @@ SECTION = f'''
 <tr><td>Edge 탭 제목 띠가 본문 밖으로 삐져나옴</td><td>Settings Edge 탭</td><td>Settings 섹션 상자를 없앨 때 Edge 탭 제목의 음수 여백을 놓침</td><td><code>b95abdc</code>에서 고침</td></tr>
 <tr><td>Catalog 오른쪽 패널 제목 순서(접근성)</td><td>Catalog 데이터셋 목록 접힘</td><td>접힌 열을 inert로 만들면서 h2가 빠짐</td><td><code>e725981</code>에서 고침</td></tr></table>
 
-<h3 id="followup">A-6. 후속 정리 (Settings 소제목, 숫자 입력칸, 모서리, 인라인 스타일)</h3>
+<h3 id="followup">A-6. 후속 정리 (Settings 소제목·폭, 숫자 입력칸, 모서리, 인라인 스타일, 표 열 폭, Classes 제목)</h3>
 <p>Platform 재검토에서 찾은 일관성 문제를 정리했다. 브랜치 <code>feat/platform-consistency</code>(<code>main</code> 이후), 아직 push하지 않았다.</p>
-<table><tr><th>시각</th><th>커밋</th><th>내용</th></tr><tr><td>18:10</td><td><code>7ae9104</code></td><td>fix(platform-pages): CSS 안의 // 주석을 블록 주석으로 바꿔 lint:style 실패를 고친다</td></tr><tr><td>18:35</td><td><code>3739d0d</code></td><td>docs(reports): foundations 리포트 제목과 절 제목에서 시간 표현을 빼고 현재 상태로 고친다</td></tr><tr><td>18:50</td><td><code>5bd8564</code></td><td>style(platform-pages): Settings 소제목을 대문자 없이 문장형으로 맞춘다</td></tr><tr><td>18:50</td><td><code>03b1c0b</code></td><td>fix(components): 숫자 입력칸에 최소 폭을 두어 값이 잘리지 않게 한다</td></tr><tr><td>18:50</td><td><code>fd744c5</code></td><td>style(platform-pages): 모서리를 직접 덮어써 깊이 규칙을 피하던 두 곳을 정리한다</td></tr><tr><td>18:50</td><td><code>29dfb0c</code></td><td>refactor(platform-pages): 댓글 목록 최대 높이를 팝업 크기 대신 레이아웃 크기 토큰으로 옮긴다</td></tr><tr><td>19:55</td><td><code>1ab09db</code></td><td>refactor(platform-pages): 인라인 스타일 객체 113개를 styled 컴포넌트로 옮긴다</td></tr></table>
+FOLLOWUP_COMMITS
 <p>검증: CI 단계를 빠짐없이 돌렸다(처음 <code>main</code> CI를 실패시킨 <code>lint:style</code>과, 그동안 로컬 검사에서 빠져 있던 소비자 앱 빌드·패키지 소비 확인·Edge 계약 테스트를 추가). 두 번의 전체 검사 모두 통과, 단위 492, Storybook 888. 인라인 스타일 정리는 전체 스토리 비교(안정 869개)로 화면 변화 0을 확인했고, 다르게 나온 4개는 다시 찍어 노이즈로 확인했다(Settings Storage는 양쪽 빌드 모두 차트가 두 상태를 번갈아 보임).</p>
 <h4>화면 비교 (변경 전 <code>73caca9</code> 빌드, 변경 후 <code>1ab09db</code> 빌드)</h4>
 <figure><a href='assets/2026-10-27-foundations/followup/f-set-project-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-project-detail.png' alt='Settings / Project: 소제목 대문자 제거'></a><figcaption>Settings / Project: 소제목 대문자 제거</figcaption></figure><ol class='legend'><li><b class='n'>1</b> h4 소제목 8개: 대문자 켬→끔 (13px semibold 회색은 유지)</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-set-storage-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-storage-detail.png' alt='Settings / Storage: 소제목 대문자 제거와 문장형'></a><figcaption>Settings / Storage: 소제목 대문자 제거와 문장형</figcaption></figure><ol class='legend'><li><b class='n'>1</b> h4 "Storage by Tier" → "Storage by tier": 대문자 켬→끔</li><li><b class='n'>2</b> h4 "Storage by Project (Top 10)" → "Storage by project (top 10)": 대문자 켬→끔 (그 밖의 Storage 소제목도 같은 규칙)</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-set-edge-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-edge-detail.png' alt='Settings / Edge: 숫자 입력칸'></a><figcaption>Settings / Edge: 숫자 입력칸</figcaption></figure><ol class='legend'><li><b class='n'>1</b> 숫자 입력칸 8개: 폭 48→80px, 숫자 자리 2→34px. 값(1, 4, 20 등)이 보이게 됨</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-customize-detail.png'><img src='assets/2026-10-27-foundations/followup/f-customize-detail.png' alt='Dashboard 맞춤 설정 팝오버'></a><figcaption>Dashboard 맞춤 설정 팝오버</figcaption></figure><ol class='legend'><li><b class='n'>1</b> 팝오버 모서리 12→16px: 다른 팝오버·메뉴와 같은 떠 있는 표면 규칙</li></ol>
+<h4>Settings 모달 안의 폭, 4px 밖의 폭, 페이지 제목</h4>
+<figure><a href='assets/2026-10-27-foundations/followup/g-catalog-col-detail.png'><img src='assets/2026-10-27-foundations/followup/g-catalog-col-detail.png' alt='Catalog 표 데이터셋 열'></a><figcaption>Catalog 표 보기: 데이터셋 열</figcaption></figure>
+<ol class='legend'><li><b class='n'>1</b> 데이터셋 열 190→192px(측정 191→193px, 1px 테두리 포함). 레이아웃 크기가 모두 4의 배수인지 단위 테스트로 고정</li></ol>
+<figure><a href='assets/2026-10-27-foundations/followup/g-class-detail.png'><img src='assets/2026-10-27-foundations/followup/g-class-detail.png' alt='Classes 제목'></a><figcaption>Class Management 페이지 제목</figcaption></figure>
+<ol class='legend'><li><b class='n'>1</b> 페이지 제목 "Class"→"Classes": 사이드바 메뉴, 화면 안 목록 제목과 같게</li></ol>
+<ul><li><b>Settings 모달 안의 폭 23곳</b>을 같은 값의 레이아웃 크기 토큰으로 옮겼다: 입력칸 최소 폭(<code>field-xs</code>~<code>field-xl</code>: 104·160·192·200·240·260px), 표 최소 폭(<code>table-min-compact</code> 640px), 넓은 칸(<code>cell-min-wide</code> 220px), 설정 탭 열(<code>settings-nav-width</code> 220px), 장치 표 동작 열(120px). 대화상자 자체 폭 7곳은 팝업 크기를 그대로 쓴다. 전체 스토리 비교(안정 871개)에서 화면 변화 0. 다르게 나온 9개는 5번씩, 판정이 애매한 2개는 순서를 바꿔 6번씩 다시 찍어 모두 노이즈로 확인했다.</li>
+<li>처음 "4px 밖 표 열 3개(190·116·124px)"라고 적었으나 116·124는 4의 배수다. 실제로는 190px가 두 곳(Catalog 데이터셋 열, 계정 삭제 대화상자 안의 해상도 선택 상자)이었고 둘 다 192px로 맞췄다. 해상도 선택 상자는 스토리에 나오지 않아 화면에서 재지 못했다.</li></ul>
 <h4>화면 변화가 없는 정리</h4>
 <ul><li>인라인 스타일 객체 146개 중 113개를 같은 CSS의 styled 컴포넌트로 옮겼다(46개 파일). 이제 스타일 린트와 원색 값 검사가 이 스타일에도 걸린다. 계산식 값, 다른 곳에서 펼쳐 쓰는 것, <code>style={{}}</code> 직접 쓰기 33개는 그대로 뒀다. 변환 도구: <code>scripts/codemods/inline-style-to-styled.py</code>.</li>
 <li>댓글 목록 최대 높이를 팝업 크기 대신 레이아웃 크기 토큰으로.</li>
 <li>사람별 라벨링 위젯 표 카드의 모서리 직접 지정(바깥 카드와 같은 12px)을 빼 깊이를 따르게 했다. 이 위젯은 지금 페이지 스토리 어디에도 나오지 않아 <b>화면에서 재지 못했다</b>.</li></ul>
 <h4>남은 것</h4>
-<ul><li>정해 주실 것: Settings 모달 안의 입력칸·표 폭(팝업 크기 토큰 사용), Catalog 표 열 190px, 사이드바 "Classes"와 페이지 제목 "Class".</li>
+<ul><li>정해 주셨던 세 가지(Settings 모달 안의 폭, 190px, Classes 제목)는 추천안대로 처리했다.</li>
 <li>팝오버·패널 안의 작은 대문자 라벨(맞춤 설정 팝오버 "VISIBLE SECTIONS", 내보내기 대화상자, 이미지 상세 등)은 Settings 소제목과 다른 종류라 이번에 손대지 않았다.</li>
 <li>좁은 화면과 라이트 모드 확인은 미뤘다.</li></ul>
 '''
+_follow_rows = ''.join(f"<tr><td>{t}</td><td><code>{h}</code></td><td>{e(m)}</td></tr>" for h, t, m in (l.rstrip('\n').split('|', 2) for l in open(f'{ROOT}/docs/reports/{A}followup/commits.txt')))
+SECTION = SECTION.replace('FOLLOWUP_COMMITS', '<table><tr><th>시각</th><th>커밋</th><th>내용</th></tr>' + _follow_rows + '</table>')
 open(f'{ROOT}/docs/reports/{A}day-section.html', 'w').write(SECTION)
 print('day section', len(SECTION), 'chars, groups', total)

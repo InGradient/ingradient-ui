@@ -5,3 +5,7 @@
 fd744c5|18:50|style(platform-pages): 모서리를 직접 덮어써 깊이 규칙을 피하던 두 곳을 정리한다
 29dfb0c|18:50|refactor(platform-pages): 댓글 목록 최대 높이를 팝업 크기 대신 레이아웃 크기 토큰으로 옮긴다
 1ab09db|19:55|refactor(platform-pages): 인라인 스타일 객체 113개를 styled 컴포넌트로 옮긴다
+35004ac|20:12|docs(reports): 후속 정리(A-6)의 커밋, 검증, 번호 박스 전후 비교를 리포트에 추가한다
+3787be6|20:17|refactor(platform-pages): Settings 모달 안의 입력칸·표·칸 폭을 레이아웃 크기 토큰으로 옮긴다
+d9b8d3a|20:19|style(tokens): 4px 밖이던 190px 폭 두 곳을 192px로 맞추고 레이아웃 크기를 4px 테스트로 고정한다
+1ea5de7|20:19|style(platform-pages): Class 페이지 제목을 사이드바 메뉴와 같은 Classes로 바꾼다
