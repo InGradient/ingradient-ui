@@ -21,7 +21,7 @@ function ClassManageViewContent({
   return (
     <Page>
       <PagePrimaryHeader
-        title="Class"
+        title="Classes"
         subtitle={PAGE_SUBTITLE}
         rightSlot={projectName ?? undefined}
       />
