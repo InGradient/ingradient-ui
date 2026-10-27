@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "type": "module",
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./src/fonts.ts",
+    "./lib/fonts.js"
   ],
   "workspaces": [
     "packages/*",
@@ -44,6 +46,10 @@
     "./utils": {
       "types": "./lib/utils.d.ts",
       "import": "./lib/utils.js"
+    },
+    "./fonts": {
+      "types": "./lib/fonts.d.ts",
+      "import": "./lib/fonts.js"
     }
   },
   "files": [
@@ -78,6 +84,9 @@
     "validate:packed-consumer": "npm run build:package && npm run check:exports && node scripts/check-packed-consumer.mjs"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-sans-kr": "^5.3.0",
     "@tanstack/react-virtual": "^3.13.0",
     "date-fns": "^4.1.0",
     "html-to-image": "^1.11.13",
