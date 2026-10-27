@@ -3,14 +3,14 @@ import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 
 const WRAP_STYLE = {
-  marginTop: 'var(--ig-space-11)',
-  paddingTop: 'var(--ig-space-9)',
+  marginTop: 'var(--ig-spacing-24)',
+  paddingTop: 'var(--ig-spacing-20)',
   borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
-const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
-const HINT_STYLE = { marginBottom: 'var(--ig-space-3)' }
-const ROW_STYLE = { marginTop: 'var(--ig-space-3)' }
+const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const HINT_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const ROW_STYLE = { marginTop: 'var(--ig-spacing-8)' }
 const CONFIRM_INPUT_STYLE = { minWidth: 'var(--ig-popup-list-min)', flex: 1 }
 
 export interface DeleteProjectSectionProps {
@@ -35,7 +35,7 @@ export function DeleteProjectSection({
     <Box style={WRAP_STYLE}>
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
       <Text as="p" tone="soft" size="var(--ig-text-body)" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
-      <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
+      <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
         <TextField
           type="text"
           value={confirmInput}

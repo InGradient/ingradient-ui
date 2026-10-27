@@ -71,7 +71,7 @@ export function ExportHistory({
                     tabIndex={0}
                     onClick={() => startEditing(pkg)}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startEditing(pkg) } }}
-                    style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-space-2)' }}
+                    style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-spacing-8)' }}
                   >
                     {pkg.device_name || '—'} <PencilIcon size={iconSizeNumbers.xs} />
                   </span>

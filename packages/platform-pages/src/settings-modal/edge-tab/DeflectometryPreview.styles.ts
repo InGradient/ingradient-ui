@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const PreviewWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-3);
-  margin-top: var(--ig-space-5);
+  gap: var(--ig-spacing-8);
+  margin-top: var(--ig-spacing-12);
 `
 
 export const CanvasFrame = styled.div`
   display: inline-flex;
-  padding: var(--ig-space-1);
+  padding: var(--ig-spacing-4);
   background: var(--ig-color-bg-canvas);
   border-radius: var(--ig-radius-md);
   align-self: flex-start;

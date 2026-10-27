@@ -61,11 +61,11 @@ export function ReferenceImageSection({
         onDropImageId={(id) => onApply?.(id)}
         onSetDragging={onSetDragging}
       >
-        <Stack gap="var(--ig-space-5)" style={STACK_STYLE}>
+        <Stack gap="var(--ig-spacing-12)" style={STACK_STYLE}>
           {imageUrl ? (
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
-            <Stack gap="var(--ig-space-3)" align="flex-start">
+            <Stack gap="var(--ig-spacing-8)" align="flex-start">
               <Text tone="muted" size="var(--ig-text-caption)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
             </Stack>
           )}

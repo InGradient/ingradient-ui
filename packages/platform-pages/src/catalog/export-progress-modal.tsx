@@ -55,8 +55,8 @@ export function ExportProgressModal({
         </>
       }
     >
-      <Stack gap="var(--ig-space-4)">
-        <Inline gap="var(--ig-space-2)">
+      <Stack gap="var(--ig-spacing-8)">
+        <Inline gap="var(--ig-spacing-8)">
           {busy ? <Spinner size="sm" /> : null}
           <Text tone="secondary" size="var(--ig-text-body-sm)">
             {phase === 'error' && errorMessage ? errorMessage : labelMap[phase]}

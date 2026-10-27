@@ -80,9 +80,9 @@ export function SettingsAccountTab({
   const deleteDisabled = !deleteAccountEmailMatches || !!deleteAccountPreviewLoading
 
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title="Profile">
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <TextField
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
@@ -105,7 +105,7 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Access">
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <Button type="button" variant="secondary" onClick={onOpenPassword}>Change password</Button>
           <Button type="button" variant="secondary" onClick={onLogout}>Log out</Button>
         </Inline>
@@ -116,7 +116,7 @@ export function SettingsAccountTab({
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
         </Hint>
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <TextField
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}

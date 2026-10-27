@@ -33,13 +33,13 @@ export const DragOverFull = styled.div`
 export const GridWrap = styled.div`
   box-sizing: border-box;
   min-height: 100%;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
   position: relative;
 `
 
 export const DragOverGrid = styled.div`
   position: absolute;
-  inset: var(--ig-space-7);
+  inset: var(--ig-spacing-16);
   background: var(--ig-color-image-option-bg);
   display: flex;
   align-items: center;
@@ -58,13 +58,14 @@ export const MobileBottomSheet = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  bottom: var(--ig-control-height-3xl);
+  /* Sits above the mobile bottom navigation. */
+  bottom: var(--ig-layout-size-mobile-bottom-sheet-offset);
   z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
   border-top: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
 `
 
 export const RightSideLoadingText = styled.span`
@@ -72,5 +73,5 @@ export const RightSideLoadingText = styled.span`
 `
 
 export const TableWrap = styled.div`
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
 `

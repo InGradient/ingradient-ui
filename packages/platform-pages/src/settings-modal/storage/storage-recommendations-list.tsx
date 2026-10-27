@@ -21,10 +21,10 @@ export function StorageRecommendationsList({
   if (loading) return <Skeleton $height={loadingHeight} />
   if (recommendations.length === 0) return null
   return (
-    <Stack as="ul" gap="var(--ig-space-2)" style={LIST_STYLE}>
+    <Stack as="ul" gap="var(--ig-spacing-8)" style={LIST_STYLE}>
       {recommendations.map((r, i) => (
         <Alert as="li" key={i} $tone={r.tone === 'warn' ? 'warning' : 'info'}>
-          <Inline gap="var(--ig-space-2)" align="flex-start">
+          <Inline gap="var(--ig-spacing-8)" align="flex-start">
             {r.tone === 'warn'
               ? <AlertTriangleIcon size={iconSizeNumbers.sm} />
               : <InfoIcon size={iconSizeNumbers.sm} />}

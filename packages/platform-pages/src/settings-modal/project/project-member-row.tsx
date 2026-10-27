@@ -7,8 +7,8 @@ const Row = styled.li`
   display: grid;
   grid-template-columns: minmax(var(--ig-popup-2xs), 1.1fr) minmax(var(--ig-popup-2xs), 1fr) minmax(var(--ig-popup-xs), 1.3fr) auto auto;
   align-items: center;
-  gap: var(--ig-space-5);
-  padding: var(--ig-space-4) 0;
+  gap: var(--ig-spacing-12);
+  padding: var(--ig-spacing-8) 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   list-style: none;
   &:last-child {
@@ -24,7 +24,7 @@ const CELL_STYLE = {
 }
 
 const ROLE_SELECT_STYLE = { minWidth: 'var(--ig-popup-3xs-wide)' }
-const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 'var(--ig-text-caption)' }
+const DANGER_BTN_STYLE = { padding: 'var(--ig-spacing-8) var(--ig-spacing-8)', fontSize: 'var(--ig-text-caption)' }
 
 export interface ProjectMemberRowMember {
   id: string

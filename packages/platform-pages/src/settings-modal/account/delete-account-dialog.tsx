@@ -79,7 +79,7 @@ export function DeleteAccountDialog({
         </>
       }
     >
-      <Stack gap="var(--ig-space-7)">
+      <Stack gap="var(--ig-spacing-16)">
         <Text as="p" tone="soft" size="var(--ig-text-body)" style={COPY_STYLE}>
           This account owns or participates in projects that need resolution before deletion. Review each shared project below
           and decide whether to transfer ownership or delete the project.
@@ -90,8 +90,8 @@ export function DeleteAccountDialog({
               You are the only member of the following project{preview.solo_projects.length === 1 ? '' : 's'}. They will be permanently deleted along with your account.
             </Alert>
             {preview.solo_projects.map((p) => (
-              <Card key={p.project_id} elevation="raised" flat tone="danger" radius="var(--ig-radius-xs)" padding="var(--ig-space-5) var(--ig-space-6)">
-                <Stack gap="var(--ig-space-2)">
+              <Card key={p.project_id} elevation="raised" flat tone="danger" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-12) var(--ig-spacing-12)">
+                <Stack gap="var(--ig-spacing-8)">
                   <Text size="var(--ig-text-body)" weight="semibold">{p.project_name}</Text>
                   <Text tone="muted" size="var(--ig-text-caption)">role: {p.role} · members: {p.member_count}</Text>
                 </Stack>
@@ -110,7 +110,7 @@ export function DeleteAccountDialog({
         {unresolvedCount > 0 && (
           <Alert $tone="danger">Select a transfer target or choose delete for every shared project before continuing.</Alert>
         )}
-        <Stack as="label" gap="var(--ig-space-2)">
+        <Stack as="label" gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-body-sm)" weight="semibold">Enter your password to confirm</Text>
           <PasswordField
             value={password}
@@ -122,7 +122,7 @@ export function DeleteAccountDialog({
             style={FULL_PASSWORD_STYLE}
           />
         </Stack>
-        <Stack as="label" gap="var(--ig-space-2)">
+        <Stack as="label" gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-body-sm)" weight="semibold">Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
           <TextField
             value={finalConfirmText}

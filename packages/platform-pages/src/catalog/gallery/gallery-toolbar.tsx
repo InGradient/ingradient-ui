@@ -18,10 +18,10 @@ const UPLOAD_PROGRESS_STYLE = {
   right: 0,
 }
 
-const ROW_STYLE = { minHeight: 'var(--ig-layout-sidebar-header)', padding: 'var(--ig-space-7)' }
+const ROW_STYLE = { minHeight: 'var(--ig-layout-sidebar-header)', padding: 'var(--ig-spacing-16)' }
 
 const SELECTION_ROW_STYLE = {
-  padding: 'var(--ig-space-3) var(--ig-space-7)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-16)',
   borderTop: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
 }
 
@@ -94,14 +94,14 @@ export function GalleryToolbar({
           style={UPLOAD_PROGRESS_STYLE}
         />
       ) : null}
-      <Inline gap="var(--ig-space-3)" wrap="nowrap" style={ROW_STYLE}>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap" style={ROW_STYLE}>
         {leftStart}
         {search}
         {filters}
         <Box style={SPACER_STYLE} />
         {actions}
       </Inline>
-      <Inline gap="var(--ig-space-3)" wrap="nowrap" style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap" style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
     </Stack>
   )
 }

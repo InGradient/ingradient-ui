@@ -6,7 +6,7 @@ export const Page = styled.main`
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: var(--ig-space-8);
+  padding: var(--ig-spacing-16);
   background: var(--ig-color-bg-canvas);
 `
 
@@ -15,7 +15,7 @@ export const Content = styled.div`
   flex-direction: column;
   /* Single-form pages use generous spacing, unlike the dense workspace screens. */
   gap: var(--ig-spacing-24);
-  width: min(var(--ig-layout-size-form-narrow), calc(100vw - var(--ig-space-13)));
+  width: min(var(--ig-layout-size-form-narrow), calc(100vw - var(--ig-spacing-32)));
 `
 
 export const LogoWrap = styled.div`
@@ -50,7 +50,7 @@ export const SubmitRow = styled.div`
 export const CheckboxRow = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   flex-wrap: wrap;
 `
 
@@ -64,5 +64,5 @@ export const Footer = styled.p`
 export const AuthLink = styled.a`
   color: var(--ig-color-accent-soft);
   text-decoration: underline;
-  text-underline-offset: var(--ig-space-1);
+  text-underline-offset: var(--ig-spacing-4);
 `

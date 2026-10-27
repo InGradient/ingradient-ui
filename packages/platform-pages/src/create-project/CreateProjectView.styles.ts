@@ -8,12 +8,12 @@ export const Page = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--ig-space-10) var(--ig-space-5);
+  padding: var(--ig-spacing-24) var(--ig-spacing-12);
   background: var(--ig-color-bg-canvas);
 `
 
 export const Content = styled(Stack)`
-  width: min(var(--ig-layout-size-form), calc(100vw - var(--ig-space-7) * 2));
+  width: min(var(--ig-layout-size-form), calc(100vw - var(--ig-spacing-16) * 2));
   /* Single-form page: generous spacing like Login and Signup (DESIGN.md §4). */
   gap: var(--ig-spacing-24);
   margin: auto;
@@ -36,7 +36,7 @@ export const Title = styled.h1`
 `
 
 export const Subtitle = styled.p`
-  margin: var(--ig-space-2) 0 0;
+  margin: var(--ig-spacing-8) 0 0;
   font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
@@ -73,7 +73,7 @@ export const SectionTitle = styled.h2`
 `
 
 export const SectionDescription = styled.p`
-  margin: var(--ig-space-2) 0 0;
+  margin: var(--ig-spacing-8) 0 0;
   font-size: var(--ig-text-caption);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
@@ -97,7 +97,7 @@ export const OptionalLabel = styled.span`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   font-weight: var(--ig-font-weight-regular);
-  margin-left: var(--ig-space-2);
+  margin-left: var(--ig-spacing-8);
 `
 
 export const FileInput = styled.input`
@@ -113,7 +113,7 @@ export const FileList = styled.ul`
 `
 
 export const FileItem = styled.li`
-  padding: var(--ig-space-2) 0;
+  padding: var(--ig-spacing-8) 0;
 `
 
 export const OptionGrid = styled(Grid).attrs({
@@ -127,7 +127,7 @@ export const OptionGrid = styled(Grid).attrs({
 
 const OptionCardBase = styled.button<{ $active?: boolean }>`
   width: 100%;
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
   text-align: left;
   /* Buttons centre their content vertically; top-align so titles line up across a row. */
   display: flex;
@@ -158,7 +158,7 @@ export const OptionCard = withSurfaceDepth(OptionCardBase, { displayName: 'Creat
 export const OptionTitle = styled.div`
   font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
-  margin-bottom: var(--ig-space-2);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const OptionText = styled.div`

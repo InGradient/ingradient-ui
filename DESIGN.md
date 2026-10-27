@@ -340,7 +340,7 @@ See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) a
 |---|---|---|---|
 | High-contrast mode is currently a Storybook placeholder | `.storybook/preview.tsx` | Existing product state; this migration does not introduce it | Implement a real high-contrast token preset before claiming high-contrast support |
 | Locale toolbar does not yet provide full i18n | `.storybook/preview.tsx` | Existing product state; migrated stories currently use English product copy | Add translated content and CJK layout verification with the i18n phase |
-| Legacy spacing names | `--ig-space-*` in about 1,650 CSS and 330 JSX uses | Values already follow the 4px scale; renaming is mechanical but touches every file | Move to `--ig-spacing-{px}` or spacing roles page by page |
+| Legacy spacing names | `--ig-space-*` in shared components and Edge (Platform pages migrated 2026-10-27) | Values already follow the 4px scale; renaming is mechanical but touches every file | Move to `--ig-spacing-{px}` or spacing roles; `space-0`, `1px`, and negative steps have no 4px-scale name and stay |
 | Spacing roles not adopted | `--ig-gap-*`, `--ig-inset-*` | Tokens exist; components still pick numbers | Adopt in shared components first |
 | Surface tone and shadow by depth | `surfacePanel` recipe | Radius depth shipped first; tone and shadow change visuals more | Trial, then apply with the surface depth provider |
 | Unused or duplicate control-height tokens | `control-height-xs-plus`, `sm-plus`, `mid-plus` | Public token names; removal is breaking | Remove in the next breaking release |

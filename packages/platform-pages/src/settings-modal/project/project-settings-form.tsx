@@ -31,10 +31,10 @@ function ProjectTypeTag({ tone, children }: { tone: ProjectTypeTone; children?: 
   )
 }
 
-const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
+const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-spacing-16)', marginBottom: 'var(--ig-spacing-8)' }
 const FIRST_TITLE_STYLE = { marginTop: 0, marginBottom: 0 }
 const ROW_STYLE = {
-  padding: 'var(--ig-space-5) 0',
+  padding: 'var(--ig-spacing-12) 0',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
 }
 const LABEL_STYLE = { cursor: 'pointer' as const }
@@ -99,35 +99,35 @@ export function ProjectSettingsForm({
         fallbackErrorMessage="Failed to save project settings."
       />
 
-      <Inline gap="var(--ig-space-3)" wrap="wrap">
+      <Inline gap="var(--ig-spacing-8)" wrap="wrap">
         <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={FIRST_TITLE_STYLE}>Project name</Text>
         <ProjectTypeTag tone={projectType} />
       </Inline>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <TextField value={name} onChange={(e) => onChangeName(e.target.value)} placeholder="Project name" aria-label="Project name" disabled={!canEdit} style={INPUT_STYLE} />
       </Inline>
 
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>Description</Text>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <Textarea minHeight={80} value={description} onChange={(e) => onChangeDescription(e.target.value)} placeholder="Project description (optional)" aria-label="Project description" rows={3} disabled={!canEdit} />
       </Inline>
 
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>Data grouping</Text>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="multi-image-group" size="var(--ig-text-body)" style={LABEL_STYLE}>Group multiple images as one item (for labeling)</Text>
         <Checkbox id="multi-image-group" checked={groupEnabled} onChange={(e) => onChangeGroupEnabled(e.target.checked)} disabled={!canEdit} />
       </Inline>
       {groupEnabled && (
         <>
-          <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
-            <Stack gap="var(--ig-space-2)" style={NESTED_FIELD_STYLE}>
+          <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
+            <Stack gap="var(--ig-spacing-8)" style={NESTED_FIELD_STYLE}>
               <Text as="label" htmlFor="group-key-regex" size="var(--ig-text-body)" style={LABEL_STYLE}>Group key pattern (regex with one capture group)</Text>
               <TextField id="group-key-regex" value={groupRegex} onChange={(e) => onChangeGroupRegex(e.target.value)} placeholder="e.g. ^([^_]+_[^_]+)_" disabled={!canEdit} style={INPUT_FLEX_STYLE} />
               <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }}>File name is matched against this regex; the first captured group becomes the group key.</Text>
             </Stack>
           </Inline>
-          <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
-            <Stack gap="var(--ig-space-2)" style={NESTED_FIELD_STYLE}>
+          <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
+            <Stack gap="var(--ig-spacing-8)" style={NESTED_FIELD_STYLE}>
               <Text as="label" htmlFor="group-representative-regex" size="var(--ig-text-body)" style={LABEL_STYLE}>Representative image pattern (optional regex)</Text>
               <TextField id="group-representative-regex" value={groupRepRegex} onChange={(e) => onChangeGroupRepRegex(e.target.value)} placeholder="e.g. _x_orig\.png$" disabled={!canEdit} style={INPUT_FLEX_STYLE} />
               <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }}>If set, the matching file becomes the representative image for each group.</Text>
@@ -137,17 +137,17 @@ export function ProjectSettingsForm({
       )}
 
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>Upload</Text>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="allow-duplicate-filenames" size="var(--ig-text-body)" style={LABEL_STYLE}>Allow duplicate file names</Text>
         <Checkbox id="allow-duplicate-filenames" checked={allowDup} onChange={(e) => onChangeAllowDup(e.target.checked)} disabled={!canEdit} />
       </Inline>
 
       <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>Display</Text>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="show-filename-in-gallery" size="var(--ig-text-body)" style={LABEL_STYLE}>Show file name below each thumbnail in Catalog</Text>
         <Checkbox id="show-filename-in-gallery" checked={showFilenameInGallery} onChange={(e) => onChangeShowFilenameInGallery(e.target.checked)} disabled={!canEdit} />
       </Inline>
-      <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
         <Text as="label" htmlFor="show-bbox-class-names-in-detail" size="var(--ig-text-body)" style={LABEL_STYLE}>Show class name on bbox in Image Detail</Text>
         <Checkbox id="show-bbox-class-names-in-detail" checked={showBboxClassNamesInDetail} onChange={(e) => onChangeShowBboxClassNamesInDetail(e.target.checked)} disabled={!canEdit} />
       </Inline>
@@ -155,7 +155,7 @@ export function ProjectSettingsForm({
       {isOwner && (
         <>
           <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>Group visibility (owner only)</Text>
-          <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+          <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
             <Text as="label" htmlFor="group-visible-owner-only" size="var(--ig-text-body)" style={LABEL_STYLE}>Only owner can see all images in group</Text>
             <Checkbox
               id="group-visible-owner-only"
@@ -165,7 +165,7 @@ export function ProjectSettingsForm({
             />
           </Inline>
           {groupVisible !== 'all' && (
-            <Inline justify="space-between" gap="var(--ig-space-7)" wrap="wrap" style={ROW_STYLE}>
+            <Inline justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap" style={ROW_STYLE}>
               <Text as="label" htmlFor="group-visible-include-manager" size="var(--ig-text-body)" style={LABEL_STYLE}>Include manager</Text>
               <Checkbox
                 id="group-visible-include-manager"

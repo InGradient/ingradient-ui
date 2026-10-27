@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const Rows = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-9);
+  gap: var(--ig-spacing-20);
 `
 
 export const KeyboardStatus = styled.span`
@@ -24,7 +24,7 @@ export const Row = styled.div<{ $count: number }>`
   position: relative;
   display: grid;
   grid-template-columns: repeat(${(p) => Math.max(1, Math.min(3, p.$count))}, minmax(0, 1fr));
-  gap: var(--ig-space-9);
+  gap: var(--ig-spacing-20);
   align-items: start;
   ${media.lg} {
     grid-template-columns: 1fr;
@@ -35,7 +35,7 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: calc(var(--ig-space-4) * -1);
+  bottom: calc(var(--ig-spacing-8) * -1);
   height: var(--ig-size-drop-indicator);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-blue-tint-92);
@@ -48,7 +48,7 @@ export const RowDropZone = styled.div<{ $active: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: calc(var(--ig-space-9) * -1);
+  bottom: calc(var(--ig-spacing-20) * -1);
   height: var(--ig-control-height-xs);
   z-index: var(--ig-z-capture-super);
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
@@ -79,9 +79,9 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     p.$dropTarget === 'before'
       ? `
         &::after {
-          top: var(--ig-space-8);
-          bottom: var(--ig-space-8);
-          left: calc(var(--ig-space-5) * -1);
+          top: var(--ig-spacing-16);
+          bottom: var(--ig-spacing-16);
+          left: calc(var(--ig-spacing-12) * -1);
           width: var(--ig-size-drop-indicator);
         }
       `
@@ -90,9 +90,9 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
     p.$dropTarget === 'after'
       ? `
         &::after {
-          top: var(--ig-space-8);
-          bottom: var(--ig-space-8);
-          right: calc(var(--ig-space-5) * -1);
+          top: var(--ig-spacing-16);
+          bottom: var(--ig-spacing-16);
+          right: calc(var(--ig-spacing-12) * -1);
           width: var(--ig-size-drop-indicator);
         }
       `
@@ -105,18 +105,18 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
   ${(p) =>
     p.$position === 'before'
       ? `
-        top: var(--ig-space-7);
-        bottom: var(--ig-space-7);
-        left: calc(var(--ig-space-6) * -1);
+        top: var(--ig-spacing-16);
+        bottom: var(--ig-spacing-16);
+        left: calc(var(--ig-spacing-12) * -1);
         width: var(--ig-control-height-xs);
       `
       : ''}
   ${(p) =>
     p.$position === 'after'
       ? `
-        top: var(--ig-space-7);
-        bottom: var(--ig-space-7);
-        right: calc(var(--ig-space-6) * -1);
+        top: var(--ig-spacing-16);
+        bottom: var(--ig-spacing-16);
+        right: calc(var(--ig-spacing-12) * -1);
         width: var(--ig-control-height-xs);
       `
       : ''}
@@ -126,7 +126,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
 const DragOverlayCardBase = styled.div`
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);
-  padding: var(--ig-space-6) var(--ig-space-7);
+  padding: var(--ig-spacing-12) var(--ig-spacing-16);
   border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-active-bg);
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);

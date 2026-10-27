@@ -59,7 +59,7 @@ export function DatasetListItem({
       data-dataset-id={id}
     >
       <Grid
-        gap="var(--ig-space-3)"
+        gap="var(--ig-spacing-8)"
         columns="auto 1fr auto auto"
         style={ROW_STYLE}
         data-ig-component="DatasetListItem"

@@ -28,12 +28,12 @@ const EMPTY_STYLE = {
   display: 'flex' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
-  padding: 'var(--ig-space-11)',
+  padding: 'var(--ig-spacing-24)',
   textAlign: 'center' as const,
 }
 
 const LOADING_STYLE = {
-  padding: 'var(--ig-space-9)',
+  padding: 'var(--ig-spacing-20)',
   textAlign: 'center' as const,
 }
 

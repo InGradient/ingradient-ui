@@ -12,7 +12,7 @@ export interface DevicesTabProps {
 
 export function DevicesTab({ license, forms, table }: DevicesTabProps) {
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title={license.title ?? 'License'}>
         <DevicesLicenseSection {...license} title="" />
       </SettingsSection>

@@ -62,7 +62,7 @@ export function DevicesTable({
     columns.push({
       key: 'actions', header: '', headerAriaLabel: 'Actions', width: popupSizeNumbers['2xsNarrow'],
       render: (d) => (
-        <Inline gap="var(--ig-space-3)">
+        <Inline gap="var(--ig-spacing-8)">
           <Button type="button" size="sm" variant="secondary" onClick={() => onViewDetails?.(d)}>Details</Button>
           {d.status !== 'REVOKED' ? (
             <Button type="button" size="sm" tone="danger" variant="secondary" onClick={() => onRevoke?.(d.id)}>Revoke</Button>
@@ -74,11 +74,11 @@ export function DevicesTable({
   }
 
   return (
-    <Stack as="section" gap="var(--ig-space-4)">
-      <Inline justify="space-between" gap="var(--ig-space-3)" wrap="wrap">
+    <Stack as="section" gap="var(--ig-spacing-8)">
+      <Inline justify="space-between" gap="var(--ig-spacing-8)" wrap="wrap">
         {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         {isAdmin ? (
-          <Inline gap="var(--ig-space-3)">
+          <Inline gap="var(--ig-spacing-8)">
             {offlineEnabled ? (
               <Button type="button" size="sm" variant="secondary" onClick={onToggleIssue}>Issue License</Button>
             ) : null}
@@ -87,7 +87,7 @@ export function DevicesTable({
         ) : null}
       </Inline>
 
-      <Inline gap="var(--ig-space-3)" wrap="wrap">
+      <Inline gap="var(--ig-spacing-8)" wrap="wrap">
         <SearchField
           placeholder="Search UID or name…"
           value={filterSearch}

@@ -176,7 +176,7 @@ export function ImagesSection(props: {
           tabIndex={props.disabled ? -1 : 0}
           style={{
             width: '100%',
-            padding: 'var(--ig-space-7)',
+            padding: 'var(--ig-spacing-16)',
             textAlign: 'center',
             fontSize: 'var(--ig-text-body-sm)',
             cursor: props.disabled ? 'not-allowed' : 'pointer',

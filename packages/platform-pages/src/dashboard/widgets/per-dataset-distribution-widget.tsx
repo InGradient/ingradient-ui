@@ -7,13 +7,13 @@ import { BarChartCard } from '@ingradient/ui/patterns'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const Block = styled.div`
-  margin-bottom: var(--ig-space-9);
+  margin-bottom: var(--ig-spacing-20);
   &:last-child { margin-bottom: 0; }
 `
 
-const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
-const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
-const CHART_STYLE = { marginTop: 'var(--ig-space-5)' }
+const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const HEAD_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const CHART_STYLE = { marginTop: 'var(--ig-spacing-12)' }
 const EMPTY_STYLE = { margin: 0 }
 
 const CLASS_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
@@ -52,7 +52,7 @@ export function PerDatasetDistributionWidget({
 }: PerDatasetDistributionWidgetProps) {
   return (
     <Card className={className}>
-      <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-12)" style={HEAD_STYLE}>
         <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
       </Inline>
       {datasetDistribution.length === 0 ? (

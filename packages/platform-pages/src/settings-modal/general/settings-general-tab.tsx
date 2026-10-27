@@ -44,7 +44,7 @@ export function SettingsGeneralTab({
   hint = DEFAULT_HINT,
 }: SettingsGeneralTabProps) {
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title="Language">
         <SettingsRow
           asLabel={false}

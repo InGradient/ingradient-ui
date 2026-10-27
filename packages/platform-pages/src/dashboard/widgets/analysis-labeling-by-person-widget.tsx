@@ -26,7 +26,7 @@ export function AnalysisLabelingByPersonWidget({
   chartData,
 }: AnalysisLabelingByPersonWidgetProps) {
   return (
-    <Stack gap="var(--ig-space-7)">
+    <Stack gap="var(--ig-spacing-16)">
       <BarChartCard
         title="Uploader activity"
         data={byPerson.length === 0 ? [] : chartData}
@@ -39,7 +39,7 @@ export function AnalysisLabelingByPersonWidget({
         emptyMessage="No uploader activity yet."
       />
       {byPerson.length > 0 ? (
-        <Card elevation="panel" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-5) var(--ig-space-7)">
+        <Card elevation="panel" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16)">
           <Table columns={PERSON_COLUMNS} rows={byPerson} ariaLabel="Uploader activity" />
         </Card>
       ) : null}

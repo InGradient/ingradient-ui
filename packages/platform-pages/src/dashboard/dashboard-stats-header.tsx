@@ -1,6 +1,6 @@
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 
-const VALUE_STYLE = { marginLeft: 'var(--ig-space-7)' }
+const VALUE_STYLE = { marginLeft: 'var(--ig-spacing-16)' }
 
 export interface DashboardStatItem {
   label: string
@@ -14,7 +14,7 @@ export interface DashboardStatsHeaderProps {
 
 export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderProps) {
   return (
-    <Stack gap="var(--ig-space-1)" className={className}>
+    <Stack gap="var(--ig-spacing-4)" className={className}>
       {items.map((item) => (
         <Inline as="span" key={item.label} justify="space-between">
           <Text as="span" size="var(--ig-text-caption)" tone="muted">{item.label}</Text>

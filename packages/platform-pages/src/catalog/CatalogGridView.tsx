@@ -47,7 +47,7 @@ export function CatalogGridView({
   return (
     <GridWrap>
       {dragOverGrid ? <DragOverGrid>Drop images here to upload</DragOverGrid> : null}
-      <Grid columns="repeat(auto-fill, minmax(min(var(--ig-layout-size-grid-cell-min), 100%), var(--ig-layout-size-grid-cell-min)))" gap="var(--ig-space-5)">
+      <Grid columns="repeat(auto-fill, minmax(min(var(--ig-layout-size-grid-cell-min), 100%), var(--ig-layout-size-grid-cell-min)))" gap="var(--ig-spacing-12)">
         {images.map((image) => {
           const card = renderCard(
             image,

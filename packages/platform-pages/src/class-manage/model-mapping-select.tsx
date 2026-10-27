@@ -3,7 +3,7 @@ import { SelectField } from '@ingradient/ui/components'
 
 const SELECT_STYLE = {
   maxWidth: 'var(--ig-layout-size-field-max)',
-  padding: 'var(--ig-space-3) var(--ig-space-5)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
   fontSize: 'var(--ig-text-body-sm)',
   borderRadius: 'var(--ig-radius-2xs)',
 }
@@ -33,7 +33,7 @@ export function ModelMappingSelect({
     return <Text size="var(--ig-text-caption)" tone="soft">{disabledHint}</Text>
   }
   return (
-    <Stack gap="var(--ig-space-3)">
+    <Stack gap="var(--ig-spacing-8)">
       <SelectField
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}

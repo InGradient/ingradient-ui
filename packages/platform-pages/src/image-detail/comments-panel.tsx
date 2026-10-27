@@ -10,12 +10,12 @@ import { CollapsibleSectionHeader } from '@ingradient/ui/components'
 import { CommentThread } from '@ingradient/ui/patterns'
 import { MentionTextarea, type MentionCandidate } from '@ingradient/ui/components'
 
-const BODY_STYLE = { marginTop: 'var(--ig-space-3)' }
+const BODY_STYLE = { marginTop: 'var(--ig-spacing-8)' }
 const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-popup-3xs)'
-const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
+const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
 
 const ERROR_BOX_STYLE = {
-  padding: 'var(--ig-space-2) var(--ig-space-3)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-8)',
   border: 'var(--ig-border-1px) solid var(--ig-color-danger-dim-bg)',
   borderRadius: 'var(--ig-radius-md)',
   background: 'var(--ig-color-danger-dim-bg)',
@@ -136,7 +136,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
   const renderActions = (c: Comment): ReactNode => {
     if (!c.canEdit || (!onEdit && !onArchive)) return undefined
     return (
-      <Inline as="span" gap="var(--ig-space-1)">
+      <Inline as="span" gap="var(--ig-spacing-4)">
         {onEdit ? (
           <IconButton
             variant="secondary"
@@ -182,7 +182,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
         badge={<Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>}
       />
       {open ? (
-        <Stack gap="var(--ig-space-3)" style={BODY_STYLE}>
+        <Stack gap="var(--ig-spacing-8)" style={BODY_STYLE}>
           {count === 0 ? (
             <Text tone="muted" size="var(--ig-text-caption)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
@@ -201,7 +201,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
             </Box>
           )}
           {composerEnabled ? (
-            <Stack gap="var(--ig-space-2)">
+            <Stack gap="var(--ig-spacing-8)">
               {mentionInputCandidates ? (
                 <MentionTextarea
                   value={draft}
@@ -224,7 +224,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                 />
               )}
               {error ? (
-                <Inline gap="var(--ig-space-2)" justify="space-between" style={ERROR_BOX_STYLE}>
+                <Inline gap="var(--ig-spacing-8)" justify="space-between" style={ERROR_BOX_STYLE}>
                   <Text as="span" size="var(--ig-text-caption)">{error}</Text>
                   {canRetry && onRetry ? (
                     <Button
@@ -240,9 +240,9 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   ) : null}
                 </Inline>
               ) : null}
-              <Inline gap="var(--ig-space-2)" justify="space-between">
+              <Inline gap="var(--ig-spacing-8)" justify="space-between">
                 <Text as="span" size="var(--ig-text-caption)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
-                <Inline as="span" gap="var(--ig-space-2)">
+                <Inline as="span" gap="var(--ig-spacing-8)">
                   {editingCommentId && onCancelEdit ? (
                     <Button
                       type="button"

@@ -21,13 +21,13 @@ const Sidebar = styled.aside<{ $flush: boolean }>`
 
 const Header = styled.div`
   min-height: var(--ig-layout-sidebar-header);
-  padding: 0 var(--ig-space-7);
+  padding: 0 var(--ig-spacing-16);
   border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-8);
 `
 
 const Title = styled.h2`
@@ -40,19 +40,19 @@ const Title = styled.h2`
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 const List = styled.ul`
   list-style: none;
   margin: 0;
-  padding: var(--ig-space-2);
+  padding: var(--ig-spacing-8);
   overflow-y: auto;
   min-height: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2px);
+  gap: var(--ig-spacing-2);
 `
 
 export interface ClassListSidebarClass {

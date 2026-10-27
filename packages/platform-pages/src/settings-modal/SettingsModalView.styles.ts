@@ -4,8 +4,8 @@ import { SettingsShell } from '@ingradient/ui/patterns'
 import { media } from '@ingradient/ui/tokens'
 
 export const Modal = styled(ModalCard)`
-  width: min(var(--ig-popup-4xl-mid), calc(100vw - var(--ig-space-7) * 2));
-  height: min(var(--ig-popup-3xl-wide), calc(100vh - var(--ig-space-7) * 2));
+  width: min(var(--ig-popup-4xl-mid), calc(100vw - var(--ig-spacing-16) * 2));
+  height: min(var(--ig-popup-3xl-wide), calc(100vh - var(--ig-spacing-16) * 2));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -46,7 +46,7 @@ export const Body = styled.div`
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-6);
+  gap: var(--ig-spacing-12);
 `
 
 // Product shell owns the divider; item appearance is shared with Edge Settings.
@@ -69,7 +69,7 @@ export const AdminBody = styled.div`
 
 export const AdminSubTabsWrap = styled.div`
   flex-shrink: 0;
-  margin-bottom: var(--ig-space-3);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const AdminDesc = styled.p`
@@ -85,7 +85,7 @@ export const AdminContent = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-8);
 
   & > * {
     flex-shrink: 0;
@@ -93,7 +93,7 @@ export const AdminContent = styled.div`
 `
 
 export const SubsectionTitle = styled.h4`
-  margin: var(--ig-space-5) 0 var(--ig-space-3);
+  margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
@@ -105,12 +105,12 @@ export const PermissionsHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-3);
-  margin: var(--ig-space-5) 0 var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
 `
 
 export const PermissionsScopeNote = styled.p`
-  margin: 0 0 var(--ig-space-4);
+  margin: 0 0 var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-soft);
   line-height: var(--ig-line-height-relaxed);

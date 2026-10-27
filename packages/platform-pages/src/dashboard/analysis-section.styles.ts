@@ -16,8 +16,8 @@ export const CardHead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-4);
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const CardTitle = styled.span`
@@ -30,7 +30,7 @@ export const StatRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--ig-space-3) 0;
+  padding: var(--ig-spacing-8) 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   &:last-child {
     border-bottom: none;
@@ -51,7 +51,7 @@ export const StatValue = styled.span`
 export const EdgeSection = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-9);
+  gap: var(--ig-spacing-20);
   ${media.lg} {
     grid-template-columns: 1fr;
   }

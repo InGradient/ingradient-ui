@@ -33,15 +33,15 @@ export function OrgSettingsTab({
   if (!organization) return <Placeholder>{loadingText}</Placeholder>
 
   return (
-    <Stack gap="var(--ig-space-4)" style={WRAP_STYLE}>
+    <Stack gap="var(--ig-spacing-8)" style={WRAP_STYLE}>
       {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
 
-      <Stack gap="var(--ig-space-2)">
+      <Stack gap="var(--ig-spacing-8)">
         <Text as="label" size="var(--ig-text-body-sm)" weight="medium">Code</Text>
         <Text size="var(--ig-text-body)" tone="muted">{organization.code}</Text>
       </Stack>
 
-      <Stack gap="var(--ig-space-2)">
+      <Stack gap="var(--ig-spacing-8)">
         <Text as="label" htmlFor="org-name-input" size="var(--ig-text-body-sm)" weight="medium">Name</Text>
         {isAdmin ? (
           <TextField
@@ -56,13 +56,13 @@ export function OrgSettingsTab({
         )}
       </Stack>
 
-      <Stack gap="var(--ig-space-2)">
+      <Stack gap="var(--ig-spacing-8)">
         <Text as="label" size="var(--ig-text-body-sm)" weight="medium">Status</Text>
         <Text size="var(--ig-text-body)" tone="muted">{organization.status}</Text>
       </Stack>
 
       {isAdmin && (
-        <Inline justify="flex-end" gap="var(--ig-space-4)">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)">
           {message && <Text size="var(--ig-text-body-sm)" tone="success">{message}</Text>}
           {error && <Text size="var(--ig-text-body-sm)" tone="danger">{error}</Text>}
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>

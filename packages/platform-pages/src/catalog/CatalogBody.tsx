@@ -7,7 +7,7 @@ import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'
 import type { CatalogImagesPaneProps, CatalogViewMode } from './types'
 
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
+const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-spacing-16)' }
 const PERMISSION_DENIED_TEXT = "You don't have permission to view images."
 const LOADING_TEXT = 'Loading images…'
 const EMPTY_TITLE = 'No images'
@@ -22,7 +22,7 @@ const EmptyStateWrap = styled.div`
   min-height: var(--ig-layout-size-state-panel-min-height);
   display: grid;
   place-items: center;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
 `
 
 const LoadingText = styled.span`
@@ -63,7 +63,7 @@ export function CatalogBody({
   if (imagesPane.loading) {
     return (
       <EmptyStateWrap>
-        <Stack gap="var(--ig-space-3)" align="center">
+        <Stack gap="var(--ig-spacing-8)" align="center">
           <Spinner size="lg" />
           <LoadingText>{LOADING_TEXT}</LoadingText>
         </Stack>

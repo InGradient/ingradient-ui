@@ -21,5 +21,5 @@ export const StatusArea = styled.div`
   min-height: var(--ig-layout-size-state-panel-min-height);
   display: grid;
   place-items: center;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
 `

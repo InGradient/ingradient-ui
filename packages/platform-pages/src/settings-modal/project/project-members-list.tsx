@@ -83,7 +83,7 @@ export function ProjectMembersList({
             </>
           }
         >
-          <Stack gap="var(--ig-space-5)">
+          <Stack gap="var(--ig-spacing-12)">
             <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
             </Text>

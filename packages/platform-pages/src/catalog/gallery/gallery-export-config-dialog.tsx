@@ -3,7 +3,7 @@ import { Button } from '@ingradient/ui/components'
 import { RadioCardGroup, type RadioCardGroupOption, TextField } from '@ingradient/ui/components'
 import { ExportErrorText, ExportSection, ExportSectionLabel } from './gallery-export-dialog.styles'
 
-const EXPORT_DIALOG_WIDTH = 'min(var(--ig-popup-lg-plus), calc(100vw - var(--ig-space-13)))'
+const EXPORT_DIALOG_WIDTH = 'min(var(--ig-popup-lg-plus), calc(100vw - var(--ig-spacing-32)))'
 
 export type GalleryExportRange = 'selected' | 'all'
 export type GalleryExportType = 'images_and_labels' | 'labels_only'
@@ -116,7 +116,7 @@ export function GalleryExportConfigDialog({
         />
         {groupBy === 'regex' ? (
           <TextField
-            style={{ marginTop: 'var(--ig-space-3)' }}
+            style={{ marginTop: 'var(--ig-spacing-8)' }}
             value={groupKeyRegex}
             onChange={(event) => setGroupKeyRegex(event.target.value)}
             placeholder="예: ^([A-Za-z]+_\\d+)_"

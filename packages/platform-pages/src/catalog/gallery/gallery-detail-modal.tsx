@@ -19,8 +19,8 @@ const DEFAULT_THUMB_STYLE = {
   display: 'block' as const,
 }
 
-const DEFAULT_SIDEBAR_STYLE = { padding: 'var(--ig-space-5)' }
-const META_TITLE_STYLE = { marginBottom: 'var(--ig-space-2)' }
+const DEFAULT_SIDEBAR_STYLE = { padding: 'var(--ig-spacing-12)' }
+const META_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
 
 export interface GalleryDetailModalImage {
   id: string
@@ -72,7 +72,7 @@ function defaultMain(image: GalleryDetailModalImage) {
 
 function defaultSidebar(image: GalleryDetailModalImage) {
   return (
-    <Stack gap="var(--ig-space-3)" style={DEFAULT_SIDEBAR_STYLE}>
+    <Stack gap="var(--ig-spacing-8)" style={DEFAULT_SIDEBAR_STYLE}>
       <Text size="var(--ig-text-body-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal" style={META_TITLE_STYLE}>Image info</Text>
       {image.sync_state ? (
         <InfoRow>

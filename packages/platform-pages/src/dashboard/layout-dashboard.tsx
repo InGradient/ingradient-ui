@@ -2,8 +2,8 @@ import { Fragment, type ReactNode } from 'react'
 import { Grid, Stack, Text } from '@ingradient/ui/primitives'
 import { StatCard } from '@ingradient/ui/patterns'
 
-const ROOT_STYLE = { padding: 'var(--ig-space-7)' }
-const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
+const ROOT_STYLE = { padding: 'var(--ig-spacing-16)' }
+const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
 
 export interface DashboardStat {
   label: ReactNode
@@ -37,9 +37,9 @@ export function LayoutDashboard({
   chartsTitle = 'Charts', tableTitle = 'Breakdown', widgetsTitle,
 }: LayoutDashboardProps) {
   return (
-    <Stack gap="var(--ig-space-7)" style={ROOT_STYLE}>
+    <Stack gap="var(--ig-spacing-16)" style={ROOT_STYLE}>
       {stats && stats.length > 0 ? (
-        <Grid gap="var(--ig-space-5)" minItemWidth={180}>
+        <Grid gap="var(--ig-spacing-12)" minItemWidth={180}>
           {stats.map((s, i) => (
             <StatCard key={i} label={s.label} value={s.value} hint={s.hint} />
           ))}
@@ -48,7 +48,7 @@ export function LayoutDashboard({
       {widgets && widgets.length > 0 ? (
         <Stack as="section" gap="var(--ig-space-0)">
           {widgetsTitle ? <Text as="h3" tone="secondary" size="var(--ig-text-body)" weight="semibold" style={SECTION_TITLE_STYLE}>{widgetsTitle}</Text> : null}
-          <Grid gap="var(--ig-space-5)" columns={`repeat(${widgetColumns}, minmax(0, 1fr))`}>
+          <Grid gap="var(--ig-spacing-12)" columns={`repeat(${widgetColumns}, minmax(0, 1fr))`}>
             {widgets.map((w) => (
               <Fragment key={w.id}>{w.content}</Fragment>
             ))}

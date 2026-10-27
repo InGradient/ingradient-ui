@@ -13,7 +13,7 @@ const NameText = styled.span<{ $active?: boolean }>`
   white-space: nowrap;
 `
 
-const EMPTY_STYLE = { padding: 'var(--ig-space-2)' }
+const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
 
 export interface ImageDetailClassListClass {
   id: string
@@ -55,7 +55,7 @@ export function ImageDetailClassList({
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (
-    <Stack gap="var(--ig-space-1)" className={className}>
+    <Stack gap="var(--ig-spacing-4)" className={className}>
       {classes.map((cls) => {
         const isSelected = selectedClassId === cls.id
         const isClassified = classifiedSet.has(cls.id)

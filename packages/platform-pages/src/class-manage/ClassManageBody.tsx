@@ -28,8 +28,8 @@ interface ClassManageBodyProps {
 
 const STORAGE_KEY = 'ig-class-manage-shell'
 
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }
+const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-spacing-16)' }
+const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)' }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'

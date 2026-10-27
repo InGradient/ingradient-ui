@@ -14,14 +14,14 @@ type Story = StoryObj<typeof meta>
 
 export const AllTypes: Story = {
   render: () => (
-    <Stack gap="var(--ig-space-3)">
-      <Inline gap="var(--ig-space-3)">
+    <Stack gap="var(--ig-spacing-8)">
+      <Inline gap="var(--ig-spacing-8)">
         <DatasetTaskTag taskType="object_detection" />
         <DatasetTaskTag taskType="classification" />
         <DatasetTaskTag taskType="segmentation" />
         <DatasetTaskTag taskType="point" />
       </Inline>
-      <Inline gap="var(--ig-space-3)">
+      <Inline gap="var(--ig-spacing-8)">
         <DatasetTaskTag taskType="object_detection" format="full" />
         <DatasetTaskTag taskType="classification" format="full" />
         <DatasetTaskTag taskType="segmentation" format="full" />

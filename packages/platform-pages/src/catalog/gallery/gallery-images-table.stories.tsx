@@ -24,7 +24,7 @@ const IMAGES: GalleryImagesTableImage[] = [
 function Demo() {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set(['1']))
   return (
-    <div style={{ padding: 'var(--ig-space-5)' }}>
+    <div style={{ padding: 'var(--ig-spacing-12)' }}>
       <GalleryImagesTable
         images={IMAGES}
         selectedIds={selectedIds}

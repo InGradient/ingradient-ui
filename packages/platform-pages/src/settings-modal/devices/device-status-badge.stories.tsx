@@ -5,7 +5,7 @@ const meta: Meta<typeof DeviceStatusBadge> = {
   id: 'platform-pages-devices-devicestatusbadge',
   title: 'Components/Platform/Devices/DeviceStatusBadge',
   component: DeviceStatusBadge,
-  decorators: [(Story) => <div style={{ padding: 24, display: 'flex', gap: 'var(--ig-space-3)', flexWrap: 'wrap', background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
+  decorators: [(Story) => <div style={{ padding: 24, display: 'flex', gap: 'var(--ig-spacing-8)', flexWrap: 'wrap', background: 'var(--ig-color-surface-panel)' }}><Story /></div>],
 }
 export default meta
 

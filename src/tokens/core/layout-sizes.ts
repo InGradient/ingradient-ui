@@ -28,6 +28,7 @@ export const layoutSizes = {
   tableColSync: '116px',
   tableColCreated: '124px',
   tableColLabeled: '80px',
+  mobileBottomSheetOffset: '60px',
 } as const
 
 /** Numeric variant for props that take numbers (e.g. ResizableColumn widths). */

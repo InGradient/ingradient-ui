@@ -136,7 +136,7 @@ export function CatalogMobileView({
       ) : null}
       {mobile.bottomSheet === 'sort' ? (
         <MobileBottomSheet as="section" aria-label="Sort images" data-ig-slot="CatalogMobile.SortSheet">
-          <Stack gap="var(--ig-space-4)">
+          <Stack gap="var(--ig-spacing-8)">
             <Text as="h2" size="var(--ig-text-title-sm)" weight="semibold">
               Sort images
             </Text>

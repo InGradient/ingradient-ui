@@ -14,14 +14,14 @@ type Story = StoryObj<typeof meta>
 
 export const AllStates: Story = {
   render: () => (
-    <Stack gap="var(--ig-space-3)">
-      <Inline gap="var(--ig-space-3)">
+    <Stack gap="var(--ig-spacing-8)">
+      <Inline gap="var(--ig-spacing-8)">
         <SyncStatusChip state="synced" />
         <SyncStatusChip state="uploading" />
         <SyncStatusChip state="upload_failed" />
         <SyncStatusChip state="local_only" />
       </Inline>
-      <Inline gap="var(--ig-space-3)">
+      <Inline gap="var(--ig-spacing-8)">
         <SyncStatusChip state="synced" showDot={false} />
         <SyncStatusChip state="uploading" showDot={false} />
         <SyncStatusChip state="upload_failed" label="Retry needed" />
