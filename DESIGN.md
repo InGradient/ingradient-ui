@@ -105,7 +105,7 @@ Workspace screens (Catalog, Class, Dashboard, Settings, Edge) are dense: 32px co
 | Primary action → footer link | 16px |
 | Field and button height | 40px (`size="lg"`) |
 
-Fields always have a visible label (`FieldLabel` linked with `htmlFor`, 13px sentence case, the same as Create Project); placeholders show an example, never the label. The primary action is a `solid` button.
+Fields always have a visible label (`FieldLabel` linked with `htmlFor`, 13px sentence case, the same as Create Project); placeholders show an example, never the label. The primary action is a `solid` button. Sections of a longer form (Create Project) are a heading plus fields separated by a 1px line, not boxes inside the form box, so fields keep the same 32px inset.
 
 ### Migration of current values (D2)
 

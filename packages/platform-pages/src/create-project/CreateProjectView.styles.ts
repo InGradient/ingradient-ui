@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Card as UiCard } from '@ingradient/ui/components'
-import { Grid, Stack, surfaceRaised, withSurfaceDepth } from '@ingradient/ui/primitives'
+import { Grid, Stack, withSurfaceDepth } from '@ingradient/ui/primitives'
 import { media } from '@ingradient/ui/tokens'
 
 export const Page = styled.div`
@@ -49,19 +49,21 @@ export const Form = styled.form`
   margin-top: var(--ig-spacing-24);
 `
 
-const SectionBase = styled.section`
-  ${surfaceRaised}
-  border-radius: var(--ig-radius-lg);
-  overflow: hidden;
+/**
+ * A form section is a heading and its fields, not a box: sections are separated by a 1px line
+ * so fields sit at the same 32px inset as Login and Signup (DESIGN.md §4).
+ */
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-spacing-16);
+  & + & {
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    padding-top: var(--ig-spacing-24);
+  }
 `
 
-export const Section = withSurfaceDepth(SectionBase, { displayName: 'CreateProjectSection' })
-
-export const SectionHeader = styled.header`
-  padding: var(--ig-spacing-16);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-interactive);
-`
+export const SectionHeader = styled.header``
 
 export const SectionTitle = styled.h2`
   margin: 0;
@@ -81,16 +83,9 @@ export const SectionBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-spacing-16);
-  padding: var(--ig-spacing-16);
 `
 
-export const FieldsBody = styled(SectionBody)`
-  gap: 0;
-  > * { padding: var(--ig-space-5) 0; }
-  > *:first-child { padding-top: 0; }
-  > *:last-child { padding-bottom: 0; }
-  > * + * { border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
-`
+export const FieldsBody = styled(SectionBody)``
 
 export const Actions = styled.div`
   display: flex;
@@ -134,6 +129,11 @@ const OptionCardBase = styled.button<{ $active?: boolean }>`
   width: 100%;
   padding: var(--ig-space-5);
   text-align: left;
+  /* Buttons centre their content vertically; top-align so titles line up across a row. */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
