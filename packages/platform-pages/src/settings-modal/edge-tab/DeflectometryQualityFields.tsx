@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import type { DeflectometryConfig } from './edge-types'
-import { FieldRow, Hint, Label, NumberInput } from './edge.styles'
+import { ControlRow, Hint, Label, NumberInput } from './edge.styles'
 
 const RETRY_MIN = 0
 const RETRY_MAX = 3
@@ -21,7 +21,7 @@ export interface DeflectometryQualityFieldsProps {
 export function DeflectometryQualityFields({ defl, setDefl }: DeflectometryQualityFieldsProps) {
   return (
     <>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-retry">Retry on failure</Label>
         <NumberInput
           id="defl-retry"
@@ -35,9 +35,9 @@ export function DeflectometryQualityFields({ defl, setDefl }: DeflectometryQuali
         <Hint>
           {RETRY_MIN}–{RETRY_MAX} retries per step
         </Hint>
-      </FieldRow>
+      </ControlRow>
       <Hint>Retries a sequence step when quality checks fail (e.g. low contrast, saturation).</Hint>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-contrast">Min fringe contrast</Label>
         <NumberInput
           id="defl-contrast"
@@ -48,9 +48,9 @@ export function DeflectometryQualityFields({ defl, setDefl }: DeflectometryQuali
           onChange={(value) => setDefl((c) => ({ ...c, min_fringe_contrast: clamp(value || 0, 0, 1) }))}
         />
         <Hint>0.0 = disabled, 0.3+ = strict</Hint>
-      </FieldRow>
+      </ControlRow>
       <Hint>Rejects frames where fringe modulation is too weak to reconstruct reliably.</Hint>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-sat">Max saturation %</Label>
         <NumberInput
           id="defl-sat"
@@ -60,7 +60,7 @@ export function DeflectometryQualityFields({ defl, setDefl }: DeflectometryQuali
           onChange={(value) => setDefl((c) => ({ ...c, max_saturation_pct: clamp(value || 100, 0, 100) }))}
         />
         <Hint>100 = disabled</Hint>
-      </FieldRow>
+      </ControlRow>
       <Hint>Rejects frames whose share of fully-saturated pixels exceeds this threshold.</Hint>
     </>
   )

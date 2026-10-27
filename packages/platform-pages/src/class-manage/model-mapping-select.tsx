@@ -2,7 +2,7 @@ import { Stack, Text } from '@ingradient/ui/primitives'
 import { SelectField } from '@ingradient/ui/components'
 
 const SELECT_STYLE = {
-  maxWidth: 'var(--ig-popup-sm)',
+  maxWidth: 'var(--ig-layout-size-field-max)',
   padding: 'var(--ig-space-3) var(--ig-space-5)',
   fontSize: 'var(--ig-text-body-sm)',
   borderRadius: 'var(--ig-radius-2xs)',

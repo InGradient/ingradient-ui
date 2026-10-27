@@ -1,7 +1,5 @@
 import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
-import { SectionPanel } from '@ingradient/ui/components'
-import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const CHART_COLORS = [
   'var(--ig-color-chart-1)',
@@ -12,13 +10,7 @@ export const CHART_COLORS = [
   'var(--ig-color-chart-6)',
 ]
 
-export const Card = styled(SectionPanel)`
-  background: var(--ig-color-surface-raised);
-  border-color: var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-md);
-  padding: var(--ig-space-7) var(--ig-space-9);
-  gap: var(--ig-space-5);
-`
+export { DashboardCard as Card } from './dashboard-card'
 
 export const CardHead = styled.div`
   display: flex;
@@ -65,7 +57,5 @@ export const EdgeSection = styled.div`
   }
 `
 
-export const Empty = styled.p`
-  ${stateTitleText}
-  margin: 0;
-`
+/** Empty message inside a dashboard card: the shared EmptyText. */
+export { EmptyText as Empty } from '@ingradient/ui/components'

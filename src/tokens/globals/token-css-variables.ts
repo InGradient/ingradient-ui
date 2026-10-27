@@ -16,6 +16,7 @@ import {
   spacingScale,
   spacing4,
   componentSizeVars,
+  layoutSizeVars,
   spacingRoles,
   typographyScale,
   fontLeading,
@@ -452,6 +453,8 @@ const staticVars = {
   '--ig-inset-page': spacingRoles.insetPage,
   // ── Component sizes (do not borrow icon or spacing tokens) ─────
   ...componentSizeVars,
+  // ── Layout sizes (side panels, forms, table columns) ───────────
+  ...layoutSizeVars,
   '--ig-border-1px': borderWidthScale['1px'],
   '--ig-border-1_5px': borderWidthScale['1_5px'],
   '--ig-border-2px': borderWidthScale['2px'],

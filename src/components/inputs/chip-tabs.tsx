@@ -31,10 +31,12 @@ export interface ChipTabsProps {
   items: ChipTabsItem[]
   currentId: string
   onSelect: (item: ChipTabsItem) => void
+  /** Accessible name for the tablist. */
+  ariaLabel?: string
   className?: string
 }
 
-export function ChipTabs({ items, currentId, onSelect, className }: ChipTabsProps) {
+export function ChipTabs({ items, currentId, onSelect, ariaLabel, className }: ChipTabsProps) {
   const buttonRefs = React.useRef<Record<string, HTMLButtonElement | null>>({})
   if (items.length <= 1) return null
   const move = (index: number) => {
@@ -43,7 +45,7 @@ export function ChipTabs({ items, currentId, onSelect, className }: ChipTabsProp
     requestAnimationFrame(() => buttonRefs.current[next.id]?.focus())
   }
   return (
-    <Inline gap="var(--ig-space-1px)" justify="center" wrap="wrap" className={className} role="tablist" style={ROW_STYLE}>
+    <Inline gap="var(--ig-space-1px)" justify="center" wrap="wrap" className={className} role="tablist" aria-label={ariaLabel} style={ROW_STYLE}>
       {items.map((item, i) => (
         <Tab
           key={item.id}

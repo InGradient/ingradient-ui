@@ -5,7 +5,7 @@ import {
   CheckItem,
   CheckList,
   ErrorHint,
-  FieldRow,
+  ControlRow,
   Hint,
   Section,
   SectionTitle,
@@ -120,7 +120,7 @@ export function ExportTabUI({
 
       <Section>
         <SectionTitle>Device Name</SectionTitle>
-        <FieldRow>
+        <ControlRow>
           <TextField
             id="device-name"
             aria-label="Device name"
@@ -130,7 +130,7 @@ export function ExportTabUI({
             placeholder="예: 공장 A - 1번 라인"
             required
           />
-        </FieldRow>
+        </ControlRow>
         {uniqueMissingHash.length > 0 && (
           <WarningBox>
             These users haven't logged in since the auth migration and cannot authenticate on Edge:

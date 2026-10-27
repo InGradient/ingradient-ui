@@ -3,7 +3,7 @@ import {
   Alert, EmptyState, FilterChipRow, IconButton, PanelLeftOpenIcon,
   ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
-import { iconSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
+import { iconSizeNumbers, layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
@@ -73,18 +73,18 @@ export function ClassManageBody({
 
   const columns: ResizableColumn[] = [
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       hidden: !!list.sidebarCollapsed,
     },
     { width: 'auto' },
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       background: 'var(--ig-color-surface-panel)',
       dividerBefore: 'strong',
       hidden: !info,

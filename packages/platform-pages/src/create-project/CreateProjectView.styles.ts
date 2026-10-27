@@ -13,7 +13,7 @@ export const Page = styled.div`
 `
 
 export const Content = styled(Stack)`
-  width: min(var(--ig-popup-3xl-mid), calc(100vw - var(--ig-space-7) * 2));
+  width: min(var(--ig-layout-size-form), calc(100vw - var(--ig-space-7) * 2));
   /* Single-form page: generous spacing like Login and Signup (DESIGN.md §4). */
   gap: var(--ig-spacing-24);
   margin: auto;

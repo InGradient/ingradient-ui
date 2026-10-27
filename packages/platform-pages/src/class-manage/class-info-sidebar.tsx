@@ -4,7 +4,7 @@ import { SidePanelLayout, TextField, TextareaField, type SidePanelLayoutSection 
 import { ColorInputRow } from '@ingradient/ui/patterns'
 
 const Sidebar = styled(SidePanelLayout)<{ $flush: boolean }>`
-  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-md-narrow)')};
+  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-layout-size-class-info-panel)')};
   flex-shrink: 0;
   background: ${(p) => (p.$flush ? 'transparent' : 'var(--ig-color-surface-panel)')};
   border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
@@ -18,7 +18,7 @@ const PropertyStack = styled.div`
   gap: var(--ig-space-4);
 `
 
-const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-popup-sm)', borderRadius: 'var(--ig-radius-2xs)' }
+const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-layout-size-field-max)', borderRadius: 'var(--ig-radius-2xs)' }
 const DESCRIPTION_STYLE = { minHeight: 'calc(var(--ig-space-13) * 2 + var(--ig-space-3))', maxWidth: '100%', fontSize: 'var(--ig-text-body-sm)', resize: 'vertical' as const }
 
 export interface ClassInfoSidebarClass {

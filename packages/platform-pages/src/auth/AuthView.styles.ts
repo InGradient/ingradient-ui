@@ -15,7 +15,7 @@ export const Content = styled.div`
   flex-direction: column;
   /* Single-form pages use generous spacing, unlike the dense workspace screens. */
   gap: var(--ig-spacing-24);
-  width: min(var(--ig-popup-2xl-narrow), calc(100vw - var(--ig-space-13)));
+  width: min(var(--ig-layout-size-form-narrow), calc(100vw - var(--ig-space-13)));
 `
 
 export const LogoWrap = styled.div`

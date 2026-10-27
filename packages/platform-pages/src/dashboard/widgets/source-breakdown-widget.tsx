@@ -1,16 +1,10 @@
 import { chartHeights } from '@ingradient/ui'
 import { chartColors } from '@ingradient/ui'
 import styled from 'styled-components'
+import { DashboardCard as Card } from '../dashboard-card'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
-import { SectionPanel, Table, type TableColumn } from '@ingradient/ui/components'
-
-const Card = styled(SectionPanel)`
-  background: var(--ig-color-surface-raised);
-  border-color: var(--ig-color-border-strong);
-  padding: var(--ig-space-7) var(--ig-space-9);
-  gap: var(--ig-space-5);
-`
+import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const Block = styled.div`
   margin-bottom: var(--ig-space-7);

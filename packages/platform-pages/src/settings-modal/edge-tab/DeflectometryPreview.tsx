@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { DeflectometryConfig, DeflectometryPatternLabel } from './edge-types'
-import { Badge, BadgeRow, CanvasFrame, PreviewHint, PreviewWrap } from './DeflectometryPreview.styles'
+import { ChipTabs } from '@ingradient/ui/components'
+import { CanvasFrame, PreviewHint, PreviewWrap } from './DeflectometryPreview.styles'
 
 const PREVIEW_WIDTH = 360
 const PREVIEW_HEIGHT = 220
@@ -47,20 +48,12 @@ export function DeflectometryPreview({
 
   return (
     <PreviewWrap>
-      <BadgeRow role="tablist" aria-label="Pattern preview selector">
-        {patternLabels.map((label) => (
-          <Badge
-            key={label}
-            type="button"
-            role="tab"
-            aria-selected={label === selected}
-            $active={label === selected}
-            onClick={() => setSelected(label)}
-          >
-            {formatBadgeLabel ? formatBadgeLabel(label) : label}
-          </Badge>
-        ))}
-      </BadgeRow>
+      <ChipTabs
+        ariaLabel="Pattern preview selector"
+        items={patternLabels.map((label) => ({ id: label, name: formatBadgeLabel ? formatBadgeLabel(label) : label }))}
+        currentId={selected}
+        onSelect={(item) => setSelected(item.id)}
+      />
       <CanvasFrame>
         <canvas
           ref={canvasRef}

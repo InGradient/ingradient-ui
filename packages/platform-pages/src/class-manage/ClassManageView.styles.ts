@@ -18,7 +18,7 @@ export const StatusArea = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  min-height: var(--ig-popup-md);
+  min-height: var(--ig-layout-size-state-panel-min-height);
   display: grid;
   place-items: center;
   padding: var(--ig-space-7);

@@ -5,7 +5,7 @@ import { PanelLeftCloseIcon } from '@ingradient/ui/components'
 import { ClassListRow } from './class-list-row'
 
 const Sidebar = styled.aside<{ $flush: boolean }>`
-  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-sm)')};
+  width: ${(p) => (p.$flush ? '100%' : 'var(--ig-layout-size-class-list-panel)')};
   flex-shrink: 0;
   display: flex;
   flex-direction: column;

@@ -9,8 +9,8 @@ interface Props extends CatalogImagesPaneProps {
 }
 
 const PREVIEW_STYLE: React.CSSProperties = {
-  width: 'var(--ig-popup-md)',
-  height: 'var(--ig-popup-xs-plus)',
+  width: 'var(--ig-layout-size-preview-width)',
+  height: 'var(--ig-layout-size-preview-height)',
   objectFit: 'cover',
   borderRadius: 'var(--ig-radius-md)',
 }
@@ -47,7 +47,7 @@ export function CatalogGridView({
   return (
     <GridWrap>
       {dragOverGrid ? <DragOverGrid>Drop images here to upload</DragOverGrid> : null}
-      <Grid columns="repeat(auto-fill, minmax(min(var(--ig-popup-2xs), 100%), var(--ig-popup-2xs)))" gap="var(--ig-space-5)">
+      <Grid columns="repeat(auto-fill, minmax(min(var(--ig-layout-size-grid-cell-min), 100%), var(--ig-layout-size-grid-cell-min)))" gap="var(--ig-space-5)">
         {images.map((image) => {
           const card = renderCard(
             image,

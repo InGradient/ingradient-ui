@@ -13,23 +13,16 @@ export const TabContent = styled(UiPageContent)`
   gap: var(--ig-space-4);
 `
 
+/** Same as the SettingsSection title on the other tabs (no band, sentence case). */
 export const SectionTitle = styled.h3`
-  margin: calc(var(--ig-space-5) * -1) calc(var(--ig-space-5) * -1) 0;
-  padding: var(--ig-space-4) var(--ig-space-5);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-interactive);
-  font-size: var(--ig-text-body-sm);
+  margin: 0;
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
 `
 
 export const SectionTitleMt = styled(SectionTitle)`
   margin: var(--ig-space-4) 0 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
 `
 
 /** Same as SettingsSection: a heading and rows separated by a 1px line, not a box. */
@@ -61,7 +54,7 @@ export const CheckDivider = styled.div`
   margin: var(--ig-space-2) 0;
 `
 
-export const FieldRow = styled.div`
+export const ControlRow = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);
