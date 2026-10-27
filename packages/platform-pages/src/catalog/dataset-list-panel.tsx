@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
@@ -7,39 +8,43 @@ import { PanelLeftCloseIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
 import type { DatasetTaskType } from './dataset-task-tag'
 
-const PANEL_STYLE = {
-  height: '100%',
-  background: 'var(--ig-color-surface-panel)',
-  borderRight: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
-}
+const PanelBox = styled(Stack)`
+  height: 100%;
+  background: var(--ig-color-surface-panel);
+  border-right: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+`
 
-const HEADER_STYLE = {
-  minHeight: 'var(--ig-layout-sidebar-header)',
-  padding: '0 var(--ig-spacing-16)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
-  flexShrink: 0,
-}
+const HeaderBox = styled(Inline)`
+  min-height: var(--ig-layout-sidebar-header);
+  padding: 0 var(--ig-spacing-16);
+  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  flex-shrink: 0;
+`
 
-const SELECT_ALL_ROW_STYLE = {
-  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
-}
+const SelectAllRowBox = styled(Inline)`
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
+  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+`
 
-const LIST_STYLE = {
-  flex: 1,
-  minHeight: 0,
-  overflowY: 'auto' as const,
-  padding: 'var(--ig-spacing-8)',
-  gap: 'var(--ig-spacing-2)',
-  margin: 0,
-  listStyle: 'none' as const,
-}
+const ListBox = styled(Stack)`
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--ig-spacing-8);
+  gap: var(--ig-spacing-2);
+  margin: 0;
+  list-style: none;
+`
 
 const PLACEHOLDER_STYLE = {
   padding: 'var(--ig-spacing-16)',
 }
 
-const TITLE_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
+const TitleBox = styled(Text)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
 
 export interface DatasetListPanelDataset {
   id: string
@@ -74,16 +79,15 @@ export function DatasetListPanel({
   const showItems = !noProject && !loading && datasets.length > 0
 
   return (
-    <Stack
-      as="aside"
+    <PanelBox
+      forwardedAs="aside"
       aria-label={title}
       gap="var(--ig-space-0)"
       data-ig-component="DatasetListPanel"
       data-ig-layer="patterns"
-      style={PANEL_STYLE}
     >
-      <Inline justify="space-between" gap="var(--ig-spacing-8)" style={HEADER_STYLE}>
-        <Text as="h2" size="var(--ig-text-title-sm)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
+      <HeaderBox justify="space-between" gap="var(--ig-spacing-8)">
+        <TitleBox forwardedAs="h2" size="var(--ig-text-title-sm)" weight="semibold">{title}</TitleBox>
         <Inline gap="var(--ig-spacing-8)">
           <Button
             variant="solid"
@@ -107,9 +111,9 @@ export function DatasetListPanel({
             </IconButton>
           ) : null}
         </Inline>
-      </Inline>
+      </HeaderBox>
       {!noProject && !loading && datasets.length > 0 ? (
-        <Inline justify="space-between" gap="var(--ig-spacing-12)" style={SELECT_ALL_ROW_STYLE}>
+        <SelectAllRowBox justify="space-between" gap="var(--ig-spacing-12)">
           <Checkbox
             checked={allSelected}
             indeterminate={!allSelected && someSelected}
@@ -121,9 +125,9 @@ export function DatasetListPanel({
               {selectedIds.size} selected
             </Text>
           ) : null}
-        </Inline>
+        </SelectAllRowBox>
       ) : null}
-      <Stack as={showItems ? 'ul' : undefined} gap="var(--ig-space-0)" style={LIST_STYLE}>
+      <ListBox forwardedAs={showItems ? 'ul' : undefined} gap="var(--ig-space-0)">
         {noProject ? (
           <EmptyText style={PLACEHOLDER_STYLE}>No project selected</EmptyText>
         ) : loading ? (
@@ -147,7 +151,7 @@ export function DatasetListPanel({
             />
           ))
         )}
-      </Stack>
-    </Stack>
+      </ListBox>
+    </PanelBox>
   )
 }

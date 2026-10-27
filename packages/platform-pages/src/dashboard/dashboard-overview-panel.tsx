@@ -4,8 +4,13 @@ import { Inline, Stack, SurfaceRegion } from '@ingradient/ui/primitives'
 import { Button, Spinner, EmptyText as Placeholder } from '@ingradient/ui/components'
 import { PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
-const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-spacing-4)' }
-const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
+const HeaderMainBox = styled(Stack)`
+  min-width: 0;
+  gap: var(--ig-spacing-4);
+`
+const HeaderActionsBox = styled(Inline)`
+  position: relative;
+`
 
 /** Flush page region: no radius, inset, or shadow; the header line separates it from the widgets. */
 const OverviewPanel = styled.section`
@@ -65,15 +70,15 @@ export function DashboardOverviewPanel({
   return (
     <OverviewPanel className={className}>
       <PanelHeader>
-        <Stack gap="var(--ig-spacing-4)" style={HEADER_MAIN_STYLE}>
+        <HeaderMainBox gap="var(--ig-spacing-4)">
           <PanelTitle>{title}</PanelTitle>
           {hint ? <PanelHint>{hint}</PanelHint> : null}
-        </Stack>
-        <Inline gap="var(--ig-spacing-8)" wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
+        </HeaderMainBox>
+        <HeaderActionsBox gap="var(--ig-spacing-8)" wrap="wrap" data-report-hide>
           {onResetLayout ? <Button type="button" variant="secondary" onClick={onResetLayout} style={RESET_BTN_STYLE}>Reset</Button> : null}
           <Button type="button" variant="secondary" onClick={onToggleDate} style={DATE_BTN_STYLE}>{dateLabel}</Button>
           {datePopover}
-        </Inline>
+        </HeaderActionsBox>
       </PanelHeader>
       <Body>
         <SurfaceRegion>

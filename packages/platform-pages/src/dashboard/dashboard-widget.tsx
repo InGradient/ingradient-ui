@@ -15,8 +15,13 @@ const RootBase = styled.div<{ $span: number }>`
 
 const Root = withSurfaceDepth(RootBase, { displayName: 'DashboardWidget' })
 
-const TITLE_BLOCK_STYLE = { gap: 'var(--ig-spacing-2)' }
-const BODY_STYLE = { flex: 1, minHeight: 0 }
+const TitleBlockBox = styled(Stack)`
+  gap: var(--ig-spacing-2);
+`
+const BodyBox = styled(Stack)`
+  flex: 1;
+  min-height: 0;
+`
 
 export interface DashboardWidgetProps {
   title: React.ReactNode
@@ -34,13 +39,13 @@ export function DashboardWidget({
   return (
     <Root $span={span} className={className}>
       <Inline justify="space-between" gap="var(--ig-spacing-8)">
-        <Stack gap="var(--ig-space-0)" style={TITLE_BLOCK_STYLE}>
+        <TitleBlockBox gap="var(--ig-space-0)">
           <Text as={titleAs} size="var(--ig-text-body)" weight="semibold">{title}</Text>
           {subtitle ? <Text size="var(--ig-text-caption)" tone="muted">{subtitle}</Text> : null}
-        </Stack>
+        </TitleBlockBox>
         {actions ? <Inline gap="var(--ig-spacing-8)">{actions}</Inline> : null}
       </Inline>
-      <Stack gap="var(--ig-space-0)" style={BODY_STYLE}>{children}</Stack>
+      <BodyBox gap="var(--ig-space-0)">{children}</BodyBox>
     </Root>
   )
 }

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { useState } from 'react'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { Button, EmptyState } from '@ingradient/ui/components'
@@ -8,8 +9,14 @@ import {
   type ProjectMemberRowRoleOption,
 } from './project-member-row'
 
-const LIST_STYLE = { listStyle: 'none' as const, margin: 0, padding: 0 }
-const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
+const ListBox = styled(Stack)`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`
+const DescriptionBox = styled(Text)`
+  line-height: var(--ig-line-height-relaxed);
+`
 
 export interface ProjectMembersListProps {
   members: ProjectMemberRowMember[]
@@ -42,7 +49,7 @@ export function ProjectMembersList({
 
   return (
     <>
-      <Stack as="ul" gap="var(--ig-space-0)" style={LIST_STYLE}>
+      <ListBox forwardedAs="ul" gap="var(--ig-space-0)">
         {members.map((m) => {
           const isOnlyOwner = m.role === 'owner' && ownerCount <= 1
           return (
@@ -59,7 +66,7 @@ export function ProjectMembersList({
             />
           )
         })}
-      </Stack>
+      </ListBox>
       {pendingRemove && (
         <DialogShell
           title="Remove Member"
@@ -84,10 +91,10 @@ export function ProjectMembersList({
           }
         >
           <Stack gap="var(--ig-spacing-12)">
-            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
+            <DescriptionBox forwardedAs="p" tone="muted" size="var(--ig-text-body)">
               Remove <strong>{pendingRemove.email}</strong> from this project?
-            </Text>
-            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
+            </DescriptionBox>
+            <DescriptionBox forwardedAs="p" tone="muted" size="var(--ig-text-body)">This member will lose access to the project immediately.</DescriptionBox>
           </Stack>
         </DialogShell>
       )}

@@ -1,8 +1,13 @@
+import styled from 'styled-components'
 import { Grid, Text } from '@ingradient/ui/primitives'
 import { Card, Skeleton } from '@ingradient/ui/components'
 
-const LABEL_STYLE = { marginBottom: 'var(--ig-spacing-4)' }
-const SUB_STYLE = { marginLeft: 'var(--ig-spacing-4)' }
+const LabelBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-4);
+`
+const SubBox = styled(Text)`
+  margin-left: var(--ig-spacing-4);
+`
 
 export interface StorageOverviewItem {
   label: string
@@ -29,10 +34,10 @@ export function StorageOverview({ items, loading, loadingCount = 4 }: StorageOve
     <Grid gap="var(--ig-spacing-12)" minItemWidth="var(--ig-popup-2xs)">
       {items.map((item, i) => (
         <Card key={i} elevation="raised" flat border="strong" radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-12)">
-          <Text as="div" size="var(--ig-text-micro)" tone="muted" style={LABEL_STYLE}>{item.label}</Text>
+          <LabelBox forwardedAs="div" size="var(--ig-text-micro)" tone="muted">{item.label}</LabelBox>
           <Text as="div" size="var(--ig-text-title)" weight="semibold">
             {item.value}
-            {item.sub ? <Text as="span" size="var(--ig-text-caption)" tone="soft" weight="regular" style={SUB_STYLE}>{item.sub}</Text> : null}
+            {item.sub ? <SubBox forwardedAs="span" size="var(--ig-text-caption)" tone="soft" weight="regular">{item.sub}</SubBox> : null}
           </Text>
         </Card>
       ))}

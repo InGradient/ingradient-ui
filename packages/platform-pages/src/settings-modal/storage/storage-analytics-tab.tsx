@@ -1,10 +1,16 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Alert, Button } from '@ingradient/ui/components'
 
-const CONTAINER_STYLE = {}
-const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
-const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const ContainerBox = styled(Stack)`
+`
+const ErrorTextBox = styled(Text)`
+  color: var(--ig-color-alert-danger-text);
+`
+const SubTitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
 
 export interface StorageAnalyticsTabProps {
   title?: string
@@ -47,19 +53,19 @@ export function StorageAnalyticsTab({
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
+      <ContainerBox gap="var(--ig-spacing-8)">
         <Alert $tone="danger">
           <Stack gap="var(--ig-spacing-8)">
-            <Text as="p" size="var(--ig-text-body-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
+            <ErrorTextBox forwardedAs="p" size="var(--ig-text-body-sm)">{error}</ErrorTextBox>
             {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
           </Stack>
         </Alert>
-      </Stack>
+      </ContainerBox>
     )
   }
 
   return (
-    <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
+    <ContainerBox gap="var(--ig-spacing-8)">
       <Inline justify="space-between">
         {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
@@ -77,11 +83,11 @@ export function StorageAnalyticsTab({
 
       <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-popup-xs)">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <SubTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{resolutionTitle}</SubTitleBox>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <SubTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{formatTitle}</SubTitleBox>
           {formatChart}
         </div>
       </Grid>
@@ -98,6 +104,6 @@ export function StorageAnalyticsTab({
           {recommendations}
         </>
       ) : null}
-    </Stack>
+    </ContainerBox>
   )
 }

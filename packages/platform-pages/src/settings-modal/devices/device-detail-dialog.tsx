@@ -1,8 +1,11 @@
+import styled from 'styled-components'
 import { Grid, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 
-const VALUE_STYLE = { wordBreak: 'break-all' as const }
+const ValueBox = styled(Text)`
+  word-break: break-all;
+`
 
 function formatDate(value: string | null | undefined): string {
   if (!value) return '—'
@@ -35,13 +38,13 @@ export function DeviceDetailDialog({ device, onClose, title = 'Device Details' }
       actions={<Button type="button" variant="secondary" onClick={onClose}>Close</Button>}
     >
       <Grid gap="var(--ig-spacing-8) var(--ig-spacing-16)" columns="var(--ig-form-label-col) 1fr">
-        <Text tone="muted" size="var(--ig-text-body-sm)">Device UID</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.deviceUid}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Name</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.name ?? '—'}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Status</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.status}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Organization ID</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.organizationId}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Registered</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.registeredAt)}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Last seen</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.lastSeenAt)}</Text>
-        <Text tone="muted" size="var(--ig-text-body-sm)">Revoked</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.revokedAt)}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Device UID</Text><ValueBox size="var(--ig-text-body-sm)">{device.deviceUid}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Name</Text><ValueBox size="var(--ig-text-body-sm)">{device.name ?? '—'}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Status</Text><ValueBox size="var(--ig-text-body-sm)">{device.status}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Organization ID</Text><ValueBox size="var(--ig-text-body-sm)">{device.organizationId}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Registered</Text><ValueBox size="var(--ig-text-body-sm)">{formatDate(device.registeredAt)}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Last seen</Text><ValueBox size="var(--ig-text-body-sm)">{formatDate(device.lastSeenAt)}</ValueBox>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Revoked</Text><ValueBox size="var(--ig-text-body-sm)">{formatDate(device.revokedAt)}</ValueBox>
       </Grid>
     </DialogShell>
   )

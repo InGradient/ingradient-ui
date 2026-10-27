@@ -1,10 +1,13 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { DialogShell } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
 import { ProgressBar } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
 
-const LINK_STYLE = { textDecoration: 'none' }
+const LinkBox = styled(Text)`
+  text-decoration: none;
+`
 
 export type ExportProgressPhase = 'preparing' | 'processing' | 'ready' | 'error'
 
@@ -64,7 +67,7 @@ export function ExportProgressModal({
         </Inline>
         {busy ? <ProgressBar value={progress} /> : null}
         {phase === 'ready' && downloadUrl ? (
-          <Text as="a" tone="accent" size="var(--ig-text-body-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
+          <LinkBox forwardedAs="a" tone="accent" size="var(--ig-text-body-sm)" href={downloadUrl} download={filename}>Download {filename}</LinkBox>
         ) : null}
       </Stack>
     </DialogShell>

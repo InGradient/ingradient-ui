@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Alert, EmptyState, Spinner } from '@ingradient/ui/components'
 import { GalleryImagesTable } from './gallery'
@@ -7,7 +7,9 @@ import { CatalogGridView } from './CatalogGridView'
 import { TableWrap } from './CatalogView.styles'
 import type { CatalogImagesPaneProps, CatalogViewMode } from './types'
 
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-spacing-16)' }
+const AlertBox = styled(Alert)`
+  margin: var(--ig-spacing-16);
+`
 const PERMISSION_DENIED_TEXT = "You don't have permission to view images."
 const LOADING_TEXT = 'Loading images…'
 const EMPTY_TITLE = 'No images'
@@ -48,16 +50,16 @@ export function CatalogBody({
 }: CatalogBodyProps) {
   if (permissionDenied) {
     return (
-      <Alert $tone="warning" style={ALERT_STYLE}>
+      <AlertBox $tone="warning">
         {PERMISSION_DENIED_TEXT}
-      </Alert>
+      </AlertBox>
     )
   }
   if (error) {
     return (
-      <Alert $tone="danger" style={ALERT_STYLE}>
+      <AlertBox $tone="danger">
         {error}
-      </Alert>
+      </AlertBox>
     )
   }
   if (imagesPane.loading) {

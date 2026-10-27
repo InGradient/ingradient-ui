@@ -1,10 +1,13 @@
+import styled from 'styled-components'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { Alert } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
 import { PasswordField } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 
-const FULL_FIELD_STYLE = { width: '100%' }
+const FullFieldBox = styled(PasswordField)`
+  width: 100%;
+`
 
 export interface PasswordChangeDialogProps {
   open: boolean
@@ -52,29 +55,26 @@ export function PasswordChangeDialog({
       <Stack gap="var(--ig-spacing-12)">
         <Stack gap="var(--ig-spacing-8)">
           <Text as="label" htmlFor="settings-current-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">Current password</Text>
-          <PasswordField
+          <FullFieldBox
             id="settings-current-password"
             value={currentPassword}
             onChange={(e) => onChangeCurrentPassword(e.target.value)}
-            style={FULL_FIELD_STYLE}
           />
         </Stack>
         <Stack gap="var(--ig-spacing-8)">
           <Text as="label" htmlFor="settings-new-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">New password</Text>
-          <PasswordField
+          <FullFieldBox
             id="settings-new-password"
             value={newPassword}
             onChange={(e) => onChangeNewPassword(e.target.value)}
-            style={FULL_FIELD_STYLE}
           />
         </Stack>
         <Stack gap="var(--ig-spacing-8)">
           <Text as="label" htmlFor="settings-confirm-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">Confirm new password</Text>
-          <PasswordField
+          <FullFieldBox
             id="settings-confirm-password"
             value={newPasswordConfirm}
             onChange={(e) => onChangeNewPasswordConfirm(e.target.value)}
-            style={FULL_FIELD_STYLE}
           />
         </Stack>
         {invalidConfirm ? <Alert $tone="danger">New password and confirmation must match.</Alert> : null}

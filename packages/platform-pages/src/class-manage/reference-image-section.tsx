@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { useState } from 'react'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { InfoSection } from '@ingradient/ui/components'
@@ -5,7 +6,9 @@ import { ReferenceImageDropZone } from './reference-image-drop-zone'
 import { IndexedNavigation } from '@ingradient/ui/components'
 
 const HINT_STYLE = { marginTop: 'var(--ig-space-neg-2px)' }
-const STACK_STYLE = { width: '100%' }
+const StackBox = styled(Stack)`
+  width: 100%;
+`
 const PREVIEW_STYLE = {
   width: '100%',
   // The preview sits inside the drop-zone frame, so it must be less rounded than the frame.
@@ -61,7 +64,7 @@ export function ReferenceImageSection({
         onDropImageId={(id) => onApply?.(id)}
         onSetDragging={onSetDragging}
       >
-        <Stack gap="var(--ig-spacing-12)" style={STACK_STYLE}>
+        <StackBox gap="var(--ig-spacing-12)">
           {imageUrl ? (
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
@@ -74,7 +77,7 @@ export function ReferenceImageSection({
           ) : null}
           {pending ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">Updating reference image…</Text> : null}
           {errorMessage ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">{errorMessage}</Text> : null}
-        </Stack>
+        </StackBox>
       </ReferenceImageDropZone>
     </>
   )

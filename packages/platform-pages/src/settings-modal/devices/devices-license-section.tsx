@@ -1,18 +1,26 @@
+import styled from 'styled-components'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button, Card, EmptyState } from '@ingradient/ui/components'
 import { DatePickerField } from '@ingradient/ui/components'
 import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 
-const INFO_GRID_STYLE = {
-  display: 'grid' as const,
-  gridTemplateColumns: 'var(--ig-form-label-col-wide) 1fr',
-  gap: 'var(--ig-spacing-8) var(--ig-spacing-12)',
-  fontSize: 'var(--ig-text-body-sm)',
-  alignItems: 'center' as const,
-}
+const InfoGridBox = styled(Box)`
+  display: grid;
+  grid-template-columns: var(--ig-form-label-col-wide) 1fr;
+  gap: var(--ig-spacing-8) var(--ig-spacing-12);
+  font-size: var(--ig-text-body-sm);
+  align-items: center;
+`
 
-const INFO_LABEL_STYLE = { fontWeight: 'var(--ig-font-weight-medium)' }
-const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-spacing-8)', color: 'var(--ig-color-text-muted)' }
+const InfoLabelBox = styled(Text)`
+  font-weight: var(--ig-font-weight-medium);
+`
+const InfoValueBox = styled(Text)`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-spacing-8);
+  color: var(--ig-color-text-muted);
+`
 
 export interface DeviceLicense {
   planCode: string
@@ -72,21 +80,21 @@ export function DevicesLicenseSection({
       {loading ? <EmptyState>Loading…</EmptyState> : null}
       {!loading && error ? <Text tone="danger" size="var(--ig-text-caption)">{error}</Text> : null}
       {!loading && !error && license ? (
-        <Box style={INFO_GRID_STYLE}>
-          <Text style={INFO_LABEL_STYLE}>Plan</Text>
-          <Text style={INFO_VALUE_STYLE}>{license.planCode}</Text>
-          <Text style={INFO_LABEL_STYLE}>Offline Mode</Text>
-          <Text style={INFO_VALUE_STYLE}>{license.offlineEnabled ? `Enabled (up to ${license.offlineMaxDays} days)` : 'Disabled'}</Text>
-          <Text style={INFO_LABEL_STYLE}>Max Users</Text>
-          <Text style={INFO_VALUE_STYLE}>{license.maxUsers}</Text>
-          <Text style={INFO_LABEL_STYLE}>Max Devices</Text>
-          <Text style={INFO_VALUE_STYLE}>{license.maxDevices}</Text>
-          <Text style={INFO_LABEL_STYLE}>Expires</Text>
-          <Text style={INFO_VALUE_STYLE}>
+        <InfoGridBox>
+          <InfoLabelBox>Plan</InfoLabelBox>
+          <InfoValueBox>{license.planCode}</InfoValueBox>
+          <InfoLabelBox>Offline Mode</InfoLabelBox>
+          <InfoValueBox>{license.offlineEnabled ? `Enabled (up to ${license.offlineMaxDays} days)` : 'Disabled'}</InfoValueBox>
+          <InfoLabelBox>Max Users</InfoLabelBox>
+          <InfoValueBox>{license.maxUsers}</InfoValueBox>
+          <InfoLabelBox>Max Devices</InfoLabelBox>
+          <InfoValueBox>{license.maxDevices}</InfoValueBox>
+          <InfoLabelBox>Expires</InfoLabelBox>
+          <InfoValueBox>
             {expiry?.label ?? (license.expiresAt ? new Date(license.expiresAt).toLocaleDateString() : '—')}
             {expiry ? <DeviceStatusBadge tone={expiryToneLabel[expiry.tone].tone}>{expiryToneLabel[expiry.tone].label}</DeviceStatusBadge> : null}
-          </Text>
-        </Box>
+          </InfoValueBox>
+        </InfoGridBox>
       ) : null}
       {!loading && !error && !license ? <EmptyState>No license found.</EmptyState> : null}
 

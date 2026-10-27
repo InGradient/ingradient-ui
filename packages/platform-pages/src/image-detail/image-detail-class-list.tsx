@@ -13,7 +13,9 @@ const NameText = styled.span<{ $active?: boolean }>`
   white-space: nowrap;
 `
 
-const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
+const EmptyBox = styled(Text)`
+  padding: var(--ig-spacing-8);
+`
 
 export interface ImageDetailClassListClass {
   id: string
@@ -51,7 +53,7 @@ export function ImageDetailClassList({
   className,
 }: ImageDetailClassListProps) {
   if (classes.length === 0) {
-    return <Text as="p" size="var(--ig-text-caption)" tone="muted" style={EMPTY_STYLE}>{emptyText}</Text>
+    return <EmptyBox forwardedAs="p" size="var(--ig-text-caption)" tone="muted">{emptyText}</EmptyBox>
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (

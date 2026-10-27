@@ -1,9 +1,9 @@
-import type { CSSProperties } from 'react'
+import styled from 'styled-components'
 import {
   Alert, EmptyState, FilterChipRow, IconButton, PanelLeftOpenIcon,
   ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
-import { iconSizeNumbers, layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
+import { iconSizeNumbers, layoutSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
@@ -28,8 +28,14 @@ interface ClassManageBodyProps {
 
 const STORAGE_KEY = 'ig-class-manage-shell'
 
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-spacing-16)' }
-const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)' }
+const AlertBox = styled(Alert)`
+  margin: var(--ig-spacing-16);
+`
+const MappingWrapBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-spacing-8);
+`
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
@@ -46,18 +52,18 @@ export function ClassManageBody({
   if (permissionDenied) {
     return (
       <ContentArea>
-        <Alert $tone="warning" style={ALERT_STYLE}>
+        <AlertBox $tone="warning">
           {PERMISSION_DENIED_TEXT}
-        </Alert>
+        </AlertBox>
       </ContentArea>
     )
   }
   if (error) {
     return (
       <ContentArea>
-        <Alert $tone="danger" style={ALERT_STYLE}>
+        <AlertBox $tone="danger">
           {error}
-        </Alert>
+        </AlertBox>
       </ContentArea>
     )
   }
@@ -176,14 +182,14 @@ function ClassInfoPane({
         />
       }
       mappingSlot={
-        <div style={MAPPING_WRAP_STYLE}>
+        <MappingWrapBox>
           <ModelMappingSelect
             enabled={!!showCocoMapping}
             options={[...cocoMappingOptions]}
             value={currentMapping}
             onChange={onChangeMapping}
           />
-        </div>
+        </MappingWrapBox>
       }
     />
   )

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { Alert } from '@ingradient/ui/components'
 import { Button } from '@ingradient/ui/components'
@@ -12,9 +13,16 @@ import {
 
 export const FINAL_DELETE_CONFIRM_TEXT = 'DELETE'
 
-const FULL_PASSWORD_STYLE = { width: '100%', minWidth: 'var(--ig-popup-sm-narrow)' }
-const FULL_CONFIRM_STYLE = { width: '100%' }
-const COPY_STYLE = { lineHeight: 'var(--ig-line-height-relaxed-plus)' }
+const FullPasswordBox = styled(PasswordField)`
+  width: 100%;
+  min-width: var(--ig-popup-sm-narrow);
+`
+const FullConfirmBox = styled(TextField)`
+  width: 100%;
+`
+const CopyBox = styled(Text)`
+  line-height: var(--ig-line-height-relaxed-plus);
+`
 
 export interface DeleteAccountSoloProject {
   project_id: string
@@ -80,10 +88,10 @@ export function DeleteAccountDialog({
       }
     >
       <Stack gap="var(--ig-spacing-16)">
-        <Text as="p" tone="soft" size="var(--ig-text-body)" style={COPY_STYLE}>
+        <CopyBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">
           This account owns or participates in projects that need resolution before deletion. Review each shared project below
           and decide whether to transfer ownership or delete the project.
-        </Text>
+        </CopyBox>
         {preview.solo_projects.length > 0 && (
           <>
             <Alert $tone="warning">
@@ -112,26 +120,24 @@ export function DeleteAccountDialog({
         )}
         <Stack as="label" gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-body-sm)" weight="semibold">Enter your password to confirm</Text>
-          <PasswordField
+          <FullPasswordBox
             value={password}
             onChange={(e) => onChangePassword(e.target.value)}
             placeholder="Current password"
             aria-label="Current password"
             autoComplete="new-password"
             name="delete-account-password"
-            style={FULL_PASSWORD_STYLE}
           />
         </Stack>
         <Stack as="label" gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-body-sm)" weight="semibold">Type <strong>{confirmKeyword}</strong> to confirm deletion</Text>
-          <TextField
+          <FullConfirmBox
             value={finalConfirmText}
             onChange={(e) => onChangeFinalConfirmText(e.target.value)}
             placeholder={confirmKeyword}
             aria-label="Final delete confirmation"
             autoComplete="off"
             name="delete-account-final-confirm"
-            style={FULL_CONFIRM_STYLE}
           />
         </Stack>
         {deleteAccountMessage && <Alert $tone="danger">{deleteAccountMessage}</Alert>}

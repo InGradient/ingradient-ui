@@ -1,24 +1,28 @@
+import styled from 'styled-components'
 import React from 'react'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Checkbox, ProgressBar } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
 
-const BAR_STYLE = {
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
-  background: 'var(--ig-color-surface-header)',
-  backdropFilter: 'var(--ig-blur-md)',
-  WebkitBackdropFilter: 'var(--ig-blur-md)',
-  position: 'relative' as const,
-}
+const BarBox = styled(Stack)`
+  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  background: var(--ig-color-surface-header);
+  backdrop-filter: var(--ig-blur-md);
+  -webkit-backdrop-filter: var(--ig-blur-md);
+  position: relative;
+`
 
-const UPLOAD_PROGRESS_STYLE = {
-  position: 'absolute' as const,
-  top: 0,
-  left: 0,
-  right: 0,
-}
+const UploadProgressBox = styled(ProgressBar)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+`
 
-const ROW_STYLE = { minHeight: 'var(--ig-layout-sidebar-header)', padding: 'var(--ig-spacing-16)' }
+const RowBox = styled(Inline)`
+  min-height: var(--ig-layout-sidebar-header);
+  padding: var(--ig-spacing-16);
+`
 
 const SELECTION_ROW_STYLE = {
   padding: 'var(--ig-spacing-8) var(--ig-spacing-16)',
@@ -30,7 +34,9 @@ const SELECTION_ROW_ACTIVE_STYLE = {
   background: 'var(--ig-color-accent-soft-surface)',
 }
 
-const SPACER_STYLE = { flex: 1 }
+const SpacerBox = styled(Box)`
+  flex: 1;
+`
 
 export interface GalleryToolbarProps {
   leftStart?: React.ReactNode
@@ -79,29 +85,28 @@ export function GalleryToolbar({
         <TextButton tone="accent" size="sm" onClick={onSelectAllVisible}>Select all {totalCount}</TextButton>
       ) : null}
       {hasSelection ? selectionActions : null}
-      <Box style={SPACER_STYLE} />
+      <SpacerBox />
       {viewMode}
     </>
   )
 
   return (
-    <Stack gap="var(--ig-space-0)" data-ig-component="GalleryToolbar" data-ig-layer="patterns" style={BAR_STYLE}>
+    <BarBox gap="var(--ig-space-0)" data-ig-component="GalleryToolbar" data-ig-layer="patterns">
       {typeof uploadProgress === 'number' && uploadProgress > 0 && uploadProgress < 100 ? (
-        <ProgressBar
+        <UploadProgressBox
           value={uploadProgress}
           size="sm"
           ariaLabel={`Upload progress ${uploadProgress}%`}
-          style={UPLOAD_PROGRESS_STYLE}
         />
       ) : null}
-      <Inline gap="var(--ig-spacing-8)" wrap="nowrap" style={ROW_STYLE}>
+      <RowBox gap="var(--ig-spacing-8)" wrap="nowrap">
         {leftStart}
         {search}
         {filters}
-        <Box style={SPACER_STYLE} />
+        <SpacerBox />
         {actions}
-      </Inline>
+      </RowBox>
       <Inline gap="var(--ig-spacing-8)" wrap="nowrap" style={hasSelection ? SELECTION_ROW_ACTIVE_STYLE : SELECTION_ROW_STYLE}>{selectionBar}</Inline>
-    </Stack>
+    </BarBox>
   )
 }

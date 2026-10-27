@@ -1,17 +1,27 @@
+import styled from 'styled-components'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 
-const WRAP_STYLE = {
-  marginTop: 'var(--ig-spacing-24)',
-  paddingTop: 'var(--ig-spacing-20)',
-  borderTop: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
+const WrapBox = styled(Box)`
+  margin-top: var(--ig-spacing-24);
+  padding-top: var(--ig-spacing-20);
+  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+`
 
-const SUBSECTION_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
-const HINT_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
-const ROW_STYLE = { marginTop: 'var(--ig-spacing-8)' }
-const CONFIRM_INPUT_STYLE = { minWidth: 'var(--ig-popup-list-min)', flex: 1 }
+const SubsectionTitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
+const HintBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
+const RowBox = styled(Inline)`
+  margin-top: var(--ig-spacing-8);
+`
+const ConfirmInputBox = styled(TextField)`
+  min-width: var(--ig-popup-list-min);
+  flex: 1;
+`
 
 export interface DeleteProjectSectionProps {
   projectName: string
@@ -32,22 +42,21 @@ export function DeleteProjectSection({
 }: DeleteProjectSectionProps) {
   const disabled = confirmInput !== projectName || !!pending
   return (
-    <Box style={WRAP_STYLE}>
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
-      <Text as="p" tone="soft" size="var(--ig-text-body)" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
-      <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
-        <TextField
+    <WrapBox>
+      <SubsectionTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{title}</SubsectionTitleBox>
+      <HintBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">{hintTemplate(projectName)}</HintBox>
+      <RowBox gap="var(--ig-spacing-8)" wrap="wrap">
+        <ConfirmInputBox
           type="text"
           value={confirmInput}
           onChange={(e) => onChangeConfirmInput(e.target.value)}
           placeholder={projectName}
           aria-label="Type project name to confirm delete"
-          style={CONFIRM_INPUT_STYLE}
         />
         <Button type="button" variant="secondary" tone="danger" disabled={disabled} onClick={onDelete}>
           {pending ? 'Deleting…' : 'Delete project'}
         </Button>
-      </Inline>
-    </Box>
+      </RowBox>
+    </WrapBox>
   )
 }

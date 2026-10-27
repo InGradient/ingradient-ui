@@ -4,7 +4,9 @@ import { Checkbox } from '@ingradient/ui/components'
 import { DropdownSelect, type DropdownOption } from '@ingradient/ui/components'
 import { SettingsRow, SettingsSection } from '@ingradient/ui/patterns'
 
-const SELECT_WRAP_STYLE = { minWidth: 'var(--ig-popup-2xs-plus)' }
+const SelectWrapBox = styled(Box)`
+  min-width: var(--ig-popup-2xs-plus);
+`
 
 const Hint = styled.p`
   margin: 0;
@@ -50,9 +52,9 @@ export function SettingsGeneralTab({
           asLabel={false}
           label="Interface language"
           control={
-            <Box style={SELECT_WRAP_STYLE}>
+            <SelectWrapBox>
               <DropdownSelect value={locale} options={localeOptions} onChange={onChangeLocale} />
-            </Box>
+            </SelectWrapBox>
           }
         />
       </SettingsSection>

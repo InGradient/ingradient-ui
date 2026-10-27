@@ -1,16 +1,21 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { TextButton, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
-const SECTION_STYLE = {
-  padding: 'var(--ig-spacing-12)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
+const SectionBox = styled(Stack)`
+  padding: var(--ig-spacing-12);
+  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+`
 
-const DETAILS_TOGGLE_STYLE = { padding: 'var(--ig-spacing-8) 0' }
-const DETAILS_BODY_STYLE = { paddingTop: 'var(--ig-spacing-8)' }
+const DetailsToggleBox = styled(TextButton)`
+  padding: var(--ig-spacing-8) 0;
+`
+const DetailsBodyBox = styled(Stack)`
+  padding-top: var(--ig-spacing-8);
+`
 
 export interface ImageDetailInfo {
   name?: string
@@ -69,7 +74,7 @@ export function ImageDetailInfoPanel({
   title = 'Image info',
 }: ImageDetailInfoPanelProps) {
   return (
-    <Stack gap="var(--ig-spacing-8)" style={SECTION_STYLE}>
+    <SectionBox gap="var(--ig-spacing-8)">
       <Text size="var(--ig-text-body-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal">{title}</Text>
       {positionLabel ? (
         <InfoRow>
@@ -89,19 +94,18 @@ export function ImageDetailInfoPanel({
         <InfoRowLabel>Captured</InfoRowLabel>
         <InfoRowValue>{image.captured_at ?? '—'}</InfoRowValue>
       </InfoRow>
-      <TextButton
+      <DetailsToggleBox
         tone="accent"
         size="sm"
         iconLeading={detailsOpen
           ? <ChevronDownIcon size={iconSizeNumbers.sm} />
           : <ChevronRightIcon size={iconSizeNumbers.sm} />}
         onClick={onToggleDetails}
-        style={DETAILS_TOGGLE_STYLE}
       >
         {detailsOpen ? 'Hide details' : 'Show details'}
-      </TextButton>
+      </DetailsToggleBox>
       {detailsOpen ? (
-        <Stack gap="var(--ig-spacing-8)" style={DETAILS_BODY_STYLE}>
+        <DetailsBodyBox gap="var(--ig-spacing-8)">
           {rowIfValue('Upload Source', image.upload_source)}
           {rowIfValue('Camera IP', image.camera_ip)}
           {rowIfValue('Camera Type', image.camera_type)}
@@ -128,9 +132,9 @@ export function ImageDetailInfoPanel({
               )
             : null}
           {rowIfValue('Pattern', image.pattern_label)}
-        </Stack>
+        </DetailsBodyBox>
       ) : null}
       {cameraParamsSlot}
-    </Stack>
+    </SectionBox>
   )
 }

@@ -1,9 +1,10 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { PagePrimaryHeader } from '@ingradient/ui/patterns'
 import { DatasetListPanel } from './dataset-list-panel'
 import { ResizableColumnsLayout, type ResizableColumn } from '@ingradient/ui/components'
 import { Stack, Box } from '@ingradient/ui/primitives'
-import { layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
+import { layoutSizeNumbers } from '@ingradient/ui/tokens'
 import { CatalogBody } from './CatalogBody'
 import { CatalogRightSidebar } from './CatalogRightSidebar'
 import { CatalogToolbarRow } from './CatalogToolbarRow'
@@ -27,10 +28,24 @@ interface Props {
 
 const STORAGE_KEY = 'ig-catalog-shell'
 
-const CENTER_STYLE = { flex: 1, minWidth: 0, minHeight: 0, height: '100%' }
-const SLOT_STYLE = { flex: '0 0 auto' as const }
-const BODY_STYLE = { flex: 1, minHeight: 0, overflow: 'auto' as const, position: 'relative' as const }
-const ROOT_STYLE = { background: 'var(--ig-color-bg-canvas)' }
+const CenterBox = styled(Stack)`
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+`
+const SlotBox = styled(Box)`
+  flex: 0 0 auto;
+`
+const BodyBox = styled(Box)`
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  position: relative;
+`
+const RootBox = styled(ResizableColumnsLayout)`
+  background: var(--ig-color-bg-canvas);
+`
 
 export function CatalogDesktopView({
   page,
@@ -69,7 +84,7 @@ export function CatalogDesktopView({
       />
       <ContentArea>
         {page.dragOverFull ? <DragOverFull>Drop images here to upload</DragOverFull> : null}
-        <ResizableColumnsLayout storageKey={STORAGE_KEY} columns={columns} style={ROOT_STYLE}>
+        <RootBox storageKey={STORAGE_KEY} columns={columns}>
           <DatasetListPanel
             datasets={datasets.datasets.map((d) => ({
               id: d.id,
@@ -88,15 +103,15 @@ export function CatalogDesktopView({
             onOpenDatasetMenu={datasets.onOpenDatasetMenu}
             onCollapse={datasets.onCollapse}
           />
-          <Stack gap="var(--ig-space-0)" style={CENTER_STYLE}>
-            <Box style={SLOT_STYLE}>
+          <CenterBox gap="var(--ig-space-0)">
+            <SlotBox>
               <CatalogToolbarRow
                 {...toolbar}
                 sidebarCollapsed={!!datasets.sidebarCollapsed}
                 onExpandSidebar={datasets.onExpand}
               />
-            </Box>
-            <Box style={BODY_STYLE}>
+            </SlotBox>
+            <BodyBox>
               <CatalogBody
                 permissionDenied={page.permissionDenied}
                 error={page.error}
@@ -105,10 +120,10 @@ export function CatalogDesktopView({
                 dragOverGrid={page.dragOverGrid}
                 statsContent={statsContent}
               />
-            </Box>
-          </Stack>
+            </BodyBox>
+          </CenterBox>
           {rightSidebar ? <CatalogRightSidebar {...rightSidebar} /> : <div />}
-        </ResizableColumnsLayout>
+        </RootBox>
       </ContentArea>
     </>
   )

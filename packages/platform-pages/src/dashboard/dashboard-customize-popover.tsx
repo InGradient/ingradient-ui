@@ -12,7 +12,9 @@ const Wrap = styled(MenuPopover)`
   padding: var(--ig-spacing-12);
 `
 
-const TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const TitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
 
 export interface DashboardCustomizeItem {
   key: string
@@ -34,7 +36,7 @@ export function DashboardCustomizePopover<K extends string = string>({
 }: DashboardCustomizePopoverProps<K>) {
   return (
     <Wrap className={className} role="group" aria-label={title}>
-      <Text size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
+      <TitleBox size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide">{title}</TitleBox>
       <Stack gap="var(--ig-spacing-8)">
         {items.map((item) => (
           <Checkbox
