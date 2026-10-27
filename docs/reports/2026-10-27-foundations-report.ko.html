@@ -60,7 +60,8 @@
 <tr><td>토글 손잡이 크기(33~34행)</td><td><code>icon-lg</code></td><td>18px</td><td rowspan="2">손잡이 크기는 아이콘, 위치는 간격 토큰이다. 둘 중 하나만 바꾸면 손잡이가 트랙에서 어긋난다</td></tr>
 <tr><td>토글 켜짐 위치(32행)</td><td><code>space-8</code></td><td>18px</td></tr>
 <tr><td>토글 트랙(15~16행)</td><td><code>control-height-mid-plus</code>, <code>icon-3xl</code></td><td>40×24px</td><td>너비는 컨트롤 높이, 높이는 아이콘 토큰</td></tr></table>
-<p>이런 곳이 있으면 간격·아이콘·컨트롤을 따로 정리할 수 없다. 공용 컴포넌트 단계(4번)에서 컴포넌트 크기 토큰(예: <code>--ig-checkbox-size</code>, <code>--ig-switch-*</code>)으로 옮기는 것을 추천한다. 같은 패턴이 다른 컴포넌트에도 있는지는 아직 전수 조사하지 않았다.</p>
+<p><b>전수 조사(검사가 위 체크박스 사례를 잡는지 먼저 확인함):</b> 크기(<code>width</code>/<code>height</code>)에 아이콘 토큰을 쓴 곳이 36건(13개 파일), 간격 토큰을 쓴 곳이 36건(19개 파일)이다. 아이콘 토큰 쪽 예: Catalog 이미지 카드 메뉴 버튼(18px), 알림 배지, 개수 배지, 단축키 표시. 간격 토큰 쪽 예: 상태 점(6px), 상태 원(12px). 간격 쪽에는 화면 읽기 전용 1px 처리처럼 정상인 것도 섞여 있다. <a href="assets/2026-10-27-foundations/borrowed-size-tokens.json">전체 목록</a>. 위치 여백(<code>top</code>/<code>right</code>에 간격 토큰)은 정상이라 세지 않았다.</p>
+<p>이런 곳이 있으면 간격·아이콘·컨트롤을 따로 정리할 수 없다. 공용 컴포넌트 단계(4번)에서 컴포넌트 크기 토큰(예: <code>--ig-checkbox-size</code>, <code>--ig-switch-*</code>)으로 옮기는 것을 추천한다. </p>
 
 <h2 id="trials">5. 시험 빌드와 재현</h2>
 <table><tr><th>포트</th><th>내용</th></tr>
