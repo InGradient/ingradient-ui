@@ -145,6 +145,8 @@ export function SidebarShell({
 }: SidebarShellProps) {
   const widthExpanded = width?.expanded ?? DEFAULT_WIDTH_EXPANDED
   const widthCollapsed = width?.collapsed ?? DEFAULT_WIDTH_COLLAPSED
+  // Toggle names follow the landmark name so several sidebars on one page stay distinguishable.
+  const toggleNoun = label === 'Sidebar' ? 'sidebar' : label.toLowerCase()
   return (
     <SidebarShellWrap
       $expanded={expanded}
@@ -160,7 +162,7 @@ export function SidebarShell({
           as={!expanded && onToggleExpanded ? 'button' : 'div'}
           type={!expanded && onToggleExpanded ? 'button' : undefined}
           onClick={!expanded && onToggleExpanded ? onToggleExpanded : undefined}
-          aria-label={!expanded && onToggleExpanded ? 'Expand sidebar' : undefined}
+          aria-label={!expanded && onToggleExpanded ? `Expand ${toggleNoun}` : undefined}
         >
           {brand !== undefined ? <SidebarBrandSlot $expanded={expanded}>{brand}</SidebarBrandSlot> : null}
           {!expanded && onToggleExpanded ? (
@@ -172,8 +174,8 @@ export function SidebarShell({
             <SidebarToggleButton
               type="button"
               onClick={onToggleExpanded}
-              aria-label="Collapse sidebar"
-              title="Collapse sidebar"
+              aria-label={`Collapse ${toggleNoun}`}
+              title={`Collapse ${toggleNoun}`}
             >
               <CollapseIcon />
             </SidebarToggleButton>

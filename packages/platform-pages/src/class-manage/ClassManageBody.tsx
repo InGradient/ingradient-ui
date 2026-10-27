@@ -3,7 +3,6 @@ import {
   Alert, EmptyState, FilterChipRow, IconButton, PanelLeftOpenIcon,
   ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
-import { Inline } from '@ingradient/ui/primitives'
 import { iconSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
@@ -31,7 +30,6 @@ const STORAGE_KEY = 'ig-class-manage-shell'
 
 const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
 const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }
-const HEADER_INLINE_STYLE: CSSProperties = { width: '100%' }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
@@ -96,6 +94,11 @@ export function ClassManageBody({
   const showChips = !!images.selectedClassId || !!list.sidebarCollapsed
   const chipRow = showChips ? (
     <FilterChipRow
+      leading={list.sidebarCollapsed && list.onExpand ? (
+        <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}>
+          <PanelLeftOpenIcon size={iconSizeNumbers.md} />
+        </IconButton>
+      ) : undefined}
       label="Dataset"
       items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
       activeIds={images.activeDatasetIds}
@@ -103,16 +106,7 @@ export function ClassManageBody({
       onToggle={images.onToggleDataset}
     />
   ) : null
-  const headerSlot = showChips
-    ? list.sidebarCollapsed && list.onExpand
-      ? (
-        <Inline gap="var(--ig-space-3px)" align="center" style={HEADER_INLINE_STYLE}>
-          <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><PanelLeftOpenIcon size={iconSizeNumbers.md} /></IconButton>
-          {chipRow}
-        </Inline>
-      )
-      : chipRow
-    : undefined
+  const headerSlot = chipRow
 
   return (
     <ContentArea>

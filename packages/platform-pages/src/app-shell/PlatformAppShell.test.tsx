@@ -38,10 +38,10 @@ describe('PlatformAppShell', () => {
   it('collapses and expands, reporting the new state', () => {
     const onExpandedChange = vi.fn()
     renderShell({ onExpandedChange })
-    fireEvent.click(screen.getByRole('button', { name: 'Collapse sidebar' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Collapse app sidebar' }))
     expect(onExpandedChange).toHaveBeenLastCalledWith(false)
     expect(screen.queryByText('Wafer-2026')).not.toBeInTheDocument()
-    fireEvent.click(screen.getByRole('button', { name: 'Expand sidebar' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Expand app sidebar' }))
     expect(onExpandedChange).toHaveBeenLastCalledWith(true)
   })
 

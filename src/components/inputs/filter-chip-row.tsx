@@ -1,5 +1,8 @@
+import type React from 'react'
 import styled from 'styled-components'
 import { Inline, Text } from '../../primitives'
+
+const LEADING_STYLE = { display: 'inline-flex', marginRight: 'var(--ig-spacing-12)' }
 
 const ROW_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-9)',
@@ -43,6 +46,8 @@ export interface FilterChipRowProps {
   loadingText?: string
   emptyText?: string
   onToggle?: (id: string) => void
+  /** Control placed before the label on the first line (e.g. a collapsed panel's expand button). */
+  leading?: React.ReactNode
 }
 
 /**
@@ -55,9 +60,11 @@ export function FilterChipRow({
   loadingText = 'Loading…',
   emptyText = 'No items',
   onToggle,
+  leading,
 }: FilterChipRowProps) {
   return (
     <Inline gap="var(--ig-space-3px)" wrap="wrap" style={ROW_STYLE}>
+      {leading ? <span style={LEADING_STYLE}>{leading}</span> : null}
       <Text as="span" size="var(--ig-font-size-xs)" weight="semibold" tone="soft" uppercase letterSpacing="normal" style={{ marginRight: 'var(--ig-space-1)' }}>{label}</Text>
       {loading ? (
         <Text as="span" tone="soft" size="var(--ig-font-size-sm)">{loadingText}</Text>
