@@ -47,7 +47,7 @@ export function ProjectMemberInvite({
 
   return (
     <>
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>{title}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SECTION_TITLE_STYLE}>{title}</Text>
       <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
         <PrimStack gap="var(--ig-spacing-8)" style={STACK_STYLE}>
           <TextField

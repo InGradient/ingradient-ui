@@ -33,7 +33,7 @@ export function DeleteProjectSection({
   const disabled = confirmInput !== projectName || !!pending
   return (
     <Box style={WRAP_STYLE}>
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUBSECTION_TITLE_STYLE}>{title}</Text>
       <Text as="p" tone="soft" size="var(--ig-text-body)" style={HINT_STYLE}>{hintTemplate(projectName)}</Text>
       <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
         <TextField

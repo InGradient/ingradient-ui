@@ -97,8 +97,6 @@ export const SubsectionTitle = styled.h4`
   font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-normal);
 `
 
 export const PermissionsHeader = styled.div`

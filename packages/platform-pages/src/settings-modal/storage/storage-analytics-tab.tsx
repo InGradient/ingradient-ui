@@ -37,13 +37,13 @@ export function StorageAnalyticsTab({
   copyDisabled, onCopyReport,
   error, onRetry,
   overview, tierChart, projectChart, resolutionChart, formatChart, tierTable, costTable, recommendations,
-  tierTitle = 'Storage by Tier',
-  projectTitle = 'Storage by Project (Top 10)',
-  resolutionTitle = 'Image Size Distribution',
-  formatTitle = 'Upload Format',
-  tierEfficiencyTitle = 'Tier Efficiency',
-  costTitle = 'Monthly Cost Estimate',
-  recommendationsTitle = 'Optimization Recommendations',
+  tierTitle = 'Storage by tier',
+  projectTitle = 'Storage by project (top 10)',
+  resolutionTitle = 'Image size distribution',
+  formatTitle = 'Upload format',
+  tierEfficiencyTitle = 'Tier efficiency',
+  costTitle = 'Monthly cost estimate',
+  recommendationsTitle = 'Optimization recommendations',
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
@@ -69,32 +69,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{projectTitle}</Text>
       {projectChart}
 
       <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-popup-xs)">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}

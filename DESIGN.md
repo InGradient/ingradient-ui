@@ -252,6 +252,7 @@ These rules apply to the shared `@ingradient/ui` components that Platform and Ed
 - `SettingsSection` is a heading (14px semibold) plus rows, separated from the previous section by a 1px line with 24px above and below. It is not a box inside the modal.
 - `tone="danger"` keeps an alert box (danger border and tint, depth radius) because it marks a real boundary around irreversible actions such as deleting an account or project.
 - The Settings modal body has a 24px inset; the Edge tab's own sections follow the same rule.
+- Subheadings inside a section are 13px semibold muted text in sentence case (no uppercase, no title case).
 
 ### Menus and popovers
 
