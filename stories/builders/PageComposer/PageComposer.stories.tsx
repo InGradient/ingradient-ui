@@ -170,31 +170,31 @@ function PageComposer({ onLoadDraftArgs = () => undefined, ...args }: PageCompos
         {preview}
       </div>
       <pre style={codeStyle}>{snippet}</pre>
-      <Inline gap={3} style={{ marginTop: 'var(--ig-space-4)' }}>
+      <Inline gap="var(--ig-space-3px)" style={{ marginTop: 'var(--ig-space-4)' }}>
         <Button variant="accent" size="sm" onClick={handleDownload}>Download TSX</Button>
         <Button variant="secondary" size="sm" onClick={handleCopy}>Copy snippet</Button>
         {feedback ? <span style={{ ...codeStyle, marginTop: 0, padding: 'var(--ig-space-2) var(--ig-space-3)' }}>{feedback}</span> : null}
       </Inline>
 
-      <Stack gap={3} style={{ marginTop: 'var(--ig-space-6)' }}>
+      <Stack gap="var(--ig-space-3px)" style={{ marginTop: 'var(--ig-space-6)' }}>
         <h3 style={{ fontSize: 'var(--ig-font-size-md)', fontWeight: 'var(--ig-font-weight-semibold)', color: 'var(--ig-color-text-secondary)', margin: 0 }}>Drafts (localStorage)</h3>
-        <Inline gap={3} align="center">
+        <Inline gap="var(--ig-space-3px)" align="center">
           <TextField placeholder="Draft name (e.g. catalog-with-inspector)" value={draftName} onChange={(e) => setDraftName(e.target.value)} />
           <Button variant="accent" size="sm" onClick={handleSaveDraft}>Save as draft</Button>
         </Inline>
         {drafts.length === 0 ? (
           <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>(no drafts saved yet)</span>
         ) : (
-          <Stack gap={2}>
+          <Stack gap="var(--ig-space-2px)">
             {drafts.map((d) => (
-              <Inline key={d.name} gap={3} justify="space-between" align="center">
-                <Stack gap={0}>
+              <Inline key={d.name} gap="var(--ig-space-3px)" justify="space-between" align="center">
+                <Stack gap="var(--ig-space-0)">
                   <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{d.name}</span>
                   <span style={{ fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
                     {d.args.pattern} · {new Date(d.savedAt).toLocaleString()}
                   </span>
                 </Stack>
-                <Inline gap={2}>
+                <Inline gap="var(--ig-space-2px)">
                   <Button variant="secondary" size="sm" onClick={() => handleLoadDraft(d)}>Load</Button>
                   <Button variant="secondary" size="sm" tone="danger" onClick={() => handleDeleteDraft(d.name)}>Delete</Button>
                 </Inline>

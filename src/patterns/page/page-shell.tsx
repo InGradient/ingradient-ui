@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { surfacePanel } from '../../primitives'
+import { surfacePanel, withSurfaceDepth } from '../../primitives'
 import { appShell, pageContentLayout, pageHeaderSurface } from '../../primitives/recipes/patterns'
 import { media } from '../../tokens/core/breakpoints'
 
@@ -62,7 +62,7 @@ export const PageContent = styled.div`
   }
 `
 
-export const Panel = styled.section`
+const PanelBase = styled.section`
   ${surfacePanel}
   border-radius: var(--ig-radius-xl);
   min-height: 0;
@@ -70,6 +70,8 @@ export const Panel = styled.section`
   flex-direction: column;
   overflow: hidden;
 `
+
+export const Panel = withSurfaceDepth(PanelBase, { displayName: 'PagePanel' })
 
 export const PanelHeader = styled.div`
   padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);

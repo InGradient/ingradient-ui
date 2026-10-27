@@ -1,6 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+
+/** px line height paired with a text role or font-size token; other sizes keep the base multiplier. */
+export function leadingFor(size: string): string {
+  const v = size.trim()
+  const role = /^var\(--ig-text-([a-z-]+)\)$/.exec(v)
+  if (role) return `var(--ig-text-${role[1]}-leading)`
+  const m = /^var\(--ig-font-size-([a-z0-9-]+)\)$/.exec(v)
+  return m ? `var(--ig-leading-${m[1]})` : 'var(--ig-line-height-base)'
+}
+
 const toneColor = {
   default: 'var(--ig-color-text-primary)',
   secondary: 'var(--ig-color-text-secondary)',
@@ -64,7 +74,7 @@ const TextRoot = styled.span<{
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 'var(--ig-font-weight-regular)'};
-  line-height: var(--ig-line-height-base);
+  line-height: ${(p) => leadingFor(p.$size ?? 'var(--ig-font-size-md)')};
   word-break: break-word;
   ${(p) => p.$align && css`text-align: ${p.$align};`}
   ${(p) => p.$uppercase && css`text-transform: uppercase;`}

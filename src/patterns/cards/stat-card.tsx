@@ -18,7 +18,7 @@ export function StatCard({
 }) {
   return (
     <Card elevation="card" radius="var(--ig-radius-xl)" padding="var(--ig-space-8)">
-      <Stack gap={3}>
+      <Stack gap="var(--ig-space-3px)">
         <ActionBar>
           <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="wide">{label}</Text>
           {meta}

@@ -7,7 +7,7 @@ const Row = styled.div<{ $count: number }>`
   position: relative;
   display: grid;
   grid-template-columns: repeat(${(p) => Math.max(1, Math.min(3, p.$count))}, minmax(0, 1fr));
-  gap: var(--ig-space-9);
+  gap: var(--ig-spacing-20);
   align-items: start;
   ${media.lg} {
     grid-template-columns: 1fr;
@@ -42,7 +42,7 @@ export function WidgetGrid<K extends string = string>({
   }
 
   return (
-    <Stack gap="var(--ig-space-9)" className={className}>
+    <Stack gap="var(--ig-spacing-20)" className={className}>
       {visibleRows.map((row, rowIndex) => (
         <Row key={`row-${rowIndex}-${row.join('-')}`} $count={row.length}>
           {row.map((key) => (

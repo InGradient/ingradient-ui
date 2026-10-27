@@ -41,7 +41,7 @@ export const TypeScale: Story = {
   render: () => (
     <StorybookPage title="Typography primitives" description="Use semantic heading levels for document structure. Use H1–H4 and B1–L1 named exports when their contract fits; use Heading or Text directly for an explicit variant.">
       <StorybookSection title="Type scale" description="Samples use Korean, English, and numbers so wrapping and rhythm can be reviewed in realistic product copy.">
-        <Stack gap={0}>
+        <Stack gap="var(--ig-space-0)">
           <Row><Tag>H1</Tag><H1>검사 결과와 Production Quality Review</H1></Row>
           <Row><Tag>H2</Tag><H2>이미지 검사 프로젝트 개요</H2></Row>
           <Row><Tag>H3</Tag><H3>Line A · Surface Inspection 2026-08</H3></Row>

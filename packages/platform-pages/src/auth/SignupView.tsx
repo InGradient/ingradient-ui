@@ -1,10 +1,12 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
 import { Alert, Button, PasswordField, TextField } from '@ingradient/ui/components'
-import { AuthLink, Form } from './AuthView.styles'
+import { AuthLink, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { SignupViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { FieldGroup, FieldLabel } from '@ingradient/ui/patterns'
 
-export function SignupView({
+function SignupViewContent({
   email,
   name,
   organization,
@@ -20,6 +22,10 @@ export function SignupView({
   onNavigateLogin,
 }: SignupViewProps) {
   const messageId = useId()
+  const emailId = useId()
+  const nameId = useId()
+  const organizationId = useId()
+  const passwordId = useId()
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -39,47 +45,74 @@ export function SignupView({
     >
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {error ? <Alert id={messageId} $tone="danger">{error}</Alert> : null}
-        <TextField
-          type="email"
-          aria-label="Email"
-          autoComplete="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => onEmailChange(event.target.value)}
-          disabled={submitting}
-        />
-        <TextField
-          type="text"
-          aria-label="Name"
-          autoComplete="name"
-          placeholder="Name"
-          value={name}
-          onChange={(event) => onNameChange(event.target.value)}
-          disabled={submitting}
-        />
-        <TextField
-          type="text"
-          aria-label="Organization"
-          autoComplete="organization"
-          placeholder="Organization"
-          value={organization}
-          onChange={(event) => onOrganizationChange(event.target.value)}
-          disabled={submitting}
-        />
-        <PasswordField
-          aria-label="Password"
-          autoComplete="new-password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => onPasswordChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={passwordInvalid || undefined}
-          aria-describedby={error ? messageId : undefined}
-        />
-        <Button type="submit" variant="accent" disabled={submitting}>
-          {submitting ? 'Signing up…' : 'Sign up'}
-        </Button>
+        <FieldGroup>
+          <FieldLabel htmlFor={emailId}>Email</FieldLabel>
+          <TextField
+            id={emailId}
+            size="lg"
+            type="email"
+            autoComplete="email"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(event) => onEmailChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={nameId}>Name</FieldLabel>
+          <TextField
+            id={nameId}
+            size="lg"
+            type="text"
+            autoComplete="name"
+            value={name}
+            onChange={(event) => onNameChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={organizationId}>Organization</FieldLabel>
+          <TextField
+            id={organizationId}
+            size="lg"
+            type="text"
+            autoComplete="organization"
+            value={organization}
+            onChange={(event) => onOrganizationChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={passwordId}>Password</FieldLabel>
+          <PasswordField
+            id={passwordId}
+            size="lg"
+            autoComplete="new-password"
+            value={password}
+            onChange={(event) => onPasswordChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={passwordInvalid || undefined}
+            aria-describedby={error ? messageId : undefined}
+          />
+        </FieldGroup>
+        <SubmitRow>
+          <Button type="submit" variant="solid" size="lg" disabled={submitting}>
+            {submitting ? 'Signing up…' : 'Sign up'}
+          </Button>
+        </SubmitRow>
       </Form>
     </AuthPageShell>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function SignupView(props: SignupViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <SignupViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

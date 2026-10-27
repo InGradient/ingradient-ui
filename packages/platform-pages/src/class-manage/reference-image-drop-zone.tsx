@@ -2,16 +2,16 @@ import type { DragEvent, ReactNode } from 'react'
 import { DropZone } from '@ingradient/ui/components'
 
 const EMPTY_STYLE = {
-  padding: 'var(--ig-space-9)',
-  minHeight: 'var(--ig-popup-xs)',
-  fontSize: 'var(--ig-font-size-sm)',
+  padding: 'var(--ig-spacing-20)',
+  minHeight: 'var(--ig-layout-size-drop-zone-min-height)',
+  fontSize: 'var(--ig-text-body-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }
 
 const HAS_IMAGE_STYLE = {
-  padding: 'var(--ig-space-4)',
-  fontSize: 'var(--ig-font-size-sm)',
+  padding: 'var(--ig-spacing-8)',
+  fontSize: 'var(--ig-text-body-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }

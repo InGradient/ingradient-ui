@@ -6,10 +6,11 @@ import {
   FingerprintBox, FingerprintText, CopyBtn, HintBox,
 } from './LicenseView.styles'
 import type { LicenseViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
 const KEY_PLACEHOLDER = 'XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX'
 
-export function LicenseView(props: LicenseViewProps): JSX.Element {
+function LicenseViewContent(props: LicenseViewProps): JSX.Element {
   const {
     mode, fingerprint, licenseKey, submitting, copied, error,
     labels, langSelector, settingsDialog,
@@ -92,5 +93,17 @@ export function LicenseView(props: LicenseViewProps): JSX.Element {
         </Stack>
       </Card>
     </Wrap>
+  )
+}
+
+/**
+ * Edge uses the same surface rules as Platform: a rounded surface inside another rounded
+ * surface is always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function LicenseView(props: LicenseViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <LicenseViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

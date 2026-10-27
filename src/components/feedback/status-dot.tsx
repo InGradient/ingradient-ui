@@ -14,8 +14,8 @@ const TONE_COLOR: Record<StatusDotTone, string> = {
  * 도메인 무관 — caller 가 자기 상태를 `$tone` 으로 매핑한다 (ui-refactoring-rule §3).
  */
 export const StatusDot = styled.button<{ $tone: StatusDotTone }>`
-  width: var(--ig-space-5);
-  height: var(--ig-space-5);
+  width: var(--ig-size-dot-lg);
+  height: var(--ig-size-dot-lg);
   border-radius: var(--ig-radius-pill);
   border: none;
   padding: 0;

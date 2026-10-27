@@ -1,11 +1,11 @@
 import React, { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { Heading } from '../../primitives'
+import { Heading, withSurfaceDepth } from '../../primitives'
 import { ModalBackdrop } from './modal-primitives'
 import { DialogCloseButton } from './dialog-close-button'
 
-const Shell = styled.div<{ $width: string; $height: string | null; $maxHeight: string }>`
+const ShellBase = styled.div<{ $width: string; $height: string | null; $maxHeight: string }>`
   width: ${(p) => p.$width};
   max-width: calc(100vw - var(--ig-space-13));
   ${(p) => (p.$height ? `height: ${p.$height};` : `max-height: ${p.$maxHeight};`)}
@@ -17,6 +17,8 @@ const Shell = styled.div<{ $width: string; $height: string | null; $maxHeight: s
   box-shadow: var(--ig-shadow-floating);
   overflow: hidden;
 `
+
+const Shell = withSurfaceDepth(ShellBase, { floating: true, displayName: 'TwoColumnDialogShell' })
 
 const Header = styled.div`
   padding: var(--ig-space-7) var(--ig-space-11);

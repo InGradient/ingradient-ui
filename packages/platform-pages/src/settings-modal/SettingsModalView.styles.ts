@@ -4,23 +4,22 @@ import { SettingsShell } from '@ingradient/ui/patterns'
 import { media } from '@ingradient/ui/tokens'
 
 export const Modal = styled(ModalCard)`
-  width: min(var(--ig-popup-4xl-mid), calc(100vw - var(--ig-space-7) * 2));
-  height: min(var(--ig-popup-3xl-wide), calc(100vh - var(--ig-space-7) * 2));
+  width: min(var(--ig-popup-4xl-mid), calc(100vw - var(--ig-spacing-16) * 2));
+  height: min(var(--ig-popup-3xl-wide), calc(100vh - var(--ig-spacing-16) * 2));
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--ig-radius-xl);
 `
 
 export const Header = styled(ModalHeader)`
-  padding: var(--ig-space-5) var(--ig-space-6);
+  padding: var(--ig-spacing-16) var(--ig-spacing-24);
   flex-shrink: 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
 
 export const Title = styled(ModalTitle)`
-  font-size: var(--ig-font-size-2xl);
+  font-size: var(--ig-text-title);
   font-weight: var(--ig-font-weight-bold);
 `
 
@@ -40,13 +39,14 @@ export const Main = styled(SettingsShell)`
 `
 
 export const Body = styled.div`
-  padding: var(--ig-space-6);
+  /* Sections are flat groups, so the body inset carries the separation from the modal edge. */
+  padding: var(--ig-spacing-24);
   overflow: auto;
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-6);
+  gap: var(--ig-spacing-12);
 `
 
 // Product shell owns the divider; item appearance is shared with Edge Settings.
@@ -69,12 +69,12 @@ export const AdminBody = styled.div`
 
 export const AdminSubTabsWrap = styled.div`
   flex-shrink: 0;
-  margin-bottom: var(--ig-space-3);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const AdminDesc = styled.p`
   margin: 0;
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
   line-height: var(--ig-line-height-relaxed);
 `
@@ -85,7 +85,7 @@ export const AdminContent = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-8);
 
   & > * {
     flex-shrink: 0;
@@ -93,8 +93,8 @@ export const AdminContent = styled.div`
 `
 
 export const SubsectionTitle = styled.h4`
-  margin: var(--ig-space-5) 0 var(--ig-space-3);
-  font-size: var(--ig-font-size-sm);
+  margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;
@@ -105,13 +105,13 @@ export const PermissionsHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-3);
-  margin: var(--ig-space-5) 0 var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
 `
 
 export const PermissionsScopeNote = styled.p`
-  margin: 0 0 var(--ig-space-4);
-  font-size: var(--ig-font-size-xs);
+  margin: 0 0 var(--ig-spacing-8);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-soft);
   line-height: var(--ig-line-height-relaxed);
 `

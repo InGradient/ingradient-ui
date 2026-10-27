@@ -11,7 +11,7 @@ const TOKEN_BOX_STYLE = {
   background: 'var(--ig-color-surface-raised)',
   border: 'var(--ig-border-1px) solid var(--ig-color-accent)',
   borderRadius: 'var(--ig-radius-xxs)',
-  padding: 'var(--ig-space-5)',
+  padding: 'var(--ig-spacing-12)',
 }
 
 const FLEX_1_STYLE = { flex: 1 }
@@ -70,14 +70,14 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   if (!isAdmin) {
     return issuedToken ? (
       <div ref={ref}>
-        <Stack gap="var(--ig-space-3)" style={TOKEN_BOX_STYLE}>
-          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">
+        <Stack gap="var(--ig-spacing-8)" style={TOKEN_BOX_STYLE}>
+          <Text size="var(--ig-text-caption)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
-          <Inline gap="var(--ig-space-3)" wrap="wrap">
+          <Inline gap="var(--ig-spacing-8)" wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>
+            <Text size="var(--ig-text-caption)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
         </Stack>
       </div>
@@ -91,10 +91,10 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   return (
     <div ref={ref}>
       {showRegister ? (
-        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
-          <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
-          <Inline gap="var(--ig-space-3)" wrap="wrap">
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-12)">
+          <Stack gap="var(--ig-spacing-8)">
+          <Text size="var(--ig-text-caption)" weight="medium" tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
+          <Inline gap="var(--ig-spacing-8)" wrap="wrap">
             <TextField
               ref={uidInputRef}
               placeholder="Device UID"
@@ -115,16 +115,16 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRegister}>Cancel</Button>
           </Inline>
-          {registerError ? <Text size="var(--ig-font-size-xs)" tone="danger">{registerError}</Text> : null}
+          {registerError ? <Text size="var(--ig-text-caption)" tone="danger">{registerError}</Text> : null}
           </Stack>
         </Card>
       ) : null}
 
       {showIssue && offlineEnabled ? (
-        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
-          <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">Select a registered device to issue an offline license token.</Text>
-          <Inline gap="var(--ig-space-3)" wrap="wrap">
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-12)">
+          <Stack gap="var(--ig-spacing-8)">
+          <Text size="var(--ig-text-caption)" weight="medium" tone="muted">Select a registered device to issue an offline license token.</Text>
+          <Inline gap="var(--ig-spacing-8)" wrap="wrap">
             <DropdownSelect
               value={issueDeviceId}
               options={deviceOptions}
@@ -150,14 +150,14 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
       ) : null}
 
       {issuedToken ? (
-        <Stack gap="var(--ig-space-3)" style={TOKEN_BOX_STYLE}>
-          <Text size="var(--ig-font-size-xs)" weight="medium" tone="muted">
+        <Stack gap="var(--ig-spacing-8)" style={TOKEN_BOX_STYLE}>
+          <Text size="var(--ig-text-caption)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
           <Textarea aria-label="Issued offline license token" variant="monospace" minHeight={72} readOnly value={issuedToken.token} />
-          <Inline gap="var(--ig-space-3)" wrap="wrap">
+          <Inline gap="var(--ig-spacing-8)" wrap="wrap">
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
-            <Text size="var(--ig-font-size-xs)" tone="muted">Paste this token into the Edge app's license field.</Text>
+            <Text size="var(--ig-text-caption)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
         </Stack>
       ) : null}

@@ -28,12 +28,12 @@ const EMPTY_STYLE = {
   display: 'flex' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
-  padding: 'var(--ig-space-11)',
+  padding: 'var(--ig-spacing-24)',
   textAlign: 'center' as const,
 }
 
 const LOADING_STYLE = {
-  padding: 'var(--ig-space-9)',
+  padding: 'var(--ig-spacing-20)',
   textAlign: 'center' as const,
 }
 
@@ -73,18 +73,18 @@ export function SelectableGridPanel({
   const mainStyle = flush ? MAIN_FLUSH_STYLE : MAIN_PANEL_STYLE
   if (!selectedId) {
     return (
-      <Stack as="main" gap={0} style={mainStyle}>
-        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noSelectionText}</Text>
+      <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
+        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{noSelectionText}</Text>
       </Stack>
     )
   }
   return (
-    <Stack as="main" gap={0} style={mainStyle}>
+    <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
       {headerSlot}
       {loading ? (
-        <Text tone="muted" size="var(--ig-font-size-md)" style={LOADING_STYLE}>{loadingText}</Text>
+        <Text tone="muted" size="var(--ig-text-body)" style={LOADING_STYLE}>{loadingText}</Text>
       ) : empty ? (
-        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         <Box style={GRID_STYLE}>{gridSlot}</Box>
       )}

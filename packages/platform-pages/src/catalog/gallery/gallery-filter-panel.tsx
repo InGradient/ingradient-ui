@@ -16,9 +16,9 @@ const PANEL_STYLE = {
 }
 
 const HEADER_STYLE = {
-  padding: '0 0 var(--ig-space-3)',
+  padding: '0 0 var(--ig-spacing-8)',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  marginBottom: 'var(--ig-space-2)',
+  marginBottom: 'var(--ig-spacing-8)',
 }
 
 const LABEL_OPTIONS = [
@@ -70,9 +70,9 @@ export function GalleryFilterPanel({
   }
 
   return (
-    <Stack gap={0} style={PANEL_STYLE}>
-      <Inline justify="space-between" gap="var(--ig-space-3)" style={HEADER_STYLE}>
-        <Text as="strong" size="var(--ig-font-size-sm)">Filter images</Text>
+    <Stack gap="var(--ig-space-0)" style={PANEL_STYLE}>
+      <Inline justify="space-between" gap="var(--ig-spacing-8)" style={HEADER_STYLE}>
+        <Text as="strong" size="var(--ig-text-body-sm)">Filter images</Text>
         {onReset ? <TextButton tone="accent" size="xs" onClick={onReset}>Reset</TextButton> : null}
       </Inline>
 

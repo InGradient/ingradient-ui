@@ -31,7 +31,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   right: var(--ig-space-2);
   top: ${(p) => `${p.$top}px`};
   height: ${(p) => `${p.$height}px`};
-  border-left: var(--ig-border-3px) solid var(--ig-color-accent-soft);
+  border-left: var(--ig-border-2px) solid var(--ig-color-accent-soft);
   border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-tab-highlight);
   opacity: ${(p) => (p.$visible ? 1 : 0)};
@@ -111,8 +111,8 @@ export const ItemBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--ig-icon-lg);
-  height: var(--ig-icon-lg);
+  min-width: var(--ig-size-badge-sm);
+  height: var(--ig-size-badge-sm);
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-badge-accent);

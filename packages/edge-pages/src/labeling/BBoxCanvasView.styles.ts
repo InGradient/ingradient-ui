@@ -75,8 +75,8 @@ export const PixelInfo = styled.div`
 
 export const PixelSwatch = styled.span<{ $color: string }>`
   display: inline-block;
-  width: var(--ig-space-4);
-  height: var(--ig-space-4);
+  width: var(--ig-size-swatch-sm);
+  height: var(--ig-size-swatch-sm);
   border-radius: var(--ig-space-2px);
   background: ${(p) => p.$color};
   border: var(--ig-border-1px) solid var(--ig-color-white-30);

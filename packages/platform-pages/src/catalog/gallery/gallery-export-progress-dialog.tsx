@@ -9,7 +9,7 @@ import {
   exportStageLabel,
 } from './gallery-export-dialog.styles'
 
-const EXPORT_DIALOG_WIDTH = 'min(var(--ig-popup-lg-plus), calc(100vw - var(--ig-space-13)))'
+const EXPORT_DIALOG_WIDTH = 'min(var(--ig-popup-lg-plus), calc(100vw - var(--ig-spacing-32)))'
 
 export type GalleryExportJobStatus = 'queued' | 'running' | 'completed' | 'failed' | string
 

@@ -39,10 +39,10 @@ export function buildTheme(name: string, palette: Palette, shadows: Shadows): In
       danger: palette.red300,
     },
     radius: {
-      sm: radiusScale.xs,
+      sm: radiusScale.sm,
       md: radiusScale.md,
-      lg: radiusScale['2xl'],
-      xl: radiusScale['4xl'],
+      lg: radiusScale.lg,
+      xl: radiusScale.xl,
       pill: radiusScale.pill,
     },
     shadows: {

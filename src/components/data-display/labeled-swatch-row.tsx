@@ -7,7 +7,7 @@ const Item = styled.li<{ $selected?: boolean }>`
   cursor: pointer;
   list-style: none;
   background: ${(p) => (p.$selected ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
-  border-left: var(--ig-border-3px) solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
+  border-left: var(--ig-border-2px) solid ${(p) => (p.$selected ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast);
   &:hover {
     background: var(--ig-color-white-04);
@@ -41,7 +41,7 @@ export function LabeledSwatchRow({ id, label, color, count, selected, onClick }:
       role="option"
       aria-selected={selected}
     >
-      <Inline gap={4} style={WRAP_STYLE}>
+      <Inline gap="var(--ig-space-1)" style={WRAP_STYLE}>
         <ColorSwatch $color={color} $size="md" $shape="square" />
         <Text size="var(--ig-font-size-md)" title={label} style={NAME_STYLE}>{label}</Text>
         {typeof count === 'number' ? <Text size="var(--ig-font-size-xs)" tone="soft" style={COUNT_STYLE}>{count.toLocaleString()}</Text> : null}

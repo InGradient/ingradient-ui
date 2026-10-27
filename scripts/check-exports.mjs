@@ -12,8 +12,9 @@ const contracts = [
     './components': ['Button', 'Alert', 'ImageCard', 'UploadDropzone'],
     './patterns': ['AppShell', 'CommentThread', 'DrawingLayer', 'ChipGroup'],
     './utils': ['logger'],
+    './fonts': [],
   } },
-  { directory: 'packages/platform-pages', exports: { '.': ['CatalogView', 'DashboardView', 'LoginView'] } },
+  { directory: 'packages/platform-pages', exports: { '.': ['CatalogView', 'DashboardView', 'LoginView', 'PlatformAppShell'] } },
   { directory: 'packages/edge-pages', exports: { '.': [
     'LoginView', 'LicenseView', 'DatasetSelectView', 'WorkspaceView',
     'CameraSettingsDialogView', 'ImagesView', 'LogPanelView', 'SetupPanelView',

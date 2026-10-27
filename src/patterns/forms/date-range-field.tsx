@@ -19,7 +19,7 @@ export function DateRangeField({
   disabled, className,
 }: DateRangeFieldProps) {
   return (
-    <Inline gap={2} className={className}>
+    <Inline gap="var(--ig-space-2px)" className={className}>
       <Box style={SLOT_STYLE}>
         <DatePickerField
           value={from}

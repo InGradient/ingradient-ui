@@ -15,8 +15,8 @@ const Handle = styled(IconButton).attrs({
     cursor: grabbing;
   }
   svg {
-    width: var(--ig-icon-md);
-    height: var(--ig-icon-md);
+    width: var(--ig-size-drag-handle);
+    height: var(--ig-size-drag-handle);
   }
 `
 

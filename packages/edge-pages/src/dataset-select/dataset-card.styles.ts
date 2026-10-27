@@ -143,8 +143,8 @@ export const ClassChipName = styled.span`
 `
 
 export const ClassChipDot = styled.span<{ $color: string }>`
-  width: var(--ig-space-1-plus);
-  height: var(--ig-space-1-plus);
+  width: var(--ig-size-dot-xs);
+  height: var(--ig-size-dot-xs);
   border-radius: 50%;
   background: ${(p) => p.$color};
   flex-shrink: 0;

@@ -9,7 +9,7 @@ import {
   CheckItem,
   CheckList,
   ErrorHint,
-  FieldRow,
+  ControlRow,
   Label,
   NumberInput,
   Section,
@@ -82,7 +82,7 @@ export function WorkOptionsTabUI({
             />
           </CheckItem>
         </CheckList>
-        <FieldRow>
+        <ControlRow>
           <Label htmlFor="min-bbox">Min BBox count</Label>
           <NumberInput
             id="min-bbox"
@@ -92,7 +92,7 @@ export function WorkOptionsTabUI({
               onOptionsChange({ ...options, require_min_bbox_count: value || 0 })
             }
           />
-        </FieldRow>
+        </ControlRow>
       </Section>
 
       {deflectometryEnabled && (

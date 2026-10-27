@@ -54,7 +54,7 @@ export function CheckboxGroup({
   return (
     <Box style={{ ...WRAP_BASE_STYLE, maxHeight }}>
       {showSelectAll && (
-        <Inline gap={3} style={HEADER_STYLE}>
+        <Inline gap="var(--ig-space-3px)" style={HEADER_STYLE}>
           <TextButton tone="accent" size="xs" onClick={() => onChange(new Set(items.map((it) => it.id)))}>
             Select All
           </TextButton>
@@ -64,7 +64,7 @@ export function CheckboxGroup({
         </Inline>
       )}
       {items.map((item) => (
-        <Inline key={item.id} gap={3} style={ITEM_ROW_STYLE}>
+        <Inline key={item.id} gap="var(--ig-space-3px)" style={ITEM_ROW_STYLE}>
           <Checkbox
             checked={selectedIds.has(item.id)}
             onChange={() => handleToggle(item.id)}

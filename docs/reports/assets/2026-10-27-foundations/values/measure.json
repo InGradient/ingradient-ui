@@ -1,0 +1,1133 @@
+{
+ "settings": {
+  "id": "pages-platform-0-0-1-settings-modal-general--preferences",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 160,
+    "y": 40,
+    "w": 1120,
+    "h": 820,
+    "radius": 24,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Settings General Account"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 395,
+    "y": 239,
+    "w": 870,
+    "h": 206,
+    "radius": 20,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "WORKSPACE Enable hover p"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 167,
+    "y": 104,
+    "w": 207,
+    "h": 48,
+    "radius": 10,
+    "padX": "10px",
+    "gap": "8px",
+    "icon": null,
+    "label": "General"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1233,
+    "y": 53,
+    "w": 32,
+    "h": 32,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Close dialog"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 1234,
+    "y": 302,
+    "w": 18,
+    "h": 18,
+    "radius": 6,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 160,
+    "y": 40,
+    "w": 1120,
+    "h": 820,
+    "radius": 16,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Settings General Account"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 393,
+    "y": 227,
+    "w": 874,
+    "h": 186,
+    "radius": 12,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "WORKSPACE Enable hover p"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 169,
+    "y": 106,
+    "w": 203,
+    "h": 48,
+    "radius": 8,
+    "padX": "8px",
+    "gap": "8px",
+    "icon": null,
+    "label": "General"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1235,
+    "y": 53,
+    "w": 32,
+    "h": 32,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Close dialog"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 1238,
+    "y": 285,
+    "w": 16,
+    "h": 16,
+    "radius": 4,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "catalog": {
+  "id": "pages-platform-0-0-1-dataset-catalog-workspace--overview",
+  "cur": [
+   {
+    "role": "글자 버튼",
+    "x": 203,
+    "y": 112,
+    "w": 66,
+    "h": 28,
+    "radius": 10,
+    "padX": "14px",
+    "gap": "8px",
+    "icon": null,
+    "label": "+ Add"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 275,
+    "y": 112,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Collapse sidebar"
+   },
+   {
+    "role": "입력창",
+    "x": 344,
+    "y": 110,
+    "w": 220,
+    "h": 32,
+    "radius": 14,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Search file name"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 14,
+    "y": 172,
+    "w": 18,
+    "h": 18,
+    "radius": 6,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "rec": [
+   {
+    "role": "글자 버튼",
+    "x": 205,
+    "y": 117,
+    "w": 62,
+    "h": 28,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "4px",
+    "icon": null,
+    "label": "+ Add"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 275,
+    "y": 117,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Collapse sidebar"
+   },
+   {
+    "role": "입력창",
+    "x": 344,
+    "y": 115,
+    "w": 220,
+    "h": 32,
+    "radius": 8,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Search file name"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 12,
+    "y": 176,
+    "w": 16,
+    "h": 16,
+    "radius": 4,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "class": {
+  "id": "pages-platform-0-0-1-class-management-workspace--overview",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 1137,
+    "y": 579,
+    "w": 287,
+    "h": 172,
+    "radius": 8,
+    "padX": "10px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 1148,
+    "y": 590,
+    "w": 265,
+    "h": 150,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "글자 버튼",
+    "x": 203,
+    "y": 112,
+    "w": 66,
+    "h": 28,
+    "radius": 10,
+    "padX": "14px",
+    "gap": "8px",
+    "icon": null,
+    "label": "+ Add"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 275,
+    "y": 112,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Collapse sidebar"
+   },
+   {
+    "role": "입력창",
+    "x": 1137,
+    "y": 162,
+    "w": 280,
+    "h": 28,
+    "radius": 6,
+    "padX": "10px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Class name"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 1137,
+    "y": 581,
+    "w": 287,
+    "h": 170,
+    "radius": 8,
+    "padX": "8px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 1146,
+    "y": 590,
+    "w": 269,
+    "h": 152,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "글자 버튼",
+    "x": 205,
+    "y": 117,
+    "w": 62,
+    "h": 28,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "4px",
+    "icon": null,
+    "label": "+ Add"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 275,
+    "y": 117,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Collapse sidebar"
+   },
+   {
+    "role": "입력창",
+    "x": 1137,
+    "y": 167,
+    "w": 280,
+    "h": 28,
+    "radius": 4,
+    "padX": "8px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Class name"
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "dashboard": {
+  "id": "pages-platform-0-0-1-dashboard-workspace--overview",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 20,
+    "y": 154,
+    "w": 1400,
+    "h": 730,
+    "radius": 24,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Project Overview Current"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 730,
+    "y": 241,
+    "w": 673,
+    "h": 380,
+    "radius": 24,
+    "padX": "18px",
+    "gap": "14px",
+    "icon": null,
+    "label": "Images over time Granula"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1200,
+    "y": 98,
+    "w": 100,
+    "h": 32,
+    "radius": 10,
+    "padX": "18px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Save PDF"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 638,
+    "y": 253,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Download widget image"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 20,
+    "y": 159,
+    "w": 1400,
+    "h": 725,
+    "radius": 16,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Project Overview Current"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 730,
+    "y": 246,
+    "w": 673,
+    "h": 374,
+    "radius": 16,
+    "padX": "16px",
+    "gap": "12px",
+    "icon": null,
+    "label": "Images over time Granula"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1226,
+    "y": 103,
+    "w": 88,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Save PDF"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 638,
+    "y": 256,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Download widget image"
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "create": {
+  "id": "pages-platform-0-0-1-create-project-workspace--overview",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 360,
+    "y": 52,
+    "w": 720,
+    "h": 1006,
+    "radius": 24,
+    "padX": "18px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Create Project Configure"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 379,
+    "y": 138,
+    "w": 682,
+    "h": 366,
+    "radius": 20,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Project details Name the"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 394,
+    "y": 601,
+    "w": 325,
+    "h": 86,
+    "radius": 20,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": "General Project Standard"
+   },
+   {
+    "role": "입력창",
+    "x": 394,
+    "y": 245,
+    "w": 652,
+    "h": 32,
+    "radius": 14,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 360,
+    "y": 52,
+    "w": 720,
+    "h": 1004,
+    "radius": 16,
+    "padX": "16px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Create Project Configure"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 377,
+    "y": 140,
+    "w": 686,
+    "h": 366,
+    "radius": 12,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Project details Name the"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 390,
+    "y": 602,
+    "w": 328,
+    "h": 88,
+    "radius": 12,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": "General Project Standard"
+   },
+   {
+    "role": "입력창",
+    "x": 390,
+    "y": 250,
+    "w": 660,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "curH": 1080,
+  "recH": 1080
+ },
+ "login": {
+  "id": "pages-platform-0-0-1-auth-login-workspace--overview",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 510,
+    "y": 335,
+    "w": 420,
+    "h": 252,
+    "radius": 24,
+    "padX": "18px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Sign in Keep me signed i"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 529,
+    "y": 506,
+    "w": 382,
+    "h": 32,
+    "radius": 10,
+    "padX": "18px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Sign in"
+   },
+   {
+    "role": "입력창",
+    "x": 529,
+    "y": 393,
+    "w": 382,
+    "h": 32,
+    "radius": 14,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Email"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 529,
+    "y": 477,
+    "w": 18,
+    "h": 18,
+    "radius": 6,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 510,
+    "y": 341,
+    "w": 420,
+    "h": 242,
+    "radius": 16,
+    "padX": "16px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Sign in Keep me signed i"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 527,
+    "y": 504,
+    "w": 386,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Sign in"
+   },
+   {
+    "role": "입력창",
+    "x": 527,
+    "y": 398,
+    "w": 386,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Email"
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 527,
+    "y": 479,
+    "w": 16,
+    "h": 16,
+    "radius": 4,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "buttons": {
+  "id": "components-inputs-button--review",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 104,
+    "y": 215,
+    "w": 1232,
+    "h": 334,
+    "radius": 24,
+    "padX": "20px",
+    "gap": "16px",
+    "icon": null,
+    "label": "Intent matrix Compare pr"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 125,
+    "y": 306,
+    "w": 386,
+    "h": 222,
+    "radius": 20,
+    "padX": "16px",
+    "gap": "12px",
+    "icon": null,
+    "label": "Action priority semantic"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 142,
+    "y": 375,
+    "w": 352,
+    "h": 36,
+    "radius": 10,
+    "padX": "18px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Create workspace"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 104,
+    "y": 215,
+    "w": 1232,
+    "h": 334,
+    "radius": 16,
+    "padX": "20px",
+    "gap": "16px",
+    "icon": null,
+    "label": "Intent matrix Compare pr"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 125,
+    "y": 306,
+    "w": 386,
+    "h": 222,
+    "radius": 12,
+    "padX": "16px",
+    "gap": "12px",
+    "icon": null,
+    "label": "Action priority semantic"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 142,
+    "y": 375,
+    "w": 352,
+    "h": 36,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "8px",
+    "icon": null,
+    "label": "Create workspace"
+   }
+  ],
+  "curH": 932,
+  "recH": 932
+ },
+ "iconbuttons": {
+  "id": "components-inputs-iconbutton--review",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 0,
+    "y": 380,
+    "w": 1440,
+    "h": 221,
+    "radius": 24,
+    "padX": "20px",
+    "gap": "16px",
+    "icon": null,
+    "label": "Sizes sm / md / lg. sm m"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 964,
+    "y": 471,
+    "w": 455,
+    "h": 110,
+    "radius": 20,
+    "padX": "16px",
+    "gap": "12px",
+    "icon": null,
+    "label": "lg"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 38,
+    "y": 282,
+    "w": 36,
+    "h": 36,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Search"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 0,
+    "y": 380,
+    "w": 1440,
+    "h": 221,
+    "radius": 16,
+    "padX": "20px",
+    "gap": "16px",
+    "icon": null,
+    "label": "Sizes sm / md / lg. sm m"
+   },
+   {
+    "role": "안쪽 표면(카드·섹션)",
+    "x": 964,
+    "y": 471,
+    "w": 455,
+    "h": 110,
+    "radius": 12,
+    "padX": "16px",
+    "gap": "12px",
+    "icon": null,
+    "label": "lg"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 38,
+    "y": 282,
+    "w": 36,
+    "h": 36,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Search"
+   }
+  ],
+  "curH": 1047,
+  "recH": 1047
+ },
+ "edgecapture": {
+  "id": "pages-edge-0-0-5-workspace--capture",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 304,
+    "y": 90,
+    "w": 832,
+    "h": 772,
+    "radius": 20,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Capture Images Statics S"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1112,
+    "y": 51,
+    "w": 96,
+    "h": 32,
+    "radius": 14,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 16,
+    "y": 42,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 14,
+    "label": "Action"
+   },
+   {
+    "role": "입력창",
+    "x": 1160,
+    "y": 759,
+    "w": 255,
+    "h": 32,
+    "radius": 14,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 1171,
+    "y": 811,
+    "w": 12,
+    "h": 12,
+    "radius": 6,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 300,
+    "y": 88,
+    "w": 840,
+    "h": 780,
+    "radius": 12,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": "Capture Images Statics S"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1124,
+    "y": 51,
+    "w": 94,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 16,
+    "y": 42,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Action"
+   },
+   {
+    "role": "입력창",
+    "x": 1162,
+    "y": 785,
+    "w": 255,
+    "h": 32,
+    "radius": 8,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   },
+   {
+    "role": "작은 요소(체크박스·칩)",
+    "x": 1171,
+    "y": 837,
+    "w": 12,
+    "h": 12,
+    "radius": 4,
+    "padX": "0px",
+    "gap": "normal",
+    "icon": null,
+    "label": ""
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "edgedataset": {
+  "id": "pages-edge-0-0-5-datasetselect--online",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 24,
+    "y": 503,
+    "w": 341,
+    "h": 126,
+    "radius": 10,
+    "padX": "18px",
+    "gap": "4px",
+    "icon": null,
+    "label": "26.07.20 Total OD 46 gro"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1106,
+    "y": 54,
+    "w": 96,
+    "h": 32,
+    "radius": 14,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1212,
+    "y": 45,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 18,
+    "label": "Refresh"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 24,
+    "y": 499,
+    "w": 342,
+    "h": 126,
+    "radius": 8,
+    "padX": "16px",
+    "gap": "4px",
+    "icon": null,
+    "label": "26.07.20 Total OD 46 gro"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1124,
+    "y": 54,
+    "w": 94,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1226,
+    "y": 45,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Refresh"
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ },
+ "edgelogin": {
+  "id": "pages-edge-0-0-5-login--offline",
+  "cur": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 510,
+    "y": 280,
+    "w": 420,
+    "h": 372,
+    "radius": 20,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": "INGRADIENT EdgeOffline L"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1292,
+    "y": 70,
+    "w": 96,
+    "h": 32,
+    "radius": 14,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1396,
+    "y": 61,
+    "w": 28,
+    "h": 28,
+    "radius": 10,
+    "padX": "0px",
+    "gap": "8px",
+    "icon": 16,
+    "label": "Action"
+   }
+  ],
+  "rec": [
+   {
+    "role": "큰 표면(모달·카드·패널)",
+    "x": 510,
+    "y": 283,
+    "w": 420,
+    "h": 366,
+    "radius": 12,
+    "padX": "32px",
+    "gap": "normal",
+    "icon": null,
+    "label": "INGRADIENT EdgeOffline L"
+   },
+   {
+    "role": "글자 버튼",
+    "x": 1294,
+    "y": 70,
+    "w": 94,
+    "h": 32,
+    "radius": 8,
+    "padX": "12px",
+    "gap": "12px",
+    "icon": 10,
+    "label": "Language"
+   },
+   {
+    "role": "아이콘 버튼",
+    "x": 1396,
+    "y": 61,
+    "w": 28,
+    "h": 28,
+    "radius": 8,
+    "padX": "0px",
+    "gap": "4px",
+    "icon": 16,
+    "label": "Action"
+   }
+  ],
+  "curH": 900,
+  "recH": 900
+ }
+}

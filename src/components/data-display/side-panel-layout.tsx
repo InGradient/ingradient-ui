@@ -51,14 +51,14 @@ const HEADING_TAGS = {
 
 export function SidePanelLayout({ sections, ariaLabel, className, headingLevel = 3 }: SidePanelLayoutProps) {
   return (
-    <Stack as="aside" aria-label={ariaLabel} gap={0} className={className} style={PANEL_STYLE}>
+    <Stack as="aside" aria-label={ariaLabel} gap="var(--ig-space-0)" className={className} style={PANEL_STYLE}>
       {sections.map((s, i) => (
         <Section key={i}>
-          <Inline justify="space-between" gap={3} style={HEADER_ROW_STYLE}>
+          <Inline justify="space-between" gap="var(--ig-space-3px)" style={HEADER_ROW_STYLE}>
             <Text as={HEADING_TAGS[headingLevel]} size="var(--ig-font-size-md)" weight="semibold">{s.title}</Text>
             {s.headerActions}
           </Inline>
-          <Stack gap={3} style={SECTION_BODY_STYLE}>{s.body}</Stack>
+          <Stack gap="var(--ig-space-3px)" style={SECTION_BODY_STYLE}>{s.body}</Stack>
         </Section>
       ))}
     </Stack>

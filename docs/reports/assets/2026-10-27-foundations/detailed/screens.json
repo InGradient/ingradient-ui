@@ -1,0 +1,19 @@
+[
+ {"name":"p-login","title":"Platform · Login","id":"pages-platform-0-0-1-auth-login-workspace--overview"},
+ {"name":"p-signup","title":"Platform · Signup","id":"pages-platform-0-0-1-auth-signup-workspace--overview"},
+ {"name":"p-create","title":"Platform · Create Project","id":"pages-platform-0-0-1-create-project-workspace--overview"},
+ {"name":"p-catalog","title":"Platform · Dataset Catalog","id":"pages-platform-0-0-1-dataset-catalog-workspace--overview"},
+ {"name":"p-catalog-col","title":"Platform · Catalog (데이터셋 목록 접힘)","id":"pages-platform-0-0-1-dataset-catalog-workspace--dataset-sidebar-collapsed"},
+ {"name":"p-class","title":"Platform · Class Management","id":"pages-platform-0-0-1-class-management-workspace--overview"},
+ {"name":"p-dashboard","title":"Platform · Dashboard","id":"pages-platform-0-0-1-dashboard-workspace--overview"},
+ {"name":"p-set-general","title":"Platform · Settings / General","id":"pages-platform-0-0-1-settings-modal-general--preferences"},
+ {"name":"p-set-account","title":"Platform · Settings / Account","id":"pages-platform-0-0-1-settings-modal-account--organization-license"},
+ {"name":"p-set-project","title":"Platform · Settings / Project","id":"pages-platform-0-0-1-settings-modal-project--configuration-workflow"},
+ {"name":"p-set-edge","title":"Platform · Settings / Edge","id":"pages-platform-0-0-1-settings-modal-edge--work-options"},
+ {"name":"p-set-org","title":"Platform · Settings / Organization","id":"pages-platform-0-0-1-settings-modal-organization--overview"},
+ {"name":"p-set-storage","title":"Platform · Settings / Storage","id":"pages-platform-0-0-1-settings-modal-storage--analytics"},
+ {"name":"e-capture","title":"Edge · Workspace / Capture","id":"pages-edge-0-0-5-workspace--capture"},
+ {"name":"e-images","title":"Edge · Workspace / Images","id":"pages-edge-0-0-5-workspace--images"},
+ {"name":"e-dataset","title":"Edge · Dataset Select","id":"pages-edge-0-0-5-datasetselect--online"},
+ {"name":"e-login","title":"Edge · Login","id":"pages-edge-0-0-5-login--offline"}
+]

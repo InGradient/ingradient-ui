@@ -66,7 +66,7 @@ export const KeyboardActivation: Story = {
 
 export const Grid3x3: Story = {
   render: () => (
-    <Grid columns="repeat(3, 1fr)" gap={3} style={{ width: 720 }}>
+    <Grid columns="repeat(3, 1fr)" gap="var(--ig-space-3px)" style={{ width: 720 }}>
       <ImageCard image={{ id: '1', name: 'A.jpg', thumb_url: sample1 as string }} topRightSlot={<DemoChip label="Synced" />} />
       <ImageCard image={{ id: '2', name: 'B.jpg', thumb_url: sample2 as string }} topRightSlot={<DemoChip label="Uploading" />} selected />
       <ImageCard image={{ id: '3', name: 'C.jpg', thumb_url: sample3 as string }} topRightSlot={<DemoChip label="Failed" />} />

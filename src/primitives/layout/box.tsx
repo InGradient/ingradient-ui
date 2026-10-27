@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { numberOrString, space, type Space } from '../shared'
+import { numberOrString, space, type SpacingValue } from '../shared'
 
 const BoxRoot = styled.div<{
   $display?: string
-  $padding?: Space
-  $gap?: Space
+  $padding?: SpacingValue
+  $gap?: SpacingValue
   $width?: string | number
   $height?: string | number
   $align?: string
@@ -28,8 +28,8 @@ const BoxRoot = styled.div<{
 export type BoxProps = React.HTMLAttributes<HTMLDivElement> & {
   as?: React.ElementType
   display?: string
-  padding?: Space
-  gap?: Space
+  padding?: SpacingValue
+  gap?: SpacingValue
   width?: string | number
   height?: string | number
   align?: string

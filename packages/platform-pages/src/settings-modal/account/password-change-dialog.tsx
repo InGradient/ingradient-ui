@@ -49,9 +49,9 @@ export function PasswordChangeDialog({
         </>
       }
     >
-      <Stack gap="var(--ig-space-5)">
-        <Stack gap="var(--ig-space-2)">
-          <Text as="label" htmlFor="settings-current-password" tone="secondary" size="var(--ig-font-size-sm)" weight="semibold">Current password</Text>
+      <Stack gap="var(--ig-spacing-12)">
+        <Stack gap="var(--ig-spacing-8)">
+          <Text as="label" htmlFor="settings-current-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">Current password</Text>
           <PasswordField
             id="settings-current-password"
             value={currentPassword}
@@ -59,8 +59,8 @@ export function PasswordChangeDialog({
             style={FULL_FIELD_STYLE}
           />
         </Stack>
-        <Stack gap="var(--ig-space-2)">
-          <Text as="label" htmlFor="settings-new-password" tone="secondary" size="var(--ig-font-size-sm)" weight="semibold">New password</Text>
+        <Stack gap="var(--ig-spacing-8)">
+          <Text as="label" htmlFor="settings-new-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">New password</Text>
           <PasswordField
             id="settings-new-password"
             value={newPassword}
@@ -68,8 +68,8 @@ export function PasswordChangeDialog({
             style={FULL_FIELD_STYLE}
           />
         </Stack>
-        <Stack gap="var(--ig-space-2)">
-          <Text as="label" htmlFor="settings-confirm-password" tone="secondary" size="var(--ig-font-size-sm)" weight="semibold">Confirm new password</Text>
+        <Stack gap="var(--ig-spacing-8)">
+          <Text as="label" htmlFor="settings-confirm-password" tone="secondary" size="var(--ig-text-body-sm)" weight="semibold">Confirm new password</Text>
           <PasswordField
             id="settings-confirm-password"
             value={newPasswordConfirm}

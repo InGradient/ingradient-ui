@@ -1,6 +1,16 @@
 export type Space = number | string
 
 /**
+ * Spacing value for `gap` / `padding` props on layout primitives.
+ *
+ * Strings only — a spacing token such as `var(--ig-space-3)` or a CSS length.
+ * Bare numbers are rejected on purpose: `gap={3}` used to mean 3px here while
+ * `GridContainer gap={3}` means token index 3 (8px), which made equal-looking
+ * props render different spacing.
+ */
+export type SpacingValue = string
+
+/**
  * Token-based spacing scale index (0–13).
  * Use with `tokenSpace()` to produce `var(--ig-space-N)` references.
  * Keep raw px values for `space()` — the two are intentionally distinct.

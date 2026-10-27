@@ -114,7 +114,7 @@ export function ResizableColumnsLayout({
   }, [widths, autoIdx, columns])
 
   return (
-    <Inline gap={0} align="stretch" wrap="nowrap" className={className} style={{ ...ROOT_STYLE, ...style }}>
+    <Inline gap="var(--ig-space-0)" align="stretch" wrap="nowrap" className={className} style={{ ...ROOT_STYLE, ...style }}>
       {columns.map((c, i) => {
         if (c.hidden) return null
         const collapsed = !!c.collapsed
@@ -125,6 +125,9 @@ export function ResizableColumnsLayout({
           <React.Fragment key={i}>
             {i > autoIdx ? handle : null}
             <Column
+              // A collapsed column keeps its content mounted at zero width. Without `inert` its
+              // controls stay focusable and are exposed to assistive tech while invisible.
+              ref={(node) => node?.toggleAttribute('inert', collapsed)}
               $width={width}
               $collapsed={collapsed}
               $bg={c.background}

@@ -143,7 +143,7 @@ export function ImageInspectorCanvas({
   const zoomOut = () => handleWheel(fakeWheelEvent(100))
 
   const floatingControls = showZoomControls || onClose ? (
-    <Inline gap={2} style={TOP_RIGHT_STYLE}>
+    <Inline gap="var(--ig-space-2px)" style={TOP_RIGHT_STYLE}>
       {showZoomControls ? (
         <>
           <IconButton

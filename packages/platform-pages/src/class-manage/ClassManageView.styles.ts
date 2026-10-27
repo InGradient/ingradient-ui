@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  height: 100vh;
+  /* Fills the app shell's page area; standalone it takes the viewport. */
+  height: var(--ig-page-height, 100vh);
   display: flex;
   flex-direction: column;
   --ig-catalog-divider-color: var(--ig-color-border-strong);
@@ -17,8 +18,8 @@ export const StatusArea = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  min-height: var(--ig-popup-md);
+  min-height: var(--ig-layout-size-state-panel-min-height);
   display: grid;
   place-items: center;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
 `

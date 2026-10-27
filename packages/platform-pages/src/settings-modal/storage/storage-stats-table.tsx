@@ -26,7 +26,7 @@ export function StorageStatsTable<T>({
   type Row = T & { id?: string | number }
   const resolvedAriaLabel = ariaLabel ?? (columns[0]?.header ? `${columns[0].header} storage statistics` : 'Storage statistics')
   return (
-    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xxs)" padding="var(--ig-space-7)">
+    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-16)">
       <Table<Row>
         columns={columns as TableColumn<Row>[]}
         rows={rows as Row[]}

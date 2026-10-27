@@ -5,12 +5,12 @@ import { TextButton, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/co
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
 const SECTION_STYLE = {
-  padding: 'var(--ig-space-5)',
+  padding: 'var(--ig-spacing-12)',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
 }
 
-const DETAILS_TOGGLE_STYLE = { padding: 'var(--ig-space-2) 0' }
-const DETAILS_BODY_STYLE = { paddingTop: 'var(--ig-space-2)' }
+const DETAILS_TOGGLE_STYLE = { padding: 'var(--ig-spacing-8) 0' }
+const DETAILS_BODY_STYLE = { paddingTop: 'var(--ig-spacing-8)' }
 
 export interface ImageDetailInfo {
   name?: string
@@ -69,8 +69,8 @@ export function ImageDetailInfoPanel({
   title = 'Image info',
 }: ImageDetailInfoPanelProps) {
   return (
-    <Stack gap="var(--ig-space-3)" style={SECTION_STYLE}>
-      <Text size="var(--ig-font-size-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal">{title}</Text>
+    <Stack gap="var(--ig-spacing-8)" style={SECTION_STYLE}>
+      <Text size="var(--ig-text-body-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal">{title}</Text>
       {positionLabel ? (
         <InfoRow>
           <InfoRowLabel>Position</InfoRowLabel>
@@ -101,7 +101,7 @@ export function ImageDetailInfoPanel({
         {detailsOpen ? 'Hide details' : 'Show details'}
       </TextButton>
       {detailsOpen ? (
-        <Stack gap="var(--ig-space-3)" style={DETAILS_BODY_STYLE}>
+        <Stack gap="var(--ig-spacing-8)" style={DETAILS_BODY_STYLE}>
           {rowIfValue('Upload Source', image.upload_source)}
           {rowIfValue('Camera IP', image.camera_ip)}
           {rowIfValue('Camera Type', image.camera_type)}

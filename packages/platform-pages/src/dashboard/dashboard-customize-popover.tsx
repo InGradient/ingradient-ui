@@ -5,15 +5,15 @@ import { Checkbox } from '@ingradient/ui/components'
 
 const Wrap = styled(MenuPopover)`
   position: absolute;
-  top: calc(100% + var(--ig-space-3));
+  top: calc(100% + var(--ig-spacing-8));
   right: 0;
   z-index: var(--ig-z-sticky-plus);
-  width: min(var(--ig-popup-md), calc(100vw - var(--ig-space-13)));
-  padding: var(--ig-space-6);
+  width: min(var(--ig-popup-md), calc(100vw - var(--ig-spacing-32)));
+  padding: var(--ig-spacing-12);
   border-radius: var(--ig-radius-lg);
 `
 
-const TITLE_STYLE = { marginBottom: 'var(--ig-space-4)' }
+const TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
 
 export interface DashboardCustomizeItem {
   key: string
@@ -35,8 +35,8 @@ export function DashboardCustomizePopover<K extends string = string>({
 }: DashboardCustomizePopoverProps<K>) {
   return (
     <Wrap className={className} role="group" aria-label={title}>
-      <Text size="var(--ig-font-size-xs)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
-      <Stack gap="var(--ig-space-3)">
+      <Text size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
+      <Stack gap="var(--ig-spacing-8)">
         {items.map((item) => (
           <Checkbox
             key={item.key}

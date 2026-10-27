@@ -32,7 +32,7 @@ const sampleImage = {
 function Demo() {
   const [open, setOpen] = useState(true)
   return (
-    <div style={{ padding: 'var(--ig-space-7)' }}>
+    <div style={{ padding: 'var(--ig-spacing-16)' }}>
       <Button onClick={() => setOpen(true)}>Open modal</Button>
       <GalleryDetailModal image={sampleImage} open={open} onClose={() => setOpen(false)} />
     </div>

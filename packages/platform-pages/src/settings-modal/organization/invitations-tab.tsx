@@ -25,7 +25,7 @@ export function InvitationsTab({
   if (loading) return <Empty>{loadingText}</Empty>
   if (error) return <Empty>{error}</Empty>
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title={invitations.title ?? 'Invitations'}>
         <InvitationsSection {...invitations} title="" />
       </SettingsSection>

@@ -8,7 +8,8 @@ const HINT_STYLE = { marginTop: 'var(--ig-space-neg-2px)' }
 const STACK_STYLE = { width: '100%' }
 const PREVIEW_STYLE = {
   width: '100%',
-  borderRadius: 'var(--ig-radius-xs)',
+  // The preview sits inside the drop-zone frame, so it must be less rounded than the frame.
+  borderRadius: 'var(--ig-radius-2xs)',
   border: 'var(--ig-border-1px) solid var(--ig-color-white-12)',
   background: 'var(--ig-color-white-04)',
   objectFit: 'contain' as const,
@@ -53,26 +54,26 @@ export function ReferenceImageSection({
   }
   const content = (
     <>
-      <Text tone="muted" size="var(--ig-font-size-xs)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
+      <Text tone="muted" size="var(--ig-text-caption)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
         onDropImageId={(id) => onApply?.(id)}
         onSetDragging={onSetDragging}
       >
-        <Stack gap="var(--ig-space-5)" style={STACK_STYLE}>
+        <Stack gap="var(--ig-spacing-12)" style={STACK_STYLE}>
           {imageUrl ? (
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
-            <Stack gap="var(--ig-space-3)" align="flex-start">
-              <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
+            <Stack gap="var(--ig-spacing-8)" align="flex-start">
+              <Text tone="muted" size="var(--ig-text-caption)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
             </Stack>
           )}
           {candidates.length > 1 ? (
             <IndexedNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} prevLabel="Previous bbox" nextLabel="Next bbox" />
           ) : null}
-          {pending ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">Updating reference image…</Text> : null}
-          {errorMessage ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">{errorMessage}</Text> : null}
+          {pending ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">Updating reference image…</Text> : null}
+          {errorMessage ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
     </>

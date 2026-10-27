@@ -3,8 +3,9 @@ import { Wrap } from './styles/page.styles'
 import { DatasetSelectHeader } from './DatasetSelectHeader'
 import { DatasetSelectContent } from './DatasetSelectContent'
 import type { DatasetSelectViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function DatasetSelectView(props: DatasetSelectViewProps): JSX.Element {
+function DatasetSelectViewContent(props: DatasetSelectViewProps): JSX.Element {
   const {
     mode, connectionStatus, connectionTitle, canSetupCamera,
     loading, fetchError, recentDatasets, groups, totalDatasets, latestDatasetId,
@@ -69,5 +70,17 @@ export function DatasetSelectView(props: DatasetSelectViewProps): JSX.Element {
       {exportModal}
       {addDatasetModal}
     </Wrap>
+  )
+}
+
+/**
+ * Edge uses the same surface rules as Platform: a rounded surface inside another rounded
+ * surface is always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function DatasetSelectView(props: DatasetSelectViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <DatasetSelectViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

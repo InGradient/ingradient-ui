@@ -1,6 +1,6 @@
 # Ingradient UI Design System
 
-This document records the design system already implemented in `src/tokens`, `src/primitives`, `src/components`, `src/patterns`, and `packages/platform-pages`. It is an extraction of the current product, not a redesign. The Platform `0.0.1` stories use the `platformV001` preset: industrial-dark theme, compact density, dark mode, and the default brand.
+This document records the design system already implemented in `src/tokens`, `src/primitives`, `src/components`, `src/patterns`, and `packages/platform-pages`. Sections 3–9 describe the 4px foundation adopted on 2026-10-27; decision numbers (Dn) refer to `docs/reports/2026-10-27-foundations-report.ko.html`. The Platform `0.0.1` stories use the `platformV001` preset: industrial-dark theme, compact density, dark mode, and the default brand.
 
 ## 1. Atmosphere & Identity
 
@@ -35,77 +35,257 @@ Rules:
 - Accent denotes interaction or selection, not decoration.
 - The default Platform page contract is dark mode. Light mode must preserve the same hierarchy and AA-oriented text contrast.
 
+> **Status.** The values below are in code (commits `7f71ae2` to `4379689` on `feat/surface-depth`). Remaining migrations are listed under Accepted Debt (§11).
+
 ## 3. Typography
+
+### Scale *(D10–D11)*
+
+Sizes keep the dense character of the product (13px and 12px are the most used today) but drop unused or near-duplicate steps. Line heights are fixed pixel values on the 4px grid instead of multipliers, because a multiplier such as 13px × 1.5 = 19.5px falls off the grid.
+
+| Token | Size | Line height | Usage |
+|---|---:|---:|---|
+| `micro` | 11px | 16px | Dense technical overlays only (badges on images, canvas labels) |
+| `caption` | 12px | 16px | Metadata, captions, table secondary text |
+| `body-sm` | 13px | 20px | Compact controls, table cells, list rows |
+| `body` | 14px | 20px | Default body and control text |
+| `title-sm` | 16px | 24px | Section and card titles |
+| `title` | 20px | 28px | Page and modal headings |
+| `display` | 24px | 32px | Empty-state and authentication headings |
+
+Migration from current tiers: 10→11, 15→16, 18→20, 22 (unused) removed, 28→24.
+
+Each role is a pair of CSS variables: `--ig-text-<role>` (size) and `--ig-text-<role>-leading` (line height). `Text` given a role size uses the paired line height automatically. Platform pages use roles only; the size-tier names (`--ig-font-size-*`) remain for shared components and Edge and are deprecated for new code.
+
+- Sans: `"IBM Plex Sans", "Segoe UI", sans-serif`. Mono: `"IBM Plex Mono", "SFMono-Regular", Consolas, monospace`.
+- Fonts load from the package (D13): `import '@ingradient/ui/fonts'` once at the app root brings IBM Plex Sans and IBM Plex Sans KR (400–700) and IBM Plex Mono (400–600) via `@fontsource`; Korean is split by `unicode-range`. Licensed under SIL OFL 1.1.
+- Weights: 400, 500, 600, 700. New code uses the typography tokens or `Text`/heading primitives.
+
+## 4. Spacing *(D1–D4)*
 
 ### Scale
 
-| Token tier | Size | Typical usage |
+All spacing is a multiple of 4px. One optical step of 2px exists for hairline alignment only (icon nudges, focus offsets), never for layout gaps.
+
+| Token | Value |
+|---|---:|
+| `--ig-spacing-2` | 2px (optical only) |
+| `--ig-spacing-4` | 4px |
+| `--ig-spacing-8` | 8px |
+| `--ig-spacing-12` | 12px |
+| `--ig-spacing-16` | 16px |
+| `--ig-spacing-20` | 20px |
+| `--ig-spacing-24` | 24px |
+| `--ig-spacing-32` | 32px |
+| `--ig-spacing-40` | 40px |
+| `--ig-spacing-48` | 48px |
+
+The token name equals its value. The legacy `--ig-space-*` names now carry the 4px values (mapped as below) and are deprecated; new code uses `--ig-spacing-{px}` or a spacing role.
+
+### Semantic spacing
+
+Components choose a role, not a number:
+
+| Role token | Value | Use |
 |---|---:|---|
-| `3xs` / `2xs` | 10 / 11px | Exceptional micro-labels and dense overlays only |
-| `xs` / `sm` | 12 / 13px | Captions, metadata, compact controls |
-| `md` / `lg` | 14 / 15px | Default body and control text |
-| `xl` / `2xl` | 16 / 18px | Section titles and emphasized values |
-| `3xl` / `3xlPlus` | 20 / 22px | Page or modal headings |
-| `4xl` / `5xl` | 24 / 28px | Large empty-state or authentication headings |
+| `--ig-gap-inline` | 4px | Inside a control: icon ↔ label in small controls, chip padding |
+| `--ig-gap-related` | 8px | Between related items: list rows, label ↔ field, buttons in a group |
+| `--ig-inset-card` | 16px | Padding inside cards and sections |
+| `--ig-gap-section` | 24px | Between sections or cards |
+| `--ig-inset-page` | 24px | Page and modal edges |
 
-- Sans: `"IBM Plex Sans", "Segoe UI", sans-serif`.
-- Mono: `"IBM Plex Mono", "SFMono-Regular", Consolas, monospace`.
-- Weights: 400, 500, 600, 700, 800. Body line height uses the tokenized 1.35–1.6 range.
-- New page code uses the typography variables or `Text`/heading primitives. Text below 12px is reserved for existing dense technical overlays and is not a general body style.
+### Dense workspaces and single-form pages
 
-## 4. Spacing & Layout
+Workspace screens (Catalog, Class, Dashboard, Settings, Edge) are dense: 32px controls, 8px between related items, 16px card insets. Single-form pages (Login, Signup, Create Project) have one task on an otherwise empty screen and use generous spacing instead:
 
-The implemented spacing scale is compact and tokenized: 4, 5, 6, 7, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28, and 32px, exposed as `--ig-space-*`. Platform `0.0.1` overrides the small/medium/large control heights to 28/32/40px.
+| Single-form page | Value |
+|---|---:|
+| Form box inset | 32px |
+| Logo → form box, title → first field, sections apart, last field → primary action | 24px |
+| Field groups apart | 16px |
+| Label → field | 8px (`FieldGroup` + `FieldLabel`) |
+| Primary action → footer link | 16px |
+| Field and button height | 40px (`size="lg"`) |
 
-- Maximum standard content width: `1280px` (`--ig-layout-page-max-width`).
-- Breakpoints: 640, 720, 768, 860, 1024, and 1280px.
-- Storybook verification widths: 375, 768, 1280, 1440, and 1920px.
-- Full pages own the viewport and scrolling; panels explicitly own their internal scroll areas.
-- Workspace pages favor resizable sidebar/content/detail columns. Narrow layouts collapse secondary navigation or expose a mobile selector rather than shrinking primary image content beyond usability.
-- Layout props that require numbers use numeric token exports such as `popupSizeNumbers`; CSS-variable strings are only used in CSS-capable values.
+Fields always have a visible label (`FieldLabel` linked with `htmlFor`, 13px sentence case, the same as Create Project); placeholders show an example, never the label. The primary action is a `solid` button. Sections of a longer form (Create Project) are a heading plus fields separated by a 1px line, not boxes inside the form box, so fields keep the same 32px inset.
 
-## 5. Components
+### Migration of current values (D2)
 
-### Application Shells
+| Current | → | Reason |
+|---:|:-:|---|
+| 3px, 5px | 4px | Off-grid |
+| 6px, 7px | 8px | 4px reads cramped between interactive items; 8px is the main rhythm |
+| 10px | 8px | Compact; merges into the most used value |
+| 14px | 12px | |
+| 18px | 16px | |
+| 22px | 24px | Large gaps follow the 8px rhythm |
+| 28px | 32px | |
 
-- **Structure**: viewport root, header/navigation, one or more workspace columns, overlay layer.
-- **Variants**: dashboard grid, catalog three-column workspace, class-management three-column workspace, settings modal, authentication form.
-- **States**: default, loading, empty, error, permission denied, sidebar collapsed, modal/drawer open.
-- **Accessibility**: landmark elements and labelled controls remain keyboard reachable; collapsed navigation retains an accessible trigger.
-- **Layout**: the viewport is the outer scroll boundary; each long list or image grid owns its panel scroll.
+Uniform rounding down or up was trialed and rejected.
 
-### Resizable Columns and Selectable Grid Panel
+### Layout *(in code)*
 
-- **Structure**: navigation/sidebar, resize handle, primary grid panel, optional detail sidebar.
-- **Variants**: bordered panel or flush shell column; selected, no-selection, loading, empty.
-- **Spacing**: panel and grid padding use `--ig-space-*`; sidebar widths use popup/layout tokens.
-- **Accessibility**: resize handles and selectable rows expose keyboard/ARIA behavior through their shared components.
-- **Layout**: columns preserve `min-width: 0`; overflow belongs to the list/grid region.
+- Maximum content width: `1280px` (`--ig-page-max-width`; the earlier DESIGN.md named it `--ig-layout-page-max-width`, which does not exist).
+- Breakpoints: 640, 720, 768, 860, 1024, and 1280px. Storybook verification widths: 375, 768, 1280, 1440, and 1920px.
+- Full pages own the viewport and scrolling; panels own their internal scroll areas. Collapsed columns are `inert`.
+- Page background is the flat canvas (`--ig-color-bg-canvas`); no decorative gradients.
 
-### Image Grid
+## 5. Shape
 
-- **Structure**: `GridContainer` → image cells → annotation/footer/top-right slots.
-- **Variants**: padded or flush, auto-fit or fixed columns, selectable, highlighted, paginated.
-- **Spacing**: minimum cell widths use numeric token exports; gaps use spacing-scale indices.
-- **States**: default, hover, selected, highlighted, loading-more, empty at the containing panel.
-- **Accessibility**: cells forward click, double-click, selection, drag, and context-menu behavior; highlighted items scroll into view.
-- **Layout**: responsive auto-fit grid with `minmax(min(cellWidth, 100%), 1fr)`; never coerce CSS strings into numeric layout props.
+### Surface depth *(D5)*
 
-### Dialogs and Menus
+A rounded surface inside another rounded surface must be less rounded than its parent. Radius is therefore chosen by nesting depth, not by component name.
 
-- **Structure**: backdrop/anchor, labelled surface, content, explicit confirm/cancel or close controls.
-- **Variants**: text input, confirm, media/lightbox, context menu, transfer/export flows.
-- **States**: open/closed, default/destructive confirm, validation or progress where applicable.
-- **Accessibility**: dialog semantics, readable title, close/escape path, focusable actions, and persistent labels.
-- **Motion**: shared overlay primitives and motion tokens; non-essential movement respects reduced motion.
+| Depth | Examples | Radius |
+|---|---|---:|
+| 1 | Modal, dialog, drawer, popover, menu; rounded page panel | 16px |
+| 2 | Card, section, widget inside a depth-1 surface | 12px |
+| 3 | Preview frame or cell inside a card | 8px |
 
-### Dashboard Widgets
+Rules:
 
-- **Structure**: widget shell, heading/actions, chart or metric content.
-- **Variants**: loading, error, empty, populated, draggable/customizable.
-- **Spacing**: shared widget shell and grid tokens; no page-specific raw colors.
-- **Accessibility**: widget labels remain visible independently of chart color; controls retain focus states; the existing drag handle supports direct arrow-key reorder with `aria-keyshortcuts` and polite status feedback.
-- **Layout**: responsive grid; widget keys provide stable ordering and test hooks.
+1. Surfaces read their depth from `SurfaceDepthProvider` (React context, so depth survives portals). Without a provider they keep their legacy radius.
+2. Floating surfaces restart at depth 1 wherever they open.
+3. Page regions (header, sidebars, main area) are flush: radius 0, no inset, no shadow, separated by 1px lines. A region that holds cards wraps them in `SurfaceRegion`, which counts as depth 1 without drawing a surface, so the cards stay depth 2.
+4. Maximum depth is 3. A fourth nested decorative surface violates section 8's no-wrapping rule.
+5. An explicit radius (`Card radius`, `styled(Surface)` override) wins; each one needs a reason.
+
+### Other radii *(D5)*
+
+| Use | Radius |
+|---|---:|
+| Buttons, inputs, selects | 8px |
+| Checkbox, chip, small badge | 4px |
+| Pill (status badge, toggle track) | 999px |
+
+## 6. Size
+
+### Controls *(D7)*
+
+| Density | xs | sm | md | lg |
+|---|---:|---:|---:|---:|
+| compact (Platform 0.0.1) | 24px | 28px | 32px | 40px |
+| comfortable | 28px | 32px | 36px | 44px |
+
+- The unused `control-height-xs-plus` (30px) and `control-height-sm-plus` (34px) and the duplicate `mid-plus` (= `lg`) remain for compatibility; see Accepted Debt.
+- `xs` exists for icon-only buttons in panel headers; it must be smaller than `sm` in every density.
+
+### Icons *(D6)*
+
+Icon sizes are 12, 16, 20, and 24px. Line icons are drawn on a 24px grid and render crisply at these sizes; 13, 14, and 18px blur.
+
+| Context | Icon |
+|---|---:|
+| Inline with 11–12px text | 12px |
+| Default; inside 24–32px controls | 16px |
+| Inside 40px controls | 20px |
+| Inside 48px+ controls, empty states | 24px |
+
+Never pass numeric sizes (`size={14}`, `width="14"`); use the icon tokens so the scale stays changeable.
+
+### Layout sizes
+
+Page structure uses `--ig-layout-size-*` (numeric `layoutSizeNumbers` for props): side panels (320, min 220, max 480), Class list/info panels, single-form widths (420, 720), field and search max widths, grid cell minimum, preview, empty-state and drop-zone minimum heights, and table columns. Popup sizes (`--ig-popup-*`) are for dialogs, popovers, and menus only.
+
+### Component sizes do not borrow other axes *(D12)*
+
+A component's own dimensions use component size tokens, never spacing or icon tokens. Component sizes are `--ig-size-*` tokens (checkbox, radio, switch, badges, dots, overlay actions, toolbar buttons, and others), all multiples of 4 and enforced by a unit test. Before 2026-10-27, 72 sizes borrowed icon or spacing tokens, so changing one axis resized unrelated components.
+
+## 7. Borders and focus *(D9)*
+
+- Borders are 1px (boundaries) or 2px (focus and emphasis).
+- Focus is a 2px ring inside the control (`outline-offset: -2px`), so focus never changes layout. A focused control does not show hover styling.
+
+## 8. Depth and surface tone *(in code; background and shadow by depth deferred)*
+
+The strategy is mixed, restrained elevation: tonal shifts and subtle borders define normal hierarchy; shadows are reserved for floating surfaces (menus, popovers, drawers, dialogs, toasts) and hover lift.
+
+- Surface boundary: `1px solid var(--ig-color-border-subtle)`.
+- Do not wrap an existing panel in another decorative panel; every border or shadow marks a real interaction or stacking boundary.
+- Background tone and shadow by depth (depth 2+ without shadow) are not applied yet; see Accepted Debt.
+
+## 9. Components
+
+These rules apply to the shared `@ingradient/ui` components that Platform and Edge both use. Page code composes them; it does not restyle them.
+
+### Button
+
+- **Variants**: `solid` (primary action), `secondary`, `accent`, `ghost`. Line, ghost, and icon buttons never take the solid fill; hover and pressed states use the same color family.
+- **Sizes**: `xs` (icon-only, panel headers), `sm`, `md`, `lg`; height from the control-height table.
+- **Padding** *(D8)*: horizontal 8 / 12 / 12 / 16px (xs / sm / md / lg).
+- **Icon ↔ label gap** *(D8)*: 4px up to 28px height, 8px above.
+- **Radius**: 8px. **Tone**: `danger` for destructive actions.
+- Icon-only buttons are `IconButton`, always have an accessible name, and keep a square size (`flex-shrink: 0`).
+
+### IconButton
+
+- Square, size from the control-height table, icon size from the icon table.
+- Panel collapse/expand uses `PanelLeftClose/Open` (left) and `PanelRightClose/Open` (right). `X` closes modals and dialogs only.
+- Never put a text glyph (`‹`, `›`, `×`, `▲`) inside; use the icon components.
+
+### TextButton
+
+- Inline text action. Persistent underline in toolbars and selection bars, visible focus ring.
+
+### Inputs (text field, search, select, date picker)
+
+- Height from the control-height table; radius 8px; 1px border, 2px inner focus ring.
+- Search shows a clear icon only after text is entered; clicking it clears the text. Icons inside inputs use icon tokens.
+- Select: focused state wins over hover; the dependent second control becomes usable after the first selection.
+
+### Checkbox and toggle
+
+- Checkbox and radio 16px, radius 4px, labelled. Toggle track (40×24px) and thumb (16px) use their own size tokens; the thumb's inset is computed from them so it stays centred (D12).
+
+### Card, SectionPanel, ChartCard
+
+- Depth-aware surfaces (section 5). Padding `--ig-inset-card`; gap between cards `--ig-gap-section`.
+- A card inside a card is depth 3 at most; do not nest a fourth level.
+
+### Dialogs, modals, drawers
+
+- `ModalCard` / `DialogShell` / `TwoColumnDialog`: floating, depth 1. Labelled title, Escape closes, focus moves in on open and returns on close, `tabIndex={-1}` on the shell.
+- `MediaDialogContent` becomes full-screen with radius 0 on narrow screens; it adopts depth styling when its page migrates.
+
+### Settings sections
+
+- `SettingsSection` is a heading (14px semibold) plus rows, separated from the previous section by a 1px line with 24px above and below. It is not a box inside the modal.
+- `tone="danger"` keeps an alert box (danger border and tint, depth radius) because it marks a real boundary around irreversible actions such as deleting an account or project.
+- The Settings modal body has a 24px inset; the Edge tab's own sections follow the same rule.
+
+### Menus and popovers
+
+- `Menu`, `PopoverCard`, `MenuPopover`, `ContextMenu`: floating, depth 1. Submenu indicator is a chevron icon. Purely visual backdrops are `aria-hidden`.
+
+### Table
+
+- Rows may be clickable only with keyboard activation (Enter/Space) and a contextual row label. Headers stay sticky during vertical scroll. Every sortable header cycles default → first direction → opposite → default.
+
+### Empty, loading, and error states
+
+- `EmptyState` uses `Button` for actions. Skeletons mirror the final layout so content does not jump.
+
+### Badges and status
+
+- Count badges are circular at one digit and grow with padding beyond it. Status uses text or shape in addition to color.
+
+### Clickable non-button elements
+
+- A `div` with `onClick` needs `role="button"`, `tabIndex`, Enter/Space handling, an accessible name, and a `:focus-visible` ring. Secondary controls are siblings, never children, of such an element.
+
+### Resizable columns
+
+- Collapsed columns are `inert` so their zero-width controls cannot be focused. A strong divider precedes an optional right inspector.
+
+### Platform app shell
+
+- `PlatformAppShell` (`@ingradient/platform-pages`) frames workspace pages with the app-wide `SidebarShell`: brand, project switcher, Dashboard / Catalog / Classes, Settings and Sign out. Render it once at the app's route-layout level so the sidebar keeps its state while pages change.
+- The shell is router-free: the app passes `activeKey` and performs navigation in `onNavigate`; rows keep real `href`s so modifier-clicks open new tabs.
+- Default state: expanded (180px) at 1440px and wider, collapsed (72px) below, so pages keep room for their own side panels. Apps can control `expanded` and persist it.
+- Page views size themselves with `height: var(--ig-page-height, 100vh)`; the shell sets `--ig-page-height: 100%` for its page area. The page area is not a landmark; pages own theirs.
+- The current project name lives in the shell's project switcher, not in page headers.
+- Single-form pages (Login, Signup, Create Project) and mobile layouts render without the shell.
+- Panel collapse/expand uses `PanelLeftClose/Open`; the sidebar `<aside>` and `<nav>` carry unique labels (`App sidebar`, `Main`).
 
 ### Platform Page Contracts
 
@@ -129,7 +309,8 @@ The 128 stories across 37 groups use scoped Controls, explicit Actions, named wo
 
 See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) and the [Platform Story Contract](./stories/pages/platform/0.0.1/README.md).
 
-## 6. Motion & Interaction
+
+## 10. Motion & Interaction
 
 | Type | Token/value | Usage |
 |---|---|---|
@@ -142,15 +323,7 @@ See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) a
 - Interactive elements must expose hover, active, focus-visible, and disabled treatment where applicable.
 - Respect `prefers-reduced-motion`; continuous status motion must retain a non-motion state cue.
 
-## 7. Depth & Surface
-
-The strategy is **mixed, restrained elevation**: tonal shifts and subtle borders define normal hierarchy; shadows are reserved for panels, menus, popovers, drawers, dialogs, toast surfaces, and hover lift.
-
-- Panel boundary: `1px solid var(--ig-color-border-subtle)`.
-- Common radii: 6–20px; 24px is reserved for the largest surfaces; pills use 999px.
-- Do not wrap an existing panel in another decorative panel. Each border or shadow must identify a real interaction or stacking boundary.
-
-## 8. Accessibility Constraints & Accepted Debt
+## 11. Accessibility Constraints & Accepted Debt
 
 ### Constraints
 
@@ -167,4 +340,11 @@ The strategy is **mixed, restrained elevation**: tonal shifts and subtle borders
 |---|---|---|---|
 | High-contrast mode is currently a Storybook placeholder | `.storybook/preview.tsx` | Existing product state; this migration does not introduce it | Implement a real high-contrast token preset before claiming high-contrast support |
 | Locale toolbar does not yet provide full i18n | `.storybook/preview.tsx` | Existing product state; migrated stories currently use English product copy | Add translated content and CJK layout verification with the i18n phase |
+| Legacy spacing names | `--ig-space-*` in shared components and Edge (Platform pages migrated 2026-10-27) | Values already follow the 4px scale; renaming is mechanical but touches every file | Move to `--ig-spacing-{px}` or spacing roles; `space-0`, `1px`, and negative steps have no 4px-scale name and stay |
+| Spacing roles not adopted | `--ig-gap-*`, `--ig-inset-*` | Tokens exist; components still pick numbers | Adopt in shared components first |
+| Surface tone and shadow by depth | `surfacePanel` recipe | Radius depth shipped first; tone and shadow change visuals more | Trial, then apply with the surface depth provider |
+| Unused or duplicate control-height tokens | `control-height-xs-plus`, `sm-plus`, `mid-plus` | Public token names; removal is breaking | Remove in the next breaking release |
+| Off-grid layout sizes | `--ig-layout-size-table-col-{dataset,sync,created}` (190, 116, 124px) | Moved from popup sizes value-for-value | Round to the 4px grid with a visual check of the Catalog table |
+| Settings modal field/table widths use popup sizes | `settings-modal/**` (about 15 uses) | A modal is a popup, so its inner sizes were left on the popup scale | Decide whether modal internals get layout sizes too |
+| Visual baselines | `tests/visual` | Foundation values changed most screenshots | Regenerate from CI (ubuntu) and approve |
 | ClassManage has no source mobile workspace shell | `packages/platform-pages/src/class-manage` | The migrated reference defines a resizable three-pane desktop workspace but no mobile navigation/detail pattern | Add a dedicated narrow shell or drawers before claiming the full ClassManage workflow at 375px |

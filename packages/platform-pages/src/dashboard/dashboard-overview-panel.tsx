@@ -1,29 +1,33 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Inline, Stack } from '@ingradient/ui/primitives'
+import { Inline, Stack, SurfaceRegion } from '@ingradient/ui/primitives'
 import { Button, Spinner, EmptyText as Placeholder } from '@ingradient/ui/components'
-import { Panel, PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
+import { PanelHeader, PanelHint, PanelTitle } from '@ingradient/ui/patterns'
 
-const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-space-1)' }
+const HEADER_MAIN_STYLE = { minWidth: 0, gap: 'var(--ig-spacing-4)' }
 const HEADER_ACTIONS_STYLE = { position: 'relative' as const }
 
-const OverviewPanel = styled(Panel)`
+/** Flush page region: no radius, inset, or shadow; the header line separates it from the widgets. */
+const OverviewPanel = styled.section`
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const Body = styled.div`
   flex: 1;
   min-height: 0;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
   overflow: auto;
   display: flex;
   flex-direction: column;
 `
 
 const DATE_BTN_STYLE = {
-  padding: 'var(--ig-space-3) var(--ig-space-5)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
   minHeight: 'var(--ig-control-height-md)',
-  fontSize: 'var(--ig-font-size-xs)',
+  fontSize: 'var(--ig-text-caption)',
   fontWeight: 'var(--ig-font-weight-semibold)',
 }
 
@@ -61,22 +65,24 @@ export function DashboardOverviewPanel({
   return (
     <OverviewPanel className={className}>
       <PanelHeader>
-        <Stack gap="var(--ig-space-1)" style={HEADER_MAIN_STYLE}>
+        <Stack gap="var(--ig-spacing-4)" style={HEADER_MAIN_STYLE}>
           <PanelTitle>{title}</PanelTitle>
           {hint ? <PanelHint>{hint}</PanelHint> : null}
         </Stack>
-        <Inline gap="var(--ig-space-4)" wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
+        <Inline gap="var(--ig-spacing-8)" wrap="wrap" data-report-hide style={HEADER_ACTIONS_STYLE}>
           {onResetLayout ? <Button type="button" variant="secondary" onClick={onResetLayout} style={RESET_BTN_STYLE}>Reset</Button> : null}
           <Button type="button" variant="secondary" onClick={onToggleDate} style={DATE_BTN_STYLE}>{dateLabel}</Button>
           {datePopover}
         </Inline>
       </PanelHeader>
       <Body>
+        <SurfaceRegion>
         {state === 'no-project' ? <Placeholder>{emptyText}</Placeholder>
-          : state === 'loading' ? <Placeholder as="div"><Stack gap={3} align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
+          : state === 'loading' ? <Placeholder as="div"><Stack gap="var(--ig-spacing-4)" align="center"><Spinner size="lg" /><span>{loadingText}</span></Stack></Placeholder>
           : state === 'error' ? <Placeholder>{errorMessage ?? 'Error'}</Placeholder>
           : children ? children
           : <Placeholder>{noDataText}</Placeholder>}
+        </SurfaceRegion>
       </Body>
     </OverviewPanel>
   )

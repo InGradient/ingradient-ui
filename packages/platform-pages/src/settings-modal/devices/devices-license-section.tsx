@@ -6,13 +6,13 @@ import { DeviceStatusBadge, type DeviceStatusTone } from './device-status-badge'
 const INFO_GRID_STYLE = {
   display: 'grid' as const,
   gridTemplateColumns: 'var(--ig-form-label-col-wide) 1fr',
-  gap: 'var(--ig-space-2) var(--ig-space-5)',
-  fontSize: 'var(--ig-font-size-sm)',
+  gap: 'var(--ig-spacing-8) var(--ig-spacing-12)',
+  fontSize: 'var(--ig-text-body-sm)',
   alignItems: 'center' as const,
 }
 
 const INFO_LABEL_STYLE = { fontWeight: 'var(--ig-font-weight-medium)' }
-const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-space-3)', color: 'var(--ig-color-text-muted)' }
+const INFO_VALUE_STYLE = { display: 'flex' as const, alignItems: 'center' as const, gap: 'var(--ig-spacing-8)', color: 'var(--ig-color-text-muted)' }
 
 export interface DeviceLicense {
   planCode: string
@@ -59,9 +59,9 @@ export function DevicesLicenseSection({
   renewDate, onChangeRenewDate, renewing, renewError, onRenew,
 }: DevicesLicenseSectionProps) {
   return (
-    <Stack as="section" gap="var(--ig-space-4)">
-      <Inline justify="space-between" gap="var(--ig-space-3)">
-        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
+    <Stack as="section" gap="var(--ig-spacing-8)">
+      <Inline justify="space-between" gap="var(--ig-spacing-8)">
+        {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}
@@ -70,7 +70,7 @@ export function DevicesLicenseSection({
       </Inline>
 
       {loading ? <EmptyState>Loading…</EmptyState> : null}
-      {!loading && error ? <Text tone="danger" size="var(--ig-font-size-xs)">{error}</Text> : null}
+      {!loading && error ? <Text tone="danger" size="var(--ig-text-caption)">{error}</Text> : null}
       {!loading && !error && license ? (
         <Box style={INFO_GRID_STYLE}>
           <Text style={INFO_LABEL_STYLE}>Plan</Text>
@@ -91,17 +91,17 @@ export function DevicesLicenseSection({
       {!loading && !error && !license ? <EmptyState>No license found.</EmptyState> : null}
 
       {isAdmin && showRenew ? (
-        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
-          <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" tone="muted" weight="medium">Set a new expiry date for this organization's license.</Text>
-          <Inline gap="var(--ig-space-3)" wrap="wrap">
+        <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-spacing-12)">
+          <Stack gap="var(--ig-spacing-8)">
+          <Text size="var(--ig-text-caption)" tone="muted" weight="medium">Set a new expiry date for this organization's license.</Text>
+          <Inline gap="var(--ig-spacing-8)" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
               {renewing ? 'Saving…' : 'Save'}
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRenew}>Cancel</Button>
           </Inline>
-          {renewError ? <Text tone="danger" size="var(--ig-font-size-xs)">{renewError}</Text> : null}
+          {renewError ? <Text tone="danger" size="var(--ig-text-caption)">{renewError}</Text> : null}
           </Stack>
         </Card>
       ) : null}

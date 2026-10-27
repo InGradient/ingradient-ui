@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Card as UiCard } from '@ingradient/ui/components'
-import { Grid, Stack, surfaceRaised } from '@ingradient/ui/primitives'
+import { Grid, Stack, withSurfaceDepth } from '@ingradient/ui/primitives'
 import { media } from '@ingradient/ui/tokens'
 
 export const Page = styled.div`
@@ -8,13 +8,14 @@ export const Page = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--ig-space-10) var(--ig-space-5);
+  padding: var(--ig-spacing-24) var(--ig-spacing-12);
   background: var(--ig-color-bg-canvas);
 `
 
 export const Content = styled(Stack)`
-  width: min(var(--ig-popup-3xl-mid), calc(100vw - var(--ig-space-7) * 2));
-  gap: var(--ig-space-6);
+  width: min(var(--ig-layout-size-form), calc(100vw - var(--ig-spacing-16) * 2));
+  /* Single-form page: generous spacing like Login and Signup (DESIGN.md §4). */
+  gap: var(--ig-spacing-24);
   margin: auto;
 `
 
@@ -24,20 +25,19 @@ export const LogoWrap = styled.div`
 `
 
 export const Card = styled(UiCard)`
-  padding: var(--ig-space-8);
-  border-radius: var(--ig-radius-xl);
+  padding: var(--ig-spacing-32);
 `
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: var(--ig-font-size-2xl);
+  font-size: var(--ig-text-title);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
 
 export const Subtitle = styled.p`
-  margin: var(--ig-space-2) 0 0;
-  font-size: var(--ig-font-size-sm);
+  margin: var(--ig-spacing-8) 0 0;
+  font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
@@ -45,32 +45,36 @@ export const Subtitle = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-6);
-  margin-top: var(--ig-space-7);
+  gap: var(--ig-spacing-24);
+  margin-top: var(--ig-spacing-24);
 `
 
+/**
+ * A form section is a heading and its fields, not a box: sections are separated by a 1px line
+ * so fields sit at the same 32px inset as Login and Signup (DESIGN.md §4).
+ */
 export const Section = styled.section`
-  ${surfaceRaised}
-  border-radius: var(--ig-radius-lg);
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ig-spacing-16);
+  & + & {
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    padding-top: var(--ig-spacing-24);
+  }
 `
 
-export const SectionHeader = styled.header`
-  padding: var(--ig-space-5) var(--ig-space-6);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-interactive);
-`
+export const SectionHeader = styled.header``
 
 export const SectionTitle = styled.h2`
   margin: 0;
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
 
 export const SectionDescription = styled.p`
-  margin: var(--ig-space-2) 0 0;
-  font-size: var(--ig-font-size-xs);
+  margin: var(--ig-spacing-8) 0 0;
+  font-size: var(--ig-text-caption);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
@@ -78,30 +82,22 @@ export const SectionDescription = styled.p`
 export const SectionBody = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-5);
-  padding: var(--ig-space-6);
+  gap: var(--ig-spacing-16);
 `
 
-export const FieldsBody = styled(SectionBody)`
-  gap: 0;
-  > * { padding: var(--ig-space-5) 0; }
-  > *:first-child { padding-top: 0; }
-  > *:last-child { padding-bottom: 0; }
-  > * + * { border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
-`
+export const FieldsBody = styled(SectionBody)``
 
 export const Actions = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: var(--ig-space-3);
-  padding-top: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const OptionalLabel = styled.span`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   font-weight: var(--ig-font-weight-regular);
-  margin-left: var(--ig-space-2);
+  margin-left: var(--ig-spacing-8);
 `
 
 export const FileInput = styled.input`
@@ -112,27 +108,32 @@ export const FileList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
 `
 
 export const FileItem = styled.li`
-  padding: var(--ig-space-2) 0;
+  padding: var(--ig-spacing-8) 0;
 `
 
 export const OptionGrid = styled(Grid).attrs({
   columns: 'repeat(2, minmax(0, 1fr))',
-  gap: 3,
+  gap: 'var(--ig-gap-related)',
 })`
   ${media.sm} {
     grid-template-columns: 1fr;
   }
 `
 
-export const OptionCard = styled.button<{ $active?: boolean }>`
+const OptionCardBase = styled.button<{ $active?: boolean }>`
   width: 100%;
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
   text-align: left;
+  /* Buttons centre their content vertically; top-align so titles line up across a row. */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid
     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
@@ -152,14 +153,16 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
   }
 `
 
+export const OptionCard = withSurfaceDepth(OptionCardBase, { displayName: 'CreateProjectOptionCard' })
+
 export const OptionTitle = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
-  margin-bottom: var(--ig-space-2);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const OptionText = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   line-height: var(--ig-line-height-relaxed);
 `

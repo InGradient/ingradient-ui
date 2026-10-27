@@ -1,5 +1,6 @@
 import {
   borderWidthScale,
+  depthRadius,
   effectsScale,
   foundationColors,
   foundationColorsLight,
@@ -13,7 +14,13 @@ import {
   shadowScale,
   shadowScaleLight,
   spacingScale,
+  spacing4,
+  componentSizeVars,
+  layoutSizeVars,
+  spacingRoles,
   typographyScale,
+  fontLeading,
+  textRoles,
   zIndexScale,
   controlSizes,
   transformScale,
@@ -301,6 +308,10 @@ const staticVars = {
   '--ig-radius-2xl': radiusScale['2xl'],
   '--ig-radius-4xl': radiusScale['4xl'],
   '--ig-radius-pill': ingradientThemeDark.radius.pill,
+  // ── Surface radius by nesting depth (see primitives/surfaces/surface-depth) ──
+  '--ig-depth-1-radius': depthRadius[1],
+  '--ig-depth-2-radius': depthRadius[2],
+  '--ig-depth-3-radius': depthRadius[3],
   // ── Typography ────────────────────────────────────────────────
   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
   '--ig-font-mono': ingradientThemeDark.typography.fontMono,
@@ -316,6 +327,9 @@ const staticVars = {
   '--ig-font-size-3xl-plus': typographyScale.size3xlPlus,
   '--ig-font-size-4xl': typographyScale.size4xl,
   '--ig-font-size-5xl': typographyScale.size5xl,
+  ...Object.fromEntries(Object.entries(fontLeading).map(([k, v]) => [`--ig-leading-${k}`, v])),
+  // Text roles: size and paired line height (DESIGN.md §3)
+  ...Object.fromEntries(Object.entries(textRoles).flatMap(([k, v]) => [[`--ig-text-${k}`, v.size], [`--ig-text-${k}-leading`, v.leading]])),
   '--ig-font-size-state-title': typographyScale.sizeSm,
   '--ig-font-size-state-description': typographyScale.sizeXs,
   '--ig-font-weight-state-title': '600',
@@ -430,6 +444,17 @@ const staticVars = {
   '--ig-space-11': spacingScale[11],
   '--ig-space-12': spacingScale[12],
   '--ig-space-13': spacingScale[13],
+  // ── 4px spacing scale (name = value) and spacing roles ─────────
+  ...Object.fromEntries(Object.entries(spacing4).map(([k, v]) => [`--ig-spacing-${k}`, v])),
+  '--ig-gap-inline': spacingRoles.gapInline,
+  '--ig-gap-related': spacingRoles.gapRelated,
+  '--ig-inset-card': spacingRoles.insetCard,
+  '--ig-gap-section': spacingRoles.gapSection,
+  '--ig-inset-page': spacingRoles.insetPage,
+  // ── Component sizes (do not borrow icon or spacing tokens) ─────
+  ...componentSizeVars,
+  // ── Layout sizes (side panels, forms, table columns) ───────────
+  ...layoutSizeVars,
   '--ig-border-1px': borderWidthScale['1px'],
   '--ig-border-1_5px': borderWidthScale['1_5px'],
   '--ig-border-2px': borderWidthScale['2px'],

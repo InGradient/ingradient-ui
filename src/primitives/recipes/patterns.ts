@@ -4,10 +4,7 @@ export const appShell = css`
   display: flex;
   flex-direction: column;
   min-height: 0;
-  background:
-    radial-gradient(circle at top left, var(--ig-color-bg-radial-a), transparent 32%),
-    radial-gradient(circle at top right, var(--ig-color-bg-radial-b), transparent 28%),
-    var(--ig-color-bg-canvas);
+  background: var(--ig-color-bg-canvas);
   color: var(--ig-color-text-primary);
 `
 

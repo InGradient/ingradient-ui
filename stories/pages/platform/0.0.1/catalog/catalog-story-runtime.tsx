@@ -14,6 +14,7 @@ import {
 } from '../../../../fixtures/platform/0.0.1/catalog-scenarios'
 import { defineHandoff } from '../../../../support/handoff'
 import { buildCatalogViewProps } from './build-view-props'
+import { PlatformStoryFrame } from '../platform-story-frame'
 import { useCatalogScene } from './use-catalog-scene'
 
 export interface CatalogStoryActions {
@@ -228,7 +229,15 @@ export function DatasetCatalogScene({ scenario: key, ...actions }: CatalogStoryA
   )
   const props = buildCatalogViewProps(scenario, state, datasetNameById, isMobile)
 
-  return <CatalogView {...instrumentCatalogViewProps(props, actions)} />
+  // Mobile has its own navigation; the app-wide sidebar frames desktop only.
+  if (isMobile) return <CatalogView {...instrumentCatalogViewProps(props, actions)} />
+  // The project name lives in the app shell's project switcher, not in the page header.
+  const framed = { ...props, page: { ...props.page, projectName: undefined } } as typeof props
+  return (
+    <PlatformStoryFrame activeKey="catalog" projectName={props.page.projectName ?? undefined}>
+      <CatalogView {...instrumentCatalogViewProps(framed, actions)} />
+    </PlatformStoryFrame>
+  )
 }
 
 function instrumentCatalogViewProps(

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { surfaceRaised } from '../../primitives'
+import { surfaceRaised, withSurfaceDepth } from '../../primitives'
 
 /** click-outside 처리를 위한 투명 backdrop */
 export const ContextMenuBackdrop = styled.div`
@@ -9,7 +9,7 @@ export const ContextMenuBackdrop = styled.div`
 `
 
 /** cursor 위치에 fixed 배치되는 메뉴 컨테이너 */
-export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p) => ({
+const ContextMenuListBase = styled.div.attrs<{ $x: number; $y: number }>((p) => ({
   style: { left: p.$x, top: p.$y },
 }))<{ $x: number; $y: number }>`
   position: fixed;
@@ -21,6 +21,8 @@ export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p) 
   overflow: hidden;
   box-shadow: var(--ig-shadow-popover);
 `
+
+export const ContextMenuList = withSurfaceDepth(ContextMenuListBase, { floating: true, displayName: 'ContextMenuList' })
 
 /** 하위 메뉴(서브메뉴)를 감싸는 wrapper — hover 감지를 위해 position: relative를 제공 */
 export const ContextMenuItem = styled.div`
@@ -50,7 +52,7 @@ export const ContextMenuButton = styled.button<{ $danger?: boolean }>`
 `
 
 /** cursor 위치에 fixed 배치되는 서브메뉴 컨테이너 */
-export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>((p) => ({
+const ContextMenuSubBase = styled.div.attrs<{ $left: number; $top: number }>((p) => ({
   style: { left: p.$left, top: p.$top },
 }))<{ $left: number; $top: number }>`
   position: fixed;
@@ -62,6 +64,8 @@ export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>(
   overflow: hidden;
   box-shadow: var(--ig-shadow-popover);
 `
+
+export const ContextMenuSub = withSurfaceDepth(ContextMenuSubBase, { floating: true, displayName: 'ContextMenuSub' })
 
 /** 서브메뉴 내 항목 버튼. $color로 개별 색상 지정 가능 */
 export const ContextMenuSubItem = styled.button<{ $color?: string }>`

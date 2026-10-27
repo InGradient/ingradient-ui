@@ -35,10 +35,10 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
 
   return (
     <Container>
-      {showPatternPreview && (
+      {(showPatternPreview || onToggleCollapsed) && (
         <Section>
           <SectionHeader>
-            <Label>{labels.patternPreview}</Label>
+            {showPatternPreview ? <Label>{labels.patternPreview}</Label> : <span />}
             {onToggleCollapsed && (
               <IconButton
                 size="xs"
@@ -51,6 +51,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
               </IconButton>
             )}
           </SectionHeader>
+          {showPatternPreview && (
           <PatternGrid>
             {patternLabels.map((label) => (
               <PatternButton
@@ -63,6 +64,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
               </PatternButton>
             ))}
           </PatternGrid>
+          )}
         </Section>
       )}
 

@@ -15,6 +15,7 @@ import { imagesForCl1 } from '../../../../fixtures/platform/0.0.1/class-images'
 import { COCO_CLASS_NAMES } from '../../../../fixtures/platform/0.0.1/coco-class-names'
 import { defineHandoff } from '../../../../support/handoff'
 import { useClassManageScene } from './use-class-manage-scene'
+import { PlatformStoryFrame } from '../platform-story-frame'
 
 export interface ClassManageStoryActions {
   onClassSelectionChange: (classId: string | null) => void
@@ -359,7 +360,12 @@ export function ClassManagementScene({ scenario: key, ...actions }: ClassManageS
     },
   }
 
-  return <ClassManageView {...props} />
+  // Framed by the app shell; its project switcher shows the project name.
+  return (
+    <PlatformStoryFrame activeKey="classes" projectName={props.projectName ?? undefined}>
+      <ClassManageView {...props} projectName={undefined} />
+    </PlatformStoryFrame>
+  )
 }
 
 function normalizeDataClassId(classId: string | null) {

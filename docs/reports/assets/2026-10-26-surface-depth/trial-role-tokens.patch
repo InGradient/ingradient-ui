@@ -1,0 +1,655 @@
+diff --git i/packages/edge-pages/src/app-shell/MainLayoutView.styles.ts w/packages/edge-pages/src/app-shell/MainLayoutView.styles.ts
+index 92e0f1d..0c55445 100644
+--- i/packages/edge-pages/src/app-shell/MainLayoutView.styles.ts
++++ w/packages/edge-pages/src/app-shell/MainLayoutView.styles.ts
+@@ -43,7 +43,7 @@ export const PanelsRow = styled.div`
+ 
+ const Panel = styled.div`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-2xl);
++  border-radius: var(--ig-radius-floating);
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+diff --git i/packages/edge-pages/src/capture/CaptureView.styles.ts w/packages/edge-pages/src/capture/CaptureView.styles.ts
+index 2dfea7e..154c3b7 100644
+--- i/packages/edge-pages/src/capture/CaptureView.styles.ts
++++ w/packages/edge-pages/src/capture/CaptureView.styles.ts
+@@ -70,7 +70,7 @@ export const SetupBlockingOverlay = styled.div`
+ export const SetupBlockingCard = styled.div`
+   background: var(--ig-color-capture-surface-loud);
+   border: var(--ig-border-1px) solid var(--ig-color-white-12);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-surface);
+   padding: var(--ig-space-8) var(--ig-space-10);
+   color: var(--ig-color-text-primary);
+   display: flex;
+diff --git i/packages/edge-pages/src/capture/setup-sections/setup-shell.tsx w/packages/edge-pages/src/capture/setup-sections/setup-shell.tsx
+index 33f3a1f..67c6898 100644
+--- i/packages/edge-pages/src/capture/setup-sections/setup-shell.tsx
++++ w/packages/edge-pages/src/capture/setup-sections/setup-shell.tsx
+@@ -8,7 +8,7 @@ import { surfacePanel } from '@ingradient/ui/primitives'
+ 
+ export const SetupAccordion = styled.details`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+   overflow: hidden;
+ 
+   summary {
+diff --git i/packages/edge-pages/src/images/ImagesView.styles.ts w/packages/edge-pages/src/images/ImagesView.styles.ts
+index 3bc3c33..4cf2007 100644
+--- i/packages/edge-pages/src/images/ImagesView.styles.ts
++++ w/packages/edge-pages/src/images/ImagesView.styles.ts
+@@ -78,7 +78,7 @@ export const ModalBBoxToolbar = styled.div`
+   gap: var(--ig-space-3);
+   padding: var(--ig-space-3) var(--ig-space-5);
+   background: var(--ig-color-overlay-strong);
+-  border-radius: 0 0 var(--ig-radius-lg) var(--ig-radius-lg);
++  border-radius: 0 0 var(--ig-radius-control) var(--ig-radius-lg);
+   flex-shrink: 0;
+ `;
+ 
+diff --git i/packages/edge-pages/src/log/LogPanelView.styles.ts w/packages/edge-pages/src/log/LogPanelView.styles.ts
+index c067147..0ad2916 100644
+--- i/packages/edge-pages/src/log/LogPanelView.styles.ts
++++ w/packages/edge-pages/src/log/LogPanelView.styles.ts
+@@ -140,7 +140,7 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
+   bottom: var(--ig-space-6);
+   width: ${edgeGeometry.logDetailWidth};
+   z-index: var(--ig-z-overlay-low);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-panel);
+   display: ${({ $visible }) => ($visible ? 'flex' : 'none')};
+   flex-direction: column;
+   pointer-events: ${({ $visible }) => ($visible ? 'auto' : 'none')};
+diff --git i/packages/edge-pages/src/statics/SessionChartsView.tsx w/packages/edge-pages/src/statics/SessionChartsView.tsx
+index 880019f..bd6b12f 100644
+--- i/packages/edge-pages/src/statics/SessionChartsView.tsx
++++ w/packages/edge-pages/src/statics/SessionChartsView.tsx
+@@ -73,7 +73,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
+         height={chartHeights.md}
+         emptyMessage={labels.noOutcomeStats}
+       />
+-      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
++      <Card elevation="raised" flat radius="var(--ig-radius-card)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
+         <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.captureWorkTime}</DurationLabel>
+         <DurationGrid style={{ marginBottom: 'var(--ig-space-6)' }}>
+@@ -104,7 +104,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
+         emptyMessage={labels.noDeflectometryData}
+       />
+       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
+-        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
++        <Card elevation="raised" flat radius="var(--ig-radius-card)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+           <PanelTitle>{labels.workerStats}</PanelTitle>
+           {workerStats.length > 0 ? (
+             <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />
+diff --git i/packages/platform-pages/src/auth/AuthView.styles.ts w/packages/platform-pages/src/auth/AuthView.styles.ts
+index eb32893..a0741b2 100644
+--- i/packages/platform-pages/src/auth/AuthView.styles.ts
++++ w/packages/platform-pages/src/auth/AuthView.styles.ts
+@@ -24,7 +24,7 @@ export const LogoWrap = styled.div`
+ 
+ export const Card = styled(UiCard)`
+   padding: var(--ig-space-8);
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+ `
+ 
+ export const Title = styled.h1`
+diff --git i/packages/platform-pages/src/class-manage/class-info-sidebar.tsx w/packages/platform-pages/src/class-manage/class-info-sidebar.tsx
+index 0556736..dc14516 100644
+--- i/packages/platform-pages/src/class-manage/class-info-sidebar.tsx
++++ w/packages/platform-pages/src/class-manage/class-info-sidebar.tsx
+@@ -7,7 +7,7 @@ const Sidebar = styled(SidePanelLayout)<{ $flush: boolean }>`
+   width: ${(p) => (p.$flush ? '100%' : 'var(--ig-popup-md-narrow)')};
+   flex-shrink: 0;
+   background: ${(p) => (p.$flush ? 'transparent' : 'var(--ig-color-surface-panel)')};
+-  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
++  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-panel)')};
+   border: ${(p) => (p.$flush ? 'none' : 'var(--ig-border-1px) solid var(--ig-color-border-subtle)')};
+   min-height: 0;
+ `
+diff --git i/packages/platform-pages/src/class-manage/class-list-sidebar.tsx w/packages/platform-pages/src/class-manage/class-list-sidebar.tsx
+index 5b7bc60..4cb5db4 100644
+--- i/packages/platform-pages/src/class-manage/class-list-sidebar.tsx
++++ w/packages/platform-pages/src/class-manage/class-list-sidebar.tsx
+@@ -10,7 +10,7 @@ const Sidebar = styled.aside<{ $flush: boolean }>`
+   display: flex;
+   flex-direction: column;
+   background: var(--ig-color-surface-panel);
+-  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-xl)')};
++  border-radius: ${(p) => (p.$flush ? 0 : 'var(--ig-radius-panel)')};
+   border: ${(p) => (p.$flush ? 'none' : 'var(--ig-border-1px) solid var(--ig-color-border-subtle)')};
+   border-right: ${(p) =>
+     p.$flush ? 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))' : undefined};
+diff --git i/packages/platform-pages/src/class-manage/selectable-grid-panel.tsx w/packages/platform-pages/src/class-manage/selectable-grid-panel.tsx
+index 4b06623..1146209 100644
+--- i/packages/platform-pages/src/class-manage/selectable-grid-panel.tsx
++++ w/packages/platform-pages/src/class-manage/selectable-grid-panel.tsx
+@@ -12,7 +12,7 @@ const MAIN_BASE_STYLE = {
+ const MAIN_PANEL_STYLE = {
+   ...MAIN_BASE_STYLE,
+   background: 'var(--ig-color-surface-panel)',
+-  borderRadius: 'var(--ig-radius-xl)',
++  borderRadius: 'var(--ig-radius-panel)',
+   border: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+ }
+ 
+diff --git i/packages/platform-pages/src/create-project/CreateProjectView.styles.ts w/packages/platform-pages/src/create-project/CreateProjectView.styles.ts
+index 11bbaaa..225f3f9 100644
+--- i/packages/platform-pages/src/create-project/CreateProjectView.styles.ts
++++ w/packages/platform-pages/src/create-project/CreateProjectView.styles.ts
+@@ -25,7 +25,7 @@ export const LogoWrap = styled.div`
+ 
+ export const Card = styled(UiCard)`
+   padding: var(--ig-space-8);
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+ `
+ 
+ export const Title = styled.h1`
+@@ -51,7 +51,7 @@ export const Form = styled.form`
+ 
+ export const Section = styled.section`
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-card);
+   overflow: hidden;
+ `
+ 
+@@ -133,7 +133,7 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
+   width: 100%;
+   padding: var(--ig-space-5);
+   text-align: left;
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-card);
+   border: var(--ig-border-1px) solid
+     ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-subtle)')};
+   background: ${(p) =>
+diff --git i/packages/platform-pages/src/dashboard/DraggableAnalysisWidgetGrid.styles.ts w/packages/platform-pages/src/dashboard/DraggableAnalysisWidgetGrid.styles.ts
+index 5b8b8ae..1d41131 100644
+--- i/packages/platform-pages/src/dashboard/DraggableAnalysisWidgetGrid.styles.ts
++++ w/packages/platform-pages/src/dashboard/DraggableAnalysisWidgetGrid.styles.ts
+@@ -126,7 +126,7 @@ export const DragOverlayCard = styled.div`
+   min-width: var(--ig-popup-xs);
+   max-width: var(--ig-popup-md);
+   padding: var(--ig-space-6) var(--ig-space-7);
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+   border: var(--ig-border-1px) solid var(--ig-color-active-bg);
+   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
+   box-shadow: var(--ig-shadow-popover);
+diff --git i/packages/platform-pages/src/dashboard/dashboard-customize-popover.tsx w/packages/platform-pages/src/dashboard/dashboard-customize-popover.tsx
+index fdc25f6..bdcc0ff 100644
+--- i/packages/platform-pages/src/dashboard/dashboard-customize-popover.tsx
++++ w/packages/platform-pages/src/dashboard/dashboard-customize-popover.tsx
+@@ -10,7 +10,7 @@ const Wrap = styled(MenuPopover)`
+   z-index: var(--ig-z-sticky-plus);
+   width: min(var(--ig-popup-md), calc(100vw - var(--ig-space-13)));
+   padding: var(--ig-space-6);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+ `
+ 
+ const TITLE_STYLE = { marginBottom: 'var(--ig-space-4)' }
+diff --git i/packages/platform-pages/src/dashboard/dashboard-widget.tsx w/packages/platform-pages/src/dashboard/dashboard-widget.tsx
+index 5e99a6e..09402f1 100644
+--- i/packages/platform-pages/src/dashboard/dashboard-widget.tsx
++++ w/packages/platform-pages/src/dashboard/dashboard-widget.tsx
+@@ -4,7 +4,7 @@ import { Inline, Stack, surfaceCard, Text } from '@ingradient/ui/primitives'
+ 
+ const Root = styled.div<{ $span: number }>`
+   ${surfaceCard}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+   padding: var(--ig-space-5);
+   display: flex;
+   flex-direction: column;
+diff --git i/packages/platform-pages/src/dashboard/widgets/analysis-labeling-by-person-widget.tsx w/packages/platform-pages/src/dashboard/widgets/analysis-labeling-by-person-widget.tsx
+index d4ffc6c..d27ddcd 100644
+--- i/packages/platform-pages/src/dashboard/widgets/analysis-labeling-by-person-widget.tsx
++++ w/packages/platform-pages/src/dashboard/widgets/analysis-labeling-by-person-widget.tsx
+@@ -39,7 +39,7 @@ export function AnalysisLabelingByPersonWidget({
+         emptyMessage="No uploader activity yet."
+       />
+       {byPerson.length > 0 ? (
+-        <Card elevation="panel" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-5) var(--ig-space-7)">
++        <Card elevation="panel" flat radius="var(--ig-radius-card)" padding="var(--ig-space-5) var(--ig-space-7)">
+           <Table columns={PERSON_COLUMNS} rows={byPerson} ariaLabel="Uploader activity" />
+         </Card>
+       ) : null}
+diff --git i/packages/platform-pages/src/settings-modal/SettingsModalView.styles.ts w/packages/platform-pages/src/settings-modal/SettingsModalView.styles.ts
+index ba35283..1e34d93 100644
+--- i/packages/platform-pages/src/settings-modal/SettingsModalView.styles.ts
++++ w/packages/platform-pages/src/settings-modal/SettingsModalView.styles.ts
+@@ -9,7 +9,7 @@ export const Modal = styled(ModalCard)`
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-surface);
+ `
+ 
+ export const Header = styled(ModalHeader)`
+diff --git i/packages/platform-pages/src/settings-modal/edge-tab/edge.styles.ts w/packages/platform-pages/src/settings-modal/edge-tab/edge.styles.ts
+index ddb83c8..6384790 100644
+--- i/packages/platform-pages/src/settings-modal/edge-tab/edge.styles.ts
++++ w/packages/platform-pages/src/settings-modal/edge-tab/edge.styles.ts
+@@ -38,7 +38,7 @@ export const Section = styled.section`
+   flex-direction: column;
+   gap: var(--ig-space-4);
+   padding: var(--ig-space-5);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-card);
+ `
+ 
+ export const CheckList = styled.div`
+diff --git i/src/components/data-display/card.tsx w/src/components/data-display/card.tsx
+index 05e0ba8..aa2b7a2 100644
+--- i/src/components/data-display/card.tsx
++++ w/src/components/data-display/card.tsx
+@@ -55,7 +55,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+ 
+ export function Card({
+   elevation = 'panel',
+-  radius = 'var(--ig-radius-lg)',
++  radius = 'var(--ig-radius-card)',
+   padding = 'var(--ig-space-6)',
+   overflow = 'visible',
+   flat = false,
+diff --git i/src/components/data-display/layout.tsx w/src/components/data-display/layout.tsx
+index 3f0b5fe..86483c2 100644
+--- i/src/components/data-display/layout.tsx
++++ w/src/components/data-display/layout.tsx
+@@ -3,7 +3,7 @@ import { surfacePanel } from '../../primitives'
+ 
+ export const SectionPanel = styled.section`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+   padding: var(--ig-space-8);
+   display: flex;
+   flex-direction: column;
+diff --git i/src/components/data-display/selectable-grid-cell.tsx w/src/components/data-display/selectable-grid-cell.tsx
+index 212ca39..314b519 100644
+--- i/src/components/data-display/selectable-grid-cell.tsx
++++ w/src/components/data-display/selectable-grid-cell.tsx
+@@ -5,7 +5,7 @@ import { surfacePanel } from '../../primitives'
+ const Cell = styled.div<{ $selected: boolean }>`
+   ${surfacePanel}
+   position: relative;
+-  border-radius: var(--ig-radius-2xl);
++  border-radius: var(--ig-radius-card);
+   overflow: hidden;
+   cursor: pointer;
+   border: var(--ig-border-1px) solid
+diff --git i/src/components/icons/icon-gallery.tsx w/src/components/icons/icon-gallery.tsx
+index 91f6f6a..415e2e2 100644
+--- i/src/components/icons/icon-gallery.tsx
++++ w/src/components/icons/icon-gallery.tsx
+@@ -11,7 +11,7 @@ const IconGalleryGrid = styled.div`
+ 
+ const IconTile = styled.div`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-card);
+   padding: var(--ig-space-6);
+   display: flex;
+   flex-direction: column;
+diff --git i/src/components/inputs/date-picker.styles.ts w/src/components/inputs/date-picker.styles.ts
+index c4156e5..4abcc2e 100644
+--- i/src/components/inputs/date-picker.styles.ts
++++ w/src/components/inputs/date-picker.styles.ts
+@@ -20,7 +20,7 @@ export const Placeholder = styled.span`
+ export const Popover = styled.div`
+   ${calendarNavigation}
+   z-index: calc(var(--ig-z-modal) + 10);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
+   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
+   box-shadow: var(--ig-shadow-popover);
+diff --git i/src/components/inputs/date-range-picker.tsx w/src/components/inputs/date-range-picker.tsx
+index 14e69ef..305e911 100644
+--- i/src/components/inputs/date-range-picker.tsx
++++ w/src/components/inputs/date-range-picker.tsx
+@@ -13,7 +13,7 @@ const Popover = styled(MenuPopover)`
+   z-index: var(--ig-z-overlay);
+   width: min(var(--ig-popup-lg), calc(100vw - var(--ig-control-height-mid-plus)));
+   padding: var(--ig-space-7);
+-  border-radius: var(--ig-radius-2xl);
++  border-radius: var(--ig-radius-floating);
+ `
+ 
+ const PRESET_BTN_STYLE = {
+@@ -25,7 +25,7 @@ const PRESET_BTN_STYLE = {
+ const Calendar = styled.div`
+   ${calendarNavigation}
+   padding: var(--ig-space-5);
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-floating);
+   background: linear-gradient(180deg, var(--ig-color-surface-calendar-top) 0%, var(--ig-color-surface-calendar-bottom) 100%);
+   border: var(--ig-border-1px) solid var(--ig-color-white-06);
+   .rdp-root {
+diff --git i/src/components/inputs/drop-zone.tsx w/src/components/inputs/drop-zone.tsx
+index 521b986..cd610f8 100644
+--- i/src/components/inputs/drop-zone.tsx
++++ w/src/components/inputs/drop-zone.tsx
+@@ -7,7 +7,7 @@ export type DropZoneVariant = 'outlined' | 'filled'
+ const variantBase = {
+   outlined: css`
+     border: var(--ig-border-2px) dashed var(--ig-color-border-subtle);
+-    border-radius: var(--ig-radius-lg);
++    border-radius: var(--ig-radius-control);
+     background: transparent;
+   `,
+   filled: css`
+diff --git i/src/components/inputs/mobile-dropdown.tsx w/src/components/inputs/mobile-dropdown.tsx
+index 6b19616..3e09f94 100644
+--- i/src/components/inputs/mobile-dropdown.tsx
++++ w/src/components/inputs/mobile-dropdown.tsx
+@@ -36,7 +36,7 @@ const Dropdown = styled.div`
+   right: 0;
+   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-mobile-top) 0%, var(--ig-color-surface-dropdown-mobile-bottom) 100%);
+   border: var(--ig-border-1px) solid var(--ig-color-slate-tint-18);
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-floating);
+   box-shadow: var(--ig-shadow-popover);
+   backdrop-filter: var(--ig-blur-xl);
+   z-index: var(--ig-z-mobile-menu);
+diff --git i/src/components/navigation/mobile-nav-shell.tsx w/src/components/navigation/mobile-nav-shell.tsx
+index 88f2733..295c93e 100644
+--- i/src/components/navigation/mobile-nav-shell.tsx
++++ w/src/components/navigation/mobile-nav-shell.tsx
+@@ -63,7 +63,7 @@ const DrawerPanel = styled.aside<{ $open: boolean }>`
+     /* Material standard ease — slow tier 의 360ms ease 보다 specific 한 곡선 의도 */
+     transition: transform var(--ig-motion-mobile-nav);
+     padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
+-    border-radius: 0 0 var(--ig-radius-xl) var(--ig-radius-xl);
++    border-radius: 0 0 var(--ig-radius-surface) var(--ig-radius-xl);
+   }
+ `
+ 
+@@ -100,7 +100,7 @@ const Item = styled.button<{ $active?: boolean }>`
+   height: var(--ig-control-height-2xl);
+   width: 100%;
+   padding: 0 var(--ig-space-4);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-control);
+   border: none;
+   background: ${(p) => (p.$active ? 'var(--ig-color-focus-bg-soft)' : 'none')};
+   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
+diff --git i/src/components/navigation/tabs.tsx w/src/components/navigation/tabs.tsx
+index a26e5d6..66809ab 100644
+--- i/src/components/navigation/tabs.tsx
++++ w/src/components/navigation/tabs.tsx
+@@ -5,7 +5,7 @@ const tabsTone = css`
+   display: inline-flex;
+   position: relative;
+   padding: var(--ig-space-1);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-control);
+   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+   background: var(--ig-color-tab-surface);
+   gap: var(--ig-space-1);
+diff --git i/src/components/navigation/vertical-tabs.styles.ts w/src/components/navigation/vertical-tabs.styles.ts
+index 77e712b..9db83e6 100644
+--- i/src/components/navigation/vertical-tabs.styles.ts
++++ w/src/components/navigation/vertical-tabs.styles.ts
+@@ -6,8 +6,8 @@ export type VerticalTabsAppearance = 'default' | 'settings'
+ export const verticalTabsRadiusStyles: Record<VerticalTabsRadius, { root: string; item: string }> = {
+   xs: { root: 'var(--ig-radius-sm)', item: 'var(--ig-radius-xs)' },
+   sm: { root: 'var(--ig-radius-md)', item: 'var(--ig-radius-sm)' },
+-  md: { root: 'var(--ig-radius-lg)', item: 'var(--ig-radius-md)' },
+-  lg: { root: 'var(--ig-radius-xl)', item: 'var(--ig-radius-lg)' },
++  md: { root: 'var(--ig-radius-control)', item: 'var(--ig-radius-md)' },
++  lg: { root: 'var(--ig-radius-control)', item: 'var(--ig-radius-lg)' },
+ }
+ 
+ export const Root = styled.div<{ $radius: VerticalTabsRadius; $appearance: VerticalTabsAppearance }>`
+diff --git i/src/components/overlays/context-menu.tsx w/src/components/overlays/context-menu.tsx
+index 6eb23a3..2e08ab4 100644
+--- i/src/components/overlays/context-menu.tsx
++++ w/src/components/overlays/context-menu.tsx
+@@ -17,7 +17,7 @@ export const ContextMenuList = styled.div.attrs<{ $x: number; $y: number }>((p)
+   min-width: var(--ig-popup-2xs);
+   padding: var(--ig-space-1) 0;
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   overflow: hidden;
+   box-shadow: var(--ig-shadow-popover);
+ `
+@@ -58,7 +58,7 @@ export const ContextMenuSub = styled.div.attrs<{ $left: number; $top: number }>(
+   min-width: var(--ig-popup-2xs);
+   padding: var(--ig-space-1) 0;
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   overflow: hidden;
+   box-shadow: var(--ig-shadow-popover);
+ `
+diff --git i/src/components/overlays/modal-primitives.tsx w/src/components/overlays/modal-primitives.tsx
+index edc07d4..4f3d735 100644
+--- i/src/components/overlays/modal-primitives.tsx
++++ w/src/components/overlays/modal-primitives.tsx
+@@ -18,7 +18,7 @@ export const ModalCard = styled.div`
+   max-height: calc(100vh - var(--ig-control-height-xl));
+   @supports (height: 1dvh) { max-height: calc(100dvh - var(--ig-control-height-xl)); }
+   overflow: hidden;
+-  border-radius: var(--ig-radius-4xl);
++  border-radius: var(--ig-radius-surface);
+   display: flex;
+   flex-direction: column;
+ `
+@@ -28,7 +28,7 @@ export const CompactModalCard = styled(ModalCard)`
+   min-width: var(--ig-popup-md);
+   max-width: min(var(--ig-popup-2xl), calc(100vw - var(--ig-control-height-xl)));
+   padding: var(--ig-space-9);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-surface);
+ `
+ 
+ export const ModalHeader = styled.div`
+diff --git i/src/components/overlays/popovers.tsx w/src/components/overlays/popovers.tsx
+index 542b10b..28c83e8 100644
+--- i/src/components/overlays/popovers.tsx
++++ w/src/components/overlays/popovers.tsx
+@@ -4,20 +4,20 @@ import { surfaceRaised } from '../../primitives'
+ 
+ export const PopoverCard = styled.div`
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   padding: var(--ig-space-7);
+ `
+ 
+ export const Menu = styled.div`
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   padding: var(--ig-space-3);
+   min-width: var(--ig-popup-xs);
+ `
+ 
+ const MenuPopoverRoot = styled.div`
+   ${surfaceRaised}
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   padding: var(--ig-space-4);
+   min-width: var(--ig-popup-xs);
+   box-shadow: var(--ig-shadow-popover);
+diff --git i/src/components/overlays/two-column-dialog.tsx w/src/components/overlays/two-column-dialog.tsx
+index 8b16682..9a667e6 100644
+--- i/src/components/overlays/two-column-dialog.tsx
++++ w/src/components/overlays/two-column-dialog.tsx
+@@ -11,7 +11,7 @@ const Shell = styled.div<{ $width: string; $height: string | null; $maxHeight: s
+   ${(p) => (p.$height ? `height: ${p.$height};` : `max-height: ${p.$maxHeight};`)}
+   background-color: var(--ig-color-surface-muted);
+   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-surface);
+   display: flex;
+   flex-direction: column;
+   box-shadow: var(--ig-shadow-floating);
+diff --git i/src/patterns/cards/stat-card.tsx w/src/patterns/cards/stat-card.tsx
+index 8f8688a..c28dd75 100644
+--- i/src/patterns/cards/stat-card.tsx
++++ w/src/patterns/cards/stat-card.tsx
+@@ -17,7 +17,7 @@ export function StatCard({
+   meta?: React.ReactNode
+ }) {
+   return (
+-    <Card elevation="card" radius="var(--ig-radius-xl)" padding="var(--ig-space-8)">
++    <Card elevation="card" radius="var(--ig-radius-card)" padding="var(--ig-space-8)">
+       <Stack gap="var(--ig-space-3px)">
+         <ActionBar>
+           <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="wide">{label}</Text>
+diff --git i/src/patterns/charts/chart-container.tsx w/src/patterns/charts/chart-container.tsx
+index 7902cc0..13ebbe2 100644
+--- i/src/patterns/charts/chart-container.tsx
++++ w/src/patterns/charts/chart-container.tsx
+@@ -6,7 +6,7 @@ import { Inline, Stack, surfaceCard, Text } from '../../primitives'
+ 
+ const ChartCard = styled.div`
+   ${surfaceCard}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-card);
+   padding: var(--ig-space-8);
+   display: flex;
+   flex-direction: column;
+diff --git i/src/patterns/dialogs/media-dialog-shell.styles.ts w/src/patterns/dialogs/media-dialog-shell.styles.ts
+index 10855ec..7730004 100644
+--- i/src/patterns/dialogs/media-dialog-shell.styles.ts
++++ w/src/patterns/dialogs/media-dialog-shell.styles.ts
+@@ -34,7 +34,7 @@ export const MediaDialogContent = styled.div<{ $width?: string; $height?: string
+   max-height: ${(p) => p.$height ?? 'calc(100vh - var(--ig-layout-topbar))'};
+   background: var(--ig-color-surface-raised);
+   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-surface);
+   box-shadow: var(--ig-shadow-floating);
+   color: var(--ig-color-text-primary);
+   overflow: hidden;
+diff --git i/src/patterns/forms/color-editor-popover.tsx w/src/patterns/forms/color-editor-popover.tsx
+index 9c5ef55..95ae44e 100644
+--- i/src/patterns/forms/color-editor-popover.tsx
++++ w/src/patterns/forms/color-editor-popover.tsx
+@@ -14,7 +14,7 @@ const Panel = styled.div`
+   width: 100%;
+   box-sizing: border-box;
+   padding: var(--ig-space-5);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-floating);
+   box-shadow: var(--ig-shadow-popover);
+ `
+ 
+diff --git i/src/patterns/forms/settings-section.tsx w/src/patterns/forms/settings-section.tsx
+index 7a441b6..8b850f0 100644
+--- i/src/patterns/forms/settings-section.tsx
++++ w/src/patterns/forms/settings-section.tsx
+@@ -9,7 +9,7 @@ const Section = styled.section<{ $tone: SettingsSectionTone }>`
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-card);
+   ${(p) => p.$tone === 'danger' && `
+     background: var(--ig-color-alert-danger-bg);
+     border-color: var(--ig-color-alert-danger-border);
+diff --git i/src/patterns/navigation/navigation.tsx w/src/patterns/navigation/navigation.tsx
+index 1f24b63..6bff5cd 100644
+--- i/src/patterns/navigation/navigation.tsx
++++ w/src/patterns/navigation/navigation.tsx
+@@ -4,7 +4,7 @@ import { headerSurface } from '../../primitives/recipes/patterns'
+ 
+ export const SidebarNav = styled.nav`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-panel);
+   padding: var(--ig-space-7);
+   display: flex;
+   flex-direction: column;
+@@ -16,7 +16,7 @@ export const AppSidebar = styled.aside<{ $width?: number | string }>`
+   width: ${(p) => (typeof p.$width === 'number' ? `${p.$width}px` : p.$width ?? 'var(--ig-popup-sm)')};
+   min-width: 0;
+   min-height: 0;
+-  border-radius: var(--ig-radius-2xl);
++  border-radius: var(--ig-radius-panel);
+   padding: var(--ig-space-8) var(--ig-space-7);
+   display: flex;
+   flex-direction: column;
+diff --git i/src/patterns/page/page-shell.tsx w/src/patterns/page/page-shell.tsx
+index bde1cc9..62f5099 100644
+--- i/src/patterns/page/page-shell.tsx
++++ w/src/patterns/page/page-shell.tsx
+@@ -64,7 +64,7 @@ export const PageContent = styled.div`
+ 
+ export const Panel = styled.section`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-xl);
++  border-radius: var(--ig-radius-panel);
+   min-height: 0;
+   display: flex;
+   flex-direction: column;
+@@ -105,7 +105,7 @@ export const Toolbar = styled.div`
+   gap: var(--ig-space-5);
+   flex-wrap: wrap;
+   padding: var(--ig-space-6) var(--ig-space-7);
+-  border-radius: var(--ig-radius-lg);
++  border-radius: var(--ig-radius-control);
+   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+   background: var(--ig-color-toolbar-surface);
+ `
+diff --git i/src/primitives/recipes/surfaces.ts w/src/primitives/recipes/surfaces.ts
+index 00553b4..25eae11 100644
+--- i/src/primitives/recipes/surfaces.ts
++++ w/src/primitives/recipes/surfaces.ts
+@@ -20,6 +20,6 @@ export const surfaceCard = css`
+ 
+ export const surfaceRounded = css`
+   ${surfacePanel}
+-  border-radius: var(--ig-radius-4xl);
++  border-radius: var(--ig-radius-surface);
+   overflow: hidden;
+ `
+diff --git i/src/primitives/surfaces/surface.tsx w/src/primitives/surfaces/surface.tsx
+index e7cf3f0..3ae9bf2 100644
+--- i/src/primitives/surfaces/surface.tsx
++++ w/src/primitives/surfaces/surface.tsx
+@@ -5,7 +5,7 @@ import { surfaceCard, surfacePanel, surfaceRaised } from '../styles/surfaces'
+ 
+ const SurfaceRoot = styled.div<{ $elevation?: 'panel' | 'raised' | 'card'; $radius?: Space }>`
+   ${(p) => (p.$elevation === 'raised' ? surfaceRaised : p.$elevation === 'card' ? surfaceCard : surfacePanel)}
+-  border-radius: ${(p) => space(p.$radius) ?? 'var(--ig-radius-2xl)'};
++  border-radius: ${(p) => space(p.$radius) ?? 'var(--ig-radius-card)'};
+ `
+ 
+ export function Surface({
+diff --git i/src/tokens/globals/token-css-variables.ts w/src/tokens/globals/token-css-variables.ts
+index e32dea1..e0d5dbf 100644
+--- i/src/tokens/globals/token-css-variables.ts
++++ w/src/tokens/globals/token-css-variables.ts
+@@ -294,13 +294,18 @@ const staticVars = {
+   '--ig-radius-2xs': radiusScale['2xs'],
+   '--ig-radius-xxs': radiusScale.xxs,
+   '--ig-radius-xs': radiusScale.xs,
+-  '--ig-radius-sm': ingradientThemeDark.radius.sm,
+-  '--ig-radius-md': ingradientThemeDark.radius.md,
++  '--ig-radius-sm': '8px',
++  '--ig-radius-md': '8px',
+   '--ig-radius-lg': ingradientThemeDark.radius.lg,
+   '--ig-radius-xl': ingradientThemeDark.radius.xl,
+   '--ig-radius-2xl': radiusScale['2xl'],
+   '--ig-radius-4xl': radiusScale['4xl'],
+   '--ig-radius-pill': ingradientThemeDark.radius.pill,
++  '--ig-radius-surface': '16px',
++  '--ig-radius-panel': '12px',
++  '--ig-radius-card': '12px',
++  '--ig-radius-floating': '12px',
++  '--ig-radius-control': '8px',
+   // ── Typography ────────────────────────────────────────────────
+   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
+   '--ig-font-mono': ingradientThemeDark.typography.fontMono,

@@ -23,8 +23,8 @@ export const Default: Story = {
   render: () => (
     <LayoutDashboard
       stats={SAMPLE_STATS}
-      charts={<Card style={{ padding: 'var(--ig-space-7)', minHeight: 240, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ig-color-text-muted)' }}>(Chart placeholder)</Card>}
-      tableSlot={<Card style={{ padding: 'var(--ig-space-5)', color: 'var(--ig-color-text-muted)' }}>(Table placeholder)</Card>}
+      charts={<Card style={{ padding: 'var(--ig-spacing-16)', minHeight: 240, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ig-color-text-muted)' }}>(Chart placeholder)</Card>}
+      tableSlot={<Card style={{ padding: 'var(--ig-spacing-12)', color: 'var(--ig-color-text-muted)' }}>(Table placeholder)</Card>}
     />
   ),
 }

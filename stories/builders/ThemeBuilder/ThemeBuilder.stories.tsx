@@ -113,27 +113,27 @@ function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuild
 
   return (
     <div style={pageStyle}>
-      <Stack gap={7}>
+      <Stack gap="var(--ig-space-2-plus)">
         <h1 style={{ fontSize: 'var(--ig-font-size-2xl)', fontWeight: 'var(--ig-font-weight-semibold)', margin: 0 }}>ThemeBuilder</h1>
         <PreviewSections />
 
-        <Stack gap={3}>
+        <Stack gap="var(--ig-space-3px)">
           <h2 style={sectionTitle}>Preset snippet</h2>
           <pre style={codeStyle}>{exportPresetTs(preset, tokenOverrides)}</pre>
         </Stack>
 
-        <Stack gap={3}>
+        <Stack gap="var(--ig-space-3px)">
           <h2 style={sectionTitle}>Export</h2>
-          <Inline gap={3}>
+          <Inline gap="var(--ig-space-3px)">
             <Button variant="accent" onClick={handleDownloadJson}>Download JSON</Button>
             <Button variant="secondary" onClick={handleCopyTs}>Copy TypeScript</Button>
           </Inline>
           {exportFeedback ? <span style={overrideKeyStyle}>{exportFeedback}</span> : null}
         </Stack>
 
-        <Stack gap={3}>
+        <Stack gap="var(--ig-space-3px)">
           <h2 style={sectionTitle}>Drafts (localStorage)</h2>
-          <Inline gap={3} align="center">
+          <Inline gap="var(--ig-space-3px)" align="center">
             <TextField
               placeholder="Draft name (e.g. wafer-line-a)"
               value={draftName}
@@ -144,16 +144,16 @@ function ThemeBuilder({ onLoadDraftArgs = () => undefined, ...args }: ThemeBuild
           {drafts.length === 0 ? (
             <span style={overrideKeyStyle}>(no drafts saved yet)</span>
           ) : (
-            <Stack gap={2}>
+            <Stack gap="var(--ig-space-2px)">
               {drafts.map((d) => (
-                <Inline key={d.name} gap={3} justify="space-between" align="center">
-                  <Stack gap={0}>
+                <Inline key={d.name} gap="var(--ig-space-3px)" justify="space-between" align="center">
+                  <Stack gap="var(--ig-space-0)">
                     <span style={{ fontWeight: 'var(--ig-font-weight-semibold)' }}>{d.name}</span>
                     <span style={overrideKeyStyle}>
                       {d.args.theme} · {d.args.brand} · {d.args.density} · {d.args.mode} · {new Date(d.savedAt).toLocaleString()}
                     </span>
                   </Stack>
-                  <Inline gap={2}>
+                  <Inline gap="var(--ig-space-2px)">
                     <Button variant="secondary" size="sm" onClick={() => handleLoadDraft(d)}>Load</Button>
                     <Button variant="secondary" size="sm" tone="danger" onClick={() => handleDeleteDraft(d.name)}>Delete</Button>
                   </Inline>

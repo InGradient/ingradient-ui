@@ -12,7 +12,7 @@ const EXPIRED_STYLE = { margin: 0 }
 const Hint = styled.p`
   margin: 0;
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
 `
 
@@ -25,17 +25,17 @@ export interface LicenseInfo {
 }
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
-  if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>Loading license information…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
+  if (!license) return <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>Loading license information…</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-text-body-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
   if (license.type === 'organization') {
     return (
-      <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
+      <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
         {`Organization license (${license.organizationName ?? ''}) | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
       </Text>
     )
   }
   return (
-    <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
+    <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
       {`Personal license | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
     </Text>
   )
@@ -80,9 +80,9 @@ export function SettingsAccountTab({
   const deleteDisabled = !deleteAccountEmailMatches || !!deleteAccountPreviewLoading
 
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title="Profile">
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <TextField
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
@@ -105,7 +105,7 @@ export function SettingsAccountTab({
       </SettingsSection>
 
       <SettingsSection title="Access">
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <Button type="button" variant="secondary" onClick={onOpenPassword}>Change password</Button>
           <Button type="button" variant="secondary" onClick={onLogout}>Log out</Button>
         </Inline>
@@ -116,7 +116,7 @@ export function SettingsAccountTab({
           Type your email address exactly, then press Delete Account. You will be asked for your password to confirm,
           and any shared projects will need to be transferred or deleted before the account is removed.
         </Hint>
-        <Inline justify="flex-end" gap="var(--ig-space-4)" wrap="wrap">
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
           <TextField
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}

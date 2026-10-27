@@ -135,7 +135,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   height: var(--ig-control-height-3xl-plus);
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ig-color-accent) 0%, var(--ig-color-accent-strong) 100%);
-  border: var(--ig-border-3px) solid var(--ig-color-border-strong);
+  border: var(--ig-border-2px) solid var(--ig-color-border-strong);
   cursor: pointer;
   transition: all var(--ig-motion-fast-ease);
   display: flex;
@@ -159,7 +159,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
           width: var(--ig-control-height-mid-plus);
           height: var(--ig-control-height-mid-plus);
           border-radius: 50%;
-          border: var(--ig-border-3px) solid var(--ig-color-border-strong);
+          border: var(--ig-border-2px) solid var(--ig-color-border-strong);
           border-top-color: var(--ig-color-white-90);
           animation: ${captureSpinAnim} var(--ig-motion-spinner-fast) linear infinite;
         }

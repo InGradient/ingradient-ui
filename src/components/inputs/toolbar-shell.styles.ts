@@ -86,8 +86,8 @@ export const ToolbarButton = styled.button<{ $active: boolean; $danger: boolean;
     cursor: not-allowed;
   }
   svg {
-    width: var(--ig-icon-lg);
-    height: var(--ig-icon-lg);
+    width: var(--ig-size-toolbar-button);
+    height: var(--ig-size-toolbar-button);
   }
 `
 
@@ -98,11 +98,11 @@ export const Separator = styled.span<{ $placement: Placement }>`
     p.$placement === 'bottom' || p.$placement === 'top'
       ? css`
           width: var(--ig-space-1px);
-          height: var(--ig-icon-2xl);
+          height: var(--ig-size-toolbar-separator);
           margin: 0 var(--ig-space-2px);
         `
       : css`
-          width: var(--ig-icon-2xl);
+          width: var(--ig-size-toolbar-separator);
           height: var(--ig-space-1px);
           margin: var(--ig-space-2px) 0;
         `}

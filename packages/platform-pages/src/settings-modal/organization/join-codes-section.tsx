@@ -7,7 +7,7 @@ import { Table, type TableColumn } from '@ingradient/ui/components'
 import { popupSizeNumbers } from '@ingradient/ui/tokens'
 
 const MAX_USES_STYLE = { width: popupSizeNumbers['2xsPlus'] }
-const EMPTY_STYLE = { marginTop: 'var(--ig-space-7)' }
+const EMPTY_STYLE = { marginTop: 'var(--ig-spacing-16)' }
 
 export interface JoinCodesRoleOption {
   value: string
@@ -52,7 +52,7 @@ export function JoinCodesSection({
   description = DEFAULT_DESC,
 }: JoinCodesSectionProps) {
   const columns: TableColumn<JoinCodeRow>[] = [
-    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-font-size-xs)" letterSpacing="wide">{r.code}</Text> },
+    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-text-caption)" letterSpacing="wide">{r.code}</Text> },
     { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
     { key: 'uses', header: 'Uses', render: (r) => <Text tone="muted">{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Text> },
     { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },
@@ -69,12 +69,12 @@ export function JoinCodesSection({
   ]
 
   return (
-    <Stack as="section" gap="var(--ig-space-5)">
-      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
-      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
+    <Stack as="section" gap="var(--ig-spacing-12)">
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
+      <Text as="p" tone="muted" size="var(--ig-text-caption)">{description}</Text>
 
       {isAdmin && (
-        <Inline gap="var(--ig-space-3)" wrap="wrap">
+        <Inline gap="var(--ig-spacing-8)" wrap="wrap">
           <SelectField
             value={codeRoleId}
             onChange={(e) => onChangeCodeRoleId((e.target as HTMLSelectElement).value)}

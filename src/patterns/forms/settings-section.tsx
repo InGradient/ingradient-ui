@@ -1,43 +1,48 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { surfaceRaised } from '../../primitives'
+import { withSurfaceDepth } from '../../primitives'
 
 type SettingsSectionTone = 'default' | 'danger'
 
-const Section = styled.section<{ $tone: SettingsSectionTone }>`
-  ${surfaceRaised}
+/**
+ * A settings section is a heading plus its rows, separated from the previous section by a 1px line
+ * (24px above and below with the 8px stack gap), not a box inside the modal (DESIGN.md §5).
+ * The danger tone keeps an alert box: it marks a real boundary around irreversible actions.
+ */
+const SectionBase = styled.section<{ $tone: SettingsSectionTone }>`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border-radius: var(--ig-radius-lg);
+  gap: var(--ig-spacing-12);
+  & + & {
+    margin-top: var(--ig-spacing-16);
+    padding-top: var(--ig-spacing-24);
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  }
   ${(p) => p.$tone === 'danger' && `
+    padding: var(--ig-spacing-16);
+    border: var(--ig-border-1px) solid var(--ig-color-alert-danger-border);
     background: var(--ig-color-alert-danger-bg);
-    border-color: var(--ig-color-alert-danger-border);
+    && + & { padding-top: var(--ig-spacing-16); border-top: var(--ig-border-1px) solid var(--ig-color-alert-danger-border); }
   `}
 `
 
+/**
+ * Only the danger box is a surface (depth radius); a plain section stays square so its top
+ * divider is a straight line rather than following a rounded corner.
+ */
+const DangerSection = withSurfaceDepth(SectionBase, { displayName: 'SettingsSection' })
+
 const Title = styled.h3<{ $tone: SettingsSectionTone }>`
   margin: 0;
-  padding: var(--ig-space-4) var(--ig-space-5);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  background: var(--ig-color-surface-interactive);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-font-size-md);
   font-weight: var(--ig-font-weight-semibold);
-  color: var(--ig-color-text-primary);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  ${(p) => p.$tone === 'danger' && `
-    background: var(--ig-color-alert-danger-bg);
-    border-bottom-color: var(--ig-color-alert-danger-border);
-    color: var(--ig-color-alert-danger-text);
-  `}
+  color: ${(p) => (p.$tone === 'danger' ? 'var(--ig-color-alert-danger-text)' : 'var(--ig-color-text-primary)')};
 `
 
 const Body = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-5);
+  gap: var(--ig-spacing-8);
 `
 
 export interface SettingsSectionProps {
@@ -48,10 +53,11 @@ export interface SettingsSectionProps {
 }
 
 export function SettingsSection({ title, children, className, tone = 'default' }: SettingsSectionProps) {
+  const Root = tone === 'danger' ? DangerSection : SectionBase
   return (
-    <Section className={className} $tone={tone}>
+    <Root className={className} $tone={tone}>
       {title ? <Title $tone={tone}>{title}</Title> : null}
       <Body>{children}</Body>
-    </Section>
+    </Root>
   )
 }

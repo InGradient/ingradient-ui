@@ -33,16 +33,16 @@ export function OrgSettingsTab({
   if (!organization) return <Placeholder>{loadingText}</Placeholder>
 
   return (
-    <Stack gap="var(--ig-space-4)" style={WRAP_STYLE}>
-      {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight="semibold">{title}</Text> : null}
+    <Stack gap="var(--ig-spacing-8)" style={WRAP_STYLE}>
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
 
-      <Stack gap="var(--ig-space-2)">
-        <Text as="label" size="var(--ig-font-size-sm)" weight="medium">Code</Text>
-        <Text size="var(--ig-font-size-md)" tone="muted">{organization.code}</Text>
+      <Stack gap="var(--ig-spacing-8)">
+        <Text as="label" size="var(--ig-text-body-sm)" weight="medium">Code</Text>
+        <Text size="var(--ig-text-body)" tone="muted">{organization.code}</Text>
       </Stack>
 
-      <Stack gap="var(--ig-space-2)">
-        <Text as="label" htmlFor="org-name-input" size="var(--ig-font-size-sm)" weight="medium">Name</Text>
+      <Stack gap="var(--ig-spacing-8)">
+        <Text as="label" htmlFor="org-name-input" size="var(--ig-text-body-sm)" weight="medium">Name</Text>
         {isAdmin ? (
           <TextField
             id="org-name-input"
@@ -52,19 +52,19 @@ export function OrgSettingsTab({
             title="Organization name"
           />
         ) : (
-          <Text size="var(--ig-font-size-md)" tone="muted">{organization.name}</Text>
+          <Text size="var(--ig-text-body)" tone="muted">{organization.name}</Text>
         )}
       </Stack>
 
-      <Stack gap="var(--ig-space-2)">
-        <Text as="label" size="var(--ig-font-size-sm)" weight="medium">Status</Text>
-        <Text size="var(--ig-font-size-md)" tone="muted">{organization.status}</Text>
+      <Stack gap="var(--ig-spacing-8)">
+        <Text as="label" size="var(--ig-text-body-sm)" weight="medium">Status</Text>
+        <Text size="var(--ig-text-body)" tone="muted">{organization.status}</Text>
       </Stack>
 
       {isAdmin && (
-        <Inline justify="flex-end" gap="var(--ig-space-4)">
-          {message && <Text size="var(--ig-font-size-sm)" tone="success">{message}</Text>}
-          {error && <Text size="var(--ig-font-size-sm)" tone="danger">{error}</Text>}
+        <Inline justify="flex-end" gap="var(--ig-spacing-8)">
+          {message && <Text size="var(--ig-text-body-sm)" tone="success">{message}</Text>}
+          {error && <Text size="var(--ig-text-body-sm)" tone="danger">{error}</Text>}
           <Button type="button" onClick={onSave} disabled={!!saving || !nameDraft.trim()}>
             {saving ? 'Saving…' : 'Save'}
           </Button>

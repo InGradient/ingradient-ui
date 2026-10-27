@@ -4,8 +4,9 @@ import {
   CapturingBlocker,
 } from './MainLayoutView.styles'
 import type { MainLayoutViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function MainLayoutView(props: MainLayoutViewProps): JSX.Element {
+function MainLayoutViewContent(props: MainLayoutViewProps): JSX.Element {
   const { topBar, leftPanel, centerContent, rightPanel, isCapturing } = props
   const panelsRef = useRef<HTMLDivElement>(null)
   const centerRef = useRef<HTMLDivElement>(null)
@@ -61,5 +62,17 @@ export function MainLayoutView(props: MainLayoutViewProps): JSX.Element {
       </PanelsRow>
       {isCapturing && <CapturingBlocker aria-hidden />}
     </AppShell>
+  )
+}
+
+/**
+ * Edge uses the same surface rules as Platform: a rounded surface inside another rounded
+ * surface is always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function MainLayoutView(props: MainLayoutViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <MainLayoutViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

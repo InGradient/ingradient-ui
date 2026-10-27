@@ -4,7 +4,7 @@ import { Alert, Button } from '@ingradient/ui/components'
 
 const CONTAINER_STYLE = {}
 const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
-const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-space-3)' }
+const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
 
 export interface StorageAnalyticsTabProps {
   title?: string
@@ -47,10 +47,10 @@ export function StorageAnalyticsTab({
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
+      <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
         <Alert $tone="danger">
-          <Stack gap="var(--ig-space-3)">
-            <Text as="p" size="var(--ig-font-size-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
+          <Stack gap="var(--ig-spacing-8)">
+            <Text as="p" size="var(--ig-text-body-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
             {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
           </Stack>
         </Alert>
@@ -59,9 +59,9 @@ export function StorageAnalyticsTab({
   }
 
   return (
-    <Stack gap="var(--ig-space-4)" style={CONTAINER_STYLE}>
+    <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
       <Inline justify="space-between">
-        {title ? <Text as="h3" size="var(--ig-font-size-xl)" weight="semibold">{title}</Text> : null}
+        {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
           Copy Report
         </Button>
@@ -69,32 +69,32 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{projectTitle}</Text>
       {projectChart}
 
-      <Grid gap="var(--ig-space-9)" minItemWidth="var(--ig-popup-xs)">
+      <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-popup-xs)">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}

@@ -66,8 +66,8 @@ export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
   &::before {
     content: '';
     display: inline-block;
-    width: var(--ig-space-3);
-    height: var(--ig-space-3);
+    width: var(--ig-size-dot);
+    height: var(--ig-size-dot);
     border-radius: 50%;
     background: currentColor;
   }

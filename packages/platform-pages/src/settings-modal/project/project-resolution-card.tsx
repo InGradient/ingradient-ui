@@ -31,16 +31,16 @@ export interface ProjectResolutionCardProps {
 
 export function ProjectResolutionCard({ project, resolution, onChange }: ProjectResolutionCardProps) {
   return (
-    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xs)" padding="var(--ig-space-6)">
-      <Stack gap="var(--ig-space-4)">
+    <Card elevation="raised" flat border="strong" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-12)">
+      <Stack gap="var(--ig-spacing-8)">
       <Box>
-        <Text as="div" size="var(--ig-font-size-md)" weight="semibold">{project.project_name}</Text>
-        <Text as="div" tone="muted" size="var(--ig-font-size-xs)">
+        <Text as="div" size="var(--ig-text-body)" weight="semibold">{project.project_name}</Text>
+        <Text as="div" tone="muted" size="var(--ig-text-caption)">
           role: {project.role} · members: {project.member_count}
           {project.owner_count !== undefined ? ` · owners: ${project.owner_count}` : ''}
         </Text>
       </Box>
-      <Inline gap="var(--ig-space-4)" wrap="wrap">
+      <Inline gap="var(--ig-spacing-8)" wrap="wrap">
         <SelectField
           value={resolution.action}
           onChange={(e) => onChange({ ...resolution, action: (e.target as HTMLSelectElement).value as ProjectResolution['action'] })}

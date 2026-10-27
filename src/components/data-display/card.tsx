@@ -1,6 +1,14 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { surfaceCard, surfacePanel, surfaceRaised } from '../../primitives'
+import {
+  SurfaceDepthScope,
+  resolveSurfaceRadius,
+  surfaceCard,
+  surfaceDepthAttributes,
+  surfacePanel,
+  surfaceRaised,
+  useSurfaceDepth,
+} from '../../primitives'
 
 type Elevation = 'panel' | 'card' | 'raised'
 
@@ -41,6 +49,10 @@ const CardRoot = styled.div<{
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   elevation?: Elevation
+  /**
+   * Corner radius. Omit it to follow surface depth when a `SurfaceDepthProvider` is active
+   * (otherwise `var(--ig-radius-lg)`). An explicit value always wins.
+   */
   radius?: string
   padding?: string
   overflow?: 'visible' | 'hidden'
@@ -55,7 +67,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Card({
   elevation = 'panel',
-  radius = 'var(--ig-radius-lg)',
+  radius,
   padding = 'var(--ig-space-6)',
   overflow = 'visible',
   flat = false,
@@ -64,10 +76,12 @@ export function Card({
   children,
   ...rest
 }: CardProps) {
+  const depth = useSurfaceDepth()
   return (
     <CardRoot
+      {...surfaceDepthAttributes(depth)}
       $elevation={elevation}
-      $radius={radius}
+      $radius={radius ?? resolveSurfaceRadius(depth, 'var(--ig-radius-lg)')}
       $padding={padding}
       $overflow={overflow}
       $flat={flat}
@@ -75,7 +89,7 @@ export function Card({
       $tone={tone}
       {...rest}
     >
-      {children}
+      <SurfaceDepthScope state={depth}>{children}</SurfaceDepthScope>
     </CardRoot>
   )
 }

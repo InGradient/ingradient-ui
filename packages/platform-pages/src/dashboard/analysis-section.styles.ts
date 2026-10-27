@@ -1,7 +1,5 @@
 import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
-import { SectionPanel } from '@ingradient/ui/components'
-import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const CHART_COLORS = [
   'var(--ig-color-chart-1)',
@@ -12,24 +10,18 @@ export const CHART_COLORS = [
   'var(--ig-color-chart-6)',
 ]
 
-export const Card = styled(SectionPanel)`
-  background: var(--ig-color-surface-raised);
-  border-color: var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-md);
-  padding: var(--ig-space-7) var(--ig-space-9);
-  gap: var(--ig-space-5);
-`
+export { DashboardCard as Card } from './dashboard-card'
 
 export const CardHead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-4);
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 export const CardTitle = styled.span`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-secondary);
 `
@@ -38,7 +30,7 @@ export const StatRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--ig-space-3) 0;
+  padding: var(--ig-spacing-8) 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
   &:last-child {
     border-bottom: none;
@@ -47,11 +39,11 @@ export const StatRow = styled.div`
 
 export const StatLabel = styled.span`
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
 `
 
 export const StatValue = styled.span`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-medium);
   color: var(--ig-color-text-primary);
 `
@@ -59,13 +51,11 @@ export const StatValue = styled.span`
 export const EdgeSection = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-9);
+  gap: var(--ig-spacing-20);
   ${media.lg} {
     grid-template-columns: 1fr;
   }
 `
 
-export const Empty = styled.p`
-  ${stateTitleText}
-  margin: 0;
-`
+/** Empty message inside a dashboard card: the shared EmptyText. */
+export { EmptyText as Empty } from '@ingradient/ui/components'

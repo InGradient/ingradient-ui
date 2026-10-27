@@ -7,7 +7,7 @@ import { EmptyText } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const SEARCH_FIELD_STYLE = { flex: 1 }
-const EMPTY_STYLE = { marginTop: 'var(--ig-space-7)' }
+const EMPTY_STYLE = { marginTop: 'var(--ig-spacing-16)' }
 
 function statusTone(status: string): 'success' | 'danger' | 'muted' {
   if (status === 'accepted') return 'success'
@@ -85,13 +85,13 @@ export function InvitationsSection({
   ]
 
   return (
-    <Stack as="section" gap="var(--ig-space-5)">
-      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
-      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
+    <Stack as="section" gap="var(--ig-spacing-12)">
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
+      <Text as="p" tone="muted" size="var(--ig-text-caption)">{description}</Text>
 
       {isAdmin && (
-        <Stack gap="var(--ig-space-3)">
-          <Inline gap="var(--ig-space-3)">
+        <Stack gap="var(--ig-spacing-8)">
+          <Inline gap="var(--ig-spacing-8)">
             <TextField
               placeholder="Search users by name or email"
               value={searchQuery}
@@ -111,8 +111,8 @@ export function InvitationsSection({
           </Inline>
 
           {readyToSearch ? (
-            <Stack gap="var(--ig-space-2)">
-              {isSearching && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Searching…</Text>}
+            <Stack gap="var(--ig-spacing-8)">
+              {isSearching && <Text as="p" tone="muted" size="var(--ig-text-caption)">Searching…</Text>}
               {!isSearching && searchResults.map((u) => (
                 <OptionRow
                   key={u.id}
@@ -123,13 +123,13 @@ export function InvitationsSection({
                   onClick={() => onInviteUser(u)}
                 />
               ))}
-              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">No registered users found.</Text>}
+              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="var(--ig-text-caption)">No registered users found.</Text>}
             </Stack>
           ) : (
-            <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Type at least {minSearchLength} characters to search registered users.</Text>
+            <Text as="p" tone="muted" size="var(--ig-text-caption)">Type at least {minSearchLength} characters to search registered users.</Text>
           )}
 
-          {inviteMessage && <Text tone="muted" size="var(--ig-font-size-xs)">{inviteMessage}</Text>}
+          {inviteMessage && <Text tone="muted" size="var(--ig-text-caption)">{inviteMessage}</Text>}
         </Stack>
       )}
 

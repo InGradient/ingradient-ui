@@ -2,9 +2,9 @@ import { Inline, Stack as PrimStack, Text } from '@ingradient/ui/primitives'
 import { EmptyState, TextField } from '@ingradient/ui/components'
 import { OptionRow } from '@ingradient/ui/components'
 
-const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-space-7)', marginBottom: 'var(--ig-space-3)' }
+const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-spacing-16)', marginBottom: 'var(--ig-spacing-8)' }
 const ROW_STYLE = {
-  padding: 'var(--ig-space-5) 0',
+  padding: 'var(--ig-spacing-12) 0',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
   width: '100%',
 }
@@ -47,9 +47,9 @@ export function ProjectMemberInvite({
 
   return (
     <>
-      <Text as="h4" tone="muted" size="var(--ig-font-size-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>{title}</Text>
-      <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
-        <PrimStack gap="var(--ig-space-4)" style={STACK_STYLE}>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>{title}</Text>
+      <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
+        <PrimStack gap="var(--ig-spacing-8)" style={STACK_STYLE}>
           <TextField
             type="search"
             value={query}
@@ -59,7 +59,7 @@ export function ProjectMemberInvite({
             style={INPUT_STYLE}
           />
           {readyToSearch ? (
-            <PrimStack gap="var(--ig-space-3)" style={STACK_STYLE}>
+            <PrimStack gap="var(--ig-spacing-8)" style={STACK_STYLE}>
               {candidates.map((c) => (
                 <OptionRow
                   key={c.id}
@@ -78,7 +78,7 @@ export function ProjectMemberInvite({
         </PrimStack>
       </Inline>
       {inviteMessage ? (
-        <Inline gap="var(--ig-space-3)" wrap="wrap" style={ROW_STYLE}>
+        <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
           <EmptyState>{inviteMessage}</EmptyState>
         </Inline>
       ) : null}

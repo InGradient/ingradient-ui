@@ -59,7 +59,7 @@ export function DatasetListItem({
       data-dataset-id={id}
     >
       <Grid
-        gap="var(--ig-space-3)"
+        gap="var(--ig-spacing-8)"
         columns="auto 1fr auto auto"
         style={ROW_STYLE}
         data-ig-component="DatasetListItem"
@@ -68,7 +68,7 @@ export function DatasetListItem({
       >
         <Inline
           as="span"
-          gap={0}
+          gap="var(--ig-space-0)"
           style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.Checkbox"
           data-ig-kind="checkbox"
@@ -94,7 +94,7 @@ export function DatasetListItem({
         </Text>
         <Inline
           as="span"
-          gap={0}
+          gap="var(--ig-space-0)"
           style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.TaskTag"
           data-ig-kind="tag"
@@ -104,7 +104,7 @@ export function DatasetListItem({
         </Inline>
         <Inline
           as="span"
-          gap={0}
+          gap="var(--ig-space-0)"
           style={SLOT_STYLE}
           data-ig-slot="DatasetListItem.MenuButtonSlot"
           data-ig-kind="button-group"

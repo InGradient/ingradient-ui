@@ -13,13 +13,13 @@ type Story = StoryObj<typeof meta>
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap={3}>
-      <Inline gap={3} align="center">
+    <Stack gap="var(--ig-space-3px)">
+      <Inline gap="var(--ig-space-3px)" align="center">
         <GroupCountBadge count={2} size="sm" />
         <GroupCountBadge count={5} size="sm" />
         <GroupCountBadge count={42} size="sm" />
       </Inline>
-      <Inline gap={3} align="center">
+      <Inline gap="var(--ig-space-3px)" align="center">
         <GroupCountBadge count={2} />
         <GroupCountBadge count={5} />
         <GroupCountBadge count={42} />

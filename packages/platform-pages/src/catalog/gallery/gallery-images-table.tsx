@@ -8,20 +8,20 @@ import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { KebabIcon } from '@ingradient/ui/components'
 
 const TableText = styled.div`
-  --ig-catalog-gallery-table-min-width: var(--ig-popup-4xl);
+  --ig-catalog-gallery-table-min-width: var(--ig-layout-size-table-min-width);
   --ig-catalog-gallery-table-col-select: var(--ig-control-height-lg);
-  --ig-catalog-gallery-table-col-thumb: var(--ig-popup-3xs);
-  --ig-catalog-gallery-table-col-name: var(--ig-popup-sm);
-  --ig-catalog-gallery-table-col-dataset: var(--ig-popup-xs-narrow);
-  --ig-catalog-gallery-table-col-sequence: var(--ig-popup-2xs);
-  --ig-catalog-gallery-table-col-pattern: var(--ig-popup-3xs-wide);
-  --ig-catalog-gallery-table-col-sync: var(--ig-popup-2xs-narrow-tight);
-  --ig-catalog-gallery-table-col-created: var(--ig-popup-2xs-tight);
-  --ig-catalog-gallery-table-col-labeled: var(--ig-popup-3xs);
+  --ig-catalog-gallery-table-col-thumb: var(--ig-layout-size-table-col-thumb);
+  --ig-catalog-gallery-table-col-name: var(--ig-layout-size-table-col-name);
+  --ig-catalog-gallery-table-col-dataset: var(--ig-layout-size-table-col-dataset);
+  --ig-catalog-gallery-table-col-sequence: var(--ig-layout-size-table-col-sequence);
+  --ig-catalog-gallery-table-col-pattern: var(--ig-layout-size-table-col-pattern);
+  --ig-catalog-gallery-table-col-sync: var(--ig-layout-size-table-col-sync);
+  --ig-catalog-gallery-table-col-created: var(--ig-layout-size-table-col-created);
+  --ig-catalog-gallery-table-col-labeled: var(--ig-layout-size-table-col-labeled);
   --ig-catalog-gallery-table-col-menu: var(--ig-control-height-lg);
   --ig-catalog-gallery-table-thumb-size: var(--ig-control-height-3xl-plus);
 
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
 
   table {
     min-width: var(--ig-catalog-gallery-table-min-width);

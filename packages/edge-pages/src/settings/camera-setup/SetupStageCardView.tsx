@@ -15,7 +15,7 @@ function CheckList({ checks }: { checks: SetupCheck[] }): JSX.Element {
     <Stack gap="var(--ig-space-2)" role="list">
       {checks.map((check) => (
         <Inline key={check.id} gap="var(--ig-space-2)" align="center" role="listitem">
-          <StatusIcon status={check.status} size={13} />
+          <StatusIcon status={check.status} size={iconSizeNumbers.xsPlus} />
           <Text tone="secondary" size="var(--ig-font-size-2xs)">{check.summary}</Text>
         </Inline>
       ))}

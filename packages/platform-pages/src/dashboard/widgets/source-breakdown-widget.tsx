@@ -1,34 +1,27 @@
 import { chartHeights } from '@ingradient/ui'
 import { chartColors } from '@ingradient/ui'
 import styled from 'styled-components'
+import { DashboardCard as Card } from '../dashboard-card'
 import { Box, Inline, Text } from '@ingradient/ui/primitives'
 import { BarChartCard } from '@ingradient/ui/patterns'
-import { SectionPanel, Table, type TableColumn } from '@ingradient/ui/components'
-
-const Card = styled(SectionPanel)`
-  background: var(--ig-color-surface-raised);
-  border-color: var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-space-7) var(--ig-space-9);
-  gap: var(--ig-space-5);
-`
+import { Table, type TableColumn } from '@ingradient/ui/components'
 
 const Block = styled.div`
-  margin-bottom: var(--ig-space-7);
+  margin-bottom: var(--ig-spacing-16);
   &:last-child { margin-bottom: 0; }
 `
 
-const HEAD_STYLE = { marginBottom: 'var(--ig-space-4)' }
+const HEAD_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
 const CHIP_STYLE = {
   display: 'inline-block' as const,
-  padding: 'var(--ig-space-2px) var(--ig-space-3)',
+  padding: 'var(--ig-spacing-2) var(--ig-spacing-8)',
   background: 'var(--ig-color-surface-raised)',
   borderRadius: 'var(--ig-radius-2xs)',
 }
 const EMPTY_STYLE = { margin: 0 }
-const EMPTY_OFFSET_STYLE = { margin: 0, marginTop: 'var(--ig-space-5)' }
-const TABLE_WRAP_STYLE = { marginTop: 'var(--ig-space-3)' }
-const CHART_STYLE = { marginTop: 'var(--ig-space-5)' }
+const EMPTY_OFFSET_STYLE = { margin: 0, marginTop: 'var(--ig-spacing-12)' }
+const TABLE_WRAP_STYLE = { marginTop: 'var(--ig-spacing-8)' }
+const CHART_STYLE = { marginTop: 'var(--ig-spacing-12)' }
 
 const SOURCE_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
 
@@ -66,11 +59,11 @@ export function SourceBreakdownWidget({
 }: SourceBreakdownWidgetProps) {
   return (
     <Card className={className}>
-      <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
-        <Text size="var(--ig-font-size-sm)" weight="semibold" tone="secondary">{title}</Text>
+      <Inline justify="space-between" gap="var(--ig-spacing-12)" style={HEAD_STYLE}>
+        <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
       </Inline>
       {bySource.length === 0 ? (
-        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         bySource.map((source) => {
           const sourceLabel = source.source === 'camera' && source.camera_ip
@@ -78,9 +71,9 @@ export function SourceBreakdownWidget({
             : source.source
           return (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Text size="var(--ig-font-size-xs)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
+            <Text size="var(--ig-text-caption)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
             {source.defect_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
+              <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
               <Box style={TABLE_WRAP_STYLE}>
                 <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${sourceLabel} defect counts`} />

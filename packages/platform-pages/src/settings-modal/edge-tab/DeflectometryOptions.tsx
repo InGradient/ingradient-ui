@@ -4,7 +4,7 @@ import type { DeflectometryConfig, DeflectometryPatternLabel } from './edge-type
 import {
   CheckItem,
   CheckList,
-  FieldRow,
+  ControlRow,
   Hint,
   Label,
   NumberInput,
@@ -55,7 +55,7 @@ export function DeflectometryOptions({
   return (
     <Section>
       <SectionTitle>Deflectometry</SectionTitle>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-phase-count">Phase shifts per direction</Label>
         <NumberInput
           id="defl-phase-count"
@@ -72,11 +72,11 @@ export function DeflectometryOptions({
         <Hint>
           {PHASE_SHIFT_MIN}–{PHASE_SHIFT_MAX} (recommended: 4)
         </Hint>
-      </FieldRow>
+      </ControlRow>
       <Hint>
         Number of phase-shifted fringe patterns captured per direction. More shifts improve phase decoding accuracy.
       </Hint>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-directions">Capture directions</Label>
         <SelectField
           id="defl-directions"
@@ -94,7 +94,7 @@ export function DeflectometryOptions({
           <option value="x_only">X only (horizontal fringe)</option>
           <option value="y_only">Y only (vertical fringe)</option>
         </SelectField>
-      </FieldRow>
+      </ControlRow>
       <Hint>
         Fringe orientation to project. X + Y enables full 2D surface reconstruction; single-axis is faster but limited.
       </Hint>
@@ -116,7 +116,7 @@ export function DeflectometryOptions({
         </CheckItem>
         <Hint>Dark frame to subtract sensor noise and bias from pattern captures.</Hint>
       </CheckList>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-fringe-period">Fringe period (px)</Label>
         <NumberInput
           id="defl-fringe-period"
@@ -129,12 +129,12 @@ export function DeflectometryOptions({
             }))
           }
         />
-      </FieldRow>
+      </ControlRow>
       <Hint>
         Pixel width of one fringe cycle on the projected pattern. Smaller values yield higher spatial resolution but
         less robust unwrapping.
       </Hint>
-      <FieldRow>
+      <ControlRow>
         <Label htmlFor="defl-exposure">Exposure per pattern</Label>
         <SelectField
           id="defl-exposure"
@@ -151,7 +151,7 @@ export function DeflectometryOptions({
           <option value="same">Same (single exposure)</option>
           <option value="auto_hdr">Auto HDR (adjust per pattern)</option>
         </SelectField>
-      </FieldRow>
+      </ControlRow>
       <Hint>
         Same uses one fixed exposure for every pattern. Auto HDR adjusts per pattern to handle bright and dark regions
         together.

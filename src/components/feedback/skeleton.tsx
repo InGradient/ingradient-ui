@@ -22,6 +22,6 @@ const shimmer = css`
 export const Skeleton = styled.div.attrs({ 'aria-hidden': true })<{ $height?: string }>`
   ${shimmer}
   width: 100%;
-  height: ${(p) => p.$height ?? 'var(--ig-icon-md)'};
+  height: ${(p) => p.$height ?? 'var(--ig-size-skeleton-line)'};
   border-radius: var(--ig-radius-sm);
 `

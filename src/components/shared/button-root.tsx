@@ -30,11 +30,11 @@ export const ButtonRoot = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ig-space-3);
+  gap: ${(p) => (p.$size === 'xs' || p.$size === 'sm' ? 'var(--ig-gap-inline)' : 'var(--ig-gap-related)')};
   min-width: 0;
   white-space: nowrap;
   height: ${(p) => controlHeight(p.$size)};
-  ${(p) => p.$iconOnly ? `width: ${controlHeight(p.$size)}; padding: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
+  ${(p) => p.$iconOnly ? `width: ${controlHeight(p.$size)}; padding: 0; flex-shrink: 0;` : `padding: 0 ${buttonPadding[p.$size].split(' ')[1]};`}
   ${(p) => FONT_SIZE[p.$size]}
   font-weight: var(--ig-font-weight-semibold);
   line-height: var(--ig-line-height-none);

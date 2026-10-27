@@ -12,8 +12,8 @@ const ToggleLabel = styled.label`
 `
 
 const SwitchTrack = styled.span<{ $checked: boolean }>`
-  width: var(--ig-control-height-mid-plus);
-  height: var(--ig-icon-3xl);
+  width: var(--ig-size-switch-track-width);
+  height: var(--ig-size-switch-track-height);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-bg)' : 'var(--ig-color-toggle-off-bg)')};
   border: var(--ig-border-1px) solid ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-border)' : 'var(--ig-color-toggle-off-border)')};
@@ -28,10 +28,10 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   &::after {
     content: '';
     position: absolute;
-    top: var(--ig-space-2px);
-    left: ${(p) => (p.$checked ? 'var(--ig-space-8)' : 'var(--ig-space-2px)')};
-    width: var(--ig-icon-lg);
-    height: var(--ig-icon-lg);
+    top: calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2);
+    left: ${(p) => (p.$checked ? 'calc(100% - var(--ig-size-switch-thumb) - calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2))' : 'calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2)')};
+    width: var(--ig-size-switch-thumb);
+    height: var(--ig-size-switch-thumb);
     border-radius: var(--ig-radius-pill);
     background: var(--ig-color-on-accent);
     transition: left var(--ig-motion-fast);
@@ -50,10 +50,10 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--ig-icon-lg);
-  height: var(--ig-icon-lg);
+  width: var(--ig-size-checkbox);
+  height: var(--ig-size-checkbox);
   border-radius: var(--ig-radius-2xs);
-  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-2px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   flex-shrink: 0;
@@ -79,10 +79,10 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--ig-icon-lg);
-  height: var(--ig-icon-lg);
+  width: var(--ig-size-radio);
+  height: var(--ig-size-radio);
   border-radius: var(--ig-radius-pill);
-  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-2px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: transparent;
   transition: border-color var(--ig-motion-fast);
   flex-shrink: 0;
@@ -95,8 +95,8 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
 
   &::after {
     content: '';
-    width: var(--ig-space-3);
-    height: var(--ig-space-3);
+    width: var(--ig-size-radio-dot);
+    height: var(--ig-size-radio-dot);
     border-radius: var(--ig-radius-pill);
     background: var(--ig-color-accent);
     opacity: ${(p) => (p.$checked ? 1 : 0)};

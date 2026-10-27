@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ColorSwatch, MenuIconButton as MenuButton, KebabIcon, SelectableListItem } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui'
 
-const ITEM_STYLE = { minHeight: 'calc((var(--ig-space-3) * 2) + var(--ig-space-12))' }
+const ITEM_STYLE = { minHeight: 'calc((var(--ig-spacing-8) * 2) + var(--ig-spacing-32))' }
 const MENU_OPEN_STYLE = {
   ...ITEM_STYLE,
   background: 'var(--ig-color-blue-tint-12)',
@@ -20,7 +20,7 @@ const Wrap = styled.div`
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   min-width: 0;
 `
 
@@ -33,7 +33,7 @@ const Name = styled.span`
 
 const Count = styled.span`
   flex-shrink: 0;
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-soft);
 `
 
@@ -44,9 +44,9 @@ const MenuSlot = styled.span`
 
 const RowMenuButton = styled(MenuButton)`
   position: absolute;
-  right: var(--ig-space-7);
+  right: var(--ig-spacing-16);
   top: 50%;
-  z-index: 1;
+  z-index: var(--ig-z-base);
   transform: translateY(-50%);
 `
 

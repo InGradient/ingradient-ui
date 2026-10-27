@@ -10,6 +10,7 @@ export default defineConfig({
     brand: 'src/brand/index.tsx',
     hooks: 'src/hooks/index.ts',
     utils: 'src/utils/index.ts',
+    fonts: 'src/fonts.ts',
   },
   format: ['esm'],
   dts: true,

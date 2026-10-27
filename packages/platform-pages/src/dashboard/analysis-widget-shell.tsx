@@ -12,8 +12,8 @@ const Shell = styled.div<{ $hasActions: boolean }>`
         --ig-analysis-widget-action-space: calc(
           var(--ig-control-height-sm) +
           var(--ig-control-height-sm) +
-          var(--ig-space-2) +
-          var(--ig-space-8)
+          var(--ig-spacing-8) +
+          var(--ig-spacing-16)
         );
 
         [data-ig-chart-head] {
@@ -25,12 +25,12 @@ const Shell = styled.div<{ $hasActions: boolean }>`
 
 const Actions = styled.div`
   position: absolute;
-  top: var(--ig-space-4);
-  right: var(--ig-space-4);
+  top: var(--ig-spacing-8);
+  right: var(--ig-spacing-8);
   z-index: var(--ig-z-capture-top);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 const ActionButton = styled(IconButton).attrs({ variant: 'secondary' as const, size: 'sm' as const })`

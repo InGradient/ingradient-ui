@@ -65,6 +65,9 @@ export function CatalogRightSidebar({
   return (
     <SidePanelLayout
       ariaLabel="Catalog details"
+      // h2: the dataset sidebar (which holds the other h2) can collapse and become inert,
+      // so these sections must not depend on it for a valid heading order.
+      headingLevel={2}
       sections={[
         { title: 'Class', body: classBody },
         { title: 'Members', body: memberBody },

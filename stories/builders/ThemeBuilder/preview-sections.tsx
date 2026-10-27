@@ -43,9 +43,9 @@ const shadowBoxStyle: React.CSSProperties = {
 export function PreviewSections() {
   return (
     <>
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Buttons</h2>
-        <Inline gap={3}>
+        <Inline gap="var(--ig-space-3px)">
           <Button variant="accent">Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="solid">Solid</Button>
@@ -53,18 +53,18 @@ export function PreviewSections() {
         </Inline>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Form</h2>
-        <Grid gap={3} columns="repeat(3, minmax(0, 1fr))">
+        <Grid gap="var(--ig-space-3px)" columns="repeat(3, minmax(0, 1fr))">
           <TextField placeholder="Small" size="sm" />
           <TextField placeholder="Medium" size="md" />
           <TextField placeholder="Large" size="lg" />
         </Grid>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Cards & Status</h2>
-        <Grid gap={3} columns="repeat(3, minmax(0, 1fr))">
+        <Grid gap="var(--ig-space-3px)" columns="repeat(3, minmax(0, 1fr))">
           {[
             { name: 'Project A', tone: 'accent' as const, status: 'completed' as const },
             { name: 'Project B', tone: 'success' as const, status: 'running' as const },
@@ -73,7 +73,7 @@ export function PreviewSections() {
             <Card key={p.name}>
               <div style={cardBody}>
                 <span style={{ fontWeight: 600 }}>{p.name}</span>
-                <Inline gap={2}>
+                <Inline gap="var(--ig-space-2px)">
                   <Badge $tone={p.tone}>{p.tone}</Badge>
                   <StatusPill tone={p.status}>{p.status}</StatusPill>
                 </Inline>
@@ -83,18 +83,18 @@ export function PreviewSections() {
         </Grid>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Alerts</h2>
         <Alert $tone="info">Info alert — preview text.</Alert>
         <Alert $tone="warning">Warning alert — preview text.</Alert>
         <Alert $tone="danger">Danger alert — preview text.</Alert>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Spacing</h2>
-        <Stack gap={2}>
+        <Stack gap="var(--ig-space-2px)">
           {SPACING_KEYS.map((i) => (
-            <Inline key={i} gap={3} align="center">
+            <Inline key={i} gap="var(--ig-space-3px)" align="center">
               <span style={{ width: 80, fontFamily: 'var(--ig-font-mono)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>space {i}</span>
               <div style={{ ...swatchStyle, width: `var(--ig-space-${i})` }} />
             </Inline>
@@ -102,18 +102,18 @@ export function PreviewSections() {
         </Stack>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Radius</h2>
-        <Inline gap={3} style={{ flexWrap: 'wrap' }}>
+        <Inline gap="var(--ig-space-3px)" style={{ flexWrap: 'wrap' }}>
           {RADIUS_KEYS.map((k) => (
             <div key={k} style={{ ...radiusBoxStyle, borderRadius: `var(--ig-radius-${k})` }}>{k}</div>
           ))}
         </Inline>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Typography</h2>
-        <Stack gap={2}>
+        <Stack gap="var(--ig-space-2px)">
           {FONT_SIZE_KEYS.map((k) => (
             <span key={k} style={{ fontSize: `var(--ig-font-size-${k})`, color: 'var(--ig-color-text-primary)' }}>
               Font {k} — The quick brown fox jumps over the lazy dog
@@ -122,9 +122,9 @@ export function PreviewSections() {
         </Stack>
       </Stack>
 
-      <Stack gap={4}>
+      <Stack gap="var(--ig-space-1)">
         <h2 style={sectionTitle}>Preview — Shadow</h2>
-        <Inline gap={4} style={{ padding: 'var(--ig-space-5)', flexWrap: 'wrap' }}>
+        <Inline gap="var(--ig-space-1)" style={{ padding: 'var(--ig-space-5)', flexWrap: 'wrap' }}>
           {SHADOW_KEYS.map((k) => (
             <div key={k} style={{ ...shadowBoxStyle, boxShadow: `var(--ig-shadow-${k})` }}>{k}</div>
           ))}

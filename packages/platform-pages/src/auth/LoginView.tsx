@@ -1,10 +1,12 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
 import { Alert, Button, Checkbox, PasswordField, TextField } from '@ingradient/ui/components'
-import { AuthLink, CheckboxRow, Form } from './AuthView.styles'
+import { AuthLink, CheckboxRow, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { LoginViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { FieldGroup, FieldLabel } from '@ingradient/ui/patterns'
 
-export function LoginView({
+function LoginViewContent({
   email,
   password,
   keepSignedIn,
@@ -21,6 +23,8 @@ export function LoginView({
   onNavigateSignup,
 }: LoginViewProps) {
   const warningId = useId()
+  const emailId = useId()
+  const passwordId = useId()
   const errorId = useId()
   const describedBy = [warning ? warningId : null, error ? errorId : null]
     .filter(Boolean)
@@ -45,27 +49,34 @@ export function LoginView({
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {warning ? <Alert id={warningId} $tone="warning">{warning}</Alert> : null}
         {error ? <Alert id={errorId} $tone="danger">{error}</Alert> : null}
-        <TextField
-          type="email"
-          aria-label="Email"
-          autoComplete="username"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => onEmailChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={credentialsInvalid || undefined}
-          aria-describedby={describedBy}
-        />
-        <PasswordField
-          aria-label="Password"
-          autoComplete="current-password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => onPasswordChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={credentialsInvalid || undefined}
-          aria-describedby={describedBy}
-        />
+        <FieldGroup>
+          <FieldLabel htmlFor={emailId}>Email</FieldLabel>
+          <TextField
+            id={emailId}
+            size="lg"
+            type="email"
+            autoComplete="username"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(event) => onEmailChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={credentialsInvalid || undefined}
+            aria-describedby={describedBy}
+          />
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={passwordId}>Password</FieldLabel>
+          <PasswordField
+            id={passwordId}
+            size="lg"
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => onPasswordChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={credentialsInvalid || undefined}
+            aria-describedby={describedBy}
+          />
+        </FieldGroup>
         <CheckboxRow>
           <Checkbox
             checked={keepSignedIn}
@@ -80,10 +91,24 @@ export function LoginView({
             label="Remember password"
           />
         </CheckboxRow>
-        <Button type="submit" variant="accent" disabled={submitting}>
-          {submitting ? 'Signing in…' : 'Sign in'}
-        </Button>
+        <SubmitRow>
+          <Button type="submit" variant="solid" size="lg" disabled={submitting}>
+            {submitting ? 'Signing in…' : 'Sign in'}
+          </Button>
+        </SubmitRow>
       </Form>
     </AuthPageShell>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function LoginView(props: LoginViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <LoginViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

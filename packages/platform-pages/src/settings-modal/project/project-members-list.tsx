@@ -42,7 +42,7 @@ export function ProjectMembersList({
 
   return (
     <>
-      <Stack as="ul" gap={0} style={LIST_STYLE}>
+      <Stack as="ul" gap="var(--ig-space-0)" style={LIST_STYLE}>
         {members.map((m) => {
           const isOnlyOwner = m.role === 'owner' && ownerCount <= 1
           return (
@@ -83,11 +83,11 @@ export function ProjectMembersList({
             </>
           }
         >
-          <Stack gap="var(--ig-space-5)">
-            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
+          <Stack gap="var(--ig-spacing-12)">
+            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
             </Text>
-            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
+            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
           </Stack>
         </DialogShell>
       )}

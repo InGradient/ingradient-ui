@@ -41,4 +41,37 @@ describe('ResizableColumnsLayout', () => {
       rule.includes('border-left:var(--ig-border-1px)solidvar(--ig-color-border-strong)'),
     )).toBe(true)
   })
+
+  it('makes a collapsed column inert so its zero-width controls cannot be focused', () => {
+    render(
+      <ResizableColumnsLayout
+        columns={[
+          { width: 200, collapsed: true },
+          { width: 'auto' },
+        ]}
+      >
+        <button type="button">Sidebar action</button>
+        <div>Body</div>
+      </ResizableColumnsLayout>,
+    )
+
+    expect(screen.getByText('Sidebar action').closest('[inert]')).not.toBeNull()
+    expect(screen.getByText('Body').closest('[inert]')).toBeNull()
+  })
+
+  it('keeps an expanded column interactive', () => {
+    render(
+      <ResizableColumnsLayout
+        columns={[
+          { width: 200, collapsed: false },
+          { width: 'auto' },
+        ]}
+      >
+        <button type="button">Sidebar action</button>
+        <div>Body</div>
+      </ResizableColumnsLayout>,
+    )
+
+    expect(screen.getByText('Sidebar action').closest('[inert]')).toBeNull()
+  })
 })

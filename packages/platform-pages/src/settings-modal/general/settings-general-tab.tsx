@@ -9,7 +9,7 @@ const SELECT_WRAP_STYLE = { minWidth: 'var(--ig-popup-2xs-plus)' }
 const Hint = styled.p`
   margin: 0;
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
 `
 
@@ -44,7 +44,7 @@ export function SettingsGeneralTab({
   hint = DEFAULT_HINT,
 }: SettingsGeneralTabProps) {
   return (
-    <Stack gap="var(--ig-space-4)">
+    <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title="Language">
         <SettingsRow
           asLabel={false}

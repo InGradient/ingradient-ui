@@ -13,8 +13,9 @@ import {
 } from './CreateProjectView.styles'
 import { DetailsSection, ImagesSection, TypeSection } from './sections'
 import type { CreateProjectViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function CreateProjectView({
+function CreateProjectViewContent({
   name,
   description,
   firstDatasetName,
@@ -70,13 +71,14 @@ export function CreateProjectView({
             <Actions>
               <Button
                 type="button"
+                size="lg"
                 variant="secondary"
                 disabled={submitting}
                 onClick={onCancel}
               >
                 Cancel
               </Button>
-              <Button type="submit" variant="solid" disabled={submitting}>
+              <Button type="submit" variant="solid" size="lg" disabled={submitting}>
                 {submitting ? 'Creating…' : 'Create Project'}
               </Button>
             </Actions>
@@ -84,5 +86,17 @@ export function CreateProjectView({
         </Card>
       </Content>
     </Page>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function CreateProjectView(props: CreateProjectViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <CreateProjectViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

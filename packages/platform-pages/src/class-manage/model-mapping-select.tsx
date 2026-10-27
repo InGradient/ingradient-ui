@@ -2,9 +2,9 @@ import { Stack, Text } from '@ingradient/ui/primitives'
 import { SelectField } from '@ingradient/ui/components'
 
 const SELECT_STYLE = {
-  maxWidth: 'var(--ig-popup-sm)',
-  padding: 'var(--ig-space-3) var(--ig-space-5)',
-  fontSize: 'var(--ig-font-size-sm)',
+  maxWidth: 'var(--ig-layout-size-field-max)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
+  fontSize: 'var(--ig-text-body-sm)',
   borderRadius: 'var(--ig-radius-2xs)',
 }
 
@@ -30,10 +30,10 @@ export function ModelMappingSelect({
   title = 'Map this class to a COCO class',
 }: ModelMappingSelectProps) {
   if (!enabled) {
-    return <Text size="var(--ig-font-size-xs)" tone="soft">{disabledHint}</Text>
+    return <Text size="var(--ig-text-caption)" tone="soft">{disabledHint}</Text>
   }
   return (
-    <Stack gap="var(--ig-space-3)">
+    <Stack gap="var(--ig-spacing-8)">
       <SelectField
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}
@@ -46,7 +46,7 @@ export function ModelMappingSelect({
           <option key={name} value={name}>{name}</option>
         ))}
       </SelectField>
-      <Text size="var(--ig-font-size-xs)" tone="soft">{enabledHint}</Text>
+      <Text size="var(--ig-text-caption)" tone="soft">{enabledHint}</Text>
     </Stack>
   )
 }

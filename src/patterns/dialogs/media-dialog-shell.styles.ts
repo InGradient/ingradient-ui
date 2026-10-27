@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { media } from '../../tokens/core/breakpoints'
+import { withSurfaceDepth } from '../../primitives'
 
 export const MediaDialogOverlay = styled.div<{ $positioning: 'fixed' | 'absolute' }>`
   position: ${(p) => p.$positioning};
@@ -22,7 +23,7 @@ export const MediaDialogBackdrop = styled.div`
   cursor: default;
 `
 
-export const MediaDialogContent = styled.div<{ $width?: string; $height?: string }>`
+const MediaDialogContentBase = styled.div<{ $width?: string; $height?: string }>`
   position: relative;
   z-index: var(--ig-z-base);
   display: flex;
@@ -47,6 +48,18 @@ export const MediaDialogContent = styled.div<{ $width?: string; $height?: string
     max-height: 100dvh;
     border-radius: 0;
     border: 0;
+  }
+`
+
+/**
+ * Floating dialog surface (depth 1). On narrow screens it becomes full-screen with square
+ * corners; that rule follows the depth rule so it still wins there.
+ */
+export const MediaDialogContent = styled(
+  withSurfaceDepth(MediaDialogContentBase, { floating: true, displayName: 'MediaDialogContent' }),
+)`
+  ${media.md} {
+    border-radius: 0;
   }
 `
 
@@ -75,7 +88,7 @@ export const MediaDialogTopRight = styled.div`
 `
 
 export const MediaDialogResizer = styled.div`
-  width: var(--ig-space-1);
+  width: var(--ig-size-resizer);
   flex-shrink: 0;
   cursor: col-resize;
   background: transparent;

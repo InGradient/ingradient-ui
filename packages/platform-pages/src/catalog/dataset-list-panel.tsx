@@ -3,7 +3,7 @@ import React from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button, Checkbox, EmptyText, IconButton } from '@ingradient/ui/components'
 import { Spinner } from '@ingradient/ui/components'
-import { ClosePanelIcon } from '@ingradient/ui/components'
+import { PanelLeftCloseIcon } from '@ingradient/ui/components'
 import { DatasetListItem } from './dataset-list-item'
 import type { DatasetTaskType } from './dataset-task-tag'
 
@@ -15,13 +15,13 @@ const PANEL_STYLE = {
 
 const HEADER_STYLE = {
   minHeight: 'var(--ig-layout-sidebar-header)',
-  padding: '0 var(--ig-space-7)',
+  padding: '0 var(--ig-spacing-16)',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
   flexShrink: 0,
 }
 
 const SELECT_ALL_ROW_STYLE = {
-  padding: 'var(--ig-space-4) var(--ig-space-6)',
+  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
   borderBottom: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
 }
 
@@ -29,14 +29,14 @@ const LIST_STYLE = {
   flex: 1,
   minHeight: 0,
   overflowY: 'auto' as const,
-  padding: 'var(--ig-space-2)',
-  gap: 'var(--ig-space-2px)',
+  padding: 'var(--ig-spacing-8)',
+  gap: 'var(--ig-spacing-2)',
   margin: 0,
   listStyle: 'none' as const,
 }
 
 const PLACEHOLDER_STYLE = {
-  padding: 'var(--ig-space-7)',
+  padding: 'var(--ig-spacing-16)',
 }
 
 const TITLE_STYLE = { overflow: 'hidden' as const, textOverflow: 'ellipsis' as const, whiteSpace: 'nowrap' as const }
@@ -77,14 +77,14 @@ export function DatasetListPanel({
     <Stack
       as="aside"
       aria-label={title}
-      gap={0}
+      gap="var(--ig-space-0)"
       data-ig-component="DatasetListPanel"
       data-ig-layer="patterns"
       style={PANEL_STYLE}
     >
-      <Inline justify="space-between" gap="var(--ig-space-4)" style={HEADER_STYLE}>
-        <Text as="h2" size="var(--ig-font-size-lg)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
-        <Inline gap="var(--ig-space-2)">
+      <Inline justify="space-between" gap="var(--ig-spacing-8)" style={HEADER_STYLE}>
+        <Text as="h2" size="var(--ig-text-title-sm)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
+        <Inline gap="var(--ig-spacing-8)">
           <Button
             variant="solid"
             size="sm"
@@ -103,13 +103,13 @@ export function DatasetListPanel({
               onClick={onCollapse}
               data-ig-component="DatasetListPanel.CollapseButton"
             >
-              <ClosePanelIcon size={iconSizeNumbers.md} />
+              <PanelLeftCloseIcon size={iconSizeNumbers.md} />
             </IconButton>
           ) : null}
         </Inline>
       </Inline>
       {!noProject && !loading && datasets.length > 0 ? (
-        <Inline justify="space-between" gap="var(--ig-space-5)" style={SELECT_ALL_ROW_STYLE}>
+        <Inline justify="space-between" gap="var(--ig-spacing-12)" style={SELECT_ALL_ROW_STYLE}>
           <Checkbox
             checked={allSelected}
             indeterminate={!allSelected && someSelected}
@@ -117,13 +117,13 @@ export function DatasetListPanel({
             label={allSelected ? 'Deselect all' : 'Select all'}
           />
           {selectedIds.size > 0 ? (
-            <Text as="span" tone="muted" size="var(--ig-font-size-xs)">
+            <Text as="span" tone="muted" size="var(--ig-text-caption)">
               {selectedIds.size} selected
             </Text>
           ) : null}
         </Inline>
       ) : null}
-      <Stack as={showItems ? 'ul' : undefined} gap={0} style={LIST_STYLE}>
+      <Stack as={showItems ? 'ul' : undefined} gap="var(--ig-space-0)" style={LIST_STYLE}>
         {noProject ? (
           <EmptyText style={PLACEHOLDER_STYLE}>No project selected</EmptyText>
         ) : loading ? (

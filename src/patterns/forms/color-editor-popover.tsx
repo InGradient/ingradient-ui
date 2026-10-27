@@ -74,7 +74,7 @@ const ValueInput = styled(TextField).attrs({ size: 'sm' as const, type: 'number'
 
 const Slider = styled.input<{ $track: string }>`
   width: 100%;
-  height: var(--ig-space-2);
+  height: var(--ig-size-slider-track);
   margin: 0;
   appearance: none;
   border-radius: var(--ig-radius-pill);
@@ -82,8 +82,8 @@ const Slider = styled.input<{ $track: string }>`
   cursor: pointer;
 
   &::-webkit-slider-thumb {
-    width: var(--ig-space-7);
-    height: var(--ig-space-7);
+    width: var(--ig-size-slider-thumb);
+    height: var(--ig-size-slider-thumb);
     appearance: none;
     border: var(--ig-border-2px) solid var(--ig-color-text-primary);
     border-radius: var(--ig-radius-pill);

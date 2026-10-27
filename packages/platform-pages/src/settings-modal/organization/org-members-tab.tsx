@@ -61,8 +61,8 @@ export function OrgMembersTab({
   ]
 
   return (
-    <Stack gap="var(--ig-space-4)">
-      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
+    <Stack gap="var(--ig-spacing-8)">
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
       {members.length === 0 ? (
         <Empty>{emptyText}</Empty>
       ) : (
@@ -96,8 +96,8 @@ export function OrgMembersTab({
             </>
           }
         >
-          <Stack gap="var(--ig-space-5)">
-            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
+          <Stack gap="var(--ig-spacing-12)">
+            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.user.displayName}</strong> ({pendingRemove.user.loginId}) from the organization?
             </Text>
           </Stack>

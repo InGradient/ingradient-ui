@@ -1,0 +1,10 @@
+7e87672|10:17|feat(platform-pages): Dashboard 본문을 띄운 카드에서 화면에 붙은 영역으로 바꾼다
+08d8e96|10:38|feat(platform-pages): Login·Signup·Create Project에 단일 폼 화면 간격과 보이는 라벨을 적용한다
+77615b7|11:12|style(platform-pages): 로그인·회원가입 라벨을 Create Project와 같게, 주 버튼을 solid로 바꾼다
+69dcf63|11:33|style(platform-pages): Create Project 섹션을 상자 대신 제목과 선으로 나눈다
+1e1fa48|12:34|feat(platform-pages): 앱 전체 사이드바로 Platform 작업 화면을 감싸는 PlatformAppShell을 추가한다
+49d2fec|13:34|fix: Class 펼치기 버튼을 칩 줄 앞에 두고 앱 사이드바 접기 버튼 이름을 구분한다
+c7885f8|14:10|style: Settings 모달 섹션을 상자 대신 제목과 선으로 나눈다
+8ca37dc|15:04|feat(tokens): 글자 역할 토큰을 만들고 Platform 페이지 글자 크기를 역할로 바꾼다
+b95abdc|16:11|refactor(platform-pages): 중복 컴포넌트를 공용으로 바꾸고 팝업 크기를 빌려 쓰던 레이아웃 폭을 옮긴다
+50c427d|16:57|refactor(platform-pages): Platform 페이지의 옛 간격 토큰을 같은 값의 4px 이름으로 바꾼다

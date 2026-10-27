@@ -3,7 +3,7 @@ import { PagePrimaryHeader } from '@ingradient/ui/patterns'
 import { DatasetListPanel } from './dataset-list-panel'
 import { ResizableColumnsLayout, type ResizableColumn } from '@ingradient/ui/components'
 import { Stack, Box } from '@ingradient/ui/primitives'
-import { popupSizeNumbers } from '@ingradient/ui/tokens'
+import { layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { CatalogBody } from './CatalogBody'
 import { CatalogRightSidebar } from './CatalogRightSidebar'
 import { CatalogToolbarRow } from './CatalogToolbarRow'
@@ -42,18 +42,18 @@ export function CatalogDesktopView({
 }: Props) {
   const columns: ResizableColumn[] = [
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       collapsed: datasets.sidebarCollapsed,
     },
     { width: 'auto' },
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       background: 'var(--ig-color-surface-panel)',
       dividerBefore: 'strong',
       hidden: !rightSidebar,
@@ -88,7 +88,7 @@ export function CatalogDesktopView({
             onOpenDatasetMenu={datasets.onOpenDatasetMenu}
             onCollapse={datasets.onCollapse}
           />
-          <Stack gap={0} style={CENTER_STYLE}>
+          <Stack gap="var(--ig-space-0)" style={CENTER_STYLE}>
             <Box style={SLOT_STYLE}>
               <CatalogToolbarRow
                 {...toolbar}

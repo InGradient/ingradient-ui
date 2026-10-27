@@ -1,10 +1,9 @@
 import type { CSSProperties } from 'react'
 import {
-  Alert, EmptyState, FilterChipRow, IconButton, MenuIcon,
+  Alert, EmptyState, FilterChipRow, IconButton, PanelLeftOpenIcon,
   ResizableColumnsLayout, type ResizableColumn,
 } from '@ingradient/ui/components'
-import { Inline } from '@ingradient/ui/primitives'
-import { iconSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
+import { iconSizeNumbers, layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import { ClassManageImageGrid } from './ClassManageImageGrid'
 import { SelectableGridPanel } from './selectable-grid-panel'
 import { ClassInfoSidebar } from './class-info-sidebar'
@@ -29,9 +28,8 @@ interface ClassManageBodyProps {
 
 const STORAGE_KEY = 'ig-class-manage-shell'
 
-const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-space-7)' }
-const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-3)' }
-const HEADER_INLINE_STYLE: CSSProperties = { width: '100%' }
+const ALERT_STYLE: CSSProperties = { margin: 'var(--ig-spacing-16)' }
+const MAPPING_WRAP_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)' }
 
 const PERMISSION_DENIED_TEXT = "You don't have permission to manage classes in this project."
 const NO_PROJECT_TITLE = 'No project selected'
@@ -75,18 +73,18 @@ export function ClassManageBody({
 
   const columns: ResizableColumn[] = [
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       hidden: !!list.sidebarCollapsed,
     },
     { width: 'auto' },
     {
-      width: popupSizeNumbers.md,
+      width: layoutSizeNumbers.sidePanel,
       resizable: true,
-      minWidth: popupSizeNumbers.xs,
-      maxWidth: popupSizeNumbers.xl,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
       background: 'var(--ig-color-surface-panel)',
       dividerBefore: 'strong',
       hidden: !info,
@@ -96,6 +94,11 @@ export function ClassManageBody({
   const showChips = !!images.selectedClassId || !!list.sidebarCollapsed
   const chipRow = showChips ? (
     <FilterChipRow
+      leading={list.sidebarCollapsed && list.onExpand ? (
+        <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}>
+          <PanelLeftOpenIcon size={iconSizeNumbers.md} />
+        </IconButton>
+      ) : undefined}
       label="Dataset"
       items={images.datasets.map((d) => ({ id: d.id, label: d.name, count: d.image_count }))}
       activeIds={images.activeDatasetIds}
@@ -103,16 +106,7 @@ export function ClassManageBody({
       onToggle={images.onToggleDataset}
     />
   ) : null
-  const headerSlot = showChips
-    ? list.sidebarCollapsed && list.onExpand
-      ? (
-        <Inline gap={3} align="center" style={HEADER_INLINE_STYLE}>
-          <IconButton variant="secondary" size="sm" aria-label="Expand class sidebar" onClick={list.onExpand}><MenuIcon size={iconSizeNumbers.lg} /></IconButton>
-          {chipRow}
-        </Inline>
-      )
-      : chipRow
-    : undefined
+  const headerSlot = chipRow
 
   return (
     <ContentArea>

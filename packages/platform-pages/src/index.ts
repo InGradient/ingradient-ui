@@ -1,3 +1,4 @@
+export * from './app-shell'
 export * from './auth'
 export * from './catalog'
 export * from './class-manage'

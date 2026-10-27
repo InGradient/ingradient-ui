@@ -59,6 +59,7 @@ export function DetailsSection(props: {
         <FieldGroup>
           <FieldLabel htmlFor="project-name">Project name</FieldLabel>
           <TextField
+            size="lg"
             id="project-name"
             type="text"
             value={props.name}
@@ -86,6 +87,7 @@ export function DetailsSection(props: {
             First dataset name <OptionalLabel>(optional)</OptionalLabel>
           </FieldLabel>
           <TextField
+            size="lg"
             id="first-dataset-name"
             type="text"
             value={props.firstDatasetName}
@@ -174,9 +176,9 @@ export function ImagesSection(props: {
           tabIndex={props.disabled ? -1 : 0}
           style={{
             width: '100%',
-            padding: 'var(--ig-space-7)',
+            padding: 'var(--ig-spacing-16)',
             textAlign: 'center',
-            fontSize: 'var(--ig-font-size-sm)',
+            fontSize: 'var(--ig-text-body-sm)',
             cursor: props.disabled ? 'not-allowed' : 'pointer',
           }}
           onDrop={handleDrop}
