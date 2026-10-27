@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { surfaceRaised } from '../../primitives'
+import { surfaceRaised, withSurfaceDepth } from '../../primitives'
 
 type SettingsSectionTone = 'default' | 'danger'
 
-const Section = styled.section<{ $tone: SettingsSectionTone }>`
+const SectionBase = styled.section<{ $tone: SettingsSectionTone }>`
   ${surfaceRaised}
   display: flex;
   flex-direction: column;
@@ -15,6 +15,8 @@ const Section = styled.section<{ $tone: SettingsSectionTone }>`
     border-color: var(--ig-color-alert-danger-border);
   `}
 `
+
+const Section = withSurfaceDepth(SectionBase, { displayName: 'SettingsSection' })
 
 const Title = styled.h3<{ $tone: SettingsSectionTone }>`
   margin: 0;

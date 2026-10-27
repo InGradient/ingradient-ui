@@ -1,27 +1,33 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { surfaceRaised } from '../../primitives'
+import { surfaceRaised, withSurfaceDepth } from '../../primitives'
 
-export const PopoverCard = styled.div`
+const PopoverCardBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-7);
 `
 
-export const Menu = styled.div`
+export const PopoverCard = withSurfaceDepth(PopoverCardBase, { floating: true, displayName: 'PopoverCard' })
+
+const MenuBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-3);
   min-width: var(--ig-popup-xs);
 `
 
-const MenuPopoverRoot = styled.div`
+export const Menu = withSurfaceDepth(MenuBase, { floating: true, displayName: 'Menu' })
+
+const MenuPopoverRootBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   padding: var(--ig-space-4);
   min-width: var(--ig-popup-xs);
   box-shadow: var(--ig-shadow-popover);
 `
+
+const MenuPopoverRoot = withSurfaceDepth(MenuPopoverRootBase, { floating: true, displayName: 'MenuPopoverRoot' })
 
 export interface MenuPopoverProps extends React.HTMLAttributes<HTMLDivElement> {
   anchor?: { top: number; left: number }

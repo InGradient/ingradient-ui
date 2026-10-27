@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo } from 'react'
+import React, { createContext, forwardRef, useContext, useMemo } from 'react'
+import styled from 'styled-components'
 
 /**
  * Surface depth: a rounded surface placed inside another rounded surface must be less
@@ -94,4 +95,44 @@ export function resolveSurfaceRadius(state: SurfaceDepthState, legacyRadius: str
 /** `data-ig-depth` attribute for automation and hierarchy checks; omitted when disabled. */
 export function surfaceDepthAttributes(state: SurfaceDepthState): { 'data-ig-depth'?: number } {
   return state.enabled ? { 'data-ig-depth': state.depth } : {}
+}
+
+export interface WithSurfaceDepthOptions {
+  /** Modal, dialog, drawer, popover, or menu: restarts at depth 1 wherever it opens. */
+  floating?: boolean
+  displayName: string
+}
+
+/**
+ * Makes an existing styled surface depth-aware without changing it when no provider is
+ * present: the added rule is empty unless depth styling is on, so the original CSS stays
+ * authoritative. With a provider, one `border-radius` declaration follows the original
+ * rules. Styles added by callers through `styled(Surface)` come later and still win, so an
+ * explicit override keeps working until the page that owns it is migrated.
+ *
+ * The returned component is typed as the original so existing `styled()` extensions and
+ * props keep type-checking. It is a function component at runtime: do not use it as a
+ * styled-components selector (`${Surface}`); none of the wrapped surfaces are used that way.
+ */
+export function withSurfaceDepth<C extends React.ElementType>(Root: C, options: WithSurfaceDepthOptions): C {
+  const Depthed = styled(Root as React.ElementType)<{ $surfaceRadius?: string }>`
+    ${(p) => (p.$surfaceRadius ? `border-radius: ${p.$surfaceRadius};` : '')}
+  `
+  const Wrapped = forwardRef<unknown, { children?: React.ReactNode } & Record<string, unknown>>(
+    function SurfaceWithDepth({ children, ...rest }, ref) {
+      const state = useSurfaceDepth({ floating: options.floating })
+      return (
+        <Depthed
+          ref={ref}
+          {...rest}
+          {...surfaceDepthAttributes(state)}
+          $surfaceRadius={state.enabled ? resolveSurfaceRadius(state, '') : undefined}
+        >
+          <SurfaceDepthScope state={state}>{children as React.ReactNode}</SurfaceDepthScope>
+        </Depthed>
+      )
+    },
+  )
+  Wrapped.displayName = options.displayName
+  return Wrapped as unknown as C
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { surfaceRaised } from '../../primitives'
+import { surfaceRaised, withSurfaceDepth } from '../../primitives'
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
   padding: var(--ig-space-11);
 `
 
-export const ModalCard = styled.div`
+const ModalCardBase = styled.div`
   ${surfaceRaised}
   width: min(var(--ig-popup-3xl), 100%);
   max-height: calc(100vh - var(--ig-control-height-xl));
@@ -22,6 +22,8 @@ export const ModalCard = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+export const ModalCard = withSurfaceDepth(ModalCardBase, { floating: true, displayName: 'ModalCard' })
 
 export const CompactModalCard = styled(ModalCard)`
   width: auto;

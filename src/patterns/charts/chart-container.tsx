@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { chartHeights } from '../../tokens/core'
 import { Skeleton } from '../../components/feedback'
-import { Inline, Stack, surfaceCard, Text } from '../../primitives'
+import { Inline, Stack, surfaceCard, Text, withSurfaceDepth } from '../../primitives'
 
-const ChartCard = styled.div`
+const ChartCardBase = styled.div`
   ${surfaceCard}
   border-radius: var(--ig-radius-xl);
   padding: var(--ig-space-8);
@@ -13,6 +13,8 @@ const ChartCard = styled.div`
   gap: var(--ig-space-6);
   min-width: 0;
 `
+
+const ChartCard = withSurfaceDepth(ChartCardBase, { displayName: 'ChartCard' })
 
 const ChartFrame = styled.div<{ $height: number }>`
   width: 100%;
