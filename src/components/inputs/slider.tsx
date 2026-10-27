@@ -33,7 +33,7 @@ const Track = styled.input`
 
 /** 폭 고정 — 자릿수가 바뀔 때 트랙이 흔들리지 않게. */
 const ValueLabel = styled.span`
-  min-width: var(--ig-icon-4xl, 38px);
+  min-width: var(--ig-size-value-label);
   text-align: right;
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-2xs);

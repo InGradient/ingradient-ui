@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { HelpCircleIcon } from '../../components/icons'
 import { Tooltip } from '../../components/overlays/tooltip'
 import { FieldLabel } from '../page/page-shell'
+import { iconSizeNumbers } from '../../tokens/core'
 
 /**
  * 필드 이름 옆에 `?` 도움말을 붙인다.
@@ -38,7 +39,7 @@ export function FieldLabelWithHelp({ label, help, htmlFor, className }: FieldLab
       {help != null && (
         <Tooltip content={help}>
           <HelpTrigger>
-            <HelpCircleIcon size={12} />
+            <HelpCircleIcon size={iconSizeNumbers.xs} />
           </HelpTrigger>
         </Tooltip>
       )}

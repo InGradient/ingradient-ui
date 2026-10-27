@@ -4,8 +4,8 @@ const Badge = styled.span<{ $size: 'sm' | 'md' }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-xl)' : 'var(--ig-icon-2xl)')};
-  height: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-xl)' : 'var(--ig-icon-2xl)')};
+  min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-badge-md)' : 'var(--ig-size-badge-lg)')};
+  height: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-badge-md)' : 'var(--ig-size-badge-lg)')};
   padding: 0 var(--ig-space-2);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-image-group-circle-bg);

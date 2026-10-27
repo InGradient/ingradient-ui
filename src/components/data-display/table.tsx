@@ -3,10 +3,11 @@ import {
   DragTd, DragTh, HandleBtn, PlainTr, StyledTable, StyledTr, TableWrap, Td, Tfoot, Th, VisuallyHidden,
 } from './table.styles'
 import { useTableDrag } from './use-table-drag'
+import { iconSizeNumbers } from '../../tokens/core'
 
 function GripIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+    <svg width={iconSizeNumbers.md} height={iconSizeNumbers.md} viewBox="0 0 16 16" fill="currentColor">
       <circle cx="5" cy="3" r="1.3" />
       <circle cx="11" cy="3" r="1.3" />
       <circle cx="5" cy="8" r="1.3" />

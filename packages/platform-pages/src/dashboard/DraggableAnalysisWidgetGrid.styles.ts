@@ -35,7 +35,7 @@ export const RowDropIndicator = styled.div<{ $active: boolean }>`
   left: 0;
   right: 0;
   bottom: calc(var(--ig-space-4) * -1);
-  height: var(--ig-space-1);
+  height: var(--ig-size-drop-indicator);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-blue-tint-92);
   opacity: ${(p) => (p.$active ? 1 : 0)};
@@ -81,7 +81,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
           top: var(--ig-space-8);
           bottom: var(--ig-space-8);
           left: calc(var(--ig-space-5) * -1);
-          width: var(--ig-space-1);
+          width: var(--ig-size-drop-indicator);
         }
       `
       : ''}
@@ -92,7 +92,7 @@ export const WidgetShell = styled.div<{ $dragging: boolean; $dropTarget: false |
           top: var(--ig-space-8);
           bottom: var(--ig-space-8);
           right: calc(var(--ig-space-5) * -1);
-          width: var(--ig-space-1);
+          width: var(--ig-size-drop-indicator);
         }
       `
       : ''}

@@ -75,7 +75,7 @@ export const MediaDialogTopRight = styled.div`
 `
 
 export const MediaDialogResizer = styled.div`
-  width: var(--ig-space-1);
+  width: var(--ig-size-resizer);
   flex-shrink: 0;
   cursor: col-resize;
   background: transparent;

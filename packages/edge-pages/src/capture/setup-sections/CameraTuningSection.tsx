@@ -7,6 +7,7 @@ import { Inline, Text } from '@ingradient/ui/primitives'
 import { PatternButton } from '../SetupPanelView.styles'
 import { FOCUS_PEAKING_PATTERN } from '../types'
 import type { CameraParams, PreviewPatternLabel, SetupPanelLabels } from '../types'
+import { iconSizeNumbers } from '@ingradient/ui/tokens'
 
 export interface CameraTuningSectionProps {
   isConnected: boolean
@@ -52,7 +53,7 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
         {/* 버튼이 곧 라벨이라 이름 없이 도움말만 붙인다. */}
         <Tooltip content={labels.focusPeakingDesc}>
           <span style={{ display: 'inline-flex', cursor: 'help', opacity: 0.5 }}>
-            <HelpCircleIcon size={12} />
+            <HelpCircleIcon size={iconSizeNumbers.xs} />
           </span>
         </Tooltip>
       </Inline>

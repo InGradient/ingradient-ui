@@ -20,7 +20,7 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
   align-items: center;
   justify-content: center;
   gap: var(--ig-space-1);
-  height: var(--ig-icon-xl);
+  height: var(--ig-size-chip);
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   font-size: var(--ig-font-size-3xs);
@@ -38,8 +38,8 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
   ${({ $collapseUntilHover }) =>
     $collapseUntilHover
       ? css`
-          max-width: var(--ig-icon-xl);
-          min-width: var(--ig-icon-xl);
+          max-width: var(--ig-size-chip);
+          min-width: var(--ig-size-chip);
           padding: 0;
 
           &:hover,
@@ -55,8 +55,8 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
 `
 
 const Dot = styled.span`
-  width: var(--ig-space-2);
-  height: var(--ig-space-2);
+  width: var(--ig-size-dot-sm);
+  height: var(--ig-size-dot-sm);
   border-radius: 50%;
   background: currentColor;
 `

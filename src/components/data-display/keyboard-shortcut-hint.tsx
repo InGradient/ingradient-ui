@@ -10,8 +10,8 @@ const Key = styled.kbd<{ $size: 'sm' | 'md' }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-md)' : 'var(--ig-icon-xl)')};
-  height: ${(p) => (p.$size === 'sm' ? 'var(--ig-icon-md)' : 'var(--ig-icon-xl)')};
+  min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-kbd-sm)' : 'var(--ig-size-kbd)')};
+  height: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-kbd-sm)' : 'var(--ig-size-kbd)')};
   padding: 0 ${(p) => (p.$size === 'sm' ? 'var(--ig-space-3px)' : 'var(--ig-space-1)')};
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-interactive);

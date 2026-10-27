@@ -8,8 +8,8 @@ import { KebabIcon } from '../icons/catalog-icons'
 
 const OptionButton = styled.button`
   pointer-events: auto;
-  width: var(--ig-icon-lg);
-  height: var(--ig-icon-lg);
+  width: var(--ig-size-overlay-action);
+  height: var(--ig-size-overlay-action);
   padding: 0;
   border: none;
   border-radius: var(--ig-radius-2xs);
