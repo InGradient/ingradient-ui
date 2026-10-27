@@ -1,6 +1,6 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
-import { Alert, Button, Checkbox, PasswordField, TextField } from '@ingradient/ui/components'
-import { AuthLink, CheckboxRow, Form } from './AuthView.styles'
+import { Alert, Button, Checkbox, FormField, PasswordField, TextField } from '@ingradient/ui/components'
+import { AuthLink, CheckboxRow, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { LoginViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
@@ -22,6 +22,8 @@ function LoginViewContent({
   onNavigateSignup,
 }: LoginViewProps) {
   const warningId = useId()
+  const emailId = useId()
+  const passwordId = useId()
   const errorId = useId()
   const describedBy = [warning ? warningId : null, error ? errorId : null]
     .filter(Boolean)
@@ -46,27 +48,32 @@ function LoginViewContent({
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {warning ? <Alert id={warningId} $tone="warning">{warning}</Alert> : null}
         {error ? <Alert id={errorId} $tone="danger">{error}</Alert> : null}
-        <TextField
-          type="email"
-          aria-label="Email"
-          autoComplete="username"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => onEmailChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={credentialsInvalid || undefined}
-          aria-describedby={describedBy}
-        />
-        <PasswordField
-          aria-label="Password"
-          autoComplete="current-password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => onPasswordChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={credentialsInvalid || undefined}
-          aria-describedby={describedBy}
-        />
+        <FormField label="Email" htmlFor={emailId}>
+          <TextField
+            id={emailId}
+            size="lg"
+            type="email"
+            autoComplete="username"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(event) => onEmailChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={credentialsInvalid || undefined}
+            aria-describedby={describedBy}
+          />
+        </FormField>
+        <FormField label="Password" htmlFor={passwordId}>
+          <PasswordField
+            id={passwordId}
+            size="lg"
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => onPasswordChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={credentialsInvalid || undefined}
+            aria-describedby={describedBy}
+          />
+        </FormField>
         <CheckboxRow>
           <Checkbox
             checked={keepSignedIn}
@@ -81,9 +88,11 @@ function LoginViewContent({
             label="Remember password"
           />
         </CheckboxRow>
-        <Button type="submit" variant="accent" disabled={submitting}>
-          {submitting ? 'Signing in…' : 'Sign in'}
-        </Button>
+        <SubmitRow>
+          <Button type="submit" variant="accent" size="lg" disabled={submitting}>
+            {submitting ? 'Signing in…' : 'Sign in'}
+          </Button>
+        </SubmitRow>
       </Form>
     </AuthPageShell>
   )

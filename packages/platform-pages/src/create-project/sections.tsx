@@ -59,6 +59,7 @@ export function DetailsSection(props: {
         <FieldGroup>
           <FieldLabel htmlFor="project-name">Project name</FieldLabel>
           <TextField
+            size="lg"
             id="project-name"
             type="text"
             value={props.name}
@@ -86,6 +87,7 @@ export function DetailsSection(props: {
             First dataset name <OptionalLabel>(optional)</OptionalLabel>
           </FieldLabel>
           <TextField
+            size="lg"
             id="first-dataset-name"
             type="text"
             value={props.firstDatasetName}

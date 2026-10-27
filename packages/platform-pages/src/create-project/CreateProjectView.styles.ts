@@ -14,7 +14,8 @@ export const Page = styled.div`
 
 export const Content = styled(Stack)`
   width: min(var(--ig-popup-3xl-mid), calc(100vw - var(--ig-space-7) * 2));
-  gap: var(--ig-space-6);
+  /* Single-form page: generous spacing like Login and Signup (DESIGN.md §4). */
+  gap: var(--ig-spacing-24);
   margin: auto;
 `
 
@@ -24,7 +25,7 @@ export const LogoWrap = styled.div`
 `
 
 export const Card = styled(UiCard)`
-  padding: var(--ig-space-8);
+  padding: var(--ig-spacing-32);
 `
 
 export const Title = styled.h1`
@@ -44,8 +45,8 @@ export const Subtitle = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-6);
-  margin-top: var(--ig-space-7);
+  gap: var(--ig-spacing-24);
+  margin-top: var(--ig-spacing-24);
 `
 
 const SectionBase = styled.section`
@@ -57,7 +58,7 @@ const SectionBase = styled.section`
 export const Section = withSurfaceDepth(SectionBase, { displayName: 'CreateProjectSection' })
 
 export const SectionHeader = styled.header`
-  padding: var(--ig-space-5) var(--ig-space-6);
+  padding: var(--ig-spacing-16);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
@@ -79,8 +80,8 @@ export const SectionDescription = styled.p`
 export const SectionBody = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-5);
-  padding: var(--ig-space-6);
+  gap: var(--ig-spacing-16);
+  padding: var(--ig-spacing-16);
 `
 
 export const FieldsBody = styled(SectionBody)`
@@ -94,8 +95,7 @@ export const FieldsBody = styled(SectionBody)`
 export const Actions = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: var(--ig-space-3);
-  padding-top: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const OptionalLabel = styled.span`
@@ -123,7 +123,7 @@ export const FileItem = styled.li`
 
 export const OptionGrid = styled(Grid).attrs({
   columns: 'repeat(2, minmax(0, 1fr))',
-  gap: 'var(--ig-space-3px)',
+  gap: 'var(--ig-gap-related)',
 })`
   ${media.sm} {
     grid-template-columns: 1fr;

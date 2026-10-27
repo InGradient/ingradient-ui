@@ -71,13 +71,14 @@ function CreateProjectViewContent({
             <Actions>
               <Button
                 type="button"
+                size="lg"
                 variant="secondary"
                 disabled={submitting}
                 onClick={onCancel}
               >
                 Cancel
               </Button>
-              <Button type="submit" variant="solid" disabled={submitting}>
+              <Button type="submit" variant="solid" size="lg" disabled={submitting}>
                 {submitting ? 'Creating…' : 'Create Project'}
               </Button>
             </Actions>

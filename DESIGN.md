@@ -92,6 +92,21 @@ Components choose a role, not a number:
 | `--ig-gap-section` | 24px | Between sections or cards |
 | `--ig-inset-page` | 24px | Page and modal edges |
 
+### Dense workspaces and single-form pages
+
+Workspace screens (Catalog, Class, Dashboard, Settings, Edge) are dense: 32px controls, 8px between related items, 16px card insets. Single-form pages (Login, Signup, Create Project) have one task on an otherwise empty screen and use generous spacing instead:
+
+| Single-form page | Value |
+|---|---:|
+| Form box inset | 32px |
+| Logo → form box, title → first field, sections apart, last field → primary action | 24px |
+| Field groups apart | 16px |
+| Label → field | 8px (`FormField`) |
+| Primary action → footer link | 16px |
+| Field and button height | 40px (`size="lg"`) |
+
+Fields always have a visible label (`FormField` linked with `htmlFor`); placeholders show an example, never the label.
+
 ### Migration of current values (D2)
 
 | Current | → | Reason |

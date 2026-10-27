@@ -1,6 +1,6 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
-import { Alert, Button, PasswordField, TextField } from '@ingradient/ui/components'
-import { AuthLink, Form } from './AuthView.styles'
+import { Alert, Button, FormField, PasswordField, TextField } from '@ingradient/ui/components'
+import { AuthLink, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { SignupViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
@@ -21,6 +21,10 @@ function SignupViewContent({
   onNavigateLogin,
 }: SignupViewProps) {
   const messageId = useId()
+  const emailId = useId()
+  const nameId = useId()
+  const organizationId = useId()
+  const passwordId = useId()
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -40,46 +44,57 @@ function SignupViewContent({
     >
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {error ? <Alert id={messageId} $tone="danger">{error}</Alert> : null}
-        <TextField
-          type="email"
-          aria-label="Email"
-          autoComplete="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => onEmailChange(event.target.value)}
-          disabled={submitting}
-        />
-        <TextField
-          type="text"
-          aria-label="Name"
-          autoComplete="name"
-          placeholder="Name"
-          value={name}
-          onChange={(event) => onNameChange(event.target.value)}
-          disabled={submitting}
-        />
-        <TextField
-          type="text"
-          aria-label="Organization"
-          autoComplete="organization"
-          placeholder="Organization"
-          value={organization}
-          onChange={(event) => onOrganizationChange(event.target.value)}
-          disabled={submitting}
-        />
-        <PasswordField
-          aria-label="Password"
-          autoComplete="new-password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => onPasswordChange(event.target.value)}
-          disabled={submitting}
-          aria-invalid={passwordInvalid || undefined}
-          aria-describedby={error ? messageId : undefined}
-        />
-        <Button type="submit" variant="accent" disabled={submitting}>
-          {submitting ? 'Signing up…' : 'Sign up'}
-        </Button>
+        <FormField label="Email" htmlFor={emailId}>
+          <TextField
+            id={emailId}
+            size="lg"
+            type="email"
+            autoComplete="email"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(event) => onEmailChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FormField>
+        <FormField label="Name" htmlFor={nameId}>
+          <TextField
+            id={nameId}
+            size="lg"
+            type="text"
+            autoComplete="name"
+            value={name}
+            onChange={(event) => onNameChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FormField>
+        <FormField label="Organization" htmlFor={organizationId}>
+          <TextField
+            id={organizationId}
+            size="lg"
+            type="text"
+            autoComplete="organization"
+            value={organization}
+            onChange={(event) => onOrganizationChange(event.target.value)}
+            disabled={submitting}
+          />
+        </FormField>
+        <FormField label="Password" htmlFor={passwordId}>
+          <PasswordField
+            id={passwordId}
+            size="lg"
+            autoComplete="new-password"
+            value={password}
+            onChange={(event) => onPasswordChange(event.target.value)}
+            disabled={submitting}
+            aria-invalid={passwordInvalid || undefined}
+            aria-describedby={error ? messageId : undefined}
+          />
+        </FormField>
+        <SubmitRow>
+          <Button type="submit" variant="accent" size="lg" disabled={submitting}>
+            {submitting ? 'Signing up…' : 'Sign up'}
+          </Button>
+        </SubmitRow>
       </Form>
     </AuthPageShell>
   )

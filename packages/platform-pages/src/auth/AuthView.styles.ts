@@ -13,7 +13,8 @@ export const Page = styled.main`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2);
+  /* Single-form pages use generous spacing, unlike the dense workspace screens. */
+  gap: var(--ig-spacing-24);
   width: min(var(--ig-popup-2xl-narrow), calc(100vw - var(--ig-space-13)));
 `
 
@@ -23,11 +24,11 @@ export const LogoWrap = styled.div`
 `
 
 export const Card = styled(UiCard)`
-  padding: var(--ig-space-8);
+  padding: var(--ig-spacing-32);
 `
 
 export const Title = styled.h1`
-  margin: 0 0 var(--ig-space-6);
+  margin: 0 0 var(--ig-spacing-24);
   font-size: var(--ig-font-size-2xl);
   font-weight: var(--ig-font-weight-semibold);
   text-align: center;
@@ -36,7 +37,14 @@ export const Title = styled.h1`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-16);
+`
+
+/** The primary action sits 24px below the last field (16px form gap + 8px). */
+export const SubmitRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--ig-spacing-8);
 `
 
 export const CheckboxRow = styled.div`
@@ -47,7 +55,7 @@ export const CheckboxRow = styled.div`
 `
 
 export const Footer = styled.p`
-  margin: var(--ig-space-5) 0 0;
+  margin: var(--ig-spacing-16) 0 0;
   font-size: var(--ig-font-size-sm);
   color: var(--ig-color-text-muted);
   text-align: center;
