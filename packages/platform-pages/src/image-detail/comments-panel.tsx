@@ -11,7 +11,7 @@ import { CommentThread } from '@ingradient/ui/patterns'
 import { MentionTextarea, type MentionCandidate } from '@ingradient/ui/components'
 
 const BODY_STYLE = { marginTop: 'var(--ig-spacing-8)' }
-const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-popup-3xs)'
+const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-layout-size-comment-list-max-height)'
 const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
 
 const ERROR_BOX_STYLE = {
