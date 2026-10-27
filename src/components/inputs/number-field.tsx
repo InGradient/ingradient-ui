@@ -7,6 +7,8 @@ const Wrap = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  /* Callers may narrow the field; the minimum keeps the value visible beside the stepper. */
+  min-width: var(--ig-size-number-field-min);
 `
 
 const Input = styled.input`

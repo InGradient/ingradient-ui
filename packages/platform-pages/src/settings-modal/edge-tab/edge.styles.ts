@@ -69,7 +69,7 @@ export const Label = styled.label`
 `
 
 export const NumberInput = styled(NumberField)`
-  width: calc(var(--ig-spacing-24) * 2);
+  width: var(--ig-size-number-field-min);
 `
 
 export const Hint = styled.p`
