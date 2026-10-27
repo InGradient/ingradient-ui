@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Alert, InlineMessage, NumberField, StatusPill as UiStatusPill } from '@ingradient/ui/components'
-import { surfaceRaised } from '@ingradient/ui/primitives'
+
 import { PageContent as UiPageContent } from '@ingradient/ui/patterns'
 
 export const TabContent = styled(UiPageContent)`
@@ -32,13 +32,16 @@ export const SectionTitleMt = styled(SectionTitle)`
   background: transparent;
 `
 
+/** Same as SettingsSection: a heading and rows separated by a 1px line, not a box. */
 export const Section = styled.section`
-  ${surfaceRaised}
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-5);
-  border-radius: var(--ig-radius-lg);
+  gap: var(--ig-spacing-12);
+  & + & {
+    margin-top: var(--ig-spacing-16);
+    padding-top: var(--ig-spacing-24);
+    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  }
 `
 
 export const CheckList = styled.div`

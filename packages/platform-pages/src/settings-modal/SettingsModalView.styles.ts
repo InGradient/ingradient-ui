@@ -12,7 +12,7 @@ export const Modal = styled(ModalCard)`
 `
 
 export const Header = styled(ModalHeader)`
-  padding: var(--ig-space-5) var(--ig-space-6);
+  padding: var(--ig-spacing-16) var(--ig-spacing-24);
   flex-shrink: 0;
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
@@ -39,7 +39,8 @@ export const Main = styled(SettingsShell)`
 `
 
 export const Body = styled.div`
-  padding: var(--ig-space-6);
+  /* Sections are flat groups, so the body inset carries the separation from the modal edge. */
+  padding: var(--ig-spacing-24);
   overflow: auto;
   flex: 1;
   min-width: 0;

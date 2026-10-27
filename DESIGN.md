@@ -241,6 +241,12 @@ These rules apply to the shared `@ingradient/ui` components that Platform and Ed
 - `ModalCard` / `DialogShell` / `TwoColumnDialog`: floating, depth 1. Labelled title, Escape closes, focus moves in on open and returns on close, `tabIndex={-1}` on the shell.
 - `MediaDialogContent` becomes full-screen with radius 0 on narrow screens; it adopts depth styling when its page migrates.
 
+### Settings sections
+
+- `SettingsSection` is a heading (14px semibold) plus rows, separated from the previous section by a 1px line with 24px above and below. It is not a box inside the modal.
+- `tone="danger"` keeps an alert box (danger border and tint, depth radius) because it marks a real boundary around irreversible actions such as deleting an account or project.
+- The Settings modal body has a 24px inset; the Edge tab's own sections follow the same rule.
+
 ### Menus and popovers
 
 - `Menu`, `PopoverCard`, `MenuPopover`, `ContextMenu`: floating, depth 1. Submenu indicator is a chevron icon. Purely visual backdrops are `aria-hidden`.
