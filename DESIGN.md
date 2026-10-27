@@ -185,7 +185,7 @@ Never pass numeric sizes (`size={14}`, `width="14"`); use the icon tokens so the
 
 ### Layout sizes
 
-Page structure uses `--ig-layout-size-*` (numeric `layoutSizeNumbers` for props): side panels (320, min 220, max 480), Class list/info panels, single-form widths (420, 720), field and search max widths, grid cell minimum, preview, empty-state and drop-zone minimum heights, and table columns. Popup sizes (`--ig-popup-*`) are for dialogs, popovers, and menus only.
+Page structure uses `--ig-layout-size-*` (numeric `layoutSizeNumbers` for props): side panels (320, min 220, max 480), Class list/info panels, single-form widths (420, 720), field and search max widths, grid cell minimum, preview, empty-state and drop-zone minimum heights, and table columns. Inside the Settings modal, field widths (`field-xs`…`field-xl`), compact table minimum, wider cell minimum, and the tab column use layout sizes too. Popup sizes (`--ig-popup-*`) are for dialogs, popovers, and menus only. Every layout size is a multiple of 4 (unit test).
 
 ### Component sizes do not borrow other axes *(D12)*
 
@@ -345,7 +345,5 @@ See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) a
 | Spacing roles not adopted | `--ig-gap-*`, `--ig-inset-*` | Tokens exist; components still pick numbers | Adopt in shared components first |
 | Surface tone and shadow by depth | `surfacePanel` recipe | Radius depth shipped first; tone and shadow change visuals more | Trial, then apply with the surface depth provider |
 | Unused or duplicate control-height tokens | `control-height-xs-plus`, `sm-plus`, `mid-plus` | Public token names; removal is breaking | Remove in the next breaking release |
-| Off-grid layout sizes | `--ig-layout-size-table-col-{dataset,sync,created}` (190, 116, 124px) | Moved from popup sizes value-for-value | Round to the 4px grid with a visual check of the Catalog table |
-| Settings modal field/table widths use popup sizes | `settings-modal/**` (about 15 uses) | A modal is a popup, so its inner sizes were left on the popup scale | Decide whether modal internals get layout sizes too |
 | Visual baselines | `tests/visual` | Foundation values changed most screenshots | Regenerate from CI (ubuntu) and approve |
 | ClassManage has no source mobile workspace shell | `packages/platform-pages/src/class-manage` | The migrated reference defines a resizable three-pane desktop workspace but no mobile navigation/detail pattern | Add a dedicated narrow shell or drawers before claiming the full ClassManage workflow at 375px |

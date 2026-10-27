@@ -1,8 +1,8 @@
 /**
  * Layout sizes for page structure (side panels, form widths, table columns, grid cells).
  * Pages used popup-size tokens for these, so resizing popups also resized sidebars and tables.
- * Values equal the popup sizes they replace; moving them here changes no pixels. A few table
- * columns (116px, 124px, 190px) are off the 4px grid and are listed as debt in DESIGN.md.
+ * Values equal the popup sizes they replace, except the two 190px widths, which were rounded to
+ * 192px so every layout size sits on the 4px grid (enforced by layout-sizes.test.ts).
  */
 export const layoutSizes = {
   sidePanel: '320px',
@@ -22,7 +22,7 @@ export const layoutSizes = {
   tableMinWidth: '1200px',
   tableColThumb: '80px',
   tableColName: '280px',
-  tableColDataset: '190px',
+  tableColDataset: '192px',
   tableColSequence: '140px',
   tableColPattern: '104px',
   tableColSync: '116px',
@@ -33,7 +33,7 @@ export const layoutSizes = {
   /** Field widths inside panels and the Settings modal (minimums for inputs and selects). */
   fieldXs: '104px',
   fieldSm: '160px',
-  fieldSmPlus: '190px',
+  fieldSmPlus: '192px',
   fieldMd: '200px',
   fieldLg: '240px',
   fieldXl: '260px',
