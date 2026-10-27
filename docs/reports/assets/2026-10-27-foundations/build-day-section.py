@@ -71,48 +71,48 @@ for name, s in cmp.items():
     rest_html = f"<details><summary>번호 없는 나머지 {len(s['rest'])}건 펼치기</summary><ul>{rest}</ul></details>" if s['rest'] else ''
     detail.append(
         f"<h3 id='cmp-{name}'>{e(s['title'])} <span class='muted'>· 변경 묶음 {s['totalGroups']}개 · {sb(s['id'], 'Storybook')}</span></h3>"
-        + fig(f"detailed/{name}-detail.png", s['title'], '왼쪽 이전(어제 저녁 b497769, 주황) · 오른쪽 지금(50c427d, 청록). 같은 번호는 같은 요소. 이미지를 누르면 원래 크기')
+        + fig(f"detailed/{name}-detail.png", s['title'], '왼쪽 변경 전(b497769, 주황) · 오른쪽 지금(50c427d, 청록). 같은 번호는 같은 요소. 이미지를 누르면 원래 크기')
         + f"<p class='muted'>화면 전체: 실제로 그려지는 글꼴 Liberation Sans(대체 글꼴) → IBM Plex Sans / Plex Sans KR</p>"
         + f"<ol class='legend'>{items}</ol>{rest_html}"
     )
 toc_cmp = ' · '.join(f"<a href='#cmp-{n}'>{e(s['title'].split(' · ')[-1])}</a>" for n, s in cmp.items())
 
 SECTION = f'''
-<h2 id="day">0. 2026-10-27 낮 작업과 어제 저녁 대비 상세 비교</h2>
-<p class="muted">10:17~16:57 · 브랜치 <code>feat/surface-depth</code> · push·PR 없음. 이 절이 가장 최신이다. 아래 "최종 결과(밤사이)"와 1~7절은 밤사이 기록이다.</p>
-<div class="note"><b>요약.</b> 화면 영역은 모두 선으로 나뉘고(Dashboard 정리), 단일 폼 화면(로그인·회원가입·프로젝트 생성)은 넉넉한 간격과 보이는 라벨을 쓰며, Platform 작업 화면은 앱 전체 사이드바 안에 들어갔다. Settings 섹션은 상자 대신 선으로 나뉘었다. 이어서 글자 역할 토큰, 중복 컴포넌트 정리, 레이아웃 크기 토큰, 간격 이름 정리를 화면 변화 없이 마쳤다. 어제 저녁과 비교하면 17개 대표 화면에서 변경 묶음이 <b>{total}개</b>다.</div>
+<h2 id="day">A. Platform 화면 정리와 변경 전후 상세 비교</h2>
+<p class="muted">10:17~16:57 · <code>main</code>에 머지(<code>4401508</code>). 이 절이 가장 최신이다. 아래 B절과 1~7절은 그 전에 진행한 기초 값·표면 깊이 작업 기록이다.</p>
+<div class="note"><b>요약.</b> 화면 영역은 모두 선으로 나뉘고(Dashboard 정리), 단일 폼 화면(로그인·회원가입·프로젝트 생성)은 넉넉한 간격과 보이는 라벨을 쓰며, Platform 작업 화면은 앱 전체 사이드바 안에 들어갔다. Settings 섹션은 상자 대신 선으로 나뉘었다. 이어서 글자 역할 토큰, 중복 컴포넌트 정리, 레이아웃 크기 토큰, 간격 이름 정리를 화면 변화 없이 마쳤다. 작업 전과 비교하면 17개 대표 화면에서 변경 묶음이 <b>{total}개</b>다.</div>
 
-<h3>0-1. Simon이 확인할 것</h3>
+<h3>A-1. Simon이 확인할 것</h3>
 <ol>
-<li><b>push와 PR 나누기</b>: <code>refactor/space-props-and-removable-list</code> → <code>fix/broken-controls</code> → <code>feat/surface-depth</code>가 쌓여 있다.</li>
-<li><b>CI 시각 기준선 승인</b>: 거의 모든 화면이 바뀌었다(아래 0-4). 로컬에서는 갱신하지 않았다.</li>
+<li><s><b>push와 PR 나누기</b></s> 완료: 세 브랜치를 <code>main</code>에 머지하고 push했다(<code>4401508</code>). 첫 CI는 <code>lint:style</code>(CSS 안의 <code>//</code> 주석)로 실패해 고쳤고, 남은 정리 작업 뒤에 한 번에 다시 확인한다.</li>
+<li><b>CI 시각 기준선 승인</b>: 거의 모든 화면이 바뀌었다(아래 A-4). 로컬에서는 갱신하지 않았다.</li>
 <li><b>사이드바 메뉴 이름</b>: "Classes"와 페이지 제목 "Class" 중 하나로 맞추기.</li>
 <li><b>Settings 모달 안의 입력칸·표 폭(약 15곳)</b>: 아직 팝업 크기 토큰을 쓴다. 레이아웃 크기 토큰으로 옮길지.</li>
 <li><b>4px 밖의 표 열 폭 3개</b>(Catalog 표 190·116·124px)를 맞출지.</li>
-<li><b>숫자 입력칸 값이 잘리는 문제</b>(0-5): 고칠지와 방식.</li>
+<li><b>숫자 입력칸 값이 잘리는 문제</b>(A-5): 고칠지와 방식.</li>
 <li>Edge와 공용 컴포넌트의 옛 글자 크기·간격 이름 정리를 이어서 할지(이번 범위는 Platform).</li>
 </ol>
 
-<h3>0-2. 커밋</h3>
+<h3>A-2. 커밋</h3>
 <table><tr><th>시각</th><th>커밋</th><th>내용</th></tr>{rows}</table>
 <p>모든 커밋 뒤에 타입·린트·단위(492)·정적 검사·패키지 빌드·공개 export·전체 Storybook(888)을 통과했다. 화면이 바뀌지 않아야 하는 커밋(<code>8ca37dc</code>, <code>50c427d</code>, <code>b95abdc</code>의 크기 토큰 부분)은 전체 스토리 픽셀 비교로 확인했고, 다르게 나온 스토리는 양쪽 빌드에서 4~6번 다시 찍어 같은 빌드끼리도 흔들리는 노이즈임을 확인했다. 한계: 비교는 화면 위쪽 900px만 찍으므로 그 아래(대시보드 분석 카드)는 따로 쟀다.</p>
 <table><tr><th>위계 검사(Platform 128 스토리)</th><th>어제 아침</th><th>지금</th></tr>
 <tr><td>DOM 구조 기준 위반</td><td>—</td><td>0</td></tr>
 <tr><td>위치 기준 같음 / 역전</td><td>81 / 84</td><td>2 / 2</td></tr></table>
 
-<h3>0-3. 변경별 설명</h3>
+<h3>A-3. 변경별 설명</h3>
 {changes}
 
-<h3 id="cmp">0-4. 어제 저녁 대비 화면별 상세 비교 (17개 화면, 변경 묶음 {total}개)</h3>
-<p>방법: 어제 저녁(<code>b497769</code>, 밤사이 작업 전)과 지금(<code>50c427d</code>)을 각각 빌드해 같은 화면 크기(1440×900)로 찍고, 컴포넌트 이름과 글자로 같은 요소를 짝지어 모서리·안쪽 여백·간격·글자 크기·줄 높이·굵기·대문자·높이·폭·배경·테두리·그림자·안내 글자를 비교했다. 같은 변경이 여러 요소에 반복되면 하나로 묶었다(×개수). 입력칸은 순서로 짝지었다. 글자가 있는 요소의 폭 변화는 글꼴과 여백의 결과라 따로 적지 않았다. 화면마다 큰 변경 14묶음까지 번호를 붙였고, 나머지는 펼쳐 볼 수 있다. 한계: 위쪽 900px만 비교하고, 화면 구조가 크게 바뀐 곳(앱 사이드바가 생긴 화면)은 요소 짝이 일부 "사라짐/새로 생김"으로 나온다.</p>
+<h3 id="cmp">A-4. 변경 전후 화면별 상세 비교 (17개 화면, 변경 묶음 {total}개)</h3>
+<p>방법: 변경 전(<code>b497769</code>, 기초 값 작업 시작 전)과 지금(<code>50c427d</code>)을 각각 빌드해 같은 화면 크기(1440×900)로 찍고, 컴포넌트 이름과 글자로 같은 요소를 짝지어 모서리·안쪽 여백·간격·글자 크기·줄 높이·굵기·대문자·높이·폭·배경·테두리·그림자·안내 글자를 비교했다. 같은 변경이 여러 요소에 반복되면 하나로 묶었다(×개수). 입력칸은 순서로 짝지었다. 글자가 있는 요소의 폭 변화는 글꼴과 여백의 결과라 따로 적지 않았다. 화면마다 큰 변경 14묶음까지 번호를 붙였고, 나머지는 펼쳐 볼 수 있다. 한계: 위쪽 900px만 비교하고, 화면 구조가 크게 바뀐 곳(앱 사이드바가 생긴 화면)은 요소 짝이 일부 "사라짐/새로 생김"으로 나온다.</p>
 <p class="muted">바로 가기: {toc_cmp}</p>
 {''.join(detail)}
 
-<h3 id="found">0-5. 새로 발견한 문제</h3>
+<h3 id="found">A-5. 새로 발견한 문제</h3>
 <table><tr><th>문제</th><th>위치</th><th>원인</th><th>상태</th></tr>
-<tr><td>숫자 입력칸 값이 잘려 숫자가 보이지 않음</td><td>Settings Edge 탭 Deflectometry(Phase shifts, Fringe period, Retry 등)</td><td><code>NumberField</code> 폭이 46~48px인데 안쪽 여백이 왼쪽 12px, 오른쪽 32px(위아래 버튼 자리)라 숫자 들어갈 자리가 0~2px</td><td><b>어제 저녁에도 있던 문제</b>(이번 변경이 만든 것 아님). 제안: <code>NumberField</code>에 최소 폭(예: 여백 + 숫자 4자리)을 두거나, Edge 탭이 폭을 지정</td></tr>
+<tr><td>숫자 입력칸 값이 잘려 숫자가 보이지 않음</td><td>Settings Edge 탭 Deflectometry(Phase shifts, Fringe period, Retry 등)</td><td><code>NumberField</code> 폭이 46~48px인데 안쪽 여백이 왼쪽 12px, 오른쪽 32px(위아래 버튼 자리)라 숫자 들어갈 자리가 0~2px</td><td><b>작업 전에도 있던 문제</b>(이번 변경이 만든 것 아님). 제안: <code>NumberField</code>에 최소 폭(예: 여백 + 숫자 4자리)을 두거나, Edge 탭이 폭을 지정</td></tr>
 <tr><td>Edge 탭 제목 띠가 본문 밖으로 삐져나옴</td><td>Settings Edge 탭</td><td>Settings 섹션 상자를 없앨 때 Edge 탭 제목의 음수 여백을 놓침</td><td><code>b95abdc</code>에서 고침</td></tr>
-<tr><td>Catalog 오른쪽 패널 제목 순서(접근성)</td><td>Catalog 데이터셋 목록 접힘</td><td>접힌 열을 inert로 만들면서 h2가 빠짐</td><td>밤사이 <code>e725981</code>에서 고침</td></tr></table>
+<tr><td>Catalog 오른쪽 패널 제목 순서(접근성)</td><td>Catalog 데이터셋 목록 접힘</td><td>접힌 열을 inert로 만들면서 h2가 빠짐</td><td><code>e725981</code>에서 고침</td></tr></table>
 '''
 open(f'{ROOT}/docs/reports/{A}day-section.html', 'w').write(SECTION)
 print('day section', len(SECTION), 'chars, groups', total)
