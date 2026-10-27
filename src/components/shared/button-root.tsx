@@ -30,7 +30,7 @@ export const ButtonRoot = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ig-space-3);
+  gap: ${(p) => (p.$size === 'xs' || p.$size === 'sm' ? 'var(--ig-gap-inline)' : 'var(--ig-gap-related)')};
   min-width: 0;
   white-space: nowrap;
   height: ${(p) => controlHeight(p.$size)};

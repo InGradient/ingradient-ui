@@ -1,6 +1,13 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+
+/** px line height paired with a font-size token; other sizes keep the base multiplier. */
+export function leadingFor(size: string): string {
+  const m = /^var\(--ig-font-size-([a-z0-9-]+)\)$/.exec(size.trim())
+  return m ? `var(--ig-leading-${m[1]})` : 'var(--ig-line-height-base)'
+}
+
 const toneColor = {
   default: 'var(--ig-color-text-primary)',
   secondary: 'var(--ig-color-text-secondary)',
@@ -64,7 +71,7 @@ const TextRoot = styled.span<{
   color: ${(p) => toneColor[p.$tone ?? 'default']};
   font-size: ${(p) => p.$size ?? 'var(--ig-font-size-md)'};
   font-weight: ${(p) => p.$weight ?? 'var(--ig-font-weight-regular)'};
-  line-height: var(--ig-line-height-base);
+  line-height: ${(p) => leadingFor(p.$size ?? 'var(--ig-font-size-md)')};
   word-break: break-word;
   ${(p) => p.$align && css`text-align: ${p.$align};`}
   ${(p) => p.$uppercase && css`text-transform: uppercase;`}

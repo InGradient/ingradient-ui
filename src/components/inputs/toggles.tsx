@@ -12,7 +12,7 @@ const ToggleLabel = styled.label`
 `
 
 const SwitchTrack = styled.span<{ $checked: boolean }>`
-  width: var(--ig-control-height-mid-plus);
+  width: var(--ig-size-switch-track-width);
   height: var(--ig-size-switch-track-height);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => (p.$checked ? 'var(--ig-color-toggle-on-bg)' : 'var(--ig-color-toggle-off-bg)')};
@@ -28,8 +28,8 @@ const SwitchTrack = styled.span<{ $checked: boolean }>`
   &::after {
     content: '';
     position: absolute;
-    top: var(--ig-space-2px);
-    left: ${(p) => (p.$checked ? 'var(--ig-size-switch-thumb-travel)' : 'var(--ig-space-2px)')};
+    top: calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2);
+    left: ${(p) => (p.$checked ? 'calc(100% - var(--ig-size-switch-thumb) - calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2))' : 'calc((var(--ig-size-switch-track-height) - 2 * var(--ig-border-1px) - var(--ig-size-switch-thumb)) / 2)')};
     width: var(--ig-size-switch-thumb);
     height: var(--ig-size-switch-thumb);
     border-radius: var(--ig-radius-pill);
@@ -53,7 +53,7 @@ const CheckboxBox = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   width: var(--ig-size-checkbox);
   height: var(--ig-size-checkbox);
   border-radius: var(--ig-radius-2xs);
-  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-2px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'transparent')};
   transition: background-color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   flex-shrink: 0;
@@ -82,7 +82,7 @@ const RadioDot = styled.span<{ $checked: boolean; $disabled?: boolean }>`
   width: var(--ig-size-radio);
   height: var(--ig-size-radio);
   border-radius: var(--ig-radius-pill);
-  border: var(--ig-border-1_5px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
+  border: var(--ig-border-2px) solid ${(p) => (p.$checked ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: transparent;
   transition: border-color var(--ig-motion-fast);
   flex-shrink: 0;

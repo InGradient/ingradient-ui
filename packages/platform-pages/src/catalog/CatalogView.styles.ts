@@ -20,7 +20,7 @@ export const DragOverFull = styled.div`
   z-index: var(--ig-z-overlay-low);
   pointer-events: none;
   background: var(--ig-color-image-option-bg);
-  border: var(--ig-border-3px) dashed var(--ig-color-white-40);
+  border: var(--ig-border-2px) dashed var(--ig-color-white-40);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@ export const DragOverGrid = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--ig-border-3px) dashed var(--ig-color-white-40);
+  border: var(--ig-border-2px) dashed var(--ig-color-white-40);
   border-radius: var(--ig-radius-md);
   z-index: var(--ig-z-sticky);
   pointer-events: none;

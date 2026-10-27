@@ -31,7 +31,7 @@ export const Highlight = styled.div<{ $top: number; $height: number; $visible: b
   right: var(--ig-space-2);
   top: ${(p) => `${p.$top}px`};
   height: ${(p) => `${p.$height}px`};
-  border-left: var(--ig-border-3px) solid var(--ig-color-accent-soft);
+  border-left: var(--ig-border-2px) solid var(--ig-color-accent-soft);
   border-radius: var(--ig-radius-2xs);
   background: var(--ig-color-tab-highlight);
   opacity: ${(p) => (p.$visible ? 1 : 0)};

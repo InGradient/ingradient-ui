@@ -6,6 +6,7 @@ import type { TokenCategory } from './types'
  */
 export const compactDensity: TokenCategory = {
   cssVars: {
+    '--ig-control-height-xs': '24px',
     '--ig-control-height-sm': '28px',
     '--ig-control-height-md': '32px',
     '--ig-control-height-lg': '40px',
