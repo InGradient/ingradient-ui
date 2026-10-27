@@ -59,16 +59,16 @@ export function PerDatasetDistributionWidget({
   return (
     <Card className={className}>
       <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
-        <Text size="var(--ig-font-size-sm)" weight="semibold" tone="secondary">{title}</Text>
+        <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
       </Inline>
       {datasetDistribution.length === 0 ? (
-        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         datasetDistribution.map((dataset) => (
           <Block key={dataset.dataset_id}>
-            <Text as="h3" tone="secondary" size="var(--ig-font-size-md)" weight="semibold" style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
+            <Text as="h3" tone="secondary" size="var(--ig-text-body)" weight="semibold" style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
             {dataset.class_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noLabelsText}</Text>
+              <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{noLabelsText}</Text>
             ) : (
               <>
                 <Table columns={CLASS_COLUMNS} rows={dataset.class_counts} ariaLabel={`${dataset.name} class counts`} />

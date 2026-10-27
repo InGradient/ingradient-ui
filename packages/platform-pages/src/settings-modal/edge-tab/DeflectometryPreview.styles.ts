@@ -20,7 +20,7 @@ export const Badge = styled.button<{ $active: boolean }>`
     ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};
   background: ${({ $active }) => ($active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-primary)')};
   color: ${({ $active }) => ($active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   font-weight: var(--ig-font-weight-medium);
   cursor: pointer;
   transition:
@@ -47,6 +47,6 @@ export const CanvasFrame = styled.div`
 `
 
 export const PreviewHint = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
 `

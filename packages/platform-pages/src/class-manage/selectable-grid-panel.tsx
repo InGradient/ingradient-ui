@@ -74,7 +74,7 @@ export function SelectableGridPanel({
   if (!selectedId) {
     return (
       <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
-        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{noSelectionText}</Text>
+        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{noSelectionText}</Text>
       </Stack>
     )
   }
@@ -82,9 +82,9 @@ export function SelectableGridPanel({
     <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
       {headerSlot}
       {loading ? (
-        <Text tone="muted" size="var(--ig-font-size-md)" style={LOADING_STYLE}>{loadingText}</Text>
+        <Text tone="muted" size="var(--ig-text-body)" style={LOADING_STYLE}>{loadingText}</Text>
       ) : empty ? (
-        <Text tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         <Box style={GRID_STYLE}>{gridSlot}</Box>
       )}

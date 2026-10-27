@@ -17,8 +17,8 @@ export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderP
     <Stack gap="var(--ig-space-1)" className={className}>
       {items.map((item) => (
         <Inline as="span" key={item.label} justify="space-between">
-          <Text as="span" size="var(--ig-font-size-xs)" tone="muted">{item.label}</Text>
-          <Text as="strong" size="var(--ig-font-size-xs)" weight="bold" style={VALUE_STYLE}>{item.value}</Text>
+          <Text as="span" size="var(--ig-text-caption)" tone="muted">{item.label}</Text>
+          <Text as="strong" size="var(--ig-text-caption)" weight="bold" style={VALUE_STYLE}>{item.value}</Text>
         </Inline>
       ))}
     </Stack>

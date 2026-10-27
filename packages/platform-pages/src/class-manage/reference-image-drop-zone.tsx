@@ -4,14 +4,14 @@ import { DropZone } from '@ingradient/ui/components'
 const EMPTY_STYLE = {
   padding: 'var(--ig-space-9)',
   minHeight: 'var(--ig-popup-xs)',
-  fontSize: 'var(--ig-font-size-sm)',
+  fontSize: 'var(--ig-text-body-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }
 
 const HAS_IMAGE_STYLE = {
   padding: 'var(--ig-space-4)',
-  fontSize: 'var(--ig-font-size-sm)',
+  fontSize: 'var(--ig-text-body-sm)',
   textAlign: 'left' as const,
   overflow: 'visible' as const,
 }

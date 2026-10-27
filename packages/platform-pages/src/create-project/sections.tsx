@@ -178,7 +178,7 @@ export function ImagesSection(props: {
             width: '100%',
             padding: 'var(--ig-space-7)',
             textAlign: 'center',
-            fontSize: 'var(--ig-font-size-sm)',
+            fontSize: 'var(--ig-text-body-sm)',
             cursor: props.disabled ? 'not-allowed' : 'pointer',
           }}
           onDrop={handleDrop}

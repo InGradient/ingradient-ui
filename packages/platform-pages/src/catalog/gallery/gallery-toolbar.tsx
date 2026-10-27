@@ -70,7 +70,7 @@ export function GalleryToolbar({
         onChange={(e) => onToggleSelectAll?.(e.target.checked)}
         aria-label="Select all images"
       />
-      <Text as="span" size="var(--ig-font-size-sm)" tone="secondary">
+      <Text as="span" size="var(--ig-text-body-sm)" tone="secondary">
         {hasSelection
           ? `${selectionCount}${typeof totalCount === 'number' ? ` of ${totalCount}` : ''} ${itemLabel}${selectionCount === 1 ? '' : 's'} selected`
           : `${totalCount ?? 0} ${itemLabel}${(totalCount ?? 0) === 1 ? '' : 's'}`}

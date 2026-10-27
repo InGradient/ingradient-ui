@@ -30,14 +30,14 @@ export const Card = styled(UiCard)`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: var(--ig-font-size-2xl);
+  font-size: var(--ig-text-title);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
 
 export const Subtitle = styled.p`
   margin: var(--ig-space-2) 0 0;
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
@@ -67,14 +67,14 @@ export const SectionHeader = styled.header``
 
 export const SectionTitle = styled.h2`
   margin: 0;
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
 
 export const SectionDescription = styled.p`
   margin: var(--ig-space-2) 0 0;
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   line-height: var(--ig-line-height-relaxed);
   color: var(--ig-color-text-muted);
 `
@@ -94,7 +94,7 @@ export const Actions = styled.div`
 `
 
 export const OptionalLabel = styled.span`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   font-weight: var(--ig-font-weight-regular);
   margin-left: var(--ig-space-2);
@@ -108,7 +108,7 @@ export const FileList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
 `
 
@@ -156,13 +156,13 @@ const OptionCardBase = styled.button<{ $active?: boolean }>`
 export const OptionCard = withSurfaceDepth(OptionCardBase, { displayName: 'CreateProjectOptionCard' })
 
 export const OptionTitle = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   margin-bottom: var(--ig-space-2);
 `
 
 export const OptionText = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   line-height: var(--ig-line-height-relaxed);
 `

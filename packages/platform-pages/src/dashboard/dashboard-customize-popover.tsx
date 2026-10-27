@@ -35,7 +35,7 @@ export function DashboardCustomizePopover<K extends string = string>({
 }: DashboardCustomizePopoverProps<K>) {
   return (
     <Wrap className={className} role="group" aria-label={title}>
-      <Text size="var(--ig-font-size-xs)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
+      <Text size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
       <Stack gap="var(--ig-space-3)">
         {items.map((item) => (
           <Checkbox

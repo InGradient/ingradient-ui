@@ -54,7 +54,7 @@ export function ReferenceImageSection({
   }
   const content = (
     <>
-      <Text tone="muted" size="var(--ig-font-size-xs)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
+      <Text tone="muted" size="var(--ig-text-caption)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
@@ -66,14 +66,14 @@ export function ReferenceImageSection({
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
             <Stack gap="var(--ig-space-3)" align="flex-start">
-              <Text tone="muted" size="var(--ig-font-size-xs)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
+              <Text tone="muted" size="var(--ig-text-caption)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
             </Stack>
           )}
           {candidates.length > 1 ? (
             <IndexedNavigation index={bboxIndex} total={candidates.length} onChange={handleBboxChange} prevLabel="Previous bbox" nextLabel="Next bbox" />
           ) : null}
-          {pending ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">Updating reference image…</Text> : null}
-          {errorMessage ? <Text tone="accent" size="var(--ig-font-size-xs)" weight="semibold">{errorMessage}</Text> : null}
+          {pending ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">Updating reference image…</Text> : null}
+          {errorMessage ? <Text tone="accent" size="var(--ig-text-caption)" weight="semibold">{errorMessage}</Text> : null}
         </Stack>
       </ReferenceImageDropZone>
     </>

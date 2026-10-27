@@ -86,8 +86,8 @@ export function InvitationsSection({
 
   return (
     <Stack as="section" gap="var(--ig-space-5)">
-      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
-      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
+      <Text as="p" tone="muted" size="var(--ig-text-caption)">{description}</Text>
 
       {isAdmin && (
         <Stack gap="var(--ig-space-3)">
@@ -112,7 +112,7 @@ export function InvitationsSection({
 
           {readyToSearch ? (
             <Stack gap="var(--ig-space-2)">
-              {isSearching && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Searching…</Text>}
+              {isSearching && <Text as="p" tone="muted" size="var(--ig-text-caption)">Searching…</Text>}
               {!isSearching && searchResults.map((u) => (
                 <OptionRow
                   key={u.id}
@@ -123,13 +123,13 @@ export function InvitationsSection({
                   onClick={() => onInviteUser(u)}
                 />
               ))}
-              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="var(--ig-font-size-xs)">No registered users found.</Text>}
+              {!isSearching && searchResults.length === 0 && <Text as="p" tone="muted" size="var(--ig-text-caption)">No registered users found.</Text>}
             </Stack>
           ) : (
-            <Text as="p" tone="muted" size="var(--ig-font-size-xs)">Type at least {minSearchLength} characters to search registered users.</Text>
+            <Text as="p" tone="muted" size="var(--ig-text-caption)">Type at least {minSearchLength} characters to search registered users.</Text>
           )}
 
-          {inviteMessage && <Text tone="muted" size="var(--ig-font-size-xs)">{inviteMessage}</Text>}
+          {inviteMessage && <Text tone="muted" size="var(--ig-text-caption)">{inviteMessage}</Text>}
         </Stack>
       )}
 

@@ -83,7 +83,7 @@ export function DatasetListPanel({
       style={PANEL_STYLE}
     >
       <Inline justify="space-between" gap="var(--ig-space-4)" style={HEADER_STYLE}>
-        <Text as="h2" size="var(--ig-font-size-lg)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
+        <Text as="h2" size="var(--ig-text-title-sm)" weight="semibold" style={TITLE_STYLE}>{title}</Text>
         <Inline gap="var(--ig-space-2)">
           <Button
             variant="solid"
@@ -117,7 +117,7 @@ export function DatasetListPanel({
             label={allSelected ? 'Deselect all' : 'Select all'}
           />
           {selectedIds.size > 0 ? (
-            <Text as="span" tone="muted" size="var(--ig-font-size-xs)">
+            <Text as="span" tone="muted" size="var(--ig-text-caption)">
               {selectedIds.size} selected
             </Text>
           ) : null}

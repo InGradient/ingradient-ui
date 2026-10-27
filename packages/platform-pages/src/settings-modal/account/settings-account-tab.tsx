@@ -12,7 +12,7 @@ const EXPIRED_STYLE = { margin: 0 }
 const Hint = styled.p`
   margin: 0;
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   line-height: var(--ig-line-height-relaxed);
 `
 
@@ -25,17 +25,17 @@ export interface LicenseInfo {
 }
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
-  if (!license) return <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>Loading license information…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-font-size-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
+  if (!license) return <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>Loading license information…</Text>
+  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-text-body-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
   if (license.type === 'organization') {
     return (
-      <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
+      <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
         {`Organization license (${license.organizationName ?? ''}) | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
       </Text>
     )
   }
   return (
-    <Text as="p" tone="muted" size="var(--ig-font-size-sm)" style={HINT_STYLE}>
+    <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
       {`Personal license | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
     </Text>
   )

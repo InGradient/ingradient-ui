@@ -35,13 +35,13 @@ export function DeviceDetailDialog({ device, onClose, title = 'Device Details' }
       actions={<Button type="button" variant="secondary" onClick={onClose}>Close</Button>}
     >
       <Grid gap="var(--ig-space-4) var(--ig-space-7)" columns="var(--ig-form-label-col) 1fr">
-        <Text tone="muted" size="var(--ig-font-size-sm)">Device UID</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.deviceUid}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Name</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.name ?? '—'}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Status</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.status}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Organization ID</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{device.organizationId}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Registered</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{formatDate(device.registeredAt)}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Last seen</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{formatDate(device.lastSeenAt)}</Text>
-        <Text tone="muted" size="var(--ig-font-size-sm)">Revoked</Text><Text size="var(--ig-font-size-sm)" style={VALUE_STYLE}>{formatDate(device.revokedAt)}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Device UID</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.deviceUid}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Name</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.name ?? '—'}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Status</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.status}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Organization ID</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{device.organizationId}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Registered</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.registeredAt)}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Last seen</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.lastSeenAt)}</Text>
+        <Text tone="muted" size="var(--ig-text-body-sm)">Revoked</Text><Text size="var(--ig-text-body-sm)" style={VALUE_STYLE}>{formatDate(device.revokedAt)}</Text>
       </Grid>
     </DialogShell>
   )

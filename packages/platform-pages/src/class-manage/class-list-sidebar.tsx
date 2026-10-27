@@ -33,7 +33,7 @@ const Header = styled.div`
 const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-lg);
+  font-size: var(--ig-text-title-sm);
   font-weight: var(--ig-font-weight-semibold);
 `
 

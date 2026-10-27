@@ -4,7 +4,7 @@ import { SelectField } from '@ingradient/ui/components'
 const SELECT_STYLE = {
   maxWidth: 'var(--ig-popup-sm)',
   padding: 'var(--ig-space-3) var(--ig-space-5)',
-  fontSize: 'var(--ig-font-size-sm)',
+  fontSize: 'var(--ig-text-body-sm)',
   borderRadius: 'var(--ig-radius-2xs)',
 }
 
@@ -30,7 +30,7 @@ export function ModelMappingSelect({
   title = 'Map this class to a COCO class',
 }: ModelMappingSelectProps) {
   if (!enabled) {
-    return <Text size="var(--ig-font-size-xs)" tone="soft">{disabledHint}</Text>
+    return <Text size="var(--ig-text-caption)" tone="soft">{disabledHint}</Text>
   }
   return (
     <Stack gap="var(--ig-space-3)">
@@ -46,7 +46,7 @@ export function ModelMappingSelect({
           <option key={name} value={name}>{name}</option>
         ))}
       </SelectField>
-      <Text size="var(--ig-font-size-xs)" tone="soft">{enabledHint}</Text>
+      <Text size="var(--ig-text-caption)" tone="soft">{enabledHint}</Text>
     </Stack>
   )
 }

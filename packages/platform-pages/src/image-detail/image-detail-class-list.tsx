@@ -5,7 +5,7 @@ import { ColorSwatch, SelectableListItem } from '@ingradient/ui/components'
 const NameText = styled.span<{ $active?: boolean }>`
   flex: 1;
   min-width: 0;
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   color: ${(p) => (p.$active ? 'var(--ig-color-text-secondary)' : 'var(--ig-color-text-muted)')};
   text-align: left;
   overflow: hidden;
@@ -51,7 +51,7 @@ export function ImageDetailClassList({
   className,
 }: ImageDetailClassListProps) {
   if (classes.length === 0) {
-    return <Text as="p" size="var(--ig-font-size-xs)" tone="muted" style={EMPTY_STYLE}>{emptyText}</Text>
+    return <Text as="p" size="var(--ig-text-caption)" tone="muted" style={EMPTY_STYLE}>{emptyText}</Text>
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (

@@ -84,10 +84,10 @@ export function ProjectMembersList({
           }
         >
           <Stack gap="var(--ig-space-5)">
-            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>
+            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
               Remove <strong>{pendingRemove.email}</strong> from this project?
             </Text>
-            <Text as="p" tone="muted" size="var(--ig-font-size-md)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
+            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>This member will lose access to the project immediately.</Text>
           </Stack>
         </DialogShell>
       )}

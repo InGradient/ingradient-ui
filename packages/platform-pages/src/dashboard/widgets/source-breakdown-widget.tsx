@@ -66,10 +66,10 @@ export function SourceBreakdownWidget({
   return (
     <Card className={className}>
       <Inline justify="space-between" gap="var(--ig-space-5)" style={HEAD_STYLE}>
-        <Text size="var(--ig-font-size-sm)" weight="semibold" tone="secondary">{title}</Text>
+        <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
       </Inline>
       {bySource.length === 0 ? (
-        <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
       ) : (
         bySource.map((source) => {
           const sourceLabel = source.source === 'camera' && source.camera_ip
@@ -77,9 +77,9 @@ export function SourceBreakdownWidget({
             : source.source
           return (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Text size="var(--ig-font-size-xs)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
+            <Text size="var(--ig-text-caption)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
             {source.defect_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="var(--ig-font-size-md)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
+              <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
             ) : (
               <Box style={TABLE_WRAP_STYLE}>
                 <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${sourceLabel} defect counts`} />

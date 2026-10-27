@@ -29,7 +29,7 @@ export const CardHead = styled.div`
 `
 
 export const CardTitle = styled.span`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-secondary);
 `
@@ -47,11 +47,11 @@ export const StatRow = styled.div`
 
 export const StatLabel = styled.span`
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
 `
 
 export const StatValue = styled.span`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-medium);
   color: var(--ig-color-text-primary);
 `

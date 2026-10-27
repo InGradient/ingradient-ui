@@ -19,7 +19,7 @@ const PropertyStack = styled.div`
 `
 
 const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-popup-sm)', borderRadius: 'var(--ig-radius-2xs)' }
-const DESCRIPTION_STYLE = { minHeight: 'calc(var(--ig-space-13) * 2 + var(--ig-space-3))', maxWidth: '100%', fontSize: 'var(--ig-font-size-sm)', resize: 'vertical' as const }
+const DESCRIPTION_STYLE = { minHeight: 'calc(var(--ig-space-13) * 2 + var(--ig-space-3))', maxWidth: '100%', fontSize: 'var(--ig-text-body-sm)', resize: 'vertical' as const }
 
 export interface ClassInfoSidebarClass {
   id: string

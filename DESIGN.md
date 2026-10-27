@@ -55,6 +55,8 @@ Sizes keep the dense character of the product (13px and 12px are the most used t
 
 Migration from current tiers: 10→11, 15→16, 18→20, 22 (unused) removed, 28→24.
 
+Each role is a pair of CSS variables: `--ig-text-<role>` (size) and `--ig-text-<role>-leading` (line height). `Text` given a role size uses the paired line height automatically. Platform pages use roles only; the size-tier names (`--ig-font-size-*`) remain for shared components and Edge and are deprecated for new code.
+
 - Sans: `"IBM Plex Sans", "Segoe UI", sans-serif`. Mono: `"IBM Plex Mono", "SFMono-Regular", Consolas, monospace`.
 - Fonts load from the package (D13): `import '@ingradient/ui/fonts'` once at the app root brings IBM Plex Sans and IBM Plex Sans KR (400–700) and IBM Plex Mono (400–600) via `@fontsource`; Korean is split by `unicode-range`. Licensed under SIL OFL 1.1.
 - Weights: 400, 500, 600, 700. New code uses the typography tokens or `Text`/heading primitives.

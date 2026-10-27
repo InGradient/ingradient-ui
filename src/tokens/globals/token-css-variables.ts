@@ -19,6 +19,7 @@ import {
   spacingRoles,
   typographyScale,
   fontLeading,
+  textRoles,
   zIndexScale,
   controlSizes,
   transformScale,
@@ -326,6 +327,8 @@ const staticVars = {
   '--ig-font-size-4xl': typographyScale.size4xl,
   '--ig-font-size-5xl': typographyScale.size5xl,
   ...Object.fromEntries(Object.entries(fontLeading).map(([k, v]) => [`--ig-leading-${k}`, v])),
+  // Text roles: size and paired line height (DESIGN.md §3)
+  ...Object.fromEntries(Object.entries(textRoles).flatMap(([k, v]) => [[`--ig-text-${k}`, v.size], [`--ig-text-${k}-leading`, v.leading]])),
   '--ig-font-size-state-title': typographyScale.sizeSm,
   '--ig-font-size-state-description': typographyScale.sizeXs,
   '--ig-font-weight-state-title': '600',

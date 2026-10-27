@@ -24,7 +24,7 @@ const CELL_STYLE = {
 }
 
 const ROLE_SELECT_STYLE = { minWidth: 'var(--ig-popup-3xs-wide)' }
-const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 'var(--ig-font-size-xs)' }
+const DANGER_BTN_STYLE = { padding: 'var(--ig-space-2) var(--ig-space-4)', fontSize: 'var(--ig-text-caption)' }
 
 export interface ProjectMemberRowMember {
   id: string
@@ -58,9 +58,9 @@ export function ProjectMemberRow({
   const onlyOwnerRemoveTitle = isOnlyOwner ? 'Add another owner before removing this account.' : 'Remove from project'
   return (
     <Row>
-      <Text as="span" size="var(--ig-font-size-md)" title={member.name ?? member.email} style={CELL_STYLE}>{member.name || '-'}</Text>
-      <Text as="span" size="var(--ig-font-size-md)" title={member.organization ?? ''} style={CELL_STYLE}>{member.organization || '-'}</Text>
-      <Text as="span" size="var(--ig-font-size-md)" title={member.email} style={CELL_STYLE}>{member.email}</Text>
+      <Text as="span" size="var(--ig-text-body)" title={member.name ?? member.email} style={CELL_STYLE}>{member.name || '-'}</Text>
+      <Text as="span" size="var(--ig-text-body)" title={member.organization ?? ''} style={CELL_STYLE}>{member.organization || '-'}</Text>
+      <Text as="span" size="var(--ig-text-body)" title={member.email} style={CELL_STYLE}>{member.email}</Text>
       <SelectField
         value={member.role}
         onChange={(e) => onRoleChange?.((e.target as HTMLSelectElement).value)}

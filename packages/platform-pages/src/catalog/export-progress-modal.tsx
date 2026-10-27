@@ -58,13 +58,13 @@ export function ExportProgressModal({
       <Stack gap="var(--ig-space-4)">
         <Inline gap="var(--ig-space-2)">
           {busy ? <Spinner size="sm" /> : null}
-          <Text tone="secondary" size="var(--ig-font-size-sm)">
+          <Text tone="secondary" size="var(--ig-text-body-sm)">
             {phase === 'error' && errorMessage ? errorMessage : labelMap[phase]}
           </Text>
         </Inline>
         {busy ? <ProgressBar value={progress} /> : null}
         {phase === 'ready' && downloadUrl ? (
-          <Text as="a" tone="accent" size="var(--ig-font-size-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
+          <Text as="a" tone="accent" size="var(--ig-text-body-sm)" href={downloadUrl} download={filename} style={LINK_STYLE}>Download {filename}</Text>
         ) : null}
       </Stack>
     </DialogShell>

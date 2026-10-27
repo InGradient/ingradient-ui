@@ -52,7 +52,7 @@ export function JoinCodesSection({
   description = DEFAULT_DESC,
 }: JoinCodesSectionProps) {
   const columns: TableColumn<JoinCodeRow>[] = [
-    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-font-size-xs)" letterSpacing="wide">{r.code}</Text> },
+    { key: 'code', header: 'Code', render: (r) => <Text fontFamily="mono" size="var(--ig-text-caption)" letterSpacing="wide">{r.code}</Text> },
     { key: 'role', header: 'Role', render: (r) => <Text tone="muted">{r.roleId}</Text> },
     { key: 'uses', header: 'Uses', render: (r) => <Text tone="muted">{r.usedCount}{r.maxUses != null ? ` / ${r.maxUses}` : ''}</Text> },
     { key: 'expires', header: 'Expires', render: (r) => <Text tone="muted">{r.expiresAt ? new Date(r.expiresAt).toLocaleDateString() : '—'}</Text> },
@@ -70,8 +70,8 @@ export function JoinCodesSection({
 
   return (
     <Stack as="section" gap="var(--ig-space-5)">
-      {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
-      <Text as="p" tone="muted" size="var(--ig-font-size-xs)">{description}</Text>
+      {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
+      <Text as="p" tone="muted" size="var(--ig-text-caption)">{description}</Text>
 
       {isAdmin && (
         <Inline gap="var(--ig-space-3)" wrap="wrap">

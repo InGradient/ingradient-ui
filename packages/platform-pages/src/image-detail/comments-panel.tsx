@@ -184,7 +184,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
       {open ? (
         <Stack gap="var(--ig-space-3)" style={BODY_STYLE}>
           {count === 0 ? (
-            <Text tone="muted" size="var(--ig-font-size-xs)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
+            <Text tone="muted" size="var(--ig-text-caption)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
           ) : (
             <Box style={{ maxHeight: listMaxHeight, overflowY: 'auto' }}>
               <CommentThread>
@@ -225,7 +225,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
               )}
               {error ? (
                 <Inline gap="var(--ig-space-2)" justify="space-between" style={ERROR_BOX_STYLE}>
-                  <Text as="span" size="var(--ig-font-size-xs)">{error}</Text>
+                  <Text as="span" size="var(--ig-text-caption)">{error}</Text>
                   {canRetry && onRetry ? (
                     <Button
                       type="button"
@@ -241,7 +241,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                 </Inline>
               ) : null}
               <Inline gap="var(--ig-space-2)" justify="space-between">
-                <Text as="span" size="var(--ig-font-size-xs)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
+                <Text as="span" size="var(--ig-text-caption)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
                 <Inline as="span" gap="var(--ig-space-2)">
                   {editingCommentId && onCancelEdit ? (
                     <Button

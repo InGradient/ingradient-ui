@@ -38,12 +38,12 @@ export function DashboardHeader({
             <PageTitle>{title}</PageTitle>
             {subtitle ? <PageSubtitle style={SUBTITLE_STYLE}>{subtitle}</PageSubtitle> : null}
           </div>
-          {projectName ? <Text size="var(--ig-font-size-2xl)" weight="bold" tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
+          {projectName ? <Text size="var(--ig-text-title)" weight="bold" tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
         </Inline>
       </PageHeader>
       {(actions || saveMessage) ? (
         <Inline gap="var(--ig-space-4)" wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
-          {saveMessage ? <Text size="var(--ig-font-size-xs)" tone="soft">{saveMessage}</Text> : null}
+          {saveMessage ? <Text size="var(--ig-text-caption)" tone="soft">{saveMessage}</Text> : null}
           {actions}
           {actionsExtra}
         </Inline>

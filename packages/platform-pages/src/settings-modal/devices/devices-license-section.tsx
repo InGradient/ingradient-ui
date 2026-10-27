@@ -7,7 +7,7 @@ const INFO_GRID_STYLE = {
   display: 'grid' as const,
   gridTemplateColumns: 'var(--ig-form-label-col-wide) 1fr',
   gap: 'var(--ig-space-2) var(--ig-space-5)',
-  fontSize: 'var(--ig-font-size-sm)',
+  fontSize: 'var(--ig-text-body-sm)',
   alignItems: 'center' as const,
 }
 
@@ -61,7 +61,7 @@ export function DevicesLicenseSection({
   return (
     <Stack as="section" gap="var(--ig-space-4)">
       <Inline justify="space-between" gap="var(--ig-space-3)">
-        {title ? <Text as="h3" size="var(--ig-font-size-lg)" weight="semibold">{title}</Text> : null}
+        {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         {isAdmin && license ? (
           <Button type="button" size="sm" variant="secondary" onClick={onToggleRenew}>
             {showRenew ? 'Cancel' : 'Renew'}
@@ -70,7 +70,7 @@ export function DevicesLicenseSection({
       </Inline>
 
       {loading ? <EmptyState>Loading…</EmptyState> : null}
-      {!loading && error ? <Text tone="danger" size="var(--ig-font-size-xs)">{error}</Text> : null}
+      {!loading && error ? <Text tone="danger" size="var(--ig-text-caption)">{error}</Text> : null}
       {!loading && !error && license ? (
         <Box style={INFO_GRID_STYLE}>
           <Text style={INFO_LABEL_STYLE}>Plan</Text>
@@ -93,7 +93,7 @@ export function DevicesLicenseSection({
       {isAdmin && showRenew ? (
         <Card elevation="raised" flat radius="var(--ig-radius-xxs)" padding="var(--ig-space-5)">
           <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-xs)" tone="muted" weight="medium">Set a new expiry date for this organization's license.</Text>
+          <Text size="var(--ig-text-caption)" tone="muted" weight="medium">Set a new expiry date for this organization's license.</Text>
           <Inline gap="var(--ig-space-3)" wrap="wrap">
             <DatePickerField value={renewDate} onChange={onChangeRenewDate} />
             <Button type="button" onClick={onRenew} disabled={!!renewing || !renewDate}>
@@ -101,7 +101,7 @@ export function DevicesLicenseSection({
             </Button>
             <Button type="button" variant="secondary" onClick={onCancelRenew}>Cancel</Button>
           </Inline>
-          {renewError ? <Text tone="danger" size="var(--ig-font-size-xs)">{renewError}</Text> : null}
+          {renewError ? <Text tone="danger" size="var(--ig-text-caption)">{renewError}</Text> : null}
           </Stack>
         </Card>
       ) : null}

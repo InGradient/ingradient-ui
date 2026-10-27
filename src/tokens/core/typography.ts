@@ -55,3 +55,20 @@ export const fontLeading = {
   '4xl': '32px',
   '5xl': '32px'
 } as const
+
+/**
+ * Text roles (DESIGN.md §3). Components pick a role instead of a size; each role pairs a size
+ * with a px line height on the 4px grid. Values equal the current size tiers, so moving from
+ * `--ig-font-size-*` to `--ig-text-*` changes no pixels.
+ */
+export const textRoles = {
+  micro: { size: typographyScale.size2xs, leading: fontLeading['2xs'] },
+  caption: { size: typographyScale.sizeXs, leading: fontLeading.xs },
+  'body-sm': { size: typographyScale.sizeSm, leading: fontLeading.sm },
+  body: { size: typographyScale.sizeMd, leading: fontLeading.md },
+  'title-sm': { size: typographyScale.sizeLg, leading: fontLeading.lg },
+  title: { size: typographyScale.size2xl, leading: fontLeading['2xl'] },
+  display: { size: typographyScale.size4xl, leading: fontLeading['4xl'] },
+} as const
+
+export type TextRole = keyof typeof textRoles
