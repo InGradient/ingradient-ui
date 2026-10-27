@@ -1,4 +1,6 @@
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 import {
   AnalysisWidgetShell,
   DashboardOverviewPanel,
@@ -10,11 +12,20 @@ import {
 } from '../../../../fixtures/platform/0.0.1/dashboard-analysis'
 import { buildDashboardWidgets, dashboardWidgetTitles } from './build-widgets'
 
-const StudyCanvas = styled.div`
+const StudyCanvasRoot = styled.div`
   min-height: 100vh;
   padding: var(--ig-space-7) var(--ig-space-9);
   background: var(--ig-color-surface-canvas);
 `
+
+/** Studies render widgets outside DashboardView, so they turn on surface depth like the product view does. */
+function StudyCanvas({ children }: { children: ReactNode }) {
+  return (
+    <SurfaceDepthProvider>
+      <StudyCanvasRoot>{children}</StudyCanvasRoot>
+    </SurfaceDepthProvider>
+  )
+}
 
 const Masonry = styled.div`
   column-count: 3;

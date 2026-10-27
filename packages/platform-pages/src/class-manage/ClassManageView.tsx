@@ -3,11 +3,12 @@ import { ClassManageBody } from './ClassManageBody'
 import { ClassManageOverlays } from './ClassManageOverlays'
 import { Page } from './ClassManageView.styles'
 import type { ClassManageViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
 const PAGE_SUBTITLE =
   'Review project classes, linked datasets, reference images, and mapping settings.'
 
-export function ClassManageView({
+function ClassManageViewContent({
   projectName,
   permissionDenied,
   error,
@@ -34,5 +35,17 @@ export function ClassManageView({
       />
       <ClassManageOverlays {...overlays} />
     </Page>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function ClassManageView(props: ClassManageViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <ClassManageViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

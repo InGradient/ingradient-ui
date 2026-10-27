@@ -15,6 +15,7 @@ import { EdgeTabView } from './edge-tab'
 import { GeneralTab } from './tabs/GeneralTab'
 import { ProjectTab } from './tabs/ProjectTab'
 import type { SettingsModalViewProps, SettingsTab } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
 const BASE_TABS: Array<{ value: SettingsTab; label: string }> = [
   { value: 'general', label: 'General' },
@@ -25,7 +26,7 @@ const BASE_TABS: Array<{ value: SettingsTab; label: string }> = [
 
 const ADMIN_TAB = { value: 'admin' as SettingsTab, label: 'Admin' }
 
-export function SettingsModalView({
+function SettingsModalViewContent({
   open,
   onClose,
   tab,
@@ -77,5 +78,17 @@ export function SettingsModalView({
         </Main>
       </Modal>
     </ModalBackdrop>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function SettingsModalView(props: SettingsModalViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <SettingsModalViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

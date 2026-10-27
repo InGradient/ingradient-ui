@@ -3,8 +3,9 @@ import { Alert, Button, Checkbox, PasswordField, TextField } from '@ingradient/u
 import { AuthLink, CheckboxRow, Form } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { LoginViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function LoginView({
+function LoginViewContent({
   email,
   password,
   keepSignedIn,
@@ -85,5 +86,17 @@ export function LoginView({
         </Button>
       </Form>
     </AuthPageShell>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function LoginView(props: LoginViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <LoginViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Card as UiCard } from '@ingradient/ui/components'
-import { Grid, Stack, surfaceRaised } from '@ingradient/ui/primitives'
+import { Grid, Stack, surfaceRaised, withSurfaceDepth } from '@ingradient/ui/primitives'
 import { media } from '@ingradient/ui/tokens'
 
 export const Page = styled.div`
@@ -25,7 +25,6 @@ export const LogoWrap = styled.div`
 
 export const Card = styled(UiCard)`
   padding: var(--ig-space-8);
-  border-radius: var(--ig-radius-xl);
 `
 
 export const Title = styled.h1`
@@ -49,11 +48,13 @@ export const Form = styled.form`
   margin-top: var(--ig-space-7);
 `
 
-export const Section = styled.section`
+const SectionBase = styled.section`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   overflow: hidden;
 `
+
+export const Section = withSurfaceDepth(SectionBase, { displayName: 'CreateProjectSection' })
 
 export const SectionHeader = styled.header`
   padding: var(--ig-space-5) var(--ig-space-6);
@@ -129,7 +130,7 @@ export const OptionGrid = styled(Grid).attrs({
   }
 `
 
-export const OptionCard = styled.button<{ $active?: boolean }>`
+const OptionCardBase = styled.button<{ $active?: boolean }>`
   width: 100%;
   padding: var(--ig-space-5);
   text-align: left;
@@ -151,6 +152,8 @@ export const OptionCard = styled.button<{ $active?: boolean }>`
     opacity: var(--ig-opacity-muted);
   }
 `
+
+export const OptionCard = withSurfaceDepth(OptionCardBase, { displayName: 'CreateProjectOptionCard' })
 
 export const OptionTitle = styled.div`
   font-size: var(--ig-font-size-sm);

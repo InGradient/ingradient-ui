@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Inline, Stack, surfaceCard, Text } from '@ingradient/ui/primitives'
+import { Inline, Stack, surfaceCard, Text, withSurfaceDepth } from '@ingradient/ui/primitives'
 
-const Root = styled.div<{ $span: number }>`
+const RootBase = styled.div<{ $span: number }>`
   ${surfaceCard}
   border-radius: var(--ig-radius-xl);
   padding: var(--ig-space-5);
@@ -12,6 +12,8 @@ const Root = styled.div<{ $span: number }>`
   grid-column: span ${(p) => p.$span};
   min-width: 0;
 `
+
+const Root = withSurfaceDepth(RootBase, { displayName: 'DashboardWidget' })
 
 const TITLE_BLOCK_STYLE = { gap: 'var(--ig-space-2px)' }
 const BODY_STYLE = { flex: 1, minHeight: 0 }

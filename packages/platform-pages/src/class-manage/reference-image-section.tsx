@@ -8,7 +8,8 @@ const HINT_STYLE = { marginTop: 'var(--ig-space-neg-2px)' }
 const STACK_STYLE = { width: '100%' }
 const PREVIEW_STYLE = {
   width: '100%',
-  borderRadius: 'var(--ig-radius-xs)',
+  // The preview sits inside the drop-zone frame, so it must be less rounded than the frame.
+  borderRadius: 'var(--ig-radius-2xs)',
   border: 'var(--ig-border-1px) solid var(--ig-color-white-12)',
   background: 'var(--ig-color-white-04)',
   objectFit: 'contain' as const,

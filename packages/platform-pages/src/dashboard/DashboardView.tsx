@@ -9,6 +9,7 @@ import { DeflectometryDashboardSection } from './DeflectometryDashboardSection'
 import { EdgeAnalyticsSection } from './EdgeAnalyticsSection'
 import { Content, Page } from './DashboardView.styles'
 import type { DashboardViewProps, DateRangePreset } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
 const DATE_PRESET_OPTIONS: Array<{ id: DateRangePreset; label: string }> = [
   { id: 'today', label: 'Today' },
@@ -34,7 +35,7 @@ export function resolveDashboardDatePreset(
   return { from: new Date(to.getFullYear(), to.getMonth(), 1), to }
 }
 
-export function DashboardView<K extends string = string>({
+function DashboardViewContent<K extends string = string>({
   projectName,
   saveMessage,
   onSavePdf,
@@ -136,5 +137,17 @@ export function DashboardView<K extends string = string>({
         </DashboardOverviewPanel>
       </Content>
     </Page>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function DashboardView<K extends string = string>(props: DashboardViewProps<K>) {
+  return (
+    <SurfaceDepthProvider>
+      <DashboardViewContent<K> {...props} />
+    </SurfaceDepthProvider>
   )
 }

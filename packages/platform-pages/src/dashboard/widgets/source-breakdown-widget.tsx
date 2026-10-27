@@ -8,7 +8,6 @@ import { SectionPanel, Table, type TableColumn } from '@ingradient/ui/components
 const Card = styled(SectionPanel)`
   background: var(--ig-color-surface-raised);
   border-color: var(--ig-color-border-strong);
-  border-radius: var(--ig-radius-xxs);
   padding: var(--ig-space-7) var(--ig-space-9);
   gap: var(--ig-space-5);
 `

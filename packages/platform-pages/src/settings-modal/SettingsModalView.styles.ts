@@ -9,7 +9,6 @@ export const Modal = styled(ModalCard)`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--ig-radius-xl);
 `
 
 export const Header = styled(ModalHeader)`

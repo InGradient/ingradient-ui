@@ -126,6 +126,7 @@ export function withSurfaceDepth<C extends React.ElementType>(Root: C, options: 
           ref={ref}
           {...rest}
           {...surfaceDepthAttributes(state)}
+          {...(state.enabled && options.floating ? { 'data-ig-floating': '' } : {})}
           $surfaceRadius={state.enabled ? resolveSurfaceRadius(state, '') : undefined}
         >
           <SurfaceDepthScope state={state}>{children as React.ReactNode}</SurfaceDepthScope>

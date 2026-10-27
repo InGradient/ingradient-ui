@@ -1,3 +1,4 @@
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { media } from '@ingradient/ui/tokens'
 import styled from 'styled-components'
 
@@ -122,7 +123,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
   opacity: ${(p) => (p.$active ? 1 : 0.0001)};
 `
 
-export const DragOverlayCard = styled.div`
+const DragOverlayCardBase = styled.div`
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);
   padding: var(--ig-space-6) var(--ig-space-7);
@@ -131,6 +132,8 @@ export const DragOverlayCard = styled.div`
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
   box-shadow: var(--ig-shadow-popover);
 `
+
+export const DragOverlayCard = withSurfaceDepth(DragOverlayCardBase, { floating: true, displayName: 'DragOverlayCard' })
 
 export const DragOverlayTitle = styled.div`
   font-size: var(--ig-font-size-sm);

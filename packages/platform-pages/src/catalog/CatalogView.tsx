@@ -3,8 +3,9 @@ import { CatalogMobileView } from './CatalogMobileView'
 import { CatalogOverlays } from './CatalogOverlays'
 import { Page } from './CatalogView.styles'
 import type { CatalogViewProps } from './types'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-export function CatalogView(props: CatalogViewProps) {
+function CatalogViewContent(props: CatalogViewProps) {
   return (
     <Page data-ig-component="CatalogView" data-ig-layer="pages">
       {props.isMobile ? (
@@ -27,5 +28,17 @@ export function CatalogView(props: CatalogViewProps) {
       )}
       <CatalogOverlays {...props.overlays} detailContent={props.detailContent} />
     </Page>
+  )
+}
+
+/**
+ * Platform pages turn on surface depth so a rounded surface inside another rounded surface is
+ * always less rounded than its parent (DESIGN.draft.md §5).
+ */
+export function CatalogView(props: CatalogViewProps) {
+  return (
+    <SurfaceDepthProvider>
+      <CatalogViewContent {...props} />
+    </SurfaceDepthProvider>
   )
 }

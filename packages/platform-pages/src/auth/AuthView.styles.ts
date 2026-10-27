@@ -24,7 +24,6 @@ export const LogoWrap = styled.div`
 
 export const Card = styled(UiCard)`
   padding: var(--ig-space-8);
-  border-radius: var(--ig-radius-xl);
 `
 
 export const Title = styled.h1`
