@@ -56,12 +56,12 @@ ET={'edgecapture':'Edge 캡처','edgeimages':'Edge 이미지','edgestatics':'Edg
 FINAL = FINAL.replace('VALUESHOTS', ''.join(f"<figure><img src='{A}values/{k}-compare.png' alt='{v}'><figcaption>{v}</figcaption></figure>" for k,v in VT.items()))
 FINAL = FINAL.replace('EDGESHOTS', ''.join(f"<figure><img src='{A}edge/{k}-compare.png' alt='{v}'><figcaption>{v}</figcaption></figure>" for k,v in ET.items()))
 body = f'''
-<h1>4px 기초 값 제안과 밤사이 진행 결과</h1>
+<h1>4px 기초 값, 밤사이 진행 결과, 10-27 낮 Platform 정리</h1>
 <p class="muted">2026-10-27 · 브랜치 <code>feat/surface-depth</code> · push·PR 없음. 진행 기록은 <code>docs/reports/2026-10-27-overnight-progress.ko.md</code>.</p>
 <div class="note"><b>요약.</b> 표면 깊이 1단계까지 마쳤고(화면 변화 0 확인), 합의한 대로 Platform 적용 전에 멈췄다. 이어서 간격·모서리·아이콘을 4px 기준으로 다시 정한 추천값을 시험 빌드로 만들어 지금과 비교했다. 결정이 필요한 곳은 제 추천을 채택해 진행했고, 아래 1절에 모두 모았다. 뒤집으실 항목만 알려주시면 된다.</div>
 
 <nav class="toc"><ol>
-<li><a href="#final">최종 결과와 확인할 것</a></li><li><a href="#decide">의견이 필요했던 것과 제 추천</a></li><li><a href="#done">밤사이 한 일</a></li>
+<li><a href="#day">10-27 낮 작업과 어제 저녁 대비 상세 비교</a></li><li><a href="#final">최종 결과와 확인할 것</a></li><li><a href="#decide">의견이 필요했던 것과 제 추천</a></li><li><a href="#done">밤사이 한 일</a></li>
 <li><a href="#compare">화면 비교(번호 박스)</a></li><li><a href="#coupling">구조 문제: 남의 토큰 빌려 쓰기</a></li>
 <li><a href="#trials">시험 빌드와 재현</a></li><li><a href="#next">다음 단계</a></li><li><a href="#worklist">4번 단계(공용 컴포넌트) 작업 목록</a></li></ol></nav>
 
@@ -127,7 +127,8 @@ body = f'''
 <tr><td>9</td><td>기존 간격 토큰 사용처를 새 토큰으로(화면별 이전 단계에서)</td><td>CSS 1,646곳 + JSX 327곳</td><td>D1~D4</td></tr></table>
 <p>진행 순서 제안: 1번(화면 변화 0, 표면 깊이 0단계와 같은 방식으로 검증) → 2~6번(컴포넌트별로 Storybook에서 확인) → 7~9번은 화면별 이전(5번 단계)과 함께.</p>
 '''
-body = body.replace('<h2 id="decide">', FINAL + '<h2 id="decide">', 1)
+DAY = open(f'{ROOT}/docs/reports/{A}day-section.html').read()
+body = body.replace('<h2 id="decide">', DAY + FINAL + '<h2 id="decide">', 1)
 out = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>4px 기초 값 제안</title><style>{css}</style></head><body><main>{body}</main></body></html>'
 open(f'{ROOT}/docs/reports/2026-10-27-foundations-report.ko.html', 'w').write(out)
 print('written', len(out))
