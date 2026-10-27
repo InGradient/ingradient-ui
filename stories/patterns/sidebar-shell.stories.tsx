@@ -48,6 +48,7 @@ export const Review: Story = {
             >
               <div style={FRAME_STYLE}>
                 <SidebarShell
+                  label="Interactive demo sidebar"
                   expanded={expanded}
                   onToggleExpanded={() => setExpanded((p) => !p)}
                   brand={<BrandMark expanded={expanded} />}
@@ -72,6 +73,7 @@ export const Review: Story = {
             <StorybookCard title="Projects 그룹 펼침" subtitle="children 3개 (datasets)">
               <div style={FRAME_STYLE}>
                 <SidebarShell
+                  label="Expandable items sidebar"
                   expanded
                   brand={<BrandMark expanded />}
                   items={expandableItems}
@@ -94,6 +96,7 @@ export const Review: Story = {
             <StorybookCard title="Notice 3" subtitle="caller wires NotificationBadge">
               <div style={FRAME_STYLE}>
                 <SidebarShell
+                  label="Notice badge sidebar"
                   expanded
                   brand={<BrandMark expanded />}
                   topAction={<ProjectButton expanded />}
@@ -127,6 +130,7 @@ export const Review: Story = {
             <StorybookCard title="width={{ expanded: 240, collapsed: 64 }}">
               <div style={FRAME_STYLE}>
                 <SidebarShell
+                  label="Static sidebar"
                   expanded
                   brand={<BrandMark expanded />}
                   items={baseItems}

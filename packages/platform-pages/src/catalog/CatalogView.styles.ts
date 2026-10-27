@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { stateTitleText } from '@ingradient/ui/primitives'
 
 export const Page = styled.div`
-  height: 100vh;
+  /* Fills the app shell's page area; standalone it takes the viewport. */
+  height: var(--ig-page-height, 100vh);
   display: flex;
   flex-direction: column;
   --ig-catalog-divider-color: var(--ig-color-border-strong);

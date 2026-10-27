@@ -265,6 +265,16 @@ These rules apply to the shared `@ingradient/ui` components that Platform and Ed
 
 - Collapsed columns are `inert` so their zero-width controls cannot be focused. A strong divider precedes an optional right inspector.
 
+### Platform app shell
+
+- `PlatformAppShell` (`@ingradient/platform-pages`) frames workspace pages with the app-wide `SidebarShell`: brand, project switcher, Dashboard / Catalog / Classes, Settings and Sign out. Render it once at the app's route-layout level so the sidebar keeps its state while pages change.
+- The shell is router-free: the app passes `activeKey` and performs navigation in `onNavigate`; rows keep real `href`s so modifier-clicks open new tabs.
+- Default state: expanded (180px) at 1440px and wider, collapsed (72px) below, so pages keep room for their own side panels. Apps can control `expanded` and persist it.
+- Page views size themselves with `height: var(--ig-page-height, 100vh)`; the shell sets `--ig-page-height: 100%` for its page area. The page area is not a landmark; pages own theirs.
+- The current project name lives in the shell's project switcher, not in page headers.
+- Single-form pages (Login, Signup, Create Project) and mobile layouts render without the shell.
+- Panel collapse/expand uses `PanelLeftClose/Open`; the sidebar `<aside>` and `<nav>` carry unique labels (`App sidebar`, `Main`).
+
 ### Platform Page Contracts
 
 `@ingradient/platform-pages` owns controlled product views; `stories/pages/platform/0.0.1` supplies deterministic fixtures/runtime and executable documentation. Page views do not import story fixtures and do not own router, API, global store, permission, or persistence.

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { AppShell } from '@ingradient/ui/patterns'
 
 export const Page = styled(AppShell)`
-  height: 100vh;
+  /* Fills the app shell's page area; standalone it takes the viewport. */
+  height: var(--ig-page-height, 100vh);
   overflow: hidden;
 `
 

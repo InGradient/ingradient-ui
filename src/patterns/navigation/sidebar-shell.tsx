@@ -14,7 +14,8 @@ import {
   SidebarToggleButton,
   SidebarTopActionWrap,
 } from './sidebar-shell.styles'
-import { svgStrokeWidths } from '../../tokens/core'
+import { iconSizeNumbers, svgStrokeWidths } from '../../tokens/core'
+import { PanelLeftCloseIcon, PanelLeftOpenIcon } from '../../components/icons/catalog-icons'
 
 export interface SidebarShellItem {
   key: string
@@ -55,26 +56,21 @@ export interface SidebarShellProps {
   /** `aria-label` on the inner `<nav>` — must be unique when multiple sidebars
    *  share a page (a11y landmark-unique). Default `"Sidebar"`. */
   navLabel?: string
+  /** `aria-label` on the outer `<aside>` landmark — must be unique on the page. Default `"Sidebar"`. */
+  label?: string
   className?: string
 }
 
 const DEFAULT_WIDTH_EXPANDED = 180
 const DEFAULT_WIDTH_COLLAPSED = 72
 
+// Panel collapse/expand uses the shared panel icon pair (DESIGN.md §9, IconButton rule).
 function CollapseIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  )
+  return <PanelLeftCloseIcon size={iconSizeNumbers.md} aria-hidden />
 }
 
 function ExpandIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={svgStrokeWidths.regular} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  )
+  return <PanelLeftOpenIcon size={iconSizeNumbers.md} aria-hidden />
 }
 
 function ChevronDownIcon({ rotated }: { rotated?: boolean }) {
@@ -144,6 +140,7 @@ export function SidebarShell({
   actions,
   children,
   navLabel = 'Sidebar',
+  label = 'Sidebar',
   className,
 }: SidebarShellProps) {
   const widthExpanded = width?.expanded ?? DEFAULT_WIDTH_EXPANDED
@@ -154,6 +151,7 @@ export function SidebarShell({
       $widthExpanded={widthExpanded}
       $widthCollapsed={widthCollapsed}
       className={className}
+      aria-label={label}
       data-expanded={expanded ? 'true' : 'false'}
     >
       {(brand !== undefined || onToggleExpanded) ? (

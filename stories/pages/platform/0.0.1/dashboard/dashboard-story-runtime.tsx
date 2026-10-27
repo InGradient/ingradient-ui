@@ -12,6 +12,7 @@ import {
   toDashboardDateString,
   useDashboardScene,
 } from './use-dashboard-scene'
+import { PlatformStoryFrame } from '../platform-story-frame'
 
 export interface DashboardStoryArgs extends DashboardStoryActions {
   scenario: DashboardScenarioKey
@@ -46,8 +47,8 @@ export function DashboardScene({ scenario: key, ...actions }: DashboardStoryArgs
     : 'All time'
 
   return (
+    <PlatformStoryFrame activeKey="dashboard" projectName={scenario.projectName ?? undefined}>
     <DashboardView
-      projectName={scenario.projectName}
       saveMessage={state.saveMessage}
       onSavePdf={() => {
         actions.onSavePdf()
@@ -133,5 +134,6 @@ export function DashboardScene({ scenario: key, ...actions }: DashboardStoryArgs
         ),
       }}
     />
+    </PlatformStoryFrame>
   )
 }
