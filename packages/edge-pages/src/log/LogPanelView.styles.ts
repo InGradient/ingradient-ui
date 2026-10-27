@@ -101,11 +101,11 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
   gap: var(--ig-space-3);
   padding: var(--ig-space-3);
   margin-bottom: var(--ig-space-1);
-  border-radius: var(--ig-radius-xs);
+  border-radius: var(--ig-radius-sm);
   cursor: default;
-  background-color: ${({ type }) =>
-    type === 'error' ? 'var(--ig-color-danger-bg-soft)' :
-    type === 'success' ? 'var(--ig-color-success-bg-soft)' : 'transparent'};
+  /* Like Platform lists: rows stay transparent and the status icon carries success/info.
+     Only errors keep a tint so they stand out in a long log. */
+  background-color: ${({ type }) => (type === 'error' ? 'var(--ig-color-danger-bg-soft)' : 'transparent')};
 
   &:hover { background-color: var(--ig-color-surface-interactive); }
   &:focus-visible {
