@@ -39,7 +39,7 @@ Simon이 잠든 동안 진행한 작업의 실시간 기록이다. 최종 정리
 - [x] 5-2 Platform 위계 검사(DOM 기준) 위반 0, 화면별 전후 번호 박스 이미지
 - [x] 6-1 Edge를 카드 방식에서 Platform과 같은 구성(선으로 나눈 영역)과 같은 컴포넌트로 바꾸기(01:05 Simon 결정) + 표면 깊이 켜기
 - [x] 6-2 Edge 화면별 전후 이미지
-- [ ] 7 `DESIGN.draft.md` → `DESIGN.md` 교체(코드에 들어간 값 기준), 리포트 최종 정리
+- [x] 7 `DESIGN.draft.md` → `DESIGN.md` 교체(코드에 들어간 값 기준), 리포트 최종 정리
 
 D13 폰트 로드는 01:07에 Simon이 추천대로 진행하라고 함. 01:05 Simon 결정: Edge는 Platform 구성으로, 줄 높이 px 진행.
 
@@ -75,3 +75,4 @@ D13 폰트 로드는 01:07에 Simon이 추천대로 진행하라고 함. 01:05 S
 - 03:06 5-1·5-2 Platform 표면 깊이: 7개 화면을 SurfaceDepthProvider로 감싸고 덮어쓰기 정리(Settings 모달, Create·Auth 카드, 대시보드 위젯 8px), 위젯·Create 섹션·옵션 카드·page Panel·MediaDialog를 깊이 인식으로, Class 미리보기 4px, Catalog 드롭 영역 12px. 연구용 대시보드 스토리도 Provider. 떠 있는 표면에 data-ig-floating. 위계 검사: DOM 기준 292쌍 위반 0, 위치 기준 같음 81→12·역전 84→2, 깨진 스토리 38→8(6개는 팝오버·메뉴·확인창 겹침, 2개는 원인 미확인). 단위 483, Storybook 888 통과.
 - 03:21 6-1·6-2 Edge를 Platform 구성으로: 그라데이션 바탕 → 단색 캔버스, 세 영역 사이 간격·바깥 여백 0, 왼쪽 패널 오른쪽 얇은 선·오른쪽 패널 앞 강한 선(Platform 오른쪽 상세 패널 규칙), 가운데 탭 pill → underline(Platform Settings 탭과 같음), Edge 최상위 화면 6개에 SurfaceDepthProvider. Edge 0.0.5 59개 스토리 위치 기준 중첩 95→40쌍, 같음 37→1, 역전 5→0. 단위 483, Storybook 888 통과. Edge 6개 화면 전후 비교 이미지.
 - 03:22 Edge 로그 줄을 Platform 목록처럼: 성공·정보 줄의 초록 배경 제거(상태 아이콘이 표시), 오류 줄만 옅은 빨간 배경 유지, 모서리 8px. 로그 단위 24, 관련 스토리 22 통과.
+- 03:24 7 `DESIGN.draft.md`를 코드 반영 상태로 고쳐 `DESIGN.md`로 교체(제안 표시 0, 남은 이전 작업은 받아들인 부채 표로). 리포트 맨 위에 최종 결과·확인할 것·커밋 표·전후 이미지(4px 값 11, 폰트 2, Edge 6) 추가. 6단계 끝.
