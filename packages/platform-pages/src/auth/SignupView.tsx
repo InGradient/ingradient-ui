@@ -1,9 +1,10 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
-import { Alert, Button, FormField, PasswordField, TextField } from '@ingradient/ui/components'
+import { Alert, Button, PasswordField, TextField } from '@ingradient/ui/components'
 import { AuthLink, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { SignupViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { FieldGroup, FieldLabel } from '@ingradient/ui/patterns'
 
 function SignupViewContent({
   email,
@@ -44,7 +45,8 @@ function SignupViewContent({
     >
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {error ? <Alert id={messageId} $tone="danger">{error}</Alert> : null}
-        <FormField label="Email" htmlFor={emailId}>
+        <FieldGroup>
+          <FieldLabel htmlFor={emailId}>Email</FieldLabel>
           <TextField
             id={emailId}
             size="lg"
@@ -55,8 +57,9 @@ function SignupViewContent({
             onChange={(event) => onEmailChange(event.target.value)}
             disabled={submitting}
           />
-        </FormField>
-        <FormField label="Name" htmlFor={nameId}>
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={nameId}>Name</FieldLabel>
           <TextField
             id={nameId}
             size="lg"
@@ -66,8 +69,9 @@ function SignupViewContent({
             onChange={(event) => onNameChange(event.target.value)}
             disabled={submitting}
           />
-        </FormField>
-        <FormField label="Organization" htmlFor={organizationId}>
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={organizationId}>Organization</FieldLabel>
           <TextField
             id={organizationId}
             size="lg"
@@ -77,8 +81,9 @@ function SignupViewContent({
             onChange={(event) => onOrganizationChange(event.target.value)}
             disabled={submitting}
           />
-        </FormField>
-        <FormField label="Password" htmlFor={passwordId}>
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={passwordId}>Password</FieldLabel>
           <PasswordField
             id={passwordId}
             size="lg"
@@ -89,9 +94,9 @@ function SignupViewContent({
             aria-invalid={passwordInvalid || undefined}
             aria-describedby={error ? messageId : undefined}
           />
-        </FormField>
+        </FieldGroup>
         <SubmitRow>
-          <Button type="submit" variant="accent" size="lg" disabled={submitting}>
+          <Button type="submit" variant="solid" size="lg" disabled={submitting}>
             {submitting ? 'Signing up…' : 'Sign up'}
           </Button>
         </SubmitRow>

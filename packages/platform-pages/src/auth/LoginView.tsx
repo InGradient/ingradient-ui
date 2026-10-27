@@ -1,9 +1,10 @@
 import { useId, type FormEvent, type MouseEvent } from 'react'
-import { Alert, Button, Checkbox, FormField, PasswordField, TextField } from '@ingradient/ui/components'
+import { Alert, Button, Checkbox, PasswordField, TextField } from '@ingradient/ui/components'
 import { AuthLink, CheckboxRow, Form, SubmitRow } from './AuthView.styles'
 import { AuthPageShell } from './auth-page-shell'
 import type { LoginViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { FieldGroup, FieldLabel } from '@ingradient/ui/patterns'
 
 function LoginViewContent({
   email,
@@ -48,7 +49,8 @@ function LoginViewContent({
       <Form onSubmit={handleSubmit} aria-busy={submitting}>
         {warning ? <Alert id={warningId} $tone="warning">{warning}</Alert> : null}
         {error ? <Alert id={errorId} $tone="danger">{error}</Alert> : null}
-        <FormField label="Email" htmlFor={emailId}>
+        <FieldGroup>
+          <FieldLabel htmlFor={emailId}>Email</FieldLabel>
           <TextField
             id={emailId}
             size="lg"
@@ -61,8 +63,9 @@ function LoginViewContent({
             aria-invalid={credentialsInvalid || undefined}
             aria-describedby={describedBy}
           />
-        </FormField>
-        <FormField label="Password" htmlFor={passwordId}>
+        </FieldGroup>
+        <FieldGroup>
+          <FieldLabel htmlFor={passwordId}>Password</FieldLabel>
           <PasswordField
             id={passwordId}
             size="lg"
@@ -73,7 +76,7 @@ function LoginViewContent({
             aria-invalid={credentialsInvalid || undefined}
             aria-describedby={describedBy}
           />
-        </FormField>
+        </FieldGroup>
         <CheckboxRow>
           <Checkbox
             checked={keepSignedIn}
@@ -89,7 +92,7 @@ function LoginViewContent({
           />
         </CheckboxRow>
         <SubmitRow>
-          <Button type="submit" variant="accent" size="lg" disabled={submitting}>
+          <Button type="submit" variant="solid" size="lg" disabled={submitting}>
             {submitting ? 'Signing in…' : 'Sign in'}
           </Button>
         </SubmitRow>
