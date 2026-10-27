@@ -57,7 +57,7 @@ body = f'''
 <nav class="toc"><ol>
 <li><a href="#decide">의견이 필요했던 것과 제 추천</a></li><li><a href="#done">밤사이 한 일</a></li>
 <li><a href="#compare">화면 비교(번호 박스)</a></li><li><a href="#coupling">구조 문제: 남의 토큰 빌려 쓰기</a></li>
-<li><a href="#trials">시험 빌드와 재현</a></li><li><a href="#next">다음 단계</a></li></ol></nav>
+<li><a href="#trials">시험 빌드와 재현</a></li><li><a href="#next">다음 단계</a></li><li><a href="#worklist">4번 단계(공용 컴포넌트) 작업 목록</a></li></ol></nav>
 
 <h2 id="decide">1. 의견이 필요했던 것과 제 추천</h2>
 <p>"채택"은 시험 빌드에 반영해 진행한 것, "추천"은 제안만 하고 코드에 넣지 않은 것이다. 제품 코드에 들어간 것은 아직 없다(표면 깊이 장치 제외, 화면 변화 0).</p>
@@ -106,6 +106,20 @@ body = f'''
 <li><code>DESIGN.md</code> 재작성 초안을 만들었다: <code>DESIGN.draft.md</code>(저장소 루트). 색·모션·접근성·Platform 계약은 유지하고, 3~9절(글자, 간격, 모양, 크기, 테두리·포커스, 표면, 컴포넌트 규칙)을 위 추천값으로 새로 썼다. 값마다 결정 번호(D1~D13)와 상태(코드에 있음/제안)를 붙였다. 값이 코드에 들어간 뒤 <code>DESIGN.md</code>와 교체한다.</li>
 <li>공용 컴포넌트 수정 → Platform 화면별 적용 → Edge 순서는 그대로다.</li>
 </ol>
+
+<h2 id="worklist">7. 4번 단계(공용 컴포넌트) 작업 목록</h2>
+<p>공용 컴포넌트는 Platform과 Edge가 함께 쓰므로 바꾸면 Edge 화면도 바뀐다. 밤사이에는 Edge 화면을 바꾸지 않기로 해서 코드는 건드리지 않고 목록만 만들었다. 숫자는 <code>feat/surface-depth</code> 기준으로 센 값이다.</p>
+<table><tr><th>#</th><th>작업</th><th>범위</th><th>결정</th></tr>
+<tr><td>1</td><td>새 토큰 추가(<code>--ig-spacing-*</code>, 의미 간격, 컴포넌트 크기, 글자·줄 높이). 아직 아무도 쓰지 않으므로 화면 변화 0</td><td>토큰 파일</td><td>D1·D3·D4·D10·D11·D12</td></tr>
+<tr><td>2</td><td>크기에 다른 축 토큰을 빌려 쓰는 곳을 컴포넌트 크기 토큰으로</td><td>72건(아이콘 36·간격 36)</td><td>D12</td></tr>
+<tr><td>3</td><td>숫자로 넣은 아이콘 크기를 아이콘 토큰으로</td><td>10곳, 8개 파일(검색창, 복사 버튼, 날짜 선택, 표 등)</td><td>D6</td></tr>
+<tr><td>4</td><td>Button 좌우 여백과 아이콘-글자 간격</td><td><code>button-types.ts</code>, <code>button-root.tsx</code></td><td>D8</td></tr>
+<tr><td>5</td><td>compact 밀도 <code>xs</code> 24px, 안 쓰는·겹치는 높이 토큰 정리</td><td>밀도 토큰</td><td>D7</td></tr>
+<tr><td>6</td><td>테두리 1.5·3px를 2px로</td><td>8곳</td><td>D9</td></tr>
+<tr><td>7</td><td>아직 깊이를 읽지 않는 표면을 깊이 인식으로(대시보드 위젯 껍데기, 참조 이미지 틀, 페이지 패널, 사이드바 등)</td><td>분류 53곳 중 남은 43곳 + 위젯 <code>Card</code> 2곳</td><td>D5</td></tr>
+<tr><td>8</td><td><code>MediaDialogContent</code> 깊이 적용과 좁은 화면 모서리 0 유지</td><td>1곳</td><td>D5</td></tr>
+<tr><td>9</td><td>기존 간격 토큰 사용처를 새 토큰으로(화면별 이전 단계에서)</td><td>CSS 1,646곳 + JSX 327곳</td><td>D1~D4</td></tr></table>
+<p>진행 순서 제안: 1번(화면 변화 0, 표면 깊이 0단계와 같은 방식으로 검증) → 2~6번(컴포넌트별로 Storybook에서 확인) → 7~9번은 화면별 이전(5번 단계)과 함께.</p>
 '''
 out = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>4px 기초 값 제안</title><style>{css}</style></head><body><main>{body}</main></body></html>'
 open(f'{ROOT}/docs/reports/2026-10-27-foundations-report.ko.html', 'w').write(out)
