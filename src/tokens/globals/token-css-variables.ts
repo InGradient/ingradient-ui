@@ -1,5 +1,6 @@
 import {
   borderWidthScale,
+  depthRadius,
   effectsScale,
   foundationColors,
   foundationColorsLight,
@@ -301,6 +302,10 @@ const staticVars = {
   '--ig-radius-2xl': radiusScale['2xl'],
   '--ig-radius-4xl': radiusScale['4xl'],
   '--ig-radius-pill': ingradientThemeDark.radius.pill,
+  // ── Surface radius by nesting depth (see primitives/surfaces/surface-depth) ──
+  '--ig-depth-1-radius': depthRadius[1],
+  '--ig-depth-2-radius': depthRadius[2],
+  '--ig-depth-3-radius': depthRadius[3],
   // ── Typography ────────────────────────────────────────────────
   '--ig-font-sans': ingradientThemeDark.typography.fontSans,
   '--ig-font-mono': ingradientThemeDark.typography.fontMono,
