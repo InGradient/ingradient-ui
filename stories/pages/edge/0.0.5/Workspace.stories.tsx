@@ -1,6 +1,7 @@
 // 화면 3·4 — 촬영 화면과 그 위에 뜨는 System Settings 다이얼로그.
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, within } from 'storybook/test'
+import { expect, fn, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { defineHandoff } from '../../../support/handoff'
 import { WorkspaceScene, type WorkspaceSceneArgs } from './workspace/workspace-scene'
 

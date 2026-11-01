@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, userEvent, within } from 'storybook/test'
+import { expect, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import type { PreviewPatternLabel } from '@ingradient/edge-pages'
 import { Inline, Stack } from '@ingradient/ui'
 import { defineHandoff } from '../../../support/handoff'

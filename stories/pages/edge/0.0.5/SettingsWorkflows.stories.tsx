@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
+import { expect, fn, waitFor, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { Button, Stack } from '@ingradient/ui'
 import type { AccountUser, LightingMode, SettingsTab } from '@ingradient/edge-pages'
 import { defineHandoff } from '../../../support/handoff'
@@ -10,7 +11,7 @@ import { AccountRuntime, LanguageRuntime } from './settings/account-runtime'
 import { SystemMonitorRuntime } from './settings/system-runtime'
 import { SAMPLE_USER } from '../../../fixtures/edge/0.0.5'
 
-interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
+export interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
 function SettingsWorkflowScene({ initialTab, lightingMode, chromeOnly, onMockAction }: WorkflowArgs) {
   const draft = useSettingsDraft()
   const [open, setOpen] = useState(!chromeOnly)

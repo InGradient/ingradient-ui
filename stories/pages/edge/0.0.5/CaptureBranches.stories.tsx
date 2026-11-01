@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fireEvent, fn, userEvent, waitFor, within } from 'storybook/test'
+import { expect, fireEvent, fn, waitFor, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { PANEL_CLASSES, RIGHT_PANEL_LABELS } from '../../../fixtures/edge/0.0.5'
 import { defineHandoff } from '../../../support/handoff'
 import { CaptureBranches } from './workspace/capture-branches'

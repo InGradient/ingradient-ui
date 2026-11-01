@@ -1,7 +1,8 @@
 // 화면 2 — 프로젝트/데이터셋 선택. 로그인 후 처음 보는 화면이다.
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
+import { expect, fn, waitFor, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { DatasetSelectView } from '@ingradient/edge-pages'
 import {
   DATASET_SELECT_LABELS, LATEST_DATASET_ID, SAMPLE_RECENT,
@@ -12,7 +13,7 @@ import { useDatasetRuntime } from './dataset-runtime'
 
 const noop = (): undefined => undefined
 
-interface SceneArgs {
+export interface SceneArgs {
   mode?: 'online' | 'offline'
   loading?: boolean
   fetchError?: string | null
