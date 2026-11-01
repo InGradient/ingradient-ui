@@ -7,7 +7,7 @@ const Body = styled.div`
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
   overflow: auto;
 `
 
@@ -24,7 +24,7 @@ export function SystemMonitorModalView(props: SystemMonitorModalViewProps): JSX.
           value={activeTab}
           onChange={(v) => onSetActiveTab(v as SystemMonitorTab)}
         />
-        <div style={{ marginTop: 'var(--ig-space-4)', flex: 1, minHeight: 0 }}>
+        <div style={{ marginTop: 'var(--ig-spacing-8)', flex: 1, minHeight: 0 }}>
           {activeTab === 'monitor' ? monitorContent : cleanupContent}
         </div>
       </Body>

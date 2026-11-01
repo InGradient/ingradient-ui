@@ -127,7 +127,7 @@ export function ImagesView(props: ImagesViewProps): JSX.Element {
                 id={filterId}
                 aria-label={labels.filterTitle}
                 width={popupSizeNumbers.smNarrow}
-                style={{ position: 'absolute', top: 'calc(100% + var(--ig-space-2))', right: 0 }}
+                style={{ position: 'absolute', top: 'calc(100% + var(--ig-spacing-8))', right: 0 }}
               >
                 <FilterPopoverSection title={labels.dateFilter.title}>
                   <DropdownSelect

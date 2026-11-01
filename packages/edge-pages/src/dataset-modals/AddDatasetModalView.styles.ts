@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const InlineError = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-danger);
-  padding: var(--ig-space-1) var(--ig-space-6) 0;
+  padding: var(--ig-spacing-4) var(--ig-spacing-12) 0;
 `

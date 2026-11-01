@@ -12,10 +12,10 @@ export const Container = styled.aside`
 `
 
 export const Section = styled.div`
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `
 
@@ -26,7 +26,7 @@ export const GrowSection = styled(Section)`
 `
 
 export const Label = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
@@ -38,13 +38,13 @@ export const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const ClassList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const SetupSlot = styled.div`
@@ -56,7 +56,7 @@ export const SetupSlot = styled.div`
 export const PatternGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const PatternButton = styled(Button).attrs({

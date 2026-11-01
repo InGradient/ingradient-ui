@@ -33,27 +33,27 @@ export const CaptureZoomWrap = styled.div.attrs<{ $zoom: number; $panX: number; 
 
 export const SetupMetrics = styled.div`
   position: absolute;
-  top: var(--ig-space-7);
-  left: var(--ig-space-7);
+  top: var(--ig-spacing-16);
+  left: var(--ig-spacing-16);
   z-index: var(--ig-z-raised-plus);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   width: var(--ig-popup-sm);
 `;
 
 export const MetricLabel = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-white-62);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-normal);
 `;
 
 export const MetricValue = styled.div`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
-  margin-top: var(--ig-space-2px);
+  margin-top: var(--ig-spacing-2);
 `;
 
 export const SetupBlockingOverlay = styled.div`
@@ -71,23 +71,23 @@ export const SetupBlockingCard = styled.div`
   background: var(--ig-color-capture-surface-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-8) var(--ig-space-10);
+  padding: var(--ig-spacing-16) var(--ig-spacing-24);
   color: var(--ig-color-text-primary);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-4);
-  font-size: var(--ig-font-size-sm);
+  gap: var(--ig-spacing-8);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
 `;
 
 export const OverlayControls = styled.div`
   position: absolute;
-  top: var(--ig-space-4);
-  right: var(--ig-space-6);
+  top: var(--ig-spacing-8);
+  right: var(--ig-spacing-12);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
   z-index: var(--ig-z-capture-high);
 `;
 
@@ -97,11 +97,11 @@ export const OverlayPopover = styled.div`
   border-radius: var(--ig-radius-xs);
   backdrop-filter: var(--ig-blur-sm);
   box-shadow: var(--ig-shadow-panel);
-  padding: var(--ig-space-4) var(--ig-space-5);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
   min-width: var(--ig-popup-2xs-plus);
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-8);
 `;
 
 export const ControlRow = styled.div`
@@ -109,7 +109,7 @@ export const ControlRow = styled.div`
   justify-content: space-between;
   align-items: center;
   color: var(--ig-color-text-secondary);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
 `;
 
 export const CaptureBar = styled.div`
@@ -119,7 +119,7 @@ export const CaptureBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--ig-space-9);
+  padding: 0 var(--ig-spacing-20);
   position: relative;
   flex-shrink: 0;
 `;
@@ -142,12 +142,12 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 0;
-  box-shadow: 0 var(--ig-space-3) var(--ig-space-11) var(--ig-color-blue-strong-tint-30);
+  box-shadow: 0 var(--ig-spacing-8) var(--ig-spacing-24) var(--ig-color-blue-strong-tint-30);
   position: relative;
 
   &:active {
     transform: scale(var(--ig-scale-press));
-    box-shadow: 0 var(--ig-space-1) var(--ig-space-5) var(--ig-color-blue-strong-tint-20);
+    box-shadow: 0 var(--ig-spacing-4) var(--ig-spacing-12) var(--ig-color-blue-strong-tint-20);
   }
 
   ${(p) => p.$capturing
@@ -189,7 +189,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
 
 export const StatusText = styled.div`
   color: var(--ig-color-text-soft);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   flex-shrink: 0;
 `;
 
@@ -238,7 +238,7 @@ export const ConnectingBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
 `;
 
 export const StreamImg = styled.img`
@@ -260,10 +260,10 @@ export const FocusPeakingOverlay = styled.img`
 
 export const HistogramOverlay = styled.div`
   position: absolute;
-  top: var(--ig-space-6);
-  right: var(--ig-space-6);
+  top: var(--ig-spacing-12);
+  right: var(--ig-spacing-12);
   z-index: var(--ig-z-raised-plus);
-  padding: var(--ig-space-3);
+  padding: var(--ig-spacing-8);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-capture-bg-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
@@ -285,11 +285,11 @@ export const CapturingBadge = styled.div`
   z-index: var(--ig-z-tooltip);
   background: var(--ig-color-overlay-deep);
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
-  padding: var(--ig-space-2) var(--ig-space-7);
+  padding: var(--ig-spacing-8) var(--ig-spacing-16);
   border-radius: var(--ig-radius-sm);
   pointer-events: none;
-  box-shadow: 0 var(--ig-space-1) var(--ig-space-7) var(--ig-color-shadow-strong);
+  box-shadow: 0 var(--ig-spacing-4) var(--ig-spacing-16) var(--ig-color-shadow-strong);
 `;

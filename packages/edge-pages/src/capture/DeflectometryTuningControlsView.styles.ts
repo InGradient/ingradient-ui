@@ -3,15 +3,15 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
-  padding-top: var(--ig-space-4);
+  gap: var(--ig-spacing-8);
+  padding-top: var(--ig-spacing-8);
   border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
 `;
 
 export const Label = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
 `;
 
@@ -24,7 +24,7 @@ export const Slider = styled.input.attrs({ type: 'range' })`
 export const SliderInline = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   input[type='range'] {
     flex: 1;
     min-width: 0;
@@ -34,7 +34,7 @@ export const SliderInline = styled.div`
 export const MetricRow = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
   font-variant-numeric: tabular-nums;
 `;
@@ -50,13 +50,13 @@ export const QualityHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
 `;
 
 export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
   display: inline-flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
   font-weight: var(--ig-font-weight-bold);
   color: ${(p) =>
     p.$status === 'good' || p.$status === 'high' ? 'var(--ig-color-success)'
@@ -76,5 +76,5 @@ export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`
 export const IndicatorRight = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
 `;

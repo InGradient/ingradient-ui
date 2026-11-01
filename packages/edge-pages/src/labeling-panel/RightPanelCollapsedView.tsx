@@ -27,7 +27,7 @@ export function RightPanelCollapsedView(props: RightPanelCollapsedViewProps): JS
   const { classes, selectedClassId, labels, onClassClick, onExpand } = props
 
   return (
-    <Stack data-ig-collapsed-panel="right" gap="var(--ig-space-2)" align="center" style={{ padding: 'var(--ig-space-2)' }}>
+    <Stack data-ig-collapsed-panel="right" gap="var(--ig-spacing-8)" align="center" style={{ padding: 'var(--ig-spacing-8)' }}>
       <IconButton
         size="xs"
         variant="ghost"

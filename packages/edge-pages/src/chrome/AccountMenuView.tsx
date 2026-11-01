@@ -65,7 +65,7 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
             <HistoryList>
               {accountHistory.map((entry) => (
                 <SelectableListItem key={entry.email} variant="card" onClick={() => { onSelectAccount(entry); accountBtnRef.current?.focus() }}>
-                  <Stack gap="var(--ig-space-2px)">
+                  <Stack gap="var(--ig-spacing-2)">
                     <HistoryName>{entry.name}</HistoryName>
                     <HistoryEmail>{entry.email}</HistoryEmail>
                   </Stack>

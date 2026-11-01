@@ -22,23 +22,23 @@ export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
         </>
       }
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-4)' }}>
-        <div style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-text-muted)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)' }}>
+        <div style={{ fontSize: 'var(--ig-text-body-sm)', color: 'var(--ig-color-text-muted)' }}>
           {cameraId} · current {currentIp ?? '—'}
         </div>
         <div>
-          <label htmlFor={`${id}-ip`} style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
+          <label htmlFor={`${id}-ip`} style={{ fontSize: 'var(--ig-text-caption)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-spacing-4)' }}>
             {labels.forceIpStaticIp}
           </label>
           <TextField id={`${id}-ip`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} value={newIp} onChange={(e) => onIpChange(e.target.value)} placeholder="192.168.1.10" />
         </div>
         <div>
-          <label htmlFor={`${id}-subnet`} style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-space-1)' }}>
+          <label htmlFor={`${id}-subnet`} style={{ fontSize: 'var(--ig-text-caption)', color: 'var(--ig-color-text-muted)', display: 'block', marginBottom: 'var(--ig-spacing-4)' }}>
             {labels.forceIpSubnet}
           </label>
           <TextField id={`${id}-subnet`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} value={newSubnet} onChange={(e) => onSubnetChange(e.target.value)} placeholder="255.255.255.0" />
         </div>
-        {error && <div id={`${id}-error`} role="alert" style={{ fontSize: 'var(--ig-font-size-sm)', color: 'var(--ig-color-danger)' }}>{error}</div>}
+        {error && <div id={`${id}-error`} role="alert" style={{ fontSize: 'var(--ig-text-body-sm)', color: 'var(--ig-color-danger)' }}>{error}</div>}
       </div>
     </DialogShell>
   )

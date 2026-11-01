@@ -7,7 +7,7 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   min-height: var(--ig-control-height-xl);
-  padding: 0 var(--ig-space-7);
+  padding: 0 var(--ig-spacing-16);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   flex-shrink: 0;
 `

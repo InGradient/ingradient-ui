@@ -6,14 +6,14 @@ import type { UpdateSectionViewProps } from './types'
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-5);
+  gap: var(--ig-spacing-8);
+  padding: var(--ig-spacing-12);
   background: var(--ig-color-surface-raised);
   border-radius: var(--ig-radius-md);
 `
-const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
-const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-font-size-sm);`
+const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
+const Label = styled.span`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted);`
+const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
   const {

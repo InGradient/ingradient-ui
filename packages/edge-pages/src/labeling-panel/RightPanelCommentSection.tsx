@@ -7,18 +7,18 @@ import type { RightPanelCommentSectionProps } from './types'
 const CommentList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   max-height: var(--ig-popup-list-min);
   overflow-y: auto;
 `
 
 const CommentMeta = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-2px);
+  margin-bottom: var(--ig-spacing-2);
 `
 
-const InputRow = styled.div`display: flex; gap: var(--ig-space-2); align-items: flex-end;`
+const InputRow = styled.div`display: flex; gap: var(--ig-spacing-8); align-items: flex-end;`
 
 export function RightPanelCommentSection(props: RightPanelCommentSectionProps): JSX.Element {
   const { comments, pendingComment, isSending, labels, onPendingCommentChange, onSend } = props
@@ -35,8 +35,8 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
                 elevation="raised"
                 flat
                 radius="var(--ig-radius-xs)"
-                padding="var(--ig-space-3)"
-                style={{ fontSize: 'var(--ig-font-size-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
+                padding="var(--ig-spacing-8)"
+                style={{ fontSize: 'var(--ig-text-body-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
               >
                 <CommentMeta>{c.author} · {c.timestamp}</CommentMeta>
                 {c.text}

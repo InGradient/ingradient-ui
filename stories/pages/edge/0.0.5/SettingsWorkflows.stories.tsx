@@ -16,7 +16,7 @@ function SettingsWorkflowScene({ initialTab, lightingMode, chromeOnly, onMockAct
   const [open, setOpen] = useState(!chromeOnly)
   const [language, setLanguage] = useState('en')
   const [user, setUser] = useState<AccountUser | null>(SAMPLE_USER)
-  return <Stack gap="var(--ig-space-4)" style={{ padding: 'var(--ig-space-5)' }}>
+  return <Stack gap="var(--ig-spacing-8)" style={{ padding: 'var(--ig-spacing-12)' }}>
     <h1>Synthetic settings workflows</h1>
     <p>No authentication, hardware, files, clipboard, network, or OS calls.</p>
     <LanguageRuntime value={language} onChange={setLanguage} onMockAction={onMockAction} />

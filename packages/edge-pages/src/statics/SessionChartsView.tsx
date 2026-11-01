@@ -28,11 +28,11 @@ function MsTooltip({ active, label, payload }: { active?: boolean; label?: strin
       background: 'var(--ig-color-surface-raised)',
       border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
       borderRadius: 'var(--ig-radius-sm)',
-      padding: 'var(--ig-space-3) var(--ig-space-4)',
+      padding: 'var(--ig-spacing-8) var(--ig-spacing-8)',
       color: 'var(--ig-color-text-primary)',
-      fontSize: 'var(--ig-font-size-xs)',
+      fontSize: 'var(--ig-text-caption)',
     }}>
-      <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-space-1)' }}>{label}</div>
+      <div style={{ fontWeight: 'var(--ig-font-weight-bold)', marginBottom: 'var(--ig-spacing-4)' }}>{label}</div>
       <div>{formatMs(value)}</div>
     </div>
   )
@@ -73,21 +73,21 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         height={chartHeights.md}
         emptyMessage={labels.noOutcomeStats}
       />
-      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
-        <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.captureWorkTime}</DurationLabel>
-        <DurationGrid style={{ marginBottom: 'var(--ig-space-6)' }}>
+        <DurationLabel style={{ marginBottom: 'var(--ig-spacing-8)' }}>{labels.captureWorkTime}</DurationLabel>
+        <DurationGrid style={{ marginBottom: 'var(--ig-spacing-12)' }}>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-5)">
+            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(durationSummary[`${k}_ms`])}</DurationValue>
             </Card>
           ))}
         </DurationGrid>
-        <DurationLabel style={{ marginBottom: 'var(--ig-space-4)' }}>{labels.labelingTime}</DurationLabel>
+        <DurationLabel style={{ marginBottom: 'var(--ig-spacing-8)' }}>{labels.labelingTime}</DurationLabel>
         <DurationGrid>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-5)">
+            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(labelingDurationSummary[`${k}_ms`])}</DurationValue>
             </Card>
@@ -104,7 +104,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         emptyMessage={labels.noDeflectometryData}
       />
       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
-        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-space-6) var(--ig-space-7) var(--ig-space-7)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
           <PanelTitle>{labels.workerStats}</PanelTitle>
           {workerStats.length > 0 ? (
             <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />

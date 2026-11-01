@@ -49,8 +49,8 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
       {!loading && fetchError && <ErrorMsg>{fetchError}</ErrorMsg>}
 
       {!loading && !fetchError && recentDatasets.length > 0 && (
-        <Stack gap="var(--ig-space-4)">
-          <Text size="var(--ig-font-size-2xs)" weight="bold" tone="muted" uppercase letterSpacing="widest">{labels.recentLabel}</Text>
+        <Stack gap="var(--ig-spacing-8)">
+          <Text size="var(--ig-text-micro)" weight="bold" tone="muted" uppercase letterSpacing="widest">{labels.recentLabel}</Text>
           <RecentScroll>
             {recentDatasets.map(({ dataset, isLatest }) => (
               <RecentDatasetCard
@@ -76,9 +76,9 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
       )}
 
       {!loading && !fetchError && groups.map((group) => (
-        <Stack key={group.project_id} gap="var(--ig-space-5)">
-          <Inline gap="var(--ig-space-4)" wrap="nowrap">
-            <Text size="var(--ig-font-size-sm)" weight="bold" tone="muted" uppercase letterSpacing="wider">{group.project_name}</Text>
+        <Stack key={group.project_id} gap="var(--ig-spacing-12)">
+          <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
+            <Text size="var(--ig-text-body-sm)" weight="bold" tone="muted" uppercase letterSpacing="wider">{group.project_name}</Text>
             {group.deflectometry_enabled && <Badge $tone="accent">Deflectometry</Badge>}
             <Badge $tone={roleTone(group.role)}>{labels.roleLabel(group.role)}</Badge>
             <Button
@@ -91,7 +91,7 @@ export function DatasetSelectContent(props: DatasetSelectContentProps): JSX.Elem
               {labels.addDataset}
             </Button>
           </Inline>
-          <Grid columns="repeat(auto-fill, minmax(var(--ig-popup-sm), 1fr))" gap="var(--ig-space-4)">
+          <Grid columns="repeat(auto-fill, minmax(var(--ig-popup-sm), 1fr))" gap="var(--ig-spacing-8)">
             {group.datasets.map((d) => (
               <DatasetCardView
                 key={d.dataset_id}

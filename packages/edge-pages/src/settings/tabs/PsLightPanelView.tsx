@@ -31,7 +31,7 @@ export function PsLightPanelView(props: PsLightPanelViewProps): JSX.Element {
         </Rows>
       ) : (
         <InlineMessage $tone="warning">
-          <Stack gap="var(--ig-space-3)">
+          <Stack gap="var(--ig-spacing-8)">
             <span>{unreachable ? labels.unreachable : labels.openFailed}</span>
             {statusError && <Hint>{statusError}</Hint>}
           </Stack>

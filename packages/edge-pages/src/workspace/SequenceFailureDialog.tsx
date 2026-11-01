@@ -16,7 +16,7 @@ export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.El
     <DialogShell
       title={
         <>
-          <AlertTriangleIcon size={iconSizeNumbers.lg} color="var(--ig-color-danger)" style={{ marginRight: 'var(--ig-space-2)' }} />
+          <AlertTriangleIcon size={iconSizeNumbers.lg} color="var(--ig-color-danger)" style={{ marginRight: 'var(--ig-spacing-8)' }} />
           {labels.sequenceFailed}
         </>
       }

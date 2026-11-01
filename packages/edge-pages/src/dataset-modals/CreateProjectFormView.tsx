@@ -7,12 +7,12 @@ const CreateProjectWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--ig-space-9);
-  padding: var(--ig-space-13) 0;
+  gap: var(--ig-spacing-20);
+  padding: var(--ig-spacing-32) 0;
 `
 
 const StatusMsg = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
 `
 

@@ -7,8 +7,8 @@ export const CaptureReview = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--ig-space-7);
-  padding: var(--ig-space-11);
+  gap: var(--ig-spacing-16);
+  padding: var(--ig-spacing-24);
   &:fullscreen { background: var(--ig-color-bg-canvas); }
 `
 

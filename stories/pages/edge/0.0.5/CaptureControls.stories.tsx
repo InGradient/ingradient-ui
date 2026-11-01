@@ -10,7 +10,7 @@ import { SIMULATION_LOGS } from './workspace/capture-fixtures'
 
 function Controls({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Element {
   const [pattern, setPattern] = useState<PreviewPatternLabel | null>(null)
-  return <Inline align="stretch" gap="var(--ig-space-4)" style={{ height: '100vh', padding: 'var(--ig-space-4)' }}>
+  return <Inline align="stretch" gap="var(--ig-spacing-8)" style={{ height: '100vh', padding: 'var(--ig-spacing-8)' }}>
     {mode === 'logs' ? <Stack style={{ width: 'var(--ig-popup-sm)' }}><LogPanel logs={SIMULATION_LOGS} /></Stack> : <>
       <Stack style={{ flex: 1, overflow: 'auto' }}><SetupContent previewPatternLabel={pattern} onPreviewPattern={setPattern} /></Stack>
       <Stack style={{ width: 'var(--ig-popup-sm)' }}><RightPanel previewPatternLabel={pattern} onPreviewPattern={setPattern} /><output aria-label="Selected simulation pattern">{pattern ?? 'None'}</output></Stack>

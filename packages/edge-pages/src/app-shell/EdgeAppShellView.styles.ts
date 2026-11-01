@@ -22,7 +22,7 @@ export const AppContent = styled.main`
 
 export const AppFooterBar = styled.footer`
   height: var(--ig-control-height-xs);
-  padding: 0 var(--ig-space-5);
+  padding: 0 var(--ig-spacing-12);
   flex-shrink: 0;
   display: flex;
   align-items: center;

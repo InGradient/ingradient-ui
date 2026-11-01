@@ -5,14 +5,14 @@ import { FieldGroup } from '@ingradient/ui/patterns'
 import type { ServerTabViewProps, ServerRuntimeMode } from '../types'
 
 const Hint = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
-  margin-top: var(--ig-space-2);
+  margin-top: var(--ig-spacing-8);
 `
 
 const Result = styled.div<{ $tone: 'success' | 'warn' | 'danger' }>`
-  font-size: var(--ig-font-size-sm);
-  margin-top: var(--ig-space-3);
+  font-size: var(--ig-text-body-sm);
+  margin-top: var(--ig-spacing-8);
   color: ${({ $tone }) =>
     $tone === 'success' ? 'var(--ig-color-success)' :
     $tone === 'warn' ? 'var(--ig-color-warning)' :
@@ -28,7 +28,7 @@ export function ServerTabView(props: ServerTabViewProps): JSX.Element {
   } = props
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-7)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-16)' }}>
       <FieldRow label={labels.baseUrl} htmlFor={urlId}>
         <TextField
           id={urlId}

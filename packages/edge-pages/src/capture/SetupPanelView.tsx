@@ -34,9 +34,9 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
   return (
     <SetupPanelWrap>
       <SetupPanelHeader>
-        <Text as="h2" size="var(--ig-font-size-md)" weight="bold">{labels.title}</Text>
+        <Text as="h2" size="var(--ig-text-body)" weight="bold">{labels.title}</Text>
         {canEditSetup && (
-          <Inline gap="var(--ig-space-2)" align="center" wrap="nowrap">
+          <Inline gap="var(--ig-spacing-8)" align="center" wrap="nowrap">
             <Button variant="secondary" size="sm" type="button" onClick={onReset} disabled={isSetupBusy}>
               {labels.reset}
             </Button>
@@ -52,7 +52,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
 
       <SetupPanelBody>
         {/* 꺼진 항목은 촬영 시점 파생 계산에서 건너뛴다 — 목록에서도 숨는다. */}
-        <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+        <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
           <SetupAccordion open>
             <summary>
               <SetupAccordionSummary>{labels.featuresTitle}</SetupAccordionSummary>
@@ -60,7 +60,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
             <div>
               <SectionTitle>{labels.analysis}</SectionTitle>
               {DERIVED_ORDER.map((label) => (
-                <Inline key={label} gap="var(--ig-space-4)" align="center" justify="space-between">
+                <Inline key={label} gap="var(--ig-spacing-8)" align="center" justify="space-between">
                   <FieldHint>{patternLabelToUI(label)}</FieldHint>
                   <Switch
                     checked={enabledFeatures[label] ?? true}

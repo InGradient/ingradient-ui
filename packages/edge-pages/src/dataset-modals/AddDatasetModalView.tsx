@@ -4,7 +4,7 @@ import { InlineError } from './AddDatasetModalView.styles'
 import type { AddDatasetModalViewProps, EdgeTaskType } from './types'
 
 const FIELD_LABEL_STYLE: CSSProperties = {
-  fontSize: 'var(--ig-font-size-xs)',
+  fontSize: 'var(--ig-text-caption)',
   fontWeight: 'var(--ig-font-weight-medium)',
   color: 'var(--ig-color-text-muted)',
 }
@@ -12,7 +12,7 @@ const FIELD_LABEL_STYLE: CSSProperties = {
 const FIELD_STYLE: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  gap: 'var(--ig-space-2)',
+  gap: 'var(--ig-spacing-8)',
 }
 
 const TASK_TYPES: EdgeTaskType[] = ['classification', 'object_detection', 'segmentation', 'point']
@@ -52,7 +52,7 @@ export function AddDatasetModalView(props: AddDatasetModalViewProps): JSX.Elemen
         id={formId}
         aria-busy={adding}
         onSubmit={(event) => { if (adding) event.preventDefault(); else onSubmit(event) }}
-        style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-7)' }}
+        style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-16)' }}
       >
         <div style={FIELD_STYLE}>
           <label htmlFor={nameId} style={FIELD_LABEL_STYLE}>{labels.datasetNameLabel}</label>

@@ -3,9 +3,9 @@ import { Button, Checkbox, EmptyState, Spinner } from '@ingradient/ui'
 import { KeyValueRow } from '@ingradient/ui/components'
 import type { SystemMonitorCleanupTabViewProps } from './types'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-5);`
-const Title = styled.div`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
-const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-font-size-sm);`
+const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-12);`
+const Title = styled.div`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
+const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-text-body-sm);`
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
@@ -30,7 +30,7 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
       )}
       <div>
         <Title>{labels.categories}</Title>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-space-2)', marginTop: 'var(--ig-space-3)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)', marginTop: 'var(--ig-spacing-8)' }}>
           {CATEGORIES.map((cat) => (
             <Checkbox
               key={cat}
@@ -42,7 +42,7 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
           ))}
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 'var(--ig-space-3)' }}>
+      <div style={{ display: 'flex', gap: 'var(--ig-spacing-8)' }}>
         <Button size="sm" variant="accent" onClick={onRun} disabled={running || selectedCategories.size === 0}>
           {running && <Spinner size="sm" tone="muted" />}
           {running ? labels.running : labels.run}

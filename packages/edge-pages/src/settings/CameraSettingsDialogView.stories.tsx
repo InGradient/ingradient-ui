@@ -119,10 +119,10 @@ const MONITORS = [
 function Placeholder({ name }: { name: string }): JSX.Element {
   return (
     <div style={{
-      display: 'grid', placeItems: 'center', minHeight: 'var(--ig-space-13)',
+      display: 'grid', placeItems: 'center', minHeight: 'var(--ig-spacing-32)',
       border: '1px dashed var(--ig-color-border-subtle)',
       borderRadius: 'var(--ig-radius-xs)',
-      color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-font-size-xs)',
+      color: 'var(--ig-color-text-muted)', fontSize: 'var(--ig-text-caption)',
     }}>
       {name} — 아직 edge-pages 로 옮기지 않은 탭
     </div>

@@ -46,7 +46,7 @@ export function AdvancedSection(props: AdvancedSectionProps): JSX.Element {
             aria-label={labels.frameRate}
             onChange={(v: number) => onUpdateCameraParams((p) => ({ ...p, frameRate: v }))}
           />
-          <Inline gap="var(--ig-space-4)" align="center">
+          <Inline gap="var(--ig-spacing-8)" align="center">
             <FieldHint>{labels.frameRateEnable}</FieldHint>
             <Switch
               checked={cameraParams.frameRateEnabled}
@@ -113,11 +113,11 @@ export function AdvancedSection(props: AdvancedSectionProps): JSX.Element {
         </FieldGroup>
 
         <SectionTitle>{labels.advancedHardware}</SectionTitle>
-        <Text tone="muted" size="var(--ig-font-size-xs)">{labels.hardwareComingSoon}</Text>
+        <Text tone="muted" size="var(--ig-text-caption)">{labels.hardwareComingSoon}</Text>
 
         <FieldGroup>
           <FieldLabelWithHelp label={labels.roi} help={labels.roiDesc} />
-          <Inline gap="var(--ig-space-2)" align="center" wrap="wrap">
+          <Inline gap="var(--ig-spacing-8)" align="center" wrap="wrap">
             {ROI_FIELDS.map((key) => (
               <TextField
                 key={key}
@@ -137,7 +137,7 @@ export function AdvancedSection(props: AdvancedSectionProps): JSX.Element {
 
         <FieldGroup>
           <FieldLabelWithHelp label={labels.hardwareTrigger} help={labels.hardwareTriggerDesc} />
-          <Inline gap="var(--ig-space-4)" align="center">
+          <Inline gap="var(--ig-spacing-8)" align="center">
             <SelectField value={cameraParams.triggerSource} disabled aria-label={labels.hardwareTrigger} onChange={() => undefined}>
               <option value="Line1">Line 1</option>
               <option value="Line2">Line 2</option>

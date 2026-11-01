@@ -79,7 +79,7 @@ function CameraSetupPanel({ guidedAction }: { guidedAction: GuidedAction }): JSX
   const [openId, setOpenId] = useState<string | null>('reachable')
 
   return (
-    <Stack gap="var(--ig-space-4)" style={{ padding: 'var(--ig-space-6)' }}>
+    <Stack gap="var(--ig-spacing-8)" style={{ padding: 'var(--ig-spacing-12)' }}>
       <SetupSummaryView
         steps={STAGES.map((stage) => ({
           label: stage.title,
@@ -96,7 +96,7 @@ function CameraSetupPanel({ guidedAction }: { guidedAction: GuidedAction }): JSX
         onViewProblem={() => setOpenId('reachable')}
       />
 
-      <Stack gap="var(--ig-space-2)">
+      <Stack gap="var(--ig-spacing-8)">
         {STAGES.map((stage) => (
           <SetupStageCardView
             key={stage.id}

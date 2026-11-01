@@ -17,13 +17,13 @@ export const CapturingStatusPill = styled.div`
   z-index: var(--ig-z-tooltip);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   background: var(--ig-color-overlay-darkest);
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
-  padding: var(--ig-space-3) var(--ig-space-8);
+  padding: var(--ig-spacing-8) var(--ig-spacing-16);
   border-radius: var(--ig-radius-md);
   pointer-events: none;
   box-shadow: var(--ig-shadow-toast);
@@ -32,9 +32,9 @@ export const CapturingStatusPill = styled.div`
 
 export const FailureCode = styled.span`
   display: block;
-  margin-top: var(--ig-space-3);
+  margin-top: var(--ig-spacing-8);
   color: var(--ig-color-danger);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-tight);
 `
@@ -47,10 +47,10 @@ export const SavingOverlay = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--ig-space-5);
+  gap: var(--ig-spacing-12);
   background: var(--ig-color-image-option-bg);
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-medium);
 `
 

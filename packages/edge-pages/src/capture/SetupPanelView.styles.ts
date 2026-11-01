@@ -10,23 +10,23 @@ export const SetupPanel = styled.div`
 `;
 
 export const SetupPanelHeader = styled.div`
-  padding: var(--ig-space-7) var(--ig-space-7) var(--ig-space-6);
+  padding: var(--ig-spacing-16) var(--ig-spacing-16) var(--ig-spacing-12);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ig-space-5);
+  gap: var(--ig-spacing-12);
 `;
 
 // SetupResetButton / SetupSaveButton: ui Button (variant secondary/accent, size sm) (PR-B1, 2026-05-09)
 
 export const SetupPanelBody = styled.div`
-  padding: var(--ig-space-6) var(--ig-space-7) var(--ig-space-7);
+  padding: var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16);
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-7);
+  gap: var(--ig-spacing-16);
   flex: 1;
   min-height: 0;
 
@@ -41,7 +41,7 @@ export const SetupPanelBody = styled.div`
 export const PatternGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `;
 
 export const PatternButton = styled(Button).attrs({
@@ -57,7 +57,7 @@ export const PatternButton = styled(Button).attrs({
 
 export const SetupMetaText = styled.div`
   color: var(--ig-color-white-70);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   line-height: var(--ig-line-height-relaxed);
 `;
 

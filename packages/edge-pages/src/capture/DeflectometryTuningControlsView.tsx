@@ -31,7 +31,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
       {expanded && (
         <>
           {isGradient && (
-            <Stack gap="var(--ig-space-1)">
+            <Stack gap="var(--ig-spacing-4)">
               <Label>
                 <Text tone="muted">modulation threshold</Text>
                 <Text tabularNums>{modulationThreshold.toFixed(2)}</Text>
@@ -54,7 +54,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
           )}
 
           {activeDerivedKind && (
-            <Stack gap="var(--ig-space-1)">
+            <Stack gap="var(--ig-spacing-4)">
               <Label>
                 <Text tone="muted">{labels.colormapSection}</Text>
               </Label>
@@ -81,22 +81,22 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         {isRecomputing ? <><Spinner tone="white" size="sm" />{labels.analyzing}</> : labels.analyze}
       </Button>
 
-      <Card elevation="raised" flat radius="var(--ig-radius-xs)" padding="var(--ig-space-3)">
-        <Stack gap="var(--ig-space-2)">
+      <Card elevation="raised" flat radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8)">
+        <Stack gap="var(--ig-spacing-8)">
           <QualityHeader>
             <Text tone="muted">{labels.confidence}</Text>
             {isRecomputing && !metrics ? (
               <Text tone="muted"><Spinner tone="white" size="sm" />{labels.computing}</Text>
             ) : (
               <IndicatorRight>
-                <Text size="var(--ig-font-size-xs)" tone="muted" tabularNums>{formatPct(metrics?.validRatio ?? null)}</Text>
+                <Text size="var(--ig-text-caption)" tone="muted" tabularNums>{formatPct(metrics?.validRatio ?? null)}</Text>
                 <QualityStatus $status={metrics?.confidenceStatus ?? null}>
                   {metrics?.confidenceStatus ?? '—'}
                 </QualityStatus>
               </IndicatorRight>
             )}
           </QualityHeader>
-          <Divider as="div" style={{ margin: 'var(--ig-space-2px) 0' }} />
+          <Divider as="div" style={{ margin: 'var(--ig-spacing-2) 0' }} />
           <MetricRow>
             <span>{labels.validRatio}</span>
             <span>{formatPct(metrics?.validRatio ?? null)}</span>
@@ -107,7 +107,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         </Stack>
       </Card>
 
-      <Inline gap="var(--ig-space-2)" wrap="nowrap">
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
         <Button variant="secondary" size="sm" disabled={disabled || isSavingDefault} onClick={onSaveDefault}>
           {isSavingDefault && <Spinner tone="white" size="sm" />}
           {isSavingDefault ? labels.saveDefaultSaving : labels.saveDefault}

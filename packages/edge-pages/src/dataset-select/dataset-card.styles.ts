@@ -7,8 +7,8 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--ig-space-1);
-  padding: var(--ig-space-6) var(--ig-space-7);
+  gap: var(--ig-spacing-4);
+  padding: var(--ig-spacing-12) var(--ig-spacing-16);
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-10)' : 'var(--ig-color-white-04)')};
@@ -34,8 +34,8 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--ig-space-1);
-  padding: var(--ig-space-7) var(--ig-space-8);
+  gap: var(--ig-spacing-4);
+  padding: var(--ig-spacing-16) var(--ig-spacing-16);
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-50)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-08)' : 'var(--ig-color-white-04)')};
@@ -66,7 +66,7 @@ export const DatasetSelectButton = styled.button`
   &:focus-visible { outline: none; }
   &:focus-visible::after {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: var(--ig-space-2px);
+    outline-offset: var(--ig-spacing-2);
   }
 `
 
@@ -76,7 +76,7 @@ export const DatasetMenuTrigger = styled(MenuIconButton)`
 `
 
 export const DatasetName = styled.div`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   flex: 1;
@@ -109,11 +109,11 @@ export const CardBottom = styled.div`
   align-items: flex-end;
   width: 100%;
   margin-top: auto;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const ImageCount = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
@@ -123,10 +123,10 @@ export const ImageCount = styled.div`
 export const ClassChip = styled.span<{ $color: string }>`
   display: inline-flex;
   align-items: center;
-  gap: var(--ig-space-1);
-  font-size: var(--ig-font-size-2xs);
+  gap: var(--ig-spacing-4);
+  font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) var(--ig-space-2-plus);
+  padding: var(--ig-spacing-2) var(--ig-spacing-8);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => `${p.$color}22`};
   color: var(--ig-color-text-primary);

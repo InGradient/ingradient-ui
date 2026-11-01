@@ -13,7 +13,7 @@ const BADGE_TONE = {
 function GuidedActions(props: SetupSummaryViewProps): JSX.Element {
   const { guidedAction, labels, onStart, onCancel, onViewProblem, onRestart, restartDisabled } = props
   return (
-    <Inline gap="var(--ig-space-2)" align="center">
+    <Inline gap="var(--ig-spacing-8)" align="center">
       {guidedAction === 'running' && (
         <>
           <Button size="sm" variant="secondary" type="button" disabled>
@@ -66,22 +66,22 @@ export function SetupSummaryView(props: SetupSummaryViewProps): JSX.Element {
   const { steps, overallStatus, description, labels } = props
 
   return (
-    <Card padding="var(--ig-space-4)" radius="var(--ig-radius-xs)" flat>
-      <Stack gap="var(--ig-space-3)">
-        <Inline gap="var(--ig-space-3)" align="center" wrap="wrap">
-          <Text size="var(--ig-font-size-lg)" weight="bold" style={{ flex: 1, minWidth: 0 }}>
+    <Card padding="var(--ig-spacing-8)" radius="var(--ig-radius-xs)" flat>
+      <Stack gap="var(--ig-spacing-8)">
+        <Inline gap="var(--ig-spacing-8)" align="center" wrap="wrap">
+          <Text size="var(--ig-text-title-sm)" weight="bold" style={{ flex: 1, minWidth: 0 }}>
             {labels.title}
           </Text>
           <Badge $tone={BADGE_TONE[overallStatus]}>{labels.overall}</Badge>
-          <Text tone="secondary" size="var(--ig-font-size-xs)" weight="semibold">{labels.progress}</Text>
+          <Text tone="secondary" size="var(--ig-text-caption)" weight="semibold">{labels.progress}</Text>
         </Inline>
 
         <StepIndicator items={steps} />
 
-        <Text tone="secondary" size="var(--ig-font-size-xs)">{description}</Text>
+        <Text tone="secondary" size="var(--ig-text-caption)">{description}</Text>
 
-        <Inline gap="var(--ig-space-3)" align="center" justify="space-between" wrap="wrap">
-          <Text tone="muted" size="var(--ig-font-size-2xs)">
+        <Inline gap="var(--ig-spacing-8)" align="center" justify="space-between" wrap="wrap">
+          <Text tone="muted" size="var(--ig-text-micro)">
             {labels.nextStage ?? labels.allDone}
           </Text>
           <GuidedActions {...props} />

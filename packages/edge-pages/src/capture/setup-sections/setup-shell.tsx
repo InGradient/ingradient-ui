@@ -13,7 +13,7 @@ export const SetupAccordion = styled.details`
 
   summary {
     cursor: pointer;
-    padding: var(--ig-space-6) var(--ig-space-7);
+    padding: var(--ig-spacing-12) var(--ig-spacing-16);
     list-style: none;
     font-weight: var(--ig-font-weight-semibold);
   }
@@ -21,10 +21,10 @@ export const SetupAccordion = styled.details`
   summary::-webkit-details-marker { display: none; }
 
   > div {
-    padding: 0 var(--ig-space-7) var(--ig-space-7);
+    padding: 0 var(--ig-spacing-16) var(--ig-spacing-16);
     display: flex;
     flex-direction: column;
-    gap: var(--ig-space-4);
+    gap: var(--ig-spacing-8);
     color: var(--ig-color-text-muted);
   }
 `

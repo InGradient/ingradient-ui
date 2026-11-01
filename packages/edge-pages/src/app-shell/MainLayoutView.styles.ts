@@ -11,7 +11,7 @@ export const AppShell = styled.div`
 
 export const AppHeader = styled.header`
   height: var(--ig-control-height-xl);
-  padding: 0 var(--ig-space-7);
+  padding: 0 var(--ig-spacing-16);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ export const LeftPanel = styled(Panel)`
   width: var(--ig-popup-sm);
   flex-shrink: 0;
   &:has([data-ig-collapsed-panel="left"]) {
-    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
+    width: calc(var(--ig-control-height-xl) + var(--ig-spacing-8));
     overflow-y: auto;
   }
 `
@@ -68,7 +68,7 @@ export const RightPanelContainer = styled(Panel)`
   flex-shrink: 0;
   overflow-y: auto;
   &:has([data-ig-collapsed-panel="right"]) {
-    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
+    width: calc(var(--ig-control-height-xl) + var(--ig-spacing-8));
   }
 `
 

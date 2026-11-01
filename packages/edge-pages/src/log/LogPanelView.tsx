@@ -193,7 +193,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
                   variant="secondary"
                   size="sm"
                   type="button"
-                  style={{ marginBottom: 'var(--ig-space-4)' }}
+                  style={{ marginBottom: 'var(--ig-spacing-8)' }}
                   onClick={() => onOpenSavedImage(hoveredLog.imagePath!)}
                 >
                   <ImageIcon size={iconSizeNumbers.sm} /> {labels.openSavedImage}

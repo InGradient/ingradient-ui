@@ -25,7 +25,7 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
   } = props
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
       <SectionTitle>{labels.patternPreview}</SectionTitle>
       <PatternGrid>
         {patterns.map((pattern) => (
@@ -43,7 +43,7 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
           </PatternButton>
         ))}
       </PatternGrid>
-      {statusText && <Text role="status" tone="muted" size="var(--ig-font-size-xs)">{statusText}</Text>}
+      {statusText && <Text role="status" tone="muted" size="var(--ig-text-caption)">{statusText}</Text>}
     </FieldGroup>
   )
 }

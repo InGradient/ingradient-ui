@@ -4,16 +4,16 @@ import styled from 'styled-components';
 export const DeletingLabel = styled.span`
   display: inline-flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `;
 
 export const GroupBadgeWrap = styled.div`
   position: absolute;
-  top: var(--ig-space-2);
-  right: var(--ig-space-2);
+  top: var(--ig-spacing-8);
+  right: var(--ig-spacing-8);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
   z-index: var(--ig-z-capture-high);
 `;
 
@@ -29,8 +29,8 @@ export const ImagesFilterDateLabel = styled.span`
 export const ImagesFilterDateRow = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin-top: var(--ig-spacing-8);
 `;
 
 // ImagesFilterPopover / ImagesFilterSection / ImagesFilterTitle: ui FilterPopover + FilterPopoverSection 로 이동 (PR-B4, 2026-05-09)
@@ -38,7 +38,7 @@ export const ImagesFilterDateRow = styled.div`
 export const ImagesFilterRow = styled.label`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   cursor: pointer;
 `;
 
@@ -50,7 +50,7 @@ export const ImagesContainer = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-16);
 `;
 
 export const ImagesWrapper = styled.div`
@@ -75,8 +75,8 @@ export const ModalBBoxCanvasWrap = styled.div`
 export const ModalBBoxToolbar = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
-  padding: var(--ig-space-3) var(--ig-space-5);
+  gap: var(--ig-spacing-8);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
   background: var(--ig-color-overlay-strong);
   border-radius: 0 0 var(--ig-radius-lg) var(--ig-radius-lg);
   flex-shrink: 0;
@@ -84,7 +84,7 @@ export const ModalBBoxToolbar = styled.div`
 
 export const ModalFilename = styled.div`
   color: var(--ig-color-white-55);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -96,7 +96,7 @@ export const ModalHeader = styled.div`
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
 `;
 
 export const ModalHeaderCenter = styled.div`
@@ -104,7 +104,7 @@ export const ModalHeaderCenter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   min-width: 0;
   overflow: hidden;
 `;
@@ -117,7 +117,7 @@ export const ModalHeaderSpacer = styled.div`
 export const ModalHint = styled.div`
   flex-shrink: 0;
   color: var(--ig-color-text-secondary);
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   text-align: center;
 `;
 
@@ -125,10 +125,10 @@ export const ModalInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   width: 100%;
   height: 100%;
-  padding: var(--ig-space-4) var(--ig-space-5) var(--ig-space-6);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12) var(--ig-spacing-12);
   min-height: 0;
 `;
 
@@ -146,8 +146,8 @@ export const ModalOverlay = styled.div`
 export const SelectionToolbar = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-2) var(--ig-space-7);
+  gap: var(--ig-spacing-8);
+  padding: var(--ig-spacing-8) var(--ig-spacing-16);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-panel);
   flex-shrink: 0;
@@ -155,8 +155,8 @@ export const SelectionToolbar = styled.div`
 
 export const SyncStateIcon = styled.div<{ $state: string }>`
   position: absolute;
-  bottom: var(--ig-space-12);
-  left: var(--ig-space-2);
+  bottom: var(--ig-spacing-32);
+  left: var(--ig-spacing-8);
   z-index: var(--ig-z-raised-plus);
   width: var(--ig-icon-2xl);
   height: var(--ig-icon-2xl);
@@ -176,15 +176,15 @@ export const SyncStateIcon = styled.div<{ $state: string }>`
 export const SyncSummary = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
-  font-size: var(--ig-font-size-2xs);
+  gap: var(--ig-spacing-8);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-text-muted);
 `;
 
 // ── Modal header left (Eye + Fullscreen) ─────────────────────────────────────
 export const ModalHeaderLeft = styled.div`
   display: flex;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   flex-shrink: 0;
 `;
 
@@ -195,7 +195,7 @@ export const ModalToolbarSpacer = styled.div`
 
 export const ModalBboxCount = styled.div`
   color: var(--ig-color-white-70);
-  font-size: var(--ig-font-size-xs);
-  padding: 0 var(--ig-space-3);
+  font-size: var(--ig-text-caption);
+  padding: 0 var(--ig-spacing-8);
   font-weight: var(--ig-font-weight-semibold);
 `;

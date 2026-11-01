@@ -12,14 +12,14 @@ export const Row = styled.div`
 export const LeftSection = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
 `
 
 export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
-  font-size: var(--ig-font-size-2xs);
+  gap: var(--ig-spacing-8);
+  font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-medium);
   color: ${({ $status }) =>
     $status === 'syncing'
@@ -33,8 +33,8 @@ export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
 export const StatChip = styled.div<{ $pct?: number }>`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3px);
-  font-size: var(--ig-font-size-2xs);
+  gap: var(--ig-spacing-4);
+  font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-medium);
   color: ${({ $pct }) => ($pct != null ? statColor($pct) : 'var(--ig-color-text-muted)')};
   user-select: none;

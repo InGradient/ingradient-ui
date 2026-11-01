@@ -13,26 +13,26 @@ export const Wrap = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  gap: var(--ig-space-11);
-  padding: var(--ig-space-13);
+  gap: var(--ig-spacing-24);
+  padding: var(--ig-spacing-32);
   background: var(--ig-color-bg-canvas);
   position: relative;
 `
 
 export const LangCorner = styled.div`
   position: absolute;
-  top: var(--ig-space-7);
-  right: var(--ig-space-7);
+  top: var(--ig-spacing-16);
+  right: var(--ig-spacing-16);
   display: flex;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   align-items: center;
 `
 
 export const PackageInfo = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
   text-align: center;
-  padding: var(--ig-space-4);
+  padding: var(--ig-spacing-8);
   background: var(--ig-color-white-04);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-07);

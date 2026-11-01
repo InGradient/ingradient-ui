@@ -7,26 +7,26 @@ import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
 const GuideCard = styled(Card)`
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--ig-space-5);
+  gap: var(--ig-spacing-12);
   align-items: start;
-  margin-bottom: var(--ig-space-7);
+  margin-bottom: var(--ig-spacing-16);
 `
 
 const Header = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
-  margin-bottom: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 const Title = styled.div`
-  font-size: var(--ig-font-size-lg);
+  font-size: var(--ig-text-title-sm);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
 
 const Summary = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
   line-height: var(--ig-line-height-relaxed);
 `
@@ -35,7 +35,7 @@ const Actions = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   flex-wrap: wrap;
 `
 
@@ -43,20 +43,20 @@ const SummaryGrid = styled.div`
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--ig-space-3);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin-top: var(--ig-spacing-8);
 `
 
 const SummaryLabel = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-1);
+  margin-bottom: var(--ig-spacing-4);
 `
 
 const SummaryValue = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   white-space: nowrap;
@@ -68,12 +68,12 @@ const Warnings = styled.div`
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-1);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-4);
+  margin-top: var(--ig-spacing-8);
 `
 
 const Warning = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-warning);
   line-height: var(--ig-line-height-snug);
 `
@@ -108,7 +108,7 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
   const { tone, statusLabel, title, summary, primaryAction, secondaryActions, network, warnings } = state
 
   return (
-    <GuideCard radius="var(--ig-radius-xs)" padding="var(--ig-space-5)">
+    <GuideCard radius="var(--ig-radius-xs)" padding="var(--ig-spacing-12)">
       <div>
         <Header>
           <StatusIcon tone={tone} />
@@ -133,19 +133,19 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
       </Actions>
 
       <SummaryGrid>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkCameraIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.cameraIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkNicIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.nicIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkJumbo}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.jumbo)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkReceive}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.receive)}</SummaryValue>
         </Card>

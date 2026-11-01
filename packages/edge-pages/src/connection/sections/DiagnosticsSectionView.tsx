@@ -5,29 +5,29 @@ import { DiagnoseClassificationCardView } from './DiagnoseClassificationCardView
 import type { DiagnosticsSectionViewProps } from '../types'
 
 const FailureLine = styled.div`
-  margin-top: var(--ig-space-3);
-  font-size: var(--ig-font-size-xs);
+  margin-top: var(--ig-spacing-8);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-danger);
   font-family: var(--ig-font-mono);
 `
 
 const RecoveryHint = styled.div`
-  margin-top: var(--ig-space-2);
-  font-size: var(--ig-font-size-sm);
+  margin-top: var(--ig-spacing-8);
+  font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
 `
 
 export function DiagnosticsSectionView(props: DiagnosticsSectionViewProps): JSX.Element {
   const { isRunning, classification, failureCode, recoveryFailure, labels, onRunDiagnose } = props
   return (
-    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
+    <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <SectionTitle>{labels.diagnosticsTitle}</SectionTitle>
       <Button size="sm" variant="secondary" onClick={onRunDiagnose} disabled={isRunning}>
         {isRunning && <Spinner size="sm" tone="muted" />}
         {isRunning ? labels.diagnosing : labels.runDiagnose}
       </Button>
       {classification && (
-        <div style={{ marginTop: 'var(--ig-space-3)' }}>
+        <div style={{ marginTop: 'var(--ig-spacing-8)' }}>
           <DiagnoseClassificationCardView classification={classification} labels={labels} />
         </div>
       )}
