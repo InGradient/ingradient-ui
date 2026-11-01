@@ -28,7 +28,7 @@ scenes (full page, review/labeling, log/setup panels).
 ## Slow playback
 
 Workflow plays use `userEvent` from [`stories/support/paced-play.ts`](../../../support/paced-play.ts)
-and are wrapped in `paced()`. In Storybook each action waits 700 ms, the target is outlined,
+and are wrapped in `paced()`. In Storybook each action waits 1000 ms, the target is outlined,
 and a caption at the bottom left shows the step title and the action (`Click · Save`,
 `Type "192.168.1.42" · Static IP`). Use the Interactions panel's replay to watch again.
 

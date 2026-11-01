@@ -12,7 +12,7 @@
  */
 import { userEvent as baseUserEvent } from 'storybook/test'
 
-const PACE_MS = 700
+const PACE_MS = 1000
 const CAPTION_ID = 'ig-play-caption'
 
 const ACTION_LABELS: Record<string, string> = {
