@@ -12,15 +12,18 @@ export interface CaptureBranchesProps {
   initialBranch?: 'review' | 'derived' | 'labeling'
   initiallyCollapsed?: boolean
   initialDerivedState?: DerivedCalcState
+  /** Show the sequence-failure dialog over the labeling shell on first render. */
+  initialSequenceFailure?: boolean
   onMockAction?: (action: string) => void
 }
 
 /** Dedicated U9 controller. Backend completion is explicit, deterministic, and synthetic. */
-export function CaptureBranches({ initialBranch = 'review', initiallyCollapsed = false, initialDerivedState = 'idle', onMockAction }: CaptureBranchesProps): JSX.Element {
+export function CaptureBranches({ initialBranch = 'review', initiallyCollapsed = false, initialDerivedState = 'idle', initialSequenceFailure = false, onMockAction }: CaptureBranchesProps): JSX.Element {
   const [branch, setBranch] = useState(initialBranch)
   const [collapsed, setCollapsed] = useState(initiallyCollapsed)
   const [derivedState, setDerivedState] = useState<DerivedCalcState>(initialDerivedState)
   const [derivedReady, setDerivedReady] = useState(false)
+  const [sequenceFailure, setSequenceFailure] = useState(initialSequenceFailure)
   const [viewMode, setViewMode] = useState<SequenceViewMode>('originals')
   const [activeImage, setActiveImage] = useState('original')
   const [classId, setClassId] = useState<string | null>('c1')
@@ -86,7 +89,7 @@ export function CaptureBranches({ initialBranch = 'review', initiallyCollapsed =
         </>
       ) : (
         <Inline style={{ flex: 1, minHeight: 0 }} align="stretch" gap="var(--ig-spacing-8)">
-          <WorkspaceLabelingShell mode="labeling" isCapturing={false} capturingStatusText="" sequenceFailure={null} labels={WORKSPACE_LABELS} onSequenceFailureCancel={() => record('failure cancelled')} onSequenceFailureRetry={() => record('retry requested')} selectedDatasetId="simulation" activeTab="capture" tabItems={[]} onTabChange={() => record('tab changed')} isSetupMode={false} setupPanelTarget={null} isSavingLabel={pendingSave !== null} labelingContent={(
+          <WorkspaceLabelingShell mode="labeling" isCapturing={false} capturingStatusText="" sequenceFailure={sequenceFailure ? { message: 'Could not start the capture sequence. Nothing was captured.', errorCode: 'SEQ-0421' } : null} labels={WORKSPACE_LABELS} onSequenceFailureCancel={() => { setSequenceFailure(false); record('failure cancelled') }} onSequenceFailureRetry={() => { setSequenceFailure(false); record('retry requested') }} selectedDatasetId="simulation" activeTab="capture" tabItems={[]} onTabChange={() => record('tab changed')} isSetupMode={false} setupPanelTarget={null} isSavingLabel={pendingSave !== null} labelingContent={(
             <BBoxCanvasView imageDataUrl={SYNTHETIC_CAPTURE} classes={PANEL_CLASSES} selectedClassId={classId} editMode={editMode} initialBboxes={LABELING_BOXES} pendingClassChange={pendingClassChange} options={{ require_labeling: true, require_min_bbox_count: 1, block_next_without_labeling: false }} labels={LABELING_LABELS} onEditModeChange={setEditMode} onSelectionChange={(index) => setSelectedBox(index)} onBboxesChange={setBoxes} onSave={(result) => { setPendingSave(result); record('label save pending; complete or cancel the simulation') }} onSkip={() => { setBranch('review'); record('labeling skipped') }} onRetry={() => record('labeling retry requested')} />
           )} />
           <div style={{ display: 'contents' }} ref={(node) => node?.toggleAttribute('inert', pendingSave !== null)}>{panel}</div>

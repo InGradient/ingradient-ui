@@ -77,6 +77,8 @@ const requiredStoryFiles = [
   'stories/pages/edge/0.0.6/SettingsTabWorkflows.stories.tsx',
   'stories/pages/edge/0.0.6/SettingsWorkflows.stories.tsx',
   'stories/pages/edge/0.0.6/Statics.stories.tsx',
+  'stories/pages/edge/0.0.6/ImagesStates.stories.tsx',
+  'stories/pages/edge/0.0.6/CaptureReview.stories.tsx',
   // Component seeds
   'src/components/inputs/button.stories.tsx',
   'src/components/inputs/file-input.stories.tsx',

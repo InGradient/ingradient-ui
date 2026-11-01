@@ -12,9 +12,9 @@ Pages/Edge/0.0.6/
 ├─ Login           Workspace (Overview · Online form) · System States
 ├─ License         Workspace (Overview · Bind device) · System States
 ├─ Dataset Select  Workspace (Overview · Online) · System States · Workflows
-├─ Capture         Workspace (Overview · Setup) · System States · Workflows
+├─ Capture         Workspace (Overview · Setup) · System States · Review and Labeling · Workflows
 │                  Review Workflows · Log and Setup Workflows
-├─ Images          Workspace · Workflows
+├─ Images          Workspace · System States · Workflows
 ├─ Statics         Workspace
 ├─ Settings        Tabs (one story per tab) · Workflows · Tab Workflows
 └─ App Chrome      Workflows (language, account, system monitor)
@@ -24,6 +24,16 @@ Canonical entries follow Platform: `pages-edge-0-0-6-<page>-workspace--overview`
 `Workspace` and `System States` show screens without steps; every story with steps is in a
 `*Workflows` group. Capture has three workflow groups because they render three different
 scenes (full page, review/labeling, log/setup panels).
+
+## States carried over from 0.0.1
+
+0.0.1 states with no 0.0.5 equivalent are static stories here: Login · Signing in; Dataset
+Select · Empty (online), Add dataset dialog, Export dialog; Images · Image inspector (view and
+editing); Capture · Review and Labeling (review, labeling, labeling with a failed sequence).
+They use optional first-render arguments added to the 0.0.5 scenes (`initialModal`,
+`imagesInspector`, `initialSequenceFailure`). Editing reuses the 0.0.1 bbox canvas because
+the 0.0.5 inspector is view-only. Component state sheets (BottomBar, CaptureView,
+LogDetailTable) are parts, not pages, and are not repeated here.
 
 ## Slow playback
 

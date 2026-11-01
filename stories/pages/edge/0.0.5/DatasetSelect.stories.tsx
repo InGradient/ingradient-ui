@@ -21,6 +21,8 @@ export interface SceneArgs {
   empty?: boolean
   sessionExpired?: boolean
   failFirstExport?: boolean
+  /** Open the add-dataset or export dialog on first render. */
+  initialModal?: 'add' | 'export'
   onMockAction?: (action: string) => void
 }
 
@@ -41,7 +43,7 @@ function DatasetSelectSession(args: SceneArgs): JSX.Element {
     setMockStatus(action === 'confirm' ? 'Mock sign-in requested; no authentication was performed.' : 'Mock session dialog dismissed.')
   }
   const [openDotMenuDatasetId, setOpenDotMenuDatasetId] = useState<string | null>(null)
-  const runtime = useDatasetRuntime(empty, args.failFirstExport ?? false, args.onMockAction)
+  const runtime = useDatasetRuntime(empty, args.failFirstExport ?? false, args.onMockAction, args.initialModal)
   const groups = runtime.groups
   const recent = empty ? [] : SAMPLE_RECENT
 

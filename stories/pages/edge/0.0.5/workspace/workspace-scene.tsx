@@ -5,7 +5,7 @@ import {
   MainLayoutView, WorkspaceView, type ConnectionStatus, type WorkspaceTab, type LightingMode, type PreviewPatternLabel,
 } from '@ingradient/edge-pages'
 import {
-  DATASET_NAME, PROJECT_NAME, WORKSPACE_LABELS, WORKSPACE_TABS,
+  DATASET_NAME, PROJECT_NAME, SAMPLE_IMAGE_ITEMS, WORKSPACE_LABELS, WORKSPACE_TABS,
 } from '../../../../fixtures/edge/0.0.5'
 import { EdgeAppFrame, buildTopBar } from '../shared/build-shell'
 import { SettingsModal } from '../settings/build-settings-modal'
@@ -27,6 +27,8 @@ export interface WorkspaceSceneArgs {
   isCapturing?: boolean
   sequenceFailure?: boolean
   logFilterOpen?: boolean
+  /** Open the image inspector on the first image: view-only, or with the bbox editing toolbar. */
+  imagesInspector?: 'view' | 'edit'
   connectionStatus?: ConnectionStatus
   lightingMode?: LightingMode
   /** 설정 다이얼로그를 띄운 상태. */
@@ -46,7 +48,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
   const [mockStatus, setMockStatus] = useState('')
   const [previewPatternLabel, setPreviewPatternLabel] = useState<PreviewPatternLabel | null>(null)
   const draft = useSettingsDraft()
-  const imagesDraft = useImagesDraft()
+  const imagesDraft = useImagesDraft(args.imagesInspector ? SAMPLE_IMAGE_ITEMS[0]?.id ?? null : null)
   const onMockAction = args.onMockAction ?? noop
   const isConnected = (args.connectionStatus ?? 'connected') === 'connected'
   const closeFailure = (action: 'cancel' | 'retry') => {
@@ -76,7 +78,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
       captureContent={activeTab === 'capture' || activeTab === 'setup'
         ? <CaptureContent previewPatternLabel={previewPatternLabel} isConnected={isConnected} isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} />
         : null}
-      imagesContent={activeTab === 'images' ? <ImagesContent draft={imagesDraft} /> : null}
+      imagesContent={activeTab === 'images' ? <ImagesContent draft={imagesDraft} editable={args.imagesInspector === 'edit'} /> : null}
       staticsContent={activeTab === 'statics' ? <StaticsContent /> : null}
       isSavingLabel={false}
     />
