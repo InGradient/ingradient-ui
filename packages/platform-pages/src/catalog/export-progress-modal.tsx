@@ -52,7 +52,7 @@ export function ExportProgressModal({
           <Button type="button" variant="secondary" onClick={onClose}>{phase === 'ready' ? 'Close' : 'Cancel'}</Button>
           {phase === 'ready' && downloadUrl ? (
             <a href={downloadUrl} download={filename} style={{ textDecoration: 'none' }}>
-              <Button type="button" variant="accent">Download {filename}</Button>
+              <Button type="button" variant="solid">Download {filename}</Button>
             </a>
           ) : null}
         </>

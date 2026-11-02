@@ -1,0 +1,39 @@
+[
+ {
+  "id": "pages-edge-0-0-6-capture-review-workflows--collapsed-roi-comment",
+  "file": "capture-review-workflows--collapsed-roi-comment.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments",
+  "file": "pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-platform-0-0-1-dataset-catalog-workflows--dataset-igp-export-dialog",
+  "file": "pages-platform-0-0-1-dataset-catalog-workflows--dataset-igp-export-dialog.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog",
+  "file": "pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog.png",
+  "boxes": [
+   {
+    "x": 852,
+    "y": 572,
+    "w": 88,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-platform-0-0-1-settings-modal-account--password-change-workflow",
+  "file": "pages-platform-0-0-1-settings-modal-account--password-change-workflow.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-platform-0-0-1-auth-signup-system-states--password-requirements",
+  "file": "pages-platform-0-0-1-auth-signup-system-states--password-requirements.png",
+  "boxes": []
+ }
+]

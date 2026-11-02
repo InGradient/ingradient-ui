@@ -53,7 +53,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
           rows={2}
           style={{ flex: 1 }}
         />
-        <Button size="sm" variant="accent" onClick={onSend} disabled={isSending || !pendingComment.trim()}>
+        <Button size="sm" variant="solid" onClick={onSend} disabled={isSending || !pendingComment.trim()}>
           <SendIcon size={iconSizeNumbers.xs} />
           {isSending ? labels.sending : labels.send}
         </Button>

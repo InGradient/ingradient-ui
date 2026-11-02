@@ -261,7 +261,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   ) : null}
                   <Button
                     type="button"
-                    variant="accent"
+                    variant="solid"
                     size="sm"
                     disabled={submitDisabled}
                     onClick={submit}

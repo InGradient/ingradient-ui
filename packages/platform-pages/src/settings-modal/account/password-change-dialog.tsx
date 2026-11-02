@@ -46,7 +46,7 @@ export function PasswordChangeDialog({
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose} disabled={!!saving}>Cancel</Button>
-          <Button type="button" variant="accent" onClick={onSubmit} disabled={submitDisabled}>
+          <Button type="button" variant="solid" onClick={onSubmit} disabled={submitDisabled}>
             {saving ? 'Saving…' : 'Save'}
           </Button>
         </>
