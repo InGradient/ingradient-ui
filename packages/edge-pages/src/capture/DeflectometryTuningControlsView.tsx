@@ -1,8 +1,8 @@
 import { Button, Checkbox, SelectField, Spinner, iconSizeNumbers } from '@ingradient/ui'
 import { Divider, Inline, Stack, Text } from '@ingradient/ui/primitives'
-import { CollapsibleSectionHeader, AlertTriangleIcon, Alert, Card } from '@ingradient/ui/components'
+import { CollapsibleSectionHeader, AlertTriangleIcon, Alert, Card, Slider } from '@ingradient/ui/components'
 import {
-  Wrap, Label, Slider, SliderInline, MetricRow,
+  Wrap, Label, SliderInline, MetricRow,
   QualityHeader, QualityStatus, IndicatorRight,
 } from './DeflectometryTuningControlsView.styles'
 import { COLORMAP_OPTIONS, type ColormapName } from './colormap-helpers'
@@ -38,6 +38,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
               </Label>
               <SliderInline>
                 <Slider
+                  aria-label="modulation threshold"
                   min={0.01} max={0.5} step={0.01} value={modulationThreshold}
                   disabled={disabled || !modulationOverlayEnabled}
                   onChange={(e) => onModulationThresholdChange(Number(e.target.value))}

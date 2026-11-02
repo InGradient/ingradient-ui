@@ -1,33 +1,19 @@
 import { useId } from 'react'
-import styled from 'styled-components'
-import { ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
-import { iconSizeNumbers } from '@ingradient/ui'
+import { CollapsibleSectionHeader } from '@ingradient/ui/components'
 import { Stack } from '@ingradient/ui/primitives'
 import type { AdvancedSectionViewProps } from '../types'
-
-const Header = styled.button`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-8);
-  background: transparent;
-  border: none;
-  font-size: var(--ig-text-body);
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-primary);
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: var(--ig-spacing-8);
-`
 
 export function AdvancedSectionView(props: AdvancedSectionViewProps): JSX.Element {
   const { expanded, children, labels, onToggleExpanded } = props
   const panelId = useId()
   return (
     <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
-      <Header type="button" onClick={onToggleExpanded} aria-expanded={expanded} aria-controls={expanded ? panelId : undefined}>
-        {expanded ? <ChevronDownIcon size={iconSizeNumbers.sm} /> : <ChevronRightIcon size={iconSizeNumbers.sm} />}
-        {labels.advancedTitle}
-      </Header>
+      <CollapsibleSectionHeader
+        title={labels.advancedTitle}
+        open={expanded}
+        onClick={onToggleExpanded}
+        controls={expanded ? panelId : undefined}
+      />
       {expanded && <div id={panelId}>{children}</div>}
     </Stack>
   )

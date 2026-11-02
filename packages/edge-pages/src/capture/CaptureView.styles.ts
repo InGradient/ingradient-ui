@@ -133,6 +133,7 @@ export const CaptureButtonWrap = styled.div`
   transform: translateX(-50%);
 `;
 
+/** Camera shutter: a large round trigger with a capture spinner. No shared Button role matches it (DESIGN §9), so it stays local. */
 export const CaptureButton = styled.button<{ $capturing?: boolean }>`
   width: var(--ig-control-height-3xl-plus);
   height: var(--ig-control-height-3xl-plus);

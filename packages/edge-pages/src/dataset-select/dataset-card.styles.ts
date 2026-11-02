@@ -4,6 +4,7 @@ import { chartColors } from '@ingradient/ui'
 import { MenuIconButton } from '@ingradient/ui/components'
 import { edgeGeometry } from '../geometry'
 
+/** Recent dataset card: the card itself is the button (no inner controls). Its corners follow surface depth. */
 const RecentCardBase = styled.button<{ $isLatest?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -55,6 +56,7 @@ export const DatasetCard = withSurfaceDepth(DatasetCardBase, { displayName: 'Dat
 
 // A stretched native selection button and a sibling kebab keep keyboard and
 // pointer activation independent without nesting interactive controls.
+/** Invisible stretched button that makes the whole card clickable while the card menu stays a sibling control (no nested interactive elements). */
 export const DatasetSelectButton = styled.button`
   flex: 1;
   min-width: 0;

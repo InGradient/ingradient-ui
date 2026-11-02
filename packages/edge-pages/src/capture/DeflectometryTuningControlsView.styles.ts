@@ -15,11 +15,6 @@ export const Label = styled.div`
   color: var(--ig-color-text-secondary);
 `;
 
-export const Slider = styled.input.attrs({ type: 'range' })`
-  width: 100%;
-  accent-color: var(--ig-color-blue-tint-90);
-`;
-
 /** 슬라이더 + 체크박스를 한 줄에 배치. 슬라이더가 남은 공간을 가져가고 체크박스는 우측. */
 export const SliderInline = styled.div`
   display: flex;

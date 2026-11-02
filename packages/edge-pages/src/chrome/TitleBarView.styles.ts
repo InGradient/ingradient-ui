@@ -47,6 +47,7 @@ export const Controls = styled.div`
   -webkit-app-region: no-drag;
 `
 
+/** Desktop window controls (minimize, maximize, close): full-height, flush, OS-style close hover. Not an app Button role, so it stays local. */
 export const Btn = styled.button<{ $variant?: 'close' }>`
   display: flex;
   align-items: center;

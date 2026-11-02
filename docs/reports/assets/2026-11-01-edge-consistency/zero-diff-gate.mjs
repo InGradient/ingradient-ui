@@ -7,7 +7,7 @@ import { PNG } from 'pngjs'
 const BASE = process.env.BASE
 const NEXT = process.env.NEXT
 const OUT = process.env.OUT
-const ids = Object.values((await (await fetch(BASE + '/index.json')).json()).entries).filter((e) => e.type === 'story' && e.id.startsWith(process.env.PREFIX || '')).map((e) => e.id)
+const ids = process.env.IDS ? process.env.IDS.split(',').filter(Boolean) : Object.values((await (await fetch(BASE + '/index.json')).json()).entries).filter((e) => e.type === 'story' && e.id.startsWith(process.env.PREFIX || '')).map((e) => e.id)
 let b = await chromium.launch()
 const ensure = async () => { if (!b.isConnected()) b = await chromium.launch() }
 const take = async (base, id) => {
