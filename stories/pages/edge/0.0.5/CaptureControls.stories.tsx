@@ -8,8 +8,13 @@ import { defineHandoff } from '../../../support/handoff'
 import { LogPanel, RightPanel } from './workspace/build-panels'
 import { SetupContent } from './workspace/build-setup-content'
 import { SIMULATION_LOGS } from './workspace/capture-fixtures'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-function Controls({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Element {
+/** Story harness: the app shell provides surface depth in the product, so the harness does too. */
+function Controls(props: { mode?: 'logs' | 'setup' }): JSX.Element {
+  return <SurfaceDepthProvider><ControlsBody {...props} /></SurfaceDepthProvider>
+}
+function ControlsBody({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Element {
   const [pattern, setPattern] = useState<PreviewPatternLabel | null>(null)
   return <Inline align="stretch" gap="var(--ig-spacing-8)" style={{ height: '100vh', padding: 'var(--ig-spacing-8)' }}>
     {mode === 'logs' ? <Stack style={{ width: 'var(--ig-popup-sm)' }}><LogPanel logs={SIMULATION_LOGS} /></Stack> : <>

@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { rotations } from '@ingradient/ui'
 import { ChevronDownIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
-import { surfacePanel } from '@ingradient/ui/primitives'
+import { surfacePanel, withSurfaceDepth } from '@ingradient/ui/primitives'
 
-export const SetupAccordion = styled.details`
+const SetupAccordionBase = styled.details`
   ${surfacePanel}
   border-radius: var(--ig-radius-xl);
   overflow: hidden;
@@ -28,6 +28,7 @@ export const SetupAccordion = styled.details`
     color: var(--ig-color-text-muted);
   }
 `
+export const SetupAccordion = withSurfaceDepth(SetupAccordionBase, { displayName: 'SetupAccordion' })
 
 const SummaryRow = styled.div`
   display: flex;

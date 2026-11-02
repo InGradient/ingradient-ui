@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 
 /**
  * Edge auth screen shared layout primitives.
@@ -28,7 +29,7 @@ export const LangCorner = styled.div`
   align-items: center;
 `
 
-export const PackageInfo = styled.div`
+const PackageInfoBase = styled.div`
   font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
   text-align: center;
@@ -37,6 +38,7 @@ export const PackageInfo = styled.div`
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-07);
 `
+export const PackageInfo = withSurfaceDepth(PackageInfoBase, { displayName: 'PackageInfo' })
 
 export const Divider = styled.div`
   height: var(--ig-space-1px);

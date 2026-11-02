@@ -14,7 +14,7 @@ const ClassificationCard = styled(Card)<{ $ok: boolean }>`
 export function DiagnoseClassificationCardView({ classification, labels }: DiagnoseClassificationCardViewProps): JSX.Element {
   const isOk = classification === 'success'
   return (
-    <ClassificationCard $ok={isOk} flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8)">
+    <ClassificationCard $ok={isOk} flat padding="var(--ig-spacing-8)">
       {labels.classificationMessages[classification]}
     </ClassificationCard>
   )

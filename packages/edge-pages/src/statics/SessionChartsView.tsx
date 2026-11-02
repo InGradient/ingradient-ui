@@ -73,12 +73,12 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         height={chartHeights.md}
         emptyMessage={labels.noOutcomeStats}
       />
-      <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+      <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
         <PanelTitle>{labels.workAndLabelingTime}</PanelTitle>
         <DurationLabel style={{ marginBottom: 'var(--ig-spacing-8)' }}>{labels.captureWorkTime}</DurationLabel>
         <DurationGrid style={{ marginBottom: 'var(--ig-spacing-12)' }}>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-12)">
+            <Card key={k} elevation="raised" flat padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(durationSummary[`${k}_ms`])}</DurationValue>
             </Card>
@@ -87,7 +87,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         <DurationLabel style={{ marginBottom: 'var(--ig-spacing-8)' }}>{labels.labelingTime}</DurationLabel>
         <DurationGrid>
           {(['average', 'median', 'p95'] as const).map((k) => (
-            <Card key={k} elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-12)">
+            <Card key={k} elevation="raised" flat padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
               <DurationValue>{formatMs(labelingDurationSummary[`${k}_ms`])}</DurationValue>
             </Card>
@@ -104,7 +104,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
         emptyMessage={labels.noDeflectometryData}
       />
       <div style={{ gridColumn: '1 / span 2', minHeight: 0 }}>
-        <Card elevation="raised" flat radius="var(--ig-radius-lg)" padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
+        <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16) var(--ig-spacing-16)" style={{ minHeight: 'var(--ig-layout-panel-min-height)' }}>
           <PanelTitle>{labels.workerStats}</PanelTitle>
           {workerStats.length > 0 ? (
             <Table columns={workerColumns} rows={workerStats} ariaLabel={labels.workerStats} />

@@ -108,7 +108,7 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
   const { tone, statusLabel, title, summary, primaryAction, secondaryActions, network, warnings } = state
 
   return (
-    <GuideCard radius="var(--ig-radius-xs)" padding="var(--ig-spacing-12)">
+    <GuideCard padding="var(--ig-spacing-12)">
       <div>
         <Header>
           <StatusIcon tone={tone} />
@@ -133,19 +133,19 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
       </Actions>
 
       <SummaryGrid>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkCameraIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.cameraIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkNicIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.nicIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkJumbo}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.jumbo)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkReceive}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.receive)}</SummaryValue>
         </Card>

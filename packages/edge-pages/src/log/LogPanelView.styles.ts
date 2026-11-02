@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { ModalBackdrop, surfacePanel } from '@ingradient/ui';
 import { edgeGeometry } from '../geometry'
 
@@ -31,7 +32,7 @@ export const FilterButtonWrap = styled.div`
   position: relative;
 `;
 
-export const FilterPopover = styled.div`
+const FilterPopoverBase = styled.div`
   position: absolute;
   top: 100%;
   right: 0;
@@ -47,6 +48,7 @@ export const FilterPopover = styled.div`
   font-weight: normal;
   color: var(--ig-color-text-secondary);
 `;
+export const FilterPopover = withSurfaceDepth(FilterPopoverBase, { floating: true, displayName: 'FilterPopover' })
 
 export const FilterSection = styled.div`
   margin-bottom: var(--ig-spacing-12);
@@ -131,7 +133,7 @@ export const LogMessage = styled.div`
   white-space: nowrap;
 `;
 
-export const DetailPanel = styled.div<{ $visible: boolean }>`
+const DetailPanelBase = styled.div<{ $visible: boolean }>`
   ${surfacePanel}
   background: var(--ig-color-surface-raised);
   position: fixed;
@@ -146,6 +148,7 @@ export const DetailPanel = styled.div<{ $visible: boolean }>`
   pointer-events: ${({ $visible }) => ($visible ? 'auto' : 'none')};
   overflow: hidden;
 `;
+export const DetailPanel = withSurfaceDepth(DetailPanelBase, { floating: true, displayName: 'DetailPanel' })
 
 export const DetailImageClickable = styled.img`
   width: 100%;

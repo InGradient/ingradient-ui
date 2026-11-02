@@ -1,5 +1,6 @@
 import { rotations } from '@ingradient/ui'
 import styled, { css, keyframes } from 'styled-components';
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { edgeGeometry } from '../geometry'
 
 const captureSpinAnim = keyframes`to { transform: rotate(${rotations.full}); }`;
@@ -67,7 +68,7 @@ export const SetupBlockingOverlay = styled.div`
   pointer-events: none;
 `;
 
-export const SetupBlockingCard = styled.div`
+const SetupBlockingCardBase = styled.div`
   background: var(--ig-color-capture-surface-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
@@ -79,6 +80,7 @@ export const SetupBlockingCard = styled.div`
   font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
 `;
+export const SetupBlockingCard = withSurfaceDepth(SetupBlockingCardBase, { displayName: 'SetupBlockingCard' })
 
 export const OverlayControls = styled.div`
   position: absolute;
@@ -91,7 +93,7 @@ export const OverlayControls = styled.div`
   z-index: var(--ig-z-capture-high);
 `;
 
-export const OverlayPopover = styled.div`
+const OverlayPopoverBase = styled.div`
   background: var(--ig-color-surface-header);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
@@ -103,6 +105,7 @@ export const OverlayPopover = styled.div`
   flex-direction: column;
   gap: var(--ig-spacing-8);
 `;
+export const OverlayPopover = withSurfaceDepth(OverlayPopoverBase, { floating: true, displayName: 'OverlayPopover' })
 
 export const ControlRow = styled.div`
   display: flex;
@@ -258,7 +261,7 @@ export const FocusPeakingOverlay = styled.img`
   pointer-events: none;
 `;
 
-export const HistogramOverlay = styled.div`
+const HistogramOverlayBase = styled.div`
   position: absolute;
   top: var(--ig-spacing-12);
   right: var(--ig-spacing-12);
@@ -269,6 +272,7 @@ export const HistogramOverlay = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   backdrop-filter: var(--ig-blur-xs);
 `;
+export const HistogramOverlay = withSurfaceDepth(HistogramOverlayBase, { floating: true, displayName: 'HistogramOverlay' })
 
 export const HistogramImage = styled.img`
   display: block;

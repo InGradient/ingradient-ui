@@ -13,7 +13,7 @@ const ErrorList = styled.ul`
 export function NicStatusCardView({ status, labels }: NicStatusCardViewProps): JSX.Element {
   void labels
   return (
-    <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8)">
+    <Card elevation="raised" flat padding="var(--ig-spacing-8)">
       <Stack gap="var(--ig-spacing-8)">
         <KeyValueRow label="NIC" value={status.nicId} />
         <KeyValueRow label="Speed" value={status.speed} />

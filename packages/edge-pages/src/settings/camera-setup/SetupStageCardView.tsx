@@ -52,7 +52,7 @@ export function SetupStageCardView(props: SetupStageCardViewProps): JSX.Element 
   const border = stage.status === 'failed' || stage.status === 'warning' ? 'strong' : 'default'
 
   return (
-    <Card padding="var(--ig-spacing-8)" radius="var(--ig-radius-xs)" border={border} flat>
+    <Card padding="var(--ig-spacing-8)" border={border} flat>
       <Stack gap="var(--ig-spacing-8)">
         {/* 헤더 전체가 토글이다. Inline 은 레이아웃만 맡고 a11y 속성은 button 이 갖는다. */}
         <button

@@ -66,7 +66,7 @@ export function SetupSummaryView(props: SetupSummaryViewProps): JSX.Element {
   const { steps, overallStatus, description, labels } = props
 
   return (
-    <Card padding="var(--ig-spacing-8)" radius="var(--ig-radius-xs)" flat>
+    <Card padding="var(--ig-spacing-8)" flat>
       <Stack gap="var(--ig-spacing-8)">
         <Inline gap="var(--ig-spacing-8)" align="center" wrap="wrap">
           <Text size="var(--ig-text-title-sm)" weight="bold" style={{ flex: 1, minWidth: 0 }}>

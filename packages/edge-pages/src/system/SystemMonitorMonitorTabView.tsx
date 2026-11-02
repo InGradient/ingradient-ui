@@ -33,9 +33,9 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
   return (
     <Wrap>
       <StatsGrid>
-        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8)"><StatLabel>{labels.cpu}</StatLabel><StatValue>{latest.cpu}%</StatValue></Card>
-        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8)"><StatLabel>{labels.memory}</StatLabel><StatValue>{latest.memory}%</StatValue></Card>
-        <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8)"><StatLabel>{labels.disk}</StatLabel><StatValue>{latest.disk}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.cpu}</StatLabel><StatValue>{latest.cpu}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.memory}</StatLabel><StatValue>{latest.memory}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.disk}</StatLabel><StatValue>{latest.disk}%</StatValue></Card>
       </StatsGrid>
       <LineChartCard
         title=""

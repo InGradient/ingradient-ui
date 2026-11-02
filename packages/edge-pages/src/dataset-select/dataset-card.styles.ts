@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { chartColors } from '@ingradient/ui'
 import { MenuIconButton } from '@ingradient/ui/components'
 import { edgeGeometry } from '../geometry'
 
-export const RecentCard = styled.button<{ $isLatest?: boolean }>`
+const RecentCardBase = styled.button<{ $isLatest?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,12 +26,13 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
     border-color: var(--ig-color-blue-tint-50);
   }
 `
+export const RecentCard = withSurfaceDepth(RecentCardBase, { displayName: 'RecentCard' })
 
 export const Spacer = styled.span`
   flex: 1;
 `
 
-export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
+const DatasetCardBase = styled.div<{ $isRecent?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -49,6 +51,7 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
     border-color: var(--ig-color-blue-tint-50);
   }
 `
+export const DatasetCard = withSurfaceDepth(DatasetCardBase, { displayName: 'DatasetCard' })
 
 // A stretched native selection button and a sibling kebab keep keyboard and
 // pointer activation independent without nesting interactive controls.
@@ -62,7 +65,7 @@ export const DatasetSelectButton = styled.button`
   font: inherit;
   text-align: left;
   cursor: pointer;
-  &::after { content: ''; position: absolute; inset: 0; border-radius: var(--ig-radius-sm); }
+  &::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
   &:focus-visible { outline: none; }
   &:focus-visible::after {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);

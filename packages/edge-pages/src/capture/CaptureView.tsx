@@ -62,11 +62,11 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
         {showGrid && <CenterCrosshair />}
         {isSetupMode && (
           <SetupMetrics>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
           </SetupMetrics>
         )}
 

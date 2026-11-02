@@ -10,9 +10,14 @@ import { useSettingsDraft, type MockAction } from './settings/tabs-moved'
 import { AccountRuntime, LanguageRuntime } from './settings/account-runtime'
 import { SystemMonitorRuntime } from './settings/system-runtime'
 import { SAMPLE_USER } from '../../../fixtures/edge/0.0.5'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
 export interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
-function SettingsWorkflowScene({ initialTab, lightingMode, chromeOnly, onMockAction }: WorkflowArgs) {
+/** Story harness: the app shell provides surface depth in the product, so the harness does too. */
+function SettingsWorkflowScene(args: WorkflowArgs) {
+  return <SurfaceDepthProvider><SettingsWorkflowSceneBody {...args} /></SurfaceDepthProvider>
+}
+function SettingsWorkflowSceneBody({ initialTab, lightingMode, chromeOnly, onMockAction }: WorkflowArgs) {
   const draft = useSettingsDraft()
   const [open, setOpen] = useState(!chromeOnly)
   const [language, setLanguage] = useState('en')

@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui'
 import { KeyValueRow, ProgressBar } from '@ingradient/ui/components'
 import type { UpdateSectionViewProps } from './types'
 
-const Wrap = styled.div`
+const WrapBase = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-spacing-8);
@@ -11,6 +12,7 @@ const Wrap = styled.div`
   background: var(--ig-color-surface-raised);
   border-radius: var(--ig-radius-md);
 `
+const Wrap = withSurfaceDepth(WrapBase, { displayName: 'Wrap' })
 const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
 const Label = styled.span`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted);`
 const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);`

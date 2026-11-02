@@ -81,7 +81,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
         {isRecomputing ? <><Spinner tone="white" size="sm" />{labels.analyzing}</> : labels.analyze}
       </Button>
 
-      <Card elevation="raised" flat radius="var(--ig-radius-xs)" padding="var(--ig-spacing-8)">
+      <Card elevation="raised" flat padding="var(--ig-spacing-8)">
         <Stack gap="var(--ig-spacing-8)">
           <QualityHeader>
             <Text tone="muted">{labels.confidence}</Text>

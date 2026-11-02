@@ -34,7 +34,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
                 key={c.id}
                 elevation="raised"
                 flat
-                radius="var(--ig-radius-xs)"
+               
                 padding="var(--ig-spacing-8)"
                 style={{ fontSize: 'var(--ig-text-body-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
               >

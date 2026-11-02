@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 
 /**
  * Edge license screen domain-specific styles.
@@ -28,7 +29,7 @@ export const LangCorner = styled.div`
   align-items: center;
 `
 
-export const FingerprintBox = styled.div`
+const FingerprintBoxBase = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-spacing-8);
@@ -37,6 +38,7 @@ export const FingerprintBox = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   background: var(--ig-color-white-04);
 `
+export const FingerprintBox = withSurfaceDepth(FingerprintBoxBase, { displayName: 'FingerprintBox' })
 
 export const FingerprintText = styled.span`
   flex: 1;
@@ -47,7 +49,7 @@ export const FingerprintText = styled.span`
   color: var(--ig-color-accent-soft);
 `
 
-export const HintBox = styled.div`
+const HintBoxBase = styled.div`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
   padding: var(--ig-spacing-12);
@@ -56,3 +58,4 @@ export const HintBox = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-selection-bg);
   line-height: var(--ig-line-height-loose);
 `
+export const HintBox = withSurfaceDepth(HintBoxBase, { displayName: 'HintBox' })

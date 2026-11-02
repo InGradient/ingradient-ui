@@ -5,6 +5,7 @@ import {
   type BBox, type CommentItem, type DerivedCalcState, type SequenceViewMode,
 } from '@ingradient/edge-pages'
 import { Button, Inline, Stack } from '@ingradient/ui'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 import { PANEL_CLASSES, RIGHT_PANEL_LABELS, WORKSPACE_LABELS } from '../../../../fixtures/edge/0.0.5'
 import { LABELING_BOXES, LABELING_LABELS, SYNTHETIC_CAPTURE } from './capture-fixtures'
 
@@ -18,7 +19,11 @@ export interface CaptureBranchesProps {
 }
 
 /** Dedicated U9 controller. Backend completion is explicit, deterministic, and synthetic. */
-export function CaptureBranches({ initialBranch = 'review', initiallyCollapsed = false, initialDerivedState = 'idle', initialSequenceFailure = false, onMockAction }: CaptureBranchesProps): JSX.Element {
+/** Story harness: the app shell provides surface depth in the product, so the harness does too. */
+export function CaptureBranches(props: CaptureBranchesProps): JSX.Element {
+  return <SurfaceDepthProvider><CaptureBranchesBody {...props} /></SurfaceDepthProvider>
+}
+export function CaptureBranchesBody({ initialBranch = 'review', initiallyCollapsed = false, initialDerivedState = 'idle', initialSequenceFailure = false, onMockAction }: CaptureBranchesProps): JSX.Element {
   const [branch, setBranch] = useState(initialBranch)
   const [collapsed, setCollapsed] = useState(initiallyCollapsed)
   const [derivedState, setDerivedState] = useState<DerivedCalcState>(initialDerivedState)
