@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { Button } from '@ingradient/ui/components'
 
 export const Container = styled.aside`
-  width: var(--ig-popup-sm);
+  /* Fills the side-panel column; its width comes from the layout (320px, resizable). */
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;

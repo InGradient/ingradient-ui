@@ -8,11 +8,16 @@ export interface ResizableColumn {
   width: number | 'auto'
   /** drag-to-resize 핸들 표시. auto 컬럼은 무시됨. */
   resizable?: boolean
-  /** min/max 제한 (resize 시). */
+  /** min/max 제한 (resize 시). `width: 'auto'` 컬럼에서는 CSS 최소 폭으로 쓰인다. */
   minWidth?: number
   maxWidth?: number
   /** collapse 시 width 0 + transition. 외부 제어 (controlled). */
   collapsed?: boolean
+  /**
+   * 접혔을 때 남길 폭(px 숫자 또는 CSS 길이). 기본 0 — 완전히 숨기고 `inert`. 0이 아니면 접힌 상태 전용
+   * 내용(아이콘 띠 등)이 그 폭으로 보이고 조작 가능하다.
+   */
+  collapsedWidth?: number | string
   /** 아예 안 보이게. 컬럼/핸들 모두 미렌더. (예: 옵셔널 inspector). */
   hidden?: boolean
   /** Column 표면 배경색 (optional). */
@@ -37,20 +42,22 @@ const ROOT_STYLE = { width: '100%', height: '100%', minHeight: 0 }
 const Column = styled.div<{
   $width: number | 'auto'
   $collapsed: boolean
+  $collapsedWidth: string
+  $autoMinWidth?: number
   $bg?: string
   $dividerBefore?: 'subtle' | 'strong'
 }>`
   flex: ${(p) => {
     if (p.$width === 'auto') return '1'
-    if (p.$collapsed) return '0 0 0'
+    if (p.$collapsed) return `0 0 ${p.$collapsedWidth}`
     return `0 0 ${p.$width}px`
   }};
   width: ${(p) => {
     if (p.$width === 'auto') return 'auto'
-    return p.$collapsed ? '0' : `${p.$width}px`
+    return p.$collapsed ? p.$collapsedWidth : `${p.$width}px`
   }};
   box-sizing: border-box;
-  min-width: 0;
+  min-width: ${(p) => (p.$autoMinWidth ? `${p.$autoMinWidth}px` : '0')};
   overflow: hidden;
   ${(p) => p.$bg && `background: ${p.$bg};`}
   ${(p) => p.$dividerBefore && `border-left: var(--ig-border-1px) solid var(--ig-color-border-${p.$dividerBefore});`}
@@ -118,6 +125,9 @@ export function ResizableColumnsLayout({
       {columns.map((c, i) => {
         if (c.hidden) return null
         const collapsed = !!c.collapsed
+        const collapsedWidth = typeof c.collapsedWidth === 'string' ? c.collapsedWidth : `${c.collapsedWidth ?? 0}px`
+        // Hidden-at-zero columns are inert; a collapsed rail with its own content stays usable.
+        const inert = collapsed && (c.collapsedWidth === undefined || c.collapsedWidth === 0)
         const width = c.width === 'auto' ? 'auto' : widths[i]
         const showHandle = c.resizable && !collapsed && i !== autoIdx
         const handle = showHandle ? <ResizeHandle onMouseDown={(e) => startResize(i, e)} /> : null
@@ -127,9 +137,11 @@ export function ResizableColumnsLayout({
             <Column
               // A collapsed column keeps its content mounted at zero width. Without `inert` its
               // controls stay focusable and are exposed to assistive tech while invisible.
-              ref={(node) => node?.toggleAttribute('inert', collapsed)}
+              ref={(node) => node?.toggleAttribute('inert', inert)}
               $width={width}
               $collapsed={collapsed}
+              $collapsedWidth={collapsedWidth}
+              $autoMinWidth={c.width === 'auto' ? c.minWidth : undefined}
               $bg={c.background}
               $dividerBefore={c.dividerBefore}
             >
