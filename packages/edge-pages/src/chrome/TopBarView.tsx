@@ -1,11 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { IconButton, StatusDot, RefreshIcon, SettingsIcon, ChevronLeftIcon } from '@ingradient/ui/components'
-import {
-  ConnectingSpinner, Container, LeftSection, RightSection, StatusItem,
-  EdgeInfoSection, BreadcrumbWrap, BreadcrumbProject, BreadcrumbSep,
-  BreadcrumbDataset,
-} from './TopBarView.styles'
+import { ConnectingSpinner, Container, StatusItem, BreadcrumbWrap, BreadcrumbSep } from './TopBarView.styles'
 import type { TopBarViewProps } from './types'
+import { Inline, Text } from '@ingradient/ui/primitives'
 
 export function TopBarView(props: TopBarViewProps): JSX.Element {
   const {
@@ -18,21 +15,21 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
   return (
     <>
       <Container>
-        <LeftSection>
+        <Inline gap="var(--ig-spacing-16)" wrap="nowrap">
           {selectedDatasetName && (
-            <EdgeInfoSection>
+            <Inline gap="var(--ig-spacing-12)" wrap="nowrap">
               <IconButton variant="secondary" size="sm" onClick={onBackToDatasets}>
                 <ChevronLeftIcon size={iconSizeNumbers.sm} />
               </IconButton>
               <BreadcrumbWrap>
-                {selectedProjectName && <BreadcrumbProject>{selectedProjectName}</BreadcrumbProject>}
+                {selectedProjectName && <Text size="var(--ig-text-body-sm)" tone="muted">{selectedProjectName}</Text>}
                 {selectedProjectName && <BreadcrumbSep>/</BreadcrumbSep>}
-                <BreadcrumbDataset>{selectedDatasetName}</BreadcrumbDataset>
+                <Text size="var(--ig-text-body-sm)" weight="semibold">{selectedDatasetName}</Text>
               </BreadcrumbWrap>
-            </EdgeInfoSection>
+            </Inline>
           )}
-        </LeftSection>
-        <RightSection>
+        </Inline>
+        <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
           <StatusItem title={connectionTitle}>
             <StatusDot
               type="button"
@@ -56,7 +53,7 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
             <SettingsIcon size={iconSizeNumbers.lg} />
           </IconButton>
           {accountMenu}
-        </RightSection>
+        </Inline>
       </Container>
       {settingsDialog}
     </>

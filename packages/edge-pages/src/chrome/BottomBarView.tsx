@@ -1,10 +1,9 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Button, Spinner, HardDriveIcon, CpuIcon, ActivityIcon, WifiIcon, WifiOffIcon, CheckIcon, AlertCircleIcon } from '@ingradient/ui/components'
-import {
-  Row, LeftSection, SyncChip, StatChip, NetIcon,
-} from './BottomBarView.styles'
+import { Row, SyncChip, StatChip, NetIcon } from './BottomBarView.styles'
 import { fmtPct } from './bottom-bar-helpers'
 import type { BottomBarViewProps } from './types'
+import { Inline } from '@ingradient/ui/primitives'
 
 export function BottomBarView(props: BottomBarViewProps): JSX.Element {
   const {
@@ -14,7 +13,7 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
 
   return (
     <Row>
-      <LeftSection>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
         {deleteProgress && (
           <SyncChip $status="syncing">
             <Spinner size={iconSizeNumbers.xs} />
@@ -39,7 +38,7 @@ export function BottomBarView(props: BottomBarViewProps): JSX.Element {
             {labels.syncFailed(syncFailed)}
           </SyncChip>
         )}
-      </LeftSection>
+      </Inline>
 
       <Button
         variant="ghost"

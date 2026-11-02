@@ -10,17 +10,7 @@ export const Container = styled.div`
   color: var(--ig-color-text-primary);
 `
 
-export const LeftSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-16);
-`
 
-export const RightSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-8);
-`
 
 export const StatusItem = styled.div`
   display: flex;
@@ -34,11 +24,6 @@ export const StatusItem = styled.div`
 `
 
 
-export const EdgeInfoSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-12);
-`
 
 /** Page title of the workspace (project / dataset). Heading semantics only: children own typography. */
 export const BreadcrumbWrap = styled.h1`
@@ -51,10 +36,6 @@ export const BreadcrumbWrap = styled.h1`
   border-left: var(--ig-spacing-2) solid var(--ig-color-border-subtle);
 `
 
-export const BreadcrumbProject = styled.span`
-  font-size: var(--ig-text-body-sm);
-  color: var(--ig-color-text-muted);
-`
 
 export const BreadcrumbSep = styled.span`
   font-size: var(--ig-text-body-sm);
@@ -62,8 +43,3 @@ export const BreadcrumbSep = styled.span`
   opacity: var(--ig-opacity-faded);
 `
 
-export const BreadcrumbDataset = styled.span`
-  font-size: var(--ig-text-body-sm);
-  font-weight: var(--ig-font-weight-semibold);
-  color: var(--ig-color-text-primary);
-`

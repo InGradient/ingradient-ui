@@ -12,8 +12,3 @@ export const DurationLabel = styled.div`
   margin-bottom: var(--ig-spacing-8);
 `;
 
-export const DurationValue = styled.div`
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-text-title);
-  font-weight: var(--ig-font-weight-bold);
-`;

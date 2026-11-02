@@ -2,9 +2,8 @@ import styled from 'styled-components'
 import { Button, Checkbox, EmptyState, Spinner } from '@ingradient/ui'
 import { KeyValueRow } from '@ingradient/ui/components'
 import type { SystemMonitorCleanupTabViewProps } from './types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-12);`
-const Title = styled.div`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-text-body-sm);`
 
 function formatBytes(bytes: number): string {
@@ -19,17 +18,17 @@ const CATEGORIES = ['datasets', 'sessions', 'logs', 'thumbs'] as const
 export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewProps): JSX.Element {
   const { stats, loading, running, result, selectedCategories, labels, onToggleCategory, onRun, onRefresh } = props
 
-  if (loading && !stats) return <Wrap><Spinner /> {labels.loading}</Wrap>
-  if (!stats) return <Wrap><EmptyState>{labels.empty}</EmptyState></Wrap>
+  if (loading && !stats) return <Stack gap="var(--ig-spacing-12)"><Spinner /> {labels.loading}</Stack>
+  if (!stats) return <Stack gap="var(--ig-spacing-12)"><EmptyState>{labels.empty}</EmptyState></Stack>
 
   return (
-    <Wrap>
+    <Stack gap="var(--ig-spacing-12)">
       <KeyValueRow label={labels.totalSize} value={formatBytes(stats.totalSize)} />
       {stats.oldestEntry && (
         <KeyValueRow label={labels.oldestEntry} value={stats.oldestEntry} />
       )}
       <div>
-        <Title>{labels.categories}</Title>
+        <Text as="div" size="var(--ig-text-body)" weight="bold">{labels.categories}</Text>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ig-spacing-8)', marginTop: 'var(--ig-spacing-8)' }}>
           {CATEGORIES.map((cat) => (
             <Checkbox
@@ -50,6 +49,6 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
         <Button size="sm" variant="secondary" onClick={onRefresh} disabled={loading || running}>{labels.refresh}</Button>
       </div>
       {result?.ok && <SuccessMsg>{labels.freed(formatBytes(result.freedBytes))}</SuccessMsg>}
-    </Wrap>
+    </Stack>
   )
 }

@@ -9,11 +9,6 @@ export const Row = styled.div`
   height: 100%;
 `
 
-export const LeftSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-8);
-`
 
 export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
   display: flex;

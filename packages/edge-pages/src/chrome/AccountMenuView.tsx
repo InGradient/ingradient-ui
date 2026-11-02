@@ -2,11 +2,9 @@ import { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { DialogShell, iconSizeNumbers, SelectableListItem, Stack } from '@ingradient/ui'
 import { Button, ContextMenuWithSubmenus, EmptyState, UserCircleIcon } from '@ingradient/ui/components'
-import {
-  AccountBtnName, AccountMenuWrap,
-  HistoryList, HistoryName, HistoryEmail,
-} from './AccountMenuView.styles'
+import { AccountBtnName, AccountMenuWrap, HistoryEmail } from './AccountMenuView.styles'
 import type { AccountMenuViewProps } from './types'
+import { Text } from '@ingradient/ui/primitives'
 
 export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null {
   const {
@@ -62,16 +60,16 @@ export function AccountMenuView(props: AccountMenuViewProps): JSX.Element | null
           {accountHistory.length === 0 ? (
             <EmptyState>{labels.noAccountHistory}</EmptyState>
           ) : (
-            <HistoryList>
+            <Stack gap="var(--ig-spacing-8)">
               {accountHistory.map((entry) => (
                 <SelectableListItem key={entry.email} variant="card" onClick={() => { onSelectAccount(entry); accountBtnRef.current?.focus() }}>
                   <Stack gap="var(--ig-spacing-2)">
-                    <HistoryName>{entry.name}</HistoryName>
+                    <Text size="var(--ig-text-body-sm)" weight="medium">{entry.name}</Text>
                     <HistoryEmail>{entry.email}</HistoryEmail>
                   </Stack>
                 </SelectableListItem>
               ))}
-            </HistoryList>
+            </Stack>
           )}
         </DialogShell>,
         document.body,

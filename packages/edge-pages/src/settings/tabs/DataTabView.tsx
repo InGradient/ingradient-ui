@@ -2,9 +2,8 @@ import styled from 'styled-components'
 import { Button } from '@ingradient/ui'
 import { CodeBlock, KeyValueRow } from '@ingradient/ui/components'
 import type { DataTabViewProps } from '../types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-16);`
-const Label = styled.span`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted);`
 
 const Success = styled.div`
   color: var(--ig-color-success);
@@ -25,9 +24,9 @@ export function DataTabView(props: DataTabViewProps): JSX.Element {
     onCleanCache, onOpenDataDir,
   } = props
   return (
-    <Wrap>
+    <Stack gap="var(--ig-spacing-16)">
       <div>
-        <Label style={{ display: 'block', marginBottom: 'var(--ig-spacing-8)' }}>{labels.dataDirLabel}</Label>
+        <Text size="var(--ig-text-body-sm)" tone="muted" style={{ display: 'block', marginBottom: 'var(--ig-spacing-8)' }}>{labels.dataDirLabel}</Text>
         <CodeBlock>{dataDirPath}</CodeBlock>
         <div style={{ marginTop: 'var(--ig-spacing-8)' }}>
           <Button size="sm" variant="secondary" onClick={onOpenDataDir}>{labels.openDataDir}</Button>
@@ -42,6 +41,6 @@ export function DataTabView(props: DataTabViewProps): JSX.Element {
         </Button>
         {cleanupCompleted && <Success style={{ marginTop: 'var(--ig-spacing-8)' }}>{labels.cleanupComplete}</Success>}
       </div>
-    </Wrap>
+    </Stack>
   )
 }

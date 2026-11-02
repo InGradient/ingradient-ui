@@ -16,11 +16,6 @@ export const Header = styled.div`
   margin-bottom: var(--ig-spacing-16);
 `;
 
-export const TitleBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-spacing-8);
-`;
 
 export const Title = styled.h2`
   margin: 0;
@@ -28,10 +23,6 @@ export const Title = styled.h2`
   font-size: var(--ig-text-title);
 `;
 
-export const Subtitle = styled.div`
-  color: var(--ig-color-text-soft);
-  font-size: var(--ig-text-caption);
-`;
 
 export const SummaryGrid = styled.div`
   display: grid;
@@ -46,11 +37,6 @@ export const SummaryLabel = styled.div`
   margin-bottom: var(--ig-spacing-8);
 `;
 
-export const SummaryValue = styled.div`
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-text-display);
-  font-weight: var(--ig-font-weight-bold);
-`;
 
 export const PanelGrid = styled.div`
   display: grid;

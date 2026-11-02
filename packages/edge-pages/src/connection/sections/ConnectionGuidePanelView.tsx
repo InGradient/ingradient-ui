@@ -2,6 +2,7 @@ import { ActivityIcon, AlertTriangleIcon, CheckCircleIcon, SearchIcon, SlidersIc
 import styled from 'styled-components'
 import { Badge, Button, Card, iconSizeNumbers } from '@ingradient/ui'
 import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
+import { Inline, Text } from '@ingradient/ui/primitives'
 
 // 라이브러리 Card(panel) 표면 위에 2열 grid 레이아웃만 얹는 thin styled(Card).
 const GuideCard = styled(Card)`
@@ -19,11 +20,6 @@ const Header = styled.div`
   margin-bottom: var(--ig-spacing-8);
 `
 
-const Title = styled.div`
-  font-size: var(--ig-text-title-sm);
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-primary);
-`
 
 const Summary = styled.div`
   font-size: var(--ig-text-caption);
@@ -31,13 +27,6 @@ const Summary = styled.div`
   line-height: var(--ig-line-height-relaxed);
 `
 
-const Actions = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--ig-spacing-8);
-  flex-wrap: wrap;
-`
 
 const SummaryGrid = styled.div`
   grid-column: 1 / -1;
@@ -112,13 +101,13 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
       <div>
         <Header>
           <StatusIcon tone={tone} />
-          <Title>{title}</Title>
+          <Text as="div" size="var(--ig-text-title-sm)" weight="bold">{title}</Text>
           <Badge $tone={tone}>{statusLabel}</Badge>
         </Header>
         <Summary>{summary}</Summary>
       </div>
 
-      <Actions>
+      <Inline gap="var(--ig-spacing-8)" justify="flex-end">
         {secondaryActions?.map((action, i) => (
           <Button key={`${action.label}-${i}`} size="sm" variant="secondary" type="button" onClick={action.onClick}>
             {action.label}
@@ -130,7 +119,7 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
             : <ActivityIcon size={iconSizeNumbers.xs} />}
           {primaryAction.label}
         </Button>
-      </Actions>
+      </Inline>
 
       <SummaryGrid>
         <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">

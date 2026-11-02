@@ -1,11 +1,6 @@
 import { rotations } from '@ingradient/ui'
 import styled from 'styled-components';
 
-export const DeletingLabel = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ig-spacing-8);
-`;
 
 export const GroupBadgeWrap = styled.div`
   position: absolute;

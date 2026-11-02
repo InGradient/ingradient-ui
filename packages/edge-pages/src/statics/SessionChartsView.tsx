@@ -2,11 +2,10 @@ import { chartHeights, Card } from '@ingradient/ui'
 import { BarChartCard, PieChartCard } from '@ingradient/ui/patterns'
 import { Table, type TableColumn, EmptyState } from '@ingradient/ui/components'
 import { PanelGrid, PanelTitle } from './StaticsView.styles'
-import {
-  DurationGrid, DurationLabel, DurationValue,
-} from './SessionChartsView.styles'
+import { DurationGrid, DurationLabel } from './SessionChartsView.styles'
 import { CHART_BLUE, CHART_GREEN, CHART_WARNING, CHART_DANGER } from './chart-helpers'
 import type { SessionChartsViewProps } from './types'
+import { Text } from '@ingradient/ui/primitives'
 
 const outcomeColors: Record<string, string> = {
   success: CHART_BLUE,
@@ -80,7 +79,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
           {(['average', 'median', 'p95'] as const).map((k) => (
             <Card key={k} elevation="raised" flat padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
-              <DurationValue>{formatMs(durationSummary[`${k}_ms`])}</DurationValue>
+              <Text as="div" size="var(--ig-text-title)" weight="bold">{formatMs(durationSummary[`${k}_ms`])}</Text>
             </Card>
           ))}
         </DurationGrid>
@@ -89,7 +88,7 @@ export function SessionChartsView(props: SessionChartsViewProps): JSX.Element {
           {(['average', 'median', 'p95'] as const).map((k) => (
             <Card key={k} elevation="raised" flat padding="var(--ig-spacing-12)">
               <DurationLabel>{labels[k]}</DurationLabel>
-              <DurationValue>{formatMs(labelingDurationSummary[`${k}_ms`])}</DurationValue>
+              <Text as="div" size="var(--ig-text-title)" weight="bold">{formatMs(labelingDurationSummary[`${k}_ms`])}</Text>
             </Card>
           ))}
         </DurationGrid>

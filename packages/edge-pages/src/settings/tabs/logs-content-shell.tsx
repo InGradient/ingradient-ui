@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { withSurfaceDepth } from '@ingradient/ui/primitives'
+import { withSurfaceDepth, Inline } from '@ingradient/ui/primitives'
 import { Button, SearchField, DropdownSelect } from '@ingradient/ui'
 import { EmptyText } from '@ingradient/ui/components'
 import type { LogEntry } from '../types'
 
 const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-8); height: 100%;`
-const ToolbarRow = styled.div`display: flex; gap: var(--ig-spacing-8); align-items: center;`
 const LogListBase = styled.div`
   flex: 1;
   min-height: 0;
@@ -67,7 +66,7 @@ export function LogsContentShell({
 }: LogsContentShellProps): JSX.Element {
   return (
     <Wrap>
-      <ToolbarRow>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
         <SearchField
           aria-label={labels.search}
           value={searchQuery}
@@ -89,7 +88,7 @@ export function LogsContentShell({
         <Button size="sm" variant="secondary" onClick={onRefresh} disabled={refreshing}>{labels.refresh}</Button>
         <Button size="sm" variant="secondary" onClick={onClear}>{labels.clear}</Button>
         <Button size="sm" variant="secondary" onClick={onExport}>{labels.export}</Button>
-      </ToolbarRow>
+      </Inline>
       <LogList role="region" aria-label={labels.search} tabIndex={0}>
         {logs.length === 0
           ? <EmptyText>{labels.empty}</EmptyText>

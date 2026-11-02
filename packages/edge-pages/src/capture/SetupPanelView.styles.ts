@@ -38,11 +38,6 @@ export const SetupPanelBody = styled.div`
 // SetupSection / SetupSectionTitle / SetupField / SetupInput: ui FieldGroup / SectionTitle / FieldLabel / TextField (PR-B1, 2026-05-09)
 
 /** 패턴 버튼이 여러 개일 때 — 이름 길이가 제각각이라 고정 칸 대신 흐르게 둔다. */
-export const PatternGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ig-spacing-8);
-`;
 
 export const PatternButton = styled(Button).attrs({
   variant: 'secondary' as const,

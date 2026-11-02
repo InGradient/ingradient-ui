@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { withSurfaceDepth } from '@ingradient/ui/primitives'
+import { withSurfaceDepth, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui'
 import { KeyValueRow, ProgressBar } from '@ingradient/ui/components'
 import type { UpdateSectionViewProps } from './types'
@@ -14,7 +14,6 @@ const WrapBase = styled.div`
 `
 const Wrap = withSurfaceDepth(WrapBase, { displayName: 'Wrap' })
 const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
-const Label = styled.span`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted);`
 const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
@@ -30,8 +29,8 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       {status === 'idle' && (
         <Button size="sm" variant="secondary" onClick={onCheckForUpdates}>{labels.checkForUpdates}</Button>
       )}
-      {status === 'checking' && <Label>{labels.checking}</Label>}
-      {status === 'noUpdate' && <Label>{labels.noUpdate}</Label>}
+      {status === 'checking' && <Text size="var(--ig-text-body-sm)" tone="muted">{labels.checking}</Text>}
+      {status === 'noUpdate' && <Text size="var(--ig-text-body-sm)" tone="muted">{labels.noUpdate}</Text>}
       {status === 'available' && availableVersion && (
         <>
           <div>{labels.available(availableVersion)}</div>
@@ -40,7 +39,7 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       )}
       {status === 'downloading' && (
         <>
-          <Label>{labels.downloading}</Label>
+          <Text size="var(--ig-text-body-sm)" tone="muted">{labels.downloading}</Text>
           <ProgressBar value={progress * 100} aria-label={labels.downloading} />
         </>
       )}

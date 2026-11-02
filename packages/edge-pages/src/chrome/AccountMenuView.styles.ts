@@ -14,17 +14,7 @@ export const AccountMenuWrap = styled.div`
 
 
 
-export const HistoryList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-spacing-8);
-`
 
-export const HistoryName = styled.span`
-  font-size: var(--ig-text-body-sm);
-  font-weight: var(--ig-font-weight-medium);
-  color: var(--ig-color-text-primary);
-`
 
 export const HistoryEmail = styled.span`
   font-size: var(--ig-text-caption);

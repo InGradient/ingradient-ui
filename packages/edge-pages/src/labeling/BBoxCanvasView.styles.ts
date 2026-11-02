@@ -21,11 +21,6 @@ export const Toolbar = styled.div`
   position: relative;
 `;
 
-export const CenterActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-12);
-`;
 
 export const RightActions = styled.div`
   position: absolute;

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Button, DialogShell } from '@ingradient/ui'
 import { CodeBlock, KeyValueRow } from '@ingradient/ui/components'
 import type { AboutTabViewProps } from '../types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
 const Section = styled.div`margin-bottom: var(--ig-spacing-20);`
 const SectionTitle = styled.h3`
@@ -16,8 +17,6 @@ const Hero = styled.div`
   gap: var(--ig-spacing-12);
   margin-bottom: var(--ig-spacing-16);
 `
-const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-2);`
-const HeroTitle = styled.div`font-size: var(--ig-text-title-sm); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
 const HeroVersion = styled.div`font-size: var(--ig-text-caption); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
 
 const FingerprintBox = styled(CodeBlock)`
@@ -47,10 +46,10 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
   return (
     <>
       <Hero>
-        <TitleGroup>
-          <HeroTitle>{labels.hero}</HeroTitle>
+        <Stack gap="var(--ig-spacing-2)">
+          <Text as="div" size="var(--ig-text-title-sm)" weight="bold">{labels.hero}</Text>
           <HeroVersion>{labels.versionLabel} {appVersion}</HeroVersion>
-        </TitleGroup>
+        </Stack>
       </Hero>
 
       <Section>

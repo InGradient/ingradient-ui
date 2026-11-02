@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { LineChartCard } from '@ingradient/ui/patterns'
 import { CHART_BLUE, CHART_GREEN, CHART_PURPLE } from '../statics/chart-helpers'
 import type { SystemMonitorMonitorTabViewProps } from './types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-12);`
 
 const StatsGrid = styled.div`
   display: grid;
@@ -12,12 +12,6 @@ const StatsGrid = styled.div`
   gap: var(--ig-spacing-8);
 `
 
-const StatLabel = styled.div`
-  font-size: var(--ig-text-micro);
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-`
 
 const StatValue = styled.div`
   font-size: var(--ig-text-title);
@@ -31,11 +25,11 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
   if (!latest) return <EmptyState>{labels.empty}</EmptyState>
 
   return (
-    <Wrap>
+    <Stack gap="var(--ig-spacing-12)">
       <StatsGrid>
-        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.cpu}</StatLabel><StatValue>{latest.cpu}%</StatValue></Card>
-        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.memory}</StatLabel><StatValue>{latest.memory}%</StatValue></Card>
-        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><StatLabel>{labels.disk}</StatLabel><StatValue>{latest.disk}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><Text as="div" size="var(--ig-text-micro)" tone="muted" uppercase letterSpacing="wide">{labels.cpu}</Text><StatValue>{latest.cpu}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><Text as="div" size="var(--ig-text-micro)" tone="muted" uppercase letterSpacing="wide">{labels.memory}</Text><StatValue>{latest.memory}%</StatValue></Card>
+        <Card elevation="raised" flat padding="var(--ig-spacing-8)"><Text as="div" size="var(--ig-text-micro)" tone="muted" uppercase letterSpacing="wide">{labels.disk}</Text><StatValue>{latest.disk}%</StatValue></Card>
       </StatsGrid>
       <LineChartCard
         title=""
@@ -48,6 +42,6 @@ export function SystemMonitorMonitorTabView(props: SystemMonitorMonitorTabViewPr
         ]}
         height={chartHeights.md}
       />
-    </Wrap>
+    </Stack>
   )
 }

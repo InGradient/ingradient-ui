@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import { withSurfaceDepth } from '@ingradient/ui/primitives'
+import { withSurfaceDepth, Stack } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui'
 import { ProgressBar } from '@ingradient/ui/components'
 import type { FieldTestTabViewProps } from '../types'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-16);`
 const Desc = styled.div`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted); line-height: var(--ig-line-height-loose);`
 const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
 const LogBoxBase = styled.pre`
@@ -24,7 +23,7 @@ const LogBox = withSurfaceDepth(LogBoxBase, { displayName: 'LogBox' })
 export function FieldTestTabView(props: FieldTestTabViewProps): JSX.Element {
   const { running, progress, hasResults, log, labels, onRun, onCancel, onReset, onExport } = props
   return (
-    <Wrap>
+    <Stack gap="var(--ig-spacing-16)">
       <Title>{labels.title}</Title>
       <Desc>{labels.description}</Desc>
       <div style={{ display: 'flex', gap: 'var(--ig-spacing-8)' }}>
@@ -41,6 +40,6 @@ export function FieldTestTabView(props: FieldTestTabViewProps): JSX.Element {
       {log.length > 0
         ? <LogBox tabIndex={0} role="region" aria-label={labels.title}>{log.join('\n')}</LogBox>
         : <Desc>{labels.noResults}</Desc>}
-    </Wrap>
+    </Stack>
   )
 }

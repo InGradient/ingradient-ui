@@ -2,21 +2,13 @@ import { useId } from 'react'
 import styled from 'styled-components'
 import { Button, TextField } from '@ingradient/ui'
 import type { CameraParamsTabViewProps } from '../types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-16);`
-const Section = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-8);`
 const SectionTitle = styled.h3`
   font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-bold);
   margin: 0;
   color: var(--ig-color-text-primary);
-`
-const Label = styled.label`
-  font-size: var(--ig-text-caption);
-  font-weight: var(--ig-font-weight-semibold);
-  color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
 `
 const Status = styled.div<{ $tone: 'success' | 'danger' }>`
   font-size: var(--ig-text-body-sm);
@@ -31,10 +23,10 @@ export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Elemen
   } = props
 
   return (
-    <Wrap>
-      <Section>
+    <Stack gap="var(--ig-spacing-16)">
+      <Stack gap="var(--ig-spacing-8)">
         <SectionTitle>{labels.title}</SectionTitle>
-        <Label htmlFor={pathId}>{labels.dllPath}</Label>
+        <Text as="label" size="var(--ig-text-caption)" weight="semibold" tone="muted" uppercase letterSpacing="wide" htmlFor={pathId}>{labels.dllPath}</Text>
         <TextField
           id={pathId}
           value={cvsCamDllPath}
@@ -45,7 +37,7 @@ export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Elemen
           <Button size="sm" variant="secondary" onClick={onApplyDllPath}>{labels.applyDllPath}</Button>
           <Button size="sm" variant="secondary" onClick={onReset}>{labels.reload}</Button>
         </div>
-      </Section>
+      </Stack>
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--ig-spacing-8)' }}>
         <Button size="sm" variant="accent" onClick={onSave} disabled={saving || !isConnected || fetching}>
           {saving ? '...' : (saveResult === 'success' ? labels.saved : labels.save)}
@@ -53,6 +45,6 @@ export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Elemen
       </div>
       {saveResult === 'success' && <Status $tone="success">{labels.saved}</Status>}
       {saveResult === 'error' && <Status $tone="danger">Error</Status>}
-    </Wrap>
+    </Stack>
   )
 }

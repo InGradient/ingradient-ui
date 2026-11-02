@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { Card, SendIcon } from '@ingradient/ui/components'
 import { Button, EmptyState, TextareaField, iconSizeNumbers } from '@ingradient/ui'
-import { Section, Label } from './RightPanelView.styles'
+import { Section } from './RightPanelView.styles'
 import type { RightPanelCommentSectionProps } from './types'
+import { Inline, Text } from '@ingradient/ui/primitives'
 
 const CommentList = styled.div`
   display: flex;
@@ -18,13 +19,12 @@ const CommentMeta = styled.div`
   margin-bottom: var(--ig-spacing-2);
 `
 
-const InputRow = styled.div`display: flex; gap: var(--ig-spacing-8); align-items: flex-end;`
 
 export function RightPanelCommentSection(props: RightPanelCommentSectionProps): JSX.Element {
   const { comments, pendingComment, isSending, labels, onPendingCommentChange, onSend } = props
   return (
     <Section>
-      <Label>{labels.title}</Label>
+      <Text as="div" size="var(--ig-text-micro)" weight="bold" tone="muted" uppercase letterSpacing="wide">{labels.title}</Text>
       {comments.length === 0
         ? <EmptyState>{labels.empty}</EmptyState>
         : (
@@ -44,7 +44,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
             ))}
           </CommentList>
         )}
-      <InputRow>
+      <Inline gap="var(--ig-spacing-8)" align="flex-end" wrap="nowrap">
         <TextareaField
           aria-label={labels.title}
           value={pendingComment}
@@ -57,7 +57,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
           <SendIcon size={iconSizeNumbers.xs} />
           {isSending ? labels.sending : labels.send}
         </Button>
-      </InputRow>
+      </Inline>
     </Section>
   )
 }

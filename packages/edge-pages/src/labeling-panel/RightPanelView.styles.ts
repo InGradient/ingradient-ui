@@ -26,27 +26,9 @@ export const GrowSection = styled(Section)`
   overflow-y: auto;
 `
 
-export const Label = styled.div`
-  font-size: var(--ig-text-micro);
-  font-weight: var(--ig-font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  color: var(--ig-color-text-muted);
-`
 
 /** 섹션 제목과 접기 버튼을 한 줄에 놓는다. 앱의 패널 헤더와 같은 배치다. */
-export const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-spacing-8);
-`
 
-export const ClassList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-spacing-8);
-`
 
 export const SetupSlot = styled.div`
   flex: 1;
