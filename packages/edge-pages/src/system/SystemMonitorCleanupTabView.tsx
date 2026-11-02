@@ -42,8 +42,8 @@ export function SystemMonitorCleanupTabView(props: SystemMonitorCleanupTabViewPr
         </div>
       </div>
       <div style={{ display: 'flex', gap: 'var(--ig-spacing-8)' }}>
-        <Button size="sm" variant="accent" onClick={onRun} disabled={running || selectedCategories.size === 0}>
-          {running && <Spinner size="sm" tone="muted" />}
+        <Button size="sm" variant="solid" onClick={onRun} disabled={running || selectedCategories.size === 0}>
+          {running && <Spinner size="sm" tone="white" />}
           {running ? labels.running : labels.run}
         </Button>
         <Button size="sm" variant="secondary" onClick={onRefresh} disabled={loading || running}>{labels.refresh}</Button>

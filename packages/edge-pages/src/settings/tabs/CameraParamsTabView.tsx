@@ -39,7 +39,7 @@ export function CameraParamsTabView(props: CameraParamsTabViewProps): JSX.Elemen
         </div>
       </Stack>
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--ig-spacing-8)' }}>
-        <Button size="sm" variant="accent" onClick={onSave} disabled={saving || !isConnected || fetching}>
+        <Button size="sm" variant="solid" onClick={onSave} disabled={saving || !isConnected || fetching}>
           {saving ? '...' : (saveResult === 'success' ? labels.saved : labels.save)}
         </Button>
       </div>

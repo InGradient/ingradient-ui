@@ -39,7 +39,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
     <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <SectionTitle>{labels.scanTitle}</SectionTitle>
       <Inline align="center" gap="var(--ig-spacing-8)" wrap="nowrap" style={{ marginBottom: 'var(--ig-spacing-12)' }}>
-        <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
+        <Button variant="secondary" size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
           {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshIcon size={iconSizeNumbers.sm} />}
           {isLoading ? labels.scanning : labels.scan}
         </Button>

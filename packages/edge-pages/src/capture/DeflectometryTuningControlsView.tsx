@@ -74,7 +74,7 @@ export function DeflectometryTuningControlsView(props: DeflectometryTuningContro
       )}
 
       <Button
-        variant="accent"
+        variant="solid"
         size="sm"
         disabled={disabled || isRecomputing || isAutoTuning}
         onClick={onRecompute}

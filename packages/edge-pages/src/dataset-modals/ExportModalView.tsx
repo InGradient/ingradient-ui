@@ -37,7 +37,7 @@ export function ExportModalView(props: ExportModalViewProps): JSX.Element {
             {phase === 'done' ? labels.close : labels.cancel}
           </Button>
           {phase !== 'done' && (
-            <Button variant="accent" size="sm" type="button" onClick={onExport} disabled={phase === 'running' || localImageCount === 0}>
+            <Button variant="solid" size="sm" type="button" onClick={onExport} disabled={phase === 'running' || localImageCount === 0}>
               {phase === 'running' ? labels.exporting : labels.export}
             </Button>
           )}

@@ -28,7 +28,7 @@ export function CaptureReviewFullscreen(props: CaptureReviewFullscreenProps): JS
         {showSkip && (
           <Button variant="secondary" type="button" onClick={onSkip}>{labels.skip}</Button>
         )}
-        <Button variant="accent" type="button" onClick={onSave}>{labels.save}</Button>
+        <Button variant="solid" type="button" onClick={onSave}>{labels.save}</Button>
       </Inline>
     </CaptureReview>
   )

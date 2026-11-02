@@ -29,7 +29,7 @@ function SettingsWorkflowSceneBody({ initialTab, lightingMode, chromeOnly, onMoc
     <output aria-label="Selected mock language">{language}</output>
     <AccountRuntime currentUser={user} onUserChange={setUser} onMockAction={onMockAction} />
     <output aria-label="Selected mock account">{user?.email ?? 'signed out'}</output>
-    <Button onClick={() => setOpen(true)}>Open mock settings</Button>
+    <Button variant="secondary" onClick={() => setOpen(true)}>Open mock settings</Button>
     <SystemMonitorRuntime onMockAction={onMockAction} />
     {open && <SettingsModal initialTab={initialTab} lightingMode={lightingMode} draft={draft} onMockAction={onMockAction} onClose={() => setOpen(false)} />}
   </Stack>

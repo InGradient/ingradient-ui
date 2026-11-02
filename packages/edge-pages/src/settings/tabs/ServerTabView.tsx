@@ -51,7 +51,7 @@ export function ServerTabView(props: ServerTabViewProps): JSX.Element {
         />
       </FieldRow>
       <div>
-        <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={saving}>
+        <Button variant="solid" size="sm" type="button" onClick={onSave} disabled={saving}>
           {saving ? labels.saving : labels.save}
         </Button>
         {saveResult === 'connected' && <Result $tone="success">{saveMessage ?? labels.connected}</Result>}

@@ -41,7 +41,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
               {labels.reset}
             </Button>
             {canSave && (
-              <Button variant="accent" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}>
+              <Button variant="solid" size="sm" type="button" onClick={onSave} disabled={isSetupBusy}>
                 {isSetupSaved ? <CheckIcon size={iconSizeNumbers.xs} color={SAVE_SUCCESS_ICON_COLOR} /> : null}
                 {isSetupSaved ? labels.saved : labels.save}
               </Button>

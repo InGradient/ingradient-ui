@@ -16,7 +16,7 @@ export function ForceIpDialogView(props: ForceIpDialogViewProps): JSX.Element {
       actions={
         <>
           <Button size="sm" variant="secondary" type="button" onClick={onCancel}>{labels.forceIpCancel}</Button>
-          <Button size="sm" variant="accent" type="button" onClick={onApply} disabled={applying || !newIp.trim() || !newSubnet.trim()}>
+          <Button size="sm" variant="solid" type="button" onClick={onApply} disabled={applying || !newIp.trim() || !newSubnet.trim()}>
             {applying ? labels.forceIpApplying : labels.forceIpApply}
           </Button>
         </>

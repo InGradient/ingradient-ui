@@ -42,7 +42,7 @@ export function AddDatasetModalView(props: AddDatasetModalViewProps): JSX.Elemen
           <Button variant="secondary" size="sm" type="button" onClick={onClose}>
             {labels.cancel}
           </Button>
-          <Button variant="accent" size="sm" type="submit" form={formId} disabled={adding}>
+          <Button variant="solid" size="sm" type="submit" form={formId} disabled={adding}>
             {adding ? labels.adding : labels.add}
           </Button>
         </>

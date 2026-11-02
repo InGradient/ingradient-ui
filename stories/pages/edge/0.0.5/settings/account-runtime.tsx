@@ -28,6 +28,6 @@ export function AccountRuntime({ currentUser, onUserChange, onMockAction }: { cu
     onToggleDropdown={() => setOpen((value) => !value)} onCloseDropdown={() => setOpen(false)}
     onOpenChangeAccount={() => { setOpen(false); setChange(true) }} onCloseChangeAccount={() => setChange(false)}
     onLogout={() => select(null)} onSelectAccount={select} />
-    {!user && <Button onClick={() => select(SAMPLE_USER)}>Restore mock account</Button>}
+    {!user && <Button variant="secondary" onClick={() => select(SAMPLE_USER)}>Restore mock account</Button>}
     {result && <span role="status">{result}</span>}</div>
 }

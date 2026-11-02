@@ -56,7 +56,7 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
         {isBind ? (
           <>
             <HintBox>{labels.bindHint}</HintBox>
-            <Button variant="accent" type="button" onClick={onBind} disabled={submitting}>
+            <Button variant="solid" type="button" onClick={onBind} disabled={submitting}>
               {submitting ? labels.binding : labels.bindButton}
             </Button>
           </>
@@ -78,7 +78,7 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
                   disabled={submitting}
                 />
               </Stack>
-              <Button variant="accent" type="submit" disabled={submitting || !licenseKey.trim()}>
+              <Button variant="solid" type="submit" disabled={submitting || !licenseKey.trim()}>
                 {submitting ? labels.activating : labels.activate}
               </Button>
             </Stack>

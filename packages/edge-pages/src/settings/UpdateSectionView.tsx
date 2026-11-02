@@ -34,7 +34,7 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       {status === 'available' && availableVersion && (
         <>
           <div>{labels.available(availableVersion)}</div>
-          <Button size="sm" variant="accent" onClick={onDownloadUpdate}>{labels.download}</Button>
+          <Button size="sm" variant="solid" onClick={onDownloadUpdate}>{labels.download}</Button>
         </>
       )}
       {status === 'downloading' && (
@@ -46,7 +46,7 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       {status === 'downloaded' && (
         <>
           <div>{labels.downloaded}</div>
-          <Button size="sm" variant="accent" onClick={onInstallUpdate}>{labels.install}</Button>
+          <Button size="sm" variant="solid" onClick={onInstallUpdate}>{labels.install}</Button>
         </>
       )}
       {status === 'error' && <ErrorMsg>{error ?? labels.error}</ErrorMsg>}

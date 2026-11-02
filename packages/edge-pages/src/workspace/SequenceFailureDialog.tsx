@@ -31,7 +31,7 @@ export function SequenceFailureDialog(props: SequenceFailureDialogProps): JSX.El
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onCancel}>{labels.cancel}</Button>
-          <Button type="button" variant="secondary" tone="danger" onClick={onRetry}>{labels.retry}</Button>
+          <Button type="button" variant="solid" onClick={onRetry}>{labels.retry}</Button>
         </>
       }
     />

@@ -74,7 +74,7 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                     <Text size="var(--ig-text-caption)" tone="muted" align="center">
                       {savedSession.email}
                     </Text>
-                    <Button variant="accent" onClick={onContinueSession}>
+                    <Button variant="solid" onClick={onContinueSession}>
                       {labels.continueSession}
                     </Button>
                   </>
@@ -133,7 +133,7 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                     label={labels.keepSignedIn}
                   />
                 </Stack>
-                <Button variant="accent" type="submit" disabled={loggingIn || !email || !password}>
+                <Button variant="solid" type="submit" disabled={loggingIn || !email || !password}>
                   {loggingIn ? labels.submitting : labels.submit}
                 </Button>
                 {externalUrl && (

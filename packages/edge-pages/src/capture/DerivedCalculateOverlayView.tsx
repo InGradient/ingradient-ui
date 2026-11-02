@@ -25,7 +25,7 @@ export function DerivedCalculateOverlayView(props: DerivedCalculateOverlayViewPr
       <Stack gap="var(--ig-spacing-8)" align="center" style={{ maxWidth: '21rem', textAlign: 'center' }}>
         <Button
           size="md"
-          variant="accent"
+          variant="solid"
           disabled={running || state === 'unavailable'}
           onClick={onCalculate}
         >

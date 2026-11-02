@@ -28,7 +28,7 @@ export function FieldTestTabView(props: FieldTestTabViewProps): JSX.Element {
       <Desc>{labels.description}</Desc>
       <div style={{ display: 'flex', gap: 'var(--ig-spacing-8)' }}>
         {!running && (
-          <Button size="sm" variant="accent" onClick={onRun}>{labels.run}</Button>
+          <Button size="sm" variant="solid" onClick={onRun}>{labels.run}</Button>
         )}
         {running && (
           <Button size="sm" variant="secondary" onClick={onCancel}>{labels.cancel}</Button>
