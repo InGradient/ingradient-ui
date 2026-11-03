@@ -30,6 +30,7 @@ export {
   ExternalLink as ExportIcon,
   Eye as EyeIcon,
   EyeOff as EyeOffIcon,
+  Factory as FactoryIcon,
   FileText as FileTextIcon,
   Filter as FilterIcon,
   FlaskConical as FlaskIcon,

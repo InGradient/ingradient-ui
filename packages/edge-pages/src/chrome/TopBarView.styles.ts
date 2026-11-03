@@ -12,19 +12,6 @@ export const Container = styled.div`
 
 
 
-export const StatusItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--ig-spacing-8);
-  font-size: var(--ig-text-body-sm);
-  color: var(--ig-color-text-muted);
-  margin-right: var(--ig-spacing-4);
-  &.active { color: var(--ig-color-success); }
-  &.error  { color: var(--ig-color-danger); }
-`
-
-
-
 /** Page title of the workspace (project / dataset). Heading semantics only: children own typography. */
 export const BreadcrumbWrap = styled.h1`
   margin: 0;

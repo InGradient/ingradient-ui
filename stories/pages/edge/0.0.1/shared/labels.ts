@@ -10,6 +10,7 @@ export const TITLE_BAR_LABELS = {
 }
 
 export const TOP_BAR_LABELS = {
+  backToDatasets: 'Back to datasets',
   refresh: 'Refresh',
   settingsTitle: 'Settings',
   settingsDisabledTitle: 'Camera setup — permission required',

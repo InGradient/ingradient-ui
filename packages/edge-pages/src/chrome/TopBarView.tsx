@@ -1,16 +1,20 @@
 import { iconSizeNumbers } from '@ingradient/ui'
-import { IconButton, StatusDot, RefreshIcon, SettingsIcon, ChevronLeftIcon } from '@ingradient/ui/components'
-import { ConnectingSpinner, Container, StatusItem, BreadcrumbWrap, BreadcrumbSep } from './TopBarView.styles'
-import type { TopBarViewProps } from './types'
+import { IconButton, RefreshIcon, SettingsIcon, ChevronLeftIcon, CameraIcon, FactoryIcon } from '@ingradient/ui/components'
+import { ConnectingSpinner, Container, BreadcrumbWrap, BreadcrumbSep } from './TopBarView.styles'
+import { StatusIconButton, type StatusIconTone } from './StatusIconButton'
+import type { PlcStatusTone, TopBarViewProps } from './types'
+
+const PLC_TONE: Record<PlcStatusTone, StatusIconTone> = { connected: 'success', disconnected: 'danger', unconfigured: 'neutral' }
 import { Inline, Text } from '@ingradient/ui/primitives'
 
 export function TopBarView(props: TopBarViewProps): JSX.Element {
   const {
     selectedProjectName, selectedDatasetName,
     connectionStatus, connectionTitle, isRefreshing, canSetupCamera,
-    labels, langSelector, accountMenu, settingsDialog,
-    onBackToDatasets, onRefresh, onOpenSettings,
+    labels, plcStatus, autoInspect, langSelector, accountMenu, settingsDialog,
+    onBackToDatasets, onRefresh, onOpenSettings, onOpenConnectionSettings,
   } = props
+  const openConnection = onOpenConnectionSettings ?? (canSetupCamera ? onOpenSettings : undefined)
 
   return (
     <>
@@ -18,7 +22,8 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
         <Inline gap="var(--ig-spacing-16)" wrap="nowrap">
           {selectedDatasetName && (
             <Inline gap="var(--ig-spacing-12)" wrap="nowrap">
-              <IconButton variant="secondary" size="sm" onClick={onBackToDatasets}>
+              <IconButton variant="secondary" size="sm" onClick={onBackToDatasets}
+                aria-label={labels.backToDatasets} title={labels.backToDatasets}>
                 <ChevronLeftIcon size={iconSizeNumbers.sm} />
               </IconButton>
               <BreadcrumbWrap>
@@ -30,16 +35,23 @@ export function TopBarView(props: TopBarViewProps): JSX.Element {
           )}
         </Inline>
         <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
-          <StatusItem title={connectionTitle}>
-            <StatusDot
-              type="button"
-              $tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}
-              aria-label={connectionTitle}
-              title={connectionTitle}
+          {autoInspect}
+          <StatusIconButton
+            icon={<CameraIcon size={iconSizeNumbers.lg} />}
+            tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}
+            label={connectionTitle}
+            onClick={openConnection}
+          />
+          {plcStatus && (
+            <StatusIconButton
+              icon={<FactoryIcon size={iconSizeNumbers.lg} />}
+              tone={PLC_TONE[plcStatus.tone]}
+              label={plcStatus.title}
+              onClick={plcStatus.onOpen}
             />
-          </StatusItem>
+          )}
           {langSelector}
-          <IconButton variant="secondary" size="sm" title={labels.refresh} onClick={onRefresh}>
+          <IconButton variant="secondary" size="sm" title={labels.refresh} aria-label={labels.refresh} onClick={onRefresh}>
             {isRefreshing ? <ConnectingSpinner size="md" /> : <RefreshIcon size={iconSizeNumbers.lg} />}
           </IconButton>
           <IconButton
