@@ -114,7 +114,9 @@ describe('settings workflow controllers', () => {
   it('changes language and mock account without authentication', () => {
     const action = vi.fn()
     render(<><LanguageRuntime onMockAction={action} /><AccountRuntime onMockAction={action} /></>)
-    click('Language'); fireEvent.click(screen.getByRole('option', { name: '한국어' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Language: English' }))
+    fireEvent.click(screen.getByRole('menuitemradio', { name: '한국어' }))
+    expect(screen.getByRole('button', { name: 'Language: 한국어' })).toBeInTheDocument()
     expect(action).toHaveBeenCalledWith('language-change', 'ko')
     fireEvent.click(screen.getByRole('button', { name: /Account: JOON/ }))
     fireEvent.click(screen.getByRole('menuitem', { name: 'Change Account' }))

@@ -188,8 +188,10 @@ export const AccountLanguage: Story = {
   args: { chromeOnly: true },
   play: async ({ canvasElement, args }) => {
     const page = within(canvasElement.ownerDocument.body)
-    await userEvent.click(page.getByRole('button', { name: 'Language' }))
-    await userEvent.click(page.getByRole('option', { name: '한국어' }))
+    await userEvent.click(page.getByRole('button', { name: 'Language: English' }))
+    await expect(page.getByRole('menuitemradio', { name: 'English' })).toHaveAttribute('aria-checked', 'true')
+    await userEvent.click(page.getByRole('menuitemradio', { name: '한국어' }))
+    await expect(page.getByRole('button', { name: 'Language: 한국어' })).toBeInTheDocument()
     await expect(page.getByLabelText('Selected mock language')).toHaveTextContent('ko')
     await userEvent.click(page.getByRole('button', { name: /Account: JOON HO LEE/ }))
     await userEvent.click(page.getByRole('menuitem', { name: 'Change Account' }))

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { iconSizeNumbers, popupSizeNumbers } from '../../tokens/core'
-import { ChevronRightIcon } from '../icons/catalog-icons'
+import { CheckIcon, ChevronRightIcon } from '../icons/catalog-icons'
 import { FloatingOverlay } from './floating-overlay'
 import { MenuItem } from './menu-item'
 import { focusAfterMenuTab } from './context-menu-focus'
@@ -14,6 +14,8 @@ export interface ContextMenuWithSubmenusAction {
   onClick?: () => void
   subActions?: ContextMenuWithSubmenusAction[]
   separator?: boolean
+  /** Single-choice menus (e.g. language): renders `menuitemradio` with `aria-checked` and a check mark. */
+  checked?: boolean
 }
 
 export interface ContextMenuWithSubmenusProps {
@@ -62,7 +64,7 @@ export function ContextMenuWithSubmenus({
   useEffect(() => {
     if (!anchorEl) return
     const id = window.requestAnimationFrame(() => {
-      const first = actions.find((a) => !a.separator && !a.disabled)
+      const first = actions.find((a) => a.checked && !a.disabled) ?? actions.find((a) => !a.separator && !a.disabled)
       if (first) mainRefs.current[first.key]?.focus()
       else menuRef.current?.focus()
     })
@@ -124,7 +126,8 @@ export function ContextMenuWithSubmenus({
             <MenuItem
               key={a.key}
               ref={(n) => { mainRefs.current[a.key] = n }}
-              role="menuitem"
+              role={a.checked === undefined ? 'menuitem' : 'menuitemradio'}
+              aria-checked={a.checked}
               tabIndex={-1}
               tone={a.tone}
               disabled={a.disabled}
@@ -157,7 +160,9 @@ export function ContextMenuWithSubmenus({
                   else close(a.onClick)
                 }
               }}
-              iconTrailing={hasSub ? <span aria-hidden style={CHEVRON_STYLE}><ChevronRightIcon size={iconSizeNumbers.xs} /></span> : undefined}
+              iconTrailing={hasSub
+                ? <span aria-hidden style={CHEVRON_STYLE}><ChevronRightIcon size={iconSizeNumbers.xs} /></span>
+                : a.checked ? <span aria-hidden style={CHEVRON_STYLE}><CheckIcon size={iconSizeNumbers.xs} /></span> : undefined}
             >
               <span style={ITEM_LABEL_STYLE}>{a.label}</span>
             </MenuItem>

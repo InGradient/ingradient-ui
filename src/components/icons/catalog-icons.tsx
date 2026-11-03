@@ -33,6 +33,7 @@ export {
   FileText as FileTextIcon,
   Filter as FilterIcon,
   FlaskConical as FlaskIcon,
+  Globe as GlobeIcon,
   Folder as FolderIcon,
   Grid as GridLinesIcon,
   HardDrive as HardDriveIcon,

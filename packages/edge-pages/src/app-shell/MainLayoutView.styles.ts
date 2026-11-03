@@ -18,6 +18,10 @@ export const AppHeader = styled.header`
   background: var(--ig-color-surface-header);
   border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
+  /* backdrop-filter makes a stacking context; without a layer the panels after it paint
+     over top-bar menus (language, account) that extend over the center column. */
+  position: relative;
+  z-index: var(--ig-z-header);
 `
 
 export const PanelsRow = styled.div`

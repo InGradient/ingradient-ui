@@ -1,15 +1,22 @@
-import { useId, useState } from 'react'
-import { DropdownSelect, Button } from '@ingradient/ui'
-import { AccountMenuView, type AccountUser } from '@ingradient/edge-pages'
+import { useState } from 'react'
+import { Button } from '@ingradient/ui'
+import { AccountMenuView, LangSelectorView, type AccountUser } from '@ingradient/edge-pages'
 import { ACCOUNT_MENU_LABELS, SAMPLE_USER } from '../../../../fixtures/edge/0.0.5'
 import type { MockAction } from './tabs-moved'
 
+/** The product's three UI languages (ingradient-edge LangSelector). */
+export const EDGE_LANG_OPTIONS = [
+  { value: 'ko', label: '한국어' },
+  { value: 'en', label: 'English' },
+  { value: 'vi', label: 'Tiếng Việt' },
+]
+
 export function LanguageRuntime({ value, onChange, onMockAction }: { value?: string; onChange?: (value: string) => void; onMockAction?: MockAction } = {}) {
   const [local, setLocal] = useState('en')
-  const id = useId()
-  return <div><label htmlFor={id}>Language</label><DropdownSelect id={id} aria-label="Language" value={value ?? local}
-    options={[{ value: 'en', label: 'English' }, { value: 'ko', label: '한국어' }]}
-    onChange={(next) => { setLocal(next); onChange?.(next); onMockAction?.('language-change', next) }} /></div>
+  const [open, setOpen] = useState(false)
+  return <LangSelectorView value={value ?? local} options={EDGE_LANG_OPTIONS} open={open} label="Language"
+    onToggle={() => setOpen((o) => !o)} onClose={() => setOpen(false)}
+    onSelect={(next) => { setLocal(next); onChange?.(next); onMockAction?.('language-change', next) }} />
 }
 
 export function AccountRuntime({ currentUser, onUserChange, onMockAction }: { currentUser?: AccountUser | null; onUserChange?: (user: AccountUser | null) => void; onMockAction?: MockAction } = {}) {

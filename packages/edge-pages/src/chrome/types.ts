@@ -121,3 +121,20 @@ export interface AccountMenuViewProps {
   onLogout: () => void
   onSelectAccount: (entry: AccountHistoryEntry) => void
 }
+
+export interface LangOption {
+  value: string
+  /** Native name, e.g. 한국어 / English / Tiếng Việt. */
+  label: string
+}
+
+export interface LangSelectorViewProps {
+  value: string
+  options: LangOption[]
+  open: boolean
+  /** Accessible name and tooltip of the globe button, e.g. "Language". */
+  label: string
+  onToggle: () => void
+  onClose: () => void
+  onSelect: (value: string) => void
+}
