@@ -82,6 +82,15 @@ All spacing is a multiple of 4px. One optical step of 2px exists for hairline al
 
 The token name equals its value. The legacy `--ig-space-*` names now carry the 4px values (mapped as below) and are deprecated; new code uses `--ig-spacing-{px}` or a spacing role.
 
+### Borders stay inside the grid
+
+Rendered heights are on the 4px grid, including borders. A border must not add to a box's size:
+
+- **Dividers (one side):** draw an inset line instead of a border, for example `box-shadow: inset 0 var(--ig-space-neg-1px) 0 <color>` for a bottom line. Inline styles use the same `boxShadow` value.
+- **Bordered boxes (all sides):** keep the border and subtract it from the padding with `paddingInsideBorder(padding)` from `@ingradient/ui/primitives`, so a 16px inset renders as 15px padding plus the 1px line.
+- **Rows whose children paint their own backgrounds** (segmented controls): use `outline` with a negative `outline-offset`, which draws above the children.
+- Fixed-height controls (`height` set with `box-sizing: border-box`) already include their border and need no change.
+
 ### Semantic spacing
 
 Components choose a role, not a number:

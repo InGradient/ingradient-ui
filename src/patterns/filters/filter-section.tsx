@@ -7,7 +7,7 @@ const Section = styled.section`
   flex-direction: column;
   gap: var(--ig-space-2);
   padding: var(--ig-space-3) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   &:last-child {
     border-bottom: none;
   }

@@ -10,7 +10,7 @@ const flatStyles = css`
 `
 
 const cardStyles = css`
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `

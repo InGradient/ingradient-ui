@@ -14,7 +14,7 @@ const WRAP_BASE_STYLE = {
 
 const HEADER_STYLE = {
   padding: 'var(--ig-space-2) var(--ig-space-4)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  boxShadow: 'inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle)',
 }
 
 const ITEM_ROW_STYLE = {

@@ -5,7 +5,7 @@ import { Checkbox, ProgressBar } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
 
 const BarBox = styled(Stack)`
-  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   background: var(--ig-color-surface-header);
   backdrop-filter: var(--ig-blur-md);
   -webkit-backdrop-filter: var(--ig-blur-md);
@@ -26,7 +26,7 @@ const RowBox = styled(Inline)`
 
 const SELECTION_ROW_STYLE = {
   padding: 'var(--ig-spacing-8) var(--ig-spacing-16)',
-  borderTop: 'var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
+  boxShadow: 'inset 0 var(--ig-border-1px) 0 var(--ig-catalog-divider-color, var(--ig-color-border-subtle))',
 }
 
 const SELECTION_ROW_ACTIVE_STYLE = {

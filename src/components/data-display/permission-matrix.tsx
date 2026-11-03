@@ -29,7 +29,7 @@ const StyledTable = styled.table`
   border-collapse: collapse;
   & th {
     padding: var(--ig-space-4) var(--ig-space-3);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
     border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     background: var(--ig-color-surface-raised);
     color: var(--ig-color-text-secondary);
@@ -44,7 +44,7 @@ const StyledTable = styled.table`
   }
   & td {
     padding: var(--ig-space-3);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
     border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     text-align: center;
   }

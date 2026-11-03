@@ -7,7 +7,7 @@ import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 
 const SectionBox = styled(Stack)`
   padding: var(--ig-spacing-12);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
 
 const DetailsToggleBox = styled(TextButton)`

@@ -7,7 +7,7 @@ const Root = styled.button`
   align-items: center;
   justify-content: space-between;
   gap: var(--ig-space-5);
-  padding: var(--ig-space-4) var(--ig-space-5);
+  padding: calc(var(--ig-space-4) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-interactive);

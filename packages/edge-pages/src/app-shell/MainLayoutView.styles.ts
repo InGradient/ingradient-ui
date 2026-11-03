@@ -16,7 +16,7 @@ export const AppHeader = styled.header`
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
   /* backdrop-filter makes a stacking context; without a layer the panels after it paint
      over top-bar menus (language, account) that extend over the center column. */

@@ -16,7 +16,7 @@ export const Toolbar = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--ig-color-surface-panel);
-  border-top: var(--ig-border-1px) solid var(--ig-color-white-08);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-white-08);
   padding: 0 var(--ig-spacing-16);
   position: relative;
 `;

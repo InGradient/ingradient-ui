@@ -18,7 +18,7 @@ const variantStyles = {
 const Field = styled.textarea<{ $variant: TextareaVariant; $minHeight: number }>`
   width: 100%;
   min-height: ${(p) => p.$minHeight}px;
-  padding: var(--ig-space-3);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px));
   background: var(--ig-color-surface-muted);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);

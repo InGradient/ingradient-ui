@@ -72,7 +72,7 @@ const SetupBlockingCardBase = styled.div`
   background: var(--ig-color-capture-surface-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-spacing-16) var(--ig-spacing-24);
+  padding: calc(var(--ig-spacing-16) - var(--ig-border-1px)) calc(var(--ig-spacing-24) - var(--ig-border-1px));
   color: var(--ig-color-text-primary);
   display: flex;
   align-items: center;
@@ -99,7 +99,7 @@ const OverlayPopoverBase = styled.div`
   border-radius: var(--ig-radius-xs);
   backdrop-filter: var(--ig-blur-sm);
   box-shadow: var(--ig-shadow-panel);
-  padding: var(--ig-spacing-8) var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-12) - var(--ig-border-1px));
   min-width: var(--ig-popup-2xs-plus);
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@ export const ControlRow = styled.div`
 export const CaptureBar = styled.div`
   height: ${edgeGeometry.captureBar};
   background-color: var(--ig-color-surface-panel);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -267,7 +267,7 @@ const HistogramOverlayBase = styled.div`
   top: var(--ig-spacing-12);
   right: var(--ig-spacing-12);
   z-index: var(--ig-z-raised-plus);
-  padding: var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-capture-bg-loud);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);

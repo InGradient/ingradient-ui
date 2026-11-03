@@ -34,7 +34,7 @@ export const ExportStatusText = styled.div`
 
 export const ExportErrorText = styled.div`
   margin-top: var(--ig-spacing-8);
-  padding: var(--ig-spacing-8) var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-8) - var(--ig-border-1px));
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-alert-danger-bg);
   border: var(--ig-border-1px) solid var(--ig-color-alert-danger-border);

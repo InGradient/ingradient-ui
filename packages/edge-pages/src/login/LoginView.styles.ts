@@ -33,7 +33,7 @@ const PackageInfoBase = styled.div`
   font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
   text-align: center;
-  padding: var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));
   background: var(--ig-color-white-04);
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-07);

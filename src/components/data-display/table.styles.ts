@@ -20,13 +20,13 @@ export const Th = styled.th<{ $numeric?: boolean }>`
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-xs);
   font-weight: var(--ig-font-weight-medium);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
 
 export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: boolean }>`
   padding: var(--ig-space-5);
   color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
   ${(p) => p.$mono && 'font-family: var(--ig-font-mono); font-size: var(--ig-font-size-xs);'}
 `
@@ -35,7 +35,7 @@ export const Tfoot = styled.tfoot`
   & td {
     font-weight: var(--ig-font-weight-semibold);
     color: var(--ig-color-text-primary);
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
     border-bottom: none;
   }
 `

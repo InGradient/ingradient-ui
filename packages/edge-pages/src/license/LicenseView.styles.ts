@@ -33,7 +33,7 @@ const FingerprintBoxBase = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-spacing-8);
-  padding: var(--ig-spacing-8) var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-12) - var(--ig-border-1px));
   border-radius: var(--ig-radius-xs);
   border: var(--ig-border-1px) solid var(--ig-color-white-12);
   background: var(--ig-color-white-04);
@@ -52,7 +52,7 @@ export const FingerprintText = styled.span`
 const HintBoxBase = styled.div`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-blue-tint-06);
   border: var(--ig-border-1px) solid var(--ig-color-selection-bg);

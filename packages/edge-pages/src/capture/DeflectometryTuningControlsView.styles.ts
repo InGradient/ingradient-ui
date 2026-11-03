@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   flex-direction: column;
   gap: var(--ig-spacing-8);
   padding-top: var(--ig-spacing-8);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
 `;
 
 export const Label = styled.div`

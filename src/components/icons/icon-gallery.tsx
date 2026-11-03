@@ -12,7 +12,7 @@ const IconGalleryGrid = styled.div`
 const IconTile = styled.div`
   ${surfacePanel}
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-6);
+  padding: calc(var(--ig-space-6) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   align-items: center;

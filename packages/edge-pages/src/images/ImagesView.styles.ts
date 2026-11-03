@@ -143,7 +143,7 @@ export const SelectionToolbar = styled.div`
   align-items: center;
   gap: var(--ig-spacing-8);
   padding: var(--ig-spacing-8) var(--ig-spacing-16);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   background: var(--ig-color-surface-panel);
   flex-shrink: 0;
 `;

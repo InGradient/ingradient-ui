@@ -20,7 +20,7 @@ const rowBase = css`
 /** 구분선형. 항목 사이를 선으로 끊고 글자도 한 단계 키운다. */
 const rowDivider = css`
   padding: var(--ig-space-4) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
   font-size: var(--ig-font-size-md);
 `
 

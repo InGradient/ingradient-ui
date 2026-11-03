@@ -27,7 +27,7 @@ export const AppFooterBar = styled.footer`
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
 `
 

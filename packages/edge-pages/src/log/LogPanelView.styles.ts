@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   padding: var(--ig-spacing-12);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   font-size: var(--ig-text-body-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
@@ -33,7 +33,7 @@ const FilterPopoverBase = styled.div`
   right: 0;
   margin-top: var(--ig-spacing-8);
   min-width: var(--ig-popup-xs-tight);
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
   border-radius: var(--ig-radius-sm);

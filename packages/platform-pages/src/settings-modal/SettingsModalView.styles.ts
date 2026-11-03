@@ -14,7 +14,7 @@ export const Modal = styled(ModalCard)`
 export const Header = styled(ModalHeader)`
   padding: var(--ig-spacing-16) var(--ig-spacing-24);
   flex-shrink: 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
 
@@ -56,7 +56,7 @@ export const TabsList = styled(VerticalTabs).attrs({ appearance: 'settings' as c
 
   ${media.lg} {
     border-right: 0;
-    border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-catalog-divider-color);
   }
 `
 

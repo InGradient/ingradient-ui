@@ -33,7 +33,7 @@ export const Section = styled.section`
   & + & {
     margin-top: var(--ig-spacing-16);
     padding-top: var(--ig-spacing-24);
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   }
 `
 
@@ -108,7 +108,7 @@ export const StatusPillMb = styled(StatusPill)`
 `
 
 export const ReportBox = styled.div`
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   background: var(--ig-color-bg-canvas);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);

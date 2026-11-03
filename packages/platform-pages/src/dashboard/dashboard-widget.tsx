@@ -5,7 +5,7 @@ import { Inline, Stack, surfaceCard, Text, withSurfaceDepth } from '@ingradient/
 const RootBase = styled.div<{ $span: number }>`
   ${surfaceCard}
   border-radius: var(--ig-radius-xl);
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   gap: var(--ig-spacing-8);

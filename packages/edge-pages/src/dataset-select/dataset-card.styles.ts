@@ -10,7 +10,7 @@ const RecentCardBase = styled.button<{ $isLatest?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-spacing-4);
-  padding: var(--ig-spacing-12) var(--ig-spacing-16);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-10)' : 'var(--ig-color-white-04)')};
@@ -38,7 +38,7 @@ const DatasetCardBase = styled.div<{ $isRecent?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ig-spacing-4);
-  padding: var(--ig-spacing-16) var(--ig-spacing-16);
+  padding: calc(var(--ig-spacing-16) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-50)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-08)' : 'var(--ig-color-white-04)')};

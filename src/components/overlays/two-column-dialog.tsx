@@ -22,7 +22,7 @@ const Shell = withSurfaceDepth(ShellBase, { floating: true, displayName: 'TwoCol
 
 const Header = styled.div`
   padding: var(--ig-space-7) var(--ig-space-11);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;

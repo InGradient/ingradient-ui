@@ -14,7 +14,7 @@ const GROW_SECTION_STYLE = {
   flex: '1 1 0',
   overflowY: 'auto' as const,
   padding: 'var(--ig-space-5)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
+  boxShadow: 'inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle)',
 }
 
 const FixedSection = styled.div`
@@ -23,7 +23,7 @@ const FixedSection = styled.div`
   flex-direction: column;
   gap: var(--ig-space-3);
   padding: var(--ig-space-5);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   &:last-child {
     border-bottom: none;
   }

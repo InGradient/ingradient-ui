@@ -8,7 +8,7 @@ export const Header = styled.div`
   justify-content: space-between;
   min-height: var(--ig-control-height-xl);
   padding: 0 var(--ig-spacing-16);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-white-08);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-white-08);
   flex-shrink: 0;
 `
 

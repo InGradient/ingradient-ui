@@ -13,7 +13,7 @@ const Panel = styled.div`
   z-index: var(--ig-z-popover);
   width: 100%;
   box-sizing: border-box;
-  padding: var(--ig-space-5);
+  padding: calc(var(--ig-space-5) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   box-shadow: var(--ig-shadow-popover);
 `
@@ -102,7 +102,7 @@ const Footer = styled.div`
   justify-content: flex-end;
   margin-top: var(--ig-space-5);
   padding-top: var(--ig-space-4);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
 `
 
 export interface ColorEditorPopoverProps {

@@ -10,7 +10,7 @@ const Bubble = styled.div`
   position: fixed;
   z-index: var(--ig-z-tooltip);
   border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   font-size: var(--ig-font-size-xs);
   max-width: var(--ig-popup-sm);
   min-width: var(--ig-popup-xs);

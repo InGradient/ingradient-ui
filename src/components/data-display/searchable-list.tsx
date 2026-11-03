@@ -8,7 +8,7 @@ const Wrap = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
@@ -48,7 +48,7 @@ const ActionLink = styled.button`
   background: transparent;
   color: var(--ig-color-accent-soft);
   font-size: var(--ig-font-size-xs);
-  padding: var(--ig-space-2) var(--ig-space-4);
+  padding: calc(var(--ig-space-2) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   cursor: pointer;
   &:hover { background: var(--ig-color-surface-interactive); }
 `

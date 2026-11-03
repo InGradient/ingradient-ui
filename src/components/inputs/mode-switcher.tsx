@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 const Row = styled.div<{ $size: 'sm' | 'md'; $shape: 'rounded' | 'pill' }>`
   display: inline-flex;
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  /* Outline drawn inside (above the options' backgrounds) instead of a border: the row is exactly the option height. */
+  outline: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  outline-offset: var(--ig-space-neg-1px);
   border-radius: ${(p) => (p.$shape === 'pill' ? 'var(--ig-radius-pill)' : 'var(--ig-radius-md)')};
   overflow: hidden;
   background: ${(p) => (p.$shape === 'pill' ? 'var(--ig-color-surface-raised)' : 'var(--ig-color-surface-muted)')};

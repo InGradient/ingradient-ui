@@ -62,7 +62,7 @@ export const MobileBottomSheet = styled.div`
   bottom: var(--ig-layout-size-mobile-bottom-sheet-offset);
   z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
-  border-top: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-spacing-12);

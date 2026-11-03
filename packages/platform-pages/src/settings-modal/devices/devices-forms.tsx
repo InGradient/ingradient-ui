@@ -12,7 +12,7 @@ const TokenBoxBox = styled(Stack)`
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-accent);
   border-radius: var(--ig-radius-xxs);
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
 `
 
 const Flex1Box = styled(TextField)`

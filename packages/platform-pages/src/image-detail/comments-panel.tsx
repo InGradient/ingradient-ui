@@ -20,7 +20,7 @@ const EmptyBox = styled(Text)`
 `
 
 const ErrorBoxBox = styled(Inline)`
-  padding: var(--ig-spacing-8) var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-8) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-danger-dim-bg);
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-danger-dim-bg);

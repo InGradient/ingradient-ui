@@ -31,7 +31,7 @@ export const StatRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: var(--ig-spacing-8) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
   &:last-child {
     border-bottom: none;
   }

@@ -17,7 +17,7 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--ig-spacing-8);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
 
 export const GrowSection = styled(Section)`

@@ -9,7 +9,7 @@ const SectionTitleBox = styled(Text)`
 `
 const RowBox = styled(Inline)`
   padding: var(--ig-spacing-12) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
   width: 100%;
 `
 const StackBox = styled(PrimStack)`

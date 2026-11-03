@@ -5,7 +5,7 @@ import { surfaceRaised } from '../../primitives'
 const Card = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-md);
-  padding: var(--ig-space-4) var(--ig-space-5);
+  padding: calc(var(--ig-space-4) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
   min-width: var(--ig-popup-2xs);
 `
 

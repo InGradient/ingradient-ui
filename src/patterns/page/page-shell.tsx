@@ -75,7 +75,7 @@ export const Panel = withSurfaceDepth(PanelBase, { displayName: 'PagePanel' })
 
 export const PanelHeader = styled.div`
   padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,7 +106,7 @@ export const Toolbar = styled.div`
   justify-content: space-between;
   gap: var(--ig-space-5);
   flex-wrap: wrap;
-  padding: var(--ig-space-6) var(--ig-space-7);
+  padding: calc(var(--ig-space-6) - var(--ig-border-1px)) calc(var(--ig-space-7) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-toolbar-surface);

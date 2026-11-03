@@ -6,12 +6,12 @@ const LEADING_STYLE = { display: 'inline-flex', marginRight: 'var(--ig-spacing-1
 
 const ROW_STYLE = {
   padding: 'var(--ig-space-5) var(--ig-space-9)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+  boxShadow: 'inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong)',
   flexShrink: 0,
 }
 
 const Chip = styled.button<{ $active: boolean }>`
-  padding: var(--ig-space-2) var(--ig-space-5);
+  padding: calc(var(--ig-space-2) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
   font-size: var(--ig-font-size-sm);
   border-radius: var(--ig-radius-pill);
   border: var(--ig-border-1px) solid ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-border-strong)')};

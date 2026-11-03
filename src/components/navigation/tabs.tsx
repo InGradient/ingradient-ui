@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 const tabsTone = css`
   display: inline-flex;
   position: relative;
-  padding: var(--ig-space-1);
+  padding: calc(var(--ig-space-1) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-tab-surface);
@@ -20,7 +20,8 @@ const TabsRoot = styled.div<{ $variant: 'pill' | 'underline' }>`
           align-items: stretch;
           gap: 0;
           width: 100%;
-          border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+          /* Inset line (not a border) so the tab row is exactly the tab height. */
+          box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
         `
       : tabsTone}
 `
@@ -32,7 +33,7 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
   ${({ $variant }) =>
     $variant === 'underline'
       ? css`
-          bottom: var(--ig-space-neg-1px);
+          bottom: 0;
           height: var(--ig-space-2px);
           border-radius: var(--ig-radius-pill);
           background: var(--ig-color-accent-soft);

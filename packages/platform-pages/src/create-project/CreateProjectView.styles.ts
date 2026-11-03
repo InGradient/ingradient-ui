@@ -58,7 +58,7 @@ export const Section = styled.section`
   flex-direction: column;
   gap: var(--ig-spacing-16);
   & + & {
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
     padding-top: var(--ig-spacing-24);
   }
 `
@@ -127,7 +127,7 @@ export const OptionGrid = styled(Grid).attrs({
 
 const OptionCardBase = styled.button<{ $active?: boolean }>`
   width: 100%;
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   text-align: left;
   /* Buttons centre their content vertically; top-align so titles line up across a row. */
   display: flex;

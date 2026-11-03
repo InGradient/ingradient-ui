@@ -6,7 +6,7 @@ const Badge = styled.span<{ $size: 'sm' | 'md' }>`
   justify-content: center;
   min-width: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-badge-md)' : 'var(--ig-size-badge-lg)')};
   height: ${(p) => (p.$size === 'sm' ? 'var(--ig-size-badge-md)' : 'var(--ig-size-badge-lg)')};
-  padding: 0 var(--ig-space-2);
+  padding: 0 calc(var(--ig-space-2) - var(--ig-border-1px));
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-image-group-circle-bg);
   color: var(--ig-color-text-primary);

@@ -14,7 +14,7 @@ const ProjectNameBox = styled(Text)`
 const ActionsBox = styled(Inline)`
   position: relative;
   padding: var(--ig-spacing-8) var(--ig-spacing-24);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
 
 export interface DashboardHeaderProps {

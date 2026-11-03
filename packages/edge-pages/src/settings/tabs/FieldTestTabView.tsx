@@ -10,7 +10,7 @@ const LogBoxBase = styled.pre`
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
-  padding: var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));
   font-family: var(--ig-font-mono);
   font-size: var(--ig-text-caption);
   max-height: var(--ig-popup-md);

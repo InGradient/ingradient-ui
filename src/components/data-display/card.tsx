@@ -7,6 +7,7 @@ import {
   surfaceDepthAttributes,
   surfacePanel,
   surfaceRaised,
+  paddingInsideBorder,
   useSurfaceDepth,
 } from '../../primitives'
 
@@ -32,7 +33,7 @@ const CardRoot = styled.div<{
 }>`
   ${(p) => surfaceMap[p.$elevation]}
   border-radius: ${(p) => p.$radius};
-  padding: ${(p) => p.$padding};
+  padding: ${(p) => paddingInsideBorder(p.$padding)};
   overflow: ${(p) => p.$overflow};
   min-width: 0;
   ${(p) => p.$border === 'strong' && css`

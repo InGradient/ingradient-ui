@@ -33,7 +33,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
     border-color: ${alertToneStyles[$tone].border};
     color: ${alertToneStyles[$tone].color};
   `}
-  padding: var(--ig-space-4) var(--ig-space-6);
+  padding: calc(var(--ig-space-4) - var(--ig-border-1px)) calc(var(--ig-space-6) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
@@ -58,7 +58,7 @@ const ActionButton = styled.button`
   border-radius: var(--ig-radius-sm);
   color: inherit;
   font: inherit;
-  padding: var(--ig-space-2px) var(--ig-space-3);
+  padding: calc(var(--ig-space-2px) - var(--ig-border-1px)) calc(var(--ig-space-3) - var(--ig-border-1px));
   cursor: pointer;
   opacity: var(--ig-opacity-loud);
   &:hover { opacity: 1; }

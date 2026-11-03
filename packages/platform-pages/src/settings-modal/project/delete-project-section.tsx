@@ -6,7 +6,7 @@ import { TextField } from '@ingradient/ui/components'
 const WrapBox = styled(Box)`
   margin-top: var(--ig-spacing-24);
   padding-top: var(--ig-spacing-20);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
 `
 
 const SubsectionTitleBox = styled(Text)`
