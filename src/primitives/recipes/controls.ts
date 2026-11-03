@@ -36,10 +36,12 @@ export const controlField = css`
     color: var(--ig-color-text-soft);
   }
 
+  /* Rows decide the height: a pixel leading and an 8px inset inside the border
+     render n rows at n × 20px + 16px, on the 4px grid. */
   &:where(textarea) {
     height: auto;
-    padding: var(--ig-space-4) var(--ig-space-5);
-    line-height: var(--ig-line-height-snug);
+    padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
+    line-height: var(--ig-text-body-leading);
   }
 
   &:where([type='date']),

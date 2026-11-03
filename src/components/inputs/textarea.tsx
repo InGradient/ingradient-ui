@@ -8,17 +8,20 @@ const variantStyles = {
   default: css`
     font-family: inherit;
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-text-body-sm-leading);
   `,
   monospace: css`
     font-family: var(--ig-font-mono);
     font-size: var(--ig-font-size-2xs);
+    line-height: var(--ig-text-caption-leading);
   `,
 }
 
 const Field = styled.textarea<{ $variant: TextareaVariant; $minHeight: number }>`
   width: 100%;
   min-height: ${(p) => p.$minHeight}px;
-  padding: calc(var(--ig-space-3) - var(--ig-border-1px));
+  /* Pixel leading + 8px inset inside the border: n rows render at n × leading + 16px, on the 4px grid. */
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));
   background: var(--ig-color-surface-muted);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);

@@ -91,6 +91,13 @@ Rendered heights are on the 4px grid, including borders. A border must not add t
 - **Rows whose children paint their own backgrounds** (segmented controls): use `outline` with a negative `outline-offset`, which draws above the children.
 - Fixed-height controls (`height` set with `box-sizing: border-box`) already include their border and need no change.
 
+### What the grid applies to
+
+- **Content-sized boxes** (controls, rows, cards, panels whose height comes from their content): rendered height is a multiple of 4px.
+- **Multi-line text fields:** a pixel leading and an 8px inset inside the border, so _n_ rows render at _n_ × leading + 16px.
+- **Parts of a control** are exact fractions of it: a number-field stepper is two halves of the field (16px each in a 32px field).
+- **Fluid sizes are exempt:** a size divided from the available width or height (gallery cells, image tiles, chart plots, columns that stretch to the window) follows the viewport, not the grid. Everything inside a fluid box — padding, gaps, fixed parts — still follows the grid.
+
 ### Semantic spacing
 
 Components choose a role, not a number:

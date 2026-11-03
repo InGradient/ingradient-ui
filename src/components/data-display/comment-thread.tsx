@@ -40,12 +40,13 @@ const Textarea = styled.textarea`
   width: 100%;
   min-height: var(--ig-control-height-2xl-wide);
   resize: vertical;
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-text-caption-leading);
   &::placeholder { color: var(--ig-color-text-soft); }
   &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `
