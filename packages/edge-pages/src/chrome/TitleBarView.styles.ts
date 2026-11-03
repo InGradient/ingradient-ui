@@ -6,7 +6,8 @@ export const Bar = styled.div`
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  /* Inset line instead of a border, so the full-height window buttons stay 32px, not 31px. */
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
   -webkit-app-region: drag;
   user-select: none;

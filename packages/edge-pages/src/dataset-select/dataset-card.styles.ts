@@ -91,7 +91,7 @@ export const DatasetName = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
-  line-height: var(--ig-line-height-tight);
+  line-height: var(--ig-text-body-leading);
   overflow-wrap: anywhere;
 `
 
@@ -119,6 +119,7 @@ export const CardBottom = styled.div`
 
 export const ImageCount = styled.div`
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
@@ -131,7 +132,9 @@ export const ClassChip = styled.span<{ $color: string }>`
   gap: var(--ig-spacing-4);
   font-size: var(--ig-text-micro);
   font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-spacing-2) var(--ig-spacing-8);
+  box-sizing: border-box;
+  height: var(--ig-size-chip);
+  padding: 0 var(--ig-spacing-8);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => `${p.$color}22`};
   color: var(--ig-color-text-primary);
