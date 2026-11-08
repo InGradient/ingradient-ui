@@ -13,7 +13,8 @@ const SetupAccordionBase = styled.details`
 
   summary {
     cursor: pointer;
-    padding: var(--ig-spacing-12) var(--ig-spacing-16);
+    /* The accordion's 1px border is given back from the summary so a closed section is 48px. */
+    padding: calc(var(--ig-spacing-12) - var(--ig-border-1px)) var(--ig-spacing-16);
     list-style: none;
     font-weight: var(--ig-font-weight-semibold);
   }

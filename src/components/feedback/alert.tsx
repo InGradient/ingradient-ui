@@ -15,7 +15,7 @@ export const Alert = styled.div<{ $tone?: keyof typeof alertToneStyles }>`
 `
 
 export const InlineMessage = styled(Alert)`
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   font-size: var(--ig-font-size-xs);
   line-height: var(--ig-leading-xs);
 `

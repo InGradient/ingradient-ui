@@ -56,7 +56,6 @@ export const MetricValue = styled.div`
   line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
-  margin-top: var(--ig-spacing-2);
 `;
 
 export const SetupBlockingOverlay = styled.div`

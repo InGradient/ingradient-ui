@@ -9,7 +9,7 @@ const Wrap = styled(MenuPopover)`
   right: 0;
   z-index: var(--ig-z-sticky-plus);
   width: min(var(--ig-popup-md), calc(100vw - var(--ig-spacing-32)));
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
 `
 
 const TitleBox = styled(Text)`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { withSurfaceDepth } from '@ingradient/ui/primitives'
+import { H1, withSurfaceDepth } from '@ingradient/ui/primitives'
 
 /**
  * Edge auth screen shared layout primitives.
@@ -41,7 +41,15 @@ const PackageInfoBase = styled.div`
 `
 export const PackageInfo = withSurfaceDepth(PackageInfoBase, { displayName: 'PackageInfo' })
 
+/** 1px line that takes no layout space (shadow under a 0px box): the card stays on the 4px grid. */
 export const Divider = styled.div`
-  height: var(--ig-space-1px);
-  background: var(--ig-color-white-08);
+  height: 0;
+  box-shadow: 0 var(--ig-border-1px) 0 var(--ig-color-white-08);
+`
+
+/** Title with its mode badge: a flex row keeps the inline badge from stretching the 32px line box (33px). */
+export const Title = styled(H1)`
+  display: flex;
+  align-items: center;
+  gap: var(--ig-spacing-8);
 `

@@ -1,8 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Badge, Card, Checkbox, TextField, PasswordField, Button, IconButton, SelectableListItem, TextButton, SettingsIcon } from '@ingradient/ui/components'
-import { Stack, Inline, H1, Text } from '@ingradient/ui/primitives'
+import { Stack, Inline, Text } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, PackageInfo, Divider,
+  Wrap, LangCorner, PackageInfo, Divider, Title,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
@@ -37,12 +37,12 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
         style={{ width: '100%', maxWidth: 'var(--ig-popup-2xl-narrow)' }}
       >
         <Stack gap="var(--ig-spacing-20)">
-        <H1>
+        <Title>
           {labels.title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? labels.online : labels.offline}
           </Badge>
-        </H1>
+        </Title>
 
         {mode === 'offline' && (
           <Stack gap="var(--ig-spacing-8)">
@@ -83,7 +83,7 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                   <Stack gap="var(--ig-spacing-8)">
                     {otherAccounts.map((entry) => (
                       <SelectableListItem key={entry.email} type="button" onClick={() => onSelectAccount(entry)}>
-                        <Stack gap="var(--ig-spacing-2)">
+                        <Stack gap="var(--ig-space-0)">
                           <Text size="var(--ig-text-body)">{entry.name || entry.email}</Text>
                           <Text size="var(--ig-text-caption)" tone="muted">{entry.email}</Text>
                         </Stack>

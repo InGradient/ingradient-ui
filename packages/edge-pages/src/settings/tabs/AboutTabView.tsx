@@ -50,7 +50,7 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
   return (
     <>
       <Hero>
-        <Stack gap="var(--ig-spacing-2)">
+        <Stack gap="var(--ig-space-0)">
           <Text as="div" size="var(--ig-text-title-sm)" weight="bold">{labels.hero}</Text>
           <HeroVersion>{labels.versionLabel} {appVersion}</HeroVersion>
         </Stack>

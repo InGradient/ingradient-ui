@@ -90,6 +90,10 @@ Rendered heights are on the 4px grid, including borders. A border must not add t
 - **Bordered boxes (all sides):** keep the border and subtract it from the padding with `paddingInsideBorder(padding)` from `@ingradient/ui/primitives`, so a 16px inset renders as 15px padding plus the 1px line.
 - **Rows whose children paint their own backgrounds** (segmented controls): use `outline` with a negative `outline-offset`, which draws above the children.
 - Fixed-height controls (`height` set with `box-sizing: border-box`) already include their border and need no change.
+- **Bordered boxes without padding** (a dialog card whose header and body pad themselves, a `<details>` whose summary pads itself): give the border back from the outermost child padding — the top of the first part and the bottom of the last.
+- **Standalone divider elements** (`Divider`): a 0px box with the 1px line drawn as a shadow, so the line adds no height.
+- **Inline items in a heading** (a status badge next to a title): make the heading a flex row; an inline-flex badge on the text baseline stretches the line box (32 → 33px).
+- **Two stacked text lines** (name + email, label + value, title + subtitle): no gap or margin between them; the px line heights already give the spacing (20 + 16 = 36px). A 2px gap makes the pair 38px.
 
 ### What the grid applies to
 

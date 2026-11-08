@@ -20,7 +20,6 @@ export const HistoryEmail = styled.span`
   font-size: var(--ig-text-caption);
   line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
-  margin-top: var(--ig-spacing-2);
 `
 
 

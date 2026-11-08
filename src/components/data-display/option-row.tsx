@@ -27,7 +27,8 @@ const Root = styled.button`
 const TextStack = styled.span`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2px);
+  /* Two lines on px line heights, no gap: keeps the row on the 4px grid. */
+  gap: var(--ig-space-0);
   min-width: 0;
   font-size: var(--ig-font-size-sm);
   line-height: var(--ig-leading-sm);
