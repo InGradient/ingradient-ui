@@ -12,10 +12,14 @@ const CONTROL_HEIGHT: Record<ButtonSize, string> = {
 
 /** 글자 크기는 값이 아니라 블록으로 둔다 — 토큰을 글자 그대로 써야 stylelint 가 읽는다. */
 const FONT_SIZE: Record<ButtonSize, ReturnType<typeof css>> = {
-  xs: css`font-size: var(--ig-font-size-xs);`,
-  sm: css`font-size: var(--ig-font-size-sm);`,
-  md: css`font-size: var(--ig-font-size-md);`,
-  lg: css`font-size: var(--ig-font-size-lg);`,
+  xs: css`font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);`,
+  sm: css`font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);`,
+  md: css`font-size: var(--ig-font-size-md);
+  line-height: var(--ig-leading-md);`,
+  lg: css`font-size: var(--ig-font-size-lg);
+  line-height: var(--ig-leading-lg);`,
 }
 
 const controlHeight = (size: ButtonSize): string => CONTROL_HEIGHT[size]

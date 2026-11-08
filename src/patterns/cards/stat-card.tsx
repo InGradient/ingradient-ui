@@ -3,8 +3,6 @@ import { Stack, Text } from '../../primitives'
 import { Card } from '../../components/data-display/card'
 import { ActionBar } from '../../components/data-display/layout'
 
-const VALUE_STYLE = { lineHeight: 'var(--ig-line-height-none)' }
-
 export function StatCard({
   label,
   value,
@@ -23,7 +21,7 @@ export function StatCard({
           <Text size="var(--ig-font-size-xs)" tone="soft" uppercase letterSpacing="wide">{label}</Text>
           {meta}
         </ActionBar>
-        <Text size="var(--ig-font-size-3xl)" weight="black" style={VALUE_STYLE}>{value}</Text>
+        <Text size="var(--ig-font-size-3xl)" weight="black">{value}</Text>
         {hint ? <Text size="var(--ig-font-size-sm)" tone="muted">{hint}</Text> : null}
       </Stack>
     </Card>

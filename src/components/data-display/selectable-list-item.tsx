@@ -27,6 +27,7 @@ const Root = styled.button<{
   border-radius: var(--ig-radius-sm);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-family: inherit;
   text-align: left;
   cursor: pointer;

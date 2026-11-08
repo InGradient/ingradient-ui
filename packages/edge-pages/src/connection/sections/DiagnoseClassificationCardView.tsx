@@ -8,6 +8,7 @@ const ClassificationCard = styled(Card)<{ $ok: boolean }>`
   border-color: ${({ $ok }) => ($ok ? 'var(--ig-color-success)' : 'var(--ig-color-warning)')};
   background: ${({ $ok }) => ($ok ? 'var(--ig-color-green-tint-success-soft)' : 'var(--ig-color-amber-tint-warning-soft)')};
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-primary);
 `
 

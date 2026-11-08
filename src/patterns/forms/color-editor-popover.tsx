@@ -28,11 +28,13 @@ const Header = styled.div`
 
 const Title = styled.strong`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-primary);
 `
 
 const Hex = styled.code`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
@@ -61,6 +63,7 @@ const Control = styled.label`
   align-items: center;
   gap: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 

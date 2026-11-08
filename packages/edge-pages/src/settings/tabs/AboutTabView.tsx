@@ -7,6 +7,7 @@ import { Stack, Text } from '@ingradient/ui/primitives'
 const Section = styled.div`margin-bottom: var(--ig-spacing-20);`
 const SectionTitle = styled.h3`
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   margin: 0 0 var(--ig-spacing-8);
   color: var(--ig-color-text-primary);
@@ -17,15 +18,18 @@ const Hero = styled.div`
   gap: var(--ig-spacing-12);
   margin-bottom: var(--ig-spacing-16);
 `
-const HeroVersion = styled.div`font-size: var(--ig-text-caption); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
+const HeroVersion = styled.div`font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
 
 const FingerprintBox = styled(CodeBlock)`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   margin-top: var(--ig-spacing-8);
 `
 
 const ErrorText = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
   margin-top: var(--ig-spacing-8);
 `

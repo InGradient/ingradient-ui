@@ -14,6 +14,7 @@ const Meta = styled.div`
   gap: var(--ig-space-3);
   margin-bottom: var(--ig-space-2);
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   color: var(--ig-color-text-muted);
 `
 
@@ -25,7 +26,7 @@ const Author = styled.span`
 
 const Body = styled.div`
   font-size: var(--ig-font-size-xs);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-leading-xs);
   white-space: pre-wrap;
   color: var(--ig-color-text-primary);
 `

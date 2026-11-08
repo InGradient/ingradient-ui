@@ -40,6 +40,7 @@ export const ContextMenuButton = styled.button<{ $danger?: boolean }>`
   background: none;
   color: ${(p) => (p.$danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-align: left;
   cursor: pointer;
   &:hover {
@@ -78,6 +79,7 @@ export const ContextMenuSubItem = styled.button<{ $color?: string }>`
   background: none;
   color: ${(p) => p.$color ?? 'var(--ig-color-text-primary)'};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-align: left;
   cursor: pointer;
   &:hover {

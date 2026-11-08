@@ -12,6 +12,7 @@ const PopoverRoot = styled.div<{ $width: number }>`
   box-shadow: var(--ig-shadow-popover);
   z-index: var(--ig-z-dropdown);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-secondary);
 `
 

@@ -31,6 +31,7 @@ export const Card = styled(UiCard)`
 export const Title = styled.h1`
   margin: 0;
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
@@ -38,7 +39,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
   margin: var(--ig-spacing-8) 0 0;
   font-size: var(--ig-text-body-sm);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
 `
 
@@ -68,6 +69,7 @@ export const SectionHeader = styled.header``
 export const SectionTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
@@ -75,7 +77,7 @@ export const SectionTitle = styled.h2`
 export const SectionDescription = styled.p`
   margin: var(--ig-spacing-8) 0 0;
   font-size: var(--ig-text-caption);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
 `
 
@@ -95,6 +97,7 @@ export const Actions = styled.div`
 
 export const OptionalLabel = styled.span`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   font-weight: var(--ig-font-weight-regular);
   margin-left: var(--ig-spacing-8);
@@ -109,6 +112,7 @@ export const FileList = styled.ul`
   margin: 0;
   padding: 0;
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
 `
 
@@ -157,6 +161,7 @@ export const OptionCard = withSurfaceDepth(OptionCardBase, { displayName: 'Creat
 
 export const OptionTitle = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   margin-bottom: var(--ig-spacing-8);
 `
@@ -164,5 +169,5 @@ export const OptionTitle = styled.div`
 export const OptionText = styled.div`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-muted);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `

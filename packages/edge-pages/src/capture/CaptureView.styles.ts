@@ -45,6 +45,7 @@ export const SetupMetrics = styled.div`
 
 export const MetricLabel = styled.div`
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-white-62);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-normal);
@@ -52,6 +53,7 @@ export const MetricLabel = styled.div`
 
 export const MetricValue = styled.div`
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin-top: var(--ig-spacing-2);
@@ -78,6 +80,7 @@ const SetupBlockingCardBase = styled.div`
   align-items: center;
   gap: var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
 `;
 export const SetupBlockingCard = withSurfaceDepth(SetupBlockingCardBase, { displayName: 'SetupBlockingCard' })
@@ -113,6 +116,7 @@ export const ControlRow = styled.div`
   align-items: center;
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `;
 
 export const CaptureBar = styled.div`
@@ -194,6 +198,7 @@ export const CaptureButton = styled.button<{ $capturing?: boolean }>`
 export const StatusText = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   flex-shrink: 0;
 `;
 
@@ -291,6 +296,7 @@ export const CapturingBadge = styled.div`
   background: var(--ig-color-overlay-deep);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
   padding: var(--ig-spacing-8) var(--ig-spacing-16);

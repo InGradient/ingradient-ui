@@ -49,6 +49,7 @@ export const TooltipBubble = styled.div`
   border-radius: var(--ig-radius-sm);
   padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   max-width: var(--ig-popup-sm);
 `
 

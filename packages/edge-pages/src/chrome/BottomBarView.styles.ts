@@ -15,6 +15,7 @@ export const SyncChip = styled.div<{ $status: 'syncing' | 'done' | 'error' }>`
   align-items: center;
   gap: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-medium);
   color: ${({ $status }) =>
     $status === 'syncing'
@@ -30,6 +31,7 @@ export const StatChip = styled.div<{ $pct?: number }>`
   align-items: center;
   gap: var(--ig-spacing-4);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-medium);
   color: ${({ $pct }) => ($pct != null ? statColor($pct) : 'var(--ig-color-text-muted)')};
   user-select: none;

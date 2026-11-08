@@ -37,6 +37,7 @@ const ValueLabel = styled.span`
   text-align: right;
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   font-variant-numeric: tabular-nums;
 `
 

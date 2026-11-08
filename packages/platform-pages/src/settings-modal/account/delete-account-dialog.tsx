@@ -20,10 +20,6 @@ const FullPasswordBox = styled(PasswordField)`
 const FullConfirmBox = styled(TextField)`
   width: 100%;
 `
-const CopyBox = styled(Text)`
-  line-height: var(--ig-line-height-relaxed-plus);
-`
-
 export interface DeleteAccountSoloProject {
   project_id: string
   project_name: string
@@ -88,10 +84,10 @@ export function DeleteAccountDialog({
       }
     >
       <Stack gap="var(--ig-spacing-16)">
-        <CopyBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">
+        <Text as="p" tone="soft" size="var(--ig-text-body)">
           This account owns or participates in projects that need resolution before deletion. Review each shared project below
           and decide whether to transfer ownership or delete the project.
-        </CopyBox>
+        </Text>
         {preview.solo_projects.length > 0 && (
           <>
             <Alert $tone="warning">

@@ -6,6 +6,7 @@ const SelectBox = styled(SelectField)`
   max-width: var(--ig-layout-size-field-max);
   padding: var(--ig-spacing-8) var(--ig-spacing-12);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   border-radius: var(--ig-radius-2xs);
 `
 

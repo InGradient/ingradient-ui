@@ -34,6 +34,7 @@ const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 

@@ -6,12 +6,14 @@ import type { ServerTabViewProps, ServerRuntimeMode } from '../types'
 
 const Hint = styled.div`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   margin-top: var(--ig-spacing-8);
 `
 
 const Result = styled.div<{ $tone: 'success' | 'warn' | 'danger' }>`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   margin-top: var(--ig-spacing-8);
   color: ${({ $tone }) =>
     $tone === 'success' ? 'var(--ig-color-success)' :

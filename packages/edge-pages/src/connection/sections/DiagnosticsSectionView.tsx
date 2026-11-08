@@ -7,6 +7,7 @@ import type { DiagnosticsSectionViewProps } from '../types'
 const FailureLine = styled.div`
   margin-top: var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-danger);
   font-family: var(--ig-font-mono);
 `
@@ -14,6 +15,7 @@ const FailureLine = styled.div`
 const RecoveryHint = styled.div`
   margin-top: var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
 `
 

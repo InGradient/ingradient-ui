@@ -6,6 +6,7 @@ const NameText = styled.span<{ $active?: boolean }>`
   flex: 1;
   min-width: 0;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: ${(p) => (p.$active ? 'var(--ig-color-text-secondary)' : 'var(--ig-color-text-muted)')};
   text-align: left;
   overflow: hidden;

@@ -20,6 +20,7 @@ export const Header = styled(ModalHeader)`
 
 export const Title = styled(ModalTitle)`
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-bold);
 `
 
@@ -76,7 +77,7 @@ export const AdminDesc = styled.p`
   margin: 0;
   font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export const AdminContent = styled.div`
@@ -95,6 +96,7 @@ export const AdminContent = styled.div`
 export const SubsectionTitle = styled.h4`
   margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
 `
@@ -111,5 +113,5 @@ export const PermissionsScopeNote = styled.p`
   margin: 0 0 var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-soft);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `

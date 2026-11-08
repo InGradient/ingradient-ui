@@ -26,6 +26,7 @@ const DescriptionBox = styled(TextareaField)`
   min-height: calc(var(--ig-spacing-32) * 2 + var(--ig-spacing-8));
   max-width: 100%;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   resize: vertical;
 `
 

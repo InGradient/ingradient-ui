@@ -80,6 +80,7 @@ export const ModalBBoxToolbar = styled.div`
 export const ModalFilename = styled.div`
   color: var(--ig-color-white-55);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -113,6 +114,7 @@ export const ModalHint = styled.div`
   flex-shrink: 0;
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   text-align: center;
 `;
 
@@ -173,6 +175,7 @@ export const SyncSummary = styled.div`
   align-items: center;
   gap: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
 `;
 
@@ -191,6 +194,7 @@ export const ModalToolbarSpacer = styled.div`
 export const ModalBboxCount = styled.div`
   color: var(--ig-color-white-70);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   padding: 0 var(--ig-spacing-8);
   font-weight: var(--ig-font-weight-semibold);
 `;

@@ -12,6 +12,7 @@ const rowBase = css`
   padding: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   &:last-child {
     border-bottom: 0;
   }
@@ -22,6 +23,7 @@ const rowDivider = css`
   padding: var(--ig-space-4) 0;
   box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
   font-size: var(--ig-font-size-md);
+  line-height: var(--ig-leading-md);
 `
 
 const Row = styled.label<{ $divider: boolean }>`

@@ -8,6 +8,7 @@ import { Stack, Text } from '@ingradient/ui/primitives'
 const Success = styled.div`
   color: var(--ig-color-success);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 function formatBytes(bytes: number): string {

@@ -26,6 +26,7 @@ export const BreadcrumbWrap = styled.h1`
 
 export const BreadcrumbSep = styled.span`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   opacity: var(--ig-opacity-faded);
 `

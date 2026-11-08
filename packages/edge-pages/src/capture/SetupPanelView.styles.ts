@@ -53,7 +53,7 @@ export const PatternButton = styled(Button).attrs({
 export const SetupMetaText = styled.div`
   color: var(--ig-color-white-70);
   font-size: var(--ig-text-caption);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `;
 
 // SetupInlineHint: ui FieldHint (PR-B1, 2026-05-09)

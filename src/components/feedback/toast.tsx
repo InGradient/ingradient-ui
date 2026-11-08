@@ -37,6 +37,7 @@ const Item = styled.div<{ $tone: ToastTone; $leaving: boolean }>`
   border: var(--ig-border-1px) solid;
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   box-shadow: var(--ig-shadow-floating);
   pointer-events: auto;
   animation: ${({ $leaving }) => ($leaving ? slideOut : slideIn)} var(--ig-motion-normal) forwards;
@@ -70,7 +71,7 @@ const CloseButton = styled.button`
   border: none;
   color: inherit;
   font-size: var(--ig-font-size-xl);
-  line-height: var(--ig-line-height-none);
+  line-height: var(--ig-leading-xl);
   padding: 0 var(--ig-space-2px);
   cursor: pointer;
   opacity: var(--ig-opacity-overlay);

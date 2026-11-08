@@ -114,6 +114,7 @@ const rowMixin = `
   gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-decoration: none;
   /* transition 제거 — color/background 변화는 즉시 적용.
    * 이전: transition 이 button 의 paint sequence 를 GPU layer 로 격리 → 빠른 스크롤 시 button 안

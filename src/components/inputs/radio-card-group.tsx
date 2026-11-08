@@ -20,6 +20,7 @@ const OptionBtn = styled.button<{ $active: boolean; $orientation: RadioCardGroup
     p.$active ? 'var(--ig-color-accent-soft-surface)' : 'var(--ig-color-surface-muted)'};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-primary)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-regular)')};
   font-family: inherit;
   cursor: pointer;

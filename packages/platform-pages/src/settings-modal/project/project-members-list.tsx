@@ -14,10 +14,6 @@ const ListBox = styled(Stack)`
   margin: 0;
   padding: 0;
 `
-const DescriptionBox = styled(Text)`
-  line-height: var(--ig-line-height-relaxed);
-`
-
 export interface ProjectMembersListProps {
   members: ProjectMemberRowMember[]
   roleOptions: ProjectMemberRowRoleOption[]
@@ -91,10 +87,10 @@ export function ProjectMembersList({
           }
         >
           <Stack gap="var(--ig-spacing-12)">
-            <DescriptionBox forwardedAs="p" tone="muted" size="var(--ig-text-body)">
+            <Text as="p" tone="muted" size="var(--ig-text-body)">
               Remove <strong>{pendingRemove.email}</strong> from this project?
-            </DescriptionBox>
-            <DescriptionBox forwardedAs="p" tone="muted" size="var(--ig-text-body)">This member will lose access to the project immediately.</DescriptionBox>
+            </Text>
+            <Text as="p" tone="muted" size="var(--ig-text-body)">This member will lose access to the project immediately.</Text>
           </Stack>
         </DialogShell>
       )}

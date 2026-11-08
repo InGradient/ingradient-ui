@@ -8,10 +8,12 @@ const sizeStyles = {
   sm: css`
     padding: var(--ig-space-2) var(--ig-space-3);
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-leading-sm);
   `,
   md: css`
     padding: var(--ig-space-3) var(--ig-space-4);
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-leading-sm);
   `,
 }
 

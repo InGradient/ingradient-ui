@@ -5,6 +5,7 @@ const Table = styled.table`
   width: 100%;
   font-family: var(--ig-font-mono);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   border-collapse: collapse;
 `
 

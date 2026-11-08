@@ -14,6 +14,7 @@ const Btn = styled.button<{ $size: 'sm' | 'md' }>`
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-muted);
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
+  line-height: ${(p) => (p.$size === 'sm' ? 'var(--ig-leading-2xs)' : 'var(--ig-leading-xs)')};
   cursor: pointer;
   transition: color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   &:hover { color: var(--ig-color-text-primary); border-color: var(--ig-color-border-strong); }

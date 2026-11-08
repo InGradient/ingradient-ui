@@ -35,6 +35,7 @@ const DangerSection = withSurfaceDepth(SectionBase, { displayName: 'SettingsSect
 const Title = styled.h3<{ $tone: SettingsSectionTone }>`
   margin: 0;
   font-size: var(--ig-font-size-md);
+  line-height: var(--ig-leading-md);
   font-weight: var(--ig-font-weight-semibold);
   color: ${(p) => (p.$tone === 'danger' ? 'var(--ig-color-alert-danger-text)' : 'var(--ig-color-text-primary)')};
 `

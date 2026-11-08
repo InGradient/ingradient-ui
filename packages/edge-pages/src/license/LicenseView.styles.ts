@@ -44,6 +44,7 @@ export const FingerprintText = styled.span`
   flex: 1;
   font-family: var(--ig-font-mono);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-widest);
   color: var(--ig-color-accent-soft);
@@ -56,6 +57,6 @@ const HintBoxBase = styled.div`
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-blue-tint-06);
   border: var(--ig-border-1px) solid var(--ig-color-selection-bg);
-  line-height: var(--ig-line-height-loose);
+  line-height: var(--ig-text-caption-leading);
 `
 export const HintBox = withSurfaceDepth(HintBoxBase, { displayName: 'HintBox' })

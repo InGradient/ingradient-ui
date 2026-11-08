@@ -33,6 +33,7 @@ const IconPreview = styled.div`
 
 const IconLabel = styled.div`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
   text-align: center;
   word-break: break-word;

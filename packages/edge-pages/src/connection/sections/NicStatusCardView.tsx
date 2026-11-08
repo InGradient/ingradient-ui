@@ -7,6 +7,7 @@ const ErrorList = styled.ul`
   margin: var(--ig-spacing-8) 0 0;
   padding-left: var(--ig-spacing-12);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-danger);
 `
 

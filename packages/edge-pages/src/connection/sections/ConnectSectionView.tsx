@@ -6,6 +6,7 @@ import type { ConnectSectionViewProps } from '../types'
 
 const ErrorMsg = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
   display: flex;
   align-items: center;
@@ -15,6 +16,7 @@ const ErrorMsg = styled.div`
 
 const ConnectedMsg = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-success);
   display: flex;
   align-items: center;

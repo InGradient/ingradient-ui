@@ -9,6 +9,7 @@ export const DurationGrid = styled.div`
 export const DurationLabel = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   margin-bottom: var(--ig-spacing-8);
 `;
 

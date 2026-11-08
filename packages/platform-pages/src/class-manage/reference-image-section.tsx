@@ -57,7 +57,7 @@ export function ReferenceImageSection({
   }
   const content = (
     <>
-      <Text tone="muted" size="var(--ig-text-caption)" style={{ ...HINT_STYLE, display: 'block', lineHeight: 'var(--ig-line-height-relaxed)' }}>{hint}</Text>
+      <Text tone="muted" size="var(--ig-text-caption)" style={{ ...HINT_STYLE, display: 'block' }}>{hint}</Text>
       <ReferenceImageDropZone
         dragging={dragging}
         hasImage={!!imageUrl}
@@ -69,7 +69,7 @@ export function ReferenceImageSection({
             <img src={imageUrl} alt={alt} style={PREVIEW_STYLE} />
           ) : (
             <Stack gap="var(--ig-spacing-8)" align="flex-start">
-              <Text tone="muted" size="var(--ig-text-caption)" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{emptyText}</Text>
+              <Text tone="muted" size="var(--ig-text-caption)">{emptyText}</Text>
             </Stack>
           )}
           {candidates.length > 1 ? (

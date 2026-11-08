@@ -31,6 +31,7 @@ export const LogoImg = styled.img`
 
 export const LogoText = styled.span`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   letter-spacing: var(--ig-letter-spacing-micro);

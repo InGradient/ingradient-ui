@@ -9,6 +9,7 @@ export const InfoRow = styled.div`
 
 export const InfoRowLabel = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   flex-shrink: 0;
@@ -17,6 +18,7 @@ export const InfoRowLabel = styled.span`
 
 export const InfoRowValue = styled.span`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-primary);
   flex: 1;
   min-width: 0;

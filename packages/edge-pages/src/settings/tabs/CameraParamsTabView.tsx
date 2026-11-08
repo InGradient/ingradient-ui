@@ -6,12 +6,14 @@ import { Stack, Text } from '@ingradient/ui/primitives'
 
 const SectionTitle = styled.h3`
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   margin: 0;
   color: var(--ig-color-text-primary);
 `
 const Status = styled.div<{ $tone: 'success' | 'danger' }>`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: ${({ $tone }) => $tone === 'success' ? 'var(--ig-color-success)' : 'var(--ig-color-danger)'};
 `
 

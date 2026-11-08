@@ -14,6 +14,7 @@ const SearchInput = styled.input`
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   &::placeholder { color: var(--ig-color-text-soft); }
   &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `
@@ -37,6 +38,7 @@ const EmptyMsg = styled.div`
   padding: var(--ig-space-4);
   text-align: center;
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-soft);
 `
 
@@ -48,6 +50,7 @@ const ActionLink = styled.button`
   background: transparent;
   color: var(--ig-color-accent-soft);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   padding: calc(var(--ig-space-2) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   cursor: pointer;
   &:hover { background: var(--ig-color-surface-interactive); }

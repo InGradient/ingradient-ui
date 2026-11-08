@@ -1,14 +1,9 @@
-import styled from 'styled-components'
 import { useState } from 'react'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { DialogShell } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 import { EmptyText as Empty } from '@ingradient/ui/components'
-
-const DescriptionBox = styled(Text)`
-  line-height: var(--ig-line-height-relaxed);
-`
 
 export interface OrgMember {
   id: string
@@ -100,9 +95,9 @@ export function OrgMembersTab({
           }
         >
           <Stack gap="var(--ig-spacing-12)">
-            <DescriptionBox forwardedAs="p" tone="muted" size="var(--ig-text-body)">
+            <Text as="p" tone="muted" size="var(--ig-text-body)">
               Remove <strong>{pendingRemove.user.displayName}</strong> ({pendingRemove.user.loginId}) from the organization?
-            </DescriptionBox>
+            </Text>
           </Stack>
         </DialogShell>
       )}

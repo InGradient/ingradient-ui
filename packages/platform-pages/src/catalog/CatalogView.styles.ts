@@ -27,6 +27,7 @@ export const DragOverFull = styled.div`
   justify-content: center;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 
@@ -51,6 +52,7 @@ export const DragOverGrid = styled.div`
   pointer-events: none;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 

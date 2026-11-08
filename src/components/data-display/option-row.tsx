@@ -30,15 +30,18 @@ const TextStack = styled.span`
   gap: var(--ig-space-2px);
   min-width: 0;
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
 `
 
 const Secondary = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
 const Action = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   white-space: nowrap;
   flex-shrink: 0;
 `

@@ -17,6 +17,7 @@ export const TabContent = styled(UiPageContent)`
 export const SectionTitle = styled.h3`
   margin: 0;
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
@@ -64,6 +65,7 @@ export const ControlRow = styled.div`
 
 export const Label = styled.label`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
 `
@@ -74,6 +76,7 @@ export const NumberInput = styled(NumberField)`
 
 export const Hint = styled.p`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   margin: var(--ig-spacing-8) 0 0;
 `
@@ -93,6 +96,7 @@ export const WarningBox = styled(Alert).attrs({ $tone: 'warning' as const })`
 export const ProgressNote = styled.span`
   margin-left: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
 `
 
@@ -113,6 +117,7 @@ export const ReportBox = styled.div`
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export const ReportGrid = styled.div`
@@ -152,6 +157,7 @@ export const ProgressWrap = styled.div`
 export const ProgressLabel = styled.div`
   margin-top: var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   font-variant-numeric: tabular-nums;
 `

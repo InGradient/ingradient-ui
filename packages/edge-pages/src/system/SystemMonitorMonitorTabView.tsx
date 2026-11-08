@@ -15,6 +15,7 @@ const StatsGrid = styled.div`
 
 const StatValue = styled.div`
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
   margin-top: var(--ig-spacing-8);

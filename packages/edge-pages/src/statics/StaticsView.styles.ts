@@ -21,6 +21,7 @@ export const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
 `;
 
 
@@ -34,6 +35,7 @@ export const SummaryGrid = styled.div`
 export const SummaryLabel = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   margin-bottom: var(--ig-spacing-8);
 `;
 
@@ -47,6 +49,7 @@ export const PanelGrid = styled.div`
 export const PanelTitle = styled.div`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   margin-bottom: var(--ig-spacing-12);
 `;
@@ -63,6 +66,7 @@ export const SectionHeader = styled.button`
   margin-top: var(--ig-spacing-12);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-bold);
   text-align: left;
   &:hover { color: var(--ig-color-text-soft); }

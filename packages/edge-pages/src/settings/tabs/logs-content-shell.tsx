@@ -12,6 +12,7 @@ const LogListBase = styled.div`
   overflow-y: auto;
   font-family: var(--ig-font-mono);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);

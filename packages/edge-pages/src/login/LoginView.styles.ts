@@ -31,6 +31,7 @@ export const LangCorner = styled.div`
 
 const PackageInfoBase = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   text-align: center;
   padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));

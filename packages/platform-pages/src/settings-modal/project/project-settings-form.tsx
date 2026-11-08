@@ -139,14 +139,14 @@ export function ProjectSettingsForm({
             <NestedFieldBox gap="var(--ig-spacing-8)">
               <LabelBox forwardedAs="label" htmlFor="group-key-regex" size="var(--ig-text-body)">Group key pattern (regex with one capture group)</LabelBox>
               <InputFlexBox id="group-key-regex" value={groupRegex} onChange={(e) => onChangeGroupRegex(e.target.value)} placeholder="e.g. ^([^_]+_[^_]+)_" disabled={!canEdit} />
-              <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }}>File name is matched against this regex; the first captured group becomes the group key.</Text>
+              <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0 }}>File name is matched against this regex; the first captured group becomes the group key.</Text>
             </NestedFieldBox>
           </RowBox>
           <RowBox justify="space-between" gap="var(--ig-spacing-16)" wrap="wrap">
             <NestedFieldBox gap="var(--ig-spacing-8)">
               <LabelBox forwardedAs="label" htmlFor="group-representative-regex" size="var(--ig-text-body)">Representative image pattern (optional regex)</LabelBox>
               <InputFlexBox id="group-representative-regex" value={groupRepRegex} onChange={(e) => onChangeGroupRepRegex(e.target.value)} placeholder="e.g. _x_orig\.png$" disabled={!canEdit} />
-              <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }}>If set, the matching file becomes the representative image for each group.</Text>
+              <Text as="p" tone="soft" size="var(--ig-text-caption)" style={{ margin: 0 }}>If set, the matching file becomes the representative image for each group.</Text>
             </NestedFieldBox>
           </RowBox>
         </>

@@ -21,6 +21,7 @@ export const CapturingStatusPill = styled.div`
   background: var(--ig-color-overlay-darkest);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-semibold);
   letter-spacing: var(--ig-letter-spacing-normal);
   padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
@@ -35,6 +36,7 @@ export const FailureCode = styled.span`
   margin-top: var(--ig-spacing-8);
   color: var(--ig-color-danger);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-tight);
 `
@@ -51,6 +53,7 @@ export const SavingOverlay = styled.div`
   background: var(--ig-color-image-option-bg);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-medium);
 `
 

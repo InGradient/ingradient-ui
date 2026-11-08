@@ -19,6 +19,7 @@ export const Th = styled.th<{ $numeric?: boolean }>`
   padding: var(--ig-space-4) var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   font-weight: var(--ig-font-weight-medium);
   box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
@@ -28,7 +29,7 @@ export const Td = styled.td<{ $numeric?: boolean; $muted?: boolean; $mono?: bool
   color: ${(p) => (p.$muted ? 'var(--ig-color-text-muted)' : 'var(--ig-color-text-secondary)')};
   box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   ${(p) => p.$numeric && 'text-align: right; font-variant-numeric: tabular-nums;'}
-  ${(p) => p.$mono && 'font-family: var(--ig-font-mono); font-size: var(--ig-font-size-xs);'}
+  ${(p) => p.$mono && 'font-family: var(--ig-font-mono); font-size: var(--ig-font-size-xs); line-height: var(--ig-leading-xs);'}
 `
 
 export const Tfoot = styled.tfoot`

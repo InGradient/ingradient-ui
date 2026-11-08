@@ -137,6 +137,7 @@ export const DragOverlayCard = withSurfaceDepth(DragOverlayCardBase, { floating:
 
 export const DragOverlayTitle = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `

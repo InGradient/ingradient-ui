@@ -19,6 +19,7 @@ export const Content = styled.div`
 
 export const ErrorMsg = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
   padding: var(--ig-spacing-24) 0;
   text-align: center;
@@ -27,6 +28,7 @@ export const ErrorMsg = styled.div`
 export const Spinner = styled.div`
   color: var(--ig-color-text-muted);
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   padding: var(--ig-spacing-32) 0;
   text-align: center;
 `

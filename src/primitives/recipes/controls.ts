@@ -11,7 +11,7 @@ export const controlField = css`
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-md);
-  line-height: var(--ig-line-height-none);
+  line-height: var(--ig-leading-md);
   transition:
     border-color var(--ig-motion-fast),
     box-shadow var(--ig-motion-fast),

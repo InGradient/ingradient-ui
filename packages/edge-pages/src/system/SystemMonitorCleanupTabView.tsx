@@ -4,7 +4,8 @@ import { KeyValueRow } from '@ingradient/ui/components'
 import type { SystemMonitorCleanupTabViewProps } from './types'
 import { Stack, Text } from '@ingradient/ui/primitives'
 
-const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-text-body-sm);`
+const SuccessMsg = styled.div`color: var(--ig-color-success); font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);`
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`

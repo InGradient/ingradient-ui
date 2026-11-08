@@ -24,6 +24,7 @@ const Chip = styled.span<{ $bg: string; $color: string; $collapseUntilHover: boo
   padding: 0 var(--ig-space-3);
   border-radius: var(--ig-radius-pill);
   font-size: var(--ig-font-size-3xs);
+  line-height: var(--ig-leading-3xs);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-normal);
   white-space: nowrap;

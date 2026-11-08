@@ -12,6 +12,7 @@ const Chip = styled.button`
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--ig-motion-fast);

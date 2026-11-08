@@ -29,6 +29,7 @@ const Root = styled.div<{ $variant: MediaOverlayVariant }>`
 
 const Label = styled.span`
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   font-weight: var(--ig-font-weight-medium);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);

@@ -33,12 +33,14 @@ const FallbackTitle = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-lg);
+  line-height: var(--ig-leading-lg);
 `
 
 const FallbackDetail = styled.pre`
   color: var(--ig-color-danger);
   font-family: var(--ig-font-mono);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   max-width: var(--ig-popup-xl);
   overflow: auto;
   white-space: pre-wrap;

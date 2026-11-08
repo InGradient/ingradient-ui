@@ -9,6 +9,7 @@ const InfoGridBox = styled(Box)`
   grid-template-columns: var(--ig-form-label-col-wide) 1fr;
   gap: var(--ig-spacing-8) var(--ig-spacing-12);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   align-items: center;
 `
 

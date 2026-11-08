@@ -4,8 +4,9 @@ import { Button } from '@ingradient/ui'
 import { ProgressBar } from '@ingradient/ui/components'
 import type { FieldTestTabViewProps } from '../types'
 
-const Desc = styled.div`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted); line-height: var(--ig-line-height-loose);`
-const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
+const Desc = styled.div`font-size: var(--ig-text-body-sm); color: var(--ig-color-text-muted); line-height: var(--ig-text-body-sm-leading);`
+const Title = styled.h3`font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
 const LogBoxBase = styled.pre`
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
@@ -13,6 +14,7 @@ const LogBoxBase = styled.pre`
   padding: calc(var(--ig-spacing-8) - var(--ig-border-1px));
   font-family: var(--ig-font-mono);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   max-height: var(--ig-popup-md);
   overflow-y: auto;
   margin: 0;

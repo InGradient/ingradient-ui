@@ -37,7 +37,7 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
       >
         <Stack gap="var(--ig-spacing-20)">
         <H1>{labels.title}</H1>
-        <Text size="var(--ig-text-body-sm)" tone="muted" align="center" style={{ lineHeight: 'var(--ig-line-height-loose)' }}>
+        <Text size="var(--ig-text-body-sm)" tone="muted" align="center">
           {isBind ? labels.bindHint : labels.subtitle}
         </Text>
 

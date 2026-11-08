@@ -13,8 +13,10 @@ const WrapBase = styled.div`
   border-radius: var(--ig-radius-md);
 `
 const Wrap = withSurfaceDepth(WrapBase, { displayName: 'Wrap' })
-const Title = styled.h3`font-size: var(--ig-text-body); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
-const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);`
+const Title = styled.h3`font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
+const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
   const {

@@ -47,6 +47,7 @@ export const ModalHeader = styled.div`
 export const ModalTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-3xl);
+  line-height: var(--ig-leading-3xl);
   font-weight: var(--ig-font-weight-bold);
 `
 

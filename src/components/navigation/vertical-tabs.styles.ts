@@ -57,6 +57,7 @@ export const ItemButton = styled.button<{ $active: boolean; $radius: VerticalTab
   background: transparent;
   color: ${(p) => (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)')};
   text-align: left;
   cursor: pointer;
@@ -119,5 +120,5 @@ export const ItemBadge = styled.span`
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
   font-weight: var(--ig-font-weight-bold);
-  line-height: var(--ig-line-height-none);
+  line-height: var(--ig-leading-2xs);
 `

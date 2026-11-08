@@ -114,12 +114,14 @@ export const DropdownOptionButton = styled.button<{ $active: boolean; $highlight
 
 export const DropdownOptionLabel = styled.div`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-semibold);
 `
 
 export const DropdownOptionDescription = styled.div`
   margin-top: var(--ig-space-1);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-soft);
 `
 

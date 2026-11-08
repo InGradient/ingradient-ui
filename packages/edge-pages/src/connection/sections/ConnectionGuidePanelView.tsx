@@ -24,7 +24,7 @@ const Header = styled.div`
 const Summary = styled.div`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `
 
 
@@ -38,6 +38,7 @@ const SummaryGrid = styled.div`
 
 const SummaryLabel = styled.div`
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
@@ -46,6 +47,7 @@ const SummaryLabel = styled.div`
 
 const SummaryValue = styled.div`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   white-space: nowrap;
@@ -64,7 +66,7 @@ const Warnings = styled.div`
 const Warning = styled.div`
   font-size: var(--ig-text-micro);
   color: var(--ig-color-warning);
-  line-height: var(--ig-line-height-snug);
+  line-height: var(--ig-text-micro-leading);
 `
 
 function toneColor(tone: GuideTone): string {

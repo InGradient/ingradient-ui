@@ -15,6 +15,7 @@ const CommentList = styled.div`
 
 const CommentMeta = styled.div`
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
   margin-bottom: var(--ig-spacing-2);
 `

@@ -13,6 +13,7 @@ export const Header = styled.div`
   padding: var(--ig-spacing-12);
   box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   display: flex;
@@ -40,6 +41,7 @@ const FilterPopoverBase = styled.div`
   box-shadow: var(--ig-shadow-panel);
   z-index: var(--ig-z-dropdown);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: normal;
   color: var(--ig-color-text-secondary);
 `;
@@ -55,6 +57,7 @@ export const FilterSectionTitle = styled.div`
   color: var(--ig-color-text-muted);
   margin-bottom: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wider);
 `;
@@ -113,6 +116,7 @@ export const LogItem = styled.div<{ type: 'error' | 'info' | 'success' }>`
 
 export const LogTime = styled.span`
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-soft);
   min-width: ${edgeGeometry.logTimeMin};
   margin-top: var(--ig-spacing-2);
@@ -122,7 +126,7 @@ export const LogTime = styled.span`
 export const LogMessage = styled.div`
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
-  line-height: var(--ig-line-height-snug);
+  line-height: var(--ig-text-caption-leading);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -177,6 +181,7 @@ export const DetailContent = styled.div`
 export const DetailPlaceholder = styled.div`
   color: var(--ig-color-text-soft);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   text-align: center;
   padding: var(--ig-spacing-16) var(--ig-spacing-8);
 `;
@@ -184,6 +189,7 @@ export const DetailPlaceholder = styled.div`
 export const LogPlaceholder = styled.div`
   padding: var(--ig-spacing-12);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-soft);
 `;
 

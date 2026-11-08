@@ -53,7 +53,7 @@ export function ChartContainer({
         <Inline align="flex-start" gap="var(--ig-space-5)" wrap="wrap" data-ig-chart-head>
           <Stack gap="var(--ig-space-1)">
             {title ? <Text as="h3" size="var(--ig-font-size-md)" weight="bold">{title}</Text> : null}
-            {description ? <Text as="p" size="var(--ig-font-size-xs)" tone="muted" style={{ lineHeight: 'var(--ig-line-height-relaxed)' }}>{description}</Text> : null}
+            {description ? <Text as="p" size="var(--ig-font-size-xs)" tone="muted">{description}</Text> : null}
           </Stack>
           {(headerExtra || legend) ? (
             <Inline gap="var(--ig-space-4)" wrap="wrap" style={{ marginLeft: 'auto' }}>

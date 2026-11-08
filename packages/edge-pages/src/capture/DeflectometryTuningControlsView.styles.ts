@@ -12,6 +12,7 @@ export const Label = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-secondary);
 `;
 
@@ -30,6 +31,7 @@ export const MetricRow = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-secondary);
   font-variant-numeric: tabular-nums;
 `;
@@ -46,6 +48,7 @@ export const QualityHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `;
 
 export const QualityStatus = styled.span<{ $status: QualityStatusValue }>`

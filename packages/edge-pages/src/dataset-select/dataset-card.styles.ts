@@ -131,6 +131,7 @@ export const ClassChip = styled.span<{ $color: string }>`
   align-items: center;
   gap: var(--ig-spacing-4);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-semibold);
   box-sizing: border-box;
   height: var(--ig-size-chip);

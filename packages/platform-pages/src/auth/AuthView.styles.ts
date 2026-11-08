@@ -30,6 +30,7 @@ export const Card = styled(UiCard)`
 export const Title = styled.h1`
   margin: 0 0 var(--ig-spacing-24);
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-semibold);
   text-align: center;
 `
@@ -57,6 +58,7 @@ export const CheckboxRow = styled.div`
 export const Footer = styled.p`
   margin: var(--ig-spacing-16) 0 0;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   text-align: center;
 `

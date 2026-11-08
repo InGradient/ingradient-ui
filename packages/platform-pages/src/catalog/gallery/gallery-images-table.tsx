@@ -22,6 +22,7 @@ const TableText = styled.div`
   --ig-catalog-gallery-table-thumb-size: var(--ig-control-height-3xl-plus);
 
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 
   table {
     min-width: var(--ig-catalog-gallery-table-min-width);

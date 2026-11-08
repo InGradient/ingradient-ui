@@ -32,6 +32,7 @@ export const RightActions = styled.div`
 
 export const BBoxCount = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   min-width: var(--ig-control-height-3xl);
   text-align: center;
@@ -42,6 +43,7 @@ export const HintOverlay = styled.div`
   top: var(--ig-spacing-8);
   left: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-white-45);
   pointer-events: none;
   background: var(--ig-color-overlay-mid);
@@ -56,6 +58,7 @@ export const PixelInfo = styled.div`
   right: var(--ig-spacing-8);
   font-family: var(--ig-font-mono, ui-monospace, Menlo, monospace);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-white-90);
   background: var(--ig-color-overlay-darker);
   padding: var(--ig-spacing-4) var(--ig-spacing-8);
@@ -83,6 +86,7 @@ export const BlockMsg = styled.div`
   left: 50%;
   transform: translateX(-50%);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-warning);
   background: var(--ig-color-modal-backdrop);
   padding: var(--ig-spacing-4) var(--ig-spacing-12);
@@ -117,6 +121,7 @@ export const HintBar = styled.div`
   flex-shrink: 0;
   text-align: center;
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
   padding: var(--ig-spacing-4) var(--ig-spacing-12);
 `;

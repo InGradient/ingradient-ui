@@ -10,7 +10,6 @@ const FieldBox = styled(TextField)`
 `
 const HintBox = styled(Text)`
   margin: 0;
-  line-height: var(--ig-line-height-relaxed);
 `
 const ExpiredBox = styled(Text)`
   margin: 0;
@@ -20,7 +19,7 @@ const Hint = styled.p`
   margin: 0;
   color: var(--ig-color-text-muted);
   font-size: var(--ig-text-body-sm);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export interface LicenseInfo {

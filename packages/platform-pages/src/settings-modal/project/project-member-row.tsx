@@ -29,6 +29,7 @@ const RoleSelectBox = styled(SelectField)`
 const DangerBtnBox = styled(Button)`
   padding: var(--ig-spacing-8) var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
 `
 
 export interface ProjectMemberRowMember {
