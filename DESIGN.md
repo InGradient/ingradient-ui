@@ -101,6 +101,7 @@ Rendered heights are on the 4px grid, including borders. A border must not add t
 - **Multi-line text fields:** a pixel leading and an 8px inset inside the border, so _n_ rows render at _n_ × leading + 16px.
 - **Parts of a control** are exact fractions of it: a number-field stepper is two halves of the field (16px each in a 32px field).
 - **Fluid sizes are exempt:** a size divided from the available width or height (gallery cells, image tiles, chart plots, columns that stretch to the window) follows the viewport, not the grid. Everything inside a fluid box — padding, gaps, fixed parts — still follows the grid.
+- **Checked automatically:** every Platform 0.0.1 and Edge 0.0.6 page story fails its Storybook test when a bordered box or control renders off the grid (`stories/support/grid-check.ts`, run after the play function). Fluid boxes, boxes inside or holding an aspect-ratio box or media, and animated or transformed elements are skipped. A story opts out with `parameters: { grid4px: 'off' }` and a comment saying why; `Foundations / 4px Grid Check` proves the check still catches known-bad boxes.
 
 ### Semantic spacing
 

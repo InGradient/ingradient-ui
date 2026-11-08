@@ -14,7 +14,9 @@ const SCROLLER_STYLE = { overflow: 'auto' as const, maxWidth: '100%' }
 const TABLE_WRAP_STYLE = {
   display: 'inline-block' as const,
   width: 'fit-content',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+  // Inset outline, not border: the table's cells set the height, so a border would add 2px off the 4px grid.
+  outline: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+  outlineOffset: 'var(--ig-space-neg-1px)',
   borderRadius: 'var(--ig-radius-xxs)',
   background: 'var(--ig-color-surface-panel)',
 }
