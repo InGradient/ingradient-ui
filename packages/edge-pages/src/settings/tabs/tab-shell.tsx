@@ -10,13 +10,11 @@ export function TabWrap({ children }: { children: ReactNode }): JSX.Element {
   return <Stack gap="var(--ig-spacing-8)">{children}</Stack>
 }
 
-/** 아이콘 + 탭 이름. */
+/** 아이콘 + 탭 이름. 아이콘과 글자 사이를 8px 띄우려고 제목 자체를 가로 줄로 둔다. */
+const TITLE_ROW = { display: 'flex', alignItems: 'center', gap: 'var(--ig-spacing-8)' } as const
+
 export function TabTitle({ children }: { children: ReactNode }): JSX.Element {
-  return (
-    <Inline gap="var(--ig-spacing-8)" align="center">
-      <Text as="h3" size="var(--ig-text-body-sm)" weight="semibold">{children}</Text>
-    </Inline>
-  )
+  return <Text as="h3" size="var(--ig-text-body-sm)" weight="semibold" style={TITLE_ROW}>{children}</Text>
 }
 
 /** 구역 이름. */
@@ -28,9 +26,9 @@ export function SectionLabel({ children }: { children: ReactNode }): JSX.Element
   )
 }
 
-/** 보조 설명 한 줄. */
-export function Hint({ children }: { children: ReactNode }): JSX.Element {
-  return <Text tone="muted" size="var(--ig-text-micro)">{children}</Text>
+/** 보조 설명 한 줄. 결과·경고 문장은 role(status/alert)을 붙여 화면 읽기 도구에 알린다. */
+export function Hint({ children, role }: { children: ReactNode; role?: 'status' | 'alert' }): JSX.Element {
+  return <Text tone="muted" size="var(--ig-text-micro)" role={role}>{children}</Text>
 }
 
 /** 목록 행 묶음. */

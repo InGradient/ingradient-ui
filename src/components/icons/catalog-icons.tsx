@@ -67,6 +67,7 @@ export {
   RefreshCw as RefreshIcon,
   RotateCcw as ResetIcon,
   Save as SaveIcon,
+  ScanSearch as ScanSearchIcon,
   Scissors as ScissorsIcon,
   Search as SearchIcon,
   Send as SendIcon,

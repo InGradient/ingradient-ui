@@ -6,14 +6,14 @@ import { edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Settings/Tabs',
   component: Workspace005.component,
-  args: { ...Workspace005.args, activeTab: 'capture', settingsOpen: true },
+  args: { ...Workspace005.args, activeTab: 'capture', settingsOpen: true, settingsPlcJudge: true },
   // The dialog covers the whole Docs page, so these open from the sidebar only.
   tags: ['!autodocs'],
   parameters: edge006Parameters({
     page: 'Settings',
     referenceStory: 'Pages / Edge / 0.0.6 / Settings / Tabs / Connection',
     fixturesPath: 'stories/fixtures/edge/0.0.5/*',
-    requiredScenarios: ['general', 'connection', 'camera', 'capture', 'lighting', 'server', 'data', 'logs', 'experiments', 'field-test', 'about'],
+    requiredScenarios: ['general', 'connection', 'camera', 'capture', 'lighting', 'plc', 'judge', 'server', 'data', 'logs', 'experiments', 'field-test', 'about'],
     interactions: ['Tab switching; edits and outcomes: see Settings / Workflows and Settings / Tab Workflows'],
   }),
 } satisfies Meta<typeof Workspace005.component>
@@ -27,6 +27,10 @@ export const Connection: Story = { name: 'Connection', args: { settingsTab: 'con
 export const Camera: Story = { name: 'Camera', args: { settingsTab: 'camera' } }
 export const Capture: Story = { name: 'Capture', args: { settingsTab: 'capture' } }
 export const Lighting: Story = { name: 'Lighting', args: { settingsTab: 'lighting' } }
+/** Same as the real app before installation: no PLC address yet, so the test row asks for one. */
+export const Plc: Story = { name: 'PLC Communication', args: { settingsTab: 'plc' } }
+/** Same as the real app without a model: status only. Other model states: Settings / System States. */
+export const Judge: Story = { name: 'Judge model', args: { settingsTab: 'judge' } }
 export const Server: Story = { name: 'Server', args: { settingsTab: 'server' } }
 export const Data: Story = { name: 'Data', args: { settingsTab: 'data' } }
 export const Logs: Story = { name: 'Logs', args: { settingsTab: 'logs' } }

@@ -5,7 +5,7 @@
 import type { ReactNode } from 'react'
 
 export type SettingsTab =
-  | 'general' | 'connection' | 'camera' | 'capture' | 'lighting' | 'server'
+  | 'general' | 'connection' | 'camera' | 'capture' | 'lighting' | 'plc' | 'judge' | 'server'
   | 'data' | 'logs' | 'experiments' | 'fieldtest' | 'about'
 
 export interface CameraSettingsDialogLabels {
@@ -17,6 +17,10 @@ export interface CameraSettingsDialogLabels {
   /** 촬영 탭. 이 라벨을 주지 않으면 탭이 서지 않는다 — 탭이 없던 버전의 화면도 그대로 뜬다. */
   tabCapture?: string
   tabLighting: string
+  /** PLC 통신 탭. 이 라벨을 주지 않으면 탭이 서지 않는다(0.0.6부터, 실제 앱과 같은 자리). */
+  tabPlc?: string
+  /** 판독 모델 탭. 이 라벨을 주지 않으면 탭이 서지 않는다. */
+  tabJudge?: string
   tabServer: string
   tabData: string
   tabLogs: string
@@ -36,6 +40,8 @@ export interface CameraSettingsDialogViewProps {
   cameraContent?: ReactNode
   captureContent?: ReactNode
   lightingContent?: ReactNode
+  plcContent?: ReactNode
+  judgeContent?: ReactNode
   serverContent?: ReactNode
   dataContent?: ReactNode
   experimentsContent?: ReactNode

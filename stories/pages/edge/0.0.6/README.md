@@ -16,7 +16,7 @@ Pages/Edge/0.0.6/
 │                  Review Workflows · Log and Setup Workflows
 ├─ Images          Workspace · System States · Workflows
 ├─ Statics         Workspace
-├─ Settings        Tabs (one story per tab) · Workflows · Tab Workflows
+├─ Settings        Tabs (one story per tab) · System States · Workflows · Tab Workflows
 └─ App Chrome      Workflows (language, account, system monitor)
 ```
 
@@ -34,6 +34,15 @@ They use optional first-render arguments added to the 0.0.5 scenes (`initialModa
 `imagesInspector`, `initialSequenceFailure`). Editing reuses the 0.0.1 bbox canvas because
 the 0.0.5 inspector is view-only. Component state sheets (BottomBar, CaptureView,
 LogDetailTable) are parts, not pages, and are not repeated here.
+
+## PLC Communication and Judge model
+
+The real Edge app has two Settings tabs that 0.0.5 does not: PLC Communication (Modbus TCP
+addresses, timing and a connection test, saved per dataset) and Judge model (model state and
+class links). 0.0.6 turns them on with the `settingsPlcJudge` argument of the 0.0.5 Workspace
+scene, so 0.0.5 keeps its 11 tabs. `plcScenario` and `judgeScenario` pick the synthetic state;
+the top-bar PLC icon opens the PLC tab. Labels and defaults come from the real app
+(`stories/fixtures/edge/0.0.5/settings-plc-judge.ts`).
 
 ## Slow playback
 

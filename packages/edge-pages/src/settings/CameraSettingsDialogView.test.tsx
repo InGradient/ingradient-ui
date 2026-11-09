@@ -17,6 +17,15 @@ describe('CameraSettingsDialogView visible tabs', () => {
     expect(screen.getByRole('tab', { name: 'Capture' })).toHaveAttribute('aria-selected', 'true')
     expect(screen.getByText('Capture settings')).toBeVisible()
   })
+  it('adds PLC Communication and Judge model after Lighting only when their labels are supplied', () => {
+    const { rerender } = render(<CameraSettingsDialogView labels={labels} activeTab="general" currentUserRole="owner"
+      onSetActiveTab={() => {}} onClose={() => {}} generalContent={<p>General</p>} />)
+    expect(screen.queryByRole('tab', { name: 'PLC Communication' })).not.toBeInTheDocument()
+    rerender(<CameraSettingsDialogView labels={{ ...labels, tabPlc: 'PLC Communication', tabJudge: 'Judge model' }} activeTab="plc"
+      currentUserRole="owner" onSetActiveTab={() => {}} onClose={() => {}} plcContent={<p>PLC settings</p>} judgeContent={<p>Judge settings</p>} />)
+    expect(screen.getAllByRole('tab').map(tab => tab.textContent).slice(3, 7)).toEqual(['Lighting', 'PLC Communication', 'Judge model', 'Server'])
+    expect(screen.getByText('PLC settings')).toBeVisible()
+  })
   it('uses the identical generic settings item appearance as Platform without hiding tab content', () => {
     render(<><TabsList items={[{ value: 'general', label: 'Platform General' }]} value="general" onChange={() => {}} />
       <CameraSettingsDialogView labels={labels} activeTab="general" currentUserRole="owner" onSetActiveTab={() => {}} onClose={() => {}} generalContent={<p>General controls</p>} /></>)

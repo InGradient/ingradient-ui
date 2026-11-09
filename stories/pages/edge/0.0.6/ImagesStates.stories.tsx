@@ -6,7 +6,7 @@ import { DIALOG_ONLY, edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Images/System States',
   component: Workspace005.component,
-  args: { ...Workspace005.args, activeTab: 'images' },
+  args: { ...Workspace005.args, activeTab: 'images', settingsPlcJudge: true },
   ...DIALOG_ONLY,
   parameters: edge006Parameters({
     page: 'Images',

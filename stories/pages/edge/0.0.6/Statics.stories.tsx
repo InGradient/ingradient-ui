@@ -6,7 +6,7 @@ import { edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Statics/Workspace',
   component: Workspace005.component,
-  args: Workspace005.args,
+  args: { ...Workspace005.args, settingsPlcJudge: true },
   tags: ['autodocs'],
   parameters: edge006Parameters({
     page: 'Statics',

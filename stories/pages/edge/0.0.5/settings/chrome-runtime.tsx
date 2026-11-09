@@ -20,6 +20,8 @@ export interface TopBarOptions {
   onMockAction?: MockAction; langSelector?: ReactNode; accountMenu?: ReactNode
   /** PLC link state; `null` hides the PLC icon and auto-inspect (PLC UI off). Default: no PLC address. */
   plc?: PlcStatusTone | null
+  /** Opens Settings > PLC Communication (0.0.6). Without it the icon only records the action. */
+  onOpenPlcSettings?: () => void
 }
 
 const PLC_TITLE: Record<PlcStatusTone, string> = {
@@ -42,7 +44,7 @@ export function TopBarRuntime(opts: TopBarOptions) {
   const plc = opts.plc === undefined ? 'unconfigured' : opts.plc
   return <><TopBarView selectedProjectName={opts.project} selectedDatasetName={opts.dataset}
     connectionStatus={opts.connectionStatus ?? 'connected'} connectionTitle={opts.connectionStatus === 'disconnected' ? 'Camera disconnected' : 'Camera connected'} isRefreshing={false} canSetupCamera={Boolean(opts.onOpenSettings)} labels={TOP_BAR_LABELS}
-    plcStatus={plc === null ? undefined : { tone: plc, title: PLC_TITLE[plc], onOpen: () => action('open-plc-settings') }}
+    plcStatus={plc === null ? undefined : { tone: plc, title: PLC_TITLE[plc], onOpen: () => { if (opts.onOpenPlcSettings) { opts.onMockAction?.('open-plc-settings'); opts.onOpenPlcSettings() } else action('open-plc-settings') } }}
     autoInspect={plc === null ? undefined : <AutoInspectRuntime onMockAction={opts.onMockAction} />}
     langSelector={opts.langSelector ?? <LanguageRuntime onMockAction={opts.onMockAction} />}
     accountMenu={opts.accountMenu ?? <AccountRuntime onMockAction={opts.onMockAction} />} settingsDialog={opts.settingsDialog ?? null}
