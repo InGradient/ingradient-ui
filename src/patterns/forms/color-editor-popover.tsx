@@ -13,7 +13,7 @@ const Panel = styled.div`
   z-index: var(--ig-z-popover);
   width: 100%;
   box-sizing: border-box;
-  padding: var(--ig-space-5);
+  padding: calc(var(--ig-space-5) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   box-shadow: var(--ig-shadow-popover);
 `
@@ -28,11 +28,13 @@ const Header = styled.div`
 
 const Title = styled.strong`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-primary);
 `
 
 const Hex = styled.code`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
@@ -61,6 +63,7 @@ const Control = styled.label`
   align-items: center;
   gap: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
@@ -102,7 +105,7 @@ const Footer = styled.div`
   justify-content: flex-end;
   margin-top: var(--ig-space-5);
   padding-top: var(--ig-space-4);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
 `
 
 export interface ColorEditorPopoverProps {

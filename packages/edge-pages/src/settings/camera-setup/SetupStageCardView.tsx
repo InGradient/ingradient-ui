@@ -12,11 +12,11 @@ const BADGE_TONE = {
 
 function CheckList({ checks }: { checks: SetupCheck[] }): JSX.Element {
   return (
-    <Stack gap="var(--ig-space-2)" role="list">
+    <Stack gap="var(--ig-spacing-8)" role="list">
       {checks.map((check) => (
-        <Inline key={check.id} gap="var(--ig-space-2)" align="center" role="listitem">
+        <Inline key={check.id} gap="var(--ig-spacing-8)" align="center" role="listitem">
           <StatusIcon status={check.status} size={iconSizeNumbers.xsPlus} />
-          <Text tone="secondary" size="var(--ig-font-size-2xs)">{check.summary}</Text>
+          <Text tone="secondary" size="var(--ig-text-micro)">{check.summary}</Text>
         </Inline>
       ))}
     </Stack>
@@ -30,12 +30,12 @@ function TechnicalDetails({ checks, label }: { checks: SetupCheck[]; label: stri
   return (
     <details>
       <summary>
-        <Text tone="muted" size="var(--ig-font-size-2xs)">{label}</Text>
+        <Text tone="muted" size="var(--ig-text-micro)">{label}</Text>
       </summary>
       <Text
         as="pre"
         tone="muted"
-        size="var(--ig-font-size-2xs)"
+        size="var(--ig-text-micro)"
         fontFamily="mono"
         style={{ whiteSpace: 'pre-wrap', margin: 0 }}
       >
@@ -52,8 +52,8 @@ export function SetupStageCardView(props: SetupStageCardViewProps): JSX.Element 
   const border = stage.status === 'failed' || stage.status === 'warning' ? 'strong' : 'default'
 
   return (
-    <Card padding="var(--ig-space-4)" radius="var(--ig-radius-xs)" border={border} flat>
-      <Stack gap="var(--ig-space-3)">
+    <Card padding="var(--ig-spacing-8)" border={border} flat>
+      <Stack gap="var(--ig-spacing-8)">
         {/* 헤더 전체가 토글이다. Inline 은 레이아웃만 맡고 a11y 속성은 button 이 갖는다. */}
         <button
           type="button"
@@ -65,29 +65,29 @@ export function SetupStageCardView(props: SetupStageCardViewProps): JSX.Element 
             textAlign: 'left', width: '100%',
           }}
         >
-          <Inline gap="var(--ig-space-3)" align="center">
+          <Inline gap="var(--ig-spacing-8)" align="center">
             {expanded
               ? <ChevronDownIcon size={iconSizeNumbers.xs} />
               : <ChevronRightIcon size={iconSizeNumbers.xs} />}
-            <Text tone="muted" size="var(--ig-font-size-2xs)" tabularNums>{stage.order}</Text>
+            <Text tone="muted" size="var(--ig-text-micro)" tabularNums>{stage.order}</Text>
             <StatusIcon status={stage.status} />
-            <Text size="var(--ig-font-size-xs)" weight="medium">{stage.title}</Text>
-            <Text tone="muted" size="var(--ig-font-size-2xs)" style={{ flex: 1, minWidth: 0 }}>
+            <Text size="var(--ig-text-caption)" weight="medium">{stage.title}</Text>
+            <Text tone="muted" size="var(--ig-text-micro)" style={{ flex: 1, minWidth: 0 }}>
               {stage.summary}
             </Text>
             {stage.updatedAtLabel && (
-              <Text tone="muted" size="var(--ig-font-size-2xs)" tabularNums>{stage.updatedAtLabel}</Text>
+              <Text tone="muted" size="var(--ig-text-micro)" tabularNums>{stage.updatedAtLabel}</Text>
             )}
             <Badge $tone={BADGE_TONE[stage.status]}>{labels.statusLabel(stage.status)}</Badge>
           </Inline>
         </button>
 
         {expanded && (
-          <Stack gap="var(--ig-space-3)" id={bodyId}>
+          <Stack gap="var(--ig-spacing-8)" id={bodyId}>
             <CheckList checks={stage.checks} />
             {remediation}
             {action && stage.status !== 'running' && (
-              <Inline gap="var(--ig-space-3)">
+              <Inline gap="var(--ig-spacing-8)">
                 <Button
                   size="sm"
                   variant="secondary"

@@ -15,7 +15,7 @@ export function CameraSetupPanel({ onMockAction }: { onMockAction: MockAction })
   const action = (name: string) => { setResult(`Mock setup ${name}; no device was contacted.`); onMockAction(`camera-setup-${name}`) }
 
   return (
-    <Stack gap="var(--ig-space-5)">
+    <Stack gap="var(--ig-spacing-12)">
       <SetupSummaryView
         steps={SUMMARY_STEPS}
         overallStatus="success"

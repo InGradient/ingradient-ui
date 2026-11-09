@@ -3,7 +3,7 @@ import { Button, Card, IconButton, TextField, SettingsIcon } from '@ingradient/u
 import { Stack, H1, Text } from '@ingradient/ui/primitives'
 import {
   Wrap, LangCorner,
-  FingerprintBox, FingerprintText, CopyBtn, HintBox,
+  FingerprintBox, FingerprintText, HintBox,
 } from './LicenseView.styles'
 import type { LicenseViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
@@ -32,40 +32,40 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
       <Card
         elevation="raised"
         flat
-        padding="var(--ig-space-13)"
+        padding="var(--ig-spacing-32)"
         style={{ width: '100%', maxWidth: 'var(--ig-popup-lg-plus)' }}
       >
-        <Stack gap="var(--ig-space-9)">
+        <Stack gap="var(--ig-spacing-20)">
         <H1>{labels.title}</H1>
-        <Text size="var(--ig-font-size-sm)" tone="muted" align="center" style={{ lineHeight: 'var(--ig-line-height-loose)' }}>
+        <Text size="var(--ig-text-body-sm)" tone="muted" align="center">
           {isBind ? labels.bindHint : labels.subtitle}
         </Text>
 
-        <Stack gap="var(--ig-space-2)">
-          <Text as="label" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+        <Stack gap="var(--ig-spacing-8)">
+          <Text as="label" size="var(--ig-text-caption)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
             {labels.fingerprintLabel}
           </Text>
           <FingerprintBox>
             <FingerprintText>{fingerprint}</FingerprintText>
-            <CopyBtn type="button" onClick={onCopyFingerprint} title={labels.copy}>
+            <Button type="button" variant="secondary" size="sm" onClick={onCopyFingerprint} title={labels.copy}>
               {copied ? labels.copied : labels.copy}
-            </CopyBtn>
+            </Button>
           </FingerprintBox>
         </Stack>
 
         {isBind ? (
           <>
             <HintBox>{labels.bindHint}</HintBox>
-            <Button variant="accent" type="button" onClick={onBind} disabled={submitting}>
+            <Button variant="solid" type="button" onClick={onBind} disabled={submitting}>
               {submitting ? labels.binding : labels.bindButton}
             </Button>
           </>
         ) : (
           <>
             <HintBox>{labels.hint}</HintBox>
-            <Stack as="form" gap="var(--ig-space-5)" onSubmit={onSubmit}>
-              <Stack gap="var(--ig-space-2)">
-                <Text as="label" htmlFor="license-key" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+            <Stack as="form" gap="var(--ig-spacing-12)" onSubmit={onSubmit}>
+              <Stack gap="var(--ig-spacing-8)">
+                <Text as="label" htmlFor="license-key" size="var(--ig-text-caption)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
                   {labels.keyLabel}
                 </Text>
                 <TextField
@@ -78,7 +78,7 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
                   disabled={submitting}
                 />
               </Stack>
-              <Button variant="accent" type="submit" disabled={submitting || !licenseKey.trim()}>
+              <Button variant="solid" type="submit" disabled={submitting || !licenseKey.trim()}>
                 {submitting ? labels.activating : labels.activate}
               </Button>
             </Stack>
@@ -86,7 +86,7 @@ function LicenseViewContent(props: LicenseViewProps): JSX.Element {
         )}
 
         {error && (
-          <Text size="var(--ig-font-size-sm)" tone="danger" align="center">
+          <Text size="var(--ig-text-body-sm)" tone="danger" align="center">
             {error}
           </Text>
         )}

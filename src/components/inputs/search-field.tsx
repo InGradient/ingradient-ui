@@ -15,7 +15,7 @@ const Input = styled.input<{ $size: 'sm' | 'md' }>`
   ${controlField}
   padding-left: calc(var(--ig-space-5) + var(--ig-space-9));
   padding-right: calc(var(--ig-space-5) + var(--ig-space-9));
-  ${(p) => p.$size === 'sm' && 'padding-top: var(--ig-space-3); padding-bottom: var(--ig-space-3); font-size: var(--ig-font-size-sm);'}
+  ${(p) => p.$size === 'sm' && 'padding-top: var(--ig-space-3); padding-bottom: var(--ig-space-3); font-size: var(--ig-font-size-sm); line-height: var(--ig-leading-sm);'}
 `
 
 const SearchIconHost = styled.span`

@@ -21,7 +21,7 @@ export function ConnectionTabContent({ draft: { connection }, onMockAction }: Se
   const [error, setError] = useState<string | null>(null)
   const [advancedExpanded, setAdvancedExpanded] = useState(false)
   const action = (name: string) => { setResult(`Mock ${name} complete; no device or network changes.`); onMockAction(`connection-${name}`) }
-  return <Stack gap="var(--ig-space-5)">
+  return <Stack gap="var(--ig-spacing-12)">
     <CameraSetupPanel onMockAction={onMockAction} />
     <ConnectionTabView labels={CONNECTION_LABELS}
       scan={{ isScanning: false, discoveredDevices: cameras, nicCandidates: SAMPLE_NIC_CANDIDATES, isLoadingCandidates: false, selectedCamera, selectedNic, isBlocked: false,

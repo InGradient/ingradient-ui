@@ -14,12 +14,13 @@ export const Modal = styled(ModalCard)`
 export const Header = styled(ModalHeader)`
   padding: var(--ig-spacing-16) var(--ig-spacing-24);
   flex-shrink: 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   background: var(--ig-color-surface-interactive);
 `
 
 export const Title = styled(ModalTitle)`
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-bold);
 `
 
@@ -27,7 +28,7 @@ export const Main = styled(SettingsShell)`
   flex: 1;
   min-height: 0;
   gap: 0;
-  grid-template-columns: var(--ig-popup-xs) minmax(0, 1fr);
+  grid-template-columns: var(--ig-layout-size-settings-nav-width) minmax(0, 1fr);
   background: var(--ig-color-bg-canvas);
   --ig-catalog-divider-color: var(--ig-color-border-strong);
 
@@ -56,7 +57,7 @@ export const TabsList = styled(VerticalTabs).attrs({ appearance: 'settings' as c
 
   ${media.lg} {
     border-right: 0;
-    border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-catalog-divider-color);
   }
 `
 
@@ -76,7 +77,7 @@ export const AdminDesc = styled.p`
   margin: 0;
   font-size: var(--ig-text-body-sm);
   color: var(--ig-color-text-muted);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export const AdminContent = styled.div`
@@ -95,10 +96,9 @@ export const AdminContent = styled.div`
 export const SubsectionTitle = styled.h4`
   margin: var(--ig-spacing-12) 0 var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-normal);
 `
 
 export const PermissionsHeader = styled.div`
@@ -113,5 +113,5 @@ export const PermissionsScopeNote = styled.p`
   margin: 0 0 var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
   color: var(--ig-color-text-soft);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `

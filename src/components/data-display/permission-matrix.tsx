@@ -14,7 +14,9 @@ const SCROLLER_STYLE = { overflow: 'auto' as const, maxWidth: '100%' }
 const TABLE_WRAP_STYLE = {
   display: 'inline-block' as const,
   width: 'fit-content',
-  border: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+  // Inset outline, not border: the table's cells set the height, so a border would add 2px off the 4px grid.
+  outline: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
+  outlineOffset: 'var(--ig-space-neg-1px)',
   borderRadius: 'var(--ig-radius-xxs)',
   background: 'var(--ig-color-surface-panel)',
 }
@@ -29,7 +31,7 @@ const StyledTable = styled.table`
   border-collapse: collapse;
   & th {
     padding: var(--ig-space-4) var(--ig-space-3);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
     border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     background: var(--ig-color-surface-raised);
     color: var(--ig-color-text-secondary);
@@ -44,7 +46,7 @@ const StyledTable = styled.table`
   }
   & td {
     padding: var(--ig-space-3);
-    border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
     border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
     text-align: center;
   }

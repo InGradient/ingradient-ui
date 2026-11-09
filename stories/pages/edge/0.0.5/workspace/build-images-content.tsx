@@ -2,6 +2,9 @@
 import { useState } from 'react'
 import { ImagesView, buildGroups, imagePassesDateFilter, type ImagesDatePreset, type ImageItem } from '@ingradient/edge-pages'
 import { SAMPLE_CLASSES_FULL, SAMPLE_IMAGE_ITEMS } from '../../../../fixtures/edge/0.0.5'
+// The 0.0.5 inspector is view-only; the edit state reuses the 0.0.1 synthetic bbox canvas.
+import { BBoxCanvasScene } from '../../0.0.1/workspace/build-bbox-canvas'
+import { SAMPLE_BBOXES } from '../../../../fixtures/edge/0.0.1/sample-images'
 
 const noop = (): undefined => undefined
 
@@ -40,7 +43,7 @@ const IMAGES_LABELS = {
 }
 
 /** Session-owned synthetic gallery state; retain this hook above tab unmount boundaries. */
-export function useImagesDraft() {
+export function useImagesDraft(initialActiveId: string | null = null) {
   const [items, setItems] = useState(() => SAMPLE_IMAGE_ITEMS.map((image, index) => ({
     ...image, sequenceId: index < 3 ? 'synthetic-sequence' : null, sequenceStep: index,
   })))
@@ -50,7 +53,7 @@ export function useImagesDraft() {
   const [fromDate, setFromDate] = useState('2026-05-19')
   const [toDate, setToDate] = useState('2026-05-20')
   const [filterOpen, setFilterOpen] = useState(false)
-  const [activeId, setActiveId] = useState<string | null>(null)
+  const [activeId, setActiveId] = useState<string | null>(initialActiveId)
   const [fullscreen, setFullscreen] = useState(false)
   const [pendingIds, setPendingIds] = useState<string[] | null>(null)
   const [status, setStatus] = useState('Synthetic fixture: 12 images. Preview clock: 20 May 2026.')
@@ -65,8 +68,9 @@ export function useImagesDraft() {
 export type ImagesDraft = ReturnType<typeof useImagesDraft>
 
 /** Omitting draft preserves an independent gallery for standalone consumers. */
-export function ImagesContent({ draft }: { draft?: ImagesDraft } = {}): JSX.Element {
-  return draft ? <ControlledImagesContent draft={draft} /> : <StandaloneImagesContent />
+/** `editable` adds the bbox toolbar and drawing canvas to the inspector (no data is saved). */
+export function ImagesContent({ draft, editable = false }: { draft?: ImagesDraft; editable?: boolean } = {}): JSX.Element {
+  return draft ? <ControlledImagesContent draft={draft} editable={editable} /> : <StandaloneImagesContent />
 }
 
 function StandaloneImagesContent(): JSX.Element {
@@ -74,7 +78,10 @@ function StandaloneImagesContent(): JSX.Element {
   return <ControlledImagesContent draft={draft} />
 }
 
-function ControlledImagesContent({ draft }: { draft: ImagesDraft }): JSX.Element {
+function ControlledImagesContent({ draft, editable = false }: { draft: ImagesDraft; editable?: boolean }): JSX.Element {
+  const [modalEditMode, setModalEditMode] = useState<'cursor' | 'bbox'>('bbox')
+  const [annotationsVisible, setAnnotationsVisible] = useState(true)
+  const [editBboxCount, setEditBboxCount] = useState(SAMPLE_BBOXES.length)
   const {
     items, setItems, selectedIds, setSelectedIds, selectionMode, setSelectionMode,
     datePreset, setDatePreset, fromDate, setFromDate, toDate, setToDate,
@@ -120,14 +127,18 @@ function ControlledImagesContent({ draft }: { draft: ImagesDraft }): JSX.Element
       modalOpen={active !== null}
       modalActiveImage={active}
       modalImageSrc={active?.fullSrc ?? null}
-      modalEditMode="cursor"
-      modalCanvasContent={null}
-      modalHintText="Synthetic image inspector. Use Previous/Next or Left/Right arrow keys. No annotation data is saved."
-      showModalToolbar={false}
-      showModalOverlayControls={false}
-      modalAnnotationsVisible
+      modalEditMode={editable ? modalEditMode : 'cursor'}
+      modalCanvasContent={editable && active ? (
+        <BBoxCanvasScene key={active.id} inModal editMode={modalEditMode} annotationsVisible={annotationsVisible} imageSrc={active.fullSrc ?? undefined} onBboxesChange={(boxes) => setEditBboxCount(boxes.length)} />
+      ) : null}
+      modalHintText={editable
+        ? (modalEditMode === 'bbox' ? IMAGES_LABELS.modal.hintDraw : IMAGES_LABELS.modal.hintSelect)
+        : 'Synthetic image inspector. Use Previous/Next or Left/Right arrow keys. No annotation data is saved.'}
+      showModalToolbar={editable}
+      showModalOverlayControls={editable}
+      modalAnnotationsVisible={editable ? annotationsVisible : true}
       modalIsFullscreen={fullscreen}
-      modalBboxCount={active?.bboxes?.length ?? 0}
+      modalBboxCount={editable ? editBboxCount : active?.bboxes?.length ?? 0}
       pendingDelete={pendingIds ? { count: pendingIds.length } : null}
       labels={IMAGES_LABELS}
       getDisplayedGroupMembers={members}
@@ -142,8 +153,8 @@ function ControlledImagesContent({ draft }: { draft: ImagesDraft }): JSX.Element
       onToggleImageSelection={(id) => toggle([id])}
       onCloseModal={() => setActiveId(null)}
       onModalSwipeNavigate={navigate}
-      onSetModalEditMode={noop}
-      onSetModalAnnotationsVisible={noop}
+      onSetModalEditMode={editable ? setModalEditMode : noop}
+      onSetModalAnnotationsVisible={editable ? setAnnotationsVisible : noop}
       onToggleModalFullscreen={() => setFullscreen((value) => !value)}
       onRequestDelete={() => setPendingIds([...selectedIds])}
       onConfirmDelete={() => {

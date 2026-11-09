@@ -33,6 +33,7 @@ export const BrandRow = styled.span`
   gap: var(--ig-spacing-8);
   min-width: 0;
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `
@@ -50,6 +51,7 @@ export const ProjectButton = styled.button`
   background: transparent;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   cursor: pointer;
   & > span {

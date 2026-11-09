@@ -4,24 +4,25 @@ import type { LogDetailTableViewProps } from './types'
 const Table = styled.table`
   width: 100%;
   font-family: var(--ig-font-mono);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   border-collapse: collapse;
 `
 
 const Th = styled.th`
   text-align: left;
-  padding: var(--ig-space-2) var(--ig-space-3);
+  padding: var(--ig-spacing-8) var(--ig-spacing-8);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-muted);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   vertical-align: top;
   white-space: nowrap;
 `
 
 const Td = styled.td`
-  padding: var(--ig-space-2) var(--ig-space-3);
+  padding: var(--ig-spacing-8) var(--ig-spacing-8);
   color: var(--ig-color-text-secondary);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   vertical-align: top;
   word-break: break-word;
 `

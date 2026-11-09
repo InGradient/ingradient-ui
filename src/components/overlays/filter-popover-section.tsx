@@ -8,6 +8,7 @@ const SectionWrap = styled.div`
 
 const SectionTitle = styled.div`
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;

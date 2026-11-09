@@ -1,10 +1,16 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { Grid, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Alert, Button } from '@ingradient/ui/components'
 
-const CONTAINER_STYLE = {}
-const ERROR_TEXT_STYLE = { color: 'var(--ig-color-alert-danger-text)' }
-const SUB_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const ContainerBox = styled(Stack)`
+`
+const ErrorTextBox = styled(Text)`
+  color: var(--ig-color-alert-danger-text);
+`
+const SubTitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
 
 export interface StorageAnalyticsTabProps {
   title?: string
@@ -37,29 +43,29 @@ export function StorageAnalyticsTab({
   copyDisabled, onCopyReport,
   error, onRetry,
   overview, tierChart, projectChart, resolutionChart, formatChart, tierTable, costTable, recommendations,
-  tierTitle = 'Storage by Tier',
-  projectTitle = 'Storage by Project (Top 10)',
-  resolutionTitle = 'Image Size Distribution',
-  formatTitle = 'Upload Format',
-  tierEfficiencyTitle = 'Tier Efficiency',
-  costTitle = 'Monthly Cost Estimate',
-  recommendationsTitle = 'Optimization Recommendations',
+  tierTitle = 'Storage by tier',
+  projectTitle = 'Storage by project (top 10)',
+  resolutionTitle = 'Image size distribution',
+  formatTitle = 'Upload format',
+  tierEfficiencyTitle = 'Tier efficiency',
+  costTitle = 'Monthly cost estimate',
+  recommendationsTitle = 'Optimization recommendations',
 }: StorageAnalyticsTabProps) {
   if (error) {
     return (
-      <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
+      <ContainerBox gap="var(--ig-spacing-8)">
         <Alert $tone="danger">
           <Stack gap="var(--ig-spacing-8)">
-            <Text as="p" size="var(--ig-text-body-sm)" style={ERROR_TEXT_STYLE}>{error}</Text>
+            <ErrorTextBox forwardedAs="p" size="var(--ig-text-body-sm)">{error}</ErrorTextBox>
             {onRetry ? <Button type="button" variant="secondary" size="sm" onClick={onRetry}>Retry</Button> : null}
           </Stack>
         </Alert>
-      </Stack>
+      </ContainerBox>
     )
   }
 
   return (
-    <Stack gap="var(--ig-spacing-8)" style={CONTAINER_STYLE}>
+    <ContainerBox gap="var(--ig-spacing-8)">
       <Inline justify="space-between">
         {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
         <Button type="button" variant="secondary" size="sm" disabled={!!copyDisabled} onClick={onCopyReport}>
@@ -69,35 +75,35 @@ export function StorageAnalyticsTab({
 
       {overview}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{tierTitle}</Text>
       {tierChart}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{projectTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{projectTitle}</Text>
       {projectChart}
 
-      <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-popup-xs)">
+      <Grid gap="var(--ig-spacing-20)" minItemWidth="var(--ig-layout-size-cell-min-wide)">
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{resolutionTitle}</Text>
+          <SubTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{resolutionTitle}</SubTitleBox>
           {resolutionChart}
         </div>
         <div>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SUB_TITLE_STYLE}>{formatTitle}</Text>
+          <SubTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{formatTitle}</SubTitleBox>
           {formatChart}
         </div>
       </Grid>
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{tierEfficiencyTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{tierEfficiencyTitle}</Text>
       {tierTable}
 
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{costTitle}</Text>
+      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{costTitle}</Text>
       {costTable}
 
       {recommendations ? (
         <>
-          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal">{recommendationsTitle}</Text>
+          <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{recommendationsTitle}</Text>
           {recommendations}
         </>
       ) : null}
-    </Stack>
+    </ContainerBox>
   )
 }

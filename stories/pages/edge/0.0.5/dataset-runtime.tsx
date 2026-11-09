@@ -5,16 +5,17 @@ import {
 } from '@ingradient/edge-pages'
 import { SAMPLE_GROUPS, SAMPLE_CLASSES_FULL } from '../../../fixtures/edge/0.0.5'
 
-export function useDatasetRuntime(empty: boolean, failFirstExport: boolean, action?: (action: string) => void) {
+/** `initialModal` opens a dialog on first render so its static state can be reviewed without a play. */
+export function useDatasetRuntime(empty: boolean, failFirstExport: boolean, action?: (action: string) => void, initialModal?: 'add' | 'export') {
   const [groups, setGroups] = useState<EdgeProjectGroup[]>(() => empty ? [] : SAMPLE_GROUPS)
-  const [projectId, setProjectId] = useState<string | null>(null)
+  const [projectId, setProjectId] = useState<string | null>(() => initialModal === 'add' && !empty ? SAMPLE_GROUPS[0]?.project_id ?? null : null)
   const [projectOpen, setProjectOpen] = useState(false)
   const [name, setName] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [taskType, setTaskType] = useState<EdgeTaskType>('object_detection')
   const [classes, setClasses] = useState<Set<string>>(new Set())
   const [job, setJob] = useState<'dataset' | 'project' | 'export' | null>(null)
-  const [exportDataset, setExportDataset] = useState<EdgeDataset | null>(null)
+  const [exportDataset, setExportDataset] = useState<EdgeDataset | null>(() => initialModal === 'export' && !empty ? SAMPLE_GROUPS[0]?.datasets[0] ?? null : null)
   const [phase, setPhase] = useState<ExportPhase>('idle')
   const [exportAttempt, setExportAttempt] = useState(0)
   const [status, setStatus] = useState('')

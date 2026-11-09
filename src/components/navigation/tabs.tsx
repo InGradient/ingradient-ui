@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 const tabsTone = css`
   display: inline-flex;
   position: relative;
-  padding: var(--ig-space-1);
+  padding: calc(var(--ig-space-1) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-tab-surface);
@@ -20,7 +20,8 @@ const TabsRoot = styled.div<{ $variant: 'pill' | 'underline' }>`
           align-items: stretch;
           gap: 0;
           width: 100%;
-          border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+          /* Inset line (not a border) so the tab row is exactly the tab height. */
+          box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
         `
       : tabsTone}
 `
@@ -32,7 +33,7 @@ const TabsHighlight = styled.div<{ $left: number; $width: number; $visible: bool
   ${({ $variant }) =>
     $variant === 'underline'
       ? css`
-          bottom: var(--ig-space-neg-1px);
+          bottom: 0;
           height: var(--ig-space-2px);
           border-radius: var(--ig-radius-pill);
           background: var(--ig-color-accent-soft);
@@ -57,6 +58,9 @@ const TabButton = styled.button<{ $active: boolean; $variant: 'pill' | 'underlin
   padding: ${(p) => (p.$variant === 'underline' ? 'var(--ig-space-4) var(--ig-space-9)' : 'var(--ig-space-4) var(--ig-space-6)')};
   color: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-color-accent-soft)' : 'var(--ig-color-text-muted)') : p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   cursor: pointer;
+  /* Text role with a pixel leading keeps the tab on the 4px grid (8 + 24 + 8 = 40px). */
+  font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: ${(p) => (p.$variant === 'underline' ? (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-medium)') : 'var(--ig-font-weight-semibold)')};
   transition: color var(--ig-motion-fast);
 

@@ -126,7 +126,7 @@ export const WidgetDropZone = styled.div<{ $position: 'before' | 'after'; $activ
 const DragOverlayCardBase = styled.div`
   min-width: var(--ig-popup-xs);
   max-width: var(--ig-popup-md);
-  padding: var(--ig-spacing-12) var(--ig-spacing-16);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
   border-radius: var(--ig-radius-xl);
   border: var(--ig-border-1px) solid var(--ig-color-active-bg);
   background: linear-gradient(180deg, var(--ig-color-surface-dropdown-grid-top) 0%, var(--ig-color-surface-dropdown-grid-bottom) 100%);
@@ -137,6 +137,7 @@ export const DragOverlayCard = withSurfaceDepth(DragOverlayCardBase, { floating:
 
 export const DragOverlayTitle = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `

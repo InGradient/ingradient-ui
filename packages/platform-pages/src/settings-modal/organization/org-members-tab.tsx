@@ -5,8 +5,6 @@ import { DialogShell } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 import { EmptyText as Empty } from '@ingradient/ui/components'
 
-const DESCRIPTION_STYLE = { lineHeight: 'var(--ig-line-height-relaxed)' }
-
 export interface OrgMember {
   id: string
   userId: string
@@ -70,7 +68,7 @@ export function OrgMembersTab({
           columns={columns}
           rows={members}
           ariaLabel="Members table"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
       {pendingRemove && (
@@ -97,7 +95,7 @@ export function OrgMembersTab({
           }
         >
           <Stack gap="var(--ig-spacing-12)">
-            <Text as="p" tone="muted" size="var(--ig-text-body)" style={DESCRIPTION_STYLE}>
+            <Text as="p" tone="muted" size="var(--ig-text-body)">
               Remove <strong>{pendingRemove.user.displayName}</strong> ({pendingRemove.user.loginId}) from the organization?
             </Text>
           </Stack>

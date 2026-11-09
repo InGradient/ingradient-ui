@@ -9,11 +9,12 @@ const Wrap = styled(MenuPopover)`
   right: 0;
   z-index: var(--ig-z-sticky-plus);
   width: min(var(--ig-popup-md), calc(100vw - var(--ig-spacing-32)));
-  padding: var(--ig-spacing-12);
-  border-radius: var(--ig-radius-lg);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
 `
 
-const TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const TitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
 
 export interface DashboardCustomizeItem {
   key: string
@@ -35,7 +36,7 @@ export function DashboardCustomizePopover<K extends string = string>({
 }: DashboardCustomizePopoverProps<K>) {
   return (
     <Wrap className={className} role="group" aria-label={title}>
-      <Text size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide" style={TITLE_STYLE}>{title}</Text>
+      <TitleBox size="var(--ig-text-caption)" weight="bold" tone="soft" uppercase letterSpacing="wide">{title}</TitleBox>
       <Stack gap="var(--ig-spacing-8)">
         {items.map((item) => (
           <Checkbox

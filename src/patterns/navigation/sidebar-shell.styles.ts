@@ -37,12 +37,10 @@ export const SidebarBrandRow = styled.div<{ $expanded: boolean }>`
   justify-content: ${(p) => (p.$expanded ? 'space-between' : 'center')};
   flex-shrink: 0;
   background: var(--ig-color-surface-header);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  /* Inset line instead of a border keeps the row on the 4px grid; border: 0 also resets the <button> form. */
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   box-sizing: border-box;
-  /* button reset (when rendered as <button> in collapsed-clickable mode) */
-  border-width: 0 0 var(--ig-border-1px) 0;
-  border-style: solid;
-  border-color: var(--ig-color-border-subtle);
+  border: 0;
   color: inherit;
   width: 100%;
   text-align: inherit;
@@ -95,7 +93,7 @@ export const SidebarToggleButton = styled.button`
 `
 
 export const SidebarTopActionWrap = styled.div`
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   & svg { width: var(--ig-icon-lg); height: var(--ig-icon-lg); flex-shrink: 0; }
 `
 
@@ -116,6 +114,7 @@ const rowMixin = `
   gap: var(--ig-space-5);
   color: var(--ig-color-text-muted);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-decoration: none;
   /* transition 제거 — color/background 변화는 즉시 적용.
    * 이전: transition 이 button 의 paint sequence 를 GPU layer 로 격리 → 빠른 스크롤 시 button 안
@@ -176,7 +175,7 @@ export const SidebarBottom = styled.div`
   display: flex;
   flex-direction: column;
   padding: var(--ig-space-5) 0;
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   gap: var(--ig-space-1);
   flex-shrink: 0;
 `

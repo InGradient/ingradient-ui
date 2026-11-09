@@ -8,7 +8,7 @@ import { EdgeAppFrame, LangSlot } from './shared/build-shell'
 
 const noop = (): undefined => undefined
 
-interface SceneArgs {
+export interface SceneArgs {
   /** offline = .ige 패키지로 들어가는 현장 기본값. */
   mode?: 'online' | 'offline'
   /** 패키지를 이미 불러왔나. */

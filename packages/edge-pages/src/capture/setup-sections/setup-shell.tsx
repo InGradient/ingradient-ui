@@ -4,16 +4,17 @@ import styled from 'styled-components'
 import { rotations } from '@ingradient/ui'
 import { ChevronDownIcon } from '@ingradient/ui/components'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
-import { surfacePanel } from '@ingradient/ui/primitives'
+import { surfacePanel, withSurfaceDepth } from '@ingradient/ui/primitives'
 
-export const SetupAccordion = styled.details`
+const SetupAccordionBase = styled.details`
   ${surfacePanel}
   border-radius: var(--ig-radius-xl);
   overflow: hidden;
 
   summary {
     cursor: pointer;
-    padding: var(--ig-space-6) var(--ig-space-7);
+    /* The accordion's 1px border is given back from the summary so a closed section is 48px. */
+    padding: calc(var(--ig-spacing-12) - var(--ig-border-1px)) var(--ig-spacing-16);
     list-style: none;
     font-weight: var(--ig-font-weight-semibold);
   }
@@ -21,13 +22,14 @@ export const SetupAccordion = styled.details`
   summary::-webkit-details-marker { display: none; }
 
   > div {
-    padding: 0 var(--ig-space-7) var(--ig-space-7);
+    padding: 0 var(--ig-spacing-16) var(--ig-spacing-16);
     display: flex;
     flex-direction: column;
-    gap: var(--ig-space-4);
+    gap: var(--ig-spacing-8);
     color: var(--ig-color-text-muted);
   }
 `
+export const SetupAccordion = withSurfaceDepth(SetupAccordionBase, { displayName: 'SetupAccordion' })
 
 const SummaryRow = styled.div`
   display: flex;

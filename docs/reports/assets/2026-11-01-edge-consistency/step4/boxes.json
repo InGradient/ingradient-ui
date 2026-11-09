@@ -1,0 +1,134 @@
+[
+ {
+  "id": "pages-edge-0-0-6-capture-workspace--overview",
+  "file": "capture-workspace--overview.png",
+  "boxes": [
+   {
+    "x": 68,
+    "y": 76,
+    "w": 616,
+    "h": 808
+   },
+   {
+    "x": 1020,
+    "y": 76,
+    "w": 416,
+    "h": 808
+   },
+   {
+    "x": 1412,
+    "y": 772,
+    "w": 24,
+    "h": 112
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-capture-workspace--setup",
+  "file": "capture-workspace--setup.png",
+  "boxes": [
+   {
+    "x": 68,
+    "y": 76,
+    "w": 640,
+    "h": 808
+   },
+   {
+    "x": 1028,
+    "y": 76,
+    "w": 400,
+    "h": 808
+   },
+   {
+    "x": 1308,
+    "y": 484,
+    "w": 96,
+    "h": 40
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-images-workspace--overview",
+  "file": "images-workspace--overview.png",
+  "boxes": [
+   {
+    "x": 68,
+    "y": 76,
+    "w": 1368,
+    "h": 808
+   },
+   {
+    "x": 1412,
+    "y": 772,
+    "w": 24,
+    "h": 112
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-statics-workspace--overview",
+  "file": "statics-workspace--overview.png",
+  "boxes": [
+   {
+    "x": 68,
+    "y": 76,
+    "w": 1368,
+    "h": 808
+   },
+   {
+    "x": 396,
+    "y": 436,
+    "w": 32,
+    "h": 24
+   },
+   {
+    "x": 844,
+    "y": 436,
+    "w": 184,
+    "h": 192
+   },
+   {
+    "x": 396,
+    "y": 492,
+    "w": 32,
+    "h": 24
+   },
+   {
+    "x": 396,
+    "y": 540,
+    "w": 32,
+    "h": 24
+   },
+   {
+    "x": 1412,
+    "y": 772,
+    "w": 24,
+    "h": 112
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-capture-system-states--camera-offline",
+  "file": "capture-system-states--camera-offline.png",
+  "boxes": [
+   {
+    "x": 68,
+    "y": 76,
+    "w": 616,
+    "h": 808
+   },
+   {
+    "x": 1020,
+    "y": 76,
+    "w": 416,
+    "h": 808
+   },
+   {
+    "x": 1412,
+    "y": 772,
+    "w": 24,
+    "h": 112
+   }
+  ]
+ }
+]

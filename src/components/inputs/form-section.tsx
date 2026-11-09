@@ -14,6 +14,7 @@ const RowWrap = styled.div`
 
 const RowLabel = styled.label`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-muted);
   padding-top: var(--ig-space-3);
 `
@@ -24,6 +25,7 @@ const RowContent = styled.div`
 
 const Hint = styled.div`
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   color: var(--ig-color-text-soft);
   margin-top: var(--ig-space-1);
 `
@@ -59,6 +61,7 @@ const FieldWrap = styled.div`
 
 const FieldLabelText = styled.label`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   text-transform: uppercase;

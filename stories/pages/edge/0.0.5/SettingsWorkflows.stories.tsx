@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
+import { expect, fn, waitFor, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { Button, Stack } from '@ingradient/ui'
 import type { AccountUser, LightingMode, SettingsTab } from '@ingradient/edge-pages'
 import { defineHandoff } from '../../../support/handoff'
@@ -9,21 +10,26 @@ import { useSettingsDraft, type MockAction } from './settings/tabs-moved'
 import { AccountRuntime, LanguageRuntime } from './settings/account-runtime'
 import { SystemMonitorRuntime } from './settings/system-runtime'
 import { SAMPLE_USER } from '../../../fixtures/edge/0.0.5'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
-function SettingsWorkflowScene({ initialTab, lightingMode, chromeOnly, onMockAction }: WorkflowArgs) {
+export interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
+/** Story harness: the app shell provides surface depth in the product, so the harness does too. */
+function SettingsWorkflowScene(args: WorkflowArgs) {
+  return <SurfaceDepthProvider><SettingsWorkflowSceneBody {...args} /></SurfaceDepthProvider>
+}
+function SettingsWorkflowSceneBody({ initialTab, lightingMode, chromeOnly, onMockAction }: WorkflowArgs) {
   const draft = useSettingsDraft()
   const [open, setOpen] = useState(!chromeOnly)
   const [language, setLanguage] = useState('en')
   const [user, setUser] = useState<AccountUser | null>(SAMPLE_USER)
-  return <Stack gap="var(--ig-space-4)" style={{ padding: 'var(--ig-space-5)' }}>
+  return <Stack gap="var(--ig-spacing-8)" style={{ padding: 'var(--ig-spacing-12)' }}>
     <h1>Synthetic settings workflows</h1>
     <p>No authentication, hardware, files, clipboard, network, or OS calls.</p>
     <LanguageRuntime value={language} onChange={setLanguage} onMockAction={onMockAction} />
     <output aria-label="Selected mock language">{language}</output>
     <AccountRuntime currentUser={user} onUserChange={setUser} onMockAction={onMockAction} />
     <output aria-label="Selected mock account">{user?.email ?? 'signed out'}</output>
-    <Button onClick={() => setOpen(true)}>Open mock settings</Button>
+    <Button variant="secondary" onClick={() => setOpen(true)}>Open mock settings</Button>
     <SystemMonitorRuntime onMockAction={onMockAction} />
     {open && <SettingsModal initialTab={initialTab} lightingMode={lightingMode} draft={draft} onMockAction={onMockAction} onClose={() => setOpen(false)} />}
   </Stack>
@@ -182,8 +188,10 @@ export const AccountLanguage: Story = {
   args: { chromeOnly: true },
   play: async ({ canvasElement, args }) => {
     const page = within(canvasElement.ownerDocument.body)
-    await userEvent.click(page.getByRole('button', { name: 'Language' }))
-    await userEvent.click(page.getByRole('option', { name: '한국어' }))
+    await userEvent.click(page.getByRole('button', { name: 'Language: English' }))
+    await expect(page.getByRole('menuitemradio', { name: 'English' })).toHaveAttribute('aria-checked', 'true')
+    await userEvent.click(page.getByRole('menuitemradio', { name: '한국어' }))
+    await expect(page.getByRole('button', { name: 'Language: 한국어' })).toBeInTheDocument()
     await expect(page.getByLabelText('Selected mock language')).toHaveTextContent('ko')
     await userEvent.click(page.getByRole('button', { name: /Account: JOON HO LEE/ }))
     await userEvent.click(page.getByRole('menuitem', { name: 'Change Account' }))

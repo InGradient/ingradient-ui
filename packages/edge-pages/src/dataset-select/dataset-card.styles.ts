@@ -1,14 +1,16 @@
 import styled from 'styled-components'
+import { withSurfaceDepth } from '@ingradient/ui/primitives'
 import { chartColors } from '@ingradient/ui'
 import { MenuIconButton } from '@ingradient/ui/components'
 import { edgeGeometry } from '../geometry'
 
-export const RecentCard = styled.button<{ $isLatest?: boolean }>`
+/** Recent dataset card: the card itself is the button (no inner controls). Its corners follow surface depth. */
+const RecentCardBase = styled.button<{ $isLatest?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--ig-space-1);
-  padding: var(--ig-space-6) var(--ig-space-7);
+  gap: var(--ig-spacing-4);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-55)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isLatest ? 'var(--ig-color-blue-tint-10)' : 'var(--ig-color-white-04)')};
@@ -25,17 +27,18 @@ export const RecentCard = styled.button<{ $isLatest?: boolean }>`
     border-color: var(--ig-color-blue-tint-50);
   }
 `
+export const RecentCard = withSurfaceDepth(RecentCardBase, { displayName: 'RecentCard' })
 
 export const Spacer = styled.span`
   flex: 1;
 `
 
-export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
+const DatasetCardBase = styled.div<{ $isRecent?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--ig-space-1);
-  padding: var(--ig-space-7) var(--ig-space-8);
+  gap: var(--ig-spacing-4);
+  padding: calc(var(--ig-spacing-16) - var(--ig-border-1px)) calc(var(--ig-spacing-16) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   border: var(--ig-border-1px) solid ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-50)' : 'var(--ig-color-white-12)')};
   background: ${(p) => (p.$isRecent ? 'var(--ig-color-blue-tint-08)' : 'var(--ig-color-white-04)')};
@@ -49,9 +52,11 @@ export const DatasetCard = styled.div<{ $isRecent?: boolean }>`
     border-color: var(--ig-color-blue-tint-50);
   }
 `
+export const DatasetCard = withSurfaceDepth(DatasetCardBase, { displayName: 'DatasetCard' })
 
 // A stretched native selection button and a sibling kebab keep keyboard and
 // pointer activation independent without nesting interactive controls.
+/** Invisible stretched button that makes the whole card clickable while the card menu stays a sibling control (no nested interactive elements). */
 export const DatasetSelectButton = styled.button`
   flex: 1;
   min-width: 0;
@@ -62,11 +67,11 @@ export const DatasetSelectButton = styled.button`
   font: inherit;
   text-align: left;
   cursor: pointer;
-  &::after { content: ''; position: absolute; inset: 0; border-radius: var(--ig-radius-sm); }
+  &::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
   &:focus-visible { outline: none; }
   &:focus-visible::after {
     outline: var(--ig-border-2px) solid var(--ig-color-accent-ring);
-    outline-offset: var(--ig-space-2px);
+    outline-offset: var(--ig-spacing-2);
   }
 `
 
@@ -76,7 +81,7 @@ export const DatasetMenuTrigger = styled(MenuIconButton)`
 `
 
 export const DatasetName = styled.div`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   flex: 1;
@@ -86,7 +91,7 @@ export const DatasetName = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
-  line-height: var(--ig-line-height-tight);
+  line-height: var(--ig-text-body-leading);
   overflow-wrap: anywhere;
 `
 
@@ -109,11 +114,12 @@ export const CardBottom = styled.div`
   align-items: flex-end;
   width: 100%;
   margin-top: auto;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const ImageCount = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
@@ -123,10 +129,13 @@ export const ImageCount = styled.div`
 export const ClassChip = styled.span<{ $color: string }>`
   display: inline-flex;
   align-items: center;
-  gap: var(--ig-space-1);
-  font-size: var(--ig-font-size-2xs);
+  gap: var(--ig-spacing-4);
+  font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-semibold);
-  padding: var(--ig-space-2px) var(--ig-space-2-plus);
+  box-sizing: border-box;
+  height: var(--ig-size-chip);
+  padding: 0 var(--ig-spacing-8);
   border-radius: var(--ig-radius-pill);
   background: ${(p) => `${p.$color}22`};
   color: var(--ig-color-text-primary);

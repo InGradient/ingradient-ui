@@ -30,7 +30,8 @@ const collect = () => {
     const isField = t === 'input' || t === 'textarea' || t === 'select'
     // Fields are matched by order: their placeholder or aria-label may change between versions.
     const label = isField ? '' : (own(e) || e.getAttribute('aria-label') || e.getAttribute('alt') || '').slice(0, 28)
-    const base = isField ? `${t}:${e.getAttribute('type') || ''}` : `${e.dataset.igComponent || t}|${label}`
+    // Match case-insensitively so a casing change shows as a text change, not removal + addition.
+    const base = isField ? `${t}:${e.getAttribute('type') || ''}` : `${e.dataset.igComponent || t}|${label.toLowerCase()}`
     const n = (seen.get(base) || 0) + 1; seen.set(base, n)
     const cs = getComputedStyle(e); const q = e.getBoundingClientRect()
     rows.push({
@@ -79,6 +80,7 @@ const describe = (a, c) => {
   if (a.bg !== c.bg) d.push(a.bg === 'rgba(0, 0, 0, 0)' ? '배경 생김' : c.bg === 'rgba(0, 0, 0, 0)' ? '배경 없앰' : '배경색 바뀜')
   if (a.border !== c.border) d.push(a.border === 'none' ? '테두리 생김' : c.border === 'none' ? '테두리 없앰' : '테두리 바뀜')
   if (a.shadow !== c.shadow) d.push(c.shadow === 'none' ? '그림자 없앰' : '그림자 생김')
+  if (a.label !== c.label) d.push(`문구 "${a.label}"→"${c.label}"`)
   if (a.placeholder !== c.placeholder) d.push(`안내 글자 "${a.placeholder}"→"${c.placeholder}"`)
   return d
 }

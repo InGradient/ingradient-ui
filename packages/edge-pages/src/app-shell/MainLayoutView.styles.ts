@@ -11,13 +11,17 @@ export const AppShell = styled.div`
 
 export const AppHeader = styled.header`
   height: var(--ig-control-height-xl);
-  padding: 0 var(--ig-space-7);
+  padding: 0 var(--ig-spacing-16);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
+  /* backdrop-filter makes a stacking context; without a layer the panels after it paint
+     over top-bar menus (language, account) that extend over the center column. */
+  position: relative;
+  z-index: var(--ig-z-header);
 `
 
 export const PanelsRow = styled.div`
@@ -37,7 +41,10 @@ export const PanelsRow = styled.div`
   }
 `
 
+// Column widths, resize handles and the collapsed rail width come from the shared
+// ResizableColumnsLayout (MainLayoutView). These fill their column.
 const Panel = styled.div`
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -47,29 +54,18 @@ const Panel = styled.div`
 export const LeftPanel = styled(Panel)`
   background: var(--ig-color-surface-panel);
   border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  width: var(--ig-popup-sm);
-  flex-shrink: 0;
   &:has([data-ig-collapsed-panel="left"]) {
-    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
     overflow-y: auto;
   }
 `
 
-export const CenterPanel = styled(Panel)`
-  flex: 1 0 var(--ig-popup-3xl-narrow);
-  min-width: var(--ig-popup-3xl-narrow);
-`
+export const CenterPanel = styled(Panel)``
 
 export const RightPanelContainer = styled(Panel)`
   /* Same as Platform's right inspector: a persistent strong divider before it. */
   background: var(--ig-color-surface-panel);
   border-left: var(--ig-border-1px) solid var(--ig-color-border-strong);
-  width: var(--ig-popup-sm);
-  flex-shrink: 0;
   overflow-y: auto;
-  &:has([data-ig-collapsed-panel="right"]) {
-    width: calc(var(--ig-control-height-xl) + var(--ig-space-4));
-  }
 `
 
 export const CapturingBlocker = styled.div`

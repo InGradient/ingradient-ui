@@ -1,30 +1,31 @@
 import styled from 'styled-components'
 import { Card, SendIcon } from '@ingradient/ui/components'
 import { Button, EmptyState, TextareaField, iconSizeNumbers } from '@ingradient/ui'
-import { Section, Label } from './RightPanelView.styles'
+import { Section } from './RightPanelView.styles'
 import type { RightPanelCommentSectionProps } from './types'
+import { Inline, Text } from '@ingradient/ui/primitives'
 
 const CommentList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   max-height: var(--ig-popup-list-min);
   overflow-y: auto;
 `
 
 const CommentMeta = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-2px);
+  margin-bottom: var(--ig-spacing-2);
 `
 
-const InputRow = styled.div`display: flex; gap: var(--ig-space-2); align-items: flex-end;`
 
 export function RightPanelCommentSection(props: RightPanelCommentSectionProps): JSX.Element {
   const { comments, pendingComment, isSending, labels, onPendingCommentChange, onSend } = props
   return (
     <Section>
-      <Label>{labels.title}</Label>
+      <Text as="div" size="var(--ig-text-micro)" weight="bold" tone="muted" uppercase letterSpacing="wide">{labels.title}</Text>
       {comments.length === 0
         ? <EmptyState>{labels.empty}</EmptyState>
         : (
@@ -34,9 +35,9 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
                 key={c.id}
                 elevation="raised"
                 flat
-                radius="var(--ig-radius-xs)"
-                padding="var(--ig-space-3)"
-                style={{ fontSize: 'var(--ig-font-size-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
+               
+                padding="var(--ig-spacing-8)"
+                style={{ fontSize: 'var(--ig-text-body-sm)', opacity: c.synced === false ? 'var(--ig-opacity-muted)' : 1 }}
               >
                 <CommentMeta>{c.author} · {c.timestamp}</CommentMeta>
                 {c.text}
@@ -44,7 +45,7 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
             ))}
           </CommentList>
         )}
-      <InputRow>
+      <Inline gap="var(--ig-spacing-8)" align="flex-end" wrap="nowrap">
         <TextareaField
           aria-label={labels.title}
           value={pendingComment}
@@ -53,11 +54,11 @@ export function RightPanelCommentSection(props: RightPanelCommentSectionProps): 
           rows={2}
           style={{ flex: 1 }}
         />
-        <Button size="sm" variant="accent" onClick={onSend} disabled={isSending || !pendingComment.trim()}>
+        <Button size="sm" variant="solid" onClick={onSend} disabled={isSending || !pendingComment.trim()}>
           <SendIcon size={iconSizeNumbers.xs} />
           {isSending ? labels.sending : labels.send}
         </Button>
-      </InputRow>
+      </Inline>
     </Section>
   )
 }

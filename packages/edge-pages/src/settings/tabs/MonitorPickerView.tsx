@@ -17,7 +17,7 @@ export function MonitorPickerView(props: MonitorPickerViewProps): JSX.Element {
   if (loadFailed) {
     return (
       <InlineMessage $tone="warning">
-        <Stack gap="var(--ig-space-3)">
+        <Stack gap="var(--ig-spacing-8)">
           <span>{labels.unreachable}</span>
           {/* 저장된 값은 그대로임을 보여줘 설정을 잃었다고 오해하지 않게 */}
           <Hint>{labels.section}: {selectedId}</Hint>

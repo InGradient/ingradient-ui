@@ -9,12 +9,13 @@ import {
 import type { ScanSectionViewProps, GigEDevice, USBDevice, NicBadge } from '../types'
 
 const SubTitle = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   font-weight: var(--ig-font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-normal);
   color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-2);
+  margin-bottom: var(--ig-spacing-8);
 `
 
 function nicBadgeTone(badge: NicBadge): 'success' | 'accent' | 'danger' {
@@ -36,14 +37,14 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
   const isLoading = isScanning || isLoadingCandidates
 
   return (
-    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
+    <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <SectionTitle>{labels.scanTitle}</SectionTitle>
-      <Inline align="center" gap="var(--ig-space-4)" wrap="nowrap" style={{ marginBottom: 'var(--ig-space-5)' }}>
-        <Button size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
+      <Inline align="center" gap="var(--ig-spacing-8)" wrap="nowrap" style={{ marginBottom: 'var(--ig-spacing-12)' }}>
+        <Button variant="secondary" size="sm" onClick={onScan} disabled={isLoading || isBlocked}>
           {isLoading ? <Spinner size="sm" tone="muted" /> : <RefreshIcon size={iconSizeNumbers.sm} />}
           {isLoading ? labels.scanning : labels.scan}
         </Button>
-        <Text size="var(--ig-font-size-2xs)" tone="soft">{labels.scanHint}</Text>
+        <Text size="var(--ig-text-micro)" tone="soft">{labels.scanHint}</Text>
       </Inline>
 
       {!isScanning && discoveredDevices.length > 0 && (
@@ -80,7 +81,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
                     </DeviceMeta>
                   </DeviceInfo>
                   {gige && gige.reachable === false && (
-                    <Badge $tone="danger"><AlertCircleIcon size={iconSizeNumbers["2xs"]} style={{ marginRight: 'var(--ig-space-3px)' }} />{labels.notReachable}</Badge>
+                    <Badge $tone="danger"><AlertCircleIcon size={iconSizeNumbers["2xs"]} style={{ marginRight: 'var(--ig-spacing-4)' }} />{labels.notReachable}</Badge>
                   )}
                   {gige && gige.reachable === true && (
                     <Badge $tone="success">{labels.reachable}</Badge>
@@ -98,7 +99,7 @@ export function ScanSectionView(props: ScanSectionViewProps): JSX.Element {
 
       {nicCandidates && nicCandidates.length > 0 && (
         <>
-          <SubTitle style={{ marginTop: 'var(--ig-space-7)' }}>{labels.nicCandidates} ({nicCandidates.length})</SubTitle>
+          <SubTitle style={{ marginTop: 'var(--ig-spacing-16)' }}>{labels.nicCandidates} ({nicCandidates.length})</SubTitle>
           <DeviceList>
             {nicCandidates.map((nic) => {
               const isSelected = selectedNic?.name === nic.name

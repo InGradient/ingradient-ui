@@ -4,7 +4,7 @@ export const Container = styled.div`
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding: var(--ig-space-8);
+  padding: var(--ig-spacing-16);
   background: var(--ig-color-bg-canvas);
 `;
 
@@ -12,71 +12,61 @@ export const Header = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--ig-space-7);
-  margin-bottom: var(--ig-space-8);
+  gap: var(--ig-spacing-16);
+  margin-bottom: var(--ig-spacing-16);
 `;
 
-export const TitleBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`;
 
 export const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-3xl);
+  font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
 `;
 
-export const Subtitle = styled.div`
-  color: var(--ig-color-text-soft);
-  font-size: var(--ig-font-size-xs);
-`;
 
 export const SummaryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-7);
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-16);
 `;
 
 export const SummaryLabel = styled.div`
   color: var(--ig-color-text-soft);
-  font-size: var(--ig-font-size-xs);
-  margin-bottom: var(--ig-space-3);
+  font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
+  margin-bottom: var(--ig-spacing-8);
 `;
 
-export const SummaryValue = styled.div`
-  color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-4xl);
-  font-weight: var(--ig-font-weight-bold);
-`;
 
 export const PanelGrid = styled.div`
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: var(--ig-space-6);
+  gap: var(--ig-spacing-12);
 `;
 
 export const PanelTitle = styled.div`
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
-  margin-bottom: var(--ig-space-5);
+  margin-bottom: var(--ig-spacing-12);
 `;
 
 export const SectionHeader = styled.button`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
   width: 100%;
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--ig-space-4) 0;
-  margin-top: var(--ig-space-5);
+  padding: var(--ig-spacing-8) 0;
+  margin-top: var(--ig-spacing-12);
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-lg);
+  font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-bold);
   text-align: left;
   &:hover { color: var(--ig-color-text-soft); }

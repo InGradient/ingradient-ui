@@ -1,12 +1,14 @@
+import styled from 'styled-components'
 import { Stack, Text } from '@ingradient/ui/primitives'
 import { SelectField } from '@ingradient/ui/components'
 
-const SELECT_STYLE = {
-  maxWidth: 'var(--ig-layout-size-field-max)',
-  padding: 'var(--ig-spacing-8) var(--ig-spacing-12)',
-  fontSize: 'var(--ig-text-body-sm)',
-  borderRadius: 'var(--ig-radius-2xs)',
-}
+const SelectBox = styled(SelectField)`
+  max-width: var(--ig-layout-size-field-max);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
+  border-radius: var(--ig-radius-2xs);
+`
 
 export interface ModelMappingSelectProps {
   /** 모델이 할당돼 있으면 true → select 렌더, false → enabled hint 만 */
@@ -34,18 +36,17 @@ export function ModelMappingSelect({
   }
   return (
     <Stack gap="var(--ig-spacing-8)">
-      <SelectField
+      <SelectBox
         value={value ?? ''}
         onChange={(e) => onChange?.((e.target as HTMLSelectElement).value)}
         aria-label={ariaLabel}
         title={title}
-        style={SELECT_STYLE}
       >
         <option value="">{unmappedLabel}</option>
         {options.map((name) => (
           <option key={name} value={name}>{name}</option>
         ))}
-      </SelectField>
+      </SelectBox>
       <Text size="var(--ig-text-caption)" tone="soft">{enabledHint}</Text>
     </Stack>
   )

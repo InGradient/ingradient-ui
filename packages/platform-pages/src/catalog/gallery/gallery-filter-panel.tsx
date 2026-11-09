@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { ModeSwitcher } from '@ingradient/ui/components'
 import { TextButton } from '@ingradient/ui/components'
@@ -6,20 +7,20 @@ import { FilterSection } from '@ingradient/ui/patterns'
 import { ColorChip } from '@ingradient/ui/components'
 import { FilterSearchableList, type FilterSearchableItem } from '@ingradient/ui/patterns'
 
-const PANEL_STYLE = {
-  width: 'var(--ig-popup-filter-panel)',
-  maxWidth: '100%',
-  maxHeight: '70vh',
-  overflowY: 'auto' as const,
-  overflowX: 'hidden' as const,
-  scrollbarGutter: 'stable',
-}
+const PanelBox = styled(Stack)`
+  width: var(--ig-popup-filter-panel);
+  max-width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+`
 
-const HEADER_STYLE = {
-  padding: '0 0 var(--ig-spacing-8)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-  marginBottom: 'var(--ig-spacing-8)',
-}
+const HeaderBox = styled(Inline)`
+  padding: 0 0 var(--ig-spacing-8);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
+  margin-bottom: var(--ig-spacing-8);
+`
 
 const LABEL_OPTIONS = [
   { value: 'all', label: 'All' },
@@ -70,11 +71,11 @@ export function GalleryFilterPanel({
   }
 
   return (
-    <Stack gap="var(--ig-space-0)" style={PANEL_STYLE}>
-      <Inline justify="space-between" gap="var(--ig-spacing-8)" style={HEADER_STYLE}>
+    <PanelBox gap="var(--ig-space-0)">
+      <HeaderBox justify="space-between" gap="var(--ig-spacing-8)">
         <Text as="strong" size="var(--ig-text-body-sm)">Filter images</Text>
         {onReset ? <TextButton tone="accent" size="xs" onClick={onReset}>Reset</TextButton> : null}
-      </Inline>
+      </HeaderBox>
 
       <FilterSection title="Upload date">
         <DateRangeField
@@ -155,7 +156,7 @@ export function GalleryFilterPanel({
           />
         </FilterSection>
       ) : null}
-    </Stack>
+    </PanelBox>
   )
 }
 

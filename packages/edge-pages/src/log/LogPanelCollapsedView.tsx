@@ -31,7 +31,7 @@ export function LogPanelCollapsedView(props: LogPanelCollapsedViewProps): JSX.El
   const { entries, hoveredLogIndex, labels, onSetHoveredLogIndex, onExpand } = props
 
   return (
-    <Stack data-ig-collapsed-panel="left" gap="var(--ig-space-2)" align="center" style={{ padding: 'var(--ig-space-2)' }}>
+    <Stack data-ig-collapsed-panel="left" gap="var(--ig-spacing-8)" align="center" style={{ padding: 'var(--ig-spacing-8)' }}>
       <IconButton
         size="xs"
         variant="ghost"

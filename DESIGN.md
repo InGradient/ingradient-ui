@@ -82,6 +82,27 @@ All spacing is a multiple of 4px. One optical step of 2px exists for hairline al
 
 The token name equals its value. The legacy `--ig-space-*` names now carry the 4px values (mapped as below) and are deprecated; new code uses `--ig-spacing-{px}` or a spacing role.
 
+### Borders stay inside the grid
+
+Rendered heights are on the 4px grid, including borders. A border must not add to a box's size:
+
+- **Dividers (one side):** draw an inset line instead of a border, for example `box-shadow: inset 0 var(--ig-space-neg-1px) 0 <color>` for a bottom line. Inline styles use the same `boxShadow` value.
+- **Bordered boxes (all sides):** keep the border and subtract it from the padding with `paddingInsideBorder(padding)` from `@ingradient/ui/primitives`, so a 16px inset renders as 15px padding plus the 1px line.
+- **Rows whose children paint their own backgrounds** (segmented controls): use `outline` with a negative `outline-offset`, which draws above the children.
+- Fixed-height controls (`height` set with `box-sizing: border-box`) already include their border and need no change.
+- **Bordered boxes without padding** (a dialog card whose header and body pad themselves, a `<details>` whose summary pads itself): give the border back from the outermost child padding — the top of the first part and the bottom of the last.
+- **Standalone divider elements** (`Divider`): a 0px box with the 1px line drawn as a shadow, so the line adds no height.
+- **Inline items in a heading** (a status badge next to a title): make the heading a flex row; an inline-flex badge on the text baseline stretches the line box (32 → 33px).
+- **Two stacked text lines** (name + email, label + value, title + subtitle): no gap or margin between them; the px line heights already give the spacing (20 + 16 = 36px). A 2px gap makes the pair 38px.
+
+### What the grid applies to
+
+- **Content-sized boxes** (controls, rows, cards, panels whose height comes from their content): rendered height is a multiple of 4px.
+- **Multi-line text fields:** a pixel leading and an 8px inset inside the border, so _n_ rows render at _n_ × leading + 16px.
+- **Parts of a control** are exact fractions of it: a number-field stepper is two halves of the field (16px each in a 32px field).
+- **Fluid sizes are exempt:** a size divided from the available width or height (gallery cells, image tiles, chart plots, columns that stretch to the window) follows the viewport, not the grid. Everything inside a fluid box — padding, gaps, fixed parts — still follows the grid.
+- **Checked automatically:** every Platform 0.0.1 and Edge 0.0.6 page story fails its Storybook test when a bordered box or control renders off the grid (`stories/support/grid-check.ts`, run after the play function). Fluid boxes, boxes inside or holding an aspect-ratio box or media, and animated or transformed elements are skipped. A story opts out with `parameters: { grid4px: 'off' }` and a comment saying why; `Foundations / 4px Grid Check` proves the check still catches known-bad boxes.
+
 ### Semantic spacing
 
 Components choose a role, not a number:
@@ -185,7 +206,7 @@ Never pass numeric sizes (`size={14}`, `width="14"`); use the icon tokens so the
 
 ### Layout sizes
 
-Page structure uses `--ig-layout-size-*` (numeric `layoutSizeNumbers` for props): side panels (320, min 220, max 480), Class list/info panels, single-form widths (420, 720), field and search max widths, grid cell minimum, preview, empty-state and drop-zone minimum heights, and table columns. Popup sizes (`--ig-popup-*`) are for dialogs, popovers, and menus only.
+Page structure uses `--ig-layout-size-*` (numeric `layoutSizeNumbers` for props): side panels (320, min 220, max 480), Class list/info panels, single-form widths (420, 720), field and search max widths, grid cell minimum, preview, empty-state and drop-zone minimum heights, and table columns. Inside the Settings modal, field widths (`field-xs`…`field-xl`), compact table minimum, wider cell minimum, and the tab column use layout sizes too. Popup sizes (`--ig-popup-*`) are for dialogs, popovers, and menus only. Every layout size is a multiple of 4 (unit test).
 
 ### Component sizes do not borrow other axes *(D12)*
 
@@ -252,6 +273,7 @@ These rules apply to the shared `@ingradient/ui` components that Platform and Ed
 - `SettingsSection` is a heading (14px semibold) plus rows, separated from the previous section by a 1px line with 24px above and below. It is not a box inside the modal.
 - `tone="danger"` keeps an alert box (danger border and tint, depth radius) because it marks a real boundary around irreversible actions such as deleting an account or project.
 - The Settings modal body has a 24px inset; the Edge tab's own sections follow the same rule.
+- Subheadings inside a section are 13px semibold muted text in sentence case (no uppercase, no title case).
 
 ### Menus and popovers
 
@@ -344,7 +366,5 @@ See [`packages/platform-pages/README.md`](./packages/platform-pages/README.md) a
 | Spacing roles not adopted | `--ig-gap-*`, `--ig-inset-*` | Tokens exist; components still pick numbers | Adopt in shared components first |
 | Surface tone and shadow by depth | `surfacePanel` recipe | Radius depth shipped first; tone and shadow change visuals more | Trial, then apply with the surface depth provider |
 | Unused or duplicate control-height tokens | `control-height-xs-plus`, `sm-plus`, `mid-plus` | Public token names; removal is breaking | Remove in the next breaking release |
-| Off-grid layout sizes | `--ig-layout-size-table-col-{dataset,sync,created}` (190, 116, 124px) | Moved from popup sizes value-for-value | Round to the 4px grid with a visual check of the Catalog table |
-| Settings modal field/table widths use popup sizes | `settings-modal/**` (about 15 uses) | A modal is a popup, so its inner sizes were left on the popup scale | Decide whether modal internals get layout sizes too |
 | Visual baselines | `tests/visual` | Foundation values changed most screenshots | Regenerate from CI (ubuntu) and approve |
 | ClassManage has no source mobile workspace shell | `packages/platform-pages/src/class-manage` | The migrated reference defines a resizable three-pane desktop workspace but no mobile navigation/detail pattern | Add a dedicated narrow shell or drawers before claiming the full ClassManage workflow at 375px |

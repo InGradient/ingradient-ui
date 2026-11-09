@@ -2,33 +2,36 @@ import styled from 'styled-components'
 import { Button, DialogShell } from '@ingradient/ui'
 import { CodeBlock, KeyValueRow } from '@ingradient/ui/components'
 import type { AboutTabViewProps } from '../types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
-const Section = styled.div`margin-bottom: var(--ig-space-9);`
+const Section = styled.div`margin-bottom: var(--ig-spacing-20);`
 const SectionTitle = styled.h3`
-  font-size: var(--ig-font-size-md);
+  font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-bold);
-  margin: 0 0 var(--ig-space-4);
+  margin: 0 0 var(--ig-spacing-8);
   color: var(--ig-color-text-primary);
 `
 const Hero = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-5);
-  margin-bottom: var(--ig-space-7);
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-16);
 `
-const TitleGroup = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-2px);`
-const HeroTitle = styled.div`font-size: var(--ig-font-size-xl); font-weight: var(--ig-font-weight-bold); color: var(--ig-color-text-primary);`
-const HeroVersion = styled.div`font-size: var(--ig-font-size-xs); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
+const HeroVersion = styled.div`font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading); color: var(--ig-color-text-muted); font-family: var(--ig-font-mono);`
 
 const FingerprintBox = styled(CodeBlock)`
-  font-size: var(--ig-font-size-sm);
-  margin-top: var(--ig-space-3);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
+  margin-top: var(--ig-spacing-8);
 `
 
 const ErrorText = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
-  margin-top: var(--ig-space-3);
+  margin-top: var(--ig-spacing-8);
 `
 
 export function AboutTabView(props: AboutTabViewProps): JSX.Element {
@@ -47,10 +50,10 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
   return (
     <>
       <Hero>
-        <TitleGroup>
-          <HeroTitle>{labels.hero}</HeroTitle>
+        <Stack gap="var(--ig-space-0)">
+          <Text as="div" size="var(--ig-text-title-sm)" weight="bold">{labels.hero}</Text>
           <HeroVersion>{labels.versionLabel} {appVersion}</HeroVersion>
-        </TitleGroup>
+        </Stack>
       </Hero>
 
       <Section>
@@ -65,7 +68,7 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
             <FingerprintBox>{fingerprint}</FingerprintBox>
           </>
         )}
-        <div style={{ marginTop: 'var(--ig-space-5)' }}>
+        <div style={{ marginTop: 'var(--ig-spacing-12)' }}>
           <Button variant="secondary" size="sm" type="button" onClick={onOpenDeactivateConfirm} disabled={isDeactivating}>
             {isDeactivating ? labels.deactivating : labels.deactivateButton}
           </Button>
@@ -77,7 +80,7 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
 
       <Section>
         <SectionTitle>{labels.releaseTitle}</SectionTitle>
-        <div style={{ fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
+        <div style={{ fontSize: 'var(--ig-text-caption)', color: 'var(--ig-color-text-muted)' }}>
           {labels.copyrightLine}
         </div>
       </Section>
@@ -88,7 +91,7 @@ export function AboutTabView(props: AboutTabViewProps): JSX.Element {
           onClose={onCloseDeactivationCode}
           width="min(var(--ig-popup-2xl-narrow), 90vw)"
         >
-          <div style={{ fontSize: 'var(--ig-font-size-sm)', marginBottom: 'var(--ig-space-3)' }}>
+          <div style={{ fontSize: 'var(--ig-text-body-sm)', marginBottom: 'var(--ig-spacing-8)' }}>
             {labels.deactivationCodeHint}
           </div>
           <FingerprintBox>{deactivationCode}</FingerprintBox>

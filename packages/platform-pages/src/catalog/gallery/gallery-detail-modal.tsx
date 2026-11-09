@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import React from 'react'
 import { Stack, Text } from '@ingradient/ui/primitives'
@@ -6,21 +7,25 @@ import { SyncStatusChip, type SyncState } from './sync-status-chip'
 import { InfoRow, InfoRowLabel, InfoRowValue } from '@ingradient/ui/components'
 import { MediaDialogShell } from '@ingradient/ui/patterns'
 
-const DEFAULT_MAIN_STYLE = {
-  height: '100%',
-}
+const DefaultMainBox = styled(Stack)`
+  height: 100%;
+`
 
-const DEFAULT_THUMB_STYLE = {
-  width: '100%',
-  flex: 1,
-  minHeight: 0,
-  objectFit: 'contain' as const,
-  background: 'var(--ig-color-bg-canvas)',
-  display: 'block' as const,
-}
+const DefaultThumbBox = styled.img`
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: contain;
+  background: var(--ig-color-bg-canvas);
+  display: block;
+`
 
-const DEFAULT_SIDEBAR_STYLE = { padding: 'var(--ig-spacing-12)' }
-const META_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
+const DefaultSidebarBox = styled(Stack)`
+  padding: var(--ig-spacing-12);
+`
+const MetaTitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
 
 export interface GalleryDetailModalImage {
   id: string
@@ -64,16 +69,16 @@ function formatSize(bytes?: number): string {
 
 function defaultMain(image: GalleryDetailModalImage) {
   return (
-    <Stack style={DEFAULT_MAIN_STYLE}>
-      <img src={image.thumb_url} alt={image.name} style={DEFAULT_THUMB_STYLE} />
-    </Stack>
+    <DefaultMainBox>
+      <DefaultThumbBox src={image.thumb_url} alt={image.name} />
+    </DefaultMainBox>
   )
 }
 
 function defaultSidebar(image: GalleryDetailModalImage) {
   return (
-    <Stack gap="var(--ig-spacing-8)" style={DEFAULT_SIDEBAR_STYLE}>
-      <Text size="var(--ig-text-body-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal" style={META_TITLE_STYLE}>Image info</Text>
+    <DefaultSidebarBox gap="var(--ig-spacing-8)">
+      <MetaTitleBox size="var(--ig-text-body-sm)" weight="semibold" tone="muted" uppercase letterSpacing="normal">Image info</MetaTitleBox>
       {image.sync_state ? (
         <InfoRow>
           <InfoRowLabel>Sync</InfoRowLabel>
@@ -108,7 +113,7 @@ function defaultSidebar(image: GalleryDetailModalImage) {
           {image.uploader ? ` by ${image.uploader}` : ''}
         </InfoRowValue>
       </InfoRow>
-    </Stack>
+    </DefaultSidebarBox>
   )
 }
 

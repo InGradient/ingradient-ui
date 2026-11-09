@@ -14,6 +14,7 @@ const Meta = styled.div`
   gap: var(--ig-space-3);
   margin-bottom: var(--ig-space-2);
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   color: var(--ig-color-text-muted);
 `
 
@@ -25,7 +26,7 @@ const Author = styled.span`
 
 const Body = styled.div`
   font-size: var(--ig-font-size-xs);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-leading-xs);
   white-space: pre-wrap;
   color: var(--ig-color-text-primary);
 `
@@ -40,12 +41,13 @@ const Textarea = styled.textarea`
   width: 100%;
   min-height: var(--ig-control-height-2xl-wide);
   resize: vertical;
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-text-caption-leading);
   &::placeholder { color: var(--ig-color-text-soft); }
   &:focus-visible { border-color: var(--ig-color-accent-ring); box-shadow: var(--ig-shadow-focus-ring); }
 `

@@ -7,6 +7,7 @@ export const ExportSection = styled.div`
 export const ExportSectionLabel = styled.div`
   margin-bottom: var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-bold);
   letter-spacing: var(--ig-letter-spacing-normal);
   text-transform: uppercase;
@@ -15,6 +16,7 @@ export const ExportSectionLabel = styled.div`
 
 export const ExportOptionHint = styled.span`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-soft);
 `
 
@@ -24,22 +26,25 @@ export const ExportProgressMeta = styled.div`
   gap: var(--ig-spacing-8);
   margin-bottom: var(--ig-spacing-8);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-soft);
 `
 
 export const ExportStatusText = styled.div`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-primary);
 `
 
 export const ExportErrorText = styled.div`
   margin-top: var(--ig-spacing-8);
-  padding: var(--ig-spacing-8) var(--ig-spacing-8);
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-8) - var(--ig-border-1px));
   border-radius: var(--ig-radius-md);
   background: var(--ig-color-alert-danger-bg);
   border: var(--ig-border-1px) solid var(--ig-color-alert-danger-border);
   color: var(--ig-color-danger);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export const DialogRow = styled.div`
@@ -48,6 +53,7 @@ export const DialogRow = styled.div`
     display: block;
     margin-bottom: var(--ig-spacing-8);
     font-size: var(--ig-text-body-sm);
+    line-height: var(--ig-text-body-sm-leading);
     color: var(--ig-color-text-muted);
   }
 `

@@ -2,12 +2,10 @@ import { IconButton, SelectableListItem, iconSizeNumbers } from '@ingradient/ui'
 import {
   ColorSwatch, EmptyState, SearchField, ScissorsIcon, PanelRightCloseIcon,
 } from '@ingradient/ui/components'
-import {
-  Container, Section, SectionHeader, GrowSection, Label, ClassList,
-  SetupSlot, PatternGrid, PatternButton, RoiPrimaryButton,
-} from './RightPanelView.styles'
+import { Container, Section, GrowSection, SetupSlot, PatternGrid, PatternButton, RoiPrimaryButton } from './RightPanelView.styles'
 import { patternLabelToUI } from '../capture/pattern-helpers'
 import type { RightPanelViewProps } from './types'
+import { Stack, Inline, Text } from '@ingradient/ui/primitives'
 
 export function RightPanelView(props: RightPanelViewProps): JSX.Element {
   const {
@@ -37,8 +35,8 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
     <Container>
       {(showPatternPreview || onToggleCollapsed) && (
         <Section>
-          <SectionHeader>
-            {showPatternPreview ? <Label>{labels.patternPreview}</Label> : <span />}
+          <Inline gap="var(--ig-spacing-8)" justify="space-between" wrap="nowrap">
+            {showPatternPreview ? <Text as="div" size="var(--ig-text-micro)" weight="bold" tone="muted" uppercase letterSpacing="wide">{labels.patternPreview}</Text> : <span />}
             {onToggleCollapsed && (
               <IconButton
                 size="xs"
@@ -50,7 +48,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
                 <PanelRightCloseIcon size={iconSizeNumbers.sm} />
               </IconButton>
             )}
-          </SectionHeader>
+          </Inline>
           {showPatternPreview && (
           <PatternGrid>
             {patternLabels.map((label) => (
@@ -84,7 +82,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
       )}
 
       <GrowSection>
-        <Label>{labels.classLabel}</Label>
+        <Text as="div" size="var(--ig-text-micro)" weight="bold" tone="muted" uppercase letterSpacing="wide">{labels.classLabel}</Text>
         {classes.length === 0 ? (
           <EmptyState>{labels.noClasses}</EmptyState>
         ) : (
@@ -99,7 +97,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
             {filteredClasses.length === 0 ? (
               <EmptyState>{labels.noClassMatches}</EmptyState>
             ) : (
-              <ClassList>
+              <Stack gap="var(--ig-spacing-8)">
                 {filteredClasses.map((cls) => (
                   <SelectableListItem
                     key={cls.class_id}
@@ -112,7 +110,7 @@ export function RightPanelView(props: RightPanelViewProps): JSX.Element {
                     {cls.class_name}
                   </SelectableListItem>
                 ))}
-              </ClassList>
+              </Stack>
             )}
           </>
         )}

@@ -25,7 +25,7 @@ export function RemediationPanelView(props: RemediationPanelViewProps): JSX.Elem
   }
 
   return (
-    <Stack gap="var(--ig-space-3)">
+    <Stack gap="var(--ig-spacing-8)">
       {actions.map((action, index) => {
         const outcome = outcomes[action.id]
         const isActive = activeActionId === action.id
@@ -33,8 +33,8 @@ export function RemediationPanelView(props: RemediationPanelViewProps): JSX.Elem
         const variant = isConfirming ? 'accent' : index === 0 ? 'solid' : 'secondary'
 
         return (
-          <Stack key={action.id} gap="var(--ig-space-2)">
-            <Inline gap="var(--ig-space-2)" align="center">
+          <Stack key={action.id} gap="var(--ig-spacing-8)">
+            <Inline gap="var(--ig-spacing-8)" align="center">
               {action.isGuidance ? (
                 <Badge $tone="neutral">{action.label}</Badge>
               ) : (
@@ -56,13 +56,13 @@ export function RemediationPanelView(props: RemediationPanelViewProps): JSX.Elem
             </Inline>
 
             {action.isGuidance && action.hint && (
-              <Text tone="muted" size="var(--ig-font-size-2xs)">{action.hint}</Text>
+              <Text tone="muted" size="var(--ig-text-micro)">{action.hint}</Text>
             )}
 
             {outcome && (
               <Text
                 tone={outcome.ok ? 'success' : 'danger'}
-                size="var(--ig-font-size-2xs)"
+                size="var(--ig-text-micro)"
               >
                 {outcome.ok ? labels.resultOk : labels.resultFail}
                 {outcome.detail ? ` — ${outcome.detail}` : ''}
@@ -72,7 +72,7 @@ export function RemediationPanelView(props: RemediationPanelViewProps): JSX.Elem
           </Stack>
         )
       })}
-      <Text tone="muted" size="var(--ig-font-size-2xs)">{labels.autoVerifyHint}</Text>
+      <Text tone="muted" size="var(--ig-text-micro)">{labels.autoVerifyHint}</Text>
     </Stack>
   )
 }

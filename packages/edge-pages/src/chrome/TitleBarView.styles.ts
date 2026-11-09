@@ -6,7 +6,8 @@ export const Bar = styled.div`
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  /* Inset line instead of a border, so the full-height window buttons stay 32px, not 31px. */
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
   -webkit-app-region: drag;
   user-select: none;
@@ -15,8 +16,8 @@ export const Bar = styled.div`
 export const LogoArea = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2-plus);
-  padding: 0 var(--ig-space-5);
+  gap: var(--ig-spacing-8);
+  padding: 0 var(--ig-spacing-12);
   flex-shrink: 0;
   -webkit-app-region: no-drag;
 `
@@ -29,7 +30,8 @@ export const LogoImg = styled.img`
 `
 
 export const LogoText = styled.span`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   letter-spacing: var(--ig-letter-spacing-micro);
@@ -47,6 +49,7 @@ export const Controls = styled.div`
   -webkit-app-region: no-drag;
 `
 
+/** Desktop window controls (minimize, maximize, close): full-height, flush, OS-style close hover. Not an app Button role, so it stays local. */
 export const Btn = styled.button<{ $variant?: 'close' }>`
   display: flex;
   align-items: center;

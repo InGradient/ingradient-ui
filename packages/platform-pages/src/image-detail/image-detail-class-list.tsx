@@ -6,6 +6,7 @@ const NameText = styled.span<{ $active?: boolean }>`
   flex: 1;
   min-width: 0;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: ${(p) => (p.$active ? 'var(--ig-color-text-secondary)' : 'var(--ig-color-text-muted)')};
   text-align: left;
   overflow: hidden;
@@ -13,7 +14,9 @@ const NameText = styled.span<{ $active?: boolean }>`
   white-space: nowrap;
 `
 
-const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
+const EmptyBox = styled(Text)`
+  padding: var(--ig-spacing-8);
+`
 
 export interface ImageDetailClassListClass {
   id: string
@@ -51,7 +54,7 @@ export function ImageDetailClassList({
   className,
 }: ImageDetailClassListProps) {
   if (classes.length === 0) {
-    return <Text as="p" size="var(--ig-text-caption)" tone="muted" style={EMPTY_STYLE}>{emptyText}</Text>
+    return <EmptyBox forwardedAs="p" size="var(--ig-text-caption)" tone="muted">{emptyText}</EmptyBox>
   }
   const classifiedSet = new Set(classifiedClassIds ?? [])
   return (

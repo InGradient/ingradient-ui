@@ -1,9 +1,12 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { EmptyText as Placeholder } from '@ingradient/ui/components'
 
-const WRAP_STYLE = { width: '100%' }
+const WrapBox = styled(Stack)`
+  width: 100%;
+`
 
 export interface OrgSettingsTabProps {
   /** 조직 정보 (null/undefined → 로딩 placeholder) */
@@ -33,7 +36,7 @@ export function OrgSettingsTab({
   if (!organization) return <Placeholder>{loadingText}</Placeholder>
 
   return (
-    <Stack gap="var(--ig-spacing-8)" style={WRAP_STYLE}>
+    <WrapBox gap="var(--ig-spacing-8)">
       {title ? <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold">{title}</Text> : null}
 
       <Stack gap="var(--ig-spacing-8)">
@@ -70,6 +73,6 @@ export function OrgSettingsTab({
           </Button>
         </Inline>
       )}
-    </Stack>
+    </WrapBox>
   )
 }

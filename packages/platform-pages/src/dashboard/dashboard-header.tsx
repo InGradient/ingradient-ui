@@ -1,14 +1,21 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { Inline, Text } from '@ingradient/ui/primitives'
 import { PageHeader, PageSubtitle, PageTitle } from '@ingradient/ui/patterns'
 
-const SUBTITLE_STYLE = { marginTop: 'var(--ig-spacing-8)' }
-const PROJECT_NAME_STYLE = { textAlign: 'right' as const, flexShrink: 0, marginLeft: 'auto' }
-const ACTIONS_STYLE = {
-  position: 'relative' as const,
-  padding: 'var(--ig-spacing-8) var(--ig-spacing-24)',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-subtle)',
-}
+const SubtitleBox = styled(PageSubtitle)`
+  margin-top: var(--ig-spacing-8);
+`
+const ProjectNameBox = styled(Text)`
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: auto;
+`
+const ActionsBox = styled(Inline)`
+  position: relative;
+  padding: var(--ig-spacing-8) var(--ig-spacing-24);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
+`
 
 export interface DashboardHeaderProps {
   title?: string
@@ -36,17 +43,17 @@ export function DashboardHeader({
         <Inline justify="space-between" align="flex-start" gap="var(--ig-spacing-16)" wrap="wrap">
           <div>
             <PageTitle>{title}</PageTitle>
-            {subtitle ? <PageSubtitle style={SUBTITLE_STYLE}>{subtitle}</PageSubtitle> : null}
+            {subtitle ? <SubtitleBox>{subtitle}</SubtitleBox> : null}
           </div>
-          {projectName ? <Text size="var(--ig-text-title)" weight="bold" tone="secondary" style={PROJECT_NAME_STYLE}>{projectName}</Text> : null}
+          {projectName ? <ProjectNameBox size="var(--ig-text-title)" weight="bold" tone="secondary">{projectName}</ProjectNameBox> : null}
         </Inline>
       </PageHeader>
       {(actions || saveMessage) ? (
-        <Inline gap="var(--ig-spacing-8)" wrap="wrap" justify="flex-end" data-report-hide style={ACTIONS_STYLE}>
+        <ActionsBox gap="var(--ig-spacing-8)" wrap="wrap" justify="flex-end" data-report-hide>
           {saveMessage ? <Text size="var(--ig-text-caption)" tone="soft">{saveMessage}</Text> : null}
           {actions}
           {actionsExtra}
-        </Inline>
+        </ActionsBox>
       ) : null}
     </div>
   )

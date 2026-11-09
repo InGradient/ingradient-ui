@@ -5,7 +5,7 @@ import { ABOUT_TAB_LABELS, DATA_TAB_LABELS, FIELD_TEST_TAB_LABELS, UPDATE_SECTIO
 import type { SettingsContentProps } from './tabs-device'
 
 export function MockConfirm({ title, onCancel, onConfirm }: { title: string; onCancel: () => void; onConfirm: () => void }) {
-  return <DialogShell title={title} onClose={onCancel} actions={<><Button onClick={onCancel}>Cancel</Button><Button variant="accent" onClick={onConfirm}>Confirm mock action</Button></>}>
+  return <DialogShell title={title} onClose={onCancel} actions={<><Button variant="secondary" onClick={onCancel}>Cancel</Button><Button variant="solid" onClick={onConfirm}>Confirm mock action</Button></>}>
     This changes synthetic session state only. No files, license, or devices will be changed.
   </DialogShell>
 }

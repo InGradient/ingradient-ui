@@ -1,0 +1,145 @@
+[
+ {
+  "id": "pages-edge-0-0-6-capture-workspace--overview",
+  "file": "capture-workspace--overview.png",
+  "boxes": [
+   {
+    "x": 12,
+    "y": 4,
+    "w": 120,
+    "h": 24
+   },
+   {
+    "x": 1092,
+    "y": 28,
+    "w": 136,
+    "h": 64
+   },
+   {
+    "x": 324,
+    "y": 84,
+    "w": 792,
+    "h": 88
+   },
+   {
+    "x": 324,
+    "y": 436,
+    "w": 792,
+    "h": 40
+   },
+   {
+    "x": 684,
+    "y": 836,
+    "w": 16,
+    "h": 16
+   },
+   {
+    "x": 740,
+    "y": 836,
+    "w": 16,
+    "h": 16
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-dataset-select-workspace--overview",
+  "file": "dataset-select-workspace--overview.png",
+  "boxes": [
+   {
+    "x": -4,
+    "y": 4,
+    "w": 1448,
+    "h": 208
+   },
+   {
+    "x": 20,
+    "y": 196,
+    "w": 1400,
+    "h": 680
+   },
+   {
+    "x": 1324,
+    "y": 772,
+    "w": 96,
+    "h": 56
+   }
+  ]
+ },
+ {
+  "id": "pages-platform-0-0-1-settings-modal-edge--work-options",
+  "file": "pages-platform-0-0-1-settings-modal-edge--work-options.png",
+  "boxes": [
+   {
+    "x": 396,
+    "y": 132,
+    "w": 864,
+    "h": 184
+   },
+   {
+    "x": 1100,
+    "y": 308,
+    "w": 160,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-platform-0-0-1-settings-modal-devices--management-workflow",
+  "file": "pages-platform-0-0-1-settings-modal-devices--management-workflow.png",
+  "boxes": [
+   {
+    "x": 396,
+    "y": 132,
+    "w": 864,
+    "h": 248
+   },
+   {
+    "x": 572,
+    "y": 268,
+    "w": 160,
+    "h": 112
+   },
+   {
+    "x": 396,
+    "y": 380,
+    "w": 864,
+    "h": 368
+   },
+   {
+    "x": 1228,
+    "y": 540,
+    "w": 16,
+    "h": 24
+   },
+   {
+    "x": 556,
+    "y": 676,
+    "w": 72,
+    "h": 32
+   },
+   {
+    "x": 700,
+    "y": 676,
+    "w": 80,
+    "h": 40
+   },
+   {
+    "x": 852,
+    "y": 676,
+    "w": 104,
+    "h": 32
+   },
+   {
+    "x": 412,
+    "y": 684,
+    "w": 88,
+    "h": 24
+   }
+  ]
+ },
+ {
+  "id": "pages-platform-0-0-1-class-management-workspace--overview",
+  "file": "pages-platform-0-0-1-class-management-workspace--overview.png",
+  "boxes": []
+ }
+]

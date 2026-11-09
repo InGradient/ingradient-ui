@@ -18,8 +18,17 @@ const PropertyStack = styled.div`
   gap: var(--ig-spacing-8);
 `
 
-const NAME_INPUT_STYLE = { maxWidth: 'var(--ig-layout-size-field-max)', borderRadius: 'var(--ig-radius-2xs)' }
-const DESCRIPTION_STYLE = { minHeight: 'calc(var(--ig-spacing-32) * 2 + var(--ig-spacing-8))', maxWidth: '100%', fontSize: 'var(--ig-text-body-sm)', resize: 'vertical' as const }
+const NameInputBox = styled(TextField)`
+  max-width: var(--ig-layout-size-field-max);
+  border-radius: var(--ig-radius-2xs);
+`
+const DescriptionBox = styled(TextareaField)`
+  min-height: calc(var(--ig-spacing-32) * 2 + var(--ig-spacing-8));
+  max-width: 100%;
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
+  resize: vertical;
+`
 
 export interface ClassInfoSidebarClass {
   id: string
@@ -56,12 +65,11 @@ export function ClassInfoSidebar({
       title: 'Name',
       body: (
         <PropertyStack>
-          <TextField
+          <NameInputBox
             size="sm"
             value={selectedClass.name}
             onChange={(e) => onChangeName?.(e.target.value)}
             aria-label="Class name"
-            style={NAME_INPUT_STYLE}
           />
           <ColorInputRow
             value={selectedClass.color}
@@ -75,12 +83,11 @@ export function ClassInfoSidebar({
     {
       title: 'Description',
       body: (
-        <TextareaField
+        <DescriptionBox
           value={selectedClass.description ?? ''}
           onChange={(e) => onChangeDescription?.(e.target.value || undefined)}
           placeholder={descriptionPlaceholder}
           rows={3}
-          style={DESCRIPTION_STYLE}
         />
       ),
     },

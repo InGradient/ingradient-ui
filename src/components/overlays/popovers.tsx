@@ -5,7 +5,7 @@ import { surfaceRaised, withSurfaceDepth } from '../../primitives'
 const PopoverCardBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-7);
+  padding: calc(var(--ig-space-7) - var(--ig-border-1px));
 `
 
 export const PopoverCard = withSurfaceDepth(PopoverCardBase, { floating: true, displayName: 'PopoverCard' })
@@ -13,7 +13,7 @@ export const PopoverCard = withSurfaceDepth(PopoverCardBase, { floating: true, d
 const MenuBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-3);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px));
   min-width: var(--ig-popup-xs);
 `
 
@@ -22,7 +22,7 @@ export const Menu = withSurfaceDepth(MenuBase, { floating: true, displayName: 'M
 const MenuPopoverRootBase = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
-  padding: var(--ig-space-4);
+  padding: calc(var(--ig-space-4) - var(--ig-border-1px));
   min-width: var(--ig-popup-xs);
   box-shadow: var(--ig-shadow-popover);
 `
@@ -47,8 +47,9 @@ MenuPopover.displayName = 'MenuPopover'
 export const TooltipBubble = styled.div`
   ${surfaceRaised}
   border-radius: var(--ig-radius-sm);
-  padding: var(--ig-space-3) var(--ig-space-4);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-4) - var(--ig-border-1px));
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   max-width: var(--ig-popup-sm);
 `
 

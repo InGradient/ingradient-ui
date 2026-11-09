@@ -2,16 +2,11 @@ import { useCallback, useId, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { DialogShell, IconButton, Switch, useClickOutside, iconSizeNumbers } from '@ingradient/ui'
 import { Button, DatePickerField, DropdownSelect, AlertCircleIcon, CheckCircleIcon, FilterIcon, ImageIcon, InfoIcon, PanelLeftCloseIcon } from '@ingradient/ui/components'
-import {
-  Container, Header, HeaderActions, FilterButtonWrap, FilterPopover,
-  FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel,
-  LogList, LogItem, LogTime, LogMessage, DetailPanel, DetailImageClickable,
-  ImageModalImg, DetailContent, DetailPlaceholder,
-  LogPlaceholder,
-} from './LogPanelView.styles'
+import { Container, Header, FilterButtonWrap, FilterPopover, FilterSection, FilterSectionTitle, FilterRow, DateRow, DateLabel, FilterButtonLabel, LogList, LogItem, LogTime, LogMessage, DetailPanel, DetailImageClickable, ImageModalImg, DetailContent, DetailPlaceholder, LogPlaceholder } from './LogPanelView.styles'
 import { getTimeFromMsg, type DatePreset } from './log-filters'
 import { LogDetailTableView } from './LogDetailTableView'
 import type { LogPanelViewProps } from './types'
+import { Inline } from '@ingradient/ui/primitives'
 
 export function LogPanelView(props: LogPanelViewProps): JSX.Element {
   const {
@@ -67,7 +62,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
     }}>
       <Header>
         <span>{labels.title}</span>
-        <HeaderActions>
+        <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
         <FilterButtonWrap>
           <Button variant="secondary" size="sm" ref={filterButtonRef} onClick={onToggleFilterPopover} title={labels.filterButton}>
             <FilterIcon size={iconSizeNumbers.sm} /><FilterButtonLabel>{labels.filterButton}</FilterButtonLabel>
@@ -130,7 +125,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
             <PanelLeftCloseIcon size={iconSizeNumbers.sm} />
           </IconButton>
         )}
-        </HeaderActions>
+        </Inline>
       </Header>
       <LogList ref={logListRef} role="region" aria-label={labels.title} tabIndex={0} onScroll={handleScroll}>
         {entries.length === 0 && <LogPlaceholder>{labels.noActivity}</LogPlaceholder>}
@@ -193,7 +188,7 @@ export function LogPanelView(props: LogPanelViewProps): JSX.Element {
                   variant="secondary"
                   size="sm"
                   type="button"
-                  style={{ marginBottom: 'var(--ig-space-4)' }}
+                  style={{ marginBottom: 'var(--ig-spacing-8)' }}
                   onClick={() => onOpenSavedImage(hoveredLog.imagePath!)}
                 >
                   <ImageIcon size={iconSizeNumbers.sm} /> {labels.openSavedImage}

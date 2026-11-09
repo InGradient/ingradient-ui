@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { Button } from '@ingradient/ui/components'
 
 export const Container = styled.aside`
-  width: var(--ig-popup-sm);
+  /* Fills the side-panel column; its width comes from the layout (320px, resizable). */
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -12,11 +13,11 @@ export const Container = styled.aside`
 `
 
 export const Section = styled.div`
-  padding: var(--ig-space-5);
+  padding: var(--ig-spacing-12);
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-3);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  gap: var(--ig-spacing-8);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
 `
 
 export const GrowSection = styled(Section)`
@@ -25,27 +26,9 @@ export const GrowSection = styled(Section)`
   overflow-y: auto;
 `
 
-export const Label = styled.div`
-  font-size: var(--ig-font-size-2xs);
-  font-weight: var(--ig-font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--ig-letter-spacing-wide);
-  color: var(--ig-color-text-muted);
-`
 
 /** 섹션 제목과 접기 버튼을 한 줄에 놓는다. 앱의 패널 헤더와 같은 배치다. */
-export const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ig-space-2);
-`
 
-export const ClassList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--ig-space-2);
-`
 
 export const SetupSlot = styled.div`
   flex: 1;
@@ -56,7 +39,7 @@ export const SetupSlot = styled.div`
 export const PatternGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const PatternButton = styled(Button).attrs({

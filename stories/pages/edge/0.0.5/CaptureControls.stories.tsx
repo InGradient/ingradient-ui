@@ -1,19 +1,25 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, userEvent, within } from 'storybook/test'
+import { expect, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import type { PreviewPatternLabel } from '@ingradient/edge-pages'
 import { Inline, Stack } from '@ingradient/ui'
 import { defineHandoff } from '../../../support/handoff'
 import { LogPanel, RightPanel } from './workspace/build-panels'
 import { SetupContent } from './workspace/build-setup-content'
 import { SIMULATION_LOGS } from './workspace/capture-fixtures'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
 
-function Controls({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Element {
+/** Story harness: the app shell provides surface depth in the product, so the harness does too. */
+function Controls(props: { mode?: 'logs' | 'setup' }): JSX.Element {
+  return <SurfaceDepthProvider><ControlsBody {...props} /></SurfaceDepthProvider>
+}
+function ControlsBody({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Element {
   const [pattern, setPattern] = useState<PreviewPatternLabel | null>(null)
-  return <Inline align="stretch" gap="var(--ig-space-4)" style={{ height: '100vh', padding: 'var(--ig-space-4)' }}>
-    {mode === 'logs' ? <Stack style={{ width: 'var(--ig-popup-sm)' }}><LogPanel logs={SIMULATION_LOGS} /></Stack> : <>
+  return <Inline align="stretch" gap="var(--ig-spacing-8)" style={{ height: '100vh', padding: 'var(--ig-spacing-8)' }}>
+    {mode === 'logs' ? <Stack style={{ width: 'var(--ig-layout-size-side-panel)' }}><LogPanel logs={SIMULATION_LOGS} /></Stack> : <>
       <Stack style={{ flex: 1, overflow: 'auto' }}><SetupContent previewPatternLabel={pattern} onPreviewPattern={setPattern} /></Stack>
-      <Stack style={{ width: 'var(--ig-popup-sm)' }}><RightPanel previewPatternLabel={pattern} onPreviewPattern={setPattern} /><output aria-label="Selected simulation pattern">{pattern ?? 'None'}</output></Stack>
+      <Stack style={{ width: 'var(--ig-layout-size-side-panel)' }}><RightPanel previewPatternLabel={pattern} onPreviewPattern={setPattern} /><output aria-label="Selected simulation pattern">{pattern ?? 'None'}</output></Stack>
     </>}
   </Inline>
 }

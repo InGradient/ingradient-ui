@@ -7,10 +7,10 @@ export function NicControlSectionView(props: NicControlSectionViewProps): JSX.El
   const { nicStatus, isApplying, labels, onEnable, onDisable, onRestart } = props
   if (!nicStatus) return null
   return (
-    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
+    <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <SectionTitle>{labels.nicControlTitle}</SectionTitle>
       <NicStatusCardView status={nicStatus} labels={labels} />
-      <Inline gap="var(--ig-space-3)" wrap="nowrap" style={{ marginTop: 'var(--ig-space-3)' }}>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap" style={{ marginTop: 'var(--ig-spacing-8)' }}>
         <Button size="sm" variant="secondary" onClick={() => onEnable(nicStatus.nicId)} disabled={isApplying || nicStatus.isAdminUp}>
           {isApplying && <Spinner size="sm" tone="muted" />}
           {labels.nicEnable}

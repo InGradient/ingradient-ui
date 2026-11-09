@@ -21,9 +21,9 @@ export function TrendTooltip({ active, label, payload }: TooltipProps): JSX.Elem
   // labels. Compose its same shared shell/rows to retain per-class color swatches
   // without changing the generic component API or overriding its private CSS.
   return <TooltipCard>
-    {label != null && <div style={{ marginBottom: 'var(--ig-space-3)', fontSize: 'var(--ig-font-size-xs)', fontWeight: 'var(--ig-font-weight-bold)', color: 'var(--ig-color-text-primary)' }}>{label}</div>}
+    {label != null && <div style={{ marginBottom: 'var(--ig-spacing-8)', fontSize: 'var(--ig-text-caption)', fontWeight: 'var(--ig-font-weight-bold)', color: 'var(--ig-color-text-primary)' }}>{label}</div>}
     {visible.map((item, index) => <KeyValueRow key={`${item.dataKey ?? item.name}-${index}`}
-      label={<span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-space-3)' }}>
+      label={<span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--ig-spacing-8)' }}>
         <ColorSwatch aria-hidden $size="xs" $color={item.color ?? CHART_LEGEND_FALLBACK} />{item.name}
       </span>} value={Number(item.value)} />)}
   </TooltipCard>

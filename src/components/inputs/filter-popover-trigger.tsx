@@ -35,6 +35,7 @@ const Trigger = styled.button<{ $active: boolean; $iconOnly: boolean }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-focus-bg-soft)' : 'var(--ig-color-surface-interactive)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-secondary)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-medium);
   cursor: pointer;
   transition: background var(--ig-motion-fast), border-color var(--ig-motion-fast), color var(--ig-motion-fast);

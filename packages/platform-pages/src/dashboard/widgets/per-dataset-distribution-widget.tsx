@@ -11,10 +11,18 @@ const Block = styled.div`
   &:last-child { margin-bottom: 0; }
 `
 
-const SECTION_TITLE_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
-const HEAD_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
-const CHART_STYLE = { marginTop: 'var(--ig-spacing-12)' }
-const EMPTY_STYLE = { margin: 0 }
+const SectionTitleBox = styled(Text)`
+  margin-bottom: var(--ig-spacing-8);
+`
+const HeadBox = styled(Inline)`
+  margin-bottom: var(--ig-spacing-8);
+`
+const ChartBox = styled.div`
+  margin-top: var(--ig-spacing-12);
+`
+const EmptyBox = styled(Text)`
+  margin: 0;
+`
 
 const CLASS_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
 
@@ -52,21 +60,21 @@ export function PerDatasetDistributionWidget({
 }: PerDatasetDistributionWidgetProps) {
   return (
     <Card className={className}>
-      <Inline justify="space-between" gap="var(--ig-spacing-12)" style={HEAD_STYLE}>
+      <HeadBox justify="space-between" gap="var(--ig-spacing-12)">
         <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
-      </Inline>
+      </HeadBox>
       {datasetDistribution.length === 0 ? (
-        <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <EmptyBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">{emptyText}</EmptyBox>
       ) : (
         datasetDistribution.map((dataset) => (
           <Block key={dataset.dataset_id}>
-            <Text as="h3" tone="secondary" size="var(--ig-text-body)" weight="semibold" style={SECTION_TITLE_STYLE}>{dataset.name}</Text>
+            <SectionTitleBox forwardedAs="h3" tone="secondary" size="var(--ig-text-body)" weight="semibold">{dataset.name}</SectionTitleBox>
             {dataset.class_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{noLabelsText}</Text>
+              <EmptyBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">{noLabelsText}</EmptyBox>
             ) : (
               <>
                 <Table columns={CLASS_COLUMNS} rows={dataset.class_counts} ariaLabel={`${dataset.name} class counts`} />
-                <div style={CHART_STYLE}>
+                <ChartBox>
                   <BarChartCard
                     data={dataset.class_counts.map((d, i) => ({ name: d.name, count: d.count, color: CLASS_COLORS[i % CLASS_COLORS.length] }))}
                     xKey="name"
@@ -74,7 +82,7 @@ export function PerDatasetDistributionWidget({
                     height={chartHeights.smPlus}
                     getCellColor={(row) => row.color as string}
                   />
-                </div>
+                </ChartBox>
               </>
             )}
           </Block>

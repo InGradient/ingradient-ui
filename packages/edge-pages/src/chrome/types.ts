@@ -25,6 +25,8 @@ export interface TitleBarViewProps {
 // ── TopBar ────────────────────────────────────────────────────────────────────
 
 export interface TopBarLabels {
+  /** Accessible name of the back (chevron) button. */
+  backToDatasets?: string
   refresh: string
   settingsTitle: string
   settingsDisabledTitle: string
@@ -41,6 +43,10 @@ export interface TopBarViewProps {
 
   labels: TopBarLabels
 
+  /** PLC link shown next to the camera status; omit when the PLC UI is off. */
+  plcStatus?: PlcStatusIndicator
+  /** Auto-inspect start/stop control (AutoInspectView), left of the status icons. */
+  autoInspect?: ReactNode
   langSelector?: ReactNode
   accountMenu?: ReactNode
   settingsDialog?: ReactNode
@@ -48,6 +54,19 @@ export interface TopBarViewProps {
   onBackToDatasets: () => void
   onRefresh: () => void
   onOpenSettings: () => void
+  /** Camera status icon opens Settings › Connection; falls back to onOpenSettings. */
+  onOpenConnectionSettings?: () => void
+}
+
+/** connected = linked, disconnected = address set but no link, unconfigured = no PLC address. */
+export type PlcStatusTone = 'connected' | 'disconnected' | 'unconfigured'
+
+export interface PlcStatusIndicator {
+  tone: PlcStatusTone
+  /** Status sentence, e.g. "PLC connected: 192.168.0.10:502". */
+  title: string
+  /** Opens Settings › PLC Communication. */
+  onOpen?: () => void
 }
 
 // ── BottomBar ─────────────────────────────────────────────────────────────────
@@ -120,4 +139,21 @@ export interface AccountMenuViewProps {
   onCloseChangeAccount: () => void
   onLogout: () => void
   onSelectAccount: (entry: AccountHistoryEntry) => void
+}
+
+export interface LangOption {
+  value: string
+  /** Native name, e.g. 한국어 / English / Tiếng Việt. */
+  label: string
+}
+
+export interface LangSelectorViewProps {
+  value: string
+  options: LangOption[]
+  open: boolean
+  /** Accessible name and tooltip of the globe button, e.g. "Language". */
+  label: string
+  onToggle: () => void
+  onClose: () => void
+  onSelect: (value: string) => void
 }

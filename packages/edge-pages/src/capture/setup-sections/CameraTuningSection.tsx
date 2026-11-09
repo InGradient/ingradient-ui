@@ -35,13 +35,13 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
   const focusPeakingOn = previewPatternLabel === FOCUS_PEAKING_PATTERN
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
       <SectionTitle>{labels.cameraTuning}</SectionTitle>
-      <Text tone="muted" size="var(--ig-font-size-xs)">
+      <Text tone="muted" size="var(--ig-text-caption)">
         {isConnected ? labels.livePreviewAvailable : labels.noCamera}
       </Text>
 
-      <Inline gap="var(--ig-space-2)" align="center">
+      <Inline gap="var(--ig-spacing-8)" align="center">
         <PatternButton
           type="button"
           $active={focusPeakingOn}
@@ -60,7 +60,7 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.exposure} help={labels.exposureDesc} />
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <NumberField
             value={+(cameraParams.exposure / US_PER_SECOND).toFixed(4)}
             min={0.0001} max={5} step={0.1}
@@ -78,7 +78,7 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
           />
           <FieldHint>s</FieldHint>
         </Inline>
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <FieldHint>{labels.auto}</FieldHint>
           <Switch
             checked={cameraParams.exposureAuto}

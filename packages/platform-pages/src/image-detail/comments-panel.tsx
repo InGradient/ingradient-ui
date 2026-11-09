@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { useState, type ReactNode } from 'react'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
@@ -10,17 +11,21 @@ import { CollapsibleSectionHeader } from '@ingradient/ui/components'
 import { CommentThread } from '@ingradient/ui/patterns'
 import { MentionTextarea, type MentionCandidate } from '@ingradient/ui/components'
 
-const BODY_STYLE = { marginTop: 'var(--ig-spacing-8)' }
-const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-popup-3xs)'
-const EMPTY_STYLE = { padding: 'var(--ig-spacing-8)' }
+const BodyBox = styled(Stack)`
+  margin-top: var(--ig-spacing-8);
+`
+const DEFAULT_LIST_MAX_HEIGHT = 'var(--ig-layout-size-comment-list-max-height)'
+const EmptyBox = styled(Text)`
+  padding: var(--ig-spacing-8);
+`
 
-const ERROR_BOX_STYLE = {
-  padding: 'var(--ig-spacing-8) var(--ig-spacing-8)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-danger-dim-bg)',
-  borderRadius: 'var(--ig-radius-md)',
-  background: 'var(--ig-color-danger-dim-bg)',
-  color: 'var(--ig-color-danger)',
-}
+const ErrorBoxBox = styled(Inline)`
+  padding: calc(var(--ig-spacing-8) - var(--ig-border-1px)) calc(var(--ig-spacing-8) - var(--ig-border-1px));
+  border: var(--ig-border-1px) solid var(--ig-color-danger-dim-bg);
+  border-radius: var(--ig-radius-md);
+  background: var(--ig-color-danger-dim-bg);
+  color: var(--ig-color-danger);
+`
 
 export interface Comment {
   id: string
@@ -182,9 +187,9 @@ export function CommentsPanel(props: CommentsPanelProps) {
         badge={<Badge $tone={count > 0 ? 'accent' : 'neutral'}>{count}</Badge>}
       />
       {open ? (
-        <Stack gap="var(--ig-spacing-8)" style={BODY_STYLE}>
+        <BodyBox gap="var(--ig-spacing-8)">
           {count === 0 ? (
-            <Text tone="muted" size="var(--ig-text-caption)" style={EMPTY_STYLE}>{emptyTextValue}</Text>
+            <EmptyBox tone="muted" size="var(--ig-text-caption)">{emptyTextValue}</EmptyBox>
           ) : (
             <Box style={{ maxHeight: listMaxHeight, overflowY: 'auto' }}>
               <CommentThread>
@@ -224,7 +229,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                 />
               )}
               {error ? (
-                <Inline gap="var(--ig-spacing-8)" justify="space-between" style={ERROR_BOX_STYLE}>
+                <ErrorBoxBox gap="var(--ig-spacing-8)" justify="space-between">
                   <Text as="span" size="var(--ig-text-caption)">{error}</Text>
                   {canRetry && onRetry ? (
                     <Button
@@ -238,7 +243,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                       Retry
                     </Button>
                   ) : null}
-                </Inline>
+                </ErrorBoxBox>
               ) : null}
               <Inline gap="var(--ig-spacing-8)" justify="space-between">
                 <Text as="span" size="var(--ig-text-caption)" tone="muted">Press Ctrl/Cmd+Enter to submit.</Text>
@@ -256,7 +261,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
                   ) : null}
                   <Button
                     type="button"
-                    variant="accent"
+                    variant="solid"
                     size="sm"
                     disabled={submitDisabled}
                     onClick={submit}
@@ -267,7 +272,7 @@ export function CommentsPanel(props: CommentsPanelProps) {
               </Inline>
             </Stack>
           ) : null}
-        </Stack>
+        </BodyBox>
       ) : null}
     </Stack>
   )

@@ -1,6 +1,9 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 
-const VALUE_STYLE = { marginLeft: 'var(--ig-spacing-16)' }
+const ValueBox = styled(Text)`
+  margin-left: var(--ig-spacing-16);
+`
 
 export interface DashboardStatItem {
   label: string
@@ -18,7 +21,7 @@ export function DashboardStatsHeader({ items, className }: DashboardStatsHeaderP
       {items.map((item) => (
         <Inline as="span" key={item.label} justify="space-between">
           <Text as="span" size="var(--ig-text-caption)" tone="muted">{item.label}</Text>
-          <Text as="strong" size="var(--ig-text-caption)" weight="bold" style={VALUE_STYLE}>{item.value}</Text>
+          <ValueBox forwardedAs="strong" size="var(--ig-text-caption)" weight="bold">{item.value}</ValueBox>
         </Inline>
       ))}
     </Stack>

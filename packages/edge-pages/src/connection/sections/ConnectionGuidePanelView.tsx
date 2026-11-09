@@ -2,61 +2,52 @@ import { ActivityIcon, AlertTriangleIcon, CheckCircleIcon, SearchIcon, SlidersIc
 import styled from 'styled-components'
 import { Badge, Button, Card, iconSizeNumbers } from '@ingradient/ui'
 import type { ConnectionGuidePanelViewProps, GuideTone } from '../types'
+import { Inline, Text } from '@ingradient/ui/primitives'
 
 // 라이브러리 Card(panel) 표면 위에 2열 grid 레이아웃만 얹는 thin styled(Card).
 const GuideCard = styled(Card)`
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--ig-space-5);
+  gap: var(--ig-spacing-12);
   align-items: start;
-  margin-bottom: var(--ig-space-7);
+  margin-bottom: var(--ig-spacing-16);
 `
 
 const Header = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--ig-space-3);
-  margin-bottom: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
+  margin-bottom: var(--ig-spacing-8);
 `
 
-const Title = styled.div`
-  font-size: var(--ig-font-size-lg);
-  font-weight: var(--ig-font-weight-bold);
-  color: var(--ig-color-text-primary);
-`
 
 const Summary = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
   color: var(--ig-color-text-secondary);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-caption-leading);
 `
 
-const Actions = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--ig-space-3);
-  flex-wrap: wrap;
-`
 
 const SummaryGrid = styled.div`
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--ig-space-3);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin-top: var(--ig-spacing-8);
 `
 
 const SummaryLabel = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   text-transform: uppercase;
   letter-spacing: var(--ig-letter-spacing-wide);
   color: var(--ig-color-text-muted);
-  margin-bottom: var(--ig-space-1);
+  margin-bottom: var(--ig-spacing-4);
 `
 
 const SummaryValue = styled.div`
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
   white-space: nowrap;
@@ -68,14 +59,14 @@ const Warnings = styled.div`
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-1);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-4);
+  margin-top: var(--ig-spacing-8);
 `
 
 const Warning = styled.div`
-  font-size: var(--ig-font-size-2xs);
+  font-size: var(--ig-text-micro);
   color: var(--ig-color-warning);
-  line-height: var(--ig-line-height-snug);
+  line-height: var(--ig-text-micro-leading);
 `
 
 function toneColor(tone: GuideTone): string {
@@ -108,17 +99,17 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
   const { tone, statusLabel, title, summary, primaryAction, secondaryActions, network, warnings } = state
 
   return (
-    <GuideCard radius="var(--ig-radius-xs)" padding="var(--ig-space-5)">
+    <GuideCard padding="var(--ig-spacing-12)">
       <div>
         <Header>
           <StatusIcon tone={tone} />
-          <Title>{title}</Title>
+          <Text as="div" size="var(--ig-text-title-sm)" weight="bold">{title}</Text>
           <Badge $tone={tone}>{statusLabel}</Badge>
         </Header>
         <Summary>{summary}</Summary>
       </div>
 
-      <Actions>
+      <Inline gap="var(--ig-spacing-8)" justify="flex-end">
         {secondaryActions?.map((action, i) => (
           <Button key={`${action.label}-${i}`} size="sm" variant="secondary" type="button" onClick={action.onClick}>
             {action.label}
@@ -130,22 +121,22 @@ export function ConnectionGuidePanelView(props: ConnectionGuidePanelViewProps): 
             : <ActivityIcon size={iconSizeNumbers.xs} />}
           {primaryAction.label}
         </Button>
-      </Actions>
+      </Inline>
 
       <SummaryGrid>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkCameraIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.cameraIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkNicIp}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.nicIp)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkJumbo}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.jumbo)}</SummaryValue>
         </Card>
-        <Card elevation="raised" radius="var(--ig-radius-xs)" padding="var(--ig-space-3) var(--ig-space-4)">
+        <Card elevation="raised" padding="var(--ig-spacing-8) var(--ig-spacing-8)">
           <SummaryLabel>{labels.guideNetworkReceive}</SummaryLabel>
           <SummaryValue>{valueOrDash(network.receive)}</SummaryValue>
         </Card>

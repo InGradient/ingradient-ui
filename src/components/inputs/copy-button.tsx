@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { paddingInsideBorder } from '../../primitives'
 import { useClipboard } from '../../hooks'
 import { iconSizeNumbers, svgStrokeWidths } from '../../tokens/core'
 
@@ -7,12 +8,13 @@ const Btn = styled.button<{ $size: 'sm' | 'md' }>`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  padding: ${(p) => (p.$size === 'sm' ? 'var(--ig-space-1) var(--ig-space-3)' : 'var(--ig-space-2) var(--ig-space-4)')};
+  padding: ${(p) => paddingInsideBorder(p.$size === 'sm' ? 'var(--ig-space-1) var(--ig-space-3)' : 'var(--ig-space-2) var(--ig-space-4)')};
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-muted);
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
+  line-height: ${(p) => (p.$size === 'sm' ? 'var(--ig-leading-2xs)' : 'var(--ig-leading-xs)')};
   cursor: pointer;
   transition: color var(--ig-motion-fast), border-color var(--ig-motion-fast);
   &:hover { color: var(--ig-color-text-primary); border-color: var(--ig-color-border-strong); }

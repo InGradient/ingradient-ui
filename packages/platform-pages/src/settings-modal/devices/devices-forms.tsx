@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { forwardRef, type Ref } from 'react'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
@@ -7,16 +8,22 @@ import { DropdownSelect } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { Textarea } from '@ingradient/ui/components'
 
-const TOKEN_BOX_STYLE = {
-  background: 'var(--ig-color-surface-raised)',
-  border: 'var(--ig-border-1px) solid var(--ig-color-accent)',
-  borderRadius: 'var(--ig-radius-xxs)',
-  padding: 'var(--ig-spacing-12)',
-}
+const TokenBoxBox = styled(Stack)`
+  background: var(--ig-color-surface-raised);
+  border: var(--ig-border-1px) solid var(--ig-color-accent);
+  border-radius: var(--ig-radius-xxs);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
+`
 
-const FLEX_1_STYLE = { flex: 1 }
-const WIDTH_160_STYLE = { width: 'var(--ig-popup-2xs-plus)' }
-const WIDTH_200_STYLE = { width: 'var(--ig-popup-list-min)' }
+const Flex1Box = styled(TextField)`
+  flex: 1;
+`
+const Width160Box = styled(TextField)`
+  width: var(--ig-layout-size-field-sm);
+`
+const Width200Box = styled(TextField)`
+  width: var(--ig-layout-size-field-md);
+`
 
 
 export interface IssuedToken {
@@ -70,7 +77,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
   if (!isAdmin) {
     return issuedToken ? (
       <div ref={ref}>
-        <Stack gap="var(--ig-spacing-8)" style={TOKEN_BOX_STYLE}>
+        <TokenBoxBox gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-caption)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
@@ -79,7 +86,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="var(--ig-text-caption)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
-        </Stack>
+        </TokenBoxBox>
       </div>
     ) : null
   }
@@ -95,20 +102,18 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
           <Stack gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-caption)" weight="medium" tone="muted">Register a new device by entering the Device UID shown in the Edge app.</Text>
           <Inline gap="var(--ig-spacing-8)" wrap="wrap">
-            <TextField
+            <Flex1Box
               ref={uidInputRef}
               placeholder="Device UID"
               value={registerUid}
               onChange={(e) => onChangeRegisterUid(e.target.value)}
               title="Device UID"
-              style={FLEX_1_STYLE}
             />
-            <TextField
+            <Width160Box
               placeholder="Name (optional)"
               value={registerName}
               onChange={(e) => onChangeRegisterName(e.target.value)}
               title="Device name"
-              style={WIDTH_160_STYLE}
             />
             <Button type="button" onClick={onRegister} disabled={!!registering || !registerUid.trim()}>
               {registering ? 'Registering…' : 'Register'}
@@ -130,7 +135,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
               options={deviceOptions}
               onChange={onChangeIssueDeviceId}
             />
-            <TextField
+            <Width200Box
               type="number"
               min={1}
               max={365}
@@ -138,7 +143,6 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
               value={issueValidDays}
               onChange={(e) => onChangeIssueValidDays(e.target.value)}
               title="Offline token valid days (1-365)"
-              style={WIDTH_200_STYLE}
             />
             <Button type="button" onClick={onIssue} disabled={!!issuing || !issueDeviceId || activeDevices.length === 0}>
               {issuing ? 'Issuing…' : 'Issue'}
@@ -150,7 +154,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
       ) : null}
 
       {issuedToken ? (
-        <Stack gap="var(--ig-spacing-8)" style={TOKEN_BOX_STYLE}>
+        <TokenBoxBox gap="var(--ig-spacing-8)">
           <Text size="var(--ig-text-caption)" weight="medium" tone="muted">
             Offline License Token — device: {issuedToken.deviceUid} · valid until {new Date(issuedToken.validUntil).toLocaleString()}
           </Text>
@@ -159,7 +163,7 @@ export const DevicesForms = forwardRef<HTMLDivElement, DevicesFormsProps>(functi
             <CopyButton value={issuedToken.token} size="sm">Copy</CopyButton>
             <Text size="var(--ig-text-caption)" tone="muted">Paste this token into the Edge app's license field.</Text>
           </Inline>
-        </Stack>
+        </TokenBoxBox>
       ) : null}
     </div>
   )

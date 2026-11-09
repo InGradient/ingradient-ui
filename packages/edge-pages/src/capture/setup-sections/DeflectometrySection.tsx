@@ -32,12 +32,12 @@ export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Elem
   useEffect(() => { setGammaDraft(String(setupConfig.gamma)) }, [setupConfig.gamma])
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
       <SectionTitle>{labels.deflectometry}</SectionTitle>
 
       {fringePreview}
 
-      <Text tone="muted" size="var(--ig-font-size-xs)">{sequenceSummary}</Text>
+      <Text tone="muted" size="var(--ig-text-caption)">{sequenceSummary}</Text>
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.fringePeriod} />
@@ -73,7 +73,7 @@ export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Elem
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.topoInvert} />
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <Switch
             checked={setupConfig.topoInvert}
             disabled={disabled}
@@ -106,7 +106,7 @@ export function DeflectometrySection(props: DeflectometrySectionProps): JSX.Elem
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.settleDelay} />
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <TextField
             size="sm"
             type="number"

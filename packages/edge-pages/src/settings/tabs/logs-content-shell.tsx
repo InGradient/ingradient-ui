@@ -1,33 +1,35 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
+import { withSurfaceDepth, Inline } from '@ingradient/ui/primitives'
 import { Button, SearchField, DropdownSelect } from '@ingradient/ui'
 import { EmptyText } from '@ingradient/ui/components'
 import type { LogEntry } from '../types'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-4); height: 100%;`
-const ToolbarRow = styled.div`display: flex; gap: var(--ig-space-3); align-items: center;`
-const LogList = styled.div`
+const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-8); height: 100%;`
+const LogListBase = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   font-family: var(--ig-font-mono);
-  font-size: var(--ig-font-size-xs);
+  font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-xs);
-  padding: var(--ig-space-3);
+  padding: var(--ig-spacing-8);
 `
+const LogList = withSurfaceDepth(LogListBase, { displayName: 'LogList' })
 
 /** 로그 한 줄 (level별 색). Backend/Frontend 의 renderEntry 에서 재사용. */
 export const LogRow = styled.div<{ $level: string }>`
-  padding: var(--ig-space-2px) 0;
+  padding: var(--ig-spacing-2) 0;
   color: ${({ $level }) =>
     $level === 'error' ? 'var(--ig-color-danger)' :
     $level === 'warn'  ? 'var(--ig-color-warning)' :
     'var(--ig-color-text-secondary)'};
 `
-export const Timestamp = styled.span`color: var(--ig-color-text-muted); margin-right: var(--ig-space-2);`
-export const LevelBadge = styled.span`text-transform: uppercase; font-weight: var(--ig-font-weight-bold); margin-right: var(--ig-space-2);`
+export const Timestamp = styled.span`color: var(--ig-color-text-muted); margin-right: var(--ig-spacing-8);`
+export const LevelBadge = styled.span`text-transform: uppercase; font-weight: var(--ig-font-weight-bold); margin-right: var(--ig-spacing-8);`
 
 export interface LogsContentShellLabels {
   search: string
@@ -65,7 +67,7 @@ export function LogsContentShell({
 }: LogsContentShellProps): JSX.Element {
   return (
     <Wrap>
-      <ToolbarRow>
+      <Inline gap="var(--ig-spacing-8)" wrap="nowrap">
         <SearchField
           aria-label={labels.search}
           value={searchQuery}
@@ -87,7 +89,7 @@ export function LogsContentShell({
         <Button size="sm" variant="secondary" onClick={onRefresh} disabled={refreshing}>{labels.refresh}</Button>
         <Button size="sm" variant="secondary" onClick={onClear}>{labels.clear}</Button>
         <Button size="sm" variant="secondary" onClick={onExport}>{labels.export}</Button>
-      </ToolbarRow>
+      </Inline>
       <LogList role="region" aria-label={labels.search} tabIndex={0}>
         {logs.length === 0
           ? <EmptyText>{labels.empty}</EmptyText>

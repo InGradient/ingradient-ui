@@ -6,12 +6,13 @@ import { popupSizeNumbers } from '../../tokens/core'
 const PopoverRoot = styled.div<{ $width: number }>`
   ${surfaceRaised}
   width: ${(p) => `${p.$width}px`};
-  padding: var(--ig-space-5);
+  padding: calc(var(--ig-space-5) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   box-shadow: var(--ig-shadow-popover);
   z-index: var(--ig-z-dropdown);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-secondary);
 `
 

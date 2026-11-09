@@ -8,8 +8,14 @@ import { DialogCloseButton } from './dialog-close-button'
 import { ModalActions, ModalBackdrop, ModalCard, ModalHeader, ModalTitle } from './modal-primitives'
 import type { ButtonVariant } from '../shared/button-types'
 
+// The card's 1px border sits outside these boxes; the outermost top and bottom padding give it back
+// so the dialog's rendered height stays on the 4px grid (DESIGN "Borders stay inside the grid").
+const DialogHeader = styled(ModalHeader)`
+  padding-top: calc(var(--ig-space-9) - var(--ig-border-1px));
+`
+
 const DialogContent = styled.div`
-  padding: var(--ig-space-9) var(--ig-space-10) var(--ig-space-10);
+  padding: var(--ig-space-9) var(--ig-space-10) calc(var(--ig-space-10) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-7);
@@ -18,7 +24,7 @@ const DialogContent = styled.div`
   overflow-y: auto;
 `
 
-const DIALOG_DESCRIPTION_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-loose)' }
+const DIALOG_DESCRIPTION_STYLE = { margin: 0 }
 
 export function DialogShell({
   title,
@@ -89,10 +95,10 @@ export function DialogShell({
         onClick={(event) => event.stopPropagation()}
         style={{ width, ...(height ? { height } : {}) }}
       >
-        <ModalHeader>
+        <DialogHeader>
           <ModalTitle id={titleId}>{title}</ModalTitle>
           {onClose ? <DialogCloseButton onClick={() => onClose()} /> : null}
-        </ModalHeader>
+        </DialogHeader>
         <DialogContent>
           {description ? <B3 as="p" tone="muted" style={DIALOG_DESCRIPTION_STYLE}>{description}</B3> : null}
           {children}

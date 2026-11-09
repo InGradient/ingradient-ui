@@ -7,7 +7,7 @@ const Root = styled.button`
   align-items: center;
   justify-content: space-between;
   gap: var(--ig-space-5);
-  padding: var(--ig-space-4) var(--ig-space-5);
+  padding: calc(var(--ig-space-4) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-surface-interactive);
@@ -27,18 +27,22 @@ const Root = styled.button`
 const TextStack = styled.span`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2px);
+  /* Two lines on px line heights, no gap: keeps the row on the 4px grid. */
+  gap: var(--ig-space-0);
   min-width: 0;
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
 `
 
 const Secondary = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
 const Action = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   white-space: nowrap;
   flex-shrink: 0;
 `
