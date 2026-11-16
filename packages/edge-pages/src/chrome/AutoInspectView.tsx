@@ -3,7 +3,7 @@ import { Button, PlayIcon, SquareIcon } from '@ingradient/ui/components'
 import { Inline, Text } from '@ingradient/ui/primitives'
 
 const CAPTION_STYLE = {
-  maxWidth: 'var(--ig-layout-size-field-lg)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+  maxWidth: 'var(--ig-layout-size-field-max)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
 } as const
 
 export interface AutoInspectLabels {

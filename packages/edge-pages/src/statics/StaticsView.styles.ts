@@ -76,3 +76,24 @@ export const SectionContent = styled.div<{ $collapsed: boolean }>`
   display: ${({ $collapsed }) => ($collapsed ? 'none' : 'block')};
 `;
 
+export const LiveHead = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-12);
+`;
+
+export const LiveGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-16);
+`;
+
+export const ChartGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--ig-layout-size-side-panel), 1fr));
+  gap: var(--ig-spacing-12);
+  margin-bottom: var(--ig-spacing-16);
+`;

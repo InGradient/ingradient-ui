@@ -40,6 +40,8 @@ export interface WorkspaceSceneArgs {
     | 'data' | 'logs' | 'experiments' | 'fieldtest' | 'about'
   /** 0.0.6: PLC Communication · Judge model 탭을 세우고, 상단바 PLC 아이콘이 그 탭을 연다. */
   settingsPlcJudge?: boolean
+  /** Statics shows the real app's Live status section (0.0.6). */
+  staticsLive?: boolean
   plcScenario?: PlcScenario
   judgeScenario?: JudgeScenario
 }
@@ -95,7 +97,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
         ? <CaptureContent previewPatternLabel={previewPatternLabel} isConnected={isConnected} isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} />
         : null}
       imagesContent={activeTab === 'images' ? <ImagesContent draft={imagesDraft} editable={args.imagesInspector === 'edit'} /> : null}
-      staticsContent={activeTab === 'statics' ? <StaticsContent /> : null}
+      staticsContent={activeTab === 'statics' ? <StaticsContent live={args.staticsLive} /> : null}
       isSavingLabel={false}
     />
   )

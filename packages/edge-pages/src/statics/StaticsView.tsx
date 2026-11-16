@@ -6,16 +6,15 @@ import { SessionChartsView } from './SessionChartsView'
 import { ImageChartsView } from './ImageChartsView'
 import { LabelingChartsView } from './LabelingChartsView'
 import { CameraChartsView } from './CameraChartsView'
-import type { StaticsViewProps } from './types'
+import { LiveStatsView } from './LiveStatsView'
+import type { StaticsSectionKey, StaticsViewProps } from './types'
 import { Stack, Text } from '@ingradient/ui/primitives'
-
-type SectionKey = 'sessions' | 'images' | 'labeling' | 'camera'
 
 export function StaticsView(props: StaticsViewProps): JSX.Element {
   const {
     hasDataset, loading, imagesLoading,
     session, enhancedImage, classNameMap, classes, images,
-    collapsedSections, trendMode, labels,
+    collapsedSections, trendMode, labels, live,
     onToggleSection, onTrendModeChange,
   } = props
   const sectionId = useId()
@@ -31,6 +30,26 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
     return <Container><EmptyState>{labels.loading}</EmptyState></Container>
   }
 
+  const renderSection = (key: StaticsSectionKey, label: string) => {
+    const isOpen = !collapsedSections[key]
+    const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
+    return (
+      <SectionHeader type="button" aria-expanded={isOpen} aria-controls={`${sectionId}-${key}`} onClick={() => onToggleSection(key)}>
+        <Icon size={iconSizeNumbers.lg} />{label}
+      </SectionHeader>
+    )
+  }
+
+  // Live status: memory and disk are worth seeing before any capture exists.
+  const liveSection = live && (
+    <>
+      {renderSection('live', live.labels.section)}
+      <SectionContent id={`${sectionId}-live`} hidden={!!collapsedSections.live} $collapsed={!!collapsedSections.live}>
+        <LiveStatsView {...live} />
+      </SectionContent>
+    </>
+  )
+
   const hasSession = !!session && session.summary.total_sessions > 0
   const hasImage = !!enhancedImage && enhancedImage.total_images > 0
 
@@ -43,18 +62,9 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
             <Text as="div" size="var(--ig-text-caption)" tone="soft">{labels.trackedFromVersion}</Text>
           </Stack>
         </Header>
+        {liveSection}
         <EmptyState>{labels.noData}</EmptyState>
       </Container>
-    )
-  }
-
-  const renderSection = (key: SectionKey, label: string) => {
-    const isOpen = !collapsedSections[key]
-    const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
-    return (
-      <SectionHeader type="button" aria-expanded={isOpen} aria-controls={`${sectionId}-${key}`} onClick={() => onToggleSection(key)}>
-        <Icon size={iconSizeNumbers.lg} />{label}
-      </SectionHeader>
     )
   }
 
@@ -70,6 +80,8 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
           <Text as="div" size="var(--ig-text-caption)" tone="soft">{labels.trackedFromVersion}{subtitleTail}</Text>
         </Stack>
       </Header>
+
+      {liveSection}
 
       {/* Keep the compact raised Card composition: StatCard fixes dashboard
           padding, XL radius and 3XL value typography and has no density variant. */}

@@ -6,14 +6,14 @@ import { edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Statics/Workspace',
   component: Workspace005.component,
-  args: { ...Workspace005.args, settingsPlcJudge: true },
+  args: { ...Workspace005.args, settingsPlcJudge: true, staticsLive: true },
   tags: ['autodocs'],
   parameters: edge006Parameters({
     page: 'Statics',
     referenceStory: 'Pages / Edge / 0.0.6 / Statics / Workspace / Overview',
     fixturesPath: 'stories/fixtures/edge/0.0.5/temp-statics.ts',
     requiredScenarios: ['overview'],
-    interactions: ['Collapse and expand chart sections'],
+    interactions: ['Collapse and expand chart sections', 'Switch the live status range (1 hour / 1 day / 1 week)'],
   }),
 } satisfies Meta<typeof Workspace005.component>
 

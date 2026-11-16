@@ -173,12 +173,90 @@ export interface StaticsViewProps {
   classes: { class_id: string; class_name: string; color: string }[]
   images: ImageItem[]
 
-  collapsedSections: Partial<Record<'sessions' | 'images' | 'labeling' | 'camera', boolean>>
+  collapsedSections: Partial<Record<StaticsSectionKey, boolean>>
 
   trendMode: TrendMode
 
   labels: StaticsViewLabels
 
-  onToggleSection: (key: 'sessions' | 'images' | 'labeling' | 'camera') => void
+  /** Live status section at the top (capture counts, speed, PLC, memory, disk). Shown even before any captures. */
+  live?: LiveStatsViewProps
+
+  onToggleSection: (key: StaticsSectionKey) => void
   onTrendModeChange: (mode: TrendMode) => void
+}
+
+export type StaticsSectionKey = 'live' | 'sessions' | 'images' | 'labeling' | 'camera'
+
+// ── Live status (real app: features/stats/LiveStatsSection) ───────────────────
+
+export interface LiveCount { sequences: number; images: number }
+export interface LiveCounts { auto: LiveCount; manual: LiveCount; unknown: LiveCount }
+export interface LiveDuration { count: number; avg_ms: number | null; median_ms: number | null; p95_ms: number | null }
+/** One chart bucket (average over a slice of the selected range); null = no data in that slice. */
+export interface LiveCapturePoint { at: string; auto_s: number | null; manual_s: number | null; plc_s: number | null }
+export interface LiveSample {
+  at: string
+  main_mb: number | null
+  renderer_mb: number | null
+  backend_mb: number | null
+  sys_mem_pct: number | null
+  disk_free_gb: number | null
+}
+export type LiveRange = 'hour' | 'day' | 'week'
+
+/** Same shape the Edge main process returns (src/types/live-stats.types.ts). */
+export interface LiveStats {
+  generated_at: string
+  range_ms: number
+  today: LiveCounts
+  total: LiveCounts
+  errors_today: number
+  capture: { auto: LiveDuration; manual: LiveDuration }
+  plc: { count: number; avg_s: number | null; p95_s: number | null; over_limit: number; limit_s: number }
+  recent: LiveCapturePoint[]
+  samples: LiveSample[]
+  disk: { free_gb: number | null; used_per_day_gb: number | null; days_left: number | null }
+}
+
+export interface LiveStatsLabels {
+  section: string
+  loading: string
+  note: (time: string) => string
+  range: Record<LiveRange, string>
+  rangeAriaLabel: string
+  todayAuto: string
+  todayManual: string
+  totalSub: (sequences: string, images: string) => string
+  errorsToday: string
+  autoCapture: string
+  manualCapture: string
+  durationSub: (avg: string, p95: string, runs: number) => string
+  plc: (limitS: number) => string
+  plcSub: (avg: string, over: number, runs: number) => string
+  memory: string
+  memorySub: (main: string, renderer: string, backend: string) => string
+  disk: string
+  diskSub: (perDay: string, daysLeft: string) => string
+  autoChart: string
+  manualChart: string
+  memoryChart: string
+  seriesAuto: string
+  seriesManual: string
+  seriesPlc: string
+  seriesMain: string
+  seriesRenderer: string
+  seriesBackend: string
+}
+
+export interface LiveStatsViewProps {
+  /** null while the first sample loads. */
+  stats: LiveStats | null
+  range: LiveRange
+  labels: LiveStatsLabels
+  onRangeChange: (range: LiveRange) => void
+  /** Clock text for the "last updated" note; defaults to HH:MM:SS. */
+  formatTime?: (iso: string) => string
+  /** Chart x-axis text for a bucket start; defaults to local H:MM (week: M/D Hh). */
+  formatAxis?: (iso: string, range: LiveRange) => string
 }
