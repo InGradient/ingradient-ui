@@ -1,0 +1,139 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Edge를 실제 앱에 맞추고 4px 그리드를 끝까지 적용</title>
+<style>
+  :root { --bg:#0b0d12; --panel:#12151c; --line:#232834; --text:#e7eaf0; --muted:#9aa3b2; --as:#f28c28; --to:#14b8a6; --accent:#5b8cff; --ok:#22c55e; --warn:#eab308; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.65 "IBM Plex Sans", "Pretendard", system-ui, sans-serif }
+  main { max-width:1180px; margin:0 auto; padding:40px 24px 80px }
+  h1 { font-size:28px; margin:0 0 6px } h2 { font-size:21px; margin:48px 0 12px; padding-top:12px; border-top:1px solid var(--line) }
+  h3 { font-size:16px; margin:24px 0 8px; color:var(--muted) }
+  p, li { color:var(--text) } .muted { color:var(--muted) } code { font:13px "IBM Plex Mono", ui-monospace, monospace; background:#1a1e27; padding:1px 6px; border-radius:4px }
+  a { color:var(--accent) } nav.toc { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 20px; margin:20px 0 }
+  nav.toc ol { margin:0; padding-left:20px; columns:2 } table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top } th { color:var(--muted); font-weight:600 }
+  .tag { display:inline-block; white-space:nowrap; padding:1px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#0b0d12 }
+  .as { background:var(--as) } .to { background:var(--to) } .ok { background:var(--ok) } .none { background:#3a4150; color:var(--text) }
+  figure { margin:16px 0; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; overflow-x:auto }
+  figure img { display:block; max-width:100%; height:auto; border-radius:6px } figcaption { margin-top:8px; font-size:13px; color:var(--muted) }
+  ol.legend { margin:8px 0 0; padding:0; list-style:none } ol.legend li { margin:6px 0; padding-left:34px; position:relative }
+  ol.legend li b.n { position:absolute; left:0; top:1px; width:24px; height:24px; border-radius:50%; background:var(--to); color:#0b0d12; display:grid; place-items:center; font-size:13px }
+  .links { font-size:13px } .links a { margin-right:12px } .note { border-left:3px solid var(--warn); padding:6px 12px; background:#1a1810; border-radius:0 6px 6px 0; margin:12px 0 }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px } @media (max-width:900px){ .grid2{ grid-template-columns:1fr } nav.toc ol{ columns:1 } }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px } .grid3 figure { margin:0 } @media (max-width:900px){ .grid3{ grid-template-columns:1fr } }
+  .warn { background:var(--warn) }
+</style>
+<body><main>
+<h1>Edge를 실제 앱에 맞추고 4px 그리드를 끝까지 적용</h1>
+<p class="muted">2026-11-16 · 브랜치 <code>feat/edge-consistency</code> · 비교 기준: 지난 리포트(2026-11-01)의 마지막 커밋 <code>8993b05</code> → 오늘 <code>b6c1931</code>. <code>15f69a7</code>까지는 <a href="https://github.com/InGradient/ingradient-ui/pull/26">Draft PR #26</a>에 올라가 있고, <code>0689e30</code>부터 커밋 4개는 아직 push하지 않았다.</p>
+<div class="note"><b>요약.</b> 맥에서 실제 Edge 앱을 띄워 0.0.6과 화면별로 비교한 뒤, 실제 앱에 있는 기능을 0.0.6 디자인으로 옮겼다(언어 선택, 상단바 상태 아이콘과 Auto inspect, PLC·Judge 설정 탭, Statics Live status, Setup의 설정 찾기·Solid 노출·줄무늬 대비 카드). 같은 기간에 4px 그리드를 실제 렌더링 높이까지 맞췄다: 스토리 212개 측정에서 4px를 벗어난 곳 2,817곳(196개 스토리) → 예외만 남은 49개 스토리. 이제 4px를 벗어나거나 테스트용 글자가 화면에 보이면 Storybook 테스트가 실패한다. 변경 전후는 같은 크기(1440×900)·같은 상태로 찍어 번호 박스(<span class="tag as">AS-IS</span> 주황 / <span class="tag to">TO-BE</span> 청록)로 표시했다. 4px 정리가 공용 컴포넌트를 바꿔 페이지 스토리 212개가 모두 조금씩 달라졌으므로, 여기에는 대표 화면만 싣고 전체 비교 이미지는 <code>assets/2026-11-16-edge-real-app/compare/</code>에 두었다.</div>
+
+<nav class="toc"><ol>
+<li><a href="#check">Simon이 확인할 것</a></li><li><a href="#commits">커밋</a></li>
+<li><a href="#real">실제 앱과 비교해 찾은 차이</a></li><li><a href="#chrome">상단바: 언어·상태 아이콘·Auto inspect</a></li>
+<li><a href="#settings">설정: PLC Communication · Judge model</a></li><li><a href="#statics">Statics: Live status</a></li>
+<li><a href="#setup">Setup: 설정 찾기 · Solid 노출 · 줄무늬 대비</a></li><li><a href="#grid">4px 그리드: Edge</a></li>
+<li><a href="#gridp">4px 그리드: Platform</a></li><li><a href="#harness">스토리 테스트용 글자 숨김</a></li>
+<li><a href="#left">남은 것</a></li><li><a href="#how">검증 방법과 재현</a></li></ol></nav>
+
+<h2 id="check">1. Simon이 확인할 것</h2>
+<ol>
+<li><b>Setup의 남은 기능.</b> 실제 앱의 모니터 밝기·각도·거리 모드와 줄무늬 굵기 Auto 찾기·AI 미세 조정은 11-03~11-13 사이 매일 바뀌어 이번 브랜치에서 뺐다. 실제 앱이 안정되면 새 브랜치에서 옮기는 것을 추천한다.</li>
+<li><b>CI 시각 기준선 승인.</b> 4px 정리로 CI 스냅샷 대부분이 달라진다(4단계 기준 53개 중 34개). 남은 커밋 4개를 push한 뒤 CI 결과로 이 리포트와 같은 번호 박스 비교를 다시 보여 드리고, 승인받은 것만 기준 이미지로 올린다.</li>
+<li><b>0.0.5도 함께 바뀐 것.</b> 0.0.6이 0.0.5 스토리 코드를 다시 쓰고, 공용 컴포넌트(탭·메뉴·배지·테두리·줄 높이)가 바뀌어 0.0.5·Platform 화면도 1~4px씩 움직인다. 실제 앱 기능(언어 메뉴를 빼고)은 0.0.6에만 켰다.</li>
+<li><b>2px 간격 허용.</b> 2px는 "광학 보정(아이콘 위치, 포커스 간격)"에만 쓰는 것으로 DESIGN.md에 남겼다. 레이아웃 간격으로는 쓰지 않는다.</li>
+</ol>
+
+<h2 id="commits">2. 커밋</h2>
+<table><tr><th>시각</th><th>커밋</th><th>내용</th></tr><tr><td>11-02 20:00</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/3425eb2"><code>3425eb2</code></a></td><td>상단바 언어 선택을 지구본 아이콘 메뉴로(실제 앱과 같게)</td></tr><tr><td>11-02 20:19</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/898334f"><code>898334f</code></a></td><td>탭·메뉴 항목·배지·창 제목줄 버튼 높이를 4px에</td></tr><tr><td>11-02 20:42</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/b315608"><code>b315608</code></a></td><td>상단바에 카메라·PLC 상태 아이콘과 Auto inspect 버튼</td></tr><tr><td>11-02 22:17</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/b7c7fe4"><code>b7c7fe4</code></a></td><td>1px 테두리를 상자 안쪽에 그려 4px에</td></tr><tr><td>11-02 22:34</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/d43e8e6"><code>d43e8e6</code></a></td><td>숫자 입력칸 증감 버튼·여러 줄 입력칸, 4px 적용 범위 문서화</td></tr><tr><td>11-08 15:42</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/5845d46"><code>5845d46</code></a></td><td>글자 줄 높이를 배수 대신 px 값으로</td></tr><tr><td>11-08 15:42</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/42d482b"><code>42d482b</code></a></td><td>줄 높이 정리 뒤 4px 감사 결과 기록</td></tr><tr><td>11-08 18:10</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/28a9014"><code>28a9014</code></a></td><td>남은 테두리·두 줄 글자 간격·구분선, 설정 절 위험 색 구분선 버그</td></tr><tr><td>11-08 19:07</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/e5f7f61"><code>e5f7f61</code></a></td><td>4px에서 벗어나면 Storybook 테스트 실패(검사 장치)</td></tr><tr><td>11-09 01:00</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/15f69a7"><code>15f69a7</code></a></td><td>CI 실행 환경을 ubuntu-24.04로 고정</td></tr><tr><td>11-09 01:25</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/0689e30"><code>0689e30</code></a></td><td>설정에 PLC Communication · Judge model 탭(0.0.6)</td></tr><tr><td>11-16 18:28</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/8b17214"><code>8b17214</code></a></td><td>Statics 맨 위에 Live status(0.0.6)</td></tr><tr><td>11-16 20:08</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/59230cf"><code>59230cf</code></a></td><td>Setup: 설정 찾기, Solid 노출, 줄무늬 대비 카드(0.0.6)</td></tr><tr><td>11-16 20:32</td><td><a href="https://github.com/InGradient/ingradient-ui/commit/b6c1931"><code>b6c1931</code></a></td><td>스토리 테스트용 문장·값을 화면에서 숨기고 재발 검사</td></tr></table>
+<p class="links"><a href="https://github.com/InGradient/ingradient-ui/pull/26/files">PR #26 파일 비교</a><a href="https://github.com/InGradient/ingradient-ui/compare/8993b05...feat/edge-consistency">8993b05와 브랜치 비교</a></p>
+
+<h2 id="real">3. 실제 앱과 비교해 찾은 차이</h2>
+<p>맥에서 실제 Edge 앱(ingradient-edge <code>main</code>, 데모 프로젝트, 목업 카메라)을 1920×1080으로 띄워 Capture·Images·Statics·Setup과 설정 13개 탭을 찍고, 같은 크기의 0.0.6 스토리와 비교했다. 실제 앱은 패널을 띄운 카드와 채워진 탭을 쓰지만 0.0.6은 이미 Platform과 같은 선으로 나눈 열과 밑줄 탭이라, <b>배치는 0.0.6을 유지하고 기능과 내용만 옮겼다.</b></p>
+<table><tr><th>차이</th><th>처리</th></tr>
+<tr><td>언어 선택: 실제 앱은 지구본 아이콘 메뉴(3개 언어), 0.0.6은 스토리용 임시 드롭다운이 상단바 밖으로 넘침</td><td>4절. <code>LangSelectorView</code> 추가</td></tr>
+<tr><td>상단바: 카메라·PLC 상태 아이콘, Auto inspect 버튼 없음</td><td>4절</td></tr>
+<tr><td>설정: PLC Communication · Judge model 탭 없음(11개 → 13개)</td><td>5절</td></tr>
+<tr><td>Statics: Live status(1시간/1일/1주) 없음</td><td>6절</td></tr>
+<tr><td>Setup: 설정 찾기, Solid 노출, 줄무늬 대비 카드 없음 · 실제 앱에서 사라진 Features/Analysis 토글이 남음</td><td>7절(모니터 모드·줄무늬 찾기는 남김)</td></tr>
+</table>
+<div class="grid2"><figure><img src="assets/2026-11-02-edge-real-app/real/00-current.png" alt="Capture"><figcaption><span class="tag none">실제 앱</span> Capture — 11-02 맥에서 찍은 실제 Edge 앱(참고용, 상태가 같지 않다).</figcaption></figure><figure><img src="assets/2026-11-02-edge-real-app/real/07-plc-status.png" alt="설정 › PLC Communication"><figcaption><span class="tag none">실제 앱</span> 설정 › PLC Communication — 11-02 맥에서 찍은 실제 Edge 앱(참고용, 상태가 같지 않다).</figcaption></figure></div>
+
+<h2 id="chrome">4. 상단바: 언어·상태 아이콘·Auto inspect</h2>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/capture-workspace--overview.png" alt="Capture 전체 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Capture 전체</figcaption><ol class="legend"><li><b class="n">1</b>창 제목줄: 아래 테두리를 안쪽 선으로 바꿔 창 버튼이 31 → 32px</li><li><b class="n">2</b>상단바 오른쪽: 스토리용 "Language / English" 드롭다운(48px 밖으로 넘침)과 상태 점 하나 → Auto inspect 버튼, 카메라·PLC 상태 아이콘(모서리 점), 지구본 언어 버튼</li><li><b class="n">3</b>경로 구분선 위치(4px 정리)</li><li><b class="n">4</b>계정 버튼 높이(4px 정리)</li><li><b class="n">5</b>뒤로 버튼: 화면 읽기 이름이 "Action" → "Back to datasets"</li><li><b class="n">6</b>밑줄 탭: 38 → 40px, 아래 선을 안쪽 선으로</li><li><b class="n">7</b>로그 시간 위치(줄 높이 px)</li><li><b class="n">8</b>로그 목록: 줄마다 높이가 1px 미만씩 달라 아래로 갈수록 어긋나던 것이 정확히 맞음</li><li><b class="n">9</b>오른쪽 패널 구분선(안쪽 선)</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-capture-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+<div class="grid2">
+<figure><img src="assets/2026-11-16-edge-real-app/new/language-menu.png" alt="언어 메뉴"><figcaption><span class="tag to">새 화면</span> 언어 메뉴를 연 상태. 한국어 / English / Tiếng Việt, 지금 언어에 체크. 상단바가 가운데 패널 위로 메뉴를 펼쳐도 가려지지 않게 상단바에 층(<code>--ig-z-header</code>)을 줬다.</figcaption></figure>
+<figure><img src="assets/2026-11-02-edge-real-app/real/05-language-menu.png" alt="실제 앱 언어 메뉴"><figcaption><span class="tag none">실제 앱</span> 실제 앱 언어 메뉴 — 11-02 맥에서 찍은 실제 Edge 앱(참고용, 상태가 같지 않다).</figcaption></figure>
+</div>
+
+<h2 id="settings">5. 설정: PLC Communication · Judge model</h2>
+<p>실제 앱의 두 탭을 0.0.6 설정에 넣었다(0.0.6 스토리에서만 켬). 상단바 PLC 아이콘을 누르면 PLC 탭이 열린다. 상태별 스토리: PLC 연결됨·응답 없음·데이터셋 없음·자동 검사 중(잠김)·주소 중복, Judge 로딩·실패·연결 불가·준비됨·프로젝트 없음.</p>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/settings-tabs--general.png" alt="설정 › General 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> 설정 › General</figcaption><ol class="legend"><li><b class="n">2</b>창 제목줄(4px 정리)</li><li><b class="n">3</b>계정 버튼</li><li><b class="n">4</b>경로 구분선</li><li><b class="n">5</b>로그 시간</li><li><b class="n">6</b>설정 왼쪽 목록에 PLC Communication · Judge model 추가, 알림음 행 높이 4px</li><li><b class="n">7</b>하단 상태줄 아이콘</li><li><b class="n">8</b>하단 상태줄</li><li><b class="n">9</b>하단 상태줄</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-settings-tabs--general">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-settings-tabs--general">TO-BE Storybook (b6c1931)</a></p></figure>
+<div class="grid2">
+<figure><img src="assets/2026-11-16-edge-real-app/new/plc-tab.png" alt="설정 › PLC Communication"><figcaption><span class="tag to">새 화면</span> 설정 › PLC Communication — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>PLC 엔지니어에게 보낼 값(Copy)</li><li><b class="n">2</b>연결: 주소·포트·Unit ID</li><li><b class="n">3</b>PLC가 보내는 신호(Ready)와 PLC로 보내는 신호(Capture done·OK·NG·Heartbeat)</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-settings-tabs--plc">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/plc-auto-running.png" alt="자동 검사 중 — 설정이 잠긴 상태"><figcaption><span class="tag to">새 화면</span> 자동 검사 중 — 설정이 잠긴 상태 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>"자동 검사 중에는 바꿀 수 없음" 안내와 비활성 입력칸</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-settings-system-states--plc-auto-running">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/judge-tab.png" alt="설정 › Judge model"><figcaption><span class="tag to">새 화면</span> 설정 › Judge model — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>모델 상태(설치 안 됨: 원본만 저장)</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-settings-tabs--judge">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/judge-failed.png" alt="Judge model 실패 상태"><figcaption><span class="tag to">새 화면</span> Judge model 실패 상태 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>실패 이유와 다시 시도</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-settings-system-states--judge-failed">Storybook (b6c1931)</a></p></figure>
+</div>
+
+<h2 id="statics">6. Statics: Live status</h2>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/statics-workspace--overview.png" alt="Statics 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Statics</figcaption><ol class="legend"><li><b class="n">2</b>상단바(4절)</li><li><b class="n">6</b>Statistics 제목줄 높이(줄 높이 px)</li><li><b class="n">7</b>로그 시간</li><li><b class="n">8</b>로그 목록</li><li><b class="n">9</b>로그 목록</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-statics-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-statics-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+<ol class="legend"><li><b class="n">+</b>가운데: 맨 위에 접을 수 있는 <b>Live status</b>가 생겼다 — 기간 전환(1시간/1일/1주), 카드 8개(오늘 자동·수동 촬영, 실패, 자동·수동 촬영 시간, PLC 응답 p95, 메모리, 남은 디스크), 그래프 3개. 실패가 있거나 PLC가 기준을 넘거나 디스크가 3일 미만이면 카드가 빨갛다. 그 아래 기존 요약 카드와 Sessions는 그대로.</li></ol>
+<figure><img src="assets/2026-11-02-edge-real-app/real/03-statics.png" alt="실제 앱 Statics"><figcaption><span class="tag none">실제 앱</span> 실제 앱 Statics — 11-02 맥에서 찍은 실제 Edge 앱(참고용, 상태가 같지 않다).</figcaption></figure>
+
+<h2 id="setup">7. Setup: 설정 찾기 · Solid 노출 · 줄무늬 대비</h2>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/capture-workspace--setup.png" alt="Setup 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Setup</figcaption><ol class="legend"><li><b class="n">2</b>상단바(4절)</li><li><b class="n">6</b>로그 목록</li><li><b class="n">7</b>로그 시간</li><li><b class="n">8</b>로그 목록</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-capture-workspace--setup">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-workspace--setup">TO-BE Storybook (b6c1931)</a></p></figure>
+<ol class="legend">
+<li><b class="n">+</b>오른쪽 패널: 실제 앱에서 사라진 <b>Features / Analysis</b> 토글을 뺐다. Camera Tuning 아래에 <b>Find the best capture settings</b> 버튼과 설명, Exposure 아래에 <b>Solid exposure (%)</b> 칸과 실제 노출(ms).</li>
+<li><b class="n">+</b>미리보기 지표: 맨 아래에 넓은 <b>Fringe contrast</b> 카드. 줄무늬를 띄우지 않으면 안내만 보인다.</li>
+<li><b class="n">+</b>값을 바꾸고 저장하지 않으면 패널 위에 "저장 안 한 변경" 안내가 뜨고 설정 찾기가 막힌다(실제 앱과 같음).</li>
+</ol>
+<div class="grid2">
+<figure><img src="assets/2026-11-16-edge-real-app/new/setup-fringe-contrast.png" alt="줄무늬(X Phase 1/16)를 띄운 Setup"><figcaption><span class="tag to">새 화면</span> 줄무늬(X Phase 1/16)를 띄운 Setup — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>Fringe contrast: 지금 값 0.214, 최고값 0.231과 Reset best, 학습 목표 0.3 대비 71% 게이지</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-workspace--setup">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/optimize-confirm.png" alt="설정 찾기 — 시작 확인"><figcaption><span class="tag to">새 화면</span> 설정 찾기 — 시작 확인 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>부품을 지그에 두고 시작, "끝날 때까지 건드리지 말 것" 경고</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-system-states--optimize-confirm">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/optimize-running.png" alt="설정 찾기 — 진행 중"><figcaption><span class="tag to">새 화면</span> 설정 찾기 — 진행 중 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>닫기 버튼과 Escape 없이 Stop만. 진행률과 지금 시험하는 노출</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-system-states--optimize-running">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/optimize-result.png" alt="설정 찾기 — 결과"><figcaption><span class="tag to">새 화면</span> 설정 찾기 — 결과 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>경고(줄무늬 대비 낮음)</li><li><b class="n">2</b>지금 → 새 값(노출·평균 횟수·패턴 최대)</li><li><b class="n">3</b>수동·자동 예상 시간</li><li><b class="n">4</b>후보 표: 통과/실패 이유, 추천 행 강조. Apply로 적용·저장</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-system-states--optimize-result">Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/new/optimize-error.png" alt="설정 찾기 — 실패"><figcaption><span class="tag to">새 화면</span> 설정 찾기 — 실패 — 이전 커밋에는 없던 상태라 현재 화면만 싣는다.</figcaption><ol class="legend"><li><b class="n">1</b>실패 이유(부품이 움직임 등)</li></ol><p class="links"><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-system-states--optimize-error">Storybook (b6c1931)</a></p></figure>
+</div>
+<p class="links">동작 시나리오: <a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-workflows--setup-optimize">수정 → 막힘 → 저장 → 시작 → Stop</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-workflows--setup-optimize-apply">결과 적용</a></p>
+
+<h2 id="grid">8. 4px 그리드: Edge</h2>
+<p>토큰 값이 아니라 <b>실제로 그려진 높이</b>를 쟀다(스토리 212개, 1440×900). 원인은 셋이었다.</p>
+<table><tr><th>원인</th><th>고친 방법</th><th>커밋</th></tr>
+<tr><td>글자 줄 높이가 배수(1.45배)라 높이에 소수점(36.19, 22.49…)</td><td>글자 크기마다 짝이 되는 px 줄 높이(<code>--ig-leading-*</code>, 텍스트 역할 <code>-leading</code>) 약 210곳</td><td><code>898334f</code> <code>5845d46</code></td></tr>
+<tr><td>1px 테두리가 상자 크기에 더해짐(41, 53…)</td><td>한쪽 구분선 57곳은 안쪽 선(inset box-shadow), 네 변 테두리 상자 약 60곳은 <code>paddingInsideBorder()</code>로 여백에서 1px 뺌</td><td><code>b7c7fe4</code> <code>28a9014</code></td></tr>
+<tr><td>컨트롤 부분 크기(숫자 입력칸 증감 15px, 여러 줄 입력칸 73·77px)</td><td>증감은 칸 높이의 절반(16px), 여러 줄은 n×20+16px</td><td><code>d43e8e6</code></td></tr>
+</table>
+<table><tr><th>측정(스토리 212개)</th><th>4px를 벗어난 곳</th><th>그런 스토리</th></tr>
+<tr><td>시작(11-02)</td><td>2,817</td><td>196</td></tr><tr><td>줄 높이 정리 뒤</td><td>897</td><td>94</td></tr><tr><td>테두리까지(11-08)</td><td>685(모두 예외)</td><td>49</td></tr></table>
+<p>남은 49개는 DESIGN.md에 적은 예외다: 화면 폭으로 크기가 정해지는 갤러리 칸·이미지 타일·늘어나는 열, 회전하는 로딩 아이콘(측정 오탐), 모바일 전용 화면. 이제 <code>stories/support/grid-check.ts</code>가 Platform 0.0.1 · Edge 0.0.6 페이지 스토리마다 돌아, 벗어나면 테스트가 실패한다(<code>e5f7f61</code>).</p>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/dataset-select-workspace--overview.png" alt="Dataset Select 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Dataset Select</figcaption><ol class="legend"><li><b class="n">1</b>제목줄 구분선(안쪽 선)</li><li><b class="n">2</b>계정 버튼</li><li><b class="n">3</b>Recent 배지 24.8 → 24px</li><li><b class="n">4</b>최근 데이터셋 카드: 제목 줄 높이 20px, 테두리를 여백에서 빼 좌우 여백이 1px 줄어 제목 줄바꿈이 바뀜</li><li><b class="n">5</b>다른 최근 카드</li><li><b class="n">6</b>다른 최근 카드</li><li><b class="n">7</b>다른 최근 카드</li><li><b class="n">8</b>다른 최근 카드</li><li><b class="n">9</b>클래스 칩 21.4 → 20px, 이미지 수 15.4 → 16px</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-dataset-select-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-dataset-select-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+
+<h2 id="gridp">9. 4px 그리드: Platform</h2>
+<p>같은 공용 컴포넌트(탭·메뉴·배지·카드·패널 구분선·줄 높이)를 쓰므로 Platform도 1~4px씩 움직였다. 색과 모양은 그대로이고, 상자가 조금 촘촘해진다.</p>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/pages-platform-0-0-1-dashboard-workspace--overview.png" alt="Dashboard 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Dashboard</figcaption><ol class="legend"><li><b class="n">1</b>사이드바 머리 구분선(안쪽 선)</li><li><b class="n">2</b>프로젝트 이름 줄 높이</li><li><b class="n">3</b>사이드바 항목</li><li><b class="n">4</b>차트 카드: 테두리를 여백에서 빼 2px 작아짐</li><li><b class="n">5</b>범례</li><li><b class="n">6</b>가로축 글자</li><li><b class="n">7</b>아래 카드 줄이 위로 당겨짐</li><li><b class="n">8</b>사이드바 아래 구분선</li><li><b class="n">9</b>원형 차트 위치</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-platform-0-0-1-dashboard-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-platform-0-0-1-dashboard-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/pages-platform-0-0-1-dataset-catalog-workspace--overview.png" alt="Catalog 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Catalog</figcaption><ol class="legend"><li><b class="n">1</b>사이드바 머리</li><li><b class="n">2</b>프로젝트 이름</li><li><b class="n">3</b>오른쪽 패널 머리</li><li><b class="n">4</b>클래스 행과 멤버 행: 테두리를 여백에서 빼고 줄 높이 px</li><li><b class="n">5</b>데이터셋 이름 줄 높이</li><li><b class="n">6</b>작업 유형 배지 24px</li><li><b class="n">7</b>데이터셋 목록</li><li><b class="n">8</b>사이드바 아래 구분선</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-platform-0-0-1-dataset-catalog-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-platform-0-0-1-dataset-catalog-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+<div class="grid2">
+<figure><img src="assets/2026-11-16-edge-real-app/compare/pages-platform-0-0-1-class-management-workspace--overview.png" alt="Class Management 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Class Management</figcaption><ol class="legend"><li><b class="n">1</b>사이드바 머리</li><li><b class="n">2</b>프로젝트 이름</li><li><b class="n">3</b>오른쪽 패널 머리</li><li><b class="n">4</b>이름·색·설명 칸(여러 줄 입력칸 76px)</li><li><b class="n">5</b>클래스 목록 줄 높이</li><li><b class="n">6</b>수 배지</li><li><b class="n">7</b>클래스 목록</li><li><b class="n">8</b>수 배지</li><li><b class="n">9</b>클래스 목록</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-platform-0-0-1-class-management-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-platform-0-0-1-class-management-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/pages-platform-0-0-1-create-project-workspace--overview.png" alt="Create Project 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Create Project</figcaption><ol class="legend"><li><b class="n">1</b>절 제목 줄 높이</li><li><b class="n">2</b>입력칸 사이 간격</li><li><b class="n">3</b>설명 칸(여러 줄 76px)부터 아래 내용이 1~3px 이동</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-platform-0-0-1-create-project-workspace--overview">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-platform-0-0-1-create-project-workspace--overview">TO-BE Storybook (b6c1931)</a></p></figure>
+</div>
+
+<h2 id="harness">10. 스토리 테스트용 글자 숨김</h2>
+<p>Edge 0.0.6 페이지 스토리 35개(10개 파일)에 실제 앱에 없는 개발용 요소가 맨 글자로 그려져 있었다: 가짜 동작 결과("Mock …", "Simulation: …"), 테스트가 읽는 값("en", "None", "1 labels"), 장면 전환·가짜 완료 버튼. Platform에는 없었다. 이를 <code>StoryStatus</code> · <code>StoryProbe</code> · <code>StoryControls</code>(<code>stories/support/story-probe.tsx</code>)로 옮겨 1px로 숨겼다. DOM에는 남아 테스트와 화면 읽기 도구는 그대로 읽는다. 다시 보이면 테스트가 실패한다(<code>harness-check.ts</code>; 이전 빌드에서 3개를 잡고 새 빌드에서 0개임을 확인).</p>
+<figure><img src="assets/2026-11-16-edge-real-app/compare/capture-review-and-labeling--labeling.png" alt="Capture › Review and Labeling › Labeling 전후"><figcaption><span class="tag as">AS-IS</span> <span class="tag to">TO-BE</span> Capture › Review and Labeling › Labeling</figcaption><ol class="legend"><li><b class="n">1</b>장면 전환 버튼 3개와 "Simulation: …" 문장이 사라짐</li><li><b class="n">2</b>오른쪽 끝에 잘려 보이던 "1 labels / None"이 사라지고 오른쪽 패널이 화면 끝까지</li><li><b class="n">3</b>보기 버튼이 제자리로</li><li><b class="n">4</b>라벨링 영역이 위로 올라가 화면을 채움</li><li><b class="n">5</b>라벨 상자 위치(영역 이동)</li></ol><p class="links"><a href="http://100.105.177.42:6051/?path=/story/pages-edge-0-0-6-capture-review-and-labeling--labeling">AS-IS Storybook (8993b05)</a><a href="http://100.105.177.42:6053/?path=/story/pages-edge-0-0-6-capture-review-and-labeling--labeling">TO-BE Storybook (b6c1931)</a></p></figure>
+
+<h2 id="left">11. 남은 것</h2>
+<ul>
+<li>Setup의 모니터 밝기·각도·거리 모드, 줄무늬 굵기 Auto 찾기·AI 미세 조정(1절 1번).</li>
+<li>커밋 4개(<code>0689e30</code>~<code>b6c1931</code>) push, CI 시각 기준선 승인(1절 2번).</li>
+<li>Platform 계정 설정의 <code>min-width</code>가 없는 토큰(<code>--ig-layout-size-field-lg</code>)을 가리켜 적용되지 않는다. Edge에서 같은 문제를 고치다 발견했다. 따로 고칠 것.</li>
+<li>모바일 전용 컴포넌트 2개의 테두리(좁은 화면 작업 보류 중).</li>
+<li>ingradient-edge <a href="https://github.com/InGradient/ingradient-edge/pull/257">PR #257</a>(맥에서 Electron 28.0.0이 바로 꺼지던 문제 → 28.3.3). Windows CI는 <code>main</code>에도 있는 <code>better-sqlite3</code> 빌드 실패로 확인되지 않았다.</li>
+</ul>
+
+<h2 id="how">12. 검증 방법과 재현</h2>
+<ul>
+<li>커밋마다: tsc, lint, lint:style, style-literals, 단위(edge-pages 142), Edge Storybook(205, 4px·글자 검사 포함). 공용 컴포넌트를 바꾼 단계는 CI와 같은 순서 전체 검사(단위 502, Storybook 974, 빌드·소비자 검사)를 통과했다.</li>
+<li>비교: <code>8993b05</code>와 <code>b6c1931</code>(Platform은 <code>59230cf</code>, 둘 사이 Platform 화면 변경 없음)을 <code>/tmp</code> 작업 폴더에서 각각 빌드(6051, 6053), <code>assets/2026-11-16-edge-real-app/compare.mjs</code>로 1440×900 같은 상태를 찍어 바뀐 픽셀을 묶어 번호 박스. 새 화면은 <code>assets/2026-11-16-edge-real-app/capture-new.mjs</code>.</li>
+<li>4px 측정: <code>assets/2026-11-02-edge-real-app/grid-audit.mjs</code>(결과 JSON 같은 폴더). 실제 앱 캡처: <code>assets/2026-11-02-edge-real-app/real/</code>.</li>
+<li><code>/tmp</code> 빌드와 6051~6053 서버는 재부팅하면 사라진다. 이미지와 측정 결과는 위 폴더에 저장했다.</li>
+</ul>
+</main></body></html>
