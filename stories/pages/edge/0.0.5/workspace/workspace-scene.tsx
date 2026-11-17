@@ -2,7 +2,7 @@
 // EdgeAppShellView > MainLayoutView(topBar / Logs / WorkspaceView / RightPanel) 구조 그대로.
 import { useState } from 'react'
 import {
-  MainLayoutView, WorkspaceView, type ConnectionStatus, type WorkspaceTab, type LightingMode, type PreviewPatternLabel,
+  MainLayoutView, WorkspaceView, type ConnectionStatus, type WorkspaceTab, type LightingMode, type PreviewPatternLabel, type CaptureOptimizePhase,
 } from '@ingradient/edge-pages'
 import {
   DATASET_NAME, PROJECT_NAME, SAMPLE_IMAGE_ITEMS, WORKSPACE_LABELS, WORKSPACE_TABS,
@@ -42,6 +42,10 @@ export interface WorkspaceSceneArgs {
   settingsPlcJudge?: boolean
   /** Statics shows the real app's Live status section (0.0.6). */
   staticsLive?: boolean
+  /** Setup as in the real app on 2026-11-16: no feature toggles, unsaved hint, capture optimize, Solid exposure, fringe contrast card (0.0.6). */
+  setupLatest?: boolean
+  /** Opens the capture-optimize flow in a fixed phase (with setupLatest). */
+  setupOptimizePhase?: CaptureOptimizePhase
   plcScenario?: PlcScenario
   judgeScenario?: JudgeScenario
 }
@@ -94,7 +98,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
       setupPanelTarget={null}
       setupPanelContent={null}
       captureContent={activeTab === 'capture' || activeTab === 'setup'
-        ? <CaptureContent previewPatternLabel={previewPatternLabel} isConnected={isConnected} isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} />
+        ? <CaptureContent previewPatternLabel={previewPatternLabel} isConnected={isConnected} isCapturing={args.isCapturing} isSetupMode={activeTab === 'setup'} fringeContrast={args.setupLatest} />
         : null}
       imagesContent={activeTab === 'images' ? <ImagesContent draft={imagesDraft} editable={args.imagesInspector === 'edit'} /> : null}
       staticsContent={activeTab === 'statics' ? <StaticsContent live={args.staticsLive} /> : null}
@@ -122,7 +126,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
       centerContent={<>{center}{mockStatus && <p role="status">{mockStatus}</p>}</>}
       rightPanel={<>
         <div hidden={activeTab !== 'setup'} style={{ height: '100%' }}>
-          <SetupContent previewPatternLabel={previewPatternLabel} onPreviewPattern={setPreviewPatternLabel} />
+          <SetupContent previewPatternLabel={previewPatternLabel} onPreviewPattern={setPreviewPatternLabel} latest={args.setupLatest} optimizePhase={args.setupOptimizePhase} onMockAction={onMockAction} />
         </div>
         <div hidden={activeTab === 'setup'} style={{ height: '100%' }}>
           <RightPanel workspaceTab={activeTab} previewPatternLabel={previewPatternLabel} onPreviewPattern={setPreviewPatternLabel} />

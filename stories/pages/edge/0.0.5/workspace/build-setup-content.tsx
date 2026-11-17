@@ -1,13 +1,16 @@
 // Deterministic UI simulation; these values do not validate physical equipment.
 import { useState } from 'react'
 import {
-  FringeProfilePreviewView, SetupPanelView,
-  type CameraParams, type SetupConfigState, type PreviewPatternLabel,
+  CaptureOptimizeView, FringeProfilePreviewView, SetupPanelView,
+  type CameraParams, type CaptureOptimizePhase, type SetupConfigState, type PreviewPatternLabel,
 } from '@ingradient/edge-pages'
 import {
   PATTERN_LABELS, PHASE_STEP_OPTIONS, PIXEL_FORMAT_OPTIONS,
   SETUP_CAMERA_PARAMS, SETUP_CONFIG, SETUP_PANEL_LABELS,
+  CAPTURE_OPTIMIZE_ERROR, CAPTURE_OPTIMIZE_LABELS, CAPTURE_OPTIMIZE_PROGRESS, CAPTURE_OPTIMIZE_RESULT,
+  SETUP_PANEL_LABELS_LATEST, SETUP_UNSAVED_HINT,
 } from '../../../../fixtures/edge/0.0.5'
+import type { MockAction } from '../settings/tabs-moved'
 
 const PREVIEW_WINDOW_PX = 256 // Number of 8-bit intensity samples, not layout geometry.
 
@@ -25,10 +28,16 @@ export function sequenceSummary(config: SetupConfigState): string {
   return `${steps}-step · X + Y · solid · total ${steps * 2 + 1} patterns (simulation)`
 }
 
-export function SetupContent({ previewPatternLabel, onPreviewPattern }: {
+export function SetupContent({ previewPatternLabel, onPreviewPattern, latest = false, optimizePhase = 'idle', onMockAction }: {
   previewPatternLabel?: PreviewPatternLabel | null
   onPreviewPattern?: (pattern: PreviewPatternLabel | null) => void
+  /** Real app 2026-11-16 Setup (0.0.6). */
+  latest?: boolean
+  optimizePhase?: CaptureOptimizePhase
+  onMockAction?: MockAction
 } = {}): JSX.Element {
+  const [phase, setPhase] = useState<CaptureOptimizePhase>(optimizePhase)
+  const [dirty, setDirty] = useState(false)
   const [setupConfig, setSetupConfig] = useState<SetupConfigState>(SETUP_CONFIG)
   const [cameraParams, setCameraParams] = useState<CameraParams>(SETUP_CAMERA_PARAMS)
   const [localPattern, setLocalPattern] = useState<PreviewPatternLabel | null>(null)
@@ -72,11 +81,31 @@ export function SetupContent({ previewPatternLabel, onPreviewPattern }: {
       )}
       autoAnalyze={autoAnalyze}
       enabledFeatures={enabledFeatures}
-      labels={SETUP_PANEL_LABELS}
-      onSave={() => { setSaved(true); setStatus('Simulation: setup saved in this story only') }}
-      onReset={() => { setSetupConfig(SETUP_CONFIG); setCameraParams(SETUP_CAMERA_PARAMS); setEnabledFeatures({}); setAutoAnalyze(true); selectPattern(null); setSaved(false); setStatus('Simulation: defaults restored') }}
-      onSetSetupConfig={(update) => { setSetupConfig(update); setSaved(false) }}
-      onUpdateCameraParams={(update) => { setCameraParams(update); setSaved(false) }}
+      labels={latest ? SETUP_PANEL_LABELS_LATEST : SETUP_PANEL_LABELS}
+      showFeatureToggles={!latest}
+      showSolidExposure={latest}
+      unsavedHint={latest && dirty ? SETUP_UNSAVED_HINT : null}
+      captureOptimize={latest ? (
+        <CaptureOptimizeView
+          phase={phase} isConnected isSetupBusy={false} setupDirty={dirty}
+          progress={CAPTURE_OPTIMIZE_PROGRESS} result={CAPTURE_OPTIMIZE_RESULT} error={CAPTURE_OPTIMIZE_ERROR}
+          labels={CAPTURE_OPTIMIZE_LABELS}
+          onOpen={() => { setPhase('confirm'); onMockAction?.('optimize-open') }}
+          onCancel={() => { setPhase('idle'); onMockAction?.('optimize-cancel') }}
+          onStart={() => { setPhase('running'); onMockAction?.('optimize-start') }}
+          onStop={() => { setPhase('idle'); setStatus('Simulation: capture-settings search stopped'); onMockAction?.('optimize-stop') }}
+          onApply={() => {
+            const best = CAPTURE_OPTIMIZE_RESULT.best
+            if (best) setCameraParams((p) => ({ ...p, exposure: best.exposure_ms * 1000 }))
+            setPhase('idle'); setSaved(true); setDirty(false)
+            setStatus('Simulation: recommended settings applied and saved in this story only'); onMockAction?.('optimize-apply')
+          }}
+        />
+      ) : undefined}
+      onSave={() => { setSaved(true); setDirty(false); setStatus('Simulation: setup saved in this story only') }}
+      onReset={() => { setSetupConfig(SETUP_CONFIG); setCameraParams(SETUP_CAMERA_PARAMS); setEnabledFeatures({}); setAutoAnalyze(true); selectPattern(null); setSaved(false); setDirty(false); setStatus('Simulation: defaults restored') }}
+      onSetSetupConfig={(update) => { setSetupConfig(update); setSaved(false); setDirty(true) }}
+      onUpdateCameraParams={(update) => { setCameraParams(update); setSaved(false); setDirty(true) }}
       onWhiteBalanceCalibrate={() => { setStatus('Simulation: white balance calibration completed; no camera command sent'); setSaved(false) }}
       onPreviewPattern={selectPattern}
       onMeasureSettleDelay={() => { setSetupConfig((current) => ({ ...current, settleDelayMs: 80 })); setStatus('Simulation: settle delay set to fixture estimate 80 ms; not physically measured'); setSaved(false) }}

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { CaptureReviewFullscreen, CaptureView, type PreviewPatternLabel } from '@ingradient/edge-pages'
 import { SYNTHETIC_CAPTURE } from './capture-fixtures'
-import { CAPTURE_LABELS } from '../../../../fixtures/edge/0.0.5'
+import { CAPTURE_LABELS, FRINGE_CONTRAST_LABELS, FRINGE_CONTRAST_SAMPLE } from '../../../../fixtures/edge/0.0.5'
 
 export function CaptureContent({
   isCapturing = false,
@@ -11,7 +11,11 @@ export function CaptureContent({
   isConnected = true,
   previewPatternLabel = null,
   onCapture,
-}: { isCapturing?: boolean; isSetupMode?: boolean; isConnected?: boolean; previewPatternLabel?: PreviewPatternLabel | null; onCapture?: () => void } = {}): JSX.Element {
+  fringeContrast = false,
+}: { isCapturing?: boolean; isSetupMode?: boolean; isConnected?: boolean; previewPatternLabel?: PreviewPatternLabel | null; onCapture?: () => void; fringeContrast?: boolean } = {}): JSX.Element {
+  const [best, setBest] = useState<number | null>(FRINGE_CONTRAST_SAMPLE.best)
+  // Story stand-in for the real app's tuning stripes: any phase pattern on screen.
+  const isStripe = !!previewPatternLabel && /^[xy]_phase_/.test(previewPatternLabel)
   const [showGrid, setShowGrid] = useState(true)
   const [showControls, setShowControls] = useState(false)
   const [review, setReview] = useState(false)
@@ -36,6 +40,10 @@ export function CaptureContent({
       captureStep={isCapturing ? 11 : null}
       captureTotalSteps={isCapturing ? 33 : null}
       setupMetrics={null}
+      fringeContrast={fringeContrast ? {
+        contrast: { value: FRINGE_CONTRAST_SAMPLE.value, target: FRINGE_CONTRAST_SAMPLE.target },
+        best, isStripe, labels: FRINGE_CONTRAST_LABELS, onResetBest: () => setBest(null),
+      } : undefined}
       previewPatternLabel={previewPatternLabel}
       setupPatternLabel={previewPatternLabel}
       captureDisabledReason={null}

@@ -36,6 +36,8 @@ export interface DeflectometryMonitor {
 export interface CameraParams {
   exposure: number
   exposureAuto: boolean
+  /** Solid frame exposure as % of the fringe exposure (100 = same). Real app 2026-11. */
+  solidExposurePct?: number
   gain: number
   frameRateEnabled: boolean
   frameRate: number
@@ -126,6 +128,8 @@ export interface CaptureViewProps {
   captureTotalSteps: number | null
 
   setupMetrics: DeflectometryMetrics | null
+  /** Wide fringe-contrast card under the setup metric cards (real app 2026-11). */
+  fringeContrast?: FringeContrastCardViewProps
   previewPatternLabel: PreviewPatternLabel | null
   setupPatternLabel: PreviewPatternLabel | null
   captureDisabledReason: string | null
@@ -170,6 +174,9 @@ export interface SetupPanelLabels {
   analysis: string
 
   cameraTuning: string
+  /** Field shown when `showSolidExposure`; both labels are required then. */
+  solidExposurePct?: string
+  solidExposurePctDesc?: string
   livePreviewAvailable: string
   noCamera: string
   focusPeaking: string
@@ -250,6 +257,14 @@ export interface SetupPanelViewProps {
 
   /** 프린지 미리보기 — 표본 계산이 촬영 백엔드와 같아야 해서 앱이 만들어 넣는다. */
   fringePreview?: React.ReactNode
+  /** Features/Analysis toggles; the real app removed them (2026-11). Default true keeps 0.0.5. */
+  showFeatureToggles?: boolean
+  /** Shown under the header while edits are not saved yet. */
+  unsavedHint?: string | null
+  /** Slot under the Camera Tuning heading, e.g. CaptureOptimizeView. */
+  captureOptimize?: React.ReactNode
+  /** Solid exposure (%) field below Exposure. */
+  showSolidExposure?: boolean
   /** 픽셀포맷 '선택값' 아래 '현재 카메라 값' 힌트 — 스토어를 읽어야 해서 앱이 만든다. */
   pixelFormatHint?: React.ReactNode
 
@@ -346,4 +361,113 @@ export interface DeflectometryTuningControlsViewProps {
   onRecompute: () => void
   onSaveDefault: () => void
   onReset: () => void
+}
+
+// ── Fringe contrast card (real app: FringeContrastCard) ─────────────────────
+
+export interface FringeContrastCardLabels {
+  title: string
+  /** Shown when the tuning stripes are not on screen. */
+  hint: string
+  none: string
+  best: (value: string) => string
+  resetBest: string
+  target: (pct: number, target: number) => string
+  noTarget: string
+}
+
+export interface FringeContrastCardViewProps {
+  /** Contrast inside the part (amplitude ÷ brightness) and the training target, if the stripe has one. */
+  contrast: { value: number; target: number | null } | null
+  /** Best value seen while adjusting; caller tracks and resets it. */
+  best: number | null
+  /** The tuning stripes are on screen; otherwise the card only shows the hint. */
+  isStripe: boolean
+  labels: FringeContrastCardLabels
+  onResetBest: () => void
+}
+
+// ── Capture optimize (real app: CaptureOptimizeSection) ─────────────────────
+
+export interface OptimizeTimes { capture_s: number; save_s: number; judge_s: number; total_s: number }
+export interface OptimizeRow {
+  exposure_ms: number
+  avg: number
+  brightness_max: number
+  snr: number
+  contrast: number | null
+  sat_pct: number | null
+  brightness_A: number | null
+  fails: string[]
+  ok: boolean
+  manual: OptimizeTimes
+  auto: OptimizeTimes
+}
+export interface OptimizeResult {
+  rows: OptimizeRow[]
+  best: OptimizeRow | null
+  warnings: string[]
+  manual_frames: number
+  auto_frames: number
+  thresholds: { snr_min: number }
+  current: { exposure_ms: number | null; avg: number; brightness_max: number }
+}
+export type CaptureOptimizePhase = 'idle' | 'confirm' | 'running' | 'result' | 'error'
+
+export interface CaptureOptimizeLabels {
+  title: string
+  desc: string
+  needSave: string
+  needCamera: string
+  confirmBody: string
+  doNotTouch: string
+  start: string
+  stop: string
+  cancel: string
+  close: string
+  runningTitle: string
+  resultTitle: string
+  notOk: string
+  current: string
+  next: string
+  exposure: string
+  avg: string
+  brightnessMax: string
+  timeTitle: string
+  tCapture: string
+  tSave: string
+  tJudge: string
+  tTotal: string
+  manual: (n: number) => string
+  auto: (n: number) => string
+  snr: string
+  sat: string
+  brightnessA: string
+  verdict: string
+  pass: string
+  fail: Record<string, string>
+  warn: Record<string, string>
+  note: (snrMin: number) => string
+  apply: string
+  applyHint: string
+  errorTitle: string
+}
+
+export interface CaptureOptimizeViewProps {
+  phase: CaptureOptimizePhase
+  isConnected: boolean
+  isSetupBusy: boolean
+  /** Unsaved setup edits: the search runs on saved settings, so it is blocked until Save. */
+  setupDirty: boolean
+  /** Running: 0–100 and the current stage sentence (e.g. "Testing exposure 80 ms (pattern max 200) · 12/45"). */
+  progress?: { percent: number; stage: string }
+  result?: OptimizeResult | null
+  /** Error phase: the reason sentence and an optional raw detail. */
+  error?: { message: string; detail?: string }
+  labels: CaptureOptimizeLabels
+  onOpen: () => void
+  onCancel: () => void
+  onStart: () => void
+  onStop: () => void
+  onApply: () => void
 }

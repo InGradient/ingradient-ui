@@ -13,6 +13,7 @@ import {
 import { DERIVED_ORDER, patternLabelToUI } from './pattern-helpers'
 import type { SetupPanelViewProps } from './types'
 
+const UNSAVED_HINT_STYLE = { padding: 'var(--ig-spacing-8) var(--ig-spacing-16) 0' } as const
 const SAVE_SUCCESS_ICON_COLOR = 'var(--ig-color-success-fg, var(--ig-color-success))'
 
 export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
@@ -24,6 +25,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
     previewPatternLabels, sequenceSummary, pixelFormatOptions, phaseStepOptions,
     fringePreview, pixelFormatHint,
     enabledFeatures, labels,
+    showFeatureToggles = true, unsavedHint, captureOptimize, showSolidExposure = false,
     onSave, onReset, onSetSetupConfig, onUpdateCameraParams, onWhiteBalanceCalibrate,
     onPreviewPattern, onMeasureSettleDelay, onEnabledFeaturesChange,
   } = props
@@ -50,9 +52,13 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
         )}
       </SetupPanelHeader>
 
+      {unsavedHint && (
+        <Text as="div" role="status" size="var(--ig-text-caption)" tone="warning" style={UNSAVED_HINT_STYLE}>{unsavedHint}</Text>
+      )}
+
       <SetupPanelBody>
         {/* 꺼진 항목은 촬영 시점 파생 계산에서 건너뛴다 — 목록에서도 숨는다. */}
-        <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
+        {showFeatureToggles && <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
           <SetupAccordion open>
             <summary>
               <SetupAccordionSummary>{labels.featuresTitle}</SetupAccordionSummary>
@@ -72,7 +78,7 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
               ))}
             </div>
           </SetupAccordion>
-        </FieldGroup>
+        </FieldGroup>}
 
         <CameraTuningSection
           isConnected={isConnected}
@@ -84,6 +90,8 @@ export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
           onUpdateCameraParams={onUpdateCameraParams}
           onWhiteBalanceCalibrate={onWhiteBalanceCalibrate}
           onPreviewPattern={onPreviewPattern}
+          captureOptimize={captureOptimize}
+          showSolidExposure={showSolidExposure}
         />
 
         <AdvancedSection

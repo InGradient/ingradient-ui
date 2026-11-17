@@ -15,6 +15,7 @@ import {
 import { useFullscreen } from './use-fullscreen'
 import { patternLabelToUI } from './pattern-helpers'
 import { FOCUS_PEAKING_PATTERN } from './types'
+import { FringeContrastCardView } from './FringeContrastCardView'
 import type { CaptureViewProps } from './types'
 
 export function CaptureView(props: CaptureViewProps): JSX.Element {
@@ -22,7 +23,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
     isConnected, isConnecting, isCapturing, isSetupMode, isSetupBusy, isSavingSequence,
     liveFrameSrc, previewSrc, frozenFrameSrc, hasReceivedSnapshot, snapshotError,
     progressText, captureStep, captureTotalSteps,
-    setupMetrics, previewPatternLabel, setupPatternLabel,
+    setupMetrics, fringeContrast, previewPatternLabel, setupPatternLabel,
     captureDisabledReason, captureStatusHint,
     showGrid, showControls, labels,
     onCapture, onReconnect, onToggleGrid, onToggleControls,
@@ -67,6 +68,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
             <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
             <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
+            {fringeContrast && <FringeContrastCardView {...fringeContrast} />}
           </SetupMetrics>
         )}
 

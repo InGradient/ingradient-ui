@@ -6,7 +6,7 @@ import { edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Settings/Tabs',
   component: Workspace005.component,
-  args: { ...Workspace005.args, activeTab: 'capture', settingsOpen: true, settingsPlcJudge: true },
+  args: { ...Workspace005.args, activeTab: 'capture', settingsOpen: true, settingsPlcJudge: true, setupLatest: true },
   // The dialog covers the whole Docs page, so these open from the sidebar only.
   tags: ['!autodocs'],
   parameters: edge006Parameters({

@@ -8,7 +8,7 @@ import { edge006Parameters } from './edge-006'
 const meta = {
   title: 'Pages/Edge/0.0.6/Settings/Workflows',
   component: Workspace005.component,
-  args: { ...Workspace005.args, settingsPlcJudge: true },
+  args: { ...Workspace005.args, settingsPlcJudge: true, setupLatest: true },
   tags: ['!autodocs'],
   parameters: edge006Parameters({
     page: 'Settings',
