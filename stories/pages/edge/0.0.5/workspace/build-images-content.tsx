@@ -5,6 +5,7 @@ import { SAMPLE_CLASSES_FULL, SAMPLE_IMAGE_ITEMS } from '../../../../fixtures/ed
 // The 0.0.5 inspector is view-only; the edit state reuses the 0.0.1 synthetic bbox canvas.
 import { BBoxCanvasScene } from '../../0.0.1/workspace/build-bbox-canvas'
 import { SAMPLE_BBOXES } from '../../../../fixtures/edge/0.0.1/sample-images'
+import { StoryStatus } from '../../../../support/story-probe'
 
 const noop = (): undefined => undefined
 
@@ -104,7 +105,7 @@ function ControlledImagesContent({ draft, editable = false }: { draft: ImagesDra
   }
 
   return (<>
-    <p role="status">{status} Showing {visible.length} images in {displayItems.length} cells; {selectedIds.size} selected.</p>
+    <StoryStatus>{status} Showing {visible.length} images in {displayItems.length} cells; {selectedIds.size} selected.</StoryStatus>
     <ImagesView
       groupedImages={displayItems}
       groupMap={groupMap}

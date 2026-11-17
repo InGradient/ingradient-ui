@@ -10,6 +10,7 @@ import {
   EXPERIMENTS_TAB_LABELS, GENERAL_TAB_LABELS, LIGHTING_TAB_LABELS, MONITORS,
   MONITOR_PICKER_LABELS, PS_LIGHT_LABELS, SOUND_OPTIONS,
 } from '../../../../fixtures/edge/0.0.5'
+import { StoryStatus } from '../../../../support/story-probe'
 
 /** Draft lifetime is the Workspace session, never the currently mounted tab. */
 export function useSettingsDraft() {
@@ -83,7 +84,7 @@ export function GeneralTabContent({ draft, onMockAction, mockMessageResult = 'ok
         setMockResult(`Mock message test: ${mockMessageResult === 'ok' ? 'success' : 'failed'}; no OS notification was sent.`)
       }}
     />
-    {mockResult && <p role="status">{mockResult}</p>}
+    {mockResult && <StoryStatus>{mockResult}</StoryStatus>}
     </>
   )
 }
@@ -164,7 +165,7 @@ export function LightingTabContent({ draft, mode = 'deflectometry', onMockAction
           onToggleIdle={(value) => { setIdleEnabled(value); action('idle-changed') }}
         />
       )}
-    />{result && <p role="status">{result}</p>}</>
+    />{result && <StoryStatus>{result}</StoryStatus>}</>
   )
 }
 

@@ -3,6 +3,7 @@ import { AutoInspectView, TitleBarView, TopBarView, type ConnectionStatus, type 
 import { TITLE_BAR_LABELS, TOP_BAR_LABELS } from '../../../../fixtures/edge/0.0.5'
 import { AccountRuntime, LanguageRuntime } from './account-runtime'
 import type { MockAction } from './tabs-moved'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export function TitleBarRuntime() {
   const [maximized, setMaximized] = useState(false)
@@ -11,7 +12,7 @@ export function TitleBarRuntime() {
     onMinimize={() => setResult('Mock minimize requested; window unchanged.')}
     onMaximize={() => { setMaximized((value) => !value); setResult('Mock maximize toggled; window unchanged.') }}
     onClose={() => setResult('Mock close requested; application remains open.')} />
-    {result && <div role="status">{result}</div>}</>
+    {result && <StoryStatus>{result}</StoryStatus>}</>
 }
 
 export interface TopBarOptions {
@@ -50,5 +51,5 @@ export function TopBarRuntime(opts: TopBarOptions) {
     accountMenu={opts.accountMenu ?? <AccountRuntime onMockAction={opts.onMockAction} />} settingsDialog={opts.settingsDialog ?? null}
     onBackToDatasets={() => action('back-to-datasets')} onRefresh={() => action('refresh')}
     onOpenSettings={() => opts.onOpenSettings?.()} />
-    {result && <div role="status">{result}</div>}</>
+    {result && <StoryStatus>{result}</StoryStatus>}</>
 }

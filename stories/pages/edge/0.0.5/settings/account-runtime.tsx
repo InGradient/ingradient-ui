@@ -3,6 +3,7 @@ import { Button } from '@ingradient/ui'
 import { AccountMenuView, LangSelectorView, type AccountUser } from '@ingradient/edge-pages'
 import { ACCOUNT_MENU_LABELS, SAMPLE_USER } from '../../../../fixtures/edge/0.0.5'
 import type { MockAction } from './tabs-moved'
+import { StoryStatus } from '../../../../support/story-probe'
 
 /** The product's three UI languages (ingradient-edge LangSelector). */
 export const EDGE_LANG_OPTIONS = [
@@ -36,5 +37,5 @@ export function AccountRuntime({ currentUser, onUserChange, onMockAction }: { cu
     onOpenChangeAccount={() => { setOpen(false); setChange(true) }} onCloseChangeAccount={() => setChange(false)}
     onLogout={() => select(null)} onSelectAccount={select} />
     {!user && <Button variant="secondary" onClick={() => select(SAMPLE_USER)}>Restore mock account</Button>}
-    {result && <span role="status">{result}</span>}</div>
+    {result && <StoryStatus>{result}</StoryStatus>}</div>
 }

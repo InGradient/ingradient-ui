@@ -18,6 +18,7 @@ import { ImagesContent, useImagesDraft } from './build-images-content'
 import { LogPanel, RightPanel } from './build-panels'
 import { StaticsContent } from './build-statics-content'
 import { SetupContent } from './build-setup-content'
+import { StoryStatus } from '../../../../support/story-probe'
 
 const noop = (): undefined => undefined
 
@@ -123,7 +124,7 @@ function WorkspaceSession(args: WorkspaceSceneArgs): JSX.Element {
           : null,
       })}
       leftPanel={<LogPanel filterOpen={args.logFilterOpen} />}
-      centerContent={<>{center}{mockStatus && <p role="status">{mockStatus}</p>}</>}
+      centerContent={<>{center}{mockStatus && <StoryStatus>{mockStatus}</StoryStatus>}</>}
       rightPanel={<>
         <div hidden={activeTab !== 'setup'} style={{ height: '100%' }}>
           <SetupContent previewPatternLabel={previewPatternLabel} onPreviewPattern={setPreviewPatternLabel} latest={args.setupLatest} optimizePhase={args.setupOptimizePhase} onMockAction={onMockAction} />

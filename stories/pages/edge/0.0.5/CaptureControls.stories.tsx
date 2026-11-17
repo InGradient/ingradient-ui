@@ -9,6 +9,7 @@ import { LogPanel, RightPanel } from './workspace/build-panels'
 import { SetupContent } from './workspace/build-setup-content'
 import { SIMULATION_LOGS } from './workspace/capture-fixtures'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { StoryProbe } from '../../../support/story-probe'
 
 /** Story harness: the app shell provides surface depth in the product, so the harness does too. */
 function Controls(props: { mode?: 'logs' | 'setup' }): JSX.Element {
@@ -19,7 +20,7 @@ function ControlsBody({ mode = 'logs' }: { mode?: 'logs' | 'setup' }): JSX.Eleme
   return <Inline align="stretch" gap="var(--ig-spacing-8)" style={{ height: '100vh', padding: 'var(--ig-spacing-8)' }}>
     {mode === 'logs' ? <Stack style={{ width: 'var(--ig-layout-size-side-panel)' }}><LogPanel logs={SIMULATION_LOGS} /></Stack> : <>
       <Stack style={{ flex: 1, overflow: 'auto' }}><SetupContent previewPatternLabel={pattern} onPreviewPattern={setPattern} /></Stack>
-      <Stack style={{ width: 'var(--ig-layout-size-side-panel)' }}><RightPanel previewPatternLabel={pattern} onPreviewPattern={setPattern} /><output aria-label="Selected simulation pattern">{pattern ?? 'None'}</output></Stack>
+      <Stack style={{ width: 'var(--ig-layout-size-side-panel)' }}><RightPanel previewPatternLabel={pattern} onPreviewPattern={setPattern} /><StoryProbe label="Selected simulation pattern">{pattern ?? 'None'}</StoryProbe></Stack>
     </>}
   </Inline>
 }

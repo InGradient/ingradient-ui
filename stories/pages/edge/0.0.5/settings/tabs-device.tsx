@@ -2,6 +2,7 @@ import { CameraParamsTabView, ServerTabView } from '@ingradient/edge-pages'
 import { CAMERA_PARAMS_TAB_LABELS, SERVER_TAB_LABELS } from '../../../../fixtures/edge/0.0.5'
 import { DEFAULT_DLL, isMockServerUrl } from './settings-drafts'
 import type { SettingsDraft, MockAction } from './tabs-moved'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export interface SettingsContentProps { draft: SettingsDraft; onMockAction: MockAction }
 
@@ -32,5 +33,5 @@ export function CameraParamsTabContent({ draft: { device }, onMockAction }: Sett
     onDllPathChange={(value) => { setPath(value); setResult(null); setMessage('') }}
     onApplyDllPath={() => apply('apply')} onSave={() => apply('save')}
     onReset={() => { setPath(DEFAULT_DLL); setResult(null); setMessage('Mock camera defaults restored.'); onMockAction('camera-reset') }} />
-    {message && <p role="status">{message}</p>}</>
+    {message && <StoryStatus>{message}</StoryStatus>}</>
 }

@@ -11,6 +11,7 @@ import { AccountRuntime, LanguageRuntime } from './settings/account-runtime'
 import { SystemMonitorRuntime } from './settings/system-runtime'
 import { SAMPLE_USER } from '../../../fixtures/edge/0.0.5'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { STORY_HIDDEN, StoryControls, StoryProbe } from '../../../support/story-probe'
 
 export interface WorkflowArgs { initialTab: SettingsTab; lightingMode: LightingMode; chromeOnly: boolean; onMockAction: MockAction }
 /** Story harness: the app shell provides surface depth in the product, so the harness does too. */
@@ -23,13 +24,13 @@ function SettingsWorkflowSceneBody({ initialTab, lightingMode, chromeOnly, onMoc
   const [language, setLanguage] = useState('en')
   const [user, setUser] = useState<AccountUser | null>(SAMPLE_USER)
   return <Stack gap="var(--ig-spacing-8)" style={{ padding: 'var(--ig-spacing-12)' }}>
-    <h1>Synthetic settings workflows</h1>
-    <p>No authentication, hardware, files, clipboard, network, or OS calls.</p>
+    <h1 style={STORY_HIDDEN}>Synthetic settings workflows</h1>
+    <p style={STORY_HIDDEN}>No authentication, hardware, files, clipboard, network, or OS calls.</p>
     <LanguageRuntime value={language} onChange={setLanguage} onMockAction={onMockAction} />
-    <output aria-label="Selected mock language">{language}</output>
+    <StoryProbe label="Selected mock language">{language}</StoryProbe>
     <AccountRuntime currentUser={user} onUserChange={setUser} onMockAction={onMockAction} />
-    <output aria-label="Selected mock account">{user?.email ?? 'signed out'}</output>
-    <Button variant="secondary" onClick={() => setOpen(true)}>Open mock settings</Button>
+    <StoryProbe label="Selected mock account">{user?.email ?? 'signed out'}</StoryProbe>
+    <StoryControls><Button variant="secondary" onClick={() => setOpen(true)}>Open mock settings</Button></StoryControls>
     <SystemMonitorRuntime onMockAction={onMockAction} />
     {open && <SettingsModal initialTab={initialTab} lightingMode={lightingMode} draft={draft} onMockAction={onMockAction} onClose={() => setOpen(false)} />}
   </Stack>

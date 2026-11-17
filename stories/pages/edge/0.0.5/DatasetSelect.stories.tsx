@@ -10,6 +10,7 @@ import {
 import { defineHandoff } from '../../../support/handoff'
 import { AccountSlot, EdgeAppFrame, LangSlot } from './shared/build-shell'
 import { useDatasetRuntime } from './dataset-runtime'
+import { StoryStatus } from '../../../support/story-probe'
 
 const noop = (): undefined => undefined
 
@@ -53,8 +54,8 @@ function DatasetSelectSession(args: SceneArgs): JSX.Element {
       isConnected={mode === 'online'}
       content={(
         <>
-        {mockStatus && <p role="status">{mockStatus}</p>}
-        {runtime.status && <p role="status">{runtime.status}</p>}
+        {mockStatus && <StoryStatus>{mockStatus}</StoryStatus>}
+        {runtime.status && <StoryStatus>{runtime.status}</StoryStatus>}
         {!loading && !fetchError && runtime.createProjectForm}
         <DatasetSelectView
           mode={mode}

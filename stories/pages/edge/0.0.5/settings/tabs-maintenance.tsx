@@ -3,6 +3,7 @@ import { Button, DialogShell } from '@ingradient/ui'
 import { AboutTabView, DataTabView, FieldTestTabView, UpdateSectionView } from '@ingradient/edge-pages'
 import { ABOUT_TAB_LABELS, DATA_TAB_LABELS, FIELD_TEST_TAB_LABELS, UPDATE_SECTION_LABELS } from '../../../../fixtures/edge/0.0.5'
 import type { SettingsContentProps } from './tabs-device'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export function MockConfirm({ title, onCancel, onConfirm }: { title: string; onCancel: () => void; onConfirm: () => void }) {
   return <DialogShell title={title} onClose={onCancel} actions={<><Button variant="secondary" onClick={onCancel}>Cancel</Button><Button variant="solid" onClick={onConfirm}>Confirm mock action</Button></>}>
@@ -19,7 +20,7 @@ export function DataTabContent({ draft: { maintenance }, onMockAction }: Setting
     cacheSize={cache === 'done' ? 0 : 7 * 1024 ** 3} isCleaningCache={cache === 'running'} cleanupCompleted={cache === 'done'}
     labels={DATA_TAB_LABELS} onCleanCache={() => setConfirm(true)}
     onOpenDataDir={() => { setResult('Mock data directory preview requested; no folder was opened.'); onMockAction('data-open-directory') }} />
-    <p role="status">{cache === 'running' ? 'Mock cache cleanup in progress.' : cache === 'done' ? 'Mock cache cleanup complete: 7 GB freed.' : result}</p>
+    <StoryStatus>{cache === 'running' ? 'Mock cache cleanup in progress.' : cache === 'done' ? 'Mock cache cleanup complete: 7 GB freed.' : result}</StoryStatus>
     {confirm && <MockConfirm title="Clean mock cache?" onCancel={() => setConfirm(false)} onConfirm={() => { setConfirm(false); setCache('running'); onMockAction('data-clean-cache') }} />}</>
 }
 
@@ -33,7 +34,7 @@ export function FieldTestTabContent({ draft: { maintenance }, onMockAction }: Se
     onCancel={() => { setField('cancelled'); onMockAction('field-test-cancel') }}
     onReset={() => { setField('idle'); setProgress(0); setResult('Mock field test reset.'); onMockAction('field-test-reset') }}
     onExport={() => { setResult(`Mock field test export prepared: ${log.length} lines. No file written.`); onMockAction('field-test-export', log) }} />
-    <p role="status">{field === 'running' ? `Mock field test running: ${progress}%` : result || (field === 'done' ? 'Mock field test complete.' : field === 'cancelled' ? 'Mock field test cancelled.' : '')}</p></>
+    <StoryStatus>{field === 'running' ? `Mock field test running: ${progress}%` : result || (field === 'done' ? 'Mock field test complete.' : field === 'cancelled' ? 'Mock field test cancelled.' : '')}</StoryStatus></>
 }
 
 export function AboutTabContent({ draft: { maintenance }, onMockAction }: SettingsContentProps) {
@@ -49,6 +50,6 @@ export function AboutTabContent({ draft: { maintenance }, onMockAction }: Settin
       onCheckForUpdates={() => { setUpdate('checking'); setResult('Mock update check; no network request.'); onMockAction('update-check') }}
       onDownloadUpdate={() => { setUpdate('downloading'); setResult('Mock download; no file transfer.'); onMockAction('update-download') }}
       onInstallUpdate={() => { setUpdate('idle'); setResult('Mock update install requested; application was not restarted.'); onMockAction('update-install') }} />} />
-    <p role="status">{result}</p>
+    <StoryStatus>{result}</StoryStatus>
     {confirm && <MockConfirm title="Deactivate mock license?" onCancel={() => setConfirm(false)} onConfirm={() => { setConfirm(false); setDeactivated(true); setCodeOpen(true); onMockAction('license-deactivate') }} />}</>
 }
