@@ -13,6 +13,7 @@ const ItemBtn = styled.button<{ $active: boolean }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-surface-interactive)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-align: left;
   cursor: pointer;
   transition: background var(--ig-motion-fast);
@@ -29,6 +30,7 @@ const Label = styled.span`
 
 const Count = styled.span`
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   color: var(--ig-color-text-soft);
 `
 

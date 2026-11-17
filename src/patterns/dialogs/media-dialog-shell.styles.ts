@@ -113,6 +113,6 @@ export const MediaDialogSidebar = styled.aside<{ $width: number }>`
     height: min(40dvh, var(--ig-popup-md));
     flex: 0 0 min(40dvh, var(--ig-popup-md));
     border-left: 0;
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   }
 `

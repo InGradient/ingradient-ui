@@ -11,6 +11,8 @@ import {
 import { ReviewWidget } from '../stories/support/ReviewWidget'
 import { CommentPanel } from '../stories/support/CommentPanel'
 import { ComponentInspector } from '../stories/support/ComponentInspector'
+import { gridCheckAfterEach } from '../stories/support/grid-check'
+import { harnessCheckAfterEach } from '../stories/support/harness-check'
 
 import { resolvePreset, type PresetHandoff } from './resolve-preset'
 
@@ -135,6 +137,9 @@ const preview: Preview = {
     inspectMode: 'off',
   },
   loaders: [mswLoader],
+  // 4px grid check for Platform 0.0.1 / Edge 0.0.6 page stories in automated runs; opt out with parameters.grid4px = 'off'.
+  // Test-only harness text (mock results, probes) must stay hidden: StoryStatus / StoryProbe.
+  afterEach: [gridCheckAfterEach, harnessCheckAfterEach],
   decorators: [
     (Story, context) => {
       const modeGlobal = context.globals.mode as string

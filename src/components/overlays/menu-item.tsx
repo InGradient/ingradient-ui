@@ -8,10 +8,12 @@ const sizeStyles = {
   sm: css`
     padding: var(--ig-space-2) var(--ig-space-3);
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-leading-sm);
   `,
   md: css`
     padding: var(--ig-space-3) var(--ig-space-4);
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-leading-sm);
   `,
 }
 
@@ -27,6 +29,8 @@ const Btn = styled.button<{ $tone: MenuItemTone; $size: MenuItemSize; $active: b
   width: 100%;
   border: none;
   border-radius: var(--ig-radius-sm);
+  /* Pixel leading keeps menu items on the 4px grid (8 + 20 + 8 = 36px). */
+  line-height: var(--ig-text-body-sm-leading);
   background: ${(p) => (p.$active ? 'var(--ig-color-selection-bg)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : TONE_COLOR[p.$tone])};
   text-align: left;

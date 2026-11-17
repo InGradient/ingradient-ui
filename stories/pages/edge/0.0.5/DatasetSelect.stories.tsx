@@ -1,7 +1,8 @@
 // 화면 2 — 프로젝트/데이터셋 선택. 로그인 후 처음 보는 화면이다.
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
+import { expect, fn, waitFor, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { DatasetSelectView } from '@ingradient/edge-pages'
 import {
   DATASET_SELECT_LABELS, LATEST_DATASET_ID, SAMPLE_RECENT,
@@ -9,10 +10,11 @@ import {
 import { defineHandoff } from '../../../support/handoff'
 import { AccountSlot, EdgeAppFrame, LangSlot } from './shared/build-shell'
 import { useDatasetRuntime } from './dataset-runtime'
+import { StoryStatus } from '../../../support/story-probe'
 
 const noop = (): undefined => undefined
 
-interface SceneArgs {
+export interface SceneArgs {
   mode?: 'online' | 'offline'
   loading?: boolean
   fetchError?: string | null
@@ -20,6 +22,8 @@ interface SceneArgs {
   empty?: boolean
   sessionExpired?: boolean
   failFirstExport?: boolean
+  /** Open the add-dataset or export dialog on first render. */
+  initialModal?: 'add' | 'export'
   onMockAction?: (action: string) => void
 }
 
@@ -40,7 +44,7 @@ function DatasetSelectSession(args: SceneArgs): JSX.Element {
     setMockStatus(action === 'confirm' ? 'Mock sign-in requested; no authentication was performed.' : 'Mock session dialog dismissed.')
   }
   const [openDotMenuDatasetId, setOpenDotMenuDatasetId] = useState<string | null>(null)
-  const runtime = useDatasetRuntime(empty, args.failFirstExport ?? false, args.onMockAction)
+  const runtime = useDatasetRuntime(empty, args.failFirstExport ?? false, args.onMockAction, args.initialModal)
   const groups = runtime.groups
   const recent = empty ? [] : SAMPLE_RECENT
 
@@ -50,8 +54,8 @@ function DatasetSelectSession(args: SceneArgs): JSX.Element {
       isConnected={mode === 'online'}
       content={(
         <>
-        {mockStatus && <p role="status">{mockStatus}</p>}
-        {runtime.status && <p role="status">{runtime.status}</p>}
+        {mockStatus && <StoryStatus>{mockStatus}</StoryStatus>}
+        {runtime.status && <StoryStatus>{runtime.status}</StoryStatus>}
         {!loading && !fetchError && runtime.createProjectForm}
         <DatasetSelectView
           mode={mode}

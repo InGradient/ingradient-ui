@@ -1,6 +1,7 @@
 import { BackendLogsContentView, FrontendLogsContentView, UnifiedLogsTabView } from '@ingradient/edge-pages'
 import { BACKEND_LOGS_LABELS, FRONTEND_LOGS_LABELS, SAMPLE_BACKEND_LOGS, SAMPLE_FRONTEND_LOGS, UNIFIED_LOGS_TAB_LABELS } from '../../../../fixtures/edge/0.0.5'
 import type { SettingsContentProps } from './tabs-device'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export function LogsTabContent({ draft: { logs }, onMockAction }: SettingsContentProps) {
   const [source, setSource] = logs.source
@@ -20,5 +21,5 @@ export function LogsTabContent({ draft: { logs }, onMockAction }: SettingsConten
   return <><UnifiedLogsTabView source={source} labels={UNIFIED_LOGS_TAB_LABELS} onSetSource={(value) => { setSource(value); setResult('') }}
     backendLogsContent={<BackendLogsContentView {...props} loading={false} labels={BACKEND_LOGS_LABELS} />}
     frontendLogsContent={<FrontendLogsContentView {...props} labels={FRONTEND_LOGS_LABELS} />} />
-    <p role="status">{result || `${filtered.length} matching mock entries`}</p></>
+    <StoryStatus>{result || `${filtered.length} matching mock entries`}</StoryStatus></>
 }

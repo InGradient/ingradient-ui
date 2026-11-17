@@ -1,8 +1,13 @@
+import styled from 'styled-components'
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Inline, Stack } from '@ingradient/ui/primitives'
 import { Alert, Skeleton, AlertTriangleIcon, InfoIcon } from '@ingradient/ui/components'
 
-const LIST_STYLE = { listStyle: 'none' as const, padding: 0, margin: 0 }
+const ListBox = styled(Stack)`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`
 
 export interface StorageRecommendation {
   tone: 'info' | 'warn'
@@ -21,7 +26,7 @@ export function StorageRecommendationsList({
   if (loading) return <Skeleton $height={loadingHeight} />
   if (recommendations.length === 0) return null
   return (
-    <Stack as="ul" gap="var(--ig-spacing-8)" style={LIST_STYLE}>
+    <ListBox forwardedAs="ul" gap="var(--ig-spacing-8)">
       {recommendations.map((r, i) => (
         <Alert as="li" key={i} $tone={r.tone === 'warn' ? 'warning' : 'info'}>
           <Inline gap="var(--ig-spacing-8)" align="flex-start">
@@ -32,6 +37,6 @@ export function StorageRecommendationsList({
           </Inline>
         </Alert>
       ))}
-    </Stack>
+    </ListBox>
   )
 }

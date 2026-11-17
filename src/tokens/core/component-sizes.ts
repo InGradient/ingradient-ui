@@ -34,6 +34,8 @@ export const componentSizes = {
   titlebarLogo: '20px',
   resizer: '4px',
   dropIndicator: '4px',
+  /** Number field minimum: 12px text inset + 32px stepper + four or five digits. */
+  numberFieldMin: '80px',
 } as const
 
 const kebab = (key: string) => key.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`)

@@ -71,48 +71,72 @@ for name, s in cmp.items():
     rest_html = f"<details><summary>번호 없는 나머지 {len(s['rest'])}건 펼치기</summary><ul>{rest}</ul></details>" if s['rest'] else ''
     detail.append(
         f"<h3 id='cmp-{name}'>{e(s['title'])} <span class='muted'>· 변경 묶음 {s['totalGroups']}개 · {sb(s['id'], 'Storybook')}</span></h3>"
-        + fig(f"detailed/{name}-detail.png", s['title'], '왼쪽 이전(어제 저녁 b497769, 주황) · 오른쪽 지금(50c427d, 청록). 같은 번호는 같은 요소. 이미지를 누르면 원래 크기')
+        + fig(f"detailed/{name}-detail.png", s['title'], '왼쪽 변경 전(b497769, 주황) · 오른쪽 지금(50c427d, 청록). 같은 번호는 같은 요소. 이미지를 누르면 원래 크기')
         + f"<p class='muted'>화면 전체: 실제로 그려지는 글꼴 Liberation Sans(대체 글꼴) → IBM Plex Sans / Plex Sans KR</p>"
         + f"<ol class='legend'>{items}</ol>{rest_html}"
     )
 toc_cmp = ' · '.join(f"<a href='#cmp-{n}'>{e(s['title'].split(' · ')[-1])}</a>" for n, s in cmp.items())
 
 SECTION = f'''
-<h2 id="day">0. 2026-10-27 낮 작업과 어제 저녁 대비 상세 비교</h2>
-<p class="muted">10:17~16:57 · 브랜치 <code>feat/surface-depth</code> · push·PR 없음. 이 절이 가장 최신이다. 아래 "최종 결과(밤사이)"와 1~7절은 밤사이 기록이다.</p>
-<div class="note"><b>요약.</b> 화면 영역은 모두 선으로 나뉘고(Dashboard 정리), 단일 폼 화면(로그인·회원가입·프로젝트 생성)은 넉넉한 간격과 보이는 라벨을 쓰며, Platform 작업 화면은 앱 전체 사이드바 안에 들어갔다. Settings 섹션은 상자 대신 선으로 나뉘었다. 이어서 글자 역할 토큰, 중복 컴포넌트 정리, 레이아웃 크기 토큰, 간격 이름 정리를 화면 변화 없이 마쳤다. 어제 저녁과 비교하면 17개 대표 화면에서 변경 묶음이 <b>{total}개</b>다.</div>
+<h2 id="day">A. Platform 화면 정리와 변경 전후 상세 비교</h2>
+<p class="muted">10:17~16:57 · <code>main</code>에 머지(<code>4401508</code>). 이 절이 가장 최신이다. 아래 B절과 1~7절은 그 전에 진행한 기초 값·표면 깊이 작업 기록이다.</p>
+<div class="note"><b>요약.</b> 화면 영역은 모두 선으로 나뉘고(Dashboard 정리), 단일 폼 화면(로그인·회원가입·프로젝트 생성)은 넉넉한 간격과 보이는 라벨을 쓰며, Platform 작업 화면은 앱 전체 사이드바 안에 들어갔다. Settings 섹션은 상자 대신 선으로 나뉘었다. 이어서 글자 역할 토큰, 중복 컴포넌트 정리, 레이아웃 크기 토큰, 간격 이름 정리를 화면 변화 없이 마쳤다. 작업 전과 비교하면 17개 대표 화면에서 변경 묶음이 <b>{total}개</b>다.</div>
 
-<h3>0-1. Simon이 확인할 것</h3>
+<h3>A-1. Simon이 확인할 것</h3>
 <ol>
-<li><b>push와 PR 나누기</b>: <code>refactor/space-props-and-removable-list</code> → <code>fix/broken-controls</code> → <code>feat/surface-depth</code>가 쌓여 있다.</li>
-<li><b>CI 시각 기준선 승인</b>: 거의 모든 화면이 바뀌었다(아래 0-4). 로컬에서는 갱신하지 않았다.</li>
-<li><b>사이드바 메뉴 이름</b>: "Classes"와 페이지 제목 "Class" 중 하나로 맞추기.</li>
-<li><b>Settings 모달 안의 입력칸·표 폭(약 15곳)</b>: 아직 팝업 크기 토큰을 쓴다. 레이아웃 크기 토큰으로 옮길지.</li>
-<li><b>4px 밖의 표 열 폭 3개</b>(Catalog 표 190·116·124px)를 맞출지.</li>
-<li><b>숫자 입력칸 값이 잘리는 문제</b>(0-5): 고칠지와 방식.</li>
+<li><s><b>push와 PR 나누기</b></s> 완료: 세 브랜치를 <code>main</code>에 머지하고 push했다(<code>4401508</code>). 첫 CI는 <code>lint:style</code>(CSS 안의 <code>//</code> 주석)로 실패해 고쳤고, 남은 정리 작업 뒤에 한 번에 다시 확인한다.</li>
+<li><b>CI 시각 기준선 승인</b>: 거의 모든 화면이 바뀌었다(아래 A-4). 로컬에서는 갱신하지 않았다.</li>
+<li><s><b>사이드바 메뉴 이름</b></s> 페이지 제목을 "Classes"로 맞춤(A-6).</li>
+<li><s><b>Settings 모달 안의 입력칸·표 폭</b></s> 처리함(A-6).</li>
+<li><b>4px 밖의 표 열 폭</b>: 처음 3개(190·116·124px)라고 적었으나 116·124는 4의 배수라 실제로는 <b>190px 두 곳</b>이었고 192px로 맞춤(A-6).</li>
+<li><s><b>숫자 입력칸 값이 잘리는 문제</b></s> 고침(A-6, <code>03b1c0b</code>).</li>
 <li>Edge와 공용 컴포넌트의 옛 글자 크기·간격 이름 정리를 이어서 할지(이번 범위는 Platform).</li>
 </ol>
 
-<h3>0-2. 커밋</h3>
+<h3>A-2. 커밋</h3>
 <table><tr><th>시각</th><th>커밋</th><th>내용</th></tr>{rows}</table>
 <p>모든 커밋 뒤에 타입·린트·단위(492)·정적 검사·패키지 빌드·공개 export·전체 Storybook(888)을 통과했다. 화면이 바뀌지 않아야 하는 커밋(<code>8ca37dc</code>, <code>50c427d</code>, <code>b95abdc</code>의 크기 토큰 부분)은 전체 스토리 픽셀 비교로 확인했고, 다르게 나온 스토리는 양쪽 빌드에서 4~6번 다시 찍어 같은 빌드끼리도 흔들리는 노이즈임을 확인했다. 한계: 비교는 화면 위쪽 900px만 찍으므로 그 아래(대시보드 분석 카드)는 따로 쟀다.</p>
 <table><tr><th>위계 검사(Platform 128 스토리)</th><th>어제 아침</th><th>지금</th></tr>
 <tr><td>DOM 구조 기준 위반</td><td>—</td><td>0</td></tr>
 <tr><td>위치 기준 같음 / 역전</td><td>81 / 84</td><td>2 / 2</td></tr></table>
 
-<h3>0-3. 변경별 설명</h3>
+<h3>A-3. 변경별 설명</h3>
 {changes}
 
-<h3 id="cmp">0-4. 어제 저녁 대비 화면별 상세 비교 (17개 화면, 변경 묶음 {total}개)</h3>
-<p>방법: 어제 저녁(<code>b497769</code>, 밤사이 작업 전)과 지금(<code>50c427d</code>)을 각각 빌드해 같은 화면 크기(1440×900)로 찍고, 컴포넌트 이름과 글자로 같은 요소를 짝지어 모서리·안쪽 여백·간격·글자 크기·줄 높이·굵기·대문자·높이·폭·배경·테두리·그림자·안내 글자를 비교했다. 같은 변경이 여러 요소에 반복되면 하나로 묶었다(×개수). 입력칸은 순서로 짝지었다. 글자가 있는 요소의 폭 변화는 글꼴과 여백의 결과라 따로 적지 않았다. 화면마다 큰 변경 14묶음까지 번호를 붙였고, 나머지는 펼쳐 볼 수 있다. 한계: 위쪽 900px만 비교하고, 화면 구조가 크게 바뀐 곳(앱 사이드바가 생긴 화면)은 요소 짝이 일부 "사라짐/새로 생김"으로 나온다.</p>
+<h3 id="cmp">A-4. 변경 전후 화면별 상세 비교 (17개 화면, 변경 묶음 {total}개)</h3>
+<p>방법: 변경 전(<code>b497769</code>, 기초 값 작업 시작 전)과 지금(<code>50c427d</code>)을 각각 빌드해 같은 화면 크기(1440×900)로 찍고, 컴포넌트 이름과 글자로 같은 요소를 짝지어 모서리·안쪽 여백·간격·글자 크기·줄 높이·굵기·대문자·높이·폭·배경·테두리·그림자·안내 글자를 비교했다. 같은 변경이 여러 요소에 반복되면 하나로 묶었다(×개수). 입력칸은 순서로 짝지었다. 글자가 있는 요소의 폭 변화는 글꼴과 여백의 결과라 따로 적지 않았다. 화면마다 큰 변경 14묶음까지 번호를 붙였고, 나머지는 펼쳐 볼 수 있다. 한계: 위쪽 900px만 비교하고, 화면 구조가 크게 바뀐 곳(앱 사이드바가 생긴 화면)은 요소 짝이 일부 "사라짐/새로 생김"으로 나온다.</p>
 <p class="muted">바로 가기: {toc_cmp}</p>
 {''.join(detail)}
 
-<h3 id="found">0-5. 새로 발견한 문제</h3>
+<h3 id="found">A-5. 새로 발견한 문제</h3>
 <table><tr><th>문제</th><th>위치</th><th>원인</th><th>상태</th></tr>
-<tr><td>숫자 입력칸 값이 잘려 숫자가 보이지 않음</td><td>Settings Edge 탭 Deflectometry(Phase shifts, Fringe period, Retry 등)</td><td><code>NumberField</code> 폭이 46~48px인데 안쪽 여백이 왼쪽 12px, 오른쪽 32px(위아래 버튼 자리)라 숫자 들어갈 자리가 0~2px</td><td><b>어제 저녁에도 있던 문제</b>(이번 변경이 만든 것 아님). 제안: <code>NumberField</code>에 최소 폭(예: 여백 + 숫자 4자리)을 두거나, Edge 탭이 폭을 지정</td></tr>
+<tr><td>숫자 입력칸 값이 잘려 숫자가 보이지 않음</td><td>Settings Edge 탭 Deflectometry(Phase shifts, Fringe period, Retry 등)</td><td><code>NumberField</code> 폭이 46~48px인데 안쪽 여백이 왼쪽 12px, 오른쪽 32px(위아래 버튼 자리)라 숫자 들어갈 자리가 0~2px</td><td>작업 전에도 있던 문제. Settings Edge 탭이 폭을 48px로 고정한 것이 원인. <code>03b1c0b</code>에서 <code>NumberField</code> 최소 폭 80px로 고침</td></tr>
 <tr><td>Edge 탭 제목 띠가 본문 밖으로 삐져나옴</td><td>Settings Edge 탭</td><td>Settings 섹션 상자를 없앨 때 Edge 탭 제목의 음수 여백을 놓침</td><td><code>b95abdc</code>에서 고침</td></tr>
-<tr><td>Catalog 오른쪽 패널 제목 순서(접근성)</td><td>Catalog 데이터셋 목록 접힘</td><td>접힌 열을 inert로 만들면서 h2가 빠짐</td><td>밤사이 <code>e725981</code>에서 고침</td></tr></table>
+<tr><td>Catalog 오른쪽 패널 제목 순서(접근성)</td><td>Catalog 데이터셋 목록 접힘</td><td>접힌 열을 inert로 만들면서 h2가 빠짐</td><td><code>e725981</code>에서 고침</td></tr></table>
+
+<h3 id="followup">A-6. 후속 정리 (Settings 소제목·폭, 숫자 입력칸, 모서리, 인라인 스타일, 표 열 폭, Classes 제목)</h3>
+<p>Platform 재검토에서 찾은 일관성 문제를 정리했다. 브랜치 <code>feat/platform-consistency</code>(<code>main</code> 이후), 아직 push하지 않았다.</p>
+FOLLOWUP_COMMITS
+<p>검증: CI 단계를 빠짐없이 돌렸다(처음 <code>main</code> CI를 실패시킨 <code>lint:style</code>과, 그동안 로컬 검사에서 빠져 있던 소비자 앱 빌드·패키지 소비 확인·Edge 계약 테스트를 추가). 두 번의 전체 검사 모두 통과, 단위 492, Storybook 888. 인라인 스타일 정리는 전체 스토리 비교(안정 869개)로 화면 변화 0을 확인했고, 다르게 나온 4개는 다시 찍어 노이즈로 확인했다(Settings Storage는 양쪽 빌드 모두 차트가 두 상태를 번갈아 보임).</p>
+<h4>화면 비교 (변경 전 <code>73caca9</code> 빌드, 변경 후 <code>1ab09db</code> 빌드)</h4>
+<figure><a href='assets/2026-10-27-foundations/followup/f-set-project-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-project-detail.png' alt='Settings / Project: 소제목 대문자 제거'></a><figcaption>Settings / Project: 소제목 대문자 제거</figcaption></figure><ol class='legend'><li><b class='n'>1</b> h4 소제목 8개: 대문자 켬→끔 (13px semibold 회색은 유지)</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-set-storage-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-storage-detail.png' alt='Settings / Storage: 소제목 대문자 제거와 문장형'></a><figcaption>Settings / Storage: 소제목 대문자 제거와 문장형</figcaption></figure><ol class='legend'><li><b class='n'>1</b> h4 "Storage by Tier" → "Storage by tier": 대문자 켬→끔</li><li><b class='n'>2</b> h4 "Storage by Project (Top 10)" → "Storage by project (top 10)": 대문자 켬→끔 (그 밖의 Storage 소제목도 같은 규칙)</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-set-edge-detail.png'><img src='assets/2026-10-27-foundations/followup/f-set-edge-detail.png' alt='Settings / Edge: 숫자 입력칸'></a><figcaption>Settings / Edge: 숫자 입력칸</figcaption></figure><ol class='legend'><li><b class='n'>1</b> 숫자 입력칸 8개: 폭 48→80px, 숫자 자리 2→34px. 값(1, 4, 20 등)이 보이게 됨</li></ol><figure><a href='assets/2026-10-27-foundations/followup/f-customize-detail.png'><img src='assets/2026-10-27-foundations/followup/f-customize-detail.png' alt='Dashboard 맞춤 설정 팝오버'></a><figcaption>Dashboard 맞춤 설정 팝오버</figcaption></figure><ol class='legend'><li><b class='n'>1</b> 팝오버 모서리 12→16px: 다른 팝오버·메뉴와 같은 떠 있는 표면 규칙</li></ol>
+<h4>Settings 모달 안의 폭, 4px 밖의 폭, 페이지 제목</h4>
+<figure><a href='assets/2026-10-27-foundations/followup/g-catalog-col-detail.png'><img src='assets/2026-10-27-foundations/followup/g-catalog-col-detail.png' alt='Catalog 표 데이터셋 열'></a><figcaption>Catalog 표 보기: 데이터셋 열</figcaption></figure>
+<ol class='legend'><li><b class='n'>1</b> 데이터셋 열 190→192px(측정 191→193px, 1px 테두리 포함). 레이아웃 크기가 모두 4의 배수인지 단위 테스트로 고정</li></ol>
+<figure><a href='assets/2026-10-27-foundations/followup/g-class-detail.png'><img src='assets/2026-10-27-foundations/followup/g-class-detail.png' alt='Classes 제목'></a><figcaption>Class Management 페이지 제목</figcaption></figure>
+<ol class='legend'><li><b class='n'>1</b> 페이지 제목 "Class"→"Classes": 사이드바 메뉴, 화면 안 목록 제목과 같게</li></ol>
+<ul><li><b>Settings 모달 안의 폭 23곳</b>을 같은 값의 레이아웃 크기 토큰으로 옮겼다: 입력칸 최소 폭(<code>field-xs</code>~<code>field-xl</code>: 104·160·192·200·240·260px), 표 최소 폭(<code>table-min-compact</code> 640px), 넓은 칸(<code>cell-min-wide</code> 220px), 설정 탭 열(<code>settings-nav-width</code> 220px), 장치 표 동작 열(120px). 대화상자 자체 폭 7곳은 팝업 크기를 그대로 쓴다. 전체 스토리 비교(안정 871개)에서 화면 변화 0. 다르게 나온 9개는 5번씩, 판정이 애매한 2개는 순서를 바꿔 6번씩 다시 찍어 모두 노이즈로 확인했다.</li>
+<li>처음 "4px 밖 표 열 3개(190·116·124px)"라고 적었으나 116·124는 4의 배수다. 실제로는 190px가 두 곳(Catalog 데이터셋 열, 계정 삭제 대화상자 안의 해상도 선택 상자)이었고 둘 다 192px로 맞췄다. 해상도 선택 상자는 스토리에 나오지 않아 화면에서 재지 못했다.</li></ul>
+<h4>화면 변화가 없는 정리</h4>
+<ul><li>인라인 스타일 객체 146개 중 113개를 같은 CSS의 styled 컴포넌트로 옮겼다(46개 파일). 이제 스타일 린트와 원색 값 검사가 이 스타일에도 걸린다. 계산식 값, 다른 곳에서 펼쳐 쓰는 것, <code>style={{}}</code> 직접 쓰기 33개는 그대로 뒀다. 변환 도구: <code>scripts/codemods/inline-style-to-styled.py</code>.</li>
+<li>댓글 목록 최대 높이를 팝업 크기 대신 레이아웃 크기 토큰으로.</li>
+<li>사람별 라벨링 위젯 표 카드의 모서리 직접 지정(바깥 카드와 같은 12px)을 빼 깊이를 따르게 했다. 이 위젯은 지금 페이지 스토리 어디에도 나오지 않아 <b>화면에서 재지 못했다</b>.</li></ul>
+<h4>남은 것</h4>
+<ul><li>정해 주셨던 세 가지(Settings 모달 안의 폭, 190px, Classes 제목)는 추천안대로 처리했다.</li>
+<li>팝오버·패널 안의 작은 대문자 라벨(맞춤 설정 팝오버 "VISIBLE SECTIONS", 내보내기 대화상자, 이미지 상세 등)은 Settings 소제목과 다른 종류라 이번에 손대지 않았다.</li>
+<li>좁은 화면과 라이트 모드 확인은 미뤘다.</li></ul>
 '''
+_follow_rows = ''.join(f"<tr><td>{t}</td><td><code>{h}</code></td><td>{e(m)}</td></tr>" for h, t, m in (l.rstrip('\n').split('|', 2) for l in open(f'{ROOT}/docs/reports/{A}followup/commits.txt')))
+SECTION = SECTION.replace('FOLLOWUP_COMMITS', '<table><tr><th>시각</th><th>커밋</th><th>내용</th></tr>' + _follow_rows + '</table>')
 open(f'{ROOT}/docs/reports/{A}day-section.html', 'w').write(SECTION)
 print('day section', len(SECTION), 'chars, groups', total)

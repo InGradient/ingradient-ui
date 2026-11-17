@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ModeSwitcher } from '@ingradient/ui'
 import type { UnifiedLogsTabViewProps, LogsSource } from '../types'
 
-const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-space-4); height: 100%;`
+const Wrap = styled.div`display: flex; flex-direction: column; gap: var(--ig-spacing-8); height: 100%;`
 
 export function UnifiedLogsTabView(props: UnifiedLogsTabViewProps): JSX.Element {
   const { source, backendLogsContent, frontendLogsContent, labels, onSetSource } = props

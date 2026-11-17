@@ -6,6 +6,7 @@ import { CONNECTION_LABELS, SAMPLE_GUIDE_STATE, SAMPLE_NIC_CANDIDATES, SAMPLE_NI
 import { CameraSetupPanel } from './build-camera-setup'
 import { isIpv4, isSubnet } from './settings-drafts'
 import type { SettingsContentProps } from './tabs-device'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export function ConnectionTabContent({ draft: { connection }, onMockAction }: SettingsContentProps): JSX.Element {
   const [selectedCamera, setSelectedCamera] = connection.camera
@@ -21,7 +22,7 @@ export function ConnectionTabContent({ draft: { connection }, onMockAction }: Se
   const [error, setError] = useState<string | null>(null)
   const [advancedExpanded, setAdvancedExpanded] = useState(false)
   const action = (name: string) => { setResult(`Mock ${name} complete; no device or network changes.`); onMockAction(`connection-${name}`) }
-  return <Stack gap="var(--ig-space-5)">
+  return <Stack gap="var(--ig-spacing-12)">
     <CameraSetupPanel onMockAction={onMockAction} />
     <ConnectionTabView labels={CONNECTION_LABELS}
       scan={{ isScanning: false, discoveredDevices: cameras, nicCandidates: SAMPLE_NIC_CANDIDATES, isLoadingCandidates: false, selectedCamera, selectedNic, isBlocked: false,
@@ -35,7 +36,7 @@ export function ConnectionTabContent({ draft: { connection }, onMockAction }: Se
         onEnable: () => { setNicEnabled(true); action('enable-nic') }, onDisable: () => { setNicEnabled(false); setConnected(false); action('disable-nic') }, onRestart: () => { setNicEnabled(true); action('restart-nic') } }}
       profile={{ profileName: 'default', isLoading: false, isSaving: false, onLoad: () => action('load-profile'), onSave: () => action('save-profile') }}
       advanced={{ expanded: advancedExpanded, onToggleExpanded: () => setAdvancedExpanded((value) => !value) }} guide={{ visible: false, state: SAMPLE_GUIDE_STATE }} />
-    {result && <p role="status">{result}</p>}
+    {result && <StoryStatus>{result}</StoryStatus>}
     {forceCamera && <ForceIpDialogView cameraId={forceCamera.mac} currentIp={forceCamera.ip} newIp={ip} newSubnet={subnet} applying={false} error={error} labels={CONNECTION_LABELS}
       onIpChange={setIp} onSubnetChange={setSubnet} onCancel={() => setForceCamera(null)} onApply={() => {
         if (!isIpv4(ip) || !isSubnet(subnet)) { setError('Enter a valid IPv4 address and contiguous subnet mask.'); return }

@@ -6,12 +6,12 @@ export function AutoSetupSectionView(props: AutoSetupSectionViewProps): JSX.Elem
   const { visible, isRunning, labels, onRun } = props
   if (!visible) return null
   return (
-    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
+    <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <Button size="sm" variant="accent" onClick={onRun} disabled={isRunning}>
         {isRunning && <Spinner size="sm" tone="muted" />}
         Auto setup
       </Button>
-      <div style={{ marginLeft: 'var(--ig-space-2)', fontSize: 'var(--ig-font-size-xs)', color: 'var(--ig-color-text-muted)' }}>
+      <div style={{ marginLeft: 'var(--ig-spacing-8)', fontSize: 'var(--ig-text-caption)', color: 'var(--ig-color-text-muted)' }}>
         {labels.scanHint}
       </div>
     </Stack>

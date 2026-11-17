@@ -31,7 +31,7 @@ export function StorageStatsTable<T>({
         columns={columns as TableColumn<Row>[]}
         rows={rows as Row[]}
         footer={footer}
-        minWidth="var(--ig-popup-3xl-narrow)"
+        minWidth="var(--ig-layout-size-table-min-compact)"
         ariaLabel={resolvedAriaLabel}
       />
     </Card>

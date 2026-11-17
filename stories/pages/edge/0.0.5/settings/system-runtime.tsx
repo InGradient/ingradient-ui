@@ -3,6 +3,7 @@ import { BottomBarView, SystemMonitorCleanupTabView, SystemMonitorModalView, Sys
 import { BOTTOM_BAR_LABELS, SAMPLE_STATS } from '../../../../fixtures/edge/0.0.5'
 import { MockConfirm } from './tabs-maintenance'
 import type { MockAction } from './tabs-moved'
+import { StoryStatus } from '../../../../support/story-probe'
 
 const initialCounts = { datasets: 2, sessions: 8, logs: 20, thumbs: 40 }
 const bytesPerItem = 1024 ** 2
@@ -41,7 +42,7 @@ export function SystemMonitorRuntime({ isConnected = true, onMockAction }: { isC
         labels={{ totalSize: 'Mock disk usage', oldestEntry: 'Oldest entry', categories: 'Categories', datasets: 'Datasets', sessions: 'Sessions', logs: 'Logs', thumbs: 'Thumbnails', run: 'Clean selected mock data', running: 'Mock cleanup running', refresh: 'Refresh', empty: 'No mock data', loading: 'Loading', freed: (value) => `Mock freed ${value}` }}
         onToggleCategory={(category) => { if (!running) setSelected((previous) => { const next = new Set(previous); if (next.has(category)) next.delete(category); else next.add(category); return next }) }}
         onRun={() => setConfirm(true)} onRefresh={() => { setMessage('Mock disk usage refreshed from session.'); onMockAction?.('system-refresh') }} />
-        <p role="status">{running ? 'Mock cleanup in progress; safe to close this monitor.' : message}</p></>} />}
+        <StoryStatus>{running ? 'Mock cleanup in progress; safe to close this monitor.' : message}</StoryStatus></>} />}
     {open && confirm && <MockConfirm title="Clean selected mock data?" onCancel={() => setConfirm(false)} onConfirm={() => { setConfirm(false); setRunning(true); setFreed(null); onMockAction?.('system-cleanup-start', [...selected]) }} />}
   </>
 }

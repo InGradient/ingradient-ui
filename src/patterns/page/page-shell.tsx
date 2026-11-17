@@ -47,6 +47,7 @@ export const PageTitle = styled.h1`
 export const PageSubtitle = styled.p`
   margin: 0;
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-muted);
 `
 
@@ -75,7 +76,7 @@ export const Panel = withSurfaceDepth(PanelBase, { displayName: 'PagePanel' })
 
 export const PanelHeader = styled.div`
   padding: var(--ig-space-7) var(--ig-space-8) var(--ig-space-5);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,17 +86,20 @@ export const PanelHeader = styled.div`
 export const PanelTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-md);
+  line-height: var(--ig-leading-md);
   font-weight: var(--ig-font-weight-bold);
 `
 
 export const PanelHint = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `
 
 export const SectionTitle = styled.h3`
   margin: 0 0 var(--ig-space-5);
   font-size: var(--ig-font-size-lg);
+  line-height: var(--ig-leading-lg);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
@@ -106,7 +110,7 @@ export const Toolbar = styled.div`
   justify-content: space-between;
   gap: var(--ig-space-5);
   flex-wrap: wrap;
-  padding: var(--ig-space-6) var(--ig-space-7);
+  padding: calc(var(--ig-space-6) - var(--ig-border-1px)) calc(var(--ig-space-7) - var(--ig-border-1px));
   border-radius: var(--ig-radius-lg);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   background: var(--ig-color-toolbar-surface);
@@ -136,11 +140,13 @@ export const FieldGroup = styled.div`
 
 export const FieldLabel = styled.label`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
 `
 
 export const FieldHint = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `

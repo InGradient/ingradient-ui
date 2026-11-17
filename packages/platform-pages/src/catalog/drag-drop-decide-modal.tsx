@@ -35,7 +35,7 @@ export function DragDropDecideModal({
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>
-          <Button type="button" variant="accent" onClick={() => onConfirm(action)}>Confirm</Button>
+          <Button type="button" variant="solid" onClick={() => onConfirm(action)}>Confirm</Button>
         </>
       }
     >

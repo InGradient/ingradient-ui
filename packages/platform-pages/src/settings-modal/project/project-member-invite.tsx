@@ -1,15 +1,24 @@
+import styled from 'styled-components'
 import { Inline, Stack as PrimStack, Text } from '@ingradient/ui/primitives'
 import { EmptyState, TextField } from '@ingradient/ui/components'
 import { OptionRow } from '@ingradient/ui/components'
 
-const SECTION_TITLE_STYLE = { marginTop: 'var(--ig-spacing-16)', marginBottom: 'var(--ig-spacing-8)' }
-const ROW_STYLE = {
-  padding: 'var(--ig-spacing-12) 0',
-  borderBottom: 'var(--ig-border-1px) solid var(--ig-color-border-strong)',
-  width: '100%',
-}
-const STACK_STYLE = { width: '100%' }
-const INPUT_STYLE = { width: '100%', minWidth: 0 }
+const SectionTitleBox = styled(Text)`
+  margin-top: var(--ig-spacing-16);
+  margin-bottom: var(--ig-spacing-8);
+`
+const RowBox = styled(Inline)`
+  padding: var(--ig-spacing-12) 0;
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
+  width: 100%;
+`
+const StackBox = styled(PrimStack)`
+  width: 100%;
+`
+const InputBox = styled(TextField)`
+  width: 100%;
+  min-width: 0;
+`
 
 export interface SearchableUserCandidate {
   id: string
@@ -47,19 +56,18 @@ export function ProjectMemberInvite({
 
   return (
     <>
-      <Text as="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold" uppercase letterSpacing="normal" style={SECTION_TITLE_STYLE}>{title}</Text>
-      <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
-        <PrimStack gap="var(--ig-spacing-8)" style={STACK_STYLE}>
-          <TextField
+      <SectionTitleBox forwardedAs="h4" tone="muted" size="var(--ig-text-body-sm)" weight="semibold">{title}</SectionTitleBox>
+      <RowBox gap="var(--ig-spacing-8)" wrap="wrap">
+        <StackBox gap="var(--ig-spacing-8)">
+          <InputBox
             type="search"
             value={query}
             onChange={(e) => onChangeQuery(e.target.value)}
             placeholder={searchPlaceholder}
             aria-label="Search registered users"
-            style={INPUT_STYLE}
           />
           {readyToSearch ? (
-            <PrimStack gap="var(--ig-spacing-8)" style={STACK_STYLE}>
+            <StackBox gap="var(--ig-spacing-8)">
               {candidates.map((c) => (
                 <OptionRow
                   key={c.id}
@@ -71,16 +79,16 @@ export function ProjectMemberInvite({
                 />
               ))}
               {!isSearching && candidates.length === 0 ? <EmptyState>{noResultsHint}</EmptyState> : null}
-            </PrimStack>
+            </StackBox>
           ) : (
             <EmptyState>{hintBelow}</EmptyState>
           )}
-        </PrimStack>
-      </Inline>
+        </StackBox>
+      </RowBox>
       {inviteMessage ? (
-        <Inline gap="var(--ig-spacing-8)" wrap="wrap" style={ROW_STYLE}>
+        <RowBox gap="var(--ig-spacing-8)" wrap="wrap">
           <EmptyState>{inviteMessage}</EmptyState>
-        </Inline>
+        </RowBox>
       ) : null}
     </>
   )

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, userEvent, within } from 'storybook/test'
+import { expect, within } from 'storybook/test'
+import { userEvent } from '../../../support/paced-play'
 import { WorkspaceScene } from './workspace/workspace-scene'
 import { defineHandoff } from '../../../support/handoff'
 

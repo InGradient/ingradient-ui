@@ -5,15 +5,21 @@ import { Button } from '@ingradient/ui/components'
 import { TextField } from '@ingradient/ui/components'
 import { SettingsSection } from '@ingradient/ui/patterns'
 
-const FIELD_STYLE = { minWidth: 'var(--ig-popup-xs-plus)' }
-const HINT_STYLE = { margin: 0, lineHeight: 'var(--ig-line-height-relaxed)' }
-const EXPIRED_STYLE = { margin: 0 }
+const FieldBox = styled(TextField)`
+  min-width: var(--ig-layout-size-field-lg);
+`
+const HintBox = styled(Text)`
+  margin: 0;
+`
+const ExpiredBox = styled(Text)`
+  margin: 0;
+`
 
 const Hint = styled.p`
   margin: 0;
   color: var(--ig-color-text-muted);
   font-size: var(--ig-text-body-sm);
-  line-height: var(--ig-line-height-relaxed);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export interface LicenseInfo {
@@ -25,19 +31,19 @@ export interface LicenseInfo {
 }
 
 function LicenseInfoDisplay({ license }: { license: LicenseInfo | null }) {
-  if (!license) return <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>Loading license information…</Text>
-  if (license.expired) return <Text as="p" tone="danger" size="var(--ig-text-body-sm)" weight="semibold" style={EXPIRED_STYLE}>Expired</Text>
+  if (!license) return <HintBox forwardedAs="p" tone="muted" size="var(--ig-text-body-sm)">Loading license information…</HintBox>
+  if (license.expired) return <ExpiredBox forwardedAs="p" tone="danger" size="var(--ig-text-body-sm)" weight="semibold">Expired</ExpiredBox>
   if (license.type === 'organization') {
     return (
-      <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
+      <HintBox forwardedAs="p" tone="muted" size="var(--ig-text-body-sm)">
         {`Organization license (${license.organizationName ?? ''}) | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
-      </Text>
+      </HintBox>
     )
   }
   return (
-    <Text as="p" tone="muted" size="var(--ig-text-body-sm)" style={HINT_STYLE}>
+    <HintBox forwardedAs="p" tone="muted" size="var(--ig-text-body-sm)">
       {`Personal license | Expires: ${license.expiresAt ?? '—'} (${license.remainingDays ?? 0} days remaining)`}
-    </Text>
+    </HintBox>
   )
 }
 
@@ -83,12 +89,11 @@ export function SettingsAccountTab({
     <Stack gap="var(--ig-spacing-8)">
       <SettingsSection title="Profile">
         <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
-          <TextField
+          <FieldBox
             value={accountName}
             onChange={(e) => onChangeAccountName(e.target.value)}
             placeholder="Display name"
             aria-label="Display name"
-            style={FIELD_STYLE}
           />
           <Button type="button" variant="solid" disabled={saveDisabled} onClick={onSaveName}>
             {accountSaving ? 'Saving…' : 'Save'}
@@ -117,12 +122,11 @@ export function SettingsAccountTab({
           and any shared projects will need to be transferred or deleted before the account is removed.
         </Hint>
         <Inline justify="flex-end" gap="var(--ig-spacing-8)" wrap="wrap">
-          <TextField
+          <FieldBox
             value={deleteAccountConfirmInput}
             onChange={(e) => onChangeDeleteAccountConfirmInput(e.target.value)}
             placeholder={user?.email ?? 'Type your email to confirm'}
             aria-label="Type email to confirm account deletion"
-            style={FIELD_STYLE}
           />
           <Button
             type="button"

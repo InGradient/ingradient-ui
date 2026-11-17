@@ -9,6 +9,7 @@ const sizeStyles: Record<TextFieldSize, ReturnType<typeof css>> = {
     height: var(--ig-control-height-sm);
     padding: 0 var(--ig-space-4);
     font-size: var(--ig-font-size-sm);
+    line-height: var(--ig-leading-sm);
   `,
   md: css``,
   lg: css`

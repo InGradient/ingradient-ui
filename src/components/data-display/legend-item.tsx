@@ -8,6 +8,7 @@ const Item = styled.div`
   gap: var(--ig-space-3);
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
 `
 
 export interface LegendItemProps {

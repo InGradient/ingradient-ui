@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import type { ReactNode } from 'react'
 import { Box, Stack, Text } from '@ingradient/ui/primitives'
 
@@ -23,21 +24,24 @@ const MAIN_FLUSH_STYLE = {
   border: 'none',
 }
 
-const EMPTY_STYLE = {
-  flex: 1,
-  display: 'flex' as const,
-  alignItems: 'center' as const,
-  justifyContent: 'center' as const,
-  padding: 'var(--ig-spacing-24)',
-  textAlign: 'center' as const,
-}
+const EmptyBox = styled(Text)`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ig-spacing-24);
+  text-align: center;
+`
 
-const LOADING_STYLE = {
-  padding: 'var(--ig-spacing-20)',
-  textAlign: 'center' as const,
-}
+const LoadingBox = styled(Text)`
+  padding: var(--ig-spacing-20);
+  text-align: center;
+`
 
-const GRID_STYLE = { flex: 1, overflow: 'auto' as const }
+const GridBox = styled(Box)`
+  flex: 1;
+  overflow: auto;
+`
 
 export interface SelectableGridPanelProps {
   /** 선택된 id — null/undefined 시 "선택 없음" empty 표시. */
@@ -74,7 +78,7 @@ export function SelectableGridPanel({
   if (!selectedId) {
     return (
       <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
-        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{noSelectionText}</Text>
+        <EmptyBox tone="soft" size="var(--ig-text-body)">{noSelectionText}</EmptyBox>
       </Stack>
     )
   }
@@ -82,11 +86,11 @@ export function SelectableGridPanel({
     <Stack as="main" gap="var(--ig-space-0)" style={mainStyle}>
       {headerSlot}
       {loading ? (
-        <Text tone="muted" size="var(--ig-text-body)" style={LOADING_STYLE}>{loadingText}</Text>
+        <LoadingBox tone="muted" size="var(--ig-text-body)">{loadingText}</LoadingBox>
       ) : empty ? (
-        <Text tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <EmptyBox tone="soft" size="var(--ig-text-body)">{emptyText}</EmptyBox>
       ) : (
-        <Box style={GRID_STYLE}>{gridSlot}</Box>
+        <GridBox>{gridSlot}</GridBox>
       )}
     </Stack>
   )

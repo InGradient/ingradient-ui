@@ -10,6 +10,7 @@ const Tab = styled.button<{ $active: boolean }>`
   border-radius: var(--ig-radius-xs);
   border: none;
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   cursor: pointer;
   background: ${(p) => (p.$active ? 'var(--ig-color-active-bg)' : 'var(--ig-color-white-08)')};
   color: ${(p) => (p.$active ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-muted)')};

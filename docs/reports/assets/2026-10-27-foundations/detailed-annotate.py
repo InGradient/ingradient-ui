@@ -32,6 +32,6 @@ for name, s in data.items():
     draw(f'{D}/{name}-before.png', f'{D}/{name}-before-ann.png', top, 'before', OR, cb)
     draw(f'{D}/{name}-after.png', f'{D}/{name}-after-ann.png', top, 'after', TE, ca)
     cap = lambda img, t: ['(', img, '-background', '#12151c', '-gravity', 'NorthWest', '-splice', '0x34', '-font', FONT, '-fill', '#e7eaf0', '-pointsize', '19', '-annotate', '+8+5', t, ')']
-    subprocess.run(['magick', *cap(f'{D}/{name}-before-ann.png', '이전 (어제 저녁, 주황)'), *cap(f'{D}/{name}-after-ann.png', '지금 (청록)'),
+    subprocess.run(['magick', *cap(f'{D}/{name}-before-ann.png', '변경 전 (주황)'), *cap(f'{D}/{name}-after-ann.png', '변경 후 (청록)'),
                     '-background', '#12151c', '-gravity', 'East', '-splice', '16x0', '-gravity', 'NorthWest', '+append', f'{D}/{name}-detail.png'], check=True)
     print(name, 'boxes', len(top), 'crop before', cb, 'after', ca)

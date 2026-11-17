@@ -6,11 +6,12 @@ const Bar = styled.div`
   display: flex;
   align-items: center;
   gap: var(--ig-space-4);
-  padding: var(--ig-space-3) var(--ig-space-5);
+  padding: calc(var(--ig-space-3) - var(--ig-border-1px)) calc(var(--ig-space-5) - var(--ig-border-1px));
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: var(--ig-color-text-primary);
 `
 

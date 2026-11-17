@@ -22,5 +22,6 @@ export const CanvasFrame = styled.div`
 
 export const PreviewHint = styled.div`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
 `

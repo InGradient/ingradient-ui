@@ -1,0 +1,150 @@
+[
+ {
+  "id": "pages-edge-0-0-6-login-workspace--overview",
+  "file": "login-workspace--overview.png",
+  "boxes": [
+   {
+    "x": 532,
+    "y": 548,
+    "w": 376,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-login-workspace--online-form",
+  "file": "login-workspace--online-form.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-edge-0-0-6-license-workspace--overview",
+  "file": "license-workspace--overview.png",
+  "boxes": []
+ },
+ {
+  "id": "pages-edge-0-0-6-license-workspace--bind-device",
+  "file": "license-workspace--bind-device.png",
+  "boxes": [
+   {
+    "x": 524,
+    "y": 564,
+    "w": 392,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-dataset-select-system-states--add-dataset-open",
+  "file": "dataset-select-system-states--add-dataset-open.png",
+  "boxes": [
+   {
+    "x": 748,
+    "y": 700,
+    "w": 112,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-dataset-select-system-states--export-open",
+  "file": "dataset-select-system-states--export-open.png",
+  "boxes": [
+   {
+    "x": 860,
+    "y": 516,
+    "w": 80,
+    "h": 40
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-capture-system-states--sequence-failed",
+  "file": "capture-system-states--sequence-failed.png",
+  "boxes": [
+   {
+    "x": 868,
+    "y": 492,
+    "w": 72,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-capture-review-and-labeling--review",
+  "file": "capture-review-and-labeling--review.png",
+  "boxes": [
+   {
+    "x": 4,
+    "y": 4,
+    "w": 384,
+    "h": 40
+   },
+   {
+    "x": 716,
+    "y": 828,
+    "w": 192,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-capture-workspace--setup",
+  "file": "capture-workspace--setup.png",
+  "boxes": [
+   {
+    "x": 1364,
+    "y": 92,
+    "w": 64,
+    "h": 40
+   },
+   {
+    "x": 596,
+    "y": 108,
+    "w": 24,
+    "h": 16
+   },
+   {
+    "x": 684,
+    "y": 108,
+    "w": 24,
+    "h": 16
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-settings-tabs--server",
+  "file": "settings-tabs--server.png",
+  "boxes": [
+   {
+    "x": 420,
+    "y": 220,
+    "w": 64,
+    "h": 48
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-settings-tabs--field-test",
+  "file": "settings-tabs--field-test.png",
+  "boxes": [
+   {
+    "x": 420,
+    "y": 172,
+    "w": 64,
+    "h": 40
+   }
+  ]
+ },
+ {
+  "id": "pages-edge-0-0-6-settings-tabs--connection",
+  "file": "settings-tabs--connection.png",
+  "boxes": [
+   {
+    "x": 420,
+    "y": 772,
+    "w": 88,
+    "h": 40
+   }
+  ]
+ }
+]

@@ -61,7 +61,7 @@ export const Unavailable: Story = {
 /** 주기·감마를 고칠 때 실제로 뜰 줄무늬. 그림을 누르면 축이 붙은 큰 그림으로 확대된다. */
 export const FringeProfile: StoryObj<typeof FringeProfilePreviewView> = {
   render: () => (
-    <Stack gap="var(--ig-space-6)" style={{ padding: 'var(--ig-space-6)', maxWidth: 360 }}>
+    <Stack gap="var(--ig-spacing-12)" style={{ padding: 'var(--ig-spacing-12)', maxWidth: 360 }}>
       <FringeProfilePreviewView
         values={fringeValues(24)}
         windowPx={256}

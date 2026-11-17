@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 const Row = styled.div<{ $size: 'sm' | 'md'; $shape: 'rounded' | 'pill' }>`
   display: inline-flex;
-  border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  /* Outline drawn inside (above the options' backgrounds) instead of a border: the row is exactly the option height. */
+  outline: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  outline-offset: var(--ig-space-neg-1px);
   border-radius: ${(p) => (p.$shape === 'pill' ? 'var(--ig-radius-pill)' : 'var(--ig-radius-md)')};
   overflow: hidden;
   background: ${(p) => (p.$shape === 'pill' ? 'var(--ig-color-surface-raised)' : 'var(--ig-color-surface-muted)')};
@@ -18,6 +20,7 @@ const OptionBtn = styled.button<{ $active: boolean; $size: 'sm' | 'md' }>`
   background: ${(p) => (p.$active ? 'var(--ig-color-accent-soft-surface)' : 'transparent')};
   color: ${(p) => (p.$active ? 'var(--ig-color-accent)' : 'var(--ig-color-text-muted)')};
   font-size: ${(p) => (p.$size === 'sm' ? 'var(--ig-font-size-2xs)' : 'var(--ig-font-size-xs)')};
+  line-height: ${(p) => (p.$size === 'sm' ? 'var(--ig-leading-2xs)' : 'var(--ig-leading-xs)')};
   font-weight: ${(p) => (p.$active ? 'var(--ig-font-weight-semibold)' : 'var(--ig-font-weight-regular)')};
   cursor: pointer;
   white-space: nowrap;

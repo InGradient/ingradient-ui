@@ -22,12 +22,12 @@ export const AppContent = styled.main`
 
 export const AppFooterBar = styled.footer`
   height: var(--ig-control-height-xs);
-  padding: 0 var(--ig-space-5);
+  padding: 0 var(--ig-spacing-12);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   background: var(--ig-color-surface-header);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-sm);
 `
 

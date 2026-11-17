@@ -15,6 +15,7 @@ const Field = styled.div`
 
 const Label = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-muted);
 `

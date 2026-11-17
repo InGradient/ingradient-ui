@@ -14,7 +14,7 @@ const Bar = styled.div`
   padding: 0 var(--ig-space-3);
   padding-bottom: env(safe-area-inset-bottom, var(--ig-space-0));
   background: var(--ig-color-surface-header);
-  border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   backdrop-filter: var(--ig-blur-lg);
   z-index: var(--ig-z-sticky);
 `

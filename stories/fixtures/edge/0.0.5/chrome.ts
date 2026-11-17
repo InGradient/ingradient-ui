@@ -13,6 +13,7 @@ export const TITLE_BAR_LABELS: TitleBarLabels = {
 }
 
 export const TOP_BAR_LABELS: TopBarLabels = {
+  backToDatasets: 'Back to datasets',
   refresh: 'Refresh',
   settingsTitle: 'Settings',
   settingsDisabledTitle: 'Settings',

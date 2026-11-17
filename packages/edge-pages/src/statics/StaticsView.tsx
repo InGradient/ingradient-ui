@@ -1,24 +1,20 @@
 import { useId } from 'react'
 import { iconSizeNumbers, Card } from '@ingradient/ui'
 import { EmptyState, ChevronDownIcon, ChevronRightIcon } from '@ingradient/ui/components'
-import {
-  Container, Header, TitleBlock, Title, Subtitle,
-  SummaryGrid, SummaryLabel, SummaryValue,
-  SectionHeader, SectionContent,
-} from './StaticsView.styles'
+import { Container, Header, Title, SummaryGrid, SummaryLabel, SectionHeader, SectionContent } from './StaticsView.styles'
 import { SessionChartsView } from './SessionChartsView'
 import { ImageChartsView } from './ImageChartsView'
 import { LabelingChartsView } from './LabelingChartsView'
 import { CameraChartsView } from './CameraChartsView'
-import type { StaticsViewProps } from './types'
-
-type SectionKey = 'sessions' | 'images' | 'labeling' | 'camera'
+import { LiveStatsView } from './LiveStatsView'
+import type { StaticsSectionKey, StaticsViewProps } from './types'
+import { Stack, Text } from '@ingradient/ui/primitives'
 
 export function StaticsView(props: StaticsViewProps): JSX.Element {
   const {
     hasDataset, loading, imagesLoading,
     session, enhancedImage, classNameMap, classes, images,
-    collapsedSections, trendMode, labels,
+    collapsedSections, trendMode, labels, live,
     onToggleSection, onTrendModeChange,
   } = props
   const sectionId = useId()
@@ -34,6 +30,26 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
     return <Container><EmptyState>{labels.loading}</EmptyState></Container>
   }
 
+  const renderSection = (key: StaticsSectionKey, label: string) => {
+    const isOpen = !collapsedSections[key]
+    const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
+    return (
+      <SectionHeader type="button" aria-expanded={isOpen} aria-controls={`${sectionId}-${key}`} onClick={() => onToggleSection(key)}>
+        <Icon size={iconSizeNumbers.lg} />{label}
+      </SectionHeader>
+    )
+  }
+
+  // Live status: memory and disk are worth seeing before any capture exists.
+  const liveSection = live && (
+    <>
+      {renderSection('live', live.labels.section)}
+      <SectionContent id={`${sectionId}-live`} hidden={!!collapsedSections.live} $collapsed={!!collapsedSections.live}>
+        <LiveStatsView {...live} />
+      </SectionContent>
+    </>
+  )
+
   const hasSession = !!session && session.summary.total_sessions > 0
   const hasImage = !!enhancedImage && enhancedImage.total_images > 0
 
@@ -41,23 +57,14 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
     return (
       <Container>
         <Header>
-          <TitleBlock>
+          <Stack gap="var(--ig-spacing-8)">
             <Title>{labels.title}</Title>
-            <Subtitle>{labels.trackedFromVersion}</Subtitle>
-          </TitleBlock>
+            <Text as="div" size="var(--ig-text-caption)" tone="soft">{labels.trackedFromVersion}</Text>
+          </Stack>
         </Header>
+        {liveSection}
         <EmptyState>{labels.noData}</EmptyState>
       </Container>
-    )
-  }
-
-  const renderSection = (key: SectionKey, label: string) => {
-    const isOpen = !collapsedSections[key]
-    const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon
-    return (
-      <SectionHeader type="button" aria-expanded={isOpen} aria-controls={`${sectionId}-${key}`} onClick={() => onToggleSection(key)}>
-        <Icon size={iconSizeNumbers.lg} />{label}
-      </SectionHeader>
     )
   }
 
@@ -68,26 +75,28 @@ export function StaticsView(props: StaticsViewProps): JSX.Element {
   return (
     <Container>
       <Header>
-        <TitleBlock>
+        <Stack gap="var(--ig-spacing-8)">
           <Title>{labels.title}</Title>
-          <Subtitle>{labels.trackedFromVersion}{subtitleTail}</Subtitle>
-        </TitleBlock>
+          <Text as="div" size="var(--ig-text-caption)" tone="soft">{labels.trackedFromVersion}{subtitleTail}</Text>
+        </Stack>
       </Header>
+
+      {liveSection}
 
       {/* Keep the compact raised Card composition: StatCard fixes dashboard
           padding, XL radius and 3XL value typography and has no density variant. */}
       <SummaryGrid>
         {hasSession && session && (
           <>
-            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) var(--ig-space-7)"><SummaryLabel>{labels.dailyCaptures}</SummaryLabel><SummaryValue>{session.summary.daily_count}</SummaryValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) var(--ig-space-7)"><SummaryLabel>{labels.weeklyCaptures}</SummaryLabel><SummaryValue>{session.summary.weekly_count}</SummaryValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) var(--ig-space-7)"><SummaryLabel>{labels.monthlyCaptures}</SummaryLabel><SummaryValue>{session.summary.monthly_count}</SummaryValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)"><SummaryLabel>{labels.dailyCaptures}</SummaryLabel><Text as="div" size="var(--ig-text-display)" weight="bold">{session.summary.daily_count}</Text></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)"><SummaryLabel>{labels.weeklyCaptures}</SummaryLabel><Text as="div" size="var(--ig-text-display)" weight="bold">{session.summary.weekly_count}</Text></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)"><SummaryLabel>{labels.monthlyCaptures}</SummaryLabel><Text as="div" size="var(--ig-text-display)" weight="bold">{session.summary.monthly_count}</Text></Card>
           </>
         )}
         {hasImage && enhancedImage && (
           <>
-            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) var(--ig-space-7)"><SummaryLabel>{labels.totalImages}</SummaryLabel><SummaryValue>{enhancedImage.total_images}</SummaryValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-md)" padding="var(--ig-space-6) var(--ig-space-7)"><SummaryLabel>{labels.labeledRatio}</SummaryLabel><SummaryValue>{(enhancedImage.labeled_ratio * 100).toFixed(0)}%</SummaryValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)"><SummaryLabel>{labels.totalImages}</SummaryLabel><Text as="div" size="var(--ig-text-display)" weight="bold">{enhancedImage.total_images}</Text></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-12) var(--ig-spacing-16)"><SummaryLabel>{labels.labeledRatio}</SummaryLabel><Text as="div" size="var(--ig-text-display)" weight="bold">{(enhancedImage.labeled_ratio * 100).toFixed(0)}%</Text></Card>
           </>
         )}
       </SummaryGrid>

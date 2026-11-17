@@ -5,6 +5,7 @@ import { KeyValueRow } from '../data-display/key-value-row'
 const ChartTooltipLabel = styled.div`
   margin-bottom: var(--ig-space-3);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   font-weight: var(--ig-font-weight-bold);
   color: var(--ig-color-text-primary);
 `

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { HoverPreview, ImageCard } from '@ingradient/ui/components'
 import { Grid } from '@ingradient/ui/primitives'
 import { SyncStatusChip } from './gallery/sync-status-chip'
@@ -8,12 +9,12 @@ interface Props extends CatalogImagesPaneProps {
   dragOverGrid?: boolean
 }
 
-const PREVIEW_STYLE: React.CSSProperties = {
-  width: 'var(--ig-layout-size-preview-width)',
-  height: 'var(--ig-layout-size-preview-height)',
-  objectFit: 'cover',
-  borderRadius: 'var(--ig-radius-md)',
-}
+const PreviewBox = styled.img`
+  width: var(--ig-layout-size-preview-width);
+  height: var(--ig-layout-size-preview-height);
+  object-fit: cover;
+  border-radius: var(--ig-radius-md);
+`
 
 function renderCard(
   image: CatalogImage,
@@ -60,7 +61,7 @@ export function CatalogGridView({
             return (
               <HoverPreview
                 key={image.id}
-                preview={<img src={image.thumb_url} alt={image.name} style={PREVIEW_STYLE} />}
+                preview={<PreviewBox src={image.thumb_url} alt={image.name} />}
                 delay={0}
                 scale={1.06}
               >

@@ -5,14 +5,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--ig-space-4);
-  gap: var(--ig-space-4);
+  padding: var(--ig-spacing-8);
+  gap: var(--ig-spacing-8);
 `;
 
 export const Segment = styled.div`
   display: flex;
-  gap: var(--ig-space-2px);
-  padding: var(--ig-space-3px);
+  gap: var(--ig-spacing-2);
+  padding: calc(var(--ig-spacing-4) - var(--ig-border-1px));
   border-radius: var(--ig-radius-sm);
   background: var(--ig-color-white-06);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
@@ -38,7 +38,7 @@ export const List = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-2px);
+  gap: var(--ig-spacing-2);
 `;
 
 export const Item = styled(Button).attrs({

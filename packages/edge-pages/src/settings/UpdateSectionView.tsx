@@ -1,19 +1,22 @@
 import styled from 'styled-components'
+import { withSurfaceDepth, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui'
 import { KeyValueRow, ProgressBar } from '@ingradient/ui/components'
 import type { UpdateSectionViewProps } from './types'
 
-const Wrap = styled.div`
+const WrapBase = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
-  padding: var(--ig-space-5);
+  gap: var(--ig-spacing-8);
+  padding: var(--ig-spacing-12);
   background: var(--ig-color-surface-raised);
   border-radius: var(--ig-radius-md);
 `
-const Title = styled.h3`font-size: var(--ig-font-size-md); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
-const Label = styled.span`font-size: var(--ig-font-size-sm); color: var(--ig-color-text-muted);`
-const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-font-size-sm);`
+const Wrap = withSurfaceDepth(WrapBase, { displayName: 'Wrap' })
+const Title = styled.h3`font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading); font-weight: var(--ig-font-weight-bold); margin: 0; color: var(--ig-color-text-primary);`
+const ErrorMsg = styled.div`color: var(--ig-color-danger); font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);`
 
 export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
   const {
@@ -28,24 +31,24 @@ export function UpdateSectionView(props: UpdateSectionViewProps): JSX.Element {
       {status === 'idle' && (
         <Button size="sm" variant="secondary" onClick={onCheckForUpdates}>{labels.checkForUpdates}</Button>
       )}
-      {status === 'checking' && <Label>{labels.checking}</Label>}
-      {status === 'noUpdate' && <Label>{labels.noUpdate}</Label>}
+      {status === 'checking' && <Text size="var(--ig-text-body-sm)" tone="muted">{labels.checking}</Text>}
+      {status === 'noUpdate' && <Text size="var(--ig-text-body-sm)" tone="muted">{labels.noUpdate}</Text>}
       {status === 'available' && availableVersion && (
         <>
           <div>{labels.available(availableVersion)}</div>
-          <Button size="sm" variant="accent" onClick={onDownloadUpdate}>{labels.download}</Button>
+          <Button size="sm" variant="solid" onClick={onDownloadUpdate}>{labels.download}</Button>
         </>
       )}
       {status === 'downloading' && (
         <>
-          <Label>{labels.downloading}</Label>
+          <Text size="var(--ig-text-body-sm)" tone="muted">{labels.downloading}</Text>
           <ProgressBar value={progress * 100} aria-label={labels.downloading} />
         </>
       )}
       {status === 'downloaded' && (
         <>
           <div>{labels.downloaded}</div>
-          <Button size="sm" variant="accent" onClick={onInstallUpdate}>{labels.install}</Button>
+          <Button size="sm" variant="solid" onClick={onInstallUpdate}>{labels.install}</Button>
         </>
       )}
       {status === 'error' && <ErrorMsg>{error ?? labels.error}</ErrorMsg>}

@@ -11,22 +11,24 @@ export const Content = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: var(--ig-space-11);
+  padding: var(--ig-spacing-24);
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-12);
+  gap: var(--ig-spacing-32);
 `
 
 export const ErrorMsg = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
-  padding: var(--ig-space-11) 0;
+  padding: var(--ig-spacing-24) 0;
   text-align: center;
 `
 
 export const Spinner = styled.div`
   color: var(--ig-color-text-muted);
-  font-size: var(--ig-font-size-md);
-  padding: var(--ig-space-13) 0;
+  font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
+  padding: var(--ig-spacing-32) 0;
   text-align: center;
 `

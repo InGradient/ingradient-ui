@@ -3,14 +3,10 @@ import { IconButton, MenuIconButton, EraserIcon, EyeIcon, EyeOffIcon, ExpandIcon
 import { useDrawingCanvas, useZoomPan, iconSizeNumbers } from '@ingradient/ui'
 import { LabelingCanvas } from '@ingradient/ui/patterns'
 import { useFullscreen } from '../capture/use-fullscreen'
-import {
-  Wrap, Toolbar, CenterActions, RightActions, BBoxCount,
-  BlockMsg,
-  Header, HeaderLeft, HeaderSpacer,
-  HintBar, ModeToggleGroup,
-} from './BBoxCanvasView.styles'
+import { Wrap, Toolbar, RightActions, BBoxCount, BlockMsg, Header, HeaderLeft, HeaderSpacer, HintBar, ModeToggleGroup } from './BBoxCanvasView.styles'
 import { toDrawingObjects, toBboxes, type BBox } from './canvas-helpers'
 import type { BBoxCanvasViewProps } from './types'
+import { Inline } from '@ingradient/ui/primitives'
 
 export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
   const {
@@ -154,7 +150,7 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
               </MenuIconButton>
             </ModeToggleGroup>
           )}
-          <CenterActions>
+          <Inline gap="var(--ig-spacing-12)" wrap="nowrap">
             {!options?.block_next_without_labeling && (
               <IconButton tone="danger" onClick={onSkip} title={labels.skip} aria-label={labels.skip}>
                 <SkipForwardIcon size={iconSizeNumbers.lg} />
@@ -169,7 +165,7 @@ export function BBoxCanvasView(props: BBoxCanvasViewProps): JSX.Element {
             >
               <SaveIcon size={iconSizeNumbers.lg} />
             </IconButton>
-          </CenterActions>
+          </Inline>
           <RightActions>
             <BBoxCount>{labels.bboxCount(bboxes.length)}</BBoxCount>
             <IconButton

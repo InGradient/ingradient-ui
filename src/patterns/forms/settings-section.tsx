@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { withSurfaceDepth } from '../../primitives'
+import { paddingInsideBorder, withSurfaceDepth } from '../../primitives'
 
 type SettingsSectionTone = 'default' | 'danger'
 
@@ -16,14 +16,19 @@ const SectionBase = styled.section<{ $tone: SettingsSectionTone }>`
   & + & {
     margin-top: var(--ig-spacing-16);
     padding-top: var(--ig-spacing-24);
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   }
-  ${(p) => p.$tone === 'danger' && `
-    padding: var(--ig-spacing-16);
+  /* Danger rules are scoped by data-tone: "&" is the class shared by every tone, so an unscoped
+     "& + &" inside the danger branch restyled plain sections too. */
+  &[data-tone='danger'] {
+    padding: ${paddingInsideBorder('var(--ig-spacing-16)')};
     border: var(--ig-border-1px) solid var(--ig-color-alert-danger-border);
     background: var(--ig-color-alert-danger-bg);
-    && + & { padding-top: var(--ig-spacing-16); border-top: var(--ig-border-1px) solid var(--ig-color-alert-danger-border); }
-  `}
+  }
+  & + &[data-tone='danger'] {
+    padding-top: ${paddingInsideBorder('var(--ig-spacing-16)')};
+    box-shadow: none;
+  }
 `
 
 /**
@@ -35,6 +40,7 @@ const DangerSection = withSurfaceDepth(SectionBase, { displayName: 'SettingsSect
 const Title = styled.h3<{ $tone: SettingsSectionTone }>`
   margin: 0;
   font-size: var(--ig-font-size-md);
+  line-height: var(--ig-leading-md);
   font-weight: var(--ig-font-weight-semibold);
   color: ${(p) => (p.$tone === 'danger' ? 'var(--ig-color-alert-danger-text)' : 'var(--ig-color-text-primary)')};
 `
@@ -55,7 +61,7 @@ export interface SettingsSectionProps {
 export function SettingsSection({ title, children, className, tone = 'default' }: SettingsSectionProps) {
   const Root = tone === 'danger' ? DangerSection : SectionBase
   return (
-    <Root className={className} $tone={tone}>
+    <Root className={className} $tone={tone} data-tone={tone}>
       {title ? <Title $tone={tone}>{title}</Title> : null}
       <Body>{children}</Body>
     </Root>

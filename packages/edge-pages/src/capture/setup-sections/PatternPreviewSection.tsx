@@ -1,7 +1,7 @@
 import { FieldGroup, SectionTitle } from '@ingradient/ui/patterns'
-import { Text } from '@ingradient/ui/primitives'
+import { Text, Inline } from '@ingradient/ui/primitives'
 
-import { PatternGrid, PatternButton } from '../SetupPanelView.styles'
+import { PatternButton } from '../SetupPanelView.styles'
 import type { PreviewPatternLabel, SetupPanelLabels } from '../types'
 
 export interface PatternPreviewSectionProps {
@@ -25,9 +25,9 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
   } = props
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
       <SectionTitle>{labels.patternPreview}</SectionTitle>
-      <PatternGrid>
+      <Inline gap="var(--ig-spacing-8)" align="stretch">
         {patterns.map((pattern) => (
           <PatternButton
             key={pattern}
@@ -42,8 +42,8 @@ export function PatternPreviewSection(props: PatternPreviewSectionProps): JSX.El
             {formatPatternLabel(pattern)}
           </PatternButton>
         ))}
-      </PatternGrid>
-      {statusText && <Text role="status" tone="muted" size="var(--ig-font-size-xs)">{statusText}</Text>}
+      </Inline>
+      {statusText && <Text role="status" tone="muted" size="var(--ig-text-caption)">{statusText}</Text>}
     </FieldGroup>
   )
 }

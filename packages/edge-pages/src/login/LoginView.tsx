@@ -1,8 +1,8 @@
 import { iconSizeNumbers } from '@ingradient/ui'
 import { Badge, Card, Checkbox, TextField, PasswordField, Button, IconButton, SelectableListItem, TextButton, SettingsIcon } from '@ingradient/ui/components'
-import { Stack, Inline, H1, Text } from '@ingradient/ui/primitives'
+import { Stack, Inline, Text } from '@ingradient/ui/primitives'
 import {
-  Wrap, LangCorner, PackageInfo, Divider,
+  Wrap, LangCorner, PackageInfo, Divider, Title,
 } from './LoginView.styles'
 import type { LoginViewProps } from './types'
 import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
@@ -33,19 +33,19 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
       <Card
         elevation="raised"
         flat
-        padding="var(--ig-space-13)"
+        padding="var(--ig-spacing-32)"
         style={{ width: '100%', maxWidth: 'var(--ig-popup-2xl-narrow)' }}
       >
-        <Stack gap="var(--ig-space-9)">
-        <H1>
+        <Stack gap="var(--ig-spacing-20)">
+        <Title>
           {labels.title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? labels.online : labels.offline}
           </Badge>
-        </H1>
+        </Title>
 
         {mode === 'offline' && (
-          <Stack gap="var(--ig-space-3)">
+          <Stack gap="var(--ig-spacing-8)">
             <Button variant="secondary" onClick={onLoadPackage} disabled={loadingPackage}>
               {loadingPackage ? labels.loading : labels.loadPackage}
             </Button>
@@ -65,27 +65,27 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
             {mode === 'offline' && <Divider />}
 
             {hasAccountList ? (
-              <Stack gap="var(--ig-space-5)">
+              <Stack gap="var(--ig-spacing-12)">
                 {savedSession && (
                   <>
-                    <Text size="var(--ig-font-size-lg)" weight="semibold" align="center">
+                    <Text size="var(--ig-text-title-sm)" weight="semibold" align="center">
                       {labels.greeting(savedSession.name || savedSession.email)}
                     </Text>
-                    <Text size="var(--ig-font-size-xs)" tone="muted" align="center">
+                    <Text size="var(--ig-text-caption)" tone="muted" align="center">
                       {savedSession.email}
                     </Text>
-                    <Button variant="accent" onClick={onContinueSession}>
+                    <Button variant="solid" onClick={onContinueSession}>
                       {labels.continueSession}
                     </Button>
                   </>
                 )}
                 {otherAccounts.length > 0 && (
-                  <Stack gap="var(--ig-space-2)">
+                  <Stack gap="var(--ig-spacing-8)">
                     {otherAccounts.map((entry) => (
                       <SelectableListItem key={entry.email} type="button" onClick={() => onSelectAccount(entry)}>
-                        <Stack gap="var(--ig-space-2px)">
-                          <Text size="var(--ig-font-size-md)">{entry.name || entry.email}</Text>
-                          <Text size="var(--ig-font-size-xs)" tone="muted">{entry.email}</Text>
+                        <Stack gap="var(--ig-space-0)">
+                          <Text size="var(--ig-text-body)">{entry.name || entry.email}</Text>
+                          <Text size="var(--ig-text-caption)" tone="muted">{entry.email}</Text>
                         </Stack>
                       </SelectableListItem>
                     ))}
@@ -96,9 +96,9 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                 </TextButton>
               </Stack>
             ) : (
-              <Stack as="form" gap="var(--ig-space-7)" onSubmit={onSubmit}>
-                <Stack gap="var(--ig-space-2)">
-                  <Text as="label" htmlFor="login-email" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+              <Stack as="form" gap="var(--ig-spacing-16)" onSubmit={onSubmit}>
+                <Stack gap="var(--ig-spacing-8)">
+                  <Text as="label" htmlFor="login-email" size="var(--ig-text-caption)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
                     {labels.emailLabel}
                   </Text>
                   <TextField
@@ -109,8 +109,8 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                     disabled={loggingIn}
                   />
                 </Stack>
-                <Stack gap="var(--ig-space-2)">
-                  <Text as="label" htmlFor="login-password" size="var(--ig-font-size-xs)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
+                <Stack gap="var(--ig-spacing-8)">
+                  <Text as="label" htmlFor="login-password" size="var(--ig-text-caption)" weight="semibold" tone="muted" uppercase letterSpacing="wide">
                     {labels.passwordLabel}
                   </Text>
                   <PasswordField
@@ -121,7 +121,7 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                     disabled={loggingIn}
                   />
                 </Stack>
-                <Stack gap="var(--ig-space-3)">
+                <Stack gap="var(--ig-spacing-8)">
                   <Checkbox
                     checked={savePassword}
                     onChange={(e) => onSavePasswordChange(e.target.checked)}
@@ -133,11 +133,11 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
                     label={labels.keepSignedIn}
                   />
                 </Stack>
-                <Button variant="accent" type="submit" disabled={loggingIn || !email || !password}>
+                <Button variant="solid" type="submit" disabled={loggingIn || !email || !password}>
                   {loggingIn ? labels.submitting : labels.submit}
                 </Button>
                 {externalUrl && (
-                  <Inline justify="center" gap="var(--ig-space-7)">
+                  <Inline justify="center" gap="var(--ig-spacing-16)">
                     <TextButton tone="accent" type="button" onClick={onOpenSignup}>
                       {labels.register}
                     </TextButton>
@@ -149,7 +149,7 @@ function LoginViewContent(props: LoginViewProps): JSX.Element {
         )}
 
         {error && (
-          <Text size="var(--ig-font-size-sm)" tone="danger" align="center">
+          <Text size="var(--ig-text-body-sm)" tone="danger" align="center">
             {error}
           </Text>
         )}

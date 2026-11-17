@@ -6,12 +6,13 @@ const Chip = styled.button`
   display: inline-flex;
   align-items: center;
   gap: var(--ig-space-2);
-  padding: var(--ig-space-1) var(--ig-space-3);
+  padding: calc(var(--ig-space-1) - var(--ig-border-1px)) calc(var(--ig-space-3) - var(--ig-border-1px));
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-surface-muted);
   color: var(--ig-color-text-primary);
   font-size: var(--ig-font-size-2xs);
+  line-height: var(--ig-leading-2xs);
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--ig-motion-fast);

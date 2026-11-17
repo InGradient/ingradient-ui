@@ -1,15 +1,63 @@
-import { useCallback, useLayoutEffect, useRef } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useRef, useState, type RefObject } from 'react'
+import { ResizableColumnsLayout, type ResizableColumn } from '@ingradient/ui/components'
+import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+import { layoutSizeNumbers, popupSizeNumbers } from '@ingradient/ui/tokens'
 import {
   AppShell, AppHeader, PanelsRow, LeftPanel, CenterPanel, RightPanelContainer,
   CapturingBlocker,
 } from './MainLayoutView.styles'
 import type { MainLayoutViewProps } from './types'
-import { SurfaceDepthProvider } from '@ingradient/ui/primitives'
+
+/** Collapsed side panels stay as a usable rail (status dots, class chips), not width 0. */
+const COLLAPSED_RAIL = 'calc(var(--ig-control-height-xl) + var(--ig-spacing-8))'
+/** Column widths persist like Platform Class Management. */
+const COLUMN_STORAGE_KEY = 'ig-edge-workspace-columns'
+
+/**
+ * Panels render their own collapsed view (`data-ig-collapsed-panel`). The layout reads it
+ * from the DOM so existing consumers keep working without passing collapse state.
+ */
+function useCollapsedPanel(ref: RefObject<HTMLElement>, side: 'left' | 'right'): boolean {
+  const [collapsed, setCollapsed] = useState(false)
+  useLayoutEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const check = () => setCollapsed(node.querySelector(`[data-ig-collapsed-panel="${side}"]`) !== null)
+    check()
+    const observer = new MutationObserver(check)
+    observer.observe(node, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-ig-collapsed-panel'] })
+    return () => observer.disconnect()
+  }, [ref, side])
+  return collapsed
+}
 
 function MainLayoutViewContent(props: MainLayoutViewProps): JSX.Element {
   const { topBar, leftPanel, centerContent, rightPanel, isCapturing } = props
   const panelsRef = useRef<HTMLDivElement>(null)
   const centerRef = useRef<HTMLDivElement>(null)
+  const leftRef = useRef<HTMLDivElement>(null)
+  const rightRef = useRef<HTMLDivElement>(null)
+  const leftCollapsed = useCollapsedPanel(leftRef, 'left')
+  const rightCollapsed = useCollapsedPanel(rightRef, 'right')
+  useLayoutEffect(() => {
+    leftRef.current?.toggleAttribute('inert', isCapturing)
+    rightRef.current?.toggleAttribute('inert', isCapturing)
+  }, [isCapturing])
+  // Same side-panel geometry as Platform Catalog and Class Management: 320px, 220–480px.
+  const columns = useMemo<ResizableColumn[]>(() => {
+    const side = {
+      width: layoutSizeNumbers.sidePanel,
+      resizable: true,
+      minWidth: layoutSizeNumbers.sidePanelMin,
+      maxWidth: layoutSizeNumbers.sidePanelMax,
+      collapsedWidth: COLLAPSED_RAIL,
+    }
+    return [
+      { ...side, collapsed: leftCollapsed },
+      { width: 'auto', minWidth: popupSizeNumbers['3xlNarrow'] },
+      { ...side, collapsed: rightCollapsed },
+    ]
+  }, [leftCollapsed, rightCollapsed])
   const pointerFocusRef = useRef(false)
   const revealWorkspace = useCallback(() => {
     const panels = panelsRef.current
@@ -56,9 +104,11 @@ function MainLayoutViewContent(props: MainLayoutViewProps): JSX.Element {
             event.target.scrollIntoView({ block: 'nearest', inline: 'nearest' })
           }
         }}>
-        <LeftPanel ref={(node) => node?.toggleAttribute('inert', isCapturing)}>{leftPanel}</LeftPanel>
-        <CenterPanel ref={centerRef}>{centerContent}</CenterPanel>
-        <RightPanelContainer ref={(node) => node?.toggleAttribute('inert', isCapturing)}>{rightPanel}</RightPanelContainer>
+        <ResizableColumnsLayout storageKey={COLUMN_STORAGE_KEY} columns={columns}>
+          <LeftPanel ref={leftRef}>{leftPanel}</LeftPanel>
+          <CenterPanel ref={centerRef}>{centerContent}</CenterPanel>
+          <RightPanelContainer ref={rightRef}>{rightPanel}</RightPanelContainer>
+        </ResizableColumnsLayout>
       </PanelsRow>
       {isCapturing && <CapturingBlocker aria-hidden />}
     </AppShell>

@@ -2,26 +2,23 @@ import styled from 'styled-components'
 import { useId } from 'react'
 import { Button, DialogShell, EmptyState, TextField } from '@ingradient/ui'
 import type { CreateProjectFormViewProps } from './types'
+import { Text } from '@ingradient/ui/primitives'
 
 const CreateProjectWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--ig-space-9);
-  padding: var(--ig-space-13) 0;
+  gap: var(--ig-spacing-20);
+  padding: var(--ig-spacing-32) 0;
 `
 
-const StatusMsg = styled.div`
-  font-size: var(--ig-font-size-xs);
-  color: var(--ig-color-text-muted);
-`
 
 export function CreateProjectFormView({ labels, form }: CreateProjectFormViewProps): JSX.Element {
   const id = useId()
   return (<>
     <CreateProjectWrap>
       <EmptyState>{labels.emptyOnline}</EmptyState>
-      <StatusMsg>{labels.createOnPlatform}</StatusMsg>
+      <Text as="div" size="var(--ig-text-caption)" tone="muted">{labels.createOnPlatform}</Text>
       {form && <Button onClick={form.onOpen}>{form.title}</Button>}
     </CreateProjectWrap>
     {form?.open && <DialogShell title={form.title} onClose={form.onClose} actions={<>

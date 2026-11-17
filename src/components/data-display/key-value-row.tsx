@@ -7,6 +7,7 @@ const Row = styled.div`
   justify-content: space-between;
   gap: var(--ig-space-4);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-secondary);
 
   &:not(:last-child) {

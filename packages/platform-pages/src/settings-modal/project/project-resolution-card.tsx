@@ -1,7 +1,10 @@
+import styled from 'styled-components'
 import { Box, Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Card, SelectField } from '@ingradient/ui/components'
 
-const SELECT_STYLE = { minWidth: 'var(--ig-popup-xs-narrow)' }
+const SelectBox = styled(SelectField)`
+  min-width: var(--ig-layout-size-field-sm-plus);
+`
 
 export interface ProjectResolutionCandidate {
   user_id: string
@@ -41,21 +44,19 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
         </Text>
       </Box>
       <Inline gap="var(--ig-spacing-8)" wrap="wrap">
-        <SelectField
+        <SelectBox
           value={resolution.action}
           onChange={(e) => onChange({ ...resolution, action: (e.target as HTMLSelectElement).value as ProjectResolution['action'] })}
           aria-label={`Resolution for ${project.project_name}`}
-          style={SELECT_STYLE}
         >
           <option value="transfer">Transfer ownership</option>
           <option value="delete_project">Delete project</option>
-        </SelectField>
+        </SelectBox>
         {resolution.action === 'transfer' ? (
-          <SelectField
+          <SelectBox
             value={resolution.transfer_user_id ?? ''}
             onChange={(e) => onChange({ action: 'transfer', transfer_user_id: (e.target as HTMLSelectElement).value || undefined })}
             aria-label={`Transfer target for ${project.project_name}`}
-            style={SELECT_STYLE}
           >
             <option value="">Select user</option>
             {project.transfer_candidates.map((c) => (
@@ -63,7 +64,7 @@ export function ProjectResolutionCard({ project, resolution, onChange }: Project
                 {c.name || c.email} ({c.email})
               </option>
             ))}
-          </SelectField>
+          </SelectBox>
         ) : null}
       </Inline>
       </Stack>

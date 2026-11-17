@@ -35,7 +35,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
 
   return (
     <DatasetCard $isRecent={isRecent}>
-      <Inline align="flex-start" gap="var(--ig-space-2)" wrap="nowrap" style={{ width: '100%' }}>
+      <Inline align="flex-start" gap="var(--ig-spacing-8)" wrap="nowrap" style={{ width: '100%' }}>
         <DatasetSelectButton type="button" onClick={() => onSelect(dataset)}>
           <DatasetName as="span" title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
         </DatasetSelectButton>
@@ -79,7 +79,7 @@ export function DatasetCardView(props: DatasetCardViewProps): JSX.Element {
       </Inline>
       <CardBottom>
         <ImageCount>{imagesLabel(dataset.image_count ?? 0, dataset.group_count)}</ImageCount>
-        <Inline gap="var(--ig-space-1)" justify="flex-end">{renderClassChips(dataset.classes, noClassesLabel)}</Inline>
+        <Inline gap="var(--ig-spacing-4)" justify="flex-end">{renderClassChips(dataset.classes, noClassesLabel)}</Inline>
       </CardBottom>
     </DatasetCard>
   )

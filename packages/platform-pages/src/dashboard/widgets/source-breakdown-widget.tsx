@@ -11,17 +11,28 @@ const Block = styled.div`
   &:last-child { margin-bottom: 0; }
 `
 
-const HEAD_STYLE = { marginBottom: 'var(--ig-spacing-8)' }
-const CHIP_STYLE = {
-  display: 'inline-block' as const,
-  padding: 'var(--ig-spacing-2) var(--ig-spacing-8)',
-  background: 'var(--ig-color-surface-raised)',
-  borderRadius: 'var(--ig-radius-2xs)',
-}
-const EMPTY_STYLE = { margin: 0 }
-const EMPTY_OFFSET_STYLE = { margin: 0, marginTop: 'var(--ig-spacing-12)' }
-const TABLE_WRAP_STYLE = { marginTop: 'var(--ig-spacing-8)' }
-const CHART_STYLE = { marginTop: 'var(--ig-spacing-12)' }
+const HeadBox = styled(Inline)`
+  margin-bottom: var(--ig-spacing-8);
+`
+const ChipBox = styled(Text)`
+  display: inline-block;
+  padding: var(--ig-spacing-2) var(--ig-spacing-8);
+  background: var(--ig-color-surface-raised);
+  border-radius: var(--ig-radius-2xs);
+`
+const EmptyBox = styled(Text)`
+  margin: 0;
+`
+const EmptyOffsetBox = styled(Text)`
+  margin: 0;
+  margin-top: var(--ig-spacing-12);
+`
+const TableWrapBox = styled(Box)`
+  margin-top: var(--ig-spacing-8);
+`
+const ChartBox = styled.div`
+  margin-top: var(--ig-spacing-12);
+`
 
 const SOURCE_COLORS = ['var(--ig-color-accent)', chartColors.violet, chartColors.teal, chartColors.amber, chartColors.coral, chartColors.lightBlue, chartColors.lightViolet, chartColors.mint]
 
@@ -59,11 +70,11 @@ export function SourceBreakdownWidget({
 }: SourceBreakdownWidgetProps) {
   return (
     <Card className={className}>
-      <Inline justify="space-between" gap="var(--ig-spacing-12)" style={HEAD_STYLE}>
+      <HeadBox justify="space-between" gap="var(--ig-spacing-12)">
         <Text size="var(--ig-text-body-sm)" weight="semibold" tone="secondary">{title}</Text>
-      </Inline>
+      </HeadBox>
       {bySource.length === 0 ? (
-        <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_STYLE}>{emptyText}</Text>
+        <EmptyBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">{emptyText}</EmptyBox>
       ) : (
         bySource.map((source) => {
           const sourceLabel = source.source === 'camera' && source.camera_ip
@@ -71,13 +82,13 @@ export function SourceBreakdownWidget({
             : source.source
           return (
           <Block key={`${source.source}-${source.camera_ip ?? ''}`}>
-            <Text size="var(--ig-text-caption)" tone="muted" style={CHIP_STYLE}>{sourceLabel}</Text>
+            <ChipBox size="var(--ig-text-caption)" tone="muted">{sourceLabel}</ChipBox>
             {source.defect_counts.length === 0 ? (
-              <Text as="p" tone="soft" size="var(--ig-text-body)" style={EMPTY_OFFSET_STYLE}>{noDefectText}</Text>
+              <EmptyOffsetBox forwardedAs="p" tone="soft" size="var(--ig-text-body)">{noDefectText}</EmptyOffsetBox>
             ) : (
-              <Box style={TABLE_WRAP_STYLE}>
+              <TableWrapBox>
                 <Table columns={DEFECT_COLUMNS} rows={source.defect_counts} ariaLabel={`${sourceLabel} defect counts`} />
-                <div style={CHART_STYLE}>
+                <ChartBox>
                   <BarChartCard
                     data={source.defect_counts.map((d, i) => ({ name: d.name, count: d.count, color: SOURCE_COLORS[i % SOURCE_COLORS.length] }))}
                     xKey="name"
@@ -85,8 +96,8 @@ export function SourceBreakdownWidget({
                     height={chartHeights.sm}
                     getCellColor={(row) => row.color as string}
                   />
-                </div>
-              </Box>
+                </ChartBox>
+              </TableWrapBox>
             )}
           </Block>
           )

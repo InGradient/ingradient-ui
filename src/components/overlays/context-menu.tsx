@@ -15,7 +15,7 @@ const ContextMenuListBase = styled.div.attrs<{ $x: number; $y: number }>((p) => 
   position: fixed;
   z-index: calc(var(--ig-z-context-menu) + 1);
   min-width: var(--ig-popup-2xs);
-  padding: var(--ig-space-1) 0;
+  padding: calc(var(--ig-space-1) - var(--ig-border-1px)) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   overflow: hidden;
@@ -40,6 +40,7 @@ export const ContextMenuButton = styled.button<{ $danger?: boolean }>`
   background: none;
   color: ${(p) => (p.$danger ? 'var(--ig-color-danger)' : 'var(--ig-color-text-primary)')};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-align: left;
   cursor: pointer;
   &:hover {
@@ -58,7 +59,7 @@ const ContextMenuSubBase = styled.div.attrs<{ $left: number; $top: number }>((p)
   position: fixed;
   z-index: calc(var(--ig-z-context-menu) + 2);
   min-width: var(--ig-popup-2xs);
-  padding: var(--ig-space-1) 0;
+  padding: calc(var(--ig-space-1) - var(--ig-border-1px)) 0;
   ${surfaceRaised}
   border-radius: var(--ig-radius-lg);
   overflow: hidden;
@@ -78,6 +79,7 @@ export const ContextMenuSubItem = styled.button<{ $color?: string }>`
   background: none;
   color: ${(p) => p.$color ?? 'var(--ig-color-text-primary)'};
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   text-align: left;
   cursor: pointer;
   &:hover {

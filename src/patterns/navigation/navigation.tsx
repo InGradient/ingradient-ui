@@ -5,7 +5,7 @@ import { headerSurface } from '../../primitives/recipes/patterns'
 export const SidebarNav = styled.nav`
   ${surfacePanel}
   border-radius: var(--ig-radius-xl);
-  padding: var(--ig-space-7);
+  padding: calc(var(--ig-space-7) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-3);
@@ -50,7 +50,7 @@ export const MobileNavDrawer = styled.aside<{ $open?: boolean }>`
   position: fixed;
   inset: 0 auto 0 0;
   width: min(var(--ig-popup-md), calc(100vw - var(--ig-space-11)));
-  padding: var(--ig-space-8) var(--ig-space-7);
+  padding: calc(var(--ig-space-8) - var(--ig-border-1px)) calc(var(--ig-space-7) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-6);

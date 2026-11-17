@@ -8,6 +8,7 @@ import {
 } from '../../../../fixtures/edge/0.0.5'
 
 import type { MockAction } from './tabs-moved'
+import { StoryStatus } from '../../../../support/story-probe'
 
 export function CameraSetupPanel({ onMockAction }: { onMockAction: MockAction }): JSX.Element {
   const [openId, setOpenId] = useState<string | null>(null)
@@ -15,7 +16,7 @@ export function CameraSetupPanel({ onMockAction }: { onMockAction: MockAction })
   const action = (name: string) => { setResult(`Mock setup ${name}; no device was contacted.`); onMockAction(`camera-setup-${name}`) }
 
   return (
-    <Stack gap="var(--ig-space-5)">
+    <Stack gap="var(--ig-spacing-12)">
       <SetupSummaryView
         steps={SUMMARY_STEPS}
         overallStatus="success"
@@ -27,7 +28,7 @@ export function CameraSetupPanel({ onMockAction }: { onMockAction: MockAction })
         onViewProblem={() => { setOpenId(CONNECTED_STAGES[0]?.id ?? null); action('details') }}
         onRestart={() => action('restarted')}
       />
-      {result && <p role="status">{result}</p>}
+      {result && <StoryStatus>{result}</StoryStatus>}
       {CONNECTED_STAGES.map((stage) => (
         <SetupStageCardView
           key={stage.id}

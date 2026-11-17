@@ -22,28 +22,29 @@ const TableText = styled.div`
   --ig-catalog-gallery-table-thumb-size: var(--ig-control-height-3xl-plus);
 
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 
   table {
     min-width: var(--ig-catalog-gallery-table-min-width);
   }
 `
 
-const THUMB_STYLE = {
-  width: 'var(--ig-catalog-gallery-table-thumb-size)',
-  height: 'var(--ig-catalog-gallery-table-thumb-size)',
-  objectFit: 'cover' as const,
-  borderRadius: 'var(--ig-radius-sm)',
-  display: 'block' as const,
-}
+const ThumbBox = styled.img`
+  width: var(--ig-catalog-gallery-table-thumb-size);
+  height: var(--ig-catalog-gallery-table-thumb-size);
+  object-fit: cover;
+  border-radius: var(--ig-radius-sm);
+  display: block;
+`
 
-const TRUNCATED_TEXT_STYLE = {
-  display: 'inline-block' as const,
-  maxWidth: '100%',
-  overflow: 'hidden' as const,
-  textOverflow: 'ellipsis' as const,
-  whiteSpace: 'nowrap' as const,
-  verticalAlign: 'middle' as const,
-}
+const TruncatedTextBox = styled(Text)`
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+`
 
 export interface GalleryImagesTableImage {
   id: string
@@ -71,7 +72,7 @@ export interface GalleryImagesTableProps {
 type Row = GalleryImagesTableImage
 
 function renderTextCell(value: string) {
-  return <Text as="span" title={value} style={TRUNCATED_TEXT_STYLE}>{value}</Text>
+  return <TruncatedTextBox forwardedAs="span" title={value}>{value}</TruncatedTextBox>
 }
 
 export function GalleryImagesTable({
@@ -93,7 +94,7 @@ export function GalleryImagesTable({
         />
       ),
     },
-    { key: 'thumb', header: '', headerAriaLabel: 'Image preview', width: 'var(--ig-catalog-gallery-table-col-thumb)', render: (row) => <img src={row.thumb_url} alt={row.name} loading="lazy" style={THUMB_STYLE} /> },
+    { key: 'thumb', header: '', headerAriaLabel: 'Image preview', width: 'var(--ig-catalog-gallery-table-col-thumb)', render: (row) => <ThumbBox src={row.thumb_url} alt={row.name} loading="lazy" /> },
     { key: 'name', header: 'Name', width: 'var(--ig-catalog-gallery-table-col-name)', render: (row) => renderTextCell(row.name) },
     {
       key: 'dataset', header: 'Dataset',

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Inline, Stack, Text } from '@ingradient/ui/primitives'
 import { Button } from '@ingradient/ui/components'
 import { SelectField } from '@ingradient/ui/components'
@@ -6,8 +7,12 @@ import { OptionRow } from '@ingradient/ui/components'
 import { EmptyText } from '@ingradient/ui/components'
 import { Table, type TableColumn } from '@ingradient/ui/components'
 
-const SEARCH_FIELD_STYLE = { flex: 1 }
-const EMPTY_STYLE = { marginTop: 'var(--ig-spacing-16)' }
+const SearchFieldBox = styled(TextField)`
+  flex: 1;
+`
+const EmptyBox = styled(EmptyText)`
+  margin-top: var(--ig-spacing-16);
+`
 
 function statusTone(status: string): 'success' | 'danger' | 'muted' {
   if (status === 'accepted') return 'success'
@@ -92,11 +97,10 @@ export function InvitationsSection({
       {isAdmin && (
         <Stack gap="var(--ig-spacing-8)">
           <Inline gap="var(--ig-spacing-8)">
-            <TextField
+            <SearchFieldBox
               placeholder="Search users by name or email"
               value={searchQuery}
               onChange={(e) => onChangeSearchQuery(e.target.value)}
-              style={SEARCH_FIELD_STYLE}
               aria-label="Search users"
               title="Search users"
             />
@@ -134,13 +138,13 @@ export function InvitationsSection({
       )}
 
       {invitations.length === 0 ? (
-        <EmptyText style={EMPTY_STYLE}>No invitations</EmptyText>
+        <EmptyBox>No invitations</EmptyBox>
       ) : (
         <Table<InvitationRow>
           columns={columns}
           rows={invitations}
           ariaLabel="Invitations table"
-          minWidth="var(--ig-popup-3xl-narrow)"
+          minWidth="var(--ig-layout-size-table-min-compact)"
         />
       )}
     </Stack>

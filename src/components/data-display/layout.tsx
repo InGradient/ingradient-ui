@@ -4,7 +4,7 @@ import { surfacePanel, withSurfaceDepth } from '../../primitives'
 const SectionPanelBase = styled.section`
   ${surfacePanel}
   border-radius: var(--ig-radius-xl);
-  padding: var(--ig-space-8);
+  padding: calc(var(--ig-space-8) - var(--ig-border-1px));
   display: flex;
   flex-direction: column;
   gap: var(--ig-space-6);

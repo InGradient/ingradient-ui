@@ -1,0 +1,166 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Edge를 Platform과 같은 룩앤필로 정리</title>
+<style>
+  :root { --bg:#0b0d12; --panel:#12151c; --line:#232834; --text:#e7eaf0; --muted:#9aa3b2; --as:#f28c28; --to:#14b8a6; --accent:#5b8cff; --ok:#22c55e; --warn:#eab308; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.65 "IBM Plex Sans", "Pretendard", system-ui, sans-serif }
+  main { max-width:1180px; margin:0 auto; padding:40px 24px 80px }
+  h1 { font-size:28px; margin:0 0 6px } h2 { font-size:21px; margin:48px 0 12px; padding-top:12px; border-top:1px solid var(--line) }
+  h3 { font-size:16px; margin:24px 0 8px; color:var(--muted) }
+  p, li { color:var(--text) } .muted { color:var(--muted) } code { font:13px "IBM Plex Mono", ui-monospace, monospace; background:#1a1e27; padding:1px 6px; border-radius:4px }
+  a { color:var(--accent) } nav.toc { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 20px; margin:20px 0 }
+  nav.toc ol { margin:0; padding-left:20px; columns:2 } table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top } th { color:var(--muted); font-weight:600 }
+  .tag { display:inline-block; white-space:nowrap; padding:1px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#0b0d12 }
+  .as { background:var(--as) } .to { background:var(--to) } .ok { background:var(--ok) } .none { background:#3a4150; color:var(--text) }
+  figure { margin:16px 0; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; overflow-x:auto }
+  figure img { display:block; max-width:100%; height:auto; border-radius:6px } figcaption { margin-top:8px; font-size:13px; color:var(--muted) }
+  ol.legend { margin:8px 0 0; padding:0; list-style:none } ol.legend li { margin:6px 0; padding-left:34px; position:relative }
+  ol.legend li b.n { position:absolute; left:0; top:1px; width:24px; height:24px; border-radius:50%; background:var(--to); color:#0b0d12; display:grid; place-items:center; font-size:13px }
+  .links { font-size:13px } .links a { margin-right:12px } .note { border-left:3px solid var(--warn); padding:6px 12px; background:#1a1810; border-radius:0 6px 6px 0; margin:12px 0 }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px } @media (max-width:900px){ .grid2{ grid-template-columns:1fr } nav.toc ol{ columns:1 } }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px } .grid3 figure { margin:0 } @media (max-width:900px){ .grid3{ grid-template-columns:1fr } }
+  .warn { background:var(--warn) }
+</style>
+<body><main>
+<h1>Edge를 Platform과 같은 룩앤필로 정리</h1>
+<p class="muted">2026-11-01 · 브랜치 <code>feat/edge-consistency</code>(<code>feat/platform-consistency</code> 위). push하지 않았다.</p>
+<div class="note"><b>요약.</b> Edge 스토리를 Platform과 같은 구조(페이지별 Workspace · System States · Workflows)의 <b>0.0.6</b>으로 정리하고, 워크플로우를 단계마다 1초씩 천천히 재생하게 했다. 이어서 Edge 화면 코드를 Platform 기준으로 5단계에 걸쳐 맞췄다: 옛 토큰 이름, 모서리 깊이 규칙, 공용 컨트롤, 직접 쓴 px, 공용 열 레이아웃(좌우 320px), 직접 꾸민 요소. 단계마다 CI와 같은 순서로 전체 검사를 통과했고, 변경 전후를 번호 박스(<span class="tag as">AS-IS</span> 주황 / <span class="tag to">TO-BE</span> 청록)로 비교했다.</div>
+
+<nav class="toc"><ol>
+<li><a href="#check">Simon이 확인할 것</a></li><li><a href="#commits">커밋</a></li>
+<li><a href="#stories">0.0.6 스토리 구조와 천천히 재생</a></li><li><a href="#s1">1단계: 모서리 깊이 규칙</a></li>
+<li><a href="#s2">2단계: 공용 컨트롤</a></li><li><a href="#s3">3단계: 직접 쓴 px</a></li>
+<li><a href="#s4">4단계: 공용 열 레이아웃</a></li><li><a href="#s5">5단계: 직접 꾸민 요소</a></li>
+<li><a href="#buttons">버튼 강조 정리(후속)</a></li><li><a href="#left">남은 것</a></li><li><a href="#how">검증 방법과 재현</a></li></ol></nav>
+
+<h2 id="check">1. Simon이 확인할 것</h2>
+<ol>
+<li><b>0.0.6 구조 확정</b>: 확정하면 0.0.5·0.0.1을 지우지 않고 보관 그룹으로 옮기고, 0.0.1에만 있는 부품 상태표 3개(BottomBar, CaptureView, LogDetailTable)는 부품 스토리로 옮긴다.</li>
+<li><b>시각 기준선</b>: 0.0.6 페이지마다 대표 화면 1~2개를 CI에서 만들어 승인 후 등록한다. 로컬에서는 갱신하지 않았다.</li>
+<li><b>Statics 섹션 헤더</b>: 큰 아이콘과 16px 제목의 페이지 단위 접기 헤더. Platform에 같은 역할이 없어 그대로 두었다.</li>
+<li><b>공용 컴포넌트 변경이 Platform에 미친 영향</b>: 펼침 헤더(<code>CollapsibleSectionHeader</code>)의 화살표가 글자(▾/▸)에서 아이콘으로 바뀌었다(2단계). 열 레이아웃은 새 옵션의 기본값이 이전과 같아 Platform 화면은 그대로다.</li>
+<li><b>push</b>: 이 브랜치는 로컬에만 있다.</li>
+</ol>
+
+<h2 id="commits">2. 커밋</h2>
+<table><tr><th>시각</th><th>커밋</th><th>내용</th></tr>
+<tr><td>18:38</td><td><code>03d701a</code></td><td>Edge의 옛 간격·글자 크기 토큰을 Platform과 같은 4px·글자 역할 이름으로 바꾼다</td></tr>
+<tr><td>19:00</td><td><code>dbe59c6</code></td><td>워크플로우 스토리를 단계마다 천천히 재생한다</td></tr>
+<tr><td>19:00</td><td><code>2732561</code></td><td>Edge 0.0.6 스토리를 Platform처럼 페이지별 Workspace·System States·Workflows로 정리한다</td></tr>
+<tr><td>19:05</td><td><code>8c5a367</code></td><td>재생 간격 700→1000ms</td></tr>
+<tr><td>19:35</td><td><code>6601da3</code></td><td>0.0.1에만 있던 Edge 상태 화면을 0.0.6 System States에 추가한다</td></tr>
+<tr><td>20:18</td><td><code>fd50ecb</code></td><td>Connection 탭에서 쓰지 않는 스타일 20개 삭제</td></tr>
+<tr><td>20:18</td><td><code>32e4ed5</code></td><td>1단계: 카드와 직접 만든 표면의 모서리를 깊이 규칙으로</td></tr>
+<tr><td>20:42</td><td><code>da34e68</code></td><td>2단계: 펼침 헤더와 슬라이더를 공용 컴포넌트로</td></tr>
+<tr><td>21:03</td><td><code>7024a8a</code></td><td>3단계: 직접 쓴 px 제거, Edge 고유 크기 4px 고정</td></tr>
+<tr><td>21:23</td><td><code>345e8eb</code></td><td>4단계: 작업 화면 열을 공용 ResizableColumnsLayout으로</td></tr>
+<tr><td>21:52</td><td><code>9f570ff</code></td><td>5단계: 직접 꾸민 레이아웃·글자 요소를 Stack/Inline/Text로</td></tr>
+<tr><td>23:02</td><td><code>f549309</code></td><td>후속: 화면마다 주 동작 버튼을 solid로, 나머지를 secondary로</td></tr>
+<tr><td>08:31</td><td><code>1825166</code></td><td>후속 2: Platform 확인 버튼 5개와 댓글 보내기를 solid로</td></tr>
+</table>
+
+<h2 id="stories">3. 0.0.6 스토리 구조와 천천히 재생</h2>
+<p>Platform 0.0.1과 같은 구조다. 각 페이지의 대표는 <code>Workspace / Overview</code>(예: <code>pages-edge-0-0-6-capture-workspace--overview</code>).</p>
+<table><tr><th>페이지</th><th>그룹</th></tr>
+<tr><td>Login · License</td><td>Workspace · System States</td></tr>
+<tr><td>Dataset Select</td><td>Workspace · System States · Workflows</td></tr>
+<tr><td>Capture</td><td>Workspace · System States · Review and Labeling · Workflows · Review Workflows · Log and Setup Workflows</td></tr>
+<tr><td>Images</td><td>Workspace · System States · Workflows</td></tr>
+<tr><td>Statics</td><td>Workspace</td></tr>
+<tr><td>Settings</td><td>Tabs(탭 11개) · Workflows · Tab Workflows</td></tr>
+<tr><td>App Chrome</td><td>Workflows(언어·계정·시스템 모니터)</td></tr></table>
+<ul>
+<li>0.0.5 스토리 59개를 모두 포함한다(58개는 그대로, <code>Workspace / Settings</code>는 <code>Settings / Tabs / Connection</code>과 같은 화면). 0.0.1에만 있던 상태 9개를 추가했다(로그인 진행 중, 빈 목록(온라인), 데이터셋 추가·내보내기 창, 이미지 보기 창(보기·편집), 검토·라벨링·라벨링 중 시퀀스 실패).</li>
+<li>장면·fixture·재생 단계는 0.0.5 모듈을 가져와 쓰고 복사하지 않는다.</li>
+<li><b>천천히 재생</b>: <code>stories/support/paced-play.ts</code>. 동작마다 대상에 노란 테두리를 그리고 왼쪽 아래에 자막(<code>Click · Force IP</code>, <code>Type "192.168.1.42" · Static IP</code>)을 띄운 뒤 1000ms 기다린다. Playwright와 Vitest 브라우저에서는 대기를 건너뛰어 테스트 시간은 그대로다. 주소에 <code>&amp;pace=1500</code>을 붙이면 속도를 바꿀 수 있다.</li>
+</ul>
+<p class="links"><a href="http://100.105.177.42:6040/?path=/story/pages-edge-0-0-6-capture-workspace--overview">Capture Overview</a><a href="http://100.105.177.42:6040/?path=/story/pages-edge-0-0-6-settings-tab-workflows--force-ip">Force IP 재생</a><a href="http://100.105.177.42:6040/?path=/story/pages-edge-0-0-6-capture-review-and-labeling--labeling">라벨링</a></p>
+
+<h2 id="s1">4. 1단계: 모서리 깊이 규칙</h2>
+<p>카드 28곳의 <code>radius</code> 지정을 빼고, 직접 만든 표면 14개를 <code>withSurfaceDepth</code>로 감싸 Platform과 같은 깊이 규칙(16/12/8px, 떠 있는 표면 16px)을 따르게 했다. 설정·캡처 검토·로그 패널 스토리 장면에는 깊이 제공자가 없어 옛 값이 나오던 것도 맞췄다.</p>
+<table><tr><th>측정(0.0.6 스토리 84개)</th><th>이전</th><th>이후</th></tr>
+<tr><td>바깥이 더 둥근 쌍(위치 기준)</td><td>62/64</td><td>63/63</td></tr>
+<tr><td>바깥이 더 둥근 쌍(DOM 기준)</td><td>15/15</td><td>42/42</td></tr>
+<tr><td>화면이 바뀐 스토리</td><td colspan="2">33개, 모두 모서리만(주로 안쪽 카드 8→12px)</td></tr></table>
+<figure><img src="assets/2026-11-01-edge-consistency/step1/dataset-select-workspace--overview.png" alt="Dataset Select 모서리 전후"><figcaption>Dataset Select. <b>1~9</b>: 최근·데이터셋 카드 모서리 8→12px(배치 그대로).</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step1/settings-tabs--connection.png" alt="Settings Connection 모서리 전후"><figcaption>Settings / Connection. <b>1~9</b>: 설정 창 안 카드·진단 단계 카드의 모서리.</figcaption></figure>
+
+<h2 id="s2">5. 2단계: 공용 컨트롤</h2>
+<ul>
+<li>Connection의 Advanced 헤더 → Platform 댓글 패널과 같은 <code>CollapsibleSectionHeader</code>. 공용 헤더는 이제 열림 상태를 알리고(<code>aria-expanded</code>, <code>aria-controls</code>) 화살표 아이콘을 쓴다.</li>
+<li>Deflectometry 조정의 기본 range 입력 → 공용 <code>Slider</code>(빠져 있던 접근성 이름 추가). 스토리가 없어 컴포넌트 스토리를 새로 만들었다.</li>
+<li>남긴 것(코드에 이유 기록): 촬영 버튼, 창 제목줄 버튼, 데이터셋 카드의 클릭 영역 버튼, 최근 카드 버튼.</li>
+</ul>
+<div class="grid2">
+<figure><img src="assets/2026-11-01-edge-consistency/step2/connection-advanced-as-is.png" alt="Advanced 헤더 이전"><figcaption><span class="tag as">AS-IS</span> Connection Advanced: 직접 만든 14px 굵은 헤더</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step2/connection-advanced-to-be.png" alt="Advanced 헤더 이후"><figcaption><span class="tag to">TO-BE</span> 공용 펼침 헤더(Platform 댓글 패널과 같은 모양)</figcaption></figure>
+</div>
+<figure><img src="assets/2026-11-01-edge-consistency/step2/pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments.png" alt="Platform 댓글 헤더 전후"><figcaption>Platform 이미지 검사 창(공용 컴포넌트 영향). <b>1</b> COMMENTS, <b>2</b> USERS 헤더 화살표가 글자에서 아이콘으로.</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step2/deflectometry-tuning-current.png" alt="Deflectometry 조정 현재 화면" style="max-width:420px"><figcaption>새로 만든 스토리 <code>Components/Edge/Capture/DeflectometryTuningControls</code>(현재 화면). 이전 모습을 비교할 스토리가 없었다.</figcaption></figure>
+
+<h2 id="s3">6. 3단계: 직접 쓴 px</h2>
+<ul>
+<li>ROI 입력칸 4개는 존재하지 않는 토큰 <code>--ig-popup-4xs</code>의 대체값 72px로 폭을 정하고 있었다. 새 토큰 없이 공용 <code>NumberField</code>를 2×2 칸에 채웠다(칸당 72→103px).</li>
+<li>4px 밖 값: 로그 시간 칸 최소 폭 45→44px, 로그 상세 창 위치 왼쪽 254→256px·위 58→56px.</li>
+<li>Edge 고유 크기(<code>geometry.ts</code>)가 모두 4px 단위인지 테스트로 고정. 이제 Edge 소스에 직접 쓴 px는 이 파일뿐이다.</li>
+</ul>
+<div class="grid2">
+<figure><img src="assets/2026-11-01-edge-consistency/step3/roi-as-is.png" alt="ROI 이전"><figcaption><span class="tag as">AS-IS</span> 72px 입력칸 4개</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step3/roi-to-be.png" alt="ROI 이후"><figcaption><span class="tag to">TO-BE</span> 공용 NumberField 2×2</figcaption></figure>
+</div>
+
+<h2 id="s4">7. 4단계: 공용 열 레이아웃</h2>
+<p>좌우 패널을 Platform Catalog·Class와 같은 <code>ResizableColumnsLayout</code>으로 바꿨다. 기본 320px, 끌어서 220–480px, 폭 저장. 접힌 패널은 Edge에서 기능이 있는 띠(로그 상태 점, 클래스 선택)라 공용 레이아웃에 <code>collapsedWidth</code>를 추가했다(기본 0이라 Platform은 그대로).</p>
+<table><tr><th>측정</th><th>이전</th><th>이후</th></tr>
+<tr><td>1440px: 왼쪽 / 가운데 / 오른쪽</td><td>280 / 880 / 280</td><td>320 / 784 / 320(+손잡이 2개)</td></tr>
+<tr><td>접힌 띠</td><td>56 / 56</td><td>56 / 56</td></tr>
+<tr><td>768px: 가로 스크롤, 가운데 보이기</td><td>유지</td><td>유지(가운데 최소 640px)</td></tr></table>
+<figure><img src="assets/2026-11-01-edge-consistency/step4/capture-workspace--overview.png" alt="Capture 열 전후"><figcaption>Capture. <b>1</b> 왼쪽 로그 280→320px(가운데가 그만큼 좁아짐), <b>2</b> 오른쪽 패널 280→320px(내용이 열을 꽉 채움), <b>3</b> 오른쪽 끝 정렬.</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step4/statics-workspace--overview.png" alt="Statics 열 전후"><figcaption>Statics. <b>1</b> 가운데 폭이 줄어 카드·차트가 다시 배치됨, <b>2~5</b> 차트 축 글자 위치, <b>6</b> 오른쪽 끝.</figcaption></figure>
+
+<h2 id="s5">8. 5단계: 직접 꾸민 요소</h2>
+<ul>
+<li>레이아웃만 하던 styled 요소 21개 → 공용 <code>Stack</code>/<code>Inline</code>(화면 변화 없음, 다르게 나온 4개는 같은 빌드끼리도 흔들리는 노이즈). 쓰지 않던 1개 삭제.</li>
+<li>글자만 꾸미던 styled 요소 15개 → 공용 <code>Text</code>(크기·굵기·톤 그대로). <code>Text</code>는 글자 역할과 짝지은 줄 높이를 써서 글자가 1~2px 위아래로 움직인다(46개 스토리).</li>
+<li>남긴 것: Platform 톤과 색이 다른 상태 메시지(성공·경고·오류는 <code>Text</code> 톤과 색이 다름), 사진 위 흰색 반투명 글자, 줄 높이를 따로 정한 설명문. 나머지 약 190개는 위치·배경·스크롤 등 화면 고유 스타일을 함께 가져 이번 범위가 아니다.</li>
+</ul>
+<figure><img src="assets/2026-11-01-edge-consistency/step5/capture-workspace--overview.png" alt="상단바 글자 전후"><figcaption>Capture. <b>1</b> 상단 경로(FINEMTECH / 데이터셋 이름) 줄 높이, <b>2</b> PATTERN PREVIEW 라벨, <b>3</b> CLASS 라벨.</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/step5/settings-tabs--camera.png" alt="Settings Camera 글자 전후"><figcaption>Settings / Camera. <b>3~5</b> 라벨 줄 높이가 바뀌어 아래 버튼이 1px 올라감.</figcaption></figure>
+
+<h2 id="buttons">9. 버튼 강조 정리(후속)</h2>
+<p class="muted">Simon 요청: 중요한 버튼은 solid인데 line(accent)으로 되어 있거나 반대인 곳을 찾아 고친다. 기준은 Platform과 DESIGN.md §9: 화면·창·폼의 <b>주 동작 하나는 solid</b>, 나머지는 secondary, 파괴 동작은 <code>tone="danger"</code>.</p>
+<table><tr><th>바꾼 것</th><th>이전 → 이후</th></tr>
+<tr><td>창의 확인 버튼: 데이터셋 추가, 내보내기, Force IP 적용</td><td>line → solid</td></tr>
+<tr><td>단일 폼 화면의 주 동작: 로그인(이어서 들어가기, 로그인), 라이선스(활성화, 기기 연결)</td><td>line → solid</td></tr>
+<tr><td>패널·탭의 저장·실행: Setup 저장, 촬영 검토 저장, 서버 탭 저장, 카메라 탭 저장, Field Test 실행, 시스템 정리 실행, 업데이트 다운로드·설치, 파생 계산, Deflectometry 분석</td><td>line → solid</td></tr>
+<tr><td>시퀀스 실패 창의 Retry(주 동작인데 파괴 동작처럼 빨간 테두리)</td><td>secondary·danger → solid</td></tr>
+<tr><td>Connection 탭의 Scan(같은 탭에 주 동작 "Continue setup"이 이미 solid)</td><td>solid → secondary</td></tr>
+<tr><td>스토리 장면의 확인 창(Cancel이 solid, Confirm이 line)과 시뮬레이션 조작 버튼</td><td>Cancel·조작 secondary, Confirm solid</td></tr></table>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons/dataset-select-system-states--add-dataset-open.png" alt="데이터셋 추가 창 버튼 전후"><figcaption>데이터셋 추가 창. <b>1</b> Add dataset: line → solid.</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons/capture-system-states--sequence-failed.png" alt="시퀀스 실패 창 버튼 전후"><figcaption>시퀀스 실패 창. <b>1</b> Retry: 빨간 테두리(secondary·danger) → solid.</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons/settings-tabs--connection.png" alt="Connection 탭 버튼 전후"><figcaption>Settings / Connection. <b>1</b> Scan: solid → secondary(이 탭의 주 동작은 Continue setup).</figcaption></figure>
+<h3>후속 2: Platform 확인 버튼과 댓글 보내기</h3>
+<p>Simon 확인에 따라 Platform에서 line이던 확인 버튼 5개를 solid로 바꿨다: 드래그 앤 드롭 Confirm, 내보내기 Download, 업로드 품질 Upload, 비밀번호 변경 Save, 댓글 Post. 같은 기준으로 Edge 댓글 보내기도 solid로 맞췄다. 이제 Platform 페이지 코드에 line(accent) 버튼은 없다. ROI 버튼은 켜고 끄는 도구 상태라 line으로 둔다.</p>
+<div class="grid2">
+<figure><img src="assets/2026-11-01-edge-consistency/buttons-platform/password-save-as-is.png" alt="비밀번호 변경 Save 이전"><figcaption><span class="tag as">AS-IS</span> 비밀번호 변경 Save(line)</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons-platform/password-save-to-be.png" alt="비밀번호 변경 Save 이후"><figcaption><span class="tag to">TO-BE</span> solid</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons-platform/comment-post-as-is.png" alt="댓글 Post 이전"><figcaption><span class="tag as">AS-IS</span> 댓글 Post(line, 입력 후)</figcaption></figure>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons-platform/comment-post-to-be.png" alt="댓글 Post 이후"><figcaption><span class="tag to">TO-BE</span> solid</figcaption></figure>
+</div>
+<figure><img src="assets/2026-11-01-edge-consistency/buttons-platform/pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog.png" alt="업로드 품질 창 전후"><figcaption>업로드 품질 창. <b>1</b> Upload: line → solid. 드래그 앤 드롭 Confirm과 내보내기 Download는 그 상태를 보여 주는 스토리가 없어 코드만 확인했다.</figcaption></figure>
+<p class="muted">ConnectionTabView(0.0.6에 나오지 않는 옛 Connection 구성)의 자동 설정·연결·프로필 저장은 한 탭에 주 동작이 여럿이라 아직 line이다.</p>
+
+<h2 id="left">10. 남은 것</h2>
+<ul>
+<li>Edge의 직접 꾸민 요소 약 190개(위치·배경·스크롤 포함). 화면별로 공용 컴포넌트가 생기면 이어서 줄인다.</li>
+<li>공용 <code>ResizableColumnsLayout</code>: <code>storageKey</code> 없이 쓰면 다시 그릴 때마다 폭이 기본값으로 돌아가는 코드가 있다(Platform Catalog). Edge는 <code>storageKey</code>를 써서 영향이 없다. 확인 후 따로 고칠 것.</li>
+<li>0.0.6 시각 기준선, 0.0.5·0.0.1 보관, 부품 상태표 이동(1절).</li>
+</ul>
+
+<h2 id="how">11. 검증 방법과 재현</h2>
+<ul>
+<li>단계마다 CI 순서: lint, lint:style, tsc, 단위, edge-contract, 전체 Storybook, 패키지·exports·번들·smoke·packed consumer, style-literals, doc-coverage, Storybook 빌드. 3단계는 Edge 범위 검사 후 4단계 전체 검사에 포함.</li>
+<li>도구: <code>assets/2026-11-01-edge-consistency/</code>의 <code>hierarchy-check.mjs</code>(모서리 위계), <code>zero-diff-gate.mjs</code>(<code>PREFIX</code>/<code>IDS</code>로 범위 지정, 기준 빌드를 두 번 찍어 흔들리는 스토리 제외), <code>compare.mjs</code>(번호 박스 전후 비교).</li>
+<li>단계별 빌드(6041~6046)는 <code>/tmp</code>에 있어 재부팅하면 사라진다. 비교 이미지와 측정 JSON은 위 폴더에 저장했다.</li>
+</ul>
+</main></body></html>

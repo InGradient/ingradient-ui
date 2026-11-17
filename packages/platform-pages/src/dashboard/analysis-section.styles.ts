@@ -22,6 +22,7 @@ export const CardHead = styled.div`
 
 export const CardTitle = styled.span`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-secondary);
 `
@@ -31,7 +32,7 @@ export const StatRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: var(--ig-spacing-8) 0;
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-strong);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
   &:last-child {
     border-bottom: none;
   }
@@ -40,10 +41,12 @@ export const StatRow = styled.div`
 export const StatLabel = styled.span`
   color: var(--ig-color-text-muted);
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
 `
 
 export const StatValue = styled.span`
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-medium);
   color: var(--ig-color-text-primary);
 `

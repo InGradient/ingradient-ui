@@ -15,6 +15,7 @@ import {
 import { useFullscreen } from './use-fullscreen'
 import { patternLabelToUI } from './pattern-helpers'
 import { FOCUS_PEAKING_PATTERN } from './types'
+import { FringeContrastCardView } from './FringeContrastCardView'
 import type { CaptureViewProps } from './types'
 
 export function CaptureView(props: CaptureViewProps): JSX.Element {
@@ -22,7 +23,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
     isConnected, isConnecting, isCapturing, isSetupMode, isSetupBusy, isSavingSequence,
     liveFrameSrc, previewSrc, frozenFrameSrc, hasReceivedSnapshot, snapshotError,
     progressText, captureStep, captureTotalSteps,
-    setupMetrics, previewPatternLabel, setupPatternLabel,
+    setupMetrics, fringeContrast, previewPatternLabel, setupPatternLabel,
     captureDisabledReason, captureStatusHint,
     showGrid, showControls, labels,
     onCapture, onReconnect, onToggleGrid, onToggleControls,
@@ -62,11 +63,12 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
         {showGrid && <CenterCrosshair />}
         {isSetupMode && (
           <SetupMetrics>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
-            <Card elevation="raised" flat radius="var(--ig-radius-sm)" padding="var(--ig-space-3) var(--ig-space-4)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.brightness}</MetricLabel><MetricValue>{setupMetrics?.brightness ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.contrast}</MetricLabel><MetricValue>{setupMetrics?.contrast ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.focus}</MetricLabel><MetricValue>{setupMetrics?.focus_score ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.overPct}</MetricLabel><MetricValue>{setupMetrics?.overexposed_pct ?? 'N/A'}</MetricValue></Card>
+            <Card elevation="raised" flat padding="var(--ig-spacing-8) var(--ig-spacing-8)"><MetricLabel>{labels.underPct}</MetricLabel><MetricValue>{setupMetrics?.underexposed_pct ?? 'N/A'}</MetricValue></Card>
+            {fringeContrast && <FringeContrastCardView {...fringeContrast} />}
           </SetupMetrics>
         )}
 
@@ -77,19 +79,19 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
                 {isAutoReconnecting ? (
                   <>
                     <ConnectingSpinner size={controlSizeNumbers.sm} />
-                    <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.cameraReconnecting}</Text>
+                    <Text as="div" tone="soft" size="var(--ig-text-display)">{labels.cameraReconnecting}</Text>
                   </>
                 ) : snapshotError ? (
                   <>
-                    <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{snapshotError}</Text>
+                    <Text as="div" tone="soft" size="var(--ig-text-display)">{snapshotError}</Text>
                     {onReconnect && (
-                      <Button type="button" variant="secondary" size="sm" onClick={onReconnect} style={{ marginTop: 'var(--ig-space-3)' }}>
+                      <Button type="button" variant="secondary" size="sm" onClick={onReconnect} style={{ marginTop: 'var(--ig-spacing-8)' }}>
                         {labels.reconnectStream}
                       </Button>
                     )}
                   </>
                 ) : (
-                  <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.waitingFrames}</Text>
+                  <Text as="div" tone="soft" size="var(--ig-text-display)">{labels.waitingFrames}</Text>
                 )}
               </ConnectingBox>
             )}
@@ -108,12 +110,12 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             )}
           </>
         ) : isConnecting ? (
-          <Stack align="center" gap="var(--ig-space-5)">
+          <Stack align="center" gap="var(--ig-spacing-12)">
             <ConnectingSpinner size={controlSizeNumbers.sm} />
-            <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.connecting}</Text>
+            <Text as="div" tone="soft" size="var(--ig-text-display)">{labels.connecting}</Text>
           </Stack>
         ) : (
-          <Text as="div" tone="soft" size="var(--ig-font-size-4xl)">{labels.noCamera}</Text>
+          <Text as="div" tone="soft" size="var(--ig-text-display)">{labels.noCamera}</Text>
         )}
 
         {isSetupMode && setupMetrics?.histogram_data_url && (
@@ -131,7 +133,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
             onClick={toggleFullscreen}
             title={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
             aria-label={isFullscreen ? labels.exitFullscreen : labels.enterFullscreen}
-            style={{ position: 'absolute', top: 'var(--ig-space-4)', right: 'var(--ig-control-height-3xl)', zIndex: 'var(--ig-z-capture-high)' }}
+            style={{ position: 'absolute', top: 'var(--ig-spacing-8)', right: 'var(--ig-control-height-3xl)', zIndex: 'var(--ig-z-capture-high)' }}
           >
             {isFullscreen ? <CollapseIcon size={iconSizeNumbers.lg} /> : <ExpandIcon size={iconSizeNumbers.lg} />}
           </IconButton>
@@ -143,7 +145,7 @@ export function CaptureView(props: CaptureViewProps): JSX.Element {
           {showControls && (
             <OverlayPopover>
               <ControlRow>
-                <Inline as="span" align="center" gap="var(--ig-space-2)" wrap="nowrap"><GridLinesIcon size={iconSizeNumbers.sm} /> {labels.grid}</Inline>
+                <Inline as="span" align="center" gap="var(--ig-spacing-8)" wrap="nowrap"><GridLinesIcon size={iconSizeNumbers.sm} /> {labels.grid}</Inline>
                 <Switch checked={showGrid} onChange={(e) => { void e; onToggleGrid() }} />
               </ControlRow>
             </OverlayPopover>

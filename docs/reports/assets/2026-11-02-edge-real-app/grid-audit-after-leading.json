@@ -1,0 +1,8313 @@
+{
+ "stories": 212,
+ "failed": 0,
+ "offending": 94,
+ "summary": [
+  {
+   "key": "Stack | li | border",
+   "count": 141,
+   "stories": 35,
+   "heights": [
+    54
+   ],
+   "sample": "JL June Lee OWNER"
+  },
+  {
+   "key": "ImageCard | button | control",
+   "count": 500,
+   "stories": 29,
+   "heights": [
+    101
+   ],
+   "sample": "Open image 20230816-wafer-020."
+  },
+  {
+   "key": "Spinner | span | content",
+   "count": 28,
+   "stories": 25,
+   "heights": [
+    17.14,
+    18.22,
+    19.16,
+    22.61,
+    21.85,
+    21.86
+   ],
+   "sample": "Loading"
+  },
+  {
+   "key": "ReferenceImageDropZone | div | content",
+   "count": 16,
+   "stories": 16,
+   "heights": [
+    170.19,
+    198.19,
+    218.19
+   ],
+   "sample": ""
+  },
+  {
+   "key": "DialogShell | div | border",
+   "count": 14,
+   "stories": 14,
+   "heights": [
+    254,
+    546,
+    366,
+    194,
+    314,
+    470
+   ],
+   "sample": "Export (.igp)  Export the data"
+  },
+  {
+   "key": "ImageGridCell | div | content",
+   "count": 123,
+   "stories": 12,
+   "heights": [
+    105.5
+   ],
+   "sample": "Grid item"
+  },
+  {
+   "key": "Card | div | border",
+   "count": 15,
+   "stories": 11,
+   "heights": [
+    406,
+    466,
+    538,
+    598,
+    366,
+    54
+   ],
+   "sample": "Sign in Email Password Keep me"
+  },
+  {
+   "key": "SettingsSection | section | border",
+   "count": 25,
+   "stories": 9,
+   "heights": [
+    173,
+    69,
+    81,
+    186
+   ],
+   "sample": "Workspace Enable hover preview"
+  },
+  {
+   "key": "Box | button | border",
+   "count": 8,
+   "stories": 4,
+   "heights": [
+    38,
+    37
+   ],
+   "sample": "Wafer line A — production batc"
+  },
+  {
+   "key": "Box | div | content",
+   "count": 4,
+   "stories": 4,
+   "heights": [
+    55
+   ],
+   "sample": "Wafer line A — production batc"
+  },
+  {
+   "key": "Card | div | content",
+   "count": 4,
+   "stories": 4,
+   "heights": [
+    397,
+    149,
+    437
+   ],
+   "sample": "INGRADIENT EdgeOnline EMAIL PA"
+  },
+  {
+   "key": "DashboardWidget | div | border",
+   "count": 8,
+   "stories": 2,
+   "heights": [
+    330
+   ],
+   "sample": "Images by dataset Last 30 days"
+  },
+  {
+   "key": "Box | div | border",
+   "count": 2,
+   "stories": 2,
+   "heights": [
+    186,
+    322
+   ],
+   "sample": "Datasets"
+  },
+  {
+   "key": "SetupPanelView | details | border",
+   "count": 2,
+   "stories": 2,
+   "heights": [
+    198
+   ],
+   "sample": "Features Analysis Gradient X G"
+  },
+  {
+   "key": "AdvancedSection | details | border",
+   "count": 2,
+   "stories": 2,
+   "heights": [
+    50
+   ],
+   "sample": "Advanced"
+  },
+  {
+   "key": "ImportTabUI | div | border",
+   "count": 2,
+   "stories": 1,
+   "heights": [
+    34
+   ],
+   "sample": "IMG_0042.jpg: Image dimensions"
+  },
+  {
+   "key": "DashboardCustomizePopover | div | border",
+   "count": 1,
+   "stories": 1,
+   "heights": [
+    266
+   ],
+   "sample": "Visible Sections"
+  },
+  {
+   "key": "Stack | button | border",
+   "count": 1,
+   "stories": 1,
+   "heights": [
+    54
+   ],
+   "sample": "Sangha Lee sangha@external.com"
+  }
+ ],
+ "results": [
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--overview",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 17.14,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--image-table",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--long-image-names",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 18.22,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--large-image-set",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-020.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-040.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-060.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-019.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-039.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-059.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-018.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-038.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-058.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-017.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-037.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-057.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-016.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-036.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-056.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-015.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-035.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-055.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-014.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-034.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-054.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-013.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-033.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-053.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-012.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-032.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-052.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-011.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-031.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-051.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-010.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-030.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-050.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-009.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-029.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-049.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-008.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-028.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-048.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-007.jpg"
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 19.16,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-027.jpg"
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 19.16,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-047.jpg"
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 19.16,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-006.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-026.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-046.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-005.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-025.jpg"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image extra-image-045.jpg"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--dataset-sidebar-collapsed",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--images-selected",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.61,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--drop-on-dataset",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.85,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--drop-on-gallery",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--page-dropzone",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workspace--upload-progress",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.86,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-analytics--overview",
+   "items": [
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Images by dataset Last 30 days"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Images over time Weekly upload"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Uploader activity Top contribu"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Source breakdown Capture devic"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-analytics--empty-state",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-dataset-details--no-connected-classes",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.49,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-dataset-details--loading",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.48,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-dataset-details--overflow",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 20.74,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "YH Yujin Han LABELER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-image-inspector--with-comments",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.23,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--active-filtered-results",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--toolbar-workflow",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.49,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--sort-menu-open",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.36,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--filter-panel-open",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.61,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--image-actions-menu",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-interactions--dataset-actions-menu",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 19.16,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-responsive--dataset-selector-open",
+   "items": [
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 55,
+     "border": 1,
+     "cause": "content",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 38,
+     "border": 2,
+     "cause": "border",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Datasets"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 37,
+     "border": 1,
+     "cause": "border",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 37,
+     "border": 1,
+     "cause": "border",
+     "text": "Surface defects"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 37,
+     "border": 1,
+     "cause": "border",
+     "text": "Pixel segmentation"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 37,
+     "border": 1,
+     "cause": "border",
+     "text": "Keypoint annotations"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 22.23,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-responsive--overview",
+   "items": [
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 55,
+     "border": 1,
+     "cause": "content",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 38,
+     "border": 2,
+     "cause": "border",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 19.17,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-responsive--filter-sheet-open",
+   "items": [
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 55,
+     "border": 1,
+     "cause": "content",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 38,
+     "border": 2,
+     "cause": "border",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.36,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-responsive--sort-sheet-open",
+   "items": [
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 55,
+     "border": 1,
+     "cause": "content",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "Box",
+     "tag": "button",
+     "h": 38,
+     "border": 2,
+     "cause": "border",
+     "text": "Wafer line A — production batc"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.36,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-responsive--analytics-fallback",
+   "items": [
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Images by dataset Last 30 days"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Images over time Weekly upload"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Uploader activity Top contribu"
+    },
+    {
+     "owner": "DashboardWidget",
+     "tag": "div",
+     "h": 330,
+     "border": 2,
+     "cause": "border",
+     "text": "Source breakdown Capture devic"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--no-datasets",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--datasets-loading",
+   "items": [
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 20.74,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--no-images",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--images-loading",
+   "items": [
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 31.11,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--image-load-error",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--access-denied",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-system-states--no-project-selected",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--dataset-igp-export-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.86,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 254,
+     "border": 2,
+     "cause": "border",
+     "text": "Export (.igp)  Export the data"
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 21.86,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--add-dataset-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 546,
+     "border": 2,
+     "cause": "border",
+     "text": "Add dataset NAME TASK TYPE Cla"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--upload-quality-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 17.15,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 366,
+     "border": 2,
+     "cause": "border",
+     "text": "Upload quality  Choose upload "
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--delete-images-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 18.2,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 194,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete 3 images Permanently de"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--transfer-images-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 314,
+     "border": 2,
+     "cause": "border",
+     "text": "Move to dataset From dataset W"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dataset-catalog-workflows--gallery-export-dialog",
+   "items": [
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-020."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-019."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-018."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-017."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-016."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-015."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-014."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image very-long-image-fil"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230927-wafer-009."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230913-wafer-008."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230907-wafer-007."
+    },
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 20.74,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230906-wafer-006."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230830-wafer-005."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230824-wafer-004."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230823-wafer-003."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230816-wafer-002."
+    },
+    {
+     "owner": "ImageCard",
+     "tag": "button",
+     "h": 101,
+     "border": 0,
+     "cause": "control",
+     "text": "Open image 20230808-wafer-001."
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "JL June Lee OWNER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "SP Soyeon Park MAINTAINER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "DK Daniel Kim LABELER"
+    },
+    {
+     "owner": "Stack",
+     "tag": "li",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "MC Mira Choi REVIEWER"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workspace--sidebar-collapsed",
+   "items": [
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workspace--overview",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workspace--large-image-set",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workspace--class-list-overflow",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-image-inspector--pattern-sequence",
+   "items": [
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-interactions--class-selection-workflow",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-interactions--dataset-selection-workflow",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-interactions--image-review-workflow",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-model-mapping--coco-mapping-workflow",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-reference-image--drop-target-active",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-reference-image--update-pending",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 198.19,
+     "border": 2,
+     "cause": "content",
+     "text": "Updating reference image…"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-reference-image--update-error",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 198.19,
+     "border": 2,
+     "cause": "content",
+     "text": "Failed to update reference ima"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-reference-image--multiple-bounding-boxes",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 218.19,
+     "border": 2,
+     "cause": "content",
+     "text": "1 / 3"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--no-project-selected",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--access-denied",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--load-error",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--classes-loading",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--no-classes",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--no-linked-datasets",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--linked-datasets-loading",
+   "items": [
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ImageGridCell",
+     "tag": "div",
+     "h": 105.5,
+     "border": 2,
+     "cause": "content",
+     "text": "Grid item"
+    },
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--images-loading",
+   "items": [
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-system-states--no-images",
+   "items": [
+    {
+     "owner": "ReferenceImageDropZone",
+     "tag": "div",
+     "h": 170.19,
+     "border": 2,
+     "cause": "content",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workflows--add-class",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-class-management-workflows--class-actions",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-create-project-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-create-project-system-states--submitting",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-create-project-system-states--server-error",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-create-project-workflows--project-creation",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-create-project-workflows--cancel",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-integrations--edge-analytics",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-integrations--deflectometry",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-interactions--customize-widgets-workflow",
+   "items": [
+    {
+     "owner": "DashboardCustomizePopover",
+     "tag": "div",
+     "h": 266,
+     "border": 2,
+     "cause": "border",
+     "text": "Visible Sections"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-interactions--date-range-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-interactions--export-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-interactions--layout-reset-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-layout-studies--compact-masonry",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-layout-studies--sectioned-grid",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-layouts--three-per-row",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-layouts--one-per-row",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-system-states--no-project-selected",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-system-states--loading",
+   "items": [
+    {
+     "owner": "Spinner",
+     "tag": "span",
+     "h": 31.11,
+     "border": 4,
+     "cause": "content",
+     "text": "Loading"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-system-states--load-error",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-system-states--no-analysis-data",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-dashboard-system-states--missing-project-name",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-general--preferences",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 173,
+     "border": 1,
+     "cause": "border",
+     "text": "Workspace Enable hover preview"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-general--non-admin-navigation",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--organization-license",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Organization license "
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--personal-license",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Personal license | Ex"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--expired-license",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Expired"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--license-loading",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Loading license infor"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--profile-saved",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Organization license "
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--password-change-workflow",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Organization license "
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--delete-shared-projects",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Organization license "
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 470,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete Account  This account o"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-account--delete-with-solo-project",
+   "items": [
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 69,
+     "border": 1,
+     "cause": "border",
+     "text": "License  Organization license "
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 81,
+     "border": 1,
+     "cause": "border",
+     "text": "Access Change password Log out"
+    },
+    {
+     "owner": "SettingsSection",
+     "tag": "section",
+     "h": 186,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete account  Type your emai"
+    },
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 634,
+     "border": 2,
+     "cause": "border",
+     "text": "Delete Account  This account o"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-devices--management-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-devices--loading",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-devices--offline-token-issued",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--no-project-selected",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--work-options",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--deflectometry-work-options",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--export-selection-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--import-idle",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--import-uploading",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-edge--import-completed-with-failures",
+   "items": [
+    {
+     "owner": "ImportTabUI",
+     "tag": "div",
+     "h": 34,
+     "border": 2,
+     "cause": "border",
+     "text": "IMG_0042.jpg: Image dimensions"
+    },
+    {
+     "owner": "ImportTabUI",
+     "tag": "div",
+     "h": 34,
+     "border": 2,
+     "cause": "border",
+     "text": "IMG_0987.jpg: Checksum mismatc"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-organization--overview",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-organization--saved",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-organization--members-and-invitations-workflow",
+   "items": [
+    {
+     "owner": "Stack",
+     "tag": "button",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "Sangha Lee sangha@external.com"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--configuration-workflow",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--deflectometry-project",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--non-owner-details",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--saving",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--invalid-name",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--no-project-selected",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-project--permissions-workflow",
+   "items": [
+    {
+     "owner": "Box",
+     "tag": "div",
+     "h": 322,
+     "border": 2,
+     "cause": "border",
+     "text": "Role\tLabeling\tShare / Analysis"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-storage--analytics",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-storage--loading",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-settings-modal-storage--error",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-workspace--overview",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 406,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Email Password Keep me"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-system-states--submitting",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 406,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Email Password Keep me"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-system-states--server-error",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 466,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Server error — try aga"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-system-states--permission-denied",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 466,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Account suspended. Con"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-system-states--long-credentials",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 406,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Email Password Keep me"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-login-workflows--sign-in",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 406,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign in Email Password Keep me"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-signup-workspace--overview",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 538,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign up Email Name Organizatio"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-signup-system-states--password-requirements",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 598,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign up Password does not meet"
+    }
+   ]
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-signup-workflows--account-creation",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 538,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign up Email Name Organizatio"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-license-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-license-workspace--bind-device",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workspace--online",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-login-workspace--overview",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 366,
+     "border": 2,
+     "cause": "border",
+     "text": "INGRADIENT EdgeOffline Load Pr"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-login-workspace--online-form",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 397,
+     "border": 2,
+     "cause": "content",
+     "text": "INGRADIENT EdgeOnline EMAIL PA"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workspace--setup",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "BRIGHTNESS N/A"
+    },
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "CONTRAST N/A"
+    },
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "FOCUS N/A"
+    },
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "OVER % N/A"
+    },
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 54,
+     "border": 2,
+     "cause": "border",
+     "text": "UNDER % N/A"
+    },
+    {
+     "owner": "SetupPanelView",
+     "tag": "details",
+     "h": 198,
+     "border": 2,
+     "cause": "border",
+     "text": "Features Analysis Gradient X G"
+    },
+    {
+     "owner": "AdvancedSection",
+     "tag": "details",
+     "h": 50,
+     "border": 2,
+     "cause": "border",
+     "text": "Advanced"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-statics-workspace--overview",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-login-system-states--no-project-file",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 149,
+     "border": 2,
+     "cause": "content",
+     "text": "INGRADIENT EdgeOffline Load Pr"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-login-system-states--signing-in",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 397,
+     "border": 2,
+     "cause": "content",
+     "text": "INGRADIENT EdgeOnline EMAIL PA"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-login-system-states--sign-in-error",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 437,
+     "border": 2,
+     "cause": "content",
+     "text": "INGRADIENT EdgeOnline EMAIL PA"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-license-system-states--key-filled",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-license-system-states--key-invalid",
+   "items": []
+  },
+  {
+   "id": "pages-platform-0-0-1-auth-signup-system-states--submitting",
+   "items": [
+    {
+     "owner": "Card",
+     "tag": "div",
+     "h": 538,
+     "border": 2,
+     "cause": "border",
+     "text": "Sign up Email Name Organizatio"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-license-system-states--bind-submitting",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--loading",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--empty",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--empty-online",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--fetch-error",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--session-expired",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 182,
+     "border": 2,
+     "cause": "border",
+     "text": "Session Expired  Your session "
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--add-dataset-open",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 646,
+     "border": 2,
+     "cause": "border",
+     "text": "Add mock dataset Dataset name "
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-system-states--export-open",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 266,
+     "border": 2,
+     "cause": "border",
+     "text": "Export mock dataset MS 04.05 —"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--add-dataset",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 646,
+     "border": 2,
+     "cause": "border",
+     "text": "Add mock dataset Dataset name "
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--add-dataset-cancel",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--create-project",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--export-retry",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 266,
+     "border": 2,
+     "cause": "border",
+     "text": "Export mock dataset MS 04.05 —"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--export-cancel",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--session-expired-confirm",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--session-expired-cancel",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-dataset-select-workflows--session-expired-escape",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-system-states--capturing",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-system-states--sequence-failed",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 206,
+     "border": 2,
+     "cause": "border",
+     "text": "Sequence Failed  Could not sta"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-system-states--log-filter-open",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-system-states--camera-offline",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-log-and-setup-workflows--log-filter-image",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-log-and-setup-workflows--setup-simulation",
+   "items": [
+    {
+     "owner": "SetupPanelView",
+     "tag": "details",
+     "h": 198,
+     "border": 2,
+     "cause": "border",
+     "text": "Features Analysis Gradient X G"
+    },
+    {
+     "owner": "AdvancedSection",
+     "tag": "details",
+     "h": 50,
+     "border": 2,
+     "cause": "border",
+     "text": "Advanced"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workflows--panel-collapse",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-license-system-states--key-submitting",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workflows--sequence-retry",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workflows--sequence-escape",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workflows--sequence-cancel",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-workflows--capturing-keyboard-lock",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-workflows--derived-retry",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-workflows--review-save",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-workflows--labeling-reset",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-workflows--collapsed-roi-comment",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workflows--selection-delete",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-workflows--canvas-edit",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workflows--group-selection",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workflows--inspector",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workflows--filter-date",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-workflows--session-selection",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-workflows--capture-ai-mode",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-workflows--general-draft",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-workflows--lighting-draft",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-workflows--experiments-draft",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-workflows--message-test-failed",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--force-ip",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--logs",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--server-camera",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--lighting-ps",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--field-test",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--cache-cleanup",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tab-workflows--license-update",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-app-chrome-workflows--system-cleanup",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--general",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-app-chrome-workflows--language-account",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--connection",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--capture",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--camera",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--lighting",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--data",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--server",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--logs",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--experiments",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--field-test",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-system-states--inspector-view",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-settings-tabs--about",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-images-system-states--inspector-edit",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-and-labeling--labeling",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-and-labeling--labeling-sequence-failed",
+   "items": [
+    {
+     "owner": "DialogShell",
+     "tag": "div",
+     "h": 206,
+     "border": 2,
+     "cause": "border",
+     "text": "Sequence Failed  Could not sta"
+    }
+   ]
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-and-labeling--review",
+   "items": []
+  },
+  {
+   "id": "pages-edge-0-0-6-capture-review-and-labeling--derived-unavailable",
+   "items": []
+  }
+ ]
+}

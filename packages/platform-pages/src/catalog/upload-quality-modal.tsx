@@ -40,7 +40,7 @@ export function UploadQualityModal({
       actions={
         <>
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>
-          <Button type="button" variant="accent" disabled={submitting} onClick={() => onConfirm(quality)}>
+          <Button type="button" variant="solid" disabled={submitting} onClick={() => onConfirm(quality)}>
             {submitting ? 'Uploading…' : 'Upload'}
           </Button>
         </>

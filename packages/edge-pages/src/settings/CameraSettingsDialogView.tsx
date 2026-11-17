@@ -1,10 +1,17 @@
 import { useEffect, useId } from 'react'
+import styled from 'styled-components'
 import {
-  ApertureIcon, BeakerIcon, CameraIcon, DatabaseIcon, FileTextIcon, FlaskIcon, InfoIcon,
-  LightbulbIcon, ServerIcon, SettingsIcon, SlidersIcon,
+  ApertureIcon, BeakerIcon, CameraIcon, DatabaseIcon, FactoryIcon, FileTextIcon, FlaskIcon, InfoIcon,
+  LightbulbIcon, ScanSearchIcon, ServerIcon, SettingsIcon, SlidersIcon,
 } from '@ingradient/ui/components'
 import { TwoColumnDialog, VerticalTabs, iconSizeNumbers } from '@ingradient/ui'
 import type { CameraSettingsDialogViewProps, SettingsTab } from './types'
+
+/** The dialog sidebar already paints the panel surface; a second translucent layer under the list
+ *  darkened only the list's height and left a seam on the dialog's left edge where it ended. */
+const SidebarTabs = styled(VerticalTabs)`
+  background: transparent;
+`
 
 interface TabDef {
   value: SettingsTab
@@ -17,6 +24,7 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
   const {
     activeTab, currentUserRole, labels,
     generalContent, connectionContent, cameraContent, captureContent, lightingContent,
+    plcContent, judgeContent,
     serverContent, dataContent, logsContent, experimentsContent,
     fieldTestContent, aboutContent,
     onClose, onSetActiveTab,
@@ -30,6 +38,8 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
     { value: 'camera',      label: labels.tabCamera,      icon: <SlidersIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
     { value: 'capture',     label: labels.tabCapture ?? '', icon: <ApertureIcon size={iconSizeNumbers.sm} />, visible: !!labels.tabCapture },
     { value: 'lighting',    label: labels.tabLighting,    icon: <LightbulbIcon size={iconSizeNumbers.sm} />, visible: true },
+    { value: 'plc',         label: labels.tabPlc ?? '',   icon: <FactoryIcon size={iconSizeNumbers.sm} />, visible: !!labels.tabPlc },
+    { value: 'judge',       label: labels.tabJudge ?? '', icon: <ScanSearchIcon size={iconSizeNumbers.sm} />, visible: !!labels.tabJudge },
     { value: 'server',      label: labels.tabServer,      icon: <ServerIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
     { value: 'data',        label: labels.tabData,        icon: <DatabaseIcon size={iconSizeNumbers.sm} />, visible: isPrivileged },
     { value: 'logs',        label: labels.tabLogs,        icon: <FileTextIcon size={iconSizeNumbers.sm} />, visible: true },
@@ -52,6 +62,8 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
     camera: cameraContent as JSX.Element | undefined ?? null,
     capture: captureContent as JSX.Element | undefined ?? null,
     lighting: lightingContent as JSX.Element | undefined ?? null,
+    plc: plcContent as JSX.Element | undefined ?? null,
+    judge: judgeContent as JSX.Element | undefined ?? null,
     server: serverContent as JSX.Element | undefined ?? null,
     data: dataContent as JSX.Element | undefined ?? null,
     experiments: experimentsContent as JSX.Element | undefined ?? null,
@@ -65,10 +77,10 @@ export function CameraSettingsDialogView(props: CameraSettingsDialogViewProps): 
       title={labels.title}
       onClose={onClose}
       width="min(var(--ig-popup-4xl-narrow), 92vw)"
-      height="calc(100dvh - var(--ig-space-13))"
-      sidebarWidth="var(--ig-popup-2xs-plus)"
+      height="calc(100dvh - var(--ig-spacing-32))"
+      sidebarWidth="var(--ig-layout-size-settings-nav-width)"
       sidebar={
-        <VerticalTabs
+        <SidebarTabs
           appearance="settings"
           items={visibleTabs.map((t) => ({ value: t.value, label: t.label, icon: t.icon,
             id: `${tabId}-${t.value}`, panelId: `${tabId}-${t.value}-panel`,

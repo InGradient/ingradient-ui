@@ -9,6 +9,7 @@ export const Wrap = styled.div`
 export const Textarea = styled.textarea`
   ${controlField}
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   resize: vertical;
   min-height: var(--ig-control-height-mid-plus-tall);
 `
@@ -42,10 +43,12 @@ export const Option = styled.button<{ $active: boolean }>`
 
 export const Primary = styled.span`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-medium);
 `
 
 export const Secondary = styled.span`
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-muted);
 `

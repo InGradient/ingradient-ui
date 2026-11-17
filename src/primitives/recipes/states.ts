@@ -3,13 +3,14 @@ import { css } from 'styled-components'
 export const stateTitleText = css`
   color: var(--ig-color-state-title);
   font-size: var(--ig-font-size-state-title);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-state-title);
 `
 
 export const stateDescriptionText = css`
   color: var(--ig-color-state-description);
   font-size: var(--ig-font-size-state-description);
-  line-height: var(--ig-line-height-state-description);
+  line-height: var(--ig-leading-xs);
 `
 
 export const stateCenteredLayout = css`

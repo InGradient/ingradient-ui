@@ -31,7 +31,7 @@ export function WorkspaceShell(props: WorkspaceViewProps): JSX.Element {
             items={tabItems}
             value={activeTab}
             onChange={(v) => { if (!isCapturing) onTabChange(v as WorkspaceTab) }}
-            style={{ margin: '0 0 var(--ig-space-1)' }}
+            style={{ margin: '0 0 var(--ig-spacing-4)' }}
           />
           {isSetupMode && setupPanelTarget && setupPanelContent
             && ReactDOM.createPortal(setupPanelContent, setupPanelTarget)}

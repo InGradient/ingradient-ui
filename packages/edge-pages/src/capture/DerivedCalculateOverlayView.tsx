@@ -22,10 +22,10 @@ export function DerivedCalculateOverlayView(props: DerivedCalculateOverlayViewPr
 
   return (
     <Scrim>
-      <Stack gap="var(--ig-space-3)" align="center" style={{ maxWidth: '21rem', textAlign: 'center' }}>
+      <Stack gap="var(--ig-spacing-8)" align="center" style={{ maxWidth: '21rem', textAlign: 'center' }}>
         <Button
           size="md"
-          variant="accent"
+          variant="solid"
           disabled={running || state === 'unavailable'}
           onClick={onCalculate}
         >
@@ -34,7 +34,7 @@ export function DerivedCalculateOverlayView(props: DerivedCalculateOverlayViewPr
 
         {/* 버튼이 눌리지 않는 이유는 남긴다 — 없으면 왜 안 되는지 알 수 없다. */}
         {(state === 'unavailable' || state === 'error') && reason && (
-          <Text tone="muted" size="var(--ig-font-size-xs)">{reason}</Text>
+          <Text tone="muted" size="var(--ig-text-caption)">{reason}</Text>
         )}
       </Stack>
     </Scrim>

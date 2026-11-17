@@ -22,7 +22,7 @@ const Sidebar = styled.aside<{ $flush: boolean }>`
 const Header = styled.div`
   min-height: var(--ig-layout-sidebar-header);
   padding: 0 var(--ig-spacing-16);
-  border-bottom: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -34,6 +34,7 @@ const Title = styled.h2`
   margin: 0;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 

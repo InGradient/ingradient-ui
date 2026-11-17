@@ -76,7 +76,7 @@ export const DropdownMenu = styled.div.attrs<{ $layout: DropdownMenuLayout }>(({
 }))<{ $layout: DropdownMenuLayout }>`
   position: fixed;
   z-index: calc(var(--ig-z-modal) + 10);
-  padding: var(--ig-space-2);
+  padding: calc(var(--ig-space-2) - var(--ig-border-1px));
   border-radius: var(--ig-radius-md);
   background: linear-gradient(180deg, var(--ig-color-dropdown-menu-a) 0%, var(--ig-color-dropdown-menu-b) 100%);
   border: var(--ig-border-1px) solid var(--ig-color-border-strong);
@@ -114,12 +114,14 @@ export const DropdownOptionButton = styled.button<{ $active: boolean; $highlight
 
 export const DropdownOptionLabel = styled.div`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   font-weight: var(--ig-font-weight-semibold);
 `
 
 export const DropdownOptionDescription = styled.div`
   margin-top: var(--ig-space-1);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: var(--ig-color-text-soft);
 `
 

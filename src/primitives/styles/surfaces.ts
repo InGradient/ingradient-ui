@@ -1,4 +1,5 @@
 export {
+  paddingInsideBorder,
   surfaceCard,
   surfacePanel,
   surfaceRaised,

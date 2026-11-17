@@ -11,6 +11,7 @@ const Table = styled.table`
   width: 100%;
   & th {
     font-size: var(--ig-font-size-xs);
+    line-height: var(--ig-leading-xs);
     font-weight: var(--ig-font-weight-semibold);
     color: var(--ig-color-text-muted);
     text-align: center;
@@ -33,6 +34,7 @@ const Cell = styled.td<{ $intensity: number }>`
   background: color-mix(in srgb, var(--ig-color-accent) ${(p) => Math.round((0.08 + p.$intensity * 0.55) * 100)}%, transparent);
   border-radius: var(--ig-radius-2xs);
   font-size: var(--ig-font-size-xs);
+  line-height: var(--ig-leading-xs);
   color: ${(p) => (p.$intensity > 0.5 ? 'var(--ig-color-text-primary)' : 'var(--ig-color-text-secondary)')};
   text-align: center;
   padding: var(--ig-space-2) var(--ig-space-3);

@@ -34,6 +34,7 @@ const Name = styled.span`
 const Count = styled.span`
   flex-shrink: 0;
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-soft);
 `
 

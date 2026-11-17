@@ -20,9 +20,11 @@ const ShellBase = styled.div<{ $width: string; $height: string | null; $maxHeigh
 
 const Shell = withSurfaceDepth(ShellBase, { floating: true, displayName: 'TwoColumnDialogShell' })
 
+// The shell's 1px border sits outside these parts; the header top and both columns' bottom padding
+// give it back so a content-sized dialog stays on the 4px grid (DESIGN "Borders stay inside the grid").
 const Header = styled.div`
-  padding: var(--ig-space-7) var(--ig-space-11);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  padding: calc(var(--ig-space-7) - var(--ig-border-1px)) var(--ig-space-11) var(--ig-space-7);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,14 +42,14 @@ const Sidebar = styled.div<{ $width: string }>`
   width: ${(p) => p.$width};
   background-color: var(--ig-color-surface-panel);
   border-right: var(--ig-border-1px) solid var(--ig-color-border-subtle);
-  padding: var(--ig-space-5) 0;
+  padding: var(--ig-space-5) 0 calc(var(--ig-space-5) - var(--ig-border-1px));
   flex-shrink: 0;
   overflow-y: auto;
 `
 
 const MainPanel = styled.div`
   flex: 1;
-  padding: var(--ig-space-11);
+  padding: var(--ig-space-11) var(--ig-space-11) calc(var(--ig-space-11) - var(--ig-border-1px));
   overflow-y: auto;
 `
 

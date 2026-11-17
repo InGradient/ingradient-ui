@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, ReactNode, SetStateAction } from 'react'
 import { Switch, Tooltip } from '@ingradient/ui'
 import { HelpCircleIcon, NumberField } from '@ingradient/ui/components'
 import { FieldGroup, FieldHint, FieldLabelWithHelp, SectionTitle } from '@ingradient/ui/patterns'
@@ -19,9 +19,13 @@ export interface CameraTuningSectionProps {
   onUpdateCameraParams: Dispatch<SetStateAction<CameraParams>>
   onWhiteBalanceCalibrate: () => void
   onPreviewPattern: (pattern: PreviewPatternLabel | null) => void
+  /** Slot under the heading, e.g. CaptureOptimizeView. */
+  captureOptimize?: ReactNode
+  showSolidExposure?: boolean
 }
 
 /** 노출은 초 단위로 보여주고 µs 로 저장한다. 카메라는 100µs 단위라 그 격자에 맞춰 반올림한다. */
+const NO_WRAP = { whiteSpace: 'nowrap' } as const
 const US_PER_SECOND = 1_000_000
 const EXPOSURE_STEP_US = 100
 const MIN_EXPOSURE_US = 100
@@ -30,18 +34,22 @@ const MAX_EXPOSURE_US = 5_000_000
 export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Element {
   const {
     isConnected, isSetupBusy, disabled, cameraParams, previewPatternLabel, labels,
-    onUpdateCameraParams, onWhiteBalanceCalibrate, onPreviewPattern,
+    onUpdateCameraParams, onWhiteBalanceCalibrate, onPreviewPattern, captureOptimize, showSolidExposure,
   } = props
+  const solidPct = cameraParams.solidExposurePct ?? 100
+  const solidMs = (cameraParams.exposure * solidPct) / 100 / 1000
   const focusPeakingOn = previewPatternLabel === FOCUS_PEAKING_PATTERN
 
   return (
-    <FieldGroup style={{ gap: 'var(--ig-space-4)' }}>
+    <FieldGroup style={{ gap: 'var(--ig-spacing-8)' }}>
       <SectionTitle>{labels.cameraTuning}</SectionTitle>
-      <Text tone="muted" size="var(--ig-font-size-xs)">
+      <Text tone="muted" size="var(--ig-text-caption)">
         {isConnected ? labels.livePreviewAvailable : labels.noCamera}
       </Text>
 
-      <Inline gap="var(--ig-space-2)" align="center">
+      {captureOptimize}
+
+      <Inline gap="var(--ig-spacing-8)" align="center">
         <PatternButton
           type="button"
           $active={focusPeakingOn}
@@ -60,7 +68,7 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.exposure} help={labels.exposureDesc} />
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <NumberField
             value={+(cameraParams.exposure / US_PER_SECOND).toFixed(4)}
             min={0.0001} max={5} step={0.1}
@@ -78,7 +86,7 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
           />
           <FieldHint>s</FieldHint>
         </Inline>
-        <Inline gap="var(--ig-space-4)" align="center">
+        <Inline gap="var(--ig-spacing-8)" align="center">
           <FieldHint>{labels.auto}</FieldHint>
           <Switch
             checked={cameraParams.exposureAuto}
@@ -88,6 +96,25 @@ export function CameraTuningSection(props: CameraTuningSectionProps): JSX.Elemen
           />
         </Inline>
       </FieldGroup>
+
+      {showSolidExposure && labels.solidExposurePct && (
+        <FieldGroup>
+          <FieldLabelWithHelp label={labels.solidExposurePct} help={labels.solidExposurePctDesc ?? ''} />
+          <Inline gap="var(--ig-spacing-8)" align="center" wrap="nowrap">
+            <NumberField
+              value={solidPct}
+              min={10} max={100} step={5}
+              disabled={disabled || cameraParams.exposureAuto}
+              format={(v: number) => String(Math.round(v))}
+              parse={parseFloat}
+              aria-label={labels.solidExposurePct}
+              onChange={(v: number) => onUpdateCameraParams((p) => ({ ...p, solidExposurePct: Math.round(v) }))}
+            />
+            <FieldHint>%</FieldHint>
+            {!cameraParams.exposureAuto && <FieldHint style={NO_WRAP}>= {solidMs.toFixed(solidMs < 10 ? 1 : 0)} ms</FieldHint>}
+          </Inline>
+        </FieldGroup>
+      )}
 
       <FieldGroup>
         <FieldLabelWithHelp label={labels.gain} help={labels.gainDesc} />

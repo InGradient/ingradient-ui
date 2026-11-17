@@ -4,7 +4,8 @@ import { controlSizeNumbers } from '../../tokens/core'
 import { Avatar } from '../feedback/avatar'
 import { RemovableItemList } from './removable-item-list'
 
-const TEXT_BLOCK_STYLE = { flex: 1, minWidth: 0, gap: 'var(--ig-space-2px)' }
+// Label and meta sit on their px line heights (20 + 16) with no gap, so the row stays on the 4px grid.
+const TEXT_BLOCK_STYLE = { flex: 1, minWidth: 0, gap: 'var(--ig-space-0)' }
 const LABEL_STYLE = {
   overflow: 'hidden' as const,
   textOverflow: 'ellipsis' as const,

@@ -25,6 +25,8 @@ const meta = {
       'Mobile Dataset Catalog shell, selector, bottom sheets, and the desktop-only analytics fallback contract.',
     ),
     viewport: { defaultViewport: 'mobile' },
+    // Mobile-only shell: narrow-width work is deferred, so its rows are not yet on the 4px grid.
+    grid4px: 'off',
   },
   argTypes: catalogArgTypes(SCENARIOS),
   args: { scenario: 'mobile-default', ...createCatalogActionArgs() },

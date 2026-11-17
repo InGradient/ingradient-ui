@@ -7,6 +7,8 @@ const Wrap = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  /* Callers may narrow the field; the minimum keeps the value visible beside the stepper. */
+  min-width: var(--ig-size-number-field-min);
 `
 
 const Input = styled.input`
@@ -31,16 +33,24 @@ const SpinBtn = styled.button`
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: none;
+  /* The stepper spans the field's full height so each half is exactly half of the 4px control
+     (16px in a 32px field). Transparent borders keep the hover fill off the field's own border line. */
+  border: var(--ig-border-1px) solid transparent;
+  border-left: 0;
+  background-clip: padding-box;
+  &:first-child { border-bottom: 0; }
+  &:last-child { border-top: 0; }
   color: var(--ig-color-text-soft);
   cursor: pointer;
   font-size: var(--ig-font-size-3xs);
-  line-height: var(--ig-line-height-none);
+  line-height: var(--ig-leading-3xs);
   padding: 0;
   &:hover { background: var(--ig-color-surface-interactive); color: var(--ig-color-text-primary); }
-  &:first-child { border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle); }
+  &:first-child { box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle); }
   &:disabled { opacity: var(--ig-opacity-overlay); cursor: default; }
 `
+
+const STEPPER_FULL_HEIGHT = { top: 0, bottom: 0 } as const
 
 export interface NumberFieldProps {
   value: number
@@ -132,7 +142,7 @@ export function NumberField({
         onKeyDown={handleKeyDown}
       />
       {!disabled && (
-        <InputAdornment side="right" inset="var(--ig-space-1px)" stretchY>
+        <InputAdornment side="right" inset="0" stretchY style={STEPPER_FULL_HEIGHT}>
           <SpinnerGroup>
             <SpinBtn type="button" tabIndex={-1} aria-label="Increase"
               disabled={max !== undefined && value >= max}

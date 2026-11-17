@@ -40,15 +40,15 @@ export function DatasetSelectHeader(props: DatasetSelectHeaderProps): JSX.Elemen
   return (
     <Header>
       <Inline align="center" wrap="nowrap" style={{ minHeight: 0 }}>
-        <Text as="h1" size="var(--ig-font-size-2xl)" weight="bold">
+        <Text as="h1" size="var(--ig-text-title)" weight="bold">
           {title}
           <Badge $tone={mode === 'online' ? 'success' : 'warning'}>
             {mode === 'online' ? onlineLabel : offlineLabel}
           </Badge>
         </Text>
       </Inline>
-      <Inline align="center" gap="var(--ig-space-4)" wrap="nowrap">
-        <Inline align="center" wrap="nowrap" style={{ marginRight: 'var(--ig-space-1)' }} title={connectionTitle}>
+      <Inline align="center" gap="var(--ig-spacing-8)" wrap="nowrap">
+        <Inline align="center" wrap="nowrap" style={{ marginRight: 'var(--ig-spacing-4)' }} title={connectionTitle}>
           <StatusDot
             type="button"
             $tone={connectionStatus === 'connected' ? 'success' : connectionStatus === 'connecting' ? 'warning' : 'danger'}

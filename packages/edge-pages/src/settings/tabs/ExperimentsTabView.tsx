@@ -40,7 +40,7 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
           <Rows>
             {fringePeriods.map((period, index) => (
               // 주기는 중복될 수 있어 값을 key 로 쓸 수 없다. 목록은 순서로만 편집한다.
-              <Inline key={index} gap="var(--ig-space-3)" align="center">
+              <Inline key={index} gap="var(--ig-spacing-8)" align="center">
                 <NumberField
                   value={period}
                   min={limits.minPeriod}
@@ -51,7 +51,7 @@ export function ExperimentsTabView(props: ExperimentsTabViewProps): JSX.Element 
                   onChange={(value: number) => onChangePeriod(index, value)}
                 />
                 {/* 값이 없어도 자리를 차지해 행이 흔들리지 않는다. */}
-                <Text tone="muted" size="var(--ig-font-size-2xs)" style={{ flex: 1, minWidth: 0 }}>
+                <Text tone="muted" size="var(--ig-text-micro)" style={{ flex: 1, minWidth: 0 }}>
                   {isDuplicate(fringePeriods, index)
                     ? labels.duplicate
                     : index === primaryIndex ? labels.primaryBadge : ''}

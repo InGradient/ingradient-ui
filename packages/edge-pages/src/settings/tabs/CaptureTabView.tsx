@@ -43,7 +43,7 @@ export function CaptureTabView(props: CaptureTabViewProps): JSX.Element {
         <>
           <SectionLabel>{labels.aiSection}</SectionLabel>
 
-          <Stack gap="var(--ig-space-2)">
+          <Stack gap="var(--ig-spacing-8)">
             <Hint>{labels.aiPattern}</Hint>
             <DropdownSelect
               value={aiPattern}
@@ -55,7 +55,7 @@ export function CaptureTabView(props: CaptureTabViewProps): JSX.Element {
             <Hint>{labels.aiPatternHint}</Hint>
           </Stack>
 
-          <Stack gap="var(--ig-space-2)">
+          <Stack gap="var(--ig-spacing-8)">
             <Hint>{labels.aiFallback}</Hint>
             <DropdownSelect
               value={aiFallback}

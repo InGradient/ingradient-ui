@@ -41,6 +41,7 @@ const Icon = styled.span<{ $status: StepStatus }>`
 
 const Label = styled.span<{ $status: StepStatus }>`
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   color: ${(p) =>
     p.$status === 'pending' ? 'var(--ig-color-text-soft)' : 'var(--ig-color-text-primary)'};
 `

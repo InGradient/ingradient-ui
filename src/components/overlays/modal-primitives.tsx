@@ -35,7 +35,7 @@ export const CompactModalCard = styled(ModalCard)`
 
 export const ModalHeader = styled.div`
   padding: var(--ig-space-9) var(--ig-space-10) var(--ig-space-7);
-  border-bottom: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+  box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,6 +47,7 @@ export const ModalHeader = styled.div`
 export const ModalTitle = styled.h2`
   margin: 0;
   font-size: var(--ig-font-size-3xl);
+  line-height: var(--ig-leading-3xl);
   font-weight: var(--ig-font-weight-bold);
 `
 
@@ -64,6 +65,6 @@ export const Drawer = styled.aside<{ $side?: 'left' | 'right' }>`
   ${(p) => (p.$side === 'left' ? 'left: 0;' : 'right: 0;')}
   width: min(var(--ig-popup-2xl-narrow), 100vw);
   z-index: var(--ig-z-drawer);
-  padding: var(--ig-space-9);
+  padding: calc(var(--ig-space-9) - var(--ig-border-1px));
   border-radius: 0;
 `

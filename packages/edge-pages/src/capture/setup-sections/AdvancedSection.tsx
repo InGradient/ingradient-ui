@@ -1,8 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react'
-import { SelectField, Switch, TextField } from '@ingradient/ui'
+import { SelectField, Switch } from '@ingradient/ui'
 import { NumberField } from '@ingradient/ui/components'
 import { FieldGroup, FieldHint, FieldLabelWithHelp, SectionTitle } from '@ingradient/ui/patterns'
-import { Inline, Text } from '@ingradient/ui/primitives'
+import { Grid, Inline, Text } from '@ingradient/ui/primitives'
 
 import type { CameraParams, SetupPanelLabels } from '../types'
 import { SetupAccordion, SetupAccordionSummary } from './setup-shell'
@@ -46,7 +46,7 @@ export function AdvancedSection(props: AdvancedSectionProps): JSX.Element {
             aria-label={labels.frameRate}
             onChange={(v: number) => onUpdateCameraParams((p) => ({ ...p, frameRate: v }))}
           />
-          <Inline gap="var(--ig-space-4)" align="center">
+          <Inline gap="var(--ig-spacing-8)" align="center">
             <FieldHint>{labels.frameRateEnable}</FieldHint>
             <Switch
               checked={cameraParams.frameRateEnabled}
@@ -113,31 +113,29 @@ export function AdvancedSection(props: AdvancedSectionProps): JSX.Element {
         </FieldGroup>
 
         <SectionTitle>{labels.advancedHardware}</SectionTitle>
-        <Text tone="muted" size="var(--ig-font-size-xs)">{labels.hardwareComingSoon}</Text>
+        <Text tone="muted" size="var(--ig-text-caption)">{labels.hardwareComingSoon}</Text>
 
         <FieldGroup>
           <FieldLabelWithHelp label={labels.roi} help={labels.roiDesc} />
-          <Inline gap="var(--ig-space-2)" align="center" wrap="wrap">
+          <Grid columns="repeat(2, minmax(0, 1fr))" gap="var(--ig-spacing-8)">
             {ROI_FIELDS.map((key) => (
-              <TextField
+              <NumberField
                 key={key}
-                size="sm"
-                type="number"
-                min="0"
-                step="1"
                 aria-label={key}
-                style={{ width: 'var(--ig-popup-4xs, 72px)' }}
-                value={cameraParams[key] || ''}
+                min={0}
+                step={1}
+                value={cameraParams[key] ?? 0}
+                format={(v) => (v ? String(v) : '')}
                 disabled
                 onChange={() => undefined}
               />
             ))}
-          </Inline>
+          </Grid>
         </FieldGroup>
 
         <FieldGroup>
           <FieldLabelWithHelp label={labels.hardwareTrigger} help={labels.hardwareTriggerDesc} />
-          <Inline gap="var(--ig-space-4)" align="center">
+          <Inline gap="var(--ig-spacing-8)" align="center">
             <SelectField value={cameraParams.triggerSource} disabled aria-label={labels.hardwareTrigger} onChange={() => undefined}>
               <option value="Line1">Line 1</option>
               <option value="Line2">Line 2</option>

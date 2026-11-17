@@ -1,4 +1,5 @@
 export * from './StaticsView'
+export * from './LiveStatsView'
 export * from './SessionChartsView'
 export * from './ImageChartsView'
 export * from './LabelingChartsView'

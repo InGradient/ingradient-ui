@@ -27,6 +27,7 @@ export const DragOverFull = styled.div`
   justify-content: center;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title);
+  line-height: var(--ig-text-title-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 
@@ -45,12 +46,13 @@ export const DragOverGrid = styled.div`
   align-items: center;
   justify-content: center;
   border: var(--ig-border-2px) dashed var(--ig-color-white-40);
-  // Wraps the image cards (radius-md), so it must be rounder than they are.
+  /* Wraps the image cards (radius-md), so it must be rounder than they are. */
   border-radius: var(--ig-radius-lg);
   z-index: var(--ig-z-sticky);
   pointer-events: none;
   color: var(--ig-color-text-primary);
   font-size: var(--ig-text-title-sm);
+  line-height: var(--ig-text-title-sm-leading);
   font-weight: var(--ig-font-weight-semibold);
 `
 
@@ -62,7 +64,7 @@ export const MobileBottomSheet = styled.div`
   bottom: var(--ig-layout-size-mobile-bottom-sheet-offset);
   z-index: var(--ig-z-sticky-top);
   background: var(--ig-color-surface-raised);
-  border-top: var(--ig-border-1px) solid var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
+  box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-catalog-divider-color, var(--ig-color-border-subtle));
   max-height: 60vh;
   overflow: auto;
   padding: var(--ig-spacing-12);

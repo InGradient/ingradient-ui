@@ -29,7 +29,8 @@ export const IngradientGlobalStyle = createGlobalStyle`
 
   body {
     font-family: var(--ig-font-sans);
-    line-height: var(--ig-line-height-snug);
+    /* Pixel leading for the 16px default size; components pair each font size with its own leading. */
+    line-height: var(--ig-leading-lg);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }

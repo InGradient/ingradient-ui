@@ -17,6 +17,7 @@ export const TabContent = styled(UiPageContent)`
 export const SectionTitle = styled.h3`
   margin: 0;
   font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   font-weight: var(--ig-font-weight-semibold);
   color: var(--ig-color-text-primary);
 `
@@ -33,7 +34,7 @@ export const Section = styled.section`
   & + & {
     margin-top: var(--ig-spacing-16);
     padding-top: var(--ig-spacing-24);
-    border-top: var(--ig-border-1px) solid var(--ig-color-border-subtle);
+    box-shadow: inset 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
   }
 `
 
@@ -64,16 +65,18 @@ export const ControlRow = styled.div`
 
 export const Label = styled.label`
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-text-muted);
   white-space: nowrap;
 `
 
 export const NumberInput = styled(NumberField)`
-  width: calc(var(--ig-spacing-24) * 2);
+  width: var(--ig-size-number-field-min);
 `
 
 export const Hint = styled.p`
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   margin: var(--ig-spacing-8) 0 0;
 `
@@ -93,6 +96,7 @@ export const WarningBox = styled(Alert).attrs({ $tone: 'warning' as const })`
 export const ProgressNote = styled.span`
   margin-left: var(--ig-spacing-8);
   font-size: var(--ig-text-micro);
+  line-height: var(--ig-text-micro-leading);
   color: var(--ig-color-text-muted);
 `
 
@@ -108,11 +112,12 @@ export const StatusPillMb = styled(StatusPill)`
 `
 
 export const ReportBox = styled.div`
-  padding: var(--ig-spacing-12);
+  padding: calc(var(--ig-spacing-12) - var(--ig-border-1px));
   background: var(--ig-color-bg-canvas);
   border: var(--ig-border-1px) solid var(--ig-color-border-subtle);
   border-radius: var(--ig-radius-md);
   font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
 `
 
 export const ReportGrid = styled.div`
@@ -145,13 +150,14 @@ export const ActionsRow = styled.div`
 
 export const ProgressWrap = styled.div`
   width: 100%;
-  max-width: var(--ig-popup-2xl-narrow);
+  max-width: var(--ig-layout-size-form-narrow);
   margin: var(--ig-spacing-8) auto 0;
 `
 
 export const ProgressLabel = styled.div`
   margin-top: var(--ig-spacing-8);
   font-size: var(--ig-text-caption);
+  line-height: var(--ig-text-caption-leading);
   color: var(--ig-color-text-muted);
   font-variant-numeric: tabular-nums;
 `

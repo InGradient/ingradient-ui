@@ -5,28 +5,30 @@ import { Inline, Stack } from '@ingradient/ui/primitives'
 import type { ConnectSectionViewProps } from '../types'
 
 const ErrorMsg = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-danger);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
-  margin-top: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  margin-top: var(--ig-spacing-8);
 `
 
 const ConnectedMsg = styled.div`
-  font-size: var(--ig-font-size-sm);
+  font-size: var(--ig-text-body-sm);
+  line-height: var(--ig-text-body-sm-leading);
   color: var(--ig-color-success);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export function ConnectSectionView(props: ConnectSectionViewProps): JSX.Element {
   const { isConnecting, isConnected, connectionError, canConnect, labels, onConnect, onDisconnect } = props
   return (
-    <Stack as="section" gap="var(--ig-space-5)" style={{ marginBottom: 'var(--ig-space-7)' }}>
+    <Stack as="section" gap="var(--ig-spacing-12)" style={{ marginBottom: 'var(--ig-spacing-16)' }}>
       <SectionTitle>{labels.connectTitle}</SectionTitle>
-      <Inline gap="var(--ig-space-3)" align="center" wrap="nowrap">
+      <Inline gap="var(--ig-spacing-8)" align="center" wrap="nowrap">
         {isConnected ? (
           <Button size="sm" variant="secondary" onClick={onDisconnect}>{labels.disconnect}</Button>
         ) : (

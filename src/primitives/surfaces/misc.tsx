@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { iconSizeNumbers } from '../../tokens/core'
 
+/** A 1px line that takes no layout space (drawn as a shadow under a 0px box), so the gaps around it stay on the 4px grid. */
 export const Divider = styled.hr`
   width: 100%;
-  height: var(--ig-space-1px);
+  height: 0;
   margin: 0;
   border: 0;
-  background: var(--ig-color-border-subtle);
+  box-shadow: 0 var(--ig-border-1px) 0 var(--ig-color-border-subtle);
 `
 
 /** Keyboard-focusable overflow region; callers provide an aria-label when the region needs a distinct name. */

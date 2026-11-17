@@ -19,14 +19,14 @@ export function RecentDatasetCard(props: RecentDatasetCardProps): JSX.Element {
   const { dataset, isLatest, recentBadgeLabel, noClassesLabel, imagesLabel, onSelect } = props
   return (
     <RecentCard $isLatest={isLatest} onClick={() => onSelect(dataset)}>
-      <Inline align="flex-start" gap="var(--ig-space-2)" wrap="nowrap" style={{ width: '100%' }}>
+      <Inline align="flex-start" gap="var(--ig-spacing-8)" wrap="nowrap" style={{ width: '100%' }}>
         <DatasetName title={dataset.dataset_name}>{dataset.dataset_name}</DatasetName>
         {isLatest && <><Spacer /><Badge $tone="accent">{recentBadgeLabel}</Badge></>}
       </Inline>
-      <Text size="var(--ig-font-size-2xs)" tone="muted">{dataset.project_name}</Text>
+      <Text size="var(--ig-text-micro)" tone="muted">{dataset.project_name}</Text>
       <CardBottom>
         <ImageCount>{imagesLabel(dataset.image_count ?? 0, dataset.group_count)}</ImageCount>
-        <Inline gap="var(--ig-space-1)" justify="flex-end">{renderClassChips(dataset.classes, noClassesLabel)}</Inline>
+        <Inline gap="var(--ig-spacing-4)" justify="flex-end">{renderClassChips(dataset.classes, noClassesLabel)}</Inline>
       </CardBottom>
     </RecentCard>
   )

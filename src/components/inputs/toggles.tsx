@@ -7,6 +7,7 @@ const ToggleLabel = styled.label`
   gap: var(--ig-space-3);
   color: var(--ig-color-text-secondary);
   font-size: var(--ig-font-size-sm);
+  line-height: var(--ig-leading-sm);
   cursor: pointer;
   user-select: none;
 `
