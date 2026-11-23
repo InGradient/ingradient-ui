@@ -130,7 +130,7 @@ export function TwoColumnDialog({
         tabIndex={-1}
       >
         <Header>
-          <Heading id={titleId} level={2} style={{ fontSize: 'var(--ig-font-size-xl)' }}>{title}</Heading>
+          <Heading id={titleId} level={2} style={{ fontSize: 'var(--ig-font-size-3xl)', lineHeight: 'var(--ig-leading-3xl)' }}>{title}</Heading>
           <DialogCloseButton onClick={onClose} />
         </Header>
         <Body>
