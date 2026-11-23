@@ -14,7 +14,7 @@ import { DERIVED_ORDER, patternLabelToUI } from './pattern-helpers'
 import type { SetupPanelViewProps } from './types'
 
 const UNSAVED_HINT_STYLE = { padding: 'var(--ig-spacing-8) var(--ig-spacing-16) 0' } as const
-const SAVE_SUCCESS_ICON_COLOR = 'var(--ig-color-success-fg, var(--ig-color-success))'
+const SAVE_SUCCESS_ICON_COLOR = 'var(--ig-color-success)'
 
 export function SetupPanelView(props: SetupPanelViewProps): JSX.Element {
   const {

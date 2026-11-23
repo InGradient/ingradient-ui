@@ -22,7 +22,7 @@ export function DerivedCalculateOverlayView(props: DerivedCalculateOverlayViewPr
 
   return (
     <Scrim>
-      <Stack gap="var(--ig-spacing-8)" align="center" style={{ maxWidth: '21rem', textAlign: 'center' }}>
+      <Stack gap="var(--ig-spacing-8)" align="center" style={{ maxWidth: 'var(--ig-popup-md)', textAlign: 'center' }}>
         <Button
           size="md"
           variant="solid"
