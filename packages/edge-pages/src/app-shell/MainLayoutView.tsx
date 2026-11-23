@@ -12,6 +12,10 @@ import type { MainLayoutViewProps } from './types'
 const COLLAPSED_RAIL = 'calc(var(--ig-control-height-xl) + var(--ig-spacing-8))'
 /** Column widths persist like Platform Class Management. */
 const COLUMN_STORAGE_KEY = 'ig-edge-workspace-columns'
+/** Two 8px ResizeHandles sit beside the side panels. Taking them out of the center minimum
+ *  keeps side + center + side inside a 1280px window instead of scrolling Logs off the left edge. */
+const RESIZE_HANDLES_WIDTH = 16
+const CENTER_MIN_WIDTH = popupSizeNumbers['3xlNarrow'] - RESIZE_HANDLES_WIDTH
 
 /**
  * Panels render their own collapsed view (`data-ig-collapsed-panel`). The layout reads it
@@ -54,7 +58,7 @@ function MainLayoutViewContent(props: MainLayoutViewProps): JSX.Element {
     }
     return [
       { ...side, collapsed: leftCollapsed },
-      { width: 'auto', minWidth: popupSizeNumbers['3xlNarrow'] },
+      { width: 'auto', minWidth: CENTER_MIN_WIDTH },
       { ...side, collapsed: rightCollapsed },
     ]
   }, [leftCollapsed, rightCollapsed])
