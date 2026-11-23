@@ -11,19 +11,17 @@ const rowBase = css`
   gap: var(--ig-space-4);
   padding: 0;
   color: var(--ig-color-text-primary);
-  font-size: var(--ig-font-size-xs);
-  line-height: var(--ig-leading-xs);
+  font-size: var(--ig-text-body);
+  line-height: var(--ig-text-body-leading);
   &:last-child {
     border-bottom: 0;
   }
 `
 
-/** 구분선형. 항목 사이를 선으로 끊고 글자도 한 단계 키운다. */
+/** 구분선형. 항목 사이를 선으로 끊는다. 글자 크기는 촘촘한 형태와 같다. */
 const rowDivider = css`
   padding: var(--ig-space-4) 0;
   box-shadow: inset 0 var(--ig-space-neg-1px) 0 var(--ig-color-border-strong);
-  font-size: var(--ig-font-size-md);
-  line-height: var(--ig-leading-md);
 `
 
 const Row = styled.label<{ $divider: boolean }>`
@@ -77,7 +75,7 @@ export function SettingsRow({
       <Row as="div" $divider={divider} className={className}>
         <TextBlock>
           <label htmlFor={controlId}>{label}</label>
-          {description != null && <Text id={descriptionId} as="span" tone="muted" size="var(--ig-font-size-2xs)">{description}</Text>}
+          {description != null && <Text id={descriptionId} as="span" tone="muted" size="var(--ig-text-body-sm)">{description}</Text>}
         </TextBlock>
         {cloneElement(control, {
           id: controlId,
@@ -91,7 +89,7 @@ export function SettingsRow({
       {description != null ? (
         <TextBlock>
           <span>{label}</span>
-          <Text as="span" tone="muted" size="var(--ig-font-size-2xs)">{description}</Text>
+          <Text as="span" tone="muted" size="var(--ig-text-body-sm)">{description}</Text>
         </TextBlock>
       ) : (
         <span>{label}</span>

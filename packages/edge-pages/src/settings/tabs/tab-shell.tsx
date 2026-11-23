@@ -14,13 +14,13 @@ export function TabWrap({ children }: { children: ReactNode }): JSX.Element {
 const TITLE_ROW = { display: 'flex', alignItems: 'center', gap: 'var(--ig-spacing-8)' } as const
 
 export function TabTitle({ children }: { children: ReactNode }): JSX.Element {
-  return <Text as="h3" size="var(--ig-text-body-sm)" weight="semibold" style={TITLE_ROW}>{children}</Text>
+  return <Text as="h3" size="var(--ig-text-title-sm)" weight="semibold" style={TITLE_ROW}>{children}</Text>
 }
 
 /** 구역 이름. */
 export function SectionLabel({ children }: { children: ReactNode }): JSX.Element {
   return (
-    <Text tone="muted" size="var(--ig-text-micro)" uppercase letterSpacing="wide">
+    <Text size="var(--ig-text-body)" weight="semibold">
       {children}
     </Text>
   )
@@ -28,7 +28,7 @@ export function SectionLabel({ children }: { children: ReactNode }): JSX.Element
 
 /** 보조 설명 한 줄. 결과·경고 문장은 role(status/alert)을 붙여 화면 읽기 도구에 알린다. */
 export function Hint({ children, role }: { children: ReactNode; role?: 'status' | 'alert' }): JSX.Element {
-  return <Text tone="muted" size="var(--ig-text-micro)" role={role}>{children}</Text>
+  return <Text tone="muted" size="var(--ig-text-body-sm)" role={role}>{children}</Text>
 }
 
 /** 목록 행 묶음. */
