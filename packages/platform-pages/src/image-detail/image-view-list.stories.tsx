@@ -11,8 +11,8 @@ const VIEWS: ImageViewListItem[] = [
 const CANVAS_STYLE = { position: 'relative' as const, height: '100vh', background: 'var(--ig-color-surface-canvas)' }
 
 const meta: Meta<typeof ImageViewList> = {
-  id: 'platform-pages-imagedetail-imageviewlist',
-  title: 'Components/Platform/ImageDetail/ImageViewList',
+  id: 'platform-pages-image-detail-imageviewlist',
+  title: 'Components/Platform/Image Detail/ImageViewList',
   component: ImageViewList,
   parameters: { layout: 'fullscreen' },
   decorators: [(Story) => <div style={CANVAS_STYLE}><Story /></div>],
