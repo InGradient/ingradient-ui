@@ -90,4 +90,6 @@ export {
   X as ClosePanelIcon,
   X as WindowCloseIcon,
   XCircle as XCircleIcon,
+  ZoomIn as ZoomInIcon,
+  ZoomOut as ZoomOutIcon,
 } from 'lucide-react'
