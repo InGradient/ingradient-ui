@@ -57,4 +57,36 @@ describe('PlatformAppShell', () => {
     expect(onOpenSettings).toHaveBeenCalled()
     expect(onSignOut).toHaveBeenCalled()
   })
+
+  it('keeps the notice, comment, and user rows hidden until their handlers are provided', () => {
+    renderShell({ onOpenSettings: vi.fn(), noticeCount: 3 })
+    expect(screen.queryByRole('button', { name: /Notice/ })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Comment' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'User' })).not.toBeInTheDocument()
+  })
+
+  it('orders the bottom rows and hands the pressed user row to onOpenUser', () => {
+    const onOpenNotices = vi.fn()
+    const onOpenComments = vi.fn()
+    const onOpenUser = vi.fn()
+    renderShell({ onOpenNotices, onOpenComments, onOpenSettings: vi.fn(), onOpenUser, noticeCount: 3 })
+    const notice = screen.getByRole('button', { name: /Notice/ })
+    const user = screen.getByRole('button', { name: 'User' })
+    expect(notice).toHaveTextContent('3')
+    const rows = [notice, screen.getByRole('button', { name: 'Comment' }), screen.getByRole('button', { name: 'Settings' }), user]
+    rows.slice(1).forEach((row, index) => {
+      expect(rows[index].compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    })
+    fireEvent.click(notice)
+    fireEvent.click(rows[1])
+    fireEvent.click(user)
+    expect(onOpenNotices).toHaveBeenCalled()
+    expect(onOpenComments).toHaveBeenCalled()
+    expect(onOpenUser).toHaveBeenCalledWith(user)
+  })
+
+  it('hides the notice badge when there is nothing new', () => {
+    renderShell({ onOpenNotices: vi.fn(), noticeCount: 0 })
+    expect(screen.getByRole('button', { name: 'Notice' })).toHaveTextContent(/^Notice$/)
+  })
 })

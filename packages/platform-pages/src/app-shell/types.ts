@@ -19,7 +19,15 @@ export interface PlatformAppShellProps {
   /** Current project shown in the project switcher row. */
   projectName?: string
   onOpenProjects?: () => void
+  /** Unseen notice count shown as a badge on the Notice row. Zero or absent hides the badge. */
+  noticeCount?: number
+  /** Shows the Notice row. The app opens its notice list. */
+  onOpenNotices?: () => void
+  /** Shows the Comment row. The app opens its comment list. */
+  onOpenComments?: () => void
   onOpenSettings?: () => void
+  /** Shows the User row. Receives the pressed row so the app can anchor its account menu to it. */
+  onOpenUser?: (anchor: HTMLElement) => void
   onSignOut?: () => void
   /**
    * Controlled sidebar state. Omit to let the shell decide: expanded at 1440px and wider,

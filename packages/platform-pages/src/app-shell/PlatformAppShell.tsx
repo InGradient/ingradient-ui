@@ -1,12 +1,16 @@
 import React, { createContext, forwardRef, useContext, useMemo, useState } from 'react'
 import { BrandMark, brandAssets } from '@ingradient/ui/brand'
 import {
+  BellIcon,
+  CommentIcon,
   FolderIcon,
   GridIcon,
   ImageIcon,
   LogOutIcon,
+  NotificationBadge,
   SettingsIcon,
   TagIcon,
+  UserCircleIcon,
 } from '@ingradient/ui/components'
 import { SidebarShell, type SidebarShellAction, type SidebarShellItem } from '@ingradient/ui/patterns'
 import { iconSizeNumbers } from '@ingradient/ui/tokens'
@@ -15,6 +19,9 @@ import type { PlatformAppShellProps, PlatformNavItem } from './types'
 
 /** Width at which the sidebar starts expanded when the app does not control it. */
 export const PLATFORM_SIDEBAR_EXPAND_MIN_WIDTH = 1440
+
+/** SidebarShell rows stretch and clip every descendant span; keep the badge wrapper at icon size. */
+const NOTICE_BADGE_STYLE = { flex: 'none', overflow: 'visible' } as const
 
 export const defaultPlatformNavItems: PlatformNavItem[] = [
   { key: 'dashboard', label: 'Dashboard', icon: <GridIcon size={iconSizeNumbers.md} aria-hidden />, href: '/dashboard' },
@@ -73,7 +80,11 @@ export function PlatformAppShell({
   items = defaultPlatformNavItems,
   projectName,
   onOpenProjects,
+  noticeCount = 0,
+  onOpenNotices,
+  onOpenComments,
   onOpenSettings,
+  onOpenUser,
   onSignOut,
   expanded: expandedProp,
   defaultExpanded,
@@ -102,8 +113,12 @@ export function PlatformAppShell({
     linkComponent: ShellNavLink,
   }))
 
+  const noticeIcon = <BellIcon size={iconSizeNumbers.md} aria-hidden />
   const actions: SidebarShellAction[] = [
+    ...(onOpenNotices ? [{ key: 'notice', title: 'Notice', label: 'Notice', icon: noticeIcon, badge: noticeCount > 0 ? <NotificationBadge value={noticeCount} tone="danger" style={NOTICE_BADGE_STYLE}>{noticeIcon}</NotificationBadge> : undefined, onClick: () => onOpenNotices() }] : []),
+    ...(onOpenComments ? [{ key: 'comment', title: 'Comment', label: 'Comment', icon: <CommentIcon size={iconSizeNumbers.md} aria-hidden />, onClick: () => onOpenComments() }] : []),
     ...(onOpenSettings ? [{ key: 'settings', title: 'Settings', label: 'Settings', icon: <SettingsIcon size={iconSizeNumbers.md} aria-hidden />, onClick: () => onOpenSettings() }] : []),
+    ...(onOpenUser ? [{ key: 'user', title: 'User', label: 'User', icon: <UserCircleIcon size={iconSizeNumbers.md} aria-hidden />, onClick: (event: React.MouseEvent<HTMLButtonElement>) => onOpenUser(event.currentTarget) }] : []),
     ...(onSignOut ? [{ key: 'sign-out', title: 'Sign out', label: 'Sign out', icon: <LogOutIcon size={iconSizeNumbers.md} aria-hidden />, onClick: () => onSignOut() }] : []),
   ]
 
