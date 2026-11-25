@@ -11,7 +11,7 @@ const CARD_BOTTOM_GUARD = 220
 
 const CARD_STYLE = {
   width: `min(var(--ig-popup-sm), calc(100vw - ${VIEWPORT_MARGIN * 2}px))`,
-  padding: 'var(--ig-space-4)',
+  padding: 'var(--ig-spacing-12)',
   borderRadius: 'var(--ig-radius-lg)',
 }
 const DESCRIPTION_STYLE = { whiteSpace: 'pre-wrap' as const }
@@ -45,7 +45,7 @@ export function ClassHoverCard({ item, top, left, resolveAssetUrl }: ClassHoverC
   if (!item.reference_image_url && !description) return null
   return (
     <FloatingOverlay variant="tooltip" top={top} left={left} style={CARD_STYLE} role="tooltip" data-ig-component="ClassHoverCard">
-      <Stack gap="var(--ig-space-3)">
+      <Stack gap="var(--ig-spacing-8)">
         <Text as="span" size="var(--ig-text-body-sm)" weight="semibold">{item.name}</Text>
         {item.reference_image_url ? (
           <img

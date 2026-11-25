@@ -6,7 +6,7 @@ import { ImageDetailConfirmDialogs, type ImageDetailDeleteScope } from './image-
 import { ImageDetailContextMenu } from './image-detail-context-menu'
 
 const FRAME_STYLE = { position: 'relative' as const, height: '100vh', background: 'var(--ig-color-bg-canvas)' }
-const HINT_STYLE = { padding: 'var(--ig-space-6)', color: 'var(--ig-color-text-muted)' }
+const HINT_STYLE = { padding: 'var(--ig-spacing-16)', color: 'var(--ig-color-text-muted)' }
 const MENU_POSITION = { x: 120, y: 80 }
 const CLASSES = [
   { id: 'c1', name: 'Scratch', color: 'var(--ig-color-danger)', description: 'A thin line cut into the surface.\nLonger than it is wide.' },

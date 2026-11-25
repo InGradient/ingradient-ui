@@ -8,19 +8,19 @@ export const ConfirmOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--ig-space-7);
+  padding: var(--ig-spacing-20);
   background: var(--ig-color-modal-backdrop);
 `
 export const ConfirmCard = styled.div`
   width: min(var(--ig-popup-2xl-narrow), 100%);
-  padding: var(--ig-space-6);
+  padding: var(--ig-spacing-16);
   border-radius: var(--ig-radius-xl);
   background: var(--ig-color-surface-raised);
   border: var(--ig-border-1px) solid var(--ig-color-white-08);
   box-shadow: var(--ig-shadow-popover);
   display: flex;
   flex-direction: column;
-  gap: var(--ig-space-4);
+  gap: var(--ig-spacing-12);
 `
 export const ConfirmTitle = styled.h3`
   margin: 0;
@@ -38,7 +38,7 @@ export const ConfirmActions = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
-  gap: var(--ig-space-3);
+  gap: var(--ig-spacing-8);
 `
 export const ConfirmError = styled.div`
   font-size: var(--ig-font-size-xs);

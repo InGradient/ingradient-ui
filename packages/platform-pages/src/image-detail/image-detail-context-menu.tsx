@@ -12,7 +12,7 @@ const CLASS_ROW_STYLE = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  gap: 'var(--ig-space-4)',
+  gap: 'var(--ig-spacing-12)',
 }
 
 export interface ImageDetailContextMenuClass {
