@@ -306,6 +306,7 @@ These rules apply to the shared `@ingradient/ui` components that Platform and Ed
 - Default state: expanded (180px) at 1440px and wider, collapsed (72px) below, so pages keep room for their own side panels. Apps can control `expanded` and persist it.
 - Page views size themselves with `height: var(--ig-page-height, 100vh)`; the shell sets `--ig-page-height: 100%` for its page area. The page area is not a landmark; pages own theirs.
 - The current project name lives in the shell's project switcher, not in page headers.
+- Bottom rows are opt-in and appear in a fixed order: Notice (with an unseen-count badge), Comment, Settings, User, Sign out. Each row renders only when the app passes its handler (`onOpenNotices`, `onOpenComments`, `onOpenSettings`, `onOpenUser`, `onSignOut`); the shell owns no notice, comment, or account state. `onOpenUser` receives the pressed row so the app can anchor its account menu.
 - Single-form pages (Login, Signup, Create Project) and mobile layouts render without the shell.
 - Panel collapse/expand uses `PanelLeftClose/Open`; the sidebar `<aside>` and `<nav>` carry unique labels (`App sidebar`, `Main`).
 
