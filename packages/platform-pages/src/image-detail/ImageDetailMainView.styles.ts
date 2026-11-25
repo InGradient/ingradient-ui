@@ -3,17 +3,17 @@ import { media } from '@ingradient/ui/tokens'
 
 export const ZoomCloseGroup = styled.div`
   position: absolute;
-  top: var(--ig-space-2);
-  right: var(--ig-space-4);
+  top: var(--ig-spacing-8);
+  right: var(--ig-spacing-16);
   z-index: var(--ig-z-sticky-plus);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
+  gap: var(--ig-spacing-8);
 `
 
 export const CoordReadout = styled.span`
   display: block;
-  padding: var(--ig-space-2) var(--ig-space-3);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
   font-size: var(--ig-font-size-xs);
   font-family: var(--ig-font-mono);
   color: var(--ig-color-text-muted);
@@ -35,13 +35,13 @@ export const LoadingOverlay = styled.div`
 
 export const HiResNotice = styled.div`
   position: absolute;
-  top: var(--ig-space-3);
-  right: var(--ig-space-3);
+  top: var(--ig-spacing-12);
+  right: var(--ig-spacing-12);
   z-index: var(--ig-z-capture-high);
   display: flex;
   align-items: center;
-  gap: var(--ig-space-2);
-  padding: var(--ig-space-2) var(--ig-space-3);
+  gap: var(--ig-spacing-8);
+  padding: var(--ig-spacing-8) var(--ig-spacing-12);
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-overlay-darker);
   color: var(--ig-color-text-primary);
@@ -57,7 +57,7 @@ export const GroupTabsFloat = styled.div`
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--ig-z-capture);
-  max-width: calc(100% - var(--ig-space-8));
+  max-width: calc(100% - var(--ig-spacing-32));
   border-radius: var(--ig-radius-pill);
   background: var(--ig-color-overlay-darker);
 `

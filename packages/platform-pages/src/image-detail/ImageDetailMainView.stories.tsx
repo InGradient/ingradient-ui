@@ -5,7 +5,7 @@ import { ImageDetailMainView } from './ImageDetailMainView'
 import type { ImageDetailMainViewProps, ImageDetailTool } from './image-detail-main.types'
 
 const FRAME_STYLE = { position: 'relative' as const, display: 'flex', flexDirection: 'column' as const, height: '100vh', background: 'var(--ig-color-bg-canvas)' }
-const SLOT_STYLE = { position: 'absolute' as const, top: 'var(--ig-space-3)', left: 'var(--ig-space-3)', color: 'var(--ig-color-text-muted)' }
+const SLOT_STYLE = { position: 'absolute' as const, top: 'var(--ig-spacing-12)', left: 'var(--ig-spacing-12)', color: 'var(--ig-color-text-muted)' }
 const IMAGE_URL = `data:image/svg+xml;utf8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480"><rect width="640" height="480" fill="#5b6472"/><circle cx="320" cy="240" r="120" fill="#8a94a6"/></svg>')}`
 const OBJECTS = [
   { id: 'bbox-0', type: 'rect' as const, x: 0.3, y: 0.3, w: 0.25, h: 0.3, color: 'var(--ig-color-danger)', label: 'Scratch' },
