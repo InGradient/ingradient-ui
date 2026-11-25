@@ -6,6 +6,22 @@ const VIEWPORT_MARGIN = 8
 const BACKDROP_STYLE = { position: 'fixed' as const, inset: 0, zIndex: 'var(--ig-z-popover)' }
 const MENU_STYLE = { minWidth: 'var(--ig-popup-xs)', padding: 'var(--ig-spacing-4)' }
 
+const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), Math.max(min, max))
+
+/**
+ * Beside the row when there is room on its right (desktop sidebar). A row that reaches the
+ * right edge (mobile drawer) gets the menu under it, or above it when the space below is short.
+ */
+export function placeUserMenu(anchor: DOMRect, width: number, height: number) {
+  const maxLeft = window.innerWidth - width - VIEWPORT_MARGIN
+  const maxTop = window.innerHeight - height - VIEWPORT_MARGIN
+  const besideLeft = anchor.right + ANCHOR_GAP
+  if (besideLeft <= maxLeft) return { top: clamp(anchor.top, VIEWPORT_MARGIN, maxTop), left: besideLeft }
+  const below = anchor.bottom + ANCHOR_GAP
+  const top = below <= maxTop ? below : anchor.top - ANCHOR_GAP - height
+  return { top: clamp(top, VIEWPORT_MARGIN, maxTop), left: clamp(anchor.right - width, VIEWPORT_MARGIN, maxLeft) }
+}
+
 export interface PlatformUserMenuProps {
   /** The pressed User row from `PlatformAppShell.onOpenUser`. Null keeps the menu closed. */
   anchorEl: HTMLElement | null
@@ -25,17 +41,12 @@ function PlatformUserMenuBody({
   anchorEl, onClose, onChangeAccount, onAddAccount, onSignOut,
 }: PlatformUserMenuProps & { anchorEl: HTMLElement }) {
   const menuRef = useRef<HTMLDivElement>(null)
-  const [position, setPosition] = useState(() => {
-    const rect = anchorEl.getBoundingClientRect()
-    return { top: rect.top, left: rect.right + ANCHOR_GAP }
-  })
+  const [position, setPosition] = useState(() => placeUserMenu(anchorEl.getBoundingClientRect(), 0, 0))
 
   // Measure the rendered menu, then keep it inside the viewport next to the row.
   useLayoutEffect(() => {
-    const rect = anchorEl.getBoundingClientRect()
-    const height = menuRef.current?.offsetHeight ?? 0
-    const maxTop = Math.max(VIEWPORT_MARGIN, window.innerHeight - height - VIEWPORT_MARGIN)
-    setPosition({ top: Math.min(Math.max(rect.top, VIEWPORT_MARGIN), maxTop), left: rect.right + ANCHOR_GAP })
+    const menu = menuRef.current
+    setPosition(placeUserMenu(anchorEl.getBoundingClientRect(), menu?.offsetWidth ?? 0, menu?.offsetHeight ?? 0))
   }, [anchorEl])
 
   useEffect(() => {

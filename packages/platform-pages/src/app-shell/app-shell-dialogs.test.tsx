@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { AccountSwitchDialog } from './account-switch-dialog'
 import { CommentedImagesDialog } from './commented-images-dialog'
 import { NoticesDialog } from './notices-dialog'
-import { PlatformUserMenu } from './platform-user-menu'
+import { PlatformUserMenu, placeUserMenu } from './platform-user-menu'
 import { ProjectSwitcherDialog } from './project-switcher-dialog'
 
 const noop = () => undefined
@@ -91,5 +91,15 @@ describe('PlatformUserMenu', () => {
     expect(calls).toEqual(['close', 'signOut'])
     expect(anchor).toHaveFocus()
     anchor.remove()
+  })
+
+  it('opens beside a sidebar row and under or above a row that reaches the right edge', () => {
+    const viewport = { width: window.innerWidth, height: window.innerHeight }
+    const row = (left: number, top: number, width: number) => new DOMRect(left, top, width, 40)
+    expect(placeUserMenu(row(0, 100, 200), 180, 120)).toEqual({ top: 100, left: 208 })
+    const fullWidth = placeUserMenu(row(0, 100, viewport.width), 180, 120)
+    expect(fullWidth).toEqual({ top: 148, left: viewport.width - 180 - 8 })
+    const nearBottom = placeUserMenu(row(0, viewport.height - 60, viewport.width), 180, 120)
+    expect(nearBottom.top).toBe(viewport.height - 60 - 8 - 120)
   })
 })
