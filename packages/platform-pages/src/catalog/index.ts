@@ -36,3 +36,17 @@ export { GalleryDeleteDialog } from './gallery/gallery-delete-dialog'
 export { GalleryExportConfigDialog } from './gallery/gallery-export-config-dialog'
 export { GalleryExportProgressDialog } from './gallery/gallery-export-progress-dialog'
 export type { UploadQuality } from './upload-quality-modal'
+export { RegisterFolderDialog } from './register-folder-dialog'
+export type {
+  RegisterFolderClassCount,
+  RegisterFolderDialogProps,
+  RegisterFolderPhase,
+  RegisterFolderReport,
+} from './register-folder-dialog'
+export { YoloFolderExportDialog } from './yolo-folder-export-dialog'
+export type {
+  YoloFolderClassMode,
+  YoloFolderExportDialogProps,
+  YoloFolderExportPayload,
+  YoloFolderExportPhase,
+} from './yolo-folder-export-dialog'
